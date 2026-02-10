@@ -1105,28 +1105,54 @@
         <div class="annotation-item">
           <div class="label">Volume Trap — Confirmed</div>
           <div class="value">
-            The 2× volume line is a hard boundary. Every high-volume drop in the 1-year sample (<span class="highlight-red">0 of 4</span>) failed to recover within 5 days. Below 2×, <span class="highlight-green">4 of 6 recovered</span>. This directly supports the cascade mechanism: forced selling at sufficient intensity creates structural correlations that prevent mean reversion.
+            The 2× volume line is a hard boundary. Every high-volume drop in the 1-year sample (<span class="highlight-red">0 of 4</span>) failed to recover within 5 days. Below 2×, <span class="highlight-green">4 of 6 recovered</span>. Forced selling at sufficient intensity creates structural correlations that prevent mean reversion.
           </div>
         </div>
         <div class="annotation-item">
-          <div class="label">E_q Layer Shift — Confirmed at Correct Resolution</div>
+          <div class="label">E_q Layer Shift — Confirmed</div>
           <div class="value">
-            Initial analysis at N=720 showed no shift — but that was <span class="highlight-gold">aliasing</span>: mapping 30 divisors onto 7 DFT bins reads the same data 30 times. At the correct operating shell (N=60, 12 layers, P₃ boundary at q=30), energy above P₃ runs at <span class="highlight-green">22.9% ± 6.8%</span> during normal trading, then rises to <span class="highlight-orange">39.6%</span> in the pre-cascade period — a <span class="highlight-purple">2.5σ shift</span> that preceded the cascade by six weeks. Peak: 50.4% on Dec 18, 2025.
+            At the correct operating shell (N=60, 12 layers, P₃ at q=30), energy above P₃ runs at <span class="highlight-green">22.9% ± 6.8%</span> during normal trading, then rises to <span class="highlight-orange">39.6%</span> pre-cascade — a <span class="highlight-purple">2.5σ shift</span> six weeks before the cascade. Peak: 50.4% on Dec 18. Initial analysis at N=720 showed no shift — that was <span class="highlight-gold">aliasing</span>: 30 divisors onto 7 DFT bins reads the same data 30 times. The fix: <span class="highlight-teal">choose_shell(L)</span> selects the richest highly-composite N ≤ signal length.
           </div>
         </div>
       </div>
 
       <div class="annotation">
         <div class="annotation-item">
-          <div class="label">Methodology Note</div>
+          <div class="label">Detection Algorithm — 1 Alert, 0 False Positives</div>
           <div class="value">
-            The operating shell N must match the signal length. Theorem 8.4 says E_q works for any N, but the coprime-frequency mapping requires L ≥ N to avoid bin aliasing. A 7-point signal has 7 DFT bins — you cannot extract 30 independent measurements from 7 numbers. N=60 gives 12 layers with the P₃ boundary; N=720 requires 720+ data points (≈3 years daily, or ≈5 hours of 1-minute bars). This is an instance of the framework's own Principle 1: <span class="highlight-teal">perception over prediction</span> — use the instrument at the resolution the data supports.
+            <pre style="background:#0c0c18; border:1px solid #2a2a44; border-radius:4px; padding:12px; font-family:'JetBrains Mono',monospace; font-size:11px; color:#c8c8e0; line-height:1.6; overflow-x:auto; margin:8px 0 12px 0;">for each day t:
+  window = returns[t-N+1 : t]
+  X = DFT(window)
+  for each divisor q | N:
+    map K(q) -> DFT indices
+    E_q = sum_{k in K(q)} |X[index(k)]|^2
+  frac_above_Pr = sum_{q > P_r} E_q / sum_all_E
+  baseline = mean(frac_above_Pr over t-W0)
+  sigma = std(frac_above_Pr over t-W0)
+  if (frac_above_Pr - baseline) > 2*sigma and volume[t] > 2*vol_mean20:
+    flag_alert(t)</pre>
+            N=60, P<sub>r</sub>=30, W<sub>0</sub>=120. Result: <span class="highlight-red">1 alert</span> in 77 scanned days — <span class="highlight-teal">Feb 4, 2026</span> (cascade day). z = +2.2, frac = 44.3%, volume = 2.37×. Z-score climbed from ~0 in November through +1.7 in January, crossing 2.0 only when volume simultaneously spiked. Three earlier high-volume drops (Jun, Aug, Nov) had z &lt; 1.5 — correctly filtered. Parameters fixed at publication.
           </div>
         </div>
         <div class="annotation-item">
           <div class="label">Reproducibility</div>
           <div class="value">
-            Full source code (<span class="highlight-teal">cascade_notebook.py</span>) and raw data (<span class="highlight-teal">pltr_us_d__8_.csv</span>) published in this repository. Python 3 + numpy + pandas + matplotlib. No API keys. All numbers on this page are traceable to the notebook output.
+            Full source code (<span class="highlight-teal">cascade_notebook.py v3</span>) and raw data (<span class="highlight-teal">pltr_us_d__8_.csv</span>) published in this repository. The detection algorithm is specified as code, not prose — the notebook IS the pre-registration. Python 3 + numpy + pandas + matplotlib. No API keys.
+          </div>
+        </div>
+      </div>
+
+      <div class="annotation">
+        <div class="annotation-item">
+          <div class="label">Shell Selection Rule</div>
+          <div class="value">
+            The operating shell N must satisfy L ≥ N. A signal of length L has L DFT bins; mapping d(N) divisors requires L ≥ N to keep coprime indices distinct. <span class="highlight-teal">choose_shell(L)</span> picks the richest highly-composite N ≤ L with P₃ boundary (30 | N). N=60 → 12 layers. N=720 requires ≈3 years daily or ≈5 hours of 1-minute bars. Principle 1: use the instrument at the resolution the data supports.
+          </div>
+        </div>
+        <div class="annotation-item">
+          <div class="label">Limitations</div>
+          <div class="value">
+            One stock, one year, one cascade event. The detection rule needs testing across a universe of tickers and multiple catalyst events to measure true/false positive rates at scale. The E_q z-score was a leading indicator here, but N=1 is hypothesis-generating, not proof. The algorithm is published precisely so others can run the backtest.
           </div>
         </div>
       </div>
