@@ -1,0 +1,1011 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leverage Cascade — Primorial Layer Activation</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+  :root {
+    --bg: #06060b;
+    --surface: #0c0c14;
+    --border: #1a1a2e;
+    --text: #c8c8d8;
+    --dim: #555570;
+    --accent-blue: #3b82f6;
+    --accent-teal: #4ECDC4;
+    --accent-gold: #FFD700;
+    --accent-red: #ef4444;
+    --accent-orange: #f97316;
+    --accent-purple: #a78bfa;
+    --accent-green: #4ade80;
+    --accent-pink: #f472b6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'JetBrains Mono', monospace;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  .page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 40px 24px 80px;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    text-align: center;
+    margin-bottom: 60px;
+    padding: 40px 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 42px;
+    font-weight: 700;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+    background: linear-gradient(135deg, var(--accent-red), var(--accent-orange), var(--accent-gold));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .header .subtitle {
+    font-size: 13px;
+    color: var(--dim);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+
+  .header .framework {
+    margin-top: 12px;
+    font-size: 11px;
+    color: var(--accent-purple);
+    letter-spacing: 1px;
+  }
+
+  /* ─── PHASE PANELS ─── */
+  .phase {
+    margin-bottom: 60px;
+    position: relative;
+  }
+
+  .phase-number {
+    position: absolute;
+    top: -20px;
+    left: -8px;
+    font-family: 'Playfair Display', serif;
+    font-size: 120px;
+    font-weight: 700;
+    color: var(--border);
+    line-height: 1;
+    z-index: 0;
+    opacity: 0.5;
+  }
+
+  .phase-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .phase-label {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 6px;
+  }
+
+  .phase-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 6px;
+  }
+
+  .phase-desc {
+    font-size: 12px;
+    color: var(--dim);
+    max-width: 600px;
+    margin-bottom: 24px;
+    line-height: 1.8;
+  }
+
+  /* ─── SVG CONTAINERS ─── */
+  .diagram-container {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 16px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .diagram-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--accent-purple), transparent);
+    opacity: 0.3;
+  }
+
+  .diagram-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 12px;
+  }
+
+  .diagram-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .diagram-wide {
+    grid-template-columns: 1fr;
+  }
+
+  /* ─── ANNOTATIONS ─── */
+  .annotation {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+    flex-wrap: wrap;
+  }
+
+  .annotation-item {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .annotation-item .label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-bottom: 4px;
+  }
+
+  .annotation-item .value {
+    font-size: 13px;
+  }
+
+  .highlight-red { color: var(--accent-red); }
+  .highlight-green { color: var(--accent-green); }
+  .highlight-gold { color: var(--accent-gold); }
+  .highlight-blue { color: var(--accent-blue); }
+  .highlight-purple { color: var(--accent-purple); }
+  .highlight-teal { color: var(--accent-teal); }
+  .highlight-orange { color: var(--accent-orange); }
+
+  /* ─── FORMULA BAR ─── */
+  .formula {
+    background: rgba(167, 139, 250, 0.06);
+    border: 1px solid rgba(167, 139, 250, 0.15);
+    border-radius: 6px;
+    padding: 12px 18px;
+    font-size: 13px;
+    color: var(--accent-purple);
+    margin: 16px 0;
+    text-align: center;
+    letter-spacing: 0.5px;
+  }
+
+  /* ─── STATS ROW ─── */
+  .stats-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 14px;
+    text-align: center;
+  }
+
+  .stat-card .stat-value {
+    font-size: 24px;
+    font-weight: 700;
+    font-family: 'Playfair Display', serif;
+  }
+
+  .stat-card .stat-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--dim);
+    margin-top: 4px;
+  }
+
+  /* ─── TIMELINE ─── */
+  .timeline {
+    position: relative;
+    padding-left: 30px;
+    margin: 20px 0;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--border);
+  }
+
+  .timeline-event {
+    position: relative;
+    margin-bottom: 16px;
+    padding: 10px 14px;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+  }
+
+  .timeline-event::before {
+    content: '';
+    position: absolute;
+    left: -26px;
+    top: 14px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-purple);
+    background: var(--bg);
+  }
+
+  .timeline-event.active::before {
+    background: var(--accent-red);
+    border-color: var(--accent-red);
+    box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+  }
+
+  .timeline-event.future::before {
+    border-color: var(--accent-orange);
+    border-style: dashed;
+  }
+
+  .timeline-date {
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 1px;
+  }
+
+  .timeline-text {
+    font-size: 12px;
+    margin-top: 2px;
+  }
+
+  /* ─── DIVIDER ─── */
+  .divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--border), transparent);
+    margin: 40px 0;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer {
+    text-align: center;
+    padding: 30px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 40px;
+  }
+
+  .footer .principle {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 18px;
+    color: var(--accent-teal);
+    margin-bottom: 8px;
+  }
+
+  .footer .credit {
+    font-size: 10px;
+    color: var(--dim);
+    letter-spacing: 2px;
+  }
+
+  /* Pulse animation for cascade nodes */
+  @keyframes pulse-red {
+    0%, 100% { opacity: 0.6; }
+    50% { opacity: 1; }
+  }
+  .pulse { animation: pulse-red 2s ease-in-out infinite; }
+
+  @keyframes edge-flow {
+    0% { stroke-dashoffset: 20; }
+    100% { stroke-dashoffset: 0; }
+  }
+  .flow-edge { animation: edge-flow 1.5s linear infinite; }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .header h1 { font-size: 28px; }
+    .phase-number { font-size: 80px; }
+    .phase-title { font-size: 22px; }
+    .diagram-row { grid-template-columns: 1fr; }
+    .stats-row { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Anatomy of a Leverage Cascade</h1>
+    <div class="subtitle">How graph topology changes extract value from leveraged markets</div>
+    <div class="framework">FVLT Framework · Primorial Layer Analysis · §8.3 Theorem 8.8</div>
+  </div>
+
+  <!-- PLTR STATS -->
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-value highlight-red">−18.5%</div>
+      <div class="stat-label">Cascade Drop</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value highlight-orange">2.58×</div>
+      <div class="stat-label">Peak Rel. Volume</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value highlight-gold">33%</div>
+      <div class="stat-label">HV Reversal Rate</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value highlight-green">63%</div>
+      <div class="stat-label">Normal Reversal</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PHASE 1: NORMAL STATE -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="phase">
+    <div class="phase-number">1</div>
+    <div class="phase-content">
+      <div class="phase-label">Normal Market State</div>
+      <div class="phase-title">Low Primorial Layer — <span class="highlight-teal">Simple Topology</span></div>
+      <div class="phase-desc">
+        Few actors dominate. Correlations are sparse and local. The market graph lives at the P₂/P₃ level — 
+        energy concentrates in the low divisors of 720. Most nodes are independent.
+      </div>
+
+      <div class="diagram-row">
+        <div class="diagram-container">
+          <div class="diagram-label">Market Graph — Normal Regime</div>
+          <svg viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg">
+            <!-- Background grid -->
+            <defs>
+              <radialGradient id="glow-teal" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#4ECDC4" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#4ECDC4" stop-opacity="0"/>
+              </radialGradient>
+            </defs>
+            <circle cx="220" cy="150" r="130" fill="url(#glow-teal)"/>
+            
+            <!-- Few edges — sparse graph -->
+            <line x1="120" y1="80" x2="180" y2="140" stroke="#4ECDC4" stroke-width="1.5" opacity="0.4"/>
+            <line x1="180" y1="140" x2="260" y2="120" stroke="#4ECDC4" stroke-width="1.5" opacity="0.4"/>
+            <line x1="260" y1="120" x2="300" y2="200" stroke="#4ECDC4" stroke-width="1.5" opacity="0.4"/>
+            <line x1="150" y1="220" x2="180" y2="140" stroke="#4ECDC4" stroke-width="1" opacity="0.3"/>
+            <line x1="340" y1="100" x2="260" y2="120" stroke="#4ECDC4" stroke-width="1" opacity="0.3"/>
+            
+            <!-- Nodes — market actors -->
+            <!-- Cluster A: retail -->
+            <circle cx="120" cy="80" r="12" fill="#0c0c14" stroke="#4ECDC4" stroke-width="2"/>
+            <text x="120" y="84" text-anchor="middle" fill="#4ECDC4" font-size="8" font-family="JetBrains Mono">R₁</text>
+            
+            <circle cx="80" cy="140" r="10" fill="#0c0c14" stroke="#4ECDC4" stroke-width="1.5" opacity="0.6"/>
+            <text x="80" y="144" text-anchor="middle" fill="#4ECDC4" font-size="7" font-family="JetBrains Mono" opacity="0.6">R₂</text>
+            
+            <circle cx="100" cy="200" r="10" fill="#0c0c14" stroke="#4ECDC4" stroke-width="1.5" opacity="0.6"/>
+            <text x="100" y="204" text-anchor="middle" fill="#4ECDC4" font-size="7" font-family="JetBrains Mono" opacity="0.6">R₃</text>
+            
+            <!-- Cluster B: institutional -->
+            <circle cx="180" cy="140" r="14" fill="#0c0c14" stroke="#4ade80" stroke-width="2"/>
+            <text x="180" y="144" text-anchor="middle" fill="#4ade80" font-size="8" font-family="JetBrains Mono">I₁</text>
+            
+            <circle cx="260" cy="120" r="14" fill="#0c0c14" stroke="#4ade80" stroke-width="2"/>
+            <text x="260" y="124" text-anchor="middle" fill="#4ade80" font-size="8" font-family="JetBrains Mono">I₂</text>
+            
+            <!-- Cluster C: algo/HFT -->
+            <circle cx="300" cy="200" r="12" fill="#0c0c14" stroke="#fbbf24" stroke-width="2"/>
+            <text x="300" y="204" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="JetBrains Mono">A₁</text>
+            
+            <circle cx="340" cy="100" r="10" fill="#0c0c14" stroke="#fbbf24" stroke-width="1.5" opacity="0.6"/>
+            <text x="340" y="104" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="JetBrains Mono" opacity="0.6">A₂</text>
+            
+            <!-- Independent nodes — no edges -->
+            <circle cx="150" cy="220" r="10" fill="#0c0c14" stroke="#555570" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <text x="150" y="224" text-anchor="middle" fill="#555570" font-size="7" font-family="JetBrains Mono">L₁</text>
+            
+            <circle cx="350" cy="240" r="10" fill="#0c0c14" stroke="#555570" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <text x="350" y="244" text-anchor="middle" fill="#555570" font-size="7" font-family="JetBrains Mono">L₂</text>
+            
+            <circle cx="220" cy="250" r="10" fill="#0c0c14" stroke="#555570" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <text x="220" y="254" text-anchor="middle" fill="#555570" font-size="7" font-family="JetBrains Mono">L₃</text>
+            
+            <circle cx="380" cy="170" r="10" fill="#0c0c14" stroke="#555570" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <text x="380" y="174" text-anchor="middle" fill="#555570" font-size="7" font-family="JetBrains Mono">L₄</text>
+
+            <circle cx="60" cy="60" r="10" fill="#0c0c14" stroke="#555570" stroke-width="1.5" stroke-dasharray="3,3"/>
+            <text x="60" y="64" text-anchor="middle" fill="#555570" font-size="7" font-family="JetBrains Mono">L₅</text>
+
+            <!-- Labels -->
+            <text x="12" y="20" fill="#555570" font-size="9" font-family="JetBrains Mono">5 edges · 10 nodes</text>
+            <text x="12" y="34" fill="#555570" font-size="9" font-family="JetBrains Mono">5 independent (dashed)</text>
+            <text x="12" y="285" fill="#4ECDC4" font-size="8" font-family="JetBrains Mono">● Retail</text>
+            <text x="80" y="285" fill="#4ade80" font-size="8" font-family="JetBrains Mono">● Institutional</text>
+            <text x="175" y="285" fill="#fbbf24" font-size="8" font-family="JetBrains Mono">● Algo</text>
+            <text x="240" y="285" fill="#555570" font-size="8" font-family="JetBrains Mono">○ Leveraged (isolated)</text>
+          </svg>
+        </div>
+
+        <div class="diagram-container">
+          <div class="diagram-label">E_q Energy — Low Divisors Dominate</div>
+          <svg viewBox="0 0 440 300" xmlns="http://www.w3.org/2000/svg">
+            <!-- Divisor lattice bars -->
+            <!-- Low divisors: high energy -->
+            <rect x="30" y="60" width="28" height="200" rx="2" fill="#4ECDC4" opacity="0.8"/>
+            <text x="44" y="280" text-anchor="middle" fill="#888" font-size="8" font-family="JetBrains Mono">q=1</text>
+            <text x="44" y="50" text-anchor="middle" fill="#4ECDC4" font-size="8" font-family="JetBrains Mono">DC</text>
+            
+            <rect x="68" y="100" width="28" height="160" rx="2" fill="#4ECDC4" opacity="0.7"/>
+            <text x="82" y="280" text-anchor="middle" fill="#888" font-size="8" font-family="JetBrains Mono">q=2</text>
+            
+            <rect x="106" y="120" width="28" height="140" rx="2" fill="#4ECDC4" opacity="0.6"/>
+            <text x="120" y="280" text-anchor="middle" fill="#888" font-size="8" font-family="JetBrains Mono">q=3</text>
+            
+            <rect x="144" y="140" width="28" height="120" rx="2" fill="#4ade80" opacity="0.5"/>
+            <text x="158" y="280" text-anchor="middle" fill="#888" font-size="8" font-family="JetBrains Mono">q=4</text>
+            
+            <rect x="182" y="155" width="28" height="105" rx="2" fill="#4ade80" opacity="0.5"/>
+            <text x="196" y="280" text-anchor="middle" fill="#888" font-size="8" font-family="JetBrains Mono">q=5</text>
+            
+            <rect x="220" y="165" width="28" height="95" rx="2" fill="#4ade80" opacity="0.4"/>
+            <text x="234" y="280" text-anchor="middle" fill="#888" font-size="8" font-family="JetBrains Mono">q=6</text>
+
+            <!-- Primorial boundary P₃ -->
+            <line x1="255" y1="40" x2="255" y2="270" stroke="#a78bfa" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+            <text x="258" y="45" fill="#a78bfa" font-size="8" font-family="JetBrains Mono">P₃ boundary</text>
+            
+            <!-- Higher divisors: low energy -->
+            <rect x="264" y="240" width="16" height="20" rx="2" fill="#fbbf24" opacity="0.25"/>
+            <text x="272" y="280" text-anchor="middle" fill="#555" font-size="7" font-family="JetBrains Mono">8</text>
+            
+            <rect x="286" y="245" width="16" height="15" rx="2" fill="#fbbf24" opacity="0.2"/>
+            <text x="294" y="280" text-anchor="middle" fill="#555" font-size="7" font-family="JetBrains Mono">9</text>
+
+            <rect x="308" y="248" width="16" height="12" rx="2" fill="#fbbf24" opacity="0.15"/>
+            <text x="316" y="280" text-anchor="middle" fill="#555" font-size="7" font-family="JetBrains Mono">10</text>
+
+            <rect x="330" y="250" width="16" height="10" rx="2" fill="#f97316" opacity="0.12"/>
+            <text x="338" y="280" text-anchor="middle" fill="#555" font-size="7" font-family="JetBrains Mono">12</text>
+
+            <rect x="352" y="252" width="16" height="8" rx="2" fill="#f97316" opacity="0.1"/>
+            <text x="360" y="280" text-anchor="middle" fill="#555" font-size="7" font-family="JetBrains Mono">...</text>
+
+            <rect x="374" y="254" width="16" height="6" rx="2" fill="#ef4444" opacity="0.08"/>
+            <text x="382" y="280" text-anchor="middle" fill="#555" font-size="7" font-family="JetBrains Mono">720</text>
+
+            <!-- Arrow showing energy concentration -->
+            <text x="120" y="30" text-anchor="middle" fill="#4ECDC4" font-size="10" font-family="JetBrains Mono" font-weight="700">← Energy here</text>
+            <text x="350" y="30" text-anchor="middle" fill="#555570" font-size="10" font-family="JetBrains Mono">Dark →</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="formula">Normal: E_q concentrated at q ≤ 30 (P₂/P₃) · Graph density ≈ 0.1 · Reversal rate 63%</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PHASE 2: PRE-TENSIONING -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="phase">
+    <div class="phase-number">2</div>
+    <div class="phase-content">
+      <div class="phase-label">Pre-Tensioning</div>
+      <div class="phase-title">Narrative Seeding — <span class="highlight-orange">Conditional Edges Form</span></div>
+      <div class="phase-desc">
+        Public commentary creates conditional correlations: "if X happens, then I sell." 
+        These are latent edges — invisible in the current graph but pre-wired to activate on a single catalyst.
+        The topology hasn't changed yet. But the potential topology has.
+      </div>
+
+      <div class="diagram-container">
+        <div class="diagram-label">Burry Timeline — Wiring the Higher Primorial Layer</div>
+        <div class="timeline">
+          <div class="timeline-event">
+            <div class="timeline-date">FEB 2 — Substack</div>
+            <div class="timeline-text">"Historic overvaluation, historic capital expenditures, tiny AI revenue"</div>
+          </div>
+          <div class="timeline-event">
+            <div class="timeline-date">FEB 3 — Substack + Bloomberg</div>
+            <div class="timeline-text">Bitcoin "death spiral" warning — cascading cross-asset contagion narrative</div>
+          </div>
+          <div class="timeline-event active">
+            <div class="timeline-date">FEB 4–5 — <span class="highlight-red">CASCADE FIRES</span></div>
+            <div class="timeline-text">PLTR −11.6% then −6.8% · Volume 2.58× and 1.96× · −18.5% total</div>
+          </div>
+          <div class="timeline-event">
+            <div class="timeline-date">FEB 5 — X post</div>
+            <div class="timeline-text">Bitcoin $BTC pattern chart — "this has legs to run deeper"</div>
+          </div>
+          <div class="timeline-event">
+            <div class="timeline-date">FEB 9 — X post</div>
+            <div class="timeline-text">"Markets jittery over historic overvaluation" — maintaining narrative pressure</div>
+          </div>
+          <div class="timeline-event">
+            <div class="timeline-date">FEB 10 — X post</div>
+            <div class="timeline-text">"I am working on something $PLTR" — direct targeting with bearish chart</div>
+          </div>
+          <div class="timeline-event future">
+            <div class="timeline-date">FEB 25 — <span class="highlight-orange">NVIDIA EARNINGS</span></div>
+            <div class="timeline-text">Target catalyst · $186M in NVDA puts already positioned</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="diagram-container">
+        <div class="diagram-label">Graph With Conditional (Latent) Edges</div>
+        <svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="glow-orange" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#f97316" stop-opacity="0.1"/>
+              <stop offset="100%" stop-color="#f97316" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <circle cx="450" cy="150" r="140" fill="url(#glow-orange)"/>
+
+          <!-- Existing edges (same as Phase 1) -->
+          <line x1="170" y1="80" x2="280" y2="130" stroke="#4ECDC4" stroke-width="1.5" opacity="0.4"/>
+          <line x1="280" y1="130" x2="400" y2="110" stroke="#4ECDC4" stroke-width="1.5" opacity="0.4"/>
+          <line x1="400" y1="110" x2="480" y2="190" stroke="#4ECDC4" stroke-width="1.5" opacity="0.4"/>
+          <line x1="230" y1="210" x2="280" y2="130" stroke="#4ECDC4" stroke-width="1" opacity="0.3"/>
+          <line x1="530" y1="90" x2="400" y2="110" stroke="#4ECDC4" stroke-width="1" opacity="0.3"/>
+
+          <!-- CONDITIONAL EDGES — dashed orange, connecting previously independent nodes -->
+          <line x1="230" y1="210" x2="480" y2="190" stroke="#f97316" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5" class="flow-edge"/>
+          <line x1="530" y1="90" x2="620" y2="230" stroke="#f97316" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5" class="flow-edge"/>
+          <line x1="170" y1="80" x2="350" y2="240" stroke="#f97316" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5" class="flow-edge"/>
+          <line x1="480" y1="190" x2="700" y2="160" stroke="#f97316" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5" class="flow-edge"/>
+          <line x1="120" y1="160" x2="350" y2="240" stroke="#f97316" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5" class="flow-edge"/>
+          <line x1="400" y1="110" x2="620" y2="230" stroke="#f97316" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5" class="flow-edge"/>
+          <line x1="280" y1="130" x2="700" y2="160" stroke="#f97316" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.4" class="flow-edge"/>
+          <line x1="100" y1="55" x2="230" y2="210" stroke="#f97316" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.4" class="flow-edge"/>
+
+          <!-- Original nodes -->
+          <circle cx="170" cy="80" r="12" fill="#0c0c14" stroke="#4ECDC4" stroke-width="2"/>
+          <text x="170" y="84" text-anchor="middle" fill="#4ECDC4" font-size="8" font-family="JetBrains Mono">R₁</text>
+
+          <circle cx="120" cy="160" r="10" fill="#0c0c14" stroke="#4ECDC4" stroke-width="1.5" opacity="0.6"/>
+          <text x="120" y="164" text-anchor="middle" fill="#4ECDC4" font-size="7" font-family="JetBrains Mono">R₂</text>
+
+          <circle cx="280" cy="130" r="14" fill="#0c0c14" stroke="#4ade80" stroke-width="2"/>
+          <text x="280" y="134" text-anchor="middle" fill="#4ade80" font-size="8" font-family="JetBrains Mono">I₁</text>
+
+          <circle cx="400" cy="110" r="14" fill="#0c0c14" stroke="#4ade80" stroke-width="2"/>
+          <text x="400" y="114" text-anchor="middle" fill="#4ade80" font-size="8" font-family="JetBrains Mono">I₂</text>
+
+          <circle cx="480" cy="190" r="12" fill="#0c0c14" stroke="#fbbf24" stroke-width="2"/>
+          <text x="480" y="194" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="JetBrains Mono">A₁</text>
+
+          <circle cx="530" cy="90" r="10" fill="#0c0c14" stroke="#fbbf24" stroke-width="1.5" opacity="0.6"/>
+          <text x="530" y="94" text-anchor="middle" fill="#fbbf24" font-size="7" font-family="JetBrains Mono">A₂</text>
+
+          <!-- Previously isolated nodes — now have conditional edges -->
+          <circle cx="230" cy="210" r="12" fill="#0c0c14" stroke="#f97316" stroke-width="2"/>
+          <text x="230" y="214" text-anchor="middle" fill="#f97316" font-size="8" font-family="JetBrains Mono">L₁</text>
+
+          <circle cx="620" cy="230" r="12" fill="#0c0c14" stroke="#f97316" stroke-width="2"/>
+          <text x="620" y="234" text-anchor="middle" fill="#f97316" font-size="8" font-family="JetBrains Mono">L₂</text>
+
+          <circle cx="350" cy="240" r="12" fill="#0c0c14" stroke="#f97316" stroke-width="2"/>
+          <text x="350" y="244" text-anchor="middle" fill="#f97316" font-size="8" font-family="JetBrains Mono">L₃</text>
+
+          <circle cx="700" cy="160" r="12" fill="#0c0c14" stroke="#f97316" stroke-width="2"/>
+          <text x="700" y="164" text-anchor="middle" fill="#f97316" font-size="8" font-family="JetBrains Mono">L₄</text>
+
+          <circle cx="100" cy="55" r="10" fill="#0c0c14" stroke="#f97316" stroke-width="2"/>
+          <text x="100" y="59" text-anchor="middle" fill="#f97316" font-size="8" font-family="JetBrains Mono">L₅</text>
+
+          <!-- Legend -->
+          <text x="15" y="20" fill="#555570" font-size="9" font-family="JetBrains Mono">5 real edges + 8 conditional</text>
+          <line x1="15" y1="35" x2="55" y2="35" stroke="#4ECDC4" stroke-width="1.5" opacity="0.5"/>
+          <text x="60" y="39" fill="#4ECDC4" font-size="8" font-family="JetBrains Mono">Active</text>
+          <line x1="15" y1="50" x2="55" y2="50" stroke="#f97316" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.5"/>
+          <text x="60" y="54" fill="#f97316" font-size="8" font-family="JetBrains Mono">Conditional — "if NVDA misses, I sell"</text>
+        </svg>
+      </div>
+
+      <div class="formula">Narrative creates conditional correlations · Latent edges ∝ reach × credibility · Graph unchanged until catalyst</div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PHASE 3: CASCADE -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="phase">
+    <div class="phase-number">3</div>
+    <div class="phase-content">
+      <div class="phase-label">Cascade Activation</div>
+      <div class="phase-title">Higher Primorial Layer Fires — <span class="highlight-red">Topology Change</span></div>
+      <div class="phase-desc">
+        Catalyst arrives. Conditional edges become real. Previously independent leveraged actors 
+        are forced into correlated selling. The graph jumps from P₃ to P₅ — new edges connect 
+        nodes that had nothing to do with each other. Energy floods the higher divisors.
+      </div>
+
+      <div class="diagram-row">
+        <div class="diagram-container">
+          <div class="diagram-label">Cascade Graph — All Edges Active</div>
+          <svg viewBox="0 0 440 320" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <radialGradient id="glow-red" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stop-color="#ef4444" stop-opacity="0.2"/>
+                <stop offset="100%" stop-color="#ef4444" stop-opacity="0"/>
+              </radialGradient>
+              <filter id="red-glow">
+                <feGaussianBlur stdDeviation="3" result="blur"/>
+                <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+              </filter>
+            </defs>
+            <circle cx="220" cy="160" r="140" fill="url(#glow-red)"/>
+
+            <!-- ALL edges now solid — cascade has activated the full graph -->
+            <!-- Original edges -->
+            <line x1="100" y1="70" x2="180" y2="130" stroke="#ef4444" stroke-width="2" opacity="0.6"/>
+            <line x1="180" y1="130" x2="280" y2="110" stroke="#ef4444" stroke-width="2" opacity="0.6"/>
+            <line x1="280" y1="110" x2="320" y2="190" stroke="#ef4444" stroke-width="2" opacity="0.6"/>
+            <line x1="140" y1="210" x2="180" y2="130" stroke="#ef4444" stroke-width="2" opacity="0.6"/>
+            <line x1="360" y1="80" x2="280" y2="110" stroke="#ef4444" stroke-width="2" opacity="0.6"/>
+
+            <!-- NEW edges — previously conditional, now real -->
+            <line x1="140" y1="210" x2="320" y2="190" stroke="#ef4444" stroke-width="2.5" opacity="0.8" filter="url(#red-glow)"/>
+            <line x1="360" y1="80" x2="370" y2="240" stroke="#ef4444" stroke-width="2.5" opacity="0.8" filter="url(#red-glow)"/>
+            <line x1="100" y1="70" x2="220" y2="260" stroke="#ef4444" stroke-width="2" opacity="0.7" filter="url(#red-glow)"/>
+            <line x1="320" y1="190" x2="400" y2="160" stroke="#ef4444" stroke-width="2" opacity="0.7" filter="url(#red-glow)"/>
+            <line x1="60" y1="150" x2="220" y2="260" stroke="#ef4444" stroke-width="2" opacity="0.7" filter="url(#red-glow)"/>
+            <line x1="280" y1="110" x2="370" y2="240" stroke="#ef4444" stroke-width="2" opacity="0.6" filter="url(#red-glow)"/>
+            <line x1="180" y1="130" x2="400" y2="160" stroke="#ef4444" stroke-width="1.5" opacity="0.5" filter="url(#red-glow)"/>
+            <line x1="60" y1="50" x2="140" y2="210" stroke="#ef4444" stroke-width="1.5" opacity="0.5" filter="url(#red-glow)"/>
+
+            <!-- Second-order cascade edges — margin calls triggering more margin calls -->
+            <line x1="140" y1="210" x2="370" y2="240" stroke="#ef4444" stroke-width="1.5" opacity="0.4" stroke-dasharray="2,2"/>
+            <line x1="220" y1="260" x2="400" y2="160" stroke="#ef4444" stroke-width="1.5" opacity="0.4" stroke-dasharray="2,2"/>
+            <line x1="60" y1="150" x2="320" y2="190" stroke="#ef4444" stroke-width="1.5" opacity="0.4" stroke-dasharray="2,2"/>
+
+            <!-- All nodes now pulsing red -->
+            <circle cx="100" cy="70" r="12" fill="#1a0808" stroke="#ef4444" stroke-width="2.5" class="pulse"/>
+            <text x="100" y="74" text-anchor="middle" fill="#ef4444" font-size="8" font-family="JetBrains Mono">R₁</text>
+
+            <circle cx="60" cy="150" r="10" fill="#1a0808" stroke="#ef4444" stroke-width="2" class="pulse"/>
+            <text x="60" y="154" text-anchor="middle" fill="#ef4444" font-size="7" font-family="JetBrains Mono">R₂</text>
+
+            <circle cx="180" cy="130" r="14" fill="#1a0808" stroke="#ef4444" stroke-width="2.5" class="pulse"/>
+            <text x="180" y="134" text-anchor="middle" fill="#ef4444" font-size="8" font-family="JetBrains Mono">I₁</text>
+
+            <circle cx="280" cy="110" r="14" fill="#1a0808" stroke="#ef4444" stroke-width="2.5" class="pulse"/>
+            <text x="280" y="114" text-anchor="middle" fill="#ef4444" font-size="8" font-family="JetBrains Mono">I₂</text>
+
+            <circle cx="320" cy="190" r="12" fill="#1a0808" stroke="#ef4444" stroke-width="2.5" class="pulse"/>
+            <text x="320" y="194" text-anchor="middle" fill="#ef4444" font-size="8" font-family="JetBrains Mono">A₁</text>
+
+            <circle cx="360" cy="80" r="10" fill="#1a0808" stroke="#ef4444" stroke-width="2" class="pulse"/>
+            <text x="360" y="84" text-anchor="middle" fill="#ef4444" font-size="7" font-family="JetBrains Mono">A₂</text>
+
+            <circle cx="140" cy="210" r="12" fill="#1a0808" stroke="#ef4444" stroke-width="2.5" class="pulse"/>
+            <text x="140" y="214" text-anchor="middle" fill="#ef4444" font-size="8" font-family="JetBrains Mono">L₁</text>
+
+            <circle cx="370" cy="240" r="12" fill="#1a0808" stroke="#ef4444" stroke-width="2.5" class="pulse"/>
+            <text x="370" y="244" text-anchor="middle" fill="#ef4444" font-size="8" font-family="JetBrains Mono">L₂</text>
+
+            <circle cx="220" cy="260" r="12" fill="#1a0808" stroke="#ef4444" stroke-width="2.5" class="pulse"/>
+            <text x="220" y="264" text-anchor="middle" fill="#ef4444" font-size="8" font-family="JetBrains Mono">L₃</text>
+
+            <circle cx="400" cy="160" r="12" fill="#1a0808" stroke="#ef4444" stroke-width="2.5" class="pulse"/>
+            <text x="400" y="164" text-anchor="middle" fill="#ef4444" font-size="8" font-family="JetBrains Mono">L₄</text>
+
+            <circle cx="60" cy="50" r="10" fill="#1a0808" stroke="#ef4444" stroke-width="2" class="pulse"/>
+            <text x="60" y="54" text-anchor="middle" fill="#ef4444" font-size="7" font-family="JetBrains Mono">L₅</text>
+
+            <text x="12" y="20" fill="#ef4444" font-size="9" font-family="JetBrains Mono" font-weight="700">16 edges · 0 independent</text>
+            <text x="12" y="310" fill="#555" font-size="8" font-family="JetBrains Mono">Margin calls create edges between structurally unrelated actors</text>
+          </svg>
+        </div>
+
+        <div class="diagram-container">
+          <div class="diagram-label">E_q Energy — Higher Divisors Light Up</div>
+          <svg viewBox="0 0 440 320" xmlns="http://www.w3.org/2000/svg">
+            <!-- Low divisors: still present but not dominant -->
+            <rect x="30" y="120" width="28" height="150" rx="2" fill="#4ECDC4" opacity="0.5"/>
+            <text x="44" y="290" text-anchor="middle" fill="#888" font-size="8" font-family="JetBrains Mono">q=1</text>
+            
+            <rect x="68" y="150" width="28" height="120" rx="2" fill="#4ECDC4" opacity="0.4"/>
+            <text x="82" y="290" text-anchor="middle" fill="#888" font-size="8" font-family="JetBrains Mono">q=2</text>
+            
+            <rect x="106" y="165" width="28" height="105" rx="2" fill="#4ECDC4" opacity="0.4"/>
+            <text x="120" y="290" text-anchor="middle" fill="#888" font-size="8" font-family="JetBrains Mono">q=3</text>
+            
+            <rect x="144" y="175" width="28" height="95" rx="2" fill="#4ade80" opacity="0.35"/>
+            <text x="158" y="290" text-anchor="middle" fill="#888" font-size="8" font-family="JetBrains Mono">q=4</text>
+            
+            <rect x="182" y="185" width="28" height="85" rx="2" fill="#4ade80" opacity="0.3"/>
+            <text x="196" y="290" text-anchor="middle" fill="#888" font-size="8" font-family="JetBrains Mono">q=5</text>
+            
+            <rect x="220" y="190" width="28" height="80" rx="2" fill="#4ade80" opacity="0.3"/>
+            <text x="234" y="290" text-anchor="middle" fill="#888" font-size="8" font-family="JetBrains Mono">q=6</text>
+
+            <!-- Primorial boundary -->
+            <line x1="255" y1="40" x2="255" y2="280" stroke="#a78bfa" stroke-width="1" stroke-dasharray="4,4" opacity="0.5"/>
+            
+            <!-- Higher divisors: NOW LIT UP -->
+            <rect x="264" y="80" width="16" height="190" rx="2" fill="#ef4444" opacity="0.8" class="pulse"/>
+            <text x="272" y="290" text-anchor="middle" fill="#ef4444" font-size="7" font-family="JetBrains Mono">8</text>
+            
+            <rect x="286" y="100" width="16" height="170" rx="2" fill="#ef4444" opacity="0.7" class="pulse"/>
+            <text x="294" y="290" text-anchor="middle" fill="#ef4444" font-size="7" font-family="JetBrains Mono">9</text>
+
+            <rect x="308" y="110" width="16" height="160" rx="2" fill="#ef4444" opacity="0.65" class="pulse"/>
+            <text x="316" y="290" text-anchor="middle" fill="#ef4444" font-size="7" font-family="JetBrains Mono">10</text>
+
+            <rect x="330" y="90" width="16" height="180" rx="2" fill="#f97316" opacity="0.7" class="pulse"/>
+            <text x="338" y="290" text-anchor="middle" fill="#f97316" font-size="7" font-family="JetBrains Mono">12</text>
+
+            <rect x="352" y="130" width="16" height="140" rx="2" fill="#f97316" opacity="0.6" class="pulse"/>
+            <text x="360" y="290" text-anchor="middle" fill="#f97316" font-size="7" font-family="JetBrains Mono">16</text>
+
+            <rect x="374" y="60" width="16" height="210" rx="2" fill="#f97316" opacity="0.75" class="pulse"/>
+            <text x="382" y="290" text-anchor="middle" fill="#f97316" font-size="7" font-family="JetBrains Mono">30</text>
+
+            <rect x="396" y="140" width="16" height="130" rx="2" fill="#ef4444" opacity="0.5" class="pulse"/>
+            <text x="404" y="290" text-anchor="middle" fill="#ef4444" font-size="7" font-family="JetBrains Mono">...</text>
+
+            <rect x="418" y="170" width="16" height="100" rx="2" fill="#7c3aed" opacity="0.6" class="pulse"/>
+            <text x="426" y="290" text-anchor="middle" fill="#7c3aed" font-size="7" font-family="JetBrains Mono">720</text>
+
+            <!-- Arrow showing energy shift -->
+            <text x="350" y="35" text-anchor="middle" fill="#ef4444" font-size="10" font-family="JetBrains Mono" font-weight="700">Energy floods here →</text>
+            <text x="120" y="35" text-anchor="middle" fill="#555570" font-size="10" font-family="JetBrains Mono">← Relatively weaker</text>
+
+            <text x="12" y="310" fill="#555" font-size="8" font-family="JetBrains Mono">Higher divisors = deeper multiplicative entanglement</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="formula">Cascade: E_q shifts to q > 30 · Graph density → 1.0 · Forced selling suppresses reversal to 33%</div>
+
+      <div class="annotation">
+        <div class="annotation-item">
+          <div class="label">Mechanism</div>
+          <div class="value">Margin call on Actor L₁ forces sale → price drops → triggers margin call on L₂ → <span class="highlight-red">edges propagate</span></div>
+        </div>
+        <div class="annotation-item">
+          <div class="label">Asymmetry</div>
+          <div class="value">Creating edges is instant (one margin call). Removing them requires <span class="highlight-gold">full dissipation</span> of forced selling</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PHASE 4: EXTRACTION -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="phase">
+    <div class="phase-number">4</div>
+    <div class="phase-content">
+      <div class="phase-label">Extraction</div>
+      <div class="phase-title">Puts Print While System is <span class="highlight-red">Trapped</span></div>
+      <div class="phase-desc">
+        The higher primorial layer persists because new correlations can't dissolve until forced selling exhausts itself.
+        Reversal rate drops from 63% to 33%. The system is structurally trapped at high energy. 
+        Pre-positioned derivatives extract the energy difference.
+      </div>
+
+      <div class="diagram-container">
+        <div class="diagram-label">Extraction Architecture</div>
+        <svg viewBox="0 0 900 280" xmlns="http://www.w3.org/2000/svg">
+          <!-- Left: positions -->
+          <rect x="30" y="30" width="250" height="220" rx="6" fill="none" stroke="#1a1a2e" stroke-width="1"/>
+          <text x="155" y="55" text-anchor="middle" fill="#555570" font-size="10" font-family="JetBrains Mono" letter-spacing="2">POSITIONS (Q3 2025 13F)</text>
+          
+          <rect x="50" y="75" width="210" height="35" rx="4" fill="rgba(239,68,68,0.08)" stroke="rgba(239,68,68,0.3)" stroke-width="1"/>
+          <text x="60" y="97" fill="#ef4444" font-size="12" font-family="JetBrains Mono" font-weight="700">$912M PLTR puts</text>
+          <text x="245" y="97" text-anchor="end" fill="#555" font-size="10" font-family="JetBrains Mono">66%</text>
+          
+          <rect x="50" y="120" width="210" height="35" rx="4" fill="rgba(239,68,68,0.05)" stroke="rgba(239,68,68,0.2)" stroke-width="1"/>
+          <text x="60" y="142" fill="#ef4444" font-size="12" font-family="JetBrains Mono">$186M NVDA puts</text>
+          <text x="245" y="142" text-anchor="end" fill="#555" font-size="10" font-family="JetBrains Mono">14%</text>
+          
+          <rect x="50" y="165" width="210" height="35" rx="4" fill="rgba(255,255,255,0.02)" stroke="#1a1a2e" stroke-width="1"/>
+          <text x="60" y="187" fill="#888" font-size="11" font-family="JetBrains Mono">Other</text>
+          <text x="245" y="187" text-anchor="end" fill="#555" font-size="10" font-family="JetBrains Mono">20%</text>
+
+          <text x="155" y="225" text-anchor="middle" fill="#ef4444" font-size="9" font-family="JetBrains Mono">80% concentrated in AI short</text>
+
+          <!-- Arrow -->
+          <line x1="290" y1="140" x2="370" y2="140" stroke="#f97316" stroke-width="2" marker-end="url(#arrow-orange)"/>
+          <defs>
+            <marker id="arrow-orange" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8" fill="#f97316"/>
+            </marker>
+            <marker id="arrow-green" markerWidth="8" markerHeight="8" refX="8" refY="4" orient="auto">
+              <path d="M0,0 L8,4 L0,8" fill="#4ade80"/>
+            </marker>
+          </defs>
+
+          <!-- Middle: catalyst -->
+          <rect x="380" y="30" width="140" height="220" rx="6" fill="none" stroke="#f97316" stroke-width="1" stroke-dasharray="4,4"/>
+          <text x="450" y="55" text-anchor="middle" fill="#f97316" font-size="10" font-family="JetBrains Mono" letter-spacing="2">CATALYST</text>
+          
+          <text x="450" y="90" text-anchor="middle" fill="#fff" font-size="11" font-family="JetBrains Mono">NVDA Earnings</text>
+          <text x="450" y="108" text-anchor="middle" fill="#555" font-size="9" font-family="JetBrains Mono">Feb 25 AMC</text>
+          
+          <text x="450" y="140" text-anchor="middle" fill="#f97316" font-size="9" font-family="JetBrains Mono">Any miss or soft</text>
+          <text x="450" y="155" text-anchor="middle" fill="#f97316" font-size="9" font-family="JetBrains Mono">guidance triggers</text>
+          <text x="450" y="170" text-anchor="middle" fill="#f97316" font-size="9" font-family="JetBrains Mono">pre-wired edges</text>
+
+          <text x="450" y="210" text-anchor="middle" fill="#ef4444" font-size="10" font-family="JetBrains Mono" font-weight="700">Conditional →</text>
+          <text x="450" y="228" text-anchor="middle" fill="#ef4444" font-size="10" font-family="JetBrains Mono" font-weight="700">Real</text>
+
+          <!-- Arrow -->
+          <line x1="530" y1="140" x2="610" y2="140" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow-orange)"/>
+
+          <!-- Right: cascade result -->
+          <rect x="620" y="30" width="260" height="220" rx="6" fill="none" stroke="#ef4444" stroke-width="1"/>
+          <text x="750" y="55" text-anchor="middle" fill="#ef4444" font-size="10" font-family="JetBrains Mono" letter-spacing="2">CASCADE RESULT</text>
+
+          <text x="640" y="85" fill="#888" font-size="10" font-family="JetBrains Mono">Primorial layer:</text>
+          <text x="855" y="85" text-anchor="end" fill="#ef4444" font-size="10" font-family="JetBrains Mono" font-weight="700">P₃ → P₅</text>
+
+          <text x="640" y="110" fill="#888" font-size="10" font-family="JetBrains Mono">Graph density:</text>
+          <text x="855" y="110" text-anchor="end" fill="#ef4444" font-size="10" font-family="JetBrains Mono" font-weight="700">0.1 → 0.8+</text>
+
+          <text x="640" y="135" fill="#888" font-size="10" font-family="JetBrains Mono">Reversal rate:</text>
+          <text x="855" y="135" text-anchor="end" fill="#ef4444" font-size="10" font-family="JetBrains Mono" font-weight="700">63% → 33%</text>
+
+          <text x="640" y="160" fill="#888" font-size="10" font-family="JetBrains Mono">Puts on $1.1B:</text>
+          <text x="855" y="160" text-anchor="end" fill="#4ade80" font-size="10" font-family="JetBrains Mono" font-weight="700">Extraction</text>
+
+          <line x1="640" y1="180" x2="860" y2="180" stroke="#1a1a2e" stroke-width="1"/>
+          
+          <text x="750" y="205" text-anchor="middle" fill="#555" font-size="9" font-family="JetBrains Mono">Energy ΔE = E(P₅) − E(P₃)</text>
+          <text x="750" y="225" text-anchor="middle" fill="#555" font-size="9" font-family="JetBrains Mono">captured by pre-positioned puts</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- PHASE 5: COUNTERMEASURE -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="phase">
+    <div class="phase-number">5</div>
+    <div class="phase-content">
+      <div class="phase-label">Countermeasure</div>
+      <div class="phase-title">Transparency Prevents <span class="highlight-teal">Edge Formation</span></div>
+      <div class="phase-desc">
+        The cascade requires opacity. Actors sell because they can't see the structure — they don't know 
+        they're being herded into correlated behavior. If the lattice signature is visible before the catalyst,
+        conditional edges never form. The graph stays at the lower primorial layer.
+      </div>
+
+      <div class="diagram-row">
+        <div class="diagram-container">
+          <div class="diagram-label">Without Visibility — Cascade Succeeds</div>
+          <svg viewBox="0 0 440 240" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="420" height="220" rx="6" fill="rgba(239,68,68,0.03)"/>
+            
+            <!-- Dense red graph -->
+            <line x1="80" y1="60" x2="160" y2="100" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
+            <line x1="160" y1="100" x2="260" y2="80" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
+            <line x1="260" y1="80" x2="340" y2="140" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
+            <line x1="80" y1="60" x2="200" y2="180" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
+            <line x1="160" y1="100" x2="340" y2="140" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
+            <line x1="260" y1="80" x2="120" y2="170" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
+            <line x1="340" y1="140" x2="200" y2="180" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
+            <line x1="120" y1="170" x2="300" y2="190" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
+            <line x1="370" y1="60" x2="260" y2="80" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
+            <line x1="370" y1="60" x2="340" y2="140" stroke="#ef4444" stroke-width="1.5" opacity="0.5"/>
+            <line x1="300" y1="190" x2="370" y2="60" stroke="#ef4444" stroke-width="1.5" opacity="0.4"/>
+
+            <circle cx="80" cy="60" r="10" fill="#1a0808" stroke="#ef4444" stroke-width="2" class="pulse"/>
+            <circle cx="160" cy="100" r="10" fill="#1a0808" stroke="#ef4444" stroke-width="2" class="pulse"/>
+            <circle cx="260" cy="80" r="10" fill="#1a0808" stroke="#ef4444" stroke-width="2" class="pulse"/>
+            <circle cx="340" cy="140" r="10" fill="#1a0808" stroke="#ef4444" stroke-width="2" class="pulse"/>
+            <circle cx="120" cy="170" r="10" fill="#1a0808" stroke="#ef4444" stroke-width="2" class="pulse"/>
+            <circle cx="200" cy="180" r="10" fill="#1a0808" stroke="#ef4444" stroke-width="2" class="pulse"/>
+            <circle cx="300" cy="190" r="10" fill="#1a0808" stroke="#ef4444" stroke-width="2" class="pulse"/>
+            <circle cx="370" cy="60" r="10" fill="#1a0808" stroke="#ef4444" stroke-width="2" class="pulse"/>
+
+            <text x="220" y="225" text-anchor="middle" fill="#ef4444" font-size="11" font-family="JetBrains Mono" font-weight="700">Full cascade · Puts print</text>
+          </svg>
+        </div>
+
+        <div class="diagram-container">
+          <div class="diagram-label">With Visibility — Edges Don't Form</div>
+          <svg viewBox="0 0 440 240" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="10" width="420" height="220" rx="6" fill="rgba(78,205,196,0.03)"/>
+            
+            <!-- Same nodes, but only original sparse edges -->
+            <line x1="80" y1="60" x2="160" y2="100" stroke="#4ECDC4" stroke-width="1.5" opacity="0.4"/>
+            <line x1="160" y1="100" x2="260" y2="80" stroke="#4ECDC4" stroke-width="1.5" opacity="0.4"/>
+            <line x1="260" y1="80" x2="340" y2="140" stroke="#4ECDC4" stroke-width="1.5" opacity="0.4"/>
+            
+            <!-- Conditional edges shown but BLOCKED — X marks -->
+            <line x1="80" y1="60" x2="200" y2="180" stroke="#555" stroke-width="1" opacity="0.15" stroke-dasharray="4,4"/>
+            <line x1="160" y1="100" x2="340" y2="140" stroke="#555" stroke-width="1" opacity="0.15" stroke-dasharray="4,4"/>
+            <line x1="260" y1="80" x2="120" y2="170" stroke="#555" stroke-width="1" opacity="0.15" stroke-dasharray="4,4"/>
+            
+            <!-- Shield icons on blocked edges -->
+            <circle cx="140" cy="120" r="8" fill="rgba(78,205,196,0.15)" stroke="#4ECDC4" stroke-width="1"/>
+            <text x="140" y="124" text-anchor="middle" fill="#4ECDC4" font-size="8">✓</text>
+            
+            <circle cx="250" cy="120" r="8" fill="rgba(78,205,196,0.15)" stroke="#4ECDC4" stroke-width="1"/>
+            <text x="250" y="124" text-anchor="middle" fill="#4ECDC4" font-size="8">✓</text>
+
+            <circle cx="190" cy="130" r="8" fill="rgba(78,205,196,0.15)" stroke="#4ECDC4" stroke-width="1"/>
+            <text x="190" y="134" text-anchor="middle" fill="#4ECDC4" font-size="8">✓</text>
+
+            <!-- Nodes stay green/healthy -->
+            <circle cx="80" cy="60" r="10" fill="#0c0c14" stroke="#4ECDC4" stroke-width="2"/>
+            <circle cx="160" cy="100" r="10" fill="#0c0c14" stroke="#4ade80" stroke-width="2"/>
+            <circle cx="260" cy="80" r="10" fill="#0c0c14" stroke="#4ade80" stroke-width="2"/>
+            <circle cx="340" cy="140" r="10" fill="#0c0c14" stroke="#fbbf24" stroke-width="2"/>
+            
+            <!-- Previously vulnerable nodes stay independent -->
+            <circle cx="120" cy="170" r="10" fill="#0c0c14" stroke="#4ECDC4" stroke-width="1.5"/>
+            <circle cx="200" cy="180" r="10" fill="#0c0c14" stroke="#4ECDC4" stroke-width="1.5"/>
+            <circle cx="300" cy="190" r="10" fill="#0c0c14" stroke="#4ECDC4" stroke-width="1.5"/>
+            <circle cx="370" cy="60" r="10" fill="#0c0c14" stroke="#4ECDC4" stroke-width="1.5"/>
+
+            <text x="220" y="225" text-anchor="middle" fill="#4ECDC4" font-size="11" font-family="JetBrains Mono" font-weight="700">Sparse graph holds · Actors hold</text>
+          </svg>
+        </div>
+      </div>
+
+      <div class="formula">Transparency over obscurity · The cascade requires you not to see it · Seeing it is the countermeasure</div>
+
+      <div class="annotation">
+        <div class="annotation-item">
+          <div class="label">What Visibility Means</div>
+          <div class="value">Showing the <span class="highlight-purple">E_q spectrum shift</span>, the <span class="highlight-orange">volume cascade signature</span>, and the <span class="highlight-red">33% reversal trap</span> — before the catalyst arrives</div>
+        </div>
+        <div class="annotation-item">
+          <div class="label">Why It Works</div>
+          <div class="value">Actors who can see the structure <span class="highlight-teal">don't form conditional edges</span>. They hold through noise because they know it's structural manipulation, not fundamental deterioration</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
