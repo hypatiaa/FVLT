@@ -753,6 +753,161 @@
   </div>
 
 
+
+  <!-- ═══════════════════════════════════════════ -->
+  <!-- SECTION 7: TRADITIONAL ANALYSIS -->
+  <!-- ═══════════════════════════════════════════ -->
+  <div class="phase">
+    <div class="phase-number">7</div>
+    <div class="phase-content">
+      <div class="phase-label">Traditional Metrics</div>
+      <div class="phase-title">What a Quant Desk <span class="highlight-blue">Already Sees</span></div>
+      <div class="phase-desc">
+        None of the following requires the FVLT framework. A standard factor model 
+        flags these two stocks as occupying the same risk bucket. The question isn't 
+        whether they correlate — any Bloomberg terminal shows that. The question is 
+        <em>why</em> two fundamentally unrelated companies move together, and what the 
+        mechanism is that converts shared positioning into synchronized drawdowns 
+        absent any macro catalyst.
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-card">
+          <div class="stat-value highlight-teal">1.96</div>
+          <div class="stat-label">APP β to NDQ</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value highlight-green">1.78</div>
+          <div class="stat-label">PLTR β to NDQ</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value highlight-purple">0.534</div>
+          <div class="stat-label">APP ↔ PLTR ρ</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value highlight-gold">72.3%</div>
+          <div class="stat-label">Same-Direction Days</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-value highlight-red">35</div>
+          <div class="stat-label">Shared Big Down Days</div>
+        </div>
+      </div>
+
+      <div class="annotation">
+        <div class="annotation-item">
+          <div class="label">Factor Profile</div>
+          <div class="value">
+            Both are high-beta momentum names: APP β = <span class="highlight-teal">1.96</span>, 
+            PLTR β = <span class="highlight-green">1.78</span> to the Nasdaq. 
+            Annualized volatility: APP <span class="highlight-teal">84.6%</span>, 
+            PLTR <span class="highlight-green">67.0%</span>, 
+            NDQ <span class="highlight-blue">23.6%</span>. 
+            They move in the same direction on 72.3% of trading days — 
+            and share 35 "big down" days (&gt;2% loss) out of the 57 
+            big down days PLTR had in the period.
+          </div>
+        </div>
+        <div class="annotation-item">
+          <div class="label">The Drawdown Test</div>
+          <div class="value">
+            Both peaked in late 2025 — APP at <span class="highlight-teal">$734</span> (Dec 22), 
+            PLTR at <span class="highlight-green">$207</span> (Nov 3) — 
+            and both are down roughly a third: 
+            APP <span class="highlight-red">−37.7%</span>, 
+            PLTR <span class="highlight-red">−34.5%</span>. 
+            YTD 2026: APP −26.1%, PLTR −19.2%. 
+            Nearly parallel descent curves for an ad-tech company 
+            and a defense intelligence platform.
+          </div>
+        </div>
+      </div>
+
+      <table class="data-table">
+        <tr>
+          <th>Date</th>
+          <th>APP Return</th>
+          <th>PLTR Return</th>
+          <th>Note</th>
+        </tr>
+        <tr>
+          <td>Jan 2</td>
+          <td><span class="highlight-red">−8.6%</span></td>
+          <td><span class="highlight-red">−5.7%</span></td>
+          <td>First trading day of 2026</td>
+        </tr>
+        <tr>
+          <td>Jan 16</td>
+          <td><span class="highlight-red">−6.5%</span></td>
+          <td><span class="highlight-red">−3.5%</span></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td>Jan 30</td>
+          <td><span class="highlight-red">−18.5%</span></td>
+          <td><span class="highlight-red">−3.5%</span></td>
+          <td>APP cascade begins</td>
+        </tr>
+        <tr>
+          <td>Feb 4</td>
+          <td><span class="highlight-red">−17.6%</span></td>
+          <td><span class="highlight-red">−12.3%</span></td>
+          <td>PLTR alert day · Shared big-down</td>
+        </tr>
+        <tr>
+          <td>Feb 5</td>
+          <td><span class="highlight-red">−3.2%</span></td>
+          <td><span class="highlight-red">−7.1%</span></td>
+          <td>PLTR cascade continues</td>
+        </tr>
+        <tr>
+          <td>Feb 11</td>
+          <td><span class="highlight-red">−3.5%</span></td>
+          <td><span class="highlight-red">−2.8%</span></td>
+          <td>APP Q4 earnings day</td>
+        </tr>
+      </table>
+
+      <div class="annotation">
+        <div class="annotation-item">
+          <div class="label">What Traditional Analysis Shows</div>
+          <div class="value">
+            High-beta momentum unwind. Factor crowding. Correlated drawdown 
+            in names with similar retail ownership and ETF exposure. 
+            A quant desk would say: "same factor, same result." And they'd be 
+            right — about the <em>what</em>. 
+          </div>
+        </div>
+        <div class="annotation-item">
+          <div class="label">What Traditional Analysis Doesn't Show</div>
+          <div class="value">
+            The <span class="highlight-purple">spectral migration</span> preceding the event 
+            by weeks or months. The <span class="highlight-orange">leveraged ETF rebalancing</span> 
+            as a measurable extraction channel. The difference between 
+            <span class="highlight-gold">potential energy</span> (E_q build without volume) 
+            and <span class="highlight-red">kinetic energy</span> (confirmed cascade). 
+            Beta tells you they'll move together. The FVLT tells you 
+            the lattice is locking up <em>before</em> they move.
+          </div>
+        </div>
+        <div class="annotation-item">
+          <div class="label">The April 4 Distinction</div>
+          <div class="value">
+            Both stocks hit max drawdown on the same day: 
+            <span class="highlight-gold">April 4, 2025</span> — "Liberation Day" tariff shock. 
+            That shared drawdown was a <em>macro event</em>, not a structural cascade. 
+            Everything sold off. The Jan–Feb 2026 cascade is different: no exogenous 
+            shock, both companies beat earnings, yet synchronized decline. 
+            Traditional correlation can't distinguish the two. 
+            The E_q spectrum can — April 4 wouldn't trigger the scanner because 
+            the energy migration pattern is absent when the cause is external.
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <div class="divider"></div>
 
 
