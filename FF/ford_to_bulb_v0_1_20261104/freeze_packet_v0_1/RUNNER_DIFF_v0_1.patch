@@ -1,0 +1,120 @@
+--- accepted-FF3-v22-643fef34
++++ proposed-FF4-v23
+@@ -1,6 +1,6 @@
+-"""Prospective FF-3 runner. Review artifact only; never run during freeze preparation.
+-
+-Usage on nucleus: python3 -I RUN_FF3_v0_1.py JOB.json
++"""Prospective FF-4 runner. Review artifact only; never run during freeze preparation.
++
++Usage on nucleus: python3 -I RUN_FF4_v0_1.py JOB.json
+ Every concrete job, source set, template, and acceptance file must be pinned first.
+ """
+ from pathlib import Path
+@@ -15,12 +15,11 @@
+ import sys
+ import time
+ 
+-ROOT = Path('/home/saphir/fvlt_formalization_20261104/ff3_v02')
+-LIB = Path('/home/saphir/rule30_theorem_library/v22')
++ROOT = Path('/home/saphir/fvlt_formalization_20261104/ff4_v01')
++LIB = Path('/home/saphir/rule30_theorem_library/v23')
+ LEAN = Path('/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean')
+-MODULES = ('FVLTRosetteFordDataV1', 'FVLTRosetteFordPhaseV1',
+-           'FVLTRosetteFordArithmeticV1', 'FVLTRosetteFordSweepV1',
+-           'FVLTRosetteFordEndpointsV1')
++MODULES = ('FVLTFordBulbDataV1', 'FVLTFordBulbParameterV1',
++           'FVLTFordBulbCombinatoricsV1')
+ ALLOWED_AXIOMS = {'propext', 'Classical.choice', 'Quot.sound'}
+ FORBIDDEN = re.compile(r'\b(sorry|admit|axiom|native_decide|implemented_by|unsafe|extern)\b')
+ 
+@@ -42,7 +41,7 @@
+ def library_check(expected):
+     latest = max(int(p.name[1:]) for p in LIB.parent.iterdir()
+                  if p.is_dir() and p.name.startswith('v') and p.name[1:].isdigit())
+-    assert latest == 22, 'Latest library changed: return for binding review'
++    assert latest == 23, 'Latest library changed: return for binding review'
+     for n, h in expected.items():
+         assert sha(member(LIB, n)) == h
+     count = 0
+@@ -110,6 +109,35 @@
+     return found
+ 
+ 
++def frozen_source_check(src, source_names, target_index, definitions):
++    expected = {t['name'].split('.')[-1]: t for t in target_index['targets']}
++    actual = []
++    for filename in source_names:
++        path = member(src, filename)
++        raw = path.read_bytes()
++        assert b'\r' not in raw and not raw.startswith(b'\xef\xbb\xbf'), 'UTF8 LF/noBOM required'
++        text = raw.decode('utf-8')
++        if filename == target_index['data_module'] + '.lean':
++            assert raw == definitions.read_bytes(), 'Data definition bytes changed: return for review'
++            continue
++        assert text.count('namespace FVLT.FordBulbV1\n') == 1
++        assert text.count('end FVLT.FordBulbV1') == 1
++        assert not re.search(r'^\s*@\[', text, re.M), 'Attribute wrappers require review'
++        assert not re.search(r'^\s*(?:noncomputable\s+)?(?:def|abbrev|opaque|lemma|structure|inductive|class|instance|example)\b', text, re.M), 'Extra public declaration refused; helpers must be private'
++        for match in re.finditer(r'^([ \t]*)theorem\s+(\w+)\b', text, re.M):
++            assert not match[1], 'Public theorem commands must start at column zero'
++            name = match[2]
++            assert name in expected and name not in actual
++            t = expected[name]
++            assert filename == t['module'] + '.lean'
++            tail = text[match.start():]
++            assert ' := by' in tail, 'Canonical reviewed public proof separator required'
++            header = tail.split(' := by', 1)[0].strip()
++            assert header == t['header'], 'Frozen public header changed: ' + name
++            actual.append(name)
++    return ['FVLT.FordBulbV1.' + n for n in actual]
++
++
+ def main():
+     assert socket.gethostname() == 'nucleus'
+     assert '100.105.106.41' in os.environ.get('SSH_CONNECTION', '')
+@@ -132,7 +160,7 @@
+     for n, h in review['reviewed_files'].items():
+         assert sha(member(ROOT, n)) == h
+     job = read(jobpath)
+-    assert job['phase'] == 'FF3_DISCRETE'
++    assert job['phase'] == 'FF4_COMBINATORIAL'
+     assert job['template_sha256'] == sha(templatepath)
+     assert job['module'] in MODULES and job['mode'] in ('compile', 'replay', 'axioms')
+     assert job['run_id'].replace('_', '').isalnum()
+@@ -142,6 +170,9 @@
+     targetpath = member(ROOT, template['target_index_file'])
+     assert sha(targetpath) == template['target_index_sha256']
+     target_index = read(targetpath)
++    definitions = member(ROOT, template['definitions_file'])
++    assert sha(definitions) == template['definitions_sha256']
++    assert sha(member(ROOT, template['headers_file'])) == template['headers_sha256']
+     assert job['signature_comparison_receipt_sha256']
+     comparison = member(ROOT, job['signature_comparison_receipt_file'])
+     assert sha(comparison) == job['signature_comparison_receipt_sha256']
+@@ -162,6 +193,8 @@
+         assert not FORBIDDEN.search(member(src, n).read_text())
+         assert not re.search(r'^\s*variables?\s', member(src, n).read_text(), re.M), \
+             'Ambient section variables refused; hypotheses must be explicit binders'
++    actual_targets = frozen_source_check(src, job['source_sha256'], target_index, definitions)
++    assert read(comparison)['present_targets'] == actual_targets
+     closure = project_import_closure(src, job['source_sha256'])
+     for n, h in job['dependency_olean_sha256'].items():
+         assert sha(member(build, n)) == h
+@@ -216,7 +249,7 @@
+                 required_targets = target_index['data_axiom_targets']
+             else:
+                 own_text = (src / (job['module'] + '.lean')).read_text()
+-                required_targets = ['FVLT.PhasorFordV1.' + n for n in
++                required_targets = ['FVLT.FordBulbV1.' + n for n in
+                                     re.findall(r'^theorem\s+(\w+)', own_text, re.M)]
+                 permitted = {t['name'] for t in target_index['targets']
+                              if t['module'] == job['module']}
+@@ -238,7 +271,7 @@
+                       address_space_bytes=8 * 1024**3, process_limit=256,
+                       output_file_limit_bytes=64 * 1024**2, nice=19,
+                       library_checksums_before=before_count,
+-                      project_import_closure=closure, child_PATH=env['PATH'])
++                      project_import_closure=closure, frozen_public_targets=actual_targets, child_PATH=env['PATH'])
+         receipt.write_text(json.dumps(record, indent=2))
+         with log.open('xb') as out:
+             proc = subprocess.Popen(cmd, cwd=src, env=env, stdout=out,

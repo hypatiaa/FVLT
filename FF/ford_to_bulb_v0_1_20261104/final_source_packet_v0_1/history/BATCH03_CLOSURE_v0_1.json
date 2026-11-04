@@ -1,0 +1,146 @@
+{
+  "status": "CLOSED_PARTIAL_PRODUCER_CHECKS_PASS",
+  "closed_unix": 1793824880,
+  "closed_utc": "2026-11-04T20:41:20+00:00",
+  "deadline": {
+    "no_reset_or_extension": true,
+    "cap_seconds": 1800,
+    "batch": "FF4 Batch03",
+    "origin_unix": 1793823650,
+    "deadline_unix": 1793825450
+  },
+  "new_theorem_targets_in_batch": 5,
+  "cumulative_theorem_targets": 22,
+  "total_targets": 33,
+  "remaining_targets": [
+    "FVLT.FordBulbV1.characteristic_period_minimal",
+    "FVLT.FordBulbV1.same_cycle",
+    "FVLT.FordBulbV1.orbit_set_eq",
+    "FVLT.FordBulbV1.orbit_card",
+    "FVLT.FordBulbV1.orbit_length",
+    "FVLT.FordBulbV1.rank_word",
+    "FVLT.FordBulbV1.rank_step",
+    "FVLT.FordBulbV1.unique_unit_gap",
+    "FVLT.FordBulbV1.angle_order",
+    "FVLT.FordBulbV1.intervals_disjoint",
+    "FVLT.FordBulbV1.mediant_interval"
+  ],
+  "latest_module_results": [
+    {
+      "module": "FVLTFordBulbDataV1",
+      "source": "batch01/attempts/Data01/src/FVLTFordBulbDataV1.lean",
+      "source_sha256": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+      "receipts": {
+        "Compile": {
+          "file": "batch01/CompileFVLTFordBulbDataV1Batch01Data01.json",
+          "sha256": "8195f124bfc7e7c4d7aa4d3793a598e70e38933742a5ddb5e5097f8d5dd69368",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "seconds": 1.5690381526947021
+        },
+        "axioms": {
+          "file": "batch01/axiomsFVLTFordBulbDataV1Batch01Data01.json",
+          "sha256": "0586d0303c608257caa7c40099da7aaef36206b55e9f67f2c75cfd3eb221012d",
+          "log_sha256": "b72c8114bd4b675328c0e0f0a405077470dd22d951809277166c418980f9a829",
+          "seconds": 1.4678394794464111
+        },
+        "replay": {
+          "file": "batch01/replayFVLTFordBulbDataV1Batch01Data01.json",
+          "sha256": "b52766cb16af44a4f677d0e5f246f9cb07775f1a009369343e27d8f5fb313e44",
+          "log_sha256": "db5957ebfd84bba890aea4fa24d64e02904c333a010b9862febecaef855ff7b9",
+          "seconds": 2.61864972114563
+        }
+      },
+      "theorem_targets": [],
+      "strict_constants": 54
+    },
+    {
+      "module": "FVLTFordBulbParameterV1",
+      "source": "batch01/attempts/Parameter02/src/FVLTFordBulbParameterV1.lean",
+      "source_sha256": "1e1eef97dab837bda264c9123a88b6d677c11c6e66863a4a9dfed3e1390463ed",
+      "receipts": {
+        "Compile": {
+          "file": "batch01/CompileFVLTFordBulbParameterV1Batch01Parameter02.json",
+          "sha256": "d321bbbf7134e2853ad66b26dffef3330d7b4dc8f376520757928d338c980ab0",
+          "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "seconds": 1.5696985721588135
+        },
+        "axioms": {
+          "file": "batch01/axiomsFVLTFordBulbParameterV1Batch01Parameter02.json",
+          "sha256": "e7e9f62aa2ee3ac3eaea1321dd3e2c63d807638d9a574c50f9b06099d27e09b0",
+          "log_sha256": "cbe5ac0ddea33d90b625fa9cbd781a5322c456b604daf7e3f18eaf9418df170c",
+          "seconds": 1.4680359363555908
+        },
+        "replay": {
+          "file": "batch01/replayFVLTFordBulbParameterV1Batch01Parameter02.json",
+          "sha256": "b6ffb175e29fb186d2bfff9ab123b3d6bae8df69ff1ebdcb7c8dd42043c33029",
+          "log_sha256": "be96b6a295896d71d9ee3b84f63c5db146d46735c3c5f02ff624831c3643c99a",
+          "seconds": 2.4698679447174072
+        }
+      },
+      "theorem_targets": [
+        "FVLT.FordBulbV1.parameter_fixed_point",
+        "FVLT.FordBulbV1.parameter_multiplier",
+        "FVLT.FordBulbV1.parameter_derivative",
+        "FVLT.FordBulbV1.canonical_multiplier_primitive"
+      ],
+      "strict_constants": 4
+    },
+    {
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "source": "batch03/attempts/Combinatorics09/src/FVLTFordBulbCombinatoricsV1.lean",
+      "source_sha256": "378f11dfd23e49f33531146fd74fb576959f093c56801bbc48a2cd88304ffd4a",
+      "receipts": {
+        "Compile": {
+          "file": "batch03/CompileFVLTFordBulbCombinatoricsV1Batch03Combinatorics09.json",
+          "sha256": "ac9f787dc38263054cdcd90b2c230eb76506163657108b375cfc50a0d40892ae",
+          "log_sha256": "878eee85c4451935df573aa8b9a1fe6d9fdf6c7054e79c97acb02f446989c6c3",
+          "seconds": 4.374503135681152
+        },
+        "axioms": {
+          "file": "batch03/axiomsFVLTFordBulbCombinatoricsV1Batch03Combinatorics09.json",
+          "sha256": "1903f69647c0d484f6d6e7829d42b0470749ad84fea89c92f8027af68740c2ac",
+          "log_sha256": "b882ab600293b6a77874f9a90c2817d1c4b525750f62a6cd4a749b0e07cc6fb5",
+          "seconds": 1.4680111408233643
+        },
+        "replay": {
+          "file": "batch03/replayFVLTFordBulbCombinatoricsV1Batch03Combinatorics09.json",
+          "sha256": "b06da097f4cb46b4e4cb66cd1dd07c4ff81b1e3e5971265ed158e9535413ffa2",
+          "log_sha256": "92f25ad12959bce09c6dfc49682f738dec771f5b65d3af2d348f30e0b43eacf1",
+          "seconds": 4.022929430007935
+        }
+      },
+      "theorem_targets": [
+        "FVLT.FordBulbV1.address_canonical",
+        "FVLT.FordBulbV1.address_interval",
+        "FVLT.FordBulbV1.address_injective",
+        "FVLT.FordBulbV1.q_at_least_two",
+        "FVLT.FordBulbV1.modulus_pos",
+        "FVLT.FordBulbV1.upper_digit_equiv",
+        "FVLT.FordBulbV1.lower_digit_equiv",
+        "FVLT.FordBulbV1.address_surjective",
+        "FVLT.FordBulbV1.word_sum",
+        "FVLT.FordBulbV1.word_bounds",
+        "FVLT.FordBulbV1.characteristic_adjacent",
+        "FVLT.FordBulbV1.characteristic_bounds",
+        "FVLT.FordBulbV1.characteristic_angle_gap",
+        "FVLT.FordBulbV1.characteristic_period_return",
+        "FVLT.FordBulbV1.farey_denominator_min",
+        "FVLT.FordBulbV1.farey_denominator_eq_iff",
+        "FVLT.FordBulbV1.word_strict",
+        "FVLT.FordBulbV1.double_word"
+      ],
+      "strict_constants": 97
+    }
+  ],
+  "separate_module_strict_constants": 155,
+  "preserved_failed_attempts": [
+    "CompileFVLTFordBulbCombinatoricsV1Batch03Combinatorics07.json"
+  ],
+  "independent_rebuild": "PENDING",
+  "independent_fidelity": "PENDING",
+  "g1_excluded": true,
+  "kernel_adoption": false,
+  "library_publication": false,
+  "rule30_claim": false,
+  "clock_closed_no_more_jobs": true
+}

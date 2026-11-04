@@ -1,0 +1,14 @@
+/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch05Combinatorics17/src/FVLTFordBulbCombinatoricsV1.lean:482:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch05Combinatorics17/src/FVLTFordBulbCombinatoricsV1.lean:482:21: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch05Combinatorics17/src/FVLTFordBulbCombinatoricsV1.lean:730:17: warning: unused name: h
+/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch05Combinatorics17/src/FVLTFordBulbCombinatoricsV1.lean:731:40: error(lean.unknownIdentifier): Unknown identifier `h`
+/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch05Combinatorics17/src/FVLTFordBulbCombinatoricsV1.lean:732:2: error: No goals to be solved
+/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch05Combinatorics17/src/FVLTFordBulbCombinatoricsV1.lean:738:17: warning: unused name: h
+/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch05Combinatorics17/src/FVLTFordBulbCombinatoricsV1.lean:739:25: error(lean.unknownIdentifier): Unknown identifier `h`
+/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch05Combinatorics17/src/FVLTFordBulbCombinatoricsV1.lean:740:2: error: No goals to be solved

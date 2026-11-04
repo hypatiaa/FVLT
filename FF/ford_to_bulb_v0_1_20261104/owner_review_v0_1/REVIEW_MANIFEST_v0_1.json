@@ -1,0 +1,17 @@
+{
+  "status": "ACCEPT_WITH_CHANGES",
+  "date": "2026-11-04",
+  "work_order_sha256": "cbfa51a7322e85766605ca4ca7cfbd4a4fb5129ba7f5d48aaeb88a11864393e9",
+  "evidence_sha256": "9708a994d4cc6fefdb183dd961088e620161eb3472ef88ffbadf88a37fd08022",
+  "review_sha256": "523f4f6d6be3f961aa6db9e0b50a2efeec6e03cc690ad74f07c2a7df90c96037",
+  "c1_proof_route_sha256": "c32d835e21cba579d003c3324b5dfe25c89bfa4431e7bd47be60717519389a82",
+  "C1": "Keep full arbitrary reduced-fraction order; finite common-word prefix proof route",
+  "B6": "DEFERRED_SEPARATE_GATE",
+  "required_corrections": 8,
+  "source_freeze": "NOT_STARTED",
+  "preregistration": "NOT_STARTED",
+  "Lean_build": "NOT_STARTED",
+  "Sage_run": "NOT_STARTED",
+  "latest_library_at_freeze": "REVERIFY_CURRENT_LATEST",
+  "execution_go": "Existing direct Robin go relayed firsthand by root; review gates still apply"
+}

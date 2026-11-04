@@ -1,0 +1,56 @@
+private theorem iterate_num_succ (d : RotationAddress) (n k : ℕ) :
+    iterateNum d n (k + 1) = doubleNum d (iterateNum d n k) := by
+  simp [iterateNum, doubleNum, pow_succ, Nat.mul_mod, Nat.mul_assoc, Nat.mul_comm,
+    Nat.mul_left_comm]
+
+private theorem phase_iteration (d : RotationAddress) (u : Fin d.q) (k : ℕ) :
+    iterateNum d (wordValue d u) k =
+      wordValue d ⟨(u.val + k * d.p) % d.q, Nat.mod_lt _ (Nat.lt_trans d.p_pos d.p_lt_q)⟩ := by
+  have hq : 0 < d.q := Nat.lt_trans d.p_pos d.p_lt_q
+  induction k with
+  | zero =>
+    have hu : (⟨u.val % d.q, Nat.mod_lt _ hq⟩ : Fin d.q) = u :=
+      Fin.ext (Nat.mod_eq_of_lt u.isLt)
+    simpa only [iterateNum, pow_zero, one_mul, zero_mul, add_zero, hu] using
+      Nat.mod_eq_of_lt (word_bounds d u).2
+  | succ k ih =>
+    rw [iterate_num_succ, ih, double_word]
+    apply congrArg (wordValue d)
+    apply Fin.ext
+    have he : u.val + (k + 1) * d.p = (u.val + k * d.p) + d.p := by ring
+    simp only [he, Nat.add_mod, Nat.mod_mod]
+
+private theorem coprime_shift_surjective (d : RotationAddress) (s r : ℕ) (hr : r < d.q) :
+    ∃ k : Fin d.q, (s + k.val * d.p) % d.q = r := by
+  have hq : 0 < d.q := Nat.lt_trans d.p_pos d.p_lt_q
+  let f : Fin d.q → Fin d.q := fun k => ⟨(s + k.val * d.p) % d.q, Nat.mod_lt _ hq⟩
+  have hi : Function.Injective f := by
+    intro i j he
+    have hm : Nat.ModEq d.q (s + i.val * d.p) (s + j.val * d.p) :=
+      congrArg Fin.val he
+    have hm' := Nat.ModEq.add_left_cancel' s hm
+    have hc := Nat.ModEq.cancel_right_of_coprime d.coprime.symm hm'
+    have hv : i.val = j.val := by
+      change i.val % d.q = j.val % d.q at hc
+      simpa only [Nat.mod_eq_of_lt i.isLt, Nat.mod_eq_of_lt j.isLt] using hc
+    exact Fin.ext hv
+  obtain ⟨k, hk⟩ := Finite.surjective_of_injective hi ⟨r, hr⟩
+  exact ⟨k, congrArg Fin.val hk⟩
+
+private theorem no_short_word_period (d : RotationAddress) (u : Fin d.q) (k : ℕ)
+    (hk0 : 0 < k) (hkq : k < d.q) : iterateNum d (wordValue d u) k ≠ wordValue d u := by
+  intro he
+  rw [phase_iteration] at he
+  have hfin := (word_strict d).injective he
+  have hv := congrArg Fin.val hfin
+  have hm : Nat.ModEq d.q (u.val + k * d.p) (u.val + 0) := by
+    change (u.val + k * d.p) % d.q = (u.val + 0) % d.q
+    simpa only [add_zero, Nat.mod_eq_of_lt u.isLt] using hv
+  have hm' := Nat.ModEq.add_left_cancel' u.val hm
+  have hz : (k * d.p) % d.q = 0 := by
+    change (k * d.p) % d.q = 0 % d.q at hm'
+    simpa using hm'
+  have hd := d.coprime.symm.dvd_of_dvd_mul_right (Nat.dvd_of_mod_eq_zero hz)
+  have hle := Nat.le_of_dvd hk0 hd
+  omega
+

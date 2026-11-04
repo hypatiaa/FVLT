@@ -1,0 +1,35 @@
+{
+  "schema": "ff4-source-comparison/1",
+  "verdict": "PASS",
+  "source_sha256": {
+    "FVLTFordBulbCombinatoricsV1.lean": "b41b4f5508506f8f86de425ec0c334d2e63e251d87990dded20cc39d9a550b8a",
+    "FVLTFordBulbDataV1.lean": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb"
+  },
+  "freeze_sha256": "115a6c7d95384e2caeb8c5453ff876f2ea4519bf4afdc8eec23e4aaec1906d90",
+  "g1_import_closure_excluded": true,
+  "all_present_public_headers_match": true,
+  "data_definitions_exact": true,
+  "present_targets": [
+    "FVLT.FordBulbV1.address_canonical",
+    "FVLT.FordBulbV1.address_interval",
+    "FVLT.FordBulbV1.address_injective",
+    "FVLT.FordBulbV1.q_at_least_two",
+    "FVLT.FordBulbV1.modulus_pos",
+    "FVLT.FordBulbV1.upper_digit_equiv",
+    "FVLT.FordBulbV1.lower_digit_equiv",
+    "FVLT.FordBulbV1.address_surjective",
+    "FVLT.FordBulbV1.word_sum"
+  ],
+  "axiom_report_targets": [
+    "FVLT.FordBulbV1.address_canonical",
+    "FVLT.FordBulbV1.address_interval",
+    "FVLT.FordBulbV1.address_injective",
+    "FVLT.FordBulbV1.q_at_least_two",
+    "FVLT.FordBulbV1.modulus_pos",
+    "FVLT.FordBulbV1.upper_digit_equiv",
+    "FVLT.FordBulbV1.lower_digit_equiv",
+    "FVLT.FordBulbV1.address_surjective",
+    "FVLT.FordBulbV1.word_sum"
+  ],
+  "method": "Seven predecessor public proofs retained byte-identical; two additional frozen headers copied unchanged; full Data unchanged; runner recomputes source inventory and imports"
+}

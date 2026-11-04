@@ -1,0 +1,211 @@
+{
+  "verdict": "PASS",
+  "exact_public_headers": 33,
+  "expected_public_headers": 33,
+  "full_data_byte_match": true,
+  "source_sha256": {
+    "FVLTFordBulbDataV1.lean": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+    "FVLTFordBulbParameterV1.lean": "1e1eef97dab837bda264c9123a88b6d677c11c6e66863a4a9dfed3e1390463ed",
+    "FVLTFordBulbCombinatoricsV1.lean": "41db1fb606df471df0780284385ef0659f15e3c59ba3b55e269190f5e526d761"
+  },
+  "checks": [
+    {
+      "name": "FVLT.FordBulbV1.parameter_fixed_point",
+      "module": "FVLTFordBulbParameterV1",
+      "header_sha256": "dd5f30d0d8e2e8d71232b2065379c98ba15a7a8a3679ba1620248666b6917fef",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.parameter_multiplier",
+      "module": "FVLTFordBulbParameterV1",
+      "header_sha256": "4c0d1c06887abe35508c75af25f21ba94a1125ff582a4a5319355da3da75b754",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.parameter_derivative",
+      "module": "FVLTFordBulbParameterV1",
+      "header_sha256": "f0a10265856ef9c646fef0708b978ec895c45679243b60a3ea8df5e28bc5179d",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.canonical_multiplier_primitive",
+      "module": "FVLTFordBulbParameterV1",
+      "header_sha256": "5067ccec885740d8b9a03dca216b8efaf8c3abb38b6e885e8c6904687a2b8c2e",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.address_canonical",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "95c92e33f3a01ab980cd8f414a6aee338ed3212d24f1fb7060c709577e3d537b",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.address_interval",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "6f51a099aa764f2492f54b45a9bcc5c0a28d6af1da236eb755df118c128521d9",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.address_injective",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "b3ccf8ed6ffce0752c1329771cbaf3ffb044a7ad4b02db3b7afe64b562b204c4",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.q_at_least_two",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "71e629b712cc7a3321bffbdeadd761ca700b92a2cea2bdbea3f464650d978a11",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.modulus_pos",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "9f0567d5b26520f63aa397e4e9012ce8993cf5aebc10cf882cdf8471e521d91d",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.upper_digit_equiv",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "5aa12b40b46c4368ecda181c940a02894f742e3fee235deeb0d3c23a50912231",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.lower_digit_equiv",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "e24444aaa33d5eff0ab75bd2a5c83260aa8e153252bade2f05e51ad44dc2e170",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.address_surjective",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "6218473cd2948398d2224365c853ab551a6bc61a93c38e5e4e4b2af3bd3261b6",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.word_sum",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "6b9ecd69f5821936edb55292002e1e0fe11dc400057d2c18aa260dd7472fbcbe",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.word_bounds",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "c059d439040e474d3cb36b8633f51c213694cb8f862b0d378c7a7d45d972fd06",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.characteristic_adjacent",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "bab4e3e803412ca35d9ce0156b779e04e686d09b0533e8c95c16dc953e382d51",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.characteristic_bounds",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "bcfa65ac4d562c21dad086475df9dd8c7070fbe87bbdc63dde0077d8b3de3cf9",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.characteristic_angle_gap",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "94ffc96c8faeb2fb0f23fd6d03fab18abd01694119bf74de4a372cce11970d66",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.characteristic_period_return",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "39b75f6e8b5423fba30cb04fe8edd73ae35e026effc74d89daf2163f4dd8a8c3",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.farey_denominator_min",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "42ab72d2badf89650e260e20c6029616301fdad33fd546a93fce434845dd3933",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.farey_denominator_eq_iff",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "256112c938a0a27bae9f43a68cf8c3d2d67b59c905c7333498bb5f7d0ed633f7",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.word_strict",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "18c2ee10805a6dd3a50e6ede0fa70d7de1c8c914bfb846a3694f8c1efeee4a69",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.double_word",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "520b4350be1ff847f44ae0bde62910b9a35d77c36088f460d7435f147616b4b1",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.characteristic_period_minimal",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "f6b98329118b1009502d124bff48c185ad8b46b9d92633c209d66cd866334dfc",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.same_cycle",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "936feafbdce418ff6710695fa2cb188746cd3badfdfc0223ac672a51a88bf493",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.orbit_set_eq",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "7a976f5f3f7ef8dd2bda7797e5632e773821d9ab794d30067f99ebb9649ac31d",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.orbit_card",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "1f8f4d809e48b9edc6b89aec47ae63a72b33671b82f3e5d437936957856b9c37",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.orbit_length",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "a77ba792ce0a32297fe6239c9e2f5e85a60d80c9bd3cf0aebcd33262d2d26c3f",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.rank_word",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "fc17b53ead0635e59a940ea87ddf59cee5f48ab9188015ca07f18e53213c8acc",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.rank_step",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "ed9e77cd8d4dde8ea8f5c29c4850a7772ac5f04e6c090e868750526012700844",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.unique_unit_gap",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "c4f40c24aa90c4e4c21524bde59a4fb2ca503ea4cb4d508590a2f459e34c34ff",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.angle_order",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "cd329577c00b613f95de84105ef73d5b61ecc45f78b090232754e87a8ef2dcec",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.intervals_disjoint",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "7083ab2b6eb29c8302d9b6493ad8e5b8a9b1bc7d47bc34ef37fa3eba4940e2c8",
+      "exact_frozen_match": true
+    },
+    {
+      "name": "FVLT.FordBulbV1.mediant_interval",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header_sha256": "a2a60c6a3d91970da8c4e23cb30f6817f414bd2a4ccb3c0e7ceaa948bd27b04d",
+      "exact_frozen_match": true
+    }
+  ]
+}

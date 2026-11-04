@@ -1,0 +1,566 @@
+{
+  "review": "FF-4 Ford-to-bulb statement-fidelity review v0.1",
+  "date": "2026-11-04",
+  "reviewer": "independent fidelity reviewer subagent, Claude Opus, spawned by skeleton 2026-11-05",
+  "reviewer_model": "claude-opus-5-5",
+  "date_note": "Local machine date at review time was 2026-11-04; the reviewer identity string is as specified by the spawning seat.",
+  "scope": "Meaning only: each of the 33 frozen public statements read with the 31 frozen data declarations and the inherited FF-1 definitions, against WORK_ORDER_v0_2. Compilation, axioms and replay are the auditor's job and are not assessed here. No Lean run, no network, no posting.",
+  "reviewed_files_sha256": {
+    "WORK_ORDER_v0_2.md": "d28dfd0ebbc49d1677e4765b492ec35450b7c842054b85bc7834c6d2f124b2d8",
+    "owner_review_v0_1/REVIEW_v0_1.md": "523f4f6d6be3f961aa6db9e0b50a2efeec6e03cc690ad74f07c2a7df90c96037",
+    "owner_review_v0_1/C1_PROOF_ROUTE_v0_1.md": "c32d835e21cba579d003c3324b5dfe25c89bfa4431e7bd47be60717519389a82",
+    "owner_review_v0_1/ACCEPTANCE_v0_2.md": "6e5c8b61ed4bd4bf6467bec2277a5cf47eb6ee7010b86a1a1daf418bcb8ec554",
+    "freeze_packet_v0_1/FF4_DEFINITIONS_PROPOSED_v0_1.lean.txt": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+    "freeze_packet_v0_1/FF4_HEADERS_PROPOSED_v0_1.lean.txt": "c5b569b1c2864fd606213ce5ee8adce5411465f4f1e8ad3505d4a5a0da64ebac",
+    "freeze_packet_v0_1/API_AND_SCOPE_NOTES_v0_1.md": "b494f195616d1ad04905f9c53c58e9e711f35e456eb59067f8bc9472c364f4fe",
+    "FF4_FREEZE_DECISION_v0_1.md": "5195a4be569cc05c60aced44dd14bbf23a615a10cfe5f39cca12e490d694d8f7",
+    "final_source_packet_v0_1/accepted_original_freeze/inputs/library_sources/FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+    "final_source_packet_v0_1/accepted_original_freeze/inputs/library_sources/FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+    "final_source_packet_v0_1/accepted_original_freeze/inputs/library_sources/FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+    "final_source_packet_v0_1/sources/FVLTFordBulbDataV1.lean": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+    "final_source_packet_v0_1/sources/FVLTFordBulbParameterV1.lean": "1e1eef97dab837bda264c9123a88b6d677c11c6e66863a4a9dfed3e1390463ed",
+    "final_source_packet_v0_1/sources/FVLTFordBulbCombinatoricsV1.lean": "41db1fb606df471df0780284385ef0659f15e3c59ba3b55e269190f5e526d761"
+  },
+  "source_state": {
+    "data_module_byte_identical_to_frozen_definitions": true,
+    "public_headers_matching_frozen_whitespace_normalized": "33/33",
+    "extra_public_declarations": [],
+    "public_targets_by_module": {
+      "FVLTFordBulbCombinatoricsV1": 29,
+      "FVLTFordBulbParameterV1": 4
+    },
+    "private_helpers": {
+      "FVLTFordBulbCombinatoricsV1": 44,
+      "FVLTFordBulbParameterV1": 0
+    },
+    "proof_module_extra_imports": {
+      "FVLTFordBulbCombinatoricsV1": [
+        "Mathlib.Data.Nat.ModEq"
+      ],
+      "FVLTFordBulbParameterV1": [
+        "Mathlib.Analysis.Calculus.Deriv.Add"
+      ]
+    },
+    "sorry_admit_axiom_native_decide_tokens": "none found by text search (not a substitute for the axiom report)",
+    "out_of_scope_terms": "no occurrence of Goldberg, landing, ray, wake, limb, Rule 30, attracting, parabolic, B6 or Mandelbrot in the three sources"
+  },
+  "targets": [
+    {
+      "name": "address_canonical",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "num(p/q)=p and den=q for every guarded record: the proved bridge to the canonical rational p/q.",
+      "work_order_locator": "§3 \"The map\" bridge; change 3; review item 3"
+    },
+    {
+      "name": "address_interval",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "Every address lies strictly in (0,1); no endpoint value.",
+      "work_order_locator": "§1, change 2 (Psi undefined at 0 and 1)"
+    },
+    {
+      "name": "address_injective",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "Record equality from equal rationals (proof fields are Props). With surjective, records biject with rationals in (0,1).",
+      "work_order_locator": "§3 \"The map\"; change 3"
+    },
+    {
+      "name": "address_surjective",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "Every rational in (0,1) has an address, so statements over RotationAddress cover every reduced fraction in (0,1).",
+      "work_order_locator": "§1; change 5 (C1 for all reduced fractions in (0,1))"
+    },
+    {
+      "name": "q_at_least_two",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "q >= 2.",
+      "work_order_locator": "B0; change 2"
+    },
+    {
+      "name": "modulus_pos",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "M = 2^q - 1 > 0 (Nat subtraction harmless since q >= 2).",
+      "work_order_locator": "B0; change 2"
+    },
+    {
+      "name": "word_sum",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "Range-sum implementation equals the Fin q sum with weight 2^(q-1-i). Negative control reversed_weight fails this target.",
+      "work_order_locator": "§3 Mechanical words; change 2 (Fin q, weight 2^(q-1-i))"
+    },
+    {
+      "name": "upper_digit_equiv",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "Digit of W(p) at Fin index i equals [((i+1)p mod q) >= q-p], the order's one-based plus rule.",
+      "work_order_locator": "§3 Characteristic numerators (b+_j, j=i+1)"
+    },
+    {
+      "name": "lower_digit_equiv",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "Conjunct 1 <= (i+1)p is proved, then digit of W(p-1) equals [(((i+1)p - 1) mod q) >= q-p]. The data itself uses u = p-1 (p >= 1 from the record), so no underflow is used anywhere.",
+      "work_order_locator": "§3 Characteristic numerators (b-_j); change 2 (j*p >= 1 before subtraction)"
+    },
+    {
+      "name": "word_bounds",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "0 < W(u) < M for every u : Fin q. Supporting B0 target; more than the B0 cell lists, used for the wrap gap.",
+      "work_order_locator": "B0 (bounds); §5 B5 architecture (0 < W(0), W(q-1) < M)"
+    },
+    {
+      "name": "characteristic_bounds",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "0 < N- < N+ < M. N- = W(p-1) and N+ = W(p) hold by definition (lowerNumerator/upperNumerator), not as separate theorems.",
+      "work_order_locator": "B0"
+    },
+    {
+      "name": "characteristic_adjacent",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "N+ = N- + 1 in Nat.",
+      "work_order_locator": "B1"
+    },
+    {
+      "name": "characteristic_angle_gap",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "theta+ - theta- = 1/M in Q.",
+      "work_order_locator": "B1"
+    },
+    {
+      "name": "characteristic_period_return",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "(2^q * n) mod M = n for n in {N-, N+}; equivalent to 2^q N == N (mod M) because N < M.",
+      "work_order_locator": "B2 (return); change 1"
+    },
+    {
+      "name": "characteristic_period_minimal",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "(2^k * n) mod M != n for 0 < k < q, n in {N-, N+}; equivalent to non-congruence because n < M.",
+      "work_order_locator": "B2 (minimality); change 1"
+    },
+    {
+      "name": "same_cycle",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "Exists i : Fin q with 2^i N+ mod M = N-, i.e. N- in O.",
+      "work_order_locator": "B3; change 1"
+    },
+    {
+      "name": "word_strict",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "StrictMono W on Fin q; supporting B4 (rank(W(u)) = u needs it).",
+      "work_order_locator": "B4 (sorted enumeration); §5"
+    },
+    {
+      "name": "orbit_set_eq",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "orbitSet (q iterates of N+) equals the image of W over Fin q.",
+      "work_order_locator": "B4 \"O = {W(u) : u < q}\""
+    },
+    {
+      "name": "orbit_card",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "card O = q: distinct-point set has q points before rank is used.",
+      "work_order_locator": "B4 \"O has exactly q elements\"; change 4"
+    },
+    {
+      "name": "orbit_length",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "Sorted list length = q, so the Fin-indexed edges number q.",
+      "work_order_locator": "B4/B5; change 4 (q directed edges)"
+    },
+    {
+      "name": "rank_word",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "rank counts distinct orbit points strictly below.",
+      "work_order_locator": "B4 \"rank(W(u)) = u\"; change 4"
+    },
+    {
+      "name": "double_word",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "Exact equality, (2 W(u)) mod M = W((u+p) mod q).",
+      "work_order_locator": "B4 \"doubling sends W(u) to W((u+p) mod q)\""
+    },
+    {
+      "name": "rank_step",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "For every x in O: rank((2x) mod M) = (rank x + p) mod q. Equality with the canonical residue is equivalent to the congruence since rank < q on O; universal over O, so the return edge is included.",
+      "work_order_locator": "B4 rank shift mod q including the return edge; change 4"
+    },
+    {
+      "name": "unique_unit_gap",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "Some edge i has start N-, end N+, gap 1, and every other edge j != i (wrap edge included, gap = (M + first) - last) has gap >= 2. Nat truncation in directedGap could only shrink a gap, so it cannot make the >= 2 clause easier. Negative control wrap_no_modulus fails this target.",
+      "work_order_locator": "B5; change 4"
+    },
+    {
+      "name": "angle_order",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "For all addresses d, e with p/q < p'/q': theta+(d) < theta-(e). Fully general: with address_surjective this covers all reduced fractions in (0,1); no denominator or neighbour narrowing.",
+      "work_order_locator": "C1; change 5; owner C1 route"
+    },
+    {
+      "name": "intervals_disjoint",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "Disjointness of the rational Icc combinatorial angle intervals; order is angle_order.",
+      "work_order_locator": "C1 \"intervals are disjoint and ordered like the fractions\""
+    },
+    {
+      "name": "mediant_interval",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "Both endpoints are RotationAddresses (in Psi's domain); fareyAdj is FF-1's |det| = 1 on canonical num/den; conclusion asserts the FF-1 mediant is itself an address m and states both strict separations theta+(x) < theta-(m) and theta+(m) < theta-(y). The existential is unique by address_injective, so it names the mediant's own interval.",
+      "work_order_locator": "C2; change 5"
+    },
+    {
+      "name": "farey_denominator_min",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "Over canonical rationals (Lean Q), x<y, fareyAdj x y, x<z<y: x.den + y.den <= z.den. Quantified over all of Q, not only (0,1). The C3 cell and owner item 6 say \"canonical rationals\" with no interval bound, so this is the literal order statement; under a reading where the table preamble (guarded domain) also governs C3, it would be a harmless generalization that implies the restricted form. Evidence includes negative rationals and integers.",
+      "work_order_locator": "C3; change 6"
+    },
+    {
+      "name": "farey_denominator_eq_iff",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "verdict": "MATCH",
+      "scope_note": "Same binders; z.den = x.den + y.den iff z = FF-1 mediant x y. Same all-of-Q remark as farey_denominator_min. Uses no FF-3 private API (only FF-1 public defs; helpers are private to this module). Negative control c3_midpoint fails this target.",
+      "work_order_locator": "C3 equality case; change 6"
+    },
+    {
+      "name": "parameter_fixed_point",
+      "module": "FVLTFordBulbParameterV1",
+      "verdict": "MATCH",
+      "scope_note": "For all lambda : C: alpha^2 + root(lambda) = alpha, with root = lambda/2 - lambda^2/4, alpha = lambda/2.",
+      "work_order_locator": "A1a; change 7"
+    },
+    {
+      "name": "parameter_multiplier",
+      "module": "FVLTFordBulbParameterV1",
+      "verdict": "MATCH",
+      "scope_note": "quadraticMultiplier is the explicit formula 2z; alone this is a bare equation, but it is paired with parameter_derivative, so no derivative claim rests on it.",
+      "work_order_locator": "A1b (explicit multiplier 2*alpha = lambda); acceptance v0.2"
+    },
+    {
+      "name": "parameter_derivative",
+      "module": "FVLTFordBulbParameterV1",
+      "verdict": "MATCH",
+      "scope_note": "HasDerivAt f f' x in Mathlib is (function, derivative value, point). Here f = z |-> z^2 + root(lambda), f' = lambda, x = alpha(lambda): the derivative at alpha equals lambda, as ordered. Negative control swap_hasderiv (reading f'=alpha at x=lambda) fails.",
+      "work_order_locator": "A1b; acceptance v0.2 (\"a derivative theorem\")"
+    },
+    {
+      "name": "canonical_multiplier_primitive",
+      "module": "FVLTFordBulbParameterV1",
+      "verdict": "MATCH",
+      "scope_note": "IsPrimitiveRoot (exp(2 pi i (p/q : Q -> R -> C))) q, i.e. primitive root of order exactly q, with the record's guards bound. \"Parabolic\" appears nowhere in the sources.",
+      "work_order_locator": "A1c; acceptance v0.2 scope clarification"
+    }
+  ],
+  "definitions": [
+    {
+      "name": "RotationAddress",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "p, q : Nat with 0 < p, p < q, Nat.Coprime p q as record fields; Psi undefined at 0 and 1."
+    },
+    {
+      "name": "address",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "p/q as an exact rational."
+    },
+    {
+      "name": "modulus",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "M = 2^q - 1 in Nat; truncation inert since q >= 2 (q_at_least_two)."
+    },
+    {
+      "name": "upperIndex",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "Fin q index p."
+    },
+    {
+      "name": "lowerIndex",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "Fin q index p - 1; p >= 1 from the record, so no underflow."
+    },
+    {
+      "name": "rawDigit",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "[q - p <= (u + i p) mod q]; total helper, standing only under the guards."
+    },
+    {
+      "name": "blockValue",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "Sum over i < n of digit * 2^(n-1-i); n-1-i never truncates for i < n >= 1."
+    },
+    {
+      "name": "digit",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "rawDigit on Fin q intercept and index."
+    },
+    {
+      "name": "wordValue",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "W(u) = blockValue at length q."
+    },
+    {
+      "name": "upperDigit",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "digit of W(p)."
+    },
+    {
+      "name": "lowerDigit",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "digit of W(p-1)."
+    },
+    {
+      "name": "upperNumerator",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "N+ = W(p)."
+    },
+    {
+      "name": "lowerNumerator",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "N- = W(p-1)."
+    },
+    {
+      "name": "upperAngle",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "theta+ = N+/M in Q."
+    },
+    {
+      "name": "lowerAngle",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "theta- = N-/M in Q."
+    },
+    {
+      "name": "psi",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "Psi(d) = (theta-, theta+). Note: no public target mentions psi by name; all statements use lowerAngle/upperAngle, which are its components by definition. Cosmetic, not a defect."
+    },
+    {
+      "name": "angleInterval",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "Set.Icc theta- theta+ in Q: the combinatorial angle interval (rational representatives), not the complex wake."
+    },
+    {
+      "name": "doubleNum",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "k |-> 2k mod M."
+    },
+    {
+      "name": "iterateNum",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "k |-> 2^i k mod M."
+    },
+    {
+      "name": "orbitPoint",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "2^i N+ mod M."
+    },
+    {
+      "name": "orbitSet",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "Finset image of range q: the distinct-point set O = {2^i N+ mod M : i < q}."
+    },
+    {
+      "name": "rank",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "#{y in O : y < n}."
+    },
+    {
+      "name": "orderedOrbit",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "O sorted ascending (Finset.sort, so strictly increasing)."
+    },
+    {
+      "name": "edgeStart",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "x_i via bounded get."
+    },
+    {
+      "name": "edgeEnd",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "x_{i+1}, or x_0 at the final index (the wrap edge)."
+    },
+    {
+      "name": "directedGap",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "x_{i+1} - x_i for non-final i; (M + x_0) - x_{q-1} at the wrap. Nat subtraction: non-wrap terms are positive on a strictly sorted list, wrap term positive since x_{q-1} < M; truncation could only make B5 harder, never vacuous."
+    },
+    {
+      "name": "cardioidParameter",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "root(lambda) = lambda/2 - lambda^2/4 (renamed, formula unchanged)."
+    },
+    {
+      "name": "alpha",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "lambda/2."
+    },
+    {
+      "name": "quadratic",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "z^2 + c."
+    },
+    {
+      "name": "quadraticMultiplier",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "explicit 2z; the derivative standing comes from parameter_derivative."
+    },
+    {
+      "name": "canonicalMultiplier",
+      "module": "FVLTFordBulbDataV1",
+      "verdict": "MATCH",
+      "scope_note": "exp(2 pi (p/q) i) via Q -> R -> C coercion; lambda_{p/q} of §3."
+    }
+  ],
+  "verdict_counts": {
+    "targets": {
+      "MATCH": 33
+    },
+    "definitions": {
+      "MATCH": 31
+    }
+  },
+  "scope_confirmations": {
+    "B6_absent": true,
+    "no_ray_landing_wake_limb_analytic_dynamics_or_Rule30_claim": true,
+    "C1_general_over_all_reduced_fractions_in_0_1": true,
+    "C2_both_endpoints_in_domain_and_both_strict_separations": true,
+    "C3_over_canonical_rationals_with_equality_case": true,
+    "C3_quantified_over_all_of_Q": "yes; faithful to the C3 cell wording; at worst a harmless generalization"
+  },
+  "finite_evidence": {
+    "label": "finite evidence, not proof",
+    "script": "FIDELITY_REVIEW_v0_1/fidelity_check.cjs (BigInt, exact rationals, Lean Nat truncated subtraction mirrored)",
+    "range": "79 addresses (all coprime 0<p<q<=16); C1/C2 on all ordered pairs with q<=12; C3 on all 409 rationals in [-2,2] with den<=18 (812 adjacent pairs, 404 equality hits); A1 exact divisibility criterion plus float sanity checks",
+    "baseline": {
+      "total_checks": 17432,
+      "failed_checks": 0,
+      "targets_checked": 34
+    },
+    "harness_correction": "First baseline run failed 22 mediant_interval checks because the script looked the mediant address up only among q<=16 while mediants of q<=12 pairs reach den 23; the lookup was replaced by constructing the address from the canonical mediant. This was a script defect, not a statement failure; recorded here rather than hidden.",
+    "negative_controls": [
+      {
+        "mutation": "reversed_weight",
+        "failed_checks": 2883,
+        "failed_targets": [
+          "word_sum",
+          "characteristic_bounds",
+          "characteristic_adjacent",
+          "characteristic_angle_gap",
+          "word_strict",
+          "rank_word",
+          "unique_unit_gap",
+          "double_word"
+        ]
+      },
+      {
+        "mutation": "lower_index_plus",
+        "failed_checks": 905,
+        "failed_targets": [
+          "lower_digit_equiv",
+          "characteristic_bounds",
+          "characteristic_adjacent",
+          "characteristic_angle_gap",
+          "unique_unit_gap",
+          "angle_order",
+          "intervals_disjoint",
+          "mediant_interval"
+        ]
+      },
+      {
+        "mutation": "wrap_no_modulus",
+        "failed_checks": 79,
+        "failed_targets": [
+          "unique_unit_gap"
+        ]
+      },
+      {
+        "mutation": "c3_midpoint",
+        "failed_checks": 472,
+        "failed_targets": [
+          "farey_denominator_eq_iff"
+        ]
+      },
+      {
+        "mutation": "swap_hasderiv",
+        "failed_checks": 200,
+        "failed_targets": [
+          "parameter_derivative"
+        ]
+      }
+    ],
+    "header_compare": {
+      "baseline_match": "33/33",
+      "negative_control_mutating_rank_step_detected": [
+        "rank_step"
+      ]
+    }
+  },
+  "own_output_sha256_before_signoff": {
+    "FIDELITY_REVIEW_v0_1/fidelity_check.cjs": "f5a15fe658a279eddaff3ee783985e839debbd428d5e90d32406cd4d42166059",
+    "FIDELITY_REVIEW_v0_1/header_compare.cjs": "b23b3edd2cf195e91745750a2ab4d29d1a273f6c624e807b0e12afa6f3a88bde",
+    "FIDELITY_REVIEW_v0_1/build_signoff.cjs": "8ad8fbef9c0e35a9571a779c87cb2402d40030d442cbcc253f819858a65b0b94",
+    "FIDELITY_REVIEW_v0_1/check_none.json": "3060d93244aeb189e62b05214627ed21a6776755277de6eb20f00107a7a34617",
+    "FIDELITY_REVIEW_v0_1/check_reversed_weight.json": "184a4bf5d9787430a8e34affa4476a65f22a027523737d58919b05cb9898c466",
+    "FIDELITY_REVIEW_v0_1/check_lower_index_plus.json": "4c9a6e11ff8ee8d66966f4917c250c292f9126d06d77446fb19b87e11541d2e6",
+    "FIDELITY_REVIEW_v0_1/check_wrap_no_modulus.json": "408004f897365426f0d28dcad00f54ce8050943255fb4591220e72079506904e",
+    "FIDELITY_REVIEW_v0_1/check_c3_midpoint.json": "e73415c367fabee048490c71fd052f39745230a4535a87a5d9fe8f35acd2dbe4",
+    "FIDELITY_REVIEW_v0_1/check_swap_hasderiv.json": "f3b401840327e06f271acd1da53eff7f0299b00ebe2eda9b9d26ab8a5c407ba3",
+    "FIDELITY_REVIEW_v0_1/header_compare_output.json": "cc6d7982513636f56c507b407c2b7a717e055a41ccb059055332280dcc2e33d8",
+    "FIDELITY_REVIEW_v0_1/header_compare_negative_control.json": "3cf882bf19562173b9e09a8dcafdfceeb547c2a21c1c0df46a29f9d600e4cab8"
+  },
+  "overall_result": "PASS: 33/33 targets MATCH, 31/31 definitions MATCH; no TRANSLATION_DEFECT, no UNRESOLVED. Advisory notes only (C3 over all of Q; psi unused by name; Nat subtraction in directedGap inert)."
+}

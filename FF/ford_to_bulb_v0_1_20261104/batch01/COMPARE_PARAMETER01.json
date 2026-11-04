@@ -1,0 +1,25 @@
+{
+  "schema": "ff4-source-comparison/1",
+  "verdict": "PASS",
+  "source_sha256": {
+    "FVLTFordBulbDataV1.lean": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+    "FVLTFordBulbParameterV1.lean": "28537dd78b0a2f63d644028a1065e0b396812fc4f08aba5f151e1d9a7bff43b0"
+  },
+  "freeze_sha256": "115a6c7d95384e2caeb8c5453ff876f2ea4519bf4afdc8eec23e4aaec1906d90",
+  "g1_import_closure_excluded": true,
+  "all_present_public_headers_match": true,
+  "data_definitions_exact": true,
+  "present_targets": [
+    "FVLT.FordBulbV1.parameter_fixed_point",
+    "FVLT.FordBulbV1.parameter_multiplier",
+    "FVLT.FordBulbV1.parameter_derivative",
+    "FVLT.FordBulbV1.canonical_multiplier_primitive"
+  ],
+  "axiom_report_targets": [
+    "FVLT.FordBulbV1.parameter_fixed_point",
+    "FVLT.FordBulbV1.parameter_multiplier",
+    "FVLT.FordBulbV1.parameter_derivative",
+    "FVLT.FordBulbV1.canonical_multiplier_primitive"
+  ],
+  "method": "Full data exact accepted19fcd5d3; four public Parameter headers copied byte-identical LF from target index; no extra public declarations/attributes/ambient variables; UTF8LFnoBOM; runner recomputes checks"
+}

@@ -1,0 +1,18 @@
+{
+ "frozen_count": 33,
+ "delivered_public": 33,
+ "combinatorics_public": 29,
+ "parameter_public": 4,
+ "match": 32,
+ "mismatch": [
+  {
+   "k": "rank_step",
+   "frozen": "theorem rank_step (d : RotationAddress) (x : ℕ) (hx : x ∈ orbitSet d) : rank d (doubleNum d x) = (rank d x + d.p) % d.p",
+   "delivered": "theorem rank_step (d : RotationAddress) (x : ℕ) (hx : x ∈ orbitSet d) : rank d (doubleNum d x) = (rank d x + d.p) % d.q"
+  }
+ ],
+ "extra_public": [],
+ "private_helpers_combinatorics": 44,
+ "private_helpers_parameter": 0,
+ "other_public_decl_kinds": []
+}

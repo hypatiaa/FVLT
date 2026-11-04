@@ -1,0 +1,23 @@
+{
+  "phase": "FF4_COMBINATORIAL",
+  "module": "FVLTFordBulbParameterV1",
+  "mode": "compile",
+  "run_id": "CompileFVLTFordBulbParameterV1Batch01Parameter01",
+  "template_sha256": "d0de6c4c7d4c59e58a0d3848f4924997658527ff1c03628d4eeb72c36c34bfd1",
+  "attempt_folder": "attempts/Batch01Parameter01",
+  "source_sha256": {
+    "FVLTFordBulbDataV1.lean": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+    "FVLTFordBulbParameterV1.lean": "28537dd78b0a2f63d644028a1065e0b396812fc4f08aba5f151e1d9a7bff43b0"
+  },
+  "dependency_olean_sha256": {
+    "FVLTFordBulbDataV1.olean": "21df17bc2e550337e13519487014f011c7ed712178c903d7bda283c546bd75f3"
+  },
+  "prerequisite_receipt_sha256": {
+    "CompileFVLTFordBulbDataV1Batch01Data01.json": "8195f124bfc7e7c4d7aa4d3793a598e70e38933742a5ddb5e5097f8d5dd69368",
+    "axiomsFVLTFordBulbDataV1Batch01Data01.json": "0586d0303c608257caa7c40099da7aaef36206b55e9f67f2c75cfd3eb221012d",
+    "replayFVLTFordBulbDataV1Batch01Data01.json": "b52766cb16af44a4f677d0e5f246f9cb07775f1a009369343e27d8f5fb313e44"
+  },
+  "signature_comparison_receipt_file": "COMPARE_PARAMETER01.json",
+  "signature_comparison_receipt_sha256": "8fd768237dab7248c8655396ce51b90a1b2e5fb6125f0b9f948c0b999ee75adf",
+  "deadline_file": "DEADLINE_BATCH01.json"
+}

@@ -1,0 +1,43 @@
+{
+  "schema": "ff4-source-comparison/1",
+  "verdict": "PASS",
+  "source_sha256": {
+    "FVLTFordBulbCombinatoricsV1.lean": "e25ad037cd484316b98b86fabd46e7441edaec5bc716541746127b00cecedf4e",
+    "FVLTFordBulbDataV1.lean": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb"
+  },
+  "freeze_sha256": "115a6c7d95384e2caeb8c5453ff876f2ea4519bf4afdc8eec23e4aaec1906d90",
+  "g1_import_closure_excluded": true,
+  "all_present_public_headers_match": true,
+  "data_definitions_exact": true,
+  "present_targets": [
+    "FVLT.FordBulbV1.address_canonical",
+    "FVLT.FordBulbV1.address_interval",
+    "FVLT.FordBulbV1.address_injective",
+    "FVLT.FordBulbV1.q_at_least_two",
+    "FVLT.FordBulbV1.modulus_pos",
+    "FVLT.FordBulbV1.upper_digit_equiv",
+    "FVLT.FordBulbV1.lower_digit_equiv",
+    "FVLT.FordBulbV1.address_surjective",
+    "FVLT.FordBulbV1.word_sum",
+    "FVLT.FordBulbV1.word_bounds",
+    "FVLT.FordBulbV1.characteristic_adjacent",
+    "FVLT.FordBulbV1.characteristic_bounds",
+    "FVLT.FordBulbV1.characteristic_angle_gap"
+  ],
+  "axiom_report_targets": [
+    "FVLT.FordBulbV1.address_canonical",
+    "FVLT.FordBulbV1.address_interval",
+    "FVLT.FordBulbV1.address_injective",
+    "FVLT.FordBulbV1.q_at_least_two",
+    "FVLT.FordBulbV1.modulus_pos",
+    "FVLT.FordBulbV1.upper_digit_equiv",
+    "FVLT.FordBulbV1.lower_digit_equiv",
+    "FVLT.FordBulbV1.address_surjective",
+    "FVLT.FordBulbV1.word_sum",
+    "FVLT.FordBulbV1.word_bounds",
+    "FVLT.FordBulbV1.characteristic_adjacent",
+    "FVLT.FordBulbV1.characteristic_bounds",
+    "FVLT.FordBulbV1.characteristic_angle_gap"
+  ],
+  "method": "Ten predecessor public proofs preserved; three additional unchanged frozen headers; five new private adjacency helpers; fullData unchanged; runner recomputes"
+}

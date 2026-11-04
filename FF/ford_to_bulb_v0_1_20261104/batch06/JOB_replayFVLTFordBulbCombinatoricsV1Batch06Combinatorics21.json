@@ -1,0 +1,26 @@
+{
+  "phase": "FF4_COMBINATORIAL",
+  "module": "FVLTFordBulbCombinatoricsV1",
+  "mode": "replay",
+  "run_id": "replayFVLTFordBulbCombinatoricsV1Batch06Combinatorics21",
+  "template_sha256": "7d194981ba8bf18294283734a09e17563b33ff78ad6f04b5a79addf871f96855",
+  "attempt_folder": "attempts/Batch06Combinatorics21",
+  "source_sha256": {
+    "FVLTFordBulbCombinatoricsV1.lean": "41db1fb606df471df0780284385ef0659f15e3c59ba3b55e269190f5e526d761",
+    "FVLTFordBulbDataV1.lean": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb"
+  },
+  "dependency_olean_sha256": {
+    "FVLTFordBulbDataV1.olean": "21df17bc2e550337e13519487014f011c7ed712178c903d7bda283c546bd75f3",
+    "FVLTFordBulbCombinatoricsV1.olean": "60ca6a269f3b0e1ee06dd5639ba082ed764af4fea2d3ac8e1f969ca89bdc2593"
+  },
+  "prerequisite_receipt_sha256": {
+    "CompileFVLTFordBulbDataV1Batch01Data01.json": "8195f124bfc7e7c4d7aa4d3793a598e70e38933742a5ddb5e5097f8d5dd69368",
+    "axiomsFVLTFordBulbDataV1Batch01Data01.json": "0586d0303c608257caa7c40099da7aaef36206b55e9f67f2c75cfd3eb221012d",
+    "replayFVLTFordBulbDataV1Batch01Data01.json": "b52766cb16af44a4f677d0e5f246f9cb07775f1a009369343e27d8f5fb313e44",
+    "CompileFVLTFordBulbCombinatoricsV1Batch06Combinatorics21.json": "7cc9e94e2cd27a29f89e1ebc70d91190f1f5f9657bfbb5ab318b6a0f95ddebac"
+  },
+  "signature_comparison_receipt_file": "COMPARE_COMBINATORICS21.json",
+  "signature_comparison_receipt_sha256": "8db42d7cbc680403be75ca9efd771ddab2fde3712e05673b52ed1402dac9c252",
+  "deadline_file": "DEADLINE_BATCH06.json",
+  "own_compile_receipt_file": "CompileFVLTFordBulbCombinatoricsV1Batch06Combinatorics21.json"
+}

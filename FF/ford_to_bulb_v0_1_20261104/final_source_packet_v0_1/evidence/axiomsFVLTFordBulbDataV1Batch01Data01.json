@@ -1,0 +1,257 @@
+{
+  "job": {
+    "phase": "FF4_COMBINATORIAL",
+    "module": "FVLTFordBulbDataV1",
+    "mode": "axioms",
+    "run_id": "axiomsFVLTFordBulbDataV1Batch01Data01",
+    "template_sha256": "50c2c5cb06999193a9f05b47d31a6984e955eefce50dd220aaadeb764da8e680",
+    "attempt_folder": "attempts/Batch01Data01",
+    "source_sha256": {
+      "FVLTFordBulbDataV1.lean": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb"
+    },
+    "dependency_olean_sha256": {
+      "FVLTFordBulbDataV1.olean": "21df17bc2e550337e13519487014f011c7ed712178c903d7bda283c546bd75f3"
+    },
+    "prerequisite_receipt_sha256": {
+      "CompileFVLTFordBulbDataV1Batch01Data01.json": "8195f124bfc7e7c4d7aa4d3793a598e70e38933742a5ddb5e5097f8d5dd69368"
+    },
+    "signature_comparison_receipt_file": "COMPARE_DATA01.json",
+    "signature_comparison_receipt_sha256": "0ce1dd60df342233bd14137ecbf72d9b6e83158390203e56f802307a398ad853",
+    "deadline_file": "DEADLINE_BATCH01.json",
+    "own_compile_receipt_file": "CompileFVLTFordBulbDataV1Batch01Data01.json",
+    "axiom_report_source": "AuditFVLTFordBulbDataV1.lean",
+    "axiom_report_source_sha256": "39477c1f3dd0e32f28ba9b97b7dc150fe1044201238aaa78346f24e2e90d1b24",
+    "axiom_targets": [
+      "FVLT.FordBulbV1.RotationAddress",
+      "FVLT.FordBulbV1.address",
+      "FVLT.FordBulbV1.modulus",
+      "FVLT.FordBulbV1.upperIndex",
+      "FVLT.FordBulbV1.lowerIndex",
+      "FVLT.FordBulbV1.rawDigit",
+      "FVLT.FordBulbV1.blockValue",
+      "FVLT.FordBulbV1.digit",
+      "FVLT.FordBulbV1.wordValue",
+      "FVLT.FordBulbV1.upperDigit",
+      "FVLT.FordBulbV1.lowerDigit",
+      "FVLT.FordBulbV1.upperNumerator",
+      "FVLT.FordBulbV1.lowerNumerator",
+      "FVLT.FordBulbV1.upperAngle",
+      "FVLT.FordBulbV1.lowerAngle",
+      "FVLT.FordBulbV1.psi",
+      "FVLT.FordBulbV1.angleInterval",
+      "FVLT.FordBulbV1.doubleNum",
+      "FVLT.FordBulbV1.iterateNum",
+      "FVLT.FordBulbV1.orbitPoint",
+      "FVLT.FordBulbV1.orbitSet",
+      "FVLT.FordBulbV1.rank",
+      "FVLT.FordBulbV1.orderedOrbit",
+      "FVLT.FordBulbV1.edgeStart",
+      "FVLT.FordBulbV1.edgeEnd",
+      "FVLT.FordBulbV1.directedGap",
+      "FVLT.FordBulbV1.cardioidParameter",
+      "FVLT.FordBulbV1.alpha",
+      "FVLT.FordBulbV1.quadratic",
+      "FVLT.FordBulbV1.quadraticMultiplier",
+      "FVLT.FordBulbV1.canonicalMultiplier"
+    ]
+  },
+  "runner_sha256": "56d69bfb76b17458adaec51f35f0ba422ed2834496690ae5a6e49f6aac34b717",
+  "command": [
+    "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+    "-j1",
+    "-s65536",
+    "-M7680",
+    "-D",
+    "Elab.async=false",
+    "/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch01Data01/AuditFVLTFordBulbDataV1.lean"
+  ],
+  "started_unix": 1793820233.3904028,
+  "wall_cap_seconds": 240,
+  "transport": "100.92.188.6 62853 100.105.106.41 22",
+  "LEAN_PATH": "/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch01Data01/build:/home/saphir/rule30_theorem_library/v23/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v23/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v23/.lake/packages/Qq/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v23/.lake/packages/aesop/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v23/.lake/packages/batteries/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v23/.lake/packages/importGraph/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v23/.lake/packages/mathlib/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v23/.lake/packages/plausible/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v23/.lake/packages/proofwidgets/.lake/build/lib/lean",
+  "library": "/home/saphir/rule30_theorem_library/v23",
+  "imported_dependencies_reused": true,
+  "cpu_affinity": [
+    0
+  ],
+  "address_space_bytes": 8589934592,
+  "process_limit": 256,
+  "output_file_limit_bytes": 67108864,
+  "nice": 19,
+  "library_checksums_before": 401,
+  "project_import_closure": {
+    "/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch01Data01/src/FVLTFordBulbDataV1.lean": {
+      "sha256": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+      "imports": [
+        "FVLTFareyArithmeticCompletionV1",
+        "Mathlib.Data.Finset.Sort",
+        "Mathlib.Data.Rat.Lemmas",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic",
+        "Mathlib.Analysis.Calculus.Deriv.Pow",
+        "Mathlib.RingTheory.RootsOfUnity.Complex"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v23/theorems/FVLTFareyArithmeticCompletionV1.lean": {
+      "sha256": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+      "imports": [
+        "FVLTFareyCertificatesV1",
+        "Mathlib.Data.Rat.Lemmas",
+        "Mathlib.Tactic"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v23/theorems/FVLTFareyCertificatesV1.lean": {
+      "sha256": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+      "imports": [
+        "FVLTFareyContactV1",
+        "Mathlib.Combinatorics.SimpleGraph.Connectivity.Finite",
+        "Mathlib.Combinatorics.SimpleGraph.Finite",
+        "Mathlib.NumberTheory.Divisors",
+        "Mathlib.Data.Rat.Lemmas",
+        "Mathlib.Tactic"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v23/theorems/FVLTFareyContactV1.lean": {
+      "sha256": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+      "imports": [
+        "Mathlib.Data.Rat.Defs",
+        "Mathlib.Algebra.Order.Group.Unbundled.Abs",
+        "Mathlib.Algebra.Order.Ring.Int"
+      ]
+    }
+  },
+  "frozen_public_targets": [],
+  "child_PATH": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin:/usr/local/bin:/usr/bin:/bin",
+  "exit_code": 0,
+  "timeout": false,
+  "seconds": 1.4678394794464111,
+  "log_sha256": "b72c8114bd4b675328c0e0f0a405077470dd22d951809277166c418980f9a829",
+  "log_bytes": 2439,
+  "peak_child_rss_kib": 3504464,
+  "source_unchanged": true,
+  "reviewed_files_unchanged": true,
+  "library_checksums_after": 401,
+  "named_axiom_reports": {
+    "FVLT.FordBulbV1.RotationAddress": [],
+    "FVLT.FordBulbV1.address": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.modulus": [
+      "propext"
+    ],
+    "FVLT.FordBulbV1.upperIndex": [],
+    "FVLT.FordBulbV1.lowerIndex": [],
+    "FVLT.FordBulbV1.rawDigit": [],
+    "FVLT.FordBulbV1.blockValue": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.digit": [],
+    "FVLT.FordBulbV1.wordValue": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.upperDigit": [],
+    "FVLT.FordBulbV1.lowerDigit": [],
+    "FVLT.FordBulbV1.upperNumerator": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.lowerNumerator": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.upperAngle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.lowerAngle": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.psi": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.angleInterval": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.doubleNum": [
+      "propext"
+    ],
+    "FVLT.FordBulbV1.iterateNum": [
+      "propext"
+    ],
+    "FVLT.FordBulbV1.orbitPoint": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.orbitSet": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.rank": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.orderedOrbit": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.edgeStart": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.edgeEnd": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.directedGap": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.cardioidParameter": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.alpha": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.quadratic": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.quadraticMultiplier": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.FordBulbV1.canonicalMultiplier": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "accepted_result": true
+}

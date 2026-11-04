@@ -1,0 +1,32 @@
+from pathlib import Path
+import json,hashlib,time,datetime
+p=Path(__file__).resolve().parent;old=p.parent/'batch01';sha=lambda f:hashlib.sha256(f.read_bytes()).hexdigest()
+def write(f,s):f.write_text(s,encoding='utf-8',newline='\n')
+def save(n,o):write(p/n,json.dumps(o,indent=2)+'\n')
+d=json.loads((p/'DEADLINE_BATCH06.json').read_text());now=int(time.time());assert now<d['deadline_unix']
+groups=[(old,'FVLTFordBulbDataV1','Data01','Batch01Data01'),(old,'FVLTFordBulbParameterV1','Parameter02','Batch01Parameter02'),(p,'FVLTFordBulbCombinatoricsV1','Combinatorics21','Batch06Combinatorics21')]
+rows=[];names=[]
+for base,module,local,remote in groups:
+ source=base/f'attempts/{local}/src/{module}.lean';row={'module':module,'source':source.relative_to(p.parent).as_posix(),'source_sha256':sha(source),'receipts':{}}
+ for mode in ['Compile','axioms','replay']:
+  f=base/(mode+module+remote+'.json');r=json.loads(f.read_text());log=f.with_suffix('.log')
+  assert r['accepted_result'] and r['exit_code']==0 and not r['timeout'] and r['source_unchanged'] and r['reviewed_files_unchanged']
+  assert r['library_checksums_before']==r['library_checksums_after']==401 and sha(log)==r['log_sha256']
+  row['receipts'][mode]={'file':f.relative_to(p.parent).as_posix(),'sha256':sha(f),'log_sha256':sha(log),'seconds':r['seconds']}
+  if mode=='Compile':row['theorem_targets']=r['frozen_public_targets'];names+=r['frozen_public_targets']
+  if mode=='axioms':assert all(set(a)<=set(['propext','Classical.choice','Quot.sound']) for a in r['named_axiom_reports'].values())
+  if mode=='replay':
+   rr=json.loads(log.read_text().strip().splitlines()[-1]);assert rr['verdict']=='PASS' and rr['kernelReplayCompleted'] and not rr['failures'] and rr['unsafeConstants']==rr['partialConstants']==0
+   assert rr['auditedConstants']==rr['targetConstants']>0;row['strict_constants']=rr['targetConstants']
+ rows.append(row)
+idx=json.loads((p.parent/'freeze_packet_v0_1/TARGET_INDEX_v0_1.json').read_text());expected={t['name'] for t in idx['targets']};assert set(names)==expected and len(names)==33
+failed=[f.name for f in p.glob('Compile*.json') if not json.loads(f.read_text())['accepted_result']]
+state={'status':'CLOSED_ALL_33_PRODUCER_CHECKS_PASS_INDEPENDENT_AUDIT_PENDING','closed_unix':now,'closed_utc':datetime.datetime.fromtimestamp(now,datetime.timezone.utc).isoformat(),'deadline':d,'new_theorem_targets_in_batch':['FVLT.FordBulbV1.angle_order','FVLT.FordBulbV1.intervals_disjoint','FVLT.FordBulbV1.mediant_interval'],'cumulative_theorem_targets':33,'total_targets':33,'remaining_frozen_targets':[],'latest_module_results':rows,'separate_module_strict_constants':sum(r['strict_constants'] for r in rows),'preserved_failed_attempts':failed,'independent_rebuild':'PENDING','independent_fidelity':'PENDING','final_manager_acceptance':'PENDING','g1_excluded':True,'kernel_adoption':False,'library_publication':False,'rule30_claim':False,'clock_closed_no_more_jobs':True}
+save('BATCH06_CLOSURE_v0_1.json',state)
+ls=['# FF-4: all 33 frozen targets pass producer checks','','2026-11-04. **Producer formalization is complete: 33 of 33 frozen theorem targets pass compilation, named axiom checks and strict replay. Independent rebuild, separate mathematical-fidelity review and final manager acceptance remain pending.**','','The final three results prove full angle ordering for every pair of ordered reduced addresses, disjoint characteristic intervals, and the mediant interval consequence. The order theorem is not restricted to Farey neighbours.','','The proof compares finite mechanical words at common length `q*q′`. Ordered addresses give ordered prefix digit counts; the total counts differ strictly at that common length. Binary prefix uniqueness gives a strict finite-word inequality. Exact repetition identities then identify each finite binary fraction with its characteristic rational angle. No infinite-binary expansion or geometric landing theorem is used.','','| Latest module | Public theorem targets | Strict replay constants |','|---|---:|---:|---|']
+ls += [f"| {r['module']} | {len(r['theorem_targets'])} | {r['strict_constants']} |" for r in rows]
+ls += ['','Every named axiom report uses only `propext`, `Classical.choice`, `Quot.sound`, or a subset. Strict replay includes every introduced private helper and generated declaration. Counts refer to the latest separate modules; superseded counts are not added again. Four if/dif lemma deprecation warnings remain; there are no compile errors in the final sources.','','All 33 public statements retain the accepted frozen text. The entire 31-declaration Data source is byte-identical to the accepted freeze. Failed attempts and their exact proof-only repairs are preserved. Helper-only compile checkpoints were not counted as full passes; the final source recompiles and strictly replays all their declarations.','','Execution used nucleus over Tailscale, read-only v23, Lean 4.35.0 and the accepted Mathlib revision, one CPU, 8 GiB and 240-second child caps. Each development batch began a fresh 1,800-second clock before proof writing/staging. No clock was reset or extended. Every run retained 401 library checksums and unchanged protected files. G1 is excluded.','','## What remains','','- Independent clean rebuild of all three final modules, raw named axiom verification and strict all-constant replay.','- Separate fidelity review against the accepted work order and frozen statements.','- Final manager acceptance.','','B6 uniqueness, parameter-ray landing, complex-plane wake/limb geometry, MLC and Rule 30 consequences remain outside this formalization. No locked-kernel change, library publication or prize submission is claimed.','','[Machine-readable closure](BATCH06_CLOSURE_v0_1.json) pins sources and receipts. The final source packet supplies the closed review inputs. The six batch histories, jobs and raw logs remain preserved.']
+write(p/'BATCH06_STATUS_v0_1.md','\n'.join(ls)+'\n')
+fs=[f for f in sorted(p.rglob('*')) if f.is_file() and f.name!='BATCH06_MANIFEST_v0_1.json' and '__pycache__' not in f.parts]
+save('BATCH06_MANIFEST_v0_1.json',{'schema':'ff4-batch-manifest/1','closed_unix':now,'entries':[{'path':f.relative_to(p).as_posix(),'sha256':sha(f),'bytes':f.stat().st_size} for f in fs]})
+print(json.dumps({'closed_unix':now,'elapsed':now-d['origin_unix'],'status':sha(p/'BATCH06_STATUS_v0_1.md'),'closure':sha(p/'BATCH06_CLOSURE_v0_1.json'),'manifest':sha(p/'BATCH06_MANIFEST_v0_1.json'),'entries':len(fs),'strict':state['separate_module_strict_constants']},indent=2))

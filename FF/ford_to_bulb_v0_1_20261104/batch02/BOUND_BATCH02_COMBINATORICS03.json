@@ -1,0 +1,116 @@
+{
+  "schema": "ff4-job-template/1",
+  "status": "BOUND_ACCEPTED",
+  "phase": "FF4_COMBINATORIAL",
+  "host": "nucleus",
+  "transport": "Tailscale 100.105.106.41",
+  "root": "/home/saphir/fvlt_formalization_20261104/ff4_v01",
+  "library": "/home/saphir/rule30_theorem_library/v23",
+  "library_expected": {
+    "SHA256SUMS": "394e72c5ce5010349779fd41b1490c4672f160f72aa779b732df272086317903",
+    "LIBRARY_MANIFEST.json": "3b8ea55068d2c92c6e70cbafe9c6ee55698b34912b791c99ce0fa2df4bedc3f5",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "23b3055199e230fe224c888dbb87533e69896ffa4e44ad8cb7662639c72c440b",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "toolchain": "leanprover/lean4:v4.35.0",
+  "mathlib_rev": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "runner": "RUN_FF4_v0_1.py",
+  "runner_sha256": "56d69bfb76b17458adaec51f35f0ba422ed2834496690ae5a6e49f6aac34b717",
+  "checker": "IndependentFVLTReplay435.lean",
+  "checker_sha256": "9c6f2ac11b50fdb846df2d5099ea673553903275a5dba11fce5a5673cae14bd0",
+  "definitions_file": "FF4_DEFINITIONS_PROPOSED_v0_1.lean.txt",
+  "definitions_sha256": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+  "headers_file": "FF4_HEADERS_PROPOSED_v0_1.lean.txt",
+  "headers_sha256": "c5b569b1c2864fd606213ce5ee8adce5411465f4f1e8ad3505d4a5a0da64ebac",
+  "target_index_file": "TARGET_INDEX_v0_1.json",
+  "target_index_sha256": "ac7cf6d27babfa2515033d88fcd5d2945b801f8a1413fd8013b2a52706e5cf7e",
+  "module_order": [
+    "FVLTFordBulbDataV1",
+    "FVLTFordBulbParameterV1",
+    "FVLTFordBulbCombinatoricsV1"
+  ],
+  "modes": [
+    "compile",
+    "axioms",
+    "replay"
+  ],
+  "cpu_jobs": 1,
+  "address_space_bytes": 8589934592,
+  "lean_memory_mb": 7680,
+  "lean_stack_kb": 65536,
+  "process_limit": 256,
+  "output_file_limit_bytes": 67108864,
+  "child_wall_cap_seconds": 240,
+  "batch_wall_cap_seconds": 1800,
+  "deadline_origin": "Before proof writing/staging; new fresh clock per development batch, never extended/reset inside a batch",
+  "fresh_capacity": "Pinned nucleus observation with age between0and600seconds at actual launch; separate current host reservation/owner reference",
+  "binding_required_fields": [
+    "signature_freeze_sha256",
+    "host_reservation_reference",
+    "fresh_capacity_receipt_file",
+    "fresh_capacity_receipt_sha256"
+  ],
+  "proposed_binding_policy": "Only status plus four binding fields may differ after explicit review acceptance; acceptance-on-exact-posting is REQUESTED, not assumed",
+  "concrete_job_required_fields": [
+    "phase",
+    "module",
+    "mode",
+    "run_id",
+    "template_sha256",
+    "attempt_folder",
+    "source_sha256",
+    "dependency_olean_sha256",
+    "prerequisite_receipt_sha256",
+    "signature_comparison_receipt_file",
+    "signature_comparison_receipt_sha256",
+    "deadline_file"
+  ],
+  "mode_specific_fields": {
+    "replay": [
+      "own_compile_receipt_file"
+    ],
+    "axioms": [
+      "own_compile_receipt_file",
+      "axiom_report_source",
+      "axiom_report_source_sha256",
+      "axiom_targets"
+    ]
+  },
+  "comparison_required_fields": [
+    "verdict",
+    "source_sha256",
+    "freeze_sha256",
+    "g1_import_closure_excluded",
+    "all_present_public_headers_match",
+    "data_definitions_exact",
+    "axiom_report_targets",
+    "present_targets"
+  ],
+  "imported_local_sources": "Every imported new source is staged and pinned; inherited project sources traverse readonly v23; Mathlib/Lean standard imports trusted as pinned library dependencies",
+  "compile_repair": "Stop item and dependents on failure; preserve attempt; same-signature private proof repairs only under reviewed policy and fresh exact posted job",
+  "axioms": "Actual raw named reports parsed by runner and delivered verbatim; only propext/Classical.choice/Quot.sound",
+  "strict_replay": "All introduced constants, including data/helpers/generated; positive target count; PASS/complete/zero failures/unsafe/partial",
+  "excluded": [
+    "G1",
+    "Neo mathematical computation",
+    "Wolfram restart",
+    "B6 uniqueness",
+    "parameter-ray landing",
+    "complex-plane wakes/limb geometry",
+    "attracting-cycle dynamics",
+    "MLC/hyperbolicity/renormalization",
+    "Rule30 claims",
+    "viewer edits",
+    "kernel adoption",
+    "library writes/publication",
+    "commits",
+    "hosted submission"
+  ],
+  "signature_enforcement": "Runner byte-checks full data source; compares each public header to pinned target index; extra public declarations/attribute wrappers refused; proof helpers private; all new sources UTF8LFnoBOM",
+  "signature_freeze_sha256": "115a6c7d95384e2caeb8c5453ff876f2ea4519bf4afdc8eec23e4aaec1906d90",
+  "host_reservation_reference": "HOST_RESERVATION_BATCH02.json SHA6b3bbc8b67cbaa818bbcf7ed639f809c6874532cbb4e7ddda6828b486fb8353d",
+  "fresh_capacity_receipt_file": "CAPACITY_BATCH02_COMBINATORICS03.json",
+  "fresh_capacity_receipt_sha256": "b14363717d969e5943cb05f89cf798fdd414da4ee619211c3ca038f40c091abc"
+}

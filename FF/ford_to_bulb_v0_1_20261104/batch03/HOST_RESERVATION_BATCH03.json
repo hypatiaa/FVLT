@@ -1,0 +1,10 @@
+{
+  "host": "nucleus",
+  "owner": "01a18167-41de-74e0-882e-9171e642530f",
+  "transport": "Tailscale 100.105.106.41",
+  "cpu_jobs": 1,
+  "address_space_bytes": 8589934592,
+  "start_unix": 1793823650,
+  "end_unix": 1793825450,
+  "other_owned_builds": false
+}

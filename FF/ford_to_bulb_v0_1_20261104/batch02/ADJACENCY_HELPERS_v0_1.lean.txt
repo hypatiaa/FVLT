@@ -1,0 +1,98 @@
+private theorem nondividing_pred_quotient (a q : ℕ) (hq : 0 < q) (hn : ¬ q ∣ a) :
+    (a - 1) / q = a / q := by
+  have hr : 0 < a % q := Nat.pos_of_ne_zero (by
+    intro h
+    exact hn (Nat.dvd_of_mod_eq_zero h))
+  have he := Nat.div_add_mod a q
+  have hb := Nat.mod_lt a hq
+  have ha : 0 < a := by omega
+  have hpred : a - 1 + 1 = a := Nat.sub_add_cancel (by omega)
+  apply Nat.div_eq_of_lt_le <;> nlinarith
+
+private theorem characteristic_prefix_counts_equal (d : RotationAddress) (n : ℕ)
+    (hn : n + 1 < d.q) :
+    (d.p + n * d.p) / d.q = (d.p - 1 + n * d.p) / d.q := by
+  have hq : 0 < d.q := Nat.lt_trans d.p_pos d.p_lt_q
+  have hnd : ¬ d.q ∣ (n + 1) * d.p := by
+    intro h
+    have hdiv := d.coprime.symm.dvd_of_dvd_mul_right h
+    have hle := Nat.le_of_dvd (by omega : 0 < n + 1) hdiv
+    omega
+  have h1 : d.p + n * d.p = (n + 1) * d.p := by ring
+  have h2 : d.p - 1 + n * d.p = (n + 1) * d.p - 1 := by
+    rw [Nat.add_mul]
+    simp only [one_mul]
+    have := d.p_pos
+    omega
+  rw [h1, h2]
+  exact (nondividing_pred_quotient _ _ hq hnd).symm
+
+private theorem characteristic_early_digit_equal (d : RotationAddress) (n : ℕ)
+    (hn : n + 2 < d.q) :
+    rawDigit d.p d.q d.p n = rawDigit d.p d.q (d.p - 1) n := by
+  have h0 := characteristic_prefix_counts_equal d n (by omega)
+  have h1 := characteristic_prefix_counts_equal d (n + 1) (by omega)
+  have hu := raw_digit_carry d (upperIndex d) n
+  have hl := raw_digit_carry d (lowerIndex d) n
+  change (d.p + (n + 1) * d.p) / d.q =
+    (d.p + n * d.p) / d.q + rawDigit d.p d.q d.p n at hu
+  change (d.p - 1 + (n + 1) * d.p) / d.q =
+    (d.p - 1 + n * d.p) / d.q + rawDigit d.p d.q (d.p - 1) n at hl
+  omega
+
+private theorem characteristic_early_block_equal (d : RotationAddress) (n : ℕ)
+    (hn : n + 1 < d.q) :
+    blockValue d.p d.q d.p n = blockValue d.p d.q (d.p - 1) n := by
+  induction n with
+  | zero => simp [blockValue]
+  | succ n ih =>
+    rw [binary_block_rec, binary_block_rec, ih (by omega),
+      characteristic_early_digit_equal d n (by omega)]
+
+private theorem characteristic_final_digits (d : RotationAddress) :
+    rawDigit d.p d.q d.p (d.q - 2) = 1 ∧
+    rawDigit d.p d.q (d.p - 1) (d.q - 2) = 0 ∧
+    rawDigit d.p d.q d.p (d.q - 1) = 0 ∧
+    rawDigit d.p d.q (d.p - 1) (d.q - 1) = 1 := by
+  have hq2 := q_at_least_two d
+  have hq : 0 < d.q := by omega
+  have hp := d.p_pos
+  have hpsub : d.p - 1 + 1 = d.p := by omega
+  have hpred : d.q - 1 + 1 = d.q := by omega
+  have hpre : d.q - 2 + 1 = d.q - 1 := by omega
+  have heU : d.p + (d.q - 1) * d.p = d.q * d.p := by
+    nlinarith [congrArg (fun n : ℕ => n * d.p) hpred]
+  have heL : d.p - 1 + (d.q - 1) * d.p = d.q * d.p - 1 := by
+    have hprod : 0 < d.q * d.p := Nat.mul_pos hq hp
+    nlinarith
+  have cu : (d.p + (d.q - 1) * d.p) / d.q = d.p := by
+    rw [heU]
+    exact Nat.mul_div_cancel_left _ hq
+  have cl : (d.p - 1 + (d.q - 1) * d.p) / d.q = d.p - 1 := by
+    rw [heL]
+    simpa using Nat.mul_sub_div 0 d.q d.p (Nat.mul_pos hq hp)
+  have fu := raw_digit_full_count d (upperIndex d)
+  have fl := raw_digit_full_count d (lowerIndex d)
+  rw [raw_digit_prefix_count] at fu fl
+  change (d.p + d.q * d.p) / d.q = d.p at fu
+  change (d.p - 1 + d.q * d.p) / d.q = d.p at fl
+  have hu1 := raw_digit_carry d (upperIndex d) (d.q - 1)
+  have hl1 := raw_digit_carry d (lowerIndex d) (d.q - 1)
+  have hu2 := raw_digit_carry d (upperIndex d) (d.q - 2)
+  have hl2 := raw_digit_carry d (lowerIndex d) (d.q - 2)
+  change (d.p + (d.q - 1 + 1) * d.p) / d.q =
+    (d.p + (d.q - 1) * d.p) / d.q + rawDigit d.p d.q d.p (d.q - 1) at hu1
+  change (d.p - 1 + (d.q - 1 + 1) * d.p) / d.q =
+    (d.p - 1 + (d.q - 1) * d.p) / d.q + rawDigit d.p d.q (d.p - 1) (d.q - 1) at hl1
+  change (d.p + (d.q - 2 + 1) * d.p) / d.q =
+    (d.p + (d.q - 2) * d.p) / d.q + rawDigit d.p d.q d.p (d.q - 2) at hu2
+  change (d.p - 1 + (d.q - 2 + 1) * d.p) / d.q =
+    (d.p - 1 + (d.q - 2) * d.p) / d.q + rawDigit d.p d.q (d.p - 1) (d.q - 2) at hl2
+  rw [hpred, fu, cu] at hu1
+  rw [hpred, fl, cl] at hl1
+  rw [hpre, cu] at hu2
+  rw [hpre, cl] at hl2
+  have hc := characteristic_prefix_counts_equal d (d.q - 2) (by omega)
+  have hb : rawDigit d.p d.q d.p (d.q - 2) ≤ 1 := by unfold rawDigit; split <;> omega
+  omega
+

@@ -1,0 +1,11 @@
+{
+  "status": "EXAMPLE_ONLY_NOT_EXECUTION_ACCEPTANCE",
+  "input_signature_acceptance": "",
+  "template_acceptance": "",
+  "runner_sha256": "56d69bfb76b17458adaec51f35f0ba422ed2834496690ae5a6e49f6aac34b717",
+  "bound_template_file": "NONE_UNBOUND",
+  "bound_template_sha256": "",
+  "accepted_job_sha256": [],
+  "reviewed_files": {},
+  "note": "After manager acceptance, stage every manifest entry under a pinned freeze_packet_v0_1 subtree and include their hashes plus manifest in reviewed_files; only then create a real runtime REVIEW_ACCEPTANCE.json. No such file is included here."
+}

@@ -1,0 +1,376 @@
+{
+  "schema": "ff4-batch-manifest/1",
+  "closed_unix": 1793823306,
+  "entries": [
+    {
+      "path": "ADJACENCY_HELPERS_v0_1.lean.txt",
+      "sha256": "889656bdc47b684c3f2bd8554acbf9f74c54705692bd1d93911dcb3862e1807a",
+      "bytes": 4226
+    },
+    {
+      "path": "attempts/Combinatorics02/AuditFVLTFordBulbCombinatoricsV1.lean",
+      "sha256": "6d4de53635bf7d42fcdbe2967b3faea35b8060a7d7f8431bab34e94d4be1a9e9",
+      "bytes": 449
+    },
+    {
+      "path": "attempts/Combinatorics02/src/FVLTFordBulbCombinatoricsV1.lean",
+      "sha256": "b41b4f5508506f8f86de425ec0c334d2e63e251d87990dded20cc39d9a550b8a",
+      "bytes": 3758
+    },
+    {
+      "path": "attempts/Combinatorics02/src/FVLTFordBulbDataV1.lean",
+      "sha256": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+      "bytes": 3290
+    },
+    {
+      "path": "attempts/Combinatorics03/AuditFVLTFordBulbCombinatoricsV1.lean",
+      "sha256": "6c0dbeb5e7ee2e4ec6369ab480a7a4192c74fc345aecfa00d38a6c28aad7ef7c",
+      "bytes": 491
+    },
+    {
+      "path": "attempts/Combinatorics03/src/FVLTFordBulbCombinatoricsV1.lean",
+      "sha256": "0b0c3e675f1e86a04b1eed8ab5fd039ac1236c57a665cf69229d20ad797f3fc5",
+      "bytes": 6473
+    },
+    {
+      "path": "attempts/Combinatorics03/src/FVLTFordBulbDataV1.lean",
+      "sha256": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+      "bytes": 3290
+    },
+    {
+      "path": "attempts/Combinatorics04/AuditFVLTFordBulbCombinatoricsV1.lean",
+      "sha256": "02301947d03c20c5750ad99c9dc47df42c13feeab078227ee6aaf61d6e87ec2e",
+      "bytes": 652
+    },
+    {
+      "path": "attempts/Combinatorics04/src/FVLTFordBulbCombinatoricsV1.lean",
+      "sha256": "e25ad037cd484316b98b86fabd46e7441edaec5bc716541746127b00cecedf4e",
+      "bytes": 12083
+    },
+    {
+      "path": "attempts/Combinatorics04/src/FVLTFordBulbDataV1.lean",
+      "sha256": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+      "bytes": 3290
+    },
+    {
+      "path": "attempts/Combinatorics05/AuditFVLTFordBulbCombinatoricsV1.lean",
+      "sha256": "02301947d03c20c5750ad99c9dc47df42c13feeab078227ee6aaf61d6e87ec2e",
+      "bytes": 652
+    },
+    {
+      "path": "attempts/Combinatorics05/build/FVLTFordBulbCombinatoricsV1.olean",
+      "sha256": "faa222e2973d91b4286ca1a0680d5dbb3b8877dd4d9c532adcc6d9ffea2f6f6c",
+      "bytes": 1143680
+    },
+    {
+      "path": "attempts/Combinatorics05/src/FVLTFordBulbCombinatoricsV1.lean",
+      "sha256": "c3f4c157bc8e392bede58cdec8e4cd294d909a74b11336da2cb4945b3f5ea5e5",
+      "bytes": 12079
+    },
+    {
+      "path": "attempts/Combinatorics05/src/FVLTFordBulbDataV1.lean",
+      "sha256": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+      "bytes": 3290
+    },
+    {
+      "path": "axiomsFVLTFordBulbCombinatoricsV1Batch02Combinatorics02.json",
+      "sha256": "c3ff002949c24e0c324aa6ab0673913ee9f0d669615cf57c41d6826768771fc1",
+      "bytes": 7556
+    },
+    {
+      "path": "axiomsFVLTFordBulbCombinatoricsV1Batch02Combinatorics02.log",
+      "sha256": "09a1e5c9ebe75d69bee21c4c029aa5d55ce9d0bec3d982970d3647e54512f752",
+      "bytes": 771
+    },
+    {
+      "path": "axiomsFVLTFordBulbCombinatoricsV1Batch02Combinatorics03.json",
+      "sha256": "9a0b186e8c62c225ea084d5e4af8b494feae3ad77b3769825ab81932cf6cdce8",
+      "bytes": 7734
+    },
+    {
+      "path": "axiomsFVLTFordBulbCombinatoricsV1Batch02Combinatorics03.log",
+      "sha256": "9477f81e3f1f4aafebcc5ad0a44250fef459cc63455e762ac7d7c3f59cfe9a98",
+      "bytes": 860
+    },
+    {
+      "path": "axiomsFVLTFordBulbCombinatoricsV1Batch02Combinatorics05.json",
+      "sha256": "def7ec0ceca51dbccd5273764f950e65b6687c40487ad04e0fb4ca9d0d25b358",
+      "bytes": 8374
+    },
+    {
+      "path": "axiomsFVLTFordBulbCombinatoricsV1Batch02Combinatorics05.log",
+      "sha256": "eed65af7d33459f6518272a36d1dfc011cdfb391ca5739b2a23318a90eaae586",
+      "bytes": 1162
+    },
+    {
+      "path": "BATCH02_CLOSURE_v0_1.json",
+      "sha256": "8fd4979f32d862c33651be0e98f4b755ccc41afc1fddf3e23be1e1629308181d",
+      "bytes": 6169
+    },
+    {
+      "path": "BATCH02_STATUS_v0_1.md",
+      "sha256": "9f876a594526ff3b55a1e6fb5b21788300b9399a74776866a42494971c023841",
+      "bytes": 3368
+    },
+    {
+      "path": "BOUND_BATCH02.json",
+      "sha256": "8721d1a72d1ab386845433da623aab0114e162bbc9a03694d882715b3c7b839f",
+      "bytes": 5144
+    },
+    {
+      "path": "BOUND_BATCH02_COMBINATORICS03.json",
+      "sha256": "6a7d493e35abede56a0bea023efc20bd72d242bf5d46e89b8be1dfeb7b861a9d",
+      "bytes": 5160
+    },
+    {
+      "path": "BOUND_BATCH02_COMBINATORICS04.json",
+      "sha256": "b1002610d6fbce93e77e72f0bdd866b48bab4fdc28dfedd131d0ef27e6704d7b",
+      "bytes": 5160
+    },
+    {
+      "path": "CAPACITY_BATCH02.json",
+      "sha256": "49530b215f79b53c150b5bf8f0ba40fafcb96f58c5428e44c73b1b26dd8cc7af",
+      "bytes": 316
+    },
+    {
+      "path": "CAPACITY_BATCH02_COMBINATORICS03.json",
+      "sha256": "b14363717d969e5943cb05f89cf798fdd414da4ee619211c3ca038f40c091abc",
+      "bytes": 178
+    },
+    {
+      "path": "CAPACITY_BATCH02_COMBINATORICS04.json",
+      "sha256": "e61537c406fc7dcc09000fb9b73566be6a1dd824645b88fd2057def014087f83",
+      "bytes": 178
+    },
+    {
+      "path": "COMPARE_COMBINATORICS02.json",
+      "sha256": "1ac81356951a19e6bddd48f8c15e76d2176bcc6136024764ebd17f84b7594d91",
+      "bytes": 1447
+    },
+    {
+      "path": "COMPARE_COMBINATORICS03.json",
+      "sha256": "fe3e90e99cc66405b80b269a2330be2cb91fdc6c74241a160a63fb158a897bae",
+      "bytes": 1510
+    },
+    {
+      "path": "COMPARE_COMBINATORICS04.json",
+      "sha256": "58b9816d5754246096461ae71ef9178040d07616b38097440b53121161e8fb04",
+      "bytes": 1782
+    },
+    {
+      "path": "COMPARE_COMBINATORICS05.json",
+      "sha256": "ebb8f4cdc245a68eb3ecb557e231ce8ef98420ed9e72259c2fee11d1b61f520f",
+      "bytes": 1780
+    },
+    {
+      "path": "CompileFVLTFordBulbCombinatoricsV1Batch02Combinatorics02.json",
+      "sha256": "ffc8e7ba3f3001e577d5ad88a5f3902092a515a414714e59b3f00b2204868bf9",
+      "bytes": 5941
+    },
+    {
+      "path": "CompileFVLTFordBulbCombinatoricsV1Batch02Combinatorics02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "CompileFVLTFordBulbCombinatoricsV1Batch02Combinatorics03.json",
+      "sha256": "d580d57ebf4297ae0b1b5aa0a577642b46e5558aa66bb4f898f2c7c1596bf0b2",
+      "bytes": 5976
+    },
+    {
+      "path": "CompileFVLTFordBulbCombinatoricsV1Batch02Combinatorics03.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "CompileFVLTFordBulbCombinatoricsV1Batch02Combinatorics04.json",
+      "sha256": "b4219b61f6bafc8f810826cca69d1f4d82c42bd300457fa25ee665b681963a8d",
+      "bytes": 6033
+    },
+    {
+      "path": "CompileFVLTFordBulbCombinatoricsV1Batch02Combinatorics04.log",
+      "sha256": "8363f6d0f9811f27612b911c24aa87192929bd1e94c1b04501917bf0f6ae860e",
+      "bytes": 451
+    },
+    {
+      "path": "CompileFVLTFordBulbCombinatoricsV1Batch02Combinatorics05.json",
+      "sha256": "7c6c475c57a5ab506f7d35314c6349026db8b4641cbfdec66110e884014c4ba5",
+      "bytes": 6116
+    },
+    {
+      "path": "CompileFVLTFordBulbCombinatoricsV1Batch02Combinatorics05.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "path": "DEADLINE_BATCH02.json",
+      "sha256": "a1fd39fc2ec0c66c770e74236ca9417805194cc9b72285017596da3376462cd4",
+      "bytes": 145
+    },
+    {
+      "path": "FINALIZE_BATCH02.py",
+      "sha256": "18f0c4764bf56c91db823ef9b6b9332633554efc13ea632c28a4d500789eabf2",
+      "bytes": 6427
+    },
+    {
+      "path": "HOST_RESERVATION_BATCH02.json",
+      "sha256": "6b3bbc8b67cbaa818bbcf7ed639f809c6874532cbb4e7ddda6828b486fb8353d",
+      "bytes": 257
+    },
+    {
+      "path": "JOB_axiomsFVLTFordBulbCombinatoricsV1Batch02Combinatorics02.json",
+      "sha256": "1bbd7f63eab9b90d343b4fc8cceada3112d640f347284f9197a31bfe1dd52e57",
+      "bytes": 2181
+    },
+    {
+      "path": "JOB_axiomsFVLTFordBulbCombinatoricsV1Batch02Combinatorics03.json",
+      "sha256": "65bbff1ba2aee728032be76e24e52d8f48b94089c00c66e1836f8ae07bb7d026",
+      "bytes": 2216
+    },
+    {
+      "path": "JOB_axiomsFVLTFordBulbCombinatoricsV1Batch02Combinatorics05.json",
+      "sha256": "ae25532bd773f235ec6e17e2a55dfb7e5c7aaa6911b80e0021b7083a539bb699",
+      "bytes": 2356
+    },
+    {
+      "path": "JOB_CompileFVLTFordBulbCombinatoricsV1Batch02Combinatorics02.json",
+      "sha256": "1eb9f0c38a41c1325c00401b6d1b36a5493a66d8b12799cbd12d8714e2417b2d",
+      "bytes": 1300
+    },
+    {
+      "path": "JOB_CompileFVLTFordBulbCombinatoricsV1Batch02Combinatorics03.json",
+      "sha256": "4bf4222a8e0804ca70e4f7b9d4579978863393f63d8da4d47fe29a93bfc1a51e",
+      "bytes": 1300
+    },
+    {
+      "path": "JOB_CompileFVLTFordBulbCombinatoricsV1Batch02Combinatorics04.json",
+      "sha256": "49fd05709b779d78e85ec5a48b337f8f1dd9a9ac500fcbc09dc9a4c5e7adbf8f",
+      "bytes": 1300
+    },
+    {
+      "path": "JOB_CompileFVLTFordBulbCombinatoricsV1Batch02Combinatorics05.json",
+      "sha256": "569fab3f31f57de897667c945b4342636c183bcd0f93e428c3d91541d471e507",
+      "bytes": 1300
+    },
+    {
+      "path": "JOB_replayFVLTFordBulbCombinatoricsV1Batch02Combinatorics02.json",
+      "sha256": "31dae234bcfc95637ea42aed531c98c561856ce4283e23859cbfd7272e923f71",
+      "bytes": 1639
+    },
+    {
+      "path": "JOB_replayFVLTFordBulbCombinatoricsV1Batch02Combinatorics03.json",
+      "sha256": "332ce067267a4e0b04dcb47a4c8a7b820f225d320e3092f4701a804d84371936",
+      "bytes": 1639
+    },
+    {
+      "path": "JOB_replayFVLTFordBulbCombinatoricsV1Batch02Combinatorics05.json",
+      "sha256": "1d4d0d384498e7a32d18a9d3b6b5f980b61bc7fbaf5e917254d4a84cde6c7439",
+      "bytes": 1639
+    },
+    {
+      "path": "PREPARE_AUDITS.py",
+      "sha256": "5995af963f04997af50dd815c6a23627cfd9ef48acae54bbf55ef1fe9573bd77",
+      "bytes": 1516
+    },
+    {
+      "path": "PREPARE_AUDITS03.py",
+      "sha256": "ab4aea64392645b0f0c02bcd289eba0db8ead2a7ec29f3d8565923797a345a81",
+      "bytes": 1516
+    },
+    {
+      "path": "PREPARE_AUDITS05.py",
+      "sha256": "044d6ac3af5eb9d5ef5b434c3c51e420d2d437d7a1246cf065194cdaccc3d411",
+      "bytes": 1516
+    },
+    {
+      "path": "PREPARE_COMBINATORICS02.py",
+      "sha256": "0efc17210ef0fb633d0edf30425878a54eee9b3d18265c57f049b60a10599722",
+      "bytes": 4641
+    },
+    {
+      "path": "PREPARE_COMBINATORICS03.py",
+      "sha256": "f725c7210a51a16163410d77f713cff3537b7c53ea930c889bf1168a0e520577",
+      "bytes": 3009
+    },
+    {
+      "path": "PREPARE_COMBINATORICS04.py",
+      "sha256": "6e830f0c950aad1300d967e8a0c21978c24494bb7ee685b48aa79fd9f023dbec",
+      "bytes": 3946
+    },
+    {
+      "path": "PREPARE_COMBINATORICS05.py",
+      "sha256": "2660476090e4902d6819580f12db375d87c32b99aa9a932a01aa26fe1e82f028",
+      "bytes": 1924
+    },
+    {
+      "path": "replayFVLTFordBulbCombinatoricsV1Batch02Combinatorics02.json",
+      "sha256": "659b485c64b2da5810afddda2e8468f021027720da90ab98d1fb0b8d93df0c92",
+      "bytes": 6075
+    },
+    {
+      "path": "replayFVLTFordBulbCombinatoricsV1Batch02Combinatorics02.log",
+      "sha256": "7ebdb66851cd50afdf9289e78bce6af64b0361c90c1050ef6be4cda8615d5d37",
+      "bytes": 167159
+    },
+    {
+      "path": "replayFVLTFordBulbCombinatoricsV1Batch02Combinatorics03.json",
+      "sha256": "09dc2ce3969c60db1213d4a675422c07c10db35106a5bd2d7f2658bfc6a75de1",
+      "bytes": 6111
+    },
+    {
+      "path": "replayFVLTFordBulbCombinatoricsV1Batch02Combinatorics03.log",
+      "sha256": "af2d1e1634a8b21b7768e7301a9c110ca7515d20ee4b4b5c673359ff13bd89dd",
+      "bytes": 169341
+    },
+    {
+      "path": "replayFVLTFordBulbCombinatoricsV1Batch02Combinatorics05.json",
+      "sha256": "910240785ce6fabacd5bb8c6d019d6fd6d6083771cbba95c8c71732300ee4522",
+      "bytes": 6250
+    },
+    {
+      "path": "replayFVLTFordBulbCombinatoricsV1Batch02Combinatorics05.log",
+      "sha256": "6ed6c191f3e2068f7f1ebfe4643d56bf0d099418405994cf2c3fe0e463f3b35d",
+      "bytes": 174093
+    },
+    {
+      "path": "REVIEW_ACCEPTANCE.json",
+      "sha256": "6074148d347b1e9651124ed42f7b16ba59f2106168ba79f407857411f4f8e5f2",
+      "bytes": 7377
+    },
+    {
+      "path": "REVIEW_ACCEPTANCE_PRE_COMBINATORICS02_AUDITS.json",
+      "sha256": "860adb7bff2be42edb06b97064d43801ab38c92ca688d89fc5e0792b82929626",
+      "bytes": 7217
+    },
+    {
+      "path": "REVIEW_ACCEPTANCE_PRE_COMBINATORICS03.json",
+      "sha256": "a551184918f65f4fb3c6fbe029cf1747de4472c7c38b5ae4f448dcda81633c5f",
+      "bytes": 7361
+    },
+    {
+      "path": "REVIEW_ACCEPTANCE_PRE_COMBINATORICS03_AUDITS.json",
+      "sha256": "fc5c74e1d95e793510a41bbcbf5022f104f0b67216e6ecda94c0534215ff6c44",
+      "bytes": 7233
+    },
+    {
+      "path": "REVIEW_ACCEPTANCE_PRE_COMBINATORICS04.json",
+      "sha256": "696fca1f8202081d4030e9190e5e0877483e3a637c4ccfa0a2fe0ab0978679da",
+      "bytes": 7377
+    },
+    {
+      "path": "REVIEW_ACCEPTANCE_PRE_COMBINATORICS05.json",
+      "sha256": "b4bd922d36ac899b894ccab71e3576e4ab2606e9ec89d20475757ed27225fe36",
+      "bytes": 7233
+    },
+    {
+      "path": "REVIEW_ACCEPTANCE_PRE_COMBINATORICS05_AUDITS.json",
+      "sha256": "632293803081ab83d86273da8c11fa32c51eb12436b529864a3b173274c3cf94",
+      "bytes": 7233
+    },
+    {
+      "path": "WORD_BOUNDS_HELPERS_v0_1.lean.txt",
+      "sha256": "d15c00a75736c62e3e21d765d050a22f5e2ea8e898c9345de4c6621710b669e8",
+      "bytes": 2363
+    }
+  ]
+}

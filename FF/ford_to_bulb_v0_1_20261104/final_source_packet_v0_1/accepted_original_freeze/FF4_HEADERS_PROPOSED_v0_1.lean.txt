@@ -1,0 +1,111 @@
+open scoped BigOperators
+
+namespace FVLT.FordBulbV1
+
+-- FVLTFordBulbCombinatoricsV1: address bridge and B0.
+theorem address_canonical (d : RotationAddress) :
+    (address d).num = (d.p : ℤ) ∧ (address d).den = d.q
+
+theorem address_interval (d : RotationAddress) : 0 < address d ∧ address d < 1
+
+theorem address_injective (d e : RotationAddress) (h : address d = address e) : d = e
+
+theorem address_surjective (x : ℚ) (hx0 : 0 < x) (hx1 : x < 1) :
+    ∃ d : RotationAddress, address d = x
+
+theorem q_at_least_two (d : RotationAddress) : 2 ≤ d.q
+
+theorem modulus_pos (d : RotationAddress) : 0 < modulus d
+
+theorem word_sum (d : RotationAddress) (u : Fin d.q) :
+    wordValue d u = ∑ i : Fin d.q, digit d u i * 2 ^ (d.q - 1 - i.val)
+
+theorem upper_digit_equiv (d : RotationAddress) (i : Fin d.q) :
+    upperDigit d i = if d.q - d.p ≤ ((i.val + 1) * d.p) % d.q then 1 else 0
+
+theorem lower_digit_equiv (d : RotationAddress) (i : Fin d.q) :
+    1 ≤ (i.val + 1) * d.p ∧
+      lowerDigit d i = if d.q - d.p ≤ ((i.val + 1) * d.p - 1) % d.q then 1 else 0
+
+theorem word_bounds (d : RotationAddress) (u : Fin d.q) :
+    0 < wordValue d u ∧ wordValue d u < modulus d
+
+theorem characteristic_bounds (d : RotationAddress) :
+    0 < lowerNumerator d ∧ lowerNumerator d < upperNumerator d ∧ upperNumerator d < modulus d
+
+-- B1--B3.
+theorem characteristic_adjacent (d : RotationAddress) : upperNumerator d = lowerNumerator d + 1
+
+theorem characteristic_angle_gap (d : RotationAddress) :
+    upperAngle d - lowerAngle d = 1 / (modulus d : ℚ)
+
+theorem characteristic_period_return (d : RotationAddress) (n : ℕ)
+    (hn : n = lowerNumerator d ∨ n = upperNumerator d) : iterateNum d n d.q = n
+
+theorem characteristic_period_minimal (d : RotationAddress) (n : ℕ)
+    (hn : n = lowerNumerator d ∨ n = upperNumerator d)
+    (k : ℕ) (hk0 : 0 < k) (hkq : k < d.q) : iterateNum d n k ≠ n
+
+theorem same_cycle (d : RotationAddress) :
+    ∃ i : Fin d.q, orbitPoint d i.val = lowerNumerator d
+
+-- B4 and B5, with the return edge included.
+theorem word_strict (d : RotationAddress) : StrictMono (wordValue d)
+
+theorem orbit_set_eq (d : RotationAddress) :
+    orbitSet d = Finset.univ.image (wordValue d)
+
+theorem orbit_card (d : RotationAddress) : (orbitSet d).card = d.q
+
+theorem orbit_length (d : RotationAddress) : (orderedOrbit d).length = d.q
+
+theorem rank_word (d : RotationAddress) (u : Fin d.q) : rank d (wordValue d u) = u.val
+
+theorem double_word (d : RotationAddress) (u : Fin d.q) :
+    doubleNum d (wordValue d u) =
+      wordValue d ⟨(u.val + d.p) % d.q, Nat.mod_lt _ (Nat.lt_trans d.p_pos d.p_lt_q)⟩
+
+theorem rank_step (d : RotationAddress) (x : ℕ) (hx : x ∈ orbitSet d) :
+    rank d (doubleNum d x) = (rank d x + d.p) % d.q
+
+theorem unique_unit_gap (d : RotationAddress) :
+    ∃ i : Fin (orderedOrbit d).length,
+      edgeStart d i = lowerNumerator d ∧ edgeEnd d i = upperNumerator d ∧
+        directedGap d i = 1 ∧
+          ∀ j : Fin (orderedOrbit d).length, j ≠ i → 2 ≤ directedGap d j
+
+-- C1--C3, entirely combinatorial and exact rational.
+theorem angle_order (d e : RotationAddress) (h : address d < address e) :
+    upperAngle d < lowerAngle e
+
+theorem intervals_disjoint (d e : RotationAddress) (h : address d < address e) :
+    Disjoint (angleInterval d) (angleInterval e)
+
+theorem mediant_interval (d e : RotationAddress)
+    (h : address d < address e)
+    (hadj : FVLT.FareyContactV1.fareyAdj (address d) (address e)) :
+    ∃ m : RotationAddress,
+      address m = FVLT.FareyContactV1.mediant (address d) (address e) ∧
+        upperAngle d < lowerAngle m ∧ upperAngle m < lowerAngle e
+
+theorem farey_denominator_min (x y z : ℚ) (hxy : x < y)
+    (hadj : FVLT.FareyContactV1.fareyAdj x y) (hxz : x < z) (hzy : z < y) :
+    x.den + y.den ≤ z.den
+
+theorem farey_denominator_eq_iff (x y z : ℚ) (hxy : x < y)
+    (hadj : FVLT.FareyContactV1.fareyAdj x y) (hxz : x < z) (hzy : z < y) :
+    z.den = x.den + y.den ↔ z = FVLT.FareyContactV1.mediant x y
+
+-- FVLTFordBulbParameterV1: A1 only; no ray-landing statement.
+theorem parameter_fixed_point (lambda : ℂ) :
+    quadratic (cardioidParameter lambda) (alpha lambda) = alpha lambda
+
+theorem parameter_multiplier (lambda : ℂ) : quadraticMultiplier (alpha lambda) = lambda
+
+theorem parameter_derivative (lambda : ℂ) :
+    HasDerivAt (fun z : ℂ => quadratic (cardioidParameter lambda) z) lambda (alpha lambda)
+
+theorem canonical_multiplier_primitive (d : RotationAddress) :
+    IsPrimitiveRoot (canonicalMultiplier d) d.q
+
+end FVLT.FordBulbV1

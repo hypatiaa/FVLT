@@ -1,0 +1,139 @@
+{
+  "job": {
+    "phase": "FF4_COMBINATORIAL",
+    "module": "FVLTFordBulbCombinatoricsV1",
+    "mode": "replay",
+    "run_id": "replayFVLTFordBulbCombinatoricsV1Batch04Combinatorics12",
+    "template_sha256": "6f7b593fee4f898f90e6b8c1d6ce341dabb4b24a571847999e97e9db64828669",
+    "attempt_folder": "attempts/Batch04Combinatorics12",
+    "source_sha256": {
+      "FVLTFordBulbCombinatoricsV1.lean": "e5b357b70b38d49e0bddacccbe960e7f3d720f5dda6a82bd18c9279ef3451115",
+      "FVLTFordBulbDataV1.lean": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb"
+    },
+    "dependency_olean_sha256": {
+      "FVLTFordBulbDataV1.olean": "21df17bc2e550337e13519487014f011c7ed712178c903d7bda283c546bd75f3",
+      "FVLTFordBulbCombinatoricsV1.olean": "fec0cd21ff04785acd6c94a9209c80b4730f63782bcb41138bbe99742114ddbd"
+    },
+    "prerequisite_receipt_sha256": {
+      "CompileFVLTFordBulbDataV1Batch01Data01.json": "8195f124bfc7e7c4d7aa4d3793a598e70e38933742a5ddb5e5097f8d5dd69368",
+      "axiomsFVLTFordBulbDataV1Batch01Data01.json": "0586d0303c608257caa7c40099da7aaef36206b55e9f67f2c75cfd3eb221012d",
+      "replayFVLTFordBulbDataV1Batch01Data01.json": "b52766cb16af44a4f677d0e5f246f9cb07775f1a009369343e27d8f5fb313e44",
+      "CompileFVLTFordBulbCombinatoricsV1Batch04Combinatorics12.json": "edc5f6a9820637ac15939435754b3828f7b5f3bad4d973708ec21484e62229e9"
+    },
+    "signature_comparison_receipt_file": "COMPARE_COMBINATORICS12.json",
+    "signature_comparison_receipt_sha256": "2c1c8227869ae981cb67b1a2c36727af65dab96adfd724e29bf471a04df54da8",
+    "deadline_file": "DEADLINE_BATCH04.json",
+    "own_compile_receipt_file": "CompileFVLTFordBulbCombinatoricsV1Batch04Combinatorics12.json"
+  },
+  "runner_sha256": "56d69bfb76b17458adaec51f35f0ba422ed2834496690ae5a6e49f6aac34b717",
+  "command": [
+    "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+    "-j1",
+    "-s65536",
+    "-M7680",
+    "-D",
+    "Elab.async=false",
+    "--run",
+    "/home/saphir/fvlt_formalization_20261104/ff4_v01/IndependentFVLTReplay435.lean",
+    "FVLTFordBulbCombinatoricsV1"
+  ],
+  "started_unix": 1793825767.5684166,
+  "wall_cap_seconds": 240,
+  "transport": "100.92.188.6 61311 100.105.106.41 22",
+  "LEAN_PATH": "/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch04Combinatorics12/build:/home/saphir/rule30_theorem_library/v23/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v23/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v23/.lake/packages/Qq/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v23/.lake/packages/aesop/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v23/.lake/packages/batteries/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v23/.lake/packages/importGraph/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v23/.lake/packages/mathlib/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v23/.lake/packages/plausible/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v23/.lake/packages/proofwidgets/.lake/build/lib/lean",
+  "library": "/home/saphir/rule30_theorem_library/v23",
+  "imported_dependencies_reused": true,
+  "cpu_affinity": [
+    0
+  ],
+  "address_space_bytes": 8589934592,
+  "process_limit": 256,
+  "output_file_limit_bytes": 67108864,
+  "nice": 19,
+  "library_checksums_before": 401,
+  "project_import_closure": {
+    "/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch04Combinatorics12/src/FVLTFordBulbDataV1.lean": {
+      "sha256": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+      "imports": [
+        "FVLTFareyArithmeticCompletionV1",
+        "Mathlib.Data.Finset.Sort",
+        "Mathlib.Data.Rat.Lemmas",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic",
+        "Mathlib.Analysis.Calculus.Deriv.Pow",
+        "Mathlib.RingTheory.RootsOfUnity.Complex"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v23/theorems/FVLTFareyArithmeticCompletionV1.lean": {
+      "sha256": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+      "imports": [
+        "FVLTFareyCertificatesV1",
+        "Mathlib.Data.Rat.Lemmas",
+        "Mathlib.Tactic"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v23/theorems/FVLTFareyCertificatesV1.lean": {
+      "sha256": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+      "imports": [
+        "FVLTFareyContactV1",
+        "Mathlib.Combinatorics.SimpleGraph.Connectivity.Finite",
+        "Mathlib.Combinatorics.SimpleGraph.Finite",
+        "Mathlib.NumberTheory.Divisors",
+        "Mathlib.Data.Rat.Lemmas",
+        "Mathlib.Tactic"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v23/theorems/FVLTFareyContactV1.lean": {
+      "sha256": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+      "imports": [
+        "Mathlib.Data.Rat.Defs",
+        "Mathlib.Algebra.Order.Group.Unbundled.Abs",
+        "Mathlib.Algebra.Order.Ring.Int"
+      ]
+    },
+    "/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch04Combinatorics12/src/FVLTFordBulbCombinatoricsV1.lean": {
+      "sha256": "e5b357b70b38d49e0bddacccbe960e7f3d720f5dda6a82bd18c9279ef3451115",
+      "imports": [
+        "FVLTFordBulbDataV1",
+        "Mathlib.Data.Nat.ModEq"
+      ]
+    }
+  },
+  "frozen_public_targets": [
+    "FVLT.FordBulbV1.address_canonical",
+    "FVLT.FordBulbV1.address_interval",
+    "FVLT.FordBulbV1.address_injective",
+    "FVLT.FordBulbV1.q_at_least_two",
+    "FVLT.FordBulbV1.modulus_pos",
+    "FVLT.FordBulbV1.upper_digit_equiv",
+    "FVLT.FordBulbV1.lower_digit_equiv",
+    "FVLT.FordBulbV1.address_surjective",
+    "FVLT.FordBulbV1.word_sum",
+    "FVLT.FordBulbV1.word_bounds",
+    "FVLT.FordBulbV1.characteristic_adjacent",
+    "FVLT.FordBulbV1.characteristic_bounds",
+    "FVLT.FordBulbV1.characteristic_angle_gap",
+    "FVLT.FordBulbV1.characteristic_period_return",
+    "FVLT.FordBulbV1.farey_denominator_min",
+    "FVLT.FordBulbV1.farey_denominator_eq_iff",
+    "FVLT.FordBulbV1.word_strict",
+    "FVLT.FordBulbV1.double_word",
+    "FVLT.FordBulbV1.characteristic_period_minimal",
+    "FVLT.FordBulbV1.same_cycle",
+    "FVLT.FordBulbV1.orbit_set_eq",
+    "FVLT.FordBulbV1.orbit_card",
+    "FVLT.FordBulbV1.orbit_length",
+    "FVLT.FordBulbV1.rank_word",
+    "FVLT.FordBulbV1.rank_step"
+  ],
+  "child_PATH": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin:/usr/local/bin:/usr/bin:/bin",
+  "exit_code": 0,
+  "timeout": false,
+  "seconds": 4.625375747680664,
+  "log_sha256": "302f5444238f790fa622e7d360495bb39297a6e678646139562e9f3013858c38",
+  "log_bytes": 182187,
+  "peak_child_rss_kib": 3681752,
+  "source_unchanged": true,
+  "reviewed_files_unchanged": true,
+  "library_checksums_after": 401,
+  "accepted_result": true
+}

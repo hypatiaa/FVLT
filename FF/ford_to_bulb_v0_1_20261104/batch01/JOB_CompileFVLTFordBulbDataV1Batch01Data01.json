@@ -1,0 +1,16 @@
+{
+  "phase": "FF4_COMBINATORIAL",
+  "module": "FVLTFordBulbDataV1",
+  "mode": "compile",
+  "run_id": "CompileFVLTFordBulbDataV1Batch01Data01",
+  "template_sha256": "50c2c5cb06999193a9f05b47d31a6984e955eefce50dd220aaadeb764da8e680",
+  "attempt_folder": "attempts/Batch01Data01",
+  "source_sha256": {
+    "FVLTFordBulbDataV1.lean": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb"
+  },
+  "dependency_olean_sha256": {},
+  "prerequisite_receipt_sha256": {},
+  "signature_comparison_receipt_file": "COMPARE_DATA01.json",
+  "signature_comparison_receipt_sha256": "0ce1dd60df342233bd14137ecbf72d9b6e83158390203e56f802307a398ad853",
+  "deadline_file": "DEADLINE_BATCH01.json"
+}

@@ -1,0 +1,62 @@
+{
+ "mutation": "c3_midpoint",
+ "QMAX": 16,
+ "QPAIR": 12,
+ "C3DEN": 18,
+ "addresses": 79,
+ "c3_rationals": 409,
+ "c3_adjacent_pairs": 812,
+ "c3_equality_hits": 404,
+ "total_checks": 17432,
+ "failed_checks": 472,
+ "targets_checked": 34,
+ "failed_targets": [
+  "farey_denominator_eq_iff"
+ ],
+ "counts": {
+  "address_canonical": 79,
+  "address_interval": 79,
+  "q_at_least_two": 79,
+  "modulus_pos": 79,
+  "word_sum": 862,
+  "word_bounds": 862,
+  "upper_digit_equiv": 862,
+  "lower_digit_equiv": 862,
+  "characteristic_bounds": 79,
+  "characteristic_adjacent": 79,
+  "characteristic_angle_gap": 79,
+  "characteristic_period_return": 158,
+  "characteristic_period_minimal": 1566,
+  "same_cycle": 79,
+  "word_strict": 79,
+  "orbit_set_eq": 79,
+  "orbit_card": 79,
+  "orbit_length": 79,
+  "rank_word": 862,
+  "double_word": 862,
+  "rank_step": 862,
+  "unique_unit_gap": 79,
+  "address_injective": 1,
+  "address_surjective": 120,
+  "angle_order": 990,
+  "intervals_disjoint": 990,
+  "mediant_interval": 68,
+  "farey_denominator_min": 2860,
+  "farey_denominator_eq_iff": 2860,
+  "canonical_multiplier_primitive": 79,
+  "canonical_multiplier_primitive_float": 79,
+  "parameter_fixed_point": 200,
+  "parameter_multiplier": 200,
+  "parameter_derivative": 200
+ },
+ "fails": {
+  "farey_denominator_eq_iff": {
+   "n": 472,
+   "examples": [
+    "-2/1,-33/17,-35/18",
+    "-2/1,-31/16,-33/17",
+    "-2/1,-29/15,-31/16"
+   ]
+  }
+ }
+}

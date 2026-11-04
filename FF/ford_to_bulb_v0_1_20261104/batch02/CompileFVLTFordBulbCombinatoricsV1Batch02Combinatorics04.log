@@ -1,0 +1,14 @@
+/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch02Combinatorics04/src/FVLTFordBulbCombinatoricsV1.lean:232:4: error: linarith failed to find a contradiction
+case h1
+d : RotationAddress
+hq2 : 2 ≤ d.q
+hq : 0 < d.q
+hp : 0 < d.p
+hpsub : d.p - 1 + 1 = d.p
+hpred : d.q - 1 + 1 = d.q
+hpre : d.q - 2 + 1 = d.q - 1
+heU : d.p + (d.q - 1) * d.p = d.q * d.p
+hprod : 0 < d.q * d.p
+a✝ : d.p - 1 + (d.q - 1) * d.p < d.q * d.p - 1
+⊢ False
+failed

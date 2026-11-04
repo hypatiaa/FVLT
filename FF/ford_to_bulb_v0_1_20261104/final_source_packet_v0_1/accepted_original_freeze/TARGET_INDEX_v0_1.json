@@ -1,0 +1,238 @@
+{
+  "data_module": "FVLTFordBulbDataV1",
+  "data_axiom_targets": [
+    "FVLT.FordBulbV1.RotationAddress",
+    "FVLT.FordBulbV1.address",
+    "FVLT.FordBulbV1.modulus",
+    "FVLT.FordBulbV1.upperIndex",
+    "FVLT.FordBulbV1.lowerIndex",
+    "FVLT.FordBulbV1.rawDigit",
+    "FVLT.FordBulbV1.blockValue",
+    "FVLT.FordBulbV1.digit",
+    "FVLT.FordBulbV1.wordValue",
+    "FVLT.FordBulbV1.upperDigit",
+    "FVLT.FordBulbV1.lowerDigit",
+    "FVLT.FordBulbV1.upperNumerator",
+    "FVLT.FordBulbV1.lowerNumerator",
+    "FVLT.FordBulbV1.upperAngle",
+    "FVLT.FordBulbV1.lowerAngle",
+    "FVLT.FordBulbV1.psi",
+    "FVLT.FordBulbV1.angleInterval",
+    "FVLT.FordBulbV1.doubleNum",
+    "FVLT.FordBulbV1.iterateNum",
+    "FVLT.FordBulbV1.orbitPoint",
+    "FVLT.FordBulbV1.orbitSet",
+    "FVLT.FordBulbV1.rank",
+    "FVLT.FordBulbV1.orderedOrbit",
+    "FVLT.FordBulbV1.edgeStart",
+    "FVLT.FordBulbV1.edgeEnd",
+    "FVLT.FordBulbV1.directedGap",
+    "FVLT.FordBulbV1.cardioidParameter",
+    "FVLT.FordBulbV1.alpha",
+    "FVLT.FordBulbV1.quadratic",
+    "FVLT.FordBulbV1.quadraticMultiplier",
+    "FVLT.FordBulbV1.canonicalMultiplier"
+  ],
+  "targets": [
+    {
+      "name": "FVLT.FordBulbV1.address_canonical",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem address_canonical (d : RotationAddress) :\n    (address d).num = (d.p : \u2124) \u2227 (address d).den = d.q",
+      "header_sha256": "95c92e33f3a01ab980cd8f414a6aee338ed3212d24f1fb7060c709577e3d537b"
+    },
+    {
+      "name": "FVLT.FordBulbV1.address_interval",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem address_interval (d : RotationAddress) : 0 < address d \u2227 address d < 1",
+      "header_sha256": "6f51a099aa764f2492f54b45a9bcc5c0a28d6af1da236eb755df118c128521d9"
+    },
+    {
+      "name": "FVLT.FordBulbV1.address_injective",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem address_injective (d e : RotationAddress) (h : address d = address e) : d = e",
+      "header_sha256": "b3ccf8ed6ffce0752c1329771cbaf3ffb044a7ad4b02db3b7afe64b562b204c4"
+    },
+    {
+      "name": "FVLT.FordBulbV1.address_surjective",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem address_surjective (x : \u211a) (hx0 : 0 < x) (hx1 : x < 1) :\n    \u2203 d : RotationAddress, address d = x",
+      "header_sha256": "6218473cd2948398d2224365c853ab551a6bc61a93c38e5e4e4b2af3bd3261b6"
+    },
+    {
+      "name": "FVLT.FordBulbV1.q_at_least_two",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem q_at_least_two (d : RotationAddress) : 2 \u2264 d.q",
+      "header_sha256": "71e629b712cc7a3321bffbdeadd761ca700b92a2cea2bdbea3f464650d978a11"
+    },
+    {
+      "name": "FVLT.FordBulbV1.modulus_pos",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem modulus_pos (d : RotationAddress) : 0 < modulus d",
+      "header_sha256": "9f0567d5b26520f63aa397e4e9012ce8993cf5aebc10cf882cdf8471e521d91d"
+    },
+    {
+      "name": "FVLT.FordBulbV1.word_sum",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem word_sum (d : RotationAddress) (u : Fin d.q) :\n    wordValue d u = \u2211 i : Fin d.q, digit d u i * 2 ^ (d.q - 1 - i.val)",
+      "header_sha256": "6b9ecd69f5821936edb55292002e1e0fe11dc400057d2c18aa260dd7472fbcbe"
+    },
+    {
+      "name": "FVLT.FordBulbV1.upper_digit_equiv",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem upper_digit_equiv (d : RotationAddress) (i : Fin d.q) :\n    upperDigit d i = if d.q - d.p \u2264 ((i.val + 1) * d.p) % d.q then 1 else 0",
+      "header_sha256": "5aa12b40b46c4368ecda181c940a02894f742e3fee235deeb0d3c23a50912231"
+    },
+    {
+      "name": "FVLT.FordBulbV1.lower_digit_equiv",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem lower_digit_equiv (d : RotationAddress) (i : Fin d.q) :\n    1 \u2264 (i.val + 1) * d.p \u2227\n      lowerDigit d i = if d.q - d.p \u2264 ((i.val + 1) * d.p - 1) % d.q then 1 else 0",
+      "header_sha256": "e24444aaa33d5eff0ab75bd2a5c83260aa8e153252bade2f05e51ad44dc2e170"
+    },
+    {
+      "name": "FVLT.FordBulbV1.word_bounds",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem word_bounds (d : RotationAddress) (u : Fin d.q) :\n    0 < wordValue d u \u2227 wordValue d u < modulus d",
+      "header_sha256": "c059d439040e474d3cb36b8633f51c213694cb8f862b0d378c7a7d45d972fd06"
+    },
+    {
+      "name": "FVLT.FordBulbV1.characteristic_bounds",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem characteristic_bounds (d : RotationAddress) :\n    0 < lowerNumerator d \u2227 lowerNumerator d < upperNumerator d \u2227 upperNumerator d < modulus d",
+      "header_sha256": "bcfa65ac4d562c21dad086475df9dd8c7070fbe87bbdc63dde0077d8b3de3cf9"
+    },
+    {
+      "name": "FVLT.FordBulbV1.characteristic_adjacent",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem characteristic_adjacent (d : RotationAddress) : upperNumerator d = lowerNumerator d + 1",
+      "header_sha256": "bab4e3e803412ca35d9ce0156b779e04e686d09b0533e8c95c16dc953e382d51"
+    },
+    {
+      "name": "FVLT.FordBulbV1.characteristic_angle_gap",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem characteristic_angle_gap (d : RotationAddress) :\n    upperAngle d - lowerAngle d = 1 / (modulus d : \u211a)",
+      "header_sha256": "94ffc96c8faeb2fb0f23fd6d03fab18abd01694119bf74de4a372cce11970d66"
+    },
+    {
+      "name": "FVLT.FordBulbV1.characteristic_period_return",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem characteristic_period_return (d : RotationAddress) (n : \u2115)\n    (hn : n = lowerNumerator d \u2228 n = upperNumerator d) : iterateNum d n d.q = n",
+      "header_sha256": "39b75f6e8b5423fba30cb04fe8edd73ae35e026effc74d89daf2163f4dd8a8c3"
+    },
+    {
+      "name": "FVLT.FordBulbV1.characteristic_period_minimal",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem characteristic_period_minimal (d : RotationAddress) (n : \u2115)\n    (hn : n = lowerNumerator d \u2228 n = upperNumerator d)\n    (k : \u2115) (hk0 : 0 < k) (hkq : k < d.q) : iterateNum d n k \u2260 n",
+      "header_sha256": "f6b98329118b1009502d124bff48c185ad8b46b9d92633c209d66cd866334dfc"
+    },
+    {
+      "name": "FVLT.FordBulbV1.same_cycle",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem same_cycle (d : RotationAddress) :\n    \u2203 i : Fin d.q, orbitPoint d i.val = lowerNumerator d",
+      "header_sha256": "936feafbdce418ff6710695fa2cb188746cd3badfdfc0223ac672a51a88bf493"
+    },
+    {
+      "name": "FVLT.FordBulbV1.word_strict",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem word_strict (d : RotationAddress) : StrictMono (wordValue d)",
+      "header_sha256": "18c2ee10805a6dd3a50e6ede0fa70d7de1c8c914bfb846a3694f8c1efeee4a69"
+    },
+    {
+      "name": "FVLT.FordBulbV1.orbit_set_eq",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem orbit_set_eq (d : RotationAddress) :\n    orbitSet d = Finset.univ.image (wordValue d)",
+      "header_sha256": "7a976f5f3f7ef8dd2bda7797e5632e773821d9ab794d30067f99ebb9649ac31d"
+    },
+    {
+      "name": "FVLT.FordBulbV1.orbit_card",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem orbit_card (d : RotationAddress) : (orbitSet d).card = d.q",
+      "header_sha256": "1f8f4d809e48b9edc6b89aec47ae63a72b33671b82f3e5d437936957856b9c37"
+    },
+    {
+      "name": "FVLT.FordBulbV1.orbit_length",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem orbit_length (d : RotationAddress) : (orderedOrbit d).length = d.q",
+      "header_sha256": "a77ba792ce0a32297fe6239c9e2f5e85a60d80c9bd3cf0aebcd33262d2d26c3f"
+    },
+    {
+      "name": "FVLT.FordBulbV1.rank_word",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem rank_word (d : RotationAddress) (u : Fin d.q) : rank d (wordValue d u) = u.val",
+      "header_sha256": "fc17b53ead0635e59a940ea87ddf59cee5f48ab9188015ca07f18e53213c8acc"
+    },
+    {
+      "name": "FVLT.FordBulbV1.double_word",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem double_word (d : RotationAddress) (u : Fin d.q) :\n    doubleNum d (wordValue d u) =\n      wordValue d \u27e8(u.val + d.p) % d.q, Nat.mod_lt _ (Nat.lt_trans d.p_pos d.p_lt_q)\u27e9",
+      "header_sha256": "520b4350be1ff847f44ae0bde62910b9a35d77c36088f460d7435f147616b4b1"
+    },
+    {
+      "name": "FVLT.FordBulbV1.rank_step",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem rank_step (d : RotationAddress) (x : \u2115) (hx : x \u2208 orbitSet d) :\n    rank d (doubleNum d x) = (rank d x + d.p) % d.q",
+      "header_sha256": "ed9e77cd8d4dde8ea8f5c29c4850a7772ac5f04e6c090e868750526012700844"
+    },
+    {
+      "name": "FVLT.FordBulbV1.unique_unit_gap",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem unique_unit_gap (d : RotationAddress) :\n    \u2203 i : Fin (orderedOrbit d).length,\n      edgeStart d i = lowerNumerator d \u2227 edgeEnd d i = upperNumerator d \u2227\n        directedGap d i = 1 \u2227\n          \u2200 j : Fin (orderedOrbit d).length, j \u2260 i \u2192 2 \u2264 directedGap d j",
+      "header_sha256": "c4f40c24aa90c4e4c21524bde59a4fb2ca503ea4cb4d508590a2f459e34c34ff"
+    },
+    {
+      "name": "FVLT.FordBulbV1.angle_order",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem angle_order (d e : RotationAddress) (h : address d < address e) :\n    upperAngle d < lowerAngle e",
+      "header_sha256": "cd329577c00b613f95de84105ef73d5b61ecc45f78b090232754e87a8ef2dcec"
+    },
+    {
+      "name": "FVLT.FordBulbV1.intervals_disjoint",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem intervals_disjoint (d e : RotationAddress) (h : address d < address e) :\n    Disjoint (angleInterval d) (angleInterval e)",
+      "header_sha256": "7083ab2b6eb29c8302d9b6493ad8e5b8a9b1bc7d47bc34ef37fa3eba4940e2c8"
+    },
+    {
+      "name": "FVLT.FordBulbV1.mediant_interval",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem mediant_interval (d e : RotationAddress)\n    (h : address d < address e)\n    (hadj : FVLT.FareyContactV1.fareyAdj (address d) (address e)) :\n    \u2203 m : RotationAddress,\n      address m = FVLT.FareyContactV1.mediant (address d) (address e) \u2227\n        upperAngle d < lowerAngle m \u2227 upperAngle m < lowerAngle e",
+      "header_sha256": "a2a60c6a3d91970da8c4e23cb30f6817f414bd2a4ccb3c0e7ceaa948bd27b04d"
+    },
+    {
+      "name": "FVLT.FordBulbV1.farey_denominator_min",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem farey_denominator_min (x y z : \u211a) (hxy : x < y)\n    (hadj : FVLT.FareyContactV1.fareyAdj x y) (hxz : x < z) (hzy : z < y) :\n    x.den + y.den \u2264 z.den",
+      "header_sha256": "42ab72d2badf89650e260e20c6029616301fdad33fd546a93fce434845dd3933"
+    },
+    {
+      "name": "FVLT.FordBulbV1.farey_denominator_eq_iff",
+      "module": "FVLTFordBulbCombinatoricsV1",
+      "header": "theorem farey_denominator_eq_iff (x y z : \u211a) (hxy : x < y)\n    (hadj : FVLT.FareyContactV1.fareyAdj x y) (hxz : x < z) (hzy : z < y) :\n    z.den = x.den + y.den \u2194 z = FVLT.FareyContactV1.mediant x y",
+      "header_sha256": "256112c938a0a27bae9f43a68cf8c3d2d67b59c905c7333498bb5f7d0ed633f7"
+    },
+    {
+      "name": "FVLT.FordBulbV1.parameter_fixed_point",
+      "module": "FVLTFordBulbParameterV1",
+      "header": "theorem parameter_fixed_point (lambda : \u2102) :\n    quadratic (cardioidParameter lambda) (alpha lambda) = alpha lambda",
+      "header_sha256": "dd5f30d0d8e2e8d71232b2065379c98ba15a7a8a3679ba1620248666b6917fef"
+    },
+    {
+      "name": "FVLT.FordBulbV1.parameter_multiplier",
+      "module": "FVLTFordBulbParameterV1",
+      "header": "theorem parameter_multiplier (lambda : \u2102) : quadraticMultiplier (alpha lambda) = lambda",
+      "header_sha256": "4c0d1c06887abe35508c75af25f21ba94a1125ff582a4a5319355da3da75b754"
+    },
+    {
+      "name": "FVLT.FordBulbV1.parameter_derivative",
+      "module": "FVLTFordBulbParameterV1",
+      "header": "theorem parameter_derivative (lambda : \u2102) :\n    HasDerivAt (fun z : \u2102 => quadratic (cardioidParameter lambda) z) lambda (alpha lambda)",
+      "header_sha256": "f0a10265856ef9c646fef0708b978ec895c45679243b60a3ea8df5e28bc5179d"
+    },
+    {
+      "name": "FVLT.FordBulbV1.canonical_multiplier_primitive",
+      "module": "FVLTFordBulbParameterV1",
+      "header": "theorem canonical_multiplier_primitive (d : RotationAddress) :\n    IsPrimitiveRoot (canonicalMultiplier d) d.q",
+      "header_sha256": "5067ccec885740d8b9a03dca216b8efaf8c3abb38b6e885e8c6904687a2b8c2e"
+    }
+  ],
+  "excluded_target": "B6 uniqueness",
+  "standing": "PROPOSED_FOR_REVIEW_NOT_LEAN_ELABORATED"
+}
