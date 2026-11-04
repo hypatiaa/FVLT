@@ -1,0 +1,209 @@
+{
+  "schema": "ff3-batch04-evidence/1",
+  "status": "PRODUCER_LOCAL_PASS_28_OF_37_INDEPENDENT_PENDING",
+  "files": [
+    {
+      "file": "axiomsFVLTRosetteFordArithmeticV1Batch04Arithmetic01.json",
+      "sha256": "81d2879e82ccfb8ce8200b4dda345b54f8a2e3ce0a9398e525c014692d7d85b2",
+      "bytes": 7697
+    },
+    {
+      "file": "axiomsFVLTRosetteFordArithmeticV1Batch04Arithmetic01.log",
+      "sha256": "d5e493536abb5e8b8063788716957dbd6f2df3c9bdad6c08efc968ef4c3fbddf",
+      "bytes": 605
+    },
+    {
+      "file": "axiomsFVLTRosetteFordArithmeticV1Batch04Arithmetic02.json",
+      "sha256": "a8ec863e838902f96854cecb092fbed92db4df4de1751d67c60e7ea10d70391c",
+      "bytes": 8015
+    },
+    {
+      "file": "axiomsFVLTRosetteFordArithmeticV1Batch04Arithmetic02.log",
+      "sha256": "29274c2ec95f2c7559b3aec29f0e6a123a07f85dd6885095abd297a1b0e4cc01",
+      "bytes": 800
+    },
+    {
+      "file": "axiomsFVLTRosetteFordArithmeticV1Batch04Arithmetic03.json",
+      "sha256": "0adf15fb57f434024fed3b552a6e4461477e6289947e9d92cea8ecea53fc154a",
+      "bytes": 9149
+    },
+    {
+      "file": "axiomsFVLTRosetteFordArithmeticV1Batch04Arithmetic03.log",
+      "sha256": "75bcb991b1c44b48fccfd704653c4cc7556502950f67fb35147d947b4772bdb3",
+      "bytes": 1488
+    },
+    {
+      "file": "BATCH04_CLOSE_v0_1.json",
+      "sha256": "b1645c868f50100e9c780336519e152a3392723a7a9896024c759bca51ef38e2",
+      "bytes": 385
+    },
+    {
+      "file": "BATCH04_STATUS_v0_1.md",
+      "sha256": "78ea891790a140f09d7fc95575a95bee2bfd1edfc5c210f9ccec42ccb7ea9d2f",
+      "bytes": 5482
+    },
+    {
+      "file": "BOUND_BATCH04_ARITHMETIC02.json",
+      "sha256": "be47ee1829d86e69062346032cb745101b953df5aac3063da036ef3c4c6801d2",
+      "bytes": 4908
+    },
+    {
+      "file": "BOUND_BATCH04_ARITHMETIC03.json",
+      "sha256": "3bc4f556b441d63b0722497d5369358afb1facf4a33a79182a327267739c7fe2",
+      "bytes": 4908
+    },
+    {
+      "file": "BOUND_BATCH04.json",
+      "sha256": "0c509c2ec3ea24a404ab3c65c7e3282392e5bc9ac8c0be2b9b24549aaf9456eb",
+      "bytes": 4895
+    },
+    {
+      "file": "CAPACITY_BATCH04_ARITHMETIC02.json",
+      "sha256": "d230e1c2cd54a199d7f7abaaf08a7520f95787f3e7d9f622b0e921f5b0fc0338",
+      "bytes": 218
+    },
+    {
+      "file": "CAPACITY_BATCH04_ARITHMETIC03.json",
+      "sha256": "7cf21d9dd77ee263a8dbe1d6ed346682cf5b713764d187854246112e3cb4fd6d",
+      "bytes": 221
+    },
+    {
+      "file": "CAPACITY_BATCH04.json",
+      "sha256": "dc1e3e7814f32efc0b761fe3d30ed6d49908c6c2e7318e65d5d8ea7b15d48827",
+      "bytes": 215
+    },
+    {
+      "file": "COMPARE_ARITHMETIC01.json",
+      "sha256": "3257c54478443b46755c2b38b9bd2367b7887b30d6431577873494848edb7699",
+      "bytes": 1566
+    },
+    {
+      "file": "COMPARE_ARITHMETIC02.json",
+      "sha256": "3157b619e272b0dcf5da0a864a7f625c3eb12107555a06a04d809d7cdaee27ac",
+      "bytes": 1740
+    },
+    {
+      "file": "COMPARE_ARITHMETIC03.json",
+      "sha256": "d24b88e37dc24417f9d6dd18eb9c7685f3c13cdc07fe5f844978e003b5d31f52",
+      "bytes": 2364
+    },
+    {
+      "file": "CompileFVLTRosetteFordArithmeticV1Batch04Arithmetic01.json",
+      "sha256": "8a5ffcb9e12ad8f791c677edd51fd1f067d49139685da542543e5adb97b9fa30",
+      "bytes": 6355
+    },
+    {
+      "file": "CompileFVLTRosetteFordArithmeticV1Batch04Arithmetic01.log",
+      "sha256": "a82724ddf6d524596b8c7ab55f9bbaa4dd5ace17b9292a602fe2f075a122a206",
+      "bytes": 424
+    },
+    {
+      "file": "CompileFVLTRosetteFordArithmeticV1Batch04Arithmetic02.json",
+      "sha256": "6a1c2addc8638cd4e1a2a3a98b864d27eaad1aa14bb5f5d908a1239e0fb59a0a",
+      "bytes": 6356
+    },
+    {
+      "file": "CompileFVLTRosetteFordArithmeticV1Batch04Arithmetic02.log",
+      "sha256": "c5e423db0b810eb370c40c877fdb7e0899be6b0f2608c6b69e0cbec832d54f00",
+      "bytes": 424
+    },
+    {
+      "file": "CompileFVLTRosetteFordArithmeticV1Batch04Arithmetic03.json",
+      "sha256": "e0785897b898b56cbd609763e0417d178c768af1f0aef5afeba1aa550d2850ec",
+      "bytes": 6357
+    },
+    {
+      "file": "CompileFVLTRosetteFordArithmeticV1Batch04Arithmetic03.log",
+      "sha256": "c0fdbfb2f39d3f35a88901f40026d6c8a92c16d2304cfce860ce532ef0b73652",
+      "bytes": 2249
+    },
+    {
+      "file": "DEADLINE_BATCH04.json",
+      "sha256": "90a0f70115b03281a5175bc7e267ac064e115909ceeced6ea9de42fe14f3d054",
+      "bytes": 145
+    },
+    {
+      "file": "HOST_RESERVATION_BATCH04.json",
+      "sha256": "8b7dc17aedad60a44383e8172d36cec3557cfe8e17a4768fa65a46ee50b84a1e",
+      "bytes": 257
+    },
+    {
+      "file": "JOB_axiomsFVLTRosetteFordArithmeticV1Batch04Arithmetic01.json",
+      "sha256": "b1c217f4745ab5c272ff7fdb61ac449bfca4344a09bbca0e90ba928be349c107",
+      "bytes": 2138
+    },
+    {
+      "file": "JOB_axiomsFVLTRosetteFordArithmeticV1Batch04Arithmetic02.json",
+      "sha256": "58b60a4fdd79468436ada1d7951f2896195a27d2c1a2f7f33ac43c86c9b14d00",
+      "bytes": 2227
+    },
+    {
+      "file": "JOB_axiomsFVLTRosetteFordArithmeticV1Batch04Arithmetic03.json",
+      "sha256": "aa5ada46cbaf6dc9cea1c1cc0a366fa41e1d8f7b735cdba5d32de3076c3fe2d6",
+      "bytes": 2544
+    },
+    {
+      "file": "JOB_CompileFVLTRosetteFordArithmeticV1Batch04Arithmetic01.json",
+      "sha256": "acc17d2c0862bc3ccc0750de0f2cae176a968ec3c704a128b72816d4e427b71b",
+      "bytes": 1301
+    },
+    {
+      "file": "JOB_CompileFVLTRosetteFordArithmeticV1Batch04Arithmetic02.json",
+      "sha256": "8d1e9f8c510eae6f2b073d4a7f1e063d28c24b1077419bb9b5797d49e8ac7382",
+      "bytes": 1301
+    },
+    {
+      "file": "JOB_CompileFVLTRosetteFordArithmeticV1Batch04Arithmetic03.json",
+      "sha256": "1a359232419ef1a463534bfd48ac2eab202095368fa09f43adf9668509350427",
+      "bytes": 1301
+    },
+    {
+      "file": "JOB_replayFVLTRosetteFordArithmeticV1Batch04Arithmetic01.json",
+      "sha256": "0cd97c332bf8243007ac41c13cfb6aec03fe17aeeb679fed30bb46d64c0297a1",
+      "bytes": 1660
+    },
+    {
+      "file": "JOB_replayFVLTRosetteFordArithmeticV1Batch04Arithmetic02.json",
+      "sha256": "f1bec230c00d6839e0191e90e5ebeec58eff5b34c5bbdf60c4c2a9fe9821357d",
+      "bytes": 1660
+    },
+    {
+      "file": "JOB_replayFVLTRosetteFordArithmeticV1Batch04Arithmetic03.json",
+      "sha256": "3712ddd21fdd748a54741bf47428ce30599139b32bef0a299114378a7cde1b03",
+      "bytes": 1660
+    },
+    {
+      "file": "replayFVLTRosetteFordArithmeticV1Batch04Arithmetic01.json",
+      "sha256": "4af974667f3fb01eb70b2726b827bddfdfb421d5196d278d5ea28131b995f726",
+      "bytes": 6488
+    },
+    {
+      "file": "replayFVLTRosetteFordArithmeticV1Batch04Arithmetic01.log",
+      "sha256": "500e720851c3f6ce8d4cd4fa3e6d0e1e0b38c2e3a17e3fe8c51641d19035d780",
+      "bytes": 164540
+    },
+    {
+      "file": "replayFVLTRosetteFordArithmeticV1Batch04Arithmetic02.json",
+      "sha256": "927674da0748ae1e1c11c2c5327227dc3f39b2cf707cea77cc20a630f12e5fea",
+      "bytes": 6488
+    },
+    {
+      "file": "replayFVLTRosetteFordArithmeticV1Batch04Arithmetic02.log",
+      "sha256": "a7d591a14c76ba4de5eea6c37951c2c65eb7538ad4e67813efb989c18567707a",
+      "bytes": 165060
+    },
+    {
+      "file": "replayFVLTRosetteFordArithmeticV1Batch04Arithmetic03.json",
+      "sha256": "98a24120106c7d9fcf97015d79fa8f66455ba6f9550fa405263c13376c66b048",
+      "bytes": 6489
+    },
+    {
+      "file": "replayFVLTRosetteFordArithmeticV1Batch04Arithmetic03.log",
+      "sha256": "4fc56c4e4ec5d98ffa70a1072a10e2bed5caae29e209f3c82c257d6b0100d4cb",
+      "bytes": 166786
+    }
+  ],
+  "data_source_sha256": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+  "arithmetic_source_sha256": "f74e1a1d8f02a60beceb6a1a44a7e5833b2583777f74cd4e36ebed459b67726f",
+  "statement_comparison": "All15arithmeticheadersLFtextunchanged;UTF8noBOMzeroCR"
+}

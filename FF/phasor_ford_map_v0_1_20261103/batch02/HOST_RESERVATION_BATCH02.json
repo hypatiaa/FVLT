@@ -1,0 +1,11 @@
+{
+  "host": "nucleus",
+  "owner_thread": "01a18167-41de-74e0-882e-9171e642530f",
+  "purpose": "FF3 Batch02 accepted Data02 and serial proof development",
+  "cpu_jobs": 1,
+  "address_space_bytes": 8589934592,
+  "start_unix": 1793782708,
+  "end_unix": 1793784508,
+  "other_owned_builds": "None; Batch01 expired, no further calls under its clock",
+  "transport": "Tailscale100.105.106.41"
+}

@@ -1,0 +1,11 @@
+{
+  "schema": "ff3-review-acceptance-EXAMPLE/1",
+  "status": "EXAMPLE_ONLY_NOT_AUTHORIZATION",
+  "input_signature_acceptance": null,
+  "template_acceptance": null,
+  "runner_sha256": "f9acf65a42bc901576cf109b17d5e0911b8b4310c38efc5b2e6044a62f396af5",
+  "bound_template_file": null,
+  "bound_template_sha256": null,
+  "accepted_job_sha256": [],
+  "reviewed_files": {}
+}

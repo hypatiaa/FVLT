@@ -1,0 +1,37 @@
+[
+  {
+    "file": "FVLTAtomSkinCountsV1.lean",
+    "sha256": "57be30510d889b8921c3f5b474b9f892570ac19d9f1a556552504498acf8bad0",
+    "bytes": 23276,
+    "public_theorems": 16,
+    "private_support": 29
+  },
+  {
+    "file": "FVLTAtomSkinDataV1.lean",
+    "sha256": "8d165af954019dd15fad6f7bf082922119d9364a3727fa59879d945fc5e8f085",
+    "bytes": 3572,
+    "public_theorems": 0,
+    "private_support": 0
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "sha256": "62be605efe85fcfbded3f0419c124aa2f1f2f0a772669aa81448400ac116cccc",
+    "bytes": 23648,
+    "public_theorems": 5,
+    "private_support": 39
+  },
+  {
+    "file": "FVLTPillowcaseDataV1.lean",
+    "sha256": "b8a03b38d0e8a8defb68bc93701f9c6ded0a8ff8ce9e9c9f1af636790ce3bcd2",
+    "bytes": 1572,
+    "public_theorems": 0,
+    "private_support": 0
+  },
+  {
+    "file": "FVLTPillowcaseV1.lean",
+    "sha256": "27e7c00dcae05e2f7e93de3d79e8f56380a553b76c2848f919deb6a3f5d82a3f",
+    "bytes": 18587,
+    "public_theorems": 7,
+    "private_support": 30
+  }
+]

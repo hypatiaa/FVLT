@@ -1,0 +1,67 @@
+OK   frozen header count = 28
+OK   vertex_count [FVLTAtomSkinCountsV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   edge_count [FVLTAtomSkinCountsV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   square_count [FVLTAtomSkinCountsV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   chi_formula [FVLTAtomSkinCountsV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   incident_pair_distinct [FVLTAtomSkinCountsV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   incident_pair_exhaustive [FVLTAtomSkinCountsV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   incident_square_count [FVLTAtomSkinCountsV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   incident_direction_equiv [FVLTAtomSkinCountsV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   link_cycle [FVLTAtomSkinCountsV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   incident_coefficients_opposite [FVLTAtomSkinCountsV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   total_boundary_zero [FVLTAtomSkinCountsV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   cube_edge_iff [FVLTAtomSkinCountsV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   cube_connected [FVLTAtomSkinCountsV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   chi_even [FVLTAtomSkinCountsV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   genus_formula [FVLTAtomSkinCountsV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   cube_genus_zero [FVLTAtomSkinCountsV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   pen_adjacent_seat [FVLTAtomSkinPenV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   pen_oriented_square [FVLTAtomSkinPenV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   pen_return_four [FVLTAtomSkinPenV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   pen_no_earlier_return [FVLTAtomSkinPenV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   pen_four_corners [FVLTAtomSkinPenV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.AtomSkinV1
+OK   pillowRel_equivalence [FVLTPillowcaseV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.PillowcaseV1
+OK   key_classifies [FVLTPillowcaseV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.PillowcaseV1
+OK   halfTurn_not_identity [FVLTPillowcaseV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.PillowcaseV1
+OK   fixingHalfTurn_iff_multiples [FVLTPillowcaseV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.PillowcaseV1
+OK   nonzero_translation_fixes_nothing [FVLTPillowcaseV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.PillowcaseV1
+OK   fixingHalfTurn_iff_corner_class [FVLTPillowcaseV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.PillowcaseV1
+OK   four_corner_classes_distinct [FVLTPillowcaseV1.lean] statement equals frozen header (whitespace-normalised), namespace FVLT.PillowcaseV1
+OK   extra public theorems: []
+OK   FVLTAtomSkinCountsV1.lean: public non-theorem declarations []
+     FVLTAtomSkinCountsV1.lean: 16 public, 29 private
+OK   FVLTAtomSkinPenV1.lean: public non-theorem declarations []
+     FVLTAtomSkinPenV1.lean: 5 public, 39 private
+OK   FVLTPillowcaseV1.lean: public non-theorem declarations []
+     FVLTPillowcaseV1.lean: 7 public, 30 private
+OK   private helper total = 98
+OK   FVLTAtomSkinCountsV1.lean: no sorry/axiom/instance/attribute/notation/variable/native_decide lines (0 hits)
+OK   FVLTAtomSkinPenV1.lean: no sorry/axiom/instance/attribute/notation/variable/native_decide lines (0 hits)
+OK   FVLTPillowcaseV1.lean: no sorry/axiom/instance/attribute/notation/variable/native_decide lines (0 hits)
+OK   FVLTAtomSkinDataV1.lean: no sorry/axiom/instance/attribute/notation/variable/native_decide lines (0 hits)
+OK   FVLTPillowcaseDataV1.lean: no sorry/axiom/instance/attribute/notation/variable/native_decide lines (0 hits)
+OK   AtomSkinData namespace block byte-equal to definitions v0.3
+OK   PillowcaseData namespace block byte-equal to definitions v0.1
+OK   Pillowcase block identical in v0.1 and v0.3
+     AtomSkinData outside namespace:
+       | -- Proposed exact definition bytes, not an executable proof file.
+       | -- Skeleton review precedes any Lean invocation. No target proof is present.
+       | import Mathlib.Data.Fintype.Powerset
+       | import Mathlib.Data.Fintype.Card
+       | import Mathlib.Data.Fintype.Prod
+       | import Mathlib.Data.Finsupp.Basic
+       | import Mathlib.Logic.Function.Iterate
+       | import Mathlib.Tactic.DeriveFintype
+       | import Lean.Elab.Tactic.Omega
+       | open scoped BigOperators
+     PillowcaseData outside namespace:
+       | -- Proposed exact definition bytes, not an executable proof file.
+       | -- Skeleton review precedes any Lean invocation. No target proof is present.
+       | import Mathlib.Data.Fintype.Powerset
+       | import Mathlib.Data.Fintype.Card
+       | import Mathlib.Data.Finsupp.Basic
+       | import Mathlib.Logic.Function.Iterate
+       | import Mathlib.Tactic.DeriveFintype
+       | import Lean.Elab.Tactic.Omega
+       | open scoped BigOperators
+RESULT: ALL OK

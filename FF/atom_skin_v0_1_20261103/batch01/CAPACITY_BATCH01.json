@@ -1,0 +1,15 @@
+{
+  "observed_unix": 1793757115,
+  "host": "nucleus",
+  "transport": "Tailscale 100.105.106.41",
+  "available_memory_mib": 28600,
+  "total_memory_mib": 31643,
+  "load_average": [
+    "0.01",
+    "0.01",
+    "0.00"
+  ],
+  "observed_competing_builds": "No Lean/lake build in the observed top-process snapshot; no root-level FVLT lock found",
+  "existing_wolfram": "Existing WolframKernel observed, left untouched; not used by this batch",
+  "reservation": "Codex FVLT FF2 owner; one CPU / 8 GiB / 1800 seconds from1793757115; no shared kernel ownership"
+}

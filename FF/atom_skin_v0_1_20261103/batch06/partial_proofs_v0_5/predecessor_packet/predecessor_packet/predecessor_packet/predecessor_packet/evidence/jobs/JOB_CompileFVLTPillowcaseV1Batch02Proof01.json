@@ -1,0 +1,26 @@
+{
+  "phase": "FF2_AB",
+  "module": "FVLTPillowcaseV1",
+  "mode": "compile",
+  "run_id": "CompileFVLTPillowcaseV1Batch02Proof01",
+  "template_sha256": "d94d107af7e77a63493c68c3bb967c0763267fb5659c4f88e1670b23799d1c44",
+  "attempt_folder": "attempts/Batch02Proof01",
+  "source_sha256": {
+    "FVLTAtomSkinCountsV1.lean": "b2b526963e1f0f96ee4860da921eb021cd03bfce82a54d2a5e83178c0979a110",
+    "FVLTPillowcaseV1.lean": "74542518e382f7f67eeedce977e7f8896f1647a81764c544defac0ad87886446"
+  },
+  "dependency_olean_sha256": {
+    "FVLTAtomSkinDataV1.olean": "5d7862ee3f1f3fe1c88c715094cd934d406665a84c0e31d3dab618c67a4940cf",
+    "FVLTPillowcaseDataV1.olean": "6b656127d20b65964d65f11e234e6123a7324cc499f7f40c733f144de9f4d58d"
+  },
+  "prerequisite_receipt_sha256": {
+    "ReplayFVLTAtomSkinDataV1Batch01Data03.json": "8e29e6656768b35b51301a52637ba1a1a4e7f6e5d087187598e18d984b71227a",
+    "ReplayFVLTPillowcaseDataV1Batch01PATH03.json": "0ddb6bbd8027b285cdef1011552a8a410e6b72aff874e9576fc06c765a809995"
+  },
+  "signature_comparison_receipt_file": "COMPARE_PROOF01.json",
+  "signature_comparison_receipt_sha256": "89746fdf1d1833f10801ab95a5ef7fee311184c5f7fb302492de90a71ed4df7b",
+  "deadline_file": "DEADLINE_BATCH02.json",
+  "launch_environment": {
+    "PATH": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin:/usr/local/bin:/usr/bin:/bin"
+  }
+}

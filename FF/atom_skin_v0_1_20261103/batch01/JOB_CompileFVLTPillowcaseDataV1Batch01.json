@@ -1,0 +1,17 @@
+{
+  "phase": "FF2_AB",
+  "module": "FVLTPillowcaseDataV1",
+  "mode": "compile",
+  "run_id": "CompileFVLTPillowcaseDataV1Batch01",
+  "template_sha256": "dbf5bc2aee3ef3e3b2aaac0d02f4e60f7941dff84d6d7131e39938ec9bdc3581",
+  "attempt_folder": "attempts/Data01",
+  "source_sha256": {
+    "FVLTAtomSkinDataV1.lean": "f9b9941742fcd44fd38fe4dc8088dd24de3602bbd74b568bb02e8660928b4c98",
+    "FVLTPillowcaseDataV1.lean": "3cca7c3d28c833c0bfdfda53301e016d534bbda108298371549cb2357fa08082"
+  },
+  "dependency_olean_sha256": {},
+  "prerequisite_receipt_sha256": {},
+  "signature_comparison_receipt_file": "COMPARE_DATA01.json",
+  "signature_comparison_receipt_sha256": "3d71f98593814951aab5862897925aa9d8309309f6c6ee877e261e4e47c254f1",
+  "deadline_file": "DEADLINE_BATCH01.json"
+}

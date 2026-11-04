@@ -1,0 +1,155 @@
+-- REVIEW TEXT ONLY. Exact target declarations without proof terms or admissions.
+namespace FVLT.PhasorFordV1
+
+-- FVLTRosetteFordPhaseV1: lifted domain, amplitude guard, integer specialization.
+theorem phasor_real_iff
+    (t1 t2 : ℤ) (s : ℚ) (n3 : ℕ) (hn3 : 0 < n3) (r : ℝ) (hr : r ≠ 0) :
+    (phasorValue t1 t2 s n3 r).im = 0 ↔ IsIntegral (phaseAddress t1 t2 s n3)
+
+theorem integer_spin_phase_iff
+    (t1 t2 s : ℤ) (n3 : ℕ) (hn3 : 0 < n3) :
+    IsIntegral (phaseAddress t1 t2 (s : ℚ) n3) ↔
+      IsIntegral (fordAddress t2 (s : ℚ) n3)
+
+theorem integer_spin_parity
+    (t1 t2 s : ℤ) (n3 : ℕ) (hn3 : 0 < n3) :
+    Complex.exp (((Real.pi * (phaseAddress t1 t2 (s : ℚ) n3 : ℝ)) : ℂ) * Complex.I) =
+      (-1 : ℂ) ^ (t1 * s) *
+        Complex.exp (-(((Real.pi * (fordAddress t2 (s : ℚ) n3 : ℝ)) : ℂ) * Complex.I))
+
+theorem circleMap_amplitude_independent
+    (d e : LiftedData) (ht2 : d.t2 = e.t2) (hs : d.s = e.s) (hn3 : d.n3 = e.n3) :
+    circleMap d = circleMap e
+
+theorem phasor_alias_not_address_alias (r : ℝ) (hr : r ≠ 0) :
+    phasorValue 1 1 0 3 r = phasorValue 1 1 3 3 r ∧
+      fordAddress 1 0 3 ≠ fordAddress 1 3 3
+
+-- FVLTRosetteFordArithmeticV1: P1 through P4, multiplication before quotient.
+theorem integer_address_iff
+    (t2 s : ℤ) (n3 : ℕ) (hn3 : 0 < n3) :
+    (fordAddress t2 (s : ℚ) n3).den = 1 ↔ (n3 : ℤ) ∣ t2 * s
+
+theorem integer_address_integral_iff
+    (t2 s : ℤ) (n3 : ℕ) (hn3 : 0 < n3) :
+    IsIntegral (fordAddress t2 (s : ℚ) n3) ↔ (n3 : ℤ) ∣ t2 * s
+
+theorem integer_address_radius
+    (t2 s : ℤ) (n3 : ℕ) (hn3 : 0 < n3) (hdiv : (n3 : ℤ) ∣ t2 * s) :
+    FVLT.FordGeometryV1.radius (fordAddress t2 (s : ℚ) n3) = (1 : ℝ) / 2
+
+theorem divisor_recovery_window (s M : ℕ) (hs : 0 < s) :
+    integerContactWindow (s : ℤ) M = divisorWindow s M
+
+theorem zero_spin_address (t2 : ℤ) (n3 : ℕ) (hn3 : 0 < n3) :
+    fordAddress t2 0 n3 = 0 ∧ (fordAddress t2 0 n3).den = 1
+
+theorem zero_spin_window (M : ℕ) : integerContactWindow 0 M = Finset.Icc 1 M
+
+theorem reduced_det_mul
+    (a c : ℤ) (q r : ℕ) (hq : 0 < q) (hr : 0 < r) :
+    |det (rawValue a q) (rawValue c r)| * (gcdFactor a q : ℤ) * (gcdFactor c r : ℤ) =
+      |a * (r : ℤ) - c * (q : ℤ)|
+
+theorem reduced_det_quotient
+    (a c : ℤ) (q r : ℕ) (hq : 0 < q) (hr : 0 < r) :
+    |det (rawValue a q) (rawValue c r)| =
+      |a * (r : ℤ) - c * (q : ℤ)| / ((gcdFactor a q : ℤ) * (gcdFactor c r : ℤ))
+
+theorem row_law (N s : ℕ) (hN : 0 < N) (hs : s < N) :
+    |det (rawValue (s : ℤ) N) (rawValue ((s + 1 : ℕ) : ℤ) N)| *
+      (gcdFactor (s : ℤ) N : ℤ) * (gcdFactor ((s + 1 : ℕ) : ℤ) N : ℤ) = (N : ℤ)
+
+theorem row_tangent_iff (N s : ℕ) (hN : 0 < N) (hs : s < N) :
+    fareyAdj (rawValue (s : ℤ) N) (rawValue ((s + 1 : ℕ) : ℤ) N) ↔
+      N = gcdFactor (s : ℤ) N * gcdFactor ((s + 1 : ℕ) : ℤ) N
+
+theorem signed_column_law (u : ℤ) (n : ℕ) (hn : 1 ≤ n) :
+    |det (rawValue u n) (rawValue u (n + 1))| *
+      (gcdFactor u n : ℤ) * (gcdFactor u (n + 1) : ℤ) = |u|
+
+theorem signed_column_tangent_iff (u : ℤ) (n : ℕ) (hn : 1 ≤ n) :
+    fareyAdj (rawValue u n) (rawValue u (n + 1)) ↔
+      |u| = (gcdFactor u n : ℤ) * (gcdFactor u (n + 1) : ℤ)
+
+theorem zero_column_stall (n : ℕ) (hn : 1 ≤ n) :
+    rawValue 0 n = rawValue 0 (n + 1) ∧
+      det (rawValue 0 n) (rawValue 0 (n + 1)) = 0 ∧
+      ¬fareyAdj (rawValue 0 n) (rawValue 0 (n + 1))
+
+theorem reference_column_tangent_iff (s n : ℕ) (hs : 0 < s) (hn : 1 ≤ n) :
+    fareyAdj (rawValue (s : ℤ) n) (rawValue (s : ℤ) (n + 1)) ↔ s ∣ n * (n + 1)
+
+theorem unit_fraction_spine (n : ℕ) (hn : 1 ≤ n) :
+    rawValue 1 n = unitFrac n ∧ fareyAdj (unitFrac n) (unitFrac (n + 1))
+
+-- FVLTRosetteFordSweepV1: P5, actual finite events and deduplicated sorted set.
+theorem shell_contact_parameterization
+    (N : ℕ) (hN : 2 ≤ N) (s : ℚ) (hs0 : 0 ≤ s) (hsN : s ≤ (N : ℚ)) :
+    IsIntegral (phaseAddress 1 1 s N) ↔
+      ∃ m : ℕ, m ≤ N - 1 ∧ s = (m : ℚ) * (N : ℚ) / ((N : ℚ) - 1)
+
+theorem shell_phasor_contact_iff
+    (N : ℕ) (hN : 2 ≤ N) (s : ℚ) (hs0 : 0 ≤ s) (hsN : s ≤ (N : ℚ))
+    (r : ℝ) (hr : r ≠ 0) :
+    (phasorValue 1 1 s N r).im = 0 ↔
+      ∃ m : ℕ, m ≤ N - 1 ∧ s = (m : ℚ) * (N : ℚ) / ((N : ℚ) - 1)
+
+theorem shell_contact_address (N m : ℕ) (hN : 2 ≤ N) (hm : m ≤ N - 1) :
+    fordAddress 1 ((m : ℚ) * (N : ℚ) / ((N : ℚ) - 1)) N =
+      (m : ℚ) / ((N : ℚ) - 1)
+
+theorem mem_shellEvents
+    (B : ℕ) (hB : 1 ≤ B) (N : ℕ) (s : ℚ) :
+    (N, s) ∈ shellEvents B ↔
+      2 ≤ N ∧ N ≤ B + 1 ∧ 0 ≤ s ∧ s ≤ (N : ℚ) ∧ IsIntegral (phaseAddress 1 1 s N)
+
+theorem mem_fareySet (B : ℕ) (hB : 1 ≤ B) (x : ℚ) :
+    x ∈ fareySet B ↔ 0 ≤ x ∧ x ≤ 1 ∧ x.den ≤ B
+
+theorem shell_addresses_eq_farey (B : ℕ) (hB : 1 ≤ B) :
+    shellEventAddresses B = fareySet B
+
+theorem fareyList_membership (B : ℕ) (hB : 1 ≤ B) (x : ℚ) :
+    x ∈ fareyList B ↔ x ∈ fareySet B
+
+theorem fareyList_strict (B : ℕ) (hB : 1 ≤ B) : (fareyList B).Pairwise (· < ·)
+
+theorem farey_consecutive_det
+    (B : ℕ) (hB : 1 ≤ B) (k : ℕ)
+    (hk0 : k < (fareyList B).length) (hk1 : k + 1 < (fareyList B).length) :
+    let x := (fareyList B).get ⟨k, hk0⟩
+    let y := (fareyList B).get ⟨k + 1, hk1⟩
+    (x.den : ℤ) * y.num - x.num * (y.den : ℤ) = 1
+
+-- FVLTRosetteFordEndpointsV1: P6, no continuous arcs.
+theorem det_zero_iff_address_equal (x y : ℚ) : det x y = 0 ↔ x = y
+
+theorem classify_stall_iff (x y : ℚ) : classifyEdge x y = .stall ↔ x = y
+
+theorem classify_tangent_iff (x y : ℚ) : classifyEdge x y = .tangent ↔ fareyAdj x y
+
+theorem classify_break_iff (x y : ℚ) : classifyEdge x y = .gap ↔ IsBreak x y
+
+theorem path_edge_trichotomy (m : ℕ) (x : Fin (m + 1) → ℚ) (k : Fin m) :
+    let u := x k.castSucc
+    let v := x k.succ
+    (fareyAdj u v ∨ u = v ∨ IsBreak u v) ∧
+      ¬(fareyAdj u v ∧ u = v) ∧
+      ¬(fareyAdj u v ∧ IsBreak u v) ∧ ¬(u = v ∧ IsBreak u v)
+
+theorem path_kind_tangent_iff (m : ℕ) (x : Fin (m + 1) → ℚ) (k : Fin m) :
+    pathEdgeKind m x k = .tangent ↔ fareyAdj (x k.castSucc) (x k.succ)
+
+theorem tangent_endpoint_certificate
+    (m : ℕ) (x : Fin (m + 1) → ℚ) (k : Fin m)
+    (h : fareyAdj (x k.castSucc) (x k.succ)) :
+    endpointCertificate m x k = some (kissQ (x k.castSucc) (x k.succ)) ∧
+      boundaryCheckQ (x k.castSucc) (kissQ (x k.castSucc) (x k.succ)) = true ∧
+      boundaryCheckQ (x k.succ) (kissQ (x k.castSucc) (x k.succ)) = true
+
+theorem nontangent_no_certificate
+    (m : ℕ) (x : Fin (m + 1) → ℚ) (k : Fin m)
+    (h : ¬fareyAdj (x k.castSucc) (x k.succ)) : endpointCertificate m x k = none
+
+end FVLT.PhasorFordV1

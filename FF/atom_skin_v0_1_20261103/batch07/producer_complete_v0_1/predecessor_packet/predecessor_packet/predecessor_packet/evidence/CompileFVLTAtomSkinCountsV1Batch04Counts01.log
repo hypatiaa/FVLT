@@ -1,0 +1,30 @@
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch04Counts01/src/FVLTAtomSkinCountsV1.lean:11:30: warning: Variable name `hω` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hω
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch04Counts01/src/FVLTAtomSkinCountsV1.lean:18:31: warning: Variable name `hω` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hω
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch04Counts01/src/FVLTAtomSkinCountsV1.lean:107:42: warning: Variable name `hω` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hω
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch04Counts01/src/FVLTAtomSkinCountsV1.lean:163:28: warning: Variable name `hω` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hω
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch04Counts01/src/FVLTAtomSkinCountsV1.lean:182:43: error: unsolved goals
+ω : ℕ
+hω : 3 ≤ ω
+i : Fin ω
+hcast : ↑↑i + 1 = ↑(↑i + 1)
+⊢ ((↑↑i + 1) % ↑ω).toNat % ω = (↑i + 1) % ω

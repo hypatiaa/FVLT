@@ -1,0 +1,31 @@
+/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch02Endpoints01/src/FVLTRosetteFordEndpointsV1.lean:39:4: error: unsolved goals
+case pos
+x y : ℚ
+hz : ¬det x y = 0
+h : |det x y| = 1
+hxy : True
+ha : ¬det x y = 0
+⊢ ¬|det x y| = 1 → 2 ≤ |det x y|
+/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch02Endpoints01/src/FVLTRosetteFordEndpointsV1.lean:39:40: warning: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [classifyEdge, IsBreak, hxy, fareyAdj] at *
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch02Endpoints01/src/FVLTRosetteFordEndpointsV1.lean:58:4: error: unsolved goals
+case pos
+m : ℕ
+x : Fin (m + 1) → ℚ
+k : Fin m
+hself : ∀ (u : ℚ), ¬fareyAdj u u
+h : ¬fareyAdj (x k.castSucc) (x k.succ)
+he : x k.castSucc = x k.succ
+⊢ ¬fareyAdj (x k.succ) (x k.succ)
+/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch02Endpoints01/src/FVLTRosetteFordEndpointsV1.lean:58:12: warning: This simp argument is unused:
+  h
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [he, IsBreak]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

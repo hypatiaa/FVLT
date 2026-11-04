@@ -1,0 +1,6 @@
+'FVLT.PhasorFordV1.integer_address_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.PhasorFordV1.integer_address_integral_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.PhasorFordV1.integer_address_radius' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.PhasorFordV1.divisor_recovery_window' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.PhasorFordV1.zero_spin_address' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.PhasorFordV1.zero_spin_window' depends on axioms: [propext, Classical.choice, Quot.sound]

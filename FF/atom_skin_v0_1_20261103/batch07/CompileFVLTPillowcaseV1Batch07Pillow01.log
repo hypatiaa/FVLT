@@ -1,0 +1,236 @@
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:8:15: warning: Variable name `ha` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ha
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:8:28: warning: Variable name `hb` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hb
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:48:15: warning: Variable name `ha` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ha
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:48:28: warning: Variable name `hb` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hb
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:133:30: warning: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [translation, corner_fst_scaled] at hx
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:134:30: warning: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [translation, corner_snd_scaled] at hy
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:145:27: warning: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [halfTurn, corner_fst_scaled] at hx
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:146:27: warning: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [halfTurn, corner_snd_scaled] at hy
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:164:30: warning: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [translation, corner_fst_scaled] at hx
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:165:30: warning: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [translation, corner_snd_scaled] at hy
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:179:27: warning: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [halfTurn, corner_fst_scaled] at hx
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:180:27: warning: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [halfTurn, corner_snd_scaled] at hy
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:240:8: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:236:39: warning: Variable name `ha` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ha
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:250:15: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:251:39: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  g ≥ 0
+  f ≥ 0
+  e ≥ 0
+  d ≥ 1
+  d - f ≤ -1
+  d - g ≤ -1
+  2*d - f ≥ 1
+  c ≥ 1
+  2*c - e ≥ 1
+where
+ c := ↑a
+ d := ↑b
+ e := ↑(residue a v.1)
+ f := ↑(residue b v.2)
+ g := ↑(net a b v).2
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:252:15: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:253:18: error: omega could not prove the goal:
+a possible counterexample may satisfy the constraints
+  g ≥ 0
+  f ≥ 0
+  e ≥ 0
+  d ≥ 1
+  d - f ≥ 0
+  d - g ≤ -1
+  2*d - f ≥ 1
+  c ≥ 1
+  2*c - e ≥ 1
+where
+ c := ↑a
+ d := ↑b
+ e := ↑(residue a v.1)
+ f := ↑(residue b v.2)
+ g := ↑(net a b v).2
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:250:25: warning: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [if_pos h, Prod.snd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:250:35: warning: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [if_pos h, Prod.fst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:252:25: warning: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [if_neg h, Prod.snd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:252:35: warning: This simp argument is unused:
+  Prod.snd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [if_neg h, Prod.fst]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:265:8: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:270:10: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  (2 * a - x) % (2 * a)
+in the target expression
+  ↑(2 * a - x) % (2 * ↑a) = (2 * if x = 0 then 0 else 1) * ↑a - ↑(residue a v.1)
+
+case pos.fst
+a b : ℕ
+ha : 0 < a
+hb : 0 < b
+v : Point
+x : ℕ := residue a v.1
+y : ℕ := residue b v.2
+hx : x < 2 * a
+hy : y < 2 * b
+hr : pillowRel a b v (asPoint (residue a v.1, residue b v.2))
+h : b < y
+⊢ ↑(2 * a - x) % (2 * ↑a) = (2 * if x = 0 then 0 else 1) * ↑a - ↑(residue a v.1)
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:274:16: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:276:43: warning: Variable name `ha` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ha
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:298:58: warning: Variable name `hb` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hb
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:331:46: warning: Variable name `ha` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _ha
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:361:56: warning: Variable name `hm` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hm
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:364:60: warning: This simp argument is unused:
+  Int.mul_emod
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [Int.add_emod]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:367:44: warning: Variable name `hm` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hm
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:400:68: warning: This simp argument is unused:
+  Int.mul_emod
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch07Pillow01/src/FVLTPillowcaseV1.lean:406:68: warning: This simp argument is unused:
+  Int.mul_emod
+
+Hint: Omit it from the simp argument list.
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

@@ -1,0 +1,151 @@
+{
+  "schema": "ff2-target-progress/1",
+  "total_targets": 28,
+  "producer_cleared": 20,
+  "open": 8,
+  "independent_verification": "Pending",
+  "ff2_final_outcome": "NOT_RECORDED",
+  "ff3_builds": "HELD",
+  "targets": [
+    {
+      "name": "FVLT.AtomSkinV1.vertex_count",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.edge_count",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.square_count",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.chi_formula",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.incident_pair_distinct",
+      "status": "OPEN_NOT_CLAIMED",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.incident_pair_exhaustive",
+      "status": "OPEN_NOT_CLAIMED",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.incident_square_count",
+      "status": "OPEN_NOT_CLAIMED",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.incident_direction_equiv",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.link_cycle",
+      "status": "OPEN_NOT_CLAIMED",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.incident_coefficients_opposite",
+      "status": "OPEN_NOT_CLAIMED",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.total_boundary_zero",
+      "status": "OPEN_NOT_CLAIMED",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.cube_edge_iff",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.cube_connected",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.chi_even",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.genus_formula",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.cube_genus_zero",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.pen_adjacent_seat",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.pen_oriented_square",
+      "status": "OPEN_NOT_CLAIMED",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.pen_return_four",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.pen_no_earlier_return",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.AtomSkinV1.pen_four_corners",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.PillowcaseV1.pillowRel_equivalence",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.PillowcaseV1.key_classifies",
+      "status": "OPEN_NOT_CLAIMED",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.PillowcaseV1.halfTurn_not_identity",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.PillowcaseV1.fixingHalfTurn_iff_multiples",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.PillowcaseV1.nonzero_translation_fixes_nothing",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.PillowcaseV1.fixingHalfTurn_iff_corner_class",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    },
+    {
+      "name": "FVLT.PillowcaseV1.four_corner_classes_distinct",
+      "status": "PRODUCER_COMPILE_AXIOMS_STRICT_REPLAY_PASS_PENDING_INDEPENDENT_REVIEW",
+      "standing": "FF2 instrument-tier frozen statement; no kernel status effect"
+    }
+  ]
+}

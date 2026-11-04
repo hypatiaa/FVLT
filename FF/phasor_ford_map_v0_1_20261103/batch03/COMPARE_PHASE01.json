@@ -1,0 +1,30 @@
+{
+  "schema": "ff3-source-comparison/1",
+  "verdict": "PASS",
+  "source_sha256": {
+    "FVLTRosetteFordDataV1.lean": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+    "FVLTRosetteFordPhaseV1.lean": "71024df4e8f6a1357ae22cc9d74c70da4fbf4f434a6fd1dbf33683c41470831f"
+  },
+  "freeze_sha256": "6c9d2f7671d233c0ac49c9af4bb887756ecbeaf63e894c4c8c7599346c2b2047",
+  "g1_import_closure_excluded": true,
+  "all_present_public_headers_match": true,
+  "data_definitions_exact": true,
+  "present_targets": [
+    "FVLT.PhasorFordV1.phasor_real_iff",
+    "FVLT.PhasorFordV1.integer_spin_phase_iff",
+    "FVLT.PhasorFordV1.integer_spin_parity",
+    "FVLT.PhasorFordV1.circleMap_amplitude_independent",
+    "FVLT.PhasorFordV1.phasor_alias_not_address_alias"
+  ],
+  "axiom_report_targets": [
+    "FVLT.PhasorFordV1.phasor_real_iff",
+    "FVLT.PhasorFordV1.integer_spin_phase_iff",
+    "FVLT.PhasorFordV1.integer_spin_parity",
+    "FVLT.PhasorFordV1.circleMap_amplitude_independent",
+    "FVLT.PhasorFordV1.phasor_alias_not_address_alias"
+  ],
+  "method": "Data exact accepted successor; five phase public headers copied verbatim from frozen phase section; bodies appended; no additional public declarations",
+  "definition_successor_sha256": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+  "repair_decision_sha256": "9f6c55b711221487d6904c813577a22d4b22dfd502bfa0faf11cbf280ce78f26",
+  "header_comparison": "Five frozen phase headers unchanged"
+}

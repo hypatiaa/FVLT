@@ -1,0 +1,143 @@
+{
+  "job": {
+    "phase": "FF3_DISCRETE",
+    "module": "FVLTRosetteFordSweepV1",
+    "mode": "compile",
+    "run_id": "CompileFVLTRosetteFordSweepV1Batch06Final02",
+    "template_sha256": "88bc77ed3d10dd24c23b9798137994e0806659086f0e26e3c5e3333f16ee6496",
+    "attempt_folder": "attempts/Batch06Final02",
+    "source_sha256": {
+      "FVLTRosetteFordDataV1.lean": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+      "FVLTRosetteFordPhaseV1.lean": "2a48f1c65b7a5a31cbeaecac2edf13f2a64fec583e2d70af6473f06a41917459",
+      "FVLTRosetteFordSweepV1.lean": "b780c36f727705014bc04ef70cd2aa2a258305e20776d8984bff8e1ce9d7ee39"
+    },
+    "dependency_olean_sha256": {
+      "FVLTRosetteFordDataV1.olean": "ccb8d144cdd85989dd5acd0f092c976094ed4b7136e173590bcbc617a222b8e9",
+      "FVLTRosetteFordPhaseV1.olean": "12055f4be01f0a2f16ccf1edcd57a615046e1bfa0595651ee39242c9d0ddb805"
+    },
+    "prerequisite_receipt_sha256": {
+      "CompileFVLTRosetteFordDataV1Batch02Data02.json": "b4496028b82ff179c554e9d5af1c26be65c4483c8029d6780e703eaf3cabd41f",
+      "axiomsFVLTRosetteFordDataV1Batch02Data02.json": "96f1ebfc3754e7efe2affe14947d126c3faaf2e02541192ef6fcd7224212bf94",
+      "replayFVLTRosetteFordDataV1Batch02Data02.json": "63bafb208a130df7e139bb77f98801b967de59f1313659008d891ec9a2041a59",
+      "CompileFVLTRosetteFordPhaseV1Batch03Phase02.json": "9b711c4bb26473ce9225d98fed79efda581c38775bb949cc5a520be592eafb5a",
+      "axiomsFVLTRosetteFordPhaseV1Batch03Phase02.json": "e86746675780ecb7beb640c29bff8208781e6a91d303d85cd76d352a6705e5fb",
+      "replayFVLTRosetteFordPhaseV1Batch03Phase02.json": "9d9c09089fa2bf7cddd7ac9309a87d42b835a9e96187c4bbbe72e3d70366e72b"
+    },
+    "signature_comparison_receipt_file": "COMPARE_FINAL02.json",
+    "signature_comparison_receipt_sha256": "409213ffd10c635f4a091b0cc1415bceabcaadfddb7573f225eaa3b21de907eb",
+    "deadline_file": "DEADLINE_BATCH06.json"
+  },
+  "runner_sha256": "643fef3438bd81e77b2471951724e8628ab6a93ccf9f1852c670990d09799eeb",
+  "command": [
+    "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+    "-j1",
+    "-s65536",
+    "-M7680",
+    "-D",
+    "Elab.async=false",
+    "-o",
+    "/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch06Final02/build/FVLTRosetteFordSweepV1.olean",
+    "/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch06Final02/src/FVLTRosetteFordSweepV1.lean"
+  ],
+  "started_unix": 1793787246.2014818,
+  "wall_cap_seconds": 240,
+  "transport": "100.92.188.6 60826 100.105.106.41 22",
+  "LEAN_PATH": "/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch06Final02/build:/home/saphir/rule30_theorem_library/v22/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v22/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v22/.lake/packages/Qq/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v22/.lake/packages/aesop/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v22/.lake/packages/batteries/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v22/.lake/packages/importGraph/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v22/.lake/packages/mathlib/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v22/.lake/packages/plausible/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v22/.lake/packages/proofwidgets/.lake/build/lib/lean",
+  "library": "/home/saphir/rule30_theorem_library/v22",
+  "imported_dependencies_reused": true,
+  "cpu_affinity": [
+    0
+  ],
+  "address_space_bytes": 8589934592,
+  "process_limit": 256,
+  "output_file_limit_bytes": 67108864,
+  "nice": 19,
+  "library_checksums_before": 396,
+  "project_import_closure": {
+    "/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch06Final02/src/FVLTRosetteFordSweepV1.lean": {
+      "sha256": "b780c36f727705014bc04ef70cd2aa2a258305e20776d8984bff8e1ce9d7ee39",
+      "imports": [
+        "FVLTRosetteFordPhaseV1",
+        "Mathlib.Data.Int.GCD"
+      ]
+    },
+    "/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch06Final02/src/FVLTRosetteFordPhaseV1.lean": {
+      "sha256": "2a48f1c65b7a5a31cbeaecac2edf13f2a64fec583e2d70af6473f06a41917459",
+      "imports": [
+        "FVLTRosetteFordDataV1"
+      ]
+    },
+    "/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch06Final02/src/FVLTRosetteFordDataV1.lean": {
+      "sha256": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+      "imports": [
+        "FVLTFareyArithmeticCompletionV1",
+        "FVLTFordExactCoordinatesV1",
+        "Mathlib.Data.Finset.Sort",
+        "Mathlib.NumberTheory.Divisors",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v22/theorems/FVLTFordExactCoordinatesV1.lean": {
+      "sha256": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+      "imports": [
+        "FVLTFordRationalV1",
+        "FVLTFordGeometryV1",
+        "Mathlib.Tactic"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v22/theorems/FVLTFordGeometryV1.lean": {
+      "sha256": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+      "imports": [
+        "FVLTFareyContactV1",
+        "Mathlib.Analysis.Complex.Norm",
+        "Mathlib.Data.Rat.Cast.Defs",
+        "Mathlib.Tactic"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v22/theorems/FVLTFareyContactV1.lean": {
+      "sha256": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+      "imports": [
+        "Mathlib.Data.Rat.Defs",
+        "Mathlib.Algebra.Order.Group.Unbundled.Abs",
+        "Mathlib.Algebra.Order.Ring.Int"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v22/theorems/FVLTFordRationalV1.lean": {
+      "sha256": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+      "imports": [
+        "Mathlib.Data.Rat.Defs"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v22/theorems/FVLTFareyArithmeticCompletionV1.lean": {
+      "sha256": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+      "imports": [
+        "FVLTFareyCertificatesV1",
+        "Mathlib.Data.Rat.Lemmas",
+        "Mathlib.Tactic"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v22/theorems/FVLTFareyCertificatesV1.lean": {
+      "sha256": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+      "imports": [
+        "FVLTFareyContactV1",
+        "Mathlib.Combinatorics.SimpleGraph.Connectivity.Finite",
+        "Mathlib.Combinatorics.SimpleGraph.Finite",
+        "Mathlib.NumberTheory.Divisors",
+        "Mathlib.Data.Rat.Lemmas",
+        "Mathlib.Tactic"
+      ]
+    }
+  },
+  "child_PATH": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin:/usr/local/bin:/usr/bin:/bin",
+  "exit_code": 0,
+  "timeout": false,
+  "seconds": 3.7708325386047363,
+  "log_sha256": "bbef9b7ab1defba3d07950e3e829a990891c7483c95f2f72a82f7b724aac75c5",
+  "log_bytes": 4302,
+  "peak_child_rss_kib": 3500696,
+  "source_unchanged": true,
+  "reviewed_files_unchanged": true,
+  "library_checksums_after": 396,
+  "olean_sha256": "01323e0ed04cdce790a8f6718026741a6fcc61d838984af77e9ebbc3aefd8742",
+  "accepted_result": true
+}

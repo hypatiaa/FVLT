@@ -1,0 +1,12 @@
+{
+  "observed_unix": 1793778950,
+  "host": "nucleus",
+  "transport": "Tailscale100.105.106.41",
+  "available_memory_mib": 28291,
+  "load_average": [
+    "0.00",
+    "0.00",
+    "0.07"
+  ],
+  "owner_thread": "01a18167-41de-74e0-882e-9171e642530f"
+}

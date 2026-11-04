@@ -1,0 +1,63 @@
+{
+  "mode": "negative_controls",
+  "statement_groups": 7,
+  "total_checks": 76957,
+  "total_failures": 25393,
+  "results": {
+    "NC1 v0.1 column law without abs": {
+      "checks": 26789,
+      "failures": 13350,
+      "first_failure": {
+        "u": -150,
+        "n": 1
+      }
+    },
+    "NC2 shellEvents m<=N": {
+      "checks": 192,
+      "failures": 36,
+      "first_failure": {
+        "B": 1,
+        "N": 2,
+        "s": "4/1"
+      }
+    },
+    "NC3 classify tangent with |det|=2": {
+      "checks": 20449,
+      "failures": 778,
+      "first_failure": {}
+    },
+    "NC4 parity without sign factor [float]": {
+      "checks": 18513,
+      "failures": 4752,
+      "first_failure": {
+        "t1": -5,
+        "s": -7
+      }
+    },
+    "NC5 phasor_real_iff at r=0 [float]": {
+      "checks": 93,
+      "failures": 80,
+      "first_failure": {
+        "s": "-11/1"
+      }
+    },
+    "NC6 shell parameterization for s<0": {
+      "checks": 105,
+      "failures": 21,
+      "first_failure": {
+        "N": 2,
+        "s": "-6/1"
+      }
+    },
+    "NC7 det taken unreduced": {
+      "checks": 10816,
+      "failures": 6376,
+      "first_failure": {
+        "a": -6,
+        "c": -6,
+        "q": 1,
+        "r": 2
+      }
+    }
+  }
+}

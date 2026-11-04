@@ -1,0 +1,12 @@
+{
+  "schema": "ff2-source-signature-comparison/1",
+  "verdict": "PASS",
+  "source_sha256": {
+    "FVLTAtomSkinDataV1.lean": "8d165af954019dd15fad6f7bf082922119d9364a3727fa59879d945fc5e8f085"
+  },
+  "freeze_sha256": "22650c5b0304d82bfd7d89a1bcfcb20884f6c11d104729aaf8187e678efd02c5",
+  "g1_import_closure_excluded": true,
+  "definition_successor_sha256": "a1ea047d677555c081cfda988487429446a6ab5f08e2b090427dc903d2012727",
+  "repair_decision_sha256": "d6a666bdeb3ad65bc294d29da7e0f54f5fce8af51695b058ee5591d0b07abcb9",
+  "method": "Exact AtomSkin namespace excerpt from accepted a1ea047d successor; seven targeted library/toolchain imports only, no projectimports; no theorem proof"
+}

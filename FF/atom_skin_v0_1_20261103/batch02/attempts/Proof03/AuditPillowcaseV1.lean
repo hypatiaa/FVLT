@@ -1,0 +1,7 @@
+import FVLTPillowcaseV1
+#print axioms FVLT.PillowcaseV1.pillowRel_equivalence
+#print axioms FVLT.PillowcaseV1.halfTurn_not_identity
+#print axioms FVLT.PillowcaseV1.fixingHalfTurn_iff_multiples
+#print axioms FVLT.PillowcaseV1.nonzero_translation_fixes_nothing
+#print axioms FVLT.PillowcaseV1.fixingHalfTurn_iff_corner_class
+#print axioms FVLT.PillowcaseV1.four_corner_classes_distinct

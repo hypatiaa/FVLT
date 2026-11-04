@@ -1,0 +1,347 @@
+import FVLTRosetteFordPhaseV1
+import Mathlib.Data.Int.GCD
+
+open FVLT.FareyContactV1 FVLT.FordExactCoordinatesV1
+namespace FVLT.PhasorFordV1
+
+theorem shell_contact_parameterization
+    (N : ℕ) (hN : 2 ≤ N) (s : ℚ) (hs0 : 0 ≤ s) (hsN : s ≤ (N : ℚ)) :
+    IsIntegral (phaseAddress 1 1 s N) ↔
+      ∃ m : ℕ, m ≤ N - 1 ∧ s = (m : ℚ) * (N : ℚ) / ((N : ℚ) - 1) := by
+  have hpos : (0 : ℚ) < (N : ℚ) := by exact_mod_cast (show 0 < N by omega)
+  have hden : (0 : ℚ) < (N : ℚ) - 1 := by
+    have ht : (2 : ℚ) ≤ (N : ℚ) := by exact_mod_cast hN
+    linarith
+  have hp : phaseAddress 1 1 s N = s * ((N : ℚ) - 1) / (N : ℚ) := by
+    unfold phaseAddress fordAddress
+    norm_num
+    field_simp [hpos.ne']
+    <;> ring
+  rw [hp]
+  constructor
+  · rintro ⟨k, hk⟩
+    have hk0 : (0 : ℚ) ≤ (k : ℚ) := by
+      rw [← hk]
+      positivity
+    have hkz : (0 : ℤ) ≤ k := by exact_mod_cast hk0
+    have hkm : (k.toNat : ℚ) = (k : ℚ) := by
+      exact_mod_cast (Int.toNat_of_nonneg hkz)
+    have hkle : (k : ℚ) ≤ (N : ℚ) - 1 := by
+      rw [← hk]
+      apply (div_le_iff₀ hpos).mpr
+      nlinarith [hsN]
+    refine ⟨k.toNat, ?_, ?_⟩
+    · have hle : (k.toNat : ℚ) ≤ ((N - 1 : ℕ) : ℚ) := by
+        rw [hkm, Nat.cast_sub (show 1 ≤ N by omega), Nat.cast_one]
+        exact hkle
+      exact_mod_cast hle
+    · apply (eq_div_iff hden.ne').mpr
+      rw [hkm]
+      have he := (div_eq_iff hpos.ne').mp hk
+      nlinarith [he]
+  · rintro ⟨m, hm, rfl⟩
+    refine ⟨(m : ℤ), ?_⟩
+    push_cast
+    field_simp [hpos.ne', hden.ne']
+    <;> ring
+
+theorem shell_phasor_contact_iff
+    (N : ℕ) (hN : 2 ≤ N) (s : ℚ) (hs0 : 0 ≤ s) (hsN : s ≤ (N : ℚ))
+    (r : ℝ) (hr : r ≠ 0) :
+    (phasorValue 1 1 s N r).im = 0 ↔
+      ∃ m : ℕ, m ≤ N - 1 ∧ s = (m : ℚ) * (N : ℚ) / ((N : ℚ) - 1) := by
+  rw [phasor_real_iff 1 1 s N (by omega) r hr]
+  exact shell_contact_parameterization N hN s hs0 hsN
+
+theorem shell_contact_address (N m : ℕ) (hN : 2 ≤ N) (hm : m ≤ N - 1) :
+    fordAddress 1 ((m : ℚ) * (N : ℚ) / ((N : ℚ) - 1)) N =
+      (m : ℚ) / ((N : ℚ) - 1) := by
+  have hn : (N : ℚ) ≠ 0 := by exact_mod_cast (show N ≠ 0 by omega)
+  have hd : (N : ℚ) - 1 ≠ 0 := by
+    have ht : (2 : ℚ) ≤ (N : ℚ) := by exact_mod_cast hN
+    linarith
+  unfold fordAddress
+  norm_num
+  field_simp [hn, hd] <;> ring
+
+theorem fareyList_membership (B : ℕ) (hB : 1 ≤ B) (x : ℚ) :
+    x ∈ fareyList B ↔ x ∈ fareySet B := by
+  exact Finset.mem_sort (· ≤ ·)
+
+theorem fareyList_strict (B : ℕ) (hB : 1 ≤ B) : (fareyList B).Pairwise (· < ·) := by
+  exact (Finset.sortedLT_sort (fareySet B)).pairwise
+
+
+private theorem unit_numerator (x : ℚ) (hx0 : 0 ≤ x) (hx1 : x ≤ 1) :
+    (x.num.natAbs : ℚ) = (x.num : ℚ) ∧ x.num.natAbs ≤ x.den := by
+  have hd : (0 : ℚ) < (x.den : ℚ) := by exact_mod_cast x.den_pos
+  have he : (x.num : ℚ) = x * (x.den : ℚ) := (div_eq_iff hd.ne').mp (Rat.num_div_den x)
+  have hnq : (0 : ℚ) ≤ (x.num : ℚ) := by rw [he]; positivity
+  have hnz : (0 : ℤ) ≤ x.num := by exact_mod_cast hnq
+  have hnm : (x.num.natAbs : ℤ) = x.num := by rw [Int.natCast_natAbs, abs_of_nonneg hnz]
+  have hmq : (x.num.natAbs : ℚ) = (x.num : ℚ) := by
+    simpa only [Int.cast_natCast] using congrArg (fun z : ℤ => (z : ℚ)) hnm
+  refine ⟨hmq, ?_⟩
+  have hle : (x.num.natAbs : ℚ) ≤ (x.den : ℚ) := by
+    rw [hmq, he]
+    simpa using mul_le_mul_of_nonneg_right hx1 hd.le
+  exact_mod_cast hle
+
+private theorem raw_den_bound (a : ℤ) (q : ℕ) (hq : 0 < q) : (rawValue a q).den ≤ q := by
+  have hu := rawValue_canonical 1 q hq (by simp)
+  have hv : (a : ℚ) * rawValue 1 q = rawValue a q := by simp [rawValue, div_eq_mul_inv]
+  have hd := Rat.mul_den_dvd (a : ℚ) (rawValue 1 q)
+  have hdiv : (rawValue a q).den ∣ q := by simpa [hv, hu.2] using hd
+  exact Nat.le_of_dvd hq hdiv
+
+theorem mem_shellEvents
+    (B : ℕ) (hB : 1 ≤ B) (N : ℕ) (s : ℚ) :
+    (N, s) ∈ shellEvents B ↔
+      2 ≤ N ∧ N ≤ B + 1 ∧ 0 ≤ s ∧ s ≤ (N : ℚ) ∧ IsIntegral (phaseAddress 1 1 s N) := by
+  constructor
+  · intro hevent
+    rcases Finset.mem_biUnion.mp hevent with ⟨N', hN', hi⟩
+    rcases Finset.mem_image.mp hi with ⟨m, hm, he⟩
+    have hne : N' = N := congrArg Prod.fst he
+    subst N'
+    have hse : (m : ℚ) * (N : ℚ) / ((N : ℚ) - 1) = s := congrArg Prod.snd he
+    rcases Finset.mem_Icc.mp hN' with ⟨hN2, hNB⟩
+    have hmlt : m < N := Finset.mem_range.mp hm
+    have hd : (0 : ℚ) < (N : ℚ) - 1 := by
+      have ht : (2 : ℚ) ≤ (N : ℚ) := by exact_mod_cast hN2
+      linarith
+    have hs0 : (0 : ℚ) ≤ s := by rw [← hse]; positivity
+    have hsN : s ≤ (N : ℚ) := by
+      rw [← hse]
+      apply (div_le_iff₀ hd).mpr
+      have hmn : (m : ℚ) + 1 ≤ (N : ℚ) := by exact_mod_cast (show m + 1 ≤ N by omega)
+      have hm' : (m : ℚ) ≤ (N : ℚ) - 1 := by linarith
+      simpa [mul_comm] using mul_le_mul_of_nonneg_right hm' (show (0 : ℚ) ≤ (N : ℚ) by positivity)
+    exact ⟨hN2, hNB, hs0, hsN,
+      (shell_contact_parameterization N hN2 s hs0 hsN).mpr ⟨m, by omega, hse.symm⟩⟩
+  · rintro ⟨hN2, hNB, hs0, hsN, hint⟩
+    rcases (shell_contact_parameterization N hN2 s hs0 hsN).mp hint with ⟨m, hm, hse⟩
+    apply Finset.mem_biUnion.mpr
+    refine ⟨N, Finset.mem_Icc.mpr ⟨hN2, hNB⟩, ?_⟩
+    exact Finset.mem_image.mpr ⟨m, Finset.mem_range.mpr (by omega), Prod.ext rfl hse.symm⟩
+
+theorem mem_fareySet (B : ℕ) (hB : 1 ≤ B) (x : ℚ) :
+    x ∈ fareySet B ↔ 0 ≤ x ∧ x ≤ 1 ∧ x.den ≤ B := by
+  constructor
+  · intro hx
+    rcases Finset.mem_biUnion.mp hx with ⟨q, hq, hi⟩
+    rcases Finset.mem_Icc.mp hq with ⟨hq1, hqB⟩
+    rcases Finset.mem_image.mp hi with ⟨m, hm, rfl⟩
+    rcases Finset.mem_filter.mp hm with ⟨hmrange, hmc⟩
+    have hmle : m ≤ q := by have := Finset.mem_range.mp hmrange; omega
+    have hd : ((m : ℚ) / (q : ℚ)).den = q := by
+      simpa [rawValue] using (rawValue_canonical (m : ℤ) q (by omega) (by simpa using hmc)).2
+    have hqpos : (0 : ℚ) < (q : ℚ) := by exact_mod_cast (show 0 < q by omega)
+    refine ⟨by positivity, (div_le_one hqpos).mpr (by exact_mod_cast hmle), ?_⟩
+    simpa [hd] using hqB
+  · rintro ⟨hx0, hx1, hxB⟩
+    have hn := unit_numerator x hx0 hx1
+    apply Finset.mem_biUnion.mpr
+    refine ⟨x.den, Finset.mem_Icc.mpr ⟨by have := x.den_pos; omega, hxB⟩, ?_⟩
+    refine Finset.mem_image.mpr ⟨x.num.natAbs,
+      Finset.mem_filter.mpr ⟨Finset.mem_range.mpr (by omega), x.reduced⟩, ?_⟩
+    rw [hn.1]
+    exact Rat.num_div_den x
+
+theorem shell_addresses_eq_farey (B : ℕ) (hB : 1 ≤ B) :
+    shellEventAddresses B = fareySet B := by
+  ext x
+  constructor
+  · intro hx
+    rcases Finset.mem_image.mp hx with ⟨⟨N, s⟩, hevent, haddr⟩
+    rcases (mem_shellEvents B hB N s).mp hevent with ⟨hN2, hNB, hs0, hsN, hint⟩
+    rcases (shell_contact_parameterization N hN2 s hs0 hsN).mp hint with ⟨m, hm, hse⟩
+    have hv : fordAddress 1 s N = rawValue (m : ℤ) (N - 1) := by
+      rw [hse, shell_contact_address N m hN2 hm]
+      simp [rawValue, Nat.cast_sub (show 1 ≤ N by omega)]
+    change fordAddress 1 s N = x at haddr
+    rw [← haddr, hv]
+    apply (mem_fareySet B hB _).mpr
+    have hq : 0 < N - 1 := by omega
+    have hqr : (0 : ℚ) < ((N - 1 : ℕ) : ℚ) := by exact_mod_cast hq
+    refine ⟨by unfold rawValue; positivity, ?_, (raw_den_bound (m : ℤ) (N - 1) hq).trans (by omega)⟩
+    change (m : ℚ) / ((N - 1 : ℕ) : ℚ) ≤ 1
+    exact (div_le_one hqr).mpr (by exact_mod_cast hm)
+  · intro hx
+    rcases (mem_fareySet B hB x).mp hx with ⟨hx0, hx1, hxB⟩
+    have hm := unit_numerator x hx0 hx1
+    let N := x.den + 1
+    let m := x.num.natAbs
+    let s : ℚ := (m : ℚ) * (N : ℚ) / ((N : ℚ) - 1)
+    have hN2 : 2 ≤ N := by dsimp [N]; have := x.den_pos; omega
+    have hNB : N ≤ B + 1 := by dsimp [N]; omega
+    have hmlt : m < N := by dsimp [m, N]; omega
+    apply Finset.mem_image.mpr
+    refine ⟨(N, s), ?_, ?_⟩
+    · apply Finset.mem_biUnion.mpr
+      refine ⟨N, Finset.mem_Icc.mpr ⟨hN2, hNB⟩, ?_⟩
+      exact Finset.mem_image.mpr ⟨m, Finset.mem_range.mpr hmlt, rfl⟩
+    · change fordAddress 1 s N = x
+      dsimp [s]
+      rw [shell_contact_address N m hN2 (by omega)]
+      dsimp [N, m]
+      push_cast
+      rw [hm.1]
+      simpa using Rat.num_div_den x
+
+
+private theorem bounded_bezout (a b B : ℕ) (hb : 0 < b) (hbB : b ≤ B)
+    (hcop : Nat.Coprime a b) :
+    ∃ c d : ℤ, 0 < d ∧ d ≤ (B : ℤ) ∧ (B : ℤ) < (b : ℤ) + d ∧
+      (b : ℤ) * c - (a : ℤ) * d = 1 := by
+  let c0 := Nat.gcdB a b
+  let d0 := -Nat.gcdA a b
+  let k := ((B : ℤ) - d0) / (b : ℤ)
+  let c := c0 + (a : ℤ) * k
+  let d := d0 + (b : ℤ) * k
+  have hbez : (b : ℤ) * c0 - (a : ℤ) * d0 = 1 := by
+    calc
+      (b : ℤ) * c0 - (a : ℤ) * d0 =
+          (a : ℤ) * Nat.gcdA a b + (b : ℤ) * Nat.gcdB a b := by dsimp [c0, d0]; ring
+      _ = (Nat.gcd a b : ℤ) := (Nat.gcd_eq_gcd_ab a b).symm
+      _ = 1 := by rw [hcop.gcd_eq_one]; rfl
+  have hbz : (0 : ℤ) < (b : ℤ) := by exact_mod_cast hb
+  have hBz : (b : ℤ) ≤ (B : ℤ) := by exact_mod_cast hbB
+  have hr0 := Int.emod_nonneg ((B : ℤ) - d0) hbz.ne'
+  have hrlt := Int.emod_lt_of_pos ((B : ℤ) - d0) hbz
+  have hdiv := Int.mul_ediv_add_emod ((B : ℤ) - d0) (b : ℤ)
+  have hdpos : 0 < d := by dsimp [d, k]; nlinarith [hdiv, hr0, hrlt]
+  have hdB : d ≤ (B : ℤ) := by dsimp [d, k]; nlinarith [hdiv, hr0]
+  have hlarge : (B : ℤ) < (b : ℤ) + d := by dsimp [d, k]; nlinarith [hdiv, hrlt]
+  refine ⟨c, d, hdpos, hdB, hlarge, ?_⟩
+  calc
+    (b : ℤ) * c - (a : ℤ) * d = (b : ℤ) * c0 - (a : ℤ) * d0 := by dsimp [c, d]; ring
+    _ = 1 := hbez
+
+private theorem interval_denominator_bound (x y z : ℚ)
+    (hdet : (x.den : ℤ) * y.num - x.num * (y.den : ℤ) = 1)
+    (hxz : x < z) (hzy : z < y) : x.den + y.den ≤ z.den := by
+  have hxp : (0 : ℚ) < (x.den : ℚ) := by exact_mod_cast x.den_pos
+  have hyp : (0 : ℚ) < (y.den : ℚ) := by exact_mod_cast y.den_pos
+  have hzp : (0 : ℚ) < (z.den : ℚ) := by exact_mod_cast z.den_pos
+  have hlq : (x.num : ℚ) * (z.den : ℚ) < (z.num : ℚ) * (x.den : ℚ) := by
+    apply (div_lt_div_iff₀ hxp hzp).mp
+    simpa only [Rat.num_div_den] using hxz
+  have hrq : (z.num : ℚ) * (y.den : ℚ) < (y.num : ℚ) * (z.den : ℚ) := by
+    apply (div_lt_div_iff₀ hzp hyp).mp
+    simpa only [Rat.num_div_den] using hzy
+  have hl : (1 : ℤ) ≤ z.num * (x.den : ℤ) - x.num * (z.den : ℤ) := by
+    have hh : x.num * (z.den : ℤ) < z.num * (x.den : ℤ) := by exact_mod_cast hlq
+    omega
+  have hr : (1 : ℤ) ≤ y.num * (z.den : ℤ) - z.num * (y.den : ℤ) := by
+    have hh : z.num * (y.den : ℤ) < y.num * (z.den : ℤ) := by exact_mod_cast hrq
+    omega
+  have he : (y.num * (z.den : ℤ) - z.num * (y.den : ℤ)) * (x.den : ℤ) +
+      (z.num * (x.den : ℤ) - x.num * (z.den : ℤ)) * (y.den : ℤ) = (z.den : ℤ) := by
+    calc
+      _ = (z.den : ℤ) * ((x.den : ℤ) * y.num - x.num * (y.den : ℤ)) := by ring
+      _ = (z.den : ℤ) := by rw [hdet, mul_one]
+  have h1 := mul_le_mul_of_nonneg_right hr (show (0 : ℤ) ≤ (x.den : ℤ) by positivity)
+  have h2 := mul_le_mul_of_nonneg_right hl (show (0 : ℤ) ≤ (y.den : ℤ) by positivity)
+  have hh : (x.den : ℤ) + (y.den : ℤ) ≤ (z.den : ℤ) := by nlinarith [he, h1, h2]
+  exact_mod_cast hh
+
+
+private theorem exists_bounded_successor (B : ℕ) (hB : 1 ≤ B) (x : ℚ)
+    (hx : x ∈ fareySet B) (hx1 : x < 1) :
+    ∃ w : ℚ, w ∈ fareySet B ∧ x < w ∧
+      (x.den : ℤ) * w.num - x.num * (w.den : ℤ) = 1 ∧ B < x.den + w.den := by
+  rcases (mem_fareySet B hB x).mp hx with ⟨hx0, hxle, hxB⟩
+  have hnum := unit_numerator x hx0 hxle
+  have ha : (x.num.natAbs : ℤ) = x.num := Rat.intCast_injective (by
+    simpa only [Int.cast_natCast] using hnum.1)
+  rcases bounded_bezout x.num.natAbs x.den B x.den_pos hxB x.reduced with
+    ⟨c, d, hdpos, hdB, hlarge, hdet⟩
+  rw [ha] at hdet
+  let q := d.toNat
+  have hqd : (q : ℤ) = d := Int.toNat_of_nonneg hdpos.le
+  have hqpos : 0 < q := by
+    have hh : (0 : ℤ) < (q : ℤ) := by rw [hqd]; exact hdpos
+    exact_mod_cast hh
+  have hqB : q ≤ B := by
+    have hh : (q : ℤ) ≤ (B : ℤ) := by rw [hqd]; exact hdB
+    exact_mod_cast hh
+  have hbq : (0 : ℚ) < (x.den : ℚ) := by exact_mod_cast x.den_pos
+  have hqq : (0 : ℚ) < (q : ℚ) := by exact_mod_cast hqpos
+  have hbz : (0 : ℤ) < (x.den : ℤ) := by exact_mod_cast x.den_pos
+  have hdetraw : |x.num * (q : ℤ) - c * (x.den : ℤ)| = 1 := by
+    rw [hqd, show x.num * d - c * (x.den : ℤ) = -1 by nlinarith [hdet]]
+    norm_num
+  have hred := (raw_det_one_coprime x.num c x.den q x.den_pos hqpos hdetraw).2.1
+  have hw := rawValue_canonical c q hqpos hred
+  let w := rawValue c q
+  have hxw : x < w := by
+    change x < (c : ℚ) / (q : ℚ)
+    have hcross : (x.num : ℚ) * (q : ℚ) < (c : ℚ) * (x.den : ℚ) := by
+      have hh : x.num * (q : ℤ) < c * (x.den : ℤ) := by rw [hqd]; nlinarith [hdet]
+      exact_mod_cast hh
+    calc
+      x = (x.num : ℚ) / (x.den : ℚ) := (Rat.num_div_den x).symm
+      _ < (c : ℚ) / (q : ℚ) := (div_lt_div_iff₀ hbq hqq).mpr hcross
+  have haw : x.num < (x.den : ℤ) := by
+    have hh : (x.num : ℚ) < (x.den : ℚ) := (div_lt_one hbq).mp (by
+      simpa only [Rat.num_div_den] using hx1)
+    exact_mod_cast hh
+  have hmul := mul_le_mul_of_nonneg_right (show x.num ≤ (x.den : ℤ) - 1 by omega) hdpos.le
+  have hcd : c ≤ d := by
+    apply (mul_le_mul_left hbz).mp
+    have hd1 : (1 : ℤ) ≤ d := by omega
+    nlinarith [hdet, hmul, hd1]
+  have hwle : w ≤ 1 := by
+    change (c : ℚ) / (q : ℚ) ≤ 1
+    apply (div_le_one hqq).mpr
+    have hh : c ≤ (q : ℤ) := by rw [hqd]; exact hcd
+    exact_mod_cast hh
+  refine ⟨w, (mem_fareySet B hB w).mpr ⟨hx0.trans hxw.le, hwle, ?_⟩, hxw, ?_, ?_⟩
+  · change (rawValue c q).den ≤ B
+    rw [hw.2]
+    exact hqB
+  · change (x.den : ℤ) * (rawValue c q).num - x.num * ((rawValue c q).den : ℤ) = 1
+    rw [hw.1, hw.2, hqd]
+    exact hdet
+  · change B < x.den + (rawValue c q).den
+    rw [hw.2]
+    have hh : (B : ℤ) < (x.den : ℤ) + (q : ℤ) := by rw [hqd]; exact hlarge
+    exact_mod_cast hh
+
+theorem farey_consecutive_det
+    (B : ℕ) (hB : 1 ≤ B) (k : ℕ)
+    (hk0 : k < (fareyList B).length) (hk1 : k + 1 < (fareyList B).length) :
+    let x := (fareyList B).get ⟨k, hk0⟩
+    let y := (fareyList B).get ⟨k + 1, hk1⟩
+    (x.den : ℤ) * y.num - x.num * (y.den : ℤ) = 1 := by
+  let x := (fareyList B).get ⟨k, hk0⟩
+  let y := (fareyList B).get ⟨k + 1, hk1⟩
+  change (x.den : ℤ) * y.num - x.num * (y.den : ℤ) = 1
+  have hsort : StrictMono (fareyList B).get := (fareyList_strict B hB).sortedLT
+  have hxy : x < y := hsort (show (⟨k, hk0⟩ : Fin (fareyList B).length) < ⟨k + 1, hk1⟩ from Nat.lt_succ_self k)
+  have hxm : x ∈ fareySet B := (fareyList_membership B hB x).mp (List.get_mem _ _)
+  have hym : y ∈ fareySet B := (fareyList_membership B hB y).mp (List.get_mem _ _)
+  have hy1 : y ≤ 1 := ((mem_fareySet B hB y).mp hym).2.1
+  have hx1 : x < 1 := hxy.trans_le hy1
+  rcases exists_bounded_successor B hB x hxm hx1 with ⟨w, hwm, hxw, hdet, hlarge⟩
+  have hnext (z : ℚ) (hzm : z ∈ fareySet B) (hxz : x < z) : y ≤ z := by
+    have hzin : z ∈ fareyList B := (fareyList_membership B hB z).mpr hzm
+    rcases List.mem_iff_getElem.mp hzin with ⟨i, hi, he⟩
+    have heget : (fareyList B).get ⟨i, hi⟩ = z := he
+    have hki : (⟨k, hk0⟩ : Fin (fareyList B).length) < ⟨i, hi⟩ :=
+      hsort.lt_iff_lt.mp (by simpa only [x, heget] using hxz)
+    have hle : k + 1 ≤ i := by have hh : k < i := hki; omega
+    have hh := hsort.monotone (show (⟨k + 1, hk1⟩ : Fin (fareyList B).length) ≤ ⟨i, hi⟩ from hle)
+    simpa only [y, heget] using hh
+  have hyw : y ≤ w := hnext w hwm hxw
+  have hwy : w ≤ y := by
+    by_contra hn
+    have hywlt : y < w := lt_of_not_ge hn
+    have hden := interval_denominator_bound x w y hdet hxy hywlt
+    have hyB := ((mem_fareySet B hB y).mp hym).2.2
+    omega
+  have heq : y = w := le_antisymm hyw hwy
+  simpa only [← heq] using hdet
+
+end FVLT.PhasorFordV1

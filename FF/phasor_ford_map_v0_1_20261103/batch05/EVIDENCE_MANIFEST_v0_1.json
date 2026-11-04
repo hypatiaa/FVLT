@@ -1,0 +1,196 @@
+{
+  "schema": "ff3-batch05-evidence/1",
+  "status": "PRODUCER_LOCAL_PASS_36_OF_37_INDEPENDENT_PENDING",
+  "files": [
+    {
+      "file": "axiomsFVLTRosetteFordSweepV1Batch05Sweep02.json",
+      "sha256": "7d9e9ac2aa2f9ce30c4f2b99c6ec5e8875d4633e79d8f4bf49de090886fa3740",
+      "bytes": 8304
+    },
+    {
+      "file": "axiomsFVLTRosetteFordSweepV1Batch05Sweep02.log",
+      "sha256": "8a8f64a7aaaa87679a44f2b06a44badf4888fc6f0924ae1f55392b8d8cdb1ae3",
+      "bytes": 511
+    },
+    {
+      "file": "axiomsFVLTRosetteFordSweepV1Batch05Sweep04.json",
+      "sha256": "60e0dd5cc078169c23053a43043ec063ac609aaaec516f3a793783e2f846b7cd",
+      "bytes": 8783
+    },
+    {
+      "file": "axiomsFVLTRosetteFordSweepV1Batch05Sweep04.log",
+      "sha256": "aa33a53499522360f41ca5ced0151b1990c032168b3ad03d72f07e53eeb2f485",
+      "bytes": 802
+    },
+    {
+      "file": "BATCH05_CLOSE_v0_1.json",
+      "sha256": "73645a42728e5d1f4377760c8846f0ff3a93c9790f79815e5c7260b328d5bb53",
+      "bytes": 396
+    },
+    {
+      "file": "BATCH05_STATUS_v0_1.md",
+      "sha256": "c6b595656aba8f2360c5eb068153e49d4a8dab51181dd933b50d840218ace7e4",
+      "bytes": 4770
+    },
+    {
+      "file": "BOUND_BATCH05_SWEEP03.json",
+      "sha256": "7f6dc69f4711a0a2d03a06438789b63c3d4a15ce45894a795918ef4e5d7ebf0d",
+      "bytes": 4903
+    },
+    {
+      "file": "BOUND_BATCH05.json",
+      "sha256": "146cb70d5ac2a0e9ad383afe1db5d719ff0614e35143b8d4c65c552276bb9527",
+      "bytes": 4895
+    },
+    {
+      "file": "CAPACITY_BATCH05_SWEEP03.json",
+      "sha256": "eb79da47dc4cf4cad5390b1970c5b53ab35dfd2941819ff2bf7fea2b33b9deb5",
+      "bytes": 221
+    },
+    {
+      "file": "CAPACITY_BATCH05.json",
+      "sha256": "8ca55cff21be8b7edafa4f6fdf75f98c053088528b6b50367de90ecc08b1cce3",
+      "bytes": 221
+    },
+    {
+      "file": "COMPARE_SWEEP01.json",
+      "sha256": "8f70e35d6f0942baccc6be7292eeb5b7a2b88689484b3199b8600b970020f07b",
+      "bytes": 1607
+    },
+    {
+      "file": "COMPARE_SWEEP02.json",
+      "sha256": "f8993109c69f1f95b0fd0fbee4f612d0ecf27053ab925777aa83e5b0a5d8aff8",
+      "bytes": 1583
+    },
+    {
+      "file": "COMPARE_SWEEP03.json",
+      "sha256": "39135eb04eef42a660acb338e5aad7013623952ee1c50e443ff9695b03688da1",
+      "bytes": 1852
+    },
+    {
+      "file": "COMPARE_SWEEP04.json",
+      "sha256": "f09311a48c71a3f3095415fad4e0d51e263e1aa289b98a005a4134e85955a9cd",
+      "bytes": 1842
+    },
+    {
+      "file": "CompileFVLTRosetteFordSweepV1Batch05Sweep01.json",
+      "sha256": "511e498e9cf98e33bd597361132a501fbc3ddb1a8972dce2e7993ec60a4976e3",
+      "bytes": 7052
+    },
+    {
+      "file": "CompileFVLTRosetteFordSweepV1Batch05Sweep01.log",
+      "sha256": "f8a7c7fdd82ab7bad61b53ced01cfceb4bec68a87ce8a71af8b6d583138423d2",
+      "bytes": 3374
+    },
+    {
+      "file": "CompileFVLTRosetteFordSweepV1Batch05Sweep02.json",
+      "sha256": "5b73afa48b6966c65f81a35a222d6cd44f14c8ef15c370c952b459fd601f52a1",
+      "bytes": 7138
+    },
+    {
+      "file": "CompileFVLTRosetteFordSweepV1Batch05Sweep02.log",
+      "sha256": "5c044ea44e87d49cd4276934a9fa6c79fd237c96a34ea03e1ba4cd9b7b6c341c",
+      "bytes": 3477
+    },
+    {
+      "file": "CompileFVLTRosetteFordSweepV1Batch05Sweep03.json",
+      "sha256": "feb3e30f2e52bec37c5e82ca4bff7ccdd84f9941e4bdb21b17d0710b412ac73b",
+      "bytes": 7052
+    },
+    {
+      "file": "CompileFVLTRosetteFordSweepV1Batch05Sweep03.log",
+      "sha256": "72882cf6513b597364da4eabad9b5ad661f59c6f72ddcc813beb1c81430862c4",
+      "bytes": 4515
+    },
+    {
+      "file": "CompileFVLTRosetteFordSweepV1Batch05Sweep04.json",
+      "sha256": "a969efbbeccae84a8e15e9a1daf7a16fc981a45e2678d12254cea5444ca3f28e",
+      "bytes": 7137
+    },
+    {
+      "file": "CompileFVLTRosetteFordSweepV1Batch05Sweep04.log",
+      "sha256": "0ae6de6b897a7c0d758ae54c42ca65f7f60485abe3a097f35bf7eda47e297c54",
+      "bytes": 4302
+    },
+    {
+      "file": "DEADLINE_BATCH05.json",
+      "sha256": "64fd4b9af85b1bb88bcb2f5046b960ad4f6117685b7d05090cc0547944603988",
+      "bytes": 145
+    },
+    {
+      "file": "HOST_RESERVATION_BATCH05.json",
+      "sha256": "2ce5c020c7d90caabe1b8cbdc06ae773eb661260d42a65b8ddca5ce5ebceef26",
+      "bytes": 257
+    },
+    {
+      "file": "JOB_axiomsFVLTRosetteFordSweepV1Batch05Sweep02.json",
+      "sha256": "2c195b2cc46e0de71d4f64a030a47c07a8e1671c5c158cf371181f0a546a65d8",
+      "bytes": 2619
+    },
+    {
+      "file": "JOB_axiomsFVLTRosetteFordSweepV1Batch05Sweep04.json",
+      "sha256": "9e5dd114d1c5e08762c4c050a9514b6e5b320ae4bbc2c0c120eec9951b42fdb0",
+      "bytes": 2751
+    },
+    {
+      "file": "JOB_CompileFVLTRosetteFordSweepV1Batch05Sweep01.json",
+      "sha256": "c3a23fe7f88531e94afca85c5fca0ecc8df656c30d780916e0f3a48eef9ffb0a",
+      "bytes": 1848
+    },
+    {
+      "file": "JOB_CompileFVLTRosetteFordSweepV1Batch05Sweep02.json",
+      "sha256": "a010fcf871144bc9af380196a834204ccedeeb08e9406c1182714bdfce6c8bb2",
+      "bytes": 1848
+    },
+    {
+      "file": "JOB_CompileFVLTRosetteFordSweepV1Batch05Sweep03.json",
+      "sha256": "c00053e8f4ce582fdf6d7ac14871e16c212b45559a6aca7d487856b7161bcb06",
+      "bytes": 1848
+    },
+    {
+      "file": "JOB_CompileFVLTRosetteFordSweepV1Batch05Sweep04.json",
+      "sha256": "8c265fdeedd89842fc94d1c4da8719067a2a808e8a219e16330a8b90174f218b",
+      "bytes": 1848
+    },
+    {
+      "file": "JOB_replayFVLTRosetteFordSweepV1Batch05Sweep02.json",
+      "sha256": "acfed25fbcb4841cc5cf554d0206cd4786b4d7b878bcdb58157821db018295ec",
+      "bytes": 2187
+    },
+    {
+      "file": "JOB_replayFVLTRosetteFordSweepV1Batch05Sweep04.json",
+      "sha256": "8a90258fc418fe8e3989a607feb9fdf5c98afb53f088562278564ade166f0a60",
+      "bytes": 2187
+    },
+    {
+      "file": "LAST_OBLIGATION_PLAN_v0_1.md",
+      "sha256": "d12bc674a920cacf87324064354fba8f2aafe4d8aff6c6f925457e489061a549",
+      "bytes": 2790
+    },
+    {
+      "file": "replayFVLTRosetteFordSweepV1Batch05Sweep02.json",
+      "sha256": "2a3d634628b6da017be40430565ae6f78432f68d890f6455bfcb56c967caddf5",
+      "bytes": 7261
+    },
+    {
+      "file": "replayFVLTRosetteFordSweepV1Batch05Sweep02.log",
+      "sha256": "9738beefce096f546ea4b6118adbe429ee25026776f6eddc3da47e380d085c89",
+      "bytes": 164570
+    },
+    {
+      "file": "replayFVLTRosetteFordSweepV1Batch05Sweep04.json",
+      "sha256": "0a25a3677ef57c1b1d18edfc8d6cc672358625eea2a47d2516301a8c1358bcca",
+      "bytes": 7259
+    },
+    {
+      "file": "replayFVLTRosetteFordSweepV1Batch05Sweep04.log",
+      "sha256": "89aa7520b21bd1f3cbe1db27aa13a2bc0feb1663ac960ba1b4cc5adc00cc5370",
+      "bytes": 167010
+    }
+  ],
+  "data_source_sha256": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+  "phase_source_sha256": "2a48f1c65b7a5a31cbeaecac2edf13f2a64fec583e2d70af6473f06a41917459",
+  "sweep_source_sha256": "eebe55f30df902c43f7b1634b39f502917f037ee82cb9f719e943baeff915deb",
+  "remaining_theorem": "farey_consecutive_det",
+  "statement_comparison": "EightfrozenSweepheadersLFunchanged; dependencybytespreserved"
+}

@@ -1,0 +1,14 @@
+{
+  "schema": "ff2-source-signature-comparison/1",
+  "verdict": "PASS",
+  "source_sha256": {
+    "FVLTAtomSkinDataV1.lean": "152a9583eba6484d054b5d7218b6ec31fc5a43ce62be56dd1c98865280d5fec7",
+    "FVLTPillowcaseDataV1.lean": "b8a03b38d0e8a8defb68bc93701f9c6ded0a8ff8ce9e9c9f1af636790ce3bcd2"
+  },
+  "freeze_sha256": "22650c5b0304d82bfd7d89a1bcfcb20884f6c11d104729aaf8187e678efd02c5",
+  "g1_import_closure_excluded": true,
+  "method": "Exact namespace blocks from original frozen definitions; six targeted library/toolchain imports, no project imports; boilerplate repair authorized1452",
+  "original_definition_namespaces_byte_equal": true,
+  "headers_unchanged": "b4484f6e148291dd20512e58ce4ec81b4bdf08527f4bd66b3e304cbb2654785a",
+  "prior_attempt": "Data01 remains preserved and excluded from acceptance due to launch before1450posting"
+}

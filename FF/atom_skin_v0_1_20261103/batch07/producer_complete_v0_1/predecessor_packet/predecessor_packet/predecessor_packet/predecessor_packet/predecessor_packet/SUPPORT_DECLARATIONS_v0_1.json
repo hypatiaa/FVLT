@@ -1,0 +1,49 @@
+{
+  "schema": "ff2-support-inventory/1",
+  "private_helpers": [
+    {
+      "kind": "def",
+      "source_name": "parityBit",
+      "visibility": "private",
+      "scope": "proof support only; audited by strict replay"
+    },
+    {
+      "kind": "theorem",
+      "source_name": "parityBit_mul",
+      "visibility": "private",
+      "scope": "proof support only; audited by strict replay"
+    },
+    {
+      "kind": "theorem",
+      "source_name": "corner_fst_scaled",
+      "visibility": "private",
+      "scope": "proof support only; audited by strict replay"
+    },
+    {
+      "kind": "theorem",
+      "source_name": "corner_snd_scaled",
+      "visibility": "private",
+      "scope": "proof support only; audited by strict replay"
+    },
+    {
+      "kind": "theorem",
+      "source_name": "parity_decompose",
+      "visibility": "private",
+      "scope": "proof support only; audited by strict replay"
+    },
+    {
+      "kind": "theorem",
+      "source_name": "parity_translation",
+      "visibility": "private",
+      "scope": "proof support only; audited by strict replay"
+    },
+    {
+      "kind": "theorem",
+      "source_name": "parity_halfTurn",
+      "visibility": "private",
+      "scope": "proof support only; audited by strict replay"
+    }
+  ],
+  "generated_declarations": "All included in raw module replay logs; proof modules introduced2+37constants, including8targettheorems",
+  "no_extra_public_helpers": true
+}

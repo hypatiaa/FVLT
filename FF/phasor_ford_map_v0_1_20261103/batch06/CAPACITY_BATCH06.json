@@ -1,0 +1,12 @@
+{
+  "observed_unix": 1793786877,
+  "available_mib": 28270,
+  "load": [
+    0,
+    0.01,
+    0
+  ],
+  "host": "nucleus",
+  "transport": "Tailscale 100.105.106.41",
+  "owner": "01a18167-41de-74e0-882e-9171e642530f"
+}

@@ -1,0 +1,39 @@
+{
+  "schema": "ff3-source-comparison/1",
+  "verdict": "PASS",
+  "source_sha256": {
+    "FVLTRosetteFordDataV1.lean": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+    "FVLTRosetteFordPhaseV1.lean": "2a48f1c65b7a5a31cbeaecac2edf13f2a64fec583e2d70af6473f06a41917459",
+    "FVLTRosetteFordSweepV1.lean": "1d982d2ee145511e2b4a55a72675b14e53b1df2cb94c872abb5baaf3a0697e23"
+  },
+  "freeze_sha256": "6c9d2f7671d233c0ac49c9af4bb887756ecbeaf63e894c4c8c7599346c2b2047",
+  "g1_import_closure_excluded": true,
+  "all_present_public_headers_match": true,
+  "data_definitions_exact": true,
+  "present_targets": [
+    "FVLT.PhasorFordV1.shell_contact_parameterization",
+    "FVLT.PhasorFordV1.shell_phasor_contact_iff",
+    "FVLT.PhasorFordV1.shell_contact_address",
+    "FVLT.PhasorFordV1.fareyList_membership",
+    "FVLT.PhasorFordV1.fareyList_strict",
+    "FVLT.PhasorFordV1.mem_shellEvents",
+    "FVLT.PhasorFordV1.mem_fareySet",
+    "FVLT.PhasorFordV1.shell_addresses_eq_farey",
+    "FVLT.PhasorFordV1.farey_consecutive_det"
+  ],
+  "axiom_report_targets": [
+    "FVLT.PhasorFordV1.shell_contact_parameterization",
+    "FVLT.PhasorFordV1.shell_phasor_contact_iff",
+    "FVLT.PhasorFordV1.shell_contact_address",
+    "FVLT.PhasorFordV1.fareyList_membership",
+    "FVLT.PhasorFordV1.fareyList_strict",
+    "FVLT.PhasorFordV1.mem_shellEvents",
+    "FVLT.PhasorFordV1.mem_fareySet",
+    "FVLT.PhasorFordV1.shell_addresses_eq_farey",
+    "FVLT.PhasorFordV1.farey_consecutive_det"
+  ],
+  "method": "All nine frozen headers unchanged LF; single private successor proof repair to explicit positive multiplication cancellation API; all previous bodies/helpers and dependency bytes retained; Final03 failure preserved",
+  "definition_successor_sha256": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+  "repair_decision_sha256": "9f6c55b711221487d6904c813577a22d4b22dfd502bfa0faf11cbf280ce78f26",
+  "header_comparison": "All nine frozen Sweep headers unchanged LF"
+}

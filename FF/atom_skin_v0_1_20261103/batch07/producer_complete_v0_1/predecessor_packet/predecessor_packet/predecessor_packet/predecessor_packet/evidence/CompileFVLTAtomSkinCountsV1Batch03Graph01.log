@@ -1,0 +1,95 @@
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch03Graph01/src/FVLTAtomSkinCountsV1.lean:7:30: warning: Variable name `hω` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hω
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch03Graph01/src/FVLTAtomSkinCountsV1.lean:14:31: warning: Variable name `hω` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hω
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch03Graph01/src/FVLTAtomSkinCountsV1.lean:58:21: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch03Graph01/src/FVLTAtomSkinCountsV1.lean:58:33: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch03Graph01/src/FVLTAtomSkinCountsV1.lean:62:21: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch03Graph01/src/FVLTAtomSkinCountsV1.lean:62:45: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch03Graph01/src/FVLTAtomSkinCountsV1.lean:84:17: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch03Graph01/src/FVLTAtomSkinCountsV1.lean:84:29: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch03Graph01/src/FVLTAtomSkinCountsV1.lean:93:8: error: Type mismatch: After simplification, term
+  hg 0 hmpos
+ has type
+  cubeAdjacent ω ∅ (g 1)
+but is expected to have type
+  cubeAdjacent ω ∅ (if n + 1 ≤ n then ∅ else g 1)
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch03Graph01/src/FVLTAtomSkinCountsV1.lean:96:19: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch03Graph01/src/FVLTAtomSkinCountsV1.lean:96:31: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch03Graph01/src/FVLTAtomSkinCountsV1.lean:111:24: error(lean.unknownIdentifier): Unknown constant `Finset.erase_eq_of_not_mem`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch03Graph01/src/FVLTAtomSkinCountsV1.lean:119:16: error: Tactic `rewrite` failed: motive is not type correct:
+  fun _a => Finset.erase _a (↑↑e).2 = (↑↑e).1
+Error: Application type mismatch: The argument
+  e
+has type
+  { e // edgeIncident ω e x }
+but is expected to have type
+  { e // edgeIncident ω e _a }
+in the application
+  ↑e
+
+Explanation: The rewrite tactic rewrites an expression 'e' using an equality 'a = b' by the following process. First, it looks for all 'a' in 'e'. Second, it tries to abstract these occurrences of 'a' to create a function 'm := fun _a => ...', called the *motive*, with the property that 'm a' is definitionally equal to 'e'. Third, we observe that 'congrArg' implies that 'm a = m b', which can be used with lemmas such as 'Eq.mpr' to change the goal. However, if 'e' depends on specific properties of 'a', then the motive 'm' might not typecheck.
+
+Possible solutions: use rewrite's 'occs' configuration option to limit which occurrences are rewritten, or use 'simp' or 'conv' mode, which have strategies for certain kinds of dependencies (these tactics can handle proofs and 'Decidable' instances whose types depend on the rewritten term, and 'simp' can apply user-defined '@[congr]' theorems as well).
+
+case fst.inl
+ω : ℕ
+hω : 3 ≤ ω
+x : Vertex ω
+e : { e // edgeIncident ω e x }
+hx : x = lower ω ↑e
+⊢ Finset.erase x (↑↑e).2 = (↑↑e).1
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch03Graph01/src/FVLTAtomSkinCountsV1.lean:121:16: error: Tactic `rewrite` failed: motive is not type correct:
+  fun _a => Finset.erase _a (↑↑e).2 = (↑↑e).1
+Error: Application type mismatch: The argument
+  e
+has type
+  { e // edgeIncident ω e x }
+but is expected to have type
+  { e // edgeIncident ω e _a }
+in the application
+  ↑e
+
+Explanation: The rewrite tactic rewrites an expression 'e' using an equality 'a = b' by the following process. First, it looks for all 'a' in 'e'. Second, it tries to abstract these occurrences of 'a' to create a function 'm := fun _a => ...', called the *motive*, with the property that 'm a' is definitionally equal to 'e'. Third, we observe that 'congrArg' implies that 'm a = m b', which can be used with lemmas such as 'Eq.mpr' to change the goal. However, if 'e' depends on specific properties of 'a', then the motive 'm' might not typecheck.
+
+Possible solutions: use rewrite's 'occs' configuration option to limit which occurrences are rewritten, or use 'simp' or 'conv' mode, which have strategies for certain kinds of dependencies (these tactics can handle proofs and 'Decidable' instances whose types depend on the rewritten term, and 'simp' can apply user-defined '@[congr]' theorems as well).
+
+case fst.inr
+ω : ℕ
+hω : 3 ≤ ω
+x : Vertex ω
+e : { e // edgeIncident ω e x }
+hx : x = upper ω ↑e
+⊢ Finset.erase x (↑↑e).2 = (↑↑e).1

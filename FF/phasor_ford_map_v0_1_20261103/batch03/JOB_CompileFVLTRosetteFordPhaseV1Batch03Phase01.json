@@ -1,0 +1,23 @@
+{
+  "phase": "FF3_DISCRETE",
+  "module": "FVLTRosetteFordPhaseV1",
+  "mode": "compile",
+  "run_id": "CompileFVLTRosetteFordPhaseV1Batch03Phase01",
+  "template_sha256": "0c5056acb3e8de4f5a89e3f4852306af69ee7f7d2c6c2d87b190be754e935c29",
+  "attempt_folder": "attempts/Batch03Phase01",
+  "source_sha256": {
+    "FVLTRosetteFordDataV1.lean": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+    "FVLTRosetteFordPhaseV1.lean": "71024df4e8f6a1357ae22cc9d74c70da4fbf4f434a6fd1dbf33683c41470831f"
+  },
+  "dependency_olean_sha256": {
+    "FVLTRosetteFordDataV1.olean": "ccb8d144cdd85989dd5acd0f092c976094ed4b7136e173590bcbc617a222b8e9"
+  },
+  "prerequisite_receipt_sha256": {
+    "CompileFVLTRosetteFordDataV1Batch02Data02.json": "b4496028b82ff179c554e9d5af1c26be65c4483c8029d6780e703eaf3cabd41f",
+    "axiomsFVLTRosetteFordDataV1Batch02Data02.json": "96f1ebfc3754e7efe2affe14947d126c3faaf2e02541192ef6fcd7224212bf94",
+    "replayFVLTRosetteFordDataV1Batch02Data02.json": "63bafb208a130df7e139bb77f98801b967de59f1313659008d891ec9a2041a59"
+  },
+  "signature_comparison_receipt_file": "COMPARE_PHASE01.json",
+  "signature_comparison_receipt_sha256": "75df8fbb81760f9f73d0e5aaf35ca0c921f1b1701bf312f16e85b1097cf092c3",
+  "deadline_file": "DEADLINE_BATCH03.json"
+}

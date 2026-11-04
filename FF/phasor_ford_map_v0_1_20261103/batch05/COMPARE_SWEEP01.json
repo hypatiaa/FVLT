@@ -1,0 +1,31 @@
+{
+  "schema": "ff3-source-comparison/1",
+  "verdict": "PASS",
+  "source_sha256": {
+    "FVLTRosetteFordDataV1.lean": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+    "FVLTRosetteFordPhaseV1.lean": "2a48f1c65b7a5a31cbeaecac2edf13f2a64fec583e2d70af6473f06a41917459",
+    "FVLTRosetteFordSweepV1.lean": "56a171e72de3d294a1e52254aabb9796c0a8cd615828c7eddf385469f1b65b3f"
+  },
+  "freeze_sha256": "6c9d2f7671d233c0ac49c9af4bb887756ecbeaf63e894c4c8c7599346c2b2047",
+  "g1_import_closure_excluded": true,
+  "all_present_public_headers_match": true,
+  "data_definitions_exact": true,
+  "present_targets": [
+    "FVLT.PhasorFordV1.shell_contact_parameterization",
+    "FVLT.PhasorFordV1.shell_phasor_contact_iff",
+    "FVLT.PhasorFordV1.shell_contact_address",
+    "FVLT.PhasorFordV1.fareyList_membership",
+    "FVLT.PhasorFordV1.fareyList_strict"
+  ],
+  "axiom_report_targets": [
+    "FVLT.PhasorFordV1.shell_contact_parameterization",
+    "FVLT.PhasorFordV1.shell_phasor_contact_iff",
+    "FVLT.PhasorFordV1.shell_contact_address",
+    "FVLT.PhasorFordV1.fareyList_membership",
+    "FVLT.PhasorFordV1.fareyList_strict"
+  ],
+  "method": "Five frozen sweep headers LF unchanged; data byte-exact accepted successor; Phase02 dependency bytes preserved with historical CRLF; new Sweep UTF8LFnoBOM; no extra publics",
+  "definition_successor_sha256": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+  "repair_decision_sha256": "9f6c55b711221487d6904c813577a22d4b22dfd502bfa0faf11cbf280ce78f26",
+  "header_comparison": "Five selected frozen sweep statement texts unchanged LF"
+}

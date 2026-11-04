@@ -1,0 +1,30 @@
+/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch03Phase01/src/FVLTRosetteFordPhaseV1.lean:7:34: warning: Variable name `hn3` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hn3
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch03Phase01/src/FVLTRosetteFordPhaseV1.lean:27:28: warning: Variable name `hn3` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hn3
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch03Phase01/src/FVLTRosetteFordPhaseV1.lean:43:28: warning: Variable name `hn3` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hn3
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch03Phase01/src/FVLTRosetteFordPhaseV1.lean:65:77: error: unsolved goals
+r : ℝ
+hr : r ≠ 0
+h0 : phaseAddress 1 1 0 3 = 0
+h3 : phaseAddress 1 1 3 3 = 2
+⊢ Complex.exp (↑Real.pi * Complex.I * 2) = 1

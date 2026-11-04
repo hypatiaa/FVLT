@@ -1,0 +1,26 @@
+{
+  "phase": "FF2_AB",
+  "module": "FVLTAtomSkinDataV1",
+  "mode": "axioms",
+  "run_id": "AxiomsFVLTAtomSkinDataV1Batch01Data03",
+  "template_sha256": "9ae6582ece85edab93b00fc83a2a8c646e766fb5a8a1f97de15ab7ab0f6a2cd7",
+  "attempt_folder": "attempts/Data03",
+  "source_sha256": {
+    "FVLTAtomSkinDataV1.lean": "8d165af954019dd15fad6f7bf082922119d9364a3727fa59879d945fc5e8f085"
+  },
+  "dependency_olean_sha256": {
+    "FVLTAtomSkinDataV1.olean": "5d7862ee3f1f3fe1c88c715094cd934d406665a84c0e31d3dab618c67a4940cf"
+  },
+  "prerequisite_receipt_sha256": {
+    "CompileFVLTAtomSkinDataV1Batch01Data03.json": "d47d963b2f376beb09827dfcd2df65bd2c3e73138bc1da5f054ce63e4a30d750"
+  },
+  "own_compile_receipt_file": "CompileFVLTAtomSkinDataV1Batch01Data03.json",
+  "signature_comparison_receipt_file": "COMPARE_DATA03.json",
+  "signature_comparison_receipt_sha256": "46b5d4f3ed37ccc811a0273b236c7ad4d162a36c3db9b506e224876d3f1eacc5",
+  "deadline_file": "DEADLINE_BATCH01.json",
+  "launch_environment": {
+    "PATH": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin:/usr/local/bin:/usr/bin:/bin"
+  },
+  "axiom_report_source": "AuditAtomSkinDataV1.lean",
+  "axiom_report_source_sha256": "348f69ab9b65d1f4724845e505daf163e2caaa701ecd12a4ec178e9186af1eed"
+}

@@ -1,0 +1,158 @@
+{
+  "status": "PRODUCER_TEXT_COMPARISON_PASS",
+  "theorem_headers": 37,
+  "all_headers_match": true,
+  "line_endings_normalized_for_comparison_only": true,
+  "data_exact_successor": true,
+  "items": {
+    "phasor_real_iff": {
+      "module": "FVLTRosetteFordPhaseV1",
+      "header_match_after_newline_normalization": true
+    },
+    "integer_spin_phase_iff": {
+      "module": "FVLTRosetteFordPhaseV1",
+      "header_match_after_newline_normalization": true
+    },
+    "integer_spin_parity": {
+      "module": "FVLTRosetteFordPhaseV1",
+      "header_match_after_newline_normalization": true
+    },
+    "circleMap_amplitude_independent": {
+      "module": "FVLTRosetteFordPhaseV1",
+      "header_match_after_newline_normalization": true
+    },
+    "phasor_alias_not_address_alias": {
+      "module": "FVLTRosetteFordPhaseV1",
+      "header_match_after_newline_normalization": true
+    },
+    "integer_address_iff": {
+      "module": "FVLTRosetteFordArithmeticV1",
+      "header_match_after_newline_normalization": true
+    },
+    "integer_address_integral_iff": {
+      "module": "FVLTRosetteFordArithmeticV1",
+      "header_match_after_newline_normalization": true
+    },
+    "integer_address_radius": {
+      "module": "FVLTRosetteFordArithmeticV1",
+      "header_match_after_newline_normalization": true
+    },
+    "divisor_recovery_window": {
+      "module": "FVLTRosetteFordArithmeticV1",
+      "header_match_after_newline_normalization": true
+    },
+    "zero_spin_address": {
+      "module": "FVLTRosetteFordArithmeticV1",
+      "header_match_after_newline_normalization": true
+    },
+    "zero_spin_window": {
+      "module": "FVLTRosetteFordArithmeticV1",
+      "header_match_after_newline_normalization": true
+    },
+    "reduced_det_mul": {
+      "module": "FVLTRosetteFordArithmeticV1",
+      "header_match_after_newline_normalization": true
+    },
+    "reduced_det_quotient": {
+      "module": "FVLTRosetteFordArithmeticV1",
+      "header_match_after_newline_normalization": true
+    },
+    "row_law": {
+      "module": "FVLTRosetteFordArithmeticV1",
+      "header_match_after_newline_normalization": true
+    },
+    "row_tangent_iff": {
+      "module": "FVLTRosetteFordArithmeticV1",
+      "header_match_after_newline_normalization": true
+    },
+    "signed_column_law": {
+      "module": "FVLTRosetteFordArithmeticV1",
+      "header_match_after_newline_normalization": true
+    },
+    "signed_column_tangent_iff": {
+      "module": "FVLTRosetteFordArithmeticV1",
+      "header_match_after_newline_normalization": true
+    },
+    "zero_column_stall": {
+      "module": "FVLTRosetteFordArithmeticV1",
+      "header_match_after_newline_normalization": true
+    },
+    "reference_column_tangent_iff": {
+      "module": "FVLTRosetteFordArithmeticV1",
+      "header_match_after_newline_normalization": true
+    },
+    "unit_fraction_spine": {
+      "module": "FVLTRosetteFordArithmeticV1",
+      "header_match_after_newline_normalization": true
+    },
+    "shell_contact_parameterization": {
+      "module": "FVLTRosetteFordSweepV1",
+      "header_match_after_newline_normalization": true
+    },
+    "shell_phasor_contact_iff": {
+      "module": "FVLTRosetteFordSweepV1",
+      "header_match_after_newline_normalization": true
+    },
+    "shell_contact_address": {
+      "module": "FVLTRosetteFordSweepV1",
+      "header_match_after_newline_normalization": true
+    },
+    "fareyList_membership": {
+      "module": "FVLTRosetteFordSweepV1",
+      "header_match_after_newline_normalization": true
+    },
+    "fareyList_strict": {
+      "module": "FVLTRosetteFordSweepV1",
+      "header_match_after_newline_normalization": true
+    },
+    "mem_shellEvents": {
+      "module": "FVLTRosetteFordSweepV1",
+      "header_match_after_newline_normalization": true
+    },
+    "mem_fareySet": {
+      "module": "FVLTRosetteFordSweepV1",
+      "header_match_after_newline_normalization": true
+    },
+    "shell_addresses_eq_farey": {
+      "module": "FVLTRosetteFordSweepV1",
+      "header_match_after_newline_normalization": true
+    },
+    "farey_consecutive_det": {
+      "module": "FVLTRosetteFordSweepV1",
+      "header_match_after_newline_normalization": true
+    },
+    "det_zero_iff_address_equal": {
+      "module": "FVLTRosetteFordEndpointsV1",
+      "header_match_after_newline_normalization": true
+    },
+    "classify_stall_iff": {
+      "module": "FVLTRosetteFordEndpointsV1",
+      "header_match_after_newline_normalization": true
+    },
+    "classify_tangent_iff": {
+      "module": "FVLTRosetteFordEndpointsV1",
+      "header_match_after_newline_normalization": true
+    },
+    "classify_break_iff": {
+      "module": "FVLTRosetteFordEndpointsV1",
+      "header_match_after_newline_normalization": true
+    },
+    "path_edge_trichotomy": {
+      "module": "FVLTRosetteFordEndpointsV1",
+      "header_match_after_newline_normalization": true
+    },
+    "path_kind_tangent_iff": {
+      "module": "FVLTRosetteFordEndpointsV1",
+      "header_match_after_newline_normalization": true
+    },
+    "tangent_endpoint_certificate": {
+      "module": "FVLTRosetteFordEndpointsV1",
+      "header_match_after_newline_normalization": true
+    },
+    "nontangent_no_certificate": {
+      "module": "FVLTRosetteFordEndpointsV1",
+      "header_match_after_newline_normalization": true
+    }
+  },
+  "independent_semantic_review": "PENDING"
+}

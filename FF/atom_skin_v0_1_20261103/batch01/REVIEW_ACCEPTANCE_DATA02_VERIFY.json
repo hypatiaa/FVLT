@@ -1,0 +1,20 @@
+{
+  "input_signature_acceptance": "Skeleton bus1448 ledger1451; decision3a5250764f4ab8a6ed998fb6c8ee403beab0d8798286bab97813205dc67e9d76",
+  "template_acceptance": "Skeleton1448/1452; new all-match capacity binding and Data02 hashes require posting receipt before launch",
+  "runner_sha256": "6a73ec377654b82d35e0981b2a16216fa88e507420ef52d990a00f055afd2860",
+  "bound_template_file": "BOUND_BATCH01B.json",
+  "bound_template_sha256": "c6a9837e80ac03d889a18afc7001046ef30fff7bfbe9d96c99f7da1dfe07568f",
+  "accepted_job_sha256": [
+    "2464e6e3b79e7da0baa967d6aa26e362799da3bbc8e6c580dccbfbe7b246b00a",
+    "eab55d29b02fae9c2365e617246a82c3ed099f8b49b142627ec7cbe60cc3e12d",
+    "21e2f80985e852809b4bdd0a0fc810f830ae04d3adfb41f3ffc6d53f91c364a9",
+    "17b7e231e2532815e45d1a0e5bb2e42912614d3c5ea667d11c819dd6d0d185d8"
+  ],
+  "reviewed_files": {
+    "freeze_packet_v0_1/PACKET_MANIFEST_v0_1.json": "22650c5b0304d82bfd7d89a1bcfcb20884f6c11d104729aaf8187e678efd02c5",
+    "freeze_packet_v0_1/FF2_DEFINITIONS_PROPOSED_v0_1.lean.txt": "61ca7137e1307967866f97d096dda974d2f6400d32374f69252fcfe6598de615",
+    "freeze_packet_v0_1/FF2_HEADERS_PROPOSED_v0_1.lean.txt": "b4484f6e148291dd20512e58ce4ec81b4bdf08527f4bd66b3e304cbb2654785a",
+    "freeze_packet_v0_1/INPUT_FREEZE_v0_1.json": "7eaae9fefc078eef2af20e67583376889a21645c62de4a894e9ea91bef6a5567",
+    "freeze_packet_v0_1/JOB_TEMPLATE_v0_1.json": "95774fa3ab818938011cc89c171d943086d28858914eb7f0fa4a7193d3fd7c41"
+  }
+}

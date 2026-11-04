@@ -1,0 +1,20 @@
+import FVLTRosetteFordDataV1
+#print axioms FVLT.PhasorFordV1.LiftedData
+#print axioms FVLT.PhasorFordV1.fordAddress
+#print axioms FVLT.PhasorFordV1.phaseAddress
+#print axioms FVLT.PhasorFordV1.IsIntegral
+#print axioms FVLT.PhasorFordV1.phasorValue
+#print axioms FVLT.PhasorFordV1.liftedPhasor
+#print axioms FVLT.PhasorFordV1.circleMap
+#print axioms FVLT.PhasorFordV1.gcdFactor
+#print axioms FVLT.PhasorFordV1.integerContactWindow
+#print axioms FVLT.PhasorFordV1.divisorWindow
+#print axioms FVLT.PhasorFordV1.fareySet
+#print axioms FVLT.PhasorFordV1.shellEvents
+#print axioms FVLT.PhasorFordV1.shellEventAddresses
+#print axioms FVLT.PhasorFordV1.fareyList
+#print axioms FVLT.PhasorFordV1.EdgeKind
+#print axioms FVLT.PhasorFordV1.IsBreak
+#print axioms FVLT.PhasorFordV1.classifyEdge
+#print axioms FVLT.PhasorFordV1.pathEdgeKind
+#print axioms FVLT.PhasorFordV1.endpointCertificate

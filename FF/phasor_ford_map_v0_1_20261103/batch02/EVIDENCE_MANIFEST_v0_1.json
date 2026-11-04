@@ -1,0 +1,168 @@
+{
+  "schema": "ff3-batch02-evidence/1",
+  "status": "PRODUCER_LOCAL_PASS_8_OF_37_INDEPENDENT_PENDING",
+  "files": [
+    {
+      "file": "axiomsFVLTRosetteFordDataV1Batch02Data02.json",
+      "sha256": "96f1ebfc3754e7efe2affe14947d126c3faaf2e02541192ef6fcd7224212bf94",
+      "bytes": 8269
+    },
+    {
+      "file": "axiomsFVLTRosetteFordDataV1Batch02Data02.log",
+      "sha256": "42a298581876d750215b6b6ab0dd3310955fd766983c74a7d29e3b0991948a3d",
+      "bytes": 1576
+    },
+    {
+      "file": "axiomsFVLTRosetteFordEndpointsV1Batch02Endpoints02.json",
+      "sha256": "d244c31cbb2f3f8d069c3d46a5b82e1103834bc4f0412df9b6f3cd3604d622fb",
+      "bytes": 7985
+    },
+    {
+      "file": "axiomsFVLTRosetteFordEndpointsV1Batch02Endpoints02.log",
+      "sha256": "8dced4ca3cf723f57bfb310ffa921c0a8aba8b0d640213b0ba79fbba71fff283",
+      "bytes": 786
+    },
+    {
+      "file": "BATCH02_CLOSE_v0_1.json",
+      "sha256": "c65887fabfcaf8ef639518385166bff7cd31ad1e4a66caa5a73a927d612b8682",
+      "bytes": 311
+    },
+    {
+      "file": "BATCH02_STATUS_v0_1.md",
+      "sha256": "5b7acaad487c884e07dfec5d80c4df1c5bf83466c6d1c9db15707a86c43c0b3a",
+      "bytes": 5407
+    },
+    {
+      "file": "BOUND_BATCH02_ENDPOINTS01.json",
+      "sha256": "5e56b591a16e342380184c9c375f06171018843b3df7d270a5f6d61f9493b1db",
+      "bytes": 5022
+    },
+    {
+      "file": "BOUND_BATCH02.json",
+      "sha256": "b18ceb29278347dc2ba99639778ecb74b7abeec22099275e6d6ee38a4e2dea0a",
+      "bytes": 5010
+    },
+    {
+      "file": "CAPACITY_BATCH02_ENDPOINTS01.json",
+      "sha256": "0f8c73a3884db9e6f87475f666783c18d9fce2c867d68cc7bead3145c803f185",
+      "bytes": 232
+    },
+    {
+      "file": "CAPACITY_BATCH02.json",
+      "sha256": "d0fa1e31c2ea9e3d4ed722a74b0c1282785cd59481fe0603440b81f09eae1cfc",
+      "bytes": 260
+    },
+    {
+      "file": "COMPARE_DATA02.json",
+      "sha256": "d6b1a564881c457e11384c1042eddb167409e75137aa3688f0bbff5a6b2ef5d3",
+      "bytes": 1575
+    },
+    {
+      "file": "COMPARE_ENDPOINTS01.json",
+      "sha256": "9f9dee28606665fea140e233d2f2ed7d5bc275ba030f7ea42f5f0413639aa52b",
+      "bytes": 1880
+    },
+    {
+      "file": "COMPARE_ENDPOINTS02.json",
+      "sha256": "79441c3c010e510cc1a968371fe8909e6ab3bbbb6422953c6c06c6d863eeaa80",
+      "bytes": 1877
+    },
+    {
+      "file": "CompileFVLTRosetteFordDataV1Batch02Data02.json",
+      "sha256": "b4496028b82ff179c554e9d5af1c26be65c4483c8029d6780e703eaf3cabd41f",
+      "bytes": 5420
+    },
+    {
+      "file": "CompileFVLTRosetteFordDataV1Batch02Data02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "CompileFVLTRosetteFordEndpointsV1Batch02Endpoints01.json",
+      "sha256": "56a97f61e20d1a4e262228fd48a70226203cce6e20a9da2f1762bcea0efa5b56",
+      "bytes": 6258
+    },
+    {
+      "file": "CompileFVLTRosetteFordEndpointsV1Batch02Endpoints01.log",
+      "sha256": "25335795e31ece1234e328d9159f139140e0aa967c1139d6bedb30dbcbaca170",
+      "bytes": 1268
+    },
+    {
+      "file": "CompileFVLTRosetteFordEndpointsV1Batch02Endpoints02.json",
+      "sha256": "b2c0eb5f89edb001b0d953180c3d708ddf23fb41f6eaf9071753be937d9ce4b0",
+      "bytes": 6339
+    },
+    {
+      "file": "CompileFVLTRosetteFordEndpointsV1Batch02Endpoints02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "DEADLINE_BATCH02.json",
+      "sha256": "1a133a35d387bbbf5d522327dc34a88d9fa9104b780ebcaebab34544c6c85c4c",
+      "bytes": 205
+    },
+    {
+      "file": "HOST_RESERVATION_BATCH02.json",
+      "sha256": "9c27cce04abd4db2aa1d0c3bea9e027f9d3e2d372373081686f4c102fd63445b",
+      "bytes": 399
+    },
+    {
+      "file": "JOB_axiomsFVLTRosetteFordDataV1Batch02Data02.json",
+      "sha256": "de0280f5107cef4a388237e886c38fdfdcaafff9af6909af47d304a3c1f68a49",
+      "bytes": 1939
+    },
+    {
+      "file": "JOB_axiomsFVLTRosetteFordEndpointsV1Batch02Endpoints02.json",
+      "sha256": "cd080e5250ca8f4f895da7f2ec385296e387cad0e59ff492bf6af26674f910eb",
+      "bytes": 2231
+    },
+    {
+      "file": "JOB_CompileFVLTRosetteFordDataV1Batch02Data02.json",
+      "sha256": "74a7ff1e1416beab5bf2b98049b51dd81f12bcbfd9c9566d1a1fc1dadf7efeaa",
+      "bytes": 708
+    },
+    {
+      "file": "JOB_CompileFVLTRosetteFordEndpointsV1Batch02Endpoints01.json",
+      "sha256": "f309b99fbe6ecd7fddc676e1c0187554602f0fb08cb678b4177d57c76882021a",
+      "bytes": 1318
+    },
+    {
+      "file": "JOB_CompileFVLTRosetteFordEndpointsV1Batch02Endpoints02.json",
+      "sha256": "6164aa2e77966b25ed89ffe585b05edd473b848c89c042c2a2a2ec06ae46178c",
+      "bytes": 1318
+    },
+    {
+      "file": "JOB_replayFVLTRosetteFordDataV1Batch02Data02.json",
+      "sha256": "4c96c1fef304f67ae6048b36033197f124fc48b35a6add525cd29674e05e7c51",
+      "bytes": 1019
+    },
+    {
+      "file": "JOB_replayFVLTRosetteFordEndpointsV1Batch02Endpoints02.json",
+      "sha256": "3125cf9cf04b2e3d9c5722c081d31c701e0726726809847ab172df2001262e6a",
+      "bytes": 1649
+    },
+    {
+      "file": "replayFVLTRosetteFordDataV1Batch02Data02.json",
+      "sha256": "63bafb208a130df7e139bb77f98801b967de59f1313659008d891ec9a2041a59",
+      "bytes": 5551
+    },
+    {
+      "file": "replayFVLTRosetteFordDataV1Batch02Data02.log",
+      "sha256": "0b1c3bba9011998e024fe5a3cf203b998f6fe99f266cba5c74155090e5d0df0e",
+      "bytes": 169760
+    },
+    {
+      "file": "replayFVLTRosetteFordEndpointsV1Batch02Endpoints02.json",
+      "sha256": "399ca4f24d99d3e410923637e40027d9dc0005f19534c371790caf1cbac3be39",
+      "bytes": 6473
+    },
+    {
+      "file": "replayFVLTRosetteFordEndpointsV1Batch02Endpoints02.log",
+      "sha256": "a888c25fafcc781338fbcb4a7556903e80939901b1d96dd2ae0da006fed05142",
+      "bytes": 164236
+    }
+  ],
+  "data_source_sha256": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+  "endpoint_source_sha256": "53ea5f08a71001be2bb6b4ba7de3932740f7861711058c7bb6ae4890cadde9e0"
+}

@@ -1,0 +1,21 @@
+{
+  "status": "PROPOSED_DEFINITION_ANNOTATION_REPAIR_REQUIRES_REVIEW",
+  "original_sha256": "3c606060cdd6f7ca74c6d460a28ad93614628bbea52a711a8b7b75ce9d371640",
+  "successor_sha256": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+  "changed_lines": [
+    {
+      "line": 47,
+      "before": "      (fun m => (m : ℚ) / (q : ℚ)))",
+      "after": "      (fun (m : ℕ) => (m : ℚ) / (q : ℚ)))"
+    },
+    {
+      "line": 51,
+      "before": "    (Finset.range N).image (fun m => (N, (m : ℚ) * (N : ℚ) / ((N : ℚ) - 1))))",
+      "after": "    (Finset.range N).image (fun (m : ℕ) => (N, (m : ℚ) * (N : ℚ) / ((N : ℚ) - 1))))"
+    }
+  ],
+  "header_sha256": "b8a052dc8784b2e7b400837a1b469f1f072bac611ff42de1dbe47fb43fdda98a",
+  "declarations": 19,
+  "mathematical_body_change": "None intended: explicit Nat binder types for two finite image maps",
+  "compiled": false
+}

@@ -1,0 +1,25 @@
+{
+  "phase": "FF2_AB",
+  "module": "FVLTPillowcaseV1",
+  "mode": "replay",
+  "run_id": "ReplayFVLTPillowcaseV1Batch07Pillow02",
+  "template_sha256": "014d2ee9c34c4947802f81589afe2a61737d74a40f04d8b32d7c69168f58839f",
+  "attempt_folder": "attempts/Batch07Pillow02",
+  "source_sha256": {
+    "FVLTPillowcaseV1.lean": "27e7c00dcae05e2f7e93de3d79e8f56380a553b76c2848f919deb6a3f5d82a3f"
+  },
+  "dependency_olean_sha256": {
+    "FVLTPillowcaseDataV1.olean": "6b656127d20b65964d65f11e234e6123a7324cc499f7f40c733f144de9f4d58d",
+    "FVLTPillowcaseV1.olean": "cc0c071472adc1c2253f937411b0af42b634b2f0778e3f757258e04273ee26ee"
+  },
+  "prerequisite_receipt_sha256": {
+    "CompileFVLTPillowcaseV1Batch07Pillow02.json": "eb4d8becc006ae2fc6344bf8f8bb546b0c0db43f622995eb1a55f1c0fd249f5d"
+  },
+  "signature_comparison_receipt_file": "COMPARE_PILLOW02.json",
+  "signature_comparison_receipt_sha256": "7128d1b2517d081d7011eab289ac0adc573c73dd0576c03d8cc7e9f6e47c99f8",
+  "deadline_file": "DEADLINE_BATCH07.json",
+  "launch_environment": {
+    "PATH": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin:/usr/local/bin:/usr/bin:/bin"
+  },
+  "own_compile_receipt_file": "CompileFVLTPillowcaseV1Batch07Pillow02.json"
+}

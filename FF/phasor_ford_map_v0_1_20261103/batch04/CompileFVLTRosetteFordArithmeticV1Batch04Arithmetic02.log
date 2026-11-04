@@ -1,0 +1,6 @@
+/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch04Arithmetic02/src/FVLTRosetteFordArithmeticV1.lean:45:45: warning: Variable name `hn3` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hn3
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`

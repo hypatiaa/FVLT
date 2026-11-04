@@ -1,0 +1,12 @@
+{
+  "observed_unix": 1793768518,
+  "host": "nucleus",
+  "transport": "Tailscale100.105.106.41",
+  "available_memory_mib": 28627,
+  "load_average": [
+    "0.21",
+    "0.11",
+    "0.03"
+  ],
+  "reservation": "FF2Batch07initialbeforewriting origin8518 deadline10318"
+}

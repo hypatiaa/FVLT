@@ -1,0 +1,91 @@
+{
+  "schema": "ff2-closed-review-packet/1",
+  "status": "PROPOSED_NO_EXECUTION",
+  "files": [
+    {
+      "path": "API_INSPECTION_v0_1.md",
+      "bytes": 2296,
+      "sha256": "2d9b95f7eabbea54bc64a62fd45e5acb56b2e51ba7ac8038cb287439437a039b"
+    },
+    {
+      "path": "FF2_DEFINITIONS_PROPOSED_v0_1.lean.txt",
+      "bytes": 4522,
+      "sha256": "61ca7137e1307967866f97d096dda974d2f6400d32374f69252fcfe6598de615"
+    },
+    {
+      "path": "FF2_HEADERS_PROPOSED_v0_1.lean.txt",
+      "bytes": 5241,
+      "sha256": "b4484f6e148291dd20512e58ce4ec81b4bdf08527f4bd66b3e304cbb2654785a"
+    },
+    {
+      "path": "IndependentFVLTReplay435.lean",
+      "bytes": 5139,
+      "sha256": "9c6f2ac11b50fdb846df2d5099ea673553903275a5dba11fce5a5673cae14bd0"
+    },
+    {
+      "path": "INPUT_FREEZE_v0_1.json",
+      "bytes": 2231,
+      "sha256": "7eaae9fefc078eef2af20e67583376889a21645c62de4a894e9ea91bef6a5567"
+    },
+    {
+      "path": "inputs/atom_skin_pen_template_v0_2.html",
+      "bytes": 49873,
+      "sha256": "0f996efecf1147d63e8f4e543fc162d5d09785493c3d41799f002bab8a6a8225"
+    },
+    {
+      "path": "inputs/atom_skin_pen_v0_2.html",
+      "bytes": 77122,
+      "sha256": "fd88dbbf90a60117460f71176231462cc9044fbae1555eaeedb7f16d185539e5"
+    },
+    {
+      "path": "inputs/EXECUTION_GO_FF2_20261103.md",
+      "bytes": 1192,
+      "sha256": "79c42179bdf906caeab2d8472fe674c8f4583f5ab3536d0b41c96c210a2238a0"
+    },
+    {
+      "path": "inputs/FF1_GOVERNING_GATES_v0_3.md",
+      "bytes": 20148,
+      "sha256": "43560b88ab50dc77d8e222562f83bad68c8ba17d12a073523a99597a484d6fdd"
+    },
+    {
+      "path": "inputs/LIBRARY_V20_READINESS_RECEIPT.md",
+      "bytes": 2226,
+      "sha256": "e7d941e1949137675a03e55b29c4525b3b61d932ef7b552cfb82790414e45c3e"
+    },
+    {
+      "path": "inputs/OWNER_DESIGN_REVIEW_v0_3.md",
+      "bytes": 2214,
+      "sha256": "bb95abe5db8fcfbea96718a184ebcbb5aaff603acec6e520fc148e2c68614d84"
+    },
+    {
+      "path": "inputs/SEQUENCING_DECISION_FF2_FF3_20261103.md",
+      "bytes": 1323,
+      "sha256": "b6e8581597fdc305c3f9b95466cf286e0fc8b9a4df6509c82c8735e43e1d7146"
+    },
+    {
+      "path": "inputs/WORK_ORDER_v0_3.md",
+      "bytes": 11641,
+      "sha256": "8e108ff4bd48784b8d33c0529afbc1aab35e652f8573986a77761999e16f6fac"
+    },
+    {
+      "path": "JOB_TEMPLATE_v0_1.json",
+      "bytes": 3578,
+      "sha256": "95774fa3ab818938011cc89c171d943086d28858914eb7f0fa4a7193d3fd7c41"
+    },
+    {
+      "path": "RUN_FF2_v0_1.py",
+      "bytes": 9482,
+      "sha256": "6a73ec377654b82d35e0981b2a16216fa88e507420ef52d990a00f055afd2860"
+    },
+    {
+      "path": "SIGNATURE_FREEZE_v0_1.md",
+      "bytes": 7617,
+      "sha256": "4d4476b02a0b1a899869fce2c4f2745ba2dd4cbeb92596e75c75f19d651e0c0b"
+    },
+    {
+      "path": "TARGET_INDEX_v0_1.json",
+      "bytes": 1621,
+      "sha256": "79627d19bca682b1c945a723cf2974af9b416102aeff7accdcd724eb9b9c6aae"
+    }
+  ]
+}

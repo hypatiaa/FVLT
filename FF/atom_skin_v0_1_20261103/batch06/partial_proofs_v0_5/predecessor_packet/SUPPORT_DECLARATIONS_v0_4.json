@@ -1,0 +1,224 @@
+[
+  {
+    "file": "FVLTAtomSkinCountsV1.lean",
+    "kind": "theorem",
+    "name": "adjacent_symmetric",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinCountsV1.lean",
+    "kind": "theorem",
+    "name": "path_from_empty",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinCountsV1.lean",
+    "kind": "theorem",
+    "name": "card_subsets",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinCountsV1.lean",
+    "kind": "theorem",
+    "name": "card_avoid_one",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinCountsV1.lean",
+    "kind": "theorem",
+    "name": "next_value",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinCountsV1.lean",
+    "kind": "theorem",
+    "name": "next_ne_self",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinCountsV1.lean",
+    "kind": "theorem",
+    "name": "card_avoid_two",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "mem_toggle",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "toggle_twice",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "toggle_commute",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "toggle_pair_ne",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "epsilon_values",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "epsilon_insert",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "epsilon_toggle",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "cyclic_value",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "cyclic_shift_cancel",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "next_ne",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "prev_ne",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "epsilon_step",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "step_twice",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "raw_return_four",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "step_ne",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "def",
+    "name": "boxOrbit",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "boxOrbit_swap",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "boxOrbit_flip_i",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "boxOrbit_flip_j",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "boxOrbit_erase_i",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "boxOrbit_erase_j",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "corners_squareAt",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTAtomSkinPenV1.lean",
+    "kind": "theorem",
+    "name": "four_vertex_orbit",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTPillowcaseV1.lean",
+    "kind": "def",
+    "name": "parityBit",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTPillowcaseV1.lean",
+    "kind": "theorem",
+    "name": "parityBit_mul",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTPillowcaseV1.lean",
+    "kind": "theorem",
+    "name": "corner_fst_scaled",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTPillowcaseV1.lean",
+    "kind": "theorem",
+    "name": "corner_snd_scaled",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTPillowcaseV1.lean",
+    "kind": "theorem",
+    "name": "parity_decompose",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTPillowcaseV1.lean",
+    "kind": "theorem",
+    "name": "parity_translation",
+    "status": "Private support, no additional public frozen target"
+  },
+  {
+    "file": "FVLTPillowcaseV1.lean",
+    "kind": "theorem",
+    "name": "parity_halfTurn",
+    "status": "Private support, no additional public frozen target"
+  }
+]

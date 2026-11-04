@@ -1,0 +1,13 @@
+{
+  "schema": "ff2-source-signature-comparison/1",
+  "verdict": "PASS",
+  "source_sha256": {
+    "FVLTAtomSkinDataV1.lean": "f9b9941742fcd44fd38fe4dc8088dd24de3602bbd74b568bb02e8660928b4c98",
+    "FVLTPillowcaseDataV1.lean": "3cca7c3d28c833c0bfdfda53301e016d534bbda108298371549cb2357fa08082"
+  },
+  "freeze_sha256": "22650c5b0304d82bfd7d89a1bcfcb20884f6c11d104729aaf8187e678efd02c5",
+  "g1_import_closure_excluded": true,
+  "method": "Exact frozen definition namespace excerpts; each data module imports only pinned Mathlib. No project imports, no theorem proof bodies. Complete proposed data definition bytes61ca7137 are retained in accepted packet. Namespace extraction mechanically follows frozen module layout.",
+  "public_targets": "Data modules only; no target theorem headers yet",
+  "independent_status": "Producer comparison; Skeleton performs independent final comparison"
+}

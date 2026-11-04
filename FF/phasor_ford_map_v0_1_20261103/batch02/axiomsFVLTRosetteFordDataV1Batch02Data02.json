@@ -1,0 +1,225 @@
+{
+  "job": {
+    "phase": "FF3_DISCRETE",
+    "module": "FVLTRosetteFordDataV1",
+    "mode": "axioms",
+    "run_id": "axiomsFVLTRosetteFordDataV1Batch02Data02",
+    "template_sha256": "b18ceb29278347dc2ba99639778ecb74b7abeec22099275e6d6ee38a4e2dea0a",
+    "attempt_folder": "attempts/Batch02Data02",
+    "source_sha256": {
+      "FVLTRosetteFordDataV1.lean": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388"
+    },
+    "dependency_olean_sha256": {
+      "FVLTRosetteFordDataV1.olean": "ccb8d144cdd85989dd5acd0f092c976094ed4b7136e173590bcbc617a222b8e9"
+    },
+    "prerequisite_receipt_sha256": {
+      "CompileFVLTRosetteFordDataV1Batch02Data02.json": "b4496028b82ff179c554e9d5af1c26be65c4483c8029d6780e703eaf3cabd41f"
+    },
+    "signature_comparison_receipt_file": "COMPARE_DATA02.json",
+    "signature_comparison_receipt_sha256": "d6b1a564881c457e11384c1042eddb167409e75137aa3688f0bbff5a6b2ef5d3",
+    "deadline_file": "DEADLINE_BATCH02.json",
+    "own_compile_receipt_file": "CompileFVLTRosetteFordDataV1Batch02Data02.json",
+    "axiom_report_source": "AuditRosetteFordDataV1.lean",
+    "axiom_report_source_sha256": "b2d4ceaecf2985f7f5d8b92ef0e6f2f4d0299040df4273b85794f3cf6f4b79b8",
+    "axiom_targets": [
+      "FVLT.PhasorFordV1.LiftedData",
+      "FVLT.PhasorFordV1.fordAddress",
+      "FVLT.PhasorFordV1.phaseAddress",
+      "FVLT.PhasorFordV1.IsIntegral",
+      "FVLT.PhasorFordV1.phasorValue",
+      "FVLT.PhasorFordV1.liftedPhasor",
+      "FVLT.PhasorFordV1.circleMap",
+      "FVLT.PhasorFordV1.gcdFactor",
+      "FVLT.PhasorFordV1.integerContactWindow",
+      "FVLT.PhasorFordV1.divisorWindow",
+      "FVLT.PhasorFordV1.fareySet",
+      "FVLT.PhasorFordV1.shellEvents",
+      "FVLT.PhasorFordV1.shellEventAddresses",
+      "FVLT.PhasorFordV1.fareyList",
+      "FVLT.PhasorFordV1.EdgeKind",
+      "FVLT.PhasorFordV1.IsBreak",
+      "FVLT.PhasorFordV1.classifyEdge",
+      "FVLT.PhasorFordV1.pathEdgeKind",
+      "FVLT.PhasorFordV1.endpointCertificate"
+    ]
+  },
+  "runner_sha256": "643fef3438bd81e77b2471951724e8628ab6a93ccf9f1852c670990d09799eeb",
+  "command": [
+    "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+    "-j1",
+    "-s65536",
+    "-M7680",
+    "-D",
+    "Elab.async=false",
+    "/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch02Data02/AuditRosetteFordDataV1.lean"
+  ],
+  "started_unix": 1793783136.3136427,
+  "wall_cap_seconds": 240,
+  "transport": "100.92.188.6 60137 100.105.106.41 22",
+  "LEAN_PATH": "/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch02Data02/build:/home/saphir/rule30_theorem_library/v22/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v22/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v22/.lake/packages/Qq/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v22/.lake/packages/aesop/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v22/.lake/packages/batteries/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v22/.lake/packages/importGraph/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v22/.lake/packages/mathlib/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v22/.lake/packages/plausible/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v22/.lake/packages/proofwidgets/.lake/build/lib/lean",
+  "library": "/home/saphir/rule30_theorem_library/v22",
+  "imported_dependencies_reused": true,
+  "cpu_affinity": [
+    0
+  ],
+  "address_space_bytes": 8589934592,
+  "process_limit": 256,
+  "output_file_limit_bytes": 67108864,
+  "nice": 19,
+  "library_checksums_before": 396,
+  "project_import_closure": {
+    "/home/saphir/fvlt_formalization_20261104/ff3_v02/attempts/Batch02Data02/src/FVLTRosetteFordDataV1.lean": {
+      "sha256": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+      "imports": [
+        "FVLTFareyArithmeticCompletionV1",
+        "FVLTFordExactCoordinatesV1",
+        "Mathlib.Data.Finset.Sort",
+        "Mathlib.NumberTheory.Divisors",
+        "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v22/theorems/FVLTFordExactCoordinatesV1.lean": {
+      "sha256": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+      "imports": [
+        "FVLTFordRationalV1",
+        "FVLTFordGeometryV1",
+        "Mathlib.Tactic"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v22/theorems/FVLTFordGeometryV1.lean": {
+      "sha256": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+      "imports": [
+        "FVLTFareyContactV1",
+        "Mathlib.Analysis.Complex.Norm",
+        "Mathlib.Data.Rat.Cast.Defs",
+        "Mathlib.Tactic"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v22/theorems/FVLTFareyContactV1.lean": {
+      "sha256": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+      "imports": [
+        "Mathlib.Data.Rat.Defs",
+        "Mathlib.Algebra.Order.Group.Unbundled.Abs",
+        "Mathlib.Algebra.Order.Ring.Int"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v22/theorems/FVLTFordRationalV1.lean": {
+      "sha256": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+      "imports": [
+        "Mathlib.Data.Rat.Defs"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v22/theorems/FVLTFareyArithmeticCompletionV1.lean": {
+      "sha256": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+      "imports": [
+        "FVLTFareyCertificatesV1",
+        "Mathlib.Data.Rat.Lemmas",
+        "Mathlib.Tactic"
+      ]
+    },
+    "/home/saphir/rule30_theorem_library/v22/theorems/FVLTFareyCertificatesV1.lean": {
+      "sha256": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+      "imports": [
+        "FVLTFareyContactV1",
+        "Mathlib.Combinatorics.SimpleGraph.Connectivity.Finite",
+        "Mathlib.Combinatorics.SimpleGraph.Finite",
+        "Mathlib.NumberTheory.Divisors",
+        "Mathlib.Data.Rat.Lemmas",
+        "Mathlib.Tactic"
+      ]
+    }
+  },
+  "child_PATH": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin:/usr/local/bin:/usr/bin:/bin",
+  "exit_code": 0,
+  "timeout": false,
+  "seconds": 1.417470932006836,
+  "log_sha256": "42a298581876d750215b6b6ab0dd3310955fd766983c74a7d29e3b0991948a3d",
+  "log_bytes": 1576,
+  "peak_child_rss_kib": 3452032,
+  "source_unchanged": true,
+  "reviewed_files_unchanged": true,
+  "library_checksums_after": 396,
+  "named_axiom_reports": {
+    "FVLT.PhasorFordV1.LiftedData": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.PhasorFordV1.fordAddress": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.PhasorFordV1.phaseAddress": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.PhasorFordV1.IsIntegral": [
+      "propext",
+      "Quot.sound"
+    ],
+    "FVLT.PhasorFordV1.phasorValue": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.PhasorFordV1.liftedPhasor": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.PhasorFordV1.circleMap": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.PhasorFordV1.gcdFactor": [],
+    "FVLT.PhasorFordV1.integerContactWindow": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.PhasorFordV1.divisorWindow": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.PhasorFordV1.fareySet": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.PhasorFordV1.shellEvents": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.PhasorFordV1.shellEventAddresses": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.PhasorFordV1.fareyList": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ],
+    "FVLT.PhasorFordV1.EdgeKind": [],
+    "FVLT.PhasorFordV1.IsBreak": [
+      "propext"
+    ],
+    "FVLT.PhasorFordV1.classifyEdge": [
+      "propext"
+    ],
+    "FVLT.PhasorFordV1.pathEdgeKind": [
+      "propext"
+    ],
+    "FVLT.PhasorFordV1.endpointCertificate": [
+      "propext",
+      "Classical.choice",
+      "Quot.sound"
+    ]
+  },
+  "accepted_result": true
+}

@@ -1,0 +1,11 @@
+{
+  "status": "COMPUTE_BATCH_CLOSED_DATA_ONLY_NOT_FF2_OUTCOME",
+  "origin_unix": 1793757115,
+  "deadline_unix": 1793758915,
+  "last_child_end_unix": 1793758802.969151,
+  "next_batch_requires_fresh_posted_binding": true,
+  "remaining_target_theorems": 28,
+  "skin_data_replayed": 53,
+  "pillowcase_data_replayed": 55,
+  "no_further_lean_calls_in_this_batch": true
+}

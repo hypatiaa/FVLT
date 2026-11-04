@@ -1,0 +1,50 @@
+{
+  "schema": "ff3-source-comparison/1",
+  "verdict": "PASS",
+  "source_sha256": {
+    "FVLTRosetteFordArithmeticV1.lean": "f74e1a1d8f02a60beceb6a1a44a7e5833b2583777f74cd4e36ebed459b67726f",
+    "FVLTRosetteFordDataV1.lean": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388"
+  },
+  "freeze_sha256": "6c9d2f7671d233c0ac49c9af4bb887756ecbeaf63e894c4c8c7599346c2b2047",
+  "g1_import_closure_excluded": true,
+  "all_present_public_headers_match": true,
+  "data_definitions_exact": true,
+  "present_targets": [
+    "FVLT.PhasorFordV1.integer_address_iff",
+    "FVLT.PhasorFordV1.integer_address_integral_iff",
+    "FVLT.PhasorFordV1.integer_address_radius",
+    "FVLT.PhasorFordV1.divisor_recovery_window",
+    "FVLT.PhasorFordV1.zero_spin_address",
+    "FVLT.PhasorFordV1.zero_spin_window",
+    "FVLT.PhasorFordV1.reduced_det_mul",
+    "FVLT.PhasorFordV1.reduced_det_quotient",
+    "FVLT.PhasorFordV1.row_law",
+    "FVLT.PhasorFordV1.row_tangent_iff",
+    "FVLT.PhasorFordV1.signed_column_law",
+    "FVLT.PhasorFordV1.signed_column_tangent_iff",
+    "FVLT.PhasorFordV1.zero_column_stall",
+    "FVLT.PhasorFordV1.reference_column_tangent_iff",
+    "FVLT.PhasorFordV1.unit_fraction_spine"
+  ],
+  "axiom_report_targets": [
+    "FVLT.PhasorFordV1.integer_address_iff",
+    "FVLT.PhasorFordV1.integer_address_integral_iff",
+    "FVLT.PhasorFordV1.integer_address_radius",
+    "FVLT.PhasorFordV1.divisor_recovery_window",
+    "FVLT.PhasorFordV1.zero_spin_address",
+    "FVLT.PhasorFordV1.zero_spin_window",
+    "FVLT.PhasorFordV1.reduced_det_mul",
+    "FVLT.PhasorFordV1.reduced_det_quotient",
+    "FVLT.PhasorFordV1.row_law",
+    "FVLT.PhasorFordV1.row_tangent_iff",
+    "FVLT.PhasorFordV1.signed_column_law",
+    "FVLT.PhasorFordV1.signed_column_tangent_iff",
+    "FVLT.PhasorFordV1.zero_column_stall",
+    "FVLT.PhasorFordV1.reference_column_tangent_iff",
+    "FVLT.PhasorFordV1.unit_fraction_spine"
+  ],
+  "method": "All eight prior proofs retained; remaining seven frozen arithmetic headers appended verbatim LF; three private helpers total; data unchanged; UTF8LFnoBOM",
+  "definition_successor_sha256": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+  "repair_decision_sha256": "9f6c55b711221487d6904c813577a22d4b22dfd502bfa0faf11cbf280ce78f26",
+  "header_comparison": "All fifteen frozen arithmetic headers unchanged LF text"
+}

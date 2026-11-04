@@ -1,0 +1,318 @@
+{
+  "headers_found": 37,
+  "delivered_public_theorems": 37,
+  "statements_identical": 37,
+  "extra_public_theorems_not_in_headers": [],
+  "rows": [
+    {
+      "name": "phasor_real_iff",
+      "header_module": "FVLTRosetteFordPhaseV1",
+      "delivered_module": "FVLTRosetteFordPhaseV1",
+      "statement_identical": true
+    },
+    {
+      "name": "integer_spin_phase_iff",
+      "header_module": "FVLTRosetteFordPhaseV1",
+      "delivered_module": "FVLTRosetteFordPhaseV1",
+      "statement_identical": true
+    },
+    {
+      "name": "integer_spin_parity",
+      "header_module": "FVLTRosetteFordPhaseV1",
+      "delivered_module": "FVLTRosetteFordPhaseV1",
+      "statement_identical": true
+    },
+    {
+      "name": "circleMap_amplitude_independent",
+      "header_module": "FVLTRosetteFordPhaseV1",
+      "delivered_module": "FVLTRosetteFordPhaseV1",
+      "statement_identical": true
+    },
+    {
+      "name": "phasor_alias_not_address_alias",
+      "header_module": "FVLTRosetteFordPhaseV1",
+      "delivered_module": "FVLTRosetteFordPhaseV1",
+      "statement_identical": true
+    },
+    {
+      "name": "integer_address_iff",
+      "header_module": "FVLTRosetteFordArithmeticV1",
+      "delivered_module": "FVLTRosetteFordArithmeticV1",
+      "statement_identical": true
+    },
+    {
+      "name": "integer_address_integral_iff",
+      "header_module": "FVLTRosetteFordArithmeticV1",
+      "delivered_module": "FVLTRosetteFordArithmeticV1",
+      "statement_identical": true
+    },
+    {
+      "name": "integer_address_radius",
+      "header_module": "FVLTRosetteFordArithmeticV1",
+      "delivered_module": "FVLTRosetteFordArithmeticV1",
+      "statement_identical": true
+    },
+    {
+      "name": "divisor_recovery_window",
+      "header_module": "FVLTRosetteFordArithmeticV1",
+      "delivered_module": "FVLTRosetteFordArithmeticV1",
+      "statement_identical": true
+    },
+    {
+      "name": "zero_spin_address",
+      "header_module": "FVLTRosetteFordArithmeticV1",
+      "delivered_module": "FVLTRosetteFordArithmeticV1",
+      "statement_identical": true
+    },
+    {
+      "name": "zero_spin_window",
+      "header_module": "FVLTRosetteFordArithmeticV1",
+      "delivered_module": "FVLTRosetteFordArithmeticV1",
+      "statement_identical": true
+    },
+    {
+      "name": "reduced_det_mul",
+      "header_module": "FVLTRosetteFordArithmeticV1",
+      "delivered_module": "FVLTRosetteFordArithmeticV1",
+      "statement_identical": true
+    },
+    {
+      "name": "reduced_det_quotient",
+      "header_module": "FVLTRosetteFordArithmeticV1",
+      "delivered_module": "FVLTRosetteFordArithmeticV1",
+      "statement_identical": true
+    },
+    {
+      "name": "row_law",
+      "header_module": "FVLTRosetteFordArithmeticV1",
+      "delivered_module": "FVLTRosetteFordArithmeticV1",
+      "statement_identical": true
+    },
+    {
+      "name": "row_tangent_iff",
+      "header_module": "FVLTRosetteFordArithmeticV1",
+      "delivered_module": "FVLTRosetteFordArithmeticV1",
+      "statement_identical": true
+    },
+    {
+      "name": "signed_column_law",
+      "header_module": "FVLTRosetteFordArithmeticV1",
+      "delivered_module": "FVLTRosetteFordArithmeticV1",
+      "statement_identical": true
+    },
+    {
+      "name": "signed_column_tangent_iff",
+      "header_module": "FVLTRosetteFordArithmeticV1",
+      "delivered_module": "FVLTRosetteFordArithmeticV1",
+      "statement_identical": true
+    },
+    {
+      "name": "zero_column_stall",
+      "header_module": "FVLTRosetteFordArithmeticV1",
+      "delivered_module": "FVLTRosetteFordArithmeticV1",
+      "statement_identical": true
+    },
+    {
+      "name": "reference_column_tangent_iff",
+      "header_module": "FVLTRosetteFordArithmeticV1",
+      "delivered_module": "FVLTRosetteFordArithmeticV1",
+      "statement_identical": true
+    },
+    {
+      "name": "unit_fraction_spine",
+      "header_module": "FVLTRosetteFordArithmeticV1",
+      "delivered_module": "FVLTRosetteFordArithmeticV1",
+      "statement_identical": true
+    },
+    {
+      "name": "shell_contact_parameterization",
+      "header_module": "FVLTRosetteFordSweepV1",
+      "delivered_module": "FVLTRosetteFordSweepV1",
+      "statement_identical": true
+    },
+    {
+      "name": "shell_phasor_contact_iff",
+      "header_module": "FVLTRosetteFordSweepV1",
+      "delivered_module": "FVLTRosetteFordSweepV1",
+      "statement_identical": true
+    },
+    {
+      "name": "shell_contact_address",
+      "header_module": "FVLTRosetteFordSweepV1",
+      "delivered_module": "FVLTRosetteFordSweepV1",
+      "statement_identical": true
+    },
+    {
+      "name": "mem_shellEvents",
+      "header_module": "FVLTRosetteFordSweepV1",
+      "delivered_module": "FVLTRosetteFordSweepV1",
+      "statement_identical": true
+    },
+    {
+      "name": "mem_fareySet",
+      "header_module": "FVLTRosetteFordSweepV1",
+      "delivered_module": "FVLTRosetteFordSweepV1",
+      "statement_identical": true
+    },
+    {
+      "name": "shell_addresses_eq_farey",
+      "header_module": "FVLTRosetteFordSweepV1",
+      "delivered_module": "FVLTRosetteFordSweepV1",
+      "statement_identical": true
+    },
+    {
+      "name": "fareyList_membership",
+      "header_module": "FVLTRosetteFordSweepV1",
+      "delivered_module": "FVLTRosetteFordSweepV1",
+      "statement_identical": true
+    },
+    {
+      "name": "fareyList_strict",
+      "header_module": "FVLTRosetteFordSweepV1",
+      "delivered_module": "FVLTRosetteFordSweepV1",
+      "statement_identical": true
+    },
+    {
+      "name": "farey_consecutive_det",
+      "header_module": "FVLTRosetteFordSweepV1",
+      "delivered_module": "FVLTRosetteFordSweepV1",
+      "statement_identical": true
+    },
+    {
+      "name": "det_zero_iff_address_equal",
+      "header_module": "FVLTRosetteFordEndpointsV1",
+      "delivered_module": "FVLTRosetteFordEndpointsV1",
+      "statement_identical": true
+    },
+    {
+      "name": "classify_stall_iff",
+      "header_module": "FVLTRosetteFordEndpointsV1",
+      "delivered_module": "FVLTRosetteFordEndpointsV1",
+      "statement_identical": true
+    },
+    {
+      "name": "classify_tangent_iff",
+      "header_module": "FVLTRosetteFordEndpointsV1",
+      "delivered_module": "FVLTRosetteFordEndpointsV1",
+      "statement_identical": true
+    },
+    {
+      "name": "classify_break_iff",
+      "header_module": "FVLTRosetteFordEndpointsV1",
+      "delivered_module": "FVLTRosetteFordEndpointsV1",
+      "statement_identical": true
+    },
+    {
+      "name": "path_edge_trichotomy",
+      "header_module": "FVLTRosetteFordEndpointsV1",
+      "delivered_module": "FVLTRosetteFordEndpointsV1",
+      "statement_identical": true
+    },
+    {
+      "name": "path_kind_tangent_iff",
+      "header_module": "FVLTRosetteFordEndpointsV1",
+      "delivered_module": "FVLTRosetteFordEndpointsV1",
+      "statement_identical": true
+    },
+    {
+      "name": "tangent_endpoint_certificate",
+      "header_module": "FVLTRosetteFordEndpointsV1",
+      "delivered_module": "FVLTRosetteFordEndpointsV1",
+      "statement_identical": true
+    },
+    {
+      "name": "nontangent_no_certificate",
+      "header_module": "FVLTRosetteFordEndpointsV1",
+      "delivered_module": "FVLTRosetteFordEndpointsV1",
+      "statement_identical": true
+    }
+  ],
+  "data_module_bytes_equal_v0_2": true,
+  "data_definitions": [
+    "LiftedData",
+    "fordAddress",
+    "phaseAddress",
+    "IsIntegral",
+    "phasorValue",
+    "liftedPhasor",
+    "circleMap",
+    "gcdFactor",
+    "integerContactWindow",
+    "divisorWindow",
+    "fareySet",
+    "shellEvents",
+    "shellEventAddresses",
+    "fareyList",
+    "EdgeKind",
+    "IsBreak",
+    "classifyEdge",
+    "pathEdgeKind",
+    "endpointCertificate"
+  ],
+  "data_definition_count": 19,
+  "private_helpers": [
+    {
+      "mod": "FVLTRosetteFordArithmeticV1",
+      "name": "raw_normalization",
+      "stmt": "private theorem raw_normalization (a : ℤ) (q : ℕ) (hq : 0 < q) : (rawValue a q).num * (gcdFactor a q : ℤ) = a ∧ (rawValue a q).den * gcdFactor a q = q"
+    },
+    {
+      "mod": "FVLTRosetteFordArithmeticV1",
+      "name": "gcd_nonzero",
+      "stmt": "private theorem gcd_nonzero (a : ℤ) (q : ℕ) (hq : 0 < q) : (gcdFactor a q : ℤ) ≠ 0"
+    },
+    {
+      "mod": "FVLTRosetteFordArithmeticV1",
+      "name": "product_one_iff",
+      "stmt": "private theorem product_one_iff (a g h b : ℤ) (hgh : g * h ≠ 0) (he : a * g * h = b) : a = 1 ↔ b = g * h"
+    },
+    {
+      "mod": "FVLTRosetteFordSweepV1",
+      "name": "unit_numerator",
+      "stmt": "private theorem unit_numerator (x : ℚ) (hx0 : 0 ≤ x) (hx1 : x ≤ 1) : (x.num.natAbs : ℚ) = (x.num : ℚ) ∧ x.num.natAbs ≤ x.den"
+    },
+    {
+      "mod": "FVLTRosetteFordSweepV1",
+      "name": "raw_den_bound",
+      "stmt": "private theorem raw_den_bound (a : ℤ) (q : ℕ) (hq : 0 < q) : (rawValue a q).den ≤ q"
+    },
+    {
+      "mod": "FVLTRosetteFordSweepV1",
+      "name": "bounded_bezout",
+      "stmt": "private theorem bounded_bezout (a b B : ℕ) (hb : 0 < b) (hbB : b ≤ B) (hcop : Nat.Coprime a b) : ∃ c d : ℤ, 0 < d ∧ d ≤ (B : ℤ) ∧ (B : ℤ) < (b : ℤ) + d ∧ (b : ℤ) * c - (a : ℤ) * d = 1"
+    },
+    {
+      "mod": "FVLTRosetteFordSweepV1",
+      "name": "interval_denominator_bound",
+      "stmt": "private theorem interval_denominator_bound (x y z : ℚ) (hdet : (x.den : ℤ) * y.num - x.num * (y.den : ℤ) = 1) (hxz : x < z) (hzy : z < y) : x.den + y.den ≤ z.den"
+    },
+    {
+      "mod": "FVLTRosetteFordSweepV1",
+      "name": "exists_bounded_successor",
+      "stmt": "private theorem exists_bounded_successor (B : ℕ) (hB : 1 ≤ B) (x : ℚ) (hx : x ∈ fareySet B) (hx1 : x < 1) : ∃ w : ℚ, w ∈ fareySet B ∧ x < w ∧ (x.den : ℤ) * w.num - x.num * (w.den : ℤ) = 1 ∧ B < x.den + w.den"
+    }
+  ],
+  "non_theorem_declarations_in_proof_modules": [],
+  "imports": {
+    "FVLTRosetteFordPhaseV1": [
+      "FVLTRosetteFordDataV1"
+    ],
+    "FVLTRosetteFordArithmeticV1": [
+      "FVLTRosetteFordDataV1"
+    ],
+    "FVLTRosetteFordSweepV1": [
+      "FVLTRosetteFordPhaseV1",
+      "Mathlib.Data.Int.GCD"
+    ],
+    "FVLTRosetteFordEndpointsV1": [
+      "FVLTRosetteFordDataV1"
+    ],
+    "FVLTRosetteFordDataV1": [
+      "FVLTFareyArithmeticCompletionV1",
+      "FVLTFordExactCoordinatesV1",
+      "Mathlib.Data.Finset.Sort",
+      "Mathlib.NumberTheory.Divisors",
+      "Mathlib.Analysis.SpecialFunctions.Trigonometric.Basic"
+    ]
+  }
+}

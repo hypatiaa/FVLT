@@ -1,0 +1,8 @@
+{
+  "cap_seconds": 1800,
+  "origin_unix": 1793782708,
+  "deadline_unix": 1793784508,
+  "no_reset_or_extension": true,
+  "batch": "FF3 Batch02",
+  "previous_batch": "Batch01 closed and unchanged"
+}

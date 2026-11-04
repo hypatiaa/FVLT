@@ -1,0 +1,29 @@
+name = "rule30lib"
+version = "1.0.0"
+defaultTargets = ["Rule30LibKitExtensions", "Rule30Lib"]
+
+[[require]]
+name = "mathlib"
+scope = "leanprover-community"
+git = "https://github.com/leanprover-community/mathlib4"
+rev = "56a005855ea17e0b0958f73ec801ae140b0a1679"
+
+# Verified new files in the Ruliology namespace (not kit files).
+[[lean_lib]]
+name = "Rule30LibKitExtensions"
+srcDir = "theorems"
+roots = ["Ruliology.CellularAutomata.Rule30LeftConductorTransferV1"]
+moreLeanArgs = ["-s65536", "-M8192", "-DElab.async=false"]
+
+# Kit 7d665044 core statements, built from the byte-identical copy in kit/lean.
+[[lean_lib]]
+name = "Ruliology"
+srcDir = "kit/lean"
+roots = ["Ruliology"]
+
+# Verified new theorems, byte-identical to their deliveries (see LIBRARY_MANIFEST.json).
+[[lean_lib]]
+name = "Rule30Lib"
+srcDir = "theorems"
+roots = ["FVLTActualSpinSpectrumV1", "FVLTAlphaAmplitudeV1", "FVLTAtomSkinCountsV1", "FVLTAtomSkinDataV1", "FVLTAtomSkinPenV1", "FVLTBeatPeriodV1", "FVLTCliffordGeometryV1", "FVLTConductorProjectorsV1", "FVLTConeSectorV1", "FVLTConeSpiralV1", "FVLTCoupledPointV1", "FVLTCyclicShiftWitnessV1", "FVLTFareyArithmeticCompletionV1", "FVLTFareyCertificatesV1", "FVLTFareyContactV1", "FVLTFareyFixturesCompletionV1", "FVLTFiniteStateObstructionV1", "FVLTFordExactCoordinatesV1", "FVLTFordGeometryCompletionV1", "FVLTFordGeometryV1", "FVLTFordRationalV1", "FVLTGearboxV1", "FVLTHelixFrameV1", "FVLTHelixGearboxV1", "FVLTHopfClockBridgeV1", "FVLTMCombHelixV1", "FVLTN6MirrorV1", "FVLTN6OrientationV1", "FVLTN6YReflectionV1", "FVLTNaturalFanV1", "FVLTNoWrapPaddingV1", "FVLTNonlinearSpectralV1", "FVLTPeriodProjectorsV1", "FVLTPhaseAddressV1", "FVLTPhasePartnersV1", "FVLTPillowcaseDataV1", "FVLTPillowcaseV1", "FVLTProductConvolutionV1", "FVLTRingSemanticsV1", "FVLTRosetteTrailV1", "FVLTRule30SpinV1", "FVLTS4dScannerV1", "FVLTS4dSpanReductionV1", "FVLTS4eUniformPeriodV1", "FVLTS4fMaskedLeakV1", "FVLTS4fSpanTimeV1", "FVLTS4gForcedBitCountV1", "FVLTS4gLBEImplicationV1", "FVLTS4gLeftScreenV1", "FVLTS4hAlternatingZeroV1", "FVLTS4hFiniteTailV1", "FVLTS4hInfinitePinsV1", "FVLTS4iResidualV1", "FVLTS4iUniformPaddingV1", "FVLTS4jBoundedDeathV1", "FVLTS4kCollapseV1", "FVLTS4kCoreV1", "FVLTS4kDomReductionV1", "FVLTS4lZeroBoundaryV1", "FVLTS4mCoordinatesV1", "FVLTS4mMachineBridgeV1", "FVLTS4mOddPhaseThetaV1", "FVLTS4mResidualV1", "FVLTS4nHarmonicTransportV1", "FVLTS4nPaddingWalkV1", "FVLTS4nPrimeReadoutV1", "FVLTS4nShellTransportV1", "FVLTS4qGatePhaseV1", "FVLTS4qSpinGateV1", "FVLTS4sRule150PenV1", "FVLTS4sSqueezeCornersV1", "FVLTStageAIntegrationV1", "FVLTTurnFourierPenV1", "FVLTTurnFourierV1", "FVLTTwoClockV1", "FVLTUnitFractionSpineV1", "FVLTWalkTiltV1", "FVLTWovenCanonicalV1", "FVLTWovenCertificateV1", "FVLTWovenCylinderV1", "FVLTWovenEvolutionV1", "FVLTWovenFiniteHorizonV1", "FVLTWovenKitBridgeV1", "FVLTYReflectionV1", "S4d", "S4e", "S4f", "S4g", "S4h", "S4h_G_CantorShiftV1", "S4i", "S4i_G_UniformLatchV1", "S4j_G_UniformCascadeV1", "S4k_G_DecreasingMeasureV1", "S4l_G_ZeroBoundaryPotentialsV1", "S4m_G_PeriodTwoResidualsV1", "S4n_G_PeriodTwoTargetIV1", "S4o_G_PeriodTwoFiniteStateV1", "S4p_G_PeriodTwoSubsequenceV1", "S4rCPhaseRecurrenceV2", "S4rCXorCocycleV2", "S4r_G_PeriodTwoAllLayersV2", "S4sBlockDuhamelV1", "S4sFrobeniusV1", "S4sPeriodConsequencesV1", "S4t_G_PeriodTwoSurvivalV2"]
+moreLeanArgs = ["-s65536", "-M8192", "-DElab.async=false"]

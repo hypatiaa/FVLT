@@ -1,0 +1,36 @@
+{
+  "schema": "ff3-source-comparison/1",
+  "verdict": "PASS",
+  "source_sha256": {
+    "FVLTRosetteFordDataV1.lean": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388"
+  },
+  "freeze_sha256": "6c9d2f7671d233c0ac49c9af4bb887756ecbeaf63e894c4c8c7599346c2b2047",
+  "g1_import_closure_excluded": true,
+  "all_present_public_headers_match": true,
+  "data_definitions_exact": true,
+  "present_targets": [],
+  "axiom_report_targets": [
+    "FVLT.PhasorFordV1.LiftedData",
+    "FVLT.PhasorFordV1.fordAddress",
+    "FVLT.PhasorFordV1.phaseAddress",
+    "FVLT.PhasorFordV1.IsIntegral",
+    "FVLT.PhasorFordV1.phasorValue",
+    "FVLT.PhasorFordV1.liftedPhasor",
+    "FVLT.PhasorFordV1.circleMap",
+    "FVLT.PhasorFordV1.gcdFactor",
+    "FVLT.PhasorFordV1.integerContactWindow",
+    "FVLT.PhasorFordV1.divisorWindow",
+    "FVLT.PhasorFordV1.fareySet",
+    "FVLT.PhasorFordV1.shellEvents",
+    "FVLT.PhasorFordV1.shellEventAddresses",
+    "FVLT.PhasorFordV1.fareyList",
+    "FVLT.PhasorFordV1.EdgeKind",
+    "FVLT.PhasorFordV1.IsBreak",
+    "FVLT.PhasorFordV1.classifyEdge",
+    "FVLT.PhasorFordV1.pathEdgeKind",
+    "FVLT.PhasorFordV1.endpointCertificate"
+  ],
+  "method": "Data source byte-identical to accepted successor02814fa1; original freeze6c9d2f76 retained; repair decision9f6c55b7;19declarations,no public theorem headers yet",
+  "definition_successor_sha256": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+  "repair_decision_sha256": "9f6c55b711221487d6904c813577a22d4b22dfd502bfa0faf11cbf280ce78f26"
+}

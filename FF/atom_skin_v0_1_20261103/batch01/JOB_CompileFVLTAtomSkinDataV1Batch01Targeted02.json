@@ -1,0 +1,17 @@
+{
+  "phase": "FF2_AB",
+  "module": "FVLTAtomSkinDataV1",
+  "mode": "compile",
+  "run_id": "CompileFVLTAtomSkinDataV1Batch01Targeted02",
+  "template_sha256": "c6a9837e80ac03d889a18afc7001046ef30fff7bfbe9d96c99f7da1dfe07568f",
+  "attempt_folder": "attempts/Data02",
+  "source_sha256": {
+    "FVLTAtomSkinDataV1.lean": "152a9583eba6484d054b5d7218b6ec31fc5a43ce62be56dd1c98865280d5fec7",
+    "FVLTPillowcaseDataV1.lean": "b8a03b38d0e8a8defb68bc93701f9c6ded0a8ff8ce9e9c9f1af636790ce3bcd2"
+  },
+  "dependency_olean_sha256": {},
+  "prerequisite_receipt_sha256": {},
+  "signature_comparison_receipt_file": "COMPARE_DATA02.json",
+  "signature_comparison_receipt_sha256": "1640cde4c236013b35dc6bddca34925f63c41595e98c6dcb2f0e7db54f655b6f",
+  "deadline_file": "DEADLINE_BATCH01.json"
+}
