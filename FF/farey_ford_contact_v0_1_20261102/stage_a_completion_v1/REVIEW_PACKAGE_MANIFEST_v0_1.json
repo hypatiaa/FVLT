@@ -1,0 +1,36 @@
+{
+  "status": "DESIGN_REVIEW_ONLY_NO_PROOF_DRAFTING_NO_BUILD",
+  "files": [
+    {
+      "path": "COVERAGE_v0_1.json",
+      "bytes": 20136,
+      "sha256": "07423e3181d9629829235b628e43fc3bbf25e54f8843c7cbd19d25639733d201"
+    },
+    {
+      "path": "PLAN_v0_1.md",
+      "bytes": 6966,
+      "sha256": "7c9a4f1bc9463a567ce69cfae5811533aeac1a63dd0d26f3536b878a8690e173"
+    },
+    {
+      "path": "PREPARE_TEMPLATE_v0_1.ps1",
+      "bytes": 5699,
+      "sha256": "3ae23630aa0be6e1e9d63b8368c4c9966d2ae536bde2edf4135021e3cf94cf14"
+    },
+    {
+      "path": "R1_JOB_TEMPLATE_v0_1.json",
+      "bytes": 5486,
+      "sha256": "50b379ba05833eb552f9bbaad808aabac86a01552d2d35406de29e36d3f70d59"
+    },
+    {
+      "path": "RUN_R1_v0_1.py",
+      "bytes": 7534,
+      "sha256": "a07e738a973429be2e8ade6406f49fea1bb6b5e351ac5ede263f721b933cbd73"
+    },
+    {
+      "path": "RUN_R1_vs_BRIDGE_v0_1.diff",
+      "bytes": 12496,
+      "sha256": "687a7145c9af2bebf846f8df3b47883d619d0c79e32fc2f61e05cd8ae2087575"
+    }
+  ],
+  "fresh_input_binding_pending": true
+}

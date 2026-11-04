@@ -1,0 +1,21 @@
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_integration_v1/src/FVLTFordGeometryV1.lean:34:42: warning: Variable name `hne` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hne
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_integration_v1/src/FVLTFordGeometryV1.lean:45:2: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_integration_v1/src/FVLTFordGeometryV1.lean:45:2: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_integration_v1/src/FVLTFordGeometryV1.lean:70:6: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_integration_v1/src/FVLTFordGeometryV1.lean:70:6: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+'FVLT.FordGeometryV1.radius_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordGeometryV1.ford_distance_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordGeometryV1.kiss_membership' depends on axioms: [propext, Classical.choice, Quot.sound]

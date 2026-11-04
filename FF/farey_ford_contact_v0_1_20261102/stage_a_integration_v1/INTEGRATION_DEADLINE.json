@@ -1,0 +1,8 @@
+{
+  "phase": "INTEGRATION",
+  "staging_started_utc": "2026-11-03T23:41:49.3232105+00:00",
+  "staging_started_unix": 1793749309,
+  "deadline_unix": 1793751109,
+  "active_cap_seconds": 1800,
+  "timing_scope": "Starts before first remote metadata/control staging; includes fresh binding and posting wait; no transferred allowance"
+}

@@ -1,0 +1,49 @@
+import FVLTPhasePartnersV1
+import Mathlib.Tactic
+
+/-! FF-1 R5: exact finite Farey contact fixtures.
+Framework assembled by Robin Miller; components are classical results of others.
+Farey/Ford (1938), Apostol ch. 5; structural reference Paulson, Isabelle AFP (2025).
+Finite checks below are kernel proof terms.
+-/
+namespace FVLT.FareyContactV1
+
+theorem fixture4321_connected : (phaseGraph [4,3,2,1]).Connected := by
+  change (fareyGraph (phases [4,3,2,1])).Connected
+  decide +kernel
+
+theorem fixture4321_repair_edges :
+  (1/5 : ℚ) ∈ phases [4,3,2,1] ∧ (1/4 : ℚ) ∈ phases [4,3,2,1] ∧
+  (3/4 : ℚ) ∈ phases [4,3,2,1] ∧ (4/5 : ℚ) ∈ phases [4,3,2,1] ∧
+  fareyAdj (1/5) (1/4) ∧ fareyAdj (3/4) (4/5) := by
+  decide +kernel
+
+theorem fixture83_certificate : rationalCertificate (phases [8,3])
+  (singletonPartition (phases [8,3]) {(1/9 : ℚ), 8/9}) := by
+  unfold rationalCertificate ComponentCertificate
+  refine ⟨by decide +kernel, ?_, ?_, ?_, ?_, ?_⟩
+  all_goals decide +kernel
+
+theorem fixture83_counts : (phases [8,3]).card = 11 ∧
+  contactCount (phases [8,3]) = 8 ∧
+  Nat.card (phaseGraph [8,3]).ConnectedComponent = 3 := by
+  refine ⟨by decide +kernel,by decide +kernel,?_⟩
+  have h := rational_certificate_count _ _ fixture83_certificate
+  have hc : (singletonPartition (phases [8,3]) {(1/9 : ℚ),8/9}).card = 3 := by decide +kernel
+  exact h.trans hc
+
+theorem fixture83_isolated (x : ℚ) :
+  isolated (phases [8,3]) x ↔ x ∈ ({(1/9 : ℚ), 8/9} : Finset ℚ) := by
+  by_cases hx : x ∈ phases [8,3]
+  · have hc : ∀ u : {u : ℚ // u ∈ phases [8,3]},
+        isolated (phases [8,3]) u.val ↔ u.val ∈ ({(1/9 : ℚ),8/9} : Finset ℚ) := by decide +kernel
+    exact hc ⟨x,hx⟩
+  · have hs : ({(1/9 : ℚ),8/9} : Finset ℚ) ⊆ phases [8,3] := by decide +kernel
+    exact iff_of_false (fun h => hx h.1) (fun h => hx (hs h))
+
+#print axioms FVLT.FareyContactV1.fixture4321_connected
+#print axioms FVLT.FareyContactV1.fixture4321_repair_edges
+#print axioms FVLT.FareyContactV1.fixture83_certificate
+#print axioms FVLT.FareyContactV1.fixture83_counts
+#print axioms FVLT.FareyContactV1.fixture83_isolated
+end FVLT.FareyContactV1

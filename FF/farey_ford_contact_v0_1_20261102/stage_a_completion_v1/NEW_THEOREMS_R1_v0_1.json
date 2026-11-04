@@ -1,0 +1,60 @@
+{
+  "module": "FVLTFareyArithmeticCompletionV1",
+  "targets": [
+    {
+      "name": "FVLT.FareyContactV1.raw_det_one_coprime",
+      "header": "theorem raw_det_one_coprime (a c : ℤ) (q s : ℕ)\n  (hq : 0 < q) (hs : 0 < s)\n  (hdet : |a * (s : ℤ) - c * (q : ℤ)| = 1) :\n  Nat.Coprime a.natAbs q ∧ Nat.Coprime c.natAbs s ∧ Nat.Coprime q s",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.rawValue_num_den",
+      "header": "theorem rawValue_num_den (x : ℚ) : rawValue x.num x.den = x",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.rawValue_canonical",
+      "header": "theorem rawValue_canonical (a : ℤ) (q : ℕ) (hq : 0 < q)\n  (hred : Nat.Coprime a.natAbs q) :\n  (rawValue a q).num = a ∧ (rawValue a q).den = q",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.rawValue_unique",
+      "header": "theorem rawValue_unique (a c : ℤ) (q s : ℕ)\n  (hq : 0 < q) (hs : 0 < s)\n  (ha : Nat.Coprime a.natAbs q) (hc : Nat.Coprime c.natAbs s) :\n  rawValue a q = rawValue c s ↔ a = c ∧ q = s",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.coprime_den_not_adj",
+      "header": "theorem coprime_den_not_adj :\n  Nat.Coprime (unitFrac 3).den (unitFrac 5).den ∧\n  ¬ fareyAdj (unitFrac 3) (unitFrac 5) ∧\n  |det (unitFrac 3) (unitFrac 5)| = 2",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.adjacent_mediant",
+      "header": "theorem adjacent_mediant (x y : ℚ) (hxy : x < y) (h : fareyAdj x y) :\n  Nat.Coprime (x.num + y.num).natAbs (x.den + y.den) ∧\n  (mediant x y).num = x.num + y.num ∧\n  (mediant x y).den = x.den + y.den ∧\n  x < mediant x y ∧ mediant x y < y ∧\n  fareyAdj x (mediant x y) ∧ fareyAdj (mediant x y) y",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.rosette",
+      "header": "theorem rosette (N : ℕ) (hN : 2 ≤ N) :\n  |det (unitFrac (N - 1)) (unitFrac (N + 1))| = 2 ∧\n  mediant (unitFrac (N - 1)) (unitFrac (N + 1)) = unitFrac N ∧\n  fareyAdj (unitFrac N) (unitFrac (N - 1)) ∧\n  fareyAdj (unitFrac N) (unitFrac (N + 1))",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    }
+  ],
+  "private_helpers": [
+    "coprime_from_det",
+    "unitFrac_data"
+  ],
+  "new_instances": 0,
+  "standing": "FINISHED_PRODUCER_ONLY"
+}

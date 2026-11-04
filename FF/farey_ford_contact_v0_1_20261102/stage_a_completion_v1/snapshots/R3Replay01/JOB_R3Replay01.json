@@ -1,0 +1,15 @@
+{
+  "phase": "R3",
+  "mode": "replay",
+  "module": "FVLTUnitFractionSpineV1",
+  "run_id": "R3Replay01",
+  "template_sha256": "32b0444d0945bbe5fc48a0131a1ad7f88f00e17900e43c838907dd764db4e4d8",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "source_sha256": {
+    "FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1"
+  },
+  "dependency_olean_sha256": {
+    "FVLTUnitFractionSpineV1.olean": "8d5f4cae1a6693a1e873ecc2ad73e81a50d380254eb289ba304d9ddb67508870"
+  },
+  "owner_accepted_utc": "2026-11-03T21:54:20.8329819+00:00"
+}

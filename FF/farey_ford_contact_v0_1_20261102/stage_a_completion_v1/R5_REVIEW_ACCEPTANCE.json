@@ -1,0 +1,60 @@
+{
+  "input_review_reference": "R5 decision #1432 accepted-on-posting",
+  "signature_review_reference": "SIGNATURE_FREEZE_DRAFT_v0_1.md accepted original freeze",
+  "final_template_review_reference": "R5 decision #1432 accepted-on-posting #1433 ledger1436 verified by coordinator",
+  "runner_sha256": "d28faa682336f7a04f734bce545b8083ac32b5cbb15060d05fe588b1efb4f22c",
+  "bound_template_file": "R5_JOB_TEMPLATE_BOUND_v0_1.json",
+  "bound_template_sha256": "38a69f260e34557d390bb4b547738884fb74f4cebde172133843a47c4beab8a9",
+  "reviewed_files": {
+    "R5_JOB_TEMPLATE_BOUND_v0_1.json": "38a69f260e34557d390bb4b547738884fb74f4cebde172133843a47c4beab8a9",
+    "R5_INPUT_OBSERVATIONS_v0_1.json": "2dc111588b3c8bb234e6f2efde432e39cac0644a8ea22ae94466156a54f374e2",
+    "R5_TEMPLATE_DECISION_v0_1.md": "cec9d25d49255923273e265b400aa560365216062b28e1a3672945352443555a"
+  },
+  "library_expected": {
+    "SHA256SUMS": "e25d4d54d074f152c452aa7247ccbe992e14b29d58306809660a75770ae7ddd5",
+    "LIBRARY_MANIFEST.json": "f0ee6b00fe4a622b63cac1f4fb24146e9b2808bdb0fb430ebdac074fecb258fa",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "4f0aea1336d288cba45c00727ce81c2cc064c39fca46e8ccf4505ae38ca6191f",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "accepted_job_manifest_sha256": [
+    "64f53ced6b4686395b63ea17b97ff418f4a358148b85b91a265eb091d2726d87",
+    "b0e4e7f8f3669c4211ed8e9b298644764cd8caa1ef648d82c48fa52d6104163d",
+    "ea3ab0b9c795365707afee89878684e9c9f10885ed81dd6d4724be9798c8800c"
+  ],
+  "owner_acceptance_log": [
+    {
+      "job": "JOB_R5Compile01.json",
+      "job_sha256": "64f53ced6b4686395b63ea17b97ff418f4a358148b85b91a265eb091d2726d87",
+      "template_sha256": "38a69f260e34557d390bb4b547738884fb74f4cebde172133843a47c4beab8a9",
+      "accepted_utc": "2026-11-03T18:17:12.3432539-05:00",
+      "headers_verbatim": 5,
+      "definitions_verbatim": 0,
+      "source_sha256": {
+        "FVLTFareyFixturesCompletionV1.lean": "03b0c57a03aeaea27b4f90d7e2250c21eb483aef6979c904d99209cefeb89b8c"
+      }
+    },
+    {
+      "job": "JOB_R5Compile02.json",
+      "job_sha256": "b0e4e7f8f3669c4211ed8e9b298644764cd8caa1ef648d82c48fa52d6104163d",
+      "template_sha256": "38a69f260e34557d390bb4b547738884fb74f4cebde172133843a47c4beab8a9",
+      "accepted_utc": "2026-11-03T18:18:15.8690028-05:00",
+      "headers_verbatim": 5,
+      "definitions_verbatim": 0,
+      "source_sha256": {
+        "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d"
+      }
+    },
+    {
+      "job": "JOB_R5Replay01.json",
+      "job_sha256": "ea3ab0b9c795365707afee89878684e9c9f10885ed81dd6d4724be9798c8800c",
+      "template_sha256": "38a69f260e34557d390bb4b547738884fb74f4cebde172133843a47c4beab8a9",
+      "accepted_utc": "2026-11-03T23:19:02.9353800+00:00",
+      "headers_verbatim": 5,
+      "definitions_verbatim": 0,
+      "source_sha256": {
+        "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d"
+      }
+    }
+  ]
+}

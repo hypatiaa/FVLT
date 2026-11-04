@@ -1,0 +1,93 @@
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1/FVLTPhasePartnersV1.lean:59:42: warning: Variable name `hα` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hα
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1/FVLTPhasePartnersV1.lean:85:6: warning: Unused tactic linter: `change ((c * t : ℕ) : ℚ) / ((a + 1 : ℕ) : ℚ) = x` does nothing.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1/FVLTPhasePartnersV1.lean:108:35: warning: Variable name `hα` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hα
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1/FVLTPhasePartnersV1.lean:122:11: warning: Variable name `hx` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hx
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1/FVLTPhasePartnersV1.lean:175:25: warning: Unused tactic linter: `<;>` should be replaced with `;` or be removed.
+
+Note: This linter can be disabled with `set_option linter.unusedTactic false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1/FVLTPhasePartnersV1.lean:175:25: warning: Used `tac1 <;> tac2` where `(tac1; tac2)` would suffice
+
+Note: This linter can be disabled with `set_option linter.unnecessarySeqFocus false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1/FVLTPhasePartnersV1.lean:182:33: warning: Variable name `hy` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hy
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1/FVLTPhasePartnersV1.lean:250:36: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1/FVLTPhasePartnersV1.lean:253:4: error: Type mismatch: After simplification, term
+  hh
+ has type
+  (1 - x).num * ↑1 * ↑x.den = (↑x.den - x.num * ↑1) * ↑x.den
+but is expected to have type
+  (1 - x).num * ↑x.den = (↑x.den - x.num) * ↑x.den
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1/FVLTPhasePartnersV1.lean:256:37: warning: Variable name `hα` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hα
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1/FVLTPhasePartnersV1.lean:265:34: warning: Variable name `hx` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hx
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1/FVLTPhasePartnersV1.lean:266:3: warning: Variable name `hy` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hy
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'FVLT.FareyContactV1.phases_eq_unreduced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.phase_domain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.denominator_partner' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.partner_congruence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.cross_denominator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.isolation_criterion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.endpoint_isolation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.complement_mem' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.complement_adj' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.complement_graph_auto' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.isolated_complement_pairs' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'_private.FVLTPhasePartnersV1.0.FVLT.FareyContactV1.admissible_two' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTPhasePartnersV1.0.FVLT.FareyContactV1.interior_numerator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTPhasePartnersV1.0.FVLT.FareyContactV1.phase_description' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTPhasePartnersV1.0.FVLT.FareyContactV1.sign_witness' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTPhasePartnersV1.0.FVLT.FareyContactV1.unit_phase' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTPhasePartnersV1.0.FVLT.FareyContactV1.complement_coordinates' depends on axioms: [propext,
+ sorryAx,
+ Classical.choice,
+ Quot.sound]

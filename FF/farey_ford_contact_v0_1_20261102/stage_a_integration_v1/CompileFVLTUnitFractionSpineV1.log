@@ -1,0 +1,22 @@
+'FVLT.FareyContactV1.unitFrac_injective_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.integerPath_adj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.unitFrac_adj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.unitFrac_graph_iso' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.unitFrac_graph_connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.empty_graph_convention' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.gap_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.minimal_gap_mediant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.gap_mediant_unit_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'_private.FVLTUnitFractionSpineV1.0.FVLT.FareyContactV1.unitFrac_coordinates' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTUnitFractionSpineV1.0.FVLT.FareyContactV1.path_cut' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTUnitFractionSpineV1.0.FVLT.FareyContactV1.induced_path_connected' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTUnitFractionSpineV1.0.FVLT.FareyContactV1.gap_mediant_value' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'FVLT.FordGeometryV1.unitFrac_tangent' depends on axioms: [propext, Classical.choice, Quot.sound]

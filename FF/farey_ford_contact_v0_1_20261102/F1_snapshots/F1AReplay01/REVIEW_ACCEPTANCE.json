@@ -1,0 +1,116 @@
+{
+  "input_review_reference": "FREEZE_REVIEW_v0_1_20261103.md + C1 (bus1373,1378)",
+  "signature_review_reference": "FREEZE_REVIEW_v0_1_20261103.md (a9382d40 exact signatures)",
+  "runner_sha256": "c14f263caa77643e653f12fe63a3cda1bfdfa5024cfab97d2eadf5d2c6a59590",
+  "reviewed_files": {
+    "SIGNATURE_FREEZE_DRAFT_v0_1.md": "a9382d4054a77d7a569e884b4f7e02b55f7c7e9aa0da2d3a6d1299075ea2b6c7",
+    "F1_JOB_TEMPLATE_v0_1.json": "45c7d8bf2046298f2f7d9e428e90ce173391050156e77f526c8da5cedd10c274"
+  },
+  "library_expected": {
+    "SHA256SUMS": "e25d4d54d074f152c452aa7247ccbe992e14b29d58306809660a75770ae7ddd5",
+    "LIBRARY_MANIFEST.json": "f0ee6b00fe4a622b63cac1f4fb24146e9b2808bdb0fb430ebdac074fecb258fa",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "4f0aea1336d288cba45c00727ce81c2cc064c39fca46e8ccf4505ae38ca6191f",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "accepted_job_manifest_sha256": [
+    "b8b0b1f6878d6e5bfa64b2b445ae31d2e771b9302f958ed4162e69364cc569a7",
+    "e3de00940b4cb1eecc9a6414e46951defd34f117bfa5ebee94b79c73e964af2f",
+    "7253cf6433d3ab9559a3292ab9ace2b0a1932e42b4cb0efe589c90e06187b3d5",
+    "de6821f81109d52fa45be0302e793aaa5be2109dd749863b90d9e3ba9d794675",
+    "343abf57577fa3cd1e0e8c43c26c6c4ebaa7f7a660f8a14d550024b6a3ea5220",
+    "f99d833d316609842fce453d1f6ede7b4396db997d5e0f0dd74a0a16f93b489e",
+    "32ca72018bb2384c442e8df0f05d06146800ea0d55d34737a0439de8215ec340",
+    "8acfdb3820849dd27e4f626be634966494b3519368e76461165d3c3e2608c4ab"
+  ],
+  "owner_acceptance_log": [
+    {
+      "job": "JOB_F1ACompile01.json",
+      "job_sha256": "b8b0b1f6878d6e5bfa64b2b445ae31d2e771b9302f958ed4162e69364cc569a7",
+      "template_sha256": "45c7d8bf2046298f2f7d9e428e90ce173391050156e77f526c8da5cedd10c274",
+      "accepted_utc": "2026-11-03T05:52:37.1034038-05:00",
+      "header_check": "two F1 frozen headers verbatim; imports Mathlib and own arithmetic only",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "e11ada278bb2b8ab43116260d8d661e563684e69b245b8a22d552b157a650868",
+        "FVLTFordGeometryV1.lean": "803b13dea032ec57190814a162e14faf638e2b48e11cfadeb0b394ef10e8a49d"
+      }
+    },
+    {
+      "job": "JOB_F1ACompile02.json",
+      "job_sha256": "e3de00940b4cb1eecc9a6414e46951defd34f117bfa5ebee94b79c73e964af2f",
+      "template_sha256": "45c7d8bf2046298f2f7d9e428e90ce173391050156e77f526c8da5cedd10c274",
+      "accepted_utc": "2026-11-03T05:54:31.7796902-05:00",
+      "header_check": "both F1 target headers verbatim; imports Mathlib/own arithmetic only",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "944c8fbfe97372545419aef91cfdfdcadfdbeb1bc8cc02de96d82bff797b2639",
+        "FVLTFordGeometryV1.lean": "9639b87bb6e0c1fc532054c6b390507a2b8412dc61751774237438fcb6753567"
+      }
+    },
+    {
+      "job": "JOB_F1ACompile03.json",
+      "job_sha256": "7253cf6433d3ab9559a3292ab9ace2b0a1932e42b4cb0efe589c90e06187b3d5",
+      "template_sha256": "45c7d8bf2046298f2f7d9e428e90ce173391050156e77f526c8da5cedd10c274",
+      "accepted_utc": "2026-11-03T06:28:34.7438702-05:00",
+      "header_check": "both F1 target headers verbatim; imports Mathlib/own arithmetic only",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "6fdc9e057daf4f10ecea7cbd3fe5998c4e54f4d58d236eacfaa7392d983c504a",
+        "FVLTFordGeometryV1.lean": "9639b87bb6e0c1fc532054c6b390507a2b8412dc61751774237438fcb6753567"
+      }
+    },
+    {
+      "job": "JOB_F1ACompile04.json",
+      "job_sha256": "de6821f81109d52fa45be0302e793aaa5be2109dd749863b90d9e3ba9d794675",
+      "template_sha256": "45c7d8bf2046298f2f7d9e428e90ce173391050156e77f526c8da5cedd10c274",
+      "accepted_utc": "2026-11-03T06:29:42.4090765-05:00",
+      "header_check": "both F1 target headers verbatim; imports Mathlib/own arithmetic only",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "9639b87bb6e0c1fc532054c6b390507a2b8412dc61751774237438fcb6753567"
+      }
+    },
+    {
+      "job": "JOB_F1GCompile01.json",
+      "job_sha256": "343abf57577fa3cd1e0e8c43c26c6c4ebaa7f7a660f8a14d550024b6a3ea5220",
+      "template_sha256": "45c7d8bf2046298f2f7d9e428e90ce173391050156e77f526c8da5cedd10c274",
+      "accepted_utc": "2026-11-03T06:30:16.0193318-05:00",
+      "header_check": "both F1 target headers verbatim; imports Mathlib/own arithmetic only",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "9639b87bb6e0c1fc532054c6b390507a2b8412dc61751774237438fcb6753567"
+      }
+    },
+    {
+      "job": "JOB_F1GCompile02.json",
+      "job_sha256": "f99d833d316609842fce453d1f6ede7b4396db997d5e0f0dd74a0a16f93b489e",
+      "template_sha256": "45c7d8bf2046298f2f7d9e428e90ce173391050156e77f526c8da5cedd10c274",
+      "accepted_utc": "2026-11-03T06:37:26.3176219-05:00",
+      "header_check": "both F1 target headers verbatim; imports Mathlib/own arithmetic only",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "02e94638feb8c33b913bb815a1ffdd29d41c2f6fb4ec7b6b71d80c5b16d31b6c"
+      }
+    },
+    {
+      "job": "JOB_F1GCompile03.json",
+      "job_sha256": "32ca72018bb2384c442e8df0f05d06146800ea0d55d34737a0439de8215ec340",
+      "template_sha256": "45c7d8bf2046298f2f7d9e428e90ce173391050156e77f526c8da5cedd10c274",
+      "accepted_utc": "2026-11-03T06:38:51.6399993-05:00",
+      "header_check": "both F1 target headers verbatim; imports Mathlib/own arithmetic only",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8"
+      }
+    },
+    {
+      "job": "JOB_F1AReplay01.json",
+      "job_sha256": "8acfdb3820849dd27e4f626be634966494b3519368e76461165d3c3e2608c4ab",
+      "template_sha256": "45c7d8bf2046298f2f7d9e428e90ce173391050156e77f526c8da5cedd10c274",
+      "accepted_utc": "2026-11-03T11:39:29.8374974+00:00",
+      "header_check": "both F1 target headers verbatim; imports Mathlib/own arithmetic only",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8"
+      }
+    }
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "phase": "F2",
+  "drafting_started_utc": "2026-11-03T12:15:07.1517360+00:00",
+  "drafting_started_unix": 1793708107,
+  "deadline_unix": 1793709907,
+  "active_cap_seconds": 1800,
+  "authority": "I3_TEMPLATE_ACCEPTANCE_F2_v0_1.md",
+  "no_F1_allowance_transferred": true
+}

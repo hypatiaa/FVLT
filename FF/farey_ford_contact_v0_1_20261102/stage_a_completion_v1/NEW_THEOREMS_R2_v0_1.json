@@ -1,0 +1,71 @@
+{
+  "module": "FVLTFordGeometryCompletionV1",
+  "targets": [
+    {
+      "name": "FVLT.FordGeometryV1.ford_open_disjoint",
+      "header": "theorem ford_open_disjoint (x y : ℚ) (hne : x ≠ y) : Disjoint (disk x) (disk y)",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FordGeometryV1.ford_boundary_disjoint",
+      "header": "theorem ford_boundary_disjoint (x y : ℚ) (hne : x ≠ y)\n  (hsep : 2 ≤ |det x y|) : Disjoint (boundary x) (boundary y)",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FordGeometryV1.ford_tangent_iff",
+      "header": "theorem ford_tangent_iff (x y : ℚ) (hne : x ≠ y) : tangent x y ↔ fareyAdj x y",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FordGeometryV1.ford_real_axis",
+      "header": "theorem ford_real_axis (x : ℚ) : boundary x ∩ realAxis = {(x : ℂ)}",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FordGeometryV1.kiss_unique",
+      "header": "theorem kiss_unique (x y : ℚ) (h : fareyAdj x y) :\n  boundary x ∩ boundary y = {kiss x y}",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FordGeometryV1.two_squares",
+      "header": "theorem two_squares (a c : ℤ) (q s : ℤ) :\n  (a*q + c*s)^2 + (a*s - c*q)^2 = (a^2 + c^2)*(q^2 + s^2)",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FordGeometryV1.kiss_integer_identity",
+      "header": "theorem kiss_integer_identity (x y : ℚ) (h : fareyAdj x y) :\n  (kissN x y)^2 + 1 = (x.num^2 + y.num^2) * (kissM x y : ℤ)",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FordGeometryV1.kiss_real_identity",
+      "header": "theorem kiss_real_identity (x y : ℚ) (h : fareyAdj x y) :\n  (kissN x y : ℝ)^2 + 1 =\n    ((x.num : ℝ)^2 + (y.num : ℝ)^2) * (kissM x y : ℝ)",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    }
+  ],
+  "private_helpers": [
+    "det_nonzero",
+    "centre_norm_ge",
+    "centre_norm_gt",
+    "centre_triangle",
+    "weighted_norm_identity",
+    "circle_inter_unique"
+  ],
+  "new_instances": 0,
+  "standing": "FINISHED_PRODUCER_ONLY"
+}

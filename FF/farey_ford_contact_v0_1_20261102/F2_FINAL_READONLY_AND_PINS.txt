@@ -1,0 +1,4 @@
+Tue Nov  3 12:33:59 PM UTC 2026
+e25d4d54d074f152c452aa7247ccbe992e14b29d58306809660a75770ae7ddd5  /home/saphir/rule30_theorem_library/v19/SHA256SUMS
+f0ee6b00fe4a622b63cac1f4fb24146e9b2808bdb0fb430ebdac074fecb258fa  /home/saphir/rule30_theorem_library/v19/LIBRARY_MANIFEST.json
+99d3b3c3a44d0f4b4aa020e0e797dff255eddddb0459b7b1e4a3b7fad8ef651e  /home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/FVLTFareyCertificatesV1.olean

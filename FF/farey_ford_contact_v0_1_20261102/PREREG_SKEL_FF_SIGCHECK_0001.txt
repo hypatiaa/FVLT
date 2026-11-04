@@ -1,0 +1,5 @@
+PREREG SKEL-FF-SIGCHECK-0001 (skeleton, 2026-11-03)
+Script: SKELETON_SIGNATURE_CHECK_20261103.cjs (sha256 e0cac846829de7f5b5f4ea9e8c525b90587561a1f5ca2e3ea890fb21c87fd0b3)
+Checks, by exact integer/BigInt-rational arithmetic on finite domains, the truth of the frozen FF-1 Stage A signatures (A1-A7) and FF-2 v0.1 Parts A and B.
+Pass: fails == 0, exit 0. Any failure is reported as found; no rerun with changed domains to hide it.
+No Lean, no network, no library access.

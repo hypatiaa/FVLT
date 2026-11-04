@@ -1,0 +1,232 @@
+{
+  "schema": "closed-file-manifest/1",
+  "status": "PRODUCER_PASS_PENDING_INDEPENDENT_AUDIT",
+  "files": [
+    {
+      "path": "ACCEPT_R2_JOB_v0_1.ps1",
+      "bytes": 2787,
+      "sha256": "9224f8564cdeb5131d305f7cb76905431681caeaaf1808e5559fbc95203e659e"
+    },
+    {
+      "path": "FVLTFordGeometryCompletionV1.lean",
+      "bytes": 8146,
+      "sha256": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1"
+    },
+    {
+      "path": "IndependentFVLTReplay435.lean",
+      "bytes": 5139,
+      "sha256": "9c6f2ac11b50fdb846df2d5099ea673553903275a5dba11fce5a5673cae14bd0"
+    },
+    {
+      "path": "JOB_R2Compile01.json",
+      "bytes": 536,
+      "sha256": "61dbd9933b967c29bf069f5058b0c87afd13293f2e73763ea9df05e275f45661"
+    },
+    {
+      "path": "JOB_R2Compile02.json",
+      "bytes": 536,
+      "sha256": "e7b738bc29935be88705c8c42047153bbb4048a9bd6e773127ef32ab39996920"
+    },
+    {
+      "path": "JOB_R2Replay01.json",
+      "bytes": 648,
+      "sha256": "814855d3f3e1d429ab1a391514a53b02416ebe3b898519a27c9e8704cead1155"
+    },
+    {
+      "path": "NEW_THEOREMS_R2_v0_1.json",
+      "bytes": 2755,
+      "sha256": "667ecbffd3e720f45ab681ffc31934f7cf1d43b3b3dc029edee573dc2eb2658a"
+    },
+    {
+      "path": "PREPARE_R2_INPUTS_v0_1.py",
+      "bytes": 3785,
+      "sha256": "3401df48f623a438f5cd68b4b069353dd657891d24eedd380cfc8a964b5f66c3"
+    },
+    {
+      "path": "R2_DEADLINE.json",
+      "bytes": 263,
+      "sha256": "a20a30141d208d55cb7506c066cb17462b831033ba85fc3ed75e34804deb1648"
+    },
+    {
+      "path": "R2_INPUT_OBSERVATIONS_v0_1.json",
+      "bytes": 18488,
+      "sha256": "d95ea1ed09205c845b65730e7b6166826504989e1f7554d47a9afa7af75c1831"
+    },
+    {
+      "path": "R2_JOB_TEMPLATE_BOUND_v0_1.json",
+      "bytes": 5675,
+      "sha256": "e658afd2c3a862a1642d520db660fb1fe529136a18d60b247e76f85120f9bdb9"
+    },
+    {
+      "path": "R2_JOB_TEMPLATE_v0_1.json",
+      "bytes": 5421,
+      "sha256": "7e28aff9656758c54f5f79a0ddff2896bc3dad5bf88235e2af7ea8d607b07adb"
+    },
+    {
+      "path": "R2_LIBRARY_SHA256_CHECK_v0_1.txt",
+      "bytes": 20501,
+      "sha256": "3e301cad0b1c422bdc6fe6f14d3764bb8ff5c6ddaee1d6cf7ed60e2e89f9aabf"
+    },
+    {
+      "path": "R2_REVIEW_ACCEPTANCE_PREPOST_v0_1.json",
+      "bytes": 1405,
+      "sha256": "ed7bf75ddedc84cfac6f7ca95d422a2e4eda013208871453ce4888c9cec9c19e"
+    },
+    {
+      "path": "R2_REVIEW_ACCEPTANCE.json",
+      "bytes": 3224,
+      "sha256": "b3f78e88545e9e5656bc8d82251db25fae2252c7c50cdacd1b5ffdad14ad5722"
+    },
+    {
+      "path": "R2_REVIEW_MANIFEST_v0_1.json",
+      "bytes": 845,
+      "sha256": "921c310f7c485d03dc27baf6c4038aa7f895166b4bb9eec8a60a6dc2a76dfb6b"
+    },
+    {
+      "path": "R2_TEMPLATE_DECISION_v0_1.md",
+      "bytes": 1998,
+      "sha256": "4c6cfa71ae3d75bf8e2d54edbafaaff905d9ae3758d4665aef03834eb9da6ce9"
+    },
+    {
+      "path": "R2_TEMPLATE_PLAN_v0_1.md",
+      "bytes": 5937,
+      "sha256": "fad1227520d76acc8414af67a2c050fbf19defa20f43de5947f6abb2639d70ec"
+    },
+    {
+      "path": "R2Compile01.json",
+      "bytes": 4067,
+      "sha256": "6a8b074c07f30bcd9a89583cd9beb6c3ecb2a683077cb4fd2f45b1a512aa8f88"
+    },
+    {
+      "path": "R2Compile01.library_after.txt",
+      "bytes": 20501,
+      "sha256": "3e301cad0b1c422bdc6fe6f14d3764bb8ff5c6ddaee1d6cf7ed60e2e89f9aabf"
+    },
+    {
+      "path": "R2Compile01.log",
+      "bytes": 2877,
+      "sha256": "a382026f98ed2d1c1627e7b748dc97881bce5e3ff3afd2e512c8ba01bcbd3e99"
+    },
+    {
+      "path": "R2Compile02.json",
+      "bytes": 4152,
+      "sha256": "4aa8d7a2bd81c6ebfe1c415afe62e426cb049de10bd3faeb0d4ac76d9b9cb181"
+    },
+    {
+      "path": "R2Compile02.library_after.txt",
+      "bytes": 20501,
+      "sha256": "3e301cad0b1c422bdc6fe6f14d3764bb8ff5c6ddaee1d6cf7ed60e2e89f9aabf"
+    },
+    {
+      "path": "R2Compile02.log",
+      "bytes": 1608,
+      "sha256": "917686dfbf0b2b93aa23bbe1d09e37adce2a21c08ca249e34313c3b8f328e8a9"
+    },
+    {
+      "path": "R2Replay01.json",
+      "bytes": 4095,
+      "sha256": "d8c29e0ba1ae4741a949d71bed3dc0b724732f036d1fcc407542140aa9e2dd98"
+    },
+    {
+      "path": "R2Replay01.library_after.txt",
+      "bytes": 20501,
+      "sha256": "3e301cad0b1c422bdc6fe6f14d3764bb8ff5c6ddaee1d6cf7ed60e2e89f9aabf"
+    },
+    {
+      "path": "R2Replay01.log",
+      "bytes": 165483,
+      "sha256": "31e69874307cb5ca41728dedf428f0720232a7a01c72c7a298fbf2a33d05794c"
+    },
+    {
+      "path": "README_R2_v0_1.md",
+      "bytes": 2473,
+      "sha256": "a3f13fffb8f81b87ba0d90ae8a70c3883531ac76d9f3558d1c9eda66e16e128c"
+    },
+    {
+      "path": "RESULT_R2_v0_1.md",
+      "bytes": 6332,
+      "sha256": "c011c03d44f12056c6bd53b2ab2b01c1fdf95a351f50992f67ba5ef5662c3112"
+    },
+    {
+      "path": "RUN_R2_v0_1.py",
+      "bytes": 7892,
+      "sha256": "45936364e02939ff24628f446cd2b63088649b20520362b226368041589d23cd"
+    },
+    {
+      "path": "RUN_R2_vs_R1_v0_1.diff",
+      "bytes": 3837,
+      "sha256": "a979e9e6713e436efd1973da3a708621d5ba674d2e4b3b9ed6f59b7074ed7788"
+    },
+    {
+      "path": "SHA256SUMS_R2_v0_1.txt",
+      "bytes": 4221,
+      "sha256": "837a658693b22ae29b3d25245513002a5a84ebb991188c6ab39612d725751ce7"
+    },
+    {
+      "path": "snapshots/R2Compile01/FVLTFordGeometryCompletionV1.lean",
+      "bytes": 7987,
+      "sha256": "8144eba74611f470dea8675ef70a327d5deef493f1fd399e39ba4a240b2516ff"
+    },
+    {
+      "path": "snapshots/R2Compile01/JOB_R2Compile01.json",
+      "bytes": 536,
+      "sha256": "61dbd9933b967c29bf069f5058b0c87afd13293f2e73763ea9df05e275f45661"
+    },
+    {
+      "path": "snapshots/R2Compile01/R2_REVIEW_ACCEPTANCE.json",
+      "bytes": 2063,
+      "sha256": "9b90981bf9b4c80f7bcdc72818b33c80fbed60e63b3c9d13fb91de3ed6796e10"
+    },
+    {
+      "path": "snapshots/R2Compile01/RUN_R2_v0_1.py",
+      "bytes": 7892,
+      "sha256": "45936364e02939ff24628f446cd2b63088649b20520362b226368041589d23cd"
+    },
+    {
+      "path": "snapshots/R2Compile02/FVLTFordGeometryCompletionV1.lean",
+      "bytes": 8146,
+      "sha256": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1"
+    },
+    {
+      "path": "snapshots/R2Compile02/JOB_R2Compile02.json",
+      "bytes": 536,
+      "sha256": "e7b738bc29935be88705c8c42047153bbb4048a9bd6e773127ef32ab39996920"
+    },
+    {
+      "path": "snapshots/R2Compile02/R2_REVIEW_ACCEPTANCE.json",
+      "bytes": 2644,
+      "sha256": "de3b6b17aedc7897e9af7eb3efa6db749610b839652568b497a0a5d8080b5e79"
+    },
+    {
+      "path": "snapshots/R2Compile02/RUN_R2_v0_1.py",
+      "bytes": 7892,
+      "sha256": "45936364e02939ff24628f446cd2b63088649b20520362b226368041589d23cd"
+    },
+    {
+      "path": "snapshots/R2Replay01/FVLTFordGeometryCompletionV1.lean",
+      "bytes": 8146,
+      "sha256": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1"
+    },
+    {
+      "path": "snapshots/R2Replay01/JOB_R2Replay01.json",
+      "bytes": 648,
+      "sha256": "814855d3f3e1d429ab1a391514a53b02416ebe3b898519a27c9e8704cead1155"
+    },
+    {
+      "path": "snapshots/R2Replay01/R2_REVIEW_ACCEPTANCE.json",
+      "bytes": 3224,
+      "sha256": "b3f78e88545e9e5656bc8d82251db25fae2252c7c50cdacd1b5ffdad14ad5722"
+    },
+    {
+      "path": "snapshots/R2Replay01/RUN_R2_v0_1.py",
+      "bytes": 7892,
+      "sha256": "45936364e02939ff24628f446cd2b63088649b20520362b226368041589d23cd"
+    },
+    {
+      "path": "VERDICT_R2_v0_1.json",
+      "bytes": 1005,
+      "sha256": "a8e1a4bf5ee3ccc341239118987ed36e7a210324360c5fa59df4ced1a7b38bb6"
+    }
+  ],
+  "manifest_self_excluded": true
+}

@@ -1,0 +1,60 @@
+{
+  "input_review_reference": "R1_TEMPLATE_DECISION_v0_1.md acceptance-on-posting #1410",
+  "signature_review_reference": "SIGNATURE_FREEZE_DRAFT_v0_1.md accepted original freeze",
+  "final_template_review_reference": "R1_TEMPLATE_DECISION_v0_1.md #1410 accepted-on-posting #1412 ledger1415 verified by coordinator",
+  "runner_sha256": "a07e738a973429be2e8ade6406f49fea1bb6b5e351ac5ede263f721b933cbd73",
+  "bound_template_file": "R1_JOB_TEMPLATE_BOUND_v0_1.json",
+  "bound_template_sha256": "8ebcc04011eabe08a19238037be287ec9ae3167e6ccd84c7298d11f94b7fb4b7",
+  "reviewed_files": {
+    "R1_JOB_TEMPLATE_BOUND_v0_1.json": "8ebcc04011eabe08a19238037be287ec9ae3167e6ccd84c7298d11f94b7fb4b7",
+    "R1_INPUT_OBSERVATIONS_v0_1.json": "f5cd392cd7d60b27ce2a55d83e45982057c19de76e37f1a375583b5bc5ff798f",
+    "R1_TEMPLATE_DECISION_v0_1.md": "34cfd2e2734fee2606cb0bfb91ded8332ca5afe216e3b505997fb1d6acaf25b6"
+  },
+  "library_expected": {
+    "SHA256SUMS": "e25d4d54d074f152c452aa7247ccbe992e14b29d58306809660a75770ae7ddd5",
+    "LIBRARY_MANIFEST.json": "f0ee6b00fe4a622b63cac1f4fb24146e9b2808bdb0fb430ebdac074fecb258fa",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "4f0aea1336d288cba45c00727ce81c2cc064c39fca46e8ccf4505ae38ca6191f",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "accepted_job_manifest_sha256": [
+    "9fa353e1dd475985ca37908f423874ed40d068ae78bd751b28cfef18b4727770",
+    "f4de86e2e6c147b600a15d69798e41531e5dda7fd305e54adbf3c81dab5772f6",
+    "2711edfc20c38aaa314b513440c6325e7fd06ca2ef31a6a86bd7018387bf5b65"
+  ],
+  "owner_acceptance_log": [
+    {
+      "job": "JOB_R1Compile01.json",
+      "job_sha256": "9fa353e1dd475985ca37908f423874ed40d068ae78bd751b28cfef18b4727770",
+      "template_sha256": "8ebcc04011eabe08a19238037be287ec9ae3167e6ccd84c7298d11f94b7fb4b7",
+      "accepted_utc": "2026-11-03T13:07:32.5080332-05:00",
+      "headers_verbatim": 7,
+      "definitions_verbatim": 3,
+      "source_sha256": {
+        "FVLTFareyArithmeticCompletionV1.lean": "c5dcd74dd48f4ed379abe5cf9c5fe6ee9ede6bb6079aba35c5dc91a3816e2843"
+      }
+    },
+    {
+      "job": "JOB_R1Compile02.json",
+      "job_sha256": "f4de86e2e6c147b600a15d69798e41531e5dda7fd305e54adbf3c81dab5772f6",
+      "template_sha256": "8ebcc04011eabe08a19238037be287ec9ae3167e6ccd84c7298d11f94b7fb4b7",
+      "accepted_utc": "2026-11-03T13:08:19.3276445-05:00",
+      "headers_verbatim": 7,
+      "definitions_verbatim": 3,
+      "source_sha256": {
+        "FVLTFareyArithmeticCompletionV1.lean": "673e63292d21481d000adfd75d99e2c87cc1e732884d40be2bd05e4aa15296a8"
+      }
+    },
+    {
+      "job": "JOB_R1Compile03.json",
+      "job_sha256": "2711edfc20c38aaa314b513440c6325e7fd06ca2ef31a6a86bd7018387bf5b65",
+      "template_sha256": "8ebcc04011eabe08a19238037be287ec9ae3167e6ccd84c7298d11f94b7fb4b7",
+      "accepted_utc": "2026-11-03T18:09:03.7169017+00:00",
+      "headers_verbatim": 7,
+      "definitions_verbatim": 3,
+      "source_sha256": {
+        "FVLTFareyArithmeticCompletionV1.lean": "4cd02309e6db36a5f40558d18adfaf462260324934b98c8a41f4178adc90f3e6"
+      }
+    }
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "phase": "F2",
+  "mode": "compile",
+  "module": "FVLTFareyCertificatesV1",
+  "run_id": "F2Compile03",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "source_sha256": {
+    "FVLTFareyCertificatesV1.lean": "c0ef13e676c2a0c21642102e32326f258ea8932695213ab12da8f0abd957dd82",
+    "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b"
+  },
+  "dependency_olean_sha256": {
+    "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8"
+  },
+  "template_sha256": "d1bffb5df9c8a3e04daf71a6d722cf518f4239e4cad35874f3540886ca2db461",
+  "owner_accepted_utc": "2026-11-03T12:27:14.5929318+00:00",
+  "annotation_erratum": "03c54bbfa34cb9854f7e10179f50a5e2fa2fdef3332e6886ec2a9613a92f9299"
+}

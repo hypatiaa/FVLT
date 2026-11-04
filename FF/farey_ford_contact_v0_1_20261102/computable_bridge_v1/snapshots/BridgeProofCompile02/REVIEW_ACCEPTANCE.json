@@ -1,0 +1,65 @@
+{
+  "input_review_reference": "fresh979b0dff...accepted539c4e84...",
+  "signature_review_reference": "4c9c80e5...12links frozen",
+  "final_template_review_reference": "BRIDGE_FINAL_TEMPLATE_ACCEPTANCE_v0_1.md SHA539c4e8479f07df4723d075569e7ac3b099f10c352c24bf425139be117cc4cf8",
+  "runner_sha256": "69d844bf053a7699a47734fdefd00786473db94b99ded4fdac56d679be2b2556",
+  "F2_outcome_recorded": true,
+  "F2_outcome_record_file": "F2_AUDIT_AND_BRIDGE_RUNNER_DECISION_v0_1.md",
+  "F2_outcome_record_sha256": "95532c2c4101197646a7a310120c9ec766282a1b41537557f585591d0d4968e1",
+  "reviewed_files": {
+    "BRIDGE_JOB_TEMPLATE_BOUND_v0_1.json": "d3c6fbf9e903a8e81b59a3b20453f8604d8bdd3f49de68a3ae706c537a834bb1",
+    "BRIDGE_INPUT_OBSERVATIONS_v0_1.json": "979b0dff77245a0f90f5c0910a134dba0b815713a52dabfc480ff43891127af7",
+    "BRIDGE_SIGNATURE_FREEZE_DRAFT_v0_1.md": "4c9c80e59664bf91f2b558611bd764e8e5f58c8286b4db7cebdc00e4e61f4f8d",
+    "BRIDGE_SMOKE_FIXTURES_v0_1.json": "4eaafb7af72a95dc4eae244bd60f9888be2e46d1fac25df27f70e7b9d93ba071"
+  },
+  "library_expected": {
+    "SHA256SUMS": "e25d4d54d074f152c452aa7247ccbe992e14b29d58306809660a75770ae7ddd5",
+    "LIBRARY_MANIFEST.json": "f0ee6b00fe4a622b63cac1f4fb24146e9b2808bdb0fb430ebdac074fecb258fa",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "4f0aea1336d288cba45c00727ce81c2cc064c39fca46e8ccf4505ae38ca6191f",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "accepted_job_manifest_sha256": [
+    "f76a1d748b6c7d952296b0eb60581b2ccd117338e5cb7ed19dff0cbc5d7296f1",
+    "bfbf00c6d4b01b07a6dba4ebe52ce5d5438bc750add3acb116516d510fba2761",
+    "9e04a81f387d9cbeaf4535c48ba6e7f0b4236b4902d941b93758ec70ae81c77e"
+  ],
+  "owner_acceptance_log": [
+    {
+      "job": "JOB_BridgeProducerCompile01.json",
+      "job_sha256": "f76a1d748b6c7d952296b0eb60581b2ccd117338e5cb7ed19dff0cbc5d7296f1",
+      "template_sha256": "d3c6fbf9e903a8e81b59a3b20453f8604d8bdd3f49de68a3ae706c537a834bb1",
+      "accepted_utc": "2026-11-03T08:21:54.3539776-05:00",
+      "headers": "12verbatim",
+      "source_sha256": {
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "614447d0cd954447e9d8e7a82a4a063b1c380ab297eb03f910ac3b85e929b98c",
+        "FVLTFordRationalSmokeV1.lean": "f5dfe53f2fee0f20dd49df2e5fe1e9328f3a468d1e0b2f580cc7fc3641f49f4e"
+      }
+    },
+    {
+      "job": "JOB_BridgeProofCompile01.json",
+      "job_sha256": "bfbf00c6d4b01b07a6dba4ebe52ce5d5438bc750add3acb116516d510fba2761",
+      "template_sha256": "d3c6fbf9e903a8e81b59a3b20453f8604d8bdd3f49de68a3ae706c537a834bb1",
+      "accepted_utc": "2026-11-03T08:22:29.5936188-05:00",
+      "headers": "12verbatim",
+      "source_sha256": {
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "614447d0cd954447e9d8e7a82a4a063b1c380ab297eb03f910ac3b85e929b98c",
+        "FVLTFordRationalSmokeV1.lean": "f5dfe53f2fee0f20dd49df2e5fe1e9328f3a468d1e0b2f580cc7fc3641f49f4e"
+      }
+    },
+    {
+      "job": "JOB_BridgeProofCompile02.json",
+      "job_sha256": "9e04a81f387d9cbeaf4535c48ba6e7f0b4236b4902d941b93758ec70ae81c77e",
+      "template_sha256": "d3c6fbf9e903a8e81b59a3b20453f8604d8bdd3f49de68a3ae706c537a834bb1",
+      "accepted_utc": "2026-11-03T13:23:17.6069179+00:00",
+      "headers": "12verbatim",
+      "source_sha256": {
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+        "FVLTFordRationalSmokeV1.lean": "f5dfe53f2fee0f20dd49df2e5fe1e9328f3a468d1e0b2f580cc7fc3641f49f4e"
+      }
+    }
+  ]
+}

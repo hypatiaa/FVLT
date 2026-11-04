@@ -1,0 +1,27 @@
+'FVLT.FordGeometryV1.ford_open_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordGeometryV1.ford_boundary_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordGeometryV1.ford_tangent_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordGeometryV1.ford_real_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordGeometryV1.kiss_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordGeometryV1.two_squares' depends on axioms: [propext, Quot.sound]
+'FVLT.FordGeometryV1.kiss_integer_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordGeometryV1.kiss_real_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'_private.FVLTFordGeometryCompletionV1.0.FVLT.FordGeometryV1.det_nonzero' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTFordGeometryCompletionV1.0.FVLT.FordGeometryV1.centre_norm_ge' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTFordGeometryCompletionV1.0.FVLT.FordGeometryV1.centre_norm_gt' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTFordGeometryCompletionV1.0.FVLT.FordGeometryV1.centre_triangle' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTFordGeometryCompletionV1.0.FVLT.FordGeometryV1.weighted_norm_identity' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTFordGeometryCompletionV1.0.FVLT.FordGeometryV1.circle_inter_unique' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+2.93 s 3513724 KiB

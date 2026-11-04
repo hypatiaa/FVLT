@@ -1,0 +1,77 @@
+{
+  "status": "AWAITING_SKELETON_ACCEPTANCE",
+  "phase": "F2",
+  "allowed_modes": [
+    "compile",
+    "replay"
+  ],
+  "allowed_modules": [
+    "FVLTFareyCertificatesV1"
+  ],
+  "namespace": "FVLT.FareyContactV1",
+  "root": "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103",
+  "runner": "RUN_FF2_v0_1.py",
+  "runner_sha256": "6ebe28fa70fd5b1a68778bf5e6b4b4a254cc3ad975764e6372797231f63c68ef",
+  "lean_executable": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "library": "/home/saphir/rule30_theorem_library/v19",
+  "library_expected": {
+    "SHA256SUMS": "e25d4d54d074f152c452aa7247ccbe992e14b29d58306809660a75770ae7ddd5",
+    "LIBRARY_MANIFEST.json": "f0ee6b00fe4a622b63cac1f4fb24146e9b2808bdb0fb430ebdac074fecb258fa",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "4f0aea1336d288cba45c00727ce81c2cc064c39fca46e8ccf4505ae38ca6191f",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "signature_file": "SIGNATURE_FREEZE_DRAFT_v0_1.md",
+  "signature_sha256": "a9382d4054a77d7a569e884b4f7e02b55f7c7e9aa0da2d3a6d1299075ea2b6c7",
+  "checker_sha256": "9c6f2ac11b50fdb846df2d5099ea673553903275a5dba11fce5a5673cae14bd0",
+  "F1_gate": {
+    "file": "F1_AUDIT_AND_BRIDGE_DECISION_v0_1.md",
+    "manager_bus": 1392,
+    "sha256": "d5470d9b2353ca9de7309064dad363955e567a356fb5075dae04c0f9f32c7526"
+  },
+  "isolated_F1_dependencies": {
+    "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+    "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b"
+  },
+  "caps": {
+    "output_file_limit_bytes": 67108864,
+    "address_space_bytes": 8589934592,
+    "lean_M_MiB": 7680,
+    "one_cpu": true,
+    "process_limit": 256,
+    "automatic_retries": false,
+    "per_call_wall_seconds": 240,
+    "F2_active_wall_seconds": 1800,
+    "serial_only": true,
+    "nice": 19
+  },
+  "frozen_headers": {
+    "fareyAdj_symm": "theorem fareyAdj_symm (x y : ℚ) : fareyAdj x y ↔ fareyAdj y x",
+    "fareyAdj_irrefl": "theorem fareyAdj_irrefl (x : ℚ) : ¬ fareyAdj x x",
+    "fareyGraph_adj": "theorem fareyGraph_adj (S : Finset ℚ) (x y : {x : ℚ // x ∈ S}) :\n  (fareyGraph S).Adj x y ↔ fareyAdj x.val y.val",
+    "spanning_tree_connected": "theorem spanning_tree_connected (V : Type*) [DecidableEq V]\n  (G : SimpleGraph V) (s : Finset V) (r : V)\n  (parent : V → V) (depth : V → ℕ) (hr : r ∈ s)\n  (hparent : ∀ v ∈ s, v ≠ r →\n    parent v ∈ s ∧ G.Adj v (parent v) ∧ depth (parent v) < depth v) :\n  (G.induce (s : Set V)).Connected",
+    "certificate_component_bijection": "theorem certificate_component_bijection (V : Type*) [DecidableEq V]\n  (G : SimpleGraph V) (parts : Finset (Finset V))\n  (h : ComponentCertificate G parts) :\n  ∃ e : {s : Finset V // s ∈ parts} ≃ G.ConnectedComponent,\n    ∀ s : {s : Finset V // s ∈ parts}, ∀ v ∈ s.val,\n      e s = G.connectedComponentMk v",
+    "certificate_component_count": "theorem certificate_component_count (V : Type*) [DecidableEq V]\n  (G : SimpleGraph V) (parts : Finset (Finset V))\n  (h : ComponentCertificate G parts) :\n  Nat.card G.ConnectedComponent = parts.card",
+    "certificate_isolation": "theorem certificate_isolation (V : Type*) [DecidableEq V]\n  (G : SimpleGraph V) (parts : Finset (Finset V))\n  (h : ComponentCertificate G parts) (v : V) :\n  (∀ w : V, ¬ G.Adj v w) ↔ {v} ∈ parts",
+    "contactCount_eq_edge_count": "theorem contactCount_eq_edge_count (S : Finset ℚ) :\n  contactCount S = Nat.card (fareyGraph S).edgeSet",
+    "rational_certificate_count": "theorem rational_certificate_count (S : Finset ℚ) (parts : Finset (Finset ℚ))\n  (h : rationalCertificate S parts) :\n  Nat.card (fareyGraph S).ConnectedComponent = parts.card",
+    "fixture421_vertices": "theorem fixture421_vertices : phases [4,2,1] =\n  {(1/5 : ℚ), 1/3, 2/5, 1/2, 3/5, 2/3, 4/5}",
+    "fixture421_certificate": "theorem fixture421_certificate : rationalCertificate (phases [4,2,1])\n  {{(1/5 : ℚ)}, {1/3, 2/5, 1/2, 3/5, 2/3}, {4/5}}",
+    "fixture421_counts": "theorem fixture421_counts : (phases [4,2,1]).card = 7 ∧\n  contactCount (phases [4,2,1]) = 6 ∧\n  Nat.card (phaseGraph [4,2,1]).ConnectedComponent = 3",
+    "fixture421_isolated": "theorem fixture421_isolated (x : ℚ) :\n  isolated (phases [4,2,1]) x ↔ x ∈ ({(1/5 : ℚ), 4/5} : Finset ℚ)",
+    "fixture92_certificate": "theorem fixture92_certificate : rationalCertificate (phases [9,2])\n  (singletonPartition (phases [9,2]) {(1/10 : ℚ), 1/5, 4/5, 9/10})",
+    "fixture92_counts": "theorem fixture92_counts : (phases [9,2]).card = 11 ∧\n  contactCount (phases [9,2]) = 8 ∧\n  Nat.card (phaseGraph [9,2]).ConnectedComponent = 5",
+    "fixture92_isolated": "theorem fixture92_isolated (x : ℚ) :\n  isolated (phases [9,2]) x ↔ x ∈ ({(1/10 : ℚ), 1/5, 4/5, 9/10} : Finset ℚ)"
+  },
+  "design_file": "F2_TEMPLATE_DESIGN_v0_1.md",
+  "layout_approval_requested": "one additive helper module; F1 bytes unchanged",
+  "proof_iteration_policy": "REQUESTED bounded proof-body iterations/private helpers; needs explicit skeleton acceptance, else original stop rule applies",
+  "source_rules": [
+    "every concrete manifest pins source/binary/dependency objects and is timestamped with accepted template hash",
+    "all16frozenheadersverbatim in complete F2source; frozen definitions unchanged",
+    "Mathlib plus exact isolated F1 arithmetic only; no G1",
+    "decide only for bounded certificates and finite arithmetic; no native_decide/axioms/unsafe/partial targets",
+    "snapshots/logs/receipts retained; changed propositions/checker failure/budgetexpiry stop"
+  ]
+}

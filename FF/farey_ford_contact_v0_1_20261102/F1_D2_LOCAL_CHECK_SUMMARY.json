@@ -1,0 +1,34 @@
+{
+  "status": "LOCAL_PASS_PENDING_SKELETON_AUDIT",
+  "headers_verbatim": [
+    true,
+    true
+  ],
+  "replay": {
+    "F1AReplay01": {
+      "module": "FVLTFareyContactV1",
+      "verdict": "PASS",
+      "targetConstants": 2,
+      "auditedConstants": 2,
+      "unsafeConstants": 0,
+      "partialConstants": 0,
+      "kernelReplayCompleted": true,
+      "fullDependencyReplay": false,
+      "g1Excluded": true,
+      "failures": []
+    },
+    "F1GReplay01": {
+      "module": "FVLTFordGeometryV1",
+      "verdict": "PASS",
+      "targetConstants": 20,
+      "auditedConstants": 20,
+      "unsafeConstants": 0,
+      "partialConstants": 0,
+      "kernelReplayCompleted": true,
+      "fullDependencyReplay": false,
+      "g1Excluded": true,
+      "failures": []
+    }
+  },
+  "F2_started": false
+}

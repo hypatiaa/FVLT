@@ -1,0 +1,95 @@
+{
+  "status": "AWAITING_OPUS_FINAL_RECEIPT_CHECK_ACCEPTANCE_NO_INVOCATIONS",
+  "phase": "BRIDGE",
+  "root": "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/computable_bridge_v1",
+  "F1_isolated_dependency_root": "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103",
+  "allowed_compile_replay_modules": [
+    "FVLTFordRationalV1",
+    "FVLTFordExactCoordinatesV1"
+  ],
+  "executable_driver": "FVLTFordRationalSmokeV1",
+  "driver_allowed_mode": "execute_only",
+  "driver_is_theorem_target": false,
+  "runner": "RUN_BRIDGE_v0_1.py",
+  "runner_sha256": "69d844bf053a7699a47734fdefd00786473db94b99ded4fdac56d679be2b2556",
+  "runner_diff_sha256": "828645d5d7d58d35d181eaea629da93267a0c3218bc2a4f56561688778771a2e",
+  "F2_outcome_record_file": "F2_AUDIT_AND_BRIDGE_RUNNER_DECISION_v0_1.md",
+  "F2_outcome_record_sha256": "95532c2c4101197646a7a310120c9ec766282a1b41537557f585591d0d4968e1",
+  "F2_outcome_recorded": true,
+  "fresh_input_observation_file": "BRIDGE_INPUT_OBSERVATIONS_v0_1.json",
+  "fresh_input_observation_sha256": "979b0dff77245a0f90f5c0910a134dba0b815713a52dabfc480ff43891127af7",
+  "fresh_observation_utc": "2026-11-03T08:02:48.177404-05:00",
+  "latest_library": "v19",
+  "library": "/home/saphir/rule30_theorem_library/v19",
+  "library_expected": {
+    "SHA256SUMS": "e25d4d54d074f152c452aa7247ccbe992e14b29d58306809660a75770ae7ddd5",
+    "LIBRARY_MANIFEST.json": "f0ee6b00fe4a622b63cac1f4fb24146e9b2808bdb0fb430ebdac074fecb258fa",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "4f0aea1336d288cba45c00727ce81c2cc064c39fca46e8ccf4505ae38ca6191f",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "lean_executable": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "checker_sha256": "9c6f2ac11b50fdb846df2d5099ea673553903275a5dba11fce5a5673cae14bd0",
+  "F1_expected_source_and_object_pins": {
+    "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+    "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+    "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+    "FVLTFordGeometryV1.olean": "ea5dc4ce259c44b6e742ce950dcea3333d83d031511595ac951b68b0570cab54"
+  },
+  "F1_observed_source_and_object_pins": {
+    "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+    "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+    "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+    "FVLTFordGeometryV1.olean": "ea5dc4ce259c44b6e742ce950dcea3333d83d031511595ac951b68b0570cab54"
+  },
+  "paperwork_and_binding_hashes": {
+    "BRIDGE_INPUT_OBSERVATIONS_v0_1.json": "979b0dff77245a0f90f5c0910a134dba0b815713a52dabfc480ff43891127af7",
+    "BRIDGE_LIBRARY_SHA256_CHECK_v0_1.txt": "3e301cad0b1c422bdc6fe6f14d3764bb8ff5c6ddaee1d6cf7ed60e2e89f9aabf",
+    "PREPARE_BRIDGE_INPUTS_v0_1.py": "ef4e8b50f4eac64695e500cb93c9e11543049268b31e4da8667423115f9feb5b",
+    "RUN_BRIDGE_v0_1.py": "69d844bf053a7699a47734fdefd00786473db94b99ded4fdac56d679be2b2556",
+    "RUN_BRIDGE_v0_1_vs_FF2.diff": "828645d5d7d58d35d181eaea629da93267a0c3218bc2a4f56561688778771a2e",
+    "BRIDGE_RUNNER_DIFF_v0_1.md": "a114a10921c292a94fbf0087e0a78600e8148b7488642baeee74d9eff010f1a9",
+    "BRIDGE_SIGNATURE_FREEZE_DRAFT_v0_1.md": "4c9c80e59664bf91f2b558611bd764e8e5f58c8286b4db7cebdc00e4e61f4f8d",
+    "BRIDGE_SMOKE_FIXTURES_v0_1.json": "4eaafb7af72a95dc4eae244bd60f9888be2e46d1fac25df27f70e7b9d93ba071",
+    "F2_AUDIT_AND_BRIDGE_RUNNER_DECISION_v0_1.md": "95532c2c4101197646a7a310120c9ec766282a1b41537557f585591d0d4968e1"
+  },
+  "frozen_headers": {
+    "kissNQ_eq": "theorem kissNQ_eq (x y : ℚ) : kissNQ x y = FVLT.FordGeometryV1.kissN x y",
+    "kissMQ_eq": "theorem kissMQ_eq (x y : ℚ) : kissMQ x y = FVLT.FordGeometryV1.kissM x y",
+    "kissMQ_pos": "theorem kissMQ_pos (x y : ℚ) : 0 < kissMQ x y",
+    "radiusQ_pos": "theorem radiusQ_pos (x : ℚ) : 0 < radiusQ x",
+    "radiusQ_cast": "theorem radiusQ_cast (x : ℚ) :\n  (radiusQ x : ℝ) = FVLT.FordGeometryV1.radius x",
+    "embedQ_injective": "theorem embedQ_injective : Function.Injective embedQ",
+    "centreQ_embed": "theorem centreQ_embed (x : ℚ) :\n  embedQ (centreQ x) = FVLT.FordGeometryV1.centre x",
+    "kissQ_embed": "theorem kissQ_embed (x y : ℚ) :\n  embedQ (kissQ x y) = FVLT.FordGeometryV1.kiss x y",
+    "sqDistanceQ_cast": "theorem sqDistanceQ_cast (u v : RatPlane) :\n  (sqDistanceQ u v : ℝ) = ‖embedQ u - embedQ v‖^2",
+    "boundaryQ_iff": "theorem boundaryQ_iff (x : ℚ) (z : RatPlane) :\n  boundaryQ x z ↔ embedQ z ∈ FVLT.FordGeometryV1.boundary x",
+    "boundaryCheckQ_correct": "theorem boundaryCheckQ_correct (x : ℚ) (z : RatPlane) :\n  boundaryCheckQ x z = true ↔ embedQ z ∈ FVLT.FordGeometryV1.boundary x",
+    "adjacent_kissQ": "theorem adjacent_kissQ (x y : ℚ) (h : FVLT.FareyContactV1.fareyAdj x y) :\n  boundaryCheckQ x (kissQ x y) = true ∧\n  boundaryCheckQ y (kissQ x y) = true"
+  },
+  "caps": {
+    "automatic_retries": false,
+    "nice": 19,
+    "address_space_bytes": 8589934592,
+    "one_cpu": true,
+    "per_call_wall_seconds": 240,
+    "serial_only": true,
+    "process_limit": 256,
+    "lean_M_MiB": 7680,
+    "active_budget_seconds": 1800,
+    "output_file_limit_bytes": 67108864
+  },
+  "proof_iteration": "accepted bounded body iteration and privatehelpers; preserve all snapshots; no automatic retries",
+  "gate_requirements": [
+    "Opus final bound-template receipt acceptance before any Lean compile/replay/execute",
+    "concrete manifests selfaccepted under thenacceptedtemplate with exact sources/objects and fullLEAN_PATH receipts",
+    "producer computable; smoke importsONLYFVLTFordRationalV1; no module importsFVLTFareyCertificatesV1",
+    "1800sactivebudget starts at proofdrafting only after finalreceiptacceptance; no transfer",
+    "changedproposition/definition,forbiddenaxiom/unsafe/partial theoremtarget,native_decide,checkerfailure or budgetexpiry stop"
+  ],
+  "optional_converse": "DEFERRED",
+  "smoke_expected_groups": 6,
+  "smoke_expected_scalar_boolean_comparisons": 24,
+  "bridge_invocations_so_far": 0
+}

@@ -1,0 +1,308 @@
+{
+  "status": "PRODUCER_INTEGRATION_PASS_PENDING_INDEPENDENT_CHECK",
+  "calls": [
+    {
+      "run_id": "CompileFVLTFareyContactV1",
+      "mode": "Compile",
+      "module": "FVLTFareyContactV1",
+      "exit_code": 0,
+      "seconds": 0.7672064304351807,
+      "peak_rss_KiB": 1660380,
+      "finished_unix": 1793749592.9593782,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "object_sha256": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8"
+    },
+    {
+      "run_id": "ReplayFVLTFareyContactV1",
+      "mode": "Replay",
+      "module": "FVLTFareyContactV1",
+      "exit_code": 0,
+      "seconds": 1.1672272682189941,
+      "peak_rss_KiB": 1962344,
+      "finished_unix": 1793749630.1598916,
+      "log_sha256": "ea495ba8fd7ba1f3f7f509f5359b36d92e0d0846f6a0a041246b8a920009df49",
+      "object_sha256": null
+    },
+    {
+      "run_id": "CompileFVLTFordGeometryV1",
+      "mode": "Compile",
+      "module": "FVLTFordGeometryV1",
+      "exit_code": 0,
+      "seconds": 2.018012285232544,
+      "peak_rss_KiB": 3486764,
+      "finished_unix": 1793749642.1068642,
+      "log_sha256": "d0ab765f6ab8dcecff5a6bd33a3cfd3275295db9f1b3abeadb1ba3bcddd13bcb",
+      "object_sha256": "ba6ae2a16ccde218c70be1233e343512a3407539365be92a8048a22b086e6fbc"
+    },
+    {
+      "run_id": "ReplayFVLTFordGeometryV1",
+      "mode": "Replay",
+      "module": "FVLTFordGeometryV1",
+      "exit_code": 0,
+      "seconds": 2.8695478439331055,
+      "peak_rss_KiB": 3619872,
+      "finished_unix": 1793749654.0788038,
+      "log_sha256": "eeb030c3b52d188af70831911b373be2c0d3b14fa35635e277d34d75c25a4812",
+      "object_sha256": null
+    },
+    {
+      "run_id": "CompileFVLTFareyCertificatesV1",
+      "mode": "Compile",
+      "module": "FVLTFareyCertificatesV1",
+      "exit_code": 0,
+      "seconds": 13.8843355178833,
+      "peak_rss_KiB": 4510700,
+      "finished_unix": 1793749677.4801812,
+      "log_sha256": "a897344488043e3eac6bc45d1e0efa15c9d790ac42f5020be05741825f0e8ca8",
+      "object_sha256": "69de57382a52f20b9839026ab89e10b29644fee6db51cdd83b83df68e753f413"
+    },
+    {
+      "run_id": "ReplayFVLTFareyCertificatesV1",
+      "mode": "Replay",
+      "module": "FVLTFareyCertificatesV1",
+      "exit_code": 0,
+      "seconds": 15.88681411743164,
+      "peak_rss_KiB": 4645964,
+      "finished_unix": 1793749704.1850147,
+      "log_sha256": "31fac993802eb316189043f98ddfc78ffdc387b5db769a677e9116a1f27ed23a",
+      "object_sha256": null
+    },
+    {
+      "run_id": "CompileFVLTFareyArithmeticCompletionV1",
+      "mode": "Compile",
+      "module": "FVLTFareyArithmeticCompletionV1",
+      "exit_code": 0,
+      "seconds": 2.0687358379364014,
+      "peak_rss_KiB": 3501844,
+      "finished_unix": 1793749731.0539894,
+      "log_sha256": "67a772ee557f62d9946dcc94c072c178710837b013c0df8af9cfb44a1b3d7070",
+      "object_sha256": "56490406672ff22bb0ba8091c1f5f707e9c5c28ecfb4e4b7d6186debd0bdd947"
+    },
+    {
+      "run_id": "ReplayFVLTFareyArithmeticCompletionV1",
+      "mode": "Replay",
+      "module": "FVLTFareyArithmeticCompletionV1",
+      "exit_code": 0,
+      "seconds": 2.2692997455596924,
+      "peak_rss_KiB": 3638236,
+      "finished_unix": 1793749743.4436874,
+      "log_sha256": "d80ba302a549f400eedf86676ea312cdc3d22adf2ea46d3d476ab1c7af68b250",
+      "object_sha256": null
+    },
+    {
+      "run_id": "CompileFVLTFordGeometryCompletionV1",
+      "mode": "Compile",
+      "module": "FVLTFordGeometryCompletionV1",
+      "exit_code": 0,
+      "seconds": 3.0720224380493164,
+      "peak_rss_KiB": 3511604,
+      "finished_unix": 1793749757.5295084,
+      "log_sha256": "917686dfbf0b2b93aa23bbe1d09e37adce2a21c08ca249e34313c3b8f328e8a9",
+      "object_sha256": "ce38bf44fe8556c09588461b69782b6752a2e1bd6fe8361f496981ef252ced9b"
+    },
+    {
+      "run_id": "ReplayFVLTFordGeometryCompletionV1",
+      "mode": "Replay",
+      "module": "FVLTFordGeometryCompletionV1",
+      "exit_code": 0,
+      "seconds": 3.770228862762451,
+      "peak_rss_KiB": 3639884,
+      "finished_unix": 1793749771.295048,
+      "log_sha256": "31e69874307cb5ca41728dedf428f0720232a7a01c72c7a298fbf2a33d05794c",
+      "object_sha256": null
+    },
+    {
+      "run_id": "CompileFVLTUnitFractionSpineV1",
+      "mode": "Compile",
+      "module": "FVLTUnitFractionSpineV1",
+      "exit_code": 0,
+      "seconds": 1.9207580089569092,
+      "peak_rss_KiB": 3501756,
+      "finished_unix": 1793749783.01212,
+      "log_sha256": "0c5ff109cdfd1a5db23ac042ec94f2d5c80df7a4415c7340d8a27b552cee5cfa",
+      "object_sha256": "8d5f4cae1a6693a1e873ecc2ad73e81a50d380254eb289ba304d9ddb67508870"
+    },
+    {
+      "run_id": "ReplayFVLTUnitFractionSpineV1",
+      "mode": "Replay",
+      "module": "FVLTUnitFractionSpineV1",
+      "exit_code": 0,
+      "seconds": 2.769768238067627,
+      "peak_rss_KiB": 3640216,
+      "finished_unix": 1793749795.7559135,
+      "log_sha256": "a047f932f31b2797c156a96d1a8fb5cd4399936fbb6907eaf952f0879a343f95",
+      "object_sha256": null
+    },
+    {
+      "run_id": "CompileFVLTPhasePartnersV1",
+      "mode": "Compile",
+      "module": "FVLTPhasePartnersV1",
+      "exit_code": 0,
+      "seconds": 2.4183971881866455,
+      "peak_rss_KiB": 3515852,
+      "finished_unix": 1793749830.5814214,
+      "log_sha256": "ed02f7c2786f570548475fbf0874c100f80b74c042928b4b203cda9a1dce357e",
+      "object_sha256": "7c03fef269cba82b5c4046395d30d5e6eead3f54eaa242f0a80b4fad47d82f0c"
+    },
+    {
+      "run_id": "ReplayFVLTPhasePartnersV1",
+      "mode": "Replay",
+      "module": "FVLTPhasePartnersV1",
+      "exit_code": 0,
+      "seconds": 3.019968032836914,
+      "peak_rss_KiB": 3638864,
+      "finished_unix": 1793749846.0801988,
+      "log_sha256": "cf9e235e6061db05d1e4c65d1f4da3aa80f983e597a3188f0b668acf4fa12a8c",
+      "object_sha256": null
+    },
+    {
+      "run_id": "CompileFVLTFareyFixturesCompletionV1",
+      "mode": "Compile",
+      "module": "FVLTFareyFixturesCompletionV1",
+      "exit_code": 0,
+      "seconds": 11.38462519645691,
+      "peak_rss_KiB": 4258988,
+      "finished_unix": 1793749867.6404982,
+      "log_sha256": "db7a2143ae97fb213f556dcd79939526c38f5c9a2a7f2ef6c9893b17fccb3b41",
+      "object_sha256": "237223a3837de4529d87d08264eeae3eead7bec8d28775b73587e262b7aca9c5"
+    },
+    {
+      "run_id": "ReplayFVLTFareyFixturesCompletionV1",
+      "mode": "Replay",
+      "module": "FVLTFareyFixturesCompletionV1",
+      "exit_code": 0,
+      "seconds": 12.582995891571045,
+      "peak_rss_KiB": 4419348,
+      "finished_unix": 1793749894.1662734,
+      "log_sha256": "4e2331adb6c842ded6285d1ba9c282838e6f79be831e0bfbc045d783590ad343",
+      "object_sha256": null
+    },
+    {
+      "run_id": "CompileFVLTFordRationalV1",
+      "mode": "Compile",
+      "module": "FVLTFordRationalV1",
+      "exit_code": 0,
+      "seconds": 0.7187943458557129,
+      "peak_rss_KiB": 1552864,
+      "finished_unix": 1793749905.014927,
+      "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "object_sha256": "6691b599440e4413ed4dd2aed348cbc12d419177a5465044c22515a14fd446f6"
+    },
+    {
+      "run_id": "ReplayFVLTFordRationalV1",
+      "mode": "Replay",
+      "module": "FVLTFordRationalV1",
+      "exit_code": 0,
+      "seconds": 1.3172945976257324,
+      "peak_rss_KiB": 1860500,
+      "finished_unix": 1793749921.5711007,
+      "log_sha256": "024a83dd68b7a3e7200614da5ca7d9292686bf8469b639c7b77f0cd432a8f7b0",
+      "object_sha256": null
+    },
+    {
+      "run_id": "CompileFVLTFordExactCoordinatesV1",
+      "mode": "Compile",
+      "module": "FVLTFordExactCoordinatesV1",
+      "exit_code": 0,
+      "seconds": 1.66776442527771,
+      "peak_rss_KiB": 3458220,
+      "finished_unix": 1793749933.5284233,
+      "log_sha256": "5deabb57a050b4459330dd2a201bc025686702bc8652d0ac717974930752a4cc",
+      "object_sha256": "ff7193e200351820627eba32fe846892e4ff2c0fdea43b1b3109d62c7328a3e2"
+    },
+    {
+      "run_id": "ReplayFVLTFordExactCoordinatesV1",
+      "mode": "Replay",
+      "module": "FVLTFordExactCoordinatesV1",
+      "exit_code": 0,
+      "seconds": 2.870485782623291,
+      "peak_rss_KiB": 3613860,
+      "finished_unix": 1793749946.9439178,
+      "log_sha256": "78f537179e36448156b6f1d61d8778790571097a6c06ac24c0e7d9b569364770",
+      "object_sha256": null
+    },
+    {
+      "run_id": "CompileFVLTStageAIntegrationV1",
+      "mode": "Compile",
+      "module": "FVLTStageAIntegrationV1",
+      "exit_code": 0,
+      "seconds": 1.5680885314941406,
+      "peak_rss_KiB": 3477872,
+      "finished_unix": 1793749975.0843027,
+      "log_sha256": "efa7df02905726a705196d9c980df3fd7cb38ac3ec846f6f4eb01aca55c652c5",
+      "object_sha256": "50d58e4c41597b9142e0b5cae9000fd959d42e2cc2ce5e575b05ff45410e6352"
+    }
+  ],
+  "strict_reports": [
+    {
+      "module": "FVLTFareyContactV1",
+      "target_declarations": 2,
+      "verdict": "PASS",
+      "full_dependency_replay": false
+    },
+    {
+      "module": "FVLTFordGeometryV1",
+      "target_declarations": 20,
+      "verdict": "PASS",
+      "full_dependency_replay": false
+    },
+    {
+      "module": "FVLTFareyCertificatesV1",
+      "target_declarations": 61,
+      "verdict": "PASS",
+      "full_dependency_replay": false
+    },
+    {
+      "module": "FVLTFareyArithmeticCompletionV1",
+      "target_declarations": 29,
+      "verdict": "PASS",
+      "full_dependency_replay": false
+    },
+    {
+      "module": "FVLTFordGeometryCompletionV1",
+      "target_declarations": 21,
+      "verdict": "PASS",
+      "full_dependency_replay": false
+    },
+    {
+      "module": "FVLTUnitFractionSpineV1",
+      "target_declarations": 33,
+      "verdict": "PASS",
+      "full_dependency_replay": false
+    },
+    {
+      "module": "FVLTPhasePartnersV1",
+      "target_declarations": 40,
+      "verdict": "PASS",
+      "full_dependency_replay": false
+    },
+    {
+      "module": "FVLTFareyFixturesCompletionV1",
+      "target_declarations": 18,
+      "verdict": "PASS",
+      "full_dependency_replay": false
+    },
+    {
+      "module": "FVLTFordRationalV1",
+      "target_declarations": 11,
+      "verdict": "PASS",
+      "full_dependency_replay": false
+    },
+    {
+      "module": "FVLTFordExactCoordinatesV1",
+      "target_declarations": 19,
+      "verdict": "PASS",
+      "full_dependency_replay": false
+    }
+  ],
+  "total_calls": 21,
+  "total_replayed_declarations": 254.0,
+  "entrypoint_axiom_reports": 72,
+  "staging_started_unix": 1793749309,
+  "last_call_finished_unix": 1793749975.0843027,
+  "staging_to_last_call_seconds": 666.0843026638031,
+  "active_cap_seconds": 1800,
+  "original_review_files_unchanged": 26,
+  "fidelity_status": "Recorded independent PASS WITH NOTES #1440; producer did not sign",
+  "sync": "Authorized conditionally; not performed"
+}

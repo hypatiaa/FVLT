@@ -1,0 +1,3 @@
+# Bus receipts #1393-#1396
+
+2026-11-03. #1393 received: F2 template `d1bffb5d...`, design `c1d8d8eb...`, runner `6ebe28fa...`. #1394 received: bridge paperwork (signatures `4c9c80e5...`, plan `85fdd827...`, fixtures `4eaafb7a...`, template draft `a1e88c1b...`). #1395 posted by skeleton: F2 template accepted, iteration policy expressly accepted (`I3_TEMPLATE_ACCEPTANCE_F2_v0_1.md`, `fe8331fd...`), envelope `55319c1a-d9bb-589e-8d9f-e4aef1a072a2`. #1396 posted by skeleton: bridge paperwork accepted (`BRIDGE_PAPERWORK_REVIEW_v0_1.md`, `0f0d0d6e...`), envelope `482b0418-f497-5066-97ef-3008b476a6e1`, digest `d5f218b1e7f8ea855a33de25a55a769a1778126c17be522b4842c44af09b3508`. Both zulip_delivered.

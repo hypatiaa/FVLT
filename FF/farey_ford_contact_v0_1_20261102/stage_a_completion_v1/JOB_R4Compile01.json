@@ -1,0 +1,13 @@
+{
+  "phase": "R4",
+  "mode": "compile",
+  "module": "FVLTPhasePartnersV1",
+  "run_id": "R4Compile01",
+  "template_sha256": "de7d4ea627cf9b64e2e8e87faec3fe9136938cf3534d854f6c05ac4673a57dab",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "source_sha256": {
+    "FVLTPhasePartnersV1.lean": "60a9d2bfbd1fcbc3a4d64d5e0180d99196de7c2e66fc062f272dbe1247094028"
+  },
+  "dependency_olean_sha256": {},
+  "owner_accepted_utc": "2026-11-03T22:36:27.9589407+00:00"
+}

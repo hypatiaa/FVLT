@@ -1,0 +1,144 @@
+{
+  "status": "REVIEW_PAPERWORK_ONLY_NO_INTEGRATION_BUILD_NO_FIDELITY_SIGNOFF",
+  "files": [
+    {
+      "path": "CONCRETE_JOB_SCHEMA_EXAMPLE_v0_1.json",
+      "bytes": 1621,
+      "sha256": "60a2fe759dad6bd51f869ff2f6e924ff5fb0ebfd9aa43703c3797b3f43ef3435"
+    },
+    {
+      "path": "CONDITIONAL_LIBRARY_SYNC_AUTHORIZATION_20261103.md",
+      "bytes": 1448,
+      "sha256": "a47a92c1b96f43fcc92f4a9bd8419e711fad227ca5c45d085325adb393de0102"
+    },
+    {
+      "path": "FIDELITY_INDEX_v0_1.md",
+      "bytes": 10401,
+      "sha256": "88e7df9660420ef795d5e1c69cb00e8d529d9ccd3a8b4eeaf1533a81be754039"
+    },
+    {
+      "path": "FIDELITY_MATRIX_v0_1.json",
+      "bytes": 61755,
+      "sha256": "cf5614f7b339304eb2ef88736183bf0429b43b6f6edd7fd2869b90ddaacaebc4"
+    },
+    {
+      "path": "IndependentFVLTReplay435.lean",
+      "bytes": 5139,
+      "sha256": "9c6f2ac11b50fdb846df2d5099ea673553903275a5dba11fce5a5673cae14bd0"
+    },
+    {
+      "path": "INTEGRATION_AND_FIDELITY_PLAN_v0_1.md",
+      "bytes": 9862,
+      "sha256": "2dd0e2a9195eb082629d57331615bf4332aad7f8e8270f3ca82e00d016caa5cc"
+    },
+    {
+      "path": "INTEGRATION_JOB_TEMPLATE_v0_1.json",
+      "bytes": 9288,
+      "sha256": "24c55385b90c090d1d3a9b38afbfd142e24546966b423725cb519a49f1e0f39c"
+    },
+    {
+      "path": "PREPARE_REVIEW_PACKET_v0_1.ps1",
+      "bytes": 15652,
+      "sha256": "15044a212bc98a914619e6cb8809a2dccd2b5c73cca07bdfd98744ccaebd83f6"
+    },
+    {
+      "path": "REFERENCE_ERRATUM_E1.md",
+      "bytes": 675,
+      "sha256": "b7240e8fe36a239d66e19986308b2a2d59aa5212d1c4b5af74dc0683768f4243"
+    },
+    {
+      "path": "REFERENCE_ERRATUM_S1.md",
+      "bytes": 2216,
+      "sha256": "03c54bbfa34cb9854f7e10179f50a5e2fa2fdef3332e6886ec2a9613a92f9299"
+    },
+    {
+      "path": "REFERENCE_kernel_v3_3_1.md",
+      "bytes": 591683,
+      "sha256": "e49533088843e2cd0a1c531c4d8ba113ea30113e8135a15c17c040bdfca3e0e0"
+    },
+    {
+      "path": "REFERENCE_SIGNATURE_FREEZE_v0_1.md",
+      "bytes": 18097,
+      "sha256": "a9382d4054a77d7a569e884b4f7e02b55f7c7e9aa0da2d3a6d1299075ea2b6c7"
+    },
+    {
+      "path": "REFERENCE_WORK_ORDER_v0_3.md",
+      "bytes": 20148,
+      "sha256": "43560b88ab50dc77d8e222562f83bad68c8ba17d12a073523a99597a484d6fdd"
+    },
+    {
+      "path": "RUN_INTEGRATION_v0_1.py",
+      "bytes": 8733,
+      "sha256": "0e8e66ffa4c001c8bd9425e8d9be26264c0880163e98068e956e389b74d5f140"
+    },
+    {
+      "path": "src/FVLTFareyArithmeticCompletionV1.lean",
+      "bytes": 6688,
+      "sha256": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac"
+    },
+    {
+      "path": "src/FVLTFareyCertificatesV1.lean",
+      "bytes": 13909,
+      "sha256": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e"
+    },
+    {
+      "path": "src/FVLTFareyContactV1.lean",
+      "bytes": 538,
+      "sha256": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b"
+    },
+    {
+      "path": "src/FVLTFareyFixturesCompletionV1.lean",
+      "bytes": 2178,
+      "sha256": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d"
+    },
+    {
+      "path": "src/FVLTFordExactCoordinatesV1.lean",
+      "bytes": 3943,
+      "sha256": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d"
+    },
+    {
+      "path": "src/FVLTFordGeometryCompletionV1.lean",
+      "bytes": 8146,
+      "sha256": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1"
+    },
+    {
+      "path": "src/FVLTFordGeometryV1.lean",
+      "bytes": 3780,
+      "sha256": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8"
+    },
+    {
+      "path": "src/FVLTFordRationalV1.lean",
+      "bytes": 931,
+      "sha256": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559"
+    },
+    {
+      "path": "src/FVLTPhasePartnersV1.lean",
+      "bytes": 15423,
+      "sha256": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac"
+    },
+    {
+      "path": "src/FVLTStageAIntegrationV1.lean",
+      "bytes": 7453,
+      "sha256": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+    },
+    {
+      "path": "src/FVLTUnitFractionSpineV1.lean",
+      "bytes": 8388,
+      "sha256": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1"
+    },
+    {
+      "path": "SUPPORT_DECLARATIONS_v0_1.json",
+      "bytes": 24324,
+      "sha256": "c8c13e92f04cdbfd35a19bf47862447365e238a5e8097adc81f9c63b4b8d0778"
+    }
+  ],
+  "original_targets": 60,
+  "additional_bridge_links": 12,
+  "source_modules": 10,
+  "integration_entrypoints": 1,
+  "proposed_lean_calls": 21,
+  "independently_signed_rows": 0,
+  "R5_manager_pass_recorded": true,
+  "library_sync": "Explicit human authorization recorded, conditional on integration and independent fidelity PASS",
+  "manifest_self_excluded": true
+}

@@ -1,0 +1,44 @@
+{
+  "module": "FVLTFareyFixturesCompletionV1",
+  "targets": [
+    {
+      "name": "FVLT.FareyContactV1.fixture4321_connected",
+      "header": "theorem fixture4321_connected : (phaseGraph [4,3,2,1]).Connected",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.fixture4321_repair_edges",
+      "header": "theorem fixture4321_repair_edges :\n  (1/5 : ℚ) ∈ phases [4,3,2,1] ∧ (1/4 : ℚ) ∈ phases [4,3,2,1] ∧\n  (3/4 : ℚ) ∈ phases [4,3,2,1] ∧ (4/5 : ℚ) ∈ phases [4,3,2,1] ∧\n  fareyAdj (1/5) (1/4) ∧ fareyAdj (3/4) (4/5)",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.fixture83_certificate",
+      "header": "theorem fixture83_certificate : rationalCertificate (phases [8,3])\n  (singletonPartition (phases [8,3]) {(1/9 : ℚ), 8/9})",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.fixture83_counts",
+      "header": "theorem fixture83_counts : (phases [8,3]).card = 11 ∧\n  contactCount (phases [8,3]) = 8 ∧\n  Nat.card (phaseGraph [8,3]).ConnectedComponent = 3",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.fixture83_isolated",
+      "header": "theorem fixture83_isolated (x : ℚ) :\n  isolated (phases [8,3]) x ↔ x ∈ ({(1/9 : ℚ), 8/9} : Finset ℚ)",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    }
+  ],
+  "private_helpers": [],
+  "new_instances": 0,
+  "new_public_definitions": 0,
+  "standing": "FINISHED_PRODUCER_ONLY"
+}

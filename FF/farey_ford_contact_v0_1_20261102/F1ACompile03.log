@@ -1,0 +1,4 @@
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/FVLTFareyContactV1.lean:12:33: error(lean.synthInstanceFailed): failed to synthesize instance of type class
+  AddGroup ℤ
+
+Hint: Type class instance resolution failures can be inspected with the `set_option trace.Meta.synthInstance true` command.

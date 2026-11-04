@@ -1,0 +1,15 @@
+{
+  "phase": "F1",
+  "status": "STOPPED_GENUINE_GEOMETRY_DECLARATION_AND_PROOF_ERRORS",
+  "verdict": "FAIL",
+  "authority": "F1_STOP_DISPOSITION_D1.md",
+  "arithmetic_compile": "PASS_DEFINITIONS_ONLY_NOT_REPLAYED",
+  "geometry_compile": "FAIL",
+  "geometry_calls": 1,
+  "D1_import_only_attempts_used": 2,
+  "total_compile_calls_including_earlier_infrastructure": 5,
+  "replay_calls": 0,
+  "failed_geometry_axiom_output_includes_sorryAx": true,
+  "F2_started": false,
+  "address_space_amendment_used": false
+}

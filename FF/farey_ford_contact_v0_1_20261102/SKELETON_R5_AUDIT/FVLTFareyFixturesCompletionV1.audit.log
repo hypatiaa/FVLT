@@ -1,0 +1,6 @@
+'FVLT.FareyContactV1.fixture4321_connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture4321_repair_edges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture83_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture83_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture83_isolated' depends on axioms: [propext, Classical.choice, Quot.sound]
+11.49 s 4258668 KiB

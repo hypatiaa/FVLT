@@ -1,0 +1,655 @@
+{
+  "reviewer": "independent verifier subagent (Claude Opus) for skeleton seat",
+  "date": "2026-11-03",
+  "scope": "Statement-fidelity (meaning) review of the 60 original FF-1 Stage A targets and 12 bridge links. Proofs and compilation not judged.",
+  "inputs": {
+    "stage_a_integration_v1/FIDELITY_MATRIX_v0_1.json": "cf5614f7b339304eb2ef88736183bf0429b43b6f6edd7fd2869b90ddaacaebc4",
+    "stage_a_integration_v1/FIDELITY_INDEX_v0_1.md": "88e7df9660420ef795d5e1c69cb00e8d529d9ccd3a8b4eeaf1533a81be754039",
+    "stage_a_integration_v1/SUPPORT_DECLARATIONS_v0_1.json": "c8c13e92f04cdbfd35a19bf47862447365e238a5e8097adc81f9c63b4b8d0778",
+    "stage_a_integration_v1/REFERENCE_kernel_v3_3_1.md": "e49533088843e2cd0a1c531c4d8ba113ea30113e8135a15c17c040bdfca3e0e0",
+    "stage_a_integration_v1/REFERENCE_SIGNATURE_FREEZE_v0_1.md": "a9382d4054a77d7a569e884b4f7e02b55f7c7e9aa0da2d3a6d1299075ea2b6c7",
+    "stage_a_integration_v1/REFERENCE_WORK_ORDER_v0_3.md": "43560b88ab50dc77d8e222562f83bad68c8ba17d12a073523a99597a484d6fdd",
+    "stage_a_integration_v1/REFERENCE_ERRATUM_E1.md": "b7240e8fe36a239d66e19986308b2a2d59aa5212d1c4b5af74dc0683768f4243",
+    "stage_a_integration_v1/REFERENCE_ERRATUM_S1.md": "03c54bbfa34cb9854f7e10179f50a5e2fa2fdef3332e6886ec2a9613a92f9299",
+    "stage_a_integration_v1/src/FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+    "stage_a_integration_v1/src/FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+    "stage_a_integration_v1/src/FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+    "stage_a_integration_v1/src/FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+    "stage_a_integration_v1/src/FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+    "stage_a_integration_v1/src/FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+    "stage_a_integration_v1/src/FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+    "stage_a_integration_v1/src/FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+    "stage_a_integration_v1/src/FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+    "stage_a_integration_v1/src/FVLTStageAIntegrationV1.lean": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa",
+    "stage_a_integration_v1/src/FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+    "BRIDGE_SIGNATURE_FREEZE_DRAFT_v0_1.md": "4c9c80e59664bf91f2b558611bd764e8e5f58c8286b4db7cebdc00e4e61f4f8d"
+  },
+  "integrity_checks": {
+    "matrix_kernel_sha256_matches_reference": true,
+    "matrix_signature_sha256_matches_reference": true,
+    "work_order_sha256_matches_E1_pin": true,
+    "all_72_source_sha256_match_matrix": true,
+    "all_72_frozen_headers_match_source_text": true,
+    "all_60_A_headers_present_verbatim_in_signature_freeze": true,
+    "all_12_B_headers_present_verbatim_in_bridge_freeze": true
+  },
+  "rows": [
+    {
+      "id": "A01",
+      "lean_name": "FVLT.FareyContactV1.raw_det_one_coprime",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "Classical helper; echoes the automatic-coprimality argument of Lemma II.5i (lines 1034-1039) and work order A1. No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. Raw-pair det-one => pairwise coprimality, q,s:ℕ with explicit 0<q, 0<s (as in work order A1). The positivity binders are not logically needed but narrow no kernel claim."
+    },
+    {
+      "id": "A02",
+      "lean_name": "FVLT.FareyContactV1.rawValue_num_den",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "Classical helper (work order A1 canonical bridge). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. Round trip num/den -> rational."
+    },
+    {
+      "id": "A03",
+      "lean_name": "FVLT.FareyContactV1.rawValue_canonical",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "Classical helper (work order A1 canonical bridge). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. A reduced positive-denominator pair is the canonical (Rat.num, Rat.den)."
+    },
+    {
+      "id": "A04",
+      "lean_name": "FVLT.FareyContactV1.rawValue_unique",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "Classical helper (work order A1 canonical bridge). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. Uniqueness of the reduced presentation; both coprimality hypotheses are necessary."
+    },
+    {
+      "id": "A05",
+      "lean_name": "FVLT.FareyContactV1.fareyAdj_symm",
+      "producer_kernel_locator": "Original work-order/signature-freeze support obligation, not a directly named kernel claim",
+      "kernel_locator_verified": "Classical helper; supports the undirected edge relation of Def II.5h (line 968). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. Symmetry of |det| = 1."
+    },
+    {
+      "id": "A06",
+      "lean_name": "FVLT.FareyContactV1.fareyAdj_irrefl",
+      "producer_kernel_locator": "Original work-order/signature-freeze support obligation, not a directly named kernel claim",
+      "kernel_locator_verified": "Classical helper; supplies the \"two distinct vertices\" clause of Def II.5h (line 976). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. Irreflexivity makes the kernel distinctness clause automatic."
+    },
+    {
+      "id": "A07",
+      "lean_name": "FVLT.FareyContactV1.fareyGraph_adj",
+      "producer_kernel_locator": "Original work-order/signature-freeze support obligation, not a directly named kernel claim",
+      "kernel_locator_verified": "Def II.5h (lines 968-981): adjacency of the phase-mode contact graph is |as-cq| = 1 on reduced data (definitional).",
+      "verdict": "MATCH",
+      "scope_note": "The producer listed this as a support obligation only; it is the definitional content of Def II.5h for fareyGraph S (phaseGraph = fareyGraph (phases α)). No hidden domain test; canonical num/den are used."
+    },
+    {
+      "id": "A08",
+      "lean_name": "FVLT.FareyContactV1.coprime_den_not_adj",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "Rmk II.5b Guard 2 (lines 734-737): 1/3, 1/5 reduced with coprime denominators, det = 2.",
+      "verdict": "MATCH",
+      "scope_note": "Corrected locator: Guard 2, not the line-716 background. States coprime denominators, non-adjacency and |det| = 2 exactly as the guard does."
+    },
+    {
+      "id": "A09",
+      "lean_name": "FVLT.FareyContactV1.adjacent_mediant",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "Classical helper (Stern-Brocot mediant property; II.5b cites §9.2). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. For adjacent x<y the canonical mediant is reduced, strictly between, and adjacent to both (work order A2)."
+    },
+    {
+      "id": "A10",
+      "lean_name": "FVLT.FareyContactV1.rosette",
+      "producer_kernel_locator": "II.5b, lines 719-724; geometry remains separately named",
+      "kernel_locator_verified": "Rmk II.5b mediant and adjacency bullets (lines 719-724) plus Guard 1, flank det = 2 (lines 728-729).",
+      "verdict": "MATCH",
+      "scope_note": "N:ℕ with 2 ≤ N, so N-1 ≥ 1 (no truncation). Equality in ℚ captures \"reduced mediant = 1/N\". The Ford-tangency bullet (lines 725-726) is not in this row; A25 (with A15) carries it. Guard 1 \"±2 neighbors det 2 relative to the centre\" is carried by A29 at k = 2."
+    },
+    {
+      "id": "A11",
+      "lean_name": "FVLT.FordGeometryV1.radius_pos",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "Classical helper; §9.4 Ford row (line 644), radius 1/(2q^2). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. Radius positivity."
+    },
+    {
+      "id": "A12",
+      "lean_name": "FVLT.FordGeometryV1.ford_distance_identity",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "Classical helper (Ford distance identity); supports the §9.4 row (line 644) and the II.5b tangency bullet. No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. Identity checked by hand: dx^2 = Δ^2/(q^2 s^2) and (r1-r2)^2-(r1+r2)^2 = -1/(q^2 s^2). Note: hne is not mathematically needed (the identity also holds at x = y); it follows the work order distinct-circle convention and narrows no kernel claim."
+    },
+    {
+      "id": "A13",
+      "lean_name": "FVLT.FordGeometryV1.ford_open_disjoint",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "Classical helper; supports II.5f Setup \"disjoint otherwise\" (line 893) and the §9.4 row. No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. Open disks of distinct rationals are disjoint."
+    },
+    {
+      "id": "A14",
+      "lean_name": "FVLT.FordGeometryV1.ford_boundary_disjoint",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "II.5f Setup (line 893): Ford circles with |det| ≠ 1 are \"disjoint otherwise\"; §9.4 row (line 644).",
+      "verdict": "MATCH",
+      "scope_note": "For x ≠ y, det ≠ 0, so |det| ≠ 1 iff |det| ≥ 2: the hypothesis 2 ≤ |det| is exactly the kernel case. Boundary disjointness plus A13 gives disjoint closed disks."
+    },
+    {
+      "id": "A15",
+      "lean_name": "FVLT.FordGeometryV1.ford_tangent_iff",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "§9.4 Ford row (line 644) \"tangent iff Farey neighbors\"; II.5b tangency bullet (lines 725-726); II.5f Setup (line 893); Def II.5h (line 983).",
+      "verdict": "MATCH",
+      "scope_note": "tangent := x ≠ y ∧ the boundary circles meet in exactly one point (distinct-circle convention, work order §3). hne is redundant with the definition but harmless."
+    },
+    {
+      "id": "A16",
+      "lean_name": "FVLT.FordGeometryV1.ford_real_axis",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "Classical helper; II.5f Setup \"tangent to the real axis at 1/a\" (line 893), here for all x; §9.4 row \"circle ... at p/q\". No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. Boundary ∩ real axis = {x}."
+    },
+    {
+      "id": "A17",
+      "lean_name": "FVLT.FordGeometryV1.kiss_membership",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "Classical helper (kiss point (n+i)/m); not in the kernel text (work order A4, viewer code). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. Kiss formula verified by an exact (BigInt) script over all reduced adjacent pairs with q, s < 25."
+    },
+    {
+      "id": "A18",
+      "lean_name": "FVLT.FordGeometryV1.kiss_unique",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "Classical helper (kiss uniqueness, work order A4). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. Exact singleton intersection."
+    },
+    {
+      "id": "A19",
+      "lean_name": "FVLT.FordGeometryV1.two_squares",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "Classical helper (Brahmagupta-Fibonacci two-squares identity). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. Polynomial identity over ℤ."
+    },
+    {
+      "id": "A20",
+      "lean_name": "FVLT.FordGeometryV1.kiss_integer_identity",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "Classical helper (n^2+1 = (a^2+c^2) m, work order A4). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. Uses canonical numerators; the fareyAdj hypothesis is needed. Checked by exact script."
+    },
+    {
+      "id": "A21",
+      "lean_name": "FVLT.FordGeometryV1.kiss_real_identity",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "Classical helper (real cast of A20). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item."
+    },
+    {
+      "id": "A22",
+      "lean_name": "FVLT.FareyContactV1.unitFrac_injective_positive",
+      "producer_kernel_locator": "II.5b supporting background, line 716; exact source role requires independent review",
+      "kernel_locator_verified": "Classical helper; supports II.5f Setup \"repeated exponent values ... one circle\" (line 893). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. Positivity is needed: unitFrac 0 = 0 in Lean."
+    },
+    {
+      "id": "A23",
+      "lean_name": "FVLT.FareyContactV1.integerPath_adj",
+      "producer_kernel_locator": "Original work-order/signature-freeze support obligation, not a directly named kernel claim",
+      "kernel_locator_verified": "Classical helper (unfolding of integerPath; \"integer path\" of II.5f (i), line 895). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. Definitional."
+    },
+    {
+      "id": "A24",
+      "lean_name": "FVLT.FareyContactV1.unitFrac_adj",
+      "producer_kernel_locator": "II.5f (i), line 895; no anchoring or label action",
+      "kernel_locator_verified": "II.5f Setup (line 893), \"On unit fractions this is |b-a|\", and the II.5c unit-fraction spine law (lines 785-788): adjacent iff k = 1.",
+      "verdict": "MATCH",
+      "scope_note": "a, b ≥ 1, as V ⊂ ℤ≥1."
+    },
+    {
+      "id": "A25",
+      "lean_name": "FVLT.FordGeometryV1.unitFrac_tangent",
+      "producer_kernel_locator": "II.5f (i), line 895; no anchoring or label action",
+      "kernel_locator_verified": "II.5f Setup (line 893): F(1/a), F(1/b) tangent iff |a-b| = 1; II.5b tangency bullet (lines 725-726) for the rosette.",
+      "verdict": "MATCH",
+      "scope_note": "Includes a = b (tangent false, |0| ≠ 1), consistent with \"repeated values contribute one circle\". Carries the II.5b tangency clause that A10 leaves out."
+    },
+    {
+      "id": "A26",
+      "lean_name": "FVLT.FareyContactV1.unitFrac_graph_iso",
+      "producer_kernel_locator": "II.5f (i), line 895; no anchoring or label action",
+      "kernel_locator_verified": "II.5f (i) (line 895), first sentence: the tangency graph of {F(1/a)} is the induced subgraph on V of the integer path, with an edge exactly between consecutive integers.",
+      "verdict": "NARROWER_THAN_SOURCE",
+      "scope_note": "The conclusion is Nonempty (integerPath.induce V ≃g fareyGraph (vertexSet V)): existence of SOME graph isomorphism, not that the canonical map a ↦ 1/a is one. The kernel sentence identifies the graphs through a ↦ F(1/a) (\"an edge exactly between consecutive integers\"). An abstract isomorphism does not say which vertex corresponds to which. The canonical edge rule is stated separately and exactly by A24 (with A22 for injectivity), so the package as a whole loses no kernel content, but this row alone is weaker than its sentence. The row also speaks of the Farey-adjacency graph; its identification with the \"tangency graph\" goes through A25."
+    },
+    {
+      "id": "A27",
+      "lean_name": "FVLT.FareyContactV1.unitFrac_graph_connected",
+      "producer_kernel_locator": "II.5f (i), line 895; no anchoring or label action",
+      "kernel_locator_verified": "II.5f (i) (line 895), connectivity sentence.",
+      "verdict": "NARROWER_THAN_SOURCE",
+      "scope_note": "For nonempty V ⊂ ℤ≥1: connected iff V = Icc m M with 1 ≤ m ≤ M. This faithfully translates \"connected iff V is an interval of consecutive integers\". The (i) clause \"and additionally anchored at the unit circle F(1/1) iff min V = 1\" is omitted, and no other row states it (the omission is declared in the signature freeze; the clause is mathematically trivial). Empty V is handled separately by A28."
+    },
+    {
+      "id": "A28",
+      "lean_name": "FVLT.FareyContactV1.empty_graph_convention",
+      "producer_kernel_locator": "Original work-order/signature-freeze support obligation, not a directly named kernel claim",
+      "kernel_locator_verified": "Classical helper (work order A5 empty-case convention, under Mathlib Preconnected/Connected). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. Kernel (i) does not address V = ∅; stating the case separately keeps a convention out of the main statement."
+    },
+    {
+      "id": "A29",
+      "lean_name": "FVLT.FareyContactV1.gap_det",
+      "producer_kernel_locator": "II.5f (iii), line 899; no complete insertion repair",
+      "kernel_locator_verified": "II.5f (iii) (line 899), gap width k = det k; exactly the II.5c unit-fraction spine law (lines 785-788).",
+      "verdict": "HARMLESS_GENERALIZATION",
+      "scope_note": "Kernel (iii) states it for a, a+k ∈ V with no intermediate values; Lean states it for all a ≥ 1, k ≥ 1, independent of V. The V-context does not affect the determinant, so the generalization is harmless. Against II.5c (1/(N-k), 1/N with N > k ≥ 1) it matches exactly."
+    },
+    {
+      "id": "A30",
+      "lean_name": "FVLT.FareyContactV1.minimal_gap_mediant",
+      "producer_kernel_locator": "II.5f (iii), line 899; no complete insertion repair",
+      "kernel_locator_verified": "II.5f (iii) (line 899), minimal break k = 2: med(1/a, 1/(a+2)) = 1/(a+1); also II.5c (line 791).",
+      "verdict": "HARMLESS_GENERALIZATION",
+      "scope_note": "Stated for every a ≥ 1, without the kernel context a, a+2 ∈ V, a+1 ∉ V. The phrase \"the unique missing exponent\" is trivial and not stated separately."
+    },
+    {
+      "id": "A31",
+      "lean_name": "FVLT.FareyContactV1.gap_mediant_unit_iff",
+      "producer_kernel_locator": "II.5f (iii), line 899; no complete insertion repair",
+      "kernel_locator_verified": "II.5f (iii) (line 899): for k > 2 the endpoint mediant 2/(2a+k) is a unit fraction iff k is even; also II.5c (lines 790-791).",
+      "verdict": "HARMLESS_GENERALIZATION",
+      "scope_note": "Stated for every a ≥ 1, k > 2, without the V-context. \"Unit fraction\" is rendered as ∃ b > 0 with mediant = 1/b. The kernel remarks \"identifies only the midpoint, not the full missing set\" and \"exact only at k = 2\" are non-claim prose and are not formalized. II.5c also covers k = 1 (odd, not a unit fraction); no row states that case, but II.5c lies outside the order scope."
+    },
+    {
+      "id": "A32",
+      "lean_name": "FVLT.FareyContactV1.phases_eq_unreduced",
+      "producer_kernel_locator": "Setting / II.5g, lines 908-963",
+      "kernel_locator_verified": "Lemma II.5g (lines 945-963) against the Setting F(a) (lines 908-942).",
+      "verdict": "MATCH",
+      "scope_note": "unreducedPhases = {e/(a+1) : a ∈ α, 1 ≤ e ≤ a} = {red(e/n_i) : 1 ≤ e ≤ n_i - 1}; values in ℚ do the reduction. admissible = {q ≥ 2 : q | a+1 for some a ∈ α} = D(a). phases uses c : ℕ (erratum S1, binder annotation only). Script: the equality holds on all 219 nonincreasing profiles with m ≤ 3, a_i ≤ 9."
+    },
+    {
+      "id": "A33",
+      "lean_name": "FVLT.FareyContactV1.phase_domain",
+      "producer_kernel_locator": "Setting / II.5g, lines 908-963",
+      "kernel_locator_verified": "Setting (lines 922-942): F(a) ⊂ ℚ ∩ (0,1), with reduced denominators in D(a), q ≥ 2.",
+      "verdict": "MATCH",
+      "scope_note": "One direction (membership implies the domain facts), as frozen; it matches the Setting. The converse is a private helper and makes no public claim."
+    },
+    {
+      "id": "A34",
+      "lean_name": "FVLT.FareyContactV1.denominator_partner",
+      "producer_kernel_locator": "II.5i, beginning line 1013",
+      "kernel_locator_verified": "Lemma II.5i (lines 1013-1045), first statement and automatic coprimality.",
+      "verdict": "MATCH",
+      "scope_note": "For any integer c: c/s is a vertex with reduced denominator s and numerator c, adjacent to x, iff 1 ≤ c ≤ s-1 and a s - c q = ε ∈ {±1}. Same sign convention as the kernel (ε = as - cq). Coprimality is not a hypothesis on the right side, so the \"automatic\" clause is part of the content. Every partner y of denominator s equals rawValue y.num s, so the characterization is exhaustive. Script: exact partner sets agree on the 219-profile sweep."
+    },
+    {
+      "id": "A35",
+      "lean_name": "FVLT.FareyContactV1.partner_congruence",
+      "producer_kernel_locator": "II.5i, beginning line 1013",
+      "kernel_locator_verified": "Lemma II.5i, \"Equivalently\" clause (lines 1025-1032).",
+      "verdict": "MATCH",
+      "scope_note": "Int.ModEq q (a s) ε means a s ≡ ε (mod q). The induced numerator (as-ε)/q is integer division, made exact by the congruence in the same conjunct (q > 0). The interior range is kept, as the order requires."
+    },
+    {
+      "id": "A36",
+      "lean_name": "FVLT.FareyContactV1.cross_denominator",
+      "producer_kernel_locator": "II.5i.1, beginning line 1050",
+      "kernel_locator_verified": "Cor II.5i.1 (lines 1050-1056).",
+      "verdict": "MATCH",
+      "scope_note": "Restricted to x, y ∈ phases α (interior domain), where it holds; the work order notes that it fails at 0/1 and 1/1, which lie outside the domain. Script: no same-denominator edge in the sweep."
+    },
+    {
+      "id": "A37",
+      "lean_name": "FVLT.FareyContactV1.isolation_criterion",
+      "producer_kernel_locator": "II.5j, beginning line 1061",
+      "kernel_locator_verified": "Cor II.5j (lines 1061-1072).",
+      "verdict": "MATCH",
+      "scope_note": "isolated = member with no fareyAdj partner in the set = degree-zero vertex of fareyGraph. \"c = (as-ε)/q an interior integer\" is rendered equivalently as ∃ c : ℤ with as - cq = ε and 1 ≤ c ≤ s-1."
+    },
+    {
+      "id": "A38",
+      "lean_name": "FVLT.FareyContactV1.endpoint_isolation",
+      "producer_kernel_locator": "II.5j.1, beginning line 1075",
+      "kernel_locator_verified": "Cor II.5j.1, endpoint form (lines 1077-1084).",
+      "verdict": "MATCH",
+      "scope_note": "For 1/n (n ∈ D, so 1/n is a vertex): s ≡ ε (mod n) with an interior induced numerator (s-ε)/n. The sentence \"(n-1)/n has the same isolation status\" is carried by A42 (1 - 1/n)."
+    },
+    {
+      "id": "A39",
+      "lean_name": "FVLT.FareyContactV1.complement_mem",
+      "producer_kernel_locator": "II.5j.1, beginning line 1075",
+      "kernel_locator_verified": "Cor II.5j.1 (lines 1086-1092): ι maps F(a) to itself (well-definedness of the automorphism).",
+      "verdict": "MATCH",
+      "scope_note": "Holds for every rational x; no hidden restriction."
+    },
+    {
+      "id": "A40",
+      "lean_name": "FVLT.FareyContactV1.complement_adj",
+      "producer_kernel_locator": "II.5j.1, beginning line 1075",
+      "kernel_locator_verified": "Cor II.5j.1 identity |(q-a)s-(s-c)q| = |cq-as| (lines 1094-1096).",
+      "verdict": "MATCH",
+      "scope_note": "The interior hypotheses are not mathematically needed (true for all rationals, since den(1-x) = den x), but they match the kernel domain F(a) ⊂ (0,1)."
+    },
+    {
+      "id": "A41",
+      "lean_name": "FVLT.FareyContactV1.complement_graph_auto",
+      "producer_kernel_locator": "II.5j.1, beginning line 1075",
+      "kernel_locator_verified": "Cor II.5j.1 (lines 1086-1092): ι(x) = 1 - x is an automorphism of G_ph(a).",
+      "verdict": "MATCH",
+      "scope_note": "Existence of a graph automorphism acting exactly as x ↦ 1 - x on vertices: the canonical map, as the kernel says."
+    },
+    {
+      "id": "A42",
+      "lean_name": "FVLT.FareyContactV1.isolated_complement_pairs",
+      "producer_kernel_locator": "II.5j.1, beginning line 1075",
+      "kernel_locator_verified": "Cor II.5j.1 (lines 1083-1084, 1098-1099): complementary isolation status; isolated vertices come in complementary pairs, except the fixed vertex 1/2.",
+      "verdict": "MATCH",
+      "scope_note": "Isolation is invariant under x ↦ 1 - x, and 1/2 is the only fixed point: exactly the pairing statement with its exception. Script: complement symmetry holds on the sweep."
+    },
+    {
+      "id": "A43",
+      "lean_name": "FVLT.FareyContactV1.spanning_tree_connected",
+      "producer_kernel_locator": "Original work-order/signature-freeze support obligation, not a directly named kernel claim",
+      "kernel_locator_verified": "Classical helper (spanning-tree certificate soundness; work order R3). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. True for an arbitrary graph: a parent/depth witness with strictly decreasing depth forces reachability of r inside s."
+    },
+    {
+      "id": "A44",
+      "lean_name": "FVLT.FareyContactV1.certificate_component_bijection",
+      "producer_kernel_locator": "Original work-order/signature-freeze support obligation, not a directly named kernel claim",
+      "kernel_locator_verified": "Classical helper (certificate-to-Mathlib ConnectedComponent bijection; work order R3). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. The bijection sends each part to the component of each of its vertices. The certificate clauses (nonempty, cover, disjoint, internally connected, no cross edges) match work order R3 exactly."
+    },
+    {
+      "id": "A45",
+      "lean_name": "FVLT.FareyContactV1.certificate_component_count",
+      "producer_kernel_locator": "Original work-order/signature-freeze support obligation, not a directly named kernel claim",
+      "kernel_locator_verified": "Classical helper (count corollary of A44). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item."
+    },
+    {
+      "id": "A46",
+      "lean_name": "FVLT.FareyContactV1.certificate_isolation",
+      "producer_kernel_locator": "Original work-order/signature-freeze support obligation, not a directly named kernel claim",
+      "kernel_locator_verified": "Classical helper (isolated vertex iff singleton part). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. True: an isolated vertex can lie in a connected part only if the part is {v}; conversely a singleton part with no cross edges gives an isolated vertex (the graph is loopless)."
+    },
+    {
+      "id": "A47",
+      "lean_name": "FVLT.FareyContactV1.contactCount_eq_edge_count",
+      "producer_kernel_locator": "Original work-order/signature-freeze support obligation, not a directly named kernel claim",
+      "kernel_locator_verified": "Def II.5h (lines 986-990): T_ph(a) = |E(G_ph(a))|.",
+      "verdict": "MATCH",
+      "scope_note": "contactCount counts each unordered edge once by rational order; this theorem identifies it with the Mathlib edgeSet cardinality, i.e. the kernel scalar contact count. The producer listed it as support only; it is the bridge for the kernel definition of T_ph."
+    },
+    {
+      "id": "A48",
+      "lean_name": "FVLT.FareyContactV1.rational_certificate_count",
+      "producer_kernel_locator": "Original work-order/signature-freeze support obligation, not a directly named kernel claim",
+      "kernel_locator_verified": "Classical helper (transport of certificates to subtype vertices). No native kernel item.",
+      "verdict": "MATCH",
+      "scope_note": "classical helper, no native kernel item. The coverage-in-S guard makes Finset.subtype injective on parts, so parts.card is preserved."
+    },
+    {
+      "id": "A49",
+      "lean_name": "FVLT.FareyContactV1.fixture421_vertices",
+      "producer_kernel_locator": "Worked fixture after II.5j.1, beginning line 1105",
+      "kernel_locator_verified": "Worked fixture after II.5j.1 (lines 1105-1119): F(4,2,1).",
+      "verdict": "MATCH",
+      "scope_note": "Script: D = {2,3,5}, F = {1/5, 1/3, 2/5, 1/2, 3/5, 2/3, 4/5}."
+    },
+    {
+      "id": "A50",
+      "lean_name": "FVLT.FareyContactV1.fixture421_certificate",
+      "producer_kernel_locator": "Worked fixture after II.5j.1, beginning line 1105",
+      "kernel_locator_verified": "Worked fixture (lines 1128-1136): three components.",
+      "verdict": "MATCH",
+      "scope_note": "Certificate with parts {1/5}, {1/3, 2/5, 1/2, 3/5, 2/3}, {4/5}; by A44 these are exactly the Mathlib components. Script reproduces them."
+    },
+    {
+      "id": "A51",
+      "lean_name": "FVLT.FareyContactV1.fixture421_counts",
+      "producer_kernel_locator": "Worked fixture after II.5j.1, beginning line 1105",
+      "kernel_locator_verified": "Worked fixture (lines 1122-1128): |F| = 7, T_ph = 6, three components.",
+      "verdict": "MATCH",
+      "scope_note": "Script: |F| = 7, T = 6, 3 components."
+    },
+    {
+      "id": "A52",
+      "lean_name": "FVLT.FareyContactV1.fixture4321_connected",
+      "producer_kernel_locator": "Worked fixture after II.5j.1, beginning line 1105",
+      "kernel_locator_verified": "Worked fixture (lines 1142-1151): the (4,3,2,1) graph is connected.",
+      "verdict": "MATCH",
+      "scope_note": "Script: 9 vertices, 10 edges, 1 component."
+    },
+    {
+      "id": "A53",
+      "lean_name": "FVLT.FareyContactV1.fixture4321_repair_edges",
+      "producer_kernel_locator": "Worked fixture after II.5j.1, beginning line 1105",
+      "kernel_locator_verified": "Worked fixture (lines 1142-1149): 1/4 and 3/4 enter; edges 1/5-1/4 and 3/4-4/5.",
+      "verdict": "MATCH",
+      "scope_note": "\"Enter\" (absence from F(4,2,1)) follows from A49. Script reproduces the edges."
+    },
+    {
+      "id": "A54",
+      "lean_name": "FVLT.FareyContactV1.fixture92_certificate",
+      "producer_kernel_locator": "II.5k, beginning line 1158",
+      "kernel_locator_verified": "Prop II.5k (lines 1158-1203): G_ph(9,2) has 5 components and isolated set {1/10, 1/5, 4/5, 9/10}.",
+      "verdict": "MATCH",
+      "scope_note": "singletonPartition = the four isolated singletons plus the remaining 7 vertices as one part. Five components with four singletons force this; the script confirms the 7-vertex remainder is one component."
+    },
+    {
+      "id": "A55",
+      "lean_name": "FVLT.FareyContactV1.fixture83_certificate",
+      "producer_kernel_locator": "II.5k, beginning line 1158",
+      "kernel_locator_verified": "Prop II.5k (lines 1158-1203): G_ph(8,3) has 3 components and isolated set {1/9, 8/9}.",
+      "verdict": "MATCH",
+      "scope_note": "Two singletons plus the remaining 9 vertices as one part; the script confirms."
+    },
+    {
+      "id": "A56",
+      "lean_name": "FVLT.FareyContactV1.fixture92_counts",
+      "producer_kernel_locator": "II.5k, beginning line 1158",
+      "kernel_locator_verified": "Prop II.5k (lines 1166-1179): |F(9,2)| = 11, T_ph = 8, 5 components.",
+      "verdict": "MATCH",
+      "scope_note": "Script: D = {2,3,5,10}, |F| = 11, T = 8, 5 components."
+    },
+    {
+      "id": "A57",
+      "lean_name": "FVLT.FareyContactV1.fixture83_counts",
+      "producer_kernel_locator": "II.5k, beginning line 1158",
+      "kernel_locator_verified": "Prop II.5k (lines 1166-1183): |F(8,3)| = 11, T_ph = 8, 3 components.",
+      "verdict": "MATCH",
+      "scope_note": "Script: D = {2,3,4,9}, |F| = 11, T = 8, 3 components."
+    },
+    {
+      "id": "A58",
+      "lean_name": "FVLT.FareyContactV1.fixture421_isolated",
+      "producer_kernel_locator": "Worked fixture after II.5j.1, beginning line 1105",
+      "kernel_locator_verified": "Worked fixture (lines 1138-1140): 1/5 isolated; 4/5 by complement symmetry.",
+      "verdict": "MATCH",
+      "scope_note": "Exact isolated set {1/5, 4/5}, stated for all x : ℚ (non-members are not isolated by definition)."
+    },
+    {
+      "id": "A59",
+      "lean_name": "FVLT.FareyContactV1.fixture92_isolated",
+      "producer_kernel_locator": "II.5k, beginning line 1158",
+      "kernel_locator_verified": "Prop II.5k (lines 1186-1190): isolated set of (9,2).",
+      "verdict": "MATCH",
+      "scope_note": "Script reproduces {1/10, 1/5, 4/5, 9/10}."
+    },
+    {
+      "id": "A60",
+      "lean_name": "FVLT.FareyContactV1.fixture83_isolated",
+      "producer_kernel_locator": "II.5k, beginning line 1158",
+      "kernel_locator_verified": "Prop II.5k (lines 1192-1196): isolated set of (8,3).",
+      "verdict": "MATCH",
+      "scope_note": "Script reproduces {1/9, 8/9}."
+    },
+    {
+      "id": "B01",
+      "lean_name": "FVLT.FordExactCoordinatesV1.kissNQ_eq",
+      "kernel_locator_verified": "Bridge freeze link 1 (interface theorem, not a kernel item).",
+      "verdict": "MATCH",
+      "scope_note": "kissNQ = F1 kissN, for all rational pairs."
+    },
+    {
+      "id": "B02",
+      "lean_name": "FVLT.FordExactCoordinatesV1.kissMQ_eq",
+      "kernel_locator_verified": "Bridge freeze link 2 (interface theorem, not a kernel item).",
+      "verdict": "MATCH",
+      "scope_note": "kissMQ = F1 kissM."
+    },
+    {
+      "id": "B03",
+      "lean_name": "FVLT.FordExactCoordinatesV1.kissMQ_pos",
+      "kernel_locator_verified": "Bridge freeze link 3 (interface theorem, not a kernel item).",
+      "verdict": "MATCH",
+      "scope_note": "Positivity proved, not assumed."
+    },
+    {
+      "id": "B04",
+      "lean_name": "FVLT.FordExactCoordinatesV1.radiusQ_pos",
+      "kernel_locator_verified": "Bridge freeze link 4 (interface theorem, not a kernel item).",
+      "verdict": "MATCH",
+      "scope_note": "Positivity proved, not assumed."
+    },
+    {
+      "id": "B05",
+      "lean_name": "FVLT.FordExactCoordinatesV1.radiusQ_cast",
+      "kernel_locator_verified": "Bridge freeze link 5 (interface theorem, not a kernel item).",
+      "verdict": "MATCH",
+      "scope_note": "The rational radius casts to the F1 real radius."
+    },
+    {
+      "id": "B06",
+      "lean_name": "FVLT.FordExactCoordinatesV1.embedQ_injective",
+      "kernel_locator_verified": "Bridge freeze link 6 (interface theorem, not a kernel item).",
+      "verdict": "MATCH",
+      "scope_note": "embedQ (u, v) = u + v i is injective."
+    },
+    {
+      "id": "B07",
+      "lean_name": "FVLT.FordExactCoordinatesV1.centreQ_embed",
+      "kernel_locator_verified": "Bridge freeze link 7 (interface theorem, not a kernel item).",
+      "verdict": "MATCH",
+      "scope_note": "The exact centre agrees with the F1 centre."
+    },
+    {
+      "id": "B08",
+      "lean_name": "FVLT.FordExactCoordinatesV1.kissQ_embed",
+      "kernel_locator_verified": "Bridge freeze link 8 (interface theorem, not a kernel item).",
+      "verdict": "MATCH",
+      "scope_note": "The exact kiss point agrees with the F1 kiss point."
+    },
+    {
+      "id": "B09",
+      "lean_name": "FVLT.FordExactCoordinatesV1.sqDistanceQ_cast",
+      "kernel_locator_verified": "Bridge freeze link 9 (interface theorem, not a kernel item).",
+      "verdict": "MATCH",
+      "scope_note": "The rational squared distance casts to the complex norm squared."
+    },
+    {
+      "id": "B10",
+      "lean_name": "FVLT.FordExactCoordinatesV1.boundaryQ_iff",
+      "kernel_locator_verified": "Bridge freeze link 10 (interface theorem, not a kernel item).",
+      "verdict": "MATCH",
+      "scope_note": "Rational boundary predicate iff F1 boundary membership of the embedded point; for supplied rational points only, as the freeze intends."
+    },
+    {
+      "id": "B11",
+      "lean_name": "FVLT.FordExactCoordinatesV1.boundaryCheckQ_correct",
+      "kernel_locator_verified": "Bridge freeze link 11 (interface theorem, not a kernel item).",
+      "verdict": "MATCH",
+      "scope_note": "Correctness of the Boolean checker, both directions."
+    },
+    {
+      "id": "B12",
+      "lean_name": "FVLT.FordExactCoordinatesV1.adjacent_kissQ",
+      "kernel_locator_verified": "Bridge freeze link 12 (interface theorem, not a kernel item).",
+      "verdict": "MATCH",
+      "scope_note": "For Farey-adjacent x, y the checker accepts kissQ x y on both circles; adjacency is required only here, as frozen."
+    }
+  ],
+  "support_inventory": {
+    "file": "stage_a_integration_v1/SUPPORT_DECLARATIONS_v0_1.json",
+    "declarations_listed": 64,
+    "source_declarations_found": 136,
+    "target_declarations": 72,
+    "unlisted_declarations": 0,
+    "declarations_in_both_lists": 0,
+    "public_theorems_in_support": 0,
+    "private_theorems_in_support": 23,
+    "definitions": 35,
+    "instances": 5,
+    "abbrevs": 1,
+    "entries_granting_kernel_standing": 0,
+    "source_line_text_mismatches": 0,
+    "private_flag_mismatches": 0,
+    "forbidden_tokens_in_src": {
+      "sorry": 0,
+      "admit": 0,
+      "native_decide": 0,
+      "axiom_declarations": 0
+    },
+    "finding": "PASS: every declaration in the 11 source files is either one of the 72 matrix targets or one of the 64 support entries (no overlap, none missing). All support theorems are private; the public support items are definitions, instances and one abbrev (RatPlane). Every entry has integration_grants_new_kernel_standing = false. No accidental claim promotion found.",
+    "notes": [
+      "Definitions inside a `noncomputable section` (FordGeometry, FordGeometryCompletion, UnitFractionSpine, PhasePartners) carry noncomputable_marker = false because the marker field records an explicit keyword only; this is informational and does not affect any proposition.",
+      "The public support definitions (det, fareyAdj, fareyGraph, admissible, phases, unreducedPhases, contactCount, isolated, singletonPartition, ComponentCertificate, rationalCertificate, radius, centre, disk, boundary, realAxis, tangent, kissN, kissM, kiss, vertexSet, integerPath, rawValue, mediant, unitFrac and the bridge producer definitions) were compared to the frozen definitions and match them byte-for-byte after whitespace normalization; phases and unreducedPhases carry only the S1 binder annotation `: ℕ`.",
+      "The five Decidable/DecidableRel instances are public; each is inferInstanceAs on the defining proposition, so they cannot change a statement."
+    ]
+  },
+  "summary": {
+    "MATCH": 67,
+    "HARMLESS_GENERALIZATION": 3,
+    "NARROWER_THAN_SOURCE": 2,
+    "TRANSLATION_DEFECT": 0,
+    "PROSE_CORRECTION_CANDIDATE": 0,
+    "UNRESOLVED": 0,
+    "total": 72,
+    "original_A": {
+      "MATCH": 55,
+      "HARMLESS_GENERALIZATION": 3,
+      "NARROWER_THAN_SOURCE": 2,
+      "TRANSLATION_DEFECT": 0,
+      "PROSE_CORRECTION_CANDIDATE": 0,
+      "UNRESOLVED": 0
+    },
+    "bridge_B": {
+      "MATCH": 12,
+      "HARMLESS_GENERALIZATION": 0,
+      "NARROWER_THAN_SOURCE": 0,
+      "TRANSLATION_DEFECT": 0,
+      "PROSE_CORRECTION_CANDIDATE": 0,
+      "UNRESOLVED": 0
+    }
+  }
+}

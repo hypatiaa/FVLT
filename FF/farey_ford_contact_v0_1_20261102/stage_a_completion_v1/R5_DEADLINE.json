@@ -1,0 +1,9 @@
+{
+  "phase": "R5",
+  "drafting_started_utc": "2026-11-03T23:16:14.4890580+00:00",
+  "drafting_started_unix": 1793747774,
+  "deadline_unix": 1793749574,
+  "active_cap_seconds": 1800,
+  "posting": "bus1433 acceptedledger1436",
+  "no_prior_allowance": true
+}

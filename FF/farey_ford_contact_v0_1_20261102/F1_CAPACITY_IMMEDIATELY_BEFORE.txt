@@ -1,0 +1,17 @@
+Tue Nov  3 10:52:41 AM UTC 2026
+               total        used        free      shared  buff/cache   available
+Mem:           31643        2673        5962          20       23482       28970
+Swap:           8191         462        7729
+ 05:52:41 up 7 days, 10:31, 4679 users,  load average: 0.00, 0.00, 0.00
+    PID COMMAND         %CPU %MEM
+ 365663 WolframKernel    0.2  0.0
+   1500 tailscaled       0.2  0.1
+ 126733 gnome-shell      0.1  0.3
+    120 kswapd0          0.1  0.0
+      1 systemd          0.0  0.0
+ 365659 python3          0.0  0.0
+   1106 systemd-oomd     0.0  0.0
+ 103846 systemd          0.0  0.0
+   1219 NetworkManager   0.0  0.0
+   1173 polkitd          0.0  0.1
+   1167 dbus-daemon      0.0  0.0

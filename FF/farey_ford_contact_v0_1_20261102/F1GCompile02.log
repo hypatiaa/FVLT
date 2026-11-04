@@ -1,0 +1,473 @@
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/FVLTFordGeometryV1.lean:30:41: error: unsolved goals
+x y : ℚ
+hne : x ≠ y
+hq : ↑x.den ≠ 0
+hs : ↑y.den ≠ 0
+⊢ -(↑x.den ^ 2 * ↑y.den ^ 2 * 2) + ↑x.den ^ 2 * ↑y.den ^ 4 * ↑x.num ^ 2 * 4 -
+                                ↑x.den ^ 3 * ↑y.den ^ 3 * ↑x.num * ↑y.num * 8 +
+                              ↑x.den ^ 3 * ↑y.den ^ 4 * ↑x.num * (↑x.den ^ 2).im *
+                                  ((↑x.den ^ 2).im ^ 2 + (↑x.den ^ 2).re ^ 2)⁻¹ *
+                                4 -
+                            ↑x.den ^ 3 * ↑y.den ^ 4 * ↑x.num * (↑y.den ^ 2).im *
+                                ((↑y.den ^ 2).im ^ 2 + (↑y.den ^ 2).re ^ 2)⁻¹ *
+                              4 -
+                          ↑x.den ^ 4 +
+                        ↑x.den ^ 4 * ↑y.den ^ 2 * ↑y.num ^ 2 * 4 -
+                      ↑x.den ^ 4 * ↑y.den ^ 3 * (↑x.den ^ 2).im * ((↑x.den ^ 2).im ^ 2 + (↑x.den ^ 2).re ^ 2)⁻¹ *
+                          ↑y.num *
+                        4 +
+                    ↑x.den ^ 4 * ↑y.den ^ 3 * ↑y.num * (↑y.den ^ 2).im * ((↑y.den ^ 2).im ^ 2 + (↑y.den ^ 2).re ^ 2)⁻¹ *
+                      4 -
+                  ↑x.den ^ 4 * ↑y.den ^ 4 * (↑x.den ^ 2).im * ((↑x.den ^ 2).im ^ 2 + (↑x.den ^ 2).re ^ 2)⁻¹ *
+                        (↑y.den ^ 2).im *
+                      ((↑y.den ^ 2).im ^ 2 + (↑y.den ^ 2).re ^ 2)⁻¹ *
+                    2 +
+                ↑x.den ^ 4 * ↑y.den ^ 4 * (↑x.den ^ 2).im ^ 2 * ((↑x.den ^ 2).im ^ 2 + (↑x.den ^ 2).re ^ 2)⁻¹ ^ 2 -
+              ↑x.den ^ 4 * ↑y.den ^ 4 * (↑x.den ^ 2).re * ((↑x.den ^ 2).im ^ 2 + (↑x.den ^ 2).re ^ 2)⁻¹ *
+                    (↑y.den ^ 2).re *
+                  ((↑y.den ^ 2).im ^ 2 + (↑y.den ^ 2).re ^ 2)⁻¹ *
+                2 +
+            ↑x.den ^ 4 * ↑y.den ^ 4 * (↑x.den ^ 2).re ^ 2 * ((↑x.den ^ 2).im ^ 2 + (↑x.den ^ 2).re ^ 2)⁻¹ ^ 2 +
+          ↑x.den ^ 4 * ↑y.den ^ 4 * (↑y.den ^ 2).im ^ 2 * ((↑y.den ^ 2).im ^ 2 + (↑y.den ^ 2).re ^ 2)⁻¹ ^ 2 +
+        ↑x.den ^ 4 * ↑y.den ^ 4 * (↑y.den ^ 2).re ^ 2 * ((↑y.den ^ 2).im ^ 2 + (↑y.den ^ 2).re ^ 2)⁻¹ ^ 2 -
+      ↑y.den ^ 4 =
+    -(↑x.den ^ 2 * ↑y.den ^ 2 * 4) + ↑x.den ^ 2 * ↑y.den ^ 4 * ↑x.num ^ 2 * 4 -
+        ↑x.den ^ 3 * ↑y.den ^ 3 * ↑x.num * ↑y.num * 8 +
+      ↑x.den ^ 4 * ↑y.den ^ 2 * ↑y.num ^ 2 * 4
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/FVLTFordGeometryV1.lean:55:65: error: unsolved goals
+x y : ℚ
+h : fareyAdj x y
+hDint : det x y ^ 2 = 1
+hD : ↑(det x y) ^ 2 = 1
+u v : ℚ
+huv : ↑(det u v) ^ 2 = 1
+hq : ↑u.den ≠ 0
+hs : ↑v.den ≠ 0
+hmpos : 0 < ↑u.den ^ 2 + ↑v.den ^ 2
+hm : ↑u.den ^ 2 + ↑v.den ^ 2 ≠ 0
+⊢ ⋯ + ⋯ + ⋯ * 16 + ⋯ * ⋯ * 8 - ⋯ * ⋯ * ⋯⁻¹ * 8 - ↑u.den ^ 7 * ↑u.num * (↑u.den ^ 2).im * (⋯ + ⋯)⁻¹ * 8 +
+                                                                                              ↑u.den ^ 7 * ↑u.num *
+                                                                                                    (↑u.den ^ 2).im *
+                                                                                                  ((↑u.den ^ 2).re ^ 2 +
+                                                                                                      (↑u.den ^ 2).im ^
+                                                                                                        2)⁻¹ *
+                                                                                                4 -
+                                                                                            ↑u.den ^ 7 * ↑u.num *
+                                                                                                  (↑v.den ^ 2).im *
+                                                                                                (⋯ + ⋯ +
+                                                                                                      (↑u.den ^ 2).im ^
+                                                                                                        2 +
+                                                                                                    (↑v.den ^ 2).im ^
+                                                                                                      2)⁻¹ *
+                                                                                              8 +
+                                                                                          ↑u.den ^ 8 * ↑u.num ^ 2 *
+                                                                                                    ↑v.den ^ 2 *
+                                                                                                  (↑u.den ^ 2).re *
+                                                                                                (↑v.den ^ 2).re *
+                                                                                              (⋯ + ⋯ +
+                                                                                                      (↑u.den ^ 2).im ^
+                                                                                                        2 +
+                                                                                                    (↑v.den ^ 2).im ^
+                                                                                                      2)⁻¹ ^
+                                                                                                2 *
+                                                                                            16 +
+                                                                                        ↑u.den ^ 8 * ↑u.num ^ 2 *
+                                                                                                ↑v.den ^ 2 *
+                                                                                              (↑u.den ^ 2).re ^ 2 *
+                                                                                            (⋯ + ⋯ + ⋯ * 2 +
+                                                                                                    (↑u.den ^ 2).im ^
+                                                                                                      2 +
+                                                                                                  (↑v.den ^ 2).im ^
+                                                                                                    2)⁻¹ ^
+                                                                                              2 *
+                                                                                          8 +
+                                                                                      ↑u.den ^ 8 * ↑u.num ^ 2 *
+                                                                                              ↑v.den ^ 2 *
+                                                                                            (↑v.den ^ 2).re ^ 2 *
+                                                                                          (⋯ + ⋯ + (↑v.den ^ 2).re ^ 2 +
+                                                                                                    (↑u.den ^ 2).im *
+                                                                                                        (↑v.den ^
+                                                                                                            2).im *
+                                                                                                      2 +
+                                                                                                  (↑u.den ^ 2).im ^ 2 +
+                                                                                                (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                                                                            2 *
+                                                                                        8 +
+                                                                                    ↑u.den ^ 8 * ↑u.num ^ 2 *
+                                                                                              ↑v.den ^ 2 *
+                                                                                            (↑u.den ^ 2).im *
+                                                                                          (↑v.den ^ 2).im *
+                                                                                        (⋯ * 2 + (↑u.den ^ 2).re ^ 2 +
+                                                                                                    (↑v.den ^ 2).re ^
+                                                                                                      2 +
+                                                                                                  (↑u.den ^ 2).im *
+                                                                                                      (↑v.den ^ 2).im *
+                                                                                                    2 +
+                                                                                                (↑u.den ^ 2).im ^ 2 +
+                                                                                              (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                                                                          2 *
+                                                                                      16 +
+                                                                                  ↑u.den ^ 8 * ↑u.num ^ 2 * ↑v.den ^ 2 *
+                                                                                        (↑u.den ^ 2).im ^ 2 *
+                                                                                      ((↑u.den ^ 2).re *
+                                                                                                        (↑v.den ^
+                                                                                                            2).re *
+                                                                                                      2 +
+                                                                                                    (↑u.den ^ 2).re ^
+                                                                                                      2 +
+                                                                                                  (↑v.den ^ 2).re ^ 2 +
+                                                                                                (↑u.den ^ 2).im *
+                                                                                                    (↑v.den ^ 2).im *
+                                                                                                  2 +
+                                                                                              (↑u.den ^ 2).im ^ 2 +
+                                                                                            (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                                                                        2 *
+                                                                                    8 +
+                                                                                ↑u.den ^ 8 * ↑u.num ^ 2 * ↑v.den ^ 2 *
+                                                                                      (↑v.den ^ 2).im ^ 2 *
+                                                                                    ((↑u.den ^ 2).re * (↑v.den ^ 2).re *
+                                                                                                    2 +
+                                                                                                  (↑u.den ^ 2).re ^ 2 +
+                                                                                                (↑v.den ^ 2).re ^ 2 +
+                                                                                              (↑u.den ^ 2).im *
+                                                                                                  (↑v.den ^ 2).im *
+                                                                                                2 +
+                                                                                            (↑u.den ^ 2).im ^ 2 +
+                                                                                          (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                                                                      2 *
+                                                                                  8 -
+                                                                              ↑u.den ^ 8 * ↑u.num ^ 2 *
+                                                                                    (↑u.den ^ 2).re *
+                                                                                  ((↑u.den ^ 2).re * (↑v.den ^ 2).re *
+                                                                                                2 +
+                                                                                              (↑u.den ^ 2).re ^ 2 +
+                                                                                            (↑v.den ^ 2).re ^ 2 +
+                                                                                          (↑u.den ^ 2).im *
+                                                                                              (↑v.den ^ 2).im *
+                                                                                            2 +
+                                                                                        (↑u.den ^ 2).im ^ 2 +
+                                                                                      (↑v.den ^ 2).im ^ 2)⁻¹ *
+                                                                                8 -
+                                                                            ↑u.den ^ 8 * ↑u.num ^ 2 * (↑v.den ^ 2).re *
+                                                                                ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 +
+                                                                                            (↑u.den ^ 2).re ^ 2 +
+                                                                                          (↑v.den ^ 2).re ^ 2 +
+                                                                                        (↑u.den ^ 2).im *
+                                                                                            (↑v.den ^ 2).im *
+                                                                                          2 +
+                                                                                      (↑u.den ^ 2).im ^ 2 +
+                                                                                    (↑v.den ^ 2).im ^ 2)⁻¹ *
+                                                                              8 +
+                                                                          ↑u.den ^ 8 * ↑v.num * ↑v.den *
+                                                                                    (↑u.den ^ 2).re *
+                                                                                  (↑v.den ^ 2).im *
+                                                                                ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 +
+                                                                                            (↑u.den ^ 2).re ^ 2 +
+                                                                                          (↑v.den ^ 2).re ^ 2 +
+                                                                                        (↑u.den ^ 2).im *
+                                                                                            (↑v.den ^ 2).im *
+                                                                                          2 +
+                                                                                      (↑u.den ^ 2).im ^ 2 +
+                                                                                    (↑v.den ^ 2).im ^ 2)⁻¹ *
+                                                                              ((↑u.den ^ 2).re ^ 2 +
+                                                                                  (↑u.den ^ 2).im ^ 2)⁻¹ *
+                                                                            4 -
+                                                                        ↑u.den ^ 8 * ↑v.num * ↑v.den * (↑v.den ^ 2).re *
+                                                                                (↑u.den ^ 2).im *
+                                                                              ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 +
+                                                                                          (↑u.den ^ 2).re ^ 2 +
+                                                                                        (↑v.den ^ 2).re ^ 2 +
+                                                                                      (↑u.den ^ 2).im *
+                                                                                          (↑v.den ^ 2).im *
+                                                                                        2 +
+                                                                                    (↑u.den ^ 2).im ^ 2 +
+                                                                                  (↑v.den ^ 2).im ^ 2)⁻¹ *
+                                                                            ((↑u.den ^ 2).re ^ 2 +
+                                                                                (↑u.den ^ 2).im ^ 2)⁻¹ *
+                                                                          4 +
+                                                                      ↑u.den ^ 8 * ↑v.num ^ 2 * ↑v.den ^ 2 *
+                                                                              (↑u.den ^ 2).re *
+                                                                            (↑v.den ^ 2).re *
+                                                                          ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 +
+                                                                                        (↑u.den ^ 2).re ^ 2 +
+                                                                                      (↑v.den ^ 2).re ^ 2 +
+                                                                                    (↑u.den ^ 2).im * (↑v.den ^ 2).im *
+                                                                                      2 +
+                                                                                  (↑u.den ^ 2).im ^ 2 +
+                                                                                (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                                                            2 *
+                                                                        8 +
+                                                                    ↑u.den ^ 8 * ↑v.num ^ 2 * ↑v.den ^ 2 *
+                                                                          (↑u.den ^ 2).re ^ 2 *
+                                                                        ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 +
+                                                                                      (↑u.den ^ 2).re ^ 2 +
+                                                                                    (↑v.den ^ 2).re ^ 2 +
+                                                                                  (↑u.den ^ 2).im * (↑v.den ^ 2).im *
+                                                                                    2 +
+                                                                                (↑u.den ^ 2).im ^ 2 +
+                                                                              (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                                                          2 *
+                                                                      4 +
+                                                                  ↑u.den ^ 8 * ↑v.num ^ 2 * ↑v.den ^ 2 *
+                                                                        (↑v.den ^ 2).re ^ 2 *
+                                                                      ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 +
+                                                                                    (↑u.den ^ 2).re ^ 2 +
+                                                                                  (↑v.den ^ 2).re ^ 2 +
+                                                                                (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                                                              (↑u.den ^ 2).im ^ 2 +
+                                                                            (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                                                        2 *
+                                                                    4 +
+                                                                ↑u.den ^ 8 * ↑v.num ^ 2 * ↑v.den ^ 2 * (↑u.den ^ 2).im *
+                                                                      (↑v.den ^ 2).im *
+                                                                    ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 +
+                                                                                  (↑u.den ^ 2).re ^ 2 +
+                                                                                (↑v.den ^ 2).re ^ 2 +
+                                                                              (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                                                            (↑u.den ^ 2).im ^ 2 +
+                                                                          (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                                                      2 *
+                                                                  8 +
+                                                              ↑u.den ^ 8 * ↑v.num ^ 2 * ↑v.den ^ 2 *
+                                                                    (↑u.den ^ 2).im ^ 2 *
+                                                                  ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 +
+                                                                                (↑u.den ^ 2).re ^ 2 +
+                                                                              (↑v.den ^ 2).re ^ 2 +
+                                                                            (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                                                          (↑u.den ^ 2).im ^ 2 +
+                                                                        (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                                                    2 *
+                                                                4 +
+                                                            ↑u.den ^ 8 * ↑v.num ^ 2 * ↑v.den ^ 2 * (↑v.den ^ 2).im ^ 2 *
+                                                                ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 +
+                                                                              (↑u.den ^ 2).re ^ 2 +
+                                                                            (↑v.den ^ 2).re ^ 2 +
+                                                                          (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                                                        (↑u.den ^ 2).im ^ 2 +
+                                                                      (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                                                  2 *
+                                                              4 -
+                                                          ↑u.den ^ 8 * (↑u.den ^ 2).re * (↑v.den ^ 2).re *
+                                                                ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 +
+                                                                            (↑u.den ^ 2).re ^ 2 +
+                                                                          (↑v.den ^ 2).re ^ 2 +
+                                                                        (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                                                      (↑u.den ^ 2).im ^ 2 +
+                                                                    (↑v.den ^ 2).im ^ 2)⁻¹ *
+                                                              ((↑u.den ^ 2).re ^ 2 + (↑u.den ^ 2).im ^ 2)⁻¹ *
+                                                            4 +
+                                                        ↑u.den ^ 8 * (↑u.den ^ 2).re * (↑v.den ^ 2).re *
+                                                            ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 +
+                                                                          (↑u.den ^ 2).re ^ 2 +
+                                                                        (↑v.den ^ 2).re ^ 2 +
+                                                                      (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                                                    (↑u.den ^ 2).im ^ 2 +
+                                                                  (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                                              2 *
+                                                          8 -
+                                                      ↑u.den ^ 8 * (↑u.den ^ 2).re ^ 2 *
+                                                            ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 +
+                                                                        (↑u.den ^ 2).re ^ 2 +
+                                                                      (↑v.den ^ 2).re ^ 2 +
+                                                                    (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                                                  (↑u.den ^ 2).im ^ 2 +
+                                                                (↑v.den ^ 2).im ^ 2)⁻¹ *
+                                                          ((↑u.den ^ 2).re ^ 2 + (↑u.den ^ 2).im ^ 2)⁻¹ *
+                                                        4 +
+                                                    ↑u.den ^ 8 * (↑u.den ^ 2).re ^ 2 *
+                                                        ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 +
+                                                                    (↑v.den ^ 2).re ^ 2 +
+                                                                  (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                                                (↑u.den ^ 2).im ^ 2 +
+                                                              (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                                          2 *
+                                                      4 +
+                                                  ↑u.den ^ 8 * (↑u.den ^ 2).re ^ 2 *
+                                                    ((↑u.den ^ 2).re ^ 2 + (↑u.den ^ 2).im ^ 2)⁻¹ ^ 2 +
+                                                ↑u.den ^ 8 * (↑v.den ^ 2).re ^ 2 *
+                                                    ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 +
+                                                                (↑v.den ^ 2).re ^ 2 +
+                                                              (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                                            (↑u.den ^ 2).im ^ 2 +
+                                                          (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                                      2 *
+                                                  4 -
+                                              ↑u.den ^ 8 * (↑u.den ^ 2).im * (↑v.den ^ 2).im *
+                                                    ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 +
+                                                              (↑v.den ^ 2).re ^ 2 +
+                                                            (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                                          (↑u.den ^ 2).im ^ 2 +
+                                                        (↑v.den ^ 2).im ^ 2)⁻¹ *
+                                                  ((↑u.den ^ 2).re ^ 2 + (↑u.den ^ 2).im ^ 2)⁻¹ *
+                                                4 +
+                                            ↑u.den ^ 8 * (↑u.den ^ 2).im * (↑v.den ^ 2).im *
+                                                ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 +
+                                                            (↑v.den ^ 2).re ^ 2 +
+                                                          (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                                        (↑u.den ^ 2).im ^ 2 +
+                                                      (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                                  2 *
+                                              8 -
+                                          ↑u.den ^ 8 * (↑u.den ^ 2).im ^ 2 *
+                                                ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 +
+                                                          (↑v.den ^ 2).re ^ 2 +
+                                                        (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                                      (↑u.den ^ 2).im ^ 2 +
+                                                    (↑v.den ^ 2).im ^ 2)⁻¹ *
+                                              ((↑u.den ^ 2).re ^ 2 + (↑u.den ^ 2).im ^ 2)⁻¹ *
+                                            4 +
+                                        ↑u.den ^ 8 * (↑u.den ^ 2).im ^ 2 *
+                                            ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 +
+                                                        (↑v.den ^ 2).re ^ 2 +
+                                                      (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                                    (↑u.den ^ 2).im ^ 2 +
+                                                  (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                              2 *
+                                          4 +
+                                      ↑u.den ^ 8 * (↑u.den ^ 2).im ^ 2 *
+                                        ((↑u.den ^ 2).re ^ 2 + (↑u.den ^ 2).im ^ 2)⁻¹ ^ 2 +
+                                    ↑u.den ^ 8 * (↑v.den ^ 2).im ^ 2 *
+                                        ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 +
+                                                    (↑v.den ^ 2).re ^ 2 +
+                                                  (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                                (↑u.den ^ 2).im ^ 2 +
+                                              (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                          2 *
+                                      4 +
+                                  ↑u.den ^ 9 * ↑u.num * ↑v.num * ↑v.den * (↑u.den ^ 2).re * (↑v.den ^ 2).re *
+                                      ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 +
+                                                  (↑v.den ^ 2).re ^ 2 +
+                                                (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                              (↑u.den ^ 2).im ^ 2 +
+                                            (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                        2 *
+                                    16 +
+                                ↑u.den ^ 9 * ↑u.num * ↑v.num * ↑v.den * (↑u.den ^ 2).re ^ 2 *
+                                    ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 + (↑v.den ^ 2).re ^ 2 +
+                                              (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                            (↑u.den ^ 2).im ^ 2 +
+                                          (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                      2 *
+                                  8 +
+                              ↑u.den ^ 9 * ↑u.num * ↑v.num * ↑v.den * (↑v.den ^ 2).re ^ 2 *
+                                  ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 + (↑v.den ^ 2).re ^ 2 +
+                                            (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                          (↑u.den ^ 2).im ^ 2 +
+                                        (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                    2 *
+                                8 +
+                            ↑u.den ^ 9 * ↑u.num * ↑v.num * ↑v.den * (↑u.den ^ 2).im * (↑v.den ^ 2).im *
+                                ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 + (↑v.den ^ 2).re ^ 2 +
+                                          (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                        (↑u.den ^ 2).im ^ 2 +
+                                      (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                  2 *
+                              16 +
+                          ↑u.den ^ 9 * ↑u.num * ↑v.num * ↑v.den * (↑u.den ^ 2).im ^ 2 *
+                              ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 + (↑v.den ^ 2).re ^ 2 +
+                                        (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                      (↑u.den ^ 2).im ^ 2 +
+                                    (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                                2 *
+                            8 +
+                        ↑u.den ^ 9 * ↑u.num * ↑v.num * ↑v.den * (↑v.den ^ 2).im ^ 2 *
+                            ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 + (↑v.den ^ 2).re ^ 2 +
+                                      (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                    (↑u.den ^ 2).im ^ 2 +
+                                  (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                              2 *
+                          8 +
+                      ↑u.den ^ 9 * ↑u.num * (↑u.den ^ 2).re * (↑v.den ^ 2).im *
+                            ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 + (↑v.den ^ 2).re ^ 2 +
+                                    (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                  (↑u.den ^ 2).im ^ 2 +
+                                (↑v.den ^ 2).im ^ 2)⁻¹ *
+                          ((↑u.den ^ 2).re ^ 2 + (↑u.den ^ 2).im ^ 2)⁻¹ *
+                        4 -
+                    ↑u.den ^ 9 * ↑u.num * (↑v.den ^ 2).re * (↑u.den ^ 2).im *
+                          ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 + (↑v.den ^ 2).re ^ 2 +
+                                  (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                                (↑u.den ^ 2).im ^ 2 +
+                              (↑v.den ^ 2).im ^ 2)⁻¹ *
+                        ((↑u.den ^ 2).re ^ 2 + (↑u.den ^ 2).im ^ 2)⁻¹ *
+                      4 +
+                  ↑u.den ^ 10 * ↑u.num ^ 2 * (↑u.den ^ 2).re * (↑v.den ^ 2).re *
+                      ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 + (↑v.den ^ 2).re ^ 2 +
+                                (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                              (↑u.den ^ 2).im ^ 2 +
+                            (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                        2 *
+                    8 +
+                ↑u.den ^ 10 * ↑u.num ^ 2 * (↑u.den ^ 2).re ^ 2 *
+                    ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 + (↑v.den ^ 2).re ^ 2 +
+                              (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                            (↑u.den ^ 2).im ^ 2 +
+                          (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                      2 *
+                  4 +
+              ↑u.den ^ 10 * ↑u.num ^ 2 * (↑v.den ^ 2).re ^ 2 *
+                  ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 + (↑v.den ^ 2).re ^ 2 +
+                            (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                          (↑u.den ^ 2).im ^ 2 +
+                        (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                    2 *
+                4 +
+            ↑u.den ^ 10 * ↑u.num ^ 2 * (↑u.den ^ 2).im * (↑v.den ^ 2).im *
+                ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 + (↑v.den ^ 2).re ^ 2 +
+                          (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                        (↑u.den ^ 2).im ^ 2 +
+                      (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                  2 *
+              8 +
+          ↑u.den ^ 10 * ↑u.num ^ 2 * (↑u.den ^ 2).im ^ 2 *
+              ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 + (↑v.den ^ 2).re ^ 2 +
+                        (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                      (↑u.den ^ 2).im ^ 2 +
+                    (↑v.den ^ 2).im ^ 2)⁻¹ ^
+                2 *
+            4 +
+        ↑u.den ^ 10 * ↑u.num ^ 2 * (↑v.den ^ 2).im ^ 2 *
+            ((↑u.den ^ 2).re * (↑v.den ^ 2).re * 2 + (↑u.den ^ 2).re ^ 2 + (↑v.den ^ 2).re ^ 2 +
+                      (↑u.den ^ 2).im * (↑v.den ^ 2).im * 2 +
+                    (↑u.den ^ 2).im ^ 2 +
+                  (↑v.den ^ 2).im ^ 2)⁻¹ ^
+              2 *
+          4 -
+      ↑v.den ^ 4 =
+    ↑u.den ^ 2 * ↑u.num ^ 2 * ↑v.den ^ 4 * 4 - ↑u.den ^ 2 * ↑v.den ^ 2 * 4 -
+        ↑u.den ^ 3 * ↑u.num * ↑v.num * ↑v.den ^ 3 * 8 +
+      ↑u.den ^ 4 * ↑v.num ^ 2 * ↑v.den ^ 2 * 4
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/FVLTFordGeometryV1.lean:66:4: error: linarith failed to find a contradiction
+case h1
+x y : ℚ
+h : fareyAdj x y
+hDint : det x y ^ 2 = 1
+hD : ↑(det x y) ^ 2 = 1
+u v : ℚ
+huv : ↑(det u v) ^ 2 = 1
+hq : ↑u.den ≠ 0
+hs : ↑v.den ≠ 0
+hmpos : 0 < ↑u.den ^ 2 + ↑v.den ^ 2
+hm : ↑u.den ^ 2 + ↑v.den ^ 2 ≠ 0
+identity :
+  ‖kiss u v - centre u‖ ^ 2 - radius u ^ 2 = ↑v.den ^ 2 * (1 - 1) / ((↑u.den ^ 2 + ↑v.den ^ 2) ^ 2 * ↑u.den ^ 2)
+hp : 0 < radius u
+hn : 0 ≤ ‖kiss u v - centre u‖
+a✝ : ‖kiss u v - centre u‖ < radius u
+⊢ False
+failed
+'FVLT.FordGeometryV1.radius_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordGeometryV1.ford_distance_identity' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FVLT.FordGeometryV1.kiss_membership' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

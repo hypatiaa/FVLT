@@ -1,0 +1,11 @@
+pins 45 bad []
+bound changed: status, input_receipt_file, input_receipt_sha256, manager_template_decision_sha256
+all_expected_equal: true latest: v19
+unreducedPhases in source:
+def unreducedPhases (α : List ℕ) : Finset ℚ :=
+  α.toFinset.biUnion (fun a => (Finset.Icc 1 a).image
+    (fun e : ℕ => (e : ℚ) / ((a + 1 : ℕ) : ℚ)))
+public: unreducedPhases,phases_eq_unreduced,phase_domain,denominator_partner,partner_congruence,cross_denominator,isolation_criterion,endpoint_isolation,complement_mem,complement_adj,complement_graph_auto,isolated_complement_pairs
+private: admissible_two,interior_numerator,phase_description,sign_witness,unit_phase,complement_coordinates
+imports: FVLTUnitFractionSpineV1, Mathlib.Data.Int.ModEq, Mathlib.Tactic
+{"fails":0}

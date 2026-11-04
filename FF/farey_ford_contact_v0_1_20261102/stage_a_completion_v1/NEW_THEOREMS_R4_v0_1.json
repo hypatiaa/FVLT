@@ -1,0 +1,92 @@
+{
+  "module": "FVLTPhasePartnersV1",
+  "targets": [
+    {
+      "name": "FVLT.FareyContactV1.phases_eq_unreduced",
+      "header": "theorem phases_eq_unreduced (α : List ℕ) (hα : ∀ a ∈ α, 0 < a) :\n  phases α = unreducedPhases α",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.phase_domain",
+      "header": "theorem phase_domain (α : List ℕ) (hα : ∀ a ∈ α, 0 < a)\n  (x : ℚ) (hx : x ∈ phases α) :\n  0 < x ∧ x < 1 ∧ 2 ≤ x.den ∧ x.den ∈ admissible α",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.denominator_partner",
+      "header": "theorem denominator_partner (α : List ℕ) (hα : ∀ a ∈ α, 0 < a)\n  (x : ℚ) (hx : x ∈ phases α) (s : ℕ) (hs : s ∈ admissible α)\n  (c : ℤ) :\n  (rawValue c s ∈ phases α ∧ (rawValue c s).den = s ∧\n    (rawValue c s).num = c ∧ fareyAdj x (rawValue c s)) ↔\n  (1 ≤ c ∧ c ≤ (s : ℤ) - 1 ∧\n    ∃ ε : ℤ, (ε = -1 ∨ ε = 1) ∧ x.num*(s : ℤ) - c*(x.den : ℤ) = ε)",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.partner_congruence",
+      "header": "theorem partner_congruence (α : List ℕ) (hα : ∀ a ∈ α, 0 < a)\n  (x : ℚ) (hx : x ∈ phases α) (s : ℕ) (hs : s ∈ admissible α) :\n  (∃ y ∈ phases α, y.den = s ∧ fareyAdj x y) ↔\n  ∃ ε : ℤ, (ε = -1 ∨ ε = 1) ∧\n    Int.ModEq (x.den : ℤ) (x.num*(s : ℤ)) ε ∧\n    1 ≤ (x.num*(s : ℤ) - ε) / (x.den : ℤ) ∧\n    (x.num*(s : ℤ) - ε) / (x.den : ℤ) ≤ (s : ℤ) - 1",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.cross_denominator",
+      "header": "theorem cross_denominator (α : List ℕ) (hα : ∀ a ∈ α, 0 < a)\n  (x y : ℚ) (hx : x ∈ phases α) (hy : y ∈ phases α)\n  (h : fareyAdj x y) : x.den ≠ y.den",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.isolation_criterion",
+      "header": "theorem isolation_criterion (α : List ℕ) (hα : ∀ a ∈ α, 0 < a)\n  (x : ℚ) (hx : x ∈ phases α) :\n  isolated (phases α) x ↔\n    ¬ ∃ s ∈ admissible α, ∃ c ε : ℤ,\n      (ε = -1 ∨ ε = 1) ∧ 1 ≤ c ∧ c ≤ (s : ℤ) - 1 ∧\n      x.num*(s : ℤ) - c*(x.den : ℤ) = ε",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.endpoint_isolation",
+      "header": "theorem endpoint_isolation (α : List ℕ) (hα : ∀ a ∈ α, 0 < a)\n  (n : ℕ) (hn : n ∈ admissible α) :\n  isolated (phases α) (unitFrac n) ↔\n    ¬ ∃ s ∈ admissible α, ∃ ε : ℤ,\n      (ε = -1 ∨ ε = 1) ∧ Int.ModEq (n : ℤ) (s : ℤ) ε ∧\n      1 ≤ ((s : ℤ) - ε)/(n : ℤ) ∧\n      ((s : ℤ) - ε)/(n : ℤ) ≤ (s : ℤ) - 1",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.complement_mem",
+      "header": "theorem complement_mem (α : List ℕ) (hα : ∀ a ∈ α, 0 < a)\n  (x : ℚ) : x ∈ phases α ↔ 1 - x ∈ phases α",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.complement_adj",
+      "header": "theorem complement_adj (x y : ℚ) (hx : 0 < x ∧ x < 1)\n  (hy : 0 < y ∧ y < 1) : fareyAdj (1-x) (1-y) ↔ fareyAdj x y",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.complement_graph_auto",
+      "header": "theorem complement_graph_auto (α : List ℕ) (hα : ∀ a ∈ α, 0 < a) :\n  ∃ e : phaseGraph α ≃g phaseGraph α,\n    ∀ x : {x : ℚ // x ∈ phases α}, (e x).val = 1 - x.val",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.isolated_complement_pairs",
+      "header": "theorem isolated_complement_pairs (α : List ℕ) (hα : ∀ a ∈ α, 0 < a)\n  (x : ℚ) (hx : x ∈ phases α) :\n  (isolated (phases α) x ↔ isolated (phases α) (1-x)) ∧\n    (1-x = x ↔ x = (1/2 : ℚ))",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    }
+  ],
+  "private_helpers": [
+    "admissible_two",
+    "interior_numerator",
+    "phase_description",
+    "sign_witness",
+    "unit_phase",
+    "complement_coordinates"
+  ],
+  "new_instances": 0,
+  "standing": "FINISHED_PRODUCER_ONLY"
+}

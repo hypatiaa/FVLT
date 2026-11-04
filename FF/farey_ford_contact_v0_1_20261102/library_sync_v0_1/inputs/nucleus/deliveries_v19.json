@@ -1,0 +1,156 @@
+[
+  [
+    "s4a_stage_a_turn_pen_v0_1_20261029",
+    "#1039"
+  ],
+  [
+    "s4a_stage_b_cone_weave_v0_1_20261030",
+    "#1054"
+  ],
+  [
+    "s4a_stage_c_spin_fourier_v0_1_20261030",
+    "#1058"
+  ],
+  [
+    "s4a_stage_d_clifford_hopf_v0_1_20261030",
+    "#1061"
+  ],
+  [
+    "n6_y_reflection_successor_v0_1_20261030",
+    "#1063"
+  ],
+  [
+    "s4d_finite_predecessor_v0_1_20261030",
+    "#1070"
+  ],
+  [
+    "s4e_uniform_period_v0_1_20261030",
+    "#1077"
+  ],
+  [
+    "s4f_right_column_leak_v0_1_20261030",
+    "#1086"
+  ],
+  [
+    "s4g_left_black_pins_v0_1_20261030",
+    "#1094"
+  ],
+  [
+    "s4h_certificate_recursion_v0_1_20261030",
+    "#1114"
+  ],
+  [
+    "s4hg_scout_study_20261030",
+    "#1115",
+    "Gemini (vision seat); file copied from scout ~/s4f_compute/gemini/, receipt S4FG-H-LEAN-0003"
+  ],
+  [
+    "s4i_v1_delivered",
+    "#1127, #1141"
+  ],
+  [
+    "s4i_g_v1_delivered",
+    "#1139",
+    "Gemini (vision seat); copied from neo rule30_seats/gemini/s4i_g_v1/, receipt S4FG-I-LEAN-0003"
+  ],
+  [
+    "s4j_v1_delivered",
+    "#1154"
+  ],
+  [
+    "s4j_g_v1_delivered",
+    "#1155",
+    "Gemini (vision seat); copied from neo rule30_seats/gemini/s4j_g_v1/, receipt S4FG-J-LEAN-0004"
+  ],
+  [
+    "s4k_v1_delivered",
+    "#1173"
+  ],
+  [
+    "s4k_g_v1_delivered",
+    "#1170",
+    "Gemini (vision seat); copied from neo rule30_seats/gemini/s4k_g_v1/, receipt S4FG-K-LEAN-0002"
+  ],
+  [
+    "s4l_v1_delivered",
+    "#1191"
+  ],
+  [
+    "s4l_g_v1_delivered",
+    "#1196",
+    "Gemini (vision seat); copied from neo rule30_seats/gemini/s4l_g_v1/, receipt S4FG-L-LEAN-0002"
+  ],
+  [
+    "s4m_v1_delivered",
+    "#1214"
+  ],
+  [
+    "s4m_g_v1_delivered",
+    "#1218",
+    "Gemini (vision seat); copied from neo rule30_seats/gemini/s4m_g_v1/, receipt S4FG-M-LEAN-0003"
+  ],
+  [
+    "s4n_v1_delivered",
+    "#1251"
+  ],
+  [
+    "s4n_g_v1_delivered",
+    "#1252",
+    "Gemini (vision seat); copied from neo rule30_seats/gemini/s4n_g_v1/, receipt S4FG-N-LEAN-0003"
+  ],
+  [
+    "fvlt_h1_projectors_delivered",
+    "#914, #915",
+    "Gemini (vision seat); FVLT-H1 Milestones A/B of 2026-10-28, included unchanged as dependencies"
+  ],
+  [
+    "s4n_v1_descriptive_delivered",
+    "#1264"
+  ],
+  [
+    "s4o_g_v1_delivered",
+    "#1270",
+    "Gemini (vision seat); copied from neo rule30_seats/gemini/s4o_g_v1/, receipt S4FG-O-LEAN-0002"
+  ],
+  [
+    "helix_mcomb_v1_delivered",
+    "#1280"
+  ],
+  [
+    "s4q_v1_delivered",
+    "#1298"
+  ],
+  [
+    "s4p_g_v1_delivered",
+    "#1301",
+    "Gemini (vision seat); copied from neo rule30_seats/gemini/s4p_g_v1/, attempt 2"
+  ],
+  [
+    "s4s_squeeze_delivered",
+    "#1310 (review)",
+    "skeleton (Claude Opus 5.5), authored; reviewed by Codex"
+  ],
+  [
+    "s4s_rule150_pen_delivered",
+    "#1318 (review)",
+    "skeleton (Claude Opus 5.5), authored; reviewed by Codex"
+  ],
+  [
+    "s4r_c_v1_delivered",
+    "#1333"
+  ],
+  [
+    "s4r_g_v2_delivered",
+    "#1332",
+    "Gemini (vision seat); copied from neo rule30_seats/gemini/s4r_g_v2/, attempt 3"
+  ],
+  [
+    "s4s_v1_delivered",
+    "#1352"
+  ],
+  [
+    "s4t_g_v2_delivered",
+    "S4t-G v2 (skeleton-verified)",
+    "Gemini (vision seat); copied from neo rule30_seats/gemini/s4t_g_v2/, receipt S4FG-T-LEAN-0003"
+  ]
+]

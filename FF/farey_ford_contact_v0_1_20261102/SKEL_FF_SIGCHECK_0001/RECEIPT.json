@@ -1,0 +1,6 @@
+{"job":"SKEL-FF-SIGCHECK-0001","runner":"run_capped_v2.sh","host":"membrane","cwd":"/home/saphir/membrane_compute/skeleton_ff","start_utc":"2026-11-03T10:11:36Z","end_utc":"2026-11-03T10:11:38Z","exit":1,
+ "caps":{"cpu":"core 0","nice":19,"mem_mib":4096,"wall_s":1800},
+ "peak_rss_kib":142492,"wall_used":"0:02.72",
+ "library_check_before":"OK","library_check_after":"OK",
+ "prereg_sha256":"463e7819059fc651cfec8d4e00e170ba1511b6bf147bb8e139a8b277d7f936e5",
+ "command":"/home/saphir/.local/bin/node SKELETON_SIGNATURE_CHECK_20261103.cjs "}

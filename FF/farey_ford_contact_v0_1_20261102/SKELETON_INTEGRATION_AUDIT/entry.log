@@ -1,0 +1,297 @@
+FVLT.FareyContactV1.raw_det_one_coprime : ∀ (a c : ℤ) (q s : ℕ),
+  0 < q → 0 < s → |a * ↑s - c * ↑q| = 1 → a.natAbs.Coprime q ∧ c.natAbs.Coprime s ∧ q.Coprime s
+'FVLT.FareyContactV1.raw_det_one_coprime' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.rawValue_num_den : ∀ (x : ℚ), FVLT.FareyContactV1.rawValue x.num x.den = x
+'FVLT.FareyContactV1.rawValue_num_den' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.rawValue_canonical : ∀ (a : ℤ) (q : ℕ),
+  0 < q → a.natAbs.Coprime q → (FVLT.FareyContactV1.rawValue a q).num = a ∧ (FVLT.FareyContactV1.rawValue a q).den = q
+'FVLT.FareyContactV1.rawValue_canonical' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.rawValue_unique : ∀ (a c : ℤ) (q s : ℕ),
+  0 < q →
+    0 < s →
+      a.natAbs.Coprime q →
+        c.natAbs.Coprime s → (FVLT.FareyContactV1.rawValue a q = FVLT.FareyContactV1.rawValue c s ↔ a = c ∧ q = s)
+'FVLT.FareyContactV1.rawValue_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.fareyAdj_symm : ∀ (x y : ℚ), FVLT.FareyContactV1.fareyAdj x y ↔ FVLT.FareyContactV1.fareyAdj y x
+'FVLT.FareyContactV1.fareyAdj_symm' depends on axioms: [propext]
+FVLT.FareyContactV1.fareyAdj_irrefl : ∀ (x : ℚ), ¬FVLT.FareyContactV1.fareyAdj x x
+'FVLT.FareyContactV1.fareyAdj_irrefl' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.fareyGraph_adj : ∀ (S : Finset ℚ) (x y : ↥S),
+  (FVLT.FareyContactV1.fareyGraph S).Adj x y ↔ FVLT.FareyContactV1.fareyAdj ↑x ↑y
+'FVLT.FareyContactV1.fareyGraph_adj' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.coprime_den_not_adj : (FVLT.FareyContactV1.unitFrac 3).den.Coprime
+    (FVLT.FareyContactV1.unitFrac 5).den ∧
+  ¬FVLT.FareyContactV1.fareyAdj (FVLT.FareyContactV1.unitFrac 3) (FVLT.FareyContactV1.unitFrac 5) ∧
+    |FVLT.FareyContactV1.det (FVLT.FareyContactV1.unitFrac 3) (FVLT.FareyContactV1.unitFrac 5)| = 2
+'FVLT.FareyContactV1.coprime_den_not_adj' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.adjacent_mediant : ∀ (x y : ℚ),
+  x < y →
+    FVLT.FareyContactV1.fareyAdj x y →
+      (x.num + y.num).natAbs.Coprime (x.den + y.den) ∧
+        (FVLT.FareyContactV1.mediant x y).num = x.num + y.num ∧
+          (FVLT.FareyContactV1.mediant x y).den = x.den + y.den ∧
+            x < FVLT.FareyContactV1.mediant x y ∧
+              FVLT.FareyContactV1.mediant x y < y ∧
+                FVLT.FareyContactV1.fareyAdj x (FVLT.FareyContactV1.mediant x y) ∧
+                  FVLT.FareyContactV1.fareyAdj (FVLT.FareyContactV1.mediant x y) y
+'FVLT.FareyContactV1.adjacent_mediant' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.rosette : ∀ (N : ℕ),
+  2 ≤ N →
+    |FVLT.FareyContactV1.det (FVLT.FareyContactV1.unitFrac (N - 1)) (FVLT.FareyContactV1.unitFrac (N + 1))| = 2 ∧
+      FVLT.FareyContactV1.mediant (FVLT.FareyContactV1.unitFrac (N - 1)) (FVLT.FareyContactV1.unitFrac (N + 1)) =
+          FVLT.FareyContactV1.unitFrac N ∧
+        FVLT.FareyContactV1.fareyAdj (FVLT.FareyContactV1.unitFrac N) (FVLT.FareyContactV1.unitFrac (N - 1)) ∧
+          FVLT.FareyContactV1.fareyAdj (FVLT.FareyContactV1.unitFrac N) (FVLT.FareyContactV1.unitFrac (N + 1))
+'FVLT.FareyContactV1.rosette' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordGeometryV1.radius_pos : ∀ (x : ℚ), 0 < FVLT.FordGeometryV1.radius x
+'FVLT.FordGeometryV1.radius_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordGeometryV1.ford_distance_identity : ∀ (x y : ℚ),
+  x ≠ y →
+    ‖FVLT.FordGeometryV1.centre x - FVLT.FordGeometryV1.centre y‖ ^ 2 -
+        (FVLT.FordGeometryV1.radius x + FVLT.FordGeometryV1.radius y) ^ 2 =
+      (↑(FVLT.FareyContactV1.det x y) ^ 2 - 1) / (↑x.den ^ 2 * ↑y.den ^ 2)
+'FVLT.FordGeometryV1.ford_distance_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordGeometryV1.ford_open_disjoint : ∀ (x y : ℚ),
+  x ≠ y → Disjoint (FVLT.FordGeometryV1.disk x) (FVLT.FordGeometryV1.disk y)
+'FVLT.FordGeometryV1.ford_open_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordGeometryV1.ford_boundary_disjoint : ∀ (x y : ℚ),
+  x ≠ y → 2 ≤ |FVLT.FareyContactV1.det x y| → Disjoint (FVLT.FordGeometryV1.boundary x) (FVLT.FordGeometryV1.boundary y)
+'FVLT.FordGeometryV1.ford_boundary_disjoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordGeometryV1.ford_tangent_iff : ∀ (x y : ℚ),
+  x ≠ y → (FVLT.FordGeometryV1.tangent x y ↔ FVLT.FareyContactV1.fareyAdj x y)
+'FVLT.FordGeometryV1.ford_tangent_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordGeometryV1.ford_real_axis : ∀ (x : ℚ), FVLT.FordGeometryV1.boundary x ∩ FVLT.FordGeometryV1.realAxis = {↑x}
+'FVLT.FordGeometryV1.ford_real_axis' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordGeometryV1.kiss_membership : ∀ (x y : ℚ),
+  FVLT.FareyContactV1.fareyAdj x y →
+    FVLT.FordGeometryV1.kiss x y ∈ FVLT.FordGeometryV1.boundary x ∧
+      FVLT.FordGeometryV1.kiss x y ∈ FVLT.FordGeometryV1.boundary y
+'FVLT.FordGeometryV1.kiss_membership' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordGeometryV1.kiss_unique : ∀ (x y : ℚ),
+  FVLT.FareyContactV1.fareyAdj x y →
+    FVLT.FordGeometryV1.boundary x ∩ FVLT.FordGeometryV1.boundary y = {FVLT.FordGeometryV1.kiss x y}
+'FVLT.FordGeometryV1.kiss_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordGeometryV1.two_squares : ∀ (a c q s : ℤ),
+  (a * q + c * s) ^ 2 + (a * s - c * q) ^ 2 = (a ^ 2 + c ^ 2) * (q ^ 2 + s ^ 2)
+'FVLT.FordGeometryV1.two_squares' depends on axioms: [propext, Quot.sound]
+FVLT.FordGeometryV1.kiss_integer_identity : ∀ (x y : ℚ),
+  FVLT.FareyContactV1.fareyAdj x y →
+    FVLT.FordGeometryV1.kissN x y ^ 2 + 1 = (x.num ^ 2 + y.num ^ 2) * ↑(FVLT.FordGeometryV1.kissM x y)
+'FVLT.FordGeometryV1.kiss_integer_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordGeometryV1.kiss_real_identity : ∀ (x y : ℚ),
+  FVLT.FareyContactV1.fareyAdj x y →
+    ↑(FVLT.FordGeometryV1.kissN x y) ^ 2 + 1 = (↑x.num ^ 2 + ↑y.num ^ 2) * ↑(FVLT.FordGeometryV1.kissM x y)
+'FVLT.FordGeometryV1.kiss_real_identity' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.unitFrac_injective_positive : ∀ (a b : ℕ),
+  0 < a → 0 < b → (FVLT.FareyContactV1.unitFrac a = FVLT.FareyContactV1.unitFrac b ↔ a = b)
+'FVLT.FareyContactV1.unitFrac_injective_positive' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.integerPath_adj : ∀ (a b : ℕ), FVLT.FareyContactV1.integerPath.Adj a b ↔ |↑a - ↑b| = 1
+'FVLT.FareyContactV1.integerPath_adj' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.unitFrac_adj : ∀ (a b : ℕ),
+  0 < a →
+    0 < b →
+      (FVLT.FareyContactV1.fareyAdj (FVLT.FareyContactV1.unitFrac a) (FVLT.FareyContactV1.unitFrac b) ↔ |↑a - ↑b| = 1)
+'FVLT.FareyContactV1.unitFrac_adj' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordGeometryV1.unitFrac_tangent : ∀ (a b : ℕ),
+  0 < a →
+    0 < b →
+      (FVLT.FordGeometryV1.tangent (FVLT.FareyContactV1.unitFrac a) (FVLT.FareyContactV1.unitFrac b) ↔ |↑a - ↑b| = 1)
+'FVLT.FordGeometryV1.unitFrac_tangent' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.unitFrac_graph_iso : ∀ (V : Finset ℕ),
+  (∀ a ∈ V, 0 < a) →
+    Nonempty
+      (SimpleGraph.induce (↑V) FVLT.FareyContactV1.integerPath ≃g
+        FVLT.FareyContactV1.fareyGraph (FVLT.FareyContactV1.vertexSet V))
+'FVLT.FareyContactV1.unitFrac_graph_iso' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.unitFrac_graph_connected : ∀ (V : Finset ℕ),
+  V.Nonempty →
+    (∀ a ∈ V, 0 < a) →
+      ((FVLT.FareyContactV1.fareyGraph (FVLT.FareyContactV1.vertexSet V)).Connected ↔
+        ∃ m M, 1 ≤ m ∧ m ≤ M ∧ V = Finset.Icc m M)
+'FVLT.FareyContactV1.unitFrac_graph_connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.empty_graph_convention : (FVLT.FareyContactV1.fareyGraph ∅).Preconnected ∧
+  ¬(FVLT.FareyContactV1.fareyGraph ∅).Connected
+'FVLT.FareyContactV1.empty_graph_convention' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.gap_det : ∀ (a k : ℕ),
+  0 < a → 0 < k → |FVLT.FareyContactV1.det (FVLT.FareyContactV1.unitFrac a) (FVLT.FareyContactV1.unitFrac (a + k))| = ↑k
+'FVLT.FareyContactV1.gap_det' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.minimal_gap_mediant : ∀ (a : ℕ),
+  0 < a →
+    FVLT.FareyContactV1.mediant (FVLT.FareyContactV1.unitFrac a) (FVLT.FareyContactV1.unitFrac (a + 2)) =
+      FVLT.FareyContactV1.unitFrac (a + 1)
+'FVLT.FareyContactV1.minimal_gap_mediant' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.gap_mediant_unit_iff : ∀ (a k : ℕ),
+  0 < a →
+    2 < k →
+      ((∃ b,
+          0 < b ∧
+            FVLT.FareyContactV1.mediant (FVLT.FareyContactV1.unitFrac a) (FVLT.FareyContactV1.unitFrac (a + k)) =
+              FVLT.FareyContactV1.unitFrac b) ↔
+        Even k)
+'FVLT.FareyContactV1.gap_mediant_unit_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.phases_eq_unreduced : ∀ (α : List ℕ),
+  (∀ a ∈ α, 0 < a) → FVLT.FareyContactV1.phases α = FVLT.FareyContactV1.unreducedPhases α
+'FVLT.FareyContactV1.phases_eq_unreduced' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.phase_domain : ∀ (α : List ℕ),
+  (∀ a ∈ α, 0 < a) →
+    ∀ x ∈ FVLT.FareyContactV1.phases α, 0 < x ∧ x < 1 ∧ 2 ≤ x.den ∧ x.den ∈ FVLT.FareyContactV1.admissible α
+'FVLT.FareyContactV1.phase_domain' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.denominator_partner : ∀ (α : List ℕ),
+  (∀ a ∈ α, 0 < a) →
+    ∀ x ∈ FVLT.FareyContactV1.phases α,
+      ∀ s ∈ FVLT.FareyContactV1.admissible α,
+        ∀ (c : ℤ),
+          FVLT.FareyContactV1.rawValue c s ∈ FVLT.FareyContactV1.phases α ∧
+              (FVLT.FareyContactV1.rawValue c s).den = s ∧
+                (FVLT.FareyContactV1.rawValue c s).num = c ∧
+                  FVLT.FareyContactV1.fareyAdj x (FVLT.FareyContactV1.rawValue c s) ↔
+            1 ≤ c ∧ c ≤ ↑s - 1 ∧ ∃ ε, (ε = -1 ∨ ε = 1) ∧ x.num * ↑s - c * ↑x.den = ε
+'FVLT.FareyContactV1.denominator_partner' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.partner_congruence : ∀ (α : List ℕ),
+  (∀ a ∈ α, 0 < a) →
+    ∀ x ∈ FVLT.FareyContactV1.phases α,
+      ∀ s ∈ FVLT.FareyContactV1.admissible α,
+        (∃ y ∈ FVLT.FareyContactV1.phases α, y.den = s ∧ FVLT.FareyContactV1.fareyAdj x y) ↔
+          ∃ ε,
+            (ε = -1 ∨ ε = 1) ∧
+              x.num * ↑s ≡ ε [ZMOD ↑x.den] ∧ 1 ≤ (x.num * ↑s - ε) / ↑x.den ∧ (x.num * ↑s - ε) / ↑x.den ≤ ↑s - 1
+'FVLT.FareyContactV1.partner_congruence' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.cross_denominator : ∀ (α : List ℕ),
+  (∀ a ∈ α, 0 < a) →
+    ∀ (x y : ℚ),
+      x ∈ FVLT.FareyContactV1.phases α →
+        y ∈ FVLT.FareyContactV1.phases α → FVLT.FareyContactV1.fareyAdj x y → x.den ≠ y.den
+'FVLT.FareyContactV1.cross_denominator' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.isolation_criterion : ∀ (α : List ℕ),
+  (∀ a ∈ α, 0 < a) →
+    ∀ x ∈ FVLT.FareyContactV1.phases α,
+      FVLT.FareyContactV1.isolated (FVLT.FareyContactV1.phases α) x ↔
+        ¬∃ s ∈ FVLT.FareyContactV1.admissible α,
+            ∃ c ε, (ε = -1 ∨ ε = 1) ∧ 1 ≤ c ∧ c ≤ ↑s - 1 ∧ x.num * ↑s - c * ↑x.den = ε
+'FVLT.FareyContactV1.isolation_criterion' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.endpoint_isolation : ∀ (α : List ℕ),
+  (∀ a ∈ α, 0 < a) →
+    ∀ n ∈ FVLT.FareyContactV1.admissible α,
+      FVLT.FareyContactV1.isolated (FVLT.FareyContactV1.phases α) (FVLT.FareyContactV1.unitFrac n) ↔
+        ¬∃ s ∈ FVLT.FareyContactV1.admissible α,
+            ∃ ε, (ε = -1 ∨ ε = 1) ∧ ↑s ≡ ε [ZMOD ↑n] ∧ 1 ≤ (↑s - ε) / ↑n ∧ (↑s - ε) / ↑n ≤ ↑s - 1
+'FVLT.FareyContactV1.endpoint_isolation' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.complement_mem : ∀ (α : List ℕ),
+  (∀ a ∈ α, 0 < a) → ∀ (x : ℚ), x ∈ FVLT.FareyContactV1.phases α ↔ 1 - x ∈ FVLT.FareyContactV1.phases α
+'FVLT.FareyContactV1.complement_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.complement_adj : ∀ (x y : ℚ),
+  0 < x ∧ x < 1 → 0 < y ∧ y < 1 → (FVLT.FareyContactV1.fareyAdj (1 - x) (1 - y) ↔ FVLT.FareyContactV1.fareyAdj x y)
+'FVLT.FareyContactV1.complement_adj' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.complement_graph_auto : ∀ (α : List ℕ),
+  (∀ a ∈ α, 0 < a) → ∃ e, ∀ (x : ↥(FVLT.FareyContactV1.phases α)), ↑(e x) = 1 - ↑x
+'FVLT.FareyContactV1.complement_graph_auto' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.isolated_complement_pairs : ∀ (α : List ℕ),
+  (∀ a ∈ α, 0 < a) →
+    ∀ x ∈ FVLT.FareyContactV1.phases α,
+      (FVLT.FareyContactV1.isolated (FVLT.FareyContactV1.phases α) x ↔
+          FVLT.FareyContactV1.isolated (FVLT.FareyContactV1.phases α) (1 - x)) ∧
+        (1 - x = x ↔ x = 1 / 2)
+'FVLT.FareyContactV1.isolated_complement_pairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.spanning_tree_connected : ∀ (V : Type u_1) [DecidableEq V] (G : SimpleGraph V) (s : Finset V)
+  (r : V) (parent : V → V) (depth : V → ℕ),
+  r ∈ s →
+    (∀ v ∈ s, v ≠ r → parent v ∈ s ∧ G.Adj v (parent v) ∧ depth (parent v) < depth v) →
+      (SimpleGraph.induce (↑s) G).Connected
+'FVLT.FareyContactV1.spanning_tree_connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.certificate_component_bijection : ∀ (V : Type u_1) [inst : DecidableEq V] (G : SimpleGraph V)
+  (parts : Finset (Finset V)),
+  FVLT.FareyContactV1.ComponentCertificate G parts → ∃ e, ∀ (s : ↥parts), ∀ v ∈ ↑s, e s = G.connectedComponentMk v
+'FVLT.FareyContactV1.certificate_component_bijection' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.certificate_component_count : ∀ (V : Type u_1) [inst : DecidableEq V] (G : SimpleGraph V)
+  (parts : Finset (Finset V)),
+  FVLT.FareyContactV1.ComponentCertificate G parts → Nat.card G.ConnectedComponent = parts.card
+'FVLT.FareyContactV1.certificate_component_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.certificate_isolation : ∀ (V : Type u_1) [inst : DecidableEq V] (G : SimpleGraph V)
+  (parts : Finset (Finset V)),
+  FVLT.FareyContactV1.ComponentCertificate G parts → ∀ (v : V), (∀ (w : V), ¬G.Adj v w) ↔ {v} ∈ parts
+'FVLT.FareyContactV1.certificate_isolation' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.contactCount_eq_edge_count : ∀ (S : Finset ℚ),
+  FVLT.FareyContactV1.contactCount S = Nat.card ↑(FVLT.FareyContactV1.fareyGraph S).edgeSet
+'FVLT.FareyContactV1.contactCount_eq_edge_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.rational_certificate_count : ∀ (S : Finset ℚ) (parts : Finset (Finset ℚ)),
+  FVLT.FareyContactV1.rationalCertificate S parts →
+    Nat.card (FVLT.FareyContactV1.fareyGraph S).ConnectedComponent = parts.card
+'FVLT.FareyContactV1.rational_certificate_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.fixture421_vertices : FVLT.FareyContactV1.phases [4, 2, 1] =
+  {1 / 5, 1 / 3, 2 / 5, 1 / 2, 3 / 5, 2 / 3, 4 / 5}
+'FVLT.FareyContactV1.fixture421_vertices' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.fixture421_certificate : FVLT.FareyContactV1.rationalCertificate
+  (FVLT.FareyContactV1.phases [4, 2, 1]) {{1 / 5}, {1 / 3, 2 / 5, 1 / 2, 3 / 5, 2 / 3}, {4 / 5}}
+'FVLT.FareyContactV1.fixture421_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.fixture421_counts : (FVLT.FareyContactV1.phases [4, 2, 1]).card = 7 ∧
+  FVLT.FareyContactV1.contactCount (FVLT.FareyContactV1.phases [4, 2, 1]) = 6 ∧
+    Nat.card (FVLT.FareyContactV1.phaseGraph [4, 2, 1]).ConnectedComponent = 3
+'FVLT.FareyContactV1.fixture421_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.fixture4321_connected : (FVLT.FareyContactV1.phaseGraph [4, 3, 2, 1]).Connected
+'FVLT.FareyContactV1.fixture4321_connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.fixture4321_repair_edges : 1 / 5 ∈ FVLT.FareyContactV1.phases [4, 3, 2, 1] ∧
+  1 / 4 ∈ FVLT.FareyContactV1.phases [4, 3, 2, 1] ∧
+    3 / 4 ∈ FVLT.FareyContactV1.phases [4, 3, 2, 1] ∧
+      4 / 5 ∈ FVLT.FareyContactV1.phases [4, 3, 2, 1] ∧
+        FVLT.FareyContactV1.fareyAdj (1 / 5) (1 / 4) ∧ FVLT.FareyContactV1.fareyAdj (3 / 4) (4 / 5)
+'FVLT.FareyContactV1.fixture4321_repair_edges' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.fixture92_certificate : FVLT.FareyContactV1.rationalCertificate (FVLT.FareyContactV1.phases [9, 2])
+  (FVLT.FareyContactV1.singletonPartition (FVLT.FareyContactV1.phases [9, 2]) {1 / 10, 1 / 5, 4 / 5, 9 / 10})
+'FVLT.FareyContactV1.fixture92_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.fixture83_certificate : FVLT.FareyContactV1.rationalCertificate (FVLT.FareyContactV1.phases [8, 3])
+  (FVLT.FareyContactV1.singletonPartition (FVLT.FareyContactV1.phases [8, 3]) {1 / 9, 8 / 9})
+'FVLT.FareyContactV1.fixture83_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.fixture92_counts : (FVLT.FareyContactV1.phases [9, 2]).card = 11 ∧
+  FVLT.FareyContactV1.contactCount (FVLT.FareyContactV1.phases [9, 2]) = 8 ∧
+    Nat.card (FVLT.FareyContactV1.phaseGraph [9, 2]).ConnectedComponent = 5
+'FVLT.FareyContactV1.fixture92_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.fixture83_counts : (FVLT.FareyContactV1.phases [8, 3]).card = 11 ∧
+  FVLT.FareyContactV1.contactCount (FVLT.FareyContactV1.phases [8, 3]) = 8 ∧
+    Nat.card (FVLT.FareyContactV1.phaseGraph [8, 3]).ConnectedComponent = 3
+'FVLT.FareyContactV1.fixture83_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.fixture421_isolated : ∀ (x : ℚ),
+  FVLT.FareyContactV1.isolated (FVLT.FareyContactV1.phases [4, 2, 1]) x ↔ x ∈ {1 / 5, 4 / 5}
+'FVLT.FareyContactV1.fixture421_isolated' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.fixture92_isolated : ∀ (x : ℚ),
+  FVLT.FareyContactV1.isolated (FVLT.FareyContactV1.phases [9, 2]) x ↔ x ∈ {1 / 10, 1 / 5, 4 / 5, 9 / 10}
+'FVLT.FareyContactV1.fixture92_isolated' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FareyContactV1.fixture83_isolated : ∀ (x : ℚ),
+  FVLT.FareyContactV1.isolated (FVLT.FareyContactV1.phases [8, 3]) x ↔ x ∈ {1 / 9, 8 / 9}
+'FVLT.FareyContactV1.fixture83_isolated' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordExactCoordinatesV1.kissNQ_eq : ∀ (x y : ℚ),
+  FVLT.FordExactCoordinatesV1.kissNQ x y = FVLT.FordGeometryV1.kissN x y
+'FVLT.FordExactCoordinatesV1.kissNQ_eq' does not depend on any axioms
+FVLT.FordExactCoordinatesV1.kissMQ_eq : ∀ (x y : ℚ),
+  FVLT.FordExactCoordinatesV1.kissMQ x y = FVLT.FordGeometryV1.kissM x y
+'FVLT.FordExactCoordinatesV1.kissMQ_eq' depends on axioms: [propext]
+FVLT.FordExactCoordinatesV1.kissMQ_pos : ∀ (x y : ℚ), 0 < FVLT.FordExactCoordinatesV1.kissMQ x y
+'FVLT.FordExactCoordinatesV1.kissMQ_pos' depends on axioms: [propext]
+FVLT.FordExactCoordinatesV1.radiusQ_pos : ∀ (x : ℚ), 0 < FVLT.FordExactCoordinatesV1.radiusQ x
+'FVLT.FordExactCoordinatesV1.radiusQ_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordExactCoordinatesV1.radiusQ_cast : ∀ (x : ℚ),
+  ↑(FVLT.FordExactCoordinatesV1.radiusQ x) = FVLT.FordGeometryV1.radius x
+'FVLT.FordExactCoordinatesV1.radiusQ_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordExactCoordinatesV1.embedQ_injective : Function.Injective FVLT.FordExactCoordinatesV1.embedQ
+'FVLT.FordExactCoordinatesV1.embedQ_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordExactCoordinatesV1.centreQ_embed : ∀ (x : ℚ),
+  FVLT.FordExactCoordinatesV1.embedQ (FVLT.FordExactCoordinatesV1.centreQ x) = FVLT.FordGeometryV1.centre x
+'FVLT.FordExactCoordinatesV1.centreQ_embed' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordExactCoordinatesV1.kissQ_embed : ∀ (x y : ℚ),
+  FVLT.FordExactCoordinatesV1.embedQ (FVLT.FordExactCoordinatesV1.kissQ x y) = FVLT.FordGeometryV1.kiss x y
+'FVLT.FordExactCoordinatesV1.kissQ_embed' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordExactCoordinatesV1.sqDistanceQ_cast : ∀ (u v : FVLT.FordExactCoordinatesV1.RatPlane),
+  ↑(FVLT.FordExactCoordinatesV1.sqDistanceQ u v) =
+    ‖FVLT.FordExactCoordinatesV1.embedQ u - FVLT.FordExactCoordinatesV1.embedQ v‖ ^ 2
+'FVLT.FordExactCoordinatesV1.sqDistanceQ_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordExactCoordinatesV1.boundaryQ_iff : ∀ (x : ℚ) (z : FVLT.FordExactCoordinatesV1.RatPlane),
+  FVLT.FordExactCoordinatesV1.boundaryQ x z ↔ FVLT.FordExactCoordinatesV1.embedQ z ∈ FVLT.FordGeometryV1.boundary x
+'FVLT.FordExactCoordinatesV1.boundaryQ_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordExactCoordinatesV1.boundaryCheckQ_correct : ∀ (x : ℚ) (z : FVLT.FordExactCoordinatesV1.RatPlane),
+  FVLT.FordExactCoordinatesV1.boundaryCheckQ x z = true ↔
+    FVLT.FordExactCoordinatesV1.embedQ z ∈ FVLT.FordGeometryV1.boundary x
+'FVLT.FordExactCoordinatesV1.boundaryCheckQ_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+FVLT.FordExactCoordinatesV1.adjacent_kissQ : ∀ (x y : ℚ),
+  FVLT.FareyContactV1.fareyAdj x y →
+    FVLT.FordExactCoordinatesV1.boundaryCheckQ x (FVLT.FordExactCoordinatesV1.kissQ x y) = true ∧
+      FVLT.FordExactCoordinatesV1.boundaryCheckQ y (FVLT.FordExactCoordinatesV1.kissQ x y) = true
+'FVLT.FordExactCoordinatesV1.adjacent_kissQ' depends on axioms: [propext, Classical.choice, Quot.sound]

@@ -1,0 +1,3 @@
+# Bus receipts #1436-#1438
+
+2026-11-03. #1436 received: saphir's explicit FF-1 sync authorization ("I want it synced"), conditional on integrated build and fidelity review passing; record `CONDITIONAL_LIBRARY_SYNC_AUTHORIZATION_20261103.md` `a47a92c1...`. #1437 received: integration and fidelity packet (manifest `de4106d7...`). #1438 posted by skeleton: integration template accepted with all-match accept-on-posting, fidelity review started by skeleton (`INTEGRATION_TEMPLATE_DECISION_v0_1.md`, `46c706e9...`). Envelope `5d3a8cc8-eec9-5cfd-a432-ea8470ebd829`, digest `edafa399bfda2d4dc665bd0aec2da8536d1a89afb782147607a4dda88039e8b1`, zulip_delivered.

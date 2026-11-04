@@ -1,0 +1,9 @@
+{
+  "phase": "BRIDGE",
+  "drafting_started_utc": "2026-11-03T13:20:03.6300108+00:00",
+  "drafting_started_unix": 1793712003,
+  "deadline_unix": 1793713803,
+  "active_cap_seconds": 1800,
+  "authority": "BRIDGE_FINAL_TEMPLATE_ACCEPTANCE_v0_1.md SHA539c4e8479f07df4723d075569e7ac3b099f10c352c24bf425139be117cc4cf8",
+  "no_prior_phase_allowance": true
+}

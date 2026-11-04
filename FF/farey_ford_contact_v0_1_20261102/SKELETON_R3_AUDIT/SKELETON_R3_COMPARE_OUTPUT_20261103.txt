@@ -1,0 +1,16 @@
+pins 53 bad []
+bound changed: status, input_receipt_file, input_receipt_sha256, manager_template_decision_sha256
+all_expected_equal: true latest: v19
+public: vertexSet,integerPath,unitFrac_injective_positive,integerPath_adj,unitFrac_adj,unitFrac_graph_iso,unitFrac_graph_connected,empty_graph_convention,gap_det,minimal_gap_mediant,gap_mediant_unit_iff,unitFrac_tangent
+private: unitFrac_coordinates,path_cut,induced_path_connected,gap_mediant_value
+imports: FVLTFordGeometryCompletionV1, Mathlib.Tactic
+namespaces: FVLT.FareyContactV1, FVLT.FordGeometryV1
+integerPath body:
+def integerPath : SimpleGraph ℕ where
+  Adj a b := |(a : ℤ) - (b : ℤ)| = 1
+  symm := ⟨fun a b h => by rwa [abs_sub_comm]⟩
+  loopless := ⟨fun a h => by simp at h⟩
+
+
+open at unitFrac_tangent: end end | namespace FVLT.FordGeometryV1
+{"fails":0}

@@ -1,0 +1,8 @@
+{
+  "phase": "F1",
+  "drafting_started_unix": 1793701924,
+  "excluded_wait_seconds": 343,
+  "deadline_unix": 1793704067,
+  "acceptance_reference": "bus1382 I3_TEMPLATE_ACCEPTANCE_F1_v0_1.md",
+  "cap_seconds": 1800
+}

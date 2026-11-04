@@ -1,0 +1,49 @@
+{
+  "status": "PRODUCER_PASS_PENDING_INDEPENDENT_AUDIT",
+  "frozen_headers_verbatim": 7,
+  "frozen_definitions_verbatim": 3,
+  "strict_replay": 29,
+  "failure_count": 0,
+  "full_dependency_replay": false,
+  "G1_excluded": true,
+  "axioms": "standard three only",
+  "runs": [
+    {
+      "run": "R1Compile01",
+      "exit": 1,
+      "seconds": 2.3192989826202393,
+      "peak_rss_KiB": 3494328,
+      "finished_unix": 1793729260.7699049
+    },
+    {
+      "run": "R1Compile02",
+      "exit": 1,
+      "seconds": 2.118703842163086,
+      "peak_rss_KiB": 3497040,
+      "finished_unix": 1793729306.2431173
+    },
+    {
+      "run": "R1Compile03",
+      "exit": 0,
+      "seconds": 2.0682199001312256,
+      "peak_rss_KiB": 3505968,
+      "finished_unix": 1793729350.3019748
+    },
+    {
+      "run": "R1Compile04",
+      "exit": 0,
+      "seconds": 2.068270206451416,
+      "peak_rss_KiB": 3506016,
+      "finished_unix": 1793729378.8243608
+    },
+    {
+      "run": "R1Replay01",
+      "exit": 0,
+      "seconds": 2.269653797149658,
+      "peak_rss_KiB": 3638212,
+      "finished_unix": 1793729411.676534
+    }
+  ],
+  "final_source_sha256": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+  "final_olean_sha256": "ab3351ff996fe0b676a322907cb445fed4dc32eed7ddbc04db8d9a17559fea56"
+}

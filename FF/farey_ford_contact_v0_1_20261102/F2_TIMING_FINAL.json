@@ -1,0 +1,10 @@
+{
+  "start_unix": 1793708107,
+  "review_wait_excluded_seconds": 45,
+  "deadline_unix": 1793709952,
+  "last_math_end_unix": 1793709177.1511002,
+  "active_seconds_to_last_math": 1025.1511001586914,
+  "no_extension_or_F1_transfer": true,
+  "final_object_same_as_strictly_replayed": true,
+  "replay_target_constants": 61
+}

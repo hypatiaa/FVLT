@@ -1,0 +1,53 @@
+OK   header in proof module: theorem kissNQ_eq (x y : ℚ) : kissNQ x y = FVLT.FordGeometryV1.kissN x y
+OK   header in proof module: theorem kissMQ_eq (x y : ℚ) : kissMQ x y = FVLT.FordGeometryV1.kissM x y
+OK   header in proof module: theorem kissMQ_pos (x y : ℚ) : 0 < kissMQ x y
+OK   header in proof module: theorem radiusQ_pos (x : ℚ) : 0 < radiusQ x
+OK   header in proof module: theorem radiusQ_cast (x : ℚ) :
+OK   header in proof module: theorem embedQ_injective : Function.Injective embedQ
+OK   header in proof module: theorem centreQ_embed (x : ℚ) :
+OK   header in proof module: theorem kissQ_embed (x y : ℚ) :
+OK   header in proof module: theorem sqDistanceQ_cast (u v : RatPlane) :
+OK   header in proof module: theorem boundaryQ_iff (x : ℚ) (z : RatPlane) :
+OK   header in proof module: theorem boundaryCheckQ_correct (x : ℚ) (z : RatPlane) :
+OK   header in proof module: theorem adjacent_kissQ (x y : ℚ) (h : FVLT.FareyContactV1.fareyAdj x y) :
+OK   producer def line: abbrev RatPlane := ℚ × ℚ
+OK   producer def line: def radiusQ (x : ℚ) : ℚ := 1 / (2 * (x.den : ℚ)^2)
+OK   producer def line: def centreQ (x : ℚ) : RatPlane := (x, radiusQ x)
+OK   producer def line: def kissNQ (x y : ℚ) : ℤ :=
+OK   producer def line: x.num * (x.den : ℤ) + y.num * (y.den : ℤ)
+OK   producer def line: def kissMQ (x y : ℚ) : ℕ := x.den^2 + y.den^2
+OK   producer def line: def kissQ (x y : ℚ) : RatPlane :=
+OK   producer def line: ((kissNQ x y : ℚ) / (kissMQ x y : ℚ), 1 / (kissMQ x y : ℚ))
+OK   producer def line: def sqDistanceQ (u v : RatPlane) : ℚ :=
+OK   producer def line: (u.1 - v.1)^2 + (u.2 - v.2)^2
+OK   producer def line: def boundaryQ (x : ℚ) (z : RatPlane) : Prop :=
+OK   producer def line: sqDistanceQ z (centreQ x) = (radiusQ x)^2
+OK   producer def line: def boundaryCheckQ (x : ℚ) (z : RatPlane) : Bool := decide (boundaryQ x z)
+OK   proof def line: noncomputable def embedQ (z : RatPlane) : ℂ :=
+OK   proof def line: (z.1 : ℂ) + (z.2 : ℂ) * Complex.I
+OK   producer has no noncomputable
+OK   producer mentions no Real/Complex/Classical
+OK   producer imports Mathlib.Data.Rat.Defs
+OK   smoke imports FVLTFordRationalV1
+OK   no Certificates import; proof imports FVLTFordRationalV1,FVLTFordGeometryV1,Mathlib.Tactic
+OK   P: no sorry
+OK   P: no admit
+OK   P: no native_decide
+OK   P: no unsafe
+OK   P: no partial def
+OK   P: no axiom
+OK   Q: no sorry
+OK   Q: no admit
+OK   Q: no native_decide
+OK   Q: no unsafe
+OK   Q: no partial def
+OK   Q: no axiom
+OK   S: no sorry
+OK   S: no admit
+OK   S: no native_decide
+OK   S: no unsafe
+OK   S: no partial def
+OK   S: no axiom
+private helpers: none
+extra instances: instance (x : ℚ) (z : RatPlane) : Decidable (boundaryQ x z) :=
+{"fails":0}

@@ -1,0 +1,15 @@
+{
+  "phase": "R2",
+  "mode": "replay",
+  "module": "FVLTFordGeometryCompletionV1",
+  "run_id": "R2Replay01",
+  "template_sha256": "e658afd2c3a862a1642d520db660fb1fe529136a18d60b247e76f85120f9bdb9",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "source_sha256": {
+    "FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1"
+  },
+  "dependency_olean_sha256": {
+    "FVLTFordGeometryCompletionV1.olean": "ce38bf44fe8556c09588461b69782b6752a2e1bd6fe8361f496981ef252ced9b"
+  },
+  "owner_accepted_utc": "2026-11-03T21:14:09.5210487+00:00"
+}

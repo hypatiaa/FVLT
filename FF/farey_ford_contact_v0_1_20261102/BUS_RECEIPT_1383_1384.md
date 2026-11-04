@@ -1,0 +1,3 @@
+# Bus receipts #1383-#1384
+
+2026-11-03. #1383 received: first F1 compile exited 1 after 2.87 s reading a cached Mathlib olean during `import Mathlib`; no declaration checked; owner classifies as tooling fault. #1384 posted by skeleton: classification ACCEPTED; skeleton read-only check on nucleus found the olean present (2078368 bytes, r-------- saphir), all package oleans 1.75 GiB; likely cause the 8 GiB address-space cap (not proven); narrower Mathlib imports authorized within the template; a 16 GiB address-space amendment pre-cleared only if that fails, everything else unchanged. Envelope `f0fac207-8ea8-5732-86b7-3f9a3ba17eb3`, digest `f13d96abb67c31a385fb4addc079b19c2b2eb18e5433008a7184d5276e7a022c`, zulip_delivered as #1384.

@@ -1,0 +1,16 @@
+{
+  "phase": "F1",
+  "authority": "F1_STOP_DISPOSITION_D1.md SHA39fa6a23ccd1d248ea1efeb2682a600ac4785ae7ba2085b9561fd306f80ed751",
+  "initial_drafting_started_unix": 1793701924,
+  "first_call_started_unix": 1793703182.1987205,
+  "initial_excluded_wait_seconds": 343,
+  "active_used_before_first_call": 915.1987204551697,
+  "tooling_fault_interval_start": 1793703182.1987205,
+  "disposition_bus_unix": 1793703837,
+  "skeleton_relay_wait_end_unix": 1793705314,
+  "restart_unix": 1793705314,
+  "remaining_active_seconds": 884,
+  "deadline_unix": 1793706198,
+  "authorized_import_attempts": 2,
+  "extension_to_minimum600_used": false
+}

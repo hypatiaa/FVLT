@@ -1,0 +1,66 @@
+{
+  "job": {
+    "phase": "R2",
+    "mode": "compile",
+    "module": "FVLTFordGeometryCompletionV1",
+    "run_id": "R2Compile01",
+    "template_sha256": "e658afd2c3a862a1642d520db660fb1fe529136a18d60b247e76f85120f9bdb9",
+    "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+    "source_sha256": {
+      "FVLTFordGeometryCompletionV1.lean": "8144eba74611f470dea8675ef70a327d5deef493f1fd399e39ba4a240b2516ff"
+    },
+    "dependency_olean_sha256": {},
+    "owner_accepted_utc": "2026-11-03T21:12:42.2841322+00:00"
+  },
+  "runner_sha256": "45936364e02939ff24628f446cd2b63088649b20520362b226368041589d23cd",
+  "command": [
+    "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+    "-j1",
+    "-s65536",
+    "-M7680",
+    "-D",
+    "Elab.async=false",
+    "-o",
+    "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1/FVLTFordGeometryCompletionV1.olean",
+    "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1/FVLTFordGeometryCompletionV1.lean"
+  ],
+  "wall_cap_seconds": 240,
+  "address_space_bytes": 8589934592,
+  "process_limit": 256,
+  "output_file_limit_bytes": 67108864,
+  "cpu_affinity": [
+    0
+  ],
+  "nice": 19,
+  "started_unix": 1793740368.5628514,
+  "library": "/home/saphir/rule30_theorem_library/v19",
+  "transport": "[ts-redact2] 57446 [ts-redacted1] 22",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "LEAN_PATH": "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1:/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103:/home/saphir/rule30_theorem_library/v19/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/Qq/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/aesop/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/batteries/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/importGraph/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/mathlib/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/plausible/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/proofwidgets/.lake/build/lib/lean",
+  "predecessor_pins": {
+    "stage_a_completion_v1/FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+    "stage_a_completion_v1/FVLTFareyArithmeticCompletionV1.olean": "ab3351ff996fe0b676a322907cb445fed4dc32eed7ddbc04db8d9a17559fea56",
+    "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+    "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+    "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+    "FVLTFordGeometryV1.olean": "ea5dc4ce259c44b6e742ce950dcea3333d83d031511595ac951b68b0570cab54",
+    "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+    "FVLTFareyCertificatesV1.olean": "99d3b3c3a44d0f4b4aa020e0e797dff255eddddb0459b7b1e4a3b7fad8ef651e"
+  },
+  "gate_pins": {
+    "R1_AUDIT_v0_1.md": "823f7386d567a7dbf8b1c5c43e81c85cf8876ce0927c1bc85b9430134317a48d",
+    "F1_AUDIT_AND_BRIDGE_DECISION_v0_1.md": "d5470d9b2353ca9de7309064dad363955e567a356fb5075dae04c0f9f32c7526",
+    "F2_AUDIT_AND_BRIDGE_RUNNER_DECISION_v0_1.md": "95532c2c4101197646a7a310120c9ec766282a1b41537557f585591d0d4968e1",
+    "BRIDGE_AUDIT_v0_1.md": "cc025916bab1d7f60676a5fb45cfea83d6898a38e4705d0f5b5feff2a1345a88"
+  },
+  "exit_code": 1,
+  "timeout": false,
+  "seconds": 3.0699286460876465,
+  "log_sha256": "a382026f98ed2d1c1627e7b748dc97881bce5e3ff3afd2e512c8ba01bcbd3e99",
+  "log_bytes": 2877,
+  "peak_child_rss_kib": 3498736,
+  "source_unchanged": true,
+  "predecessors_unchanged": true,
+  "gates_unchanged": true,
+  "library_checksum_after_exit": 0
+}

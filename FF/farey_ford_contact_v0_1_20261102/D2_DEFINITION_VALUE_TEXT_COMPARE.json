@@ -1,0 +1,34 @@
+[
+  {
+    "name": "det",
+    "definition_body_preserved_verbatim": true
+  },
+  {
+    "name": "fareyAdj",
+    "definition_body_preserved_verbatim": true
+  },
+  {
+    "name": "radius",
+    "definition_body_preserved_verbatim": true
+  },
+  {
+    "name": "centre",
+    "definition_body_preserved_verbatim": true
+  },
+  {
+    "name": "boundary",
+    "definition_body_preserved_verbatim": true
+  },
+  {
+    "name": "kissN",
+    "definition_body_preserved_verbatim": true
+  },
+  {
+    "name": "kissM",
+    "definition_body_preserved_verbatim": true
+  },
+  {
+    "name": "kiss",
+    "definition_body_preserved_verbatim": true
+  }
+]

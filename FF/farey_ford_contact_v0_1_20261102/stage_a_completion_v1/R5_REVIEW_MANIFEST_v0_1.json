@@ -1,0 +1,28 @@
+{
+  "status": "RECEIPT_REVIEW_ONLY_NO_R5_PROOF_DRAFTING_NO_COMPUTE",
+  "files": [
+    {
+      "path": "R5_TEMPLATE_PLAN_v0_1.md",
+      "bytes": 5665,
+      "sha256": "6ccc92c7bc8a536559e9e3b6c676f9ed3ae204c7f48ea80fbb64967a9049d19a"
+    },
+    {
+      "path": "R5_JOB_TEMPLATE_v0_1.json",
+      "bytes": 6006,
+      "sha256": "61f05461925d6b6c0bf30b3ee21b00979b2f645988cd5ec068c52e8b58a3476f"
+    },
+    {
+      "path": "RUN_R5_v0_1.py",
+      "bytes": 8930,
+      "sha256": "d28faa682336f7a04f734bce545b8083ac32b5cbb15060d05fe588b1efb4f22c"
+    },
+    {
+      "path": "RUN_R5_vs_R4_v0_1.diff",
+      "bytes": 3837,
+      "sha256": "50b0c6f0af98016f515439800cf3dc04cf540651f53e29bc0ab05b4a392d9309"
+    }
+  ],
+  "all5headers_verbatim": true,
+  "new_public_definitions": 0,
+  "fresh_input_binding_pending": true
+}

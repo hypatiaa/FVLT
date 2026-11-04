@@ -1,0 +1,13 @@
+{
+  "phase": "R3",
+  "mode": "compile",
+  "module": "FVLTUnitFractionSpineV1",
+  "run_id": "R3Compile02",
+  "template_sha256": "32b0444d0945bbe5fc48a0131a1ad7f88f00e17900e43c838907dd764db4e4d8",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "source_sha256": {
+    "FVLTUnitFractionSpineV1.lean": "6344add92722fbda1cf7a7db87000d8213ac46da040776a861a590c39e9fd0e5"
+  },
+  "dependency_olean_sha256": {},
+  "owner_accepted_utc": "2026-11-03T21:52:51.5650217+00:00"
+}

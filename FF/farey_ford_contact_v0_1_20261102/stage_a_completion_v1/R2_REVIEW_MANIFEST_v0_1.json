@@ -1,0 +1,28 @@
+{
+  "status": "RECEIPT_REVIEW_ONLY_NO_R2_PROOF_DRAFTING_NO_COMPUTE",
+  "files": [
+    {
+      "path": "R2_TEMPLATE_PLAN_v0_1.md",
+      "bytes": 5937,
+      "sha256": "fad1227520d76acc8414af67a2c050fbf19defa20f43de5947f6abb2639d70ec"
+    },
+    {
+      "path": "R2_JOB_TEMPLATE_v0_1.json",
+      "bytes": 5421,
+      "sha256": "7e28aff9656758c54f5f79a0ddff2896bc3dad5bf88235e2af7ea8d607b07adb"
+    },
+    {
+      "path": "RUN_R2_v0_1.py",
+      "bytes": 7892,
+      "sha256": "45936364e02939ff24628f446cd2b63088649b20520362b226368041589d23cd"
+    },
+    {
+      "path": "RUN_R2_vs_R1_v0_1.diff",
+      "bytes": 3837,
+      "sha256": "a979e9e6713e436efd1973da3a708621d5ba674d2e4b3b9ed6f59b7074ed7788"
+    }
+  ],
+  "all8headers_verbatim": true,
+  "all3definitions_verbatim": true,
+  "fresh_input_binding_pending": true
+}

@@ -1,0 +1,18 @@
+{
+  "status": "PREREGISTERED_EXPECTATIONS_NOT_EXECUTED",
+  "arithmetic": "exact rational, numerator integer / positive denominator natural",
+  "group_count": 6,
+  "fixtures": [
+    {"id":"radius_zero","x":{"num":0,"den":1},"radius":{"num":1,"den":2},"centre":[{"num":0,"den":1},{"num":1,"den":2}]},
+    {"id":"radius_one","x":{"num":1,"den":1},"radius":{"num":1,"den":2},"centre":[{"num":1,"den":1},{"num":1,"den":2}]},
+    {"id":"radius_half","x":{"num":1,"den":2},"radius":{"num":1,"den":8},"centre":[{"num":1,"den":2},{"num":1,"den":8}]},
+    {"id":"radius_negative","x":{"num":-3,"den":4},"radius":{"num":1,"den":32},"centre":[{"num":-3,"den":4},{"num":1,"den":32}]},
+    {"id":"kiss_adjacent","x":{"num":1,"den":2},"y":{"num":1,"den":3},"kissN":5,"kissM":13,"kiss":[{"num":5,"den":13},{"num":1,"den":13}],"boundary_x":true,"boundary_y":true},
+    {"id":"kiss_nonadjacent","x":{"num":1,"den":3},"y":{"num":1,"den":5},"kissN":8,"kissM":34,"kiss":[{"num":4,"den":17},{"num":1,"den":34}],"boundary_x":false,"boundary_y":false}
+  ],
+  "comparisons": "12 scalar radius/centre comparisons and 12 scalar-or-Boolean kiss comparisons, 24 in total across 6 groups",
+  "expected_failed_comparisons":0,
+  "finite_evidence_only":true,
+  "failure_action":"exit nonzero and preserve actual output; no replacement of preregistered values",
+  "executable_driver_separate_from_theorem_module":true
+}

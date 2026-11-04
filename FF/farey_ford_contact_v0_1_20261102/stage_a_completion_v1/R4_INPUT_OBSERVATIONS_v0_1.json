@@ -1,0 +1,132 @@
+{
+  "utc": "2026-11-03T22:29:53.356474+00:00",
+  "transport": "[ts-redact2] 58608 [ts-redacted1] 22",
+  "latest_version": "v19",
+  "library": "/home/saphir/rule30_theorem_library/v19",
+  "expected": {
+    "SHA256SUMS": "e25d4d54d074f152c452aa7247ccbe992e14b29d58306809660a75770ae7ddd5",
+    "LIBRARY_MANIFEST.json": "f0ee6b00fe4a622b63cac1f4fb24146e9b2808bdb0fb430ebdac074fecb258fa",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "4f0aea1336d288cba45c00727ce81c2cc064c39fca46e8ccf4505ae38ca6191f",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "observed": {
+    "SHA256SUMS": "e25d4d54d074f152c452aa7247ccbe992e14b29d58306809660a75770ae7ddd5",
+    "LIBRARY_MANIFEST.json": "f0ee6b00fe4a622b63cac1f4fb24146e9b2808bdb0fb430ebdac074fecb258fa",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "4f0aea1336d288cba45c00727ce81c2cc064c39fca46e8ccf4505ae38ca6191f",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "predecessor_expected": {
+    "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+    "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+    "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+    "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+    "FVLTFordGeometryV1.olean": "ea5dc4ce259c44b6e742ce950dcea3333d83d031511595ac951b68b0570cab54",
+    "FVLTFareyCertificatesV1.olean": "99d3b3c3a44d0f4b4aa020e0e797dff255eddddb0459b7b1e4a3b7fad8ef651e",
+    "stage_a_completion_v1/FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+    "stage_a_completion_v1/FVLTFareyArithmeticCompletionV1.olean": "ab3351ff996fe0b676a322907cb445fed4dc32eed7ddbc04db8d9a17559fea56",
+    "stage_a_completion_v1/FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+    "stage_a_completion_v1/FVLTFordGeometryCompletionV1.olean": "ce38bf44fe8556c09588461b69782b6752a2e1bd6fe8361f496981ef252ced9b",
+    "stage_a_completion_v1/FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+    "stage_a_completion_v1/FVLTUnitFractionSpineV1.olean": "8d5f4cae1a6693a1e873ecc2ad73e81a50d380254eb289ba304d9ddb67508870"
+  },
+  "predecessor_observed": {
+    "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+    "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+    "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+    "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+    "FVLTFordGeometryV1.olean": "ea5dc4ce259c44b6e742ce950dcea3333d83d031511595ac951b68b0570cab54",
+    "FVLTFareyCertificatesV1.olean": "99d3b3c3a44d0f4b4aa020e0e797dff255eddddb0459b7b1e4a3b7fad8ef651e",
+    "stage_a_completion_v1/FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+    "stage_a_completion_v1/FVLTFareyArithmeticCompletionV1.olean": "ab3351ff996fe0b676a322907cb445fed4dc32eed7ddbc04db8d9a17559fea56",
+    "stage_a_completion_v1/FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+    "stage_a_completion_v1/FVLTFordGeometryCompletionV1.olean": "ce38bf44fe8556c09588461b69782b6752a2e1bd6fe8361f496981ef252ced9b",
+    "stage_a_completion_v1/FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+    "stage_a_completion_v1/FVLTUnitFractionSpineV1.olean": "8d5f4cae1a6693a1e873ecc2ad73e81a50d380254eb289ba304d9ddb67508870"
+  },
+  "gate_expected": {
+    "F1_AUDIT_AND_BRIDGE_DECISION_v0_1.md": "d5470d9b2353ca9de7309064dad363955e567a356fb5075dae04c0f9f32c7526",
+    "F2_AUDIT_AND_BRIDGE_RUNNER_DECISION_v0_1.md": "95532c2c4101197646a7a310120c9ec766282a1b41537557f585591d0d4968e1",
+    "BRIDGE_AUDIT_v0_1.md": "cc025916bab1d7f60676a5fb45cfea83d6898a38e4705d0f5b5feff2a1345a88",
+    "R1_AUDIT_v0_1.md": "823f7386d567a7dbf8b1c5c43e81c85cf8876ce0927c1bc85b9430134317a48d",
+    "R2_AUDIT_v0_1.md": "48e4ee942af299f2fed279057c4852aa6c6d539bf405b5dbad18fe8a72a6c75d",
+    "R3_AUDIT_v0_1.md": "8003559f76ce6b2035e4a91be7638f55ec5440f784c6305d944a6c05e1ec3562"
+  },
+  "gate_observed": {
+    "F1_AUDIT_AND_BRIDGE_DECISION_v0_1.md": "d5470d9b2353ca9de7309064dad363955e567a356fb5075dae04c0f9f32c7526",
+    "F2_AUDIT_AND_BRIDGE_RUNNER_DECISION_v0_1.md": "95532c2c4101197646a7a310120c9ec766282a1b41537557f585591d0d4968e1",
+    "BRIDGE_AUDIT_v0_1.md": "cc025916bab1d7f60676a5fb45cfea83d6898a38e4705d0f5b5feff2a1345a88",
+    "R1_AUDIT_v0_1.md": "823f7386d567a7dbf8b1c5c43e81c85cf8876ce0927c1bc85b9430134317a48d",
+    "R2_AUDIT_v0_1.md": "48e4ee942af299f2fed279057c4852aa6c6d539bf405b5dbad18fe8a72a6c75d",
+    "R3_AUDIT_v0_1.md": "8003559f76ce6b2035e4a91be7638f55ec5440f784c6305d944a6c05e1ec3562"
+  },
+  "checksum_exit": 0,
+  "checksum_ok_entries": 381,
+  "checksum_log_sha256": "3e301cad0b1c422bdc6fe6f14d3764bb8ff5c6ddaee1d6cf7ed60e2e89f9aabf",
+  "read_only": {
+    "entries_scanned": 153937,
+    "writable": [],
+    "symlinks_skipped": [
+      {
+        "path": "/home/saphir/rule30_theorem_library/v19/.lake/packages/batteries/docs/README.md",
+        "target": "/home/saphir/rule30_theorem_library/v19/.lake/packages/batteries/README.md"
+      }
+    ]
+  },
+  "compiler": {
+    "argv": [
+      "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+      "--version"
+    ],
+    "exit": 0,
+    "stdout": "Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)\n",
+    "stderr": ""
+  },
+  "mathlib_head": {
+    "argv": [
+      "git",
+      "-C",
+      "/home/saphir/rule30_theorem_library/v19/.lake/packages/mathlib",
+      "rev-parse",
+      "HEAD"
+    ],
+    "exit": 0,
+    "stdout": "56a005855ea17e0b0958f73ec801ae140b0a1679\n",
+    "stderr": ""
+  },
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "checker_sha256": "9c6f2ac11b50fdb846df2d5099ea673553903275a5dba11fce5a5673cae14bd0",
+  "runner_sha256": "3d6cb1535a64a81fd71dfb4b8546e98b8c269d8583ca2c869bce8f2148580478",
+  "capacity": {
+    "argv": [
+      "free",
+      "-m"
+    ],
+    "exit": 0,
+    "stdout": "               total        used        free      shared  buff/cache   available\nMem:           31643        2957        4248          22       24913       28685\nSwap:           8191         230        7961\n",
+    "stderr": ""
+  },
+  "load": {
+    "argv": [
+      "uptime"
+    ],
+    "exit": 0,
+    "stdout": " 17:29:53 up 7 days, 22:09, 5136 users,  load average: 0.00, 0.00, 0.00\n",
+    "stderr": ""
+  },
+  "processes": {
+    "argv": [
+      "ps",
+      "-eo",
+      "pid,comm,pcpu,pmem",
+      "--sort=-pcpu"
+    ],
+    "exit": 0,
+    "stdout": "    PID COMMAND         %CPU %MEM\n 608480 python3         97.2  0.0\n 595789 WolframKernel    0.3  1.0\n   1500 tailscaled       0.1  0.1\n 126733 gnome-shell      0.1  0.3\n    120 kswapd0          0.1  0.0\n 595787 python3          0.0  0.0\n      1 systemd          0.0  0.0\n   1106 systemd-oomd     0.0  0.0\n 103846 systemd          0.0  0.0\n   1219 NetworkManager   0.0  0.0\n   1173 polkitd          0.0  0.1\n   1167 dbus-daemon      0.0  0.0\n 106962 systemd          0.0  0.0\n   1254 rsyslogd         0.0  0.0\n   2216 ollama           0.0  0.0\n   1165 avahi-daemon     0.0  0.0\n   1222 wpa_supplicant   0.0  0.0\n 605579 kworker/u48:3-k  0.0  0.0\n 607694 kworker/u48:4-i  0.0  0.0\n 607724 kworker/1:0-mm_  0.0  0.0\n   1186 accounts-daemon  0.0  0.0\n 607701 kworker/u48:0-i  0.0  0.0\n     15 rcu_preempt      0.0  0.0\n 607721 kworker/u48:5-k  0.0  0.0\n 605591 kworker/2:0-mm_  0.0  0.0\n 607902 kworker/u48:1-e  0.0  0.0\n 607899 python3          0.0  0.0\n 607895 python3          0.0  0.0\n 607896 python3          0.0  0.0\n     98 kcompactd0       0.0  0.0\n    605 systemd-udevd    0.0  0.0\n 595784 python3          0.0  0.0\n   1677 sshd             0.0  0.0\n 126526 gdm-session-wor  0.0  0.0\n 606123 kworker/3:0-mm_  0.0  0.0\n 595726 python3          0.0  0.0\n 595879 python3          0.0  0.0\n   1107 systemd-resolve  0.0  0.0\n 126579 user-session-he  0.0  0.0\n 126584 gdm-wayland-ses  0.0  0.0\n 268945 fwupd            0.0  0.1\n   1195 udisksd          0.0  0.0\n 126598 snapd            0.0  0.0\n   1194 systemd-logind   0.0  0.0\n 598584 kworker/5:1-eve  0.0  0.0\n 603686 kworker/4:2-eve  0.0  0.0\n 598007 kworker/7:1-mm_  0.0  0.0\n   1166 bluetoothd       0.0  0.0\n 595639 kworker/8:1-mm_  0.0  0.0\n 598591 kworker/9:2-mm_  0.0  0.0\n 588240 kworker/0:2-mm_  0.0  0.0\n 126597 systemd-journal  0.0  0.2\n   1111 systemd-timesyn  0.0  0.0\n   1520 gdm3             0.0  0.0\n 127007 gsd-housekeepin  0.0  0.0\n   1568 rtkit-daemon     0.0  0.0\n     41 migration/4      0.0  0.0\n    943 napi/phy0-0      0.0  0.0\n    515 jbd2/dm-0-8      0.0  0.0\n 588191 kworker/10:2-ev  0.0  0.0\n 599022 kworker/6:0-mm_  0.0  0.0\n     35 migration/3      0.0  0.0\n 553128 kworker/11:0-mm  0.0  0.0\n 126923 gsd-sharing      0.0  0.0\n     30 ksoftirqd/2      0.0  0.0\n   1868 upowerd          0.0  0.0\n     24 ksoftirqd/1      0.0  0.0\n     47 migration/5      0.0  0.0\n 126704 wireplumber      0.0  0.0\n     36 ksoftirqd/3      0.0  0.0\n   1188 cron             0.0  0.0\n     18 migration/0      0.0  0.0\n     66 ksoftirqd/8      0.0  0.0\n     60 ksoftirqd/7      0.0  0.0\n 245088 user-session-he  0.0  0.0\n     29 migration/2      0.0  0.0\n     77 migration/10     0.0  0.0\n     23 migration/1      0.0  0.0\n     83 migration/11     0.0  0.0\n     71 migration/9      0.0  0.0\n     53 migration/6      0.0  0.0\n   1328 ModemManager     0.0  0.0\n   1175 power-profiles-  0.0  0.0\n   1170 gnome-remote-de  0.0  0.0\n 603855 python3          0.0  0.0\n     72 ksoftirqd/9      0.0  0.0\n     42 ksoftirqd/4      0.0  0.0\n   2217 kerneloops       0.0  0.0\n     65 migration/8      0.0  0.0\n     59 migration/7      0.0  0.0\n   2220 kerneloops       0.0  0.0\n     14 ksoftirqd/0      0.0  0.0\n    100 khugepaged       0.0  0.0\n 602867 python3          0.0  0.0\n 602862 python3          0.0  0.0\n 602695 python3          0.0  0.0\n 126615 gnome-session-b  0.0  0.0\n 601677 python3          0.0  0.0\n 600698 python3          0.0  0.0\n 600695 python3          0.0  0.0\n     54 ksoftirqd/6      0.0  0.0\n     48 ksoftirqd/5      0.0  0.0\n    941 napi/phy0-0      0.0  0.0\n 126938 gsd-color        0.0  0.0\n    942 napi/phy0-0      0.0  0.0\n     78 ksoftirqd/10     0.0  0.0\n   1420 mt76-tx phy0     0.0  0.0\n 603859 python3          0.0  0.0\n 603854 python3          0.0  0.0\n 126697 wireplumber      0.0  0.0\n     84 ksoftirqd/11     0.0  0.0\n 245091 wireplumber      0.0  0.0\n 596060 python3          0.0  0.0\n 596059 python3          0.0  0.0\n 245061 systemd          0.0  0.0\n 602863 python3          0.0  0.0\n 602693 python3          0.0  0.0\n 602694 python3          0.0  0.0\n 562281 cups-browsed     0.0  0.0\n 601611 python3          0.0  0.0\n 601612 python3          0.0  0.0\n 600700 python3          0.0  0.0\n    190 kworker/1:1H-kb  0.0  0.0\n    187 kworker/2:1H-kb  0.0  0.0\n 127019 gsd-power        0.0  0.0\n 126975 gsd-media-keys   0.0  0.0\n    224 kworker/3:1H-kb  0.0  0.0\n   1768 colord           0.0  0.0\n     93 khungtaskd       0.0  0.0\n 596057 python3          0.0  0.0\n    184 kworker/4:1H-kb  0.0  0.0\n 126708 dbus-daemon      0.0  0.0\n    229 kworker/7:1H-kb  0.0  0.0\n    223 kworker/8:1H-kb  0.0  0.0\n    134 kworker/5:1H-kb  0.0  0.0\n    204 kworker/9:1H-kb  0.0  0.0\n    155 kworker/0:1H-kb  0.0  0.0\n    209 kworker/6:1H-kb  0.0  0.0\n    222 kworker/10:1H-k  0.0  0.0\n    117 kworker/11:1H-k  0.0  0.0\n 245119 dbus-daemon      0.0  0.0\n 562279 cupsd            0.0  0.0\n 126953 gsd-rfkill       0.0  0.0\n      2 kthreadd         0.0  0.0\n 127205 ibus-x11         0.0  0.0\n 127175 mutter-x11-fram  0.0  0.0\n 126810 Xwayland         0.0  0.0\n 245177 xdg-document-po  0.0  0.0\n 126928 gsd-wacom        0.0  0.0\n    636 psimon           0.0  0.0\n 126942 gsd-keyboard     0.0  0.0\n 126614 dbus-daemon      0.0  0.0\n 127180 ibus-daemon      0.0  0.0\n 126948 gsd-print-notif  0.0  0.0\n     17 rcu_exp_gp_kthr  0.0  0.0\n 127249 gjs              0.0  0.0\n 126700 pipewire         0.0  0.0\n   1503 unattended-upgr  0.0  0.0\n   1190 switcheroo-cont  0.0  0.0\n 245080 pipewire         0.0  0.0\n 126913 gjs              0.0  0.0\n 126672 pipewire         0.0  0.0\n 126593 dbus-daemon      0.0  0.0\n      3 pool_workqueue_  0.0  0.0\n      4 kworker/R-rcu_g  0.0  0.0\n      5 kworker/R-sync_  0.0  0.0\n      6 kworker/R-kvfre  0.0  0.0\n      7 kworker/R-slub_  0.0  0.0\n      8 kworker/R-netns  0.0  0.0\n     11 kworker/0:0H-ev  0.0  0.0\n     13 kworker/R-mm_pe  0.0  0.0\n     16 rcu_exp_par_gp_  0.0  0.0\n     19 idle_inject/0    0.0  0.0\n     20 cpuhp/0          0.0  0.0\n     21 cpuhp/1          0.0  0.0\n     22 idle_inject/1    0.0  0.0\n     26 kworker/1:0H-ev  0.0  0.0\n     27 cpuhp/2          0.0  0.0\n     28 idle_inject/2    0.0  0.0\n     32 kworker/2:0H-ev  0.0  0.0\n     33 cpuhp/3          0.0  0.0\n     34 idle_inject/3    0.0  0.0\n     38 kworker/3:0H-ev  0.0  0.0\n     39 cpuhp/4          0.0  0.0\n     40 idle_inject/4    0.0  0.0\n     44 kworker/4:0H-ev  0.0  0.0\n     45 cpuhp/5          0.0  0.0\n     46 idle_inject/5    0.0  0.0\n     50 kworker/5:0H-ev  0.0  0.0\n     51 cpuhp/6          0.0  0.0\n     52 idle_inject/6    0.0  0.0\n     56 kworker/6:0H-ev  0.0  0.0\n     57 cpuhp/7          0.0  0.0\n     58 idle_inject/7    0.0  0.0\n     62 kworker/7:0H-ev  0.0  0.0\n     63 cpuhp/8          0.0  0.0\n     64 idle_inject/8    0.0  0.0\n     68 kworker/8:0H-ev  0.0  0.0\n     69 cpuhp/9          0.0  0.0\n     70 idle_inject/9    0.0  0.0\n     74 kworker/9:0H-ev  0.0  0.0\n     75 cpuhp/10         0.0  0.0\n     76 idle_inject/10   0.0  0.0\n     80 kworker/10:0H-e  0.0  0.0\n     81 cpuhp/11         0.0  0.0\n     82 idle_inject/11   0.0  0.0\n     86 kworker/11:0H-e  0.0  0.0\n     87 kdevtmpfs        0.0  0.0\n     88 kworker/R-inet_  0.0  0.0\n     89 rcu_tasks_kthre  0.0  0.0\n     90 rcu_tasks_rude_  0.0  0.0\n     91 rcu_tasks_trace  0.0  0.0\n     92 kauditd          0.0  0.0\n     96 oom_reaper       0.0  0.0\n     97 kworker/R-write  0.0  0.0\n     99 ksmd             0.0  0.0\n    101 kworker/R-kbloc  0.0  0.0\n    102 kworker/R-blkcg  0.0  0.0\n    103 kworker/R-kinte  0.0  0.0\n    104 irq/9-acpi       0.0  0.0\n    108 kworker/R-tpm_d  0.0  0.0\n    109 kworker/R-ata_s  0.0  0.0\n    110 kworker/R-md     0.0  0.0\n    111 kworker/R-md_bi  0.0  0.0\n    112 kworker/R-edac-  0.0  0.0\n    113 kworker/R-devfr  0.0  0.0\n    114 watchdogd        0.0  0.0\n    116 kworker/R-quota  0.0  0.0\n    119 irq/26-AMD-Vi    0.0  0.0\n    121 ecryptfs-kthrea  0.0  0.0\n    122 kworker/R-kthro  0.0  0.0\n    124 kworker/R-acpi_  0.0  0.0\n    133 kworker/R-mld    0.0  0.0\n    135 kworker/R-ipv6_  0.0  0.0\n    136 kworker/R-kstrp  0.0  0.0\n    153 kworker/R-charg  0.0  0.0\n    154 irq/27-ACPI:Eve  0.0  0.0\n    156 irq/28-ACPI:Eve  0.0  0.0\n    157 irq/29-ACPI:Eve  0.0  0.0\n    253 scsi_eh_0        0.0  0.0\n    254 kworker/R-scsi_  0.0  0.0\n    255 scsi_eh_1        0.0  0.0\n    256 kworker/R-scsi_  0.0  0.0\n    257 scsi_eh_2        0.0  0.0\n    258 kworker/R-scsi_  0.0  0.0\n    259 scsi_eh_3        0.0  0.0\n    260 kworker/R-scsi_  0.0  0.0\n    261 scsi_eh_4        0.0  0.0\n    262 kworker/R-scsi_  0.0  0.0\n    263 scsi_eh_5        0.0  0.0\n    264 kworker/R-scsi_  0.0  0.0\n    270 kworker/R-nvme-  0.0  0.0\n    271 kworker/R-nvme-  0.0  0.0\n    272 kworker/R-nvme-  0.0  0.0\n    273 kworker/R-nvme-  0.0  0.0\n    280 kworker/R-kdmfl  0.0  0.0\n    292 kworker/R-amdgp  0.0  0.0\n    297 kworker/R-ttm    0.0  0.0\n    298 kworker/R-amdgp  0.0  0.0\n    299 kworker/R-amdgp  0.0  0.0\n    300 kworker/R-amdgp  0.0  0.0\n    301 kworker/R-amdgp  0.0  0.0\n    302 kworker/R-dm_vb  0.0  0.0\n    303 card1-crtc0      0.0  0.0\n    304 card1-crtc1      0.0  0.0\n    305 card1-crtc2      0.0  0.0\n    306 card1-crtc3      0.0  0.0\n    307 kworker/R-gfx_0  0.0  0.0\n    308 kworker/R-comp_  0.0  0.0\n    309 kworker/R-comp_  0.0  0.0\n    310 kworker/R-comp_  0.0  0.0\n    311 kworker/R-comp_  0.0  0.0\n    312 kworker/R-sdma0  0.0  0.0\n    313 kworker/R-sdma1  0.0  0.0\n    314 kworker/R-vcn_u  0.0  0.0\n    315 kworker/R-jpeg_  0.0  0.0\n    516 kworker/R-ext4-  0.0  0.0\n    881 kworker/R-cfg80  0.0  0.0\n    961 jbd2/nvme0n1p2-  0.0  0.0\n    962 kworker/R-ext4-  0.0  0.0\n   1201 avahi-daemon     0.0  0.0\n   1719 krfcommd         0.0  0.0\n  97049 kworker/R-tls-s  0.0  0.0\n 103847 (sd-pam)         0.0  0.0\n 106966 (sd-pam)         0.0  0.0\n 121145 kworker/u49:18-  0.0  0.0\n 126613 dbus-run-sessio  0.0  0.0\n 126702 pipewire-pulse   0.0  0.0\n 126705 pipewire-pulse   0.0  0.0\n 126707 dbus-daemon      0.0  0.0\n 126803 at-spi-bus-laun  0.0  0.0\n 126809 dbus-daemon      0.0  0.0\n 126819 at-spi2-registr  0.0  0.0\n 126896 xdg-permission-  0.0  0.0\n 126958 gsd-smartcard    0.0  0.0\n 126965 gsd-datetime     0.0  0.0\n 126980 gsd-screensaver  0.0  0.0\n 126992 gsd-sound        0.0  0.0\n 127004 gsd-a11y-settin  0.0  0.0\n 127127 gsd-printer      0.0  0.0\n 127201 ibus-memconf     0.0  0.0\n 127215 ibus-portal      0.0  0.0\n 127267 ibus-engine-sim  0.0  0.0\n 245064 (sd-pam)         0.0  0.0\n 245084 pipewire         0.0  0.0\n 245094 pipewire-pulse   0.0  0.0\n 245182 xdg-permission-  0.0  0.0\n 245189 fusermount3      0.0  0.0\n 364818 kworker/u49:0-h  0.0  0.0\n 387370 psimon           0.0  0.0\n 588106 kworker/6:1      0.0  0.0\n 595887 sshd             0.0  0.0\n 595888 sshd             0.0  0.0\n 595891 sshd             0.0  0.0\n 595986 sshd             0.0  0.0\n 595988 sshd             0.0  0.0\n 596010 sshd             0.0  0.0\n 597801 kworker/0:0      0.0  0.0\n 597949 kworker/4:1-cgr  0.0  0.0\n 597963 kworker/11:2-ev  0.0  0.0\n 600134 kworker/5:0      0.0  0.0\n 600524 sshd             0.0  0.0\n 600525 sshd             0.0  0.0\n 600526 sshd             0.0  0.0\n 600575 sshd             0.0  0.0\n 600648 sshd             0.0  0.0\n 600649 sshd             0.0  0.0\n 601494 kworker/7:0-cgr  0.0  0.0\n 601499 sshd             0.0  0.0\n 601501 sshd             0.0  0.0\n 601502 sshd             0.0  0.0\n 601579 sshd             0.0  0.0\n 601580 sshd             0.0  0.0\n 601653 sshd             0.0  0.0\n 602528 sshd             0.0  0.0\n 602530 sshd             0.0  0.0\n 602531 sshd             0.0  0.0\n 602645 sshd             0.0  0.0\n 602646 sshd             0.0  0.0\n 602647 sshd             0.0  0.0\n 602700 sshd             0.0  0.0\n 602702 sshd             0.0  0.0\n 602703 sshd             0.0  0.0\n 602780 sshd             0.0  0.0\n 602781 sshd             0.0  0.0\n 602842 sshd             0.0  0.0\n 603687 kworker/2:2-cgr  0.0  0.0\n 603689 sshd             0.0  0.0\n 603690 sshd             0.0  0.0\n 603693 sshd             0.0  0.0\n 603771 sshd             0.0  0.0\n 603782 sshd             0.0  0.0\n 603808 sshd             0.0  0.0\n 604201 kworker/8:0      0.0  0.0\n 605583 kworker/9:0      0.0  0.0\n 605603 kworker/10:0     0.0  0.0\n 607693 kworker/3:2      0.0  0.0\n 607708 kworker/1:1-cgr  0.0  0.0\n 607730 sshd             0.0  0.0\n 607731 sshd             0.0  0.0\n 607734 sshd             0.0  0.0\n 607810 sshd             0.0  0.0\n 607811 sshd             0.0  0.0\n 607858 sshd             0.0  0.0\n 608425 sshd             0.0  0.0\n 608464 sshd             0.0  0.0\n 608488 ps               0.0  0.0\n",
+    "stderr": ""
+  },
+  "mathematical_checks": 0,
+  "proof_compilations": 0,
+  "all_expected_equal": true
+}

@@ -1,0 +1,29 @@
+{
+  "status": "RECEIPT_REVIEW_ONLY_NO_R4_PROOF_DRAFTING_NO_COMPUTE",
+  "files": [
+    {
+      "path": "R4_TEMPLATE_PLAN_v0_1.md",
+      "bytes": 5952,
+      "sha256": "10d29b3a4d7011232300610abf9f516ab76a26c1b265b0774d72545b81c7672a"
+    },
+    {
+      "path": "R4_JOB_TEMPLATE_v0_1.json",
+      "bytes": 8153,
+      "sha256": "6f59c2e5ca54f7591f53c20c1b4b53ea61719edaee06d54d27ac3460c41528fb"
+    },
+    {
+      "path": "RUN_R4_v0_1.py",
+      "bytes": 8583,
+      "sha256": "3d6cb1535a64a81fd71dfb4b8546e98b8c269d8583ca2c869bce8f2148580478"
+    },
+    {
+      "path": "RUN_R4_vs_R3_v0_1.diff",
+      "bytes": 3872,
+      "sha256": "26f9d1d8c2bd77617567eeaa4de76036d56d986b6c9c8270aba7236d0e836d5b"
+    }
+  ],
+  "all11headers_verbatim": true,
+  "unreducedPhases_original_body_verbatim": true,
+  "S1_exception_explicitly_pinned": true,
+  "fresh_input_binding_pending": true
+}
