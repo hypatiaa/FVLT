@@ -1,0 +1,105 @@
+{
+  "schema": "ff2-support-inventory/1",
+  "private_helpers": [
+    {
+      "module": "FVLTAtomSkinCountsV1",
+      "kind": "theorem",
+      "source_name": "adjacent_symmetric",
+      "visibility": "private",
+      "standing": "Proof support only; included in strict replay"
+    },
+    {
+      "module": "FVLTAtomSkinCountsV1",
+      "kind": "theorem",
+      "source_name": "path_from_empty",
+      "visibility": "private",
+      "standing": "Proof support only; included in strict replay"
+    },
+    {
+      "module": "FVLTAtomSkinCountsV1",
+      "kind": "theorem",
+      "source_name": "card_subsets",
+      "visibility": "private",
+      "standing": "Proof support only; included in strict replay"
+    },
+    {
+      "module": "FVLTAtomSkinCountsV1",
+      "kind": "theorem",
+      "source_name": "card_avoid_one",
+      "visibility": "private",
+      "standing": "Proof support only; included in strict replay"
+    },
+    {
+      "module": "FVLTAtomSkinCountsV1",
+      "kind": "theorem",
+      "source_name": "next_value",
+      "visibility": "private",
+      "standing": "Proof support only; included in strict replay"
+    },
+    {
+      "module": "FVLTAtomSkinCountsV1",
+      "kind": "theorem",
+      "source_name": "next_ne_self",
+      "visibility": "private",
+      "standing": "Proof support only; included in strict replay"
+    },
+    {
+      "module": "FVLTAtomSkinCountsV1",
+      "kind": "theorem",
+      "source_name": "card_avoid_two",
+      "visibility": "private",
+      "standing": "Proof support only; included in strict replay"
+    },
+    {
+      "module": "FVLTPillowcaseV1",
+      "kind": "def",
+      "source_name": "parityBit",
+      "visibility": "private",
+      "standing": "Proof support only; included in strict replay"
+    },
+    {
+      "module": "FVLTPillowcaseV1",
+      "kind": "theorem",
+      "source_name": "parityBit_mul",
+      "visibility": "private",
+      "standing": "Proof support only; included in strict replay"
+    },
+    {
+      "module": "FVLTPillowcaseV1",
+      "kind": "theorem",
+      "source_name": "corner_fst_scaled",
+      "visibility": "private",
+      "standing": "Proof support only; included in strict replay"
+    },
+    {
+      "module": "FVLTPillowcaseV1",
+      "kind": "theorem",
+      "source_name": "corner_snd_scaled",
+      "visibility": "private",
+      "standing": "Proof support only; included in strict replay"
+    },
+    {
+      "module": "FVLTPillowcaseV1",
+      "kind": "theorem",
+      "source_name": "parity_decompose",
+      "visibility": "private",
+      "standing": "Proof support only; included in strict replay"
+    },
+    {
+      "module": "FVLTPillowcaseV1",
+      "kind": "theorem",
+      "source_name": "parity_translation",
+      "visibility": "private",
+      "standing": "Proof support only; included in strict replay"
+    },
+    {
+      "module": "FVLTPillowcaseV1",
+      "kind": "theorem",
+      "source_name": "parity_halfTurn",
+      "visibility": "private",
+      "standing": "Proof support only; included in strict replay"
+    }
+  ],
+  "latest_proof_declarations_replayed": 84,
+  "generated_declarations": "Included in47+37rawstrictreports; no historical constants added again"
+}

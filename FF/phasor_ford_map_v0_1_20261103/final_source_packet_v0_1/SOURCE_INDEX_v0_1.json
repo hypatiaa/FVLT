@@ -1,0 +1,37 @@
+{
+  "FVLTRosetteFordDataV1": {
+    "source_origin": "C:\\Users\\robin\\s6_atom\\FVLT_FORMALIZATION_v0_1_20261028\\phasor_ford_map_v0_1_20261103\\batch02\\attempts\\Data02\\src\\FVLTRosetteFordDataV1.lean",
+    "sha256": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+    "bytes": 2554,
+    "CR_bytes": 0,
+    "UTF8_BOM": false
+  },
+  "FVLTRosetteFordPhaseV1": {
+    "source_origin": "C:\\Users\\robin\\s6_atom\\FVLT_FORMALIZATION_v0_1_20261028\\phasor_ford_map_v0_1_20261103\\batch03\\attempts\\Phase02\\src\\FVLTRosetteFordPhaseV1.lean",
+    "sha256": "2a48f1c65b7a5a31cbeaecac2edf13f2a64fec583e2d70af6473f06a41917459",
+    "bytes": 3027,
+    "CR_bytes": 76,
+    "UTF8_BOM": false
+  },
+  "FVLTRosetteFordArithmeticV1": {
+    "source_origin": "C:\\Users\\robin\\s6_atom\\FVLT_FORMALIZATION_v0_1_20261028\\phasor_ford_map_v0_1_20261103\\batch04\\attempts\\Arithmetic03\\src\\FVLTRosetteFordArithmeticV1.lean",
+    "sha256": "f74e1a1d8f02a60beceb6a1a44a7e5833b2583777f74cd4e36ebed459b67726f",
+    "bytes": 7662,
+    "CR_bytes": 0,
+    "UTF8_BOM": false
+  },
+  "FVLTRosetteFordSweepV1": {
+    "source_origin": "C:\\Users\\robin\\s6_atom\\FVLT_FORMALIZATION_v0_1_20261028\\phasor_ford_map_v0_1_20261103\\batch06\\attempts\\Final04\\src\\FVLTRosetteFordSweepV1.lean",
+    "sha256": "1d982d2ee145511e2b4a55a72675b14e53b1df2cb94c872abb5baaf3a0697e23",
+    "bytes": 16402,
+    "CR_bytes": 0,
+    "UTF8_BOM": false
+  },
+  "FVLTRosetteFordEndpointsV1": {
+    "source_origin": "C:\\Users\\robin\\s6_atom\\FVLT_FORMALIZATION_v0_1_20261028\\phasor_ford_map_v0_1_20261103\\batch02\\attempts\\Endpoints02\\src\\FVLTRosetteFordEndpointsV1.lean",
+    "sha256": "53ea5f08a71001be2bb6b4ba7de3932740f7861711058c7bb6ae4890cadde9e0",
+    "bytes": 3642,
+    "CR_bytes": 87,
+    "UTF8_BOM": false
+  }
+}

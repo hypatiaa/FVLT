@@ -1,0 +1,4 @@
+'FVLT.AtomSkinV1.pen_adjacent_seat' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.AtomSkinV1.pen_return_four' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.AtomSkinV1.pen_no_earlier_return' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.AtomSkinV1.pen_four_corners' depends on axioms: [propext, Classical.choice, Quot.sound]

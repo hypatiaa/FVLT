@@ -1,0 +1,61 @@
+{
+  "schema": "ff3-input-freeze/1",
+  "date": "2026-11-04",
+  "status": "PROPOSED_AWAITING_REVIEW",
+  "observation_started_unix": 1793774099,
+  "host": "nucleus",
+  "transport": "Tailscale [ts-redacted1]",
+  "observation_window": "Read-only observations began at1793774099 and continued during packet preparation on2026-11-04; not an execution capacity receipt",
+  "library": "/home/saphir/rule30_theorem_library/v21",
+  "latest_observed_version": 21,
+  "library_expected": {
+    "SHA256SUMS": "648ac325c5df362b0a034dab3ee1e0bd495982d33f0ead433293168ba6c269cc",
+    "LIBRARY_MANIFEST.json": "799b3baa0b61f227d626c36016ebda8180645abf92127f331fdd23a2d2779a81",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "5c9941e381b3821cabc50e28a7446a373ecec77f6fc5780543b8d2205de8f66f",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "library_observed": {
+    "SHA256SUMS": "648ac325c5df362b0a034dab3ee1e0bd495982d33f0ead433293168ba6c269cc",
+    "LIBRARY_MANIFEST.json": "799b3baa0b61f227d626c36016ebda8180645abf92127f331fdd23a2d2779a81",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "5c9941e381b3821cabc50e28a7446a373ecec77f6fc5780543b8d2205de8f66f",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "checksum_entries": 397,
+  "checksum_failures": 0,
+  "writable_paths": 0,
+  "expected_basis": "Explicit current v21 records and SHA256SUMS; changed library snapshot is returned for this review, not silently rebound",
+  "toolchain": "leanprover/lean4:v4.35.0",
+  "lean_executable": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+  "lean_expected_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "lean_observed_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "mathlib_expected_rev": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "mathlib_observed_rev": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "checker_sha256": "9c6f2ac11b50fdb846df2d5099ea673553903275a5dba11fce5a5673cae14bd0",
+  "inherited_project_source_count": 6,
+  "inherited_source_observation": "All six local audited sources matched nucleus v21 sha256sum observations",
+  "historical_kernel_sha256": "e49533088843e2cd0a1c531c4d8ba113ea30113e8135a15c17c040bdfca3e0e0",
+  "current_kernel_sha256": "0d6beee233602502576c1d0eedfe5a586e66f1b4e4b8a1858c39189d872ec1a2",
+  "kernel_II5_text_identical": true,
+  "kernel_II5_characters": 52715,
+  "reference_lemma6a": "UNAUDITED reference only; not an import or assumption",
+  "inspected_api_sources": [
+    {
+      "path": "Mathlib/Analysis/SpecialFunctions/Trigonometric/Basic.lean",
+      "sha256": "55b385f7abb43dd591acc7d548d1de8c3dba6111f79d60814d47b000d8f3bce7"
+    },
+    {
+      "path": "Mathlib/Analysis/Complex/Exponential.lean",
+      "sha256": "35d9f9e6abaf24d09a25cb1eeefbfc4180c3fe18de4d47362704c2f9f6601146"
+    },
+    {
+      "path": "Mathlib/Data/Rat/Lemmas.lean",
+      "sha256": "4f51b10ea64768413aadccceda80f0a2a7c339d4b01588e67a4b6f16a85bcd84"
+    }
+  ],
+  "execution_capacity": "UNBOUND: fresh capacity, reservation and batch deadline required after review",
+  "no_lean_or_numerical_proof_execution": true,
+  "g1_excluded": true,
+  "dependency_replay_claimed": false
+}

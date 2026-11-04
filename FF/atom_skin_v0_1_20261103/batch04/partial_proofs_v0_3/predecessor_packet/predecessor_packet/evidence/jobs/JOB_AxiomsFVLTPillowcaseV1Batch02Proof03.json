@@ -1,0 +1,27 @@
+{
+  "phase": "FF2_AB",
+  "module": "FVLTPillowcaseV1",
+  "mode": "axioms",
+  "run_id": "AxiomsFVLTPillowcaseV1Batch02Proof03",
+  "template_sha256": "8c26d695d11e074697cf5e3df354d7dcdfad089e228670a984c89f91e76f2086",
+  "attempt_folder": "attempts/Batch02Proof03",
+  "source_sha256": {
+    "FVLTPillowcaseV1.lean": "c2844ce47b2d6ce97273a5c563169d9a96390f804d2bd737a5a17e3f87db4ef1"
+  },
+  "dependency_olean_sha256": {
+    "FVLTPillowcaseDataV1.olean": "6b656127d20b65964d65f11e234e6123a7324cc499f7f40c733f144de9f4d58d",
+    "FVLTPillowcaseV1.olean": "bbdd0cca8169b47d777e399d3edf7723487e91a7a44c53ee5b2a340b8f09b87d"
+  },
+  "prerequisite_receipt_sha256": {
+    "CompileFVLTPillowcaseV1Batch02Proof03.json": "ef6a545d28b1d24275f2b0bedc84e938f7c54283608e10f6d8cfdf1846baff63"
+  },
+  "own_compile_receipt_file": "CompileFVLTPillowcaseV1Batch02Proof03.json",
+  "signature_comparison_receipt_file": "COMPARE_PILLOW03.json",
+  "signature_comparison_receipt_sha256": "b6685b4aeaa6dc2e0d6d9da6d555ca41983c7831a2c44c1a9be749709068d590",
+  "deadline_file": "DEADLINE_BATCH02.json",
+  "launch_environment": {
+    "PATH": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin:/usr/local/bin:/usr/bin:/bin"
+  },
+  "axiom_report_source": "AuditPillowcaseV1.lean",
+  "axiom_report_source_sha256": "5ede8c1a757dbfa1ef81f39a36265f9e5e7362f8d4c4e400514e54433b20f8f2"
+}

@@ -1,0 +1,24 @@
+FVLTRosetteFordPhaseV1.lean:7:34: warning: Variable name `hn3` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hn3
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+FVLTRosetteFordPhaseV1.lean:27:28: warning: Variable name `hn3` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hn3
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+FVLTRosetteFordPhaseV1.lean:43:28: warning: Variable name `hn3` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hn3
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+FVLTRosetteFordPhaseV1.lean:60:48: warning: Variable name `hr` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hr
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`

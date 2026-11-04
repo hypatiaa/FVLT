@@ -1,0 +1,95 @@
+{
+  "schema": "ff2-job-template/1",
+  "status": "BOUND_ACCEPTED",
+  "phase": "FF2_AB",
+  "host": "nucleus",
+  "transport": "Tailscale [ts-redacted1]",
+  "root": "/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103",
+  "library": "/home/saphir/rule30_theorem_library/v20",
+  "library_expected": {
+    "SHA256SUMS": "a2933a5c7d22563b70d8f45800ef592c21d62a0adcf64f8327c11c4b9119ae60",
+    "LIBRARY_MANIFEST.json": "4e318f9b71c4ad5c23abe6fbab2171f61920337f5d334ac0e2fd013c51b55d17",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "toolchain": "leanprover/lean4:v4.35.0",
+  "mathlib_rev": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "runner": "RUN_FF2_v0_1.py",
+  "runner_sha256": "6a73ec377654b82d35e0981b2a16216fa88e507420ef52d990a00f055afd2860",
+  "checker": "IndependentFVLTReplay435.lean",
+  "checker_sha256": "9c6f2ac11b50fdb846df2d5099ea673553903275a5dba11fce5a5673cae14bd0",
+  "definitions_file": "FF2_DEFINITIONS_PROPOSED_v0_1.lean.txt",
+  "definitions_sha256": "61ca7137e1307967866f97d096dda974d2f6400d32374f69252fcfe6598de615",
+  "headers_file": "FF2_HEADERS_PROPOSED_v0_1.lean.txt",
+  "headers_sha256": "b4484f6e148291dd20512e58ce4ec81b4bdf08527f4bd66b3e304cbb2654785a",
+  "module_order": [
+    "FVLTAtomSkinDataV1",
+    "FVLTAtomSkinCountsV1",
+    "FVLTAtomSkinPenV1",
+    "FVLTPillowcaseDataV1",
+    "FVLTPillowcaseV1"
+  ],
+  "modes": [
+    "compile",
+    "replay",
+    "axioms"
+  ],
+  "cpu_jobs": 1,
+  "address_space_bytes": 8589934592,
+  "lean_memory_mb": 7680,
+  "lean_stack_kb": 65536,
+  "process_limit": 256,
+  "output_file_limit_bytes": 67108864,
+  "child_wall_cap_seconds": 240,
+  "batch_wall_cap_seconds": 1800,
+  "deadline_origin": "before staging; fresh per bound development batch, never reset inside it",
+  "global_reservation": "Required reference to current host reservation and owner; absent means refusal",
+  "fresh_capacity": "Required hashed observation at binding, at most 600 seconds old at launch",
+  "source_signature_check": "Required reviewed receipt: exact frozen data definitions and all assigned headers; no extra public declarations; G1-free recursive project import closure",
+  "binding_required_fields": [
+    "signature_freeze_sha256",
+    "host_reservation_reference",
+    "fresh_capacity_receipt_file",
+    "fresh_capacity_receipt_sha256"
+  ],
+  "concrete_job_required_fields": [
+    "phase",
+    "module",
+    "mode",
+    "run_id",
+    "template_sha256",
+    "attempt_folder",
+    "source_sha256",
+    "dependency_olean_sha256",
+    "prerequisite_receipt_sha256",
+    "signature_comparison_receipt_file",
+    "signature_comparison_receipt_sha256",
+    "deadline_file"
+  ],
+  "mode_specific_fields": {
+    "replay": [
+      "own_compile_receipt_file"
+    ],
+    "axioms": [
+      "own_compile_receipt_file",
+      "axiom_report_source",
+      "axiom_report_source_sha256"
+    ]
+  },
+  "results": "Compile, named axiom report, strict replay remain distinct; data modules also receive nonempty strict replay; no dependency replay or cold build claimed",
+  "excluded": [
+    "G1",
+    "Part C",
+    "FF3 builds before FF2 outcome",
+    "viewer edits",
+    "kernel adoption",
+    "library writes",
+    "commits",
+    "Neo mathematical computation"
+  ],
+  "signature_freeze_sha256": "22650c5b0304d82bfd7d89a1bcfcb20884f6c11d104729aaf8187e678efd02c5",
+  "host_reservation_reference": "FF2_BATCH04_OWNER_REFRESH_1793762317_SAME_DEADLINE",
+  "fresh_capacity_receipt_file": "CAPACITY_BATCH04B.json",
+  "fresh_capacity_receipt_sha256": "2a2d44d6669db00ba61c4fa2c0a1cca2d6e333aa3d885fe9fc7737b5537fa57d"
+}

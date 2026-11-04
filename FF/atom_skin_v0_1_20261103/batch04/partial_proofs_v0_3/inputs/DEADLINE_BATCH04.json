@@ -1,0 +1,7 @@
+{
+  "cap_seconds": 1800,
+  "origin_unix": 1793761889,
+  "deadline_unix": 1793763689,
+  "no_reset_or_extension": true,
+  "previous_batch": "Batch03closed; olddeadline1793762458unchanged"
+}

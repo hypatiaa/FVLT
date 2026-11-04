@@ -1,0 +1,22 @@
+-- Development text only; not compiled or a verified theorem.
+-- Requires the same-module coefficient_channels and incident_pair_distinct proofs.
+theorem total_boundary_zero (ω : ℕ) (hω : 3 ≤ ω) :
+    (∑ f : Square ω hω, boundary ω hω f) = 0 := by
+  classical
+  apply Finsupp.ext
+  intro e
+  rw [Finsupp.finsetSum_apply]
+  change (∑ f : Square ω hω, coefficient ω hω f e) = 0
+  let a := squareAt ω hω (lower ω e) (prev ω hω e.val.2)
+  let b := squareAt ω hω (lower ω e) e.val.2
+  have hab : a ≠ b := incident_pair_distinct ω hω e
+  calc
+    (∑ f : Square ω hω, coefficient ω hω f e) =
+        ∑ f ∈ ({a, b} : Finset (Square ω hω)), coefficient ω hω f e := by
+      symm
+      apply Finset.sum_subset (Finset.subset_univ _)
+      intro f _ hf
+      have ha : f ≠ a := by simpa using (Finset.not_mem_insert.mp hf).1
+      have hb : f ≠ b := by simpa using (Finset.not_mem_insert.mp hf).2
+      simp [coefficient_channels, ha, hb, a, b]
+    _ = 0 := by simp [a, b, coefficient_channels, hab, Ne.symm hab]

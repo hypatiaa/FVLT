@@ -1,0 +1,4 @@
+'FVLT.PillowcaseV1.pillowRel_equivalence' depends on axioms: [propext, Quot.sound]
+'FVLT.PillowcaseV1.halfTurn_not_identity' depends on axioms: [propext, Quot.sound]
+'FVLT.PillowcaseV1.fixingHalfTurn_iff_multiples' depends on axioms: [propext, Quot.sound]
+'FVLT.PillowcaseV1.nonzero_translation_fixes_nothing' depends on axioms: [propext, Classical.choice, Quot.sound]

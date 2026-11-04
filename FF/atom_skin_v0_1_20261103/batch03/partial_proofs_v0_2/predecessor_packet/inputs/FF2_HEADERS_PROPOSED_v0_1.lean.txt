@@ -1,0 +1,121 @@
+-- Exact proposed declaration headers: intentionally no proof terms.
+-- This is review text, not executable Lean and not an axiom/admission file.
+namespace FVLT.AtomSkinV1
+
+-- A1
+theorem vertex_count (ω : ℕ) (hω : 3 ≤ ω) :
+    Fintype.card (Vertex ω) = 2 ^ ω
+theorem edge_count (ω : ℕ) (hω : 3 ≤ ω) :
+    Fintype.card (Edge ω) = ω * 2 ^ (ω - 1)
+theorem square_count (ω : ℕ) (hω : 3 ≤ ω) :
+    Fintype.card (Square ω hω) = ω * 2 ^ (ω - 2)
+theorem chi_formula (ω : ℕ) (hω : 3 ≤ ω) :
+    chi ω hω = (2 : ℤ) ^ (ω - 2) * (4 - (ω : ℤ))
+
+-- A2: constructors, identified incident pair, count.
+theorem incident_pair_distinct (ω : ℕ) (hω : 3 ≤ ω) (e : Edge ω) :
+    squareAt ω hω (lower ω e) (prev ω hω e.val.2) ≠
+      squareAt ω hω (lower ω e) e.val.2
+theorem incident_pair_exhaustive
+    (ω : ℕ) (hω : 3 ≤ ω) (e : Edge ω) (f : Square ω hω) :
+    coefficient ω hω f e ≠ 0 ↔
+      f = squareAt ω hω (lower ω e) (prev ω hω e.val.2) ∨
+      f = squareAt ω hω (lower ω e) e.val.2
+theorem incident_square_count (ω : ℕ) (hω : 3 ≤ ω) (e : Edge ω) :
+    Fintype.card {f : Square ω hω // coefficient ω hω f e ≠ 0} = 2
+
+-- A3: actual incident edges are the labelled cycle vertices.
+theorem incident_direction_equiv (ω : ℕ) (hω : 3 ≤ ω) (x : Vertex ω) :
+    ∃ φ : {e : Edge ω // edgeIncident ω e x} ≃ Fin ω,
+      ∀ e, φ e = e.val.val.2
+theorem link_cycle (ω : ℕ) (hω : 3 ≤ ω)
+    (x : Vertex ω) (i j : Fin ω) :
+    linkAdjacent ω hω x i j ↔ j = next ω hω i ∨ i = next ω hω j
+
+-- A4
+theorem incident_coefficients_opposite
+    (ω : ℕ) (hω : 3 ≤ ω) (e : Edge ω) (f g : Square ω hω)
+    (hfg : f ≠ g) (hf : coefficient ω hω f e ≠ 0)
+    (hg : coefficient ω hω g e ≠ 0) :
+    coefficient ω hω f e = -coefficient ω hω g e
+theorem total_boundary_zero (ω : ℕ) (hω : 3 ≤ ω) :
+    (∑ f : Square ω hω, boundary ω hω f) = 0
+
+-- A5
+theorem cube_edge_iff (ω : ℕ) (hω : 3 ≤ ω) (x y : Vertex ω) :
+    cubeAdjacent ω x y ↔ ∃ e : Edge ω,
+      (x = lower ω e ∧ y = upper ω e) ∨
+      (y = lower ω e ∧ x = upper ω e)
+theorem cube_connected (ω : ℕ) (hω : 3 ≤ ω) (x y : Vertex ω) :
+    ∃ n : ℕ, ∃ v : ℕ → Vertex ω,
+      v 0 = x ∧ v n = y ∧
+      ∀ k : ℕ, k < n → cubeAdjacent ω (v k) (v (k + 1))
+
+-- A6: integer numerical invariant only.
+theorem chi_even (ω : ℕ) (hω : 3 ≤ ω) : Even (chi ω hω)
+theorem genus_formula (ω : ℕ) (hω : 3 ≤ ω) :
+    genus ω hω = 1 + ((ω : ℤ) - 4) * (2 : ℤ) ^ (ω - 3)
+theorem cube_genus_zero (h3 : 3 ≤ (3 : ℕ)) : genus 3 h3 = 0
+
+-- A7: two directed edge incidences with the same orientation factor.
+theorem pen_adjacent_seat
+    (ω : ℕ) (hω : 3 ≤ ω) (s : Sign) (st : State ω) :
+    ((step ω hω s st).2 = next ω hω st.2 ∨
+      (step ω hω s st).2 = prev ω hω st.2) ∧
+      (step ω hω s st).2 ≠ st.2
+theorem pen_oriented_square
+    (ω : ℕ) (hω : 3 ≤ ω) (s : Sign) (st : State ω) :
+    ∃ f : Square ω hω,
+      coefficient ω hω f (mkEdge ω st.1 st.2) ≠ 0 ∧
+      coefficient ω hω f (mkEdge ω st.1 (step ω hω s st).2) ≠ 0 ∧
+      directedCoefficient ω (toggle ω st.1 st.2) st.1 (mkEdge ω st.1 st.2) =
+        signValue s * coefficient ω hω f (mkEdge ω st.1 st.2) ∧
+      directedCoefficient ω st.1 (step ω hω s st).1
+          (mkEdge ω st.1 (step ω hω s st).2) =
+        signValue s * coefficient ω hω f (mkEdge ω st.1 (step ω hω s st).2)
+
+-- A8
+theorem pen_return_four
+    (ω : ℕ) (hω : 3 ≤ ω) (s : Sign) (st : State ω) :
+    (step ω hω s)^[4] st = st
+theorem pen_no_earlier_return
+    (ω : ℕ) (hω : 3 ≤ ω) (s : Sign) (st : State ω)
+    (k : ℕ) (hk0 : 0 < k) (hk4 : k < 4) :
+    (step ω hω s)^[k] st ≠ st
+theorem pen_four_corners
+    (ω : ℕ) (hω : 3 ≤ ω) (s : Sign) (st : State ω) :
+    ∃ f : Square ω hω,
+      (Finset.range 4).image (fun k => ((step ω hω s)^[k] st).1) =
+        corners ω hω f
+
+end FVLT.AtomSkinV1
+
+namespace FVLT.PillowcaseV1
+
+-- B1
+theorem pillowRel_equivalence
+    (a b : ℕ) (ha : 0 < a) (hb : 0 < b) : Equivalence (pillowRel a b)
+theorem key_classifies
+    (a b : ℕ) (ha : 0 < a) (hb : 0 < b) (v w : Point) :
+    key a b v = key a b w ↔ pillowRel a b v w
+
+-- B2: the centre (0,0) is permitted in the nonidentity half-turn family.
+theorem halfTurn_not_identity (a b : ℕ) (i j : ℤ) :
+    ∃ u : Point, halfTurn a b i j u ≠ u
+theorem fixingHalfTurn_iff_multiples
+    (a b : ℕ) (ha : 0 < a) (hb : 0 < b) (v : Point) :
+    HasFixingHalfTurn a b v ↔
+      ∃ i j : ℤ, v = (i * (a : ℤ), j * (b : ℤ))
+theorem nonzero_translation_fixes_nothing
+    (a b : ℕ) (ha : 0 < a) (hb : 0 < b)
+    (i j : ℤ) (hij : i ≠ 0 ∨ j ≠ 0) (v : Point) :
+    translation a b i j v ≠ v
+theorem fixingHalfTurn_iff_corner_class
+    (a b : ℕ) (ha : 0 < a) (hb : 0 < b) (v : Point) :
+    HasFixingHalfTurn a b v ↔
+      ∃ c : Bool × Bool, pillowRel a b v (corner a b c)
+theorem four_corner_classes_distinct
+    (a b : ℕ) (ha : 0 < a) (hb : 0 < b) (c d : Bool × Bool) :
+    pillowRel a b (corner a b c) (corner a b d) ↔ c = d
+
+end FVLT.PillowcaseV1

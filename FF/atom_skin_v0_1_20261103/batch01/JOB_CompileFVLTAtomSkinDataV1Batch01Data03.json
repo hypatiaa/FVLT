@@ -1,0 +1,19 @@
+{
+  "phase": "FF2_AB",
+  "module": "FVLTAtomSkinDataV1",
+  "mode": "compile",
+  "run_id": "CompileFVLTAtomSkinDataV1Batch01Data03",
+  "template_sha256": "9ae6582ece85edab93b00fc83a2a8c646e766fb5a8a1f97de15ab7ab0f6a2cd7",
+  "attempt_folder": "attempts/Data03",
+  "source_sha256": {
+    "FVLTAtomSkinDataV1.lean": "8d165af954019dd15fad6f7bf082922119d9364a3727fa59879d945fc5e8f085"
+  },
+  "dependency_olean_sha256": {},
+  "prerequisite_receipt_sha256": {},
+  "signature_comparison_receipt_file": "COMPARE_DATA03.json",
+  "signature_comparison_receipt_sha256": "46b5d4f3ed37ccc811a0273b236c7ad4d162a36c3db9b506e224876d3f1eacc5",
+  "deadline_file": "DEADLINE_BATCH01.json",
+  "launch_environment": {
+    "PATH": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin:/usr/local/bin:/usr/bin:/bin"
+  }
+}

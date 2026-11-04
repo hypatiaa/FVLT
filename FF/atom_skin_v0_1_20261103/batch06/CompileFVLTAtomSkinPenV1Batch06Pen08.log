@@ -1,0 +1,153 @@
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch06Pen08/src/FVLTAtomSkinPenV1.lean:203:42: warning: This simp argument is unused:
+  or_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [boxOrbit, toggle_commute ω w i j, or_left_comm, or_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch06Pen08/src/FVLTAtomSkinPenV1.lean:203:65: warning: This simp argument is unused:
+  or_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [boxOrbit, toggle_commute ω w i j, or_comm, or_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch06Pen08/src/FVLTAtomSkinPenV1.lean:208:55: warning: This simp argument is unused:
+  or_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [boxOrbit, toggle_twice, or_comm, or_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch06Pen08/src/FVLTAtomSkinPenV1.lean:218:24: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch06Pen08/src/FVLTAtomSkinPenV1.lean:251:15: warning: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hb] at he
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch06Pen08/src/FVLTAtomSkinPenV1.lean:365:52: warning: This simp argument is unused:
+  Finsupp.single_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all [coefficient, boundary, mkEdge, lower, Subtype.mk.injEq, Prod.mk.injEq, epsilon_insert]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch06Pen08/src/FVLTAtomSkinPenV1.lean:375:24: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch06Pen08/src/FVLTAtomSkinPenV1.lean:376:10: warning: This simp argument is unused:
+  Finset.erase_eq_of_notMem hd
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch06Pen08/src/FVLTAtomSkinPenV1.lean:391:65: warning: This simp argument is unused:
+  hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [directedCoefficient, toggle, mkEdge, lower, upper, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch06Pen08/src/FVLTAtomSkinPenV1.lean:401:65: warning: This simp argument is unused:
+  hne
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [directedCoefficient, toggle, mkEdge, lower, upper, hd]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch06Pen08/src/FVLTAtomSkinPenV1.lean:431:6: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch06Pen08/src/FVLTAtomSkinPenV1.lean:431:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  if squareAt ω hω w i = squareAt ω hω (lower ω ⟨(Finset.erase w i, i), ⋯⟩) i then ?m.60 else ?m.61
+in the target expression
+  (if squareAt ω hω w i = squareAt ω hω (lower ω ⟨(Finset.erase w i, i), ⋯⟩) i then
+      epsilon ω (lower ω ⟨(Finset.erase w i, i), ⋯⟩)
+    else
+      if squareAt ω hω w i = squareAt ω hω (lower ω ⟨(Finset.erase w i, i), ⋯⟩) (prev ω hω i) then
+        -epsilon ω (lower ω ⟨(Finset.erase w i, i), ⋯⟩)
+      else 0) =
+    epsilon ω (Finset.erase w i)
+
+ω : ℕ
+hω : 3 ≤ ω
+w : Vertex ω
+i : Fin ω
+hp : squareAt ω hω w i = squareAt ω hω (lower ω ⟨(Finset.erase w i, i), ⋯⟩) i
+⊢ (if squareAt ω hω w i = squareAt ω hω (lower ω ⟨(Finset.erase w i, i), ⋯⟩) i then
+      epsilon ω (lower ω ⟨(Finset.erase w i, i), ⋯⟩)
+    else
+      if squareAt ω hω w i = squareAt ω hω (lower ω ⟨(Finset.erase w i, i), ⋯⟩) (prev ω hω i) then
+        -epsilon ω (lower ω ⟨(Finset.erase w i, i), ⋯⟩)
+      else 0) =
+    epsilon ω (Finset.erase w i)
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    Subtype.instDecidableEq (squareAt ω hω w i) (squareAt ω hω (lower ω (mkEdge ω w i)) (↑(mkEdge ω w i)).2)
+  has type
+    Decidable (squareAt ω hω w i = squareAt ω hω (lower ω (mkEdge ω w i)) (↑(mkEdge ω w i)).2)
+  but is expected to have type
+    Decidable (squareAt ω hω w i = squareAt ω hω (lower ω ⟨(Finset.erase w i, i), ⋯⟩) i)
+  in the application
+    @ite ℤ (squareAt ω hω w i = squareAt ω hω (lower ω ⟨(Finset.erase w i, i), ⋯⟩) i)
+      (Subtype.instDecidableEq (squareAt ω hω w i) (squareAt ω hω (lower ω (mkEdge ω w i)) (↑(mkEdge ω w i)).2))
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch06Pen08/src/FVLTAtomSkinPenV1.lean:453:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch06Pen08/src/FVLTAtomSkinPenV1.lean:453:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  if squareAt ω hω w i = squareAt ω hω (lower ω ⟨(Finset.erase w (next ω hω i), next ω hω i), ⋯⟩) (next ω hω i) then
+    ?m.88
+  else ?m.89
+in the target expression
+  (if squareAt ω hω w i = squareAt ω hω (lower ω ⟨(Finset.erase w (next ω hω i), next ω hω i), ⋯⟩) (next ω hω i) then
+      epsilon ω (lower ω ⟨(Finset.erase w (next ω hω i), next ω hω i), ⋯⟩)
+    else
+      if
+          squareAt ω hω w i =
+            squareAt ω hω (lower ω ⟨(Finset.erase w (next ω hω i), next ω hω i), ⋯⟩) (prev ω hω (next ω hω i)) then
+        -epsilon ω (lower ω ⟨(Finset.erase w (next ω hω i), next ω hω i), ⋯⟩)
+      else 0) =
+    -epsilon ω (Finset.erase w (next ω hω i))
+
+ω : ℕ
+hω : 3 ≤ ω
+w : Vertex ω
+i : Fin ω
+hp : squareAt ω hω w i ≠ squareAt ω hω (lower ω ⟨(Finset.erase w (next ω hω i), next ω hω i), ⋯⟩) (next ω hω i)
+hs :
+  squareAt ω hω w i = squareAt ω hω (lower ω ⟨(Finset.erase w (next ω hω i), next ω hω i), ⋯⟩) (prev ω hω (next ω hω i))
+⊢ (if squareAt ω hω w i = squareAt ω hω (lower ω ⟨(Finset.erase w (next ω hω i), next ω hω i), ⋯⟩) (next ω hω i) then
+      epsilon ω (lower ω ⟨(Finset.erase w (next ω hω i), next ω hω i), ⋯⟩)
+    else
+      if
+          squareAt ω hω w i =
+            squareAt ω hω (lower ω ⟨(Finset.erase w (next ω hω i), next ω hω i), ⋯⟩) (prev ω hω (next ω hω i)) then
+        -epsilon ω (lower ω ⟨(Finset.erase w (next ω hω i), next ω hω i), ⋯⟩)
+      else 0) =
+    -epsilon ω (Finset.erase w (next ω hω i))
+
+Note: The target expression is not type-correct under the `implicit` transparency level, which may have triggered the failure. This is usually caused by unfolding of semireducible definitions in prior tactic steps. Use `set_option linter.tacticCheckInstances true` to investigate the source of the issue.
+Full error:
+  Application type mismatch: The argument
+    Subtype.instDecidableEq (squareAt ω hω w i)
+      (squareAt ω hω (lower ω (mkEdge ω w (next ω hω i))) (↑(mkEdge ω w (next ω hω i))).2)
+  has type
+    Decidable (squareAt ω hω w i = squareAt ω hω (lower ω (mkEdge ω w (next ω hω i))) (↑(mkEdge ω w (next ω hω i))).2)
+  but is expected to have type
+    Decidable
+      (squareAt ω hω w i = squareAt ω hω (lower ω ⟨(Finset.erase w (next ω hω i), next ω hω i), ⋯⟩) (next ω hω i))
+  in the application
+    @ite ℤ (squareAt ω hω w i = squareAt ω hω (lower ω ⟨(Finset.erase w (next ω hω i), next ω hω i), ⋯⟩) (next ω hω i))
+      (Subtype.instDecidableEq (squareAt ω hω w i)
+        (squareAt ω hω (lower ω (mkEdge ω w (next ω hω i))) (↑(mkEdge ω w (next ω hω i))).2))

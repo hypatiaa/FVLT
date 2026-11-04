@@ -1,0 +1,9 @@
+{
+  "batch": "FF3 Batch01",
+  "origin_unix": 1793778950,
+  "deadline_unix": 1793780750,
+  "last_child_end_unix": 1793779215.903363,
+  "closed_unix": 1793782708,
+  "mathematical_calls_closed": true,
+  "status": "Expired while awaiting accepted definition repair; no reset"
+}

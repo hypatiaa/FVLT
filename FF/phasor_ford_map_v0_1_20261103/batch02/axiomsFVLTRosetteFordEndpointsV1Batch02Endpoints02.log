@@ -1,0 +1,8 @@
+'FVLT.PhasorFordV1.det_zero_iff_address_equal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.PhasorFordV1.classify_stall_iff' depends on axioms: [propext]
+'FVLT.PhasorFordV1.classify_tangent_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.PhasorFordV1.classify_break_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.PhasorFordV1.path_edge_trichotomy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.PhasorFordV1.path_kind_tangent_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.PhasorFordV1.tangent_endpoint_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.PhasorFordV1.nontangent_no_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]

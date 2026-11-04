@@ -1,0 +1,45 @@
+{
+  "schema": "ff2-source-signature-comparison/1",
+  "verdict": "PASS",
+  "source_sha256": {
+    "FVLTAtomSkinPenV1.lean": "7caf134ca1434b46cb834f1ea0bdc547223ae7fca75f962d0a77beea9bcd0b18"
+  },
+  "freeze_sha256": "22650c5b0304d82bfd7d89a1bcfcb20884f6c11d104729aaf8187e678efd02c5",
+  "g1_import_closure_excluded": true,
+  "definition_successor_sha256": "a1ea047d677555c081cfda988487429446a6ab5f08e2b090427dc903d2012727",
+  "repair_decision_sha256": "d6a666bdeb3ad65bc294d29da7e0f54f5fce8af51695b058ee5591d0b07abcb9",
+  "present_targets": [
+    "pen_adjacent_seat",
+    "pen_return_four",
+    "pen_no_earlier_return"
+  ],
+  "pending_targets": [
+    "chi_even",
+    "chi_formula",
+    "cube_connected",
+    "cube_edge_iff",
+    "cube_genus_zero",
+    "edge_count",
+    "fixingHalfTurn_iff_corner_class",
+    "fixingHalfTurn_iff_multiples",
+    "four_corner_classes_distinct",
+    "genus_formula",
+    "halfTurn_not_identity",
+    "incident_coefficients_opposite",
+    "incident_direction_equiv",
+    "incident_pair_distinct",
+    "incident_pair_exhaustive",
+    "incident_square_count",
+    "key_classifies",
+    "link_cycle",
+    "nonzero_translation_fixes_nothing",
+    "pen_four_corners",
+    "pen_oriented_square",
+    "pillowRel_equivalence",
+    "square_count",
+    "total_boundary_zero",
+    "vertex_count"
+  ],
+  "method": "Same3frozenpublicheaders verifiedtokenexact;proof-only preserve membershipcontradiction before simp and remove alreadyclosed tactic;no data/header/publicdecl change",
+  "status_scope": "Partial3of5Pentargets;withretained16would19of28ifclear;not arbitrary signstream periodicity"
+}

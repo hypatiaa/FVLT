@@ -1,0 +1,10 @@
+{
+  "status": "PASS_STATIC_ONLY_NOT_LEAN_ELABORATION",
+  "target_count": 37,
+  "data_declarations": 19,
+  "runner_imported": false,
+  "runner_executed": false,
+  "lean_invoked": false,
+  "mathematical_result": false,
+  "note": "Static validator distinguishes proposition-level let assignments from proof bodies"
+}

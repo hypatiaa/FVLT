@@ -1,0 +1,109 @@
+{
+  "schema": "ff3-batch03-evidence/1",
+  "status": "PRODUCER_LOCAL_PASS_13_OF_37_INDEPENDENT_PENDING",
+  "files": [
+    {
+      "file": "axiomsFVLTRosetteFordPhaseV1Batch03Phase02.json",
+      "sha256": "e86746675780ecb7beb640c29bff8208781e6a91d303d85cd76d352a6705e5fb",
+      "bytes": 7466
+    },
+    {
+      "file": "axiomsFVLTRosetteFordPhaseV1Batch03Phase02.log",
+      "sha256": "44c868d89dcd9fcb73482e4402ac65fa4d3f4632487be18c5c54a5f8dbc3e29b",
+      "bytes": 517
+    },
+    {
+      "file": "BATCH03_CLOSE_v0_1.json",
+      "sha256": "bd0380d31392d369905aaab5628b88f2e926a8e601d0e68199ad3197ea700b07",
+      "bytes": 369
+    },
+    {
+      "file": "BATCH03_STATUS_v0_1.md",
+      "sha256": "14aa6015dd33d7a02e1e025d01dfda793526ae129f0140e52758349c934312b6",
+      "bytes": 4932
+    },
+    {
+      "file": "BOUND_BATCH03.json",
+      "sha256": "0c5056acb3e8de4f5a89e3f4852306af69ee7f7d2c6c2d87b190be754e935c29",
+      "bytes": 5010
+    },
+    {
+      "file": "CAPACITY_BATCH03.json",
+      "sha256": "967232d45ce5dc58f658daa2fb393b048f7b9099eea9f3a52a109c9615eb3b47",
+      "bytes": 227
+    },
+    {
+      "file": "COMPARE_PHASE01.json",
+      "sha256": "75df8fbb81760f9f73d0e5aaf35ca0c921f1b1701bf312f16e85b1097cf092c3",
+      "bytes": 1504
+    },
+    {
+      "file": "COMPARE_PHASE02.json",
+      "sha256": "58192fd830d551dc08f9530edb65978ef87df8134930e76a775b9deba527e78d",
+      "bytes": 1499
+    },
+    {
+      "file": "CompileFVLTRosetteFordPhaseV1Batch03Phase01.json",
+      "sha256": "5239944a45865522b6473085030a0d5897fbdb8fd765ba480bb629cb66b102fe",
+      "bytes": 6202
+    },
+    {
+      "file": "CompileFVLTRosetteFordPhaseV1Batch03Phase01.log",
+      "sha256": "06d190a51c2ef1a24af6292b19c45c5178d37631df4ede58895393b720e05fef",
+      "bytes": 1804
+    },
+    {
+      "file": "CompileFVLTRosetteFordPhaseV1Batch03Phase02.json",
+      "sha256": "9b711c4bb26473ce9225d98fed79efda581c38775bb949cc5a520be592eafb5a",
+      "bytes": 6286
+    },
+    {
+      "file": "CompileFVLTRosetteFordPhaseV1Batch03Phase02.log",
+      "sha256": "638770ce6c15850d8ffd9867c05f159177da09ca79d4b39bebb695ff5edb3668",
+      "bytes": 1653
+    },
+    {
+      "file": "DEADLINE_BATCH03.json",
+      "sha256": "281c8c1c2bb8e90edcea8ebef04df9d98c115375fe0ad119fa54d374ffc4f24c",
+      "bytes": 152
+    },
+    {
+      "file": "HOST_RESERVATION_BATCH03.json",
+      "sha256": "cf8541ad4bdc65129d261adffb4a856fecaaac3f17c54af89ade192493766131",
+      "bytes": 267
+    },
+    {
+      "file": "JOB_axiomsFVLTRosetteFordPhaseV1Batch03Phase02.json",
+      "sha256": "01c11ee708e27ba5c9bc209e4bbda986b742809f5fcf52af30e924549801b573",
+      "bytes": 2043
+    },
+    {
+      "file": "JOB_CompileFVLTRosetteFordPhaseV1Batch03Phase01.json",
+      "sha256": "cbc1db78ad1947715c07553a48676633fe845ab8a78bc41f9a29be9ad6140115",
+      "bytes": 1294
+    },
+    {
+      "file": "JOB_CompileFVLTRosetteFordPhaseV1Batch03Phase02.json",
+      "sha256": "3ebb732553bdb1c2b5fc73b00b43396b606c54a54f71422a22e9d7c27f3d7a42",
+      "bytes": 1294
+    },
+    {
+      "file": "JOB_replayFVLTRosetteFordPhaseV1Batch03Phase02.json",
+      "sha256": "5bddce0b9310b4e70c45c18078a9ce175957761a0c52fb372b14346b425596f3",
+      "bytes": 1605
+    },
+    {
+      "file": "replayFVLTRosetteFordPhaseV1Batch03Phase02.json",
+      "sha256": "9d9c09089fa2bf7cddd7ac9309a87d42b835a9e96187c4bbbe72e3d70366e72b",
+      "bytes": 6409
+    },
+    {
+      "file": "replayFVLTRosetteFordPhaseV1Batch03Phase02.log",
+      "sha256": "54d6ab5b88679545a66eaf5c22d656e74eb6384e0f04062c1dfa452d3bab53ac",
+      "bytes": 163803
+    }
+  ],
+  "data_source_sha256": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+  "phase_source_sha256": "2a48f1c65b7a5a31cbeaecac2edf13f2a64fec583e2d70af6473f06a41917459",
+  "statement_comparison": "LF-normalized text; posted CRLF source bytes preserved"
+}

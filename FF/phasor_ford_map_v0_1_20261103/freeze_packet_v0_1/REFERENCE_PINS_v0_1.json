@@ -1,0 +1,77 @@
+[
+  {
+    "file": "inputs/WORK_ORDER_v0_2.md",
+    "source": "C:\\Users\\robin\\s6_atom\\FVLT_FORMALIZATION_v0_1_20261028\\phasor_ford_map_v0_1_20261103\\WORK_ORDER_v0_2.md",
+    "sha256": "5b41c955e35478f7eeca169586384c0dffe63c45e1fa3a5488886bb03610c035"
+  },
+  {
+    "file": "inputs/OWNER_REVIEW_v0_2.md",
+    "source": "C:\\Users\\robin\\s6_atom\\rule30_seats\\codex\\reviews\\ff3_design_20261103\\REVIEW_v0_2.md",
+    "sha256": "cd0ecc9a57d107c9ce3b7beb62ea9477327cef100b5b8e964cf7541cf70cb90b"
+  },
+  {
+    "file": "inputs/CONDITIONAL_EXECUTION_GO_20261103.md",
+    "source": "C:\\Users\\robin\\s6_atom\\FVLT_FORMALIZATION_v0_1_20261028\\phasor_ford_map_v0_1_20261103\\CONDITIONAL_EXECUTION_GO_20261103.md",
+    "sha256": "1035988d640204a3fa4f6ce6c316aa2b07b0e365541e2c838e9bfba220048365"
+  },
+  {
+    "file": "inputs/SEQUENCING_DECISION_FF2_FF3_20261103.md",
+    "source": "C:\\Users\\robin\\s6_atom\\FVLT_FORMALIZATION_v0_1_20261028\\atom_skin_v0_1_20261103\\SEQUENCING_DECISION_FF2_FF3_20261103.md",
+    "sha256": "b6e8581597fdc305c3f9b95466cf286e0fc8b9a4df6509c82c8735e43e1d7146"
+  },
+  {
+    "file": "inputs/FF2_FINAL_AUDIT_v0_1.md",
+    "source": "C:\\Users\\robin\\s6_atom\\FVLT_FORMALIZATION_v0_1_20261028\\atom_skin_v0_1_20261103\\FF2_FINAL_AUDIT_v0_1.md",
+    "sha256": "70d6dbf51ae1fea634a85f58ade78c3900affd41046d3a7356a9b463e0018cf0"
+  },
+  {
+    "file": "inputs/LIBRARY_V21_READINESS_RECEIPT.md",
+    "source": "C:\\Users\\robin\\s6_atom\\FVLT_FORMALIZATION_v0_1_20261028\\atom_skin_v0_1_20261103\\library_sync_v0_1\\LIBRARY_V21_READINESS_RECEIPT.md",
+    "sha256": "b4fe0fab19170836340c0d4f295ded9570bd628d4b3238710fd714fd5a71b77e"
+  },
+  {
+    "file": "inputs/FF1_WORK_ORDER_v0_3.md",
+    "source": "C:\\Users\\robin\\s6_atom\\FVLT_FORMALIZATION_v0_1_20261028\\farey_ford_contact_v0_1_20261102\\WORK_ORDER_v0_3.md",
+    "sha256": "43560b88ab50dc77d8e222562f83bad68c8ba17d12a073523a99597a484d6fdd"
+  },
+  {
+    "file": "inputs/F1_AUDIT_AND_BRIDGE_DECISION_v0_1.md",
+    "source": "C:\\Users\\robin\\s6_atom\\FVLT_FORMALIZATION_v0_1_20261028\\farey_ford_contact_v0_1_20261102\\F1_AUDIT_AND_BRIDGE_DECISION_v0_1.md",
+    "sha256": "d5470d9b2353ca9de7309064dad363955e567a356fb5075dae04c0f9f32c7526"
+  },
+  {
+    "file": "inputs/F2_AUDIT_AND_BRIDGE_RUNNER_DECISION_v0_1.md",
+    "source": "C:\\Users\\robin\\s6_atom\\FVLT_FORMALIZATION_v0_1_20261028\\farey_ford_contact_v0_1_20261102\\F2_AUDIT_AND_BRIDGE_RUNNER_DECISION_v0_1.md",
+    "sha256": "95532c2c4101197646a7a310120c9ec766282a1b41537557f585591d0d4968e1"
+  },
+  {
+    "file": "inputs/BRIDGE_SIGNATURE_FREEZE_DRAFT_v0_1.md",
+    "source": "C:\\Users\\robin\\s6_atom\\FVLT_FORMALIZATION_v0_1_20261028\\farey_ford_contact_v0_1_20261102\\BRIDGE_SIGNATURE_FREEZE_DRAFT_v0_1.md",
+    "sha256": "4c9c80e59664bf91f2b558611bd764e8e5f58c8286b4db7cebdc00e4e61f4f8d"
+  },
+  {
+    "file": "inputs/FF1_FINAL_INTEGRATION_VERDICT_v0_1.json",
+    "source": "C:\\Users\\robin\\s6_atom\\FVLT_FORMALIZATION_v0_1_20261028\\farey_ford_contact_v0_1_20261102\\stage_a_integration_v1\\FINAL_INTEGRATION_VERDICT_v0_1.json",
+    "sha256": "b87d58eb1798325f68d171bcb48ad7a3d8c30509fb03bd65b0dd37a084a3c46b"
+  },
+  {
+    "file": "inputs/FF1_RECORDED_FIDELITY_SIGNOFF_v0_1.json",
+    "source": "C:\\Users\\robin\\s6_atom\\FVLT_FORMALIZATION_v0_1_20261028\\farey_ford_contact_v0_1_20261102\\stage_a_integration_v1\\RECORDED_FIDELITY_SIGNOFF_v0_1.json",
+    "sha256": "7a7f0e848bbe3fc8d4ff0cf00dea03c2b14fc545baa28033941222914b4153e3"
+  },
+  {
+    "file": "inputs/REFERENCE_KERNEL_v3_3_1.md",
+    "source": "C:\\Users\\robin\\.codex\\skills\\fvlt\\legacy\\v3.3.1\\kernel_v3_3_1.md",
+    "sha256": "e49533088843e2cd0a1c531c4d8ba113ea30113e8135a15c17c040bdfca3e0e0"
+  },
+  {
+    "file": "inputs/CURRENT_KERNEL_v3_4_0.md",
+    "source": "C:\\Users\\robin\\.codex\\skills\\fvlt\\kernel_v3_4_0.md",
+    "sha256": "0d6beee233602502576c1d0eedfe5a586e66f1b4e4b8a1858c39189d872ec1a2"
+  },
+  {
+    "file": "inputs/UNAUDITED_REFERENCE_LEMMA_6a.md",
+    "source": "C:\\Users\\robin\\s6_atom\\candidates\\ANL4_S2_FAREY_INPUT_LEMMA_v0_1_CLAUDE_OPUS_20260925.md",
+    "sha256": "220a481905da2767379318d4960d08713ca821f1c6fcee944d6eed598f10bb3b"
+  }
+]

@@ -1,0 +1,8 @@
+{
+  "folder": "../final_source_packet_v0_1",
+  "manifest_sha256": "2b4ac17abb7699509028ef20b6c840db33382e4dd4f00946ad4a65b73777cfdd",
+  "listed_files": 99,
+  "source_comparison_sha256": "33a3c637e4cce36d59716c917760768d11a0888b76c8dcc6a76c6f758637057e",
+  "check_index_sha256": "0bd4e836f229a3ec89b1c6c6d263cf027a07e4f429bd15005b1d6ebba47ead89",
+  "status": "PRODUCER_LOCAL_37_OF_37_INDEPENDENT_PENDING"
+}

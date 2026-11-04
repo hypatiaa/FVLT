@@ -1,0 +1,13 @@
+{
+  "status": "CLOSED",
+  "observed_no_active_run_unix": 1793785457,
+  "origin_unix": 1793784377,
+  "original_deadline_unix": 1793786177,
+  "clock_reset": false,
+  "further_calls_allowed": false,
+  "arithmetic_completed": 15,
+  "cumulative_completed_theorem_targets": 28,
+  "remaining_theorem_targets": 9,
+  "remaining_module": "Sweep",
+  "independent_review": "PENDING"
+}

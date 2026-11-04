@@ -16,3 +16,11 @@ This folder is a private backup of the 84 FVLT Lean modules, copied byte for byt
 - **It is not a full backup.** The full backup of every version, with the kit copies, manifests, tools and logs, is meant for a local drive, not this repository.
 
 Credit: saphir (@saphirbijoux), with the authoring model seats recorded in the library's `LIBRARY_MANIFEST.json`.
+
+## Update 2026-11-04: library v23 (FF-3)
+
+The v21 backup above is unchanged, and `MANIFEST.sha256` still pins it. This update adds the five FF-3 modules from frozen library **v23** (`FVLTRosetteFord{Arithmetic,Data,Endpoints,Phase,Sweep}V1.lean`). The 84 v21 files are byte-identical in v23, so nothing else changed.
+
+- v23 `SHA256SUMS`: `394e72c5ce5010349779fd41b1490c4672f160f72aa779b732df272086317903`
+- `MANIFEST_v23.sha256`: the 89 v23 entries for `theorems/FVLT*.lean`; `sha256sum -c MANIFEST_v23.sha256` must report 89 OK.
+- FF-2's modules (`FVLTAtomSkin*`, `FVLTPillowcase*`) were already in v21. The FF-2 and FF-3 working records are in `../FF/`.

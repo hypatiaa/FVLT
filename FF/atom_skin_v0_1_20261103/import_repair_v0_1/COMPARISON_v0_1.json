@@ -1,0 +1,9 @@
+{
+  "kind": "import-only-repair-comparison",
+  "namespace_bodies_byte_equal": true,
+  "headers_unchanged": "b4484f6e148291dd20512e58ce4ec81b4bdf08527f4bd66b3e304cbb2654785a",
+  "original_definitions_sha256": "61ca7137e1307967866f97d096dda974d2f6400d32374f69252fcfe6598de615",
+  "successor_sha256": "6b013b45bfafad44641edfab88d6a17c8de98581e1acf4d8b78cfde19e872623",
+  "failing_compile_receipt_sha256": "d01c09034384aa3db49077a12de4aaa3f8fe0b967354f4bec86285d3de7544e8",
+  "failing_log_sha256": "c4e43a379956e03c3ebc83efc59f14184070aaf6490ee7d53686b5e880e1a3d0"
+}

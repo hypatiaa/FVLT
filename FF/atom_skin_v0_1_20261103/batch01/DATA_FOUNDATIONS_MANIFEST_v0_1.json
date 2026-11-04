@@ -1,0 +1,81 @@
+{
+  "schema": "ff2-data-foundations-result/1",
+  "status": "PRODUCER_PARTIAL_NOT_FINAL_PASS",
+  "files": [
+    {
+      "path": "RESULT_DATA_FOUNDATIONS_v0_1.md",
+      "bytes": 5329,
+      "sha256": "1ac6172a4cfa95ebaee628832b9105bc14e3425901be1b88c15f5cc32221e4bc"
+    },
+    {
+      "path": "BATCH01_CLOSE_v0_1.json",
+      "bytes": 376,
+      "sha256": "612be8102afec706353b78dfb545587d46a87b41db89bf39a403c1500ee4f61b"
+    },
+    {
+      "path": "CompileFVLTAtomSkinDataV1Batch01Data03.json",
+      "bytes": 2963,
+      "sha256": "d47d963b2f376beb09827dfcd2df65bd2c3e73138bc1da5f054ce63e4a30d750"
+    },
+    {
+      "path": "CompileFVLTAtomSkinDataV1Batch01Data03.log",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "AxiomsFVLTAtomSkinDataV1Batch01Data03.json",
+      "bytes": 3235,
+      "sha256": "1832caac283ed70ca9799a4c7623389fbfb8d63b89da7b458c3619d85690b314"
+    },
+    {
+      "path": "AxiomsFVLTAtomSkinDataV1Batch01Data03.log",
+      "bytes": 2230,
+      "sha256": "57bc602e47768cd6eb360f7063f188e55e8e30b146d11c9c29d9ee4972656bc3"
+    },
+    {
+      "path": "ReplayFVLTAtomSkinDataV1Batch01Data03.json",
+      "bytes": 3106,
+      "sha256": "8e29e6656768b35b51301a52637ba1a1a4e7f6e5d087187598e18d984b71227a"
+    },
+    {
+      "path": "ReplayFVLTAtomSkinDataV1Batch01Data03.log",
+      "bytes": 78835,
+      "sha256": "094986ba6e15762015413fb97efea8783fa5bf79623aaeaf0b7a92905ed47396"
+    },
+    {
+      "path": "attempts/Data03/src/FVLTAtomSkinDataV1.lean",
+      "bytes": 3572,
+      "sha256": "8d165af954019dd15fad6f7bf082922119d9364a3727fa59879d945fc5e8f085"
+    },
+    {
+      "path": "attempts/Data03/AuditAtomSkinDataV1.lean",
+      "bytes": 1146,
+      "sha256": "348f69ab9b65d1f4724845e505daf163e2caaa701ecd12a4ec178e9186af1eed"
+    },
+    {
+      "path": "accepted_repairs/FF2_DEFINITIONS_PROPOSED_v0_3.lean.txt",
+      "bytes": 4767,
+      "sha256": "a1ea047d677555c081cfda988487429446a6ab5f08e2b090427dc903d2012727"
+    },
+    {
+      "path": "accepted_repairs/REPAIR_DECISION_v0_1.md",
+      "bytes": 4137,
+      "sha256": "d6a666bdeb3ad65bc294d29da7e0f54f5fce8af51695b058ee5591d0b07abcb9"
+    },
+    {
+      "path": "RESULT_PILLOWCASE_DATA_v0_1.md",
+      "bytes": 4464,
+      "sha256": "14a7dc791e6b5f59ef4f32b5f1a84f16556cf92d6b94e1c83c9a415ee1283342"
+    },
+    {
+      "path": "PILLOWCASE_DATA_MANIFEST_v0_1.json",
+      "bytes": 2136,
+      "sha256": "fcd73861c22fe87680769747594e74bae26df95ea388b5937a0d3a47ecd3642f"
+    },
+    {
+      "path": "DEVIATION_AND_DIAGNOSTIC_CORRECTION_v0_1.md",
+      "bytes": 2036,
+      "sha256": "c619da84e6bba0472631c7a69354ee676c8a90b16f6fc7256228f7193e7134b4"
+    }
+  ]
+}

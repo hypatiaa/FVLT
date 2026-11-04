@@ -1,0 +1,163 @@
+{
+  "schema": "ff3-batch06-evidence/1",
+  "status": "PRODUCER_LOCAL_PASS_37_OF_37_INDEPENDENT_PENDING",
+  "files": [
+    {
+      "file": "axiomsFVLTRosetteFordSweepV1Batch06Final04.json",
+      "sha256": "cb889720b4c644db7f1e6e2b548ee559b348940936a1804e99293485b05976bf",
+      "bytes": 9107
+    },
+    {
+      "file": "axiomsFVLTRosetteFordSweepV1Batch06Final04.log",
+      "sha256": "b0bb9d58108c12db5b8d6267568b6c8736d4c573c41a8041bcbd698080df3f77",
+      "bytes": 903
+    },
+    {
+      "file": "BATCH06_CLOSE_v0_1.json",
+      "sha256": "0ad77120e5babcc709eef096e7f72eaf965819dec06dfae2e95781deca2cc979",
+      "bytes": 407
+    },
+    {
+      "file": "BATCH06_STATUS_v0_1.md",
+      "sha256": "27c9155f6121e12f5ff96c7f1e8819b54cd59f0b5106afa860cbe75bf3e1c5a5",
+      "bytes": 6510
+    },
+    {
+      "file": "BOUND_BATCH06_FINAL03.json",
+      "sha256": "5af1ae4c3ccd1c8d79bc856857bf823fe2eee1faef6d8792cbed1ac237a686bd",
+      "bytes": 4903
+    },
+    {
+      "file": "BOUND_BATCH06.json",
+      "sha256": "88bc77ed3d10dd24c23b9798137994e0806659086f0e26e3c5e3333f16ee6496",
+      "bytes": 4895
+    },
+    {
+      "file": "CAPACITY_BATCH06_FINAL03.json",
+      "sha256": "53872e53f0ffeaa12b99d57d101e8ad8c201918ff206a53f62d237bb750b2a29",
+      "bytes": 218
+    },
+    {
+      "file": "CAPACITY_BATCH06.json",
+      "sha256": "322c58e101ca22c550d31282e2214a8426fbd4258e9d84711fbd979effb9ac4d",
+      "bytes": 215
+    },
+    {
+      "file": "COMPARE_FINAL01.json",
+      "sha256": "dd9feed88af5ca56a10de7809e2fd2d74f5dafdd2a2e0894070d7c40c8c4845b",
+      "bytes": 1881
+    },
+    {
+      "file": "COMPARE_FINAL02.json",
+      "sha256": "409213ffd10c635f4a091b0cc1415bceabcaadfddb7573f225eaa3b21de907eb",
+      "bytes": 1885
+    },
+    {
+      "file": "COMPARE_FINAL03.json",
+      "sha256": "774ecb4d7bccf80349d3ed15e05c17559bf7312d75554cd6af18a2f943023e33",
+      "bytes": 2007
+    },
+    {
+      "file": "COMPARE_FINAL04.json",
+      "sha256": "1a9e05e54602ee071131d8a6fbb866e0128dbaa05859d6785b23b682d0a68292",
+      "bytes": 1988
+    },
+    {
+      "file": "CompileFVLTRosetteFordSweepV1Batch06Final01.json",
+      "sha256": "92c03f4c1fdccfb3e1be9fa447b0d07e647d50394be2e87ebe4cb2801fa4b1df",
+      "bytes": 7085
+    },
+    {
+      "file": "CompileFVLTRosetteFordSweepV1Batch06Final01.log",
+      "sha256": "678323a9f59cb32f1d3949445ec00db95dc13add5d0e099bdaef3ed958c40e07",
+      "bytes": 4757
+    },
+    {
+      "file": "CompileFVLTRosetteFordSweepV1Batch06Final02.json",
+      "sha256": "9c010723e590344c21f2f17ef4f5cc6711ef2701f76ff576b774be326ed17773",
+      "bytes": 7171
+    },
+    {
+      "file": "CompileFVLTRosetteFordSweepV1Batch06Final02.log",
+      "sha256": "bbef9b7ab1defba3d07950e3e829a990891c7483c95f2f72a82f7b724aac75c5",
+      "bytes": 4302
+    },
+    {
+      "file": "CompileFVLTRosetteFordSweepV1Batch06Final03.json",
+      "sha256": "28a4d635cf434aa7d4d89e6b325c58161963a329fbff98db75307b07464397c2",
+      "bytes": 7211
+    },
+    {
+      "file": "CompileFVLTRosetteFordSweepV1Batch06Final03.log",
+      "sha256": "2dff5e0090b379571189977763447c9360ee42366109b2e73fdf8efa9fe7893e",
+      "bytes": 4935
+    },
+    {
+      "file": "CompileFVLTRosetteFordSweepV1Batch06Final04.json",
+      "sha256": "4c801d71aceedddb8b1f96a5d4805991f525b29cc606a892eea3eca23dd39da9",
+      "bytes": 7295
+    },
+    {
+      "file": "CompileFVLTRosetteFordSweepV1Batch06Final04.log",
+      "sha256": "128f3366e29a783826876ee897311a98f4ebbccdef4c4e05f1e54380af57863a",
+      "bytes": 4302
+    },
+    {
+      "file": "DEADLINE_BATCH06.json",
+      "sha256": "aa7c2f92b03992468c712d3c2f3e265a64b5f5f40fae482756f0eb7f58f348ab",
+      "bytes": 145
+    },
+    {
+      "file": "FINAL_PACKET_REFERENCE_v0_1.json",
+      "sha256": "97099dcd0eefeaf0999aca16ff3762b9176cf445293f6ca12b9c83001c731c98",
+      "bytes": 413
+    },
+    {
+      "file": "HOST_RESERVATION_BATCH06.json",
+      "sha256": "e64e0e3f71f490241a06514d3c413361d5ffd1d6a38f1d6e091b6605d6dc799e",
+      "bytes": 257
+    },
+    {
+      "file": "JOB_axiomsFVLTRosetteFordSweepV1Batch06Final04.json",
+      "sha256": "8d09438f16c8e1fcabe94192b2988715e1d5fdd4cddb1f2edd911a429b021638",
+      "bytes": 2924
+    },
+    {
+      "file": "JOB_CompileFVLTRosetteFordSweepV1Batch06Final01.json",
+      "sha256": "85428f591219f22cc6c46f3821049c630ee084863070ba9c53163c8b0b42ffd7",
+      "bytes": 1848
+    },
+    {
+      "file": "JOB_CompileFVLTRosetteFordSweepV1Batch06Final02.json",
+      "sha256": "d5efafb4e0654632e1c91bd8f7fb834ff082bf2f540efcad902b1f87d837d8f6",
+      "bytes": 1848
+    },
+    {
+      "file": "JOB_CompileFVLTRosetteFordSweepV1Batch06Final03.json",
+      "sha256": "d1b2ce03d0ca4b9e5951cae1b6ff460f9b689ba5fc100aef81982ef40549c9d1",
+      "bytes": 1972
+    },
+    {
+      "file": "JOB_CompileFVLTRosetteFordSweepV1Batch06Final04.json",
+      "sha256": "2594cc12e6b656a4fa622d75e2aa87e3b0aec6dc5780c1fe77ddc0325dc2fd2b",
+      "bytes": 1972
+    },
+    {
+      "file": "JOB_replayFVLTRosetteFordSweepV1Batch06Final04.json",
+      "sha256": "f4ca2ddc547c72e38476288840b187ddb56f828cf901a07b13c0a641f9722ad0",
+      "bytes": 2312
+    },
+    {
+      "file": "replayFVLTRosetteFordSweepV1Batch06Final04.json",
+      "sha256": "59958cbd51a65d504af23795afac0421fe02af96d2b6b0d10281d644d1502f1f",
+      "bytes": 7418
+    },
+    {
+      "file": "replayFVLTRosetteFordSweepV1Batch06Final04.log",
+      "sha256": "8ec958246a1ce76c2cf2960cfe2573459816c28c9b58a42d147dd42b7aec0f86",
+      "bytes": 168631
+    }
+  ],
+  "final_sweep_source_sha256": "1d982d2ee145511e2b4a55a72675b14e53b1df2cb94c872abb5baaf3a0697e23",
+  "source_packet_manifest_sha256": "2b4ac17abb7699509028ef20b6c840db33382e4dd4f00946ad4a65b73777cfdd"
+}

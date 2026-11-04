@@ -1,0 +1,15 @@
+{
+ "base_sha256": "0d6beee233602502576c1d0eedfe5a586e66f1b4e4b8a1858c39189d872ec1a2",
+ "candidate_sha256": "4b87049052b42f9dcdbc0a50df8523fde3d73cdab6e43d712b28e001b9ce9b37",
+ "old_occurrences": 1,
+ "new_found_in_candidate": true,
+ "lines_before": 5625,
+ "lines_after": 5625,
+ "changed_lines": [
+  644
+ ],
+ "new_occurrences_after": 1,
+ "applied_sha256": "e2d348b7ab32fde7f1a7083813e7e7b0add45174a827785f62b15193d2f1f9ed",
+ "non_ascii_dollar_balance_ok": true,
+ "ford_not_defined_mentions_after": 1
+}

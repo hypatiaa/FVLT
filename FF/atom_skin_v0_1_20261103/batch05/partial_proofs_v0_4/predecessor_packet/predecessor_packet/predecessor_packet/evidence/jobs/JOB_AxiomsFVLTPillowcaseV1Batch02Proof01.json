@@ -1,0 +1,29 @@
+{
+  "phase": "FF2_AB",
+  "module": "FVLTPillowcaseV1",
+  "mode": "axioms",
+  "run_id": "AxiomsFVLTPillowcaseV1Batch02Proof01",
+  "template_sha256": "d94d107af7e77a63493c68c3bb967c0763267fb5659c4f88e1670b23799d1c44",
+  "attempt_folder": "attempts/Batch02Proof01",
+  "source_sha256": {
+    "FVLTAtomSkinCountsV1.lean": "b2b526963e1f0f96ee4860da921eb021cd03bfce82a54d2a5e83178c0979a110",
+    "FVLTPillowcaseV1.lean": "74542518e382f7f67eeedce977e7f8896f1647a81764c544defac0ad87886446"
+  },
+  "dependency_olean_sha256": {
+    "FVLTAtomSkinDataV1.olean": "5d7862ee3f1f3fe1c88c715094cd934d406665a84c0e31d3dab618c67a4940cf",
+    "FVLTPillowcaseDataV1.olean": "6b656127d20b65964d65f11e234e6123a7324cc499f7f40c733f144de9f4d58d",
+    "FVLTPillowcaseV1.olean": "89c37c41b8333d441b2fe4b24c92930696973f332839458db7dbe3876c343eee"
+  },
+  "prerequisite_receipt_sha256": {
+    "CompileFVLTPillowcaseV1Batch02Proof01.json": "f605b406c3f9daedc56ed32e638aa131eddc11ca15498dcfd3c45701dc2f5817"
+  },
+  "own_compile_receipt_file": "CompileFVLTPillowcaseV1Batch02Proof01.json",
+  "signature_comparison_receipt_file": "COMPARE_PROOF01.json",
+  "signature_comparison_receipt_sha256": "89746fdf1d1833f10801ab95a5ef7fee311184c5f7fb302492de90a71ed4df7b",
+  "deadline_file": "DEADLINE_BATCH02.json",
+  "launch_environment": {
+    "PATH": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin:/usr/local/bin:/usr/bin:/bin"
+  },
+  "axiom_report_source": "AuditPillowcaseV1.lean",
+  "axiom_report_source_sha256": "648477b0828c11a01dae4d02c2ff0eb00e7770a21c94138baf86bccc2879287c"
+}

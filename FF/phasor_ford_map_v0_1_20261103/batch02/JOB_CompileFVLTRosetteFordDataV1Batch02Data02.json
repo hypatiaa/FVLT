@@ -1,0 +1,16 @@
+{
+  "phase": "FF3_DISCRETE",
+  "module": "FVLTRosetteFordDataV1",
+  "mode": "compile",
+  "run_id": "CompileFVLTRosetteFordDataV1Batch02Data02",
+  "template_sha256": "b18ceb29278347dc2ba99639778ecb74b7abeec22099275e6d6ee38a4e2dea0a",
+  "attempt_folder": "attempts/Batch02Data02",
+  "source_sha256": {
+    "FVLTRosetteFordDataV1.lean": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388"
+  },
+  "dependency_olean_sha256": {},
+  "prerequisite_receipt_sha256": {},
+  "signature_comparison_receipt_file": "COMPARE_DATA02.json",
+  "signature_comparison_receipt_sha256": "d6b1a564881c457e11384c1042eddb167409e75137aa3688f0bbff5a6b2ef5d3",
+  "deadline_file": "DEADLINE_BATCH02.json"
+}

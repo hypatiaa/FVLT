@@ -1,0 +1,45 @@
+{
+  "schema": "ff2-source-signature-comparison/1",
+  "verdict": "PASS",
+  "source_sha256": {
+    "FVLTAtomSkinCountsV1.lean": "0dd73ac65e337dc4d19a1b4b4a124fe72ff5413b0bbf4e5201f41460300012f2"
+  },
+  "freeze_sha256": "22650c5b0304d82bfd7d89a1bcfcb20884f6c11d104729aaf8187e678efd02c5",
+  "g1_import_closure_excluded": true,
+  "definition_successor_sha256": "a1ea047d677555c081cfda988487429446a6ab5f08e2b090427dc903d2012727",
+  "repair_decision_sha256": "d6a666bdeb3ad65bc294d29da7e0f54f5fce8af51695b058ee5591d0b07abcb9",
+  "present_targets": [
+    "vertex_count",
+    "cube_genus_zero",
+    "cube_edge_iff",
+    "cube_connected",
+    "incident_direction_equiv",
+    "edge_count",
+    "square_count",
+    "chi_formula",
+    "chi_even",
+    "genus_formula",
+    "incident_pair_distinct",
+    "incident_pair_exhaustive",
+    "incident_square_count",
+    "incident_coefficients_opposite"
+  ],
+  "pending_targets": [
+    "link_cycle",
+    "total_boundary_zero",
+    "pen_adjacent_seat",
+    "pen_oriented_square",
+    "pen_return_four",
+    "pen_no_earlier_return",
+    "pen_four_corners",
+    "pillowRel_equivalence",
+    "key_classifies",
+    "halfTurn_not_identity",
+    "fixingHalfTurn_iff_multiples",
+    "nonzero_translation_fixes_nothing",
+    "fixingHalfTurn_iff_corner_class",
+    "four_corner_classes_distinct"
+  ],
+  "method": "All14publicheaders normalized exact against originalfreeze; only private support added; same data import and targetedMathlib closure",
+  "status_scope": "Partial10of16Countstargetdevelopment;withretainedB6would16of28ifallclear"
+}

@@ -1,0 +1,11 @@
+{
+  "host": "nucleus",
+  "owner_thread": "01a18167-41de-74e0-882e-9171e642530f",
+  "purpose": "FF3 Batch01 serial data and proof development",
+  "cpu_jobs": 1,
+  "address_space_bytes": 8589934592,
+  "start_unix": 1793778950,
+  "end_unix": 1793780750,
+  "other_owned_builds": "None: FF1/FF2 previous batches closed; FF3 root absent at preflight",
+  "transport": "Tailscale[ts-redacted1]"
+}

@@ -1,0 +1,43 @@
+{
+  "phase": "FF3_DISCRETE",
+  "module": "FVLTRosetteFordSweepV1",
+  "mode": "axioms",
+  "run_id": "axiomsFVLTRosetteFordSweepV1Batch05Sweep04",
+  "template_sha256": "7f6dc69f4711a0a2d03a06438789b63c3d4a15ce45894a795918ef4e5d7ebf0d",
+  "attempt_folder": "attempts/Batch05Sweep04",
+  "source_sha256": {
+    "FVLTRosetteFordDataV1.lean": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+    "FVLTRosetteFordPhaseV1.lean": "2a48f1c65b7a5a31cbeaecac2edf13f2a64fec583e2d70af6473f06a41917459",
+    "FVLTRosetteFordSweepV1.lean": "eebe55f30df902c43f7b1634b39f502917f037ee82cb9f719e943baeff915deb"
+  },
+  "dependency_olean_sha256": {
+    "FVLTRosetteFordDataV1.olean": "ccb8d144cdd85989dd5acd0f092c976094ed4b7136e173590bcbc617a222b8e9",
+    "FVLTRosetteFordPhaseV1.olean": "12055f4be01f0a2f16ccf1edcd57a615046e1bfa0595651ee39242c9d0ddb805",
+    "FVLTRosetteFordSweepV1.olean": "c4030bf3e1690ce95db6e3470fbfbca9fd56c0e9bd4bd2091369f6bbafc5f6e4"
+  },
+  "prerequisite_receipt_sha256": {
+    "CompileFVLTRosetteFordDataV1Batch02Data02.json": "b4496028b82ff179c554e9d5af1c26be65c4483c8029d6780e703eaf3cabd41f",
+    "axiomsFVLTRosetteFordDataV1Batch02Data02.json": "96f1ebfc3754e7efe2affe14947d126c3faaf2e02541192ef6fcd7224212bf94",
+    "replayFVLTRosetteFordDataV1Batch02Data02.json": "63bafb208a130df7e139bb77f98801b967de59f1313659008d891ec9a2041a59",
+    "CompileFVLTRosetteFordPhaseV1Batch03Phase02.json": "9b711c4bb26473ce9225d98fed79efda581c38775bb949cc5a520be592eafb5a",
+    "axiomsFVLTRosetteFordPhaseV1Batch03Phase02.json": "e86746675780ecb7beb640c29bff8208781e6a91d303d85cd76d352a6705e5fb",
+    "replayFVLTRosetteFordPhaseV1Batch03Phase02.json": "9d9c09089fa2bf7cddd7ac9309a87d42b835a9e96187c4bbbe72e3d70366e72b",
+    "CompileFVLTRosetteFordSweepV1Batch05Sweep04.json": "a969efbbeccae84a8e15e9a1daf7a16fc981a45e2678d12254cea5444ca3f28e"
+  },
+  "signature_comparison_receipt_file": "COMPARE_SWEEP04.json",
+  "signature_comparison_receipt_sha256": "f09311a48c71a3f3095415fad4e0d51e263e1aa289b98a005a4134e85955a9cd",
+  "deadline_file": "DEADLINE_BATCH05.json",
+  "own_compile_receipt_file": "CompileFVLTRosetteFordSweepV1Batch05Sweep04.json",
+  "axiom_report_source": "AuditRosetteFordSweepV1.lean",
+  "axiom_report_source_sha256": "a5bd3a70233513102be0c082f6497524fed43886b041b25ecb7f5a46a1b86e35",
+  "axiom_targets": [
+    "FVLT.PhasorFordV1.shell_contact_parameterization",
+    "FVLT.PhasorFordV1.shell_phasor_contact_iff",
+    "FVLT.PhasorFordV1.shell_contact_address",
+    "FVLT.PhasorFordV1.fareyList_membership",
+    "FVLT.PhasorFordV1.fareyList_strict",
+    "FVLT.PhasorFordV1.mem_shellEvents",
+    "FVLT.PhasorFordV1.mem_fareySet",
+    "FVLT.PhasorFordV1.shell_addresses_eq_farey"
+  ]
+}

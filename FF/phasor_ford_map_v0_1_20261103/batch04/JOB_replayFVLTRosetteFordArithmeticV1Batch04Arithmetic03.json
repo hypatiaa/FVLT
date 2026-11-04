@@ -1,0 +1,26 @@
+{
+  "phase": "FF3_DISCRETE",
+  "module": "FVLTRosetteFordArithmeticV1",
+  "mode": "replay",
+  "run_id": "replayFVLTRosetteFordArithmeticV1Batch04Arithmetic03",
+  "template_sha256": "3bc4f556b441d63b0722497d5369358afb1facf4a33a79182a327267739c7fe2",
+  "attempt_folder": "attempts/Batch04Arithmetic03",
+  "source_sha256": {
+    "FVLTRosetteFordArithmeticV1.lean": "f74e1a1d8f02a60beceb6a1a44a7e5833b2583777f74cd4e36ebed459b67726f",
+    "FVLTRosetteFordDataV1.lean": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388"
+  },
+  "dependency_olean_sha256": {
+    "FVLTRosetteFordDataV1.olean": "ccb8d144cdd85989dd5acd0f092c976094ed4b7136e173590bcbc617a222b8e9",
+    "FVLTRosetteFordArithmeticV1.olean": "f858a069e9661273f8946a931e07978a666c7d4c055b7d1fce045146b72b4b6b"
+  },
+  "prerequisite_receipt_sha256": {
+    "CompileFVLTRosetteFordDataV1Batch02Data02.json": "b4496028b82ff179c554e9d5af1c26be65c4483c8029d6780e703eaf3cabd41f",
+    "axiomsFVLTRosetteFordDataV1Batch02Data02.json": "96f1ebfc3754e7efe2affe14947d126c3faaf2e02541192ef6fcd7224212bf94",
+    "replayFVLTRosetteFordDataV1Batch02Data02.json": "63bafb208a130df7e139bb77f98801b967de59f1313659008d891ec9a2041a59",
+    "CompileFVLTRosetteFordArithmeticV1Batch04Arithmetic03.json": "e0785897b898b56cbd609763e0417d178c768af1f0aef5afeba1aa550d2850ec"
+  },
+  "signature_comparison_receipt_file": "COMPARE_ARITHMETIC03.json",
+  "signature_comparison_receipt_sha256": "d24b88e37dc24417f9d6dd18eb9c7685f3c13cdc07fe5f844978e003b5d31f52",
+  "deadline_file": "DEADLINE_BATCH04.json",
+  "own_compile_receipt_file": "CompileFVLTRosetteFordArithmeticV1Batch04Arithmetic03.json"
+}

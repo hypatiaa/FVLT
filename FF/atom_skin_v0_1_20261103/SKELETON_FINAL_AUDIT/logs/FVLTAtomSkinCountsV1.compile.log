@@ -1,0 +1,63 @@
+FVLTAtomSkinCountsV1.lean:12:30: warning: Variable name `hω` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hω
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+FVLTAtomSkinCountsV1.lean:19:31: warning: Variable name `hω` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hω
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+FVLTAtomSkinCountsV1.lean:108:42: warning: Variable name `hω` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hω
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+FVLTAtomSkinCountsV1.lean:164:28: warning: Variable name `hω` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hω
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+FVLTAtomSkinCountsV1.lean:403:52: warning: This simp argument is unused:
+  Finsupp.single_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp_all [coefficient, boundary, mkEdge, lower, Subtype.mk.injEq, Prod.mk.injEq, epsilon_insert]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+FVLTAtomSkinCountsV1.lean:464:55: warning: This simp argument is unused:
+  Ne.symm hab
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [a, b, coefficient_channels, hab]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+FVLTAtomSkinCountsV1.lean:490:42: warning: This simp argument is unused:
+  or_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [boxOrbit, toggle_commute ω w i j, or_left_comm, or_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+FVLTAtomSkinCountsV1.lean:490:65: warning: This simp argument is unused:
+  or_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [boxOrbit, toggle_commute ω w i j, or_comm, or_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+FVLTAtomSkinCountsV1.lean:495:55: warning: This simp argument is unused:
+  or_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [boxOrbit, toggle_twice, or_comm, or_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+FVLTAtomSkinCountsV1.lean:505:24: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲

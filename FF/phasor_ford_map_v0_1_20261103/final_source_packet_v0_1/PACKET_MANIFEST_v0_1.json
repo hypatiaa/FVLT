@@ -1,0 +1,500 @@
+{
+  "status": "PRODUCER_LOCAL_37_OF_37_INDEPENDENT_PENDING",
+  "files": [
+    {
+      "file": "CHECK_INDEX_v0_1.json",
+      "sha256": "0bd4e836f229a3ec89b1c6c6d263cf027a07e4f429bd15005b1d6ebba47ead89",
+      "bytes": 13252
+    },
+    {
+      "file": "checks/FVLTRosetteFordArithmeticV1/axiomsFVLTRosetteFordArithmeticV1Batch04Arithmetic03.json",
+      "sha256": "0adf15fb57f434024fed3b552a6e4461477e6289947e9d92cea8ecea53fc154a",
+      "bytes": 9149
+    },
+    {
+      "file": "checks/FVLTRosetteFordArithmeticV1/axiomsFVLTRosetteFordArithmeticV1Batch04Arithmetic03.log",
+      "sha256": "75bcb991b1c44b48fccfd704653c4cc7556502950f67fb35147d947b4772bdb3",
+      "bytes": 1488
+    },
+    {
+      "file": "checks/FVLTRosetteFordArithmeticV1/CompileFVLTRosetteFordArithmeticV1Batch04Arithmetic03.json",
+      "sha256": "e0785897b898b56cbd609763e0417d178c768af1f0aef5afeba1aa550d2850ec",
+      "bytes": 6357
+    },
+    {
+      "file": "checks/FVLTRosetteFordArithmeticV1/CompileFVLTRosetteFordArithmeticV1Batch04Arithmetic03.log",
+      "sha256": "c0fdbfb2f39d3f35a88901f40026d6c8a92c16d2304cfce860ce532ef0b73652",
+      "bytes": 2249
+    },
+    {
+      "file": "checks/FVLTRosetteFordArithmeticV1/replayFVLTRosetteFordArithmeticV1Batch04Arithmetic03.json",
+      "sha256": "98a24120106c7d9fcf97015d79fa8f66455ba6f9550fa405263c13376c66b048",
+      "bytes": 6489
+    },
+    {
+      "file": "checks/FVLTRosetteFordArithmeticV1/replayFVLTRosetteFordArithmeticV1Batch04Arithmetic03.log",
+      "sha256": "4fc56c4e4ec5d98ffa70a1072a10e2bed5caae29e209f3c82c257d6b0100d4cb",
+      "bytes": 166786
+    },
+    {
+      "file": "checks/FVLTRosetteFordDataV1/axiomsFVLTRosetteFordDataV1Batch02Data02.json",
+      "sha256": "96f1ebfc3754e7efe2affe14947d126c3faaf2e02541192ef6fcd7224212bf94",
+      "bytes": 8269
+    },
+    {
+      "file": "checks/FVLTRosetteFordDataV1/axiomsFVLTRosetteFordDataV1Batch02Data02.log",
+      "sha256": "42a298581876d750215b6b6ab0dd3310955fd766983c74a7d29e3b0991948a3d",
+      "bytes": 1576
+    },
+    {
+      "file": "checks/FVLTRosetteFordDataV1/CompileFVLTRosetteFordDataV1Batch02Data02.json",
+      "sha256": "b4496028b82ff179c554e9d5af1c26be65c4483c8029d6780e703eaf3cabd41f",
+      "bytes": 5420
+    },
+    {
+      "file": "checks/FVLTRosetteFordDataV1/CompileFVLTRosetteFordDataV1Batch02Data02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "checks/FVLTRosetteFordDataV1/replayFVLTRosetteFordDataV1Batch02Data02.json",
+      "sha256": "63bafb208a130df7e139bb77f98801b967de59f1313659008d891ec9a2041a59",
+      "bytes": 5551
+    },
+    {
+      "file": "checks/FVLTRosetteFordDataV1/replayFVLTRosetteFordDataV1Batch02Data02.log",
+      "sha256": "0b1c3bba9011998e024fe5a3cf203b998f6fe99f266cba5c74155090e5d0df0e",
+      "bytes": 169760
+    },
+    {
+      "file": "checks/FVLTRosetteFordEndpointsV1/axiomsFVLTRosetteFordEndpointsV1Batch02Endpoints02.json",
+      "sha256": "d244c31cbb2f3f8d069c3d46a5b82e1103834bc4f0412df9b6f3cd3604d622fb",
+      "bytes": 7985
+    },
+    {
+      "file": "checks/FVLTRosetteFordEndpointsV1/axiomsFVLTRosetteFordEndpointsV1Batch02Endpoints02.log",
+      "sha256": "8dced4ca3cf723f57bfb310ffa921c0a8aba8b0d640213b0ba79fbba71fff283",
+      "bytes": 786
+    },
+    {
+      "file": "checks/FVLTRosetteFordEndpointsV1/CompileFVLTRosetteFordEndpointsV1Batch02Endpoints02.json",
+      "sha256": "b2c0eb5f89edb001b0d953180c3d708ddf23fb41f6eaf9071753be937d9ce4b0",
+      "bytes": 6339
+    },
+    {
+      "file": "checks/FVLTRosetteFordEndpointsV1/CompileFVLTRosetteFordEndpointsV1Batch02Endpoints02.log",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    {
+      "file": "checks/FVLTRosetteFordEndpointsV1/replayFVLTRosetteFordEndpointsV1Batch02Endpoints02.json",
+      "sha256": "399ca4f24d99d3e410923637e40027d9dc0005f19534c371790caf1cbac3be39",
+      "bytes": 6473
+    },
+    {
+      "file": "checks/FVLTRosetteFordEndpointsV1/replayFVLTRosetteFordEndpointsV1Batch02Endpoints02.log",
+      "sha256": "a888c25fafcc781338fbcb4a7556903e80939901b1d96dd2ae0da006fed05142",
+      "bytes": 164236
+    },
+    {
+      "file": "checks/FVLTRosetteFordPhaseV1/axiomsFVLTRosetteFordPhaseV1Batch03Phase02.json",
+      "sha256": "e86746675780ecb7beb640c29bff8208781e6a91d303d85cd76d352a6705e5fb",
+      "bytes": 7466
+    },
+    {
+      "file": "checks/FVLTRosetteFordPhaseV1/axiomsFVLTRosetteFordPhaseV1Batch03Phase02.log",
+      "sha256": "44c868d89dcd9fcb73482e4402ac65fa4d3f4632487be18c5c54a5f8dbc3e29b",
+      "bytes": 517
+    },
+    {
+      "file": "checks/FVLTRosetteFordPhaseV1/CompileFVLTRosetteFordPhaseV1Batch03Phase02.json",
+      "sha256": "9b711c4bb26473ce9225d98fed79efda581c38775bb949cc5a520be592eafb5a",
+      "bytes": 6286
+    },
+    {
+      "file": "checks/FVLTRosetteFordPhaseV1/CompileFVLTRosetteFordPhaseV1Batch03Phase02.log",
+      "sha256": "638770ce6c15850d8ffd9867c05f159177da09ca79d4b39bebb695ff5edb3668",
+      "bytes": 1653
+    },
+    {
+      "file": "checks/FVLTRosetteFordPhaseV1/replayFVLTRosetteFordPhaseV1Batch03Phase02.json",
+      "sha256": "9d9c09089fa2bf7cddd7ac9309a87d42b835a9e96187c4bbbe72e3d70366e72b",
+      "bytes": 6409
+    },
+    {
+      "file": "checks/FVLTRosetteFordPhaseV1/replayFVLTRosetteFordPhaseV1Batch03Phase02.log",
+      "sha256": "54d6ab5b88679545a66eaf5c22d656e74eb6384e0f04062c1dfa452d3bab53ac",
+      "bytes": 163803
+    },
+    {
+      "file": "checks/FVLTRosetteFordSweepV1/axiomsFVLTRosetteFordSweepV1Batch06Final04.json",
+      "sha256": "cb889720b4c644db7f1e6e2b548ee559b348940936a1804e99293485b05976bf",
+      "bytes": 9107
+    },
+    {
+      "file": "checks/FVLTRosetteFordSweepV1/axiomsFVLTRosetteFordSweepV1Batch06Final04.log",
+      "sha256": "b0bb9d58108c12db5b8d6267568b6c8736d4c573c41a8041bcbd698080df3f77",
+      "bytes": 903
+    },
+    {
+      "file": "checks/FVLTRosetteFordSweepV1/CompileFVLTRosetteFordSweepV1Batch06Final04.json",
+      "sha256": "4c801d71aceedddb8b1f96a5d4805991f525b29cc606a892eea3eca23dd39da9",
+      "bytes": 7295
+    },
+    {
+      "file": "checks/FVLTRosetteFordSweepV1/CompileFVLTRosetteFordSweepV1Batch06Final04.log",
+      "sha256": "128f3366e29a783826876ee897311a98f4ebbccdef4c4e05f1e54380af57863a",
+      "bytes": 4302
+    },
+    {
+      "file": "checks/FVLTRosetteFordSweepV1/replayFVLTRosetteFordSweepV1Batch06Final04.json",
+      "sha256": "59958cbd51a65d504af23795afac0421fe02af96d2b6b0d10281d644d1502f1f",
+      "bytes": 7418
+    },
+    {
+      "file": "checks/FVLTRosetteFordSweepV1/replayFVLTRosetteFordSweepV1Batch06Final04.log",
+      "sha256": "8ec958246a1ce76c2cf2960cfe2573459816c28c9b58a42d147dd42b7aec0f86",
+      "bytes": 168631
+    },
+    {
+      "file": "controls/BUILD_FINAL_SOURCE_PACKET_v0_1.py",
+      "sha256": "aac3642aecb3e519a919a5588552a2f027a1ef4b1290cdf8d41049767c524d6a",
+      "bytes": 7976
+    },
+    {
+      "file": "controls/definition_repair_v0_1/FF3_DEFINITIONS_PROPOSED_v0_2.lean.txt",
+      "sha256": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+      "bytes": 2554
+    },
+    {
+      "file": "controls/definition_repair_v0_1/REPAIR_DECISION_v0_1.md",
+      "sha256": "9f6c55b711221487d6904c813577a22d4b22dfd502bfa0faf11cbf280ce78f26",
+      "bytes": 2738
+    },
+    {
+      "file": "controls/definition_repair_v0_1/REVIEW_REQUEST_v0_1.md",
+      "sha256": "a375bfb3da88926e33061507b50395955183e8f79b8e0818d60c332009c0e05c",
+      "bytes": 1910
+    },
+    {
+      "file": "controls/definition_repair_v0_1/SCRIPT_DIFF_v0_1.json",
+      "sha256": "0e529733b187ce7a84642d96efb94e8ee150b66d579b6f34c39f06ffd9dd83c1",
+      "bytes": 925
+    },
+    {
+      "file": "controls/FF3_FREEZE_DECISION_v0_1.md",
+      "sha256": "9e7d01b95588e5d7be61346c6a2ba42a860739ab01efa8d731ac7fc2cbfbdd81",
+      "bytes": 7074
+    },
+    {
+      "file": "controls/FF3_REBIND_V22_DECISION_v0_1.md",
+      "sha256": "3cf0b0218292fbe0674f1942e1247c1c45eaa16a4ff251eef0437a578a60e4dd",
+      "bytes": 2484
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/API_AND_SCOPE_NOTES_v0_1.md",
+      "sha256": "6a68fc799c8d21fa84113c7cbf3674af51cf9efcce312e4bf4576775349c9f40",
+      "bytes": 2777
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/ASSEMBLE_PACKET_MANIFEST_v0_1.ps1",
+      "sha256": "4ffe3e5a0dd1938b0ac6a08a250d8eff7c485817062e4a4168159185370cdf34",
+      "bytes": 1826
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/CONCRETE_JOB_EXAMPLE_v0_1.json",
+      "sha256": "e01eee70c18c247eca541179b939ff19de0662d0e4b4111a0379469d5946b205",
+      "bytes": 474
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/FF3_DEFINITIONS_PROPOSED_v0_1.lean.txt",
+      "sha256": "3c606060cdd6f7ca74c6d460a28ad93614628bbea52a711a8b7b75ce9d371640",
+      "bytes": 2538
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/FF3_HEADERS_PROPOSED_v0_1.lean.txt",
+      "sha256": "b8a052dc8784b2e7b400837a1b469f1f072bac611ff42de1dbe47fb43fdda98a",
+      "bytes": 6823
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/IndependentFVLTReplay435.lean",
+      "sha256": "9c6f2ac11b50fdb846df2d5099ea673553903275a5dba11fce5a5673cae14bd0",
+      "bytes": 5139
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/INPUT_FREEZE_v0_1.json",
+      "sha256": "d1d1b15e47d318d2030b90ac3d7548783833d5f063d33d0281263808a9b406f7",
+      "bytes": 3460
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/INPUT_LIBRARY_SOURCE_CLOSURE_v0_1.json",
+      "sha256": "53c70df4ef3841e60c2bdad19b833b4291357ec774f85d6b6355b32446a48f75",
+      "bytes": 2557
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/BRIDGE_SIGNATURE_FREEZE_DRAFT_v0_1.md",
+      "sha256": "4c9c80e59664bf91f2b558611bd764e8e5f58c8286b4db7cebdc00e4e61f4f8d",
+      "bytes": 4633
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/CONDITIONAL_EXECUTION_GO_20261103.md",
+      "sha256": "1035988d640204a3fa4f6ce6c316aa2b07b0e365541e2c838e9bfba220048365",
+      "bytes": 1485
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/CURRENT_KERNEL_v3_4_0.md",
+      "sha256": "0d6beee233602502576c1d0eedfe5a586e66f1b4e4b8a1858c39189d872ec1a2",
+      "bytes": 600959
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/EXECUTION_GO_RELAY_20261104.md",
+      "sha256": "210ee00ac37d4dc40df063f5293225139efc415f3696d874146fdea33b74517d",
+      "bytes": 1184
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/F1_AUDIT_AND_BRIDGE_DECISION_v0_1.md",
+      "sha256": "d5470d9b2353ca9de7309064dad363955e567a356fb5075dae04c0f9f32c7526",
+      "bytes": 4638
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/F2_AUDIT_AND_BRIDGE_RUNNER_DECISION_v0_1.md",
+      "sha256": "95532c2c4101197646a7a310120c9ec766282a1b41537557f585591d0d4968e1",
+      "bytes": 4833
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/FF1_FINAL_INTEGRATION_VERDICT_v0_1.json",
+      "sha256": "b87d58eb1798325f68d171bcb48ad7a3d8c30509fb03bd65b0dd37a084a3c46b",
+      "bytes": 985
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/FF1_RECORDED_FIDELITY_SIGNOFF_v0_1.json",
+      "sha256": "7a7f0e848bbe3fc8d4ff0cf00dea03c2b14fc545baa28033941222914b4153e3",
+      "bytes": 40719
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/FF1_WORK_ORDER_v0_3.md",
+      "sha256": "43560b88ab50dc77d8e222562f83bad68c8ba17d12a073523a99597a484d6fdd",
+      "bytes": 20148
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/FF2_FINAL_AUDIT_v0_1.md",
+      "sha256": "70d6dbf51ae1fea634a85f58ade78c3900affd41046d3a7356a9b463e0018cf0",
+      "bytes": 6689
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/library_metadata/FULL_LIBRARY_CHECK_v0_1.txt",
+      "sha256": "643118d05ad9a1789c70a1fd1bf4a97c9938df957e32f62c7833528b369721cc",
+      "bytes": 21152
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/library_metadata/lake-manifest.json",
+      "sha256": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+      "bytes": 3176
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/library_metadata/lakefile.toml",
+      "sha256": "5c9941e381b3821cabc50e28a7446a373ecec77f6fc5780543b8d2205de8f66f",
+      "bytes": 3371
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/library_metadata/lean-toolchain",
+      "sha256": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c",
+      "bytes": 25
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/library_metadata/LIBRARY_MANIFEST.json",
+      "sha256": "799b3baa0b61f227d626c36016ebda8180645abf92127f331fdd23a2d2779a81",
+      "bytes": 86486
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/library_metadata/SHA256SUMS",
+      "sha256": "648ac325c5df362b0a034dab3ee1e0bd495982d33f0ead433293168ba6c269cc",
+      "bytes": 45766
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/library_sources/FVLTFareyArithmeticCompletionV1.lean",
+      "sha256": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+      "bytes": 6688
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/library_sources/FVLTFareyCertificatesV1.lean",
+      "sha256": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+      "bytes": 13909
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/library_sources/FVLTFareyContactV1.lean",
+      "sha256": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+      "bytes": 538
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/library_sources/FVLTFordExactCoordinatesV1.lean",
+      "sha256": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+      "bytes": 3943
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/library_sources/FVLTFordGeometryV1.lean",
+      "sha256": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+      "bytes": 3780
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/library_sources/FVLTFordRationalV1.lean",
+      "sha256": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+      "bytes": 931
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/LIBRARY_V21_READINESS_RECEIPT.md",
+      "sha256": "b4fe0fab19170836340c0d4f295ded9570bd628d4b3238710fd714fd5a71b77e",
+      "bytes": 3137
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/OWNER_REVIEW_v0_2.md",
+      "sha256": "cd0ecc9a57d107c9ce3b7beb62ea9477327cef100b5b8e964cf7541cf70cb90b",
+      "bytes": 5431
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/REFERENCE_KERNEL_v3_3_1.md",
+      "sha256": "e49533088843e2cd0a1c531c4d8ba113ea30113e8135a15c17c040bdfca3e0e0",
+      "bytes": 591683
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/SEQUENCING_DECISION_FF2_FF3_20261103.md",
+      "sha256": "b6e8581597fdc305c3f9b95466cf286e0fc8b9a4df6509c82c8735e43e1d7146",
+      "bytes": 1323
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/UNAUDITED_REFERENCE_LEMMA_6a.md",
+      "sha256": "220a481905da2767379318d4960d08713ca821f1c6fcee944d6eed598f10bb3b",
+      "bytes": 9210
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/inputs/WORK_ORDER_v0_2.md",
+      "sha256": "5b41c955e35478f7eeca169586384c0dffe63c45e1fa3a5488886bb03610c035",
+      "bytes": 10621
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/JOB_TEMPLATE_v0_1.json",
+      "sha256": "c8a122204e849c2eb90f07f7a60219182a444ef426f05abfe5268b51a909b21e",
+      "bytes": 4657
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/PACKET_MANIFEST_v0_1.json",
+      "sha256": "6c9d2f7671d233c0ac49c9af4bb887756ecbeaf63e894c4c8c7599346c2b2047",
+      "bytes": 8811
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/PREPARE_REVIEW_METADATA_v0_1.ps1",
+      "sha256": "fbb42eef26273476e180037133319694bf92a8bc4b4f961df9f5c40dc7c1ba0b",
+      "bytes": 9934
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/README.md",
+      "sha256": "8121aa2f3e7baab8f7aae3260deca31a363f650f7d33dca4c22fef5392cdd269",
+      "bytes": 7514
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/REFERENCE_PINS_v0_1.json",
+      "sha256": "f3a857335a971bbce78a11001d21f99b96b4d8ab235c9ffd4faf3f4518c164e5",
+      "bytes": 4254
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/REVIEW_ACCEPTANCE_EXAMPLE_v0_1.json",
+      "sha256": "9e1009321aa5819618f9d093789d06b8927e46827cf20d3c4d10beacff4d77c6",
+      "bytes": 380
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/REVIEW_REQUEST_v0_1.md",
+      "sha256": "6ce74bcd541c2323d4b6d466f7b5c0da1c39ec8d61131eb4cc5cd7158e6397d6",
+      "bytes": 4999
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/RUN_FF3_v0_1.py",
+      "sha256": "f9acf65a42bc901576cf109b17d5e0911b8b4310c38efc5b2e6044a62f396af5",
+      "bytes": 14106
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/RUNNER_CHANGELOG_v0_1.md",
+      "sha256": "a24bbb49be200f32e6e97ea930ec6b6db6cec87d92a2f4257a8dbc6e8ac25635",
+      "bytes": 2793
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/SHA256SUMS.txt",
+      "sha256": "56caafa5fd13adbd71ae3b133615819b5ef1932da0a0e19d605cb11098087b39",
+      "bytes": 4858
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/STATIC_VALIDATE_v0_1.py",
+      "sha256": "19dbbd44e70cc76deb0907dca46aed024b44dc9d1ebbe70e6e01fca421d6c891",
+      "bytes": 2236
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/STATIC_VALIDATION_v0_1.json",
+      "sha256": "88aedb9558291be20496513305e29f76b53261410dbf1baa433cc1b03ac25283",
+      "bytes": 324
+    },
+    {
+      "file": "controls/freeze_packet_v0_1/TARGET_INDEX_v0_1.json",
+      "sha256": "c87f3b4704e6099dfc134957e7706376e3619a96213fe322488b090ce1e7a15c",
+      "bytes": 10966
+    },
+    {
+      "file": "controls/rebind_v22_v0_1/JOB_TEMPLATE_v0_1.json",
+      "sha256": "79bb00edbea1bef6ea49adc4c5b209eda2c41d461b4543921d36e5292af72f8f",
+      "bytes": 4657
+    },
+    {
+      "file": "controls/rebind_v22_v0_1/RUN_FF3_v0_1.py",
+      "sha256": "643fef3438bd81e77b2471951724e8628ab6a93ccf9f1852c670990d09799eeb",
+      "bytes": 14106
+    },
+    {
+      "file": "controls/rebind_v22_v0_1/SCRIPT_DIFF_RECEIPT_v0_1.json",
+      "sha256": "34d9f1efb2e93de12489a9d733f56fd414fc51ec92168acedd44c50ad113fe3a",
+      "bytes": 913
+    },
+    {
+      "file": "controls/rebind_v22_v0_1/SCRIPT_DIFF_v0_1.patch",
+      "sha256": "2eecbe484d7cb5d56d53078ae85d8a58e4a01acf5af9399654b7546157063e73",
+      "bytes": 2701
+    },
+    {
+      "file": "README.md",
+      "sha256": "2d8013969e45425a1300520a5dbd7d54280047b8b65e79cfd47b1a4465d6c200",
+      "bytes": 2797
+    },
+    {
+      "file": "SOURCE_AND_HEADER_COMPARISON_v0_1.json",
+      "sha256": "33a3c637e4cce36d59716c917760768d11a0888b76c8dcc6a76c6f758637057e",
+      "bytes": 5339
+    },
+    {
+      "file": "SOURCE_INDEX_v0_1.json",
+      "sha256": "afe3d86fa1a630e3a4dc86b12eaf3acd27e9040193b2e6997c30ddba8e5657fb",
+      "bytes": 1800
+    },
+    {
+      "file": "sources/FVLTRosetteFordArithmeticV1.lean",
+      "sha256": "f74e1a1d8f02a60beceb6a1a44a7e5833b2583777f74cd4e36ebed459b67726f",
+      "bytes": 7662
+    },
+    {
+      "file": "sources/FVLTRosetteFordDataV1.lean",
+      "sha256": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+      "bytes": 2554
+    },
+    {
+      "file": "sources/FVLTRosetteFordEndpointsV1.lean",
+      "sha256": "53ea5f08a71001be2bb6b4ba7de3932740f7861711058c7bb6ae4890cadde9e0",
+      "bytes": 3642
+    },
+    {
+      "file": "sources/FVLTRosetteFordPhaseV1.lean",
+      "sha256": "2a48f1c65b7a5a31cbeaecac2edf13f2a64fec583e2d70af6473f06a41917459",
+      "bytes": 3027
+    },
+    {
+      "file": "sources/FVLTRosetteFordSweepV1.lean",
+      "sha256": "1d982d2ee145511e2b4a55a72675b14e53b1df2cb94c872abb5baaf3a0697e23",
+      "bytes": 16402
+    }
+  ]
+}

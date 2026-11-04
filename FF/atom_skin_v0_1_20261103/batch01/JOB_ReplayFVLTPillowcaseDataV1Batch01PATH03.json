@@ -1,0 +1,26 @@
+{
+  "phase": "FF2_AB",
+  "module": "FVLTPillowcaseDataV1",
+  "mode": "replay",
+  "run_id": "ReplayFVLTPillowcaseDataV1Batch01PATH03",
+  "template_sha256": "f5cb45ddc28e4dc30300c51f9103606671365ef7e76ea13a128c286e571c235b",
+  "attempt_folder": "attempts/Data02",
+  "source_sha256": {
+    "FVLTAtomSkinDataV1.lean": "152a9583eba6484d054b5d7218b6ec31fc5a43ce62be56dd1c98865280d5fec7",
+    "FVLTPillowcaseDataV1.lean": "b8a03b38d0e8a8defb68bc93701f9c6ded0a8ff8ce9e9c9f1af636790ce3bcd2"
+  },
+  "dependency_olean_sha256": {
+    "FVLTPillowcaseDataV1.olean": "6b656127d20b65964d65f11e234e6123a7324cc499f7f40c733f144de9f4d58d"
+  },
+  "prerequisite_receipt_sha256": {
+    "CompileFVLTPillowcaseDataV1Batch01Targeted02.json": "172c8926e9246a5a72316ca8412596c82c5ac0511998c10c9abc666ee52234fa"
+  },
+  "own_compile_receipt_file": "CompileFVLTPillowcaseDataV1Batch01Targeted02.json",
+  "signature_comparison_receipt_file": "COMPARE_DATA02.json",
+  "signature_comparison_receipt_sha256": "1640cde4c236013b35dc6bddca34925f63c41595e98c6dcb2f0e7db54f655b6f",
+  "deadline_file": "DEADLINE_BATCH01.json",
+  "launch_environment": {
+    "PATH": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin:/usr/local/bin:/usr/bin:/bin"
+  },
+  "harness_repair_note": "Prior checker could not execute child lean before any kernel verdict; unchanged checker/runner/source/object, explicit launcher PATH only"
+}

@@ -1,0 +1,32 @@
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch05Pen06/src/FVLTAtomSkinPenV1.lean:203:42: warning: This simp argument is unused:
+  or_comm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [boxOrbit, toggle_commute ω w i j, or_left_comm, or_assoc]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch05Pen06/src/FVLTAtomSkinPenV1.lean:203:65: warning: This simp argument is unused:
+  or_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [boxOrbit, toggle_commute ω w i j, or_comm, or_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch05Pen06/src/FVLTAtomSkinPenV1.lean:208:55: warning: This simp argument is unused:
+  or_assoc
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [boxOrbit, toggle_twice, or_comm, or_left_comm]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch05Pen06/src/FVLTAtomSkinPenV1.lean:218:24: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch05Pen06/src/FVLTAtomSkinPenV1.lean:251:15: warning: This simp argument is unused:
+  Prod.fst
+
+Hint: Omit it from the simp argument list.
+  [apply] simp only [hb] at he
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`

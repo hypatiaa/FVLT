@@ -1,0 +1,24 @@
+{
+  "status": "PASS_NARROW_REBIND_DIFF_ONLY",
+  "decision_sha256": "3cf0b0218292fbe0674f1942e1247c1c45eaa16a4ff251eef0437a578a60e4dd",
+  "runner_changes": [
+    "LIB v21 to v22",
+    "latest guard 21 to22"
+  ],
+  "template_changed_keys": [
+    "library",
+    "library_expected",
+    "runner_sha256"
+  ],
+  "limits_changed": false,
+  "definitions_changed": false,
+  "headers_changed": false,
+  "index_changed": false,
+  "checker_changed": false,
+  "binding_created": false,
+  "lean_invoked": false,
+  "original_runner_sha256": "f9acf65a42bc901576cf109b17d5e0911b8b4310c38efc5b2e6044a62f396af5",
+  "successor_runner_sha256": "643fef3438bd81e77b2471951724e8628ab6a93ccf9f1852c670990d09799eeb",
+  "original_template_sha256": "c8a122204e849c2eb90f07f7a60219182a444ef426f05abfe5268b51a909b21e",
+  "successor_template_sha256": "79bb00edbea1bef6ea49adc4c5b209eda2c41d461b4543921d36e5292af72f8f"
+}

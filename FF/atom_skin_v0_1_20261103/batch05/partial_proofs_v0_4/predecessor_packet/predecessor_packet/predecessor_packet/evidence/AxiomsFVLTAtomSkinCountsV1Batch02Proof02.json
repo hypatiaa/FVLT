@@ -1,0 +1,63 @@
+{
+  "job": {
+    "phase": "FF2_AB",
+    "module": "FVLTAtomSkinCountsV1",
+    "mode": "axioms",
+    "run_id": "AxiomsFVLTAtomSkinCountsV1Batch02Proof02",
+    "template_sha256": "8c26d695d11e074697cf5e3df354d7dcdfad089e228670a984c89f91e76f2086",
+    "attempt_folder": "attempts/Batch02Proof02",
+    "source_sha256": {
+      "FVLTAtomSkinCountsV1.lean": "4c499cb08eb7ac7e11a1f7009054ceb5a3a49e440f813a5599a6617fea15152c"
+    },
+    "dependency_olean_sha256": {
+      "FVLTAtomSkinDataV1.olean": "5d7862ee3f1f3fe1c88c715094cd934d406665a84c0e31d3dab618c67a4940cf",
+      "FVLTPillowcaseDataV1.olean": "6b656127d20b65964d65f11e234e6123a7324cc499f7f40c733f144de9f4d58d",
+      "FVLTAtomSkinCountsV1.olean": "f94de8beb4edf37299a48f7447bcdaaa640d060306d83a5ad30310ccb26f6a45"
+    },
+    "prerequisite_receipt_sha256": {
+      "CompileFVLTAtomSkinCountsV1Batch02Proof02.json": "74c6074c3281e7f3a198202d8e12f203ea8544242c0f6737acbd406fb6f5a3ec"
+    },
+    "own_compile_receipt_file": "CompileFVLTAtomSkinCountsV1Batch02Proof02.json",
+    "signature_comparison_receipt_file": "COMPARE_COUNTS02.json",
+    "signature_comparison_receipt_sha256": "48970ae0b28664e32031a21874c369c2b60f79fd946afd1aecb131b6cee3b2eb",
+    "deadline_file": "DEADLINE_BATCH02.json",
+    "launch_environment": {
+      "PATH": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin:/usr/local/bin:/usr/bin:/bin"
+    },
+    "axiom_report_source": "AuditSkinCountsV1.lean",
+    "axiom_report_source_sha256": "bc4c26f126230412371e19c3a53d0bae02099cc499ad726d363905c129b8fe7c"
+  },
+  "runner_sha256": "6a73ec377654b82d35e0981b2a16216fa88e507420ef52d990a00f055afd2860",
+  "command": [
+    "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+    "-j1",
+    "-s65536",
+    "-M7680",
+    "-D",
+    "Elab.async=false",
+    "/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch02Proof02/AuditSkinCountsV1.lean"
+  ],
+  "started_unix": 1793760030.476563,
+  "wall_cap_seconds": 240,
+  "transport": "[ts-redact2] 63906 [ts-redacted1] 22",
+  "LEAN_PATH": "/home/saphir/fvlt_formalization_20261028/ff2_v03_20261103/attempts/Batch02Proof02/build:/home/saphir/rule30_theorem_library/v20/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v20/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v20/.lake/packages/Qq/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v20/.lake/packages/aesop/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v20/.lake/packages/batteries/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v20/.lake/packages/importGraph/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v20/.lake/packages/mathlib/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v20/.lake/packages/plausible/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v20/.lake/packages/proofwidgets/.lake/build/lib/lean",
+  "library": "/home/saphir/rule30_theorem_library/v20",
+  "imported_dependencies_reused": true,
+  "cpu_affinity": [
+    0
+  ],
+  "address_space_bytes": 8589934592,
+  "process_limit": 256,
+  "output_file_limit_bytes": 67108864,
+  "nice": 19,
+  "exit_code": 0,
+  "timeout": false,
+  "seconds": 0.8168036937713623,
+  "log_sha256": "1652666ed704395041fbf8591d55b5915a4f783e439d18cf0fdd890e97d8507b",
+  "log_bytes": 183,
+  "peak_child_rss_kib": 1782144,
+  "source_unchanged": true,
+  "reviewed_files_unchanged": true,
+  "library_checksums_after": 392,
+  "accepted_result": true
+}

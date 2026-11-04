@@ -1,0 +1,28 @@
+{
+  "phase": "FF3_DISCRETE",
+  "module": "FVLTRosetteFordSweepV1",
+  "mode": "compile",
+  "run_id": "CompileFVLTRosetteFordSweepV1Batch06Final01",
+  "template_sha256": "88bc77ed3d10dd24c23b9798137994e0806659086f0e26e3c5e3333f16ee6496",
+  "attempt_folder": "attempts/Batch06Final01",
+  "source_sha256": {
+    "FVLTRosetteFordDataV1.lean": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388",
+    "FVLTRosetteFordPhaseV1.lean": "2a48f1c65b7a5a31cbeaecac2edf13f2a64fec583e2d70af6473f06a41917459",
+    "FVLTRosetteFordSweepV1.lean": "f802d71026921abde03c6787eb0b4b7eb99083245f534f7302d67fc2c71ff3db"
+  },
+  "dependency_olean_sha256": {
+    "FVLTRosetteFordDataV1.olean": "ccb8d144cdd85989dd5acd0f092c976094ed4b7136e173590bcbc617a222b8e9",
+    "FVLTRosetteFordPhaseV1.olean": "12055f4be01f0a2f16ccf1edcd57a615046e1bfa0595651ee39242c9d0ddb805"
+  },
+  "prerequisite_receipt_sha256": {
+    "CompileFVLTRosetteFordDataV1Batch02Data02.json": "b4496028b82ff179c554e9d5af1c26be65c4483c8029d6780e703eaf3cabd41f",
+    "axiomsFVLTRosetteFordDataV1Batch02Data02.json": "96f1ebfc3754e7efe2affe14947d126c3faaf2e02541192ef6fcd7224212bf94",
+    "replayFVLTRosetteFordDataV1Batch02Data02.json": "63bafb208a130df7e139bb77f98801b967de59f1313659008d891ec9a2041a59",
+    "CompileFVLTRosetteFordPhaseV1Batch03Phase02.json": "9b711c4bb26473ce9225d98fed79efda581c38775bb949cc5a520be592eafb5a",
+    "axiomsFVLTRosetteFordPhaseV1Batch03Phase02.json": "e86746675780ecb7beb640c29bff8208781e6a91d303d85cd76d352a6705e5fb",
+    "replayFVLTRosetteFordPhaseV1Batch03Phase02.json": "9d9c09089fa2bf7cddd7ac9309a87d42b835a9e96187c4bbbe72e3d70366e72b"
+  },
+  "signature_comparison_receipt_file": "COMPARE_FINAL01.json",
+  "signature_comparison_receipt_sha256": "dd9feed88af5ca56a10de7809e2fd2d74f5dafdd2a2e0894070d7c40c8c4845b",
+  "deadline_file": "DEADLINE_BATCH06.json"
+}

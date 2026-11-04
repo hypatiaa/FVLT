@@ -1,0 +1,5 @@
+'FVLT.PhasorFordV1.phasor_real_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.PhasorFordV1.integer_spin_phase_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.PhasorFordV1.integer_spin_parity' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.PhasorFordV1.circleMap_amplitude_independent' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.PhasorFordV1.phasor_alias_not_address_alias' depends on axioms: [propext, Classical.choice, Quot.sound]

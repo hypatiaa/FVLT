@@ -1,0 +1,15 @@
+{
+  "status": "EXAMPLE_NOT_AN_EXECUTABLE_JOB",
+  "phase": "FF3_DISCRETE",
+  "module": "FVLTRosetteFordDataV1",
+  "mode": "compile",
+  "run_id": "ExampleOnlyDataCompile",
+  "template_sha256": null,
+  "attempt_folder": "attempts/EXAMPLE_NOT_STAGED",
+  "source_sha256": {},
+  "dependency_olean_sha256": {},
+  "prerequisite_receipt_sha256": {},
+  "signature_comparison_receipt_file": null,
+  "signature_comparison_receipt_sha256": null,
+  "deadline_file": null
+}

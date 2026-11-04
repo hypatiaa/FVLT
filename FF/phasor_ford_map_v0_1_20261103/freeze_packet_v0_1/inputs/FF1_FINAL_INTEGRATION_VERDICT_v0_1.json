@@ -1,0 +1,23 @@
+{
+  "status": "PRODUCER_INTEGRATION_PASS_PENDING_INDEPENDENT_CHECK",
+  "all21calls_exit0": true,
+  "nonempty_strict_reports": 10,
+  "replayed_declarations": 254,
+  "strict_failures": 0,
+  "unsafe_declarations": 0,
+  "partial_declarations": 0,
+  "axioms": "Allowed standard three subsets only",
+  "entrypoint_names_and_axiom_reports": 72,
+  "fresh_project_object_build": true,
+  "mathematical_source_edits": 0,
+  "original_review_files_unchanged": 26,
+  "historical_source_object_pins_protected": 20,
+  "manager_records_protected": 8,
+  "library_checksums_after_each_call": "381 OK",
+  "staging_to_last_lean_call_seconds": 666.0843026638031,
+  "active_cap_seconds": 1800,
+  "independent_fidelity": "PASS WITH NOTES, recorded #1440/ledger1443",
+  "producer_signed_fidelity_rows": 0,
+  "sync": "Explicitly authorized after required outcomes; not performed",
+  "remote_build": "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_integration_v1/build"
+}

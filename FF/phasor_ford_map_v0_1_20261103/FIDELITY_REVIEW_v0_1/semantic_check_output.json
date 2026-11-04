@@ -1,0 +1,200 @@
+{
+  "mode": "positive",
+  "statement_groups": 37,
+  "total_checks": 939644,
+  "total_failures": 0,
+  "results": {
+    "phasor_real_iff [float]": {
+      "checks": 82026,
+      "failures": 0,
+      "first_failure": null
+    },
+    "integer_spin_phase_iff": {
+      "checks": 18513,
+      "failures": 0,
+      "first_failure": null
+    },
+    "integer_spin_parity [float]": {
+      "checks": 18513,
+      "failures": 0,
+      "first_failure": null
+    },
+    "circleMap_amplitude_independent": {
+      "checks": 6930,
+      "failures": 0,
+      "first_failure": null
+    },
+    "phasor_alias_not_address_alias": {
+      "checks": 1,
+      "failures": 0,
+      "first_failure": null
+    },
+    "integer_address_iff": {
+      "checks": 9375,
+      "failures": 0,
+      "first_failure": null
+    },
+    "integer_address_integral_iff": {
+      "checks": 9375,
+      "failures": 0,
+      "first_failure": null
+    },
+    "integer_address_radius": {
+      "checks": 3639,
+      "failures": 0,
+      "first_failure": null
+    },
+    "zero_spin_address": {
+      "checks": 375,
+      "failures": 0,
+      "first_failure": null
+    },
+    "divisor_recovery_window": {
+      "checks": 995,
+      "failures": 0,
+      "first_failure": null
+    },
+    "zero_spin_window": {
+      "checks": 5,
+      "failures": 0,
+      "first_failure": null
+    },
+    "reduced_det_mul": {
+      "checks": 164836,
+      "failures": 0,
+      "first_failure": null
+    },
+    "reduced_det_quotient": {
+      "checks": 164836,
+      "failures": 0,
+      "first_failure": null
+    },
+    "row_law": {
+      "checks": 44850,
+      "failures": 0,
+      "first_failure": null
+    },
+    "row_tangent_iff": {
+      "checks": 44850,
+      "failures": 0,
+      "first_failure": null
+    },
+    "signed_column_law": {
+      "checks": 26789,
+      "failures": 0,
+      "first_failure": null
+    },
+    "signed_column_tangent_iff": {
+      "checks": 26789,
+      "failures": 0,
+      "first_failure": null
+    },
+    "zero_column_stall": {
+      "checks": 89,
+      "failures": 0,
+      "first_failure": null
+    },
+    "reference_column_tangent_iff": {
+      "checks": 14161,
+      "failures": 0,
+      "first_failure": null
+    },
+    "unit_fraction_spine": {
+      "checks": 500,
+      "failures": 0,
+      "first_failure": null
+    },
+    "shell_contact_parameterization": {
+      "checks": 16435,
+      "failures": 0,
+      "first_failure": null
+    },
+    "shell_phasor_contact_iff [float]": {
+      "checks": 32870,
+      "failures": 0,
+      "first_failure": null
+    },
+    "shell_contact_address": {
+      "checks": 104,
+      "failures": 0,
+      "first_failure": null
+    },
+    "mem_shellEvents": {
+      "checks": 67972,
+      "failures": 0,
+      "first_failure": null
+    },
+    "mem_fareySet": {
+      "checks": 3164,
+      "failures": 0,
+      "first_failure": null
+    },
+    "shell_addresses_eq_farey": {
+      "checks": 60,
+      "failures": 0,
+      "first_failure": null
+    },
+    "fareyList_membership": {
+      "checks": 60,
+      "failures": 0,
+      "first_failure": null
+    },
+    "fareyList_strict": {
+      "checks": 22991,
+      "failures": 0,
+      "first_failure": null
+    },
+    "farey_consecutive_det": {
+      "checks": 22991,
+      "failures": 0,
+      "first_failure": null
+    },
+    "_sizes": {
+      "B40": {
+        "shellEvents": 860,
+        "addresses": 491,
+        "farey": 491
+      }
+    },
+    "det_zero_iff_address_equal": {
+      "checks": 20449,
+      "failures": 0,
+      "first_failure": null
+    },
+    "classify_stall_iff": {
+      "checks": 20449,
+      "failures": 0,
+      "first_failure": null
+    },
+    "classify_tangent_iff": {
+      "checks": 20449,
+      "failures": 0,
+      "first_failure": null
+    },
+    "classify_break_iff": {
+      "checks": 20449,
+      "failures": 0,
+      "first_failure": null
+    },
+    "path_edge_trichotomy": {
+      "checks": 20449,
+      "failures": 0,
+      "first_failure": null
+    },
+    "path_kind_tangent_iff": {
+      "checks": 16181,
+      "failures": 0,
+      "first_failure": null
+    },
+    "nontangent_no_certificate": {
+      "checks": 15825,
+      "failures": 0,
+      "first_failure": null
+    },
+    "tangent_endpoint_certificate": {
+      "checks": 1299,
+      "failures": 0,
+      "first_failure": null
+    }
+  }
+}

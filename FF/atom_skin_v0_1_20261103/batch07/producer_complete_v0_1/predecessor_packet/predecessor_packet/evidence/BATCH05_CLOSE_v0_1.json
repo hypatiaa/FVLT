@@ -1,0 +1,10 @@
+{
+  "schema": "ff2-batch-close/1",
+  "batch": "Batch05",
+  "origin_unix": 1793764729,
+  "deadline_unix": 1793766529,
+  "last_child_end_unix": 1793766495.9819546,
+  "closed_unix": 1793766509,
+  "mathematical_calls_closed": true,
+  "no_reset_or_extension": true
+}

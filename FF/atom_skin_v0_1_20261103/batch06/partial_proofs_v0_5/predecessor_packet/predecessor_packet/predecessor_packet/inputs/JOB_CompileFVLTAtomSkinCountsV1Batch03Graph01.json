@@ -1,0 +1,23 @@
+{
+  "phase": "FF2_AB",
+  "module": "FVLTAtomSkinCountsV1",
+  "mode": "compile",
+  "run_id": "CompileFVLTAtomSkinCountsV1Batch03Graph01",
+  "template_sha256": "7636f77ce119c0773b157b41c530c72a864993f78d83fe9e3d8f1420c2e8382f",
+  "attempt_folder": "attempts/Batch03Graph01",
+  "source_sha256": {
+    "FVLTAtomSkinCountsV1.lean": "40e638debf8b2cdfce971c5a6a15e2be8e1e29f8ac008de525c1069ca298e09d"
+  },
+  "dependency_olean_sha256": {
+    "FVLTAtomSkinDataV1.olean": "5d7862ee3f1f3fe1c88c715094cd934d406665a84c0e31d3dab618c67a4940cf"
+  },
+  "prerequisite_receipt_sha256": {
+    "ReplayFVLTAtomSkinDataV1Batch01Data03.json": "8e29e6656768b35b51301a52637ba1a1a4e7f6e5d087187598e18d984b71227a"
+  },
+  "signature_comparison_receipt_file": "COMPARE_GRAPH01.json",
+  "signature_comparison_receipt_sha256": "f44ed5d01ae568fe801f696b03ebab6bf6a9af95b7571e3663e82d700ef415a2",
+  "deadline_file": "DEADLINE_BATCH03.json",
+  "launch_environment": {
+    "PATH": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin:/usr/local/bin:/usr/bin:/bin"
+  }
+}

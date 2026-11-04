@@ -1,0 +1,10 @@
+{
+  "schema": "ff2-definition-delta/1",
+  "status": "AWAITING_REVIEW_NO_RETRY",
+  "original_namespace_source_sha256": "6b013b45bfafad44641edfab88d6a17c8de98581e1acf4d8b78cfde19e872623",
+  "successor_sha256": "a1ea047d677555c081cfda988487429446a6ab5f08e2b090427dc903d2012727",
+  "all_other_bytes_equal_after_reversing_three_declared_changes": true,
+  "headers_sha256": "b4484f6e148291dd20512e58ce4ec81b4bdf08527f4bd66b3e304cbb2654785a",
+  "request_sha256": "c9484f412e31100b43f64ceb1d9053df2c422ddf1ab38f7fdbcee5403758114d",
+  "comparison_harness_note": "First reverse-delta check accidentally changed both deriving clauses; corrected to Sign-specific context. Successor bytes unchanged."
+}

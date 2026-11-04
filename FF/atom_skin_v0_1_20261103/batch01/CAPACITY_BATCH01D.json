@@ -1,0 +1,12 @@
+{
+  "observed_unix": 1793758517,
+  "host": "nucleus",
+  "transport": "Tailscale[ts-redacted1]",
+  "available_memory_mib": 28586,
+  "load_average": [
+    "0.00",
+    "0.00",
+    "0.00"
+  ],
+  "reservation": "FF2Batch01owner1CPU8GiB; noRUNNINGlock;sameoriginaldeadline1793758915"
+}

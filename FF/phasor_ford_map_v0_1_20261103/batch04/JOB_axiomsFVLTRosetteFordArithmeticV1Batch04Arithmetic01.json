@@ -1,0 +1,36 @@
+{
+  "phase": "FF3_DISCRETE",
+  "module": "FVLTRosetteFordArithmeticV1",
+  "mode": "axioms",
+  "run_id": "axiomsFVLTRosetteFordArithmeticV1Batch04Arithmetic01",
+  "template_sha256": "0c509c2ec3ea24a404ab3c65c7e3282392e5bc9ac8c0be2b9b24549aaf9456eb",
+  "attempt_folder": "attempts/Batch04Arithmetic01",
+  "source_sha256": {
+    "FVLTRosetteFordArithmeticV1.lean": "b51a6e0992e7c31e3788d29ff3240554ec79bbe4ee739502c896d8d734c57030",
+    "FVLTRosetteFordDataV1.lean": "02814fa15dfdafc3551d63943baedf57655f6b671c618895ca8dd8f490809388"
+  },
+  "dependency_olean_sha256": {
+    "FVLTRosetteFordDataV1.olean": "ccb8d144cdd85989dd5acd0f092c976094ed4b7136e173590bcbc617a222b8e9",
+    "FVLTRosetteFordArithmeticV1.olean": "5e60d3deb3d306c19527e4e6e9a51e2069f75cf1c7895e8878716af8477a8da6"
+  },
+  "prerequisite_receipt_sha256": {
+    "CompileFVLTRosetteFordDataV1Batch02Data02.json": "b4496028b82ff179c554e9d5af1c26be65c4483c8029d6780e703eaf3cabd41f",
+    "axiomsFVLTRosetteFordDataV1Batch02Data02.json": "96f1ebfc3754e7efe2affe14947d126c3faaf2e02541192ef6fcd7224212bf94",
+    "replayFVLTRosetteFordDataV1Batch02Data02.json": "63bafb208a130df7e139bb77f98801b967de59f1313659008d891ec9a2041a59",
+    "CompileFVLTRosetteFordArithmeticV1Batch04Arithmetic01.json": "8a5ffcb9e12ad8f791c677edd51fd1f067d49139685da542543e5adb97b9fa30"
+  },
+  "signature_comparison_receipt_file": "COMPARE_ARITHMETIC01.json",
+  "signature_comparison_receipt_sha256": "3257c54478443b46755c2b38b9bd2367b7887b30d6431577873494848edb7699",
+  "deadline_file": "DEADLINE_BATCH04.json",
+  "own_compile_receipt_file": "CompileFVLTRosetteFordArithmeticV1Batch04Arithmetic01.json",
+  "axiom_report_source": "AuditRosetteFordArithmeticV1.lean",
+  "axiom_report_source_sha256": "d0b8878e64e0da31b2bda5d0cf30bbc1ca72f0be9a2e5faacf7b48db733a6fe6",
+  "axiom_targets": [
+    "FVLT.PhasorFordV1.integer_address_iff",
+    "FVLT.PhasorFordV1.integer_address_integral_iff",
+    "FVLT.PhasorFordV1.integer_address_radius",
+    "FVLT.PhasorFordV1.divisor_recovery_window",
+    "FVLT.PhasorFordV1.zero_spin_address",
+    "FVLT.PhasorFordV1.zero_spin_window"
+  ]
+}

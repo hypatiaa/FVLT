@@ -1,0 +1,11 @@
+{
+  "status": "COMPUTE_BATCH03_CLOSED_PARTIAL11_NOT_FF2_OUTCOME",
+  "origin_unix": 1793760658,
+  "deadline_unix": 1793762458,
+  "last_child_end_unix": 1793761281.5989432,
+  "no_further_lean_calls_in_batch03": true,
+  "next_batch_requires_fresh_posted_binding": true,
+  "target_proofs_producer_cleared": 11,
+  "targets_open": 17,
+  "latest_proof_declarations_replayed": 64
+}

@@ -1,0 +1,11 @@
+{
+  "status": "COMPUTE_BATCH04_CLOSED_PARTIAL16_NOT_FF2_OUTCOME",
+  "origin_unix": 1793761889,
+  "deadline_unix": 1793763689,
+  "last_child_end_unix": 1793762820.4616802,
+  "no_further_lean_calls_in_batch04": true,
+  "next_batch_requires_fresh_posted_binding": true,
+  "targets_producer_cleared": 16,
+  "targets_open": 12,
+  "latest_proof_declarations_replayed": 84
+}

@@ -1,0 +1,11 @@
+{
+  "status": "CLOSED",
+  "observed_no_active_run_unix": 1793783661,
+  "origin_unix": 1793782708,
+  "original_deadline_unix": 1793784508,
+  "clock_reset": false,
+  "further_calls_allowed": false,
+  "completed_theorem_targets": 8,
+  "remaining_theorem_targets": 29,
+  "independent_review": "PENDING"
+}
