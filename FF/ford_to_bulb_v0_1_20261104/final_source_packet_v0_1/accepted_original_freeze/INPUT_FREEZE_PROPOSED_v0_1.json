@@ -1,0 +1,30 @@
+{
+  "status": "PROPOSED_FOR_MANAGER_REVIEW_NOT_ACCEPTED",
+  "date": "2026-11-04",
+  "accepted_order_sha256": "d28dfd0ebbc49d1677e4765b492ec35450b7c842054b85bc7834c6d2f124b2d8",
+  "owner_acceptance_sha256": "6e5c8b61ed4bd4bf6467bec2277a5cf47eb6ee7010b86a1a1daf418bcb8ec554",
+  "library": "/home/saphir/rule30_theorem_library/v23",
+  "library_expected": {
+    "SHA256SUMS": "394e72c5ce5010349779fd41b1490c4672f160f72aa779b732df272086317903",
+    "LIBRARY_MANIFEST.json": "3b8ea55068d2c92c6e70cbafe9c6ee55698b34912b791c99ce0fa2df4bedc3f5",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "23b3055199e230fe224c888dbb87533e69896ffa4e44ad8cb7662639c72c440b",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "mathlib_rev": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "definitions_sha256": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+  "headers_sha256": "c5b569b1c2864fd606213ce5ee8adce5411465f4f1e8ad3505d4a5a0da64ebac",
+  "target_index_sha256": "ac7cf6d27babfa2515033d88fcd5d2945b801f8a1413fd8013b2a52706e5cf7e",
+  "checker_sha256": "9c6f2ac11b50fdb846df2d5099ea673553903275a5dba11fce5a5673cae14bd0",
+  "runner_sha256": "56d69bfb76b17458adaec51f35f0ba422ed2834496690ae5a6e49f6aac34b717",
+  "unbound_template_sha256": "c22052160a8e1fb0e6aad9bb899a37088df7353c3ef7279122be13dc0123ab5c",
+  "actual_import_closure_sha256": "a529203215b5900b8a27269a70fdb05f84d5679a5618366da1a2401b2597f01e",
+  "data_named_targets": 31,
+  "public_targets": 33,
+  "B6": "EXCLUDED_SEPARATE_GATE",
+  "Lean_elaboration": "NOT_RUN",
+  "Sage_run": "NOT_RUN",
+  "execution_go": "Existing Robin FF4 go relayed firsthand by root and bus1557; manager gates remain",
+  "kernel_standing": "NO_ADOPTION"
+}

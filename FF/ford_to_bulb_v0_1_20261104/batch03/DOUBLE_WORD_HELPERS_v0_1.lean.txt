@@ -1,0 +1,23 @@
+private theorem raw_digit_step (p q u n : ℕ) :
+    rawDigit p q u (n + 1) = rawDigit p q (u + p) n := by
+  have he : u + (n + 1) * p = (u + p) + n * p := by ring
+  simp only [rawDigit, he]
+
+private theorem block_prepend (p q u n : ℕ) :
+    blockValue p q u (n + 1) = rawDigit p q u 0 * 2 ^ n + blockValue p q (u + p) n := by
+  induction n with
+  | zero => simp [blockValue]
+  | succ n ih =>
+    rw [binary_block_rec, ih, binary_block_rec, pow_succ, raw_digit_step]
+    ring
+
+private theorem block_phase_mod (p q u n : ℕ) :
+    blockValue p q (u % q) n = blockValue p q u n := by
+  unfold blockValue
+  apply Finset.sum_congr rfl
+  intro i hi
+  simp only [rawDigit, Nat.add_mod, Nat.mod_mod]
+
+private theorem raw_digit_period (p q u : ℕ) : rawDigit p q u q = rawDigit p q u 0 := by
+  simp [rawDigit, Nat.add_mod]
+

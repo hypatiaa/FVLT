@@ -1,0 +1,39 @@
+/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch06Combinatorics19/src/FVLTFordBulbCombinatoricsV1.lean:482:6: warning: `if_neg` has been deprecated: Use `ite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵n̵e̵g̵i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch06Combinatorics19/src/FVLTFordBulbCombinatoricsV1.lean:482:21: warning: `if_pos` has been deprecated: Use `ite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  i̵f̵_̵p̵o̵s̵i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch06Combinatorics19/src/FVLTFordBulbCombinatoricsV1.lean:730:6: warning: `dif_pos` has been deprecated: Use `dite_eq_left` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵p̵o̵s̵d̲i̲t̲e̲_̲e̲q̲_̲l̲e̲f̲t̲
+/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch06Combinatorics19/src/FVLTFordBulbCombinatoricsV1.lean:737:6: warning: `dif_neg` has been deprecated: Use `dite_eq_right` instead
+
+Hint: Replace the deprecated name:
+  d̵i̵f̵_̵n̵e̵g̵d̲i̲t̲e̲_̲e̲q̲_̲r̲i̲g̲h̲t̲
+/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch06Combinatorics19/src/FVLTFordBulbCombinatoricsV1.lean:876:6: error: Tactic `rewrite` failed: Did not find an occurrence of the pattern
+  ∑ i ∈ Finset.range ?n, rawDigit d.p d.q (↑(upperIndex d)) i
+in the target expression
+  ∑ i ∈ Finset.range n, rawDigit d.p d.q d.p i ≤ ∑ i ∈ Finset.range n, rawDigit e.p e.q (e.p - 1) i
+
+d e : RotationAddress
+h : address d < address e
+n : ℕ
+hq : 0 < d.q
+hr : 0 < e.q
+hcross : d.p * e.q < e.p * d.q
+a : ℕ := (n + 1) * d.p
+b : ℕ := (n + 1) * e.p
+k : ℕ := a / d.q
+hprod : a * e.q < b * d.q
+hlo : k * d.q ≤ a
+hlo' : k * d.q * e.q ≤ a * e.q
+hkb : k * e.q < b
+hdiv : k ≤ (b - 1) / e.q
+⊢ ∑ i ∈ Finset.range n, rawDigit d.p d.q d.p i ≤ ∑ i ∈ Finset.range n, rawDigit e.p e.q (e.p - 1) i
+/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch06Combinatorics19/src/FVLTFordBulbCombinatoricsV1.lean:934:92: error: unsolved goals
+d : RotationAddress
+⊢ 2 ^ d.q - 1 = 2 ^ d.q - 1

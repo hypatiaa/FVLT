@@ -1,0 +1,32 @@
+{
+  "FVLTFareyArithmeticCompletionV1.lean": {
+    "sha256": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+    "imports": [
+      "FVLTFareyCertificatesV1",
+      "Mathlib.Data.Rat.Lemmas",
+      "Mathlib.Tactic"
+    ],
+    "role": "ACTUAL_INHERITED_IMPORT"
+  },
+  "FVLTFareyCertificatesV1.lean": {
+    "sha256": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+    "imports": [
+      "FVLTFareyContactV1",
+      "Mathlib.Combinatorics.SimpleGraph.Connectivity.Finite",
+      "Mathlib.Combinatorics.SimpleGraph.Finite",
+      "Mathlib.NumberTheory.Divisors",
+      "Mathlib.Data.Rat.Lemmas",
+      "Mathlib.Tactic"
+    ],
+    "role": "ACTUAL_INHERITED_IMPORT"
+  },
+  "FVLTFareyContactV1.lean": {
+    "sha256": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+    "imports": [
+      "Mathlib.Data.Rat.Defs",
+      "Mathlib.Algebra.Order.Group.Unbundled.Abs",
+      "Mathlib.Algebra.Order.Ring.Int"
+    ],
+    "role": "ACTUAL_INHERITED_IMPORT"
+  }
+}

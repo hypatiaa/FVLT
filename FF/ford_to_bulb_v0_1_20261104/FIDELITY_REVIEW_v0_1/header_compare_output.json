@@ -1,0 +1,12 @@
+{
+ "frozen_count": 33,
+ "delivered_public": 33,
+ "combinatorics_public": 29,
+ "parameter_public": 4,
+ "match": 33,
+ "mismatch": [],
+ "extra_public": [],
+ "private_helpers_combinatorics": 44,
+ "private_helpers_parameter": 0,
+ "other_public_decl_kinds": []
+}

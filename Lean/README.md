@@ -24,3 +24,11 @@ The v21 backup above is unchanged, and `MANIFEST.sha256` still pins it. This upd
 - v23 `SHA256SUMS`: `394e72c5ce5010349779fd41b1490c4672f160f72aa779b732df272086317903`
 - `MANIFEST_v23.sha256`: the 89 v23 entries for `theorems/FVLT*.lean`; `sha256sum -c MANIFEST_v23.sha256` must report 89 OK.
 - FF-2's modules (`FVLTAtomSkin*`, `FVLTPillowcase*`) were already in v21. The FF-2 and FF-3 working records are in `../FF/`.
+
+## Update 2026-11-04: library v24 (FF-4)
+
+The v21 and v23 sections above are unchanged, and `MANIFEST.sha256` and `MANIFEST_v23.sha256` still pin them. This update adds the three FF-4 modules from frozen library **v24** (`FVLTFordBulb{Data,Parameter,Combinatorics}V1.lean`). The 89 v23 files are byte-identical in v24.
+
+- v24 `SHA256SUMS`: `74e30ce658ac1367b144318716272d830fece449166357ee110f51bd2dcf94cb` (404 entries)
+- `MANIFEST_v24.sha256`: the 92 v24 entries for `theorems/FVLT*.lean`; `sha256sum -c MANIFEST_v24.sha256` must report 92 OK.
+- The FF-4 working records are in `../FF/ford_to_bulb_v0_1_20261104/`.

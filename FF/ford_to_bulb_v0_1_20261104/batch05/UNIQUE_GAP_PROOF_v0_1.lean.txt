@@ -1,0 +1,68 @@
+by
+  have hbound : d.p - 1 < (orderedOrbit d).length := by
+    rw [orbit_length]
+    exact (lowerIndex d).isLt
+  let i : Fin (orderedOrbit d).length := ⟨d.p - 1, hbound⟩
+  have hi : i.val + 1 < (orderedOrbit d).length := by
+    dsimp [i]
+    rw [orbit_length]
+    have := d.p_pos
+    have := d.p_lt_q
+    omega
+  have hs : edgeStart d i = lowerNumerator d := by
+    rw [edge_start_word]
+    rfl
+  have he : edgeEnd d i = upperNumerator d := by
+    unfold upperNumerator
+    rw [edge_end_nonwrap d i hi]
+    apply congrArg (wordValue d)
+    apply Fin.ext
+    dsimp [i, upperIndex]
+    have := d.p_pos
+    omega
+  have hg : directedGap d i = 1 := by
+    simp only [directedGap, ite_eq_left hi, he, hs]
+    rw [characteristic_adjacent]
+    omega
+  refine ⟨i, hs, he, hg, ?_⟩
+  intro j hji
+  have hj : j.val < d.q := by rw [← orbit_length d]; exact j.isLt
+  have hne : j.val ≠ d.p - 1 := by
+    intro h
+    apply hji
+    apply Fin.ext
+    exact h
+  by_cases hn : j.val + 1 < (orderedOrbit d).length
+  · have hj1 : j.val + 1 < d.q := by rw [← orbit_length d]; exact hn
+    let u : Fin d.q := ⟨j.val, hj⟩
+    let v : Fin d.q := ⟨j.val + 1, hj1⟩
+    have hlt : wordValue d u < wordValue d v :=
+      word_strict d (by change j.val < j.val + 1; omega)
+    have hpU := word_parity d u
+    have hpV := word_parity d v
+    have hside : j.val + 1 < d.p ∨ d.p ≤ j.val := by have := d.p_pos; omega
+    have hpar : wordValue d u % 2 = wordValue d v % 2 := by
+      rcases hside with h | h
+      · have hu : u.val < d.p := by dsimp [u]; omega
+        have hv : v.val < d.p := h
+        rw [ite_eq_left hu] at hpU
+        rw [ite_eq_left hv] at hpV
+        exact hpU.trans hpV.symm
+      · have hu : ¬ u.val < d.p := by dsimp [u]; omega
+        have hv : ¬ v.val < d.p := by dsimp [v]; omega
+        rw [ite_eq_right hu] at hpU
+        rw [ite_eq_right hv] at hpV
+        exact hpU.trans hpV.symm
+    simp only [directedGap, ite_eq_left hn]
+    rw [edge_end_nonwrap d j hn, edge_start_word d j]
+    change 2 ≤ wordValue d v - wordValue d u
+    omega
+  · let u : Fin d.q := ⟨j.val, hj⟩
+    let z : Fin d.q := ⟨0, Nat.lt_trans d.p_pos d.p_lt_q⟩
+    have hu := word_bounds d u
+    have hz := word_bounds d z
+    simp only [directedGap, ite_eq_right hn]
+    rw [edge_end_wrap d j hn, edge_start_word d j]
+    change 2 ≤ modulus d + wordValue d z - wordValue d u
+    omega
+

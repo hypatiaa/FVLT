@@ -1,0 +1,56 @@
+private theorem binary_block_rec (p q u n : ℕ) :
+    blockValue p q u (n + 1) = 2 * blockValue p q u n + rawDigit p q u n := by
+  unfold blockValue
+  rw [Finset.sum_range_succ]
+  simp only [Nat.add_sub_cancel, Nat.sub_self, pow_zero, mul_one]
+  have hs : (∑ i ∈ Finset.range n, rawDigit p q u i * 2 ^ (n - i)) =
+      2 * (∑ i ∈ Finset.range n, rawDigit p q u i * 2 ^ (n - 1 - i)) := by
+    rw [Finset.mul_sum]
+    apply Finset.sum_congr rfl
+    intro i hi
+    have hi' : i < n := Finset.mem_range.mp hi
+    have he : n - i = (n - 1 - i) + 1 := by omega
+    rw [he, pow_succ]
+    ring
+  rw [hs]
+
+private theorem raw_digit_carry (d : RotationAddress) (u : Fin d.q) (n : ℕ) :
+    (u.val + (n + 1) * d.p) / d.q =
+      (u.val + n * d.p) / d.q + rawDigit d.p d.q u.val n := by
+  have hq : 0 < d.q := Nat.lt_trans d.p_pos d.p_lt_q
+  have he : u.val + (n + 1) * d.p = (u.val + n * d.p) + d.p := by ring
+  rw [he, Nat.add_div hq, Nat.div_eq_of_lt d.p_lt_q, Nat.mod_eq_of_lt d.p_lt_q]
+  have hc : d.q ≤ (u.val + n * d.p) % d.q + d.p ↔
+      d.q - d.p ≤ (u.val + n * d.p) % d.q := by
+    have := d.p_lt_q
+    omega
+  simp only [Nat.add_zero, hc, rawDigit]
+
+private theorem raw_digit_prefix_count (d : RotationAddress) (u : Fin d.q) (n : ℕ) :
+    (∑ i ∈ Finset.range n, rawDigit d.p d.q u.val i) = (u.val + n * d.p) / d.q := by
+  induction n with
+  | zero => simp [Nat.div_eq_of_lt u.isLt]
+  | succ n ih =>
+    rw [Finset.sum_range_succ, ih]
+    exact (raw_digit_carry d u n).symm
+
+private theorem raw_digit_full_count (d : RotationAddress) (u : Fin d.q) :
+    (∑ i ∈ Finset.range d.q, rawDigit d.p d.q u.val i) = d.p := by
+  rw [raw_digit_prefix_count]
+  rw [Nat.add_mul_div_left u.val d.p (Nat.lt_trans d.p_pos d.p_lt_q)]
+  simp [Nat.div_eq_of_lt u.isLt]
+
+private theorem binary_count_bounds (p q u n : ℕ) :
+    blockValue p q u n ≤ 2 ^ n - 1 ∧
+    (∑ i ∈ Finset.range n, rawDigit p q u i) ≤ blockValue p q u n ∧
+    blockValue p q u n + n ≤ 2 ^ n - 1 +
+      (∑ i ∈ Finset.range n, rawDigit p q u i) := by
+  induction n with
+  | zero => simp [blockValue]
+  | succ n ih =>
+    have hb : rawDigit p q u n ≤ 1 := by unfold rawDigit; split <;> omega
+    have hp : 1 ≤ (2 : ℕ) ^ n := Nat.one_le_pow n 2 (by decide)
+    rw [binary_block_rec, Finset.sum_range_succ, pow_succ]
+    rcases ih with ⟨h1, h2, h3⟩
+    omega
+

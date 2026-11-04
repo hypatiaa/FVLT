@@ -1,0 +1,31 @@
+'FVLT.FordBulbV1.RotationAddress' does not depend on any axioms
+'FVLT.FordBulbV1.address' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.modulus' depends on axioms: [propext]
+'FVLT.FordBulbV1.upperIndex' does not depend on any axioms
+'FVLT.FordBulbV1.lowerIndex' does not depend on any axioms
+'FVLT.FordBulbV1.rawDigit' does not depend on any axioms
+'FVLT.FordBulbV1.blockValue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.digit' does not depend on any axioms
+'FVLT.FordBulbV1.wordValue' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.upperDigit' does not depend on any axioms
+'FVLT.FordBulbV1.lowerDigit' does not depend on any axioms
+'FVLT.FordBulbV1.upperNumerator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.lowerNumerator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.upperAngle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.lowerAngle' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.psi' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.angleInterval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.doubleNum' depends on axioms: [propext]
+'FVLT.FordBulbV1.iterateNum' depends on axioms: [propext]
+'FVLT.FordBulbV1.orbitPoint' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.orbitSet' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.rank' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.orderedOrbit' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.edgeStart' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.edgeEnd' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.directedGap' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.cardioidParameter' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.alpha' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.quadratic' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.quadraticMultiplier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.canonicalMultiplier' depends on axioms: [propext, Classical.choice, Quot.sound]

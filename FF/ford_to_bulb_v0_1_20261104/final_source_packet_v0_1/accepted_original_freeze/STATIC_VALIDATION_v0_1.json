@@ -1,0 +1,26 @@
+{
+  "status": "PASS_STATIC_AND_PURE_TEXT_GUARDS_ONLY",
+  "public_targets": 33,
+  "data_declarations": 31,
+  "positive_text_fixture": "PASS_33_HEADERS",
+  "negative_controls": {
+    "changed_public_header": "EXPECTED_REFUSAL",
+    "unknown_public_theorem": "EXPECTED_REFUSAL",
+    "indented_public_theorem": "EXPECTED_REFUSAL",
+    "extra_public_lemma": "EXPECTED_REFUSAL",
+    "extra_public_definition": "EXPECTED_REFUSAL",
+    "attribute_wrapper": "EXPECTED_REFUSAL",
+    "CRLF_source": "EXPECTED_REFUSAL",
+    "BOM_source": "EXPECTED_REFUSAL",
+    "data_guard_changed": "EXPECTED_REFUSAL",
+    "proof_separator_changed": "EXPECTED_REFUSAL",
+    "duplicate_theorem": "EXPECTED_REFUSAL"
+  },
+  "runner_imported": false,
+  "runner_entrypoint_executed": false,
+  "pure_guard_extracted_by_AST": true,
+  "Lean_invoked": false,
+  "Sage_invoked": false,
+  "mathematical_result": false,
+  "warning": "No Lean elaboration is tested; source typing and theorem proofs remain unverified"
+}

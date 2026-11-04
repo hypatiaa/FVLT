@@ -1,0 +1,125 @@
+{
+ "mutation": "lower_index_plus",
+ "QMAX": 16,
+ "QPAIR": 12,
+ "C3DEN": 18,
+ "addresses": 79,
+ "c3_rationals": 409,
+ "c3_adjacent_pairs": 812,
+ "c3_equality_hits": 404,
+ "total_checks": 17432,
+ "failed_checks": 905,
+ "targets_checked": 34,
+ "failed_targets": [
+  "lower_digit_equiv",
+  "characteristic_bounds",
+  "characteristic_adjacent",
+  "characteristic_angle_gap",
+  "unique_unit_gap",
+  "angle_order",
+  "intervals_disjoint",
+  "mediant_interval"
+ ],
+ "counts": {
+  "address_canonical": 79,
+  "address_interval": 79,
+  "q_at_least_two": 79,
+  "modulus_pos": 79,
+  "word_sum": 862,
+  "word_bounds": 862,
+  "upper_digit_equiv": 862,
+  "lower_digit_equiv": 862,
+  "characteristic_bounds": 79,
+  "characteristic_adjacent": 79,
+  "characteristic_angle_gap": 79,
+  "characteristic_period_return": 158,
+  "characteristic_period_minimal": 1566,
+  "same_cycle": 79,
+  "word_strict": 79,
+  "orbit_set_eq": 79,
+  "orbit_card": 79,
+  "orbit_length": 79,
+  "rank_word": 862,
+  "double_word": 862,
+  "rank_step": 862,
+  "unique_unit_gap": 79,
+  "address_injective": 1,
+  "address_surjective": 120,
+  "angle_order": 990,
+  "intervals_disjoint": 990,
+  "mediant_interval": 68,
+  "farey_denominator_min": 2860,
+  "farey_denominator_eq_iff": 2860,
+  "canonical_multiplier_primitive": 79,
+  "canonical_multiplier_primitive_float": 79,
+  "parameter_fixed_point": 200,
+  "parameter_multiplier": 200,
+  "parameter_derivative": 200
+ },
+ "fails": {
+  "lower_digit_equiv": {
+   "n": 256,
+   "examples": [
+    "1/3 i0",
+    "1/3 i2",
+    "2/3 i0"
+   ]
+  },
+  "characteristic_bounds": {
+   "n": 64,
+   "examples": [
+    "1/3",
+    "1/4",
+    "1/5"
+   ]
+  },
+  "characteristic_adjacent": {
+   "n": 78,
+   "examples": [
+    "1/3",
+    "2/3",
+    "1/4"
+   ]
+  },
+  "characteristic_angle_gap": {
+   "n": 78,
+   "examples": [
+    "1/3",
+    "2/3",
+    "1/4"
+   ]
+  },
+  "unique_unit_gap": {
+   "n": 78,
+   "examples": [
+    "1/3",
+    "2/3",
+    "1/4"
+   ]
+  },
+  "angle_order": {
+   "n": 167,
+   "examples": [
+    "1/2<2/3",
+    "1/2<3/4",
+    "1/2<4/5"
+   ]
+  },
+  "intervals_disjoint": {
+   "n": 167,
+   "examples": [
+    "1/2<2/3",
+    "1/2<3/4",
+    "1/2<4/5"
+   ]
+  },
+  "mediant_interval": {
+   "n": 17,
+   "examples": [
+    "1/2<2/3",
+    "2/3<3/4",
+    "3/4<4/5"
+   ]
+  }
+ }
+}

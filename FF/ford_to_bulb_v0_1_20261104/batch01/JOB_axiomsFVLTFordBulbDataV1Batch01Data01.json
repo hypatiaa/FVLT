@@ -1,0 +1,56 @@
+{
+  "phase": "FF4_COMBINATORIAL",
+  "module": "FVLTFordBulbDataV1",
+  "mode": "axioms",
+  "run_id": "axiomsFVLTFordBulbDataV1Batch01Data01",
+  "template_sha256": "50c2c5cb06999193a9f05b47d31a6984e955eefce50dd220aaadeb764da8e680",
+  "attempt_folder": "attempts/Batch01Data01",
+  "source_sha256": {
+    "FVLTFordBulbDataV1.lean": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb"
+  },
+  "dependency_olean_sha256": {
+    "FVLTFordBulbDataV1.olean": "21df17bc2e550337e13519487014f011c7ed712178c903d7bda283c546bd75f3"
+  },
+  "prerequisite_receipt_sha256": {
+    "CompileFVLTFordBulbDataV1Batch01Data01.json": "8195f124bfc7e7c4d7aa4d3793a598e70e38933742a5ddb5e5097f8d5dd69368"
+  },
+  "signature_comparison_receipt_file": "COMPARE_DATA01.json",
+  "signature_comparison_receipt_sha256": "0ce1dd60df342233bd14137ecbf72d9b6e83158390203e56f802307a398ad853",
+  "deadline_file": "DEADLINE_BATCH01.json",
+  "own_compile_receipt_file": "CompileFVLTFordBulbDataV1Batch01Data01.json",
+  "axiom_report_source": "AuditFVLTFordBulbDataV1.lean",
+  "axiom_report_source_sha256": "39477c1f3dd0e32f28ba9b97b7dc150fe1044201238aaa78346f24e2e90d1b24",
+  "axiom_targets": [
+    "FVLT.FordBulbV1.RotationAddress",
+    "FVLT.FordBulbV1.address",
+    "FVLT.FordBulbV1.modulus",
+    "FVLT.FordBulbV1.upperIndex",
+    "FVLT.FordBulbV1.lowerIndex",
+    "FVLT.FordBulbV1.rawDigit",
+    "FVLT.FordBulbV1.blockValue",
+    "FVLT.FordBulbV1.digit",
+    "FVLT.FordBulbV1.wordValue",
+    "FVLT.FordBulbV1.upperDigit",
+    "FVLT.FordBulbV1.lowerDigit",
+    "FVLT.FordBulbV1.upperNumerator",
+    "FVLT.FordBulbV1.lowerNumerator",
+    "FVLT.FordBulbV1.upperAngle",
+    "FVLT.FordBulbV1.lowerAngle",
+    "FVLT.FordBulbV1.psi",
+    "FVLT.FordBulbV1.angleInterval",
+    "FVLT.FordBulbV1.doubleNum",
+    "FVLT.FordBulbV1.iterateNum",
+    "FVLT.FordBulbV1.orbitPoint",
+    "FVLT.FordBulbV1.orbitSet",
+    "FVLT.FordBulbV1.rank",
+    "FVLT.FordBulbV1.orderedOrbit",
+    "FVLT.FordBulbV1.edgeStart",
+    "FVLT.FordBulbV1.edgeEnd",
+    "FVLT.FordBulbV1.directedGap",
+    "FVLT.FordBulbV1.cardioidParameter",
+    "FVLT.FordBulbV1.alpha",
+    "FVLT.FordBulbV1.quadratic",
+    "FVLT.FordBulbV1.quadraticMultiplier",
+    "FVLT.FordBulbV1.canonicalMultiplier"
+  ]
+}

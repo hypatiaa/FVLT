@@ -1,0 +1,68 @@
+private theorem raw_digit_le_one (p q u i : ℕ) : rawDigit p q u i ≤ 1 := by
+  unfold rawDigit
+  split <;> omega
+
+private theorem binary_equal_count (p q u v n : ℕ)
+    (h : blockValue p q u n = blockValue p q v n) :
+    (∑ i ∈ Finset.range n, rawDigit p q u i) =
+      ∑ i ∈ Finset.range n, rawDigit p q v i := by
+  induction n with
+  | zero => simp
+  | succ n ih =>
+    rw [binary_block_rec, binary_block_rec] at h
+    have hu := raw_digit_le_one p q u n
+    have hv := raw_digit_le_one p q v n
+    have he : blockValue p q u n = blockValue p q v n := by omega
+    have hb : rawDigit p q u n = rawDigit p q v n := by omega
+    rw [Finset.sum_range_succ, Finset.sum_range_succ, ih he, hb]
+
+private theorem binary_prefix_equal (p q u v m n : ℕ) (hn : n ≤ m)
+    (h : blockValue p q u m = blockValue p q v m) :
+    blockValue p q u n = blockValue p q v n := by
+  induction m generalizing n with
+  | zero => have hn0 : n = 0 := by omega; subst n; rfl
+  | succ m ih =>
+    by_cases he : n = m + 1
+    · subst n; exact h
+    · rw [binary_block_rec, binary_block_rec] at h
+      have hu := raw_digit_le_one p q u m
+      have hv := raw_digit_le_one p q v m
+      have hm : blockValue p q u m = blockValue p q v m := by omega
+      exact ih n (by omega) hm
+
+private theorem phase_block_monotone (d : RotationAddress) (u v : Fin d.q)
+    (huv : u.val ≤ v.val) (n : ℕ) :
+    blockValue d.p d.q u.val n ≤ blockValue d.p d.q v.val n := by
+  induction n with
+  | zero => simp [blockValue]
+  | succ n ih =>
+    have hu := raw_digit_le_one d.p d.q u.val n
+    have hv := raw_digit_le_one d.p d.q v.val n
+    rcases lt_or_eq_of_le ih with hp | hp
+    · rw [binary_block_rec, binary_block_rec]
+      omega
+    · have hc := binary_equal_count d.p d.q u.val v.val n hp
+      have hn : (∑ i ∈ Finset.range (n + 1), rawDigit d.p d.q u.val i) ≤
+          ∑ i ∈ Finset.range (n + 1), rawDigit d.p d.q v.val i := by
+        rw [raw_digit_prefix_count d u, raw_digit_prefix_count d v]
+        exact Nat.div_le_div_right (Nat.add_le_add_right huv _)
+      rw [Finset.sum_range_succ, Finset.sum_range_succ] at hn
+      rw [binary_block_rec, binary_block_rec, hp]
+      omega
+
+private theorem coprime_phase_surjective (d : RotationAddress) (r : ℕ) (hr : r < d.q) :
+    ∃ n : Fin d.q, (n.val * d.p) % d.q = r := by
+  have hq : 0 < d.q := Nat.lt_trans d.p_pos d.p_lt_q
+  let f : Fin d.q → Fin d.q := fun n => ⟨(n.val * d.p) % d.q, Nat.mod_lt _ hq⟩
+  have hi : Function.Injective f := by
+    intro i j he
+    have hm : Nat.ModEq d.q (i.val * d.p) (j.val * d.p) := by
+      exact congrArg Fin.val he
+    have hc := Nat.ModEq.cancel_right_of_coprime d.coprime.symm hm
+    have hv : i.val = j.val := by
+      change i.val % d.q = j.val % d.q at hc
+      simpa only [Nat.mod_eq_of_lt i.isLt, Nat.mod_eq_of_lt j.isLt] using hc
+    exact Fin.ext hv
+  obtain ⟨n, hn⟩ := Finite.surjective_of_injective hi ⟨r, hr⟩
+  exact ⟨n, congrArg Fin.val hn⟩
+

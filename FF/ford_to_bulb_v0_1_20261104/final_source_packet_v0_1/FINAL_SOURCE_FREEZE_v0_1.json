@@ -1,0 +1,22 @@
+{
+  "status": "ALL_33_PRODUCER_PASS_INDEPENDENT_AUDIT_PENDING",
+  "source_sha256": {
+    "FVLTFordBulbDataV1.lean": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+    "FVLTFordBulbParameterV1.lean": "1e1eef97dab837bda264c9123a88b6d677c11c6e66863a4a9dfed3e1390463ed",
+    "FVLTFordBulbCombinatoricsV1.lean": "41db1fb606df471df0780284385ef0659f15e3c59ba3b55e269190f5e526d761"
+  },
+  "public_targets": 33,
+  "data_named_targets": 31,
+  "strict_constants_separate_modules": 219,
+  "library": "v23",
+  "lean": "leanprover/lean4:v4.35.0",
+  "mathlib_rev": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "accepted_freeze_decision_sha256": "5195a4be569cc05c60aced44dd14bbf23a615a10cfe5f39cca12e490d694d8f7",
+  "original_freeze_manifest_sha256": "115a6c7d95384e2caeb8c5453ff876f2ea4519bf4afdc8eec23e4aaec1906d90",
+  "independent_rebuild": "PENDING",
+  "independent_fidelity": "PENDING",
+  "final_manager_acceptance": "PENDING",
+  "kernel_adoption": false,
+  "library_publication": false,
+  "rule30_claim": false
+}

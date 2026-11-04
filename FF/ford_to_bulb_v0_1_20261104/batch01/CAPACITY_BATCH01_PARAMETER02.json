@@ -1,0 +1,7 @@
+{
+  "observed_unix": 1793820586,
+  "available_kib": 28974252,
+  "host": "nucleus",
+  "transport": "Tailscale [ts-redacted1]",
+  "owner": "01a18167-41de-74e0-882e-9171e642530f"
+}

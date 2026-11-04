@@ -1,0 +1,53 @@
+private theorem phase_last_digit (d : RotationAddress) (u : Fin d.q) :
+    rawDigit d.p d.q u.val (d.q - 1) = if u.val < d.p then 1 else 0 := by
+  have hq2 := q_at_least_two d
+  have hq : 0 < d.q := by omega
+  have hp := d.p_pos
+  have hpq := d.p_lt_q
+  have huq := u.isLt
+  have hqs : d.q - 1 + 1 = d.q := by omega
+  have hps : d.p - 1 + 1 = d.p := by omega
+  have hmQ : (d.q - 1) * d.p + d.p = d.q * d.p := by
+    nlinarith [congrArg (fun n : ℕ => n * d.p) hqs]
+  have hmP : d.q * (d.p - 1) + d.q = d.q * d.p := by
+    nlinarith [congrArg (fun n : ℕ => d.q * n) hps]
+  have hquot : (u.val + (d.q - 1) * d.p) / d.q =
+      if u.val < d.p then d.p - 1 else d.p := by
+    by_cases hu : u.val < d.p
+    · rw [ite_eq_left hu]
+      apply Nat.div_eq_of_lt_le <;> nlinarith
+    · rw [ite_eq_right hu]
+      apply Nat.div_eq_of_lt_le <;> nlinarith
+  have hc := raw_digit_carry d u (d.q - 1)
+  have hf := raw_digit_full_count d u
+  rw [raw_digit_prefix_count] at hf
+  rw [hqs, hf, hquot] at hc
+  by_cases hu : u.val < d.p
+  · rw [ite_eq_left hu] at hc ⊢
+    omega
+  · rw [ite_eq_right hu] at hc ⊢
+    omega
+
+private theorem word_parity (d : RotationAddress) (u : Fin d.q) :
+    wordValue d u % 2 = if u.val < d.p then 1 else 0 := by
+  have hq := q_at_least_two d
+  have hs : d.q - 1 + 1 = d.q := by omega
+  have hb := binary_block_rec d.p d.q u.val (d.q - 1)
+  rw [hs] at hb
+  change blockValue d.p d.q u.val d.q % 2 = _
+  rw [hb, phase_last_digit d u]
+  by_cases hu : u.val < d.p <;> simp [hu, Nat.add_mod]
+
+private theorem ordered_word_at (d : RotationAddress) (i : Fin (orderedOrbit d).length) :
+    (orderedOrbit d).get i = wordValue d ⟨i.val, by rw [← orbit_length d]; exact i.isLt⟩ := by
+  have hf : wordValue d = (orbitSet d).orderEmbOfFin (orbit_card d) := by
+    apply Finset.orderEmbOfFin_unique (orbit_card d)
+    · intro u
+      rw [orbit_set_eq]
+      exact Finset.mem_image.mpr ⟨u, Finset.mem_univ _, rfl⟩
+    · exact word_strict d
+  have hiq : i.val < d.q := by rw [← orbit_length d]; exact i.isLt
+  have hv := congrFun hf ⟨i.val, hiq⟩
+  rw [Finset.orderEmbOfFin_apply] at hv
+  simpa only [orderedOrbit, List.get_eq_getElem] using hv.symm
+

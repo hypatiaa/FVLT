@@ -1,0 +1,7 @@
+/home/saphir/fvlt_formalization_20261104/ff4_v01/attempts/Batch01Parameter01/src/FVLTFordBulbParameterV1.lean:18:4: error: Type mismatch: After simplification, term
+  HasFDerivAtFilter.add_const (cardioidParameter lambda) (hasDerivAt_pow 2 (alpha lambda))
+ has type
+  HasFDerivAtFilter (fun x => x ^ 2) (ContinuousLinearMap.toSpanSingleton ℂ (2 * alpha lambda))
+    (Filter.map (fun a => (a, alpha lambda)) (nhds (alpha lambda)))
+but is expected to have type
+  HasDerivAt (fun z => z ^ 2 + cardioidParameter lambda) (2 * alpha lambda) (alpha lambda)

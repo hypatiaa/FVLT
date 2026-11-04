@@ -1,0 +1,20 @@
+private theorem edge_start_word (d : RotationAddress) (i : Fin (orderedOrbit d).length) :
+    edgeStart d i = wordValue d ⟨i.val, by rw [← orbit_length d]; exact i.isLt⟩ := by
+  exact ordered_word_at d i
+
+private theorem edge_end_nonwrap (d : RotationAddress) (i : Fin (orderedOrbit d).length)
+    (hi : i.val + 1 < (orderedOrbit d).length) :
+    edgeEnd d i = wordValue d ⟨i.val + 1, by rw [← orbit_length d]; exact hi⟩ := by
+  unfold edgeEnd
+  split_ifs with h
+  · exact ordered_word_at d ⟨i.val + 1, h⟩
+  · exact False.elim (h hi)
+
+private theorem edge_end_wrap (d : RotationAddress) (i : Fin (orderedOrbit d).length)
+    (hi : ¬ i.val + 1 < (orderedOrbit d).length) :
+    edgeEnd d i = wordValue d ⟨0, Nat.lt_trans d.p_pos d.p_lt_q⟩ := by
+  unfold edgeEnd
+  split_ifs with h
+  · exact False.elim (hi h)
+  · exact ordered_word_at d ⟨0, by have := i.isLt; omega⟩
+

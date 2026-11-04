@@ -1,0 +1,4 @@
+'FVLT.FordBulbV1.parameter_fixed_point' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.parameter_multiplier' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.parameter_derivative' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordBulbV1.canonical_multiplier_primitive' depends on axioms: [propext, Classical.choice, Quot.sound]

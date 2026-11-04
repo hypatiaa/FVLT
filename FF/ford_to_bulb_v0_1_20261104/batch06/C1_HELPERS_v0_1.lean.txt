@@ -1,0 +1,141 @@
+private theorem cross_binary_equal_count (p q u P Q v n : ℕ)
+    (h : blockValue p q u n = blockValue P Q v n) :
+    (∑ i ∈ Finset.range n, rawDigit p q u i) =
+      ∑ i ∈ Finset.range n, rawDigit P Q v i := by
+  induction n with
+  | zero => simp
+  | succ n ih =>
+    rw [binary_block_rec, binary_block_rec] at h
+    have hu := raw_digit_le_one p q u n
+    have hv := raw_digit_le_one P Q v n
+    have he : blockValue p q u n = blockValue P Q v n := by omega
+    have hb : rawDigit p q u n = rawDigit P Q v n := by omega
+    rw [Finset.sum_range_succ, Finset.sum_range_succ, ih he, hb]
+
+private theorem cross_block_monotone (p q u P Q v n : ℕ)
+    (hc : ∀ k, k ≤ n → (∑ i ∈ Finset.range k, rawDigit p q u i) ≤
+      ∑ i ∈ Finset.range k, rawDigit P Q v i) :
+    blockValue p q u n ≤ blockValue P Q v n := by
+  induction n with
+  | zero => simp [blockValue]
+  | succ n ih =>
+    have hprev := ih (fun k hk => hc k (by omega))
+    have hu := raw_digit_le_one p q u n
+    have hv := raw_digit_le_one P Q v n
+    rcases lt_or_eq_of_le hprev with hp | hp
+    · rw [binary_block_rec, binary_block_rec]
+      omega
+    · have he := cross_binary_equal_count p q u P Q v n hp
+      have hn := hc (n + 1) (by omega)
+      rw [Finset.sum_range_succ, Finset.sum_range_succ] at hn
+      rw [binary_block_rec, binary_block_rec, hp]
+      omega
+
+private theorem address_cross_lt (d e : RotationAddress) (h : address d < address e) :
+    d.p * e.q < e.p * d.q := by
+  have hd : (0 : ℚ) < d.q := by exact_mod_cast Nat.lt_trans d.p_pos d.p_lt_q
+  have he : (0 : ℚ) < e.q := by exact_mod_cast Nat.lt_trans e.p_pos e.p_lt_q
+  have hc : (d.p : ℚ) * e.q < (e.p : ℚ) * d.q := (div_lt_div_iff₀ hd he).mp h
+  exact_mod_cast hc
+
+private theorem ordered_prefix_counts (d e : RotationAddress) (h : address d < address e)
+    (n : ℕ) :
+    (∑ i ∈ Finset.range n, rawDigit d.p d.q d.p i) ≤
+      ∑ i ∈ Finset.range n, rawDigit e.p e.q (e.p - 1) i := by
+  have hq : 0 < d.q := Nat.lt_trans d.p_pos d.p_lt_q
+  have hr : 0 < e.q := Nat.lt_trans e.p_pos e.p_lt_q
+  have hcross := address_cross_lt d e h
+  let a := (n + 1) * d.p
+  let b := (n + 1) * e.p
+  let k := a / d.q
+  have hprod : a * e.q < b * d.q := by
+    dsimp [a, b]
+    nlinarith only [Nat.mul_lt_mul_of_pos_left hcross (by omega : 0 < n + 1)]
+  have hlo : k * d.q ≤ a := Nat.div_mul_le_self a d.q
+  have hlo' := Nat.mul_le_mul_right e.q hlo
+  have hkb : k * e.q < b := by
+    by_contra hn
+    have hle : b ≤ k * e.q := by omega
+    have hm := Nat.mul_le_mul_right d.q hle
+    nlinarith
+  have hdiv : k ≤ (b - 1) / e.q :=
+    (Nat.le_div_iff_mul_le hr).2 (by omega)
+  rw [raw_digit_prefix_count d (upperIndex d), raw_digit_prefix_count e (lowerIndex e)]
+  change (d.p + n * d.p) / d.q ≤ (e.p - 1 + n * e.p) / e.q
+  have hA : d.p + n * d.p = (n + 1) * d.p := by ring
+  have hB : e.p - 1 + n * e.p = (n + 1) * e.p - 1 := by
+    rw [Nat.add_mul]
+    simp only [one_mul]
+    have := e.p_pos
+    omega
+  rw [hA, hB]
+  exact hdiv
+
+private theorem full_count_multiple (d : RotationAddress) (u : Fin d.q) (m : ℕ) :
+    (∑ i ∈ Finset.range (m * d.q), rawDigit d.p d.q u.val i) = m * d.p := by
+  rw [raw_digit_prefix_count d u]
+  have he : u.val + (m * d.q) * d.p = u.val + (m * d.p) * d.q := by ring
+  rw [he, Nat.add_mul_div_right _ _ (Nat.lt_trans d.p_pos d.p_lt_q)]
+  simp [Nat.div_eq_of_lt u.isLt]
+
+private theorem ordered_common_blocks (d e : RotationAddress) (h : address d < address e) :
+    blockValue d.p d.q d.p (d.q * e.q) <
+      blockValue e.p e.q (e.p - 1) (d.q * e.q) := by
+  have hle := cross_block_monotone d.p d.q d.p e.p e.q (e.p - 1) (d.q * e.q)
+    (fun k hk => ordered_prefix_counts d e h k)
+  by_contra hn
+  have he : blockValue d.p d.q d.p (d.q * e.q) =
+      blockValue e.p e.q (e.p - 1) (d.q * e.q) := by omega
+  have hc := cross_binary_equal_count d.p d.q d.p e.p e.q (e.p - 1) (d.q * e.q) he
+  have hd := full_count_multiple d (upperIndex d) e.q
+  have hh := full_count_multiple e (lowerIndex e) d.q
+  rw [Nat.mul_comm e.q d.q] at hd
+  change (∑ i ∈ Finset.range (d.q * e.q), rawDigit d.p d.q d.p i) = e.q * d.p at hd
+  change (∑ i ∈ Finset.range (d.q * e.q), rawDigit e.p e.q (e.p - 1) i) = d.q * e.p at hh
+  rw [hd, hh] at hc
+  have hcross := address_cross_lt d e h
+  nlinarith
+
+private theorem block_concat (p q u n m : ℕ) :
+    blockValue p q u (n + m) = 2 ^ m * blockValue p q u n + blockValue p q (u + n * p) m := by
+  induction m with
+  | zero => simp [blockValue]
+  | succ m ih =>
+    rw [show n + (m + 1) = (n + m) + 1 by omega,
+      binary_block_rec, ih, binary_block_rec, pow_succ]
+    have hd : rawDigit p q u (n + m) = rawDigit p q (u + n * p) m := by
+      have he : u + (n + m) * p = (u + n * p) + m * p := by ring
+      simp only [rawDigit, he]
+    rw [hd]
+    ring
+
+private theorem block_period_start (p q u m n : ℕ) :
+    blockValue p q (u + (m * q) * p) n = blockValue p q u n := by
+  have he : u + (m * q) * p = u + (m * p) * q := by ring
+  have hm : (u + (m * q) * p) % q = u % q := by rw [he]; simp [Nat.add_mod]
+  calc
+    _ = blockValue p q ((u + (m * q) * p) % q) n := (block_phase_mod _ _ _ _).symm
+    _ = blockValue p q (u % q) n := by rw [hm]
+    _ = blockValue p q u n := block_phase_mod _ _ _ _
+
+private theorem modulus_cast (d : RotationAddress) : (modulus d : ℚ) = (2 : ℚ) ^ d.q - 1 := by
+  unfold modulus
+  rw [Nat.cast_sub (Nat.one_le_pow d.q 2 (by decide))]
+  push_cast
+
+private theorem repetition_cross (d : RotationAddress) (u : Fin d.q) (m : ℕ) :
+    (blockValue d.p d.q u.val (m * d.q) : ℚ) * (modulus d : ℚ) =
+      (wordValue d u : ℚ) * ((2 : ℚ) ^ (m * d.q) - 1) := by
+  change (blockValue d.p d.q u.val (m * d.q) : ℚ) * (modulus d : ℚ) =
+    (blockValue d.p d.q u.val d.q : ℚ) * ((2 : ℚ) ^ (m * d.q) - 1)
+  have hM := modulus_cast d
+  induction m with
+  | zero => simp [blockValue]
+  | succ m ih =>
+    have hs : (m + 1) * d.q = m * d.q + d.q := by ring
+    rw [hs, block_concat, block_period_start, pow_add]
+    push_cast
+    have hH := congrArg (fun t : ℚ => (2 : ℚ) ^ d.q * t) ih
+    have hHM := congrArg (fun t : ℚ => (blockValue d.p d.q u.val d.q : ℚ) * t) hM
+    nlinarith only [hH, hHM]
+

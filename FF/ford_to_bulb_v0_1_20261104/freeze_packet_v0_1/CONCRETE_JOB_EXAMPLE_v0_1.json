@@ -1,0 +1,17 @@
+{
+  "status": "EXAMPLE_ONLY_NOT_DISPATCHABLE",
+  "phase": "FF4_COMBINATORIAL",
+  "module": "FVLTFordBulbDataV1",
+  "mode": "compile",
+  "run_id": "DataExampleNotDispatched",
+  "template_sha256": "c22052160a8e1fb0e6aad9bb899a37088df7353c3ef7279122be13dc0123ab5c",
+  "attempt_folder": "EXAMPLE_NOT_STAGED",
+  "source_sha256": {
+    "FVLTFordBulbDataV1.lean": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb"
+  },
+  "dependency_olean_sha256": {},
+  "prerequisite_receipt_sha256": {},
+  "signature_comparison_receipt_file": "EXAMPLE_COMPARISON_NOT_ACCEPTED.json",
+  "signature_comparison_receipt_sha256": "UNBOUND",
+  "deadline_file": "EXAMPLE_DEADLINE_NOT_ARMED.json"
+}

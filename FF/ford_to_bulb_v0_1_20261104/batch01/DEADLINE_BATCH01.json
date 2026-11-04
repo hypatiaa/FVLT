@@ -1,0 +1,7 @@
+{
+  "cap_seconds": 1800,
+  "origin_unix": 1793819862,
+  "deadline_unix": 1793821662,
+  "no_reset_or_extension": true,
+  "batch": "FF4 Batch01"
+}

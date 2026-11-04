@@ -1,0 +1,236 @@
+{
+  "schema": "ff4-batch-manifest/1",
+  "closed_unix": 1793828000,
+  "entries": [
+    {
+      "path": "attempts/Combinatorics19/AuditFVLTFordBulbCombinatoricsV1.lean",
+      "sha256": "0de58d87e93c03410284f835a32124c1d7b5591eca82a5498702006cc5ec80df",
+      "bytes": 1256
+    },
+    {
+      "path": "attempts/Combinatorics19/src/FVLTFordBulbCombinatoricsV1.lean",
+      "sha256": "736f6e518e5176730414b0a3995f1fb8060e9734599192cac87673f15a167a73",
+      "bytes": 40092
+    },
+    {
+      "path": "attempts/Combinatorics19/src/FVLTFordBulbDataV1.lean",
+      "sha256": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+      "bytes": 3290
+    },
+    {
+      "path": "attempts/Combinatorics20/AuditFVLTFordBulbCombinatoricsV1.lean",
+      "sha256": "0de58d87e93c03410284f835a32124c1d7b5591eca82a5498702006cc5ec80df",
+      "bytes": 1256
+    },
+    {
+      "path": "attempts/Combinatorics20/src/FVLTFordBulbCombinatoricsV1.lean",
+      "sha256": "32e7a53c673c71d66cbadaea529a7328813dc64fb973b3b599df824bef12f3f8",
+      "bytes": 40328
+    },
+    {
+      "path": "attempts/Combinatorics20/src/FVLTFordBulbDataV1.lean",
+      "sha256": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+      "bytes": 3290
+    },
+    {
+      "path": "attempts/Combinatorics21/AuditFVLTFordBulbCombinatoricsV1.lean",
+      "sha256": "be8557c30ecf4ed855f54a58a9b13d969de7c0c010af42001c55c37d6f25dfa8",
+      "bytes": 1394
+    },
+    {
+      "path": "attempts/Combinatorics21/build/FVLTFordBulbCombinatoricsV1.olean",
+      "sha256": "60ca6a269f3b0e1ee06dd5639ba082ed764af4fea2d3ac8e1f969ca89bdc2593",
+      "bytes": 2825320
+    },
+    {
+      "path": "attempts/Combinatorics21/src/FVLTFordBulbCombinatoricsV1.lean",
+      "sha256": "41db1fb606df471df0780284385ef0659f15e3c59ba3b55e269190f5e526d761",
+      "bytes": 42899
+    },
+    {
+      "path": "attempts/Combinatorics21/src/FVLTFordBulbDataV1.lean",
+      "sha256": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb",
+      "bytes": 3290
+    },
+    {
+      "path": "axiomsFVLTFordBulbCombinatoricsV1Batch06Combinatorics21.json",
+      "sha256": "50353f866796635201806c2d4065095047b49193070493bfd95049d1c7222053",
+      "bytes": 11466
+    },
+    {
+      "path": "axiomsFVLTFordBulbCombinatoricsV1Batch06Combinatorics21.log",
+      "sha256": "5d253ef33bdf0c7d6343dcc77396e36df0d8d3be2ef92c59504384a0dfadd45c",
+      "bytes": 2656
+    },
+    {
+      "path": "BATCH06_CLOSURE_v0_1.json",
+      "sha256": "f77167f4b01a35c13e29cc8bff0f06f249f5eb178a9563f1d079850e95ff22f3",
+      "bytes": 6435
+    },
+    {
+      "path": "BATCH06_STATUS_v0_1.md",
+      "sha256": "13412da7c7c2601cfb51a68a4e836b5595f6788546a714b3318143eb219c851b",
+      "bytes": 2854
+    },
+    {
+      "path": "BOUND_BATCH06.json",
+      "sha256": "5df73afd2396f104ae9b5936283a2ca42180ec448a1764a267427691edd3f74a",
+      "bytes": 5144
+    },
+    {
+      "path": "BOUND_BATCH06_COMBINATORICS21.json",
+      "sha256": "7d194981ba8bf18294283734a09e17563b33ff78ad6f04b5a79addf871f96855",
+      "bytes": 5160
+    },
+    {
+      "path": "C1_HELPERS_v0_1.lean.txt",
+      "sha256": "ce7a357b9030e576fad97d30c52daabdf1451c60ffa9dc968058879092e17598",
+      "bytes": 6196
+    },
+    {
+      "path": "CAPACITY_BATCH06.json",
+      "sha256": "69948d35c2d38f4ae214fafd98a7f4b743f4b8791bb064573c091d00c7aef216",
+      "bytes": 273
+    },
+    {
+      "path": "CAPACITY_BATCH06_COMBINATORICS21.json",
+      "sha256": "30769bd425088f48b29ff9daa7cb0e7e6877e8f971cbdbc0ab3a35e56ed95687",
+      "bytes": 178
+    },
+    {
+      "path": "COMPARE_COMBINATORICS19.json",
+      "sha256": "79f1cb10c40db2a46a199a4005212486b72ea15308709db3c1c145352f1c024b",
+      "bytes": 2812
+    },
+    {
+      "path": "COMPARE_COMBINATORICS20.json",
+      "sha256": "0f843ee08eea9b0daa491875ecf06917e50020875729383218300ae80a6733fc",
+      "bytes": 2850
+    },
+    {
+      "path": "COMPARE_COMBINATORICS21.json",
+      "sha256": "8db42d7cbc680403be75ca9efd771ddab2fde3712e05673b52ed1402dac9c252",
+      "bytes": 3088
+    },
+    {
+      "path": "CompileFVLTFordBulbCombinatoricsV1Batch06Combinatorics19.json",
+      "sha256": "441db50d11a5d7169609f74fafbafe3a9574a9c7a055df9179ffa557223a7d47",
+      "bytes": 6580
+    },
+    {
+      "path": "CompileFVLTFordBulbCombinatoricsV1Batch06Combinatorics19.log",
+      "sha256": "8648b46f9c7e7e0c6320af17958314c7f57887cc3c75ff1ea91c1582b641e9f4",
+      "bytes": 2164
+    },
+    {
+      "path": "CompileFVLTFordBulbCombinatoricsV1Batch06Combinatorics20.json",
+      "sha256": "08a232bc757dc1dadb065774837d58c09348067854103456b606fc8379905374",
+      "bytes": 6665
+    },
+    {
+      "path": "CompileFVLTFordBulbCombinatoricsV1Batch06Combinatorics20.log",
+      "sha256": "01df0b3e2fa993805a9d921ba4c8ad76acf624481240ec3930010b778682f236",
+      "bytes": 1145
+    },
+    {
+      "path": "CompileFVLTFordBulbCombinatoricsV1Batch06Combinatorics21.json",
+      "sha256": "7cc9e94e2cd27a29f89e1ebc70d91190f1f5f9657bfbb5ab318b6a0f95ddebac",
+      "bytes": 6782
+    },
+    {
+      "path": "CompileFVLTFordBulbCombinatoricsV1Batch06Combinatorics21.log",
+      "sha256": "0186c14b3109b2acd728e27c3c0c53a3357c71565105d7757df2422bd85b3047",
+      "bytes": 1145
+    },
+    {
+      "path": "DEADLINE_BATCH06.json",
+      "sha256": "69396f4d7328274e8e982f88c8f0e38005c1eda7248432d872aadf3d27e20467",
+      "bytes": 145
+    },
+    {
+      "path": "FINALIZE_BATCH06.py",
+      "sha256": "1c1c1562dc6f69eb38b0004d191146c098ea798951c25cb5926072ead4d4dc2b",
+      "bytes": 6545
+    },
+    {
+      "path": "HOST_RESERVATION_BATCH06.json",
+      "sha256": "9072e4fef8801cdc15040178d7af6ea52185567a0eb4e46d17794a861efe4af4",
+      "bytes": 257
+    },
+    {
+      "path": "JOB_axiomsFVLTFordBulbCombinatoricsV1Batch06Combinatorics21.json",
+      "sha256": "be388661272631a5f2d8bc2d3c77cf4f7c43ae52e1763d256e14164f248dc7c3",
+      "bytes": 2986
+    },
+    {
+      "path": "JOB_CompileFVLTFordBulbCombinatoricsV1Batch06Combinatorics19.json",
+      "sha256": "7da25a7d0bd851ac38497dec13ecd6f47fbb18fd2da15968f324b362b2894095",
+      "bytes": 1300
+    },
+    {
+      "path": "JOB_CompileFVLTFordBulbCombinatoricsV1Batch06Combinatorics20.json",
+      "sha256": "b857d358b3a4e71840badb3494017814f67ee2c346807cdb90ef43aecb25d971",
+      "bytes": 1300
+    },
+    {
+      "path": "JOB_CompileFVLTFordBulbCombinatoricsV1Batch06Combinatorics21.json",
+      "sha256": "0752cc97dd2be2064c70910d84c0eedffaaa774eda12469b202b7c9f2956cdcd",
+      "bytes": 1300
+    },
+    {
+      "path": "JOB_replayFVLTFordBulbCombinatoricsV1Batch06Combinatorics21.json",
+      "sha256": "b12b6f1b16c1cdf81db284c8901f048eff71f459606f627cd9aac1d16eb2814b",
+      "bytes": 1639
+    },
+    {
+      "path": "PREPARE_AUDITS21.py",
+      "sha256": "2270fdfa2516a8176bf574aa7a1f7133be3c63d084c53ef32176c989be1910fd",
+      "bytes": 1516
+    },
+    {
+      "path": "PREPARE_COMBINATORICS19.py",
+      "sha256": "a7cfc61ffbd63c397e1542dc5b9ab5d11dfe5f994010b1ee82f8f6a157a5a6ec",
+      "bytes": 2999
+    },
+    {
+      "path": "PREPARE_COMBINATORICS20.py",
+      "sha256": "383a3f62107e9353afac536dc42d34824d48fd479a45ba14df3cc4451cc96467",
+      "bytes": 2464
+    },
+    {
+      "path": "PREPARE_COMBINATORICS21.py",
+      "sha256": "1c4c2a9d0352252683dfa79a352895f530d88e858c06c36f9863e26abd4c1b5b",
+      "bytes": 4872
+    },
+    {
+      "path": "replayFVLTFordBulbCombinatoricsV1Batch06Combinatorics21.json",
+      "sha256": "740d47367fb31e076c8a6da54936d634d09e9dd0ef9576e72b91a6fa8544602e",
+      "bytes": 6914
+    },
+    {
+      "path": "replayFVLTFordBulbCombinatoricsV1Batch06Combinatorics21.log",
+      "sha256": "db12620df406352cc9ab9f5c18def76cc38e364140185615e53af3772727349d",
+      "bytes": 189755
+    },
+    {
+      "path": "REVIEW_ACCEPTANCE.json",
+      "sha256": "aced498d8f2904d1bcd5a4f02e4ad3819c271de7c1e1ae7245f7ddcbdd934995",
+      "bytes": 8185
+    },
+    {
+      "path": "REVIEW_ACCEPTANCE_PRE_COMBINATORICS20.json",
+      "sha256": "7bd70d3b62c209f207374c501881e0b1478f51fd041a47df2c7ef73b70d072aa",
+      "bytes": 8025
+    },
+    {
+      "path": "REVIEW_ACCEPTANCE_PRE_COMBINATORICS21.json",
+      "sha256": "f62b0813f7f7062fd06791a714caae6e4a1f205d4f41e6fff74bbc442afa8f69",
+      "bytes": 8025
+    },
+    {
+      "path": "REVIEW_ACCEPTANCE_PRE_COMBINATORICS21_AUDITS.json",
+      "sha256": "bf4667d08dc77b3753e47461b7d43efc4bb93b9d77086c96a5fb30e0dada5662",
+      "bytes": 8041
+    }
+  ]
+}

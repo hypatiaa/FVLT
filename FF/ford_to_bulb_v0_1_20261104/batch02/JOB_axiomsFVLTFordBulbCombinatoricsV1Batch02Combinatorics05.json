@@ -1,0 +1,43 @@
+{
+  "phase": "FF4_COMBINATORIAL",
+  "module": "FVLTFordBulbCombinatoricsV1",
+  "mode": "axioms",
+  "run_id": "axiomsFVLTFordBulbCombinatoricsV1Batch02Combinatorics05",
+  "template_sha256": "b1002610d6fbce93e77e72f0bdd866b48bab4fdc28dfedd131d0ef27e6704d7b",
+  "attempt_folder": "attempts/Batch02Combinatorics05",
+  "source_sha256": {
+    "FVLTFordBulbCombinatoricsV1.lean": "c3f4c157bc8e392bede58cdec8e4cd294d909a74b11336da2cb4945b3f5ea5e5",
+    "FVLTFordBulbDataV1.lean": "19fcd5d35edce000a49b3c0f9a34fb2d0b4c5ce8094e36d15b66dd9d74f5c4eb"
+  },
+  "dependency_olean_sha256": {
+    "FVLTFordBulbDataV1.olean": "21df17bc2e550337e13519487014f011c7ed712178c903d7bda283c546bd75f3",
+    "FVLTFordBulbCombinatoricsV1.olean": "faa222e2973d91b4286ca1a0680d5dbb3b8877dd4d9c532adcc6d9ffea2f6f6c"
+  },
+  "prerequisite_receipt_sha256": {
+    "CompileFVLTFordBulbDataV1Batch01Data01.json": "8195f124bfc7e7c4d7aa4d3793a598e70e38933742a5ddb5e5097f8d5dd69368",
+    "axiomsFVLTFordBulbDataV1Batch01Data01.json": "0586d0303c608257caa7c40099da7aaef36206b55e9f67f2c75cfd3eb221012d",
+    "replayFVLTFordBulbDataV1Batch01Data01.json": "b52766cb16af44a4f677d0e5f246f9cb07775f1a009369343e27d8f5fb313e44",
+    "CompileFVLTFordBulbCombinatoricsV1Batch02Combinatorics05.json": "7c6c475c57a5ab506f7d35314c6349026db8b4641cbfdec66110e884014c4ba5"
+  },
+  "signature_comparison_receipt_file": "COMPARE_COMBINATORICS05.json",
+  "signature_comparison_receipt_sha256": "ebb8f4cdc245a68eb3ecb557e231ce8ef98420ed9e72259c2fee11d1b61f520f",
+  "deadline_file": "DEADLINE_BATCH02.json",
+  "own_compile_receipt_file": "CompileFVLTFordBulbCombinatoricsV1Batch02Combinatorics05.json",
+  "axiom_report_source": "AuditFVLTFordBulbCombinatoricsV1.lean",
+  "axiom_report_source_sha256": "02301947d03c20c5750ad99c9dc47df42c13feeab078227ee6aaf61d6e87ec2e",
+  "axiom_targets": [
+    "FVLT.FordBulbV1.address_canonical",
+    "FVLT.FordBulbV1.address_interval",
+    "FVLT.FordBulbV1.address_injective",
+    "FVLT.FordBulbV1.q_at_least_two",
+    "FVLT.FordBulbV1.modulus_pos",
+    "FVLT.FordBulbV1.upper_digit_equiv",
+    "FVLT.FordBulbV1.lower_digit_equiv",
+    "FVLT.FordBulbV1.address_surjective",
+    "FVLT.FordBulbV1.word_sum",
+    "FVLT.FordBulbV1.word_bounds",
+    "FVLT.FordBulbV1.characteristic_adjacent",
+    "FVLT.FordBulbV1.characteristic_bounds",
+    "FVLT.FordBulbV1.characteristic_angle_gap"
+  ]
+}
