@@ -1,0 +1,16 @@
+{
+  "phase": "F1",
+  "drafting_started_utc": "2026-11-03T05:32:04.4401951-05:00",
+  "drafting_started_unix": 1793701924,
+  "active_cap_seconds": 1800,
+  "acceptance_waits": [
+    {
+      "waiting_for": "initial I3 template acceptance",
+      "started_utc": "2026-11-03T05:32:51.5852803-05:00",
+      "started_unix": 1793701971,
+      "ended_unix": 1793702314
+    }
+  ],
+  "invocations": 2,
+  "stopped_after_run": "F1ACompile02"
+}

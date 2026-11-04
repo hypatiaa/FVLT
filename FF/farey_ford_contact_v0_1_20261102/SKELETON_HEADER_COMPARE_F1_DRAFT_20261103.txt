@@ -1,0 +1,30 @@
+OK   template header in signature file: theorem ford_distance_identity (x y : ℚ) (hne : x ≠ y) :
+OK   template header in signature file: theorem kiss_membership (x y : ℚ) (h : fareyAdj x y) :
+OK   template header in sources: theorem ford_distance_identity (x y : ℚ) (hne : x ≠ y) :
+OK   template header in sources: theorem kiss_membership (x y : ℚ) (h : fareyAdj x y) :
+OK   FVLTFareyContactV1.lean: frozen verbatim: def det (x y : ℚ) : ℤ
+OK   FVLTFareyContactV1.lean: frozen verbatim: def fareyAdj (x y : ℚ) : Prop
+OK   FVLTFareyContactV1.lean: no 'sorry'
+OK   FVLTFareyContactV1.lean: no 'admit'
+OK   FVLTFareyContactV1.lean: no 'native_decide'
+OK   FVLTFareyContactV1.lean: no 'unsafe'
+OK   FVLTFareyContactV1.lean: no 'partial def'
+OK   FVLTFareyContactV1.lean: no 'axiom'
+OK   FVLTFareyContactV1.lean: imports Mathlib
+OK   FVLTFordGeometryV1.lean: frozen verbatim: def radius (x : ℚ) : ℝ
+OK   FVLTFordGeometryV1.lean: frozen verbatim: def centre (x : ℚ) : ℂ
+OK   FVLTFordGeometryV1.lean: frozen verbatim: def boundary (x : ℚ) : Set ℂ
+OK   FVLTFordGeometryV1.lean: frozen verbatim: def kissN (x y : ℚ) : ℤ
+OK   FVLTFordGeometryV1.lean: frozen verbatim: def kissM (x y : ℚ) : ℕ
+OK   FVLTFordGeometryV1.lean: frozen verbatim: def kiss (x y : ℚ) : ℂ
+OK   FVLTFordGeometryV1.lean: frozen verbatim: theorem radius_pos (x : ℚ) : 0 < radius x
+OK   FVLTFordGeometryV1.lean: frozen verbatim: theorem ford_distance_identity (x y : ℚ) (hne : x ≠ y) :
+OK   FVLTFordGeometryV1.lean: frozen verbatim: theorem kiss_membership (x y : ℚ) (h : fareyAdj x y) :
+OK   FVLTFordGeometryV1.lean: no 'sorry'
+OK   FVLTFordGeometryV1.lean: no 'admit'
+OK   FVLTFordGeometryV1.lean: no 'native_decide'
+OK   FVLTFordGeometryV1.lean: no 'unsafe'
+OK   FVLTFordGeometryV1.lean: no 'partial def'
+OK   FVLTFordGeometryV1.lean: no 'axiom'
+OK   FVLTFordGeometryV1.lean: imports FVLTFareyContactV1
+{"fails":0}

@@ -1,0 +1,49 @@
+{
+  "job": {
+    "phase": "F1",
+    "mode": "compile",
+    "module": "FVLTFareyContactV1",
+    "run_id": "F1ACompile03",
+    "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+    "source_sha256": {
+      "FVLTFareyContactV1.lean": "6fdc9e057daf4f10ecea7cbd3fe5998c4e54f4d58d236eacfaa7392d983c504a",
+      "FVLTFordGeometryV1.lean": "9639b87bb6e0c1fc532054c6b390507a2b8412dc61751774237438fcb6753567"
+    },
+    "dependency_olean_sha256": {},
+    "template_sha256": "45c7d8bf2046298f2f7d9e428e90ce173391050156e77f526c8da5cedd10c274",
+    "owner_accepted_utc": "2026-11-03T11:28:34.7438702+00:00"
+  },
+  "runner_sha256": "c14f263caa77643e653f12fe63a3cda1bfdfa5024cfab97d2eadf5d2c6a59590",
+  "command": [
+    "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+    "-j1",
+    "-s65536",
+    "-M7680",
+    "-D",
+    "Elab.async=false",
+    "-o",
+    "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/FVLTFareyContactV1.olean",
+    "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/FVLTFareyContactV1.lean"
+  ],
+  "wall_cap_seconds": 240,
+  "address_space_bytes": 8589934592,
+  "process_limit": 256,
+  "output_file_limit_bytes": 67108864,
+  "cpu_affinity": [
+    0
+  ],
+  "nice": 19,
+  "started_unix": 1793705342.014713,
+  "library": "/home/saphir/rule30_theorem_library/v19",
+  "transport": "100.92.188.6 58024 100.105.106.41 22",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "LEAN_PATH": "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103:/home/saphir/rule30_theorem_library/v19/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/Qq/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/aesop/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/batteries/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/importGraph/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/mathlib/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/plausible/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/proofwidgets/.lake/build/lib/lean",
+  "exit_code": 1,
+  "timeout": false,
+  "seconds": 0.7166011333465576,
+  "log_sha256": "f0077a3dc7dabac625bd8825939994ca3ddbcc428448d4c2de669a60e8421b7f",
+  "log_bytes": 306,
+  "peak_child_rss_kib": 1598972,
+  "source_unchanged": true,
+  "library_checksum_after_exit": 0
+}

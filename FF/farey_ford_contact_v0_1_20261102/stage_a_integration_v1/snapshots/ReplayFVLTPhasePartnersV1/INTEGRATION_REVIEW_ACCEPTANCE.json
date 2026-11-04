@@ -1,0 +1,395 @@
+{
+  "input_review_reference": "Decision #1438 plus exact-match receipt853fc5e7",
+  "final_template_review_reference": "Accepted-on-posting #1439 ledger1442 verified by coordinator",
+  "runner_sha256": "0e8e66ffa4c001c8bd9425e8d9be26264c0880163e98068e956e389b74d5f140",
+  "bound_template_file": "INTEGRATION_JOB_TEMPLATE_BOUND_v0_1.json",
+  "bound_template_sha256": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+  "reviewed_files": {
+    "FIDELITY_MATRIX_v0_1.json": "cf5614f7b339304eb2ef88736183bf0429b43b6f6edd7fd2869b90ddaacaebc4",
+    "SUPPORT_DECLARATIONS_v0_1.json": "c8c13e92f04cdbfd35a19bf47862447365e238a5e8097adc81f9c63b4b8d0778",
+    "REFERENCE_kernel_v3_3_1.md": "e49533088843e2cd0a1c531c4d8ba113ea30113e8135a15c17c040bdfca3e0e0",
+    "REFERENCE_WORK_ORDER_v0_3.md": "43560b88ab50dc77d8e222562f83bad68c8ba17d12a073523a99597a484d6fdd",
+    "REFERENCE_SIGNATURE_FREEZE_v0_1.md": "a9382d4054a77d7a569e884b4f7e02b55f7c7e9aa0da2d3a6d1299075ea2b6c7",
+    "REFERENCE_ERRATUM_E1.md": "b7240e8fe36a239d66e19986308b2a2d59aa5212d1c4b5af74dc0683768f4243",
+    "REFERENCE_ERRATUM_S1.md": "03c54bbfa34cb9854f7e10179f50a5e2fa2fdef3332e6886ec2a9613a92f9299",
+    "INTEGRATION_AND_FIDELITY_PLAN_v0_1.md": "2dd0e2a9195eb082629d57331615bf4332aad7f8e8270f3ca82e00d016caa5cc",
+    "CONDITIONAL_LIBRARY_SYNC_AUTHORIZATION_20261103.md": "a47a92c1b96f43fcc92f4a9bd8419e711fad227ca5c45d085325adb393de0102",
+    "INTEGRATION_JOB_TEMPLATE_BOUND_v0_1.json": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+    "INTEGRATION_INPUT_OBSERVATIONS_v0_1.json": "853fc5e72a21430c80ad67f072b1492005c4cfbe19e3dacbfeb3de9fe0f9cbe4",
+    "INTEGRATION_TEMPLATE_DECISION_v0_1.md": "46c706e90fef5eeeefcdf0b8b4be63916ce39db1e87a532d368b01359964af7b"
+  },
+  "accepted_job_manifest_sha256": [
+    "c583ab37d930513e66a40b6250b7f84325417fb78e39ab2ac18b0d46b7059ec5",
+    "e08601a287134c58f019e80673b1504bd818aa67569a5c439fd0fbb1f1bf30a2",
+    "46a444ffe286d2ae4ddefb20656fd64944bf17c625e1cd9d4f5022d6fa0378f3",
+    "cda3b643623746b7155d9725ca570cf3658182a9433f03852c78492696a9b416",
+    "bf7fd0350c789f1e861ef84e9c7ad1e52c6955b4d08d59d9d608eaaa7737375d",
+    "ea8648c2330b7e58d73382b556da0df3e10b7d45fdef7a4c1e999561df996651",
+    "79e1e54c2bd1cae89cb0aa4d7ab177ffa2873afbab67675a82e921a836142459",
+    "e0c08052b5c8e462bff9d5a832695c7cca7f4d24eaa845571c5a1f5a359a3709",
+    "0de503b4d2e675d1b43a524534b206df774dc0aab63327d7d660bbcf455c8ef2",
+    "c36fcee3120dc92c182bac785c54e87ecd2b1b73a70c9a770939369eca1a1163",
+    "474e14a1c37c5be1871897e90a76119c7fe516e42ee3797d4e85cdddece3a424",
+    "9ee99ba3e900783be2ae75570d50829e8c3d5b4002c1af1e6abfd37dbf075922",
+    "50f6b342b51c3a1982d59e97948b4b7d1850e6574a07bd0256035d389b5cf3ff",
+    "7282c1b0367ad4fe4bb37b53869d12dcd0d33b0c8c4a805505f5c8ce7de23884"
+  ],
+  "owner_acceptance_log": [
+    {
+      "job": "JOB_CompileFVLTFareyContactV1.json",
+      "job_sha256": "c583ab37d930513e66a40b6250b7f84325417fb78e39ab2ac18b0d46b7059ec5",
+      "accepted_utc": "2026-11-03T23:46:28.278554+00:00",
+      "template_sha256": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+      "metadata_helper_sha256": "88301f5084de38726a0625216424ff2aa7ead6e14ee3e74561d5bff5e9ab52fb",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+        "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+        "FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+        "FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+        "FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+        "FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+        "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+        "FVLTStageAIntegrationV1.lean": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+      },
+      "dependency_olean_sha256": {}
+    },
+    {
+      "job": "JOB_ReplayFVLTFareyContactV1.json",
+      "job_sha256": "e08601a287134c58f019e80673b1504bd818aa67569a5c439fd0fbb1f1bf30a2",
+      "accepted_utc": "2026-11-03T23:47:05.615209+00:00",
+      "template_sha256": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+      "metadata_helper_sha256": "88301f5084de38726a0625216424ff2aa7ead6e14ee3e74561d5bff5e9ab52fb",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+        "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+        "FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+        "FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+        "FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+        "FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+        "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+        "FVLTStageAIntegrationV1.lean": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+      },
+      "dependency_olean_sha256": {
+        "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8"
+      }
+    },
+    {
+      "job": "JOB_CompileFVLTFordGeometryV1.json",
+      "job_sha256": "46a444ffe286d2ae4ddefb20656fd64944bf17c625e1cd9d4f5022d6fa0378f3",
+      "accepted_utc": "2026-11-03T23:47:16.718953+00:00",
+      "template_sha256": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+      "metadata_helper_sha256": "88301f5084de38726a0625216424ff2aa7ead6e14ee3e74561d5bff5e9ab52fb",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+        "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+        "FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+        "FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+        "FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+        "FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+        "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+        "FVLTStageAIntegrationV1.lean": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+      },
+      "dependency_olean_sha256": {
+        "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8"
+      }
+    },
+    {
+      "job": "JOB_ReplayFVLTFordGeometryV1.json",
+      "job_sha256": "cda3b643623746b7155d9725ca570cf3658182a9433f03852c78492696a9b416",
+      "accepted_utc": "2026-11-03T23:47:28.172721+00:00",
+      "template_sha256": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+      "metadata_helper_sha256": "88301f5084de38726a0625216424ff2aa7ead6e14ee3e74561d5bff5e9ab52fb",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+        "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+        "FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+        "FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+        "FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+        "FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+        "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+        "FVLTStageAIntegrationV1.lean": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+      },
+      "dependency_olean_sha256": {
+        "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+        "FVLTFordGeometryV1.olean": "ba6ae2a16ccde218c70be1233e343512a3407539365be92a8048a22b086e6fbc"
+      }
+    },
+    {
+      "job": "JOB_CompileFVLTFareyCertificatesV1.json",
+      "job_sha256": "bf7fd0350c789f1e861ef84e9c7ad1e52c6955b4d08d59d9d608eaaa7737375d",
+      "accepted_utc": "2026-11-03T23:47:40.538306+00:00",
+      "template_sha256": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+      "metadata_helper_sha256": "88301f5084de38726a0625216424ff2aa7ead6e14ee3e74561d5bff5e9ab52fb",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+        "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+        "FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+        "FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+        "FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+        "FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+        "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+        "FVLTStageAIntegrationV1.lean": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+      },
+      "dependency_olean_sha256": {
+        "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+        "FVLTFordGeometryV1.olean": "ba6ae2a16ccde218c70be1233e343512a3407539365be92a8048a22b086e6fbc"
+      }
+    },
+    {
+      "job": "JOB_ReplayFVLTFareyCertificatesV1.json",
+      "job_sha256": "ea8648c2330b7e58d73382b556da0df3e10b7d45fdef7a4c1e999561df996651",
+      "accepted_utc": "2026-11-03T23:48:04.723226+00:00",
+      "template_sha256": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+      "metadata_helper_sha256": "88301f5084de38726a0625216424ff2aa7ead6e14ee3e74561d5bff5e9ab52fb",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+        "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+        "FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+        "FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+        "FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+        "FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+        "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+        "FVLTStageAIntegrationV1.lean": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+      },
+      "dependency_olean_sha256": {
+        "FVLTFareyCertificatesV1.olean": "69de57382a52f20b9839026ab89e10b29644fee6db51cdd83b83df68e753f413",
+        "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+        "FVLTFordGeometryV1.olean": "ba6ae2a16ccde218c70be1233e343512a3407539365be92a8048a22b086e6fbc"
+      }
+    },
+    {
+      "job": "JOB_CompileFVLTFareyArithmeticCompletionV1.json",
+      "job_sha256": "79e1e54c2bd1cae89cb0aa4d7ab177ffa2873afbab67675a82e921a836142459",
+      "accepted_utc": "2026-11-03T23:48:45.356591+00:00",
+      "template_sha256": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+      "metadata_helper_sha256": "88301f5084de38726a0625216424ff2aa7ead6e14ee3e74561d5bff5e9ab52fb",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+        "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+        "FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+        "FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+        "FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+        "FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+        "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+        "FVLTStageAIntegrationV1.lean": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+      },
+      "dependency_olean_sha256": {
+        "FVLTFareyCertificatesV1.olean": "69de57382a52f20b9839026ab89e10b29644fee6db51cdd83b83df68e753f413",
+        "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+        "FVLTFordGeometryV1.olean": "ba6ae2a16ccde218c70be1233e343512a3407539365be92a8048a22b086e6fbc"
+      }
+    },
+    {
+      "job": "JOB_ReplayFVLTFareyArithmeticCompletionV1.json",
+      "job_sha256": "e0c08052b5c8e462bff9d5a832695c7cca7f4d24eaa845571c5a1f5a359a3709",
+      "accepted_utc": "2026-11-03T23:48:57.604528+00:00",
+      "template_sha256": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+      "metadata_helper_sha256": "88301f5084de38726a0625216424ff2aa7ead6e14ee3e74561d5bff5e9ab52fb",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+        "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+        "FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+        "FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+        "FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+        "FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+        "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+        "FVLTStageAIntegrationV1.lean": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+      },
+      "dependency_olean_sha256": {
+        "FVLTFareyArithmeticCompletionV1.olean": "56490406672ff22bb0ba8091c1f5f707e9c5c28ecfb4e4b7d6186debd0bdd947",
+        "FVLTFareyCertificatesV1.olean": "69de57382a52f20b9839026ab89e10b29644fee6db51cdd83b83df68e753f413",
+        "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+        "FVLTFordGeometryV1.olean": "ba6ae2a16ccde218c70be1233e343512a3407539365be92a8048a22b086e6fbc"
+      }
+    },
+    {
+      "job": "JOB_CompileFVLTFordGeometryCompletionV1.json",
+      "job_sha256": "0de503b4d2e675d1b43a524534b206df774dc0aab63327d7d660bbcf455c8ef2",
+      "accepted_utc": "2026-11-03T23:49:11.015589+00:00",
+      "template_sha256": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+      "metadata_helper_sha256": "88301f5084de38726a0625216424ff2aa7ead6e14ee3e74561d5bff5e9ab52fb",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+        "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+        "FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+        "FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+        "FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+        "FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+        "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+        "FVLTStageAIntegrationV1.lean": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+      },
+      "dependency_olean_sha256": {
+        "FVLTFareyArithmeticCompletionV1.olean": "56490406672ff22bb0ba8091c1f5f707e9c5c28ecfb4e4b7d6186debd0bdd947",
+        "FVLTFareyCertificatesV1.olean": "69de57382a52f20b9839026ab89e10b29644fee6db51cdd83b83df68e753f413",
+        "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+        "FVLTFordGeometryV1.olean": "ba6ae2a16ccde218c70be1233e343512a3407539365be92a8048a22b086e6fbc"
+      }
+    },
+    {
+      "job": "JOB_ReplayFVLTFordGeometryCompletionV1.json",
+      "job_sha256": "c36fcee3120dc92c182bac785c54e87ecd2b1b73a70c9a770939369eca1a1163",
+      "accepted_utc": "2026-11-03T23:49:24.317021+00:00",
+      "template_sha256": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+      "metadata_helper_sha256": "88301f5084de38726a0625216424ff2aa7ead6e14ee3e74561d5bff5e9ab52fb",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+        "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+        "FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+        "FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+        "FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+        "FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+        "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+        "FVLTStageAIntegrationV1.lean": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+      },
+      "dependency_olean_sha256": {
+        "FVLTFareyArithmeticCompletionV1.olean": "56490406672ff22bb0ba8091c1f5f707e9c5c28ecfb4e4b7d6186debd0bdd947",
+        "FVLTFareyCertificatesV1.olean": "69de57382a52f20b9839026ab89e10b29644fee6db51cdd83b83df68e753f413",
+        "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+        "FVLTFordGeometryCompletionV1.olean": "ce38bf44fe8556c09588461b69782b6752a2e1bd6fe8361f496981ef252ced9b",
+        "FVLTFordGeometryV1.olean": "ba6ae2a16ccde218c70be1233e343512a3407539365be92a8048a22b086e6fbc"
+      }
+    },
+    {
+      "job": "JOB_CompileFVLTUnitFractionSpineV1.json",
+      "job_sha256": "474e14a1c37c5be1871897e90a76119c7fe516e42ee3797d4e85cdddece3a424",
+      "accepted_utc": "2026-11-03T23:49:37.853831+00:00",
+      "template_sha256": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+      "metadata_helper_sha256": "88301f5084de38726a0625216424ff2aa7ead6e14ee3e74561d5bff5e9ab52fb",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+        "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+        "FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+        "FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+        "FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+        "FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+        "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+        "FVLTStageAIntegrationV1.lean": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+      },
+      "dependency_olean_sha256": {
+        "FVLTFareyArithmeticCompletionV1.olean": "56490406672ff22bb0ba8091c1f5f707e9c5c28ecfb4e4b7d6186debd0bdd947",
+        "FVLTFareyCertificatesV1.olean": "69de57382a52f20b9839026ab89e10b29644fee6db51cdd83b83df68e753f413",
+        "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+        "FVLTFordGeometryCompletionV1.olean": "ce38bf44fe8556c09588461b69782b6752a2e1bd6fe8361f496981ef252ced9b",
+        "FVLTFordGeometryV1.olean": "ba6ae2a16ccde218c70be1233e343512a3407539365be92a8048a22b086e6fbc"
+      }
+    },
+    {
+      "job": "JOB_ReplayFVLTUnitFractionSpineV1.json",
+      "job_sha256": "9ee99ba3e900783be2ae75570d50829e8c3d5b4002c1af1e6abfd37dbf075922",
+      "accepted_utc": "2026-11-03T23:49:49.708919+00:00",
+      "template_sha256": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+      "metadata_helper_sha256": "88301f5084de38726a0625216424ff2aa7ead6e14ee3e74561d5bff5e9ab52fb",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+        "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+        "FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+        "FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+        "FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+        "FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+        "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+        "FVLTStageAIntegrationV1.lean": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+      },
+      "dependency_olean_sha256": {
+        "FVLTFareyArithmeticCompletionV1.olean": "56490406672ff22bb0ba8091c1f5f707e9c5c28ecfb4e4b7d6186debd0bdd947",
+        "FVLTFareyCertificatesV1.olean": "69de57382a52f20b9839026ab89e10b29644fee6db51cdd83b83df68e753f413",
+        "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+        "FVLTFordGeometryCompletionV1.olean": "ce38bf44fe8556c09588461b69782b6752a2e1bd6fe8361f496981ef252ced9b",
+        "FVLTFordGeometryV1.olean": "ba6ae2a16ccde218c70be1233e343512a3407539365be92a8048a22b086e6fbc",
+        "FVLTUnitFractionSpineV1.olean": "8d5f4cae1a6693a1e873ecc2ad73e81a50d380254eb289ba304d9ddb67508870"
+      }
+    },
+    {
+      "job": "JOB_CompileFVLTPhasePartnersV1.json",
+      "job_sha256": "50f6b342b51c3a1982d59e97948b4b7d1850e6574a07bd0256035d389b5cf3ff",
+      "accepted_utc": "2026-11-03T23:50:24.653047+00:00",
+      "template_sha256": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+      "metadata_helper_sha256": "88301f5084de38726a0625216424ff2aa7ead6e14ee3e74561d5bff5e9ab52fb",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+        "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+        "FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+        "FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+        "FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+        "FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+        "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+        "FVLTStageAIntegrationV1.lean": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+      },
+      "dependency_olean_sha256": {
+        "FVLTFareyArithmeticCompletionV1.olean": "56490406672ff22bb0ba8091c1f5f707e9c5c28ecfb4e4b7d6186debd0bdd947",
+        "FVLTFareyCertificatesV1.olean": "69de57382a52f20b9839026ab89e10b29644fee6db51cdd83b83df68e753f413",
+        "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+        "FVLTFordGeometryCompletionV1.olean": "ce38bf44fe8556c09588461b69782b6752a2e1bd6fe8361f496981ef252ced9b",
+        "FVLTFordGeometryV1.olean": "ba6ae2a16ccde218c70be1233e343512a3407539365be92a8048a22b086e6fbc",
+        "FVLTUnitFractionSpineV1.olean": "8d5f4cae1a6693a1e873ecc2ad73e81a50d380254eb289ba304d9ddb67508870"
+      }
+    },
+    {
+      "job": "JOB_ReplayFVLTPhasePartnersV1.json",
+      "job_sha256": "7282c1b0367ad4fe4bb37b53869d12dcd0d33b0c8c4a805505f5c8ce7de23884",
+      "accepted_utc": "2026-11-03T23:50:39.635201+00:00",
+      "template_sha256": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+      "metadata_helper_sha256": "88301f5084de38726a0625216424ff2aa7ead6e14ee3e74561d5bff5e9ab52fb",
+      "source_sha256": {
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+        "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+        "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+        "FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+        "FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+        "FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+        "FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+        "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+        "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+        "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+        "FVLTStageAIntegrationV1.lean": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+      },
+      "dependency_olean_sha256": {
+        "FVLTFareyArithmeticCompletionV1.olean": "56490406672ff22bb0ba8091c1f5f707e9c5c28ecfb4e4b7d6186debd0bdd947",
+        "FVLTFareyCertificatesV1.olean": "69de57382a52f20b9839026ab89e10b29644fee6db51cdd83b83df68e753f413",
+        "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+        "FVLTFordGeometryCompletionV1.olean": "ce38bf44fe8556c09588461b69782b6752a2e1bd6fe8361f496981ef252ced9b",
+        "FVLTFordGeometryV1.olean": "ba6ae2a16ccde218c70be1233e343512a3407539365be92a8048a22b086e6fbc",
+        "FVLTPhasePartnersV1.olean": "7c03fef269cba82b5c4046395d30d5e6eead3f54eaa242f0a80b4fad47d82f0c",
+        "FVLTUnitFractionSpineV1.olean": "8d5f4cae1a6693a1e873ecc2ad73e81a50d380254eb289ba304d9ddb67508870"
+      }
+    }
+  ]
+}

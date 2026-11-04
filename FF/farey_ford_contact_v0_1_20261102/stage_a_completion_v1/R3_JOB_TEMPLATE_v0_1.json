@@ -1,0 +1,100 @@
+{
+  "status": "AWAITING_OPUS_DESIGN_ACCEPTANCE_AND_FRESH_INPUT_BINDING",
+  "phase": "R3",
+  "module": "FVLTUnitFractionSpineV1",
+  "namespace": "FVLT.FareyContactV1; unitFrac_tangent in FVLT.FordGeometryV1",
+  "root": "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1",
+  "allowed_modes": [
+    "compile",
+    "replay"
+  ],
+  "imports_allowed": [
+    "FVLTFordGeometryCompletionV1",
+    "standard Mathlib"
+  ],
+  "runner": "RUN_R3_v0_1.py",
+  "runner_sha256": "446d2ceda8cfbfa677df6ba1f8ea6957a6010d86bee5dbef86a7449670b3f896",
+  "library": "/home/saphir/rule30_theorem_library/v19",
+  "library_expected": {
+    "SHA256SUMS": "e25d4d54d074f152c452aa7247ccbe992e14b29d58306809660a75770ae7ddd5",
+    "LIBRARY_MANIFEST.json": "f0ee6b00fe4a622b63cac1f4fb24146e9b2808bdb0fb430ebdac074fecb258fa",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "4f0aea1336d288cba45c00727ce81c2cc064c39fca46e8ccf4505ae38ca6191f",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "lean_executable": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "checker_sha256": "9c6f2ac11b50fdb846df2d5099ea673553903275a5dba11fce5a5673cae14bd0",
+  "toolchain": "Lean 4.35.0 commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc",
+  "mathlib_commit": "56a005855ea17e0b0958f73ec801ae140b0a1679",
+  "signature_sha256": "a9382d4054a77d7a569e884b4f7e02b55f7c7e9aa0da2d3a6d1299075ea2b6c7",
+  "frozen_definitions": {
+    "vertexSet": "def vertexSet (V : Finset ℕ) : Finset ℚ := V.image unitFrac",
+    "integerPath": "def integerPath : SimpleGraph ℕ"
+  },
+  "frozen_headers": {
+    "unitFrac_injective_positive": "theorem unitFrac_injective_positive (a b : ℕ) (ha : 0 < a) (hb : 0 < b) :\n  unitFrac a = unitFrac b ↔ a = b",
+    "integerPath_adj": "theorem integerPath_adj (a b : ℕ) :\n  integerPath.Adj a b ↔ |(a : ℤ) - (b : ℤ)| = 1",
+    "unitFrac_adj": "theorem unitFrac_adj (a b : ℕ) (ha : 0 < a) (hb : 0 < b) :\n  fareyAdj (unitFrac a) (unitFrac b) ↔ |(a : ℤ) - (b : ℤ)| = 1",
+    "unitFrac_tangent": "theorem unitFrac_tangent (a b : ℕ) (ha : 0 < a) (hb : 0 < b) :\n  tangent (unitFrac a) (unitFrac b) ↔ |(a : ℤ) - (b : ℤ)| = 1",
+    "unitFrac_graph_iso": "theorem unitFrac_graph_iso (V : Finset ℕ) (hV : ∀ a ∈ V, 0 < a) :\n  Nonempty ((integerPath.induce (V : Set ℕ)) ≃g fareyGraph (vertexSet V))",
+    "unitFrac_graph_connected": "theorem unitFrac_graph_connected (V : Finset ℕ) (hne : V.Nonempty)\n  (hV : ∀ a ∈ V, 0 < a) :\n  (fareyGraph (vertexSet V)).Connected ↔\n    ∃ m M : ℕ, 1 ≤ m ∧ m ≤ M ∧ V = Finset.Icc m M",
+    "empty_graph_convention": "theorem empty_graph_convention :\n  (fareyGraph ∅).Preconnected ∧ ¬ (fareyGraph ∅).Connected",
+    "gap_det": "theorem gap_det (a k : ℕ) (ha : 0 < a) (hk : 0 < k) :\n  |det (unitFrac a) (unitFrac (a + k))| = (k : ℤ)",
+    "minimal_gap_mediant": "theorem minimal_gap_mediant (a : ℕ) (ha : 0 < a) :\n  mediant (unitFrac a) (unitFrac (a + 2)) = unitFrac (a + 1)",
+    "gap_mediant_unit_iff": "theorem gap_mediant_unit_iff (a k : ℕ) (ha : 0 < a) (hk : 2 < k) :\n  (∃ b : ℕ, 0 < b ∧\n    mediant (unitFrac a) (unitFrac (a + k)) = unitFrac b) ↔ Even k"
+  },
+  "caps": {
+    "active_wall_seconds": 1800,
+    "per_call_wall_seconds": 240,
+    "one_cpu": true,
+    "nice": 19,
+    "address_space_bytes": 8589934592,
+    "lean_M_MiB": 7680,
+    "stack_KiB": 65536,
+    "process_limit": 256,
+    "output_file_limit_bytes": 67108864,
+    "serial_only": true,
+    "automatic_retries": false
+  },
+  "proof_iteration": "REQUEST bounded proof-body iteration; explicit manager acceptance required; preserve failed source/job/log/receipt",
+  "concrete_self_acceptance": "REQUEST template-bound receipt checking with timestamp and snapshot; explicit manager acceptance required",
+  "fresh_input_gate": "NO proof drafting or calls until complete fresh observations and bound template independently accepted",
+  "next_chunks": "R4 R5 queued only; separate templates required",
+  "exclusions": [
+    "Stage B",
+    "G1",
+    "Rule30",
+    "FF2 execution",
+    "FF3 execution",
+    "library sync",
+    "commits",
+    "viewer changes",
+    "kernel adoption",
+    "release"
+  ],
+  "predecessor_pins": {
+    "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+    "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+    "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+    "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+    "FVLTFordGeometryV1.olean": "ea5dc4ce259c44b6e742ce950dcea3333d83d031511595ac951b68b0570cab54",
+    "FVLTFareyCertificatesV1.olean": "99d3b3c3a44d0f4b4aa020e0e797dff255eddddb0459b7b1e4a3b7fad8ef651e",
+    "stage_a_completion_v1/FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+    "stage_a_completion_v1/FVLTFareyArithmeticCompletionV1.olean": "ab3351ff996fe0b676a322907cb445fed4dc32eed7ddbc04db8d9a17559fea56",
+    "stage_a_completion_v1/FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+    "stage_a_completion_v1/FVLTFordGeometryCompletionV1.olean": "ce38bf44fe8556c09588461b69782b6752a2e1bd6fe8361f496981ef252ced9b"
+  },
+  "manager_pass_records": {
+    "F1_AUDIT_AND_BRIDGE_DECISION_v0_1.md": "d5470d9b2353ca9de7309064dad363955e567a356fb5075dae04c0f9f32c7526",
+    "F2_AUDIT_AND_BRIDGE_RUNNER_DECISION_v0_1.md": "95532c2c4101197646a7a310120c9ec766282a1b41537557f585591d0d4968e1",
+    "BRIDGE_AUDIT_v0_1.md": "cc025916bab1d7f60676a5fb45cfea83d6898a38e4705d0f5b5feff2a1345a88",
+    "R1_AUDIT_v0_1.md": "823f7386d567a7dbf8b1c5c43e81c85cf8876ce0927c1bc85b9430134317a48d",
+    "R2_AUDIT_v0_1.md": "48e4ee942af299f2fed279057c4852aa6c6d539bf405b5dbad18fe8a72a6c75d"
+  },
+  "integerPath_adjacency": "|(a : ℤ) - (b : ℤ)| = 1, exactly; symmetry/looplessness proof fields only",
+  "target_namespaces": {
+    "default": "FVLT.FareyContactV1",
+    "unitFrac_tangent": "FVLT.FordGeometryV1"
+  }
+}

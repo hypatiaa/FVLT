@@ -1,0 +1,17 @@
+{
+  "phase": "F1",
+  "mode": "replay",
+  "module": "FVLTFordGeometryV1",
+  "run_id": "F1GReplay01",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "source_sha256": {
+    "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+    "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8"
+  },
+  "dependency_olean_sha256": {
+    "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+    "FVLTFordGeometryV1.olean": "ea5dc4ce259c44b6e742ce950dcea3333d83d031511595ac951b68b0570cab54"
+  },
+  "template_sha256": "45c7d8bf2046298f2f7d9e428e90ce173391050156e77f526c8da5cedd10c274",
+  "owner_accepted_utc": "2026-11-03T11:39:29.9161289+00:00"
+}

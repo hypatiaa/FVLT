@@ -1,0 +1,111 @@
+{
+  "schema": "ff1-additive-library-sync-inputs/1",
+  "status": "PLAN_ONLY_NOT_EXECUTED",
+  "historical_kernel": "FVLT v3.3.1",
+  "current_skill_kernel": "FVLT v3.4.0; compatibility text comparison pending",
+  "observed_base": "v19; recheck at execution",
+  "audited_manifest_sha256": "89f7cf92b51d6121aa952db5181e0b4aaceb19d2c821e28e790cab194d095656",
+  "independent_audit_sha256": "3ae4aff5e27ec3933284dd0c4b9b2c5f385455fad22c9b36314b539bef596dc4",
+  "modules": [
+    {
+      "module": "FVLTFareyArithmeticCompletionV1",
+      "name": "FVLTFareyArithmeticCompletionV1.lean",
+      "bytes": 6688,
+      "sha256": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac"
+    },
+    {
+      "module": "FVLTFareyCertificatesV1",
+      "name": "FVLTFareyCertificatesV1.lean",
+      "bytes": 13909,
+      "sha256": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e"
+    },
+    {
+      "module": "FVLTFareyContactV1",
+      "name": "FVLTFareyContactV1.lean",
+      "bytes": 538,
+      "sha256": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b"
+    },
+    {
+      "module": "FVLTFareyFixturesCompletionV1",
+      "name": "FVLTFareyFixturesCompletionV1.lean",
+      "bytes": 2178,
+      "sha256": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d"
+    },
+    {
+      "module": "FVLTFordExactCoordinatesV1",
+      "name": "FVLTFordExactCoordinatesV1.lean",
+      "bytes": 3943,
+      "sha256": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d"
+    },
+    {
+      "module": "FVLTFordGeometryCompletionV1",
+      "name": "FVLTFordGeometryCompletionV1.lean",
+      "bytes": 8146,
+      "sha256": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1"
+    },
+    {
+      "module": "FVLTFordGeometryV1",
+      "name": "FVLTFordGeometryV1.lean",
+      "bytes": 3780,
+      "sha256": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8"
+    },
+    {
+      "module": "FVLTFordRationalV1",
+      "name": "FVLTFordRationalV1.lean",
+      "bytes": 931,
+      "sha256": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559"
+    },
+    {
+      "module": "FVLTPhasePartnersV1",
+      "name": "FVLTPhasePartnersV1.lean",
+      "bytes": 15423,
+      "sha256": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac"
+    },
+    {
+      "module": "FVLTStageAIntegrationV1",
+      "name": "FVLTStageAIntegrationV1.lean",
+      "bytes": 7453,
+      "sha256": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+    },
+    {
+      "module": "FVLTUnitFractionSpineV1",
+      "name": "FVLTUnitFractionSpineV1.lean",
+      "bytes": 8388,
+      "sha256": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1"
+    }
+  ],
+  "tool_inputs": [
+    {
+      "name": "assemble_vN_v2tool.py",
+      "sha256": "e1c783be89e79a94e3f8b4450dd08973bff93e12f1cd099c9d346ea2ec7ed794"
+    },
+    {
+      "name": "assemble_vN.py",
+      "sha256": "662f00bae2a63fc5a7e29b54b6a0c3d7515736ba26a28085c928458e5267a06c"
+    },
+    {
+      "name": "AxiomCheck.lean",
+      "sha256": "fe637ffb3402084200932ccef30f31924e79e46909716c2e3283e36c1b7838ed"
+    },
+    {
+      "name": "deliveries_v19.json",
+      "sha256": "509addbf33583dd6e9cc05d48e86ed28ffadb8170d78980c2d8f6fe9e7c6e605"
+    },
+    {
+      "name": "LIBRARY_MANIFEST.json",
+      "sha256": "f0ee6b00fe4a622b63cac1f4fb24146e9b2808bdb0fb430ebdac074fecb258fa"
+    },
+    {
+      "name": "README.md",
+      "sha256": "cce7ca8d0ada0babfbc4246a81527487e1cccf5a48639a8200785aa2da5e9d6f"
+    },
+    {
+      "name": "resolve_closure_vN_v16tool.py",
+      "sha256": "3cce84931bfc6fd59381c13c1ef0954a90ca733f83b1760a312520fb566a7126"
+    },
+    {
+      "name": "resolve_closure_vN.py",
+      "sha256": "83673f04ecd0653368e9cc0d133a925e397100df4392743521e187a08ee87ff6"
+    }
+  ]
+}

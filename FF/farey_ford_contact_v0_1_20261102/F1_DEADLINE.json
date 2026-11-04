@@ -1,0 +1,10 @@
+{
+  "phase": "F1",
+  "authority": "D2 SHAa8d59e055b0861e00189f2b9881de3b4f31e4516e4e33d5d43a71fe116519fa8",
+  "excluded_interval_starts": 1793705428.2815557,
+  "excluded_interval_includes_manager_relay_wait_until": 1793705846,
+  "restart_unix": 1793705846,
+  "remaining_active_seconds": 769,
+  "deadline_unix": 1793706615,
+  "floor600_used": false
+}

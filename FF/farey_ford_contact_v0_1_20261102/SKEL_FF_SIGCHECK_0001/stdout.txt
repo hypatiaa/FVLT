@@ -1,0 +1,13 @@
+{
+ "checks": 1950186,
+ "fails": 18,
+ "failures": {
+  "FF2 B pillow(X,Y) identifies exactly the orbits (as written in the order)": [
+   "2,1",
+   "2,2",
+   "2,3",
+   "2,4",
+   "2,5"
+  ]
+ }
+}

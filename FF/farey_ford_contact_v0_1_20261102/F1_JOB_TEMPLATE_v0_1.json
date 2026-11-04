@@ -1,0 +1,47 @@
+{
+  "status": "AWAITING_SKELETON_TEMPLATE_ACCEPTANCE",
+  "phase": "F1",
+  "allowed_modes": ["compile", "replay"],
+  "allowed_modules": ["FVLTFareyContactV1", "FVLTFordGeometryV1"],
+  "root": "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103",
+  "runner": "RUN_FF1_v0_2.py",
+  "runner_sha256": "c14f263caa77643e653f12fe63a3cda1bfdfa5024cfab97d2eadf5d2c6a59590",
+  "lean_executable": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "signature_file": "SIGNATURE_FREEZE_DRAFT_v0_1.md",
+  "signature_sha256": "a9382d4054a77d7a569e884b4f7e02b55f7c7e9aa0da2d3a6d1299075ea2b6c7",
+  "library": "/home/saphir/rule30_theorem_library/v19",
+  "library_expected": {
+    "SHA256SUMS": "e25d4d54d074f152c452aa7247ccbe992e14b29d58306809660a75770ae7ddd5",
+    "LIBRARY_MANIFEST.json": "f0ee6b00fe4a622b63cac1f4fb24146e9b2808bdb0fb430ebdac074fecb258fa",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "4f0aea1336d288cba45c00727ce81c2cc064c39fca46e8ccf4505ae38ca6191f",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "checker_sha256": "9c6f2ac11b50fdb846df2d5099ea673553903275a5dba11fce5a5673cae14bd0",
+  "caps": {
+    "one_cpu": true, "nice": 19, "address_space_bytes": 8589934592,
+    "lean_M_MiB": 7680, "per_call_wall_seconds": 240,
+    "process_limit": 256, "output_file_limit_bytes": 67108864,
+    "F1_active_wall_seconds_including_drafting": 1800,
+    "recorded_skeleton_acceptance_wait_excluded": true,
+    "serial_only": true, "automatic_retries": false,
+    "compiler_or_checker_failure_stops_item": true
+  },
+  "frozen_F1_headers": [
+    "theorem ford_distance_identity (x y : ℚ) (hne : x ≠ y) :\n  ‖centre x - centre y‖^2 - (radius x + radius y)^2 =\n    (((det x y : ℤ) : ℝ)^2 - 1) /\n      ((x.den : ℝ)^2 * (y.den : ℝ)^2)",
+    "theorem kiss_membership (x y : ℚ) (h : fareyAdj x y) :\n  kiss x y ∈ boundary x ∧ kiss x y ∈ boundary y"
+  ],
+  "scope": "F1 only: definitions/support for the displayed identity and kiss membership. No uniqueness, A6, F2, Stage B or library synchronization.",
+  "source_rules": [
+    "Every concrete job pins all own source bytes, the binary hash and any imported own olean hashes.",
+    "Both frozen F1 headers appear verbatim across the staged source pair; definitions agree with frozen definitions.",
+    "No new top-level mathematical helper signatures beyond accepted frozen support; local proof have-steps permitted.",
+    "Arithmetic module may contain definitions only during F1; geometry contains the two target proofs and only frozen support targets if needed.",
+    "Imports are Mathlib only, plus geometry importing FVLTFareyContactV1; no G1/project imports.",
+    "No sorry/admit/added axioms/native_decide/unsafe/partial target declarations.",
+    "Concrete manifests may be self-accepted by owner only after skeleton accepts this template; log timestamp and template hash in REVIEW_ACCEPTANCE.json.",
+    "Preserve exact source snapshots before every invocation; preserve failures and stop item; changed propositions or outside-template jobs return for review.",
+    "All manifests, sources, receipts, logs and scripted verbatim header comparisons delivered for skeleton audit."
+  ]
+}

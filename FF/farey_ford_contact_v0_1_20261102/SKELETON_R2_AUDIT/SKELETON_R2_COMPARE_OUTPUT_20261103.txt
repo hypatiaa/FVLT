@@ -1,0 +1,5 @@
+pins 45 bad []
+public: disk,realAxis,tangent,ford_open_disjoint,ford_boundary_disjoint,ford_real_axis,kiss_unique,ford_tangent_iff,two_squares,kiss_integer_identity,kiss_real_identity
+private: det_nonzero,centre_norm_ge,centre_norm_gt,centre_triangle,weighted_norm_identity,circle_inter_unique
+imports: FVLTFareyArithmeticCompletionV1, FVLTFordGeometryV1, Mathlib.Tactic
+{"fails":0}

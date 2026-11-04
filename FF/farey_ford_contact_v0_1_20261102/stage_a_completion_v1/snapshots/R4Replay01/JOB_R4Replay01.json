@@ -1,0 +1,15 @@
+{
+  "phase": "R4",
+  "mode": "replay",
+  "module": "FVLTPhasePartnersV1",
+  "run_id": "R4Replay01",
+  "template_sha256": "de7d4ea627cf9b64e2e8e87faec3fe9136938cf3534d854f6c05ac4673a57dab",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "source_sha256": {
+    "FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac"
+  },
+  "dependency_olean_sha256": {
+    "FVLTPhasePartnersV1.olean": "875d7726a34ca13d247b53d71525087141481441fbef5b0928586712b84f77a3"
+  },
+  "owner_accepted_utc": "2026-11-03T22:38:15.8140786+00:00"
+}

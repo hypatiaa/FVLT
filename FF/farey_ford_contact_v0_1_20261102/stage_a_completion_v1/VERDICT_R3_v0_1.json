@@ -1,0 +1,44 @@
+{
+  "status": "PRODUCER_PASS_PENDING_INDEPENDENT_AUDIT",
+  "frozen_headers_verbatim": 10,
+  "definition_headers_verbatim": 2,
+  "integerPath_adjacency_exact": true,
+  "unitFrac_tangent_namespace": "FVLT.FordGeometryV1",
+  "strict_replay": 33,
+  "failure_count": 0,
+  "full_dependency_replay": false,
+  "G1_excluded": true,
+  "axioms": "standard three only",
+  "runs": [
+    {
+      "run": "R3Compile01",
+      "exit": 1,
+      "seconds": 1.9182734489440918,
+      "peak_rss_KiB": 3489772,
+      "finished_unix": 1793742720.8232663
+    },
+    {
+      "run": "R3Compile02",
+      "exit": 1,
+      "seconds": 1.9185800552368164,
+      "peak_rss_KiB": 3489484,
+      "finished_unix": 1793742778.2948775
+    },
+    {
+      "run": "R3Compile03",
+      "exit": 0,
+      "seconds": 1.920412540435791,
+      "peak_rss_KiB": 3501784,
+      "finished_unix": 1793742822.857599
+    },
+    {
+      "run": "R3Replay01",
+      "exit": 0,
+      "seconds": 2.7718794345855713,
+      "peak_rss_KiB": 3640188,
+      "finished_unix": 1793742868.7809432
+    }
+  ],
+  "final_source_sha256": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+  "final_olean_sha256": "8d5f4cae1a6693a1e873ecc2ad73e81a50d380254eb289ba304d9ddb67508870"
+}

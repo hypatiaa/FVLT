@@ -1,0 +1,22 @@
+{
+  "input_review_reference": "R4 decision #1427 accepted-on-posting",
+  "signature_review_reference": "SIGNATURE_FREEZE_DRAFT_v0_1.md accepted original freeze",
+  "final_template_review_reference": "PENDING_VERIFIED_POSTING",
+  "runner_sha256": "3d6cb1535a64a81fd71dfb4b8546e98b8c269d8583ca2c869bce8f2148580478",
+  "bound_template_file": "R4_JOB_TEMPLATE_BOUND_v0_1.json",
+  "bound_template_sha256": "de7d4ea627cf9b64e2e8e87faec3fe9136938cf3534d854f6c05ac4673a57dab",
+  "reviewed_files": {
+    "R4_JOB_TEMPLATE_BOUND_v0_1.json": "de7d4ea627cf9b64e2e8e87faec3fe9136938cf3534d854f6c05ac4673a57dab",
+    "R4_INPUT_OBSERVATIONS_v0_1.json": "1fde30ddd029690baeb945a5d52d656e2321883f3dddf0b7f3032cd0750864b8",
+    "R4_TEMPLATE_DECISION_v0_1.md": "f53647f25f5439c46eb2f028cf04796de8c972e9d6400e86fec3fc3b3795bf17"
+  },
+  "library_expected": {
+    "SHA256SUMS": "e25d4d54d074f152c452aa7247ccbe992e14b29d58306809660a75770ae7ddd5",
+    "LIBRARY_MANIFEST.json": "f0ee6b00fe4a622b63cac1f4fb24146e9b2808bdb0fb430ebdac074fecb258fa",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "4f0aea1336d288cba45c00727ce81c2cc064c39fca46e8ccf4505ae38ca6191f",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "accepted_job_manifest_sha256": [],
+  "owner_acceptance_log": []
+}

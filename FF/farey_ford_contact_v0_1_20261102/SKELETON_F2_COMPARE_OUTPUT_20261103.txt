@@ -1,0 +1,83 @@
+OK   header verbatim in source: theorem fareyAdj_symm (x y : ℚ) : fareyAdj x y ↔ fareyAdj y x
+OK   header verbatim in source: theorem fareyAdj_irrefl (x : ℚ) : ¬ fareyAdj x x
+OK   header verbatim in source: theorem fareyGraph_adj (S : Finset ℚ) (x y : {x : ℚ // x ∈ S}) :
+OK   header verbatim in source: theorem spanning_tree_connected (V : Type*) [DecidableEq V]
+OK   header verbatim in source: theorem certificate_component_bijection (V : Type*) [DecidableEq V]
+OK   header verbatim in source: theorem certificate_component_count (V : Type*) [DecidableEq V]
+OK   header verbatim in source: theorem certificate_isolation (V : Type*) [DecidableEq V]
+OK   header verbatim in source: theorem contactCount_eq_edge_count (S : Finset ℚ) :
+OK   header verbatim in source: theorem rational_certificate_count (S : Finset ℚ) (parts : Finset (Finset ℚ))
+OK   header verbatim in source: theorem fixture421_vertices : phases [4,2,1] =
+OK   header verbatim in source: theorem fixture421_certificate : rationalCertificate (phases [4,2,1])
+OK   header verbatim in source: theorem fixture421_counts : (phases [4,2,1]).card = 7 ∧
+OK   header verbatim in source: theorem fixture421_isolated (x : ℚ) :
+OK   header verbatim in source: theorem fixture92_certificate : rationalCertificate (phases [9,2])
+OK   header verbatim in source: theorem fixture92_counts : (phases [9,2]).card = 11 ∧
+OK   header verbatim in source: theorem fixture92_isolated (x : ℚ) :
+OK   frozen (S1 reading): theorem fareyAdj_symm (x y : ℚ) : fareyAdj x y ↔ fareyAdj y x
+OK   frozen (S1 reading): theorem fareyAdj_irrefl (x : ℚ) : ¬ fareyAdj x x
+FAIL frozen (S1 reading): instance (x y : ℚ) : Decidable (fareyAdj x y)
+FAIL frozen (S1 reading): def fareyGraph (S : Finset ℚ) : SimpleGraph {x : ℚ // x ∈ S} where
+FAIL frozen (S1 reading): instance (S : Finset ℚ) : DecidableRel (fareyGraph S).Adj
+FAIL frozen (S1 reading): instance (S : Finset ℚ) (s : Finset {x : ℚ // x ∈ S}) :
+OK   frozen (S1 reading): theorem fareyGraph_adj (S : Finset ℚ) (x y : {x : ℚ // x ∈ S}) :
+OK   frozen (S1 reading): def admissible (α : List ℕ) : Finset ℕ
+OK   frozen (S1 reading): def phases (α : List ℕ) : Finset ℚ
+OK   frozen (S1 reading): def phaseGraph (α : List ℕ)
+OK   frozen (S1 reading): def contactCount (S : Finset ℚ) : ℕ
+OK   frozen (S1 reading): def isolated (S : Finset ℚ) (x : ℚ) : Prop
+FAIL frozen (S1 reading): instance (S : Finset ℚ) (x : ℚ) : Decidable (isolated S x)
+OK   frozen (S1 reading): def singletonPartition (S I : Finset ℚ) : Finset (Finset ℚ)
+FAIL frozen (S1 reading): def ComponentCertificate {V : Type*} [DecidableEq V]
+OK   frozen (S1 reading): def rationalCertificate (S : Finset ℚ) (parts : Finset (Finset ℚ)) : Prop
+OK   frozen (S1 reading): theorem spanning_tree_connected (V : Type*) [DecidableEq V]
+OK   frozen (S1 reading): theorem certificate_component_bijection (V : Type*) [DecidableEq V]
+OK   frozen (S1 reading): theorem certificate_component_count (V : Type*) [DecidableEq V]
+OK   frozen (S1 reading): theorem certificate_isolation (V : Type*) [DecidableEq V]
+OK   frozen (S1 reading): theorem contactCount_eq_edge_count (S : Finset ℚ) :
+OK   frozen (S1 reading): theorem rational_certificate_count (S : Finset ℚ) (parts : Finset (Finset ℚ))
+OK   frozen (S1 reading): theorem fixture421_vertices : phases [4,2,1] =
+OK   frozen (S1 reading): theorem fixture421_certificate : rationalCertificate (phases [4,2,1])
+OK   frozen (S1 reading): theorem fixture421_counts : (phases [4,2,1]).card = 7 ∧
+OK   frozen (S1 reading): theorem fixture421_isolated (x : ℚ) :
+OK   frozen (S1 reading): theorem fixture92_certificate : rationalCertificate (phases [9,2])
+OK   frozen (S1 reading): theorem fixture92_counts : (phases [9,2]).card = 11 ∧
+OK   frozen (S1 reading): theorem fixture92_isolated (x : ℚ) :
+FAIL def line: def fareyGraph (S : Finset ℚ) : SimpleGraph {x : ℚ // x ∈ S} where
+FAIL def line: Adj x y := fareyAdj x.val y.val
+FAIL def line: symm := ⟨fun _ _ h => (fareyAdj_symm _ _).mp h⟩
+FAIL def line: loopless := ⟨fun x => fareyAdj_irrefl x.val⟩
+OK   def line: def admissible (α : List ℕ) : Finset ℕ :=
+OK   def line: α.toFinset.biUnion (fun a => (a + 1).divisors.filter (fun q => 2 ≤ q))
+OK   def line: def phases (α : List ℕ) : Finset ℚ :=
+OK   def line: (admissible α).biUnion (fun q =>
+OK   def line: ((Finset.Icc 1 (q - 1)).filter (fun c => Nat.Coprime c q)).image
+OK   def line: (fun c : ℕ => (c : ℚ) / (q : ℚ)))
+OK   def line: def phaseGraph (α : List ℕ) := fareyGraph (phases α)
+OK   def line: def contactCount (S : Finset ℚ) : ℕ :=
+OK   def line: ((S.product S).filter (fun xy => xy.1 < xy.2 ∧ fareyAdj xy.1 xy.2)).card
+OK   def line: def isolated (S : Finset ℚ) (x : ℚ) : Prop :=
+OK   def line: x ∈ S ∧ ∀ y ∈ S, ¬ fareyAdj x y
+OK   def line: def singletonPartition (S I : Finset ℚ) : Finset (Finset ℚ) :=
+OK   def line: I.image (fun x => {x}) ∪ {S \ I}
+FAIL def line: def ComponentCertificate {V : Type*} [DecidableEq V]
+FAIL def line: (G : SimpleGraph V) (parts : Finset (Finset V)) : Prop :=
+FAIL def line: (∀ s ∈ parts, s.Nonempty) ∧
+FAIL def line: (∀ v : V, ∃ s ∈ parts, v ∈ s) ∧
+FAIL def line: (∀ s ∈ parts, ∀ t ∈ parts, s ≠ t → Disjoint s t) ∧
+FAIL def line: (∀ s ∈ parts, (G.induce (s : Set V)).Connected) ∧
+FAIL def line: (∀ s ∈ parts, ∀ t ∈ parts, s ≠ t →
+FAIL def line: ∀ u ∈ s, ∀ v ∈ t, ¬ G.Adj u v)
+OK   def line: def rationalCertificate (S : Finset ℚ) (parts : Finset (Finset ℚ)) : Prop :=
+OK   def line: (∀ s ∈ parts, s ⊆ S) ∧
+OK   def line: ComponentCertificate (fareyGraph S)
+OK   def line: (parts.image (fun s => s.subtype (fun x => x ∈ S)))
+private helpers: part_reachable_closed
+OK   no 'sorry'
+OK   no 'admit'
+OK   no 'native_decide'
+OK   no 'unsafe'
+OK   no 'partial def'
+OK   no 'axiom'
+OK   imports FVLTFareyContactV1, Mathlib.Combinatorics.SimpleGraph.Connectivity.Finite, Mathlib.Combinatorics.SimpleGraph.Finite, Mathlib.NumberTheory.Divisors, Mathlib.Data.Rat.Lemmas, Mathlib.Tactic
+{"fails":18}

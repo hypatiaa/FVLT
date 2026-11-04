@@ -1,0 +1,13 @@
+{
+  "phase": "R1",
+  "mode": "compile",
+  "module": "FVLTFareyArithmeticCompletionV1",
+  "run_id": "R1Compile04",
+  "template_sha256": "8ebcc04011eabe08a19238037be287ec9ae3167e6ccd84c7298d11f94b7fb4b7",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "source_sha256": {
+    "FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac"
+  },
+  "dependency_olean_sha256": {},
+  "owner_accepted_utc": "2026-11-03T18:09:32.3524673+00:00"
+}

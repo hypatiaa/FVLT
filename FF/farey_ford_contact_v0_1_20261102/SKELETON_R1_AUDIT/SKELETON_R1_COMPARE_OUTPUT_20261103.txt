@@ -1,0 +1,22 @@
+OK   header verbatim: theorem raw_det_one_coprime (a c : ℤ) (q s : ℕ)
+OK   header verbatim: theorem rawValue_num_den (x : ℚ) : rawValue x.num x.den = x
+OK   header verbatim: theorem rawValue_canonical (a : ℤ) (q : ℕ) (hq : 0 < q)
+OK   header verbatim: theorem rawValue_unique (a c : ℤ) (q s : ℕ)
+OK   header verbatim: theorem coprime_den_not_adj :
+OK   header verbatim: theorem adjacent_mediant (x y : ℚ) (hxy : x < y) (h : fareyAdj x y) :
+OK   header verbatim: theorem rosette (N : ℕ) (hN : 2 ≤ N) :
+OK   definition verbatim: rawValue
+OK   definition verbatim: mediant
+OK   definition verbatim: unitFrac
+public decls: def rawValue | def mediant | def unitFrac | theorem raw_det_one_coprime | theorem rawValue_num_den | theorem rawValue_canonical | theorem rawValue_unique | theorem coprime_den_not_adj | theorem adjacent_mediant | theorem rosette
+private: coprime_from_det, unitFrac_data
+OK   no extra public declarations: 
+OK   no sorry
+OK   no admit
+OK   no native_decide
+OK   no unsafe
+OK   no partial def
+OK   no axiom
+OK   imports FVLTFareyCertificatesV1, Mathlib.Data.Rat.Lemmas, Mathlib.Tactic
+OK   det/fareyAdj not redeclared
+{"fails":0}

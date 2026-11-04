@@ -1,0 +1,109 @@
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/FVLTFareyCertificatesV1.lean:85:8: error(lean.unknownIdentifier): Unknown constant `SimpleGraph.connected_iff_exists_forall_reachable.mpr`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/FVLTFareyCertificatesV1.lean:165:8: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp [← this]
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/FVLTFareyCertificatesV1.lean:244:2: error: failed to synthesize
+  Decidable
+    ((∀ s ∈ {{1 / 5}, {1 / 3, 2 / 5, 1 / 2, 3 / 5, 2 / 3}, {4 / 5}}, s ⊆ phases [4, 2, 1]) ∧
+      (∀
+          s ∈
+            Finset.image (fun s => Finset.subtype (fun x => x ∈ phases [4, 2, 1]) s)
+              {{1 / 5}, {1 / 3, 2 / 5, 1 / 2, 3 / 5, 2 / 3}, {4 / 5}},
+          s.Nonempty) ∧
+        (∀ (v : ↥(phases [4, 2, 1])),
+            ∃
+              s ∈
+                Finset.image (fun s => Finset.subtype (fun x => x ∈ phases [4, 2, 1]) s)
+                  {{1 / 5}, {1 / 3, 2 / 5, 1 / 2, 3 / 5, 2 / 3}, {4 / 5}},
+              v ∈ s) ∧
+          (∀
+              s ∈
+                Finset.image (fun s => Finset.subtype (fun x => x ∈ phases [4, 2, 1]) s)
+                  {{1 / 5}, {1 / 3, 2 / 5, 1 / 2, 3 / 5, 2 / 3}, {4 / 5}},
+              ∀
+                t ∈
+                  Finset.image (fun s => Finset.subtype (fun x => x ∈ phases [4, 2, 1]) s)
+                    {{1 / 5}, {1 / 3, 2 / 5, 1 / 2, 3 / 5, 2 / 3}, {4 / 5}},
+                s ≠ t → Disjoint s t) ∧
+            (∀
+                s ∈
+                  Finset.image (fun s => Finset.subtype (fun x => x ∈ phases [4, 2, 1]) s)
+                    {{1 / 5}, {1 / 3, 2 / 5, 1 / 2, 3 / 5, 2 / 3}, {4 / 5}},
+                (SimpleGraph.induce (↑s) (fareyGraph (phases [4, 2, 1]))).Connected) ∧
+              ∀
+                s ∈
+                  Finset.image (fun s => Finset.subtype (fun x => x ∈ phases [4, 2, 1]) s)
+                    {{1 / 5}, {1 / 3, 2 / 5, 1 / 2, 3 / 5, 2 / 3}, {4 / 5}},
+                ∀
+                  t ∈
+                    Finset.image (fun s => Finset.subtype (fun x => x ∈ phases [4, 2, 1]) s)
+                      {{1 / 5}, {1 / 3, 2 / 5, 1 / 2, 3 / 5, 2 / 3}, {4 / 5}},
+                  s ≠ t → ∀ u ∈ s, ∀ v ∈ t, ¬(fareyGraph (phases [4, 2, 1])).Adj u v)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/FVLTFareyCertificatesV1.lean:257:85: error: failed to synthesize
+  Decidable (∀ (u : ↥(phases [4, 2, 1])), isolated (phases [4, 2, 1]) ↑u ↔ ↑u ∈ {1 / 5, 4 / 5})
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/FVLTFareyCertificatesV1.lean:265:2: error: failed to synthesize
+  Decidable
+    ((∀ s ∈ singletonPartition (phases [9, 2]) {1 / 10, 1 / 5, 4 / 5, 9 / 10}, s ⊆ phases [9, 2]) ∧
+      (∀
+          s ∈
+            Finset.image (fun s => Finset.subtype (fun x => x ∈ phases [9, 2]) s)
+              (singletonPartition (phases [9, 2]) {1 / 10, 1 / 5, 4 / 5, 9 / 10}),
+          s.Nonempty) ∧
+        (∀ (v : ↥(phases [9, 2])),
+            ∃
+              s ∈
+                Finset.image (fun s => Finset.subtype (fun x => x ∈ phases [9, 2]) s)
+                  (singletonPartition (phases [9, 2]) {1 / 10, 1 / 5, 4 / 5, 9 / 10}),
+              v ∈ s) ∧
+          (∀
+              s ∈
+                Finset.image (fun s => Finset.subtype (fun x => x ∈ phases [9, 2]) s)
+                  (singletonPartition (phases [9, 2]) {1 / 10, 1 / 5, 4 / 5, 9 / 10}),
+              ∀
+                t ∈
+                  Finset.image (fun s => Finset.subtype (fun x => x ∈ phases [9, 2]) s)
+                    (singletonPartition (phases [9, 2]) {1 / 10, 1 / 5, 4 / 5, 9 / 10}),
+                s ≠ t → Disjoint s t) ∧
+            (∀
+                s ∈
+                  Finset.image (fun s => Finset.subtype (fun x => x ∈ phases [9, 2]) s)
+                    (singletonPartition (phases [9, 2]) {1 / 10, 1 / 5, 4 / 5, 9 / 10}),
+                (SimpleGraph.induce (↑s) (fareyGraph (phases [9, 2]))).Connected) ∧
+              ∀
+                s ∈
+                  Finset.image (fun s => Finset.subtype (fun x => x ∈ phases [9, 2]) s)
+                    (singletonPartition (phases [9, 2]) {1 / 10, 1 / 5, 4 / 5, 9 / 10}),
+                ∀
+                  t ∈
+                    Finset.image (fun s => Finset.subtype (fun x => x ∈ phases [9, 2]) s)
+                      (singletonPartition (phases [9, 2]) {1 / 10, 1 / 5, 4 / 5, 9 / 10}),
+                  s ≠ t → ∀ u ∈ s, ∀ v ∈ t, ¬(fareyGraph (phases [9, 2])).Adj u v)
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/FVLTFareyCertificatesV1.lean:279:93: error: failed to synthesize
+  Decidable (∀ (u : ↥(phases [9, 2])), isolated (phases [9, 2]) ↑u ↔ ↑u ∈ {1 / 10, 1 / 5, 4 / 5, 9 / 10})
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+'FVLT.FareyContactV1.fareyAdj_symm' depends on axioms: [propext]
+'FVLT.FareyContactV1.fareyAdj_irrefl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fareyGraph_adj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.spanning_tree_connected' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.certificate_component_bijection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.certificate_component_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.certificate_isolation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.contactCount_eq_edge_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.rational_certificate_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture421_vertices' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture421_certificate' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture421_counts' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture421_isolated' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture92_certificate' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture92_counts' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture92_isolated' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

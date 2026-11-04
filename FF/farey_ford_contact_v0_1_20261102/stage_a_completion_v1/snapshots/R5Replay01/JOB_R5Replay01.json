@@ -1,0 +1,15 @@
+{
+  "phase": "R5",
+  "mode": "replay",
+  "module": "FVLTFareyFixturesCompletionV1",
+  "run_id": "R5Replay01",
+  "template_sha256": "38a69f260e34557d390bb4b547738884fb74f4cebde172133843a47c4beab8a9",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "source_sha256": {
+    "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d"
+  },
+  "dependency_olean_sha256": {
+    "FVLTFareyFixturesCompletionV1.olean": "237223a3837de4529d87d08264eeae3eead7bec8d28775b73587e262b7aca9c5"
+  },
+  "owner_accepted_utc": "2026-11-03T23:19:02.9353800+00:00"
+}

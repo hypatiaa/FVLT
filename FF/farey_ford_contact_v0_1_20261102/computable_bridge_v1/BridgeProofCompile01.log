@@ -1,0 +1,30 @@
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/computable_bridge_v1/FVLTFordExactCoordinatesV1.lean:44:53: error: unsolved goals
+u v : RatPlane
+⊢ (↑u.1 - ↑v.1) * (↑u.1 - ↑v.1) + (↑u.2 - ↑v.2) * (↑u.2 - ↑v.2) =
+    ‖↑u.1 + ↑u.2 * Complex.I - (↑v.1 + ↑v.2 * Complex.I)‖ * ‖↑u.1 + ↑u.2 * Complex.I - (↑v.1 + ↑v.2 * Complex.I)‖
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/computable_bridge_v1/FVLTFordExactCoordinatesV1.lean:45:29: warning: This simp argument is unused:
+  Complex.sq_norm
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [sqDistanceQ, embedQ, Complex.normSq_apply, pow_two]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/computable_bridge_v1/FVLTFordExactCoordinatesV1.lean:45:46: warning: This simp argument is unused:
+  Complex.normSq_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [sqDistanceQ, embedQ, Complex.sq_norm, pow_two]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+'FVLT.FordExactCoordinatesV1.kissNQ_eq' does not depend on any axioms
+'FVLT.FordExactCoordinatesV1.kissMQ_eq' depends on axioms: [propext]
+'FVLT.FordExactCoordinatesV1.kissMQ_pos' depends on axioms: [propext]
+'FVLT.FordExactCoordinatesV1.radiusQ_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordExactCoordinatesV1.radiusQ_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordExactCoordinatesV1.embedQ_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordExactCoordinatesV1.centreQ_embed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordExactCoordinatesV1.kissQ_embed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordExactCoordinatesV1.sqDistanceQ_cast' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FVLT.FordExactCoordinatesV1.boundaryQ_iff' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FVLT.FordExactCoordinatesV1.boundaryCheckQ_correct' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FVLT.FordExactCoordinatesV1.adjacent_kissQ' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]

@@ -1,0 +1,17 @@
+{
+  "phase":"F2",
+  "status":"LOCAL_COMPILE_STRICT_REPLAY_PASS_AWAITING_SKELETON_AUDIT",
+  "frozen_target_theorems":16,
+  "written_private_helpers":1,
+  "all_written_theorem_axiom_reports":17,
+  "strict_target_constants":61,
+  "strict_audited_constants":61,
+  "strict_replay":"PASS",
+  "unsafe_targets":0,
+  "partial_targets":0,
+  "disallowed_axioms":0,
+  "F1_unchanged":true,
+  "bridge_invocations":0,
+  "final_compile_emits_same_object_as_replayed_compile":true,
+  "recorded_manager_F2_outcome":"PENDING"
+}

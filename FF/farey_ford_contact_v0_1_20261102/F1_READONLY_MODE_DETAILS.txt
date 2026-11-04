@@ -1,0 +1,2 @@
+lrwxrwxrwx 1 saphir saphir 12 Oct 31 09:31 /home/saphir/rule30_theorem_library/v19/.lake/packages/batteries/docs/README.md -> ../README.md
+444

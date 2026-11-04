@@ -1,0 +1,19 @@
+{
+  "status": "PRODUCER_PASS_AWAITING_INDEPENDENT_AUDIT",
+  "frozen_headers": 12,
+  "strict_replay_counts": [
+    11,
+    19
+  ],
+  "allowed_axioms": [
+    "propext",
+    "Classical.choice",
+    "Quot.sound"
+  ],
+  "smoke_groups": 6,
+  "smoke_comparisons": 24,
+  "smoke_pass": 24,
+  "G1_excluded": true,
+  "failed_attempt_preserved": true,
+  "full_dependency_replay": false
+}

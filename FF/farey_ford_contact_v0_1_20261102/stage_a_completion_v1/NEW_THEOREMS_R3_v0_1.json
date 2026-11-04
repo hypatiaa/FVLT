@@ -1,0 +1,83 @@
+{
+  "module": "FVLTUnitFractionSpineV1",
+  "targets": [
+    {
+      "name": "FVLT.FareyContactV1.unitFrac_injective_positive",
+      "header": "theorem unitFrac_injective_positive (a b : ℕ) (ha : 0 < a) (hb : 0 < b) :\n  unitFrac a = unitFrac b ↔ a = b",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.integerPath_adj",
+      "header": "theorem integerPath_adj (a b : ℕ) :\n  integerPath.Adj a b ↔ |(a : ℤ) - (b : ℤ)| = 1",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.unitFrac_adj",
+      "header": "theorem unitFrac_adj (a b : ℕ) (ha : 0 < a) (hb : 0 < b) :\n  fareyAdj (unitFrac a) (unitFrac b) ↔ |(a : ℤ) - (b : ℤ)| = 1",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FordGeometryV1.unitFrac_tangent",
+      "header": "theorem unitFrac_tangent (a b : ℕ) (ha : 0 < a) (hb : 0 < b) :\n  tangent (unitFrac a) (unitFrac b) ↔ |(a : ℤ) - (b : ℤ)| = 1",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.unitFrac_graph_iso",
+      "header": "theorem unitFrac_graph_iso (V : Finset ℕ) (hV : ∀ a ∈ V, 0 < a) :\n  Nonempty ((integerPath.induce (V : Set ℕ)) ≃g fareyGraph (vertexSet V))",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.unitFrac_graph_connected",
+      "header": "theorem unitFrac_graph_connected (V : Finset ℕ) (hne : V.Nonempty)\n  (hV : ∀ a ∈ V, 0 < a) :\n  (fareyGraph (vertexSet V)).Connected ↔\n    ∃ m M : ℕ, 1 ≤ m ∧ m ≤ M ∧ V = Finset.Icc m M",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.empty_graph_convention",
+      "header": "theorem empty_graph_convention :\n  (fareyGraph ∅).Preconnected ∧ ¬ (fareyGraph ∅).Connected",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.gap_det",
+      "header": "theorem gap_det (a k : ℕ) (ha : 0 < a) (hk : 0 < k) :\n  |det (unitFrac a) (unitFrac (a + k))| = (k : ℤ)",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.minimal_gap_mediant",
+      "header": "theorem minimal_gap_mediant (a : ℕ) (ha : 0 < a) :\n  mediant (unitFrac a) (unitFrac (a + 2)) = unitFrac (a + 1)",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    },
+    {
+      "name": "FVLT.FareyContactV1.gap_mediant_unit_iff",
+      "header": "theorem gap_mediant_unit_iff (a k : ℕ) (ha : 0 < a) (hk : 2 < k) :\n  (∃ b : ℕ, 0 < b ∧\n    mediant (unitFrac a) (unitFrac (a + k)) = unitFrac b) ↔ Even k",
+      "producer_status": "PASS",
+      "independent_audit": "PENDING",
+      "fidelity_signoff": "PENDING"
+    }
+  ],
+  "private_helpers": [
+    "unitFrac_coordinates",
+    "path_cut",
+    "induced_path_connected",
+    "gap_mediant_value"
+  ],
+  "new_instances": 0,
+  "standing": "FINISHED_PRODUCER_ONLY"
+}

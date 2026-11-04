@@ -1,0 +1,25 @@
+{
+  "phase": "INTEGRATION",
+  "mode": "compile",
+  "module": "FVLTFordGeometryV1",
+  "run_id": "CompileFVLTFordGeometryV1",
+  "template_sha256": "765025bf6c3001435cbc2fd281d5a3109ed91443d9449a536425665bf41e4de5",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "source_sha256": {
+    "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+    "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+    "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+    "FVLTFareyArithmeticCompletionV1.lean": "01abe886ef9e92dd2cf8d4289a0093733ecb519facefc6345212e758fc4da2ac",
+    "FVLTFordGeometryCompletionV1.lean": "c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1",
+    "FVLTUnitFractionSpineV1.lean": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1",
+    "FVLTPhasePartnersV1.lean": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+    "FVLTFareyFixturesCompletionV1.lean": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+    "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+    "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+    "FVLTStageAIntegrationV1.lean": "0d43383f2d3889a6811565d994e691b8e1811452c12699fbdae0fb83ef9dc9fa"
+  },
+  "dependency_olean_sha256": {
+    "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8"
+  },
+  "owner_accepted_utc": "2026-11-03T23:47:16.718953+00:00"
+}

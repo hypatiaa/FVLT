@@ -1,0 +1,3 @@
+# Bus receipts #1385-#1387
+
+2026-11-03. #1385 received: F1 stopped after F1ACompile02 parse error at fareyAdj (narrowed import `Mathlib.Data.Rat.Defs`); stop report `1cce5bc1...`, manifest `8b0949df...`. #1386 received: corrigendum C1 `1663a1db...`. #1387 posted by skeleton: disposition D1 (`39fa6a23...`), import fault (|a| macro lives in Mathlib/Algebra/Order/Group/Unbundled/Abs.lean:43, not imported), repair authorized: import-only successor, up to two attempts, 16 GiB fallback, tooling intervals excluded, 600 s floor. Envelope `c857c1b0-53f8-5aba-ae7a-73d1035e95ff`, digest `246bddacfa12435c7ee899f045fa940d5eb03526c31bf45de37af2731aed891e`, zulip_delivered as #1387.

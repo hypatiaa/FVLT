@@ -1,0 +1,108 @@
+{
+  "headers": [
+    {
+      "name": "fareyAdj_symm",
+      "verbatim": true
+    },
+    {
+      "name": "fareyAdj_irrefl",
+      "verbatim": true
+    },
+    {
+      "name": "fareyGraph_adj",
+      "verbatim": true
+    },
+    {
+      "name": "spanning_tree_connected",
+      "verbatim": true
+    },
+    {
+      "name": "certificate_component_bijection",
+      "verbatim": true
+    },
+    {
+      "name": "certificate_component_count",
+      "verbatim": true
+    },
+    {
+      "name": "certificate_isolation",
+      "verbatim": true
+    },
+    {
+      "name": "contactCount_eq_edge_count",
+      "verbatim": true
+    },
+    {
+      "name": "rational_certificate_count",
+      "verbatim": true
+    },
+    {
+      "name": "fixture421_vertices",
+      "verbatim": true
+    },
+    {
+      "name": "fixture421_certificate",
+      "verbatim": true
+    },
+    {
+      "name": "fixture421_counts",
+      "verbatim": true
+    },
+    {
+      "name": "fixture421_isolated",
+      "verbatim": true
+    },
+    {
+      "name": "fixture92_certificate",
+      "verbatim": true
+    },
+    {
+      "name": "fixture92_counts",
+      "verbatim": true
+    },
+    {
+      "name": "fixture92_isolated",
+      "verbatim": true
+    }
+  ],
+  "definitions": [
+    {
+      "name": "admissible",
+      "verbatim_with_only_S1_annotation": true
+    },
+    {
+      "name": "phases",
+      "verbatim_with_only_S1_annotation": false
+    },
+    {
+      "name": "phaseGraph",
+      "verbatim_with_only_S1_annotation": true
+    },
+    {
+      "name": "fareyGraph",
+      "verbatim_with_only_S1_annotation": true
+    },
+    {
+      "name": "contactCount",
+      "verbatim_with_only_S1_annotation": true
+    },
+    {
+      "name": "isolated",
+      "verbatim_with_only_S1_annotation": true
+    },
+    {
+      "name": "singletonPartition",
+      "verbatim_with_only_S1_annotation": true
+    },
+    {
+      "name": "rationalCertificate",
+      "verbatim_with_only_S1_annotation": false
+    }
+  ],
+  "certificate_definition_matches_accepted_five_clause_body": true,
+  "graph_adjacency_field_exact": true,
+  "private_helper_names": [
+    "part_reachable_closed"
+  ],
+  "source_forbidden_tokens": false
+}

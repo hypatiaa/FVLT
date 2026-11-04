@@ -1,0 +1,36 @@
+{
+  "status": "PRODUCER_PASS_PENDING_INDEPENDENT_AUDIT",
+  "frozen_headers_verbatim": 5,
+  "new_public_definitions": 0,
+  "strict_replay": 18,
+  "failure_count": 0,
+  "full_dependency_replay": false,
+  "G1_excluded": true,
+  "axioms": "standard three only",
+  "final_compile_warnings": 0,
+  "runs": [
+    {
+      "run": "R5Compile01",
+      "exit": 1,
+      "seconds": 10.42992639541626,
+      "peak_rss_KiB": 4258876,
+      "finished_unix": 1793747848.5606334
+    },
+    {
+      "run": "R5Compile02",
+      "exit": 0,
+      "seconds": 11.430549621582031,
+      "peak_rss_KiB": 4255512,
+      "finished_unix": 1793747912.9865541
+    },
+    {
+      "run": "R5Replay01",
+      "exit": 0,
+      "seconds": 12.482100486755371,
+      "peak_rss_KiB": 4419392,
+      "finished_unix": 1793747960.040297
+    }
+  ],
+  "final_source_sha256": "85b05d8021e6f44979c0f98533ade819f1b88363adfce331cdbe9f26e5ba0a2d",
+  "final_olean_sha256": "237223a3837de4529d87d08264eeae3eead7bec8d28775b73587e262b7aca9c5"
+}

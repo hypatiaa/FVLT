@@ -1,0 +1,3 @@
+# Bus receipts #1376-#1378
+
+2026-11-03. #1376 received: owner asks whether F1 source drafting is allowed before I3. #1377 received: FF-2 v0.2 ACCEPT WITH CHANGES S1-S4 (review `289641b9...`, matched), runner `RUN_FF1_v0_2.py` (`c14f263c...`, matched). #1378 posted by skeleton: clarification C1 (`aff6deaa...`: drafting authorized now, no invocation before I3; I1 runner v0.2 accepted, lean executable `bf8d54e4...` hashed by skeleton on nucleus; I3 as a job-manifest template) and FF-2 v0.3 (`8e108ff4...`). Envelope `8a357aa3-68c7-5865-901f-382f5633f423`, digest `c76308d9fc2d35d4043639aef122640cc8ca98b7527c8078afc3d2d36130d6c8`, zulip_delivered as #1378.

@@ -1,0 +1,272 @@
+{
+  "schema": "closed-file-manifest/1",
+  "status": "PRODUCER_PASS_PENDING_INDEPENDENT_AUDIT",
+  "files": [
+    {
+      "path": "ACCEPT_R3_JOB_v0_1.ps1",
+      "bytes": 2742,
+      "sha256": "ee6e25c7fdca6eb558839d31bc956c5c658d050d86bde6f48396984b4e36015c"
+    },
+    {
+      "path": "FVLTUnitFractionSpineV1.lean",
+      "bytes": 8388,
+      "sha256": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1"
+    },
+    {
+      "path": "IndependentFVLTReplay435.lean",
+      "bytes": 5139,
+      "sha256": "9c6f2ac11b50fdb846df2d5099ea673553903275a5dba11fce5a5673cae14bd0"
+    },
+    {
+      "path": "JOB_R3Compile01.json",
+      "bytes": 526,
+      "sha256": "f32b26ec6733f2e45003aea146781f8547e2b792bfebaab82dce9ca6a98b45a6"
+    },
+    {
+      "path": "JOB_R3Compile02.json",
+      "bytes": 526,
+      "sha256": "f66b4c9191c630533ce3171e9847f9898af801fd38f3f56cf8fd4903aa8ed821"
+    },
+    {
+      "path": "JOB_R3Compile03.json",
+      "bytes": 526,
+      "sha256": "1432110a5903590741efa73668fd7c793e0b5e4db2f42c6cab400a03e3d2467e"
+    },
+    {
+      "path": "JOB_R3Replay01.json",
+      "bytes": 633,
+      "sha256": "eb7136cda1da5413ee08a18b72d893c0e6b8597366da84a99eb46a5893696d34"
+    },
+    {
+      "path": "NEW_THEOREMS_R3_v0_1.json",
+      "bytes": 3599,
+      "sha256": "5d03c94f1b2834c4d48152bbfaba93f850c306dd9e2fdd5cb8e8daab4b1f2466"
+    },
+    {
+      "path": "PREPARE_R3_INPUTS_v0_1.py",
+      "bytes": 3785,
+      "sha256": "c11fff0daccd4b162ce9475162640c7f15fc83d4e03fe5862976a3699292a178"
+    },
+    {
+      "path": "R3_DEADLINE.json",
+      "bytes": 263,
+      "sha256": "77ff644e6dfe07c82c4c57a998776d83547619349d71f53325003c59176a6037"
+    },
+    {
+      "path": "R3_INPUT_OBSERVATIONS_v0_1.json",
+      "bytes": 19198,
+      "sha256": "a8afc4edd8fc542e37badcb64204320e47cd0f54c01161677bb4946dafcfe4d1"
+    },
+    {
+      "path": "R3_JOB_TEMPLATE_BOUND_v0_1.json",
+      "bytes": 6698,
+      "sha256": "32b0444d0945bbe5fc48a0131a1ad7f88f00e17900e43c838907dd764db4e4d8"
+    },
+    {
+      "path": "R3_JOB_TEMPLATE_v0_1.json",
+      "bytes": 6444,
+      "sha256": "876cf251c75856be0168fe370588c63e66c2eb40cfa6a0cc0e0d928ab344c03a"
+    },
+    {
+      "path": "R3_LIBRARY_SHA256_CHECK_v0_1.txt",
+      "bytes": 20501,
+      "sha256": "3e301cad0b1c422bdc6fe6f14d3764bb8ff5c6ddaee1d6cf7ed60e2e89f9aabf"
+    },
+    {
+      "path": "R3_REVIEW_ACCEPTANCE_PREPOST_v0_1.json",
+      "bytes": 1405,
+      "sha256": "9db9a206d2a838e7b7802b89bba8d63f73dff1049a2ce6220c71171d4bb4967a"
+    },
+    {
+      "path": "R3_REVIEW_ACCEPTANCE.json",
+      "bytes": 3772,
+      "sha256": "ea1c3123993487240fec30b31050c6fbea7e66814a4ebf187383e40571d353e1"
+    },
+    {
+      "path": "R3_REVIEW_MANIFEST_v0_1.json",
+      "bytes": 931,
+      "sha256": "596a3f8b159af9f291c0b76cd6c5ad7e0734e39bad6679de4e9531089c60fd7c"
+    },
+    {
+      "path": "R3_TEMPLATE_DECISION_v0_1.md",
+      "bytes": 1970,
+      "sha256": "0713a265ea67b8f5938ea339fcee8a3afccc6e65d68681a2812d4506502e2376"
+    },
+    {
+      "path": "R3_TEMPLATE_PLAN_v0_1.md",
+      "bytes": 5474,
+      "sha256": "c5610b694482b7dfdcffd929aa6081158802a273e60a50a4ed0c8383f62aac56"
+    },
+    {
+      "path": "R3Compile01.json",
+      "bytes": 4402,
+      "sha256": "0290b689e12edb28fe8017bbe53663ddf95b140eca8b57c0cad59a6855b8b2d0"
+    },
+    {
+      "path": "R3Compile01.library_after.txt",
+      "bytes": 20501,
+      "sha256": "3e301cad0b1c422bdc6fe6f14d3764bb8ff5c6ddaee1d6cf7ed60e2e89f9aabf"
+    },
+    {
+      "path": "R3Compile01.log",
+      "bytes": 4723,
+      "sha256": "0f76d7a5630110e9cf16c394bf810c85798f99abbadb56d49977703bc4901f3e"
+    },
+    {
+      "path": "R3Compile02.json",
+      "bytes": 4402,
+      "sha256": "05340ca51044d55b1bd03ca77abbb3896656cc7d7727eb5ecbb1e097f1ec1c4f"
+    },
+    {
+      "path": "R3Compile02.library_after.txt",
+      "bytes": 20501,
+      "sha256": "3e301cad0b1c422bdc6fe6f14d3764bb8ff5c6ddaee1d6cf7ed60e2e89f9aabf"
+    },
+    {
+      "path": "R3Compile02.log",
+      "bytes": 1928,
+      "sha256": "963ab93457cd2550fb5f04b35cf4cc8cd72b98d9a41236163718d23fe0869ae3"
+    },
+    {
+      "path": "R3Compile03.json",
+      "bytes": 4487,
+      "sha256": "046b83fcdc1aad51d7e5b3d8e4681c3b6e061fdb1d6d67b8b048b49f593e4c39"
+    },
+    {
+      "path": "R3Compile03.library_after.txt",
+      "bytes": 20501,
+      "sha256": "3e301cad0b1c422bdc6fe6f14d3764bb8ff5c6ddaee1d6cf7ed60e2e89f9aabf"
+    },
+    {
+      "path": "R3Compile03.log",
+      "bytes": 1543,
+      "sha256": "0c5ff109cdfd1a5db23ac042ec94f2d5c80df7a4415c7340d8a27b552cee5cfa"
+    },
+    {
+      "path": "R3Replay01.json",
+      "bytes": 4431,
+      "sha256": "c7f2eb6d5cce5bc69e98f2e2314408842db09b40f9a76f439a30cb88aa28c558"
+    },
+    {
+      "path": "R3Replay01.library_after.txt",
+      "bytes": 20501,
+      "sha256": "3e301cad0b1c422bdc6fe6f14d3764bb8ff5c6ddaee1d6cf7ed60e2e89f9aabf"
+    },
+    {
+      "path": "R3Replay01.log",
+      "bytes": 167278,
+      "sha256": "a047f932f31b2797c156a96d1a8fb5cd4399936fbb6907eaf952f0879a343f95"
+    },
+    {
+      "path": "README_R3_v0_1.md",
+      "bytes": 2399,
+      "sha256": "4cd9ba4a70c662b8d014e6eb50c2053add7d9821c10c785002ff40d406ad6694"
+    },
+    {
+      "path": "RESULT_R3_v0_1.md",
+      "bytes": 6543,
+      "sha256": "334116304cc975dbe193f8012cddd4b38a9cccff29e994b905ecd459dc4a8d06"
+    },
+    {
+      "path": "RUN_R3_v0_1.py",
+      "bytes": 8242,
+      "sha256": "446d2ceda8cfbfa677df6ba1f8ea6957a6010d86bee5dbef86a7449670b3f896"
+    },
+    {
+      "path": "RUN_R3_vs_R2_v0_1.diff",
+      "bytes": 3889,
+      "sha256": "aa08d0f318f10edaf3065aef134846e1ca0aa6c48bc5179e3e0d163f4a8a37bc"
+    },
+    {
+      "path": "SHA256SUMS_R3_v0_1.txt",
+      "bytes": 4992,
+      "sha256": "f00349e474fd8aecd2af4b807f1fc6c5cc343d42dc9470d983a121aabdf71e6a"
+    },
+    {
+      "path": "snapshots/R3Compile01/FVLTUnitFractionSpineV1.lean",
+      "bytes": 8351,
+      "sha256": "8d37f7297075ffbfcd2e90ebb1799e6c7690c598d80e1c32429a64c8bf1f95ef"
+    },
+    {
+      "path": "snapshots/R3Compile01/JOB_R3Compile01.json",
+      "bytes": 526,
+      "sha256": "f32b26ec6733f2e45003aea146781f8547e2b792bfebaab82dce9ca6a98b45a6"
+    },
+    {
+      "path": "snapshots/R3Compile01/R3_REVIEW_ACCEPTANCE.json",
+      "bytes": 2042,
+      "sha256": "f198f3186dabcb2aa09caec362e92e47c88cf7973a2b2a7fb743b279c3a67282"
+    },
+    {
+      "path": "snapshots/R3Compile01/RUN_R3_v0_1.py",
+      "bytes": 8242,
+      "sha256": "446d2ceda8cfbfa677df6ba1f8ea6957a6010d86bee5dbef86a7449670b3f896"
+    },
+    {
+      "path": "snapshots/R3Compile02/FVLTUnitFractionSpineV1.lean",
+      "bytes": 8390,
+      "sha256": "6344add92722fbda1cf7a7db87000d8213ac46da040776a861a590c39e9fd0e5"
+    },
+    {
+      "path": "snapshots/R3Compile02/JOB_R3Compile02.json",
+      "bytes": 526,
+      "sha256": "f66b4c9191c630533ce3171e9847f9898af801fd38f3f56cf8fd4903aa8ed821"
+    },
+    {
+      "path": "snapshots/R3Compile02/R3_REVIEW_ACCEPTANCE.json",
+      "bytes": 2619,
+      "sha256": "856b6b4a311ed6fc1296d9525792d325446fa52d0f3823775957bec8ac58e5c3"
+    },
+    {
+      "path": "snapshots/R3Compile02/RUN_R3_v0_1.py",
+      "bytes": 8242,
+      "sha256": "446d2ceda8cfbfa677df6ba1f8ea6957a6010d86bee5dbef86a7449670b3f896"
+    },
+    {
+      "path": "snapshots/R3Compile03/FVLTUnitFractionSpineV1.lean",
+      "bytes": 8388,
+      "sha256": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1"
+    },
+    {
+      "path": "snapshots/R3Compile03/JOB_R3Compile03.json",
+      "bytes": 526,
+      "sha256": "1432110a5903590741efa73668fd7c793e0b5e4db2f42c6cab400a03e3d2467e"
+    },
+    {
+      "path": "snapshots/R3Compile03/R3_REVIEW_ACCEPTANCE.json",
+      "bytes": 3196,
+      "sha256": "59b5eefb97096476fe9e711f5efd91388c26414bfef3cf2dd6d054db97e4cbcb"
+    },
+    {
+      "path": "snapshots/R3Compile03/RUN_R3_v0_1.py",
+      "bytes": 8242,
+      "sha256": "446d2ceda8cfbfa677df6ba1f8ea6957a6010d86bee5dbef86a7449670b3f896"
+    },
+    {
+      "path": "snapshots/R3Replay01/FVLTUnitFractionSpineV1.lean",
+      "bytes": 8388,
+      "sha256": "21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1"
+    },
+    {
+      "path": "snapshots/R3Replay01/JOB_R3Replay01.json",
+      "bytes": 633,
+      "sha256": "eb7136cda1da5413ee08a18b72d893c0e6b8597366da84a99eb46a5893696d34"
+    },
+    {
+      "path": "snapshots/R3Replay01/R3_REVIEW_ACCEPTANCE.json",
+      "bytes": 3772,
+      "sha256": "ea1c3123993487240fec30b31050c6fbea7e66814a4ebf187383e40571d353e1"
+    },
+    {
+      "path": "snapshots/R3Replay01/RUN_R3_v0_1.py",
+      "bytes": 8242,
+      "sha256": "446d2ceda8cfbfa677df6ba1f8ea6957a6010d86bee5dbef86a7449670b3f896"
+    },
+    {
+      "path": "VERDICT_R3_v0_1.json",
+      "bytes": 1271,
+      "sha256": "2bd3da472d0e87416e85594d1fa9abd5fca6bd46457202826b2734f59aad5e43"
+    }
+  ],
+  "manifest_self_excluded": true
+}

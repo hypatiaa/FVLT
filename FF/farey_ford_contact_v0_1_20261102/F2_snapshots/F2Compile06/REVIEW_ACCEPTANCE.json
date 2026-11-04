@@ -1,0 +1,104 @@
+{
+  "input_review_reference": "acceptedFF1inputs reobservedF2_INPUT_OBSERVATIONS_v0_1.json",
+  "signature_review_reference": "SIGNATURE_FREEZE_DRAFT_v0_1.md accepted;16headers verbatim",
+  "runner_sha256": "6ebe28fa70fd5b1a68778bf5e6b4b4a254cc3ad975764e6372797231f63c68ef",
+  "reviewed_files": {
+    "F2_JOB_TEMPLATE_v0_1.json": "d1bffb5df9c8a3e04daf71a6d722cf518f4239e4cad35874f3540886ca2db461",
+    "SIGNATURE_FREEZE_DRAFT_v0_1.md": "a9382d4054a77d7a569e884b4f7e02b55f7c7e9aa0da2d3a6d1299075ea2b6c7"
+  },
+  "library_expected": {
+    "SHA256SUMS": "e25d4d54d074f152c452aa7247ccbe992e14b29d58306809660a75770ae7ddd5",
+    "LIBRARY_MANIFEST.json": "f0ee6b00fe4a622b63cac1f4fb24146e9b2808bdb0fb430ebdac074fecb258fa",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "4f0aea1336d288cba45c00727ce81c2cc064c39fca46e8ccf4505ae38ca6191f",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "accepted_job_manifest_sha256": [
+    "a308a9be6ff6b9e125b9487f2d954040f17eb5551bb21d1327351905c6a0577a",
+    "4e7b153e2dccebbc4c23a18d1286b880e8f5b5c88d59221f985228ec99445556",
+    "d27d2350b16dbdfedffd6cd840f81417cdaf941bbf8bd5cfbd31e4649e4673dd",
+    "927316fc137344289ca75b0b795ac7e39e84507f272c73e8279da4fd6b8f8610",
+    "36665966217463cbf958a09afb6f873668aa77d4a488f0d660fb3823d80d7fb4",
+    "fbe2d6a353c62b4db3c2ec5ecf9c322219983237a895150b0363ed6944a48581",
+    "f5f2fff14275b47401705424d98b7a35e923bdd88db30972e123aca60d12960c"
+  ],
+  "owner_acceptance_log": [
+    {
+      "headers": "16verbatim",
+      "template_sha256": "d1bffb5df9c8a3e04daf71a6d722cf518f4239e4cad35874f3540886ca2db461",
+      "job": "JOB_F2Compile01.json",
+      "timestamp": "2026-11-03T07:20:53.0331931-05:00",
+      "source_sha256": {
+        "FVLTFareyCertificatesV1.lean": "bd4f11bf27edf4bf8024935133748e49ccd85e56f51c6154e9bb5675bca92952",
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b"
+      },
+      "job_sha256": "a308a9be6ff6b9e125b9487f2d954040f17eb5551bb21d1327351905c6a0577a"
+    },
+    {
+      "job": "JOB_F2Compile02.json",
+      "job_sha256": "4e7b153e2dccebbc4c23a18d1286b880e8f5b5c88d59221f985228ec99445556",
+      "template_sha256": "d1bffb5df9c8a3e04daf71a6d722cf518f4239e4cad35874f3540886ca2db461",
+      "timestamp": "2026-11-03T07:24:51.3380187-05:00",
+      "source_sha256": {
+        "FVLTFareyCertificatesV1.lean": "3872adc8932c29164ac2ab85d64484bb034e432b1f5a9a409c65aa7865c789aa",
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b"
+      },
+      "headers": "16verbatim;S1annotationonly"
+    },
+    {
+      "job": "JOB_F2Compile03.json",
+      "job_sha256": "d27d2350b16dbdfedffd6cd840f81417cdaf941bbf8bd5cfbd31e4649e4673dd",
+      "template_sha256": "d1bffb5df9c8a3e04daf71a6d722cf518f4239e4cad35874f3540886ca2db461",
+      "timestamp": "2026-11-03T07:27:14.5929318-05:00",
+      "source_sha256": {
+        "FVLTFareyCertificatesV1.lean": "c0ef13e676c2a0c21642102e32326f258ea8932695213ab12da8f0abd957dd82",
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b"
+      },
+      "headers": "16verbatim;S1annotationonly"
+    },
+    {
+      "job": "JOB_F2Compile04.json",
+      "job_sha256": "927316fc137344289ca75b0b795ac7e39e84507f272c73e8279da4fd6b8f8610",
+      "template_sha256": "d1bffb5df9c8a3e04daf71a6d722cf518f4239e4cad35874f3540886ca2db461",
+      "timestamp": "2026-11-03T07:28:48.6896009-05:00",
+      "source_sha256": {
+        "FVLTFareyCertificatesV1.lean": "fc8dfa12bfb20ed9508461fd3bce99b68c005b4fdea7d88c482580d9bd4559ed",
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b"
+      },
+      "headers": "16verbatim;S1annotationonly"
+    },
+    {
+      "job": "JOB_F2Compile05.json",
+      "job_sha256": "36665966217463cbf958a09afb6f873668aa77d4a488f0d660fb3823d80d7fb4",
+      "template_sha256": "d1bffb5df9c8a3e04daf71a6d722cf518f4239e4cad35874f3540886ca2db461",
+      "timestamp": "2026-11-03T07:30:10.7070496-05:00",
+      "source_sha256": {
+        "FVLTFareyCertificatesV1.lean": "c6a2aeddf9810ae947b206756560e7c0d80a645f1b869c176e2e3b6ead2a81d0",
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b"
+      },
+      "headers": "16verbatim;S1annotationonly"
+    },
+    {
+      "job": "JOB_F2Replay01.json",
+      "job_sha256": "fbe2d6a353c62b4db3c2ec5ecf9c322219983237a895150b0363ed6944a48581",
+      "template_sha256": "d1bffb5df9c8a3e04daf71a6d722cf518f4239e4cad35874f3540886ca2db461",
+      "timestamp": "2026-11-03T07:31:13.6699917-05:00",
+      "source_sha256": {
+        "FVLTFareyCertificatesV1.lean": "c6a2aeddf9810ae947b206756560e7c0d80a645f1b869c176e2e3b6ead2a81d0",
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b"
+      },
+      "headers": "16verbatim;S1annotationonly"
+    },
+    {
+      "job": "JOB_F2Compile06.json",
+      "job_sha256": "f5f2fff14275b47401705424d98b7a35e923bdd88db30972e123aca60d12960c",
+      "template_sha256": "d1bffb5df9c8a3e04daf71a6d722cf518f4239e4cad35874f3540886ca2db461",
+      "timestamp": "2026-11-03T12:32:33.9726981+00:00",
+      "source_sha256": {
+        "FVLTFareyCertificatesV1.lean": "4119bffe98e36c703dfef30a1ff48b956ee90a623b12dbc931a1d6695a91121e",
+        "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b"
+      },
+      "headers": "16verbatim;S1annotationonly"
+    }
+  ]
+}

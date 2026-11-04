@@ -22,3 +22,13 @@ Credit: saphir (@saphirbijoux), with the model seats named in each folder's reco
 - **Check:** in this folder, run `sha256sum -c MANIFEST_ff4.sha256`; it must report 618 OK. `MANIFEST.sha256` still covers FF-2 and FF-3.
 - The folder includes three build `.olean` files, copied byte for byte from the working folder.
 - **Date note:** some headers in this folder (the audit, the sync plan, `BUS_RECEIPT_1611`) say 2026-11-05. The true date is 2026-11-04; see `DATE_CORRECTION_v0_1.md`. The bytes are kept as they are.
+
+## Update 2026-11-04: FF-1
+
+| Folder | Project | Library |
+|---|---|---|
+| `farey_ford_contact_v0_1_20261102/` | FF-1: Farey contact and Ford geometry, Stage A plus completions R1–R5 | modules entered library v20 (bus #1445) and are in `../Lean/theorems/` from the v21 backup on |
+
+- **Modules:** `FVLTFareyContactV1`, `FVLTFordGeometryV1`, `FVLTFareyCertificatesV1`, `FVLTFordRationalV1`, `FVLTFordExactCoordinatesV1`, `FVLTFareyArithmeticCompletionV1`, `FVLTFordGeometryCompletionV1`, `FVLTUnitFractionSpineV1`, `FVLTPhasePartnersV1` and `FVLTFareyFixturesCompletionV1`. `../Lean/MANIFEST.sha256` pins them.
+- **Check:** in this folder, run `sha256sum -c MANIFEST_ff1.sha256`; it must report 1,119 OK.
+- **G1:** none. The folder mentions G1 only as an exclusion. Its replay tool refuses any import whose name contains "g1", and no G1 files are included.

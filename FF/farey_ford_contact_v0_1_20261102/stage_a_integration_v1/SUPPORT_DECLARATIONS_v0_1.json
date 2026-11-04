@@ -1,0 +1,645 @@
+{
+  "status": "SOURCE_INVENTORY_NOT_INDEPENDENT_REVIEW",
+  "declarations": [
+    {
+      "module": "FVLTFareyContactV1",
+      "source_line": 12,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def det (x y : ℚ) : ℤ := x.num * (y.den : ℤ) - y.num * (x.den : ℤ)",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyContactV1",
+      "source_line": 13,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def fareyAdj (x y : ℚ) : Prop := |det x y| = 1",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryV1",
+      "source_line": 14,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def radius (x : ℚ) : ℝ := 1 / (2 * (x.den : ℝ)^2)",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryV1",
+      "source_line": 15,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def centre (x : ℚ) : ℂ := (x : ℂ) + (radius x : ℂ) * Complex.I",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryV1",
+      "source_line": 16,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def boundary (x : ℚ) : Set ℂ := {z | ‖z - centre x‖ = radius x}",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryV1",
+      "source_line": 17,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def kissN (x y : ℚ) : ℤ := x.num * (x.den : ℤ) + y.num * (y.den : ℤ)",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryV1",
+      "source_line": 18,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def kissM (x y : ℚ) : ℕ := x.den^2 + y.den^2",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryV1",
+      "source_line": 19,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def kiss (x y : ℚ) : ℂ :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryV1",
+      "source_line": 22,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem centre_re (x : ℚ) : (centre x).re = (x : ℝ) := by simp [centre]",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryV1",
+      "source_line": 23,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem centre_im (x : ℚ) : (centre x).im = radius x := by simp [centre]",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryV1",
+      "source_line": 24,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem kiss_re (x y : ℚ) :",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryV1",
+      "source_line": 26,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem kiss_im (x y : ℚ) :",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyCertificatesV1",
+      "source_line": 23,
+      "kind": "instance",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "instance (x y : ℚ) : Decidable (fareyAdj x y) :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyCertificatesV1",
+      "source_line": 26,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def fareyGraph (S : Finset ℚ) : SimpleGraph {x : ℚ // x ∈ S} where",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyCertificatesV1",
+      "source_line": 31,
+      "kind": "instance",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "instance (S : Finset ℚ) : DecidableRel (fareyGraph S).Adj :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyCertificatesV1",
+      "source_line": 34,
+      "kind": "instance",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "instance (S : Finset ℚ) (s : Finset {x : ℚ // x ∈ S}) :",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyCertificatesV1",
+      "source_line": 41,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def admissible (α : List ℕ) : Finset ℕ :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyCertificatesV1",
+      "source_line": 43,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def phases (α : List ℕ) : Finset ℚ :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyCertificatesV1",
+      "source_line": 47,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def phaseGraph (α : List ℕ) := fareyGraph (phases α)",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyCertificatesV1",
+      "source_line": 48,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def contactCount (S : Finset ℚ) : ℕ :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyCertificatesV1",
+      "source_line": 50,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def isolated (S : Finset ℚ) (x : ℚ) : Prop :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyCertificatesV1",
+      "source_line": 52,
+      "kind": "instance",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "instance (S : Finset ℚ) (x : ℚ) : Decidable (isolated S x) := by",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyCertificatesV1",
+      "source_line": 55,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def singletonPartition (S I : Finset ℚ) : Finset (Finset ℚ) :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyCertificatesV1",
+      "source_line": 58,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def ComponentCertificate {V : Type*} [DecidableEq V]",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyCertificatesV1",
+      "source_line": 67,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def rationalCertificate (S : Finset ℚ) (parts : Finset (Finset ℚ)) : Prop :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyCertificatesV1",
+      "source_line": 97,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem part_reachable_closed (V : Type*) [DecidableEq V]",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyArithmeticCompletionV1",
+      "source_line": 12,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def rawValue (a : ℤ) (q : ℕ) : ℚ := (a : ℚ) / (q : ℚ)",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyArithmeticCompletionV1",
+      "source_line": 13,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def mediant (x y : ℚ) : ℚ :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyArithmeticCompletionV1",
+      "source_line": 15,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def unitFrac (a : ℕ) : ℚ := 1 / (a : ℚ)",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyArithmeticCompletionV1",
+      "source_line": 17,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem coprime_from_det (a b c d : ℤ)",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFareyArithmeticCompletionV1",
+      "source_line": 121,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem unitFrac_data (a : ℕ) (ha : 0 < a) :",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryCompletionV1",
+      "source_line": 13,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def disk (x : ℚ) : Set ℂ := {z | ‖z - centre x‖ < radius x}",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryCompletionV1",
+      "source_line": 14,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def realAxis : Set ℂ := {z | z.im = 0}",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryCompletionV1",
+      "source_line": 15,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def tangent (x y : ℚ) : Prop :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryCompletionV1",
+      "source_line": 18,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem det_nonzero (x y : ℚ) (hne : x ≠ y) : det x y ≠ 0 := by",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryCompletionV1",
+      "source_line": 30,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem centre_norm_ge (x y : ℚ) (hne : x ≠ y) :",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryCompletionV1",
+      "source_line": 42,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem centre_norm_gt (x y : ℚ) (hne : x ≠ y)",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryCompletionV1",
+      "source_line": 54,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem centre_triangle (x y : ℚ) (z : ℂ) :",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryCompletionV1",
+      "source_line": 80,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem weighted_norm_identity (u v : ℂ) (r s : ℝ) :",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordGeometryCompletionV1",
+      "source_line": 88,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem circle_inter_unique (c d z w : ℂ) (r s : ℝ)",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTUnitFractionSpineV1",
+      "source_line": 11,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def vertexSet (V : Finset ℕ) : Finset ℚ := V.image unitFrac",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTUnitFractionSpineV1",
+      "source_line": 12,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def integerPath : SimpleGraph ℕ where",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTUnitFractionSpineV1",
+      "source_line": 17,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem unitFrac_coordinates (a : ℕ) (ha : 0 < a) :",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTUnitFractionSpineV1",
+      "source_line": 58,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem path_cut (V : Finset ℕ) (k : ℕ) (hk : k ∉ V)",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTUnitFractionSpineV1",
+      "source_line": 75,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem induced_path_connected (V : Finset ℕ) (hne : V.Nonempty)",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTUnitFractionSpineV1",
+      "source_line": 151,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem gap_mediant_value (a k : ℕ) (ha : 0 < a) (hk : 0 < k) :",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTPhasePartnersV1",
+      "source_line": 12,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def unreducedPhases (α : List ℕ) : Finset ℚ :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTPhasePartnersV1",
+      "source_line": 16,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem admissible_two (α : List ℕ) (q : ℕ) (hq : q ∈ admissible α) : 2 ≤ q := by",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTPhasePartnersV1",
+      "source_line": 20,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem interior_numerator (x : ℚ) (hx : 0 < x ∧ x < 1) :",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTPhasePartnersV1",
+      "source_line": 28,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem phase_description (α : List ℕ) (x : ℚ) :",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTPhasePartnersV1",
+      "source_line": 113,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem sign_witness (d : ℤ) (hd : |d| = 1) :",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTPhasePartnersV1",
+      "source_line": 210,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem unit_phase (α : List ℕ) (n : ℕ) (hn : n ∈ admissible α) :",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTPhasePartnersV1",
+      "source_line": 247,
+      "kind": "theorem",
+      "private": true,
+      "noncomputable_marker": false,
+      "source_declaration_line": "private theorem complement_coordinates (x : ℚ) :",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordRationalV1",
+      "source_line": 6,
+      "kind": "abbrev",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "abbrev RatPlane := ℚ × ℚ",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordRationalV1",
+      "source_line": 7,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def radiusQ (x : ℚ) : ℚ := 1 / (2 * (x.den : ℚ)^2)",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordRationalV1",
+      "source_line": 8,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def centreQ (x : ℚ) : RatPlane := (x, radiusQ x)",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordRationalV1",
+      "source_line": 9,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def kissNQ (x y : ℚ) : ℤ :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordRationalV1",
+      "source_line": 11,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def kissMQ (x y : ℚ) : ℕ := x.den^2 + y.den^2",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordRationalV1",
+      "source_line": 12,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def kissQ (x y : ℚ) : RatPlane :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordRationalV1",
+      "source_line": 14,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def sqDistanceQ (u v : RatPlane) : ℚ :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordRationalV1",
+      "source_line": 16,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def boundaryQ (x : ℚ) (z : RatPlane) : Prop :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordRationalV1",
+      "source_line": 18,
+      "kind": "instance",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "instance (x : ℚ) (z : RatPlane) : Decidable (boundaryQ x z) :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordRationalV1",
+      "source_line": 20,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": false,
+      "source_declaration_line": "def boundaryCheckQ (x : ℚ) (z : RatPlane) : Bool := decide (boundaryQ x z)",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    },
+    {
+      "module": "FVLTFordExactCoordinatesV1",
+      "source_line": 8,
+      "kind": "def",
+      "private": false,
+      "noncomputable_marker": true,
+      "source_declaration_line": "noncomputable def embedQ (z : RatPlane) : ℂ :=",
+      "integration_grants_new_kernel_standing": false,
+      "review_status": "PENDING_SUPPORT_CLASSIFICATION"
+    }
+  ]
+}

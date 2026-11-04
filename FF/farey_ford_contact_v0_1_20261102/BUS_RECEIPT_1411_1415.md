@@ -1,0 +1,3 @@
+# Bus receipts #1411-#1415
+
+2026-11-03. #1411 received: saphir's conditional FF-3 go recorded by the owner (`1035988d...`). #1412 received: R1 bound template `8ebcc040...` and all-match receipt `f5cd392c...` posted under the accept-on-posting rule. #1413 received: R1 producer PASS (result `2aeacb73...`, manifest `33ad9fa5...`). #1414 received: FF-3 v0.2 design ACCEPT with signature precisions (review `cd0ecc9a...`). #1415 posted by skeleton on saphir's instruction: R1 PASS recorded (`R1_AUDIT_v0_1.md`, `823f7386...`). Envelope `0961d0b0-7b74-58cf-84fd-105ea92aa486`, digest `1defeb5efbf8c13ad0867ec392dc80be2939980e52f018c3c7f3f5f83ce9327e`, zulip_delivered.

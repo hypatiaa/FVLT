@@ -1,0 +1,59 @@
+diff --git a/C:/Users/robin/s6_atom/FVLT_FORMALIZATION_v0_1_20261028/farey_ford_contact_v0_1_20261102/stage_a_completion_v1/RUN_R4_v0_1.py b/C:/Users/robin/s6_atom/FVLT_FORMALIZATION_v0_1_20261028/farey_ford_contact_v0_1_20261102/stage_a_completion_v1/RUN_R5_v0_1.py
+index a289279..c5cd7c7 100644
+--- a/C:/Users/robin/s6_atom/FVLT_FORMALIZATION_v0_1_20261028/farey_ford_contact_v0_1_20261102/stage_a_completion_v1/RUN_R4_v0_1.py
++++ b/C:/Users/robin/s6_atom/FVLT_FORMALIZATION_v0_1_20261028/farey_ford_contact_v0_1_20261102/stage_a_completion_v1/RUN_R5_v0_1.py
+@@ -1,7 +1,7 @@
+-"""Prospective R4 runner: not executed during template preparation.
++"""Prospective R5 runner: not executed during template preparation.
+ 
+ Derived from RUN_BRIDGE_v0_1.py. Requires final bound-template acceptance.
+-Invocation: python3 RUN_R4_v0_1.py JOB.json
++Invocation: python3 RUN_R5_v0_1.py JOB.json
+ """
+ from pathlib import Path
+ import hashlib
+@@ -19,8 +19,10 @@ ROOT = PARENT / 'stage_a_completion_v1'
+ LIB = Path('/home/saphir/rule30_theorem_library/v19')
+ LEAN = Path('/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean')
+ CHECKER = ROOT / 'IndependentFVLTReplay435.lean'
+-MODULE = 'FVLTPhasePartnersV1'
++MODULE = 'FVLTFareyFixturesCompletionV1'
+ PREDECESSOR_PINS = {
++    'stage_a_completion_v1/FVLTPhasePartnersV1.lean': '81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac',
++    'stage_a_completion_v1/FVLTPhasePartnersV1.olean': '875d7726a34ca13d247b53d71525087141481441fbef5b0928586712b84f77a3',
+     'stage_a_completion_v1/FVLTUnitFractionSpineV1.lean': '21b2efd2defd0d42f7a1238c1ee417926a0033f41df700d13c937feee6156bf1',
+     'stage_a_completion_v1/FVLTUnitFractionSpineV1.olean': '8d5f4cae1a6693a1e873ecc2ad73e81a50d380254eb289ba304d9ddb67508870',
+     'stage_a_completion_v1/FVLTFordGeometryCompletionV1.lean': 'c3251f10239e178c243a7793f35e60fddda64637342adfc7c52fdd95dd5b18a1',
+@@ -35,6 +37,7 @@ PREDECESSOR_PINS = {
+     'FVLTFareyCertificatesV1.olean': '99d3b3c3a44d0f4b4aa020e0e797dff255eddddb0459b7b1e4a3b7fad8ef651e',
+ }
+ GATES = {
++    'R4_AUDIT_v0_1.md': 'ffbb74192b3ef1c037bb9862e81ff96284585717356cc7270e6cb4b31199a302',
+     'R3_AUDIT_v0_1.md': '8003559f76ce6b2035e4a91be7638f55ec5440f784c6305d944a6c05e1ec3562',
+     'R2_AUDIT_v0_1.md': '48e4ee942af299f2fed279057c4852aa6c6d539bf405b5dbad18fe8a72a6c75d',
+     'R1_AUDIT_v0_1.md': '823f7386d567a7dbf8b1c5c43e81c85cf8876ce0927c1bc85b9430134317a48d',
+@@ -52,13 +55,13 @@ assert len(sys.argv) == 2
+ job_path = Path(sys.argv[1]).resolve()
+ assert job_path.parent == ROOT
+ job = json.loads(job_path.read_text())
+-review = json.loads((ROOT / 'R4_REVIEW_ACCEPTANCE.json').read_text())
++review = json.loads((ROOT / 'R5_REVIEW_ACCEPTANCE.json').read_text())
+ assert review['input_review_reference'] and review['signature_review_reference']
+ assert review['final_template_review_reference']
+ assert review['runner_sha256'] == sha(Path(__file__))
+ assert sha(job_path) in review['accepted_job_manifest_sha256']
+ assert job['template_sha256'] == review['bound_template_sha256']
+-assert job['phase'] == 'R4' and job['module'] == MODULE
++assert job['phase'] == 'R5' and job['module'] == MODULE
+ assert job['mode'] in ('compile', 'replay')
+ assert set(job['source_sha256']) == {MODULE + '.lean'}
+ assert job['lean_executable_sha256'] == sha(LEAN)
+@@ -86,7 +89,7 @@ for name, digest in job.get('dependency_olean_sha256', {}).items():
+     path = ROOT / name
+     assert path.resolve().parent == ROOT and sha(path) == digest
+ assert sha(CHECKER) == '9c6f2ac11b50fdb846df2d5099ea673553903275a5dba11fce5a5673cae14bd0'
+-deadline = json.loads((ROOT / 'R4_DEADLINE.json').read_text())
++deadline = json.loads((ROOT / 'R5_DEADLINE.json').read_text())
+ assert deadline['active_cap_seconds'] == 1800
+ remaining = deadline['deadline_unix'] - time.time()
+ assert remaining > 0

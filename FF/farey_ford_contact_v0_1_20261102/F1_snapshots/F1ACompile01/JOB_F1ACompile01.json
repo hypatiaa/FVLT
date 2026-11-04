@@ -1,0 +1,14 @@
+{
+  "phase": "F1",
+  "mode": "compile",
+  "module": "FVLTFareyContactV1",
+  "run_id": "F1ACompile01",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "source_sha256": {
+    "FVLTFareyContactV1.lean": "e11ada278bb2b8ab43116260d8d661e563684e69b245b8a22d552b157a650868",
+    "FVLTFordGeometryV1.lean": "803b13dea032ec57190814a162e14faf638e2b48e11cfadeb0b394ef10e8a49d"
+  },
+  "dependency_olean_sha256": {},
+  "template_sha256": "45c7d8bf2046298f2f7d9e428e90ce173391050156e77f526c8da5cedd10c274",
+  "owner_accepted_utc": "2026-11-03T10:52:37.1034038+00:00"
+}

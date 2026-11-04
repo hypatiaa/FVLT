@@ -1,0 +1,72 @@
+{
+  "status": "PAPERWORK_REVIEW_REQUEST_NOT_EXECUTION_READY",
+  "phase": "BRIDGE",
+  "allowed_modules": [
+    "FVLTFordRationalV1",
+    "FVLTFordExactCoordinatesV1"
+  ],
+  "executable_driver": "FVLTFordRationalSmokeV1",
+  "executable_driver_is_theorem_target": false,
+  "root": "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/computable_bridge_v1",
+  "F1_isolated_dependency_root": "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103",
+  "lean_executable": "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "library": "/home/saphir/rule30_theorem_library/v19",
+  "library_expected": {
+    "SHA256SUMS": "e25d4d54d074f152c452aa7247ccbe992e14b29d58306809660a75770ae7ddd5",
+    "LIBRARY_MANIFEST.json": "f0ee6b00fe4a622b63cac1f4fb24146e9b2808bdb0fb430ebdac074fecb258fa",
+    "lake-manifest.json": "1f0e0c1c0a06e2a9ecc117aed82f7a8ee62b418235e10686d3bda2d6986ea527",
+    "lakefile.toml": "4f0aea1336d288cba45c00727ce81c2cc064c39fca46e8ccf4505ae38ca6191f",
+    "lean-toolchain": "ca5f1f601d34c49079e38d7e7041eb0f2a9c227fbc1df0f404820069a052330c"
+  },
+  "checker_sha256": "9c6f2ac11b50fdb846df2d5099ea673553903275a5dba11fce5a5673cae14bd0",
+  "paperwork_sha256": {
+    "BRIDGE_SIGNATURE_FREEZE_DRAFT_v0_1.md": "4c9c80e59664bf91f2b558611bd764e8e5f58c8286b4db7cebdc00e4e61f4f8d",
+    "BRIDGE_INPUT_AND_JOB_PLAN_v0_1.md": "85fdd8279f9458381facb8f17264faf3451bc29e2da2465b622d585b1c0c81bd",
+    "BRIDGE_SMOKE_FIXTURES_v0_1.json": "4eaafb7af72a95dc4eae244bd60f9888be2e46d1fac25df27f70e7b9d93ba071"
+  },
+  "frozen_headers": {
+    "kissNQ_eq": "theorem kissNQ_eq (x y : ℚ) : kissNQ x y = FVLT.FordGeometryV1.kissN x y",
+    "kissMQ_eq": "theorem kissMQ_eq (x y : ℚ) : kissMQ x y = FVLT.FordGeometryV1.kissM x y",
+    "kissMQ_pos": "theorem kissMQ_pos (x y : ℚ) : 0 < kissMQ x y",
+    "radiusQ_pos": "theorem radiusQ_pos (x : ℚ) : 0 < radiusQ x",
+    "radiusQ_cast": "theorem radiusQ_cast (x : ℚ) :\n  (radiusQ x : ℝ) = FVLT.FordGeometryV1.radius x",
+    "embedQ_injective": "theorem embedQ_injective : Function.Injective embedQ",
+    "centreQ_embed": "theorem centreQ_embed (x : ℚ) :\n  embedQ (centreQ x) = FVLT.FordGeometryV1.centre x",
+    "kissQ_embed": "theorem kissQ_embed (x y : ℚ) :\n  embedQ (kissQ x y) = FVLT.FordGeometryV1.kiss x y",
+    "sqDistanceQ_cast": "theorem sqDistanceQ_cast (u v : RatPlane) :\n  (sqDistanceQ u v : ℝ) = ‖embedQ u - embedQ v‖^2",
+    "boundaryQ_iff": "theorem boundaryQ_iff (x : ℚ) (z : RatPlane) :\n  boundaryQ x z ↔ embedQ z ∈ FVLT.FordGeometryV1.boundary x",
+    "boundaryCheckQ_correct": "theorem boundaryCheckQ_correct (x : ℚ) (z : RatPlane) :\n  boundaryCheckQ x z = true ↔ embedQ z ∈ FVLT.FordGeometryV1.boundary x",
+    "adjacent_kissQ": "theorem adjacent_kissQ (x y : ℚ) (h : FVLT.FareyContactV1.fareyAdj x y) :\n  boundaryCheckQ x (kissQ x y) = true ∧\n  boundaryCheckQ y (kissQ x y) = true"
+  },
+  "caps": {
+    "automatic_retries": false,
+    "nice": 19,
+    "address_space_bytes": 8589934592,
+    "one_cpu": true,
+    "per_call_wall_seconds": 240,
+    "serial_only": true,
+    "process_limit": 256,
+    "lean_M_MiB": 7680,
+    "active_budget_seconds": 1800,
+    "output_file_limit_bytes": 67108864
+  },
+  "execution_binding_required": [
+    "F2 outcome recorded, exact recordhash reviewed",
+    "fresh complete input/checksum/read-only/capacity receipt and latest-library determination",
+    "actual bridge runner bytes/hash reviewed before invocation",
+    "accepted bridge signatures/template plus concrete source manifest"
+  ],
+  "proof_iteration": "requested bounded body iterations/privatehelpers, needs explicit acceptance",
+  "optional_converse": "DEFERRED",
+  "smoke_expected_groups": 6,
+  "smoke_expected_scalar_boolean_comparisons": 24,
+  "noncomputable_runtime_boundary": "embedQ only in proof module; producer/test computable exact rationals",
+  "source_rules": [
+    "frozen definitions and12headers exact",
+    "all producer declarations computable, no noncomputablesection/classicalruntime/RealComplex arithmetic",
+    "accepted isolatedF1pair source/objectpins checked; no F2 dependency",
+    "strictchecker producer+proofmodule; separate executable driver is finite evidence",
+    "no sorry/admit/addedaxiom/native_decide/unsafe/partial theoremtargets; preserve all failures"
+  ]
+}

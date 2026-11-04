@@ -1,0 +1,13 @@
+'FVLT.FordExactCoordinatesV1.kissNQ_eq' does not depend on any axioms
+'FVLT.FordExactCoordinatesV1.kissMQ_eq' depends on axioms: [propext]
+'FVLT.FordExactCoordinatesV1.kissMQ_pos' depends on axioms: [propext]
+'FVLT.FordExactCoordinatesV1.radiusQ_pos' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordExactCoordinatesV1.radiusQ_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordExactCoordinatesV1.embedQ_injective' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordExactCoordinatesV1.centreQ_embed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordExactCoordinatesV1.kissQ_embed' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordExactCoordinatesV1.sqDistanceQ_cast' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordExactCoordinatesV1.boundaryQ_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordExactCoordinatesV1.boundaryCheckQ_correct' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FordExactCoordinatesV1.adjacent_kissQ' depends on axioms: [propext, Classical.choice, Quot.sound]
+1.56 s 3458044 KiB

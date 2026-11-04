@@ -1,0 +1,72 @@
+FVLTPhasePartnersV1.lean:59:42: warning: Variable name `hα` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hα
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+FVLTPhasePartnersV1.lean:107:35: warning: Variable name `hα` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hα
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+FVLTPhasePartnersV1.lean:121:11: warning: Variable name `hx` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hx
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+FVLTPhasePartnersV1.lean:181:33: warning: Variable name `hy` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hy
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+FVLTPhasePartnersV1.lean:255:37: warning: Variable name `hα` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hα
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+FVLTPhasePartnersV1.lean:264:34: warning: Variable name `hx` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hx
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+FVLTPhasePartnersV1.lean:265:3: warning: Variable name `hy` is not explicitly referenced.
+
+Hint: The binding can be removed (if unused) or named `_` (if used implicitly). Alternatively, prefix the name with `_` to silence this warning:
+  [apply] _hy
+
+Note: This linter can be disabled with `set_option linter.unusedVariables false`
+'FVLT.FareyContactV1.phases_eq_unreduced' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.phase_domain' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.denominator_partner' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.partner_congruence' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.cross_denominator' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.isolation_criterion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.endpoint_isolation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.complement_mem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.complement_adj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.complement_graph_auto' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.isolated_complement_pairs' depends on axioms: [propext, Classical.choice, Quot.sound]
+'_private.FVLTPhasePartnersV1.0.FVLT.FareyContactV1.admissible_two' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTPhasePartnersV1.0.FVLT.FareyContactV1.interior_numerator' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTPhasePartnersV1.0.FVLT.FareyContactV1.phase_description' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTPhasePartnersV1.0.FVLT.FareyContactV1.sign_witness' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTPhasePartnersV1.0.FVLT.FareyContactV1.unit_phase' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+'_private.FVLTPhasePartnersV1.0.FVLT.FareyContactV1.complement_coordinates' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]
+2.31 s 3515436 KiB

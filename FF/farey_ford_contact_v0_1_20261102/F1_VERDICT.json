@@ -1,0 +1,14 @@
+{
+  "phase": "F1",
+  "verdict": "FAIL",
+  "status": "STOPPED_UNDER_COMPILE_ERROR_RULE",
+  "runs": ["F1ACompile01", "F1ACompile02"],
+  "first_run": "Missing cached dependency reached by broad Mathlib import; infrastructure fault before own declarations.",
+  "second_run": "Narrow cached import reaches fareyAdj and parser rejects absolute-value notation at line 11, column 32.",
+  "geometry_invocations": 0,
+  "replay_invocations": 0,
+  "axiom_reports": 0,
+  "F2_started": false,
+  "no_mathematical_counterexample_inferred": true,
+  "next_owner": "Opus: review failure evidence and decide whether to issue an additive repaired-source successor authorization."
+}

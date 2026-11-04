@@ -1,0 +1,25 @@
+zero.radius=true
+zero.centre.re=true
+zero.centre.im=true
+one.radius=true
+one.centre.re=true
+one.centre.im=true
+half.radius=true
+half.centre.re=true
+half.centre.im=true
+negative.radius=true
+negative.centre.re=true
+negative.centre.im=true
+adjacent.kissN=true
+adjacent.kissM=true
+adjacent.kiss.re=true
+adjacent.kiss.im=true
+adjacent.boundary.x=true
+adjacent.boundary.y=true
+nonadjacent.kissN=true
+nonadjacent.kissM=true
+nonadjacent.kiss.re=true
+nonadjacent.kiss.im=true
+nonadjacent.boundary.x=true
+nonadjacent.boundary.y=true
+groups=6 comparisons=24 pass=24 fail=0

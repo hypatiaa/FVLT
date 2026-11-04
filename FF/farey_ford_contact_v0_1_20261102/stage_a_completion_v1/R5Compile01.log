@@ -1,0 +1,9 @@
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_completion_v1/FVLTFareyFixturesCompletionV1.lean:12:2: error: failed to synthesize
+  Decidable (phaseGraph [4, 3, 2, 1]).Connected
+
+Hint: Additional diagnostic information may be available using the `set_option diagnostics true` command.
+'FVLT.FareyContactV1.fixture4321_connected' depends on axioms: [propext, sorryAx, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture4321_repair_edges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture83_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture83_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture83_isolated' depends on axioms: [propext, Classical.choice, Quot.sound]

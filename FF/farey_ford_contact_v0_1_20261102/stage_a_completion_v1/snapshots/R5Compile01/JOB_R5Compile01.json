@@ -1,0 +1,13 @@
+{
+  "phase": "R5",
+  "mode": "compile",
+  "module": "FVLTFareyFixturesCompletionV1",
+  "run_id": "R5Compile01",
+  "template_sha256": "38a69f260e34557d390bb4b547738884fb74f4cebde172133843a47c4beab8a9",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "source_sha256": {
+    "FVLTFareyFixturesCompletionV1.lean": "03b0c57a03aeaea27b4f90d7e2250c21eb483aef6979c904d99209cefeb89b8c"
+  },
+  "dependency_olean_sha256": {},
+  "owner_accepted_utc": "2026-11-03T23:17:12.3432539+00:00"
+}

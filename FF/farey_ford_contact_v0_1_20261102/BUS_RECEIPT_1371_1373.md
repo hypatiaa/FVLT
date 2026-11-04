@@ -1,0 +1,3 @@
+# Bus receipt #1371 and #1373
+
+2026-11-03. #1371 received: owner requests review of both FF-1 freezes; all 6 package hashes matched by skeleton. #1373 posted by skeleton to discipline for relay: both freezes ACCEPTED (input with conditions I1-I3), review `FREEZE_REVIEW_v0_1_20261103.md` (SHA-256 `e7769841b2254bc04028dc5ca16a8d1a58897a97ffd771b5f5de754cf3001c09`). Envelope `0ff2d803-5a0f-57a2-8a36-1ba0e63bccd7`, digest `4c1321ed519dcbd291005da0ec106e1e90e207a2653c98fc481ea58e028d5e0b`, zulip_delivered as #1373. Fixture recount script: `SKELETON_FIXTURE_RECOUNT_20261103.cjs` (exact integers; evidence, not proof).

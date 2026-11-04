@@ -1,0 +1,63 @@
+{
+  "job": {
+    "phase": "BRIDGE",
+    "mode": "compile",
+    "module": "FVLTFordExactCoordinatesV1",
+    "run_id": "BridgeProofCompile02",
+    "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+    "source_sha256": {
+      "FVLTFordRationalV1.lean": "fdccda2c22abe186acc8530f4c7f28bcbce7c8498407061dd2f5ba693c606559",
+      "FVLTFordExactCoordinatesV1.lean": "23f776a40d9daec1cd7ec4f27c9c64917be6430595416756c6d7fe7d88dc7f3d",
+      "FVLTFordRationalSmokeV1.lean": "f5dfe53f2fee0f20dd49df2e5fe1e9328f3a468d1e0b2f580cc7fc3641f49f4e"
+    },
+    "dependency_olean_sha256": {
+      "FVLTFordRationalV1.olean": "6691b599440e4413ed4dd2aed348cbc12d419177a5465044c22515a14fd446f6"
+    },
+    "template_sha256": "d3c6fbf9e903a8e81b59a3b20453f8604d8bdd3f49de68a3ae706c537a834bb1",
+    "owner_accepted_utc": "2026-11-03T13:23:17.6069179+00:00",
+    "finite_evidence_only": false
+  },
+  "runner_sha256": "69d844bf053a7699a47734fdefd00786473db94b99ded4fdac56d679be2b2556",
+  "command": [
+    "/home/saphir/.elan/toolchains/leanprover--lean4---v4.35.0/bin/lean",
+    "-j1",
+    "-s65536",
+    "-M7680",
+    "-D",
+    "Elab.async=false",
+    "-o",
+    "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/computable_bridge_v1/FVLTFordExactCoordinatesV1.olean",
+    "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/computable_bridge_v1/FVLTFordExactCoordinatesV1.lean"
+  ],
+  "wall_cap_seconds": 240,
+  "address_space_bytes": 8589934592,
+  "process_limit": 256,
+  "output_file_limit_bytes": 67108864,
+  "cpu_affinity": [
+    0
+  ],
+  "nice": 19,
+  "started_unix": 1793712211.7164755,
+  "library": "/home/saphir/rule30_theorem_library/v19",
+  "transport": "100.92.188.6 59378 100.105.106.41 22",
+  "lean_executable_sha256": "bf8d54e4714cc4b03d3f6bb34c83b7202b87e49c8bfcbff6895c085bb90ceb38",
+  "LEAN_PATH": "/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/computable_bridge_v1:/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103:/home/saphir/rule30_theorem_library/v19/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/LeanSearchClient/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/Qq/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/aesop/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/batteries/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/importGraph/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/mathlib/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/plausible/.lake/build/lib/lean:/home/saphir/rule30_theorem_library/v19/.lake/packages/proofwidgets/.lake/build/lib/lean",
+  "F1_dependency_pins": {
+    "FVLTFareyContactV1.lean": "2760392f984bd1375169920a702ae53c13115ddfb36d71bae36b3855950d1e4b",
+    "FVLTFordGeometryV1.lean": "0b380fd6cf1319317edbc9bbd5c56ed6f913bfbb7ac45104877b0f754b7e6db8",
+    "FVLTFareyContactV1.olean": "202d39c1c940eef0a6cd23ea422e251df2d9e111255bbc460cb14650c8f042e8",
+    "FVLTFordGeometryV1.olean": "ea5dc4ce259c44b6e742ce950dcea3333d83d031511595ac951b68b0570cab54"
+  },
+  "F2_outcome_record_sha256": "95532c2c4101197646a7a310120c9ec766282a1b41537557f585591d0d4968e1",
+  "finite_evidence_only": false,
+  "exit_code": 0,
+  "timeout": false,
+  "seconds": 1.720658540725708,
+  "log_sha256": "5deabb57a050b4459330dd2a201bc025686702bc8652d0ac717974930752a4cc",
+  "log_bytes": 1147,
+  "peak_child_rss_kib": 3458724,
+  "source_unchanged": true,
+  "F1_dependencies_unchanged": true,
+  "library_checksum_after_exit": 0,
+  "olean_sha256": "ff7193e200351820627eba32fe846892e4ff2c0fdea43b1b3109d62c7328a3e2"
+}

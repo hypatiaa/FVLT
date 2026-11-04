@@ -1,0 +1,43 @@
+structure SimpleGraph.Connected.{u} {V : Type u} (G : SimpleGraph V) : Prop
+number of parameters: 2
+fields:
+  SimpleGraph.Connected.preconnected : G.Preconnected
+  SimpleGraph.Connected.nonempty : Nonempty V
+constructor:
+  SimpleGraph.Connected.mk.{u} {V : Type u} {G : SimpleGraph V} (preconnected : G.Preconnected)
+    [nonempty : Nonempty V] : G.Connected
+def SimpleGraph.Preconnected.{u} : {V : Type u} → SimpleGraph V → Prop :=
+fun {V} G => ∀ (u v : V), G.Reachable u v
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_integration_v1/src/FVLTFareyCertificatesV1.lean:94:2: warning: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+/home/saphir/fvlt_formalization_20261028/ff1_v03_20261103/stage_a_integration_v1/src/FVLTFareyCertificatesV1.lean:174:8: warning: `simp` already closes the goal
+
+Hint: Use `simp` instead of `simpa`:
+  [apply] simp [← this]
+
+Note: This linter can be disabled with `set_option linter.unnecessarySimpa false`
+'FVLT.FareyContactV1.fareyAdj_symm' depends on axioms: [propext]
+'FVLT.FareyContactV1.fareyAdj_irrefl' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fareyGraph_adj' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.spanning_tree_connected' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.certificate_component_bijection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.certificate_component_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.certificate_isolation' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.contactCount_eq_edge_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.rational_certificate_count' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture421_vertices' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture421_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture421_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture421_isolated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture92_certificate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture92_counts' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FVLT.FareyContactV1.fixture92_isolated' depends on axioms: [propext, Classical.choice, Quot.sound]
+'_private.FVLTFareyCertificatesV1.0.FVLT.FareyContactV1.part_reachable_closed' depends on axioms: [propext,
+ Classical.choice,
+ Quot.sound]

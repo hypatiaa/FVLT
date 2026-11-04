@@ -1,0 +1,37 @@
+{
+  "status": "PRODUCER_PASS_PENDING_INDEPENDENT_AUDIT",
+  "frozen_headers_verbatim": 11,
+  "definition_matches_except_accepted_S1_e_Nat": true,
+  "S1_file_hash_matches": true,
+  "strict_replay": 40,
+  "failure_count": 0,
+  "full_dependency_replay": false,
+  "G1_excluded": true,
+  "axioms": "standard three only",
+  "final_compile_warnings": 7,
+  "runs": [
+    {
+      "run": "R4Compile01",
+      "exit": 1,
+      "seconds": 2.4196553230285645,
+      "peak_rss_KiB": 3505092,
+      "finished_unix": 1793745396.2221713
+    },
+    {
+      "run": "R4Compile02",
+      "exit": 0,
+      "seconds": 2.4707982540130615,
+      "peak_rss_KiB": 3517984,
+      "finished_unix": 1793745460.6623964
+    },
+    {
+      "run": "R4Replay01",
+      "exit": 0,
+      "seconds": 3.0204341411590576,
+      "peak_rss_KiB": 3638840,
+      "finished_unix": 1793745503.7613163
+    }
+  ],
+  "final_source_sha256": "81b55661b4e1c6c8e4a8a837fdd62bf1ce61b7358499334d818756fa173e80ac",
+  "final_olean_sha256": "875d7726a34ca13d247b53d71525087141481441fbef5b0928586712b84f77a3"
+}
