@@ -1,0 +1,44 @@
+PASS fixture records the source sha256 599c6855…
+PASS the source file is present and still matches its sha256 (read only)
+PASS ainvs = (0, 0, 1, −1, 0) (37a1)
+PASS invariants b2, b4, b6, b8, c4, c6 = fixture (0, -2, 1, -1, 48, -216)
+PASS Δ = 37 = fixture discriminant, and 1728 Δ = c4³ − c6²
+PASS P = (0, −1) lies on the curve; O is a flag, not a coordinate
+PASS short model via (u, r, s, t) = (1/2, 0, 0, −1/2): [0, 0, 0, −16, 16] = fixture y² = x³ − 16x + 16
+PASS short model discriminant = u^(−12) Δ = 4096·37
+PASS kP for k = 1 … 10 = fixture (exact rationals)
+PASS double-and-add labels: each step’s case equals this test’s own classification, and the sequence follows the bits of k (k = 1 … 20)
+PASS kP labels k = 1 … 10 as recorded: 1: p1inf; 2: p1inf>doubling; 3: p1inf>doubling>generic; 4: p1inf>doubling>doubling; 5: p1inf>doubling>doubling>generic; 6: p1inf>doubling>generic>doubling; 7: p1inf>doubling>generic>doubling>generic; 8: p1inf>doubling>doubling>doubling; 9: p1inf>doubling>doubling>doubling>generic; 10: p1inf>doubling>doubling>generic>doubling
+PASS kP by double-and-add = (k−1)P + P by the table, k = 1 … 20 (the chain step at k = 2 is the doubling case, the rest generic)
+PASS every kP (k ≤ 20) lies on the curve
+PASS map to the short model: x′ = 4x, y′ = 8y + 4, every kP (k ≤ 10) lands on y² = x³ − 16x + 16 and the map commutes with [k]
+PASS −P = (0, 0) by −(x, y) = (x, −y − a1x − a3); P + (−P) = O, case “P2 = −P1”
+PASS O + P = P (case “P1 = O”), P + O = P (case “P2 = O”), O + O = O (case “P1 = O”)
+PASS [0]P = O and [−3]P = −(3P)
+PASS exactly-one assertion: two off-curve points with x1 = x2 that are neither equal nor opposite are refused (no case applies)
+PASS 2-torsion over F_5: T = (2, 2) has 2y + a1x + a3 = 0; T + T is the case “P2 = −P1” and gives O
+PASS 2-torsion over F_5: the doubling formula refuses T (division by 2y + a1x + a3 = 0)
+PASS 2-torsion over F_5: [2]T = O by double-and-add, labels P1 = O, P2 = −P1
+PASS Jacobi symbol (by reciprocity) = Legendre symbol from the table of squares, every a mod p, odd p < 100
+PASS a_p route (i) (naive projective count, singular point included) = fixture for all 25 p < 100
+PASS a_p route (ii) (character sum, Jacobi reciprocity) = fixture for all 24 odd p < 100; p = 2 uses route (i) only
+PASS routes (i) and (ii) agree for every odd p < 100, the bad prime 37 included
+PASS #E(F_p) = p + 1 − a_p = fixture E.Np(p) for all 24 good p < 100
+PASS at p = 37 the naive count 39 = p + 2 includes the singular point (E_ns(F_37) has p + 1 = 38 points)
+PASS Hasse bound |a_p| ≤ 2√p (as a_p² ≤ 4p) for every good p < 100
+PASS p = 37: reduction type nonsplit multiplicative (node, tangents conjugate over F_p2) (tangent cone at the singular point (5, 18)), matching a_37 = −1
+PASS p = 37: independent route: 37 ∤ c4 = 48 (multiplicative) and −c6 = 216 is a non-square mod 37 (nonsplit)
+PASS every other p < 100 has good reduction (p ∤ Δ = 37)
+PASS order of P mod p divides #E(F_p) for every good p < 60
+PASS E(F_p) cyclic for every good p < 60, by a point of full order (found by search), and #E(F_p) = fixture
+PASS …which matches the fixture’s abelian invariants (n,) for 3 ≤ p < 60, p ≠ 37 (p = 2: #E = 5, cyclic, not in the fixture list)
+PASS orders of P mod p, p < 60 good: 2:5|5 3:7|7 5:8|8 7:9|9 11:17|17 13:16|16 17:18|18 19:20|20 23:11|22 29:12|24 31:18|36 41:51|51 43:14|42 47:57|57 53:53|53 59:13|52
+PASS reduction mod p is a homomorphism on kP, k = 1 … 10, every good p < 100; O exactly when p divides a denominator
+PASS 5P = (1/4, −3/8) reduces to O mod 2; 7P = (−5/9, …) reduces to O mod 3
+PASS enc(A) = 2x + (y mod 2) is injective on E(F_p) for a1 = a3 = 0: short model y² = x³ − 16x + 16 and y² = x³ + x + 1, every p < 100 (exhaustive)
+PASS enc on 37a1 (a3 = 1): injective at p = 2 only; at every odd p < 100 the collisions are exactly the x with two points (y + y′ = p − 1 is even, so y ≡ y′ mod 2)
+PASS enc collisions on 37a1 per p (collisions / x-values with two points): 2:0/2 3:3/3 5:3/3 7:4/4 11:8/8 13:7/7 17:8/8 19:9/9 23:10/10 29:11/11 31:17/17 37:18/18 41:25/25 43:20/20 47:28/28 53:26/26 59:25/25 61:34/34 67:28/28 71:31/31 73:37/37 79:37/37 83:49/49 89:42/42 97:46/46
+PASS the y-pairing proof for 37a1, checked: for odd p and every affine point, the partner y′ = −y − 1 mod p satisfies y + y′ = p − 1
+PASS not adopted, recorded only: enc′(A) = 2x + ((2y + a1x + a3) mod p mod 2) is injective on 37a1 for every odd p < 100
+PASS curves over F_p keep residues canonical in [0, p) (all points of 37a1 mod 97)
+SUMMARY test-elliptic-exact: 43 passed, 0 failed

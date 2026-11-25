@@ -1,0 +1,18 @@
+PASS host-core/pen-interval-core.js: no banned token
+PASS host-core/pen-curvature-core.js: no banned token
+PASS host-core/pen-sphere-core.js: no banned token
+PASS host-core/d1-event-pieces.js: no banned token
+PASS instruments/comb-hopf/panel-pens.js: no banned token (allowlisted at line 13)
+PASS host-core/test-v0419-goldbach-order.cjs: no banned token
+PASS host-core/test-v0419-fixups.cjs: no banned token
+PASS host-core/test-v0419-pens.cjs: no banned token
+PASS build/browser-check-d1-v0419.cjs: no banned token
+PASS build/browser-check-v0419.cjs: no banned token
+PASS build/shots-v0419.cjs: no banned token
+PASS build/check-expected-fails-v0419.cjs: no banned token
+PASS build/selftest-expected-fails-v0419.cjs: no banned token
+PASS build/make-expected-fails-v0419.cjs: no banned token
+PASS build/dump-a5-moves-v0419.cjs: no banned token
+PASS build/sage-a5-v0419.sage: no banned token
+PASS build/runall.sh: no banned token
+SUMMARY no-float-v0419: 17 passed, 0 failed

@@ -1,0 +1,11 @@
+# P1 record and gate
+
+BSD_P1_REQUEST_V1 contains u1 (full replayable U1 record), pt1 (full PT1 packet or null), sourceAinvs, inputToFinal (exact u,r,s,t), and extraPoints. The PT1 parent model must equal sourceAinvs. Its linked/source hashes must match the U1 request. The exact map must transform sourceAinvs into the U1 final model. The current consumer independently rebuilds the complete request before replay.
+
+BSD_POINT_PLACEMENT_V1 stores the request, status, placements, preserved pt1RankLowerBound, verifier hashes, and scope. Each enclosed placement stores a stable record id, exact source/final point, separate component, model realLog, signed selectedRealLog, realAdaptedAddress, markedUnwrapped, all clipped representatives and exact cell shifts. Per-point arithmetic fields cite the PT1 certificate and, for nonzero multiples of an infinite witness, its exact PT1 multiplication relation. No new arithmetic certificate is issued. orderConsistency and additivity are explicitly enclosure consistency checks, never order or rank proofs.
+
+produce(request) creates an untrusted candidate. replay(bytes, expectedRequest) strictly reconstructs and compares every field. It returns PASS, PARTIAL or REJECTED. Only the private current signed-response consumer commits to the viewer. BSDPointPlacementV1.snapshot() is a clone and has no authority setter. Standalone replay establishes mathematical consistency, not current context or Neron authority.
+
+Requests may contain at most 8 extra exact points and 128 combined records, in addition to inherited PT1 caps. Enclosures use the sealed U1 192-bit dyadic library, integration limits, model limits and marking limits. Address width must be <=2^-70. Unresolved roots, signs, endpoints or work limits give an explicit per-point UNAVAILABLE, never a Float64 fallback. Strict JSON is capped at 4 MB.
+
+BSD_POINT_PLACEMENT_LINKED_V1 is the saved-setting wrapper with schema, linked, pt1, u1 and p1. Import replays all layers before holding and rebuilding the setting. The separately hashed p1-reference.json is a torsion comparison on its own curve, with model-differential periods and no active-curve contribution. Server and /assess bytes remain unchanged.

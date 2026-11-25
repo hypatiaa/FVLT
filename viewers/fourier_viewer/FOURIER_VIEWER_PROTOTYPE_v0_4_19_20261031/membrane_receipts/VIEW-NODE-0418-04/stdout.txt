@@ -1,0 +1,28 @@
+PASS dodecahedron preset: cos θ = 1/2, sin θ = √3/2, cos α = √5/3, sin α = 2/3 with cos² + sin² = 1 exactly in K
+PASS dodecahedron: five lefts return to the start flag exactly (a pentagonal face closes), five rights too; three lefts do not
+PASS dodecahedron: closing the start flag under the two moves gives exactly 60 flags on 20 vertices (60 on 20)
+PASS dodecahedron: every reached frame has |x| = |v| = 1 and x · v = 0 exactly
+PASS dodecahedron: every vertex has exactly 3 others at x · y = cos α = √5/3 (its edge neighbours)
+PASS dodecahedron: the dot products between distinct vertices are exactly √5/3 (60), 1/3 (120), −1/3 (120), −√5/3 (60), −1 (20 antipodes): the regular dodecahedron’s
+PASS dodecahedron: the moves generate a group of order 60 with element orders {"1":1,"2":15,"3":20,"5":24} (A₅’s profile 1, 15, 20, 24), each move of order 5 (44 ms)
+PASS dodecahedron, Rule 30 T = 1328: every position is one of the 20 vertices (20 visited, 60 flags), coverage 20/432 exact, 0 uncertain (91 ms)
+PASS dodecahedron, coin seed 1 T = 1328: every position is one of the 20 vertices (20 visited, 60 flags), coverage 20/432 exact, 0 uncertain (88 ms)
+PASS dodecahedron, Goldbach run to 1448 (first 4096): every position is one of the 20 vertices (20 visited, 60 flags), coverage 20/432 exact, 0 uncertain (171 ms)
+PASS TIMING sphere pen, Rule 30, T = 1328, α = 3/96, θ = 2/24: 120 ms at P = 1392 bits; widest enclosure 2^978·2^−1392; pixels not certified (R = 140 px) 0; |x|² ∋ 1; coverage 406/432, uncertain cells 0 (33 ms)
+PASS TIMING sphere pen, Rule 30, T = 4096, α = 3/96, θ = 2/24: 1873 ms at P = 4160 bits; widest enclosure 2^3015·2^−4160; pixels not certified (R = 140 px) 0; |x|² ∋ 1; coverage 432/432, uncertain cells 0 (92 ms)
+PASS TIMING sphere pen, Rule 30, T = 1328, α = 24/96, θ = 4/24: 79 ms at P = 1392 bits; widest enclosure 2^1011·2^−1392; pixels not certified (R = 140 px) 0; |x|² ∋ 1; coverage 411/432, uncertain cells 3 (30 ms)
+PASS TIMING sphere pen, Rule 30, T = 1328, α = 1/96, θ = 11/24: 124 ms at P = 1392 bits; widest enclosure 2^499·2^−1392; pixels not certified (R = 140 px) 0; |x|² ∋ 1; coverage 13/432, uncertain cells 0 (41 ms)
+PASS TIMING ball register, Rule 30, T = 1328, α = 3/96, θ = 2/24: 8 ms at P = 96 bits, final radius 30543 ulp; every ball meets the interval-register enclosure; pixels not certified 0; coverage 406/432, uncertain 0 (interval register: 406, 0)
+PASS TIMING ball register, Rule 30, T = 4096, α = 3/96, θ = 2/24: 17 ms at P = 96 bits, final radius 94207 ulp; every ball meets the interval-register enclosure; pixels not certified 0; coverage 432/432, uncertain 0 (interval register: 432, 0)
+PASS TIMING ball register, Rule 30, T = 1328, α = 24/96, θ = 4/24: 7 ms at P = 96 bits, final radius 22575 ulp; every ball meets the interval-register enclosure; pixels not certified 0; coverage 411/432, uncertain 3 (interval register: 411, 3)
+PASS TIMING ball register, coin seed 1, T = 1328, α = 5/96, θ = 7/24: 3 ms at P = 96 bits, final radius 27887 ulp; every ball meets the interval-register enclosure; pixels not certified 0; coverage 354/432, uncertain 0 (interval register: 354, 0)
+PASS TIMING ball register, Goldbach run to 1448 (first 4096), T = 4096, α = 3/96, θ = 2/24: 7 ms at P = 96 bits, final radius 94207 ulp; every ball meets the interval-register enclosure; pixels not certified 0; coverage 432/432, uncertain 0 (interval register: 432, 0)
+PASS ball register, α = 24/96, θ = 6/24, Rule 30, T = 300: every ball contains the exact octahedron vertex
+PASS α = 24/96, θ = 6/24 (the octahedron), Rule 30, T = 300: every interval position contains the exact octahedron vertex
+PASS α = 24/96, θ = 6/24 (the octahedron), coin seed 5, T = 300: every interval position contains the exact octahedron vertex
+PASS Q(ζ₉₆) exact frames (α = 3/96, θ = 2/24, Rule 30, T = 64) meet the interval enclosures at every 8th step
+PASS Q(ζ₉₆) benchmark (degree 32, Φ₉₆ = x³² − x¹⁶ + 1): T = 16: 7 ms, numerators up to 29 bits over 2^30; T = 32: 14 ms, numerators up to 59 bits over 2^60; T = 64: 40 ms, numerators up to 119 bits over 2^120; T = 128: 119 ms, numerators up to 239 bits over 2^240; T = 256: 424 ms, numerators up to 479 bits over 2^480; T = 512: 1691 ms, numerators up to 958 bits over 2^960. Each step costs about 24 products of 32 × 32 BigInt convolutions on coefficients that grow by about 2 bits per step, so the cost per step grows with T; against the interval register (T = 1328: see the timing above) the exact field is far slower, and its positions would still need enclosures for the pixels and the cells. Chosen: the guaranteed numerical register (the ball register for the card, the interval register as its cross-check).
+PASS coverage cell of the start point (0, 0, 1): band 23, sector 9 (the skeleton’s atan2(0, 0) = 0), decided exactly
+PASS coverage cell of (−1, 0, 0): band 12, sector 17 (atan2 = π, clamped as the skeleton does)
+PASS a point whose enclosure straddles a sector ray (here the ray at angle 0) is counted as uncertain, not placed; a nearby decided point is placed
+SUMMARY test-pen-sphere: 27 passed, 0 failed

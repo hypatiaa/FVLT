@@ -1,0 +1,2 @@
+VERIFY-0419-04 (independent verifier of Fourier viewer v0.4.19). Sage diagnosis of the arc-containment FAIL of VERIFY-0419-03: lists every arc coordinate
+enclosure that is not certainly inside, at 600 bits, as "certainly outside" or "undecided". Output only; no expectation fixed in advance beyond reporting.

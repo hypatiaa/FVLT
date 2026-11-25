@@ -1,0 +1,15 @@
+# SCHEMA ADDENDUM 12: comb-hopf v0.4.4 (2026-10-20)
+
+**Status:** builder's record for v0.4.4, an additive successor of v0.4.3 in its own folder. Not reviewed yet.
+
+**Credits:** saphir: the decisions (CA presets as an alternate track in the Fourier viewer, preset set B, the inequality information belongs with G. Robin and the previous viewer's panel content goes there); Opus (track owner): the design; Sol: the caution line; Astra and the RH margin builder: the accepted package this ports; Claude Sonnet 5.5: v0.4.4.
+
+**Amends:** nothing in the state, address, exact, Lift or pair schemas. Display only.
+
+## 1. CA base option
+A third base button `CA` (`id mode_ca`). UI overlay `UI.ca`, not part of the state or the address. Clicking it sets `shellMode = integer` and keeps B if B is a CA preset, else sets B = 5040. The menu `ca_sel` lists `FVCa.CA_PRESETS` = 2, 6, 12, 60, 120, 360, 2520, 5040, 55440, 720720; choosing one dials `{shellMode: integer, B}`. The overlay ends when the state leaves integer mode or B leaves the list. The model gains `ca` (true only while the overlay is on and the state is integer with a preset B); nothing else reads it except the card.
+Where a preset equals a factorial (2 = 2!, 6 = 3!, 120 = 5!, 5040 = 7!) the CA state equals the n! state in every key except `shellMode`; `resolve` is identical. The readouts differ in the gearbox group only (the factorial-only Wilson gate and signature), as for any integer base.
+CA membership: each preset has an exact rational witness eps = u/v (2: 1/2, 6: 1/4, 12: 1/5, 60: 1/9, 120: 1/11, 360: 1/14, 2520: 1/15, 5040: 1/22, 55440: 1/28, 720720: 1/35) for which n maximises sigma(k)/k^(1+eps) over all k, checked prime by prime in integers (build/test-v044.cjs). The claim that CA and superior highly composite numbers coincide up to 720720 is unchecked and is not printed.
+
+## 2. G. Robin margin card (Panels tab, group B, id `g-robin-margin`)
+Rebuilt as a port of the frozen host panel RH_MARGIN_V0_1 (accepted package MCOMB_FCA_M7_COMBINED_BCD_RH_MARGIN_v0_1_20261001, MANIFEST 3f562965306039d56fedba77819076f3c47ba0be9488e7236330cabd4fbe2ef1, rhm-ui.js 163098e361f70b6dce39a347d890871d8fd64a6c81ad849cf722c5f69a700c5b). Exact core: `host-core/rhm-core.js`, byte copy of the package's rhm-core.js (2a483c04d35e6a41eafcfcedd717716e7299f2bd743ed084562b5ab92cd4fe62). Record: `rh_atom_margins` 0.1.0 (rh-criteria-readout 0.1.0), built for B of the shared model; factorial mode uses factorial_index = n1, every other mode `direct`. Register: mixed. Sign convention of the accepted panel: margin = value minus threshold; negative means Robin's inequality holds; the card names the margin Delta_R. Added: CA index in the atom box, a "Robin inequality at this B" row (holds / fails, agreeing with side and applicability) in the C1 box, Sol's caution merged into the scope box. Export source identity (adapted): `host_build` names the card, `host_sha256` pins the embedded rhm-core.js. Per-element list of ported / adapted / omitted items: BUILD_REPORT_v0_4_4.md.

@@ -1,0 +1,632 @@
+diff -ru orig417/build/browser-check.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check.cjs
+--- orig417/build/browser-check.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check.cjs	2026-10-31 12:03:40.135642323 +0000
+@@ -1,7 +1,7 @@
+ 'use strict';
+ // Browser check (Playwright from s6_atom/node_modules): loads dist/comb-hopf.html over file://, screenshots, exercises tabs, stepping, exports.
+ const path=require('path'),fs=require('fs');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),url='file:///'+path.join(root,'dist','comb-hopf.html').replace(/\\/g,'/');
+ let pass=0,fail=0,minFont=1e9;
+ const expOpen=async(p,imp)=>{if(!(await p.locator('#expmenu').isVisible()))await p.click('#expBtn');if(imp&&!(await p.locator('#imp').isVisible()))await p.click('#impShow');await p.waitForTimeout(40);};const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x?' '+x:''));c?pass++:fail++;};
+diff -ru orig417/build/browser-check-mirror.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-mirror.cjs
+--- orig417/build/browser-check-mirror.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-mirror.cjs	2026-10-31 12:03:40.131642342 +0000
+@@ -2,7 +2,7 @@
+ // v0.4 browser check of the mirror axis (T-MA in the page; R1–R4 as amended by the S0 design review §5). Playwright from s6_atom/node_modules, dist page over file://.
+ // The v0.3 suite build/browser-check.cjs runs unchanged beside this one.
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),url='file:///'+path.join(root,'dist','comb-hopf.html').replace(/\\/g,'/');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x&&!c?' '+x:''));c?pass++:fail++;};
+ const B={shellMode:'integer',B:'24',nMode:'integer',n6:'1',alpha:'0'};
+diff -ru orig417/build/browser-check-v0410.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v0410.cjs
+--- orig417/build/browser-check-v0410.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v0410.cjs	2026-10-31 12:03:40.132642337 +0000
+@@ -3,9 +3,9 @@
+ // (1) counts 39/41/39/41 unchanged, also on the n² + 1 track; (2) every v0.4.9 check state: state, address, exact export (JSON, state, CSV, Lift JSON, stats), caption, cards, about, canvas and PNG export byte-identical to v0.4.9;
+ // the Panels tab differs only by the two new (collapsed) card elements; (3) the cards: contents, gates, idle captions, canvas geometry, tessellation parity, pairing lines; (4) the preset track and its address key; (5) no horizontal scroll at 375; (6) shots shot_v0410_*.
+ const fs=require('fs'),path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),u=p=>'file:///'+p.split(path.sep).join('/');
+-const url=u(path.join(root,'dist','comb-hopf.html')),url49=u('C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_9_20261020/dist/comb-hopf.html');
++const url=u(path.join(root,'dist','comb-hopf.html')),url49=u('/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_9_20261020/dist/comb-hopf.html');
+ const CC=require('../host-core/comb-core.js'),BD=require('../host-core/branch-disk-core.js');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x!==undefined&&!c?' '+x:''));c?pass++:fail++;};
+ const addr=(o,extra)=>CC.encodeAddress(CC.initial(o))+(extra||'');
+diff -ru orig417/build/browser-check-v0411.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v0411.cjs
+--- orig417/build/browser-check-v0411.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v0411.cjs	2026-10-31 12:03:40.132642337 +0000
+@@ -4,9 +4,9 @@
+ // (3) the layer: view keys fr/cr/hr only when on, menu item only while the Full stack is on, toggle round trip, reload restores, data attributes, canvas changes;
+ // (4) Hopf: ink at the expected reflected positions (control: the primary positions); (5) no key collision; (6) no horizontal scroll at 375; (7) shots shot_v0411_*.
+ const fs=require('fs'),path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),u=p=>'file:///'+p.split(path.sep).join('/');
+-const url=u(path.join(root,'dist','comb-hopf.html')),url410=u('C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_10_20261020/dist/comb-hopf.html');
++const url=u(path.join(root,'dist','comb-hopf.html')),url410=u('/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_10_20261020/dist/comb-hopf.html');
+ const CC=require('../host-core/comb-core.js'),SC=require('../host-core/stack-core.js');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x!==undefined&&!c?' '+x:''));c?pass++:fail++;};
+ const addr=(o,extra)=>CC.encodeAddress(CC.initial(o))+(extra||'');
+diff -ru orig417/build/browser-check-v0412.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v0412.cjs
+--- orig417/build/browser-check-v0412.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v0412.cjs	2026-10-31 12:03:40.132642337 +0000
+@@ -4,9 +4,9 @@
+ // (3) the layer: key fl only when on, menu item only while the Full stack is on, toggle round trip, reload, inert with the stack off, data attributes, caption wording, throat circle, log rings, R(1) = R_t;
+ // (4) pixel probe: ink at the expected log positions of both halves; Clifford and Hopf unchanged by fl; (5) key unique; (6) no horizontal scroll; (7) shots shot_v0412_*.
+ const fs=require('fs'),path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),u=p=>'file:///'+p.split(path.sep).join('/');
+-const url=u(path.join(root,'dist','comb-hopf.html')),url411=u('C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_11_20261021/dist/comb-hopf.html');
++const url=u(path.join(root,'dist','comb-hopf.html')),url411=u('/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_11_20261021/dist/comb-hopf.html');
+ const CC=require('../host-core/comb-core.js');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x!==undefined&&!c?' '+x:''));c?pass++:fail++;};
+ const addr=(o,extra)=>CC.encodeAddress(CC.initial(o))+(extra||'');
+diff -ru orig417/build/browser-check-v0413.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v0413.cjs
+--- orig417/build/browser-check-v0413.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v0413.cjs	2026-10-31 12:03:40.132642337 +0000
+@@ -1,9 +1,9 @@
+ 'use strict';
+ // v0.4.13 browser check (SCHEMA_ADDENDUM_21): in log mode only the stack is log-mapped; pen, teeth, carrier on a linear scale with a scale bar. 1280x800 and 375x812.
+ const fs=require('fs'),path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),u=p=>'file:///'+p.split(path.sep).join('/');
+-const url=u(path.join(root,'dist','comb-hopf.html')),url412=u('C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_12_20261021/dist/comb-hopf.html');
++const url=u(path.join(root,'dist','comb-hopf.html')),url412=u('/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_12_20261021/dist/comb-hopf.html');
+ const CC=require('../host-core/comb-core.js');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x!==undefined&&!c?' '+x:''));c?pass++:fail++;};
+ const addr=(o,extra)=>CC.encodeAddress(CC.initial(o))+(extra||'');
+diff -ru orig417/build/browser-check-v0414.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v0414.cjs
+--- orig417/build/browser-check-v0414.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v0414.cjs	2026-10-31 12:03:40.133642332 +0000
+@@ -1,9 +1,9 @@
+ 'use strict';
+ // v0.4.14 browser check (SCHEMA_ADDENDUM_22): the Goldbach prime-pair track "Goldbach N ▸". 1280x800 and 375x812. The reference arithmetic is independent of goldbach-core (own sieve, own G_N).
+ const fs=require('fs'),path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),u=p=>'file:///'+p.split(path.sep).join('/');
+-const url=u(path.join(root,'dist','comb-hopf.html')),url413=u('C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_13_20261021/dist/comb-hopf.html');
++const url=u(path.join(root,'dist','comb-hopf.html')),url413=u('/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_13_20261021/dist/comb-hopf.html');
+ const CC=require('../host-core/comb-core.js'),GB=require('../host-core/goldbach-core.js'),X=require('../exact-lib/exact-lib-0.2.0.js');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x!==undefined&&!c?' '+x:''));c?pass++:fail++;};
+ const LIM=1500,comp=new Uint8Array(LIM+1);comp[0]=comp[1]=1;for(let i=2;i*i<=LIM;i++)if(!comp[i])for(let j=i*i;j<=LIM;j+=i)comp[j]=1;
+diff -ru orig417/build/browser-check-v0416.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v0416.cjs
+--- orig417/build/browser-check-v0416.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v0416.cjs	2026-10-31 12:03:40.133642332 +0000
+@@ -3,10 +3,10 @@
+ // Cases: rule 30 j = 3 (doubling), rule 30 j = 5 (stall), rule 90 j = 3 (density 0), each at q = 1, 2, 4, 8. Expected values come from the core (itself checked against the pinned rule30 fixture by test-rule30-ladder).
+ // D1 off: the page is compared with the v0.4.14 build (stage, canvas, caption, about, cards, address) on 8 states, and the visible-control counts are compared.
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const CC=require('../host-core/comb-core.js'),RL=require('../host-core/rule30-ladder-core.js');
+ const root=path.join(__dirname,'..'),u=p=>'file:///'+p.split(path.sep).join('/');
+-const url=u(path.join(root,'dist','comb-hopf.html')),url414=u('C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_14_20261021/dist/comb-hopf.html');
++const url=u(path.join(root,'dist','comb-hopf.html')),url414=u('/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_14_20261021/dist/comb-hopf.html');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x!==undefined&&!c?' '+x:''));c?pass++:fail++;};
+ const addr=(o)=>CC.encodeAddress(CC.initial(o));
+ const count=pg=>pg.evaluate(()=>{const vis=e=>{const r=e.getBoundingClientRect(),cs=getComputedStyle(e);return r.width>0&&r.height>0&&cs.display!=='none'&&cs.visibility!=='hidden'&&!e.closest('[style*="display: none"]')&&!e.closest('[hidden]');};
+diff -ru orig417/build/browser-check-v0417.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v0417.cjs
+--- orig417/build/browser-check-v0417.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v0417.cjs	2026-10-31 12:03:40.133642332 +0000
+@@ -6,10 +6,10 @@
+ // elements are removed, and the other tabs are identical to v0.4.16 (stage, caption, cards, address). The v0.4.16 page is read only (sha256 pinned).
+ // No floating point: pixel counts are integers; times are integer milliseconds from Date.now.
+ const path=require('path'),fs=require('fs'),crypto=require('crypto');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const CC=require('../host-core/comb-core.js'),EX=require('../host-core/elliptic-exact-core.js'),PE=require('../host-core/elliptic-period-core.js');
+ const root=path.join(__dirname,'..'),u=p=>'file:///'+p.split(path.sep).join('/');
+-const OLD='C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_16_20261028/dist/comb-hopf.html',OLDSHA='1da7dc8f8cad8c31f22e302a92e763fdc95b71abf4d3dc559fcad33df88c1b71';
++const OLD='/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_16_20261028/dist/comb-hopf.html',OLDSHA='1da7dc8f8cad8c31f22e302a92e763fdc95b71abf4d3dc559fcad33df88c1b71';
+ const url=u(path.join(root,'dist','comb-hopf.html')),url416=u(OLD);
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x!==undefined&&!c?' '+x:''));c?pass++:fail++;};
+ const addr=o=>CC.encodeAddress(CC.initial(o));
+diff -ru orig417/build/browser-check-v041.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v041.cjs
+--- orig417/build/browser-check-v041.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v041.cjs	2026-10-31 12:03:40.132642337 +0000
+@@ -2,9 +2,9 @@
+ // v0.4.1 browser check (SCHEMA_ADDENDUM_9): shell range n1 = 1..13 / B >= 1, the star on t1*s in Z, the carrier foliation (display register).
+ // Playwright from s6_atom/node_modules; dist pages over file:// (v0.4 page read-only, for the byte-identity comparison with the foliation off).
+ const path=require('path'),crypto=require('crypto');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),url='file:///'+path.join(root,'dist','comb-hopf.html').replace(/\\/g,'/');
+-const url04='file:///C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_20261019/dist/comb-hopf.html';
++const url04='file:///home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_20261019/dist/comb-hopf.html';
+ const CC=require('../host-core/comb-core.js');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x&&!c?' '+x:''));c?pass++:fail++;};
+ const addr=o=>CC.encodeAddress(CC.enterSpin(CC.initial(o),o.sTyped||'1'));
+diff -ru orig417/build/browser-check-v042.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v042.cjs
+--- orig417/build/browser-check-v042.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v042.cjs	2026-10-31 12:03:40.133642332 +0000
+@@ -2,9 +2,9 @@
+ // v0.4.2 browser check (SCHEMA_ADDENDUM_10): (1) the N = 0 Wilson wording on the page and in the exports; (2) the shell-switch clamp phi3 -> B (N = 1).
+ // Playwright from s6_atom/node_modules; dist pages over file://. The v0.4.1 page is opened read-only, for the comparisons.
+ const path=require('path'),crypto=require('crypto');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),url='file:///'+path.join(root,'dist','comb-hopf.html').replace(/\\/g,'/');
+-const url41='file:///C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_1_20261019/dist/comb-hopf.html';
++const url41='file:///home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_1_20261019/dist/comb-hopf.html';
+ const CC=require('../host-core/comb-core.js');
+ const NEW='N = 0: no comb, so the Wilson test does not apply.',OLD='N = 1 is not prime.';
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x&&!c?' '+x:''));c?pass++:fail++;};
+diff -ru orig417/build/browser-check-v043.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v043.cjs
+--- orig417/build/browser-check-v043.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v043.cjs	2026-10-31 12:03:40.133642332 +0000
+@@ -2,7 +2,7 @@
+ // v0.4.3 browser check (SCHEMA_ADDENDUM_11): the canvas bitmap is full resolution while the camera moves (Clifford and Hopf), and after release;
+ // the 'surface' kind still yields half size (unit level, through FVViews.resFactor and a probe canvas).
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),url='file:///'+path.join(root,'dist','comb-hopf.html').split(path.sep).join('/');
+ const REPRO={shellMode:'factorial',n1:'4',phi3:'6',alpha:'-1/50',n6:'1',t1:'1',t2:'-21/4',m:'3'};
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x&&!c?' '+x:''));c?pass++:fail++;};
+diff -ru orig417/build/browser-check-v044.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v044.cjs
+--- orig417/build/browser-check-v044.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v044.cjs	2026-10-31 12:03:40.134642328 +0000
+@@ -3,9 +3,9 @@
+ // (port of the accepted RH margin panel) read from the DOM and compared with rhm-core.js, no horizontal scroll at 375,
+ // non-CA states unchanged against the v0.4.3 dist, and the shot_v044_* screenshots.
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),u=p=>'file:///'+p.split(path.sep).join('/');
+-const url=u(path.join(root,'dist','comb-hopf.html')),url43=u(path.join('C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_3_20261019','dist','comb-hopf.html'));
++const url=u(path.join(root,'dist','comb-hopf.html')),url43=u(path.join('/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_3_20261019','dist','comb-hopf.html'));
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x&&!c?' '+x:''));c?pass++:fail++;};
+ const EXP={2:['3/2','2.152786','fails'],6:['2','0.961281','fails'],12:['7/3','0.712138','fails'],60:['14/5','0.289388','fails'],120:['3','0.210828','fails'],360:['13/4','0.092881','fails'],2520:['26/7','0.048447','fails'],5040:['403/105','0.021217','fails'],55440:['1612/385','\u22120.071311','holds'],720720:['248/55','\u22120.124905','holds']};
+ const SAMPLES=[{shellMode:'factorial',n1:'4',phi3:'6',m:'3',t1:'1',t2:'1',tab:'fourier'},{shellMode:'factorial',n1:'5',phi3:'0',m:'6',t1:'1',t2:'-21/4',tab:'clifford'},{shellMode:'integer',B:'24',phi3:'20',m:'5',t1:'1',t2:'2',tab:'hopf'},
+diff -ru orig417/build/browser-check-v045.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v045.cjs
+--- orig417/build/browser-check-v045.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v045.cjs	2026-10-31 12:03:40.134642328 +0000
+@@ -4,9 +4,9 @@
+ // "visible controls ... <= 40" assertions, the two continuous-mode inventory assertions, and the "N mode switch" assertion). The counting method is the old one verbatim (layout(): visible button/input/select
+ // inside #inst or .header, minus .info buttons).
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),u=p=>'file:///'+p.split(path.sep).join('/');
+-const url=u(path.join(root,'dist','comb-hopf.html')),url44=u('C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_4_20261020/dist/comb-hopf.html');
++const url=u(path.join(root,'dist','comb-hopf.html')),url44=u('/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_4_20261020/dist/comb-hopf.html');
+ const CC=require('../host-core/comb-core.js');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x&&!c?' '+x:''));c?pass++:fail++;};
+ const PRESETS=['2','6','12','60','120','360','2520','5040','55440','720720'];
+diff -ru orig417/build/browser-check-v046.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v046.cjs
+--- orig417/build/browser-check-v046.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v046.cjs	2026-10-31 12:03:40.134642328 +0000
+@@ -1,9 +1,9 @@
+ 'use strict';
+ // v0.4.6 browser check (SCHEMA_ADDENDUM_14): n1 group hidden in integer mode; counts; addresses identical to v0.4.5.
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),u=p=>'file:///'+p.split(path.sep).join('/');
+-const url=u(path.join(root,'dist','comb-hopf.html')),url45=u('C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_5_20261020/dist/comb-hopf.html');
++const url=u(path.join(root,'dist','comb-hopf.html')),url45=u('/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_5_20261020/dist/comb-hopf.html');
+ const CC=require('../host-core/comb-core.js');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x&&!c?' '+x:''));c?pass++:fail++;};
+ const addr=o=>CC.encodeAddress(CC.initial(o));
+diff -ru orig417/build/browser-check-v047.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v047.cjs
+--- orig417/build/browser-check-v047.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v047.cjs	2026-10-31 12:03:40.134642328 +0000
+@@ -1,9 +1,9 @@
+ 'use strict';
+ // v0.4.7 browser check (SCHEMA_ADDENDUM_15): alpha_Tilt as a walk weight. Design note section 9, tests 1 (browser part), 6, 7, 8, 10, 11, and the shots.
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),u=p=>'file:///'+p.split(path.sep).join('/');
+-const url=u(path.join(root,'dist','comb-hopf.html')),url46=u('C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_6_20261020/dist/comb-hopf.html');
++const url=u(path.join(root,'dist','comb-hopf.html')),url46=u('/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_6_20261020/dist/comb-hopf.html');
+ const CC=require('../host-core/comb-core.js');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x&&!c?' '+x:''));c?pass++:fail++;};
+ const addr=(o,tilt)=>CC.encodeAddress(CC.initial(o))+(tilt?'&tilt='+tilt:'');
+diff -ru orig417/build/browser-check-v048.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v048.cjs
+--- orig417/build/browser-check-v048.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v048.cjs	2026-10-31 12:03:40.134642328 +0000
+@@ -1,9 +1,9 @@
+ 'use strict';
+ // v0.4.8 check (SCHEMA_ADDENDUM_16): shorter tilt wording in the Fourier caption; Q-res visible at 1280x800; tilt 0 identical to v0.4.7; Panels relabel; shots.
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),u=p=>'file:///'+p.split(path.sep).join('/');
+-const url=u(path.join(root,'dist','comb-hopf.html')),url47=u('C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_7_20261020/dist/comb-hopf.html');
++const url=u(path.join(root,'dist','comb-hopf.html')),url47=u('/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_7_20261020/dist/comb-hopf.html');
+ const CC=require('../host-core/comb-core.js');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x&&!c?' '+x:''));c?pass++:fail++;};
+ const gopen=async(pg,hash,base)=>{await pg.goto((base||url)+hash);await pg.waitForFunction(()=>window.FVPanel&&FVPanel.perf&&FVPanel.perf.n>0);await pg.waitForTimeout(400);};
+diff -ru orig417/build/browser-check-v049.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v049.cjs
+--- orig417/build/browser-check-v049.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/browser-check-v049.cjs	2026-10-31 12:03:40.134642328 +0000
+@@ -4,9 +4,9 @@
+ // (3) the page's stack equals stack-core in Node and the OLD instrument's buildFullStack (frozen file, run in a Node vm); (4) dots really drawn; (5) address key only when on;
+ // (6) signature cache: an s change does not redraw the stack bitmap; (7) no horizontal scroll at 375; (8) shots shot_v049_*.
+ const fs=require('fs'),vm=require('vm'),path=require('path'),crypto=require('crypto');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),u=p=>'file:///'+p.split(path.sep).join('/');
+-const url=u(path.join(root,'dist','comb-hopf.html')),url48=u('C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_8_20261020/dist/comb-hopf.html');
++const url=u(path.join(root,'dist','comb-hopf.html')),url48=u('/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_8_20261020/dist/comb-hopf.html');
+ const CC=require('../host-core/comb-core.js'),SC=require('../host-core/stack-core.js');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x!==undefined&&!c?' '+x:''));c?pass++:fail++;};
+ const addr=(o,extra)=>CC.encodeAddress(CC.initial(o))+(extra||'');
+@@ -16,7 +16,7 @@
+ const snap=pg=>pg.evaluate(()=>({stage:document.getElementById('stage').innerHTML,cv:(()=>{try{return document.getElementById('stagecv').toDataURL();}catch(e){return '';}})(),caption:document.getElementById('caption').innerHTML,about:document.getElementById('about').innerHTML,cards:document.getElementById('cards').innerHTML,addr:document.getElementById('addr').textContent,hash:location.hash,st:JSON.stringify(FVPanel.state)}));
+ const pngHash=pg=>pg.evaluate(async()=>{const b=await FVPanel.exportPng();const a=new Uint8Array(await b.arrayBuffer());const d=await crypto.subtle.digest('SHA-256',a);return [...new Uint8Array(d)].map(x=>x.toString(16).padStart(2,'0')).join('');});
+ // ---- the old instrument's buildFullStack in a vm (read only)
+-const OLD='C:/Users/robin/s6_atom/cold audit fourier/MCOMB_FCA_M7_COMBINED_BCD_RHM_AF_v0_1_20261004/monodromy-31-linked-reduction.html',src=fs.readFileSync(OLD,'utf8');
++const OLD='/home/saphir/membrane_compute/viewer/mirror/cold audit fourier/MCOMB_FCA_M7_COMBINED_BCD_RHM_AF_v0_1_20261004/monodromy-31-linked-reduction.html',src=fs.readFileSync(OLD,'utf8');
+ function block(t){const i=src.indexOf(t);let j=src.indexOf('{',i),d=0;for(;j<src.length;j++){if(src[j]==='{')d++;else if(src[j]==='}'){d--;if(d===0)break;}}return src.slice(i,j+1);}
+ const vctx={Math,Number,String,Object,Array,JSON};vm.createContext(vctx);
+ vm.runInContext('var state={};function factorial(n){let f=1;for(let k=2;k<=n;k++)f*=k;return f;}function gearboxExactText(k){return state[k+"Exact"];}let _stackCache=null,_stackCacheKey=null,_stackDrawSig=null;\n'+['function selectedShellBase(','function selectedShellSpan(','function combOffsets(','function combKernel(','function reducedHalfTurns(','function stableGearboxAngle(','function computeVernier(','function buildFullStack('].map(block).join('\n'),vctx);
+diff -ru orig417/build/package.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/package.cjs
+--- orig417/build/package.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/package.cjs	2026-10-31 12:03:40.135642323 +0000
+@@ -4,7 +4,7 @@
+ const root=path.join(__dirname,'..'),dir=path.join(root,'instruments','comb-hopf');
+ const sha=b=>crypto.createHash('sha256').update(b).digest('hex');
+ let html=fs.readFileSync(path.join(dir,'index.html'),'utf8');
+-const LIBSHA='3edfc8fb396fda90cfa945963eb18ccdf243f5a491e3ee49275b5c459a223a71',LIBSRC='C:/Users/robin/s6_atom/FOURIER_VIEWER_LIBS/exact-lib-0.2.0/dist/exact-lib.js';
++const LIBSHA='3edfc8fb396fda90cfa945963eb18ccdf243f5a491e3ee49275b5c459a223a71',LIBSRC='/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_LIBS/exact-lib-0.2.0/dist/exact-lib.js';
+ const libCopy=path.join(root,'exact-lib','exact-lib-0.2.0.js');
+ if(sha(fs.readFileSync(libCopy))!==LIBSHA)throw Error('exact-lib 0.2.0 sha256 mismatch');
+ if(fs.existsSync(LIBSRC)&&sha(fs.readFileSync(LIBSRC))!==LIBSHA)throw Error('exact-lib 0.2.0 source sha256 mismatch');
+diff -ru orig417/build/perf-bench.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/perf-bench.cjs
+--- orig417/build/perf-bench.cjs	2026-10-31 12:03:40.108642454 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/perf-bench.cjs	2026-10-31 12:03:40.135642323 +0000
+@@ -1,7 +1,7 @@
+ 'use strict';
+ // Performance bench (Playwright from s6_atom/node_modules). Usage: node perf-bench.cjs [url] ; prints JSON tables for 1x and 4x CPU throttle.
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),url=process.argv[2]||'file:///'+path.join(root,'dist','comb-hopf.html').split(path.sep).join('/');
+ const REPRO={shellMode:'factorial',n1:'4',phi3:'6',alpha:'-1/50',n6:'1',t1:'1',t2:'-21/4',m:'3'};
+ const med=a=>{const s=[...a].sort((x,y)=>x-y);return s[Math.floor(s.length/2)];};
+diff -ru orig417/build/perf-camera.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/perf-camera.cjs
+--- orig417/build/perf-camera.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/perf-camera.cjs	2026-10-31 12:03:40.135642323 +0000
+@@ -2,7 +2,7 @@
+ // Camera / drag / first-render bench (performance round 2). Usage: node perf-camera.cjs [url] ; JSON for 1x and 4x CPU throttle.
+ // Camera: 60 synthetic pointer/wheel events, one per animation frame, at the reproduction state. fps = 60 / total seconds (frame-rate limited at about 58 on this harness).
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),url=process.argv[2]||'file:///'+path.join(root,'dist','comb-hopf.html').split(path.sep).join('/');
+ const REPRO={shellMode:'factorial',n1:'4',phi3:'6',alpha:'-1/50',n6:'1',t1:'1',t2:'-21/4',m:'3'};
+ const med=a=>{const s=[...a].sort((x,y)=>x-y);return s[Math.floor(s.length/2)];};
+diff -ru orig417/build/perf-camprofile.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/perf-camprofile.cjs
+--- orig417/build/perf-camprofile.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/perf-camprofile.cjs	2026-10-31 12:03:40.135642323 +0000
+@@ -1,7 +1,7 @@
+ 'use strict';
+ // CDP Profiler + trace categories while rotating the camera 60 frames on one tab (reproduction state). Usage: node perf-camprofile.cjs [tab] [throttle] [kind]
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),url='file:///'+path.join(root,'dist',process.env.F||'comb-hopf.html').split(path.sep).join('/'),tab=process.argv[2]||'hopf',thr=+process.argv[3]||4,kind=process.argv[4]||'rotate';
+ (async()=>{
+   const b=await chromium.launch(),ctx=await b.newContext({viewport:{width:1280,height:800}}),page=await ctx.newPage(),cdp=await ctx.newCDPSession(page);
+diff -ru orig417/build/perf-cdp.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/perf-cdp.cjs
+--- orig417/build/perf-cdp.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/perf-cdp.cjs	2026-10-31 12:03:40.135642323 +0000
+@@ -1,7 +1,7 @@
+ 'use strict';
+ // CDP Profiler + Tracing: self time by function and main-thread event categories while stepping phi3 40 times on one tab at the reproduction state.
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),url=process.argv[2]||'file:///'+path.join(root,'dist','comb-hopf.html').split(path.sep).join('/'),tab=process.argv[3]||'clifford',mode=process.argv[4]||'step',thr=+process.argv[5]||1;
+ (async()=>{
+   const b=await chromium.launch(),ctx=await b.newContext({viewport:{width:1280,height:800}}),page=await ctx.newPage(),cdp=await ctx.newCDPSession(page);
+diff -ru orig417/build/perf-first.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/perf-first.cjs
+--- orig417/build/perf-first.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/perf-first.cjs	2026-10-31 12:03:40.135642323 +0000
+@@ -1,7 +1,7 @@
+ 'use strict';
+ // First render, A/B interleaved: page load to the first frame presented after the first full render (rAF after FVPanel.perf.n > 0), per tab, 1x and 4x CPU throttle.
+ // Usage: node perf-first.cjs <urlA> [urlB] ; load order alternates A, B, A, B ... (9 loads each) so machine noise hits both alike; medians.
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const urls=process.argv.slice(2);if(!urls.length)throw Error('usage: node perf-first.cjs urlA [urlB]');
+ const REPRO={shellMode:'factorial',n1:'4',phi3:'6',alpha:'-1/50',n6:'1',t1:'1',t2:'-21/4',m:'3'};
+ const med=a=>{const s=[...a].sort((x,y)=>x-y);return s[Math.floor(s.length/2)];};
+diff -ru orig417/build/perf-frame-v043.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/perf-frame-v043.cjs
+--- orig417/build/perf-frame-v043.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/perf-frame-v043.cjs	2026-10-31 12:03:40.136642318 +0000
+@@ -1,7 +1,7 @@
+ 'use strict';
+ // v0.4.3: frame time while rotating (Clifford and Hopf). Usage: node perf-frame-v043.cjs <url> <width> <height> <dsf> <throttle> [runs]
+ // 90 synthetic pointer moves per run, one per animation frame, as perf-camera.cjs does; per-frame time = interval between consecutive frames. Reports median and p95 over all frames of all runs.
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const [url,W,H,DSF,THR,RUNS]=[process.argv[2],+process.argv[3],+process.argv[4],+process.argv[5],+process.argv[6],+(process.argv[7]||5)];
+ const REPRO={shellMode:'factorial',n1:'4',phi3:'6',alpha:'-1/50',n6:'1',t1:'1',t2:'-21/4',m:'3'};
+ const q=(a,p)=>{const s=[...a].sort((x,y)=>x-y);return s[Math.min(s.length-1,Math.floor(p*s.length))];};
+diff -ru orig417/build/perf-load.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/perf-load.cjs
+--- orig417/build/perf-load.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/perf-load.cjs	2026-10-31 12:03:40.136642318 +0000
+@@ -1,7 +1,7 @@
+ 'use strict';
+ // Where the page-load time goes: CDP trace of one load (throttle via argv[2]), main-thread events by name. Usage: node perf-load.cjs [throttle] [hash]
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),url='file:///'+path.join(root,'dist','comb-hopf.html').split(path.sep).join('/'),thr=+process.argv[2]||4,hash=process.argv[3]||'';
+ (async()=>{
+   const b=await chromium.launch(),ctx=await b.newContext({viewport:{width:1280,height:800}}),page=await ctx.newPage(),cdp=await ctx.newCDPSession(page);
+diff -ru orig417/build/perf-profile.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/perf-profile.cjs
+--- orig417/build/perf-profile.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/perf-profile.cjs	2026-10-31 12:03:40.136642318 +0000
+@@ -1,7 +1,7 @@
+ 'use strict';
+ // Where does a render go? Per-phase wall times (performance.now) at the reproduction state, per tab, plus DOM/SVG size.
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),url=process.argv[2]||'file:///'+path.join(root,'dist','comb-hopf.html').split(path.sep).join('/');
+ (async()=>{
+   const b=await chromium.launch(),ctx=await b.newContext({viewport:{width:1280,height:800}}),page=await ctx.newPage();
+diff -ru orig417/build/probe-old-lift-alpha.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/probe-old-lift-alpha.cjs
+--- orig417/build/probe-old-lift-alpha.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/probe-old-lift-alpha.cjs	2026-10-31 12:03:40.136642318 +0000
+@@ -2,7 +2,7 @@
+ // v0.4.9 read-only probe (PORT_NOTE §7): does the OLD instrument's lift stack change with alpha, and what does its camera autofit (prepareCameraScreen) do with it?
+ // Runs the old PlaneCliffordLiftCore (read from the frozen file, never edited) in a Node vm for saphir's state n1 = 4, m = 2, t1 = t2 = 1, n6 = 1.
+ const fs=require('fs'),vm=require('vm');
+-const OLD='C:/Users/robin/s6_atom/cold audit fourier/MCOMB_FCA_M7_COMBINED_BCD_RHM_AF_v0_1_20261004/monodromy-31-linked-reduction.html',src=fs.readFileSync(OLD,'utf8');
++const OLD='/home/saphir/membrane_compute/viewer/mirror/cold audit fourier/MCOMB_FCA_M7_COMBINED_BCD_RHM_AF_v0_1_20261004/monodromy-31-linked-reduction.html',src=fs.readFileSync(OLD,'utf8');
+ function block(t){const i=src.indexOf(t);let j=src.indexOf('{',i),d=0;for(;j<src.length;j++){if(src[j]==='{')d++;else if(src[j]==='}'){d--;if(d===0)break;}}return src.slice(i,j+1);}
+ const ctx={Math,Number,BigInt,String,Object,Array,Set,Map,RangeError,TypeError,Error,JSON,isFinite};vm.createContext(ctx);
+ vm.runInContext(block('function combOffsets(')+'\nvar PlaneCliffordLiftCore='+block('const PlaneCliffordLiftCore = (() => {').replace('const PlaneCliffordLiftCore = ','')+')();this.L=PlaneCliffordLiftCore;',ctx);
+diff -ru orig417/build/probe-old-page-alpha.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/probe-old-page-alpha.cjs
+--- orig417/build/probe-old-page-alpha.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/probe-old-page-alpha.cjs	2026-10-31 12:03:40.136642318 +0000
+@@ -1,8 +1,8 @@
+ 'use strict';
+ // v0.4.9 read-only probe (PORT_NOTE §7): open the OLD instrument page (frozen file, not edited), Clifford lift + Full stack, press alpha -1 / 0 / +1,
+ // and record state.alpha, the stack lift's point norms, the camera fit and a hash of the Clifford canvas.
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright'),crypto=require('crypto'),path=require('path');
+-const OLD='file:///C:/Users/robin/s6_atom/cold%20audit%20fourier/MCOMB_FCA_M7_COMBINED_BCD_RHM_AF_v0_1_20261004/monodromy-31-linked-reduction.html';
++const {chromium}=require('playwright'),crypto=require('crypto'),path=require('path');
++const OLD='file:///home/saphir/membrane_compute/viewer/mirror/cold%20audit%20fourier/MCOMB_FCA_M7_COMBINED_BCD_RHM_AF_v0_1_20261004/monodromy-31-linked-reduction.html';
+ const out=process.argv[2];
+ (async()=>{const b=await chromium.launch();const pg=await (await b.newContext({viewport:{width:1280,height:900},deviceScaleFactor:1})).newPage();const errs=[];pg.on('pageerror',e=>errs.push(String(e)));
+   await pg.goto(OLD);await pg.waitForTimeout(4000);
+diff -ru orig417/build/shots-v0414.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/shots-v0414.cjs
+--- orig417/build/shots-v0414.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/shots-v0414.cjs	2026-10-31 12:03:40.136642318 +0000
+@@ -1,6 +1,6 @@
+ 'use strict';
+ // v0.4.14 shots: the Goldbach track, Fourier (pen = G_N, ghosted teeth) and Clifford (Goldbach tori on one leaf), N = 24 (s = 4/3, near-zero pen) and N = 30 (s = 15/4), at 1280x800 and 375x812.
+-const path=require('path');const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const path=require('path');const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),url='file:///'+path.join(root,'dist','comb-hopf.html').split(path.sep).join('/');
+ const CC=require('../host-core/comb-core.js'),GB=require('../host-core/goldbach-core.js');
+ (async()=>{const b=await chromium.launch();
+diff -ru orig417/build/shots-v0416.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/shots-v0416.cjs
+--- orig417/build/shots-v0416.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/shots-v0416.cjs	2026-10-31 12:03:40.136642318 +0000
+@@ -1,7 +1,7 @@
+ 'use strict';
+ // v0.4.16 screenshots (SCHEMA_ADDENDUM_23): the D1 Rule 30 ladder card on the Clifford tab, 1280x800 and 375x812. Page only (full page at 375 so the card shows).
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const CC=require('../host-core/comb-core.js');
+ const root=path.join(__dirname,'..'),url='file:///'+path.join(root,'dist','comb-hopf.html').split(path.sep).join('/');
+ const addr=view=>CC.encodeAddress(CC.initial({tab:'clifford',view}));
+diff -ru orig417/build/shots-v0417.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/shots-v0417.cjs
+--- orig417/build/shots-v0417.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/shots-v0417.cjs	2026-10-31 12:03:40.136642318 +0000
+@@ -1,7 +1,7 @@
+ 'use strict';
+ // v0.4.17 screenshots (SCHEMA_ADDENDUM_24): the two group-D exact cards of the Panels tab, 1280x800 and 375x812. Card element shots, plus the group-D list.
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const CC=require('../host-core/comb-core.js');
+ const root=path.join(__dirname,'..'),url='file:///'+path.join(root,'dist','comb-hopf.html').split(path.sep).join('/')+CC.encodeAddress(CC.initial({tab:'panels'}));
+ const setDial=(pg,role,v)=>pg.evaluate(([r,v])=>{const x=document.querySelector('[data-role="'+r+'"]');x.value=v;x.dispatchEvent(new Event('change',{bubbles:true}));},[role,String(v)]);
+diff -ru orig417/build/shots-v043.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/shots-v043.cjs
+--- orig417/build/shots-v043.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/shots-v043.cjs	2026-10-31 12:03:40.136642318 +0000
+@@ -1,8 +1,8 @@
+ 'use strict';
+ // v0.4.3: mid-drag screenshots of v0.4.2 vs v0.4.3, Clifford view, same state and same drag. The 200 ms idle timer that ends "moving" is held off during the shot (page setTimeout wrapper), so the picture is the moving frame.
+ // Usage: node shots-v043.cjs <outdir>
+-const path=require('path');const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
+-const out=process.argv[2],S='C:/Users/robin/s6_atom/';
++const path=require('path');const {chromium}=require('playwright');
++const out=process.argv[2],S='/home/saphir/membrane_compute/viewer/mirror/';
+ const U={v042:'file:///'+S+'FOURIER_VIEWER_PROTOTYPE_v0_4_2_20261019/dist/comb-hopf.html',v043:'file:///'+S+'FOURIER_VIEWER_PROTOTYPE_v0_4_3_20261019/dist/comb-hopf.html'};
+ const REPRO={shellMode:'factorial',n1:'4',phi3:'6',alpha:'-1/50',n6:'1',t1:'1',t2:'-21/4',m:'3'};
+ (async()=>{
+diff -ru orig417/build/shots-v047.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/shots-v047.cjs
+--- orig417/build/shots-v047.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/shots-v047.cjs	2026-10-31 12:03:40.136642318 +0000
+@@ -1,7 +1,7 @@
+ 'use strict';
+ // v0.4.7 shots: Fourier and Hopf base at alpha_Tilt = -1, -0.6, 0, +1 for B = 6 (n1 = 3), m = 7, N = 5, s = 1; 1280x800 and 375x812.
+ const path=require('path');
+-const {chromium}=require('C:/Users/robin/s6_atom/node_modules/playwright');
++const {chromium}=require('playwright');
+ const root=path.join(__dirname,'..'),url='file:///'+path.join(root,'dist','comb-hopf.html').split(path.sep).join('/');
+ const CC=require('../host-core/comb-core.js');
+ (async()=>{
+diff -ru orig417/build/test-v0410.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/test-v0410.cjs
+--- orig417/build/test-v0410.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/test-v0410.cjs	2026-10-31 12:03:40.136642318 +0000
+@@ -5,7 +5,7 @@
+ const fs=require('fs'),path=require('path'),crypto=require('crypto'),cp=require('child_process');
+ const X=require('../exact-lib/exact-lib-0.2.0.js'),C=require('../host-core/comb-core.js'),O=require('../host-core/orbit-core.js'),SH=require('../host-core/shell-core.js'),BD=require('../host-core/branch-disk-core.js');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x!==undefined&&!c?' '+x:''));c?pass++:fail++;};
+-const root=path.join(__dirname,'..'),V49='C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_9_20261020';
++const root=path.join(__dirname,'..'),V49='/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_9_20261020';
+ const sha=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+ const euclid=(a,b)=>{a=a<0n?-a:a;b=b<0n?-b:b;while(b){[a,b]=[b,a%b];}return a;};
+ const shell=(n,o)=>C.initial({shellMode:'integer',B:String(n*n),phi3:'0',m:String(2*n+1),t1:'1',t2:'1',...(o||{})});
+@@ -139,7 +139,7 @@
+   ok('B3 F(a) (Lemma II.5g), contact edges |as − cq| = 1 (Def II.5h) and isolated beads for N = 2, 5, 10, 12, 17, 26, 30, 50, 60, 101, 120, 360, 720, 5040 equal an independent enumeration; N = 12 = 2²·3 has orders 3, 2: F = {1/3, 1/2, 2/3}, 2 edges',bad.length===0&&d12.F.map(x=>x.join('/')).join()==='1/3,1/2,2/3'&&d12.edges.length===2,bad.join(' | '));
+ }
+ { // B4. Astra's points, n <= 30, against disk_checks.py run live
+-  const script='C:/Users/robin/s6_atom/POINCARE_DISK_VIEW_INVESTIGATION_v0_1_20261020/disk_checks.py';
++  const script='/home/saphir/membrane_compute/viewer/mirror/POINCARE_DISK_VIEW_INVESTIGATION_v0_1_20261020/disk_checks.py';
+   let out='',pyok=true;try{out=cp.execFileSync('python',['-I',script],{stdio:['ignore','pipe','pipe'],encoding:'utf8',timeout:120000});}catch(e){pyok=false;out=String(e);}
+   ok('B4 disk_checks.py ran live (python -I, stdin closed): exit 0, "FAILURES: 0"',pyok&&/FAILURES: 0/.test(out));
+   const m4=/C4 n = 1\.\.30: (\d+) pairs[^\n]*largest m = (\d+)/.exec(out);
+diff -ru orig417/build/test-v0411.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/test-v0411.cjs
+--- orig417/build/test-v0411.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/test-v0411.cjs	2026-10-31 12:03:40.136642318 +0000
+@@ -3,7 +3,7 @@
+ const fs=require('fs'),path=require('path'),crypto=require('crypto');
+ const C=require('../host-core/comb-core.js'),NUM=require('../host-core/comb-numeric.js'),SC=require('../host-core/stack-core.js');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x!==undefined&&!c?' '+x:''));c?pass++:fail++;};
+-const root=path.join(__dirname,'..'),OLD='C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_10_20261020';
++const root=path.join(__dirname,'..'),OLD='/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_10_20261020';
+ const sha=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+ const stOf=o=>C.initial({shellMode:'factorial',n1:'4',phi3:'2',m:'2',...o});
+ const hop=(x,y)=>{const q=x*x+y*y,d=1+q;return [2*x/d,2*y/d,(q-1)/d];};
+diff -ru orig417/build/test-v0412.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/test-v0412.cjs
+--- orig417/build/test-v0412.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/test-v0412.cjs	2026-10-31 12:03:40.137642313 +0000
+@@ -6,7 +6,7 @@
+ require('../instruments/comb-hopf/view-fourier.js');
+ const {logModel,logR}=globalThis.FVStackView;
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x!==undefined&&!c?' '+x:''));c?pass++:fail++;};
+-const root=path.join(__dirname,'..'),OLD='C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_11_20261021';
++const root=path.join(__dirname,'..'),OLD='/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_11_20261021';
+ const sha=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+ const stOf=o=>C.initial({shellMode:'factorial',n1:'4',phi3:'2',m:'2',...o});
+ const ST=[{alpha:'1',n6:'1',m:'2'},{alpha:'-1',n6:'1',m:'2'},{alpha:'2',n6:'1/2',m:'3'},{alpha:'1/2',n6:'3',m:'5'},{alpha:'-1',n6:'-1',m:'4'},{alpha:'3',n6:'-2',m:'2'},{alpha:'-2',n6:'2/3',m:'3'},{n1:'3',alpha:'1',n6:'1',m:'2',phi3:'5'},{n1:'4',phi3:'22',alpha:'1',n6:'1',m:'2'},{n1:'4',phi3:'22',alpha:'-1',n6:'1',m:'2'}];
+diff -ru orig417/build/test-v0413.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/test-v0413.cjs
+--- orig417/build/test-v0413.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/test-v0413.cjs	2026-10-31 12:03:40.137642313 +0000
+@@ -3,7 +3,7 @@
+ // (3) the two named panel files and every source file except view-fourier.js equal v0.4.12. The pen drawing is checked in browser-check-v0413.
+ const fs=require('fs'),path=require('path'),crypto=require('crypto'),vm=require('vm');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x!==undefined&&!c?' '+x:''));c?pass++:fail++;};
+-const root=path.join(__dirname,'..'),OLD='C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_12_20261021';
++const root=path.join(__dirname,'..'),OLD='/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_12_20261021';
+ const sha=f=>crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex');
+ ok('v0.4.12 dist sha256 unchanged (b6e0e6e8…)',sha(OLD+'/dist/comb-hopf.html')==='b6e0e6e839b26bfd6304b9f5a273ca171d6a606fb416d663fc1c5da12debf090');
+ ok('v0.4.12 SHA256SUMS.txt sha256 unchanged (7d90774e…)',sha(OLD+'/SHA256SUMS.txt')==='7d90774ea9c7f33069df594ad429ae312fb7d30e7eecff5172f260f5f5b7379f');
+diff -ru orig417/build/test-v0414.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/test-v0414.cjs
+--- orig417/build/test-v0414.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/test-v0414.cjs	2026-10-31 12:03:40.137642313 +0000
+@@ -1,7 +1,7 @@
+ 'use strict';
+ // v0.4.14 core test (SCHEMA_ADDENDUM_22): the Goldbach prime-pair mask. Node only. The reference code below is independent of goldbach-core (own sieve, own direct G_N sum).
+ const fs=require('fs'),path=require('path'),crypto=require('crypto');
+-const root=path.join(__dirname,'..'),BASE='C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_13_20261021/';
++const root=path.join(__dirname,'..'),BASE='/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_13_20261021/';
+ const C=require('../host-core/comb-core.js'),NUM=require('../host-core/comb-numeric.js'),O=require('../host-core/orbit-core.js'),GB=require('../host-core/goldbach-core.js'),X=require('../exact-lib/exact-lib-0.2.0.js');
+ const C0=require(BASE+'host-core/comb-core.js'),NUM0=require(BASE+'host-core/comb-numeric.js');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x!==undefined&&!c?' '+x:''));c?pass++:fail++;};
+diff -ru orig417/build/test-v047.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/test-v047.cjs
+--- orig417/build/test-v047.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/test-v047.cjs	2026-10-31 12:03:40.137642313 +0000
+@@ -5,7 +5,7 @@
+ const path=require('path');
+ const root=path.join(__dirname,'..');
+ const C=require('../host-core/comb-core.js'),NUM=require('../host-core/comb-numeric.js'),X=require('../exact-lib/exact-lib-0.2.0.js');
+-const OLD='C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_6_20261020/';
++const OLD='/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_6_20261020/';
+ const C6=require(OLD+'host-core/comb-core.js'),N6=require(OLD+'host-core/comb-numeric.js');
+ let pass=0,fail=0;const ok=(n,c,x)=>{if(!c)console.log('FAIL '+n+(x?' '+x:''));c?pass++:fail++;};
+ let seed=20261020;const rnd=()=>{seed=(seed*1664525+1013904223)>>>0;return seed/4294967296;};const pick=a=>a[Math.floor(rnd()*a.length)];
+diff -ru orig417/build/test-v049.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/test-v049.cjs
+--- orig417/build/test-v049.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/test-v049.cjs	2026-10-31 12:03:40.137642313 +0000
+@@ -3,7 +3,7 @@
+ // The old instrument's own functions (computeVernier, buildFullStack, PlaneCliffordLiftCore, ContinuousRadialDisplayV1) are read from the frozen file (never edited)
+ // and run in a Node vm; their point sets are compared with host-core/stack-core.js, which uses this viewer's exact core.
+ const fs=require('fs'),vm=require('vm'),path=require('path'),crypto=require('crypto');
+-const OLD='C:/Users/robin/s6_atom/cold audit fourier/MCOMB_FCA_M7_COMBINED_BCD_RHM_AF_v0_1_20261004/monodromy-31-linked-reduction.html';
++const OLD='/home/saphir/membrane_compute/viewer/mirror/cold audit fourier/MCOMB_FCA_M7_COMBINED_BCD_RHM_AF_v0_1_20261004/monodromy-31-linked-reduction.html';
+ const OLD_SHA='b4cee4e30a753eda7c62f72e8043d6d5c9b3f69c3c2e1dd0da9a3f9ab5b8e248';
+ const X=require('../exact-lib/exact-lib-0.2.0.js'),C=require('../host-core/comb-core.js'),NUM=require('../host-core/comb-numeric.js'),SC=require('../host-core/stack-core.js'),FS=require('../host-core/fraction-stack-core.js');
+ let pass=0,fail=0;const ok=(n,c,x)=>{console.log((c?'PASS ':'FAIL ')+n+(x!==undefined&&!c?' '+x:''));c?pass++:fail++;};
+diff -ru orig417/build/transcribe-elliptic-fixture.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/transcribe-elliptic-fixture.cjs
+--- orig417/build/transcribe-elliptic-fixture.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/transcribe-elliptic-fixture.cjs	2026-10-31 12:03:40.137642313 +0000
+@@ -3,7 +3,7 @@
+ // A parser, not a recomputation: it checks the source sha256 first, then reads each line by a fixed pattern and fails on anything it does not recognise.
+ // No floating point: every value stays a string or a BigInt-checked integer string.
+ const fs=require('fs'),path=require('path'),crypto=require('crypto');
+-const SRC='C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029_BRIEF/SAGE_REFERENCE_37a1_20261029.txt';
++const SRC='/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029_BRIEF/SAGE_REFERENCE_37a1_20261029.txt';
+ const PIN='599c68552af2521c0b762298875c922e4c03aef29ae7ad4573af614642ab6a72';
+ const buf=fs.readFileSync(SRC),h=crypto.createHash('sha256').update(buf).digest('hex');
+ if(h!==PIN)throw Error('source sha256 mismatch: '+h);
+diff -ru orig417/build/transcribe-rule30-fixture.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/transcribe-rule30-fixture.cjs
+--- orig417/build/transcribe-rule30-fixture.cjs	2026-10-31 12:03:40.109642449 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/build/transcribe-rule30-fixture.cjs	2026-10-31 12:03:40.137642313 +0000
+@@ -2,7 +2,7 @@
+ // v0.4.16: transcribes the pinned rule30 outputs (READ ONLY; nothing in rule30_prize_research_2026_10_26/ is run, copied or written) into fixtures/rule30-ladder-fixture.json.
+ // The source sha256 values are checked against the brief's pins before anything is written.
+ const fs=require('fs'),path=require('path'),crypto=require('crypto');
+-const SRC='C:/Users/robin/s6_atom/rule30_prize_research_2026_10_26/';
++const SRC='/home/saphir/membrane_compute/viewer/mirror/rule30_prize_research_2026_10_26/';
+ const PINS={'opus_two_adic_n2_densities_v0_1_20261028.output.txt':'72d0bd143c106c37ff3b1e8a46aa44d7605a8c17a88bee0990b0ce886fc7efcf',
+   'opus_two_adic_n2_lemma_check_v0_1_20261028.output.txt':'fa24e8067419383eb0184b4868468a3d6b1c5072ac20e8cd1e75ef887585defd',
+   'opus_two_adic_n2_v0_1_20261028.sha256':'677bfe28bae82f6fed3b4716a2fceacd521e2c8c281b5063d1f0fe173e8035a8'};
+diff -ru orig417/host-core/parity-sample.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/host-core/parity-sample.cjs
+--- orig417/host-core/parity-sample.cjs	2026-10-31 12:03:40.111642440 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/host-core/parity-sample.cjs	2026-10-31 12:03:40.137642313 +0000
+@@ -2,7 +2,7 @@
+ // Informative parity sample (not R18): 2000 random integer-gear states, rebuild vs frozen v0.3.2 comb-core.js / control-math.js (read-only load).
+ // Every difference is listed with its class: (a) mandated by R20/R21, (d) reference defect reproduced by exact arithmetic, or UNEXPLAINED.
+ const X=require('../exact-lib/exact-lib-0.2.0.js'),C=require('./comb-core.js');
+-const F='C:/Users/robin/s6_atom/cubic_Fourier/DIVISOR_COMB_RIEMANN_v0_3_2_20261012/';
++const F='/home/saphir/membrane_compute/viewer/mirror/cubic_Fourier/DIVISOR_COMB_RIEMANN_v0_3_2_20261012/';
+ const HC=require(F+'comb-core.js'),HM=require(F+'control-math.js');
+ let seed=0x12345678;const rnd=()=>{seed^=seed<<13;seed>>>=0;seed^=seed>>>17;seed^=seed<<5;seed>>>=0;return seed/4294967296;};
+ const ri=(a,b)=>a+Math.floor(rnd()*(b-a+1)),pick=a=>a[ri(0,a.length-1)];
+diff -ru orig417/host-core/test-core.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/host-core/test-core.cjs
+--- orig417/host-core/test-core.cjs	2026-10-31 12:03:40.111642440 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/host-core/test-core.cjs	2026-10-31 12:03:40.138642308 +0000
+@@ -197,7 +197,7 @@
+ 
+ // ---------- addendum tests: shell core, flags, gates, lift, gearbox parity
+ const SH=require('./shell-core.js');
+-const FROZEN='C:/Users/robin/s6_atom/cubic_Fourier/DIVISOR_COMB_RIEMANN_v0_3_2_20261012/';
++const FROZEN='/home/saphir/membrane_compute/viewer/mirror/cubic_Fourier/DIVISOR_COMB_RIEMANN_v0_3_2_20261012/';
+ t('SPREAD/ALIGN exact flags vs numerical |K_m| < 1e-9 at 2000 random states (any disagreement fails)',()=>{
+   let bad=0,zeros=0;
+   for(let i=0;i<2000;i++){
+diff -ru orig417/host-core/test-elliptic-exact.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/host-core/test-elliptic-exact.cjs
+--- orig417/host-core/test-elliptic-exact.cjs	2026-10-31 12:03:40.111642440 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/host-core/test-elliptic-exact.cjs	2026-10-31 12:03:40.138642308 +0000
+@@ -6,7 +6,7 @@
+ let pass=0,fail=0;
+ function t(name,fn){let ok=false,msg='';try{const r=fn();ok=r===true;if(!ok&&r!==false)msg=' '+r;}catch(e){msg=' threw: '+e.message;}console.log((ok?'PASS ':'FAIL ')+name+msg);ok?pass++:fail++;}
+ const FIX=path.join(__dirname,'..','fixtures','elliptic-37a1-fixture.json'),fx=JSON.parse(fs.readFileSync(FIX,'utf8'));
+-const SRC='C:/Users/robin/s6_atom/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029_BRIEF/SAGE_REFERENCE_37a1_20261029.txt';
++const SRC='/home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029_BRIEF/SAGE_REFERENCE_37a1_20261029.txt';
+ const B=s=>BigInt(s),A=fx.ainvs.map(B),C=E.curveQ(A),P=E.pt(E.Q(B(fx.generator.x)),E.Q(B(fx.generator.y)));
+ const qs=E.qascii;
+ t('fixture records the source sha256 599c6855…',()=>fx.source.sha256==='599c68552af2521c0b762298875c922e4c03aef29ae7ad4573af614642ab6a72');
+diff -ru orig417/host-core/test-rule30-ladder.cjs mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/host-core/test-rule30-ladder.cjs
+--- orig417/host-core/test-rule30-ladder.cjs	2026-10-31 12:03:40.111642440 +0000
++++ mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_17_20261029/host-core/test-rule30-ladder.cjs	2026-10-31 12:03:40.138642308 +0000
+@@ -13,7 +13,7 @@
+ const REF={};for(const r of [30,90,150]){const xs=[];let x=1n;do{xs.push(x);x=F[r](x)&M35;}while(x!==1n&&xs.length<100000);REF[r]=xs;}
+ const bit=(x,j)=>Number((x>>BigInt(j))&1n);
+ t('fixture source hashes recorded (densities 72d0bd14…, lemma fa24e806…, manifest 677bfe28…)',()=>fx.sources.map(s=>s.sha256.slice(0,8)).join()==='72d0bd14,fa24e806,677bfe28');
+-{const SRC='C:/Users/robin/s6_atom/rule30_prize_research_2026_10_26/';let seen=0,okh=true;
++{const SRC='/home/saphir/membrane_compute/viewer/mirror/rule30_prize_research_2026_10_26/';let seen=0,okh=true;
+  for(const s of fx.sources){const f=SRC+path.basename(s.file);if(fs.existsSync(f)){seen++;if(crypto.createHash('sha256').update(fs.readFileSync(f)).digest('hex')!==s.sha256)okh=false;}}
+  t('pinned sources still match their sha256 (read only; '+seen+' of 3 present)',()=>okh&&seen===3);}
+ for(const r of L.RULES){const R=fx.rules[r],T=L.table(r);

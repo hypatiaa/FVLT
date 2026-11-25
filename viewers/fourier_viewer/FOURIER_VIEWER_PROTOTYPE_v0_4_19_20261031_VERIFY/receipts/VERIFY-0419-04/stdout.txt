@@ -1,0 +1,11 @@
+edge 7 k 4 coord 0: lo 0 hi 0 true*2^P 0.00000000000000000000000000000000000000  (undecided at 600 bits)
+edge 7 k 4 coord 2: lo 0 hi 0 true*2^P 0.00000000000000000000000000000000000000  (undecided at 600 bits)
+edge 8 k 4 coord 2: lo 0 hi 0 true*2^P 0.00000000000000000000000000000000000000  (undecided at 600 bits)
+edge 9 k 4 coord 1: lo 0 hi 0 true*2^P 0.00000000000000000000000000000000000000  (undecided at 600 bits)
+edge 10 k 4 coord 2: lo 0 hi 0 true*2^P 0.00000000000000000000000000000000000000  (undecided at 600 bits)
+edge 11 k 4 coord 0: lo 0 hi 0 true*2^P 0.00000000000000000000000000000000000000  (undecided at 600 bits)
+edge 11 k 4 coord 2: lo 0 hi 0 true*2^P 0.00000000000000000000000000000000000000  (undecided at 600 bits)
+edge 14 k 4 coord 2: lo 0 hi 0 true*2^P 0.00000000000000000000000000000000000000  (undecided at 600 bits)
+edge 21 k 4 coord 2: lo 0 hi 0 true*2^P 0.00000000000000000000000000000000000000  (undecided at 600 bits)
+edge 24 k 4 coord 1: lo 0 hi 0 true*2^P 0.00000000000000000000000000000000000000  (undecided at 600 bits)
+not certainly inside: 10 (certainly outside: 0, undecided: 10) of 630

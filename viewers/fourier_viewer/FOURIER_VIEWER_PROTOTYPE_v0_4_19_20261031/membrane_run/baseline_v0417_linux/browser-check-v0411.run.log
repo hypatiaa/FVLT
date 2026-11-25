@@ -1,0 +1,94 @@
+PASS 1280x800 fourier: counts 39/41/39/41 unchanged (v0.4.11 off / stack+reciprocal on / v0.4.10 = 39/39/39/41/41/41/39/39/39/41/41/41)
+PASS 1280x800 clifford: counts 39/41/39/41 unchanged (v0.4.11 off / stack+reciprocal on / v0.4.10 = 39/39/39/41/41/41/39/39/39/41/41/41)
+PASS 1280x800 hopf: counts 39/41/39/41 unchanged (v0.4.11 off / stack+reciprocal on / v0.4.10 = 39/39/39/41/41/41/39/39/39/41/41/41)
+FAIL 1280x800 byte-identical to v0.4.10 for 32 states (incl. tilt −1/2, stack on / reciprocal off): stage, canvas, caption, about, cards, address, hash AND exact JSON, state JSON, CSV, Lift JSON, stats (32/32 exports) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=integer&phi3 hstage | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=integer&phi3 hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=9&nMode=integer&phi3=0&m= hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=9&nMode=integer&phi3=0&m= hstage
+PASS 1280x800 PNG export byte-identical to v0.4.10 (10/10)
+PASS 1280x800 fourier: address has no fr key while the layer is off
+PASS 1280x800 fourier: Layers menu offers "Reciprocal winding (throat at 1/1)" while the Full stack is on
+PASS 1280x800 fourier: ... and not while the Full stack is off
+PASS 1280x800 fourier: toggle writes fr=1 to the address; stage/canvas/caption change; data-role="reciprocal" present
+INFO 1280x800 fourier reciprocal data: n/undef/raw/drawn/half = ["1300","0",null,null,null]
+PASS 1280x800 fourier: reciprocal point count = stack points (1300) or its lifted half
+PASS 1280x800 fourier: reload restores the layer (canvas and stage equal)
+PASS 1280x800 fourier: toggling off again restores the off state byte for byte (stage, canvas, caption, about, hash)
+PASS 1280x800 fourier: with the Full stack off the fr key is inert (view equals the plain off view)
+PASS 1280x800 fourier: n6 = 0 (no image) is labelled, not hidden
+PASS 1280x800 clifford: address has no cr key while the layer is off
+PASS 1280x800 clifford: Layers menu offers "Reciprocal winding (throat at 1/1)" while the Full stack is on
+PASS 1280x800 clifford: ... and not while the Full stack is off
+PASS 1280x800 clifford: toggle writes cr=1 to the address; stage/canvas/caption change; data-role="reciprocal" present
+INFO 1280x800 clifford reciprocal data: n/undef/raw/drawn/half = ["1300","0","1300","1300","1300"]
+PASS 1280x800 clifford: reciprocal point count = stack points (1300) or its lifted half
+PASS 1280x800 clifford: reload restores the layer (canvas and stage equal)
+PASS 1280x800 clifford: toggling off again restores the off state byte for byte (stage, canvas, caption, about, hash)
+PASS 1280x800 clifford: with the Full stack off the cr key is inert (view equals the plain off view)
+PASS 1280x800 clifford: n6 = 0 (no image) is labelled, not hidden
+PASS 1280x800 hopf: address has no hr key while the layer is off
+PASS 1280x800 hopf: Layers menu offers "Reciprocal winding (throat at 1/1)" while the Full stack is on
+PASS 1280x800 hopf: ... and not while the Full stack is off
+PASS 1280x800 hopf: toggle writes hr=1 to the address; stage/canvas/caption change; data-role="reciprocal" present
+INFO 1280x800 hopf reciprocal data: n/undef/raw/drawn/half = ["1300","0",null,null,null]
+PASS 1280x800 hopf: reciprocal point count = stack points (1300) or its lifted half
+PASS 1280x800 hopf: reload restores the layer (canvas and stage equal)
+PASS 1280x800 hopf: toggling off again restores the off state byte for byte (stage, canvas, caption, about, hash)
+PASS 1280x800 hopf: with the Full stack off the hr key is inert (view equals the plain off view)
+PASS 1280x800 hopf: n6 = 0 (no image) is labelled, not hidden
+PASS 1280x800 Clifford thinned state (n1 = 6): caption says the halves share the 12,000 − m budget and are thinned
+PASS 1280x800 Fourier at alpha = −1 (stack inside the unit circle): the frame grows to include the reciprocal half (scale 201.600 → 8.064)
+INFO 1280x800 hopf host ink probe {"recip":[29,29],"primary":[309,309],"size":[638,479,638,479]}
+PASS 1280x800 Hopf (host chart): ink at ≥ 90% of the expected reflected (front-facing, sampled) positions: 29/29; control (primary positions): 309/309
+INFO 1280x800 hopf comb ink probe {"recip":[79,79],"primary":[252,252],"size":[638,479,638,479]}
+PASS 1280x800 Hopf (comb chart): ink at ≥ 90% of the expected reflected (front-facing, sampled) positions: 79/79; control (primary positions): 252/252
+PASS 1280x800 view keys fr, cr, hr are new and unique across all views (duplicates: [])
+PASS 1280x800 fourier: no horizontal scroll with the Layers menu open and the layer on (1265 ≤ 1280)
+PASS 1280x800 clifford: no horizontal scroll with the Layers menu open and the layer on (1265 ≤ 1280)
+PASS 1280x800 hopf: no horizontal scroll with the Layers menu open and the layer on (1265 ≤ 1280)
+PASS 1280x800 no page errors
+PASS 375x812 fourier: counts 39/41/39/41 unchanged (v0.4.11 off / stack+reciprocal on / v0.4.10 = 39/39/39/41/41/41/39/39/39/41/41/41)
+PASS 375x812 clifford: counts 39/41/39/41 unchanged (v0.4.11 off / stack+reciprocal on / v0.4.10 = 39/39/39/41/41/41/39/39/39/41/41/41)
+PASS 375x812 hopf: counts 39/41/39/41 unchanged (v0.4.11 off / stack+reciprocal on / v0.4.10 = 39/39/39/41/41/41/39/39/39/41/41/41)
+FAIL 375x812 byte-identical to v0.4.10 for 32 states (incl. tilt −1/2, stack on / reciprocal off): stage, canvas, caption, about, cards, address, hash AND exact JSON, state JSON, CSV, Lift JSON, stats (32/32 exports) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=integer&phi3 hstage | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=integer&phi3 hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=9&nMode=integer&phi3=0&m= hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=9&nMode=integer&phi3=0&m= hstage
+PASS 375x812 PNG export byte-identical to v0.4.10 (10/10)
+PASS 375x812 fourier: address has no fr key while the layer is off
+PASS 375x812 fourier: Layers menu offers "Reciprocal winding (throat at 1/1)" while the Full stack is on
+PASS 375x812 fourier: ... and not while the Full stack is off
+PASS 375x812 fourier: toggle writes fr=1 to the address; stage/canvas/caption change; data-role="reciprocal" present
+INFO 375x812 fourier reciprocal data: n/undef/raw/drawn/half = ["1300","0",null,null,null]
+PASS 375x812 fourier: reciprocal point count = stack points (1300) or its lifted half
+PASS 375x812 fourier: reload restores the layer (canvas and stage equal)
+PASS 375x812 fourier: toggling off again restores the off state byte for byte (stage, canvas, caption, about, hash)
+PASS 375x812 fourier: with the Full stack off the fr key is inert (view equals the plain off view)
+PASS 375x812 fourier: n6 = 0 (no image) is labelled, not hidden
+PASS 375x812 clifford: address has no cr key while the layer is off
+PASS 375x812 clifford: Layers menu offers "Reciprocal winding (throat at 1/1)" while the Full stack is on
+PASS 375x812 clifford: ... and not while the Full stack is off
+PASS 375x812 clifford: toggle writes cr=1 to the address; stage/canvas/caption change; data-role="reciprocal" present
+INFO 375x812 clifford reciprocal data: n/undef/raw/drawn/half = ["1300","0","1300","1300","1300"]
+PASS 375x812 clifford: reciprocal point count = stack points (1300) or its lifted half
+PASS 375x812 clifford: reload restores the layer (canvas and stage equal)
+PASS 375x812 clifford: toggling off again restores the off state byte for byte (stage, canvas, caption, about, hash)
+PASS 375x812 clifford: with the Full stack off the cr key is inert (view equals the plain off view)
+PASS 375x812 clifford: n6 = 0 (no image) is labelled, not hidden
+PASS 375x812 hopf: address has no hr key while the layer is off
+PASS 375x812 hopf: Layers menu offers "Reciprocal winding (throat at 1/1)" while the Full stack is on
+PASS 375x812 hopf: ... and not while the Full stack is off
+PASS 375x812 hopf: toggle writes hr=1 to the address; stage/canvas/caption change; data-role="reciprocal" present
+INFO 375x812 hopf reciprocal data: n/undef/raw/drawn/half = ["1300","0",null,null,null]
+PASS 375x812 hopf: reciprocal point count = stack points (1300) or its lifted half
+PASS 375x812 hopf: reload restores the layer (canvas and stage equal)
+PASS 375x812 hopf: toggling off again restores the off state byte for byte (stage, canvas, caption, about, hash)
+PASS 375x812 hopf: with the Full stack off the hr key is inert (view equals the plain off view)
+PASS 375x812 hopf: n6 = 0 (no image) is labelled, not hidden
+PASS 375x812 Clifford thinned state (n1 = 6): caption says the halves share the 12,000 − m budget and are thinned
+PASS 375x812 Fourier at alpha = −1 (stack inside the unit circle): the frame grows to include the reciprocal half (scale 201.600 → 8.064)
+INFO 375x812 hopf host ink probe {"recip":[29,29],"primary":[309,309],"size":[320,240,320,240]}
+PASS 375x812 Hopf (host chart): ink at ≥ 90% of the expected reflected (front-facing, sampled) positions: 29/29; control (primary positions): 309/309
+INFO 375x812 hopf comb ink probe {"recip":[75,79],"primary":[252,252],"size":[320,240,320,240]}
+PASS 375x812 Hopf (comb chart): ink at ≥ 90% of the expected reflected (front-facing, sampled) positions: 75/79; control (primary positions): 252/252
+PASS 375x812 view keys fr, cr, hr are new and unique across all views (duplicates: [])
+PASS 375x812 fourier: no horizontal scroll with the Layers menu open and the layer on (360 ≤ 375)
+PASS 375x812 clifford: no horizontal scroll with the Layers menu open and the layer on (360 ≤ 375)
+PASS 375x812 hopf: no horizontal scroll with the Layers menu open and the layer on (360 ≤ 375)
+PASS 375x812 no page errors
+
+SUMMARY browser-check-v0411: 80 pass, 2 fail

@@ -1,0 +1,29 @@
+---- case real: checker exit 0
+HOST this machine: membrane (linux); list host of record: membrane (linux)
+PASS case real: the checker exits 0 (got 0)
+---- case injected: checker exit 1
+HOST this machine: membrane (linux); list host of record: membrane (linux)
+FAIL browser-check-v0414: 2 expected FAIL line(s), exit 1, summary 94 / 2 :: UNEXPECTED: FAIL 1280x800 SELFTEST-INJECTED line
+     UNEXPECTED: FAIL 1280x800 SELFTEST-INJECTED line
+PASS case injected: the checker exits 1 (got 1)
+---- case removed: checker exit 1
+HOST this machine: membrane (linux); list host of record: membrane (linux)
+FAIL test-v0410: 3 expected FAIL line(s), exit 1, summary 17 / 3 :: MISSING: FAIL B4 disk_checks.py ran live (python -I, stdin closed): exit 0, "FAILURES: 0"
+     MISSING: FAIL B4 disk_checks.py ran live (python -I, stdin closed): exit 0, "FAILURES: 0"
+PASS case removed: the checker exits 1 (got 1)
+---- case crash: checker exit 1
+HOST this machine: membrane (linux); list host of record: membrane (linux)
+FAIL browser-check-v0414: 2 expected FAIL line(s), exit 1, summary 94 / 2 :: MISSING: FAIL 1280x800 track off: byte-identical to v0.4.13 for 32 states (incl. the Goldbach shells without the flag, tilt −1/2 too): stage, canvas, caption, about, cards, address, hash and the five exports (32/32) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage | MISSING: FAIL 375x812 track off: byte-identical to v0.4.13 for 32 states (incl. the Goldbach shells without the flag, tilt −1/2 too): stage, canvas, caption, about, cards, address, hash and the five exports (32/32) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage | SUMMARY: expected "SUMMARY browser-check-v0414 94 passed, 2 failed", got (none) | COUNTS: expected 94 / 2, got (none)
+     MISSING: FAIL 1280x800 track off: byte-identical to v0.4.13 for 32 states (incl. the Goldbach shells without the flag, tilt −1/2 too): stage, canvas, caption, about, cards, address, hash and the five exports (32/32) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage
+     MISSING: FAIL 375x812 track off: byte-identical to v0.4.13 for 32 states (incl. the Goldbach shells without the flag, tilt −1/2 too): stage, canvas, caption, about, cards, address, hash and the five exports (32/32) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage
+     SUMMARY: expected "SUMMARY browser-check-v0414 94 passed, 2 failed", got (none)
+     COUNTS: expected 94 / 2, got (none)
+PASS case crash: the checker exits 1 (got 1)
+---- case truncated: checker exit 1
+HOST this machine: membrane (linux); list host of record: membrane (linux)
+FAIL browser-check-v0417: 4 expected FAIL line(s), exit 1, summary 73 / 4 :: EXIT: expected 1, got 134 | SUMMARY: expected "SUMMARY browser-check-v0417: 73 passed, 4 failed", got (none) | COUNTS: expected 73 / 4, got (none)
+     EXIT: expected 1, got 134
+     SUMMARY: expected "SUMMARY browser-check-v0417: 73 passed, 4 failed", got (none)
+     COUNTS: expected 73 / 4, got (none)
+PASS case truncated: the checker exits 1 (got 1)
+SUMMARY selftest-expected-fails-v0419: 5 passed, 0 failed

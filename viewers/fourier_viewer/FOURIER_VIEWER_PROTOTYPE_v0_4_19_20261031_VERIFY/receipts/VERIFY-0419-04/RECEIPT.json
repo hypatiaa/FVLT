@@ -1,0 +1,6 @@
+{"job":"VERIFY-0419-04","runner":"run_capped_v2.sh","host":"membrane","cwd":"/home/saphir/membrane_compute/viewer/verify_0419","start_utc":"2026-10-31T18:18:32Z","end_utc":"2026-10-31T18:18:33Z","exit":0,
+ "caps":{"cpu":"core 0","nice":19,"mem_mib":4096,"wall_s":1800},
+ "peak_rss_kib":214184,"wall_used":"0:00.69",
+ "library_check_before":"OK","library_check_after":"OK",
+ "prereg_sha256":"9ef825ba3dfc2fe591c7053410f9bd686dfc404fea0f097b122356e3fcc14b0c",
+ "command":"/home/saphir/sage-network-platform/env/bin/sage diag_arcs.sage out01/a5_moves.json "}

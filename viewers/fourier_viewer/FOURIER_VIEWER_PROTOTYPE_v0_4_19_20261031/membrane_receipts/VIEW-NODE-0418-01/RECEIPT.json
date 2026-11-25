@@ -1,0 +1,6 @@
+{"job":"VIEW-NODE-0418-01","runner":"run_capped_v2.sh","host":"membrane","cwd":"/home/saphir/membrane_compute/viewer/v0_4_18","start_utc":"2026-10-31T12:39:05Z","end_utc":"2026-10-31T12:39:06Z","exit":0,
+ "caps":{"cpu":"core 0","nice":19,"mem_mib":4096,"wall_s":1800},
+ "peak_rss_kib":75380,"wall_used":"0:00.64",
+ "library_check_before":"OK","library_check_after":"OK",
+ "prereg_sha256":"202b84a38f5e5304aa4b46306f7070c554778776bd9edb673fa8f6d6d248ef31",
+ "command":"/home/saphir/.local/bin/node host-core/test-pen-streams.cjs "}

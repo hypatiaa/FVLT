@@ -1,0 +1,2 @@
+VERIFY-0419-06 (independent verifier of Fourier viewer v0.4.19). Re-runs the builder's new node suites unchanged on the untouched uploaded copy:
+test-v0419-goldbach-order, test-v0419-fixups, test-v0419-pens, no-float-v0419. Expected (builder's claims): 29/0, 10/0, 15/0, 17/0, all exit 0.

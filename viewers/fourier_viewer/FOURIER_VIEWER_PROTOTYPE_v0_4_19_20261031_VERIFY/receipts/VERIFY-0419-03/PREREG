@@ -1,0 +1,4 @@
+VERIFY-0419-03 (independent verifier of Fourier viewer v0.4.19). Sage 10.9: verify_a5.sage on out01/a5_moves.json (the build's own two dodecahedron moves
+as permutations of 60 flags, dumped by job 02 with the build's dodecaStep). Route 1: permutation group order 60, is_isomorphic(AlternatingGroup(5)),
+regular, element orders. Route 2: matrices transcribed from the DODECA constants over Q(sqrt3, sqrt5), closure 60, isomorphic to A5, tied to the dumped
+flags. Arcs: the build's 30 dodecahedron edge arcs (7 interior points, P = 96) contain the true normalised points (400-bit intervals). Expected: all PASS.

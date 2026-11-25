@@ -1,0 +1,65 @@
+PASS 1280x800 fourier: counts 39/41/39/41 unchanged, also with tilt in the address
+PASS 1280x800 clifford: counts 39/41/39/41 unchanged, also with tilt in the address
+PASS 1280x800 hopf: counts 39/41/39/41 unchanged, also with tilt in the address
+PASS 1280x800 tilt 0: stage, canvas, caption, about, cards, address, URL, state identical to v0.4.6 (8/8)
+PASS 1280x800 the α drawer holds two separately labelled dials (α, α_Tilt) with presets
+PASS 1280x800 drawer open: tilt box shows 0
+PASS 1280x800 slider 0.37 stored as 37/100, address has tilt=37/100, chip shows it, box shows it
+PASS 1280x800 typed -1/2: state, address (tilt after view) and chip
+PASS 1280x800 ▶ steps by 1/10 (-1/2 -> -2/5)
+PASS 1280x800 ▶ stops at +1 (clamped)
+PASS 1280x800 out-of-range 3 refused with the reason, state unchanged
+PASS 1280x800 preset 0 removes tilt from the state and the address
+PASS 1280x800 tilt + &ca=1 read: tilt kept, CA on, hash writes tilt before &ca=1
+PASS 1280x800 &ca=1 before &tilt= reads the same
+PASS 1280x800 &tilt=0 refused with the reason (defaults shown)
+FAIL 1280x800 t1*s in Z: tilt 0 caption "★ lab sum real"; tilt 1 caption "★ pair phases conjugate (t₁·s ∈ ℤ); tilted walk not real in general" ALIGN yes · SPREAD yes ★ lab sum real · Q-res 0.0e+0 (numerical) · mirror axis = real axis (t₁·s ∈ ℤ) || ALIGN yes · SPREAD yes ★ teeth conjugate (t₁·s ∈ ℤ); walk not real · Q-res 6.0e+0 (numerical) · mirror axis = real axis (t₁·s ∈ ℤ)
+
+α_Tilt = 1: walk step t weighted t^α_Tilt (walk only; teeth unchanged) · instrument-tier, no theorem standing
+PASS 1280x800 v0.4.1 counterexample (N=5, m=6, t1=1/2, t2=1, s=1) still shows no ★ at tilt 1
+PASS 1280x800 m = 2 and tilt != 0: the Vernier-sum label appears
+PASS 1280x800 m = 2 at tilt 0: no such label
+PASS 1280x800 mirror-axis about gains "teeth only; the tilted walk is not mirror-symmetric" at tilt != 0 and the instrument-tier statement
+PASS 1280x800 at tilt 0 those sentences are absent
+PASS 1280x800 Clifford: stage SVG, canvas and caption identical at tilt 0 and 1; one ⓘ line says α_Tilt does not apply
+PASS 1280x800 Clifford: the visible α_Tilt dial says "α_Tilt does not apply here"
+PASS 1280x800 G. Robin card present and identical at tilt 0 and 1
+PASS 1280x800 Panels at tilt 1: α_Tilt row, ★ wording and carrier-relative caption changed
+PASS 1280x800 Copy formula appends the walk line only at tilt != 0
+PASS 1280x800 exact JSON carries state.tilt and exact.tilt (numerical weights for -1/2)
+PASS 1280x800 Hopf: tooth dots identical, walk vertices change at tilt 1; gate line still passes
+PASS 1280x800 N = 0 at tilt -1: the empty state is drawn and labelled
+PASS 1280x800 no page errors
+PASS 375x812 fourier: counts 39/41/39/41 unchanged, also with tilt in the address
+PASS 375x812 clifford: counts 39/41/39/41 unchanged, also with tilt in the address
+PASS 375x812 hopf: counts 39/41/39/41 unchanged, also with tilt in the address
+PASS 375x812 tilt 0: stage, canvas, caption, about, cards, address, URL, state identical to v0.4.6 (8/8)
+PASS 375x812 the α drawer holds two separately labelled dials (α, α_Tilt) with presets
+PASS 375x812 drawer open: tilt box shows 0
+PASS 375x812 slider 0.37 stored as 37/100, address has tilt=37/100, chip shows it, box shows it
+PASS 375x812 typed -1/2: state, address (tilt after view) and chip
+PASS 375x812 ▶ steps by 1/10 (-1/2 -> -2/5)
+PASS 375x812 ▶ stops at +1 (clamped)
+PASS 375x812 out-of-range 3 refused with the reason, state unchanged
+PASS 375x812 preset 0 removes tilt from the state and the address
+PASS 375x812 tilt + &ca=1 read: tilt kept, CA on, hash writes tilt before &ca=1
+PASS 375x812 &ca=1 before &tilt= reads the same
+PASS 375x812 &tilt=0 refused with the reason (defaults shown)
+FAIL 375x812 t1*s in Z: tilt 0 caption "★ lab sum real"; tilt 1 caption "★ pair phases conjugate (t₁·s ∈ ℤ); tilted walk not real in general" ALIGN yes · SPREAD yes ★ lab sum real · Q-res 0.0e+0 (numerical) · mirror axis = real axis (t₁·s ∈ ℤ) || ALIGN yes · SPREAD yes ★ teeth conjugate (t₁·s ∈ ℤ); walk not real · Q-res 6.0e+0 (numerical) · mirror axis = real axis (t₁·s ∈ ℤ)
+
+α_Tilt = 1: walk step t weighted t^α_Tilt (walk only; teeth unchanged) · instrument-tier, no theorem standing
+PASS 375x812 v0.4.1 counterexample (N=5, m=6, t1=1/2, t2=1, s=1) still shows no ★ at tilt 1
+PASS 375x812 m = 2 and tilt != 0: the Vernier-sum label appears
+PASS 375x812 m = 2 at tilt 0: no such label
+PASS 375x812 mirror-axis about gains "teeth only; the tilted walk is not mirror-symmetric" at tilt != 0 and the instrument-tier statement
+PASS 375x812 at tilt 0 those sentences are absent
+PASS 375x812 Clifford: stage SVG, canvas and caption identical at tilt 0 and 1; one ⓘ line says α_Tilt does not apply
+PASS 375x812 Clifford: the visible α_Tilt dial says "α_Tilt does not apply here"
+PASS 375x812 G. Robin card present and identical at tilt 0 and 1
+PASS 375x812 Panels at tilt 1: α_Tilt row, ★ wording and carrier-relative caption changed
+PASS 375x812 Copy formula appends the walk line only at tilt != 0
+PASS 375x812 exact JSON carries state.tilt and exact.tilt (numerical weights for -1/2)
+PASS 375x812 Hopf: tooth dots identical, walk vertices change at tilt 1; gate line still passes
+PASS 375x812 N = 0 at tilt -1: the empty state is drawn and labelled
+PASS 375x812 no page errors
+browser-check-v047: 58 passed, 2 failed

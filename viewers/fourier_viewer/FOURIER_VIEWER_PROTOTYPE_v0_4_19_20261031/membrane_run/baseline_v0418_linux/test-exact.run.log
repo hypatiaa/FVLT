@@ -1,0 +1,22 @@
+PASS rat normalises sign and gcd
+PASS rat zero denominator throws
+PASS parse decimals/fractions
+PASS parse rejects junk
+PASS parse round trip text(parse(text(q)))
+PASS parseProduct
+PASS floor/ceil signs
+PASS cmp/eq/add/sub/mul/div
+PASS canonical bytes: sorted keys, compact, ASCII, bigint as string
+PASS canonicalFile one trailing LF
+PASS canonical refuses JS numbers
+PASS strict parser accepts valid
+PASS strict parser rejects duplicate keys
+PASS strict parser rejects nested duplicate keys
+PASS strict parser rejects floats, exponents, trailing garbage
+PASS parse(canonical(x)) round trip
+PASS SHA-256 empty
+PASS SHA-256 abc
+PASS SHA-256 two-block vector
+PASS SHA-256 matches node crypto on random inputs
+PASS the library file is exact-lib 0.2.0 with the pinned sha256 (never edited)
+test-exact: 21 passed, 0 failed

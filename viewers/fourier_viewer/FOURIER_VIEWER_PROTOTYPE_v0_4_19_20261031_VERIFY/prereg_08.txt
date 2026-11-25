@@ -1,0 +1,3 @@
+VERIFY-0419-08 (independent verifier of Fourier viewer v0.4.19). list_honesty.cjs: every [baseline] line of EXPECTED_FAILS_v0419.txt is in the same suite's
+log of the builder's v0.4.18 Linux baseline run (logs of record copied from the build folder), no [new card] line is there; and the FAIL-line multiset of each
+suite equals the list on the builder's v0.4.19 run-of-record logs and on the verifier's own full run. Expected all PASS.

@@ -1,0 +1,44 @@
+PASS T = 300, Rule 30: lattice positions = the skeleton planePen (transcription), all 301
+PASS T = 300, Rule 30: octahedron vertices = the skeleton spherePen (transcription), all 301; each flag direction v_t = −x_(t−1)
+PASS T = 300, Rule 150: lattice positions = the skeleton planePen (transcription), all 301
+PASS T = 300, Rule 150: octahedron vertices = the skeleton spherePen (transcription), all 301; each flag direction v_t = −x_(t−1)
+PASS T = 300, coin seed 1: lattice positions = the skeleton planePen (transcription), all 301
+PASS T = 300, coin seed 1: octahedron vertices = the skeleton spherePen (transcription), all 301; each flag direction v_t = −x_(t−1)
+PASS T = 300, coin seed 5: lattice positions = the skeleton planePen (transcription), all 301
+PASS T = 300, coin seed 5: octahedron vertices = the skeleton spherePen (transcription), all 301; each flag direction v_t = −x_(t−1)
+PASS lattice: 4 lefts close a face, 4 rights too; 1, 2, 3 do not
+PASS octahedron: 3 lefts close a face (back to the start flag), 3 rights too; 1 and 2 do not
+PASS disk: 5 lefts return the pen to 0 exactly (product −I), 5 rights too
+PASS Rule 150 planar pen to T = 4096: |x| ≤ 3, |y| ≤ 2 (max 3, 2), 13 lattice points visited (13: a FINITE count)
+PASS octahedron: the two moves (as permutations of the 24 flags) generate a group of order 12, element orders {"1":1,"2":3,"3":8}, non-abelian, both moves of order 3: A₄ (the only group of order 12 with 8 elements of order 3), not S₄
+PASS octahedron: the start flag has an orbit of exactly 12 of the 24 flags
+PASS octahedron flags reached, Rule 30 T = 4096 (4096 steps): 12 of 24 (vertices 6/6); the whole orbit of 12
+PASS octahedron flags reached, Rule 150 T = 4096 (4096 steps): 12 of 24 (vertices 6/6); the whole orbit of 12
+PASS octahedron flags reached, coin seed 1 T = 4096 (4096 steps): 12 of 24 (vertices 6/6); the whole orbit of 12
+PASS octahedron flags reached, coin seed 5 T = 4096 (4096 steps): 12 of 24 (vertices 6/6); the whole orbit of 12
+PASS octahedron flags reached, Goldbach shell 24 (8 steps): 7 of 24 (vertices 5/6); a short stream reaches part of the 12-flag orbit only
+PASS octahedron flags reached, Goldbach shell 1448 (706 steps): 8 of 24 (vertices 5/6); a short stream reaches part of the 12-flag orbit only
+PASS octahedron flags reached, Goldbach run to 1448 (257430 steps): 12 of 24 (vertices 6/6); the whole orbit of 12
+PASS TIMING Goldbach run N_max = 1448 (257430 steps): lattice 1 ms, octahedron 64 ms (lattice: 6499 points, max |x| 115, |y| 208)
+PASS disk T = 64, Rule 30: the interval product (P = 136) contains the exact F[i] product entrywise
+PASS disk T = 64, Rule 30: d exact-route 29.285573798460 meets d interval-route 29.285573798460
+PASS disk T = 64, Rule 30: det = 1 exactly for the exact product
+PASS disk T = 64, Rule 150: the interval product (P = 136) contains the exact F[i] product entrywise
+PASS disk T = 64, Rule 150: d exact-route 22.018552700006 meets d interval-route 22.018552700006
+PASS disk T = 64, Rule 150: det = 1 exactly for the exact product
+PASS disk T = 64, coin seed 1: the interval product (P = 136) contains the exact F[i] product entrywise
+PASS disk T = 64, coin seed 1: d exact-route 22.187244650365 meets d interval-route 22.187244650365
+PASS disk T = 64, coin seed 1: det = 1 exactly for the exact product
+PASS disk T = 64, coin seed 5: the interval product (P = 136) contains the exact F[i] product entrywise
+PASS disk T = 64, coin seed 5: d exact-route 20.308363000951 meets d interval-route 20.308363000951
+PASS disk T = 64, coin seed 5: det = 1 exactly for the exact product
+PASS trail: Q_j = g_u⁻¹ g_(u−j) exactly for j = 1 … 40 (u = 40, Rule 30)
+PASS trail: every interval trail point Q_j(0) contains the exact point (j = 0 … 40)
+PASS TIMING k = −1, Rule 30, T = 1024: 6 ms at P = 256 bits; d = 309.396527759557 (12 guaranteed places), cosh d = 1.169970012097 × 10^134; enclosure width 2^18 against magnitude 2^270 (relative precision 2^−252)
+PASS TIMING k = −1, Rule 30, T = 4096: 26 ms at P = 640 bits; d = 1308.231479757862 (12 guaranteed places), cosh d = 7.189235585065 × 10^567; enclosure width 2^87 against magnitude 2^656 (relative precision 2^−569)
+PASS chunked exact products (CHUNK = 64): precision lost at P = 2048: Rule 30 71 bits over 64 joins; Rule 150 151 bits over 64 joins; coin seed 1 69 bits over 64 joins; coin seed 5 63 bits over 64 joins; Goldbach shell 1448 16 bits over 12 joins; Goldbach run (first 4096) 82 bits over 64 joins; worst ≤ 3 bits per join, within the 8 allowed
+PASS follow the pen, T = 4096, W = 600: pixels not certified 0 of 3601 (54 ms)
+PASS absolute view, T = 4096: pixels not certified 0 of 24577 (405 ms)
+PASS {5,4} tiling patch, exact BFS depth 8: 334 edges, pixels not certified 0 of 1670 (249 ms)
+PASS {5,4} patch (depth 6, 106 edges, exact keys in F[i]): every vertex degree ≤ 4, the start vertex has degree 4
+SUMMARY test-pen-curvature: 43 passed, 0 failed

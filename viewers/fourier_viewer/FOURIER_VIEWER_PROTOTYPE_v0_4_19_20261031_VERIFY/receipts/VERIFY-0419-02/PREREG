@@ -1,0 +1,5 @@
+VERIFY-0419-02 (rerun of 01 after a relative-path bug in my script; independent verifier of Fourier viewer v0.4.19, Opus 5.5 subagent). Runs verify_0419.cjs (the verifier's own code) on the uploaded
+untouched copies orig/FOURIER_VIEWER_PROTOTYPE_v0_4_19_20261031 and orig/..._v0_4_18_20261031:
+A Goldbach tooth order vs own enumeration (N = 4, 6, 24, 100, 1448, every shell to 1448, the run); B D1 event pieces vs own construction from the
+D1 core (per, psi), end point vs the v0.4.18 core; C pixelCert vs own floor definitions; D dumps the build's dodecahedron moves and arcs for Sage;
+E own float scan. Expected: all PASS, exit 0. Integers/BigInt only.

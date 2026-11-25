@@ -1,0 +1,9 @@
+PASS host-core/elliptic-exact-core.js: no banned token
+PASS host-core/elliptic-period-core.js: no banned token
+PASS instruments/comb-hopf/panel-elliptic.js: no banned token (allowlisted Number(...) at line 11)
+PASS host-core/test-elliptic-exact.cjs: no banned token
+PASS host-core/test-elliptic-period.cjs: no banned token
+PASS build/transcribe-elliptic-fixture.cjs: no banned token
+PASS build/browser-check-v0417.cjs: no banned token
+PASS build/shots-v0417.cjs: no banned token
+SUMMARY no-float-elliptic: 8 passed, 0 failed

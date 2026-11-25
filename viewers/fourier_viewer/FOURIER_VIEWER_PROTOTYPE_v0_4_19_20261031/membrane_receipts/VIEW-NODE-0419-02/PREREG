@@ -1,0 +1,1 @@
+VIEW-NODE-0419-02 (Fourier viewer v0.4.19 builder). Runs host-core/test-v0419-goldbach-order.cjs: the decided Goldbach tooth order (|c| ascending, +c before -c) of pen-streams-core against an independent enumeration (own sieve, comb, sort) for N = 4, 6, 24, 100, 1448, every even N to 1448 and the full run. Exact. Expected: 29 passed, 0 failed.

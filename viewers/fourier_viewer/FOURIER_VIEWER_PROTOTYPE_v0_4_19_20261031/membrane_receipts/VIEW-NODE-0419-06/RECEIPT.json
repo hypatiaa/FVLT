@@ -1,0 +1,6 @@
+{"job":"VIEW-NODE-0419-06","runner":"run_capped_v2.sh","host":"membrane","cwd":"/home/saphir/membrane_compute/viewer/v0_4_19","start_utc":"2026-10-31T18:01:15Z","end_utc":"2026-10-31T18:01:15Z","exit":0,
+ "caps":{"cpu":"core 0","nice":19,"mem_mib":4096,"wall_s":1800},
+ "peak_rss_kib":48236,"wall_used":"0:00.02",
+ "library_check_before":"OK","library_check_after":"OK",
+ "prereg_sha256":"3f4e10833ba64c53810570a55fc06ca31e103da6ed48590db75ca9d9c9969d5f",
+ "command":"node build/check-expected-fails-v0419.cjs --logs /home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_19_20261031/build/_logs --summary /home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_19_20261031/build/_logs/SUMMARY_v0419.txt "}

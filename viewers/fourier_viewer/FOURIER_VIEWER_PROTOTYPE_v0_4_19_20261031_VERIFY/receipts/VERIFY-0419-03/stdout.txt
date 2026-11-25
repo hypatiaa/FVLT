@@ -1,0 +1,14 @@
+PASS route 1: permutation group of the two build moves on the 60 flags has order 60
+PASS route 1: is_isomorphic(AlternatingGroup(5)) = True
+PASS route 1: transitive and regular on 60 flags
+PASS route 1: both moves have order 5 (five lefts / five rights close): 5, 5
+element orders: [(1, 1), (2, 15), (3, 20), (5, 24)]
+PASS element orders 1:1, 2:15, 3:20, 5:24
+PASS route 2: M+ and M- orthogonal with det 1
+PASS route 2: matrix group closure has 60 elements
+PASS route 2: regular representation order 60, is_isomorphic(AlternatingGroup(5)) = True
+PASS route 2 = route 1: on all 60 dumped flags, the build move equals right multiplication by the transcribed M+ / M-
+PASS 20 distinct vertices, all unit
+PASS 30 edges: endpoints at dot sqrt5/3 exactly (dodecahedron edges)
+FAIL arcs: all 630 coordinate enclosures (30 edges x 7 points x 3) contain the true normalised point; max width 2 / 2^96
+SUMMARY verify_a5: 11 passed, 1 failed

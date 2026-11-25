@@ -1,0 +1,71 @@
+PASS 1280x800 fourier controls: non-CA (n! base, the old test state) 41, CA 39; both <= 41 and CA pressed
+INFO 1280x800 fourier integer base B = 24 (non-CA), same method: 39 controls (not asserted; was 42 in v0.4.4 as well)
+PASS 1280x800 fourier controls in continuous mode 41 <= 41
+COUNT 1280x800 fourier non-CA 41 CA 39 continuous 41
+PASS 1280x800 clifford controls: non-CA (n! base, the old test state) 41, CA 39; both <= 41 and CA pressed
+INFO 1280x800 clifford integer base B = 24 (non-CA), same method: 39 controls (not asserted; was 42 in v0.4.4 as well)
+PASS 1280x800 clifford controls in continuous mode 41 <= 41
+COUNT 1280x800 clifford non-CA 41 CA 39 continuous 41
+PASS 1280x800 hopf controls: non-CA (n! base, the old test state) 41, CA 39; both <= 41 and CA pressed
+INFO 1280x800 hopf integer base B = 24 (non-CA), same method: 39 controls (not asserted; was 42 in v0.4.4 as well)
+PASS 1280x800 hopf controls in continuous mode 41 <= 41
+COUNT 1280x800 hopf non-CA 41 CA 39 continuous 41
+PASS 1280x800 CA 2: pressed, B correct, select shows B, card mode CA and index 1 of 10, address text and URL keep &ca=1
+PASS 1280x800 CA 6: pressed, B correct, select shows B, card mode CA and index 2 of 10, address text and URL keep &ca=1
+PASS 1280x800 CA 12: pressed, B correct, select shows B, card mode CA and index 3 of 10, address text and URL keep &ca=1
+PASS 1280x800 CA 60: pressed, B correct, select shows B, card mode CA and index 4 of 10, address text and URL keep &ca=1
+PASS 1280x800 CA 120: pressed, B correct, select shows B, card mode CA and index 5 of 10, address text and URL keep &ca=1
+PASS 1280x800 CA 360: pressed, B correct, select shows B, card mode CA and index 6 of 10, address text and URL keep &ca=1
+PASS 1280x800 CA 2520: pressed, B correct, select shows B, card mode CA and index 7 of 10, address text and URL keep &ca=1
+PASS 1280x800 CA 5040: pressed, B correct, select shows B, card mode CA and index 8 of 10, address text and URL keep &ca=1
+PASS 1280x800 CA 55440: pressed, B correct, select shows B, card mode CA and index 9 of 10, address text and URL keep &ca=1
+PASS 1280x800 CA 720720: pressed, B correct, select shows B, card mode CA and index 10 of 10, address text and URL keep &ca=1
+PASS 1280x800 UI CA 55440 writes &ca=1 into the URL and the address line
+PASS 1280x800 round trip: reload from that URL gives the same state, CA pressed, same address
+PASS 1280x800 leaving CA (integer button) drops the field from the URL
+PASS 1280x800 non-CA states (incl. integer B = 5040 and 55440 without the field): address, URL and state identical to v0.4.4 (6/6)
+PASS 1280x800 old-style address of a preset B (no field): integer mode, CA unpressed, address unchanged
+PASS 1280x800 refusal (non-preset B): state loads as named, CA unpressed, label shown, no ca in the address line
+PASS 1280x800 refusal (n! mode): state loads as named, CA unpressed, label shown, no ca in the address line
+PASS 1280x800 refusal (ca=2): state loads as named, CA unpressed, label shown, no ca in the address line
+PASS 1280x800 refusal (repeated): state loads as named, CA unpressed, label shown, no ca in the address line
+PASS 1280x800 refusal keeps B = 100 (not 5040), integer mode, no preset menu
+PASS 1280x800 an invalid state part is still refused as before
+PASS 1280x800 hashchange: adding the field presses CA, removing it releases CA
+PASS 1280x800 no page errors
+PASS 375x812 fourier controls: non-CA (n! base, the old test state) 41, CA 39; both <= 41 and CA pressed
+INFO 375x812 fourier integer base B = 24 (non-CA), same method: 39 controls (not asserted; was 42 in v0.4.4 as well)
+PASS 375x812 fourier controls in continuous mode 41 <= 41
+COUNT 375x812 fourier non-CA 41 CA 39 continuous 41
+PASS 375x812 clifford controls: non-CA (n! base, the old test state) 41, CA 39; both <= 41 and CA pressed
+INFO 375x812 clifford integer base B = 24 (non-CA), same method: 39 controls (not asserted; was 42 in v0.4.4 as well)
+PASS 375x812 clifford controls in continuous mode 41 <= 41
+COUNT 375x812 clifford non-CA 41 CA 39 continuous 41
+PASS 375x812 hopf controls: non-CA (n! base, the old test state) 41, CA 39; both <= 41 and CA pressed
+INFO 375x812 hopf integer base B = 24 (non-CA), same method: 39 controls (not asserted; was 42 in v0.4.4 as well)
+PASS 375x812 hopf controls in continuous mode 41 <= 41
+COUNT 375x812 hopf non-CA 41 CA 39 continuous 41
+PASS 375x812 CA 2: pressed, B correct, select shows B, card mode CA and index 1 of 10, address text and URL keep &ca=1
+PASS 375x812 CA 6: pressed, B correct, select shows B, card mode CA and index 2 of 10, address text and URL keep &ca=1
+PASS 375x812 CA 12: pressed, B correct, select shows B, card mode CA and index 3 of 10, address text and URL keep &ca=1
+PASS 375x812 CA 60: pressed, B correct, select shows B, card mode CA and index 4 of 10, address text and URL keep &ca=1
+PASS 375x812 CA 120: pressed, B correct, select shows B, card mode CA and index 5 of 10, address text and URL keep &ca=1
+PASS 375x812 CA 360: pressed, B correct, select shows B, card mode CA and index 6 of 10, address text and URL keep &ca=1
+PASS 375x812 CA 2520: pressed, B correct, select shows B, card mode CA and index 7 of 10, address text and URL keep &ca=1
+PASS 375x812 CA 5040: pressed, B correct, select shows B, card mode CA and index 8 of 10, address text and URL keep &ca=1
+PASS 375x812 CA 55440: pressed, B correct, select shows B, card mode CA and index 9 of 10, address text and URL keep &ca=1
+PASS 375x812 CA 720720: pressed, B correct, select shows B, card mode CA and index 10 of 10, address text and URL keep &ca=1
+PASS 375x812 UI CA 55440 writes &ca=1 into the URL and the address line
+PASS 375x812 round trip: reload from that URL gives the same state, CA pressed, same address
+PASS 375x812 leaving CA (integer button) drops the field from the URL
+PASS 375x812 non-CA states (incl. integer B = 5040 and 55440 without the field): address, URL and state identical to v0.4.4 (6/6)
+PASS 375x812 old-style address of a preset B (no field): integer mode, CA unpressed, address unchanged
+PASS 375x812 refusal (non-preset B): state loads as named, CA unpressed, label shown, no ca in the address line
+PASS 375x812 refusal (n! mode): state loads as named, CA unpressed, label shown, no ca in the address line
+PASS 375x812 refusal (ca=2): state loads as named, CA unpressed, label shown, no ca in the address line
+PASS 375x812 refusal (repeated): state loads as named, CA unpressed, label shown, no ca in the address line
+PASS 375x812 refusal keeps B = 100 (not 5040), integer mode, no preset menu
+PASS 375x812 an invalid state part is still refused as before
+PASS 375x812 hashchange: adding the field presses CA, removing it releases CA
+PASS 375x812 no page errors
+58 passed, 0 failed

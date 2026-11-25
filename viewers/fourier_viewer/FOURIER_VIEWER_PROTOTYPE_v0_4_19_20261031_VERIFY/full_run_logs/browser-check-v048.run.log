@@ -1,0 +1,20 @@
+PASS 1280x800 tilt -1: new wording, no old wording
+FAIL 1280x800 tilt -1: Q-res part "Q-res x (numerical)" fully visible (not cut by the ellipsis) ALIGN yes · SPREAD no ★ teeth conjugate (t₁·s ∈ ℤ); walk not real · Q-res 6.1e+0 (numerical) · mirror axis = real axis (t₁·s ∈ ℤ)
+PASS 1280x800 hopf tilt -1: one-line caption has no star/Q-res text and is not cut
+PASS 1280x800 tilt -3/5: new wording, no old wording
+FAIL 1280x800 tilt -3/5: Q-res part "Q-res x (numerical)" fully visible (not cut by the ellipsis) ALIGN yes · SPREAD no ★ teeth conjugate (t₁·s ∈ ℤ); walk not real · Q-res 5.2e+0 (numerical) · mirror axis = real axis (t₁·s ∈ ℤ)
+PASS 1280x800 hopf tilt -3/5: one-line caption has no star/Q-res text and is not cut
+PASS 1280x800 tilt 1: new wording, no old wording
+FAIL 1280x800 tilt 1: Q-res part "Q-res x (numerical)" fully visible (not cut by the ellipsis) ALIGN yes · SPREAD no ★ teeth conjugate (t₁·s ∈ ℤ); walk not real · Q-res 5.3e+1 (numerical) · mirror axis = real axis (t₁·s ∈ ℤ)
+PASS 1280x800 hopf tilt 1: one-line caption has no star/Q-res text and is not cut
+PASS 1280x800 tilt 0: caption, about, stage byte-identical to v0.4.7 (6/6)
+PASS 1280x800 Panels at tilt 1: relabel "(teeth only; the tilted walk is not mirror-symmetric)" present
+PASS 375x812 tilt -1: new wording, no old wording
+PASS 375x812 hopf tilt -1: one-line caption has no star/Q-res text and is not cut (375: wraps/ellipsis not required)
+PASS 375x812 tilt -3/5: new wording, no old wording
+PASS 375x812 hopf tilt -3/5: one-line caption has no star/Q-res text and is not cut (375: wraps/ellipsis not required)
+PASS 375x812 tilt 1: new wording, no old wording
+PASS 375x812 hopf tilt 1: one-line caption has no star/Q-res text and is not cut (375: wraps/ellipsis not required)
+PASS 375x812 tilt 0: caption, about, stage byte-identical to v0.4.7 (6/6)
+PASS 375x812 Panels at tilt 1: relabel "(teeth only; the tilted walk is not mirror-symmetric)" present
+v0.4.8 browser check: 16 pass / 3 fail

@@ -1,0 +1,6 @@
+{"job":"VIEW-NODE-0418-03","runner":"run_capped_v2.sh","host":"membrane","cwd":"/home/saphir/membrane_compute/viewer/v0_4_18","start_utc":"2026-10-31T12:39:12Z","end_utc":"2026-10-31T12:39:15Z","exit":0,
+ "caps":{"cpu":"core 0","nice":19,"mem_mib":4096,"wall_s":1800},
+ "peak_rss_kib":291160,"wall_used":"0:02.26",
+ "library_check_before":"OK","library_check_after":"OK",
+ "prereg_sha256":"d889b536bbf72081141a7cee7bdd910c275730bda6b38a30bb4367bb10d8f29e",
+ "command":"/home/saphir/.local/bin/node host-core/test-pen-curvature.cjs "}

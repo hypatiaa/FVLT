@@ -1,0 +1,6 @@
+{"job":"VIEW-SAGE-0419-01","runner":"run_capped_v2.sh","host":"membrane","cwd":"/home/saphir/membrane_compute/viewer/v0_4_19","start_utc":"2026-10-31T17:15:34Z","end_utc":"2026-10-31T17:15:37Z","exit":1,
+ "caps":{"cpu":"core 0","nice":19,"mem_mib":4096,"wall_s":1800},
+ "peak_rss_kib":325680,"wall_used":"0:02.51",
+ "library_check_before":"OK","library_check_after":"OK",
+ "prereg_sha256":"07d1d9d3e0e11b9d82ca7a2ecc373848bcc47e842cac583130512d0d3c9614ff",
+ "command":"sage build/sage-a5-v0419.sage a5_moves_v0419.json "}

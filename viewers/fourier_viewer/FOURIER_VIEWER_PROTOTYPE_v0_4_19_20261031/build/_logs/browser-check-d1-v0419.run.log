@@ -1,0 +1,190 @@
+PASS the v0.4.18 page (read only) has its pinned sha256 0ccc87aef5612d57…
+PASS 1280x800 rule 30 j = 26 q = 1: per 1024, steps 1024, base sub 1, event steps 768; every event step has 32 pieces (need ≥ 32): min = max = 32
+PASS 1280x800 rule 30 j = 26 q = 1: the fibre is strictly forward along every piece of all 768 event steps (and the base too); none backward
+PASS 1280x800 rule 30 j = 26 q = 1: points n = (steps − events)·sub + events·e + 1 = 24833
+PASS 1280x800 rule 30 j = 26 q = 1: the first event step (t = 12, N_j(t) = 0): 32 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 1280x800 rule 30 j = 26 q = 1: the last event step (t = 1023, N_j(t) = 767): 32 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 1280x800 rule 30 j = 26 q = 1: end point unchanged: base 1/1, fibre 768/1 = the core’s = the v0.4.18 page’s
+PASS 1280x800 rule 30 j = 26 q = 1: per, S, k, steps and sub equal v0.4.18’s
+PASS 1280x800 rule 30 j = 26 q = 1: v0.4.18 drew each event step as 1 chord(s) (768 event segments); v0.4.19 draws 24576 event pieces
+PASS 1280x800 rule 30 j = 26 q = 1: the q = 1 caption states the full forward fibre loop
+PASS 1280x800 rule 30 j = 26 q = 1: amber (event) ink drawn: 89543 px (v0.4.18: 533 px)
+PASS 1280x800 rule 30 j = 26 q = 1: no horizontal page scroll
+TIMING 1280x800 rule 30 j = 26 q = 1: page load to first render 618 ms
+PASS 1280x800 rule 30 j = 26 q = 2: per 1024, steps 1024, base sub 1, event steps 768; every event step has 16 pieces (need ≥ 16): min = max = 16
+PASS 1280x800 rule 30 j = 26 q = 2: the fibre is strictly forward along every piece of all 768 event steps (and the base too); none backward
+PASS 1280x800 rule 30 j = 26 q = 2: points n = (steps − events)·sub + events·e + 1 = 12545
+PASS 1280x800 rule 30 j = 26 q = 2: the first event step (t = 12, N_j(t) = 0): 16 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 1280x800 rule 30 j = 26 q = 2: the last event step (t = 1023, N_j(t) = 767): 16 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 1280x800 rule 30 j = 26 q = 2: end point unchanged: base 1/1, fibre 384/1 = the core’s = the v0.4.18 page’s
+PASS 1280x800 rule 30 j = 26 q = 2: per, S, k, steps and sub equal v0.4.18’s
+PASS 1280x800 rule 30 j = 26 q = 2: v0.4.18 drew each event step as 1 chord(s) (768 event segments); v0.4.19 draws 12288 event pieces
+PASS 1280x800 rule 30 j = 26 q = 2: amber (event) ink drawn: 89036 px (v0.4.18: 18238 px)
+PASS 1280x800 rule 30 j = 26 q = 2: no horizontal page scroll
+TIMING 1280x800 rule 30 j = 26 q = 2: page load to first render 522 ms
+PASS 1280x800 rule 30 j = 30 q = 1: per 4096, steps 4096, base sub 1, event steps 3070; every event step has 32 pieces (need ≥ 32): min = max = 32
+PASS 1280x800 rule 30 j = 30 q = 1: the fibre is strictly forward along every piece of all 3070 event steps (and the base too); none backward
+PASS 1280x800 rule 30 j = 30 q = 1: points n = (steps − events)·sub + events·e + 1 = 99267
+PASS 1280x800 rule 30 j = 30 q = 1: the first event step (t = 14, N_j(t) = 0): 32 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 1280x800 rule 30 j = 30 q = 1: the last event step (t = 4095, N_j(t) = 3069): 32 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 1280x800 rule 30 j = 30 q = 1: end point unchanged: base 1/1, fibre 3070/1 = the core’s = the v0.4.18 page’s
+PASS 1280x800 rule 30 j = 30 q = 1: per, S, k, steps and sub equal v0.4.18’s
+PASS 1280x800 rule 30 j = 30 q = 1: v0.4.18 drew each event step as 1 chord(s) (3070 event segments); v0.4.19 draws 98240 event pieces
+PASS 1280x800 rule 30 j = 30 q = 1: the q = 1 caption states the full forward fibre loop
+PASS 1280x800 rule 30 j = 30 q = 1: amber (event) ink drawn: 89660 px (v0.4.18: 552 px)
+PASS 1280x800 rule 30 j = 30 q = 1: more event ink than v0.4.18 (whose event steps had zero length at q = 1)
+PASS 1280x800 rule 30 j = 30 q = 1: no horizontal page scroll
+TIMING 1280x800 rule 30 j = 30 q = 1: page load to first render 1077 ms
+PASS 1280x800 rule 30 j = 30 q = 2: per 4096, steps 4096, base sub 1, event steps 3070; every event step has 16 pieces (need ≥ 16): min = max = 16
+PASS 1280x800 rule 30 j = 30 q = 2: the fibre is strictly forward along every piece of all 3070 event steps (and the base too); none backward
+PASS 1280x800 rule 30 j = 30 q = 2: points n = (steps − events)·sub + events·e + 1 = 50147
+PASS 1280x800 rule 30 j = 30 q = 2: the first event step (t = 14, N_j(t) = 0): 16 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 1280x800 rule 30 j = 30 q = 2: the last event step (t = 4095, N_j(t) = 3069): 16 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 1280x800 rule 30 j = 30 q = 2: end point unchanged: base 1/1, fibre 1535/1 = the core’s = the v0.4.18 page’s
+PASS 1280x800 rule 30 j = 30 q = 2: per, S, k, steps and sub equal v0.4.18’s
+PASS 1280x800 rule 30 j = 30 q = 2: v0.4.18 drew each event step as 1 chord(s) (3070 event segments); v0.4.19 draws 49120 event pieces
+PASS 1280x800 rule 30 j = 30 q = 2: amber (event) ink drawn: 89636 px (v0.4.18: 18270 px)
+PASS 1280x800 rule 30 j = 30 q = 2: no horizontal page scroll
+TIMING 1280x800 rule 30 j = 30 q = 2: page load to first render 731 ms
+PASS 1280x800 rule 30 j = 34 q = 1: per 4096, steps 4096, base sub 1, event steps 3043; every event step has 32 pieces (need ≥ 32): min = max = 32
+PASS 1280x800 rule 30 j = 34 q = 1: the fibre is strictly forward along every piece of all 3043 event steps (and the base too); none backward
+PASS 1280x800 rule 30 j = 34 q = 1: points n = (steps − events)·sub + events·e + 1 = 98430
+PASS 1280x800 rule 30 j = 34 q = 1: the first event step (t = 16, N_j(t) = 0): 32 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 1280x800 rule 30 j = 34 q = 1: the last event step (t = 4095, N_j(t) = 3042): 32 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 1280x800 rule 30 j = 34 q = 1: end point unchanged: base 1/1, fibre 3043/1 = the core’s = the v0.4.18 page’s
+PASS 1280x800 rule 30 j = 34 q = 1: per, S, k, steps and sub equal v0.4.18’s
+PASS 1280x800 rule 30 j = 34 q = 1: v0.4.18 drew each event step as 1 chord(s) (3043 event segments); v0.4.19 draws 97376 event pieces
+PASS 1280x800 rule 30 j = 34 q = 1: the q = 1 caption states the full forward fibre loop
+PASS 1280x800 rule 30 j = 34 q = 1: amber (event) ink drawn: 89662 px (v0.4.18: 553 px)
+PASS 1280x800 rule 30 j = 34 q = 1: no horizontal page scroll
+TIMING 1280x800 rule 30 j = 34 q = 1: page load to first render 1093 ms
+PASS 1280x800 rule 30 j = 34 q = 2: per 4096, steps 8192, base sub 1, event steps 6086; every event step has 16 pieces (need ≥ 16): min = max = 16
+PASS 1280x800 rule 30 j = 34 q = 2: the fibre is strictly forward along every piece of all 6086 event steps (and the base too); none backward
+PASS 1280x800 rule 30 j = 34 q = 2: points n = (steps − events)·sub + events·e + 1 = 99483
+PASS 1280x800 rule 30 j = 34 q = 2: the first event step (t = 16, N_j(t) = 0): 16 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 1280x800 rule 30 j = 34 q = 2: the last event step (t = 8191, N_j(t) = 6085): 16 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 1280x800 rule 30 j = 34 q = 2: end point unchanged: base 2/1, fibre 3043/1 = the core’s = the v0.4.18 page’s
+PASS 1280x800 rule 30 j = 34 q = 2: per, S, k, steps and sub equal v0.4.18’s
+PASS 1280x800 rule 30 j = 34 q = 2: v0.4.18 drew each event step as 1 chord(s) (6086 event segments); v0.4.19 draws 97376 event pieces
+PASS 1280x800 rule 30 j = 34 q = 2: amber (event) ink drawn: 89538 px (v0.4.18: 18164 px)
+PASS 1280x800 rule 30 j = 34 q = 2: no horizontal page scroll
+TIMING 1280x800 rule 30 j = 34 q = 2: page load to first render 1086 ms
+PASS 1280x800 rule 30 j = 3 q = 1 (control): per 2, steps 2, base sub 360, event steps 1; every event step has 360 pieces (need ≥ 32): min = max = 360
+PASS 1280x800 rule 30 j = 3 q = 1 (control): the fibre is strictly forward along every piece of all 1 event steps (and the base too); none backward
+PASS 1280x800 rule 30 j = 3 q = 1 (control): points n = (steps − events)·sub + events·e + 1 = 721
+PASS 1280x800 rule 30 j = 3 q = 1 (control): the first event step (t = 1, N_j(t) = 0): 360 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 1280x800 rule 30 j = 3 q = 1 (control): the last event step (t = 1, N_j(t) = 0): 360 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 1280x800 rule 30 j = 3 q = 1 (control): end point unchanged: base 1/1, fibre 1/1 = the core’s = the v0.4.18 page’s
+PASS 1280x800 rule 30 j = 3 q = 1 (control): per, S, k, steps and sub equal v0.4.18’s
+PASS 1280x800 rule 30 j = 3 q = 1 (control): control row (sub = 360 ≥ 32): every v0.4.18 attribute unchanged (n, event and base segments included)
+PASS 1280x800 rule 30 j = 3 q = 1 (control): the q = 1 caption states the full forward fibre loop
+PASS 1280x800 rule 30 j = 3 q = 1 (control): amber (event) ink drawn: 1015 px (v0.4.18: 1015 px)
+PASS 1280x800 rule 30 j = 3 q = 1 (control): no horizontal page scroll
+TIMING 1280x800 rule 30 j = 3 q = 1 (control): page load to first render 479 ms
+PASS 1280x800 rule 30 j = 3 q = 2 (control): per 2, steps 4, base sub 360, event steps 2; every event step has 360 pieces (need ≥ 16): min = max = 360
+PASS 1280x800 rule 30 j = 3 q = 2 (control): the fibre is strictly forward along every piece of all 2 event steps (and the base too); none backward
+PASS 1280x800 rule 30 j = 3 q = 2 (control): points n = (steps − events)·sub + events·e + 1 = 1441
+PASS 1280x800 rule 30 j = 3 q = 2 (control): the first event step (t = 1, N_j(t) = 0): 360 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 1280x800 rule 30 j = 3 q = 2 (control): the last event step (t = 3, N_j(t) = 1): 360 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 1280x800 rule 30 j = 3 q = 2 (control): end point unchanged: base 2/1, fibre 1/1 = the core’s = the v0.4.18 page’s
+PASS 1280x800 rule 30 j = 3 q = 2 (control): per, S, k, steps and sub equal v0.4.18’s
+PASS 1280x800 rule 30 j = 3 q = 2 (control): control row (sub = 360 ≥ 16): every v0.4.18 attribute unchanged (n, event and base segments included)
+PASS 1280x800 rule 30 j = 3 q = 2 (control): amber (event) ink drawn: 1083 px (v0.4.18: 1083 px)
+PASS 1280x800 rule 30 j = 3 q = 2 (control): no horizontal page scroll
+TIMING 1280x800 rule 30 j = 3 q = 2 (control): page load to first render 478 ms
+PASS 1280x800 no page errors and no console errors
+PASS 375x812 rule 30 j = 26 q = 1: per 1024, steps 1024, base sub 1, event steps 768; every event step has 32 pieces (need ≥ 32): min = max = 32
+PASS 375x812 rule 30 j = 26 q = 1: the fibre is strictly forward along every piece of all 768 event steps (and the base too); none backward
+PASS 375x812 rule 30 j = 26 q = 1: points n = (steps − events)·sub + events·e + 1 = 24833
+PASS 375x812 rule 30 j = 26 q = 1: the first event step (t = 12, N_j(t) = 0): 32 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 375x812 rule 30 j = 26 q = 1: the last event step (t = 1023, N_j(t) = 767): 32 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 375x812 rule 30 j = 26 q = 1: end point unchanged: base 1/1, fibre 768/1 = the core’s = the v0.4.18 page’s
+PASS 375x812 rule 30 j = 26 q = 1: per, S, k, steps and sub equal v0.4.18’s
+PASS 375x812 rule 30 j = 26 q = 1: v0.4.18 drew each event step as 1 chord(s) (768 event segments); v0.4.19 draws 24576 event pieces
+PASS 375x812 rule 30 j = 26 q = 1: the q = 1 caption states the full forward fibre loop
+PASS 375x812 rule 30 j = 26 q = 1: amber (event) ink drawn: 22431 px (v0.4.18: 86 px)
+PASS 375x812 rule 30 j = 26 q = 1: no horizontal page scroll
+TIMING 375x812 rule 30 j = 26 q = 1: page load to first render 577 ms
+PASS 375x812 rule 30 j = 26 q = 2: per 1024, steps 1024, base sub 1, event steps 768; every event step has 16 pieces (need ≥ 16): min = max = 16
+PASS 375x812 rule 30 j = 26 q = 2: the fibre is strictly forward along every piece of all 768 event steps (and the base too); none backward
+PASS 375x812 rule 30 j = 26 q = 2: points n = (steps − events)·sub + events·e + 1 = 12545
+PASS 375x812 rule 30 j = 26 q = 2: the first event step (t = 12, N_j(t) = 0): 16 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 375x812 rule 30 j = 26 q = 2: the last event step (t = 1023, N_j(t) = 767): 16 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 375x812 rule 30 j = 26 q = 2: end point unchanged: base 1/1, fibre 384/1 = the core’s = the v0.4.18 page’s
+PASS 375x812 rule 30 j = 26 q = 2: per, S, k, steps and sub equal v0.4.18’s
+PASS 375x812 rule 30 j = 26 q = 2: v0.4.18 drew each event step as 1 chord(s) (768 event segments); v0.4.19 draws 12288 event pieces
+PASS 375x812 rule 30 j = 26 q = 2: amber (event) ink drawn: 22289 px (v0.4.18: 4500 px)
+PASS 375x812 rule 30 j = 26 q = 2: no horizontal page scroll
+TIMING 375x812 rule 30 j = 26 q = 2: page load to first render 507 ms
+PASS 375x812 rule 30 j = 30 q = 1: per 4096, steps 4096, base sub 1, event steps 3070; every event step has 32 pieces (need ≥ 32): min = max = 32
+PASS 375x812 rule 30 j = 30 q = 1: the fibre is strictly forward along every piece of all 3070 event steps (and the base too); none backward
+PASS 375x812 rule 30 j = 30 q = 1: points n = (steps − events)·sub + events·e + 1 = 99267
+PASS 375x812 rule 30 j = 30 q = 1: the first event step (t = 14, N_j(t) = 0): 32 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 375x812 rule 30 j = 30 q = 1: the last event step (t = 4095, N_j(t) = 3069): 32 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 375x812 rule 30 j = 30 q = 1: end point unchanged: base 1/1, fibre 3070/1 = the core’s = the v0.4.18 page’s
+PASS 375x812 rule 30 j = 30 q = 1: per, S, k, steps and sub equal v0.4.18’s
+PASS 375x812 rule 30 j = 30 q = 1: v0.4.18 drew each event step as 1 chord(s) (3070 event segments); v0.4.19 draws 98240 event pieces
+PASS 375x812 rule 30 j = 30 q = 1: the q = 1 caption states the full forward fibre loop
+PASS 375x812 rule 30 j = 30 q = 1: amber (event) ink drawn: 22464 px (v0.4.18: 97 px)
+PASS 375x812 rule 30 j = 30 q = 1: more event ink than v0.4.18 (whose event steps had zero length at q = 1)
+PASS 375x812 rule 30 j = 30 q = 1: no horizontal page scroll
+TIMING 375x812 rule 30 j = 30 q = 1: page load to first render 886 ms
+PASS 375x812 rule 30 j = 30 q = 2: per 4096, steps 4096, base sub 1, event steps 3070; every event step has 16 pieces (need ≥ 16): min = max = 16
+PASS 375x812 rule 30 j = 30 q = 2: the fibre is strictly forward along every piece of all 3070 event steps (and the base too); none backward
+PASS 375x812 rule 30 j = 30 q = 2: points n = (steps − events)·sub + events·e + 1 = 50147
+PASS 375x812 rule 30 j = 30 q = 2: the first event step (t = 14, N_j(t) = 0): 16 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 375x812 rule 30 j = 30 q = 2: the last event step (t = 4095, N_j(t) = 3069): 16 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 375x812 rule 30 j = 30 q = 2: end point unchanged: base 1/1, fibre 1535/1 = the core’s = the v0.4.18 page’s
+PASS 375x812 rule 30 j = 30 q = 2: per, S, k, steps and sub equal v0.4.18’s
+PASS 375x812 rule 30 j = 30 q = 2: v0.4.18 drew each event step as 1 chord(s) (3070 event segments); v0.4.19 draws 49120 event pieces
+PASS 375x812 rule 30 j = 30 q = 2: amber (event) ink drawn: 22467 px (v0.4.18: 4524 px)
+PASS 375x812 rule 30 j = 30 q = 2: no horizontal page scroll
+TIMING 375x812 rule 30 j = 30 q = 2: page load to first render 651 ms
+PASS 375x812 rule 30 j = 34 q = 1: per 4096, steps 4096, base sub 1, event steps 3043; every event step has 32 pieces (need ≥ 32): min = max = 32
+PASS 375x812 rule 30 j = 34 q = 1: the fibre is strictly forward along every piece of all 3043 event steps (and the base too); none backward
+PASS 375x812 rule 30 j = 34 q = 1: points n = (steps − events)·sub + events·e + 1 = 98430
+PASS 375x812 rule 30 j = 34 q = 1: the first event step (t = 16, N_j(t) = 0): 32 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 375x812 rule 30 j = 34 q = 1: the last event step (t = 4095, N_j(t) = 3042): 32 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 375x812 rule 30 j = 34 q = 1: end point unchanged: base 1/1, fibre 3043/1 = the core’s = the v0.4.18 page’s
+PASS 375x812 rule 30 j = 34 q = 1: per, S, k, steps and sub equal v0.4.18’s
+PASS 375x812 rule 30 j = 34 q = 1: v0.4.18 drew each event step as 1 chord(s) (3043 event segments); v0.4.19 draws 97376 event pieces
+PASS 375x812 rule 30 j = 34 q = 1: the q = 1 caption states the full forward fibre loop
+PASS 375x812 rule 30 j = 34 q = 1: amber (event) ink drawn: 22464 px (v0.4.18: 95 px)
+PASS 375x812 rule 30 j = 34 q = 1: no horizontal page scroll
+TIMING 375x812 rule 30 j = 34 q = 1: page load to first render 897 ms
+PASS 375x812 rule 30 j = 34 q = 2: per 4096, steps 8192, base sub 1, event steps 6086; every event step has 16 pieces (need ≥ 16): min = max = 16
+PASS 375x812 rule 30 j = 34 q = 2: the fibre is strictly forward along every piece of all 6086 event steps (and the base too); none backward
+PASS 375x812 rule 30 j = 34 q = 2: points n = (steps − events)·sub + events·e + 1 = 99483
+PASS 375x812 rule 30 j = 34 q = 2: the first event step (t = 16, N_j(t) = 0): 16 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 375x812 rule 30 j = 34 q = 2: the last event step (t = 8191, N_j(t) = 6085): 16 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 375x812 rule 30 j = 34 q = 2: end point unchanged: base 2/1, fibre 3043/1 = the core’s = the v0.4.18 page’s
+PASS 375x812 rule 30 j = 34 q = 2: per, S, k, steps and sub equal v0.4.18’s
+PASS 375x812 rule 30 j = 34 q = 2: v0.4.18 drew each event step as 1 chord(s) (6086 event segments); v0.4.19 draws 97376 event pieces
+PASS 375x812 rule 30 j = 34 q = 2: amber (event) ink drawn: 22437 px (v0.4.18: 4497 px)
+PASS 375x812 rule 30 j = 34 q = 2: no horizontal page scroll
+TIMING 375x812 rule 30 j = 34 q = 2: page load to first render 907 ms
+PASS 375x812 rule 30 j = 3 q = 1 (control): per 2, steps 2, base sub 360, event steps 1; every event step has 360 pieces (need ≥ 32): min = max = 360
+PASS 375x812 rule 30 j = 3 q = 1 (control): the fibre is strictly forward along every piece of all 1 event steps (and the base too); none backward
+PASS 375x812 rule 30 j = 3 q = 1 (control): points n = (steps − events)·sub + events·e + 1 = 721
+PASS 375x812 rule 30 j = 3 q = 1 (control): the first event step (t = 1, N_j(t) = 0): 360 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 375x812 rule 30 j = 3 q = 1 (control): the last event step (t = 1, N_j(t) = 0): 360 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 375x812 rule 30 j = 3 q = 1 (control): end point unchanged: base 1/1, fibre 1/1 = the core’s = the v0.4.18 page’s
+PASS 375x812 rule 30 j = 3 q = 1 (control): per, S, k, steps and sub equal v0.4.18’s
+PASS 375x812 rule 30 j = 3 q = 1 (control): control row (sub = 360 ≥ 32): every v0.4.18 attribute unchanged (n, event and base segments included)
+PASS 375x812 rule 30 j = 3 q = 1 (control): the q = 1 caption states the full forward fibre loop
+PASS 375x812 rule 30 j = 3 q = 1 (control): amber (event) ink drawn: 180 px (v0.4.18: 180 px)
+PASS 375x812 rule 30 j = 3 q = 1 (control): no horizontal page scroll
+TIMING 375x812 rule 30 j = 3 q = 1 (control): page load to first render 472 ms
+PASS 375x812 rule 30 j = 3 q = 2 (control): per 2, steps 4, base sub 360, event steps 2; every event step has 360 pieces (need ≥ 16): min = max = 360
+PASS 375x812 rule 30 j = 3 q = 2 (control): the fibre is strictly forward along every piece of all 2 event steps (and the base too); none backward
+PASS 375x812 rule 30 j = 3 q = 2 (control): points n = (steps − events)·sub + events·e + 1 = 1441
+PASS 375x812 rule 30 j = 3 q = 2 (control): the first event step (t = 1, N_j(t) = 0): 360 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 375x812 rule 30 j = 3 q = 2 (control): the last event step (t = 3, N_j(t) = 1): 360 pieces with exact fibre values (N_j(t)·e + i)/(q·e), strictly increasing, from N_j(t)/q to (N_j(t) + 1)/q
+PASS 375x812 rule 30 j = 3 q = 2 (control): end point unchanged: base 2/1, fibre 1/1 = the core’s = the v0.4.18 page’s
+PASS 375x812 rule 30 j = 3 q = 2 (control): per, S, k, steps and sub equal v0.4.18’s
+PASS 375x812 rule 30 j = 3 q = 2 (control): control row (sub = 360 ≥ 16): every v0.4.18 attribute unchanged (n, event and base segments included)
+PASS 375x812 rule 30 j = 3 q = 2 (control): amber (event) ink drawn: 201 px (v0.4.18: 201 px)
+PASS 375x812 rule 30 j = 3 q = 2 (control): no horizontal page scroll
+TIMING 375x812 rule 30 j = 3 q = 2 (control): page load to first render 476 ms
+PASS 375x812 no page errors and no console errors
+SUMMARY browser-check-d1-v0419: 173 passed, 0 failed

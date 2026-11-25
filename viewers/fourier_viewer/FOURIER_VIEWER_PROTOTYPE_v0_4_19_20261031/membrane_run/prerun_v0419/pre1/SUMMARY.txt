@@ -1,0 +1,2 @@
+browser-check-d1-v0419 exit=0 SUMMARY browser-check-d1-v0419: 173 passed, 0 failed
+browser-check-v0419 exit=1 SUMMARY browser-check-v0419: 64 passed, 2 failed

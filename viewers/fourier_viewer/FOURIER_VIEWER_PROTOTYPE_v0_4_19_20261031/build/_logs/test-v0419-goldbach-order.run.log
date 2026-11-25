@@ -1,0 +1,30 @@
+PASS N = 4 (m = 3, odd m, t₂ = 1): tooth order = reference (0, 1, -1), 3 teeth
+PASS N = 4: signs = reference mask (+ iff N/2 ± |c|·t₂ both prime)
+PASS N = 4: #+ = 1 = 2·g(N) − δ = 2·1 − 1 (pairs p ≠ N − p twice, the equal pair once)
+PASS N = 4: odd m starts 0, 1, −1, …
+PASS N = 4: each +c is followed by −c with the same sign (both sides)
+PASS N = 6 (m = 3, odd m, t₂ = 2): tooth order = reference (0, 1, -1), 3 teeth
+PASS N = 6: signs = reference mask (+ iff N/2 ± |c|·t₂ both prime)
+PASS N = 6: #+ = 1 = 2·g(N) − δ = 2·1 − 1 (pairs p ≠ N − p twice, the equal pair once)
+PASS N = 6: odd m starts 0, 1, −1, …
+PASS N = 6: each +c is followed by −c with the same sign (both sides)
+PASS N = 24 (m = 8, even m, t₂ = 1): tooth order = reference (1, -1, 3, -3, 5, -5, 7, -7), 8 teeth
+PASS N = 24: signs = reference mask (+ iff N/2 ± |c|·t₂ both prime)
+PASS N = 24: #+ = 6 = 2·g(N) − δ = 2·3 − 0 (pairs p ≠ N − p twice, the equal pair once)
+PASS N = 24: even m has no c = 0 tooth and starts 1, −1, 3, −3
+PASS N = 24: each +c is followed by −c with the same sign (both sides)
+PASS N = 100 (m = 48, even m, t₂ = 1): tooth order = reference (1, -1, 3, -3, 5, -5, 7, -7, 9, …), 48 teeth
+PASS N = 100: signs = reference mask (+ iff N/2 ± |c|·t₂ both prime)
+PASS N = 100: #+ = 12 = 2·g(N) − δ = 2·6 − 0 (pairs p ≠ N − p twice, the equal pair once)
+PASS N = 100: even m has no c = 0 tooth and starts 1, −1, 3, −3
+PASS N = 100: each +c is followed by −c with the same sign (both sides)
+PASS N = 1448 (m = 706, even m, t₂ = 1): tooth order = reference (1, -1, 3, -3, 5, -5, 7, -7, 9, …), 706 teeth
+PASS N = 1448: signs = reference mask (+ iff N/2 ± |c|·t₂ both prime)
+PASS N = 1448: #+ = 40 = 2·g(N) − δ = 2·20 − 0 (pairs p ≠ N − p twice, the equal pair once)
+PASS N = 1448: even m has no c = 0 tooth and starts 1, −1, 3, −3
+PASS N = 1448: each +c is followed by −c with the same sign (both sides)
+PASS every even N = 4 … 1,448 (723 shells): order, signs and #+ = 2·g − δ equal the reference
+PASS odd m exactly for N ≡ 2 mod 4 (and N = 4, whose comb is m = 3); even m exactly for N ≡ 0 mod 4, N ≥ 8
+PASS run to 1,448: 723 shells, 257430 signs, boundaries at the shell starts, every sign equal to the reference
+PASS run to 1,448: #+ = 30534 = 2·Σg − Σδ = 2·15331 − 128 (expected 30,534 = 2·15,331 − 128)
+SUMMARY test-v0419-goldbach-order: 29 passed, 0 failed

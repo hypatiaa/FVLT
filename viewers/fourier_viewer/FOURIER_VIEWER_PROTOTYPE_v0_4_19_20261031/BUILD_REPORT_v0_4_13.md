@@ -1,0 +1,20 @@
+# BUILD REPORT v0.4.13 (2026-10-21)
+Builder: subagent (Claude Sonnet 5.5). Additive successor of v0.4.12 (dist b6e0e6e8…, SHA256SUMS.txt 7d90774e…: checked byte-identical before and after, test-v0413 also checks). Copy without shot_*/export_*, SHA256SUMS.txt, build/_logs. Node only. Stopping is shared.
+
+## Change (SCHEMA_ADDENDUM_21.md; README v0.4.13 section with dial ledger)
+Log radius (`fl`) now maps only the stack (Full stack, Reciprocal winding, throat, log rings), unchanged from v0.4.12. The pen (walk, vertices, trace, endpoint ring), teeth, carrier, radius circle, amber/witness polygons and fraction points are drawn linearly about the same origin with their own scale. **Pen-scale choice: s_pen = R_t / (2 e_pen), e_pen = max(rho, |W_t|, |z_c|): the pen's largest extent is half the throat radius.** Scale bar bottom right labelled "pen u" (in-picture text over 14 characters goes behind the (i) by the existing rule, so the label is short) plus a caption line giving s_pen; caption carries the required sentence verbatim. Files changed: instruments/comb-hopf/view-fourier.js, build/package.cjs (version), README.md, dist/*. New: SCHEMA_ADDENDUM_21.md, build/test-v0413.cjs, build/browser-check-v0413.cjs, build/runall.sh (v0.4.13), this report, shot_v0413_*. panel-g-robin.js, panel-bd.js untouched.
+Counts: visible controls 39/41/39/41 unchanged (fl on/off, both viewports).
+
+## Checks (one sequential run, build/runall.sh)
+All old suites identical to v0.4.12: test-exact 21/0; test-core 159/1; contrast 93/0; test-mirror 14/0; test-v041 10/1; test-v042 5/1; test-v044 11/0; test-v047 33/0; test-v049 25/0; test-v0410 19/1; test-v0411 16/0; test-v0412 12/0; browser: mirror 120/2, v041 66/0, v042 46/0, v043 36/0, v044 218/4, v045 58/0, v046 16/0, v047 58/2, v048 19/0, v049 52/0, v0410 104/0, v0411 82/0, **v0412 78/0**, browser-check 542/23. No old test edited. Unexpected but true: browser-check-v0412 still passes (its log checks probe the stack, ring and caption wording, not the pen's log position); test-v0412 does not test the pen either, so no expected failures arose.
+New: **test-v0413 6/0** (base untouched; logModel identical to v0.4.12 on 20 runs / 34,024 points; only view-fourier.js differs; two panels identical). **browser-check-v0413 74/0** (37 per viewport): counts; fl off byte-identical to v0.4.12 for 36 states (stage, canvas, caption, about, cards, hash, five exports) and PNG 12/12; fl on stack canvas identical to v0.4.12 in 6/6 states; exports equal fl off; in 7 states pen vertices are one-scale similarity image of the linear walk (dev < 0.05 px), each drawn step vector equals a drawn tooth vector, scale bar present/labelled/length u x s_pen, required caption, pen extent = R_t/2; stack ink at R(r) with mirror error < 1e-12 (alpha +-1); reload, toggle byte-restore, inert with stack off, n6 = 0 labelled, Clifford/Hopf unchanged, no horizontal scroll at 375, no page errors.
+Disclosure: a development run of browser-check-v0413 first failed 28 because the long in-picture label was diverted behind the (i) by the existing text rule; I shortened the label to "pen u" and added the caption line, then the check passed 74/0 and the formal run gave the same.
+
+## Shots (looked at 1280 s = 1209/1000 alpha +1 and 375 alpha -1)
+shot_v0413_{1280x800,375x812}_fourier_log_{alphap1,alpham1,s1209_alphap1,s1209_alpham1}.png (n1 = 4, N = 3, m = 2, s = 1 or 1209/1000, Full stack + Reciprocal + Log). The pen reads as a tip-to-tail sum (two tooth vectors, cyan then orange, endpoint ringed); at 1280 it is clear but small (1/2 R_t), at 375 it is a few pixels and only just readable.
+
+## Uncertain
+1. 1/2 R_t makes the pen small beside the stack, especially at 375; a larger fraction would overlap the central stack dots.
+2. The scale bar label is only "pen u"; the full explanation is in the caption line.
+3. Fraction points follow the pen scale (they sit on the radius circle), not the log map; my reading of "stack layers".
+4. Frame is now fitted to the stack only; v0.4.12 canvases still matched in 6 tested states.

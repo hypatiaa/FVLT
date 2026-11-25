@@ -1,0 +1,9 @@
+PASS the dump is the build's: 60 flags, 20 vertices, core sha256 83fab2043cf90d298910d6983fa64ef7cfd6603c82b60aaf9ca7f38904d950e7
+PASS order of <left, right> = 60 (expected 60)
+PASS is_isomorphic(AlternatingGroup(5)) = True
+PASS an explicit isomorphism to A5 exists (isomorphism_to): left -> (1,5,4,2,3), right -> (1,2,5,4,3)
+PASS element orders {1: 1, 2: 15, 3: 20, 5: 24} (A5: {1: 1, 2: 15, 3: 20, 5: 24})
+PASS each move has order 5 (left 5, right 5)
+PASS the action on the 60 flags is regular (transitive and order = degree)
+PASS G is simple (A5 is the smallest non-abelian simple group)
+SUMMARY sage-a5-v0419: 8 passed, 0 failed

@@ -1,0 +1,53 @@
+PASS 1280x800 fourier: counts 39/41/39/41 unchanged, also with the stack toggles on (fs=1;ff=1)
+PASS 1280x800 clifford: counts 39/41/39/41 unchanged, also with the stack toggles on (cs=1)
+PASS 1280x800 hopf: counts 39/41/39/41 unchanged, also with the stack toggles on (hs=1;hf=1)
+PASS 1280x800 toggles off: stage, canvas, caption, about, cards, address, hash, state byte-identical to v0.4.8 (20/20 states incl. tilt −1/2)
+PASS 1280x800 toggles off: PNG export byte-identical to v0.4.8 (4/4)
+PASS 1280x800 page stack = stack-core (≤ 1e-13 relative, Chromium vs Node float64) = old buildFullStack (≤ 1e-12 relative) for 7 states (n1 3/4/5, α −1/0/1/1/2, m 2/3/7, n6 −1)
+PASS 1280x800 saphir state (n1 4, N 5, s 0, α 1, m 2): 650 cells × 2 = 1,300 points, step 1, equal to the old buildFullStack (max |Δ| 3.6e-14); teeth as the old readout [[5,0],[5,0]]
+PASS 1280x800 saphir state (n1 4, N 5, s 1, α 1, m 2): 650 cells × 2 = 1,300 points, step 1, equal to the old buildFullStack (max |Δ| 3.6e-14); teeth as the old readout [[-4.045084972,2.938926261],[-4.045084972,-2.938926261]]
+PASS 1280x800 Fourier: sampled stack points carry ink on the canvas (36/36)
+PASS 1280x800 Clifford: 1,300 lifted stack points drawn, 25 ρ-levels
+PASS 1280x800 Hopf: 1,300 stack points on the base
+PASS 1280x800 α 3/7, −5/2, 8: page stack = stack-core, and differs between the three
+PASS 1280x800 Layers ✦ Full stack: address gets view=fs=1 only while on (id unchanged); off restores the v0.4.8 address
+PASS 1280x800 Stack opacity item (only while the stack is on): 0.50 → 0.30, address view fs=1;so=0.3; absent with the stack off
+PASS 1280x800 a v0.4.8 reader accepts the address (view key ignored there): view = fs=1
+PASS 1280x800 signature cache: two s steps redraw nothing (18 → 18), an α change redraws once (19)
+PASS 1280x800 n1 = 5, m = 3 (14,762 cells, 44,286 points): rebuild + draw 26 ms (< 1500)
+PASS 1280x800 n6 = 0 labelled
+PASS 1280x800 B = 5040: thinning labelled (every 21st value, cap 58,081)
+PASS 1280x800 Hopf, thinned stack: caption says indices are skipped and pixel resolution does not certify labels at large N
+PASS 1280x800 current N = 0: stack not drawn, labelled
+PASS 1280x800 N = 0 column labelled and register stated
+PASS 1280x800 Fourier fraction stack: heads drawn on |z| = |ρ| with caption
+PASS 1280x800 α_Tilt = 1: the stack is unchanged (bitwise against tilt 0 in the page; ≤ 1e-13 against Node)
+PASS 1280x800 no horizontal scroll with the stacks on (Fourier, Clifford, Hopf)
+PASS 1280x800 no page errors
+PASS 375x812 fourier: counts 39/41/39/41 unchanged, also with the stack toggles on (fs=1;ff=1)
+PASS 375x812 clifford: counts 39/41/39/41 unchanged, also with the stack toggles on (cs=1)
+PASS 375x812 hopf: counts 39/41/39/41 unchanged, also with the stack toggles on (hs=1;hf=1)
+PASS 375x812 toggles off: stage, canvas, caption, about, cards, address, hash, state byte-identical to v0.4.8 (20/20 states incl. tilt −1/2)
+PASS 375x812 toggles off: PNG export byte-identical to v0.4.8 (4/4)
+PASS 375x812 page stack = stack-core (≤ 1e-13 relative, Chromium vs Node float64) = old buildFullStack (≤ 1e-12 relative) for 7 states (n1 3/4/5, α −1/0/1/1/2, m 2/3/7, n6 −1)
+PASS 375x812 saphir state (n1 4, N 5, s 0, α 1, m 2): 650 cells × 2 = 1,300 points, step 1, equal to the old buildFullStack (max |Δ| 3.6e-14); teeth as the old readout [[5,0],[5,0]]
+PASS 375x812 saphir state (n1 4, N 5, s 1, α 1, m 2): 650 cells × 2 = 1,300 points, step 1, equal to the old buildFullStack (max |Δ| 3.6e-14); teeth as the old readout [[-4.045084972,2.938926261],[-4.045084972,-2.938926261]]
+PASS 375x812 Fourier: sampled stack points carry ink on the canvas (36/36)
+PASS 375x812 Clifford: 1,300 lifted stack points drawn, 25 ρ-levels
+PASS 375x812 Hopf: 1,300 stack points on the base
+PASS 375x812 α 3/7, −5/2, 8: page stack = stack-core, and differs between the three
+PASS 375x812 Layers ✦ Full stack: address gets view=fs=1 only while on (id unchanged); off restores the v0.4.8 address
+PASS 375x812 Stack opacity item (only while the stack is on): 0.50 → 0.30, address view fs=1;so=0.3; absent with the stack off
+PASS 375x812 a v0.4.8 reader accepts the address (view key ignored there): view = fs=1
+PASS 375x812 signature cache: two s steps redraw nothing (18 → 18), an α change redraws once (19)
+PASS 375x812 n1 = 5, m = 3 (14,762 cells, 44,286 points): rebuild + draw 25 ms (< 1500)
+PASS 375x812 n6 = 0 labelled
+PASS 375x812 B = 5040: thinning labelled (every 21st value, cap 58,081)
+PASS 375x812 Hopf, thinned stack: caption says indices are skipped and pixel resolution does not certify labels at large N
+PASS 375x812 current N = 0: stack not drawn, labelled
+PASS 375x812 N = 0 column labelled and register stated
+PASS 375x812 Fourier fraction stack: heads drawn on |z| = |ρ| with caption
+PASS 375x812 α_Tilt = 1: the stack is unchanged (bitwise against tilt 0 in the page; ≤ 1e-13 against Node)
+PASS 375x812 no horizontal scroll with the stacks on (Fourier, Clifford, Hopf)
+PASS 375x812 no page errors
+v0.4.9 browser check: 52 pass / 0 fail

@@ -1,0 +1,6 @@
+{"job":"VIEW-NODE-0418-07","runner":"run_capped_v2.sh","host":"membrane","cwd":"/home/saphir/membrane_compute/viewer/v0_4_18","start_utc":"2026-10-31T14:18:06Z","end_utc":"2026-10-31T14:18:06Z","exit":0,
+ "caps":{"cpu":"core 0","nice":19,"mem_mib":4096,"wall_s":1800},
+ "peak_rss_kib":48388,"wall_used":"0:00.03",
+ "library_check_before":"OK","library_check_after":"OK",
+ "prereg_sha256":"3b053494bf2299a33605dc937d1117557e994ed8b201bdde38fbbb21130995ff",
+ "command":"/home/saphir/.local/bin/node build/no-float-v0418.cjs "}

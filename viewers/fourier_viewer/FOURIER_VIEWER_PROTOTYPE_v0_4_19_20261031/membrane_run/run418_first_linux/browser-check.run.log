@@ -1,0 +1,643 @@
+PASS 375x812 no console errors
+PASS 375x812 zero network requests
+PASS 375x812 no horizontal scroll 360/375
+PASS 375x812 fourier no visible text below 13.000px (137 text elements checked, smallest 13.0000px)
+PASS 375x812 touch targets >= 40px high
+PASS 375x812 page defaults: n1 4, phi3 23 (N = 2), m 2, t1 = t2 = 1, alpha 1, n6 1, s 1 {"phi3":"23","m":"2","N":"2","n1":"4","s":"1","t1":"1","t2":"1","alpha":"1","n6":"1","E":"2","rows":["carrier (not a tooth)","z[-1]","z[+1]"]}
+PASS 375x812 default m = 2 (even): a separate carrier row, no c = 0 tooth ["carrier (not a tooth)","z[-1]","z[+1]"]
+PASS 375x812 clifford no visible text below 13.000px (139 text elements checked, smallest 13.0000px)
+PASS 375x812 hopf no visible text below 13.000px (142 text elements checked, smallest 13.0000px)
+PASS 375x812 panels no visible text below 13.000px (321 text elements checked, smallest 13.0000px)
+PASS 375x812 phasor table headers do not wrap (max header height 35px) ["z[-1]","z[0] (carrier)","z[+1]"]
+PASS 375x812 odd m: single carrier row keyed z[0] (carrier)
+PASS 375x812 fourier @110% (every A+ step) no visible text below 13.000px (139 text elements checked, smallest 14.3000px)
+PASS 375x812 fourier @120% (every A+ step) no visible text below 13.000px (139 text elements checked, smallest 15.6000px)
+PASS 375x812 fourier @130% (every A+ step) no visible text below 13.000px (139 text elements checked, smallest 16.9000px)
+PASS 375x812 fourier @140% (every A+ step) no visible text below 13.000px (139 text elements checked, smallest 18.2000px)
+PASS 375x812 fourier @150% (every A+ step) no visible text below 13.000px (139 text elements checked, smallest 19.5000px)
+PASS 375x812 fourier @160% (every A+ step) no visible text below 13.000px (139 text elements checked, smallest 20.8000px)
+PASS 375x812 text size reaches 160%
+PASS 375x812 fourier @160% no visible text below 13.000px (139 text elements checked, smallest 20.8000px)
+PASS 375x812 clifford @160% no visible text below 13.000px (139 text elements checked, smallest 20.8000px)
+PASS 375x812 hopf @160% no visible text below 13.000px (142 text elements checked, smallest 20.8000px)
+PASS 375x812 panels @160% no visible text below 13.000px (321 text elements checked, smallest 13.0000px)
+PASS 375x812 @160% no horizontal scroll
+PASS 375x812 A− stops at 100%
+PASS 375x812 tab fourier renders, no horizontal scroll
+PASS 375x812 tab switch leaves settings alone
+PASS 375x812 tab clifford renders, no horizontal scroll
+PASS 375x812 tab switch leaves settings alone
+PASS 375x812 tab hopf renders, no horizontal scroll
+PASS 375x812 tab switch leaves settings alone
+PASS 375x812 tab panels renders, no horizontal scroll
+PASS 375x812 tab switch leaves settings alone
+PASS 375x812 import state: pasted address loads D1 state (gate closed) exactly as stored {"t":"49","e":"49","E":"49"} Loaded: s_typed = 49, s_eff = 49, E = 49 (restored as stored).
+PASS 375x812 import state: address after load equals the pasted address
+PASS 375x812 R21.2 label shown: gate closed, s_typed 49 is not its own representative in (-24, 24]
+PASS 375x812 R21.2 label absent: gate closed, s_typed 5 is already its own representative
+PASS 375x812 R21.2 label shown for s_typed -24 (a wrap would give +24) with the gate closed
+PASS 375x812 import state: pasted state JSON with an invariant wrap restores s_eff as stored (49 / 3 / 23), labelled wrapped {"t":"49","e":"3","E":"23"}
+PASS 375x812 import state refuses a wrong representative (sEff 5 for sTyped 49) as a whole, reason shown, defaults shown as a new state (current state not kept) Import refused: sEff is neither sTyped nor its declared invariant representative. — showing defaults as a new state.
+PASS 375x812 import state refuses E < N as a whole, reason shown, defaults shown as a new state (current state not kept) Import refused: E < N. — showing defaults as a new state.
+PASS 375x812 import state refuses E < |sEff| as a whole, reason shown, defaults shown as a new state (current state not kept) Import refused: E < |sEff|. — showing defaults as a new state.
+PASS 375x812 import state refuses a non-canonical E as a whole, reason shown, defaults shown as a new state (current state not kept) Import refused: E is not in canonical exact form. — showing defaults as a new state.
+PASS 375x812 import state refuses text that is not a state as a whole, reason shown, defaults shown as a new state (current state not kept) Import refused: Malformed address. — showing defaults as a new state.
+PASS 375x812 import state: empty box says nothing to load
+PASS 375x812 witness p=7 polygon drawn after Test
+PASS 375x812 witness persists across a gear change (control)
+PASS 375x812 witness polygon hidden after a phi3 step (N changes)
+PASS 375x812 witness needs Test again after the phi3 step: polygon back after Test
+PASS 375x812 witness polygon hidden when n1 (the shell) changes
+PASS 375x812 witness needs Test again: polygon back after Test
+PASS 375x812 witness polygon hidden when the shell mode changes
+PASS 375x812 numerical readouts shown: |W|, |W|/rho, W1 gate residual, each labelled numerical with a bound
+PASS 375x812 |W|/rho equals |W| divided by rho on the page model
+PASS 375x812 rho=0: "|W|/ρ undefined (ρ = 0)" shown
+PASS 375x812 rho=0 Clifford: the x3 axis is drawn, labelled as a line closed at infinity, not a circle ρ = 0: collapsed leaf; no reference longitudes and no same-time events are drawn.ρ 0.00e+0 (numerical) · 1 of 2 points drawn · 1 not finite · mirror axis β = 0, π: reference carrier · no tooth1 tooth point(s) AT_INFINITY or CLIPPED_NEAR_POLE: not drawn as finite points (labelled, not hidden)ρ = 0: the leaf collapses to the circle z₁ = 0; it passes through the projection pole, so its image is the x₃ axis (a line through the origin, closed at ∞), drawn as that axis.
+PASS 375x812 rho>0 Clifford: no x3-axis line, leaf mesh drawn (control)
+PASS 375x812 clifford drag without ✥ rotates (ca changes, cx does not) {"ca":"-0.01","ce":"0.85"}
+PASS 375x812 ✥ pan toggle (Camera menu) is pressed
+PASS 375x812 clifford drag with ✥ pans (cx, cy change; rotation unchanged) {"cx":"80","cy":"50","cp":"1"}
+PASS 375x812 fourier ⛶ enters real fullscreen on the view frame (Fullscreen API) {"fs":"frame","maxed":false}
+PASS 375x812 fourier fullscreen exits
+PASS 375x812 clifford ⛶ enters real fullscreen on the view frame (Fullscreen API) {"fs":"frame","maxed":false}
+PASS 375x812 clifford fullscreen exits
+PASS 375x812 hopf ⛶ enters real fullscreen on the view frame (Fullscreen API) {"fs":"frame","maxed":false}
+PASS 375x812 hopf fullscreen exits
+PASS 375x812 fourier ⛶ without the API: maximised view fills the window with a Close button ≥40px {"maxed":true,"fill":true,"closeVisible":true}
+PASS 375x812 fourier Close button restores the page
+PASS 375x812 fourier Esc also closes the maximised view
+PASS 375x812 clifford ⛶ without the API: maximised view fills the window with a Close button ≥40px {"maxed":true,"fill":true,"closeVisible":true}
+PASS 375x812 maximised Clifford: no SVG text below 13px on screen 0
+PASS 375x812 clifford Close button restores the page
+PASS 375x812 clifford Esc also closes the maximised view
+PASS 375x812 hopf ⛶ without the API: maximised view fills the window with a Close button ≥40px {"maxed":true,"fill":true,"closeVisible":true}
+PASS 375x812 hopf Close button restores the page
+PASS 375x812 hopf Esc also closes the maximised view
+PASS 375x812 contrast 29/8 > 3: defend colour and lock {"t":"29/8 ≈ 3.6250 (decimal is display) 🔒","c":"rgb(255, 107, 107)"}
+PASS 375x812 contrast 5/2 (2 < v < 3): warn colour, no lock {"t":"5/2 ≈ 2.5000 (decimal is display)","c":"rgb(251, 191, 36)"}
+PASS 375x812 contrast 1/2: dim colour, no lock {"t":"1/2 ≈ 0.5000 (decimal is display)","c":"rgb(154, 154, 184)"}
+PASS 375x812 Clifford orbits at example state: teeth with an orbit drawn (7), each has >= 100 points in all its runs (min 181)
+PASS 375x812 Clifford orbits at example state: longest drawn segment 8.91 <= 3% of view width (19.20)
+PASS 375x812 Clifford orbits at example state: no "partial orbit" label
+PASS 375x812 Hopf orbits at example state: teeth with an orbit drawn (7), each has >= 100 points in all its runs (min 183)
+PASS 375x812 Hopf orbits at example state: longest drawn segment 6.45 <= 3% of view width (19.20)
+PASS 375x812 Hopf orbits at example state: no "partial orbit" label
+PASS 375x812 branch chips live in the Layers menu (Advanced): one chip per branch (7), count line, All and None buttons
+PASS 375x812 branch chips read c · raw · primitive ×d · type (c = -3 and c = -2) ["c −3 · raw (4,3) · primitive (4,3) ×1 · T(3,4)+","c −2 · raw (4,2) · primitive (2,1) ×2 · UNKNOT","c −1 · raw (4,1) · primitive (4,1) ×1 · UNKNOT","c 0 · raw (4,0) · primitive (1,0) ×4 · UNKNOT","c +1 · raw (4,−1) · primitive (4,−1) ×1 · UNKNOT","c +2 · raw (4,−2) · primitive (2,−1) ×2 · UNKNOT","c +3 · raw (4,−3) · primitive (4,−3) ×1 · T(3,4)−"]
+PASS 375x812 reference state: 7 s-orbits and 7 tooth dots drawn, one per branch
+PASS 375x812 orbit colour equals chip colour for every branch []
+PASS 375x812 tap chip c = 2 hides that s-orbit and tooth dot (6 left), chip unpressed, count 6 of 7
+PASS 375x812 branch visibility is in the URL address (view key ch) #v=fv-comb-hopf/0.2&shellMode=factorial&n1=4&B=24&nMode=integer&phi3=21&m=7&t1=1&t2=1&n6=1&alpha=1&chart=host&sTyped=4/7&sEff=4/7&E=4&tab=clifford&view=ch=h:2
+PASS 375x812 tap again shows it; address returns to no ch
+PASS 375x812 None hides every orbit and dot (0 drawn), all chips unpressed
+PASS 375x812 toggle again (All) shows every branch (7 orbits, 7 dots)
+PASS 375x812 shift-click isolates: only c = -3 drawn, address shows ch=v:-3
+PASS 375x812 long-press isolates c = 1 (and the release does not toggle it back) ["1"] #v=fv-comb-hopf/0.2&shellMode=factorial&n1=4&B=24&nMode=integer&phi3=21&m=7&t1=1&t2=1&n6=1&alpha=1&chart=host&sTyped=4/7&sEff=4/7&E=4&tab=clifford&view=ch=v:1
+PASS 375x812 reloading the address restores the branch visibility (only c = 1)
+PASS 375x812 branch chips are offered on the Clifford tab only (none in the Fourier Layers menu)
+PASS 375x812 Phasors card shows the field line (reference state) generated by the phase factors ℚ(ζ₁₄) · phase container (convention) ℚ(ζ₅₆) (exact)
+PASS 375x812 exact JSON has no view or branch visibility
+PASS 375x812 Lift JSON cyclotomic_field: generated Q(zeta_14), phase_container Q(zeta_56), host_ambient_equivalent true {"L_k":"1","N":"4","N_integer":true,"a":"4","exact_spin":"4/7","generated":"ℚ(ζ_14)","generated_n":"14","host_ambient_equivalent":true,"k_denominator_lcm":"1","note":"generated by the phase factors: Q(zeta_L), L = lcm over the nonzero-amplitude teeth of the order of exp(i*pi*k_c*s/N); the amplitude rho = n6*N^alpha may be irrational, so the phasor values themselves may need Q(zeta_L, rho); phase container (convention): Q(zeta_C), C = 2*q*a*L_k for s = p/q and N = a/b in lowest terms (a = N on an integer shell, so C = 2*q*N*L_k there), L_k = lcm of the denominators of the k_c (1 when every k_c is an integer): every k_c*s/N lies in (1/(L_k*q*a))Z; a container convention, not a minimal field","phase_container":"ℚ(ζ_56)","phase_container_factor":"2qN","phase_container_formula":"C = 2*q*N*L_k","phase_container_n":"56","q":"7","rho_irrational":false,"shell_reference":"ℚ(ζ_24)"}
+PASS 375x812 Lift JSON schema is fv-comb-hopf-lift/0.3 with branches[7]
+FAIL 375x812 Lift JSON branches equal the old viewer exactRationalLift.branches (c as string); independent of branch visibility
+PASS 375x812 Hopf comb walk: 7 edges sampled as curves (>= 7*33 points, 438), longest drawn segment 6.22 <= 2 degrees of the sphere radius (7 view units) {"n":7,"pts":438,"maxSeg":6.223509584332149,"Wd":640}
+PASS 375x812 Hopf walk at a near-pole state (rho = 524288, chart w = W): renders, no errors
+PASS 375x812 order: header, shell row, gearbox row, view row, view frame, strip, phi3 row, s row, transport, exports (top to bottom) [["header",74],["shell",89],["gear",159],["tabs",246],["frame",357],["toolbar",602],["phi",688],["s",747],["transport",798],["exports",841]]
+PASS 375x812 header is the title plus one live-formula line z_c = n6*N^alpha*exp(i*k_c*s*pi/N) z_c = n₆·N^α·exp(i·k_c·s·π/N)
+PASS 375x812 phone: cards below the instrument (after the exports), one column {"x":10,"y":943.21875,"w":340,"h":1910.5,"r":350,"b":2853.71875}
+PASS 375x812 Lift JSON at N = 0: schema 0.3, 3 undefined branches, cyclotomic status, no teeth {"N":"0","N_integer":true,"branches":[{"c":"-1","canonical_type":"UNDEFINED","cleared_rate":null,"closure_period_s":null,"common_factor":null,"denominator_scale":null,"frequency_integral":null,"freque
+PASS 375x812 Lift JSON with fractional k_c (N = 4, t1 = 1/3, s = 3/5): phase_container C = 2qN*L_k = 120, host_ambient_equivalent false, branches carry k_c as rationals {"L_k":"3","N":"4","N_integer":true,"a":"4","exact_spin":"3/5","generated":"ℚ(ζ_40)","generated_n":"40","host_ambient_equivalent":false,"k_denominator_lcm":"3","note":"generated by the phase factors: Q(zeta_L), L = lcm over the nonzero-amplitude teeth of the order of exp(i*pi*k_c*s/N); the amplitude rho = n6*N^alpha may be irrational, so the phasor values themselves may need Q(zeta_L, rho); phase container (convention): Q(zeta_C), C = 2*q*a*L_k for s = p/q and N = a/b in lowest terms (a = N on an integer shell, so C = 2*q*N*L_k there), L_k = lcm of the denominators of the k_c (1 when every k_c is an integer): every k_c*s/N lies in (1/(L_k*q*a))Z; a container convention, not a minimal field","phase_container":"ℚ(ζ_120)","phase_container_factor":"2qN*L_k","phase_container_formula":"C = 2*q*N*L_k","phase_container_n":"120","q":"5","rho_irrational":false,"shell_reference":"ℚ(ζ_24)"}
+PASS 375x812 export row: only Export PNG and Export ▾ visible by default; the menu is closed
+PASS 375x812 Export ▾ holds JSON, state, CSV, Lift JSON, pair, copy stats, copy formula, import
+PASS 375x812 Copy formula writes the live formula as text (symbolic line plus the current values) "z_c = n6*N^alpha*exp(i*k_c*s*pi/N), k_c = N*t1 + c*t2\nwith n6 = 1, alpha = 1, N = 2, t1 = 1, t2 = 1, s = 1, m = 2\n"
+PASS 375x812 no Wolfram link or text anywhere on the page
+PASS 375x812 menus closed by default; strip has Layers, Camera, zoom + - reset, full view, info
+FAIL 375x812 Fourier Layers menu: Teeth, Walk, Amber polygon, Divisors
+PASS 375x812 one menu at a time: Camera replaces Layers; Fourier Camera has the zoom lock
+PASS 375x812 Clifford Camera select: Side X+ sets the azimuth to pi/2 and elevation 0
+PASS 375x812 Camera select has the seven presets
+PASS 375x812 Clifford Guides select: four circles drawn and its swatches shown
+FAIL 375x812 Guides none: no circles, no swatches; layer swatches only on pressed layers
+PASS 375x812 Hopf View-from select q1+ sets the azimuth
+PASS 375x812 Hopf Layers: tooth trails switch off (none drawn); chart toggle sits under Advanced
+PASS 375x812 gearbox (addendum 7 F1): five chips, each ONE button "label value"; t1 and t2 keep their minus/plus beside the chip; no input in the chip row; no Presets/Continuous switch
+PASS 375x812 chip row reads alpha 1, n6 1, t1 1, t2 1, m 2 at the default state
+PASS 375x812 drawers closed by default (no slider in the gearbox area)
+FAIL 375x812 drawer alpha opens with its presets+slider {"sl":2,"pre":6,"dl":0,"box":2,"steppers":4}
+PASS 375x812 drawer n6 opens with its presets+slider {"sl":1,"pre":3,"dl":0,"box":1,"steppers":2}
+PASS 375x812 drawer t1 opens with its delta+slider {"sl":1,"pre":0,"dl":1,"box":1,"steppers":0}
+PASS 375x812 drawer t2 opens with its delta+slider {"sl":1,"pre":0,"dl":1,"box":1,"steppers":0}
+PASS 375x812 drawer m opens with its slider {"sl":1,"pre":0,"dl":0,"box":1,"steppers":2}
+PASS 375x812 drawer closes when its label is tapped again
+PASS 375x812 steppers: alpha +1 and m +1 (in their drawers), t1 + delta (1/4 by default, beside the chip) {"a":"2","t1":"5/4","m":"3"}
+PASS 375x812 alpha drawer preset -1 sets alpha
+PASS 375x812 F2 caption is exactly one line (default state, fourier): 1 (ellipsis) [{"lines":1,"trunc":true,"text":"ALIGN yes · SPREAD yes ★ lab sum real · Q-res 0.0e+0 (numerical) · mirror axis = real axis (t₁·s ∈ ℤ)"}]
+PASS 375x812 F2 tapping a truncated caption expands it (default, fourier): 3 lines
+PASS 375x812 F2 tapping again collapses it to one line (default, fourier)
+PASS 375x812 F2 caption is exactly one line (default state, clifford): 1 (ellipsis) [{"lines":1,"trunc":true,"text":"ρ 2.00e+0 (numerical) · 2 of 2 points drawn · ok · mirror axis β = 0, π: reference carrier · no tooth"}]
+PASS 375x812 F2 tapping a truncated caption expands it (default, clifford): 3 lines
+PASS 375x812 F2 tapping again collapses it to one line (default, clifford)
+PASS 375x812 F2 caption is exactly one line (default state, hopf): 1 (ellipsis) [{"lines":1,"trunc":true,"text":"latitude q₃ 0.6000 (numerical) · same object"}]
+PASS 375x812 F2 tapping a truncated caption expands it (default, hopf): 2 lines
+PASS 375x812 F2 tapping again collapses it to one line (default, hopf)
+PASS 375x812 F2 caption is exactly one line (reference state, fourier): 1 (ellipsis) [{"lines":1,"trunc":true,"text":"ALIGN no · SPREAD no · Q-res 1.8e+1 (numerical)"}]
+PASS 375x812 F2 tapping a truncated caption expands it (reference, fourier): 2 lines
+PASS 375x812 F2 tapping again collapses it to one line (reference, fourier)
+PASS 375x812 F2 caption is exactly one line (reference state, clifford): 1 (ellipsis) [{"lines":1,"trunc":true,"text":"ρ 4.00e+0 (numerical) · 7 of 7 points drawn · ok · mirror axis β = 0, π: c = 0 · carrier tooth"}]
+PASS 375x812 F2 tapping a truncated caption expands it (reference, clifford): 3 lines
+PASS 375x812 F2 tapping again collapses it to one line (reference, clifford)
+PASS 375x812 F2 caption is exactly one line (reference state, hopf): 1 (ellipsis) [{"lines":1,"trunc":true,"text":"latitude q₃ 0.8824 (numerical) · same object"}]
+PASS 375x812 F2 tapping a truncated caption expands it (reference, hopf): 2 lines
+PASS 375x812 F2 tapping again collapses it to one line (reference, hopf)
+PASS 375x812 F2 Clifford with the fraction stack on: every caption paragraph is one line (2 paragraphs) [{"lines":1,"trunc":true,"text":"fraction stack s ∈ (1/7)·ℤ · 1232/1232 heads · spread-zero columns bright"},{"lines":1,"trunc":true,"text":"ρ 4.00e+0 (numerical) · 7 of 7 points drawn · ok · mirror axis β = 0, π: c = 0 · carrier tooth"}]
+PASS 375x812 F8 the text-size readout "100%" is one line {"lines":1,"w":44.796875,"txt":"100%"}
+PASS 375x812 F8 the readout stays one line at 160% ("160%") {"lines":1,"txt":"160%"}
+PASS 375x812 F3 N is shown once on the surface: the shell-row readout "B = ... N = 4" (1 occurrences of "N = 4" in the page text) n!
+integer
+CA
+◀
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+▶
+B = 24 · N = 4
+PASS 375x812 F3 the cards show no N row (Shell card), no "Shell N =" in the Wilson card, and no N in the field line
+PASS 375x812 F3 Q-res and the ALIGN / SPREAD flags are in the Fourier caption and not in the cards ALIGN no · SPREAD no · Q-res 1.8e+1 (numerical)
+PASS 375x812 F3 the spread t₂·s/N appears once, as the flag line of the card (spread t₂·s/N (exact) = 1/7) PHASORS
+key	kc	tooth φ (exact)	carrier (exact)	offset (exact)	z (numerical)
+z[-3]	1	1/7 (order 14)	4/7 (order 7)	3/7 (order 14)	+3.603875472 +1.735534956i
+z[-2]	2	2/7 (order 7)	4/7 (order 7)	2/7 (order 7)	+2.493959207 +3.127325930i
+z[-1]	3	3/7 (order 14)	4/7 (order 7)	1/7 (order 14)	+0.890083736 +3.899711649i
+z[0] (carrier)	4	4/7 (order 7)	4/7 (order 7)	0 (order 1)	-0.890083736 +3.899711649i
+z[+1]
+PASS 375x812 F4 the K_m kernel line is not on the surface
+PASS 375x812 F4 the Phasors (i) holds the kernel K_m(β) = sin(mβ/2)/sin(β/2) (odd m) and its zeros Field line. generated by the phase factors ℚ(ζ_L): L = lcm, over the nonzero-amplitude teeth, of the order of e^{iπ·k_c·s/N}; it is the field generated by the phase factors, not necessarily the field 
+PASS 375x812 F7 the (i) defines generated by the phase factors ℚ(ζ_L) and phase container (convention) ℚ(ζ_C) with C = 2·q·N·L_k, L_k, the (1/L_k)ℤ container, L_k = 1 equals the host ambient, reference values Field line. generated by the phase factors ℚ(ζ_L): L = lcm, over the nonzero-amplitude teeth, of the order of e^{iπ·k_c·s/N}; it is the field generated by the phase factors, not necessarily the field of the phasor values z_c = ρ·e^{iπ·k_c·s/N}, because ρ = n₆·N^α can be irrational (N = 2, α = 1/2, n₆ = 1, s = 0 gives phase factors 1 but phasors √2). phase container (convention) ℚ(ζ_C): for s = p/q in lowest terms, C = 2·q·N·L_k, where L_k is the lcm of the denominators of the k_c (L_k = 1 when every k_c is an integer). It is the fixed field that contains e^{iπ·k·s/N} for every k in (1/L_k)ℤ: a container convention, not a minimal field. When L_k = 1 it equals the old host’s “ambient” ℚ(ζ_{2qN}) (frozen host L6406) and the export says host_ambient_equivalent: true. Between shells, with N = a/b in lowest terms, the same derivation gives C = 2·q·a·L_k (every k_c·s/N lies in (1/(L_k·q·a))ℤ); a = N on a shell, and host_ambient_equivalent is true only on a shell with L_k = 1. Now: q = 7, L_k = 1, C = 56. Shell reference ℚ(ζ_B) = ℚ(ζ₂₄). Kernel. K_m(β) = sin(mβ/2)/sin(β/2), β = π·t₂s/N; its zeros e^{iβ} ∈ μ_m∖{1} are the SPREAD stops. Columns. k_c = N·t₁ + c·t₂ (exact). tooth φ = k_c·s/N mod 2, in units of π, with the order of e^{iπφ} (exact). carrier = t₁·s (+1 if n₆ < 0) mod 2 (exact). offset = −c·t₂·s/N mod 2 (exact). z (numerical) = n₆·N^α·e^{iπφ}, float64, nine decimals. For odd m the carrier is the tooth c = 0; for even m there is no c = 0 tooth, so the carrier has its own row. The Gearbox card was merged here and into the Wilson card: N and k_c are in the table and the shell readout.
+PASS 375x812 F7 reference state: field line says generated by the phase factors ℚ(ζ₁₄), phase container (convention) ℚ(ζ₅₆) generated by the phase factors ℚ(ζ₁₄) · phase container (convention) ℚ(ζ₅₆) (exact)
+PASS 375x812 F7 fractional k_c (t1 = 1/3, N = 4, s = 3/5): generated by the phase factors ℚ(ζ₄₀), phase container (convention) ℚ(ζ₁₂₀) generated by the phase factors ℚ(ζ₄₀) · phase container (convention) ℚ(ζ₁₂₀) (exact)
+PASS 375x812 F7 fractional k_c: the (i) states q = 5, L_k = 3, C = 120 ier is the tooth c = 0; for even m there is no c = 0 tooth, so the carrier has its own row. The Gearbox card was merged here and into the Wilson card: N and k_c are in the table and the shell readout.
+PASS 375x812 F6 Lift JSON gates at t1 = 1/3 (N = 4, m = 3): exact_rational_lift PASS, closed_orbits PASS, integral_frequencies FAIL listing -1,0,1; prime_pair SEPARATE_GATE; rank4 OUT_OF_SCOPE {"closed_orbits":{"failing":[],"reason":"every branch has a finite exact closure period","status":"PASS"},"exact_rational_lift":{"failing":[],"reason":"t1, t2 and s are exact rationals","status":"PASS"},"integral_frequencies":{"failing":["-1","0","1"],"reason":"k_c is not an integer for c = -1, 0, 1","status":"FAIL"},"prime_pair":{"failing":[],"reason":"requires integral selected frequencies and independent primality evidence","status":"SEPARATE_GATE"},"rank4_smith_monodromy":{"failing":[],"reason":"Rank-4 monodromy has its own viewer (saphir, 2026-10-13)","status":"OUT_OF_SCOPE"}}
+PASS 375x812 F6 Lift JSON gates at the reference state: exact_rational_lift PASS, closed_orbits PASS, integral_frequencies PASS (all three computed gates pass) {"closed_orbits":{"failing":[],"reason":"every branch has a finite exact closure period","status":"PASS"},"exact_rational_lift":{"failing":[],"reason":"t1, t2 and s are exact rationals","status":"PASS"},"integral_frequencies":{"failing":[],"reason":"every k_c is an integer","status":"PASS"},"prime_pair":{"failing":[],"reason":"requires integral selected frequencies and independent primality evidence","status":"SEPARATE_GATE"},"rank4_smith_monodromy":{"failing":[],"reason":"Rank-4 monodromy has its own viewer (saphir, 2026-10-13)","status":"OUT_OF_SCOPE"}}
+PASS 375x812 F6 the two outside gates carry their reasons
+PASS 375x812 F6 Lift JSON gates at t1 = t2 = 0: closed_orbits FAIL listing -1,0,1 (every branch stationary), integral_frequencies PASS (k_c = 0) {"closed_orbits":{"failing":["-1","0","1"],"reason":"no finite exact closure period for c = -1, 0, 1 (stationary: both phase rates are zero)","status":"FAIL"},"exact_rational_lift":{"failing":[],"reason":"t1, t2 and s are exact rationals","status":"PASS"},"integral_frequencies":{"failing":[],"reason":"every k_c is an integer","status":"PASS"},"prime_pair":{"failing":[],"reason":"requires integral selected frequencies and independent primality evidence","status":"SEPARATE_GATE"},"rank4_smith_monodromy":{"failing":[],"reason":"Rank-4 monodromy has its own viewer (saphir, 2026-10-13)","status":"OUT_OF_SCOPE"}}
+PASS 375x812 warnings: N = 0 (degenerate) shows its full text in a caption line with no ellipsis, none truncated [{"cls":"warnline","trunc":false,"h":58.5,"lh":19.5,"t":"N = 0: the Fourier comb has no angular denominator, so no walk is defined (empty state, drawn and labelled)."}]
+PASS 375x812 warnings: a stepping refusal (t1 = 0, m = 3) is shown in full, visible, not truncated, outside the (i) {"t":"refused (4e): t₁ = 0: ALIGN and SPREAD stops are undefined, so stepping is unavailable.","trunc":false,"vis":true,"inViewport":true,"ell":"clip"}
+PASS 375x812 F-R2-1 clifford: stationary teeth (t1 = 0, m = 3) show "stationary: c = ... (no orbit|trail)" on the warning line, full, visible, not ellipsized {"t":"stationary: c = 0 (no orbit)","cls":"warnline","trunc":false,"vis":true,"inViewport":true,"ell":"clip"}
+PASS 375x812 F-R2-1 hopf: stationary teeth (t1 = 0, m = 3) show "stationary: c = ... (no orbit|trail)" on the warning line, full, visible, not ellipsized {"t":"stationary: c = 0 (no trail)","cls":"warnline","trunc":false,"vis":true,"inViewport":true,"ell":"clip"}
+PASS 375x812 fix 2026-10-14 clifford: N = 2, m = 2, t1 = 1, t2 = 2 shows the base-fixed caption and no stationary caption ["base fixed: c = -1 (k_c = 0; orbit runs along the Hopf fiber)"]
+PASS 375x812 fix 2026-10-14 hopf: N = 2, m = 2, t1 = 1, t2 = 2 shows the base-fixed caption and no stationary caption ["base fixed: c = -1 (k_c = 0; the fiber moves — see Clifford)"]
+PASS 375x812 fix 2026-10-14 Phasors (i) kernel zeros: even m = 4 says e^{2iβ} ∈ Field line. generated by the phase factors ℚ(ζ_L): L = lcm, over the nonzero-amplitude teeth, of the order of e^{iπ·k_c·s/N}; it is the field generated by the phase factors, not necessarily the field of the phasor values z_c = ρ·e^{iπ·k_c·s/N}, because ρ = n₆·N^α can be irrational (N = 2, α = 1/2, n
+PASS 375x812 fix 2026-10-14 Phasors (i) kernel zeros: odd m = 7 says e^{iβ} ∈ and not e^{2iβ} Field line. generated by the phase factors ℚ(ζ_L): L = lcm, over the nonzero-amplitude teeth, of the order of e^{iπ·k_c·s/N}; it is the field generated by the phase factors, not necessarily the field of the phasor values z_c = ρ·e^{iπ·k_c·s/N}, because ρ = n₆·N^α can be irrational (N = 2, α = 1/2, n
+PASS 375x812 F-R2-2 (t1 = 0, m = 3): before any press, "stepping unavailable — <reason>" is on the surface and both arrows look disabled {"t":"stepping unavailable — t₁ = 0: ALIGN and SPREAD stops are undefined, so stepping is unavailable.","vis":true,"trunc":false,"inViewport":true,"ad":["true","true"],"op":["0.45","0.45"],"dis":[false,false]}
+PASS 375x812 F-R2-2 (t1 = 0, m = 3): pressing still gives the R20 refusal and leaves the state unchanged {"shellMode":"factorial","n1":"4","B":"24","nMode":"integer","phi3":"21","m":"3","t1":"0","t2":"1","n6":"1","alpha":"1","chart":"host","sTyped":"4/7","sEff":"4/
+PASS 375x812 F-R2-2 (t1 = t2 = 0, m = 4): before any press, "stepping unavailable — <reason>" is on the surface and both arrows look disabled {"t":"stepping unavailable — t₁ = 0: ALIGN and SPREAD stops are undefined, so stepping is unavailable.","vis":true,"trunc":false,"inViewport":true,"ad":["true","true"],"op":["0.45","0.45"],"dis":[false,false]}
+PASS 375x812 F-R2-2 (t1 = t2 = 0, m = 4): pressing still gives the R20 refusal and leaves the state unchanged {"shellMode":"factorial","n1":"4","B":"24","nMode":"integer","phi3":"21","m":"4","t1":"0","t2":"0","n6":"1","alpha":"1","chart":"host","sTyped":"4/7","sEff":"4/
+PASS 375x812 F-R2-2 (non-integer gear t2 = 1/2): before any press, "stepping unavailable — <reason>" is on the surface and both arrows look disabled {"t":"stepping unavailable — Non-integer gears: no exact stop family is derived, so stepping is unavailable (no integer-snap fallback).","vis":true,"trunc":false,"inViewport":true,"ad":["true","true"],"op":["0.45","0.45"],"dis":[false,false]}
+PASS 375x812 F-R2-2 (non-integer gear t2 = 1/2): pressing still gives the R20 refusal and leaves the state unchanged {"shellMode":"factorial","n1":"4","B":"24","nMode":"integer","phi3":"21","m":"5","t1":"1","t2":"1/2","n6":"1","alpha":"1","chart":"host","sTyped":"4/7","sEff":"
+PASS 375x812 F-R2-2 (N = 0): before any press, "stepping unavailable — <reason>" is on the surface and both arrows look disabled {"t":"stepping unavailable — N ≤ 0: comb stepping is inactive.","vis":true,"trunc":false,"inViewport":true,"ad":["true","true"],"op":["0.45","0.45"],"dis":[false,false]}
+PASS 375x812 F-R2-2 (N = 0): pressing still gives the R20 refusal and leaves the state unchanged {"shellMode":"factorial","n1":"4","B":"24","nMode":"integer","phi3":"25","m":"7","t1":"1","t2":"1","n6":"1","alpha":"1","chart":"host","sTyped":"4/7","sEff":"4/
+PASS 375x812 F-R2-2 reference state: no unavailable line and arrows enabled {"u":false,"ad":["false","false"]}
+PASS 375x812 SPREAD: the Fourier caption puts ALIGN and SPREAD (with the value and star) before Q-res, and the flag text is fully inside the line without tapping {"t":"ALIGN no · SPREAD no · Q-res 1.8e+1 (numerical)","flagsFirst":true,"flagRight":175.546875,"pRight":341,"exp":"false"}
+PASS 375x812 F7 irrational rho: the (i) says the phasor values may need the extension ℚ(ζ_L, ρ) and that the field is generated by the phase factors Field line. generated by the phase factors ℚ(ζ_L): L = lcm, over the nonzero-amplitude teeth, of the order of e^{iπ·k_c·s/N}; it is the field generated by the phase factors, not necessarily the field of the phasor values z_c = ρ·e^{iπ·k_c·s/N}, because ρ = n₆·N^α can be irrational (N = 2, α = 1/2, n
+PASS 375x812 F5 S16: the m register line is not on the surface; the m drawer has an (i)
+PASS 375x812 F5 S16: the m drawer (i) says "m (teeth, 2 to 720): 2 · ζ₂ pair · ALG-5" at m = 2 m (teeth, 2 to 720): 2 · ζ₂ pair · ALG-5. The m tooth set is the exact comb order; stop families and the gearbox follow it.
+FAIL 375x812 v0.3 the N mode switch (one toggle button, aria-pressed) is in the φ₃ row, not pressed by default ("N∈ℤ"); step 2: the φ₃ label is a chip "φ₃ 23" in the row and no φ₃ box is on the surface (it is in the φ₃ drawer); the instrument panel keeps the cap: 41 visible controls (ⓘ excluded) <= 40 {"inRow":true,"pressed":"false","txt":"N∈ℤ","box":false,"chip":"φ₃ 23"} {"instNoInfo":41,"frame":{"t":357.21875,"b":599.21875,"vis":true},"phi":{"t":688.21875,"b":745.21875,"vis":true},"s":{"t":747.21875,"b":796.21875,"vis":true},"tr":{"t":798.21875,"b":838.21875,"vis":true},"vh":812}
+PASS 375x812 v0.3 integer → continuous: aria-pressed true ("N∈ℚ"), φ₃ unchanged (23), no message; step 2: no φ₃ box appears on the surface, the chip reads "φ₃ 23" {"nMode":"continuous","phi3":"23","pr":"true","txt":"N∈ℚ","box":false,"chip":"φ₃ 23","msg":""}
+CONTROLS 375x812 v0.3: instrument panel without ⓘ: integer mode 41, continuous mode (φ₃ drawer closed) 41
+FAIL 375x812 v0.3 step 2 (F1): visible controls in the instrument panel in continuous mode (default φ₃, nothing opened, ⓘ excluded): 41 <= 40 {"instNoInfo":41,"frame":{"t":357.21875,"b":599.21875,"vis":true},"phi":{"t":688.21875,"b":745.21875,"vis":true},"s":{"t":747.21875,"b":796.21875,"vis":true},"tr":{"t":798.21875,"b":838.21875,"vis":true},"vh":812}
+PASS 375x812 v0.3 step 2 (F1): tapping the φ₃ chip opens the φ₃ drawer under the φ₃ row: ◀ exact box ▶ (box holds 23), range line "0 … 25 · decimal or fraction · Enter applies", aria-expanded true, no gear drawer open {"exp":"true","box":1,"val":"23","dn":1,"up":1,"range":"0 … 25 · decimal or fraction · Enter applies","afterRow":true,"gear":0}
+PASS 375x812 v0.3 step 2 (F1): with the φ₃ drawer open no visible text is below 13 px (smallest 13.000 px) and its controls are >= 40 px high {"bad":[],"tt":[]}
+PASS 375x812 v0.3 step 2 resolution (F1): ⏮ is in the φ₃ drawer (not on the φ₃ row) and sets φ₃ = B = 24 (N = 1); the drawer stays open {"p0":{"row":0,"drawer":1},"p1":{"phi3":"24","shell":"B = n₁! = 24 · N = 1","open":true}}
+PASS 375x812 v0.3 step 2 (F1): the drawer box applies 89/4 (Enter): φ₃ = 89/4 exactly, shell readout "N = 11/4", chip "φ₃ 89/4", drawer stays open with the box holding 89/4, no message {"phi3":"89/4","shell":"B = n₁! = 24 · N = 11/4","chip":"φ₃ 89/4","open":true,"val":"89/4","msg":""}
+PASS 375x812 v0.3 step 2 (F1): the drawer ◀ ▶ are the row's shell steps: from φ₃ = 89/4, ◀ (N − 1) -> 23, ▶ (N + 1) -> 22 23,22
+PASS 375x812 v0.3 step 2 (F1): tapping the chip again closes the φ₃ drawer (no box on the page, aria-expanded false), φ₃ stays 89/4 {"open":false,"box":false,"exp":"false","phi3":"89/4"}
+FAIL 375x812 v0.3 first screen in integer mode (default φ₃): view frame, φ₃ row (to 745), s row (to 796) and transport (to 838) inside the first 812 px {"instNoInfo":41,"frame":{"t":357.21875,"b":599.21875,"vis":true},"phi":{"t":688.21875,"b":745.21875,"vis":true},"s":{"t":747.21875,"b":796.21875,"vis":true},"tr":{"t":798.21875,"b":838.21875,"vis":true},"vh":812}
+FAIL 375x812 v0.3 first screen in continuous mode (default φ₃): view frame, φ₃ row (to 745), s row (to 796) and transport (to 838) inside the first 812 px {"instNoInfo":41,"frame":{"t":357.21875,"b":599.21875,"vis":true},"phi":{"t":688.21875,"b":745.21875,"vis":true},"s":{"t":747.21875,"b":796.21875,"vis":true},"tr":{"t":798.21875,"b":838.21875,"vis":true},"vh":812}
+PASS 375x812 v0.3 continuous mode: φ₃ slider step 0.01 (1/100 of a shell), max B + 1 = 25, the 26 integer shells 0..25 marked on the track at j/25 {"step":"0.01","max":"25","n":26}
+PASS 375x812 v0.3 the φ₃ box accepts 7/2 (Enter): φ₃ = 7/2 exactly, the shell readout shows N = 43/2, the address carries nMode=continuous&phi3=7/2 {"phi3":"7/2","shell":"B = n₁! = 24 · N = 43/2","addr":"#v=fv-comb-hopf/0.2&shellMode=factorial&n1=4&B=24&nMode=continuous&phi3=7/2&m=2&t1=1&t2=1&n6=1&alpha=1&chart=host&sTyped=1&sEff=1&E=43/2&tab=fourier&view="}
+PASS 375x812 v0.3 the φ₃ box accepts a decimal (6.25 -> 25/4) and refuses 26 (outside 0..B+1) with the reason, state unchanged {"b2":"25/4","b3":{"phi3":"25/4","msg":"Shell position φ₃ must be 0 through B + 1."}}
+PASS 375x812 v0.3 continuous slider: value 12.37 is committed as φ₃ = 1237/100 (exact)
+PASS 375x812 v0.3 ◀ ▶ snap to the next integer shell: from φ₃ = 7/2, ◀ (N − 1) -> 4, ▶ (N + 1) -> 3, then ▶ -> 2 4,3,2
+PASS 375x812 v0.3 Play ▶ N in continuous mode advances φ₃ by 1/100 of a shell per tick (3/100 after about 3 ticks) and says so {"phi3":"353/100","note":"animated: φ₃ advances 1/100 of a shell per tick"}
+PASS 375x812 v0.3 continuous → integer at φ₃ = 27/4: rounded to the nearest shell φ₃ = 7 and said in the message line (never silently) {"nMode":"integer","phi3":"7","msg":"N continuous → integer: φ₃ = 27/4 rounded to the nearest shell φ₃ = 7 (N = 18)."}
+PASS 375x812 v0.3 step 2 (F1): in integer mode the φ₃ drawer (range line "0 … 25 · integer (N∈ℤ) · Enter applies") refuses 7/2 with "N integer mode: φ₃ must be an integer; switch to N∈ℚ for fractions" in the message line and in the drawer; state unchanged (φ₃ = 7, integer mode) {"rg":"0 … 25 · integer (N∈ℤ) · Enter applies","r5":{"nMode":"integer","phi3":"7","msg":"N integer mode: φ₃ must be an integer; switch to N∈ℚ for fractions","inDrawer":"N integer mode: φ₃ must be an integer; switch to N∈ℚ for fractions"}}
+PASS 375x812 v0.3 step 2 (F1): integer mode drawer: 8/2 is the integer 4 (applied, refusal cleared); 26 is refused with the range reason, state unchanged {"a8":{"phi3":"4","msg":"","inDrawer":false},"a26":{"phi3":"4","msg":"Shell position φ₃ must be 0 through B + 1."}}
+FIRSTSCREEN 375x812 v0.3 between shells (N = 43/2, m = 5, Fourier): transport bottom 874 of 812 px; φ₃ row to 781; s row to 832
+FAIL 375x812 v0.3 step 2 (F1): visible controls in the instrument panel between shells (N = 43/2, continuous mode, nothing opened, ⓘ excluded): 41 <= 40 {"instNoInfo":41,"frame":{"t":393.21875,"b":635.21875,"vis":true},"phi":{"t":724.21875,"b":781.21875,"vis":true},"s":{"t":783.21875,"b":832.21875,"vis":true},"tr":{"t":834.21875,"b":874.21875,"vis":true},"vh":812}
+FAIL 375x812 v0.3 fourier: the warning line carries the short form "between shells: shell arithmetic undefined" once, in full, on one line, role degenerate, not ellipsized; the shell readout shows N = 43/2 {"n":1,"t":"between shells: shell arithmetic undefined","lines":2,"cls":"warnline","trunc":false,"vis":true,"inView":true,"ell":"clip","shell":"B = n₁! = 24 · N = 43/2"}
+PASS 375x812 v0.3 fourier between shells: no visible text below 13 px (138 elements, smallest 13.000 px)
+FAIL 375x812 v0.3 clifford: the warning line carries the short form "between shells: shell arithmetic undefined" once, in full, on one line, role degenerate, not ellipsized; the shell readout shows N = 43/2 {"n":1,"t":"between shells: shell arithmetic undefined","lines":2,"cls":"warnline","trunc":false,"vis":true,"inView":true,"ell":"clip","shell":"B = n₁! = 24 · N = 43/2"}
+PASS 375x812 v0.3 clifford between shells: no visible text below 13 px (138 elements, smallest 13.000 px)
+FAIL 375x812 v0.3 hopf: the warning line carries the short form "between shells: shell arithmetic undefined" once, in full, on one line, role degenerate, not ellipsized; the shell readout shows N = 43/2 {"n":1,"t":"between shells: shell arithmetic undefined","lines":2,"cls":"warnline","trunc":false,"vis":true,"inView":true,"ell":"clip","shell":"B = n₁! = 24 · N = 43/2"}
+PASS 375x812 v0.3 hopf between shells: no visible text below 13 px (141 elements, smallest 13.000 px)
+FAIL 375x812 v0.3 panels: the warning line carries the short form "between shells: shell arithmetic undefined" once, in full, on one line, role degenerate, not ellipsized; the shell readout shows N = 43/2 {"n":1,"t":"between shells: shell arithmetic undefined","lines":2,"cls":"warnline","trunc":false,"vis":true,"inView":true,"ell":"clip","shell":"B = n₁! = 24 · N = 43/2"}
+PASS 375x812 v0.3 panels between shells: no visible text below 13 px (316 elements, smallest 13.000 px)
+PASS 375x812 v0.3 cards between shells: Wilson (both readouts and the gearbox), Divisors and Shell show the label instead of values; Phasors and the exact flags keep working with exact fractions (spread 2/129) {"wilson":"WILSON\n\nbetween shells: N = 43/2; shell arithmetic undefined\n\nⓘ","div":"DIVISORS\n\nbetween shells: N = 43/2; shell arithmetic undefined\n\nⓘ","shell":"SHELL\n\nbetween shells: N = 43/2; shell arithmetic undefined\n\nⓘ","phasors":true,"flags":"EXACT FLAGS AND NUMERICAL READOUTS\nExact neighbouring-tooth alignment (t₂s/N ∈ ℤ)\nno\nall teeth aligned\nno\nspread t₂·s/N (exact)\n2/129\n|W| (endpoint) numerical\n1.072451e+2 ±4.2e-13\n|W|/ρ numerical\n4.988146e+0 ±2.0e-14\nW₁ latitude-g
+PASS 375x812 v0.3 step 2 (F2): s row between shells (m = 5): before any press there is no SPREAD line under the view; the s ⓘ states "SPREAD refused (4e): SPREAD needs an integer gearbox: N = 43/2" in full {"sr":{"line":false,"sread":""},"si":{"t":"SPREAD refused (4e): SPREAD needs an integer gearbox: N = 43/2","vis":true,"trunc":false}}
+PASS 375x812 v0.3 s ▶ between shells lands on the ALIGN stop 1 (SPREAD refused, not approximated) {"s":"1","lbl":"ALIGN stop (t₁·s ∈ ℤ); SPREAD refused (4e): SPREAD needs an integer gearbox: N = 43/2"}
+PASS 375x812 v0.3 step 2 (F2): after the s ▶ step the s-row stepper message shows "SPREAD refused (4e): SPREAD needs an integer gearbox: N = 43/2" in full, visible, not truncated {"t":"SPREAD refused (4e): SPREAD needs an integer gearbox: N = 43/2","trunc":false,"vis":true,"inView":true}
+PASS 375x812 v0.3 s ◀ between shells lands on the ALIGN stop 0 (SPREAD refused, not approximated) {"s":"0","lbl":"ALIGN stop (t₁·s ∈ ℤ); SPREAD refused (4e): SPREAD needs an integer gearbox: N = 43/2"}
+PASS 375x812 v0.3 step 2 (F2): after the s ◀ step the s-row stepper message shows "SPREAD refused (4e): SPREAD needs an integer gearbox: N = 43/2" in full, visible, not truncated {"t":"SPREAD refused (4e): SPREAD needs an integer gearbox: N = 43/2","trunc":false,"vis":true,"inView":true}
+PASS 375x812 v0.3 Lift JSON between shells: schema fv-comb-hopf-lift/0.3, nMode continuous, N "43/2", N_integer false; integral_frequencies NOT_EVALUATED with the label as reason; closed_orbits PASS {"closed_orbits":{"failing":[],"reason":"every branch has a finite exact closure period","status":"PASS"},"exact_rational_lift":{"failing":[],"reason":"t1, t2 and s are exact rationals","status":"PASS"},"integral_frequencies":{"failing":[],"reason":"between shells: N = 43/2; shell arithmetic undefined","status":"NOT_EVALUATED"},"prime_pair":{"failing":[],"reason":"requires integral selected frequencies and independent primality evidence; between shells: N = 43/2; shell arithmetic undefined","status":"SEPARATE_GATE"},"rank4_smith_monodromy":{"failing":[],"reason":"Rank-4 monodromy has its own viewer (saphir, 2026-10-13)","status":"OUT_OF_SCOPE"}}
+PASS 375x812 v0.3 exact JSON between shells: schema fv-comb-hopf/0.2, state.nMode continuous, exact.N "43/2", N_integer false, gearbox BETWEEN_SHELLS, shell contrast null with the label {"B":"24","N":"43/2","bracket":null,"contrast":null,"span":"25","status":"between shells: N = 43/2; shell arithmetic undefined"}
+PASS 375x812 v0.3 tab switches change no setting in continuous mode
+PASS 375x812 v0.3 tab switches change no setting in integer mode
+FIRSTSCREEN 375x812 step 2 between shells N = 11/4, m = 2, fourier: φ₃ row to 781.2, s row to 832.2, transport to 874.2 of 812 px
+FAIL 375x812 v0.3 step 2 (F2) first screen between shells (N = 11/4, B = 24, φ₃ = 89/4, m = 2, fourier, nothing opened): view frame (393.2-635.2), φ₃ row (to 781.2), s row (to 832.2) and transport (to 874.2) inside the first 812 px {"frame":{"t":393.2,"b":635.2,"vis":true},"html":{"t":0,"b":0,"vis":false},"phi":{"t":724.2,"b":781.2,"vis":true},"s":{"t":783.2,"b":832.2,"vis":true},"tr":{"t":834.2,"b":874.2,"vis":true},"vh":812,"y":0,"shell":"B = n₁! = 24 · N = 11/4","opened":{"phiDrawer":false,"gearDrawer":0,"menu":0,"sinfo":false,"about":0,"exp":false}}
+FIRSTSCREEN 375x812 step 2 between shells N = 11/4, m = 2, clifford: φ₃ row to 781.2, s row to 832.2, transport to 874.2 of 812 px
+FAIL 375x812 v0.3 step 2 (F2) first screen between shells (N = 11/4, B = 24, φ₃ = 89/4, m = 2, clifford, nothing opened): view frame (393.2-635.2), φ₃ row (to 781.2), s row (to 832.2) and transport (to 874.2) inside the first 812 px {"frame":{"t":393.2,"b":635.2,"vis":true},"html":{"t":0,"b":0,"vis":false},"phi":{"t":724.2,"b":781.2,"vis":true},"s":{"t":783.2,"b":832.2,"vis":true},"tr":{"t":834.2,"b":874.2,"vis":true},"vh":812,"y":0,"shell":"B = n₁! = 24 · N = 11/4","opened":{"phiDrawer":false,"gearDrawer":0,"menu":0,"sinfo":false,"about":0,"exp":false}}
+FIRSTSCREEN 375x812 step 2 between shells N = 11/4, m = 2, hopf: φ₃ row to 781.2, s row to 832.2, transport to 874.2 of 812 px
+FAIL 375x812 v0.3 step 2 (F2) first screen between shells (N = 11/4, B = 24, φ₃ = 89/4, m = 2, hopf, nothing opened): view frame (393.2-635.2), φ₃ row (to 781.2), s row (to 832.2) and transport (to 874.2) inside the first 812 px {"frame":{"t":393.2,"b":635.2,"vis":true},"html":{"t":0,"b":0,"vis":false},"phi":{"t":724.2,"b":781.2,"vis":true},"s":{"t":783.2,"b":832.2,"vis":true},"tr":{"t":834.2,"b":874.2,"vis":true},"vh":812,"y":0,"shell":"B = n₁! = 24 · N = 11/4","opened":{"phiDrawer":false,"gearDrawer":0,"menu":0,"sinfo":false,"about":0,"exp":false}}
+FIRSTSCREEN 375x812 step 2 between shells N = 11/4, m = 2, panels: φ₃ row to 474.7, s row to 525.7, transport to 567.7 of 812 px
+PASS 375x812 v0.3 step 2 (F2) first screen between shells (N = 11/4, B = 24, φ₃ = 89/4, m = 2, panels, nothing opened): panel stage top (577.7), φ₃ row (to 474.7), s row (to 525.7) and transport (to 567.7) inside the first 812 px {"frame":{"t":0,"b":0,"vis":false},"html":{"t":577.7,"b":8771.2,"vis":true},"phi":{"t":417.7,"b":474.7,"vis":true},"s":{"t":476.7,"b":525.7,"vis":true},"tr":{"t":527.7,"b":567.7,"vis":true},"vh":812,"y":0,"shell":"B = n₁! = 24 · N = 11/4","opened":{"phiDrawer":false,"gearDrawer":0,"menu":0,"sinfo":false,"about":0,"exp":false}}
+FIRSTSCREEN 375x812 step 2 between shells N = 11/4, m = 5, fourier: φ₃ row to 781.2, s row to 832.2, transport to 874.2 of 812 px
+FAIL 375x812 v0.3 step 2 (F2) first screen between shells (N = 11/4, B = 24, φ₃ = 89/4, m = 5, fourier, nothing opened): view frame (393.2-635.2), φ₃ row (to 781.2), s row (to 832.2) and transport (to 874.2) inside the first 812 px {"frame":{"t":393.2,"b":635.2,"vis":true},"html":{"t":0,"b":0,"vis":false},"phi":{"t":724.2,"b":781.2,"vis":true},"s":{"t":783.2,"b":832.2,"vis":true},"tr":{"t":834.2,"b":874.2,"vis":true},"vh":812,"y":0,"shell":"B = n₁! = 24 · N = 11/4","opened":{"phiDrawer":false,"gearDrawer":0,"menu":0,"sinfo":false,"about":0,"exp":false}}
+FIRSTSCREEN 375x812 step 2 between shells N = 11/4, m = 5, clifford: φ₃ row to 781.2, s row to 832.2, transport to 874.2 of 812 px
+FAIL 375x812 v0.3 step 2 (F2) first screen between shells (N = 11/4, B = 24, φ₃ = 89/4, m = 5, clifford, nothing opened): view frame (393.2-635.2), φ₃ row (to 781.2), s row (to 832.2) and transport (to 874.2) inside the first 812 px {"frame":{"t":393.2,"b":635.2,"vis":true},"html":{"t":0,"b":0,"vis":false},"phi":{"t":724.2,"b":781.2,"vis":true},"s":{"t":783.2,"b":832.2,"vis":true},"tr":{"t":834.2,"b":874.2,"vis":true},"vh":812,"y":0,"shell":"B = n₁! = 24 · N = 11/4","opened":{"phiDrawer":false,"gearDrawer":0,"menu":0,"sinfo":false,"about":0,"exp":false}}
+FIRSTSCREEN 375x812 step 2 between shells N = 11/4, m = 5, hopf: φ₃ row to 781.2, s row to 832.2, transport to 874.2 of 812 px
+FAIL 375x812 v0.3 step 2 (F2) first screen between shells (N = 11/4, B = 24, φ₃ = 89/4, m = 5, hopf, nothing opened): view frame (393.2-635.2), φ₃ row (to 781.2), s row (to 832.2) and transport (to 874.2) inside the first 812 px {"frame":{"t":393.2,"b":635.2,"vis":true},"html":{"t":0,"b":0,"vis":false},"phi":{"t":724.2,"b":781.2,"vis":true},"s":{"t":783.2,"b":832.2,"vis":true},"tr":{"t":834.2,"b":874.2,"vis":true},"vh":812,"y":0,"shell":"B = n₁! = 24 · N = 11/4","opened":{"phiDrawer":false,"gearDrawer":0,"menu":0,"sinfo":false,"about":0,"exp":false}}
+FIRSTSCREEN 375x812 step 2 between shells N = 11/4, m = 5, panels: φ₃ row to 474.7, s row to 525.7, transport to 567.7 of 812 px
+PASS 375x812 v0.3 step 2 (F2) first screen between shells (N = 11/4, B = 24, φ₃ = 89/4, m = 5, panels, nothing opened): panel stage top (577.7), φ₃ row (to 474.7), s row (to 525.7) and transport (to 567.7) inside the first 812 px {"frame":{"t":0,"b":0,"vis":false},"html":{"t":577.7,"b":8771.2,"vis":true},"phi":{"t":417.7,"b":474.7,"vis":true},"s":{"t":476.7,"b":525.7,"vis":true},"tr":{"t":527.7,"b":567.7,"vis":true},"vh":812,"y":0,"shell":"B = n₁! = 24 · N = 11/4","opened":{"phiDrawer":false,"gearDrawer":0,"menu":0,"sinfo":false,"about":0,"exp":false}}
+SLIDERS 375x812 step 2 integer mode, default: φ₃ slider 127.8 px, s slider 23.6 px, N toggle 40 px, φ₃ chip 58.2 px
+PASS 375x812 v0.3 step 2 (F1) integer mode, default: φ₃ slider 127.8 px >= s slider 23.6 px − N toggle 40 px {"phi":127.8,"s":23.6,"toggle":40,"chip":58.2}
+SLIDERS 375x812 step 2 continuous mode, default φ₃: φ₃ slider 127.8 px, s slider 23.6 px, N toggle 40 px, φ₃ chip 58.2 px
+PASS 375x812 v0.3 step 2 (F1) continuous mode, default φ₃: φ₃ slider 127.8 px >= s slider 23.6 px − N toggle 40 px {"phi":127.8,"s":23.6,"toggle":40,"chip":58.2}
+SLIDERS 375x812 step 2 between shells N = 11/4: φ₃ slider 108.6 px, s slider 23.6 px, N toggle 40 px, φ₃ chip 77.4 px
+PASS 375x812 v0.3 step 2 (F1) between shells N = 11/4: φ₃ slider 108.6 px >= s slider 23.6 px − N toggle 40 px {"phi":108.6,"s":23.6,"toggle":40,"chip":77.4}
+PASS 375x812 v0.3 step 2 (F6): build pins "fv-comb-hopf-build/0.1", exact export "fv-comb-hopf/0.2", state export "fv-comb-hopf-state/0.2" are pairwise distinct; the pins id is fv-comb-hopf-build/0.1 ["fv-comb-hopf-build/0.1","fv-comb-hopf/0.2","fv-comb-hopf-state/0.2"]
+PASS 375x812 v0.3 a 0.1 address opens as nMode = integer (no refusal banner) and is rewritten as a 0.2 address {"nMode":"integer","phi3":"6","tab":"clifford","status":"","hash":"#v=fv-comb-hopf/0.2&shellMode=factorial&n1=4&B=24&nMode=integer&phi3=6&m=3&t1=1&t2=-21/4&n6=1&alpha=-1/50&chart=host&sTyped=-627/250&sEff=-627/250&E=19&tab=clifford&view="}
+PASS 375x812 v0.3 zero network requests in the continuous-N pages
+PASS 375x812 PERF reproduction state reached (partial-orbit caption, 2 orbits) partial orbit: 2 orbit(s) need more than 4,000 points at 2° steps; a 4,000-point window centred on the current s is drawn | ρ 9.43e-1 (numerical) · 3 of 3 points drawn · ok · mirror axis β = 0, π: c = 0 · carrier tooth
+PASS 375x812 PERF state change at the reproduction state: median 19.1 ms to next frame (< 250 ms regression bound) [12.6,18.5,18.5,19.1,19.2,19.3,19.4]
+PASS 375x812 PERF canvas layer drawn (non-background pixels), SVG overlay small: 18 elements, orbit stubs carry data-c and stroke, no geometry in the SVG {"cv":[320,240],"lit":223,"svgEls":18,"stubs":3,"stubPts":0,"dataC":true,"runs":3,"leaf":1}
+PASS 375x812 PERF clipped-text fix: the "(see note)" stand-in at the left edge lies fully inside the Clifford frame [{"l":5,"r":236.71875,"anchor":"start"}]
+PASS 375x812 PERF preview: 30 input events in one task coalesce to one render (<= 2), state and the exact s box current at once, caption says "preview" {"full":8181,"sync":{"state":"56/25","renders":0},"during":{"renders":1,"cap":["preview: reduced drawing sample while input is moving; every readout is exact and current"],"exactBox":"56/25","state":"56/25","pts":526,"eff":"56/25","cardsS":true},"after":{"cap":0,"pts":8181,"exactBox":"56/25","state":"56/25"}}
+PASS 375x812 PERF preview draws fewer orbit points than the full sample and the full sample returns (no preview label) after 200 ms {"full":8181,"sync":{"state":"56/25","renders":0},"during":{"renders":1,"cap":["preview: reduced drawing sample while input is moving; every readout is exact and current"],"exactBox":"56/25","state":"56/25","pts":526,"eff":"56/25","cardsS":true},"after":{"cap":0,"pts":8181,"exactBox":"56/25","state":"56/25"}}
+PASS 375x812 PERF no page errors in the performance block
+PASS 375x812 PERF PNG export (canvas layer + SVG overlay composited) is non-trivial and not a preview frame {"size":792455,"preview":0}
+PASS 375x812 PERF2 clifford rotate (60 moves): camera frames drawn (60), no full render, no orbit/model/mesh recomputation, exact state and cards unchanged {"full":0,"cam":60,"cnt":{"orbits":0,"compute":0,"torusMesh":0},"state":true,"cards":true,"cvMoving":320}
+FAIL 375x812 PERF2 clifford release: one full render, view moved, exact JSON hash unchanged by the camera, cards identical, canvas back at full resolution (was 320, now 320) {"full":1,"viewMoved":true,"sha":true,"cardsSame":true,"cvFull":320}
+PASS 375x812 PERF2 clifford rotate frame rate 61.0 fps (regression bound >= 30; target 50 desktop) 61.02522375989369
+PASS 375x812 PERF2 hopf rotate (60 moves): camera frames drawn (60), no full render, no orbit/model/mesh recomputation, exact state and cards unchanged {"full":0,"cam":60,"cnt":{"orbits":0,"compute":0,"torusMesh":0},"state":true,"cards":true,"cvMoving":320}
+FAIL 375x812 PERF2 hopf release: one full render, view moved, exact JSON hash unchanged by the camera, cards identical, canvas back at full resolution (was 320, now 320) {"full":1,"viewMoved":true,"sha":true,"cardsSame":true,"cvFull":320}
+PASS 375x812 PERF2 hopf rotate frame rate 60.9 fps (regression bound >= 30; target 50 desktop) 60.93845216183944
+PASS 375x812 PERF2 Clifford wheel zoom, pinch zoom and pan change the view string (zoom cz=2.4642 / cz=4.3122, pan cz=4.3122;cx=80;cy=40) on the camera path {"v0":"","z1":"cz=2.4642","z2":"cz=4.3122","pan":"cz=4.3122;cx=80;cy=40","cam":30,"full":2}
+PASS 375x812 R17 clifford at rest: every tooth dot (3 of 3) has an overlay element with data-role, data-c, data-t, within 1 px of the canvas-drawn position (max 0.002 px), pixel drawn {"dots":[{"c":"-1","t":0,"err":0.001852638929051409,"lit":true},{"c":"0","t":1,"err":0.0017305610574567254,"lit":true},{"c":"1","t":2,"err":0.0024046603186889115,"lit":true}],"verts":[],"orbs":[{"branch":"-1","err":0.002217062094814537,"attrs":true},{"branch":"0","err":0.000842169883611632,"attrs":true},{"branch":"1","err":0.0024617277582024144,"attrs":true}],"bad":[],"attrs":true,"nTeeth":3}
+PASS 375x812 R17 clifford at rest: every branch orbit/trail (3) has an overlay element with data-role, data-c, data-branch, data-t, its box within 1 px of the drawn curve (max 0.002 px) [{"branch":"-1","err":0.002217062094814537,"attrs":true},{"branch":"0","err":0.000842169883611632,"attrs":true},{"branch":"1","err":0.0024617277582024144,"attrs":true}]
+PASS 375x812 R17 clifford after a camera drag: every tooth dot (3 of 3) has an overlay element with data-role, data-c, data-t, within 1 px of the canvas-drawn position (max 0.002 px), pixel drawn {"dots":[{"c":"-1","t":0,"err":0.0017990287274187722,"lit":true},{"c":"0","t":1,"err":0.001878976605439675,"lit":true},{"c":"1","t":2,"err":0.0024229519598293336,"lit":true}],"verts":[],"orbs":[{"branch":"-1","err":0.00189651366848409,"attrs":true},{"branch":"0","err":0.0013898852578222431,"attrs":true},{"branch":"1","err":0.0023902057199620685,"attrs":true}],"bad":[],"attrs":true,"nTeeth":3}
+PASS 375x812 R17 clifford after a camera drag: every branch orbit/trail (3) has an overlay element with data-role, data-c, data-branch, data-t, its box within 1 px of the drawn curve (max 0.002 px) [{"branch":"-1","err":0.00189651366848409,"attrs":true},{"branch":"0","err":0.0013898852578222431,"attrs":true},{"branch":"1","err":0.0023902057199620685,"attrs":true}]
+PASS 375x812 R17 hopf at rest: every tooth dot (3 of 3) has an overlay element with data-role, data-c, data-t, within 1 px of the canvas-drawn position (max 0.002 px), pixel drawn {"dots":[{"c":"-1","t":0,"err":0.001822131040739805,"lit":true},{"c":"0","t":1,"err":0.002049730009986206,"lit":true},{"c":"1","t":2,"err":0.001013807944104883,"lit":true}],"verts":[{"c":null,"t":0,"err":0.0016288763275724705,"lit":true},{"c":"-1","t":1,"err":0.001806872251677305,"lit":true},{"c":"0","t":2,"err":0.001505633006786411,"lit":true},{"c":"1","t":3,"err":0.0010628398889593882,"lit":true
+PASS 375x812 R17 hopf at rest: every branch orbit/trail (3) has an overlay element with data-role, data-c, data-branch, data-t, its box within 1 px of the drawn curve (max 0.003 px) [{"branch":"-1","err":0.0020430176459740323,"attrs":true},{"branch":"0","err":0.003457714908563503,"attrs":true},{"branch":"1","err":0.0016453896956818426,"attrs":true}]
+PASS 375x812 R17 hopf at rest: every walk vertex (4) has an overlay element with data-role and data-t within 1 px of the canvas-drawn position (max 0.002 px) [{"c":null,"t":0,"err":0.0016288763275724705,"lit":true},{"c":"-1","t":1,"err":0.001806872251677305,"lit":true},{"c":"0","t":2,"err":0.001505633006786411,"lit":true},{"c":"1","t":3,"err":0.0010628398889593882,"lit":true}]
+PASS 375x812 R17 hopf after a camera drag: every tooth dot (3 of 3) has an overlay element with data-role, data-c, data-t, within 1 px of the canvas-drawn position (max 0.002 px), pixel drawn {"dots":[{"c":"-1","t":0,"err":0.000446318685376923,"lit":true},{"c":"0","t":1,"err":0.00210667870079817,"lit":true},{"c":"1","t":2,"err":0.001984613186863271,"lit":true}],"verts":[{"c":null,"t":0,"err":0.001748404092495548,"lit":true},{"c":"-1","t":1,"err":0.000446318685376923,"lit":true},{"c":"0","t":2,"err":0.0006569212459908158,"lit":true},{"c":"1","t":3,"err":0.0016606305159996282,"lit":true}
+PASS 375x812 R17 hopf after a camera drag: every branch orbit/trail (3) has an overlay element with data-role, data-c, data-branch, data-t, its box within 1 px of the drawn curve (max 0.002 px) [{"branch":"-1","err":0.001518735117997494,"attrs":true},{"branch":"0","err":0.0014677646919949439,"attrs":true},{"branch":"1","err":0.0013538435313193986,"attrs":true}]
+PASS 375x812 R17 hopf after a camera drag: every walk vertex (4) has an overlay element with data-role and data-t within 1 px of the canvas-drawn position (max 0.002 px) [{"c":null,"t":0,"err":0.001748404092495548,"lit":true},{"c":"-1","t":1,"err":0.000446318685376923,"lit":true},{"c":"0","t":2,"err":0.0006569212459908158,"lit":true},{"c":"1","t":3,"err":0.0016606305159996282,"lit":true}]
+PASS 375x812 R17 clifford at rest m=7: every tooth dot (7 of 7) has an overlay element with data-role, data-c, data-t, within 1 px of the canvas-drawn position (max 0.002 px), pixel drawn {"dots":[{"c":"3","t":6,"err":0.0014861104772307954,"lit":true},{"c":"2","t":5,"err":0.0012216044746082844,"lit":true},{"c":"1","t":4,"err":0.0024806935598462587,"lit":true},{"c":"0","t":3,"err":0.0014940740792326324,"lit":true},{"c":"-1","t":2,"err":0.0007220059698056502,"lit":true},{"c":"-2","t":1,"err":0.0014062189184187446,"lit":true},{"c":"-3","t":0,"err":0.0020363782742265357,"lit":true}],"v
+PASS 375x812 R17 clifford at rest m=7: every branch orbit/trail (7) has an overlay element with data-role, data-c, data-branch, data-t, its box within 1 px of the drawn curve (max 0.003 px) [{"branch":"-3","err":0.0022529061380396342,"attrs":true},{"branch":"-2","err":0.0011224927698378906,"attrs":true},{"branch":"-1","err":0.001928592214596847,"attrs":true},{"branch":"0","err":0.001961195647822933,"attrs":true},{"branch":"1","err":0.002316165049705887,"attrs":true},{"branch":"2","err":0.002065208384806283,"attrs":true},{"branch":"3","err":0.0032341003094984444,"attrs":true}]
+PASS 375x812 R17 clifford after a camera drag m=7: every tooth dot (7 of 7) has an overlay element with data-role, data-c, data-t, within 1 px of the canvas-drawn position (max 0.002 px), pixel drawn {"dots":[{"c":"3","t":6,"err":0.0024700817536427166,"lit":true},{"c":"-3","t":0,"err":0.0013771207356967352,"lit":true},{"c":"2","t":5,"err":0.0014099004876584331,"lit":true},{"c":"1","t":4,"err":0.0016425431075504093,"lit":true},{"c":"-2","t":1,"err":0.0023072638123551314,"lit":true},{"c":"0","t":3,"err":0.0008536455910075347,"lit":true},{"c":"-1","t":2,"err":0.00022662169186560277,"lit":true}],"
+PASS 375x812 R17 clifford after a camera drag m=7: every branch orbit/trail (7) has an overlay element with data-role, data-c, data-branch, data-t, its box within 1 px of the drawn curve (max 0.003 px) [{"branch":"-3","err":0.0022011072723557845,"attrs":true},{"branch":"-2","err":0.002297979893342017,"attrs":true},{"branch":"-1","err":0.002429901260512679,"attrs":true},{"branch":"0","err":0.0012186752407501444,"attrs":true},{"branch":"1","err":0.0015125022687243472,"attrs":true},{"branch":"2","err":0.0028989110500106108,"attrs":true},{"branch":"3","err":0.002825861454311962,"attrs":true}]
+PASS 375x812 R17 hopf at rest m=7: every tooth dot (7 of 7) has an overlay element with data-role, data-c, data-t, within 1 px of the canvas-drawn position (max 0.002 px), pixel drawn {"dots":[{"c":"-3","t":0,"err":0.0009677541468136042,"lit":true},{"c":"-2","t":1,"err":0.0021491679206064873,"lit":true},{"c":"-1","t":2,"err":0.0016595255102060946,"lit":true},{"c":"0","t":3,"err":0.002049641701546534,"lit":true},{"c":"1","t":4,"err":0.0009157799259753574,"lit":true},{"c":"2","t":5,"err":0.0016354667858706762,"lit":true},{"c":"3","t":6,"err":0.0024196774660367737,"lit":true}],"ve
+PASS 375x812 R17 hopf at rest m=7: every branch orbit/trail (7) has an overlay element with data-role, data-c, data-branch, data-t, its box within 1 px of the drawn curve (max 0.004 px) [{"branch":"-3","err":0.0031450615281300998,"attrs":true},{"branch":"-2","err":0.0031403998169139413,"attrs":true},{"branch":"-1","err":0.0036509574688352586,"attrs":true},{"branch":"0","err":0.0036509574688352586,"attrs":true},{"branch":"1","err":0.003592124384510953,"attrs":true},{"branch":"2","err":0.0031403998169139413,"attrs":true},{"branch":"3","err":0.0031450615281300998,"attrs":true}]
+PASS 375x812 R17 hopf at rest m=7: every walk vertex (8) has an overlay element with data-role and data-t within 1 px of the canvas-drawn position (max 0.002 px) [{"c":null,"t":0,"err":0.0016288763275724705,"lit":true},{"c":"-3","t":1,"err":0.0009830129358761042,"lit":true},{"c":"-2","t":2,"err":0.00233326813503254,"lit":true},{"c":"-1","t":3,"err":0.0012788754534085456,"lit":true},{"c":"0","t":4,"err":0.0013562121358745571,"lit":true},{"c":"1","t":5,"err":0
+PASS 375x812 R17 hopf after a camera drag m=7: every tooth dot (7 of 7) has an overlay element with data-role, data-c, data-t, within 1 px of the canvas-drawn position (max 0.002 px), pixel drawn {"dots":[{"c":"-3","t":0,"err":0.0024091277382467524,"lit":true},{"c":"-2","t":1,"err":0.00229266009910134,"lit":true},{"c":"-1","t":2,"err":0.0024158027013356786,"lit":true},{"c":"0","t":3,"err":0.0008800416362078067,"lit":true},{"c":"1","t":4,"err":0.0007983641929456553,"lit":true},{"c":"2","t":5,"err":0.002475597785661421,"lit":true},{"c":"3","t":6,"err":0.0005436701914049991,"lit":true}],"vert
+PASS 375x812 R17 hopf after a camera drag m=7: every branch orbit/trail (7) has an overlay element with data-role, data-c, data-branch, data-t, its box within 1 px of the drawn curve (max 0.003 px) [{"branch":"-3","err":0.0028357451642762044,"attrs":true},{"branch":"-2","err":0.0028357451642762044,"attrs":true},{"branch":"-1","err":0.0016505065586329692,"attrs":true},{"branch":"0","err":0.0028417311988278016,"attrs":true},{"branch":"1","err":0.003330982843010588,"attrs":true},{"branch":"2","err":0.0028357451642762044,"attrs":true},{"branch":"3","err":0.0016505065586329692,"attrs":true}]
+PASS 375x812 R17 hopf after a camera drag m=7: every walk vertex (8) has an overlay element with data-role and data-t within 1 px of the canvas-drawn position (max 0.002 px) [{"c":null,"t":0,"err":0.001748404092495548,"lit":true},{"c":"-3","t":1,"err":0.0024091277382467524,"lit":true},{"c":"-2","t":2,"err":0.0013206795635483104,"lit":true},{"c":"-1","t":3,"err":0.0009461259889462781,"lit":true},{"c":"0","t":4,"err":0.0007825884358965141,"lit":true},{"c":"1","t":5,"err":
+PASS 375x812 PERF2 slider drag: cards updated 4 times in 1.03 s (<= 4 per second plus the first), preview marker shown while dragging (40 of 40 frames), gone after release {"upd":4,"dur":1.0262000000476836,"saw":40,"after":false}
+PASS 375x812 PERF2 after release every card equals a fresh computation for the final state (Phasors, flags, Wilson, Divisors, Shell: 3832 characters of card markup compared)
+PASS 375x812 PERF2 mid-drag the cards show exactly the state of their last update (#v=fv-comb-hopf/0.2&shellMode=factorial&n1=4&B=24&nMode=inte...), not a mixture
+PASS 375x812 PERF2 pair export (PNG + exact JSON + state) works after camera moves: schema, exact sha256 matches a fresh export, PNG hash present, address current, canvas at full resolution {"schema":"fv-comb-hopf-pair/0.2","exact":true,"png":true,"addr":true,"full":true}
+CONTROLS 375x812 fourier: page 54 with (i), 47 without; instrument panel + header 43 with (i), 41 without (49 buttons, 4 inputs, 1 selects in the page)
+FAIL 375x812 fourier: visible controls in the instrument panel with (i) excluded <= 40 (addendum 7 F1): 41 (with (i) 43; whole page 47 / 54) {"total":54,"totalNoInfo":47,"inst":43,"instNoInfo":41,"infos":7,"instInfos":2,"buttons":49,"inputs":4,"selects":1,"frame":{"t":357.21875,"b":599.21875,"vis":true},"phi":{"t":688.21875,"b":745.21875,"vis":true},"s":{"t":747.21875,"b":796.21875,"vis":true},"tr":{"t":798.21875,"b":838.21875,"vis":true},"vh":812}
+FAIL 375x812 fourier first screen: view frame (357-599), phi3 row (to 745), s row (to 796) and transport (to 838) all inside the first 812 px {"total":54,"totalNoInfo":47,"inst":43,"instNoInfo":41,"infos":7,"instInfos":2,"buttons":49,"inputs":4,"selects":1,"frame":{"t":357.21875,"b":599.21875,"vis":true},"phi":{"t":688.21875,"b":745.21875,"vis":true},"s":{"t":747.21875,"b":796.21875,"vis":true},"tr":{"t":798.21875,"b":838.21875,"vis":true},"vh":812}
+CONTROLS 375x812 clifford: page 54 with (i), 47 without; instrument panel + header 43 with (i), 41 without (49 buttons, 4 inputs, 1 selects in the page)
+FAIL 375x812 clifford: visible controls in the instrument panel with (i) excluded <= 40 (addendum 7 F1): 41 (with (i) 43; whole page 47 / 54) {"total":54,"totalNoInfo":47,"inst":43,"instNoInfo":41,"infos":7,"instInfos":2,"buttons":49,"inputs":4,"selects":1,"frame":{"t":357.21875,"b":599.21875,"vis":true},"phi":{"t":688.21875,"b":745.21875,"vis":true},"s":{"t":747.21875,"b":796.21875,"vis":true},"tr":{"t":798.21875,"b":838.21875,"vis":true},"vh":812}
+FAIL 375x812 clifford first screen: view frame (357-599), phi3 row (to 745), s row (to 796) and transport (to 838) all inside the first 812 px {"total":54,"totalNoInfo":47,"inst":43,"instNoInfo":41,"infos":7,"instInfos":2,"buttons":49,"inputs":4,"selects":1,"frame":{"t":357.21875,"b":599.21875,"vis":true},"phi":{"t":688.21875,"b":745.21875,"vis":true},"s":{"t":747.21875,"b":796.21875,"vis":true},"tr":{"t":798.21875,"b":838.21875,"vis":true},"vh":812}
+CONTROLS 375x812 hopf: page 54 with (i), 47 without; instrument panel + header 43 with (i), 41 without (49 buttons, 4 inputs, 1 selects in the page)
+FAIL 375x812 hopf: visible controls in the instrument panel with (i) excluded <= 40 (addendum 7 F1): 41 (with (i) 43; whole page 47 / 54) {"total":54,"totalNoInfo":47,"inst":43,"instNoInfo":41,"infos":7,"instInfos":2,"buttons":49,"inputs":4,"selects":1,"frame":{"t":357.21875,"b":599.21875,"vis":true},"phi":{"t":688.21875,"b":745.21875,"vis":true},"s":{"t":747.21875,"b":796.21875,"vis":true},"tr":{"t":798.21875,"b":838.21875,"vis":true},"vh":812}
+FAIL 375x812 hopf first screen: view frame (357-599), phi3 row (to 745), s row (to 796) and transport (to 838) all inside the first 812 px {"total":54,"totalNoInfo":47,"inst":43,"instNoInfo":41,"infos":7,"instInfos":2,"buttons":49,"inputs":4,"selects":1,"frame":{"t":357.21875,"b":599.21875,"vis":true},"phi":{"t":688.21875,"b":745.21875,"vis":true},"s":{"t":747.21875,"b":796.21875,"vis":true},"tr":{"t":798.21875,"b":838.21875,"vis":true},"vh":812}
+CONTROLS 375x812 panels: page 68 with (i), 45 without; instrument panel + header 57 with (i), 39 without (62 buttons, 4 inputs, 2 selects in the page)
+PASS 375x812 panels: visible controls in the instrument panel with (i) excluded <= 40 (addendum 7 F1): 39 (with (i) 57; whole page 45 / 68) {"total":68,"totalNoInfo":45,"inst":57,"instNoInfo":39,"infos":23,"instInfos":18,"buttons":62,"inputs":4,"selects":2,"frame":{"t":0,"b":0,"vis":false},"phi":{"t":376.71875,"b":433.71875,"vis":true},"s":{"t":435.71875,"b":484.71875,"vis":true},"tr":{"t":486.71875,"b":526.71875,"vis":true},"vh":812}
+PASS 1280x800 no console errors
+PASS 1280x800 zero network requests
+PASS 1280x800 no horizontal scroll 1265/1280
+PASS 1280x800 fourier no visible text below 13.000px (138 text elements checked, smallest 13.0000px)
+PASS 1280x800 touch targets >= 40px high
+PASS 1280x800 page defaults: n1 4, phi3 23 (N = 2), m 2, t1 = t2 = 1, alpha 1, n6 1, s 1 {"phi3":"23","m":"2","N":"2","n1":"4","s":"1","t1":"1","t2":"1","alpha":"1","n6":"1","E":"2","rows":["carrier (not a tooth)","z[-1]","z[+1]"]}
+PASS 1280x800 default m = 2 (even): a separate carrier row, no c = 0 tooth ["carrier (not a tooth)","z[-1]","z[+1]"]
+PASS 1280x800 clifford no visible text below 13.000px (140 text elements checked, smallest 13.0000px)
+PASS 1280x800 hopf no visible text below 13.000px (143 text elements checked, smallest 13.0000px)
+PASS 1280x800 panels no visible text below 13.000px (322 text elements checked, smallest 13.0000px)
+PASS 1280x800 phasor table headers do not wrap (max header height 35px) ["z[-1]","z[0] (carrier)","z[+1]"]
+PASS 1280x800 odd m: single carrier row keyed z[0] (carrier)
+PASS 1280x800 fourier @110% (every A+ step) no visible text below 13.000px (140 text elements checked, smallest 14.3000px)
+PASS 1280x800 fourier @120% (every A+ step) no visible text below 13.000px (140 text elements checked, smallest 15.6000px)
+PASS 1280x800 fourier @130% (every A+ step) no visible text below 13.000px (140 text elements checked, smallest 16.9000px)
+PASS 1280x800 fourier @140% (every A+ step) no visible text below 13.000px (140 text elements checked, smallest 18.2000px)
+PASS 1280x800 fourier @150% (every A+ step) no visible text below 13.000px (140 text elements checked, smallest 19.5000px)
+PASS 1280x800 fourier @160% (every A+ step) no visible text below 13.000px (140 text elements checked, smallest 20.8000px)
+PASS 1280x800 text size reaches 160%
+PASS 1280x800 fourier @160% no visible text below 13.000px (140 text elements checked, smallest 20.8000px)
+PASS 1280x800 clifford @160% no visible text below 13.000px (140 text elements checked, smallest 20.8000px)
+PASS 1280x800 hopf @160% no visible text below 13.000px (143 text elements checked, smallest 20.8000px)
+PASS 1280x800 panels @160% no visible text below 13.000px (322 text elements checked, smallest 13.0000px)
+PASS 1280x800 @160% no horizontal scroll
+PASS 1280x800 A− stops at 100%
+PASS 1280x800 tab fourier renders, no horizontal scroll
+PASS 1280x800 tab switch leaves settings alone
+PASS 1280x800 tab clifford renders, no horizontal scroll
+PASS 1280x800 tab switch leaves settings alone
+PASS 1280x800 tab hopf renders, no horizontal scroll
+PASS 1280x800 tab switch leaves settings alone
+PASS 1280x800 tab panels renders, no horizontal scroll
+PASS 1280x800 tab switch leaves settings alone
+PASS spin step forward changes s_typed exactly 1 -> 2
+PASS dial change keeps s_typed
+PASS clifford fraction stack caption shown
+PASS PNG export fourier is a valid PNG (169923 bytes, fvlt_fourier_fourier_m3_n4f_s2_0e5b7cc7.png)
+PASS PNG fourier page-shown SHA-256 matches file
+PASS PNG export clifford is a valid PNG (532572 bytes, fvlt_fourier_clifford_m3_n4f_s2_9200dceb.png)
+PASS PNG clifford page-shown SHA-256 matches file
+PASS PNG export hopf is a valid PNG (428935 bytes, fvlt_fourier_hopf_m3_n4f_s2_a2e3f9e0.png)
+PASS PNG hopf page-shown SHA-256 matches file
+PASS pair export produced 4 files fvlt_fourier_hopf_m3_n4f_s2_a2e3f9e0.png, fvlt_fourier_hopf_m3_n4f_s2_a2e3f9e0.json, fvlt_fourier_hopf_m3_n4f_s2_a2e3f9e0.state.json, fvlt_fourier_hopf_m3_n4f_s2_a2e3f9e0.pair.json
+PASS exact JSON ends with LF and omits tab/view
+FAIL panels tab lists 17 placeholder cards
+PASS about toggle opens provenance notes (closed by default)
+PASS hopf drag rotates the camera (view state changes, spin unchanged)
+PASS 1280x800 import state: pasted address loads D1 state (gate closed) exactly as stored {"t":"49","e":"49","E":"49"} Loaded: s_typed = 49, s_eff = 49, E = 49 (restored as stored).
+PASS 1280x800 import state: address after load equals the pasted address
+PASS 1280x800 R21.2 label shown: gate closed, s_typed 49 is not its own representative in (-24, 24]
+PASS 1280x800 R21.2 label absent: gate closed, s_typed 5 is already its own representative
+PASS 1280x800 R21.2 label shown for s_typed -24 (a wrap would give +24) with the gate closed
+PASS 1280x800 import state: pasted state JSON with an invariant wrap restores s_eff as stored (49 / 3 / 23), labelled wrapped {"t":"49","e":"3","E":"23"}
+PASS 1280x800 import state refuses a wrong representative (sEff 5 for sTyped 49) as a whole, reason shown, defaults shown as a new state (current state not kept) Import refused: sEff is neither sTyped nor its declared invariant representative. — showing defaults as a new state.
+PASS 1280x800 import state refuses E < N as a whole, reason shown, defaults shown as a new state (current state not kept) Import refused: E < N. — showing defaults as a new state.
+PASS 1280x800 import state refuses E < |sEff| as a whole, reason shown, defaults shown as a new state (current state not kept) Import refused: E < |sEff|. — showing defaults as a new state.
+PASS 1280x800 import state refuses a non-canonical E as a whole, reason shown, defaults shown as a new state (current state not kept) Import refused: E is not in canonical exact form. — showing defaults as a new state.
+PASS 1280x800 import state refuses text that is not a state as a whole, reason shown, defaults shown as a new state (current state not kept) Import refused: Malformed address. — showing defaults as a new state.
+PASS 1280x800 import state: empty box says nothing to load
+PASS 1280x800 witness p=7 polygon drawn after Test
+PASS 1280x800 witness persists across a gear change (control)
+PASS 1280x800 witness polygon hidden after a phi3 step (N changes)
+PASS 1280x800 witness needs Test again after the phi3 step: polygon back after Test
+PASS 1280x800 witness polygon hidden when n1 (the shell) changes
+PASS 1280x800 witness needs Test again: polygon back after Test
+PASS 1280x800 witness polygon hidden when the shell mode changes
+PASS 1280x800 numerical readouts shown: |W|, |W|/rho, W1 gate residual, each labelled numerical with a bound
+PASS 1280x800 |W|/rho equals |W| divided by rho on the page model
+PASS 1280x800 rho=0: "|W|/ρ undefined (ρ = 0)" shown
+PASS 1280x800 rho=0 Clifford: the x3 axis is drawn, labelled as a line closed at infinity, not a circle ρ = 0: collapsed leaf; no reference longitudes and no same-time events are drawn.ρ 0.00e+0 (numerical) · 1 of 2 points drawn · 1 not finite · mirror axis β = 0, π: reference carrier · no tooth1 tooth point(s) AT_INFINITY or CLIPPED_NEAR_POLE: not drawn as finite points (labelled, not hidden)ρ = 0: the leaf collapses to the circle z₁ = 0; it passes through the projection pole, so its image is the x₃ axis (a line through the origin, closed at ∞), drawn as that axis.
+PASS 1280x800 rho>0 Clifford: no x3-axis line, leaf mesh drawn (control)
+PASS 1280x800 clifford drag without ✥ rotates (ca changes, cx does not) {"ca":"-0.329","ce":"0.6505"}
+PASS 1280x800 ✥ pan toggle (Camera menu) is pressed
+PASS 1280x800 clifford drag with ✥ pans (cx, cy change; rotation unchanged) {"cx":"40.1255","cy":"25.0785","cp":"1"}
+PASS 1280x800 fourier ⛶ enters real fullscreen on the view frame (Fullscreen API) {"fs":"frame","maxed":false}
+PASS 1280x800 fourier fullscreen exits
+PASS 1280x800 clifford ⛶ enters real fullscreen on the view frame (Fullscreen API) {"fs":"frame","maxed":false}
+PASS 1280x800 clifford fullscreen exits
+PASS 1280x800 hopf ⛶ enters real fullscreen on the view frame (Fullscreen API) {"fs":"frame","maxed":false}
+PASS 1280x800 hopf fullscreen exits
+PASS 1280x800 fourier ⛶ without the API: maximised view fills the window with a Close button ≥40px {"maxed":true,"fill":true,"closeVisible":true}
+PASS 1280x800 fourier Close button restores the page
+PASS 1280x800 fourier Esc also closes the maximised view
+PASS 1280x800 clifford ⛶ without the API: maximised view fills the window with a Close button ≥40px {"maxed":true,"fill":true,"closeVisible":true}
+PASS 1280x800 maximised Clifford: no SVG text below 13px on screen 0
+PASS 1280x800 clifford Close button restores the page
+PASS 1280x800 clifford Esc also closes the maximised view
+PASS 1280x800 hopf ⛶ without the API: maximised view fills the window with a Close button ≥40px {"maxed":true,"fill":true,"closeVisible":true}
+PASS 1280x800 hopf Close button restores the page
+PASS 1280x800 hopf Esc also closes the maximised view
+PASS 1280x800 contrast 29/8 > 3: defend colour and lock {"t":"29/8 ≈ 3.6250 (decimal is display) 🔒","c":"rgb(255, 107, 107)"}
+PASS 1280x800 contrast 5/2 (2 < v < 3): warn colour, no lock {"t":"5/2 ≈ 2.5000 (decimal is display)","c":"rgb(251, 191, 36)"}
+PASS 1280x800 contrast 1/2: dim colour, no lock {"t":"1/2 ≈ 0.5000 (decimal is display)","c":"rgb(154, 154, 184)"}
+PASS 1280x800 Clifford orbits at example state: teeth with an orbit drawn (7), each has >= 100 points in all its runs (min 181)
+PASS 1280x800 Clifford orbits at example state: longest drawn segment 8.91 <= 3% of view width (19.20)
+PASS 1280x800 Clifford orbits at example state: no "partial orbit" label
+PASS 1280x800 Hopf orbits at example state: teeth with an orbit drawn (7), each has >= 100 points in all its runs (min 183)
+PASS 1280x800 Hopf orbits at example state: longest drawn segment 6.45 <= 3% of view width (19.20)
+PASS 1280x800 Hopf orbits at example state: no "partial orbit" label
+PASS 1280x800 branch chips live in the Layers menu (Advanced): one chip per branch (7), count line, All and None buttons
+PASS 1280x800 branch chips read c · raw · primitive ×d · type (c = -3 and c = -2) ["c −3 · raw (4,3) · primitive (4,3) ×1 · T(3,4)+","c −2 · raw (4,2) · primitive (2,1) ×2 · UNKNOT","c −1 · raw (4,1) · primitive (4,1) ×1 · UNKNOT","c 0 · raw (4,0) · primitive (1,0) ×4 · UNKNOT","c +1 · raw (4,−1) · primitive (4,−1) ×1 · UNKNOT","c +2 · raw (4,−2) · primitive (2,−1) ×2 · UNKNOT","c +3 · raw (4,−3) · primitive (4,−3) ×1 · T(3,4)−"]
+PASS 1280x800 reference state: 7 s-orbits and 7 tooth dots drawn, one per branch
+PASS 1280x800 orbit colour equals chip colour for every branch []
+PASS 1280x800 tap chip c = 2 hides that s-orbit and tooth dot (6 left), chip unpressed, count 6 of 7
+PASS 1280x800 branch visibility is in the URL address (view key ch) #v=fv-comb-hopf/0.2&shellMode=factorial&n1=4&B=24&nMode=integer&phi3=21&m=7&t1=1&t2=1&n6=1&alpha=1&chart=host&sTyped=4/7&sEff=4/7&E=4&tab=clifford&view=ch=h:2
+PASS 1280x800 tap again shows it; address returns to no ch
+PASS 1280x800 None hides every orbit and dot (0 drawn), all chips unpressed
+PASS 1280x800 toggle again (All) shows every branch (7 orbits, 7 dots)
+PASS 1280x800 shift-click isolates: only c = -3 drawn, address shows ch=v:-3
+PASS 1280x800 long-press isolates c = 1 (and the release does not toggle it back) ["1"] #v=fv-comb-hopf/0.2&shellMode=factorial&n1=4&B=24&nMode=integer&phi3=21&m=7&t1=1&t2=1&n6=1&alpha=1&chart=host&sTyped=4/7&sEff=4/7&E=4&tab=clifford&view=ch=v:1
+PASS 1280x800 reloading the address restores the branch visibility (only c = 1)
+PASS 1280x800 branch chips are offered on the Clifford tab only (none in the Fourier Layers menu)
+PASS 1280x800 Phasors card shows the field line (reference state) generated by the phase factors ℚ(ζ₁₄) · phase container (convention) ℚ(ζ₅₆) (exact)
+PASS 1280x800 exact JSON has no view or branch visibility
+PASS 1280x800 Lift JSON cyclotomic_field: generated Q(zeta_14), phase_container Q(zeta_56), host_ambient_equivalent true {"L_k":"1","N":"4","N_integer":true,"a":"4","exact_spin":"4/7","generated":"ℚ(ζ_14)","generated_n":"14","host_ambient_equivalent":true,"k_denominator_lcm":"1","note":"generated by the phase factors: Q(zeta_L), L = lcm over the nonzero-amplitude teeth of the order of exp(i*pi*k_c*s/N); the amplitude rho = n6*N^alpha may be irrational, so the phasor values themselves may need Q(zeta_L, rho); phase container (convention): Q(zeta_C), C = 2*q*a*L_k for s = p/q and N = a/b in lowest terms (a = N on an integer shell, so C = 2*q*N*L_k there), L_k = lcm of the denominators of the k_c (1 when every k_c is an integer): every k_c*s/N lies in (1/(L_k*q*a))Z; a container convention, not a minimal field","phase_container":"ℚ(ζ_56)","phase_container_factor":"2qN","phase_container_formula":"C = 2*q*N*L_k","phase_container_n":"56","q":"7","rho_irrational":false,"shell_reference":"ℚ(ζ_24)"}
+PASS 1280x800 Lift JSON schema is fv-comb-hopf-lift/0.3 with branches[7]
+FAIL 1280x800 Lift JSON branches equal the old viewer exactRationalLift.branches (c as string); independent of branch visibility
+PASS 1280x800 Hopf comb walk: 7 edges sampled as curves (>= 7*33 points, 438), longest drawn segment 6.22 <= 2 degrees of the sphere radius (7 view units) {"n":7,"pts":438,"maxSeg":6.223509584332149,"Wd":640}
+PASS 1280x800 Hopf walk at a near-pole state (rho = 524288, chart w = W): renders, no errors
+PASS 1280x800 order: header, shell row, gearbox row, view row, view frame, strip, phi3 row, s row, transport, exports (top to bottom) [["header",82],["shell",101],["gear",147],["tabs",193],["frame",266],["toolbar",752],["phi",798],["s",859],["transport",912],["exports",958]]
+PASS 1280x800 header is the title plus one live-formula line z_c = n6*N^alpha*exp(i*k_c*s*pi/N) z_c = n₆·N^α·exp(i·k_c·s·π/N)
+PASS 1280x800 desktop: cards in a right column of about 380 px beside the instrument panel {"x":852.5,"y":88,"w":380,"h":1862,"r":1232.5,"b":1950} inst r 838.5
+PASS 1280x800 desktop: the view sits in the middle of the instrument panel frame centre 436 panel centre 436
+PASS 1280x800 Lift JSON at N = 0: schema 0.3, 3 undefined branches, cyclotomic status, no teeth {"N":"0","N_integer":true,"branches":[{"c":"-1","canonical_type":"UNDEFINED","cleared_rate":null,"closure_period_s":null,"common_factor":null,"denominator_scale":null,"frequency_integral":null,"freque
+PASS 1280x800 Lift JSON with fractional k_c (N = 4, t1 = 1/3, s = 3/5): phase_container C = 2qN*L_k = 120, host_ambient_equivalent false, branches carry k_c as rationals {"L_k":"3","N":"4","N_integer":true,"a":"4","exact_spin":"3/5","generated":"ℚ(ζ_40)","generated_n":"40","host_ambient_equivalent":false,"k_denominator_lcm":"3","note":"generated by the phase factors: Q(zeta_L), L = lcm over the nonzero-amplitude teeth of the order of exp(i*pi*k_c*s/N); the amplitude rho = n6*N^alpha may be irrational, so the phasor values themselves may need Q(zeta_L, rho); phase container (convention): Q(zeta_C), C = 2*q*a*L_k for s = p/q and N = a/b in lowest terms (a = N on an integer shell, so C = 2*q*N*L_k there), L_k = lcm of the denominators of the k_c (1 when every k_c is an integer): every k_c*s/N lies in (1/(L_k*q*a))Z; a container convention, not a minimal field","phase_container":"ℚ(ζ_120)","phase_container_factor":"2qN*L_k","phase_container_formula":"C = 2*q*N*L_k","phase_container_n":"120","q":"5","rho_irrational":false,"shell_reference":"ℚ(ζ_24)"}
+PASS 1280x800 export row: only Export PNG and Export ▾ visible by default; the menu is closed
+PASS 1280x800 Export ▾ holds JSON, state, CSV, Lift JSON, pair, copy stats, copy formula, import
+PASS 1280x800 Copy formula writes the live formula as text (symbolic line plus the current values) "z_c = n6*N^alpha*exp(i*k_c*s*pi/N), k_c = N*t1 + c*t2\nwith n6 = 1, alpha = 1, N = 2, t1 = 1, t2 = 1, s = 1, m = 2\n"
+PASS 1280x800 no Wolfram link or text anywhere on the page
+PASS 1280x800 menus closed by default; strip has Layers, Camera, zoom + - reset, full view, info
+FAIL 1280x800 Fourier Layers menu: Teeth, Walk, Amber polygon, Divisors
+PASS 1280x800 one menu at a time: Camera replaces Layers; Fourier Camera has the zoom lock
+PASS 1280x800 Clifford Camera select: Side X+ sets the azimuth to pi/2 and elevation 0
+PASS 1280x800 Camera select has the seven presets
+PASS 1280x800 Clifford Guides select: four circles drawn and its swatches shown
+FAIL 1280x800 Guides none: no circles, no swatches; layer swatches only on pressed layers
+PASS 1280x800 Hopf View-from select q1+ sets the azimuth
+PASS 1280x800 Hopf Layers: tooth trails switch off (none drawn); chart toggle sits under Advanced
+PASS 1280x800 gearbox (addendum 7 F1): five chips, each ONE button "label value"; t1 and t2 keep their minus/plus beside the chip; no input in the chip row; no Presets/Continuous switch
+PASS 1280x800 chip row reads alpha 1, n6 1, t1 1, t2 1, m 2 at the default state
+PASS 1280x800 drawers closed by default (no slider in the gearbox area)
+FAIL 1280x800 drawer alpha opens with its presets+slider {"sl":2,"pre":6,"dl":0,"box":2,"steppers":4}
+PASS 1280x800 drawer n6 opens with its presets+slider {"sl":1,"pre":3,"dl":0,"box":1,"steppers":2}
+PASS 1280x800 drawer t1 opens with its delta+slider {"sl":1,"pre":0,"dl":1,"box":1,"steppers":0}
+PASS 1280x800 drawer t2 opens with its delta+slider {"sl":1,"pre":0,"dl":1,"box":1,"steppers":0}
+PASS 1280x800 drawer m opens with its slider {"sl":1,"pre":0,"dl":0,"box":1,"steppers":2}
+PASS 1280x800 drawer closes when its label is tapped again
+PASS 1280x800 steppers: alpha +1 and m +1 (in their drawers), t1 + delta (1/4 by default, beside the chip) {"a":"2","t1":"5/4","m":"3"}
+PASS 1280x800 alpha drawer preset -1 sets alpha
+PASS 1280x800 F2 caption is exactly one line (default state, fourier): 1 (ellipsis) [{"lines":1,"trunc":true,"text":"ALIGN yes · SPREAD yes ★ lab sum real · Q-res 0.0e+0 (numerical) · mirror axis = real axis (t₁·s ∈ ℤ)"}]
+PASS 1280x800 F2 tapping a truncated caption expands it (default, fourier): 2 lines
+PASS 1280x800 F2 tapping again collapses it to one line (default, fourier)
+PASS 1280x800 F2 caption is exactly one line (default state, clifford): 1 (ellipsis) [{"lines":1,"trunc":true,"text":"ρ 2.00e+0 (numerical) · 2 of 2 points drawn · ok · mirror axis β = 0, π: reference carrier · no tooth"}]
+PASS 1280x800 F2 tapping a truncated caption expands it (default, clifford): 2 lines
+PASS 1280x800 F2 tapping again collapses it to one line (default, clifford)
+PASS 1280x800 F2 caption is exactly one line (default state, hopf): 1 [{"lines":1,"trunc":false,"text":"latitude q₃ 0.6000 (numerical) · same object"}]
+PASS 1280x800 F2 caption is exactly one line (reference state, fourier): 1 [{"lines":1,"trunc":false,"text":"ALIGN no · SPREAD no · Q-res 1.8e+1 (numerical)"}]
+PASS 1280x800 F2 caption is exactly one line (reference state, clifford): 1 (ellipsis) [{"lines":1,"trunc":true,"text":"ρ 4.00e+0 (numerical) · 7 of 7 points drawn · ok · mirror axis β = 0, π: c = 0 · carrier tooth"}]
+PASS 1280x800 F2 tapping a truncated caption expands it (reference, clifford): 2 lines
+PASS 1280x800 F2 tapping again collapses it to one line (reference, clifford)
+PASS 1280x800 F2 caption is exactly one line (reference state, hopf): 1 [{"lines":1,"trunc":false,"text":"latitude q₃ 0.8824 (numerical) · same object"}]
+PASS 1280x800 F2 Clifford with the fraction stack on: every caption paragraph is one line (2 paragraphs) [{"lines":1,"trunc":false,"text":"fraction stack s ∈ (1/7)·ℤ · 1232/1232 heads · spread-zero columns bright"},{"lines":1,"trunc":true,"text":"ρ 4.00e+0 (numerical) · 7 of 7 points drawn · ok · mirror axis β = 0, π: c = 0 · carrier tooth"}]
+PASS 1280x800 F8 the text-size readout "100%" is one line {"lines":1,"w":44.796875,"txt":"100%"}
+PASS 1280x800 F8 the readout stays one line at 160% ("160%") {"lines":1,"txt":"160%"}
+PASS 1280x800 F3 N is shown once on the surface: the shell-row readout "B = ... N = 4" (1 occurrences of "N = 4" in the page text) n!
+integer
+CA
+◀
+1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+▶
+B = n₁! = 24 · N = 4
+PASS 1280x800 F3 the cards show no N row (Shell card), no "Shell N =" in the Wilson card, and no N in the field line
+PASS 1280x800 F3 Q-res and the ALIGN / SPREAD flags are in the Fourier caption and not in the cards ALIGN no · SPREAD no · Q-res 1.8e+1 (numerical)
+PASS 1280x800 F3 the spread t₂·s/N appears once, as the flag line of the card (spread t₂·s/N (exact) = 1/7) PHASORS
+key	kc	tooth φ (exact)	carrier (exact)	offset (exact)	z (numerical)
+z[-3]	1	1/7 (order 14)	4/7 (order 7)	3/7 (order 14)	+3.603875472 +1.735534956i
+z[-2]	2	2/7 (order 7)	4/7 (order 7)	2/7 (order 7)	+2.493959207 +3.127325930i
+z[-1]	3	3/7 (order 14)	4/7 (order 7)	1/7 (order 14)	+0.890083736 +3.899711649i
+z[0] (carrier)	4	4/7 (order 7)	4/7 (order 7)	0 (order 1)	-0.890083736 +3.899711649i
+z[+1]
+PASS 1280x800 F4 the K_m kernel line is not on the surface
+PASS 1280x800 F4 the Phasors (i) holds the kernel K_m(β) = sin(mβ/2)/sin(β/2) (odd m) and its zeros Field line. generated by the phase factors ℚ(ζ_L): L = lcm, over the nonzero-amplitude teeth, of the order of e^{iπ·k_c·s/N}; it is the field generated by the phase factors, not necessarily the field 
+PASS 1280x800 F7 the (i) defines generated by the phase factors ℚ(ζ_L) and phase container (convention) ℚ(ζ_C) with C = 2·q·N·L_k, L_k, the (1/L_k)ℤ container, L_k = 1 equals the host ambient, reference values Field line. generated by the phase factors ℚ(ζ_L): L = lcm, over the nonzero-amplitude teeth, of the order of e^{iπ·k_c·s/N}; it is the field generated by the phase factors, not necessarily the field of the phasor values z_c = ρ·e^{iπ·k_c·s/N}, because ρ = n₆·N^α can be irrational (N = 2, α = 1/2, n₆ = 1, s = 0 gives phase factors 1 but phasors √2). phase container (convention) ℚ(ζ_C): for s = p/q in lowest terms, C = 2·q·N·L_k, where L_k is the lcm of the denominators of the k_c (L_k = 1 when every k_c is an integer). It is the fixed field that contains e^{iπ·k·s/N} for every k in (1/L_k)ℤ: a container convention, not a minimal field. When L_k = 1 it equals the old host’s “ambient” ℚ(ζ_{2qN}) (frozen host L6406) and the export says host_ambient_equivalent: true. Between shells, with N = a/b in lowest terms, the same derivation gives C = 2·q·a·L_k (every k_c·s/N lies in (1/(L_k·q·a))ℤ); a = N on a shell, and host_ambient_equivalent is true only on a shell with L_k = 1. Now: q = 7, L_k = 1, C = 56. Shell reference ℚ(ζ_B) = ℚ(ζ₂₄). Kernel. K_m(β) = sin(mβ/2)/sin(β/2), β = π·t₂s/N; its zeros e^{iβ} ∈ μ_m∖{1} are the SPREAD stops. Columns. k_c = N·t₁ + c·t₂ (exact). tooth φ = k_c·s/N mod 2, in units of π, with the order of e^{iπφ} (exact). carrier = t₁·s (+1 if n₆ < 0) mod 2 (exact). offset = −c·t₂·s/N mod 2 (exact). z (numerical) = n₆·N^α·e^{iπφ}, float64, nine decimals. For odd m the carrier is the tooth c = 0; for even m there is no c = 0 tooth, so the carrier has its own row. The Gearbox card was merged here and into the Wilson card: N and k_c are in the table and the shell readout.
+PASS 1280x800 F7 reference state: field line says generated by the phase factors ℚ(ζ₁₄), phase container (convention) ℚ(ζ₅₆) generated by the phase factors ℚ(ζ₁₄) · phase container (convention) ℚ(ζ₅₆) (exact)
+PASS 1280x800 F7 fractional k_c (t1 = 1/3, N = 4, s = 3/5): generated by the phase factors ℚ(ζ₄₀), phase container (convention) ℚ(ζ₁₂₀) generated by the phase factors ℚ(ζ₄₀) · phase container (convention) ℚ(ζ₁₂₀) (exact)
+PASS 1280x800 F7 fractional k_c: the (i) states q = 5, L_k = 3, C = 120 ier is the tooth c = 0; for even m there is no c = 0 tooth, so the carrier has its own row. The Gearbox card was merged here and into the Wilson card: N and k_c are in the table and the shell readout.
+PASS 1280x800 F6 Lift JSON gates at t1 = 1/3 (N = 4, m = 3): exact_rational_lift PASS, closed_orbits PASS, integral_frequencies FAIL listing -1,0,1; prime_pair SEPARATE_GATE; rank4 OUT_OF_SCOPE {"closed_orbits":{"failing":[],"reason":"every branch has a finite exact closure period","status":"PASS"},"exact_rational_lift":{"failing":[],"reason":"t1, t2 and s are exact rationals","status":"PASS"},"integral_frequencies":{"failing":["-1","0","1"],"reason":"k_c is not an integer for c = -1, 0, 1","status":"FAIL"},"prime_pair":{"failing":[],"reason":"requires integral selected frequencies and independent primality evidence","status":"SEPARATE_GATE"},"rank4_smith_monodromy":{"failing":[],"reason":"Rank-4 monodromy has its own viewer (saphir, 2026-10-13)","status":"OUT_OF_SCOPE"}}
+PASS 1280x800 F6 Lift JSON gates at the reference state: exact_rational_lift PASS, closed_orbits PASS, integral_frequencies PASS (all three computed gates pass) {"closed_orbits":{"failing":[],"reason":"every branch has a finite exact closure period","status":"PASS"},"exact_rational_lift":{"failing":[],"reason":"t1, t2 and s are exact rationals","status":"PASS"},"integral_frequencies":{"failing":[],"reason":"every k_c is an integer","status":"PASS"},"prime_pair":{"failing":[],"reason":"requires integral selected frequencies and independent primality evidence","status":"SEPARATE_GATE"},"rank4_smith_monodromy":{"failing":[],"reason":"Rank-4 monodromy has its own viewer (saphir, 2026-10-13)","status":"OUT_OF_SCOPE"}}
+PASS 1280x800 F6 the two outside gates carry their reasons
+PASS 1280x800 F6 Lift JSON gates at t1 = t2 = 0: closed_orbits FAIL listing -1,0,1 (every branch stationary), integral_frequencies PASS (k_c = 0) {"closed_orbits":{"failing":["-1","0","1"],"reason":"no finite exact closure period for c = -1, 0, 1 (stationary: both phase rates are zero)","status":"FAIL"},"exact_rational_lift":{"failing":[],"reason":"t1, t2 and s are exact rationals","status":"PASS"},"integral_frequencies":{"failing":[],"reason":"every k_c is an integer","status":"PASS"},"prime_pair":{"failing":[],"reason":"requires integral selected frequencies and independent primality evidence","status":"SEPARATE_GATE"},"rank4_smith_monodromy":{"failing":[],"reason":"Rank-4 monodromy has its own viewer (saphir, 2026-10-13)","status":"OUT_OF_SCOPE"}}
+PASS 1280x800 warnings: N = 0 (degenerate) shows its full text in a caption line with no ellipsis, none truncated [{"cls":"warnline","trunc":false,"h":45,"lh":22.5,"t":"N = 0: the Fourier comb has no angular denominator, so no walk is defined (empty state, drawn and labelled)."}]
+PASS 1280x800 warnings: a stepping refusal (t1 = 0, m = 3) is shown in full, visible, not truncated, outside the (i) {"t":"refused (4e): t₁ = 0: ALIGN and SPREAD stops are undefined, so stepping is unavailable.","trunc":false,"vis":true,"inViewport":true,"ell":"clip"}
+PASS 1280x800 F-R2-1 clifford: stationary teeth (t1 = 0, m = 3) show "stationary: c = ... (no orbit|trail)" on the warning line, full, visible, not ellipsized {"t":"stationary: c = 0 (no orbit)","cls":"warnline","trunc":false,"vis":true,"inViewport":true,"ell":"clip"}
+PASS 1280x800 F-R2-1 hopf: stationary teeth (t1 = 0, m = 3) show "stationary: c = ... (no orbit|trail)" on the warning line, full, visible, not ellipsized {"t":"stationary: c = 0 (no trail)","cls":"warnline","trunc":false,"vis":true,"inViewport":true,"ell":"clip"}
+PASS 1280x800 fix 2026-10-14 clifford: N = 2, m = 2, t1 = 1, t2 = 2 shows the base-fixed caption and no stationary caption ["base fixed: c = -1 (k_c = 0; orbit runs along the Hopf fiber)"]
+PASS 1280x800 fix 2026-10-14 hopf: N = 2, m = 2, t1 = 1, t2 = 2 shows the base-fixed caption and no stationary caption ["base fixed: c = -1 (k_c = 0; the fiber moves — see Clifford)"]
+PASS 1280x800 fix 2026-10-14 Phasors (i) kernel zeros: even m = 4 says e^{2iβ} ∈ Field line. generated by the phase factors ℚ(ζ_L): L = lcm, over the nonzero-amplitude teeth, of the order of e^{iπ·k_c·s/N}; it is the field generated by the phase factors, not necessarily the field of the phasor values z_c = ρ·e^{iπ·k_c·s/N}, because ρ = n₆·N^α can be irrational (N = 2, α = 1/2, n
+PASS 1280x800 fix 2026-10-14 Phasors (i) kernel zeros: odd m = 7 says e^{iβ} ∈ and not e^{2iβ} Field line. generated by the phase factors ℚ(ζ_L): L = lcm, over the nonzero-amplitude teeth, of the order of e^{iπ·k_c·s/N}; it is the field generated by the phase factors, not necessarily the field of the phasor values z_c = ρ·e^{iπ·k_c·s/N}, because ρ = n₆·N^α can be irrational (N = 2, α = 1/2, n
+PASS 1280x800 F-R2-2 (t1 = 0, m = 3): before any press, "stepping unavailable — <reason>" is on the surface and both arrows look disabled {"t":"stepping unavailable — t₁ = 0: ALIGN and SPREAD stops are undefined, so stepping is unavailable.","vis":true,"trunc":false,"inViewport":true,"ad":["true","true"],"op":["0.45","0.45"],"dis":[false,false]}
+PASS 1280x800 F-R2-2 (t1 = 0, m = 3): pressing still gives the R20 refusal and leaves the state unchanged {"shellMode":"factorial","n1":"4","B":"24","nMode":"integer","phi3":"21","m":"3","t1":"0","t2":"1","n6":"1","alpha":"1","chart":"host","sTyped":"4/7","sEff":"4/
+PASS 1280x800 F-R2-2 (t1 = t2 = 0, m = 4): before any press, "stepping unavailable — <reason>" is on the surface and both arrows look disabled {"t":"stepping unavailable — t₁ = 0: ALIGN and SPREAD stops are undefined, so stepping is unavailable.","vis":true,"trunc":false,"inViewport":true,"ad":["true","true"],"op":["0.45","0.45"],"dis":[false,false]}
+PASS 1280x800 F-R2-2 (t1 = t2 = 0, m = 4): pressing still gives the R20 refusal and leaves the state unchanged {"shellMode":"factorial","n1":"4","B":"24","nMode":"integer","phi3":"21","m":"4","t1":"0","t2":"0","n6":"1","alpha":"1","chart":"host","sTyped":"4/7","sEff":"4/
+PASS 1280x800 F-R2-2 (non-integer gear t2 = 1/2): before any press, "stepping unavailable — <reason>" is on the surface and both arrows look disabled {"t":"stepping unavailable — Non-integer gears: no exact stop family is derived, so stepping is unavailable (no integer-snap fallback).","vis":true,"trunc":false,"inViewport":true,"ad":["true","true"],"op":["0.45","0.45"],"dis":[false,false]}
+PASS 1280x800 F-R2-2 (non-integer gear t2 = 1/2): pressing still gives the R20 refusal and leaves the state unchanged {"shellMode":"factorial","n1":"4","B":"24","nMode":"integer","phi3":"21","m":"5","t1":"1","t2":"1/2","n6":"1","alpha":"1","chart":"host","sTyped":"4/7","sEff":"
+PASS 1280x800 F-R2-2 (N = 0): before any press, "stepping unavailable — <reason>" is on the surface and both arrows look disabled {"t":"stepping unavailable — N ≤ 0: comb stepping is inactive.","vis":true,"trunc":false,"inViewport":true,"ad":["true","true"],"op":["0.45","0.45"],"dis":[false,false]}
+PASS 1280x800 F-R2-2 (N = 0): pressing still gives the R20 refusal and leaves the state unchanged {"shellMode":"factorial","n1":"4","B":"24","nMode":"integer","phi3":"25","m":"7","t1":"1","t2":"1","n6":"1","alpha":"1","chart":"host","sTyped":"4/7","sEff":"4/
+PASS 1280x800 F-R2-2 reference state: no unavailable line and arrows enabled {"u":false,"ad":["false","false"]}
+PASS 1280x800 SPREAD: the Fourier caption puts ALIGN and SPREAD (with the value and star) before Q-res, and the flag text is fully inside the line without tapping {"t":"ALIGN no · SPREAD no · Q-res 1.8e+1 (numerical)","flagsFirst":true,"flagRight":226.125,"pRight":825.5,"exp":"false"}
+PASS 1280x800 F7 irrational rho: the (i) says the phasor values may need the extension ℚ(ζ_L, ρ) and that the field is generated by the phase factors Field line. generated by the phase factors ℚ(ζ_L): L = lcm, over the nonzero-amplitude teeth, of the order of e^{iπ·k_c·s/N}; it is the field generated by the phase factors, not necessarily the field of the phasor values z_c = ρ·e^{iπ·k_c·s/N}, because ρ = n₆·N^α can be irrational (N = 2, α = 1/2, n
+PASS 1280x800 F5 S16: the m register line is not on the surface; the m drawer has an (i)
+PASS 1280x800 F5 S16: the m drawer (i) says "m (teeth, 2 to 720): 2 · ζ₂ pair · ALG-5" at m = 2 m (teeth, 2 to 720): 2 · ζ₂ pair · ALG-5. The m tooth set is the exact comb order; stop families and the gearbox follow it.
+FAIL 1280x800 v0.3 the N mode switch (one toggle button, aria-pressed) is in the φ₃ row, not pressed by default ("N∈ℤ"); step 2: the φ₃ label is a chip "φ₃ 23" in the row and no φ₃ box is on the surface (it is in the φ₃ drawer); the instrument panel keeps the cap: 41 visible controls (ⓘ excluded) <= 40 {"inRow":true,"pressed":"false","txt":"N∈ℤ","box":false,"chip":"φ₃ 23"} {"instNoInfo":41,"frame":{"t":265.5,"b":746,"vis":true},"phi":{"t":798,"b":855,"vis":true},"s":{"t":859,"b":908,"vis":true},"tr":{"t":912,"b":952,"vis":true},"vh":800}
+PASS 1280x800 v0.3 integer → continuous: aria-pressed true ("N∈ℚ"), φ₃ unchanged (23), no message; step 2: no φ₃ box appears on the surface, the chip reads "φ₃ 23" {"nMode":"continuous","phi3":"23","pr":"true","txt":"N∈ℚ","box":false,"chip":"φ₃ 23","msg":""}
+CONTROLS 1280x800 v0.3: instrument panel without ⓘ: integer mode 41, continuous mode (φ₃ drawer closed) 41
+FAIL 1280x800 v0.3 step 2 (F1): visible controls in the instrument panel in continuous mode (default φ₃, nothing opened, ⓘ excluded): 41 <= 40 {"instNoInfo":41,"frame":{"t":-161.5,"b":319,"vis":true},"phi":{"t":371,"b":428,"vis":true},"s":{"t":432,"b":481,"vis":true},"tr":{"t":485,"b":525,"vis":true},"vh":800}
+PASS 1280x800 v0.3 step 2 (F1): tapping the φ₃ chip opens the φ₃ drawer under the φ₃ row: ◀ exact box ▶ (box holds 23), range line "0 … 25 · decimal or fraction · Enter applies", aria-expanded true, no gear drawer open {"exp":"true","box":1,"val":"23","dn":1,"up":1,"range":"0 … 25 · decimal or fraction · Enter applies","afterRow":true,"gear":0}
+PASS 1280x800 v0.3 step 2 (F1): with the φ₃ drawer open no visible text is below 13 px (smallest 13.000 px) and its controls are >= 40 px high {"bad":[],"tt":[]}
+PASS 1280x800 v0.3 step 2 resolution (F1): ⏮ is in the φ₃ drawer (not on the φ₃ row) and sets φ₃ = B = 24 (N = 1); the drawer stays open {"p0":{"row":0,"drawer":1},"p1":{"phi3":"24","shell":"B = n₁! = 24 · N = 1","open":true}}
+PASS 1280x800 v0.3 step 2 (F1): the drawer box applies 89/4 (Enter): φ₃ = 89/4 exactly, shell readout "N = 11/4", chip "φ₃ 89/4", drawer stays open with the box holding 89/4, no message {"phi3":"89/4","shell":"B = n₁! = 24 · N = 11/4","chip":"φ₃ 89/4","open":true,"val":"89/4","msg":""}
+PASS 1280x800 v0.3 step 2 (F1): the drawer ◀ ▶ are the row's shell steps: from φ₃ = 89/4, ◀ (N − 1) -> 23, ▶ (N + 1) -> 22 23,22
+PASS 1280x800 v0.3 step 2 (F1): tapping the chip again closes the φ₃ drawer (no box on the page, aria-expanded false), φ₃ stays 89/4 {"open":false,"box":false,"exp":"false","phi3":"89/4"}
+PASS 1280x800 v0.3 continuous mode: φ₃ slider step 0.01 (1/100 of a shell), max B + 1 = 25, the 26 integer shells 0..25 marked on the track at j/25 {"step":"0.01","max":"25","n":26}
+PASS 1280x800 v0.3 the φ₃ box accepts 7/2 (Enter): φ₃ = 7/2 exactly, the shell readout shows N = 43/2, the address carries nMode=continuous&phi3=7/2 {"phi3":"7/2","shell":"B = n₁! = 24 · N = 43/2","addr":"#v=fv-comb-hopf/0.2&shellMode=factorial&n1=4&B=24&nMode=continuous&phi3=7/2&m=2&t1=1&t2=1&n6=1&alpha=1&chart=host&sTyped=1&sEff=1&E=43/2&tab=fourier&view="}
+PASS 1280x800 v0.3 the φ₃ box accepts a decimal (6.25 -> 25/4) and refuses 26 (outside 0..B+1) with the reason, state unchanged {"b2":"25/4","b3":{"phi3":"25/4","msg":"Shell position φ₃ must be 0 through B + 1."}}
+PASS 1280x800 v0.3 continuous slider: value 12.37 is committed as φ₃ = 1237/100 (exact)
+PASS 1280x800 v0.3 ◀ ▶ snap to the next integer shell: from φ₃ = 7/2, ◀ (N − 1) -> 4, ▶ (N + 1) -> 3, then ▶ -> 2 4,3,2
+PASS 1280x800 v0.3 Play ▶ N in continuous mode advances φ₃ by 1/100 of a shell per tick (3/100 after about 3 ticks) and says so {"phi3":"353/100","note":"animated: φ₃ advances 1/100 of a shell per tick"}
+PASS 1280x800 v0.3 continuous → integer at φ₃ = 27/4: rounded to the nearest shell φ₃ = 7 and said in the message line (never silently) {"nMode":"integer","phi3":"7","msg":"N continuous → integer: φ₃ = 27/4 rounded to the nearest shell φ₃ = 7 (N = 18)."}
+PASS 1280x800 v0.3 step 2 (F1): in integer mode the φ₃ drawer (range line "0 … 25 · integer (N∈ℤ) · Enter applies") refuses 7/2 with "N integer mode: φ₃ must be an integer; switch to N∈ℚ for fractions" in the message line and in the drawer; state unchanged (φ₃ = 7, integer mode) {"rg":"0 … 25 · integer (N∈ℤ) · Enter applies","r5":{"nMode":"integer","phi3":"7","msg":"N integer mode: φ₃ must be an integer; switch to N∈ℚ for fractions","inDrawer":"N integer mode: φ₃ must be an integer; switch to N∈ℚ for fractions"}}
+PASS 1280x800 v0.3 step 2 (F1): integer mode drawer: 8/2 is the integer 4 (applied, refusal cleared); 26 is refused with the range reason, state unchanged {"a8":{"phi3":"4","msg":"","inDrawer":false},"a26":{"phi3":"4","msg":"Shell position φ₃ must be 0 through B + 1."}}
+FAIL 1280x800 v0.3 step 2 (F1): visible controls in the instrument panel between shells (N = 43/2, continuous mode, nothing opened, ⓘ excluded): 41 <= 40 {"instNoInfo":41,"frame":{"t":290,"b":770.5,"vis":true},"phi":{"t":822.5,"b":879.5,"vis":true},"s":{"t":883.5,"b":932.5,"vis":true},"tr":{"t":936.5,"b":976.5,"vis":true},"vh":800}
+PASS 1280x800 v0.3 fourier: the warning line carries the short form "between shells: shell arithmetic undefined" once, in full, on one line, role degenerate, not ellipsized; the shell readout shows N = 43/2 {"n":1,"t":"between shells: shell arithmetic undefined","lines":1,"cls":"warnline","trunc":false,"vis":true,"inView":true,"ell":"clip","shell":"B = n₁! = 24 · N = 43/2"}
+PASS 1280x800 v0.3 fourier between shells: no visible text below 13 px (139 elements, smallest 13.000 px)
+PASS 1280x800 v0.3 clifford: the warning line carries the short form "between shells: shell arithmetic undefined" once, in full, on one line, role degenerate, not ellipsized; the shell readout shows N = 43/2 {"n":1,"t":"between shells: shell arithmetic undefined","lines":1,"cls":"warnline","trunc":false,"vis":true,"inView":true,"ell":"clip","shell":"B = n₁! = 24 · N = 43/2"}
+PASS 1280x800 v0.3 clifford between shells: no visible text below 13 px (139 elements, smallest 13.000 px)
+PASS 1280x800 v0.3 hopf: the warning line carries the short form "between shells: shell arithmetic undefined" once, in full, on one line, role degenerate, not ellipsized; the shell readout shows N = 43/2 {"n":1,"t":"between shells: shell arithmetic undefined","lines":1,"cls":"warnline","trunc":false,"vis":true,"inView":true,"ell":"clip","shell":"B = n₁! = 24 · N = 43/2"}
+PASS 1280x800 v0.3 hopf between shells: no visible text below 13 px (142 elements, smallest 13.000 px)
+PASS 1280x800 v0.3 panels: the warning line carries the short form "between shells: shell arithmetic undefined" once, in full, on one line, role degenerate, not ellipsized; the shell readout shows N = 43/2 {"n":1,"t":"between shells: shell arithmetic undefined","lines":1,"cls":"warnline","trunc":false,"vis":true,"inView":true,"ell":"clip","shell":"B = n₁! = 24 · N = 43/2"}
+PASS 1280x800 v0.3 panels between shells: no visible text below 13 px (317 elements, smallest 13.000 px)
+PASS 1280x800 v0.3 cards between shells: Wilson (both readouts and the gearbox), Divisors and Shell show the label instead of values; Phasors and the exact flags keep working with exact fractions (spread 2/129) {"wilson":"WILSON\n\nbetween shells: N = 43/2; shell arithmetic undefined\n\nⓘ","div":"DIVISORS\n\nbetween shells: N = 43/2; shell arithmetic undefined\n\nⓘ","shell":"SHELL\n\nbetween shells: N = 43/2; shell arithmetic undefined\n\nⓘ","phasors":true,"flags":"EXACT FLAGS AND NUMERICAL READOUTS\nExact neighbouring-tooth alignment (t₂s/N ∈ ℤ)\nno\nall teeth aligned\nno\nspread t₂·s/N (exact)\n2/129\n|W| (endpoint) numerical\n1.072451e+2 ±4.2e-13\n|W|/ρ numerical\n4.988146e+0 ±2.0e-14\nW₁ latitude-g
+PASS 1280x800 v0.3 step 2 (F2): s row between shells (m = 5): before any press there is no SPREAD line under the view; the s ⓘ states "SPREAD refused (4e): SPREAD needs an integer gearbox: N = 43/2" in full {"sr":{"line":false,"sread":""},"si":{"t":"SPREAD refused (4e): SPREAD needs an integer gearbox: N = 43/2","vis":true,"trunc":false}}
+PASS 1280x800 v0.3 s ▶ between shells lands on the ALIGN stop 1 (SPREAD refused, not approximated) {"s":"1","lbl":"ALIGN stop (t₁·s ∈ ℤ); SPREAD refused (4e): SPREAD needs an integer gearbox: N = 43/2"}
+PASS 1280x800 v0.3 step 2 (F2): after the s ▶ step the s-row stepper message shows "SPREAD refused (4e): SPREAD needs an integer gearbox: N = 43/2" in full, visible, not truncated {"t":"SPREAD refused (4e): SPREAD needs an integer gearbox: N = 43/2","trunc":false,"vis":true,"inView":true}
+PASS 1280x800 v0.3 s ◀ between shells lands on the ALIGN stop 0 (SPREAD refused, not approximated) {"s":"0","lbl":"ALIGN stop (t₁·s ∈ ℤ); SPREAD refused (4e): SPREAD needs an integer gearbox: N = 43/2"}
+PASS 1280x800 v0.3 step 2 (F2): after the s ◀ step the s-row stepper message shows "SPREAD refused (4e): SPREAD needs an integer gearbox: N = 43/2" in full, visible, not truncated {"t":"SPREAD refused (4e): SPREAD needs an integer gearbox: N = 43/2","trunc":false,"vis":true,"inView":true}
+PASS 1280x800 v0.3 Lift JSON between shells: schema fv-comb-hopf-lift/0.3, nMode continuous, N "43/2", N_integer false; integral_frequencies NOT_EVALUATED with the label as reason; closed_orbits PASS {"closed_orbits":{"failing":[],"reason":"every branch has a finite exact closure period","status":"PASS"},"exact_rational_lift":{"failing":[],"reason":"t1, t2 and s are exact rationals","status":"PASS"},"integral_frequencies":{"failing":[],"reason":"between shells: N = 43/2; shell arithmetic undefined","status":"NOT_EVALUATED"},"prime_pair":{"failing":[],"reason":"requires integral selected frequencies and independent primality evidence; between shells: N = 43/2; shell arithmetic undefined","status":"SEPARATE_GATE"},"rank4_smith_monodromy":{"failing":[],"reason":"Rank-4 monodromy has its own viewer (saphir, 2026-10-13)","status":"OUT_OF_SCOPE"}}
+PASS 1280x800 v0.3 exact JSON between shells: schema fv-comb-hopf/0.2, state.nMode continuous, exact.N "43/2", N_integer false, gearbox BETWEEN_SHELLS, shell contrast null with the label {"B":"24","N":"43/2","bracket":null,"contrast":null,"span":"25","status":"between shells: N = 43/2; shell arithmetic undefined"}
+PASS 1280x800 v0.3 tab switches change no setting in continuous mode
+PASS 1280x800 v0.3 tab switches change no setting in integer mode
+PASS 1280x800 v0.3 step 2 (F6): build pins "fv-comb-hopf-build/0.1", exact export "fv-comb-hopf/0.2", state export "fv-comb-hopf-state/0.2" are pairwise distinct; the pins id is fv-comb-hopf-build/0.1 ["fv-comb-hopf-build/0.1","fv-comb-hopf/0.2","fv-comb-hopf-state/0.2"]
+PASS 1280x800 v0.3 a 0.1 address opens as nMode = integer (no refusal banner) and is rewritten as a 0.2 address {"nMode":"integer","phi3":"6","tab":"clifford","status":"","hash":"#v=fv-comb-hopf/0.2&shellMode=factorial&n1=4&B=24&nMode=integer&phi3=6&m=3&t1=1&t2=-21/4&n6=1&alpha=-1/50&chart=host&sTyped=-627/250&sEff=-627/250&E=19&tab=clifford&view="}
+PASS 1280x800 v0.3 zero network requests in the continuous-N pages
+PASS 1280x800 PERF reproduction state reached (partial-orbit caption, 2 orbits) partial orbit: 2 orbit(s) need more than 4,000 points at 2° steps; a 4,000-point window centred on the current s is drawn | ρ 9.43e-1 (numerical) · 3 of 3 points drawn · ok · mirror axis β = 0, π: c = 0 · carrier tooth
+PASS 1280x800 PERF state change at the reproduction state: median 18.9 ms to next frame (< 250 ms regression bound) [13.1,18.8,18.9,18.9,19,19,19]
+PASS 1280x800 PERF canvas layer drawn (non-background pixels), SVG overlay small: 18 elements, orbit stubs carry data-c and stroke, no geometry in the SVG {"cv":[638,479],"lit":709,"svgEls":18,"stubs":3,"stubPts":0,"dataC":true,"runs":3,"leaf":1}
+PASS 1280x800 PERF clipped-text fix: the "(see note)" stand-in at the left edge lies fully inside the Clifford frame [{"l":9.96875,"r":549.75,"anchor":"start"}]
+PASS 1280x800 PERF preview: 30 input events in one task coalesce to one render (<= 2), state and the exact s box current at once, caption says "preview" {"full":8181,"sync":{"state":"56/25","renders":0},"during":{"renders":1,"cap":["preview: reduced drawing sample while input is moving; every readout is exact and current"],"exactBox":"56/25","state":"56/25","pts":526,"eff":"56/25","cardsS":true},"after":{"cap":0,"pts":8181,"exactBox":"56/25","state":"56/25"}}
+PASS 1280x800 PERF preview draws fewer orbit points than the full sample and the full sample returns (no preview label) after 200 ms {"full":8181,"sync":{"state":"56/25","renders":0},"during":{"renders":1,"cap":["preview: reduced drawing sample while input is moving; every readout is exact and current"],"exactBox":"56/25","state":"56/25","pts":526,"eff":"56/25","cardsS":true},"after":{"cap":0,"pts":8181,"exactBox":"56/25","state":"56/25"}}
+PASS 1280x800 PERF no page errors in the performance block
+PASS 1280x800 PERF PNG export (canvas layer + SVG overlay composited) is non-trivial and not a preview frame {"size":869521,"preview":0}
+PASS 1280x800 PERF2 clifford rotate (60 moves): camera frames drawn (60), no full render, no orbit/model/mesh recomputation, exact state and cards unchanged {"full":0,"cam":60,"cnt":{"orbits":0,"compute":0,"torusMesh":0},"state":true,"cards":true,"cvMoving":638}
+FAIL 1280x800 PERF2 clifford release: one full render, view moved, exact JSON hash unchanged by the camera, cards identical, canvas back at full resolution (was 638, now 638) {"full":1,"viewMoved":true,"sha":true,"cardsSame":true,"cvFull":638}
+PASS 1280x800 PERF2 clifford rotate frame rate 61.1 fps (regression bound >= 30; target 50 desktop) 61.06248727716686
+PASS 1280x800 PERF2 hopf rotate (60 moves): camera frames drawn (60), no full render, no orbit/model/mesh recomputation, exact state and cards unchanged {"full":0,"cam":60,"cnt":{"orbits":0,"compute":0,"torusMesh":0},"state":true,"cards":true,"cvMoving":638}
+FAIL 1280x800 PERF2 hopf release: one full render, view moved, exact JSON hash unchanged by the camera, cards identical, canvas back at full resolution (was 638, now 638) {"full":1,"viewMoved":true,"sha":true,"cardsSame":true,"cvFull":638}
+PASS 1280x800 PERF2 hopf rotate frame rate 61.6 fps (regression bound >= 30; target 50 desktop) 61.633281972265024
+PASS 1280x800 PERF2 Clifford wheel zoom, pinch zoom and pan change the view string (zoom cz=2.4642 / cz=4.3122, pan cz=4.3122;cx=40.125;cy=20.063) on the camera path {"v0":"","z1":"cz=2.4642","z2":"cz=4.3122","pan":"cz=4.3122;cx=40.125;cy=20.063","cam":30,"full":2}
+PASS 1280x800 R17 clifford at rest: every tooth dot (3 of 3) has an overlay element with data-role, data-c, data-t, within 1 px of the canvas-drawn position (max 0.005 px), pixel drawn {"dots":[{"c":"-1","t":0,"err":0.0037010898407174864,"lit":true},{"c":"0","t":1,"err":0.0034481603410654316,"lit":true},{"c":"1","t":2,"err":0.004788855566800976,"lit":true}],"verts":[],"orbs":[{"branch":"-1","err":0.0044544090920908275,"attrs":true},{"branch":"0","err":0.0016781225311319758,"attrs":true},{"branch":"1","err":0.004920658218907192,"attrs":true}],"bad":[],"attrs":true,"nTeeth":3}
+PASS 1280x800 R17 clifford at rest: every branch orbit/trail (3) has an overlay element with data-role, data-c, data-branch, data-t, its box within 1 px of the drawn curve (max 0.005 px) [{"branch":"-1","err":0.0044544090920908275,"attrs":true},{"branch":"0","err":0.0016781225311319758,"attrs":true},{"branch":"1","err":0.004920658218907192,"attrs":true}]
+PASS 1280x800 R17 clifford after a camera drag: every tooth dot (3 of 3) has an overlay element with data-role, data-c, data-t, within 1 px of the canvas-drawn position (max 0.005 px), pixel drawn {"dots":[{"c":"-1","t":0,"err":0.004622158511381258,"lit":true},{"c":"0","t":1,"err":0.004994391469438142,"lit":true},{"c":"1","t":2,"err":0.0017268238249812384,"lit":true}],"verts":[],"orbs":[{"branch":"-1","err":0.005640491157919314,"attrs":true},{"branch":"0","err":0.004829449474982539,"attrs":true},{"branch":"1","err":0.006641090255925519,"attrs":true}],"bad":[],"attrs":true,"nTeeth":3}
+PASS 1280x800 R17 clifford after a camera drag: every branch orbit/trail (3) has an overlay element with data-role, data-c, data-branch, data-t, its box within 1 px of the drawn curve (max 0.007 px) [{"branch":"-1","err":0.005640491157919314,"attrs":true},{"branch":"0","err":0.004829449474982539,"attrs":true},{"branch":"1","err":0.006641090255925519,"attrs":true}]
+PASS 1280x800 R17 hopf at rest: every tooth dot (3 of 3) has an overlay element with data-role, data-c, data-t, within 1 px of the canvas-drawn position (max 0.004 px), pixel drawn {"dots":[{"c":"-1","t":0,"err":0.003646272886612678,"lit":true},{"c":"0","t":1,"err":0.00409995296422494,"lit":true},{"c":"1","t":2,"err":0.0020718243273449843,"lit":true}],"verts":[{"c":null,"t":0,"err":0.0032475721779974265,"lit":true},{"c":"-1","t":1,"err":0.003600496519425178,"lit":true},{"c":"0","t":2,"err":0.0029800643491171286,"lit":true},{"c":"1","t":3,"err":0.002123805400231049,"lit":true
+PASS 1280x800 R17 hopf at rest: every branch orbit/trail (3) has an overlay element with data-role, data-c, data-branch, data-t, its box within 1 px of the drawn curve (max 0.007 px) [{"branch":"-1","err":0.004004983350569091,"attrs":true},{"branch":"0","err":0.0068391258769224805,"attrs":true},{"branch":"1","err":0.00325798899189067,"attrs":true}]
+PASS 1280x800 R17 hopf at rest: every walk vertex (4) has an overlay element with data-role and data-t within 1 px of the canvas-drawn position (max 0.004 px) [{"c":null,"t":0,"err":0.0032475721779974265,"lit":true},{"c":"-1","t":1,"err":0.003600496519425178,"lit":true},{"c":"0","t":2,"err":0.0029800643491171286,"lit":true},{"c":"1","t":3,"err":0.002123805400231049,"lit":true}]
+PASS 1280x800 R17 hopf after a camera drag: every tooth dot (3 of 3) has an overlay element with data-role, data-c, data-t, within 1 px of the canvas-drawn position (max 0.004 px), pixel drawn {"dots":[{"c":"-1","t":0,"err":0.0036855375896038822,"lit":true},{"c":"0","t":1,"err":0.0016965856816568703,"lit":true},{"c":"1","t":2,"err":0.00256855328666461,"lit":true}],"verts":[{"c":null,"t":0,"err":0.00043525693422452605,"lit":true},{"c":"-1","t":1,"err":0.0036855375896038822,"lit":true},{"c":"0","t":2,"err":0.004048675693127279,"lit":true},{"c":"1","t":3,"err":0.003962555888506358,"lit":tr
+PASS 1280x800 R17 hopf after a camera drag: every branch orbit/trail (3) has an overlay element with data-role, data-c, data-branch, data-t, its box within 1 px of the drawn curve (max 0.007 px) [{"branch":"-1","err":0.004868254354050805,"attrs":true},{"branch":"0","err":0.007063897341140546,"attrs":true},{"branch":"1","err":0.0047092732997953135,"attrs":true}]
+PASS 1280x800 R17 hopf after a camera drag: every walk vertex (4) has an overlay element with data-role and data-t within 1 px of the canvas-drawn position (max 0.004 px) [{"c":null,"t":0,"err":0.00043525693422452605,"lit":true},{"c":"-1","t":1,"err":0.0036855375896038822,"lit":true},{"c":"0","t":2,"err":0.004048675693127279,"lit":true},{"c":"1","t":3,"err":0.003962555888506358,"lit":true}]
+PASS 1280x800 R17 clifford at rest m=7: every tooth dot (7 of 7) has an overlay element with data-role, data-c, data-t, within 1 px of the canvas-drawn position (max 0.005 px), pixel drawn {"dots":[{"c":"3","t":6,"err":0.002961502252446735,"lit":true},{"c":"2","t":5,"err":0.0024428695297729064,"lit":true},{"c":"1","t":4,"err":0.004944929110706653,"lit":true},{"c":"0","t":3,"err":0.0029862011713817083,"lit":true},{"c":"-1","t":2,"err":0.001440214658032346,"lit":true},{"c":"-2","t":1,"err":0.0028020754059525643,"lit":true},{"c":"-3","t":0,"err":0.004049586450435072,"lit":true}],"verts
+PASS 1280x800 R17 clifford at rest m=7: every branch orbit/trail (7) has an overlay element with data-role, data-c, data-branch, data-t, its box within 1 px of the drawn curve (max 0.006 px) [{"branch":"-3","err":0.004501459090761273,"attrs":true},{"branch":"-2","err":0.0022457900892618454,"attrs":true},{"branch":"-1","err":0.003851043508575458,"attrs":true},{"branch":"0","err":0.00389888046595388,"attrs":true},{"branch":"1","err":0.004627867648196116,"attrs":true},{"branch":"2","err":0.004136964173198976,"attrs":true},{"branch":"3","err":0.0064128922772397345,"attrs":true}]
+PASS 1280x800 R17 clifford after a camera drag m=7: every tooth dot (7 of 7) has an overlay element with data-role, data-c, data-t, within 1 px of the canvas-drawn position (max 0.005 px), pixel drawn {"dots":[{"c":"3","t":6,"err":0.003949023637744631,"lit":true},{"c":"2","t":5,"err":0.004572825019977245,"lit":true},{"c":"1","t":4,"err":0.0012182574117218792,"lit":true},{"c":"-3","t":0,"err":0.0033438927774795957,"lit":true},{"c":"0","t":3,"err":0.0028782707140635466,"lit":true},{"c":"-1","t":2,"err":0.002000638643039565,"lit":true},{"c":"-2","t":1,"err":0.0047961659861357475,"lit":true}],"vert
+PASS 1280x800 R17 clifford after a camera drag m=7: every branch orbit/trail (7) has an overlay element with data-role, data-c, data-branch, data-t, its box within 1 px of the drawn curve (max 0.009 px) [{"branch":"-3","err":0.00434378489694609,"attrs":true},{"branch":"-2","err":0.005276870492139096,"attrs":true},{"branch":"-1","err":0.004948910586790589,"attrs":true},{"branch":"0","err":0.004360929599101837,"attrs":true},{"branch":"1","err":0.004957040915542166,"attrs":true},{"branch":"2","err":0.0029512516282466095,"attrs":true},{"branch":"3","err":0.00850128462820976,"attrs":true}]
+PASS 1280x800 R17 hopf at rest m=7: every tooth dot (7 of 7) has an overlay element with data-role, data-c, data-t, within 1 px of the canvas-drawn position (max 0.005 px), pixel drawn {"dots":[{"c":"-3","t":0,"err":0.001933703680947474,"lit":true},{"c":"-2","t":1,"err":0.004294917122081188,"lit":true},{"c":"-1","t":2,"err":0.0033094419254098284,"lit":true},{"c":"0","t":3,"err":0.00409820333652533,"lit":true},{"c":"1","t":4,"err":0.0018136768799195124,"lit":true},{"c":"2","t":5,"err":0.0032566587884730325,"lit":true},{"c":"3","t":6,"err":0.0048268068686070364,"lit":true}],"verts
+PASS 1280x800 R17 hopf at rest m=7: every branch orbit/trail (7) has an overlay element with data-role, data-c, data-branch, data-t, its box within 1 px of the drawn curve (max 0.007 px) [{"branch":"-3","err":0.0063109022127605385,"attrs":true},{"branch":"-2","err":0.006301607925990993,"attrs":true},{"branch":"-1","err":0.00728882393150343,"attrs":true},{"branch":"0","err":0.00728882393150343,"attrs":true},{"branch":"1","err":0.007171525469630069,"attrs":true},{"branch":"2","err":0.006301607925990993,"attrs":true},{"branch":"3","err":0.0063109022127605385,"attrs":true}]
+PASS 1280x800 R17 hopf at rest m=7: every walk vertex (8) has an overlay element with data-role and data-t within 1 px of the canvas-drawn position (max 0.005 px) [{"c":null,"t":0,"err":0.0032475721779974265,"lit":true},{"c":"-3","t":1,"err":0.001994738837197474,"lit":true},{"c":"-2","t":2,"err":0.004645992879773075,"lit":true},{"c":"-1","t":3,"err":0.002544417359047202,"lit":true},{"c":"0","t":4,"err":0.0026955556119787616,"lit":true},{"c":"1","t":5,"err":0.
+PASS 1280x800 R17 hopf after a camera drag m=7: every tooth dot (7 of 7) has an overlay element with data-role, data-c, data-t, within 1 px of the canvas-drawn position (max 0.005 px), pixel drawn {"dots":[{"c":"-3","t":0,"err":0.004690386377149025,"lit":true},{"c":"-2","t":1,"err":0.004326346202617515,"lit":true},{"c":"-1","t":2,"err":0.002864391276830247,"lit":true},{"c":"0","t":3,"err":0.0043017122577566624,"lit":true},{"c":"1","t":4,"err":0.004670278299045094,"lit":true},{"c":"2","t":5,"err":0.003228349272092146,"lit":true},{"c":"3","t":6,"err":0.004226477120425898,"lit":true}],"verts":
+PASS 1280x800 R17 hopf after a camera drag m=7: every branch orbit/trail (7) has an overlay element with data-role, data-c, data-branch, data-t, its box within 1 px of the drawn curve (max 0.007 px) [{"branch":"-3","err":0.006049520017199939,"attrs":true},{"branch":"-2","err":0.006049520017199939,"attrs":true},{"branch":"-1","err":0.006049520017199939,"attrs":true},{"branch":"0","err":0.007182859214708515,"attrs":true},{"branch":"1","err":0.006081091339183331,"attrs":true},{"branch":"2","err":0.006049520017199939,"attrs":true},{"branch":"3","err":0.007277570776182074,"attrs":true}]
+PASS 1280x800 R17 hopf after a camera drag m=7: every walk vertex (8) has an overlay element with data-role and data-t within 1 px of the canvas-drawn position (max 0.005 px) [{"c":null,"t":0,"err":0.00043525693422452605,"lit":true},{"c":"-3","t":1,"err":0.004720903955274025,"lit":true},{"c":"-2","t":2,"err":0.004509247439841602,"lit":true},{"c":"-1","t":3,"err":0.0027912153966553888,"lit":true},{"c":"0","t":4,"err":0.0008073886370993932,"lit":true},{"c":"1","t":5,"err":
+PASS 1280x800 PERF2 slider drag: cards updated 4 times in 1.01 s (<= 4 per second plus the first), preview marker shown while dragging (40 of 40 frames), gone after release {"upd":4,"dur":1.008199999988079,"saw":40,"after":false}
+PASS 1280x800 PERF2 after release every card equals a fresh computation for the final state (Phasors, flags, Wilson, Divisors, Shell: 3832 characters of card markup compared)
+PASS 1280x800 PERF2 mid-drag the cards show exactly the state of their last update (#v=fv-comb-hopf/0.2&shellMode=factorial&n1=4&B=24&nMode=inte...), not a mixture
+PASS 1280x800 PERF2 pair export (PNG + exact JSON + state) works after camera moves: schema, exact sha256 matches a fresh export, PNG hash present, address current, canvas at full resolution {"schema":"fv-comb-hopf-pair/0.2","exact":true,"png":true,"addr":true,"full":true}
+CONTROLS 1280x800 fourier: page 54 with (i), 47 without; instrument panel + header 43 with (i), 41 without (49 buttons, 4 inputs, 1 selects in the page)
+FAIL 1280x800 fourier: visible controls in the instrument panel with (i) excluded <= 40 (addendum 7 F1): 41 (with (i) 43; whole page 47 / 54) {"total":54,"totalNoInfo":47,"inst":43,"instNoInfo":41,"infos":7,"instInfos":2,"buttons":49,"inputs":4,"selects":1,"frame":{"t":265.5,"b":746,"vis":true},"phi":{"t":798,"b":855,"vis":true},"s":{"t":859,"b":908,"vis":true},"tr":{"t":912,"b":952,"vis":true},"vh":800}
+CONTROLS 1280x800 clifford: page 54 with (i), 47 without; instrument panel + header 43 with (i), 41 without (49 buttons, 4 inputs, 1 selects in the page)
+FAIL 1280x800 clifford: visible controls in the instrument panel with (i) excluded <= 40 (addendum 7 F1): 41 (with (i) 43; whole page 47 / 54) {"total":54,"totalNoInfo":47,"inst":43,"instNoInfo":41,"infos":7,"instInfos":2,"buttons":49,"inputs":4,"selects":1,"frame":{"t":265.5,"b":746,"vis":true},"phi":{"t":798,"b":855,"vis":true},"s":{"t":859,"b":908,"vis":true},"tr":{"t":912,"b":952,"vis":true},"vh":800}
+CONTROLS 1280x800 hopf: page 54 with (i), 47 without; instrument panel + header 43 with (i), 41 without (49 buttons, 4 inputs, 1 selects in the page)
+FAIL 1280x800 hopf: visible controls in the instrument panel with (i) excluded <= 40 (addendum 7 F1): 41 (with (i) 43; whole page 47 / 54) {"total":54,"totalNoInfo":47,"inst":43,"instNoInfo":41,"infos":7,"instInfos":2,"buttons":49,"inputs":4,"selects":1,"frame":{"t":265.5,"b":746,"vis":true},"phi":{"t":798,"b":855,"vis":true},"s":{"t":859,"b":908,"vis":true},"tr":{"t":912,"b":952,"vis":true},"vh":800}
+CONTROLS 1280x800 panels: page 68 with (i), 45 without; instrument panel + header 57 with (i), 39 without (62 buttons, 4 inputs, 2 selects in the page)
+PASS 1280x800 panels: visible controls in the instrument panel with (i) excluded <= 40 (addendum 7 F1): 39 (with (i) 57; whole page 45 / 68) {"total":68,"totalNoInfo":45,"inst":57,"instNoInfo":39,"infos":23,"instInfos":18,"buttons":62,"inputs":4,"selects":2,"frame":{"t":0,"b":0,"vis":false},"phi":{"t":285,"b":342,"vis":true},"s":{"t":346,"b":395,"vis":true},"tr":{"t":399,"b":439,"vis":true},"vh":800}
+smallest text measured in this run: 13.0000 px
+browser-check: 531 passed, 40 failed

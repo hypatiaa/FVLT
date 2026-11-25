@@ -1,0 +1,28 @@
+'use strict';
+const X=require('./exact-lib-0.2.0.js');
+let pass=0,fail=0;
+function t(name,fn){let ok=false,msg='';try{ok=fn()===true;}catch(e){msg=' '+e.message;}console.log((ok?'PASS ':'FAIL ')+name+msg);ok?pass++:fail++;}
+const T=X.text;
+t('rat normalises sign and gcd',()=>T(X.rat(6n,-4n))==='-3/2'&&T(X.rat(0n,-5n))==='0');
+t('rat zero denominator throws',()=>{try{X.rat(1n,0n);return false;}catch(e){return true;}});
+t('parse decimals/fractions',()=>T(X.parse('0.25'))==='1/4'&&T(X.parse('-1.50'))==='-3/2'&&T(X.parse('6/4'))==='3/2'&&T(X.parse('−3'))==='-3'&&T(X.parse('.5'))==='1/2');
+t('parse rejects junk',()=>['1e3','1/2/3','abc','','1.','0x10'].every(s=>{if(s==='1.')return true;try{X.parse(s);return false;}catch(e){return true;}}));
+t('parse round trip text(parse(text(q)))',()=>{for(const q of [X.rat(-7n,3n),X.rat(5n),X.rat(1n,1024n)])if(!X.eq(X.parse(T(q)),q))return false;return true;});
+t('parseProduct',()=>T(X.parseProduct('2*1/3*-3'))==='-2');
+t('floor/ceil signs',()=>{const c=[['7/2',3n,4n],['-7/2',-4n,-3n],['4',4n,4n],['-4',-4n,-4n],['-1/3',-1n,0n],['1/3',0n,1n]];return c.every(([s,f,e])=>X.floor(X.parse(s))===f&&X.ceil(X.parse(s))===e);});
+t('cmp/eq/add/sub/mul/div',()=>X.cmp(X.parse('1/3'),X.parse('1/2'))===-1&&T(X.add(X.parse('1/3'),X.parse('1/6')))==='1/2'&&T(X.div(X.parse('1/2'),X.parse('1/4')))==='2'&&T(X.sub(X.parse('1/2'),X.parse('1')))==='-1/2');
+t('canonical bytes: sorted keys, compact, ASCII, bigint as string',()=>X.canonical({b:[1n,'x'],a:true,c:null,'é':'é"\\'})==='{"a":true,"b":["1","x"],"c":null,"\\u00e9":"\\u00e9\\"\\\\"}');
+t('canonicalFile one trailing LF',()=>X.canonicalFile({a:'1'})==='{"a":"1"}\n');
+t('canonical refuses JS numbers',()=>{try{X.canonical({a:1});return false;}catch(e){return true;}});
+t('strict parser accepts valid',()=>{const v=X.parseStrict(' {"a":[1,"x\\u00e9",true,null],"b":{}} ');return v.a[0]===1n&&v.a[1]==='xé'&&v.a[2]===true&&v.a[3]===null;});
+t('strict parser rejects duplicate keys',()=>{try{X.parseStrict('{"a":"1","a":"2"}');return false;}catch(e){return /duplicate/.test(e.message);}});
+t('strict parser rejects nested duplicate keys',()=>{try{X.parseStrict('{"x":{"a":1,"a":1}}');return false;}catch(e){return /duplicate/.test(e.message);}});
+t('strict parser rejects floats, exponents, trailing garbage',()=>['1.5','1e3','{"a":1} x','{"a":01}','[1,]'].every(s=>{try{X.parseStrict(s);return false;}catch(e){return true;}}));
+t('parse(canonical(x)) round trip',()=>{const o={k:['1/2','-3'],z:{y:'q'}};return X.canonical(X.parseStrict(X.canonical(o)))===X.canonical(o);});
+t('SHA-256 empty',()=>X.sha256Text('')==='e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855');
+t('SHA-256 abc',()=>X.sha256Text('abc')==='ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad');
+t('SHA-256 two-block vector',()=>X.sha256Text('abcdbcdecdefdefgefghfghighijhijkijkljklmklmnlmnomnopnopq')==='248d6a61d20638b8e5c026930c3e6039a33ce45964ff2167f6ecedd419db06c1');
+t('SHA-256 matches node crypto on random inputs',()=>{const c=require('crypto');for(let n=0;n<300;n+=7){const b=Buffer.alloc(n);for(let i=0;i<n;i++)b[i]=(i*31+n)&255;if(X.sha256(Uint8Array.from(b))!==c.createHash('sha256').update(b).digest('hex'))return false;}return true;});
+t('the library file is exact-lib 0.2.0 with the pinned sha256 (never edited)',()=>X.VERSION==='exact-lib/0.2.0'&&require('crypto').createHash('sha256').update(require('fs').readFileSync(__dirname+'/exact-lib-0.2.0.js')).digest('hex')==='3edfc8fb396fda90cfa945963eb18ccdf243f5a491e3ee49275b5c459a223a71');
+console.log(`test-exact: ${pass} passed, ${fail} failed`);
+process.exit(fail?1:0);

@@ -1,0 +1,80 @@
+PASS 1280x800 fourier: counts 39/41/39/41 unchanged (v0.4.12 off / stack+reciprocal+log on / v0.4.11 = 39/39/39/41/41/41/39/39/39/41/41/41)
+PASS 1280x800 clifford: counts 39/41/39/41 unchanged (v0.4.12 off / stack+reciprocal+log on / v0.4.11 = 39/39/39/41/41/41/39/39/39/41/41/41)
+PASS 1280x800 hopf: counts 39/41/39/41 unchanged (v0.4.12 off / stack+reciprocal+log on / v0.4.11 = 39/39/39/41/41/41/39/39/39/41/41/41)
+FAIL 1280x800 fl off: byte-identical to v0.4.11 for 34 states (incl. tilt −1/2, stack / reciprocal / fraction on): stage, canvas, caption, about, cards, address, hash AND exact JSON, state JSON, CSV, Lift JSON, stats (34/34 exports) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=integer&phi3 hstage | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=integer&phi3 hstage
+PASS 1280x800 fl off: PNG export byte-identical to v0.4.11 (12/12)
+PASS 1280x800 fl on: the five exports equal the fl off exports (key aside) in 3 of 3 states
+PASS 1280x800 address has no fl key while the layer is off
+PASS 1280x800 Layers menu offers "Log radius (throat at |z| = 1)" while the Full stack is on
+PASS 1280x800 ... and not while the Full stack is off
+PASS 1280x800 clifford Layers menu has no log radius item
+PASS 1280x800 hopf Layers menu has no log radius item
+PASS 1280x800 toggle writes fl=1; canvas/caption change; data-role="log-radius", throat circle and log rings present
+PASS 1280x800 caption carries the required wording
+PASS 1280x800 R(1) = R_t: throat circle radius 100.8 = on-screen throat radius 100.8; log rings at r = e^k radius R_t(1 + k/L) (-3,-2,-1,1,2,3)
+PASS 1280x800 no clamped or undefined points in this state (clamp 0, undef 0)
+PASS 1280x800 reload restores the log radius view (canvas and stage equal)
+PASS 1280x800 toggling off restores the off state byte for byte (stage, canvas, caption, about, hash)
+PASS 1280x800 with the Full stack off the fl key is inert (view equals the plain view)
+PASS 1280x800 log radius without the reciprocal layer: L from the shown half
+PASS 1280x800 n6 = 0: points at r = 0 counted (1300) and labelled in the caption
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"5","phi3":"100","m":"5","alph view fs=1;fr=1;fl=1: teeth 5, walk true, log layer true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"5","phi3":"100","m":"5","alph view fs=1;fr=1;fl=1;ff=1: teeth 5, walk true, log layer true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"5","phi3":"100","m":"5","alph view fs=1;fr=1;fl=1;fp=1;fd=1: teeth 5, walk true, log layer true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m":"2","alpha view fs=1;fr=1;fl=1: teeth 2, walk true, log layer true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m":"2","alpha view fs=1;fr=1;fl=1;ff=1: teeth 2, walk true, log layer true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m":"2","alpha view fs=1;fr=1;fl=1;fp=1;fd=1: teeth 2, walk true, log layer true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m":"2","alpha view fs=1;fr=1;fl=1: teeth 2, walk true, log layer true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m":"2","alpha view fs=1;fr=1;fl=1;ff=1: teeth 2, walk true, log layer true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m":"2","alpha view fs=1;fr=1;fl=1;fp=1;fd=1: teeth 2, walk true, log layer true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"43/2","m":"2","alp view fs=1;fr=1;fl=1: teeth 2, walk true, log layer true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"43/2","m":"2","alp view fs=1;fr=1;fl=1;ff=1: teeth 2, walk true, log layer true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"43/2","m":"2","alp view fs=1;fr=1;fl=1;fp=1;fd=1: teeth 2, walk true, log layer true
+PASS 1280x800 alpha = 1 pixel probe: ink at the log positions of the primary half 186,186 and of the reciprocal half 186,186; mirror error 6.7e-16
+PASS 1280x800 alpha = -1 pixel probe: ink at the log positions of the primary half 186,186 and of the reciprocal half 186,186; mirror error 4.4e-16
+PASS 1280x800 clifford: the fl key changes nothing in this view (stage, canvas, caption)
+PASS 1280x800 hopf: the fl key changes nothing in this view (stage, canvas, caption)
+PASS 1280x800 view key fl is new and unique across all views (duplicates: [])
+PASS 1280x800 no horizontal scroll with the Layers menu open and the log radius on (1265 ≤ 1280)
+PASS 1280x800 no page errors
+PASS 375x812 fourier: counts 39/41/39/41 unchanged (v0.4.12 off / stack+reciprocal+log on / v0.4.11 = 39/39/39/41/41/41/39/39/39/41/41/41)
+PASS 375x812 clifford: counts 39/41/39/41 unchanged (v0.4.12 off / stack+reciprocal+log on / v0.4.11 = 39/39/39/41/41/41/39/39/39/41/41/41)
+PASS 375x812 hopf: counts 39/41/39/41 unchanged (v0.4.12 off / stack+reciprocal+log on / v0.4.11 = 39/39/39/41/41/41/39/39/39/41/41/41)
+FAIL 375x812 fl off: byte-identical to v0.4.11 for 34 states (incl. tilt −1/2, stack / reciprocal / fraction on): stage, canvas, caption, about, cards, address, hash AND exact JSON, state JSON, CSV, Lift JSON, stats (34/34 exports) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=integer&phi3 hstage | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=integer&phi3 hstage
+PASS 375x812 fl off: PNG export byte-identical to v0.4.11 (12/12)
+PASS 375x812 fl on: the five exports equal the fl off exports (key aside) in 3 of 3 states
+PASS 375x812 address has no fl key while the layer is off
+PASS 375x812 Layers menu offers "Log radius (throat at |z| = 1)" while the Full stack is on
+PASS 375x812 ... and not while the Full stack is off
+PASS 375x812 clifford Layers menu has no log radius item
+PASS 375x812 hopf Layers menu has no log radius item
+PASS 375x812 toggle writes fl=1; canvas/caption change; data-role="log-radius", throat circle and log rings present
+PASS 375x812 caption carries the required wording
+PASS 375x812 R(1) = R_t: throat circle radius 100.8 = on-screen throat radius 100.8; log rings at r = e^k radius R_t(1 + k/L) (-3,-2,-1,1,2,3)
+PASS 375x812 no clamped or undefined points in this state (clamp 0, undef 0)
+PASS 375x812 reload restores the log radius view (canvas and stage equal)
+PASS 375x812 toggling off restores the off state byte for byte (stage, canvas, caption, about, hash)
+PASS 375x812 with the Full stack off the fl key is inert (view equals the plain view)
+PASS 375x812 log radius without the reciprocal layer: L from the shown half
+PASS 375x812 n6 = 0: points at r = 0 counted (1300) and labelled in the caption
+PASS 375x812 extra state {"shellMode":"factorial","n1":"5","phi3":"100","m":"5","alph view fs=1;fr=1;fl=1: teeth 5, walk true, log layer true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"5","phi3":"100","m":"5","alph view fs=1;fr=1;fl=1;ff=1: teeth 5, walk true, log layer true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"5","phi3":"100","m":"5","alph view fs=1;fr=1;fl=1;fp=1;fd=1: teeth 5, walk true, log layer true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m":"2","alpha view fs=1;fr=1;fl=1: teeth 2, walk true, log layer true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m":"2","alpha view fs=1;fr=1;fl=1;ff=1: teeth 2, walk true, log layer true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m":"2","alpha view fs=1;fr=1;fl=1;fp=1;fd=1: teeth 2, walk true, log layer true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m":"2","alpha view fs=1;fr=1;fl=1: teeth 2, walk true, log layer true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m":"2","alpha view fs=1;fr=1;fl=1;ff=1: teeth 2, walk true, log layer true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m":"2","alpha view fs=1;fr=1;fl=1;fp=1;fd=1: teeth 2, walk true, log layer true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"43/2","m":"2","alp view fs=1;fr=1;fl=1: teeth 2, walk true, log layer true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"43/2","m":"2","alp view fs=1;fr=1;fl=1;ff=1: teeth 2, walk true, log layer true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"43/2","m":"2","alp view fs=1;fr=1;fl=1;fp=1;fd=1: teeth 2, walk true, log layer true
+PASS 375x812 alpha = 1 pixel probe: ink at the log positions of the primary half 186,186 and of the reciprocal half 186,186; mirror error 6.7e-16
+PASS 375x812 alpha = -1 pixel probe: ink at the log positions of the primary half 186,186 and of the reciprocal half 186,186; mirror error 4.4e-16
+PASS 375x812 clifford: the fl key changes nothing in this view (stage, canvas, caption)
+PASS 375x812 hopf: the fl key changes nothing in this view (stage, canvas, caption)
+PASS 375x812 view key fl is new and unique across all views (duplicates: [])
+PASS 375x812 no horizontal scroll with the Layers menu open and the log radius on (360 ≤ 375)
+PASS 375x812 no page errors
+
+SUMMARY browser-check-v0412: 76 pass, 2 fail

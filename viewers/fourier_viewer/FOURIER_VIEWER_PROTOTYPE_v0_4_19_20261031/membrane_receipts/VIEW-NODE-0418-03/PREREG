@@ -1,0 +1,2 @@
+VIEW-NODE-0418-03 (Fourier viewer v0.4.18 builder).
+Runs host-core/test-pen-curvature.cjs: the curvature pen at k = 0, +1, -1 (cross-implementation with the skeleton transcription at T = 300; Rule 150 confinement and 13 points; A4 by closure; exact F[i] against chunked intervals; timings; pixel certification). Expected: 43 passed, 0 failed.

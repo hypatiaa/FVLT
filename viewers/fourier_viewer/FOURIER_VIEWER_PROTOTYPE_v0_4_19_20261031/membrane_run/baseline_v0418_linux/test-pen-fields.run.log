@@ -1,0 +1,27 @@
+PASS F: √2·√2 = 2, √5·√5 = 5, τ·τ = √5 − 1 (τ² = √5 − 1)
+PASS F: √2·√5 = √10 (basis e3), (√10)² = 10, (√2τ)² = 2√5 − 2, (√10 τ)² = 10√5 − 10
+PASS F: all 64 entries of the reduction table agree with the product of the basis enclosures (2^−128)
+PASS F: commutative, associative, distributive on 60 random triples
+PASS F: x · x⁻¹ = 1 on 120 random elements (inverse by the tower conjugates)
+PASS K = ℚ(√3, √5): x · x⁻¹ = 1 on 120 random elements
+PASS cosh²(ℓ/2) − sinh²(ℓ/2) = 1 exactly: ((√2 + √10)/4)² − (τ/2)² = 1
+PASS cosh²(ℓ/2) = (3 + √5)/4 and sinh²(ℓ/2) = (√5 − 1)/4 = cos 72° (so sinh(ℓ/2) ∉ ℚ(√2, √5): the field needs τ)
+PASS cosh(ℓ/2) = cos 36°/sin 45°: the F enclosure meets the quotient of the series enclosures (2^−200)
+PASS sinh²(ℓ/2) = cos 72°: enclosures meet
+PASS τ = 1.1117859405028… (guaranteed digits: 1.111785940503)
+PASS edge ℓ = 2 arccosh(cos 36°/sin 45°) = 1.06127506190504 to 14 places (skeleton: 1.0612751): d of one step from 0, by the interval log
+PASS det = |a|² − |b|² = 1 exactly for R(±90°), T(ℓ), M_L = R(90°)T(ℓ), M_R = R(−90°)T(ℓ)
+PASS (rotate-left · step)^5 = −I in SU(1,1) over F: five lefts close a face of the disk
+PASS (rotate-right · step)^5 = −I likewise
+PASS (M_L)^k and (M_R)^k ≠ ±I for k = 1 … 4 (the face has exactly five edges)
+PASS R(90°)^4 = −I (the vertex has four edges; −I acts as the identity on the disk)
+PASS K: cos²60° + sin²60° = 1 and (√5/3)² + (2/3)² = 1 exactly
+PASS cos² + sin² ∋ 1 and widths ≤ 2^−88 for rational turns p/q, q ≤ 96 (sampled)
+PASS exact quadrant values: cos(1/4 turn) = 0, sin(1/4) = 1, cos(1/2) = −1 are point intervals
+PASS cos(1/6 turn) ∋ 1/2, sin(1/12 turn) ∋ 1/2, cos(1/8 turn)² ∋ 1/2
+PASS π = 3.14159265358979323846264338327950288… (Machin, guaranteed digits)
+PASS ln 2 = 0.693147180559945309417232121458… and ln 10 = 2.302585092994045684017991454684…
+PASS log of a huge number: log(2^5000) = 5000 ln 2 = 3465.73590279972654708616…
+PASS isqrt is the exact floor square root on 2000 values
+PASS outward rounding: [−3, −1]·[2, 5] at scale 0 = [−15, −2]; division by an interval containing 0 is refused
+SUMMARY test-pen-fields: 26 passed, 0 failed

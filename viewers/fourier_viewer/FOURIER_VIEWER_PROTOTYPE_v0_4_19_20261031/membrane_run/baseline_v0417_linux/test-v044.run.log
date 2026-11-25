@@ -1,0 +1,24 @@
+PASS every CA preset is colossally abundant: an exact rational witness eps=u/v exists (checked from the definition, per prime, in integers) 2:eps=1/2 6:eps=1/4 12:eps=1/5 60:eps=1/9 120:eps=1/11 360:eps=1/14 2520:eps=1/15 5040:eps=1/22 55440:eps=1/28 720720:eps=1/35
+PASS control: the checker is not vacuous - 4, 8, 24, 36, 720, 5039, 10080, 1441441 have no witness in the same search
+PASS at each witnessed eps the maximiser built prime by prime from g_p is a preset (cross-check of the witness search; ties resolve upward) maximisers 2,6,12,60,120,360,2520,5040,55440,720720
+PASS sigma(B)/B exact and reduced, equal to the hand values for all ten presets; sigma(5040)=19344, 19344/5040 = 403/105
+PASS threshold enclosure contains Math.exp(gamma)*Math.log(Math.log(B)) up to 1e-9 (floating point only as cross-check; the shown value is the BigInt enclosure)
+PASS margin = sigma(B)/B minus threshold (to 2e-6); negative means Robin holds: fails at 2,6,12,60,120,360,2520,5040; holds at 55440 and 720720
+TABLE B | sigma(B)/B | threshold | margin | verdict
+2 | 3/2 | [−0.652787, −0.652786] | [2.152786, 2.152787] | fails
+6 | 2 | [1.038718, 1.038719] | [0.961281, 0.961282] | fails
+12 | 7/3 | [1.621194, 1.621195] | [0.712138, 0.712139] | fails
+60 | 14/5 | [2.510611, 2.510612] | [0.289388, 0.289389] | fails
+120 | 3 | [2.789171, 2.789172] | [0.210828, 0.210829] | fails
+360 | 13/4 | [3.157118, 3.157119] | [0.092881, 0.092882] | fails
+2520 | 26/7 | [3.665838, 3.665839] | [0.048447, 0.048448] | fails
+5040 | 403/105 | [3.816877, 3.816878] | [0.021217, 0.021218] | fails
+55440 | 1612/385 | [4.258323, 4.258324] | [−0.071311, −0.071310] | holds
+720720 | 248/55 | [4.633995, 4.633996] | [−0.124905, −0.124904] | holds
+PASS caution line says particular numbers only, nothing about the general case or RH
+PASS rhm-core.js is a byte copy of the accepted panel module (sha256 2a483c04...)
+PASS record agrees with the accepted builder: 5040 carries the boundary note and side ABOVE; 55440 side BELOW
+PASS where CA equals a factorial (2,6,120,5040) the CA state equals the n! state in every key except shellMode, and resolve() is identical
+PASS readouts for those pairs: groups that differ between factorial and integer base are listed (info, not hidden) differing readout groups: 2:gearbox,6:gearbox,120:gearbox,5040:gearbox
+
+11 passed, 0 failed

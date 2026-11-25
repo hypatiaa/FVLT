@@ -1,0 +1,6 @@
+{"job":"VERIFY-0419-08","runner":"run_capped_v2.sh","host":"membrane","cwd":"/home/saphir/membrane_compute/viewer/verify_0419","start_utc":"2026-10-31T18:56:11Z","end_utc":"2026-10-31T18:56:12Z","exit":0,
+ "caps":{"cpu":"core 0","nice":19,"mem_mib":4096,"wall_s":1800},
+ "peak_rss_kib":47808,"wall_used":"0:00.03",
+ "library_check_before":"OK","library_check_after":"OK",
+ "prereg_sha256":"2d391e04277060fa04ec31f2e263e11a41825928b017e3b62eb36caae86c0474",
+ "command":"/home/saphir/.local/bin/node list_honesty.cjs orig/FOURIER_VIEWER_PROTOTYPE_v0_4_19_20261031/build/EXPECTED_FAILS_v0419.txt logs_of_record/baseline_v0418_linux logs_of_record/builder_v0419 root/FOURIER_VIEWER_PROTOTYPE_v0_4_19_20261031/build/_logs "}

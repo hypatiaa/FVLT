@@ -1,0 +1,163 @@
+PASS 1280x800 group headings: "D. Elliptic and BSD" (placement decided) and "E. Surface pens (exact)" last
+PASS 1280x800 the two pen cards are the last two cards (group E), collapsed on a fresh page; the v0.4.17 group-D cards still close group D (23 cards)
+PASS 1280x800 a collapsed pen card computes nothing ("Open the card to compute.")
+PASS 1280x800 Rule 30 T = 512: lattice readout = core (219 points, max |x| 24, |y| 11)
+PASS 1280x800 Rule 30 T = 512: octahedron readout = core (12 flags of 24; group order 12, A₄)
+PASS 1280x800 Rule 30 T = 512: k = −1 distance d = core 175.204234001017 (drawn to T = 512), pixels not certified 0
+PASS 1280x800 Rule 30 T = 512: no cap label (stream length 512 ≤ 4096)
+PASS 1280x800 Rule 30 T = 512: ink on the three canvases and the sphere
+PASS 1280x800 Rule 30 T = 512: no horizontal page scroll
+PASS 1280x800 Rule 150 T = 4096: lattice readout = core (13 points, max |x| 3, |y| 2)
+PASS 1280x800 Rule 150 T = 4096: octahedron readout = core (12 flags of 24; group order 12, A₄)
+PASS 1280x800 Rule 150 T = 4096: k = −1 distance d = core 1232.358485148210 (drawn to T = 4096), pixels not certified 0
+PASS 1280x800 Rule 150 T = 4096: no cap label (stream length 4096 ≤ 4096)
+PASS 1280x800 Rule 150 T = 4096: the confinement line cites FVLTS4sRule150PenV1.pen_confined and shows 13 points
+PASS 1280x800 Rule 150 T = 4096: ink on the three canvases and the sphere
+PASS 1280x800 Rule 150 T = 4096: no horizontal page scroll
+PASS 1280x800 coin seed 5 T = 304: lattice readout = core (126 points, max |x| 9, |y| 8)
+PASS 1280x800 coin seed 5 T = 304: octahedron readout = core (12 flags of 24; group order 12, A₄)
+PASS 1280x800 coin seed 5 T = 304: k = −1 distance d = core 107.151391161030 (drawn to T = 304), pixels not certified 0
+PASS 1280x800 coin seed 5 T = 304: no cap label (stream length 304 ≤ 4096)
+PASS 1280x800 coin seed 5 T = 304: ink on the three canvases and the sphere
+PASS 1280x800 coin seed 5 T = 304: no horizontal page scroll
+PASS 1280x800 Goldbach shell N = 1448: lattice readout = core (26 points, max |x| 1, |y| 7)
+PASS 1280x800 Goldbach shell N = 1448: octahedron readout = core (8 flags of 24; group order 12, A₄)
+PASS 1280x800 Goldbach shell N = 1448: k = −1 distance d = core 25.081875610155 (drawn to T = 706), pixels not certified 0
+PASS 1280x800 Goldbach shell N = 1448: no cap label (stream length 706 ≤ 4096)
+PASS 1280x800 Goldbach shell N = 1448: exact readouts (g = 20, + signs 40, relation holds) and both guards printed
+PASS 1280x800 Goldbach shell N = 1448: strip carries 1 shell tick(s) and all 706 signs
+PASS 1280x800 Goldbach shell N = 1448: ink on the three canvases and the sphere
+PASS 1280x800 Goldbach shell N = 1448: no horizontal page scroll
+PASS 1280x800 Goldbach run N_max = 1448: lattice readout = core (6499 points, max |x| 115, |y| 208)
+PASS 1280x800 Goldbach run N_max = 1448: octahedron readout = core (12 flags of 24; group order 12, A₄)
+PASS 1280x800 Goldbach run N_max = 1448: k = −1 distance d = core 512.367770990972 (drawn to T = 4096), pixels not certified 0
+PASS 1280x800 Goldbach run N_max = 1448: the caps are visible labels: "k = −1 drawn to T = 4096; the rest is not drawn" and the sphere likewise
+PASS 1280x800 Goldbach run N_max = 1448: exact readouts (g = 15331, + signs 30534, relation holds) and both guards printed
+PASS 1280x800 Goldbach run N_max = 1448: strip carries 723 shell tick(s) and all 257430 signs
+PASS 1280x800 Goldbach run N_max = 1448: ink on the three canvases and the sphere
+PASS 1280x800 Goldbach run N_max = 1448: no horizontal page scroll
+PASS 1280x800 T = 0: lattice readout = core (1 points, max |x| 0, |y| 0)
+PASS 1280x800 T = 0: octahedron readout = core (1 flags of 24; group order 12, A₄)
+PASS 1280x800 T = 0: k = −1 distance d = core 0.000000000000 (drawn to T = 0), pixels not certified 0
+PASS 1280x800 T = 0: no cap label (stream length 0 ≤ 4096)
+PASS 1280x800 T = 0: the label is drawn and the pens stay at the start (0 lattice steps)
+PASS 1280x800 T = 0: ink on the three canvases and the sphere
+PASS 1280x800 T = 0: no horizontal page scroll
+PASS 1280x800 k = −1, Rule 30, T = 48: register exact over F[i]; pixels not certified 0
+PASS 1280x800 k = −1, Rule 30, T = 1024: register guaranteed intervals; pixels not certified 0
+PASS 1280x800 k = −1, Rule 30, T = 4096: register guaranteed intervals; pixels not certified 0
+PASS 1280x800 follow off, T = 4096: absolute view from the start, pixels not certified 0
+PASS 1280x800 sphere, Rule 30, T = 1328, α = 3/96, θ = 2/24: coverage 406/432 and uncertain 0 = core; tooth events 339; pixels not certified 0
+PASS 1280x800 sphere dodecahedron preset (exact in ℚ(√3, √5)): coverage 20/432, uncertain 0, the exact statement shown (five lefts close a face; 60 flags, 20 vertices; order 60, A₅ profile)
+PASS 1280x800 pen card "see also" opens D1 (Clifford tab, rl = 1, D1 card shown, with its link back)
+PASS 1280x800 D1 "see also" opens the Panels tab with the curvature pen card open
+PASS 1280x800 fix-up 2: the case table is stacked (5 blocks, one active) and no word is broken across lines
+PASS 1280x800 fix-up 3: p = 97 at zoom 1×: the whole grid, dots of 3 px (minimum), all affine points drawn (n = 94 counts O too)
+PASS 1280x800 fix-up 3: zoom 2×: a window of 49 cells, larger dots, part of the points drawn
+PASS 1280x800 fix-up 3: the ▶ arrow pans the window (x from 24)
+PASS 1280x800 fix-up 3: zoom 4×: a window of 25 cells
+PASS 1280x800 fix-up 4: P1 = P2: both outlines visible (amber 240 px, violet 288 px; violet drawn 6 px larger)
+PASS 1280x800 fix-up 5: "ν (nu)" in the sum line
+PASS 1280x800 fix-up 6: the refused 11a1 Δ prints −161051 with U+2212
+PASS 1280x800 fix-up 7 (F3): the label rule gives "additive" (not "additive multiplicative"), "nonsplit multiplicative", "split multiplicative", "good"; p = 37 row reads "nonsplit multiplicative"
+PASS 1280x800 no horizontal page scroll with the group-D and group-E cards open
+PASS 1280x800 no page errors and no console errors
+PASS 375x812 group headings: "D. Elliptic and BSD" (placement decided) and "E. Surface pens (exact)" last
+PASS 375x812 the two pen cards are the last two cards (group E), collapsed on a fresh page; the v0.4.17 group-D cards still close group D (23 cards)
+PASS 375x812 a collapsed pen card computes nothing ("Open the card to compute.")
+PASS 375x812 Rule 30 T = 512: lattice readout = core (219 points, max |x| 24, |y| 11)
+PASS 375x812 Rule 30 T = 512: octahedron readout = core (12 flags of 24; group order 12, A₄)
+PASS 375x812 Rule 30 T = 512: k = −1 distance d = core 175.204234001017 (drawn to T = 512), pixels not certified 0
+PASS 375x812 Rule 30 T = 512: no cap label (stream length 512 ≤ 4096)
+PASS 375x812 Rule 30 T = 512: ink on the three canvases and the sphere
+FAIL 375x812 Rule 30 T = 512: no horizontal page scroll
+PASS 375x812 Rule 150 T = 4096: lattice readout = core (13 points, max |x| 3, |y| 2)
+PASS 375x812 Rule 150 T = 4096: octahedron readout = core (12 flags of 24; group order 12, A₄)
+PASS 375x812 Rule 150 T = 4096: k = −1 distance d = core 1232.358485148210 (drawn to T = 4096), pixels not certified 0
+PASS 375x812 Rule 150 T = 4096: no cap label (stream length 4096 ≤ 4096)
+PASS 375x812 Rule 150 T = 4096: the confinement line cites FVLTS4sRule150PenV1.pen_confined and shows 13 points
+PASS 375x812 Rule 150 T = 4096: ink on the three canvases and the sphere
+FAIL 375x812 Rule 150 T = 4096: no horizontal page scroll
+PASS 375x812 coin seed 5 T = 304: lattice readout = core (126 points, max |x| 9, |y| 8)
+PASS 375x812 coin seed 5 T = 304: octahedron readout = core (12 flags of 24; group order 12, A₄)
+PASS 375x812 coin seed 5 T = 304: k = −1 distance d = core 107.151391161030 (drawn to T = 304), pixels not certified 0
+PASS 375x812 coin seed 5 T = 304: no cap label (stream length 304 ≤ 4096)
+PASS 375x812 coin seed 5 T = 304: ink on the three canvases and the sphere
+FAIL 375x812 coin seed 5 T = 304: no horizontal page scroll
+PASS 375x812 Goldbach shell N = 1448: lattice readout = core (26 points, max |x| 1, |y| 7)
+PASS 375x812 Goldbach shell N = 1448: octahedron readout = core (8 flags of 24; group order 12, A₄)
+PASS 375x812 Goldbach shell N = 1448: k = −1 distance d = core 25.081875610155 (drawn to T = 706), pixels not certified 0
+PASS 375x812 Goldbach shell N = 1448: no cap label (stream length 706 ≤ 4096)
+PASS 375x812 Goldbach shell N = 1448: exact readouts (g = 20, + signs 40, relation holds) and both guards printed
+PASS 375x812 Goldbach shell N = 1448: strip carries 1 shell tick(s) and all 706 signs
+PASS 375x812 Goldbach shell N = 1448: ink on the three canvases and the sphere
+FAIL 375x812 Goldbach shell N = 1448: no horizontal page scroll
+PASS 375x812 Goldbach run N_max = 1448: lattice readout = core (6499 points, max |x| 115, |y| 208)
+PASS 375x812 Goldbach run N_max = 1448: octahedron readout = core (12 flags of 24; group order 12, A₄)
+PASS 375x812 Goldbach run N_max = 1448: k = −1 distance d = core 512.367770990972 (drawn to T = 4096), pixels not certified 0
+PASS 375x812 Goldbach run N_max = 1448: the caps are visible labels: "k = −1 drawn to T = 4096; the rest is not drawn" and the sphere likewise
+PASS 375x812 Goldbach run N_max = 1448: exact readouts (g = 15331, + signs 30534, relation holds) and both guards printed
+PASS 375x812 Goldbach run N_max = 1448: strip carries 723 shell tick(s) and all 257430 signs
+PASS 375x812 Goldbach run N_max = 1448: ink on the three canvases and the sphere
+FAIL 375x812 Goldbach run N_max = 1448: no horizontal page scroll
+PASS 375x812 T = 0: lattice readout = core (1 points, max |x| 0, |y| 0)
+PASS 375x812 T = 0: octahedron readout = core (1 flags of 24; group order 12, A₄)
+PASS 375x812 T = 0: k = −1 distance d = core 0.000000000000 (drawn to T = 0), pixels not certified 0
+PASS 375x812 T = 0: no cap label (stream length 0 ≤ 4096)
+PASS 375x812 T = 0: the label is drawn and the pens stay at the start (0 lattice steps)
+PASS 375x812 T = 0: ink on the three canvases and the sphere
+FAIL 375x812 T = 0: no horizontal page scroll
+PASS 375x812 k = −1, Rule 30, T = 48: register exact over F[i]; pixels not certified 0
+PASS 375x812 k = −1, Rule 30, T = 1024: register guaranteed intervals; pixels not certified 0
+PASS 375x812 k = −1, Rule 30, T = 4096: register guaranteed intervals; pixels not certified 0
+PASS 375x812 follow off, T = 4096: absolute view from the start, pixels not certified 0
+PASS 375x812 sphere, Rule 30, T = 1328, α = 3/96, θ = 2/24: coverage 406/432 and uncertain 0 = core; tooth events 339; pixels not certified 0
+PASS 375x812 sphere dodecahedron preset (exact in ℚ(√3, √5)): coverage 20/432, uncertain 0, the exact statement shown (five lefts close a face; 60 flags, 20 vertices; order 60, A₅ profile)
+PASS 375x812 pen card "see also" opens D1 (Clifford tab, rl = 1, D1 card shown, with its link back)
+PASS 375x812 D1 "see also" opens the Panels tab with the curvature pen card open
+PASS 375x812 fix-up 2: the case table is stacked (5 blocks, one active) and no word is broken across lines
+PASS 375x812 fix-up 3: p = 97 at zoom 1×: the whole grid, dots of 3 px (minimum), all affine points drawn (n = 94 counts O too)
+PASS 375x812 fix-up 3: zoom 2×: a window of 49 cells, larger dots, part of the points drawn
+PASS 375x812 fix-up 3: the ▶ arrow pans the window (x from 24)
+PASS 375x812 fix-up 3: zoom 4×: a window of 25 cells
+PASS 375x812 fix-up 4: P1 = P2: both outlines visible (amber 240 px, violet 288 px; violet drawn 6 px larger)
+PASS 375x812 fix-up 5: "ν (nu)" in the sum line
+PASS 375x812 fix-up 6: the refused 11a1 Δ prints −161051 with U+2212
+PASS 375x812 fix-up 7 (F3): the label rule gives "additive" (not "additive multiplicative"), "nonsplit multiplicative", "split multiplicative", "good"; p = 37 row reads "nonsplit multiplicative"
+FAIL 375x812 no horizontal page scroll with the group-D and group-E cards open
+PASS 375x812 no page errors and no console errors
+TIMING 1280x800 Rule 30 T = 512: both cards recomputed and drawn in 0 ms (dial change to readouts)
+TIMING 1280x800 Rule 30 T = 512: lattice 0 ms, octahedron 1 ms, disk 6 + 235 ms, sphere 9 + 2 ms
+TIMING 1280x800 Rule 150 T = 4096: both cards recomputed and drawn in 685 ms (dial change to readouts)
+TIMING 1280x800 Rule 150 T = 4096: lattice 0 ms, octahedron 3 ms, disk 25 + 16 ms, sphere 55 + 9 ms
+TIMING 1280x800 coin seed 5 T = 304: both cards recomputed and drawn in 303 ms (dial change to readouts)
+TIMING 1280x800 coin seed 5 T = 304: lattice 0 ms, octahedron 1 ms, disk 1 + 12 ms, sphere 4 + 1 ms
+TIMING 1280x800 Goldbach shell N = 1448: both cards recomputed and drawn in 140 ms (dial change to readouts)
+TIMING 1280x800 Goldbach shell N = 1448: lattice 0 ms, octahedron 0 ms, disk 3 + 11 ms, sphere 15 + 3 ms
+TIMING 1280x800 Goldbach run N_max = 1448: both cards recomputed and drawn in 1804 ms (dial change to readouts)
+TIMING 1280x800 Goldbach run N_max = 1448: lattice 14 ms, octahedron 203 ms, disk 20 + 11 ms, sphere 51 + 8 ms
+TIMING 1280x800 T = 0: both cards recomputed and drawn in 91 ms (dial change to readouts)
+TIMING 1280x800 T = 0: lattice 0 ms, octahedron 0 ms, disk 0 + 1 ms, sphere 0 + 1 ms
+TIMING 1280x800 k = −1 T = 48: 7 ms compute + 11 ms draw (exact)
+TIMING 1280x800 k = −1 T = 1024: 5 ms compute + 11 ms draw (256)
+TIMING 1280x800 k = −1 T = 4096: 21 ms compute + 12 ms draw (640)
+TIMING 1280x800 k = −1 T = 4096 absolute view: 107 ms compute + 135 ms draw
+TIMING 1280x800 sphere T = 1328: 15 ms compute + 3 ms draw (ball register, P = 96 bits)
+TIMING 375x812 Rule 30 T = 512: both cards recomputed and drawn in 0 ms (dial change to readouts)
+TIMING 375x812 Rule 30 T = 512: lattice 0 ms, octahedron 2 ms, disk 6 + 239 ms, sphere 9 + 2 ms
+TIMING 375x812 Rule 150 T = 4096: both cards recomputed and drawn in 739 ms (dial change to readouts)
+TIMING 375x812 Rule 150 T = 4096: lattice 0 ms, octahedron 3 ms, disk 27 + 15 ms, sphere 57 + 9 ms
+TIMING 375x812 coin seed 5 T = 304: both cards recomputed and drawn in 345 ms (dial change to readouts)
+TIMING 375x812 coin seed 5 T = 304: lattice 0 ms, octahedron 0 ms, disk 2 + 12 ms, sphere 4 + 1 ms
+TIMING 375x812 Goldbach shell N = 1448: both cards recomputed and drawn in 184 ms (dial change to readouts)
+TIMING 375x812 Goldbach shell N = 1448: lattice 0 ms, octahedron 1 ms, disk 5 + 19 ms, sphere 13 + 4 ms
+TIMING 375x812 Goldbach run N_max = 1448: both cards recomputed and drawn in 1825 ms (dial change to readouts)
+TIMING 375x812 Goldbach run N_max = 1448: lattice 14 ms, octahedron 205 ms, disk 22 + 12 ms, sphere 51 + 9 ms
+TIMING 375x812 T = 0: both cards recomputed and drawn in 126 ms (dial change to readouts)
+TIMING 375x812 T = 0: lattice 0 ms, octahedron 0 ms, disk 0 + 4 ms, sphere 0 + 1 ms
+TIMING 375x812 k = −1 T = 48: 8 ms compute + 11 ms draw (exact)
+TIMING 375x812 k = −1 T = 1024: 7 ms compute + 19 ms draw (256)
+TIMING 375x812 k = −1 T = 4096: 22 ms compute + 11 ms draw (640)
+TIMING 375x812 k = −1 T = 4096 absolute view: 110 ms compute + 136 ms draw
+TIMING 375x812 sphere T = 1328: 17 ms compute + 3 ms draw (ball register, P = 96 bits)
+SUMMARY browser-check-v0418: 121 passed, 7 failed

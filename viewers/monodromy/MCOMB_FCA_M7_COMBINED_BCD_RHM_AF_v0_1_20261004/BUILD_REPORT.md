@@ -1,0 +1,5 @@
+# M7 build report
+The successor adds exact FCA contexts, bounded closures, small cover diagrams, divisor/extent selections, strand factorization and zero-sum witnesses, three walk semantics, order transforms and separately labelled group characters. A source-bound sidecar replays all admitted content.
+New modules: fca-core.js, fca-packet.js, fca-worker.js, fca-ui.js. New suites: test-fca.worker.cjs and test-fca-browser.worker.cjs. Build/verify/seal scripts include the new module pins, tests and M6 predecessor. M6 arithmetic modules, M5 refinements and T4/PT1/U1/P1 modules are unchanged.
+The first focused run exposed a JavaScript signed-zero assertion in the test eigenvector check; exact BigInt comparison corrected it. No certificate tolerance was introduced. A source-dimension change resets incompatible local walk controls.
+The qualifying full preseal receipt, subsequent seal and full postseal verification are mandatory external evidence. This document is written before sealing; no independent audit or lock is asserted.

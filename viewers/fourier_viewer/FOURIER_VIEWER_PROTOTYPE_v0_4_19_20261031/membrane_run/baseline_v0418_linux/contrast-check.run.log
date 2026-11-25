@@ -1,0 +1,94 @@
+PASS  7.11  text-dim on bg-deep
+PASS  6.73  text-dim on bg-panel
+PASS  7.01  text-dim on bg-card
+PASS  7.31  text-dim on bg-inset
+PASS  9.56  text-mid on bg-deep
+PASS  9.05  text-mid on bg-panel
+PASS  9.43  text-mid on bg-card
+PASS  9.83  text-mid on bg-inset
+PASS 13.30  text-bright on bg-deep
+PASS 12.58  text-bright on bg-panel
+PASS 13.12  text-bright on bg-card
+PASS 13.67  text-bright on bg-inset
+PASS 12.62  accent-z1 on bg-deep
+PASS 11.95  accent-z1 on bg-panel
+PASS 12.45  accent-z1 on bg-card
+PASS 12.98  accent-z1 on bg-inset
+PASS  6.54  accent-z2 on bg-deep
+PASS  6.19  accent-z2 on bg-panel
+PASS  6.45  accent-z2 on bg-card
+PASS  6.72  accent-z2 on bg-inset
+PASS  7.35  accent-z0 (text) on bg-deep
+PASS  6.95  accent-z0 (text) on bg-panel
+PASS  7.25  accent-z0 (text) on bg-card
+PASS  7.55  accent-z0 (text) on bg-inset
+PASS 11.63  accent-warn on bg-deep
+PASS 11.01  accent-warn on bg-panel
+PASS 11.47  accent-warn on bg-card
+PASS 11.96  accent-warn on bg-inset
+PASS  7.66  accent-good on bg-deep
+PASS  7.24  accent-good on bg-panel
+PASS  7.55  accent-good on bg-card
+PASS  7.87  accent-good on bg-inset
+PASS  7.00  accent-defend on bg-deep
+PASS  6.62  accent-defend on bg-panel
+PASS  6.90  accent-defend on bg-card
+PASS  7.19  accent-defend on bg-inset
+PASS  9.04  accent-spine on bg-deep
+PASS  8.56  accent-spine on bg-panel
+PASS  8.92  accent-spine on bg-card
+PASS  9.30  accent-spine on bg-inset
+PASS  8.03  poly-text on bg-deep
+PASS  7.60  poly-text on bg-panel
+PASS  7.92  poly-text on bg-card
+PASS  8.25  poly-text on bg-inset
+PASS 12.62  tooth -1 #00e5ff on bg-deep
+PASS 11.95  tooth -1 #00e5ff on bg-panel
+PASS 12.45  tooth -1 #00e5ff on bg-card
+PASS 12.98  tooth -1 #00e5ff on bg-inset
+PASS  6.54  tooth +1 #ff5e6c on bg-deep
+PASS  6.19  tooth +1 #ff5e6c on bg-panel
+PASS  6.45  tooth +1 #ff5e6c on bg-card
+PASS  6.72  tooth +1 #ff5e6c on bg-inset
+PASS  7.66  tooth -2 #10b981 on bg-deep
+PASS  7.24  tooth -2 #10b981 on bg-panel
+PASS  7.55  tooth -2 #10b981 on bg-card
+PASS  7.87  tooth -2 #10b981 on bg-inset
+PASS 11.63  tooth +2 #fbbf24 on bg-deep
+PASS 11.01  tooth +2 #fbbf24 on bg-panel
+PASS 11.47  tooth +2 #fbbf24 on bg-card
+PASS 11.96  tooth +2 #fbbf24 on bg-inset
+PASS  7.66  tooth -3 #3b82f6 (text variant) on bg-deep
+PASS  7.24  tooth -3 #3b82f6 (text variant) on bg-panel
+PASS  7.55  tooth -3 #3b82f6 (text variant) on bg-card
+PASS  7.87  tooth -3 #3b82f6 (text variant) on bg-inset
+PASS  7.33  tooth +3 #f472b6 on bg-deep
+PASS  6.94  tooth +3 #f472b6 on bg-panel
+PASS  7.23  tooth +3 #f472b6 on bg-card
+PASS  7.54  tooth +3 #f472b6 on bg-inset
+PASS  9.83  tooth -4 #84cc16 on bg-deep
+PASS  9.30  tooth -4 #84cc16 on bg-panel
+PASS  9.70  tooth -4 #84cc16 on bg-card
+PASS 10.10  tooth -4 #84cc16 on bg-inset
+PASS  8.58  tooth +4 #fb923c on bg-deep
+PASS  8.12  tooth +4 #fb923c on bg-panel
+PASS  8.46  tooth +4 #fb923c on bg-card
+PASS  8.82  tooth +4 #fb923c on bg-inset
+PASS 10.43  tooth -5 #2dd4bf on bg-deep
+PASS  9.87  tooth -5 #2dd4bf on bg-panel
+PASS 10.29  tooth -5 #2dd4bf on bg-card
+PASS 10.72  tooth -5 #2dd4bf on bg-inset
+PASS  7.89  tooth +5 #e879f9 on bg-deep
+PASS  7.47  tooth +5 #e879f9 on bg-panel
+PASS  7.78  tooth +5 #e879f9 on bg-card
+PASS  8.11  tooth +5 #e879f9 on bg-inset
+PASS  7.93  tooth -6 #a3a3c2 on bg-deep
+PASS  7.50  tooth -6 #a3a3c2 on bg-panel
+PASS  7.82  tooth -6 #a3a3c2 on bg-card
+PASS  8.15  tooth -6 #a3a3c2 on bg-inset
+PASS 10.13  tooth +6 #eab308 on bg-deep
+PASS  9.58  tooth +6 #eab308 on bg-panel
+PASS  9.99  tooth +6 #eab308 on bg-card
+PASS 10.41  tooth +6 #eab308 on bg-inset
+PASS 12.62  button-pressed bg-deep on z1 on accent-z1 fill
+contrast-check: 93 pass, 0 fail

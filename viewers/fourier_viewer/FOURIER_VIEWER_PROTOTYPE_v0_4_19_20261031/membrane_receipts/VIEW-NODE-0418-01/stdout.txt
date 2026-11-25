@@ -1,0 +1,42 @@
+PASS Rule 30 signs = skeleton caSigns(30, 0)
+PASS Rule 150 signs = skeleton caSigns(150, 0)
+PASS Rule 30 signs = skeleton caSigns(30, 1)
+PASS Rule 150 signs = skeleton caSigns(150, 1)
+PASS Rule 30 signs = skeleton caSigns(30, 2)
+PASS Rule 150 signs = skeleton caSigns(150, 2)
+PASS Rule 30 signs = skeleton caSigns(30, 300)
+PASS Rule 150 signs = skeleton caSigns(150, 300)
+PASS Rule 30 signs = skeleton caSigns(30, 1328)
+PASS Rule 150 signs = skeleton caSigns(150, 1328)
+PASS Rule 30 signs = skeleton caSigns(30, 4096)
+PASS Rule 150 signs = skeleton caSigns(150, 4096)
+PASS coin seed 1 T = 300 = skeleton coinSigns (xorshift32 13, 17, 5; + on odd)
+PASS coin seed 1 T = 4096 = skeleton coinSigns (xorshift32 13, 17, 5; + on odd)
+PASS coin seed 5 T = 300 = skeleton coinSigns (xorshift32 13, 17, 5; + on odd)
+PASS coin seed 5 T = 4096 = skeleton coinSigns (xorshift32 13, 17, 5; + on odd)
+PASS coin seed 2 T = 300 = skeleton coinSigns (xorshift32 13, 17, 5; + on odd)
+PASS coin seed 2 T = 4096 = skeleton coinSigns (xorshift32 13, 17, 5; + on odd)
+PASS coin seed 4294967295 T = 300 = skeleton coinSigns (xorshift32 13, 17, 5; + on odd)
+PASS coin seed 4294967295 T = 4096 = skeleton coinSigns (xorshift32 13, 17, 5; + on odd)
+PASS Rule 150: the centre cell x_t(0) is black for every t < 4096 (kit center150)
+PASS Rule 30: s_t = −1 exactly when q XOR r = 1, tooth exactly when q = r = 1 (1042 tooth events in 4096 steps)
+PASS Rule 30 centre x_t(0), t < 32, equals an independent BigInt row computation
+PASS seed 0 and 2^32 are refused
+PASS T outside 0 … 4096 or not an integer is refused
+PASS every Goldbach shell N = 4 … 1448: one sign per tooth, stream length = number of teeth m
+PASS every shell: + exactly on the teeth with N/2 ± c·t₂ both prime (independent BigInt primality), − on the ghosted teeth
+PASS every shell: tooth order c = 0, 1, −1, 2, −2, … (as present in the comb)
+PASS every shell: #+ = 2g(N) − δ (δ = 1 when N/2 is prime: the equal pair counted once)
+PASS N = 4: g(N) = 1, #+ = 1, teeth 3, net turning (#+ − #−)·90° = -1·90°
+PASS N = 6: g(N) = 1, #+ = 1, teeth 3, net turning (#+ − #−)·90° = -1·90°
+PASS N = 24: g(N) = 3, #+ = 6, teeth 8, net turning (#+ − #−)·90° = 4·90°
+PASS N = 26: g(N) = 3, #+ = 5, teeth 11, net turning (#+ − #−)·90° = -1·90°
+PASS N = 1448: g(N) = 20, #+ = 40, teeth 706, net turning (#+ − #−)·90° = -626·90°
+PASS empty-fibre guard (injected empty pair set, unreachable for 4 ≤ N ≤ 1448): g = 0, every tooth ghosted, the label is set
+PASS g(N) ≥ 1 for every even 4 ≤ N ≤ 1448 (so the empty-fibre label never shows on a real shell): min g = 1
+PASS Goldbach run to 1448 = the 723 shells concatenated in order (257430 signs, 30534 +), boundaries at the shell starts
+PASS Goldbach run to 1448: #+ = 30534 = 2·Σg(N) − Σδ = 2·15331 − 128 (holds); built in 38 ms
+PASS Goldbach run is biased to − (226896 − against 30534 +); recorded as a drawing-register observation only
+PASS N_max must be even and 4 … 1448
+PASS the printed guards carry the brief wording
+SUMMARY test-pen-streams: 41 passed, 0 failed

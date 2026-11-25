@@ -1,0 +1,17 @@
+PASS host-core/pen-interval-core.js: no banned token
+PASS host-core/field-q2-q5-tau.js: no banned token
+PASS host-core/pen-streams-core.js: no banned token
+PASS host-core/pen-curvature-core.js: no banned token
+PASS host-core/pen-sphere-core.js: no banned token
+PASS instruments/comb-hopf/panel-pens.js: no banned token (allowlisted at line 10)
+PASS host-core/transcription-skeleton-pens.cjs: no banned token (allowlisted at line 35)
+PASS host-core/test-pen-streams.cjs: no banned token
+PASS host-core/test-pen-fields.cjs: no banned token
+PASS host-core/test-pen-curvature.cjs: no banned token
+PASS host-core/test-pen-sphere.cjs: no banned token
+PASS host-core/test-v0418-fixups.cjs: no banned token
+PASS build/browser-check-v0418.cjs: no banned token
+PASS build/shots-v0418.cjs: no banned token
+PASS build/browser-check-legacy-panels-v0418.cjs: no banned token
+PASS build/check-expected-fails-v0418.cjs: no banned token
+SUMMARY no-float-v0418: 16 passed, 0 failed

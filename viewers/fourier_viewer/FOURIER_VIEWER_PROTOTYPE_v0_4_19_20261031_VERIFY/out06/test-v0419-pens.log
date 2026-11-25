@@ -1,0 +1,16 @@
+PASS pixelCert: [2624, 2656]/256 px is ≤ ¼ px wide and decided (pixel 110 = 100 + floor 10)
+PASS pixelCert: [2784, 2832]/256 px is ≤ ¼ px wide but undecided (straddles the edge at 11)
+PASS pixelCert: a 1 px wide enclosure is counted wider than ¼ px (and undecided: [10, 11] reaches the edge 11)
+PASS pixelCert: an exact point on an edge is decided (floor(lo) = floor(hi))
+PASS pixelCert, flipped axis: 100 − [2576, 2608]/256 is decided
+PASS pixelCert, flipped axis: 100 − [2544, 2576]/256 is undecided (edge 90)
+PASS pixelCert, flipped axis: an exact 100 − 10 = 90 is decided
+PASS pixelCert agrees with the v0.4.18 pixel (same p, same ok)
+PASS the dodecahedron preset has 60 directed edges (30 edges, both directions), each joining two vertices at x·y = √5/3
+PASS every arc point (420 = 60 × 7): |x|² ∋ 1 (on the sphere)
+PASS every arc point lies on the great circle of its edge: (a × b)·x ∋ 0
+PASS every arc point lies on the minor arc: x·a and x·b are not below cos α = √5/3 (enclosures)
+PASS arc points at the card scale (R = 140 px, world axes): enclosure wider than ¼ px on an axis: 0 (expected 0); pixel-edge straddles counted: 0
+PASS the arcs are cached per (a, b, P): a second call returns the same object
+PASS Rule 30, T = 1328 on the preset: 1328 steps, each drawn with 7 interior arc points
+SUMMARY test-v0419-pens: 15 passed, 0 failed

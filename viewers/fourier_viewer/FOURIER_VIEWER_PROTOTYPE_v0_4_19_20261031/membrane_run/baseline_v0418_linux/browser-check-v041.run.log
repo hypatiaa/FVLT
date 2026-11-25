@@ -1,0 +1,67 @@
+PASS 375x812 shell range: the n₁ select offers 1 … 13 (13 options)
+PASS 375x812 shell range: selecting n₁ = 2 gives B = 2 (φ₃ clamped into 0 … B + 1 = 3), no refusal
+PASS 375x812 shell range: selecting n₁ = 1 gives B = 1 (φ₃ clamped into 0 … B + 1 = 2), no refusal, and ◀ n₁ is disabled at the bottom
+PASS 375x812 shell range: integer base B = 1 is accepted (shell readout B = 1 · N = 2)
+FAIL 375x812 n1_1 fourier: renders without a refusal or error, first screen holds (transport bottom 838 ≤ 812), no visible text below 13 px (smallest 13.000) {"L":{"tr":838.21875,"vh":812,"status":"","svg":31},"bad":[]}
+PASS 375x812 n1_1 clifford: renders without a refusal or error (transport bottom 874, informative), no visible text below 13 px (smallest 13.000)
+PASS 375x812 n1_1 hopf: renders without a refusal or error (transport bottom 874, informative), no visible text below 13 px (smallest 13.000)
+PASS 375x812 n1_1 panels: renders without a refusal or error (transport bottom 527, informative), no visible text below 13 px (smallest 13.000)
+FAIL 375x812 n1_2 fourier: renders without a refusal or error, first screen holds (transport bottom 838 ≤ 812), no visible text below 13 px (smallest 13.000) {"L":{"tr":838.21875,"vh":812,"status":"","svg":40},"bad":[]}
+PASS 375x812 n1_2 clifford: renders without a refusal or error (transport bottom 838, informative), no visible text below 13 px (smallest 13.000)
+PASS 375x812 n1_2 hopf: renders without a refusal or error (transport bottom 838, informative), no visible text below 13 px (smallest 13.000)
+PASS 375x812 n1_2 panels: renders without a refusal or error (transport bottom 527, informative), no visible text below 13 px (smallest 13.000)
+FAIL 375x812 n1_1_continuous fourier: renders without a refusal or error, first screen holds (transport bottom 874 ≤ 812), no visible text below 13 px (smallest 13.000) {"L":{"tr":874.21875,"vh":812,"status":"","svg":34},"bad":[]}
+PASS 375x812 n1_1_continuous clifford: renders without a refusal or error (transport bottom 874, informative), no visible text below 13 px (smallest 13.000)
+PASS 375x812 n1_1_continuous hopf: renders without a refusal or error (transport bottom 874, informative), no visible text below 13 px (smallest 13.000)
+PASS 375x812 n1_1_continuous panels: renders without a refusal or error (transport bottom 568, informative), no visible text below 13 px (smallest 13.000)
+FAIL 375x812 B1_integer fourier: renders without a refusal or error, first screen holds (transport bottom 838 ≤ 812), no visible text below 13 px (smallest 13.000) {"L":{"tr":838.21875,"vh":812,"status":"","svg":32},"bad":[]}
+PASS 375x812 B1_integer clifford: renders without a refusal or error (transport bottom 838, informative), no visible text below 13 px (smallest 13.000)
+PASS 375x812 B1_integer hopf: renders without a refusal or error (transport bottom 838, informative), no visible text below 13 px (smallest 13.000)
+PASS 375x812 B1_integer panels: renders without a refusal or error (transport bottom 527, informative), no visible text below 13 px (smallest 13.000)
+PASS 375x812 ★ counterexample (N = 5, m = 6, t₁ = 1/2, t₂ = 1, s = 1, ρ = 1): no ★ in the caption (s ∈ ℤ but t₁·s ∉ ℤ), Q-res 1.0e+0; the card says "lab-frame W real (t₁·s ∈ ℤ, exact) no" and gives the carrier-relative Im within the bound
+PASS 375x812 ★ default state (t₁·s = 1 ∈ ℤ): "SPREAD … ★ lab sum real" precedes Q-res, and the card says "yes ★"
+PASS 375x812 foliation: the "Carrier foliation" toggle is visible in the Clifford Layers menu, not pressed by default; leaf counts 6, 12, 24, 120 offered; readout says off; nothing drawn
+PASS 375x812 foliation: every Layers-menu control is at least 40 px high
+PASS 375x812 foliation on, β ▶▶ ×3, β ▶, ◀ β, leaves 12: view cff=1, cfb=30, cfk=12; readout "selected β = 1/4·π (exact, β/π = k/120, k = 30) · companion β + π = 5/4·π (dashed)"; 12 family runs, the selected (β/π = 1/4) and companion (5/4) stubs, label "β = 1/4·π"; every drawn point has arg z₂ = β and |z₁|, |z₂| = a, b within 1e-9 (worst 4.44e-16)
+PASS 375x812 foliation with the Layers menu open: no visible text below 13 px (smallest 13.000)
+PASS 375x812 foliation on an even comb (m = 6): 24 family runs, readout "no tooth lies on the foliation (even comb)"
+PASS 375x812 N = 1 via φ₃ = B (n₁ = 4, m = 2, t₁ = t₂ = 1) with the foliation on: 24 + 2 runs drawn
+PASS 375x812 foliation guard t₁ = 0: labelled (each carrier orbit is a point), drawn as 24 + 2 points, no curves
+PASS 375x812 foliation guard ρ = 0: nothing drawn, labelled "collapsed leaf (ρ = 0): the carrier foliation is not drawn."
+PASS 375x812 foliation off: for 8 states the Clifford SVG overlay, caption, canvas pixels (PNG data URL), recorded runs and marks equal the v0.4 page byte for byte
+PASS 375x812 no console or page errors in the v0.4.1 checks
+PASS 375x812 no horizontal scroll
+PASS 1280x800 shell range: the n₁ select offers 1 … 13 (13 options)
+PASS 1280x800 shell range: selecting n₁ = 2 gives B = 2 (φ₃ clamped into 0 … B + 1 = 3), no refusal
+PASS 1280x800 shell range: selecting n₁ = 1 gives B = 1 (φ₃ clamped into 0 … B + 1 = 2), no refusal, and ◀ n₁ is disabled at the bottom
+PASS 1280x800 shell range: integer base B = 1 is accepted (shell readout B = 1 · N = 2)
+PASS 1280x800 n1_1 fourier: renders without a refusal or error, first screen holds (transport bottom 952 ≤ 800), no visible text below 13 px (smallest 13.000)
+PASS 1280x800 n1_1 clifford: renders without a refusal or error (transport bottom 977, informative), no visible text below 13 px (smallest 13.000)
+PASS 1280x800 n1_1 hopf: renders without a refusal or error (transport bottom 977, informative), no visible text below 13 px (smallest 13.000)
+PASS 1280x800 n1_1 panels: renders without a refusal or error (transport bottom 439, informative), no visible text below 13 px (smallest 13.000)
+PASS 1280x800 n1_2 fourier: renders without a refusal or error, first screen holds (transport bottom 952 ≤ 800), no visible text below 13 px (smallest 13.000)
+PASS 1280x800 n1_2 clifford: renders without a refusal or error (transport bottom 952, informative), no visible text below 13 px (smallest 13.000)
+PASS 1280x800 n1_2 hopf: renders without a refusal or error (transport bottom 952, informative), no visible text below 13 px (smallest 13.000)
+PASS 1280x800 n1_2 panels: renders without a refusal or error (transport bottom 439, informative), no visible text below 13 px (smallest 13.000)
+PASS 1280x800 n1_1_continuous fourier: renders without a refusal or error, first screen holds (transport bottom 977 ≤ 800), no visible text below 13 px (smallest 13.000)
+PASS 1280x800 n1_1_continuous clifford: renders without a refusal or error (transport bottom 977, informative), no visible text below 13 px (smallest 13.000)
+PASS 1280x800 n1_1_continuous hopf: renders without a refusal or error (transport bottom 977, informative), no visible text below 13 px (smallest 13.000)
+PASS 1280x800 n1_1_continuous panels: renders without a refusal or error (transport bottom 468, informative), no visible text below 13 px (smallest 13.000)
+PASS 1280x800 B1_integer fourier: renders without a refusal or error, first screen holds (transport bottom 952 ≤ 800), no visible text below 13 px (smallest 13.000)
+PASS 1280x800 B1_integer clifford: renders without a refusal or error (transport bottom 952, informative), no visible text below 13 px (smallest 13.000)
+PASS 1280x800 B1_integer hopf: renders without a refusal or error (transport bottom 952, informative), no visible text below 13 px (smallest 13.000)
+PASS 1280x800 B1_integer panels: renders without a refusal or error (transport bottom 439, informative), no visible text below 13 px (smallest 13.000)
+PASS 1280x800 ★ counterexample (N = 5, m = 6, t₁ = 1/2, t₂ = 1, s = 1, ρ = 1): no ★ in the caption (s ∈ ℤ but t₁·s ∉ ℤ), Q-res 1.0e+0; the card says "lab-frame W real (t₁·s ∈ ℤ, exact) no" and gives the carrier-relative Im within the bound
+PASS 1280x800 ★ default state (t₁·s = 1 ∈ ℤ): "SPREAD … ★ lab sum real" precedes Q-res, and the card says "yes ★"
+PASS 1280x800 foliation: the "Carrier foliation" toggle is visible in the Clifford Layers menu, not pressed by default; leaf counts 6, 12, 24, 120 offered; readout says off; nothing drawn
+PASS 1280x800 foliation: every Layers-menu control is at least 40 px high
+PASS 1280x800 foliation on, β ▶▶ ×3, β ▶, ◀ β, leaves 12: view cff=1, cfb=30, cfk=12; readout "selected β = 1/4·π (exact, β/π = k/120, k = 30) · companion β + π = 5/4·π (dashed)"; 12 family runs, the selected (β/π = 1/4) and companion (5/4) stubs, label "β = 1/4·π"; every drawn point has arg z₂ = β and |z₁|, |z₂| = a, b within 1e-9 (worst 4.44e-16)
+PASS 1280x800 foliation with the Layers menu open: no visible text below 13 px (smallest 13.000)
+PASS 1280x800 foliation on an even comb (m = 6): 24 family runs, readout "no tooth lies on the foliation (even comb)"
+PASS 1280x800 N = 1 via φ₃ = B (n₁ = 4, m = 2, t₁ = t₂ = 1) with the foliation on: 24 + 2 runs drawn
+PASS 1280x800 foliation guard t₁ = 0: labelled (each carrier orbit is a point), drawn as 24 + 2 points, no curves
+PASS 1280x800 foliation guard ρ = 0: nothing drawn, labelled "collapsed leaf (ρ = 0): the carrier foliation is not drawn."
+PASS 1280x800 foliation off: for 8 states the Clifford SVG overlay, caption, canvas pixels (PNG data URL), recorded runs and marks equal the v0.4 page byte for byte
+PASS 1280x800 no console or page errors in the v0.4.1 checks
+PASS 1280x800 no horizontal scroll
+browser-check-v041: 62 passed, 4 failed

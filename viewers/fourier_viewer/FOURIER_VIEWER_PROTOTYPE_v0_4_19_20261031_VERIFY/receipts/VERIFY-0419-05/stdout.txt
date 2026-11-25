@@ -1,0 +1,2 @@
+enclosures equal to [0,0]: 24; exact coordinate 0 in K: 24; mismatches either way: 0
+PASS arc zero coordinates decided exactly

@@ -1,0 +1,22 @@
+PASS A1 exact table n = 1…359 (B = n², φ₃ = 0, m = 2n + 1, gears 1): 64261 branches c = 2…n: g_c = card = orbit-core commonFactor = independent Euclid gcd; cleared (N, −c); primitive (N/g, −c/g); closure period 2N/g; type by g
+PASS A1 verdict = independent trial division for all 359 shells (54 primes n² + 1 in range); both forms (all ×1 / no UNKNOT among c = 2…n) agree on all 359; least repeated c = least prime factor
+PASS A1 the note’s count: 54 primes n² + 1 for n = 1…359
+PASS A2 fixtures N = 2, 5, 10 (c = 2 ×2), 17, 26 (c = 2, 4 ×2), 37, 50 (c = 2, 4, 5, 6; c = 5 UNKNOT ×5), 65 (c = 5 UNKNOT ×5), 101, 170, 197, 257, 401 and n = 359 (N = 128 882, even, c = 2 ×2; repeated list = independent gcd)
+PASS A3 c = ±1 reads UNKNOT ×1 for every N tested (N = 10 and 26 composite among them), c = 0 repeats N times
+PASS A4 gates refuse a verdict with the reason: t₁ = t₂ = 2; t₁ = 1, t₂ = 2; t₁ = 1/2, t₂ = 2/3; m = 5 at N = 26 (missing 3, 4, 5); even m = 8; even m = 2; N = 0; non-integer N; N = 1; m = 3 at n = 359 (missing list capped at 12)
+PASS A4 Q1: N = 24 (N − 1 not a square) applies with c = 2…4, not marked quadratic, verdict composite (c = 2 ×2)
+PASS A4 N = 2, 3 (empty range, prime) and N = 4 (r = 2, c = 2 ×2, composite)
+PASS A4 why the gate: at N = 10, t₁ = t₂ = 2 gives ×2, ×4, ×2 for c = 1, 2, 3 (twice gcd(10, c)); t₁ = 1, t₂ = 2 gives ×2 at c = 1; t₁ = 1/2, t₂ = 2/3 gives ×1 at c = 2 although 2 | 10
+PASS A4 n₆ = 0: same rows and verdict, n6zero flag set (formal label); α changes nothing
+PASS A5 host-core/branch-disk-core.js contains no Number(, parseFloat, parseInt, Math. or toFixed (the verdict and every readout path is BigInt / exact rationals)
+PASS B1 cusp images ζ(p/q) = ((p² − q²) − 2pq·i)/(p² + q²) = (z − i)/(z + i) exactly, on the unit circle (re² + im² = den²), 2937 reduced p/q with q ≤ 40, |p| ≤ 60; 1/2 ↦ (−3 − 4i)/5, 2/3 ↦ (−5 − 12i)/13
+PASS B2 Farey edges among the F₁₀ cusps in [−1, 1] and ∞: 129 edges (1 diameter): centre (a − ib)(c − id)/(ac + bd), radius 1/|ac + bd|, |C|² = 1 + r² (orthogonal to the rim), through both cusp images, = tangent intersection 2ζ₁ζ₂/(ζ₁ + ζ₂) = circumcentre of the Cayley image of the half-plane semicircle; the 0—∞ edge is a diameter
+PASS B3 F(a) (Lemma II.5g), contact edges |as − cq| = 1 (Def II.5h) and isolated beads for N = 2, 5, 10, 12, 17, 26, 30, 50, 60, 101, 120, 360, 720, 5040 equal an independent enumeration; N = 12 = 2²·3 has orders 3, 2: F = {1/3, 1/2, 2/3}, 2 edges
+FAIL B4 disk_checks.py ran live (python -I, stdin closed): exit 0, "FAILURES: 0"
+FAIL B4 Astra’s orbit, n = 1…30: 124 pairs (n, m), largest m 901 (disk_checks.py: ?): ζ = (k − m − 2n·i)/(k + m + 2), |ζ|² = (k + m − 2)/(k + m + 2), cosh d = (k + m)/2 = (a² + b² + c² + d²)/2, an SL(2, ℤ) matrix with γi = (n + i)/m (independent complex arithmetic), Cayley image of (n + i)/m = ζ, ζ on the Farey edge a/c — b/d, mirror m ↔ k = ζ ↦ −ζ̄; 0 rows equal the script’s printed ζ 
+PASS B5 N − 1 not a square (N = 24): the layer is drawn, orbit.square = false (labelled idle); non-integer N and N = 0: idle with the reason, no data
+PASS B5 the disk reads only the shell: unchanged by t₁, t₂, α, n₆, m
+PASS B5 N = 2 on the n! base (n₁ = 1, φ₃ = 0 gives N = 2 = 1² + 1): the orbit has m = 1, 2
+FAIL B6 15 source files byte-identical to v0.4.9 (comb-core, orbit-core, comb-numeric, stack-core, shell-core, ca-core, exact-lib, panel-g-robin, the three tab views, views-common …) host-core/comb-numeric.js,host-core/stack-core.js,instruments/comb-hopf/view-fourier.js,instruments/comb-hopf/view-clifford.js,instruments/comb-hopf/view-hopf.js
+
+SUMMARY test-v0410: 17 pass / 3 fail

@@ -1,0 +1,54 @@
+=== case 0-real (want exit 0)
+HOST this machine: membrane (linux); list host of record: membrane (linux)
+SUMMARY check-expected-fails-v0419: 51 passed, 0 failed
+case 0-real exit=0 want=0 OK
+=== case 1-injected (want exit 1)
+HOST this machine: membrane (linux); list host of record: membrane (linux)
+FAIL test-v0419-pens: 0 expected FAIL line(s), exit 0, summary 15 / 0 :: UNEXPECTED: FAIL VERIFIER-INJECTED pixelCert: [2624, 2656]/256 px is ≤ ¼ px wide and decided (pixel 110 = 100 + floor 10)
+     UNEXPECTED: FAIL VERIFIER-INJECTED pixelCert: [2624, 2656]/256 px is ≤ ¼ px wide and decided (pixel 110 = 100 + floor 10)
+SUMMARY check-expected-fails-v0419: 50 passed, 1 failed
+case 1-injected exit=1 want=1 OK
+=== case 2-removed (want exit 1)
+HOST this machine: membrane (linux); list host of record: membrane (linux)
+FAIL test-v0410: 3 expected FAIL line(s), exit 1, summary 17 / 3 :: MISSING: FAIL B4 disk_checks.py ran live (python -I, stdin closed): exit 0, "FAILURES: 0"
+     MISSING: FAIL B4 disk_checks.py ran live (python -I, stdin closed): exit 0, "FAILURES: 0"
+SUMMARY check-expected-fails-v0419: 50 passed, 1 failed
+case 2-removed exit=1 want=1 OK
+=== case 3-crash (want exit 1)
+HOST this machine: membrane (linux); list host of record: membrane (linux)
+FAIL browser-check-v0414: 2 expected FAIL line(s), exit 1, summary 94 / 2 :: MISSING: FAIL 1280x800 track off: byte-identical to v0.4.13 for 32 states (incl. the Goldbach shells without the flag, tilt −1/2 too): stage, canvas, caption, about, cards, address, hash and the five exports (32/32) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage | MISSING: FAIL 375x812 track off: byte-identical to v0.4.13 for 32 states (incl. the Goldbach shells without the flag, tilt −1/2 too): stage, canvas, caption, about, cards, address, hash and the five exports (32/32) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage | SUMMARY: expected "SUMMARY browser-check-v0414 94 passed, 2 failed", got (none) | COUNTS: expected 94 / 2, got (none)
+     MISSING: FAIL 1280x800 track off: byte-identical to v0.4.13 for 32 states (incl. the Goldbach shells without the flag, tilt −1/2 too): stage, canvas, caption, about, cards, address, hash and the five exports (32/32) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage
+     MISSING: FAIL 375x812 track off: byte-identical to v0.4.13 for 32 states (incl. the Goldbach shells without the flag, tilt −1/2 too): stage, canvas, caption, about, cards, address, hash and the five exports (32/32) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage
+     SUMMARY: expected "SUMMARY browser-check-v0414 94 passed, 2 failed", got (none)
+     COUNTS: expected 94 / 2, got (none)
+SUMMARY check-expected-fails-v0419: 50 passed, 1 failed
+case 3-crash exit=1 want=1 OK
+=== case 4-fails-then-crash (want exit 1)
+HOST this machine: membrane (linux); list host of record: membrane (linux)
+FAIL test-v0410: 3 expected FAIL line(s), exit 1, summary 17 / 3 :: SUMMARY: expected "SUMMARY test-v0410: 17 pass / 3 fail", got (none) | COUNTS: expected 17 / 3, got (none)
+     SUMMARY: expected "SUMMARY test-v0410: 17 pass / 3 fail", got (none)
+     COUNTS: expected 17 / 3, got (none)
+SUMMARY check-expected-fails-v0419: 50 passed, 1 failed
+case 4-fails-then-crash exit=1 want=1 OK
+=== case 4b-pass-then-crash (want exit 1)
+HOST this machine: membrane (linux); list host of record: membrane (linux)
+FAIL test-v0419-pens: 0 expected FAIL line(s), exit 0, summary 15 / 0 :: EXIT: expected 0, got 1 | SUMMARY: expected "SUMMARY test-v0419-pens: 15 passed, 0 failed", got (none) | COUNTS: expected 15 / 0, got (none)
+     EXIT: expected 0, got 1
+     SUMMARY: expected "SUMMARY test-v0419-pens: 15 passed, 0 failed", got (none)
+     COUNTS: expected 15 / 0, got (none)
+SUMMARY check-expected-fails-v0419: 50 passed, 1 failed
+case 4b-pass-then-crash exit=1 want=1 OK
+=== case 5-summary-then-crash (want exit 0)
+HOST this machine: membrane (linux); list host of record: membrane (linux)
+SUMMARY check-expected-fails-v0419: 51 passed, 0 failed
+case 5-summary-then-crash exit=0 want=0 OK
+=== case 6-wrong-host (want exit 2)
+HOST this machine: membrane (linux); list host of record: neo (win32)
+NOT THE HOST OF RECORD: the expected-fails list is for neo (win32); this machine is membrane (linux). Nothing was compared (exit 2, not a FAIL).
+case 6-wrong-host exit=2 want=2 OK
+=== case 7-exit-only (want exit 1)
+HOST this machine: membrane (linux); list host of record: membrane (linux)
+FAIL test-exact: 0 expected FAIL line(s), exit 0, summary 21 / 0 :: EXIT: expected 0, got 1
+     EXIT: expected 0, got 1
+SUMMARY check-expected-fails-v0419: 50 passed, 1 failed
+case 7-exit-only exit=1 want=1 OK

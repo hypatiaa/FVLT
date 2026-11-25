@@ -1,0 +1,1 @@
+VIEW-NODE-0419-01 (Fourier viewer v0.4.19 builder, Opus 5.5 subagent). Runs build/dump-a5-moves-v0419.cjs: writes the dodecahedron preset own two moves (permutations of its 60 flags, as computed by host-core/pen-sphere-core.js dodecaStructure) to a5_moves_v0419.json, input of VIEW-SAGE-0419-01. Exact. Expected: 60 flags, 20 vertices, 1 passed, 0 failed.

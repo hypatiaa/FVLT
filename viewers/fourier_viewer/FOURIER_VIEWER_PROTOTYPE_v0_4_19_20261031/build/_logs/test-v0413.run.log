@@ -1,0 +1,8 @@
+PASS v0.4.12 dist sha256 unchanged (b6e0e6e8…)
+PASS v0.4.12 SHA256SUMS.txt sha256 unchanged (7d90774e…)
+PASS logModel arrays (stack mapping) identical in v0.4.12 and v0.4.13: 20/20 model runs, 34024 points
+FAIL source files differing from v0.4.12: host-core/comb-numeric.js, host-core/d1-event-pieces.js, host-core/elliptic-exact-core.js, host-core/elliptic-period-core.js, host-core/field-q2-q5-tau.js, host-core/goldbach-core.js, host-core/pen-curvature-core.js, host-core/pen-interval-core.js, host-core/pen-sphere-core.js, host-core/pen-streams-core.js, host-core/rule30-ladder-core.js, instruments/comb-hopf/index.html, instruments/comb-hopf/panel-elliptic.js, instruments/comb-hopf/panel-pens.js, instruments/comb-hopf/panel.js, instruments/comb-hopf/view-clifford.js, instruments/comb-hopf/view-fourier.js, instruments/comb-hopf/view-hopf.js, instruments/comb-hopf/view-panels.js host-core/comb-numeric.js,host-core/d1-event-pieces.js,host-core/elliptic-exact-core.js,host-core/elliptic-period-core.js,host-core/field-q2-q5-tau.js,host-core/goldbach-core.js,host-core/pen-curvature-core.js,host-core/pen-interval-core.js,host-core/pen-sphere-core.js,host-core/pen-streams-core.js,host-core/rule30-ladder-core.js,instruments/comb-hopf/index.html,instruments/comb-hopf/panel-elliptic.js,instruments/comb-hopf/panel-pens.js,instruments/comb-hopf/panel.js,instruments/comb-hopf/view-clifford.js,instruments/comb-hopf/view-fourier.js,instruments/comb-hopf/view-hopf.js,instruments/comb-hopf/view-panels.js
+PASS panel-g-robin.js byte-identical to v0.4.12
+PASS panel-bd.js byte-identical to v0.4.12
+
+SUMMARY test-v0413: 5 pass, 1 fail

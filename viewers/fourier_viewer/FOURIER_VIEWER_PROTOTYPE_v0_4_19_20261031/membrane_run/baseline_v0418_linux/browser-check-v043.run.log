@@ -1,0 +1,37 @@
+PASS 1280x800 dsf1 unit: wireframe moving = 1, default kind = 1, surface moving = 0.5, surface at rest = 1
+PASS 1280x800 dsf1 unit: layerBegin(...,"surface") while moving gives round(size*dpr*0.5), layerBegin default gives round(size*dpr); layerFit agrees with the kind it was begun with
+PASS 1280x800 dsf1 clifford at rest: bitmap = round(displayed*min(dpr,2)) (638x479)
+PASS 1280x800 dsf1 clifford mid-drag (mouse held, 12 moves): layer.moving/preview true in 12 of 12 samples, and the bitmap is full resolution in all 12 (638x479 vs expected 638x479)
+PASS 1280x800 dsf1 clifford after release: bitmap = round(displayed*min(dpr,2)), not moving (638x479)
+PASS 1280x800 dsf1 hopf at rest: bitmap = round(displayed*min(dpr,2)) (638x479)
+PASS 1280x800 dsf1 hopf mid-drag (mouse held, 12 moves): layer.moving/preview true in 12 of 12 samples, and the bitmap is full resolution in all 12 (638x479 vs expected 638x479)
+PASS 1280x800 dsf1 hopf after release: bitmap = round(displayed*min(dpr,2)), not moving (638x479)
+PASS 1280x800 dsf1 no page errors
+PASS 375x812 dsf2 unit: wireframe moving = 1, default kind = 1, surface moving = 0.5, surface at rest = 1
+PASS 375x812 dsf2 unit: layerBegin(...,"surface") while moving gives round(size*dpr*0.5), layerBegin default gives round(size*dpr); layerFit agrees with the kind it was begun with
+PASS 375x812 dsf2 clifford at rest: bitmap = round(displayed*min(dpr,2)) (640x480)
+PASS 375x812 dsf2 clifford mid-drag (mouse held, 12 moves): layer.moving/preview true in 12 of 12 samples, and the bitmap is full resolution in all 12 (640x480 vs expected 640x480)
+PASS 375x812 dsf2 clifford after release: bitmap = round(displayed*min(dpr,2)), not moving (640x480)
+PASS 375x812 dsf2 hopf at rest: bitmap = round(displayed*min(dpr,2)) (640x480)
+PASS 375x812 dsf2 hopf mid-drag (mouse held, 12 moves): layer.moving/preview true in 12 of 12 samples, and the bitmap is full resolution in all 12 (640x480 vs expected 640x480)
+PASS 375x812 dsf2 hopf after release: bitmap = round(displayed*min(dpr,2)), not moving (640x480)
+PASS 375x812 dsf2 no page errors
+PASS 1280x800 dsf2 unit: wireframe moving = 1, default kind = 1, surface moving = 0.5, surface at rest = 1
+PASS 1280x800 dsf2 unit: layerBegin(...,"surface") while moving gives round(size*dpr*0.5), layerBegin default gives round(size*dpr); layerFit agrees with the kind it was begun with
+PASS 1280x800 dsf2 clifford at rest: bitmap = round(displayed*min(dpr,2)) (1276x957)
+PASS 1280x800 dsf2 clifford mid-drag (mouse held, 12 moves): layer.moving/preview true in 12 of 12 samples, and the bitmap is full resolution in all 12 (1276x957 vs expected 1276x957)
+PASS 1280x800 dsf2 clifford after release: bitmap = round(displayed*min(dpr,2)), not moving (1276x957)
+PASS 1280x800 dsf2 hopf at rest: bitmap = round(displayed*min(dpr,2)) (1276x957)
+PASS 1280x800 dsf2 hopf mid-drag (mouse held, 12 moves): layer.moving/preview true in 12 of 12 samples, and the bitmap is full resolution in all 12 (1276x957 vs expected 1276x957)
+PASS 1280x800 dsf2 hopf after release: bitmap = round(displayed*min(dpr,2)), not moving (1276x957)
+PASS 1280x800 dsf2 no page errors
+PASS 375x812 dsf1 unit: wireframe moving = 1, default kind = 1, surface moving = 0.5, surface at rest = 1
+PASS 375x812 dsf1 unit: layerBegin(...,"surface") while moving gives round(size*dpr*0.5), layerBegin default gives round(size*dpr); layerFit agrees with the kind it was begun with
+PASS 375x812 dsf1 clifford at rest: bitmap = round(displayed*min(dpr,2)) (320x240)
+PASS 375x812 dsf1 clifford mid-drag (mouse held, 12 moves): layer.moving/preview true in 12 of 12 samples, and the bitmap is full resolution in all 12 (320x240 vs expected 320x240)
+PASS 375x812 dsf1 clifford after release: bitmap = round(displayed*min(dpr,2)), not moving (320x240)
+PASS 375x812 dsf1 hopf at rest: bitmap = round(displayed*min(dpr,2)) (320x240)
+PASS 375x812 dsf1 hopf mid-drag (mouse held, 12 moves): layer.moving/preview true in 12 of 12 samples, and the bitmap is full resolution in all 12 (320x240 vs expected 320x240)
+PASS 375x812 dsf1 hopf after release: bitmap = round(displayed*min(dpr,2)), not moving (320x240)
+PASS 375x812 dsf1 no page errors
+browser-check-v043: 36 passed, 0 failed

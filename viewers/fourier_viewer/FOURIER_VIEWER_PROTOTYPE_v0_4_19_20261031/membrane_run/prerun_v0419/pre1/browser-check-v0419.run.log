@@ -1,0 +1,81 @@
+PASS 1280x800 disk, Rule 30, T = 48 (follow): "enclosure wider than ¼ px: 0 of 1911" and "pixel undecided: 54" printed; equal to data-uncertified / data-undecided; the wide count is 0; P doubled 0 times; the old wording is gone
+INFO 1280x800 disk T = 48 follow: pixel undecided 54 of 1911
+PASS 1280x800 disk, Rule 30, T = 512 (follow): "enclosure wider than ¼ px: 0 of 2671" and "pixel undecided: 55" printed; equal to data-uncertified / data-undecided; the wide count is 0; P doubled 0 times; the old wording is gone
+INFO 1280x800 disk T = 512 follow: pixel undecided 55 of 2671
+PASS 1280x800 disk, Rule 30, T = 1024 (follow): "enclosure wider than ¼ px: 0 of 2671" and "pixel undecided: 54" printed; equal to data-uncertified / data-undecided; the wide count is 0; P doubled 0 times; the old wording is gone
+INFO 1280x800 disk T = 1024 follow: pixel undecided 54 of 2671
+PASS 1280x800 disk, Rule 30, T = 4096 (follow): "enclosure wider than ¼ px: 0 of 2671" and "pixel undecided: 48" printed; equal to data-uncertified / data-undecided; the wide count is 0; P doubled 0 times; the old wording is gone
+INFO 1280x800 disk T = 4096 follow: pixel undecided 48 of 2671
+PASS 1280x800 disk, T = 4096, absolute view: both counts printed, wide 0
+INFO 1280x800 disk T = 4096 absolute: pixel undecided 56 of 22152
+PASS 1280x800 doubling rule exercised (threshold 13 places, never met): P doubled 2 times, P = 4 × 256 = 1024 bits, the cap note is shown
+PASS 1280x800 threshold back to 6 places: P = 256 bits, doubled 0 times, no cap note
+PASS 1280x800 the pixel rule is stated on the card
+PASS 1280x800 sphere, Rule 30, T = 1328: both counts printed (wide 0, undecided 0 of 1329), equal to the data attributes, wide 0
+INFO 1280x800 sphere T = 1328 free: pixel undecided 0 of 1329
+PASS 1280x800 tooth events: toggle present and on by default; 339 events counted and drawn (data-teeth = data-events = 339)
+PASS 1280x800 tooth events off: none drawn (data-teeth 0), the count still printed with "(not drawn: toggle off)"; amber pixels 1553 → 0
+PASS 1280x800 smaller dots: the amber added by the 339 dots is at most 9 px per dot (3 × 3 front, 1 px back): 1553 px
+PASS 1280x800 sphere card: "follow the pen" and W shown disabled, each with "(not used on this card)"; the curvature card keeps them enabled
+PASS 1280x800 dodecahedron preset: edges drawn as arcs (9296 interior points = 1328 × 7), counted with the other points (10625 = 1329 + 9296), wide 0
+INFO 1280x800 dodecahedron T = 1328: pixel undecided 0 of 10625
+FAIL 1280x800 A₅ wording: "isomorphic to A₅", the verifier’s job VERIFY-0418-18 (9a77f4ca…) and this build’s job VIEW-SAGE-0419-02 with its receipt; the element-order statement kept; arcs stated Dodecahedron preset, exact in ℚ(√3, √5): cos θ = 1/2, sin θ = √3/2, cos α = √5/3, sin α = 2/3. Shown exactly (host-core/test-pen-sphere.cjs): five lefts (or five rights) close a pentagonal face; the moves reach exactly 60 flags on 20 vertices, every vertex with three neighbours at cos α = √5/3; they generate a group of order 60 isomorphic to A₅ (explicit isomorphism, is_isomorphic(AlternatingGroup(5)) in Sage: the v0.4.18 verifier’s job VERIFY-0418-18, receipt 9a77f4ca…, and this build’s job VIEW-SAGE-0419-02 on the build’s own two moves, receipt 46dd9ccc…); its element orders (1, 15, 20, 24 elements of order 1, 2, 3, 5) are those of A₅. So every stream walks the edges of a spherical dodecahedron. Edges are drawn as great-circle arcs (8 pieces each; the interior points are normalised by intervals and counted with the other points).
+PASS 1280x800 free preset: steps drawn as chords, and the card says so
+PASS 1280x800 Codex wording on both cards: "Codex-reviewed (PASS WITH FLAGS, #1310 / #1318)", no "both Codex-reviewed"; the credit line names the same reviews
+PASS 1280x800 Goldbach shell N = 24: the order sentence (decided by saphir, 2026-10-31; |c| ascending, +c before −c; pairs twice, the equal pair once; #+ = 2·g(N) − δ) on both cards, both guards kept
+PASS 1280x800 Goldbach shell N = 24: the listed teeth follow the order (1, -1, 3, -3, …)
+PASS 1280x800 Goldbach shell N = 24 pen-strip-0: ticks every 1 shell(s) (own rule: the smallest k keeping drawn ticks ≥ 3 px apart on 260 px), 1 of 1 drawn, no note
+PASS 1280x800 Goldbach shell N = 24 pen-strip-sph: ticks every 1 shell(s) (own rule: the smallest k keeping drawn ticks ≥ 3 px apart on 320 px), 1 of 1 drawn, no note
+PASS 1280x800 Goldbach shell N = 1446: the order sentence (decided by saphir, 2026-10-31; |c| ascending, +c before −c; pairs twice, the equal pair once; #+ = 2·g(N) − δ) on both cards, both guards kept
+PASS 1280x800 Goldbach shell N = 1446: the listed teeth follow the order (0, 1, -1, 2, …)
+PASS 1280x800 Goldbach shell N = 1446 pen-strip-0: ticks every 1 shell(s) (own rule: the smallest k keeping drawn ticks ≥ 3 px apart on 260 px), 1 of 1 drawn, no note
+PASS 1280x800 Goldbach shell N = 1446 pen-strip-sph: ticks every 1 shell(s) (own rule: the smallest k keeping drawn ticks ≥ 3 px apart on 320 px), 1 of 1 drawn, no note
+PASS 1280x800 Goldbach run N_max = 100: the order sentence (decided by saphir, 2026-10-31; |c| ascending, +c before −c; pairs twice, the equal pair once; #+ = 2·g(N) − δ) on both cards, both guards kept
+PASS 1280x800 Goldbach run N_max = 100 pen-strip-0: ticks every 5 shell(s) (own rule: the smallest k keeping drawn ticks ≥ 3 px apart on 260 px), 10 of 49 drawn, "ticks every 5 shells" printed
+PASS 1280x800 Goldbach run N_max = 100 pen-strip-sph: ticks every 4 shell(s) (own rule: the smallest k keeping drawn ticks ≥ 3 px apart on 320 px), 13 of 49 drawn, "ticks every 4 shells" printed
+PASS 1280x800 Goldbach run N_max = 1448: the order sentence (decided by saphir, 2026-10-31; |c| ascending, +c before −c; pairs twice, the equal pair once; #+ = 2·g(N) − δ) on both cards, both guards kept
+PASS 1280x800 Goldbach run N_max = 1448 pen-strip-0: ticks every 80 shell(s) (own rule: the smallest k keeping drawn ticks ≥ 3 px apart on 260 px), 10 of 723 drawn, "ticks every 80 shells" printed
+PASS 1280x800 Goldbach run N_max = 1448 pen-strip-sph: ticks every 73 shell(s) (own rule: the smallest k keeping drawn ticks ≥ 3 px apart on 320 px), 10 of 723 drawn, "ticks every 73 shells" printed
+PASS 1280x800 no horizontal page scroll
+PASS 1280x800 no page errors and no console errors
+PASS 375x812 disk, Rule 30, T = 48 (follow): "enclosure wider than ¼ px: 0 of 1911" and "pixel undecided: 54" printed; equal to data-uncertified / data-undecided; the wide count is 0; P doubled 0 times; the old wording is gone
+INFO 375x812 disk T = 48 follow: pixel undecided 54 of 1911
+PASS 375x812 disk, Rule 30, T = 512 (follow): "enclosure wider than ¼ px: 0 of 2671" and "pixel undecided: 55" printed; equal to data-uncertified / data-undecided; the wide count is 0; P doubled 0 times; the old wording is gone
+INFO 375x812 disk T = 512 follow: pixel undecided 55 of 2671
+PASS 375x812 disk, Rule 30, T = 1024 (follow): "enclosure wider than ¼ px: 0 of 2671" and "pixel undecided: 54" printed; equal to data-uncertified / data-undecided; the wide count is 0; P doubled 0 times; the old wording is gone
+INFO 375x812 disk T = 1024 follow: pixel undecided 54 of 2671
+PASS 375x812 disk, Rule 30, T = 4096 (follow): "enclosure wider than ¼ px: 0 of 2671" and "pixel undecided: 48" printed; equal to data-uncertified / data-undecided; the wide count is 0; P doubled 0 times; the old wording is gone
+INFO 375x812 disk T = 4096 follow: pixel undecided 48 of 2671
+PASS 375x812 disk, T = 4096, absolute view: both counts printed, wide 0
+INFO 375x812 disk T = 4096 absolute: pixel undecided 56 of 22152
+PASS 375x812 doubling rule exercised (threshold 13 places, never met): P doubled 2 times, P = 4 × 256 = 1024 bits, the cap note is shown
+PASS 375x812 threshold back to 6 places: P = 256 bits, doubled 0 times, no cap note
+PASS 375x812 the pixel rule is stated on the card
+PASS 375x812 sphere, Rule 30, T = 1328: both counts printed (wide 0, undecided 0 of 1329), equal to the data attributes, wide 0
+INFO 375x812 sphere T = 1328 free: pixel undecided 0 of 1329
+PASS 375x812 tooth events: toggle present and on by default; 339 events counted and drawn (data-teeth = data-events = 339)
+PASS 375x812 tooth events off: none drawn (data-teeth 0), the count still printed with "(not drawn: toggle off)"; amber pixels 1553 → 0
+PASS 375x812 smaller dots: the amber added by the 339 dots is at most 9 px per dot (3 × 3 front, 1 px back): 1553 px
+PASS 375x812 sphere card: "follow the pen" and W shown disabled, each with "(not used on this card)"; the curvature card keeps them enabled
+PASS 375x812 dodecahedron preset: edges drawn as arcs (9296 interior points = 1328 × 7), counted with the other points (10625 = 1329 + 9296), wide 0
+INFO 375x812 dodecahedron T = 1328: pixel undecided 0 of 10625
+FAIL 375x812 A₅ wording: "isomorphic to A₅", the verifier’s job VERIFY-0418-18 (9a77f4ca…) and this build’s job VIEW-SAGE-0419-02 with its receipt; the element-order statement kept; arcs stated Dodecahedron preset, exact in ℚ(√3, √5): cos θ = 1/2, sin θ = √3/2, cos α = √5/3, sin α = 2/3. Shown exactly (host-core/test-pen-sphere.cjs): five lefts (or five rights) close a pentagonal face; the moves reach exactly 60 flags on 20 vertices, every vertex with three neighbours at cos α = √5/3; they generate a group of order 60 isomorphic to A₅ (explicit isomorphism, is_isomorphic(AlternatingGroup(5)) in Sage: the v0.4.18 verifier’s job VERIFY-0418-18, receipt 9a77f4ca…, and this build’s job VIEW-SAGE-0419-02 on the build’s own two moves, receipt 46dd9ccc…); its element orders (1, 15, 20, 24 elements of order 1, 2, 3, 5) are those of A₅. So every stream walks the edges of a spherical dodecahedron. Edges are drawn as great-circle arcs (8 pieces each; the interior points are normalised by intervals and counted with the other points).
+PASS 375x812 free preset: steps drawn as chords, and the card says so
+PASS 375x812 Codex wording on both cards: "Codex-reviewed (PASS WITH FLAGS, #1310 / #1318)", no "both Codex-reviewed"; the credit line names the same reviews
+PASS 375x812 Goldbach shell N = 24: the order sentence (decided by saphir, 2026-10-31; |c| ascending, +c before −c; pairs twice, the equal pair once; #+ = 2·g(N) − δ) on both cards, both guards kept
+PASS 375x812 Goldbach shell N = 24: the listed teeth follow the order (1, -1, 3, -3, …)
+PASS 375x812 Goldbach shell N = 24 pen-strip-0: ticks every 1 shell(s) (own rule: the smallest k keeping drawn ticks ≥ 3 px apart on 260 px), 1 of 1 drawn, no note
+PASS 375x812 Goldbach shell N = 24 pen-strip-sph: ticks every 1 shell(s) (own rule: the smallest k keeping drawn ticks ≥ 3 px apart on 320 px), 1 of 1 drawn, no note
+PASS 375x812 Goldbach shell N = 1446: the order sentence (decided by saphir, 2026-10-31; |c| ascending, +c before −c; pairs twice, the equal pair once; #+ = 2·g(N) − δ) on both cards, both guards kept
+PASS 375x812 Goldbach shell N = 1446: the listed teeth follow the order (0, 1, -1, 2, …)
+PASS 375x812 Goldbach shell N = 1446 pen-strip-0: ticks every 1 shell(s) (own rule: the smallest k keeping drawn ticks ≥ 3 px apart on 260 px), 1 of 1 drawn, no note
+PASS 375x812 Goldbach shell N = 1446 pen-strip-sph: ticks every 1 shell(s) (own rule: the smallest k keeping drawn ticks ≥ 3 px apart on 320 px), 1 of 1 drawn, no note
+PASS 375x812 Goldbach run N_max = 100: the order sentence (decided by saphir, 2026-10-31; |c| ascending, +c before −c; pairs twice, the equal pair once; #+ = 2·g(N) − δ) on both cards, both guards kept
+PASS 375x812 Goldbach run N_max = 100 pen-strip-0: ticks every 5 shell(s) (own rule: the smallest k keeping drawn ticks ≥ 3 px apart on 260 px), 10 of 49 drawn, "ticks every 5 shells" printed
+PASS 375x812 Goldbach run N_max = 100 pen-strip-sph: ticks every 4 shell(s) (own rule: the smallest k keeping drawn ticks ≥ 3 px apart on 320 px), 13 of 49 drawn, "ticks every 4 shells" printed
+PASS 375x812 Goldbach run N_max = 1448: the order sentence (decided by saphir, 2026-10-31; |c| ascending, +c before −c; pairs twice, the equal pair once; #+ = 2·g(N) − δ) on both cards, both guards kept
+PASS 375x812 Goldbach run N_max = 1448 pen-strip-0: ticks every 80 shell(s) (own rule: the smallest k keeping drawn ticks ≥ 3 px apart on 260 px), 10 of 723 drawn, "ticks every 80 shells" printed
+PASS 375x812 Goldbach run N_max = 1448 pen-strip-sph: ticks every 73 shell(s) (own rule: the smallest k keeping drawn ticks ≥ 3 px apart on 320 px), 10 of 723 drawn, "ticks every 73 shells" printed
+PASS 375x812 no horizontal page scroll
+PASS 375x812 no page errors and no console errors
+SUMMARY browser-check-v0419: 64 passed, 2 failed

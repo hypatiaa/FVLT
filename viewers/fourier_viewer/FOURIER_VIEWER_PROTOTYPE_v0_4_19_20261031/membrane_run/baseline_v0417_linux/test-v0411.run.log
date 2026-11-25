@@ -1,0 +1,18 @@
+PASS reciprocal points equal 1/conj(z) of the stack points (z/|z|^2) over 17236 points in 8 states: max relative error 3.93e-16
+PASS Hopf: H(1/conj(w)) is the reflection (x, y, -z) of H(w) through the equator plane, both charts (host scale 1 and comb scale sqrt 2): max error 3.55e-16
+PASS Hopf: chordal distances between sampled stack points equal those between their images (isometry): max difference 4.44e-16
+PASS N = 1 layer is fixed (the reciprocal point equals the stack point exactly) when |n6| = 1: 386 of 386 points
+PASS exact: for integer alpha the s = 0 column is real rational R = n6 N^alpha = p/q; the reciprocal radius q/p and height (q^2-p^2)/(q^2+p^2) = minus the height of R (BigInt, 125 cells), and the float layer agrees within 1 ulp / 1e-15 (125 cells)
+PASS |n6| = 1: the reciprocal layer at alpha = 2 equals the stack at alpha = -2 point for point in lattice order (same n = 1950), max abs difference 6.9e-18
+PASS |n6| = 2: the reciprocal layer differs from the alpha -> -alpha stack (radius 1/(2N^2) against 2/N^2, a factor n6^2 = 4): 2948 of 3900 coordinates differ
+PASS the N = 1 layer sits at height (n6^2-1)/(n6^2+1) and its reciprocal at the negative of it, for n6 = 1, -1, 2, 1/2, 3, 2/3 (6 of 6); on the equator only for |n6| = 1
+PASS n6 = 0: every reciprocal point is undefined (NaN), counted: undef = 1950 of 1950
+PASS Clifford: on the unit S3 the reciprocal point has |z1|, |z2| = (1/sqrt(1+rho^2), rho/sqrt(1+rho^2)), the primary the swap, and the phases (arg z1, arg z2) are equal: 634 points, max amplitude error 3.3e-16, max phase error 5.4e-14
+PASS Clifford budget is shared, not doubled: n = 116162 stack points, budget 12,000 - m = 11998; the halves draw 5999 + 5999 = 11998 <= budget; the single stack draws 11998 (unchanged); both halves flagged thinned
+PASS liftHalf(non-reciprocal, full budget) equals the existing lift() exactly (same arithmetic)
+PASS n1 = 8 (B = 40320): near-pole clipping of the reciprocal half is counted (bad = 0) and reported in the caption field, never silent
+FAIL panel-g-robin.js, panel-bd.js and 6 other source files are byte-identical to v0.4.10 host-core/comb-numeric.js
+PASS exactly the five expected source files differ from v0.4.10 (5)
+PASS stack-core.js: the part before the v0.4.11 addition equals v0.4.10 up to the api line
+
+SUMMARY test-v0411: 15 pass, 1 fail

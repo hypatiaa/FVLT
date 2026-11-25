@@ -1,0 +1,46 @@
+PASS A1 N=4 m=3 t2=1 order 0,1,-1 len 3 g=1 δ=1 #+=1
+PASS A1 N=6 m=3 t2=2 order 0,1,-1 len 3 g=1 δ=1 #+=1
+PASS A1 N=24 m=8 t2=1 order 1,-1,3,-3,5,-5,7,-7 len 8 g=3 δ=0 #+=6
+PASS A1 N=100 m=48 t2=1 order 1,-1,3,-3,5,-5,7,-7,… len 48 g=6 δ=0 #+=12
+PASS A1 N=1448 m=706 t2=1 order 1,-1,3,-3,5,-5,7,-7,… len 706 g=20 δ=0 #+=40
+PASS A2 N=4: m=3, t2=1, order 0,1,-1, signs +,-,-, #+ = 1 = 2·1 − 1
+PASS A3 every even N 4..1448 (723 shells): build order and signs = own enumeration; every pair p≠q at +c then −c (adjacent, both +), equal pair at c=0
+PASS A4 run to 1448: shells 723, len 257430, #+ 30534 = 2·15331 − 128; bounds and every sign equal
+A-table N m t2 g δ teeth #+ first: [[4,3,1,1,1,3,1,"0 1 -1"],[6,3,2,1,1,3,1,"0 1 -1"],[24,8,1,3,0,8,6,"1 -1 3 -3 5 -5"],[100,48,1,6,0,48,12,"1 -1 3 -3 5 -5"],[1448,706,1,20,0,706,40,"1 -1 3 -3 5 -5"]]
+PASS A5 pen-streams-core.js and goldbach-core.js byte-identical to v0.4.18
+PASS A6 card text states the order with the twice/once rule; both v0.4.18 guards still printed
+PASS B0 D1 core and fixture byte-identical to v0.4.18
+PASS B1 rule 30 j=26 q=1: per 1024, sub 1, e 32, event steps 768, min pieces 32 ≥ 32; build points = own construction; fibre and base strictly forward on every event step (+1/q per step); base steps = v0.4.18 points; end = v0.4.18 end; build audit agrees
+PASS B1 rule 30 j=26 q=2: per 1024, sub 1, e 16, event steps 768, min pieces 16 ≥ 16; build points = own construction; fibre and base strictly forward on every event step (+1/q per step); base steps = v0.4.18 points; end = v0.4.18 end; build audit agrees
+PASS B1 rule 30 j=30 q=1: per 4096, sub 1, e 32, event steps 3070, min pieces 32 ≥ 32; build points = own construction; fibre and base strictly forward on every event step (+1/q per step); base steps = v0.4.18 points; end = v0.4.18 end; build audit agrees
+PASS B1 rule 30 j=30 q=2: per 4096, sub 1, e 16, event steps 3070, min pieces 16 ≥ 16; build points = own construction; fibre and base strictly forward on every event step (+1/q per step); base steps = v0.4.18 points; end = v0.4.18 end; build audit agrees
+PASS B1 rule 30 j=34 q=1: per 4096, sub 1, e 32, event steps 3043, min pieces 32 ≥ 32; build points = own construction; fibre and base strictly forward on every event step (+1/q per step); base steps = v0.4.18 points; end = v0.4.18 end; build audit agrees
+PASS B1 rule 30 j=34 q=2: per 4096, sub 1, e 16, event steps 6086, min pieces 16 ≥ 16; build points = own construction; fibre and base strictly forward on every event step (+1/q per step); base steps = v0.4.18 points; end = v0.4.18 end; build audit agrees
+PASS B1 rule 30 j=3 q=1: per 2, sub 360, e 360, event steps 1, min pieces 360 ≥ 32; build points = own construction; fibre and base strictly forward on every event step (+1/q per step); base steps = v0.4.18 points; end = v0.4.18 end; build audit agrees
+PASS B1 rule 30 j=3 q=2: per 2, sub 360, e 360, event steps 2, min pieces 360 ≥ 16; build points = own construction; fibre and base strictly forward on every event step (+1/q per step); base steps = v0.4.18 points; end = v0.4.18 end; build audit agrees
+PASS B2 sweep rules 30/90/150, j 0..34, q 1/2/4/8 (420 curves): same checks
+B-table [[26,1,1024,1,32,768,32,1024,"1/1 | 768/1"],[26,2,1024,1,16,768,16,1024,"1/1 | 384/1"],[30,1,4096,1,32,3070,32,4096,"1/1 | 3070/1"],[30,2,4096,1,16,3070,16,4096,"1/1 | 1535/1"],[34,1,4096,1,32,3043,32,4096,"1/1 | 3043/1"],[34,2,4096,1,16,6086,16,8192,"2/1 | 3043/1"],[3,1,2,360,360,1,360,2,"1/1 | 1/1"],[3,2,2,360,360,2,360,4,"2/1 | 1/1"]]
+PASS C1 pixelCert: wide and undecided equal own definitions on 200,000 random enclosures (both axes, flip and not)
+C2 info: decided points where drawn p != floor(true): non-flipped axis 0 of 3932; flipped (y) axis 3843 of 3843
+PASS C3 P_DOUBLINGS_MAX = 2 exported
+PASS D1 BFS from the start flag with the build's dodecaStep: 60 flags, both moves are permutations
+PASS D2 K basis order is (1, gen0, gen1, gen0·gen1) with gens √3, √5 (by squaring the generators)
+PASS D3 30 undirected edges, each with 7 interior arc points
+E host-core/pen-interval-core.js {"/ on non-BigInt?":[9,16,36,46,54,68,85]}
+E host-core/pen-curvature-core.js {"/ on non-BigInt?":[114]}
+E host-core/pen-sphere-core.js {}
+E host-core/d1-event-pieces.js {}
+E instruments/comb-hopf/panel-pens.js {"Number(":[13],"/ on non-BigInt?":[39,43,45,50,57,58,66,67,98,125,166,205,282]}
+E host-core/test-v0419-goldbach-order.cjs {}
+E host-core/test-v0419-fixups.cjs {"/ on non-BigInt?":[28]}
+E host-core/test-v0419-pens.cjs {}
+E build/check-expected-fails-v0419.cjs {"/ on non-BigInt?":[19,20,23,25,26,28,29,30,31,35,44,50]}
+E build/browser-check-d1-v0419.cjs {"/ on non-BigInt?":[24,61]}
+E build/browser-check-v0419.cjs {"/ on non-BigInt?":[23,25,37,40,46,49,54,73,75,84,86]}
+E build/make-expected-fails-v0419.cjs {"/ on non-BigInt?":[12,24,26]}
+E build/selftest-expected-fails-v0419.cjs {"/ on non-BigInt?":[26,31]}
+E build/dump-a5-moves-v0419.cjs {}
+E build/shots-v0419.cjs {}
+E view-clifford.js (added lines: 12) {"Math.":["const a=Math.SQRT1_2,b=Math.SQRT1_2,pj=RL.perN(rule,j),sub=Math.max(1,Math.ceil(720/pj)),c=RL.curve(rule,j,q,{sub}),cd=RL.card(rule,j,q);"],"/ on non-BigInt?":["const a=Math.SQRT1_2,b=Math.SQRT1_2,pj=RL.perN(rule,j),sub=Math.max(1,Math.ceil(720/pj)),c=RL.curve(rule,j,q,{sub}),cd=RL.card(rule,j,q);"],"decimal literal":["if(g.samples){let ns=0;for(let s=0;s<c.steps;s++){const i=g.pc.starts[s],x=B[3*i],y=B[3*i+1];o+=V.cvDot(x,y,2.6,g.ev[i]?RLE:RLC,1,'',0.8,'',"]}
+FAIL E1 no Math./float literal/Float array/parseFloat/toFixed/performance.now/Number. in the changed/added code (strings and comments stripped) :: [["view-clifford.js (added lines: 12)",{"Math.":["const a=Math.SQRT1_2,b=Math.SQRT1_2,pj=RL.perN(rule,j),sub=Math.max(1,Math.ceil(720/pj)),c=RL.curve(rule,j,q,{sub}),cd=RL.card(rule,j,q);"],"/ on non-BigInt?":["const a=Math.SQRT1_2,b=Math.SQRT1_2,pj=RL.perN(rule,j),sub=Math.max(1,Math.ceil(720/pj)),c=RL.curve(rule,j,q,{sub}),cd=RL.card(rule,j,q);"],"decimal literal":["if(g.samples){let ns=0;for(let s=0;s<c.steps;s++){const i=g.pc.starts[s],x=B[3*i],y=B[3*i+1];o+=V.cvDot(x,y,2.6,g.ev[i]?RLE:RLC,1,'',0.8,'',"]}]]
+SUMMARY verify_0419: 25 passed, 1 failed

@@ -1,0 +1,219 @@
+PASS 1280x800 rule 30 j = 3 (doubling) q = 1: curve data = core (per 2, S 1, k 1, steps 2, ends at base 1, fibre 1/1)
+PASS 1280x800 rule 30 j = 3 (doubling) q = 1: event / base segments = core (360 / 360)
+PASS 1280x800 rule 30 j = 3 (doubling) q = 1: caption label "row 3, rule 30, q = 1: S_3 = 1, closes after 1 turn" and "monodromy nontrivial"
+PASS 1280x800 rule 30 j = 3 (doubling) q = 1: degenerate labels drawn [q1] in the caption and the card
+PASS 1280x800 rule 30 j = 3 (doubling) q = 1: card S_j, k, per_j, monodromy, density, F1
+PASS 1280x800 rule 30 j = 3 (doubling) q = 1: returns to base angle 0 marked: 2 (i = 0 … k)
+PASS 1280x800 rule 30 j = 3 (doubling) q = 1: ink on the canvas (amber events and cyan base steps; amber 1015, cyan 190)
+PASS 1280x800 rule 30 j = 3 (doubling) q = 1: no horizontal page scroll
+PASS 1280x800 rule 30 j = 3 (doubling) q = 2: curve data = core (per 2, S 1, k 2, steps 4, ends at base 2, fibre 1/1)
+PASS 1280x800 rule 30 j = 3 (doubling) q = 2: event / base segments = core (720 / 720)
+PASS 1280x800 rule 30 j = 3 (doubling) q = 2: caption label "row 3, rule 30, q = 2: S_3 = 1, closes after 2 turns" and "monodromy nontrivial"
+PASS 1280x800 rule 30 j = 3 (doubling) q = 2: degenerate labels drawn [] in the caption and the card
+PASS 1280x800 rule 30 j = 3 (doubling) q = 2: card S_j, k, per_j, monodromy, density, F1
+PASS 1280x800 rule 30 j = 3 (doubling) q = 2: returns to base angle 0 marked: 3 (i = 0 … k)
+PASS 1280x800 rule 30 j = 3 (doubling) q = 2: ink on the canvas (amber events and cyan base steps; amber 1083, cyan 380)
+PASS 1280x800 rule 30 j = 3 (doubling) q = 2: no horizontal page scroll
+PASS 1280x800 rule 30 j = 3 (doubling) q = 4: curve data = core (per 2, S 1, k 4, steps 8, ends at base 4, fibre 1/1)
+PASS 1280x800 rule 30 j = 3 (doubling) q = 4: event / base segments = core (1440 / 1440)
+PASS 1280x800 rule 30 j = 3 (doubling) q = 4: caption label "row 3, rule 30, q = 4: S_3 = 1, closes after 4 turns" and "monodromy nontrivial"
+PASS 1280x800 rule 30 j = 3 (doubling) q = 4: degenerate labels drawn [] in the caption and the card
+PASS 1280x800 rule 30 j = 3 (doubling) q = 4: card S_j, k, per_j, monodromy, density, F1
+PASS 1280x800 rule 30 j = 3 (doubling) q = 4: returns to base angle 0 marked: 5 (i = 0 … k)
+PASS 1280x800 rule 30 j = 3 (doubling) q = 4: ink on the canvas (amber events and cyan base steps; amber 1737, cyan 1149)
+PASS 1280x800 rule 30 j = 3 (doubling) q = 4: no horizontal page scroll
+PASS 1280x800 rule 30 j = 3 (doubling) q = 8: curve data = core (per 2, S 1, k 8, steps 16, ends at base 8, fibre 1/1)
+PASS 1280x800 rule 30 j = 3 (doubling) q = 8: event / base segments = core (2880 / 2880)
+PASS 1280x800 rule 30 j = 3 (doubling) q = 8: caption label "row 3, rule 30, q = 8: S_3 = 1, closes after 8 turns" and "monodromy nontrivial"
+PASS 1280x800 rule 30 j = 3 (doubling) q = 8: degenerate labels drawn [] in the caption and the card
+PASS 1280x800 rule 30 j = 3 (doubling) q = 8: card S_j, k, per_j, monodromy, density, F1
+PASS 1280x800 rule 30 j = 3 (doubling) q = 8: returns to base angle 0 marked: 9 (i = 0 … k)
+PASS 1280x800 rule 30 j = 3 (doubling) q = 8: ink on the canvas (amber events and cyan base steps; amber 3094, cyan 2013)
+PASS 1280x800 rule 30 j = 3 (doubling) q = 8: no horizontal page scroll
+PASS 1280x800 rule 30 j = 5 (stall) q = 1: curve data = core (per 8, S 6, k 1, steps 8, ends at base 1, fibre 6/1)
+PASS 1280x800 rule 30 j = 5 (stall) q = 1: event / base segments = core (540 / 180)
+PASS 1280x800 rule 30 j = 5 (stall) q = 1: caption label "row 5, rule 30, q = 1: S_5 = 6, closes after 1 turn" and "trivial (stall)"
+PASS 1280x800 rule 30 j = 5 (stall) q = 1: degenerate labels drawn [q1] in the caption and the card
+PASS 1280x800 rule 30 j = 5 (stall) q = 1: card S_j, k, per_j, monodromy, density, F1
+PASS 1280x800 rule 30 j = 5 (stall) q = 1: returns to base angle 0 marked: 2 (i = 0 … k)
+PASS 1280x800 rule 30 j = 5 (stall) q = 1: ink on the canvas (amber events and cyan base steps; amber 4920, cyan 57)
+PASS 1280x800 rule 30 j = 5 (stall) q = 1: no horizontal page scroll
+PASS 1280x800 rule 30 j = 5 (stall) q = 2: curve data = core (per 8, S 6, k 1, steps 8, ends at base 1, fibre 3/1)
+PASS 1280x800 rule 30 j = 5 (stall) q = 2: event / base segments = core (540 / 180)
+PASS 1280x800 rule 30 j = 5 (stall) q = 2: caption label "row 5, rule 30, q = 2: S_5 = 6, closes after 1 turn" and "trivial (stall)"
+PASS 1280x800 rule 30 j = 5 (stall) q = 2: degenerate labels drawn [] in the caption and the card
+PASS 1280x800 rule 30 j = 5 (stall) q = 2: card S_j, k, per_j, monodromy, density, F1
+PASS 1280x800 rule 30 j = 5 (stall) q = 2: returns to base angle 0 marked: 2 (i = 0 … k)
+PASS 1280x800 rule 30 j = 5 (stall) q = 2: ink on the canvas (amber events and cyan base steps; amber 2434, cyan 64)
+PASS 1280x800 rule 30 j = 5 (stall) q = 2: no horizontal page scroll
+PASS 1280x800 rule 30 j = 5 (stall) q = 4: curve data = core (per 8, S 6, k 2, steps 16, ends at base 2, fibre 3/1)
+PASS 1280x800 rule 30 j = 5 (stall) q = 4: event / base segments = core (1080 / 360)
+PASS 1280x800 rule 30 j = 5 (stall) q = 4: caption label "row 5, rule 30, q = 4: S_5 = 6, closes after 2 turns" and "trivial (stall)"
+PASS 1280x800 rule 30 j = 5 (stall) q = 4: degenerate labels drawn [] in the caption and the card
+PASS 1280x800 rule 30 j = 5 (stall) q = 4: card S_j, k, per_j, monodromy, density, F1
+PASS 1280x800 rule 30 j = 5 (stall) q = 4: returns to base angle 0 marked: 3 (i = 0 … k)
+PASS 1280x800 rule 30 j = 5 (stall) q = 4: ink on the canvas (amber events and cyan base steps; amber 2616, cyan 129)
+PASS 1280x800 rule 30 j = 5 (stall) q = 4: no horizontal page scroll
+PASS 1280x800 rule 30 j = 5 (stall) q = 8: curve data = core (per 8, S 6, k 4, steps 32, ends at base 4, fibre 3/1)
+PASS 1280x800 rule 30 j = 5 (stall) q = 8: event / base segments = core (2160 / 720)
+PASS 1280x800 rule 30 j = 5 (stall) q = 8: caption label "row 5, rule 30, q = 8: S_5 = 6, closes after 4 turns" and "trivial (stall)"
+PASS 1280x800 rule 30 j = 5 (stall) q = 8: degenerate labels drawn [] in the caption and the card
+PASS 1280x800 rule 30 j = 5 (stall) q = 8: card S_j, k, per_j, monodromy, density, F1
+PASS 1280x800 rule 30 j = 5 (stall) q = 8: returns to base angle 0 marked: 5 (i = 0 … k)
+PASS 1280x800 rule 30 j = 5 (stall) q = 8: ink on the canvas (amber events and cyan base steps; amber 3428, cyan 439)
+PASS 1280x800 rule 30 j = 5 (stall) q = 8: no horizontal page scroll
+PASS 1280x800 rule 90 j = 3 (density 0) q = 1: curve data = core (per 2, S 0, k 1, steps 2, ends at base 1, fibre 0/1)
+PASS 1280x800 rule 90 j = 3 (density 0) q = 1: event / base segments = core (0 / 720)
+PASS 1280x800 rule 90 j = 3 (density 0) q = 1: caption label "row 3, rule 90, q = 1: S_3 = 0, closes after 1 turn" and "trivial (stall)"
+PASS 1280x800 rule 90 j = 3 (density 0) q = 1: degenerate labels drawn [q1, S0, dens0] in the caption and the card
+PASS 1280x800 rule 90 j = 3 (density 0) q = 1: card S_j, k, per_j, monodromy, density, F1
+PASS 1280x800 rule 90 j = 3 (density 0) q = 1: returns to base angle 0 marked: 2 (i = 0 … k)
+PASS 1280x800 rule 90 j = 3 (density 0) q = 1: ink on the canvas (cyan base steps; amber 0, cyan 403)
+PASS 1280x800 rule 90 j = 3 (density 0) q = 1: no horizontal page scroll
+PASS 1280x800 rule 90 j = 3 (density 0) q = 2: curve data = core (per 2, S 0, k 1, steps 2, ends at base 1, fibre 0/1)
+PASS 1280x800 rule 90 j = 3 (density 0) q = 2: event / base segments = core (0 / 720)
+PASS 1280x800 rule 90 j = 3 (density 0) q = 2: caption label "row 3, rule 90, q = 2: S_3 = 0, closes after 1 turn" and "trivial (stall)"
+PASS 1280x800 rule 90 j = 3 (density 0) q = 2: degenerate labels drawn [S0, dens0] in the caption and the card
+PASS 1280x800 rule 90 j = 3 (density 0) q = 2: card S_j, k, per_j, monodromy, density, F1
+PASS 1280x800 rule 90 j = 3 (density 0) q = 2: returns to base angle 0 marked: 2 (i = 0 … k)
+PASS 1280x800 rule 90 j = 3 (density 0) q = 2: ink on the canvas (cyan base steps; amber 0, cyan 403)
+PASS 1280x800 rule 90 j = 3 (density 0) q = 2: no horizontal page scroll
+PASS 1280x800 rule 90 j = 3 (density 0) q = 4: curve data = core (per 2, S 0, k 1, steps 2, ends at base 1, fibre 0/1)
+PASS 1280x800 rule 90 j = 3 (density 0) q = 4: event / base segments = core (0 / 720)
+PASS 1280x800 rule 90 j = 3 (density 0) q = 4: caption label "row 3, rule 90, q = 4: S_3 = 0, closes after 1 turn" and "trivial (stall)"
+PASS 1280x800 rule 90 j = 3 (density 0) q = 4: degenerate labels drawn [S0, dens0] in the caption and the card
+PASS 1280x800 rule 90 j = 3 (density 0) q = 4: card S_j, k, per_j, monodromy, density, F1
+PASS 1280x800 rule 90 j = 3 (density 0) q = 4: returns to base angle 0 marked: 2 (i = 0 … k)
+PASS 1280x800 rule 90 j = 3 (density 0) q = 4: ink on the canvas (cyan base steps; amber 0, cyan 403)
+PASS 1280x800 rule 90 j = 3 (density 0) q = 4: no horizontal page scroll
+PASS 1280x800 rule 90 j = 3 (density 0) q = 8: curve data = core (per 2, S 0, k 1, steps 2, ends at base 1, fibre 0/1)
+PASS 1280x800 rule 90 j = 3 (density 0) q = 8: event / base segments = core (0 / 720)
+PASS 1280x800 rule 90 j = 3 (density 0) q = 8: caption label "row 3, rule 90, q = 8: S_3 = 0, closes after 1 turn" and "trivial (stall)"
+PASS 1280x800 rule 90 j = 3 (density 0) q = 8: degenerate labels drawn [S0, dens0] in the caption and the card
+PASS 1280x800 rule 90 j = 3 (density 0) q = 8: card S_j, k, per_j, monodromy, density, F1
+PASS 1280x800 rule 90 j = 3 (density 0) q = 8: returns to base angle 0 marked: 2 (i = 0 … k)
+PASS 1280x800 rule 90 j = 3 (density 0) q = 8: ink on the canvas (cyan base steps; amber 0, cyan 403)
+PASS 1280x800 rule 90 j = 3 (density 0) q = 8: no horizontal page scroll
+PASS 1280x800 Layers: "Rule 30 ladder (D1)" switches the card on (rule 30, j = 3, q = 2; address view=rl=1)
+PASS 1280x800 j ▶ twice: j = 5, trivial (stall)
+PASS 1280x800 ◀ j: j = 4
+PASS 1280x800 selects: rule 150, j = 3, q = 8 → row 3, rule 150, q = 8: S_3 = 2, closes after 4 turns
+PASS 1280x800 address round trip (reload): same card
+PASS 1280x800 switch off: the comb picture is back, no D1 card, the dial values stay in the view string
+PASS 1280x800 refused dials (j = 99, q = 3): labelled, defaults drawn
+PASS 1280x800 fourier with rl=1 draws the same picture as without it
+PASS 1280x800 hopf with rl=1 draws the same picture as without it
+PASS 1280x800 D1 off: stage, canvas, caption, about, cards and address identical to v0.4.14 on 8 of 8 states
+PASS 1280x800 visible-control counts = v0.4.14 (pairs: 39/39/41/41/39/39/41/41/39/39/41/41)
+PASS 1280x800 visible controls with D1 on (menus closed): 41/41 (≤ 41)
+PASS 1280x800 no page errors or console errors
+PASS 375x812 rule 30 j = 3 (doubling) q = 1: curve data = core (per 2, S 1, k 1, steps 2, ends at base 1, fibre 1/1)
+PASS 375x812 rule 30 j = 3 (doubling) q = 1: event / base segments = core (360 / 360)
+PASS 375x812 rule 30 j = 3 (doubling) q = 1: caption label "row 3, rule 30, q = 1: S_3 = 1, closes after 1 turn" and "monodromy nontrivial"
+PASS 375x812 rule 30 j = 3 (doubling) q = 1: degenerate labels drawn [q1] in the caption and the card
+PASS 375x812 rule 30 j = 3 (doubling) q = 1: card S_j, k, per_j, monodromy, density, F1
+PASS 375x812 rule 30 j = 3 (doubling) q = 1: returns to base angle 0 marked: 2 (i = 0 … k)
+PASS 375x812 rule 30 j = 3 (doubling) q = 1: ink on the canvas (amber events and cyan base steps; amber 180, cyan 94)
+PASS 375x812 rule 30 j = 3 (doubling) q = 1: no horizontal page scroll
+PASS 375x812 rule 30 j = 3 (doubling) q = 2: curve data = core (per 2, S 1, k 2, steps 4, ends at base 2, fibre 1/1)
+PASS 375x812 rule 30 j = 3 (doubling) q = 2: event / base segments = core (720 / 720)
+PASS 375x812 rule 30 j = 3 (doubling) q = 2: caption label "row 3, rule 30, q = 2: S_3 = 1, closes after 2 turns" and "monodromy nontrivial"
+PASS 375x812 rule 30 j = 3 (doubling) q = 2: degenerate labels drawn [] in the caption and the card
+PASS 375x812 rule 30 j = 3 (doubling) q = 2: card S_j, k, per_j, monodromy, density, F1
+PASS 375x812 rule 30 j = 3 (doubling) q = 2: returns to base angle 0 marked: 3 (i = 0 … k)
+PASS 375x812 rule 30 j = 3 (doubling) q = 2: ink on the canvas (amber events and cyan base steps; amber 201, cyan 188)
+PASS 375x812 rule 30 j = 3 (doubling) q = 2: no horizontal page scroll
+PASS 375x812 rule 30 j = 3 (doubling) q = 4: curve data = core (per 2, S 1, k 4, steps 8, ends at base 4, fibre 1/1)
+PASS 375x812 rule 30 j = 3 (doubling) q = 4: event / base segments = core (1440 / 1440)
+PASS 375x812 rule 30 j = 3 (doubling) q = 4: caption label "row 3, rule 30, q = 4: S_3 = 1, closes after 4 turns" and "monodromy nontrivial"
+PASS 375x812 rule 30 j = 3 (doubling) q = 4: degenerate labels drawn [] in the caption and the card
+PASS 375x812 rule 30 j = 3 (doubling) q = 4: card S_j, k, per_j, monodromy, density, F1
+PASS 375x812 rule 30 j = 3 (doubling) q = 4: returns to base angle 0 marked: 5 (i = 0 … k)
+PASS 375x812 rule 30 j = 3 (doubling) q = 4: ink on the canvas (amber events and cyan base steps; amber 311, cyan 433)
+PASS 375x812 rule 30 j = 3 (doubling) q = 4: no horizontal page scroll
+PASS 375x812 rule 30 j = 3 (doubling) q = 8: curve data = core (per 2, S 1, k 8, steps 16, ends at base 8, fibre 1/1)
+PASS 375x812 rule 30 j = 3 (doubling) q = 8: event / base segments = core (2880 / 2880)
+PASS 375x812 rule 30 j = 3 (doubling) q = 8: caption label "row 3, rule 30, q = 8: S_3 = 1, closes after 8 turns" and "monodromy nontrivial"
+PASS 375x812 rule 30 j = 3 (doubling) q = 8: degenerate labels drawn [] in the caption and the card
+PASS 375x812 rule 30 j = 3 (doubling) q = 8: card S_j, k, per_j, monodromy, density, F1
+PASS 375x812 rule 30 j = 3 (doubling) q = 8: returns to base angle 0 marked: 9 (i = 0 … k)
+PASS 375x812 rule 30 j = 3 (doubling) q = 8: ink on the canvas (amber events and cyan base steps; amber 557, cyan 773)
+PASS 375x812 rule 30 j = 3 (doubling) q = 8: no horizontal page scroll
+PASS 375x812 rule 30 j = 5 (stall) q = 1: curve data = core (per 8, S 6, k 1, steps 8, ends at base 1, fibre 6/1)
+PASS 375x812 rule 30 j = 5 (stall) q = 1: event / base segments = core (540 / 180)
+PASS 375x812 rule 30 j = 5 (stall) q = 1: caption label "row 5, rule 30, q = 1: S_5 = 6, closes after 1 turn" and "trivial (stall)"
+PASS 375x812 rule 30 j = 5 (stall) q = 1: degenerate labels drawn [q1] in the caption and the card
+PASS 375x812 rule 30 j = 5 (stall) q = 1: card S_j, k, per_j, monodromy, density, F1
+PASS 375x812 rule 30 j = 5 (stall) q = 1: returns to base angle 0 marked: 2 (i = 0 … k)
+PASS 375x812 rule 30 j = 5 (stall) q = 1: ink on the canvas (amber events and cyan base steps; amber 897, cyan 21)
+PASS 375x812 rule 30 j = 5 (stall) q = 1: no horizontal page scroll
+PASS 375x812 rule 30 j = 5 (stall) q = 2: curve data = core (per 8, S 6, k 1, steps 8, ends at base 1, fibre 3/1)
+PASS 375x812 rule 30 j = 5 (stall) q = 2: event / base segments = core (540 / 180)
+PASS 375x812 rule 30 j = 5 (stall) q = 2: caption label "row 5, rule 30, q = 2: S_5 = 6, closes after 1 turn" and "trivial (stall)"
+PASS 375x812 rule 30 j = 5 (stall) q = 2: degenerate labels drawn [] in the caption and the card
+PASS 375x812 rule 30 j = 5 (stall) q = 2: card S_j, k, per_j, monodromy, density, F1
+PASS 375x812 rule 30 j = 5 (stall) q = 2: returns to base angle 0 marked: 2 (i = 0 … k)
+PASS 375x812 rule 30 j = 5 (stall) q = 2: ink on the canvas (amber events and cyan base steps; amber 430, cyan 24)
+PASS 375x812 rule 30 j = 5 (stall) q = 2: no horizontal page scroll
+PASS 375x812 rule 30 j = 5 (stall) q = 4: curve data = core (per 8, S 6, k 2, steps 16, ends at base 2, fibre 3/1)
+PASS 375x812 rule 30 j = 5 (stall) q = 4: event / base segments = core (1080 / 360)
+PASS 375x812 rule 30 j = 5 (stall) q = 4: caption label "row 5, rule 30, q = 4: S_5 = 6, closes after 2 turns" and "trivial (stall)"
+PASS 375x812 rule 30 j = 5 (stall) q = 4: degenerate labels drawn [] in the caption and the card
+PASS 375x812 rule 30 j = 5 (stall) q = 4: card S_j, k, per_j, monodromy, density, F1
+PASS 375x812 rule 30 j = 5 (stall) q = 4: returns to base angle 0 marked: 3 (i = 0 … k)
+PASS 375x812 rule 30 j = 5 (stall) q = 4: ink on the canvas (amber events and cyan base steps; amber 472, cyan 52)
+PASS 375x812 rule 30 j = 5 (stall) q = 4: no horizontal page scroll
+PASS 375x812 rule 30 j = 5 (stall) q = 8: curve data = core (per 8, S 6, k 4, steps 32, ends at base 4, fibre 3/1)
+PASS 375x812 rule 30 j = 5 (stall) q = 8: event / base segments = core (2160 / 720)
+PASS 375x812 rule 30 j = 5 (stall) q = 8: caption label "row 5, rule 30, q = 8: S_5 = 6, closes after 4 turns" and "trivial (stall)"
+PASS 375x812 rule 30 j = 5 (stall) q = 8: degenerate labels drawn [] in the caption and the card
+PASS 375x812 rule 30 j = 5 (stall) q = 8: card S_j, k, per_j, monodromy, density, F1
+PASS 375x812 rule 30 j = 5 (stall) q = 8: returns to base angle 0 marked: 5 (i = 0 … k)
+PASS 375x812 rule 30 j = 5 (stall) q = 8: ink on the canvas (amber events and cyan base steps; amber 634, cyan 143)
+PASS 375x812 rule 30 j = 5 (stall) q = 8: no horizontal page scroll
+PASS 375x812 rule 90 j = 3 (density 0) q = 1: curve data = core (per 2, S 0, k 1, steps 2, ends at base 1, fibre 0/1)
+PASS 375x812 rule 90 j = 3 (density 0) q = 1: event / base segments = core (0 / 720)
+PASS 375x812 rule 90 j = 3 (density 0) q = 1: caption label "row 3, rule 90, q = 1: S_3 = 0, closes after 1 turn" and "trivial (stall)"
+PASS 375x812 rule 90 j = 3 (density 0) q = 1: degenerate labels drawn [q1, S0, dens0] in the caption and the card
+PASS 375x812 rule 90 j = 3 (density 0) q = 1: card S_j, k, per_j, monodromy, density, F1
+PASS 375x812 rule 90 j = 3 (density 0) q = 1: returns to base angle 0 marked: 2 (i = 0 … k)
+PASS 375x812 rule 90 j = 3 (density 0) q = 1: ink on the canvas (cyan base steps; amber 0, cyan 192)
+PASS 375x812 rule 90 j = 3 (density 0) q = 1: no horizontal page scroll
+PASS 375x812 rule 90 j = 3 (density 0) q = 2: curve data = core (per 2, S 0, k 1, steps 2, ends at base 1, fibre 0/1)
+PASS 375x812 rule 90 j = 3 (density 0) q = 2: event / base segments = core (0 / 720)
+PASS 375x812 rule 90 j = 3 (density 0) q = 2: caption label "row 3, rule 90, q = 2: S_3 = 0, closes after 1 turn" and "trivial (stall)"
+PASS 375x812 rule 90 j = 3 (density 0) q = 2: degenerate labels drawn [S0, dens0] in the caption and the card
+PASS 375x812 rule 90 j = 3 (density 0) q = 2: card S_j, k, per_j, monodromy, density, F1
+PASS 375x812 rule 90 j = 3 (density 0) q = 2: returns to base angle 0 marked: 2 (i = 0 … k)
+PASS 375x812 rule 90 j = 3 (density 0) q = 2: ink on the canvas (cyan base steps; amber 0, cyan 192)
+PASS 375x812 rule 90 j = 3 (density 0) q = 2: no horizontal page scroll
+PASS 375x812 rule 90 j = 3 (density 0) q = 4: curve data = core (per 2, S 0, k 1, steps 2, ends at base 1, fibre 0/1)
+PASS 375x812 rule 90 j = 3 (density 0) q = 4: event / base segments = core (0 / 720)
+PASS 375x812 rule 90 j = 3 (density 0) q = 4: caption label "row 3, rule 90, q = 4: S_3 = 0, closes after 1 turn" and "trivial (stall)"
+PASS 375x812 rule 90 j = 3 (density 0) q = 4: degenerate labels drawn [S0, dens0] in the caption and the card
+PASS 375x812 rule 90 j = 3 (density 0) q = 4: card S_j, k, per_j, monodromy, density, F1
+PASS 375x812 rule 90 j = 3 (density 0) q = 4: returns to base angle 0 marked: 2 (i = 0 … k)
+PASS 375x812 rule 90 j = 3 (density 0) q = 4: ink on the canvas (cyan base steps; amber 0, cyan 192)
+PASS 375x812 rule 90 j = 3 (density 0) q = 4: no horizontal page scroll
+PASS 375x812 rule 90 j = 3 (density 0) q = 8: curve data = core (per 2, S 0, k 1, steps 2, ends at base 1, fibre 0/1)
+PASS 375x812 rule 90 j = 3 (density 0) q = 8: event / base segments = core (0 / 720)
+PASS 375x812 rule 90 j = 3 (density 0) q = 8: caption label "row 3, rule 90, q = 8: S_3 = 0, closes after 1 turn" and "trivial (stall)"
+PASS 375x812 rule 90 j = 3 (density 0) q = 8: degenerate labels drawn [S0, dens0] in the caption and the card
+PASS 375x812 rule 90 j = 3 (density 0) q = 8: card S_j, k, per_j, monodromy, density, F1
+PASS 375x812 rule 90 j = 3 (density 0) q = 8: returns to base angle 0 marked: 2 (i = 0 … k)
+PASS 375x812 rule 90 j = 3 (density 0) q = 8: ink on the canvas (cyan base steps; amber 0, cyan 192)
+PASS 375x812 rule 90 j = 3 (density 0) q = 8: no horizontal page scroll
+PASS 375x812 Layers: "Rule 30 ladder (D1)" switches the card on (rule 30, j = 3, q = 2; address view=rl=1)
+PASS 375x812 j ▶ twice: j = 5, trivial (stall)
+PASS 375x812 ◀ j: j = 4
+PASS 375x812 selects: rule 150, j = 3, q = 8 → row 3, rule 150, q = 8: S_3 = 2, closes after 4 turns
+PASS 375x812 address round trip (reload): same card
+PASS 375x812 switch off: the comb picture is back, no D1 card, the dial values stay in the view string
+PASS 375x812 refused dials (j = 99, q = 3): labelled, defaults drawn
+PASS 375x812 fourier with rl=1 draws the same picture as without it
+PASS 375x812 hopf with rl=1 draws the same picture as without it
+PASS 375x812 D1 off: stage, canvas, caption, about, cards and address identical to v0.4.14 on 8 of 8 states
+PASS 375x812 visible-control counts = v0.4.14 (pairs: 39/39/41/41/39/39/41/41/39/39/41/41)
+PASS 375x812 visible controls with D1 on (menus closed): 41/41 (≤ 41)
+PASS 375x812 no page errors or console errors
+SUMMARY browser-check-v0416: 218 passed, 0 failed

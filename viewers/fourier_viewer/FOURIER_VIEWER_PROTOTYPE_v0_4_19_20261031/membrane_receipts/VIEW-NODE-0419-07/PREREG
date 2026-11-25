@@ -1,0 +1,1 @@
+VIEW-NODE-0419-07 (Fourier viewer v0.4.19 builder). Runs build/selftest-expected-fails-v0419.cjs on copies of the run419 logs: real (exit 0), one injected FAIL (exit 1), one removed expected FAIL (exit 1), a crash replacing a log (exit 1), a log with all expected FAIL lines then a crash, exit 134, no SUMMARY (exit 1). Expected: 5 passed, 0 failed.

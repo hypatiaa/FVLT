@@ -1,0 +1,226 @@
+PASS 1280x800 CA button present beside n! and integer, not pressed at load; ca_sel hidden
+FAIL 1280x800 the preset menu lists exactly 2,6,12,60,120,360,2520,5040,55440,720720
+PASS 1280x800 CA click: integer base B = 5040 (current B 24 not a preset), button pressed, select shown, Mbox and n1 stepper hidden
+PASS 1280x800 top bar: no readout in the preset area, no horizontal scroll
+INFO 1280x800 top bar: height before CA 40, in CA mode 40, distinct rows 2, select width 99
+PASS 1280x800 card B=2: exact sigma(B)/B = 3/2 (reduced), verdict fails, CA #1, atom line says mode CA
+PASS 1280x800 card B=2: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 1280x800 card B=2: margin shows 2.152786; verdict agrees with side/applicability (ABOVE, OUT_OF_RANGE)
+PASS 1280x800 card B=2: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 1280x800 card B=2: no horizontal scroll; C1 and C2 side by side
+PASS 1280x800 card B=6: exact sigma(B)/B = 2 (reduced), verdict fails, CA #2, atom line says mode CA
+PASS 1280x800 card B=6: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 1280x800 card B=6: margin shows 0.961281; verdict agrees with side/applicability (ABOVE, OUT_OF_RANGE)
+PASS 1280x800 card B=6: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 1280x800 card B=6: no horizontal scroll; C1 and C2 side by side
+PASS 1280x800 card B=12: exact sigma(B)/B = 7/3 (reduced), verdict fails, CA #3, atom line says mode CA
+PASS 1280x800 card B=12: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 1280x800 card B=12: margin shows 0.712138; verdict agrees with side/applicability (ABOVE, OUT_OF_RANGE)
+PASS 1280x800 card B=12: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 1280x800 card B=12: no horizontal scroll; C1 and C2 side by side
+PASS 1280x800 card B=60: exact sigma(B)/B = 14/5 (reduced), verdict fails, CA #4, atom line says mode CA
+PASS 1280x800 card B=60: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 1280x800 card B=60: margin shows 0.289388; verdict agrees with side/applicability (ABOVE, OUT_OF_RANGE)
+PASS 1280x800 card B=60: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 1280x800 card B=60: no horizontal scroll; C1 and C2 side by side
+PASS 1280x800 card B=120: exact sigma(B)/B = 3 (reduced), verdict fails, CA #5, atom line says mode CA
+PASS 1280x800 card B=120: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 1280x800 card B=120: margin shows 0.210828; verdict agrees with side/applicability (ABOVE, OUT_OF_RANGE)
+PASS 1280x800 card B=120: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 1280x800 card B=120: no horizontal scroll; C1 and C2 side by side
+PASS 1280x800 card B=360: exact sigma(B)/B = 13/4 (reduced), verdict fails, CA #6, atom line says mode CA
+PASS 1280x800 card B=360: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 1280x800 card B=360: margin shows 0.092881; verdict agrees with side/applicability (ABOVE, OUT_OF_RANGE)
+PASS 1280x800 card B=360: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 1280x800 card B=360: no horizontal scroll; C1 and C2 side by side
+PASS 1280x800 card B=2520: exact sigma(B)/B = 26/7 (reduced), verdict fails, CA #7, atom line says mode CA
+PASS 1280x800 card B=2520: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 1280x800 card B=2520: margin shows 0.048447; verdict agrees with side/applicability (ABOVE, OUT_OF_RANGE)
+PASS 1280x800 card B=2520: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 1280x800 card B=2520: no horizontal scroll; C1 and C2 side by side
+PASS 1280x800 card B=5040: exact sigma(B)/B = 403/105 (reduced), verdict fails, CA #8, atom line says mode CA
+PASS 1280x800 card B=5040: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 1280x800 card B=5040: margin shows 0.021217; verdict agrees with side/applicability (ABOVE, OUT_OF_RANGE)
+PASS 1280x800 card B=5040: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 1280x800 card B=5040: no horizontal scroll; C1 and C2 side by side
+PASS 1280x800 card B=55440: exact sigma(B)/B = 1612/385 (reduced), verdict holds, CA #9, atom line says mode CA
+PASS 1280x800 card B=55440: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 1280x800 card B=55440: margin shows −0.071311; verdict agrees with side/applicability (BELOW, IN_RANGE)
+PASS 1280x800 card B=55440: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 1280x800 card B=55440: no horizontal scroll; C1 and C2 side by side
+PASS 1280x800 card B=720720: exact sigma(B)/B = 248/55 (reduced), verdict holds, CA #10, atom line says mode CA
+PASS 1280x800 card B=720720: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 1280x800 card B=720720: margin shows −0.124905; verdict agrees with side/applicability (BELOW, IN_RANGE)
+PASS 1280x800 card B=720720: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 1280x800 card B=720720: no horizontal scroll; C1 and C2 side by side
+PASS 1280x800 card B=24 equals the previous viewer panel: C1 5/2, C2 3, threshold [2.059398835087633225937464, ...465], margins 0.4406011649123667740625 35 / 0.94060116491236677406253 6 prefix; ABOVE/ABOVE; OUT_OF_RANGE / NOT_IN_FAMILY; primorial_k null; factors 2^3*3
+PASS 1280x800 layout B=24: 23 value cells in C1/C2/constants lie inside their card, are >= 40% of the card inner width (or on their own row), no single-character lines, no page scroll
+PASS 1280x800 layout B=5040: 24 value cells in C1/C2/constants lie inside their card, are >= 40% of the card inner width (or on their own row), no single-character lines, no page scroll
+FAIL 1280x800 layout B=55440: 23 value cells in C1/C2/constants lie inside their card, are >= 40% of the card inner width (or on their own row), no single-character lines, no page scroll {"bad":["rhm-c1 single-character line in [−0.071310031214214456408696, "],"cells":23,"sw":1265,"iw":1280}
+FAIL 1280x800 layout B=720720: 23 value cells in C1/C2/constants lie inside their card, are >= 40% of the card inner width (or on their own row), no single-character lines, no page scroll {"bad":["rhm-c1 single-character line in [−0.124904813854560748862942, "],"cells":23,"sw":1265,"iw":1280}
+PASS 1280x800 card in n! mode n1=3: every exact output equals rhm-core.js (factorial mode); atom line says mode factorial
+PASS 1280x800 card in n! mode n1=5: every exact output equals rhm-core.js (factorial mode); atom line says mode factorial
+PASS 1280x800 card in n! mode n1=7: every exact output equals rhm-core.js (factorial mode); atom line says mode factorial
+PASS 1280x800 card in n! mode n1=10: every exact output equals rhm-core.js (factorial mode); atom line says mode factorial
+PASS 1280x800 card in n! mode n1=13: every exact output equals rhm-core.js (factorial mode); atom line says mode factorial
+PASS 1280x800 card B=1: domain unavailable, no crash
+PASS 1280x800 card B with a prime above 10^6: refusal shown with the domain, no record, no crash
+PASS 1280x800 precision_bits 16: record rebuilt (working bits 80)
+PASS 1280x800 export record: downloads rh-atom-margins-B5040-direct-bits128.json
+FAIL 1280x800 exactly 16 other Panels cards remain placeholders ("not yet rebuilt"); the g-robin card is not one
+PASS 1280x800 factorial coincidence through the page: CA preset state differs from the n! state only in shellMode for 2, 6, 120, 5040
+PASS 1280x800 integer button: select hidden, Mbox shown, B kept, CA unpressed
+PASS 1280x800 typed M=24 is no preset: the CA button moves B to 5040
+PASS 1280x800 n! button: factorial mode, CA overlay off
+PASS 1280x800 state leaves the presets (B=7): CA overlay ends
+PASS 1280x800 no page errors
+PASS 375x812 CA button present beside n! and integer, not pressed at load; ca_sel hidden
+FAIL 375x812 the preset menu lists exactly 2,6,12,60,120,360,2520,5040,55440,720720
+PASS 375x812 CA click: integer base B = 5040 (current B 24 not a preset), button pressed, select shown, Mbox and n1 stepper hidden
+PASS 375x812 top bar: no readout in the preset area, no horizontal scroll
+INFO 375x812 top bar: height before CA 67, in CA mode 67, distinct rows 2, select width 99
+PASS 375x812 card B=2: exact sigma(B)/B = 3/2 (reduced), verdict fails, CA #1, atom line says mode CA
+PASS 375x812 card B=2: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 375x812 card B=2: margin shows 2.152786; verdict agrees with side/applicability (ABOVE, OUT_OF_RANGE)
+PASS 375x812 card B=2: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 375x812 card B=2: no horizontal scroll; C1 and C2 stack in one column
+PASS 375x812 card B=6: exact sigma(B)/B = 2 (reduced), verdict fails, CA #2, atom line says mode CA
+PASS 375x812 card B=6: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 375x812 card B=6: margin shows 0.961281; verdict agrees with side/applicability (ABOVE, OUT_OF_RANGE)
+PASS 375x812 card B=6: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 375x812 card B=6: no horizontal scroll; C1 and C2 stack in one column
+PASS 375x812 card B=12: exact sigma(B)/B = 7/3 (reduced), verdict fails, CA #3, atom line says mode CA
+PASS 375x812 card B=12: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 375x812 card B=12: margin shows 0.712138; verdict agrees with side/applicability (ABOVE, OUT_OF_RANGE)
+PASS 375x812 card B=12: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 375x812 card B=12: no horizontal scroll; C1 and C2 stack in one column
+PASS 375x812 card B=60: exact sigma(B)/B = 14/5 (reduced), verdict fails, CA #4, atom line says mode CA
+PASS 375x812 card B=60: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 375x812 card B=60: margin shows 0.289388; verdict agrees with side/applicability (ABOVE, OUT_OF_RANGE)
+PASS 375x812 card B=60: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 375x812 card B=60: no horizontal scroll; C1 and C2 stack in one column
+PASS 375x812 card B=120: exact sigma(B)/B = 3 (reduced), verdict fails, CA #5, atom line says mode CA
+PASS 375x812 card B=120: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 375x812 card B=120: margin shows 0.210828; verdict agrees with side/applicability (ABOVE, OUT_OF_RANGE)
+PASS 375x812 card B=120: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 375x812 card B=120: no horizontal scroll; C1 and C2 stack in one column
+PASS 375x812 card B=360: exact sigma(B)/B = 13/4 (reduced), verdict fails, CA #6, atom line says mode CA
+PASS 375x812 card B=360: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 375x812 card B=360: margin shows 0.092881; verdict agrees with side/applicability (ABOVE, OUT_OF_RANGE)
+PASS 375x812 card B=360: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 375x812 card B=360: no horizontal scroll; C1 and C2 stack in one column
+PASS 375x812 card B=2520: exact sigma(B)/B = 26/7 (reduced), verdict fails, CA #7, atom line says mode CA
+PASS 375x812 card B=2520: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 375x812 card B=2520: margin shows 0.048447; verdict agrees with side/applicability (ABOVE, OUT_OF_RANGE)
+PASS 375x812 card B=2520: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 375x812 card B=2520: no horizontal scroll; C1 and C2 stack in one column
+PASS 375x812 card B=5040: exact sigma(B)/B = 403/105 (reduced), verdict fails, CA #8, atom line says mode CA
+PASS 375x812 card B=5040: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 375x812 card B=5040: margin shows 0.021217; verdict agrees with side/applicability (ABOVE, OUT_OF_RANGE)
+PASS 375x812 card B=5040: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 375x812 card B=5040: no horizontal scroll; C1 and C2 stack in one column
+PASS 375x812 card B=55440: exact sigma(B)/B = 1612/385 (reduced), verdict holds, CA #9, atom line says mode CA
+PASS 375x812 card B=55440: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 375x812 card B=55440: margin shows −0.071311; verdict agrees with side/applicability (BELOW, IN_RANGE)
+PASS 375x812 card B=55440: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 375x812 card B=55440: no horizontal scroll; C1 and C2 stack in one column
+PASS 375x812 card B=720720: exact sigma(B)/B = 248/55 (reduced), verdict holds, CA #10, atom line says mode CA
+PASS 375x812 card B=720720: every exact output equals rhm-core.js (c1, c2, margin, threshold endpoints, sides, applicability, constants, canonical record bytes, factor product check)
+PASS 375x812 card B=720720: margin shows −0.124905; verdict agrees with side/applicability (BELOW, IN_RANGE)
+PASS 375x812 card B=720720: scope, rh_status, Sol caution merged in the one box; credits verbatim; port line separate
+PASS 375x812 card B=720720: no horizontal scroll; C1 and C2 stack in one column
+PASS 375x812 card B=24 equals the previous viewer panel: C1 5/2, C2 3, threshold [2.059398835087633225937464, ...465], margins 0.4406011649123667740625 35 / 0.94060116491236677406253 6 prefix; ABOVE/ABOVE; OUT_OF_RANGE / NOT_IN_FAMILY; primorial_k null; factors 2^3*3
+PASS 375x812 layout B=24: 23 value cells in C1/C2/constants lie inside their card, are >= 40% of the card inner width (or on their own row), no single-character lines, no page scroll
+PASS 375x812 layout B=5040: 24 value cells in C1/C2/constants lie inside their card, are >= 40% of the card inner width (or on their own row), no single-character lines, no page scroll
+PASS 375x812 layout B=55440: 23 value cells in C1/C2/constants lie inside their card, are >= 40% of the card inner width (or on their own row), no single-character lines, no page scroll
+PASS 375x812 layout B=720720: 23 value cells in C1/C2/constants lie inside their card, are >= 40% of the card inner width (or on their own row), no single-character lines, no page scroll
+PASS 375x812 card in n! mode n1=3: every exact output equals rhm-core.js (factorial mode); atom line says mode factorial
+PASS 375x812 card in n! mode n1=5: every exact output equals rhm-core.js (factorial mode); atom line says mode factorial
+PASS 375x812 card in n! mode n1=7: every exact output equals rhm-core.js (factorial mode); atom line says mode factorial
+PASS 375x812 card in n! mode n1=10: every exact output equals rhm-core.js (factorial mode); atom line says mode factorial
+PASS 375x812 card in n! mode n1=13: every exact output equals rhm-core.js (factorial mode); atom line says mode factorial
+PASS 375x812 card B=1: domain unavailable, no crash
+PASS 375x812 card B with a prime above 10^6: refusal shown with the domain, no record, no crash
+PASS 375x812 precision_bits 16: record rebuilt (working bits 80)
+PASS 375x812 export record: downloads rh-atom-margins-B5040-direct-bits128.json
+FAIL 375x812 exactly 16 other Panels cards remain placeholders ("not yet rebuilt"); the g-robin card is not one
+PASS 375x812 factorial coincidence through the page: CA preset state differs from the n! state only in shellMode for 2, 6, 120, 5040
+PASS 375x812 integer button: select hidden, Mbox shown, B kept, CA unpressed
+PASS 375x812 typed M=24 is no preset: the CA button moves B to 5040
+PASS 375x812 n! button: factorial mode, CA overlay off
+PASS 375x812 state leaves the presets (B=7): CA overlay ends
+PASS 375x812 no page errors
+PASS 1280x800 non-CA sample 0 (factorial fourier) addr byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 0 (factorial fourier) stage byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 0 (factorial fourier) cards byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 0 (factorial fourier) caption byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 0 (factorial fourier) shell byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 0 (factorial fourier) state byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 1 (factorial clifford) addr byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 1 (factorial clifford) stage byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 1 (factorial clifford) cards byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 1 (factorial clifford) caption byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 1 (factorial clifford) shell byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 1 (factorial clifford) state byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 2 (integer hopf) addr byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 2 (integer hopf) stage byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 2 (integer hopf) cards byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 2 (integer hopf) caption byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 2 (integer hopf) shell byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 2 (integer hopf) state byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 3 (integer clifford) addr byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 3 (integer clifford) stage byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 3 (integer clifford) cards byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 3 (integer clifford) caption byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 3 (integer clifford) shell byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 3 (integer clifford) state byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 4 (factorial panels) addr byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 4 (factorial panels) stage byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 4 (factorial panels) cards byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 4 (factorial panels) caption byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 4 (factorial panels) shell byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 4 (factorial panels) state byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 5 (integer fourier) addr byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 5 (integer fourier) stage byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 5 (integer fourier) cards byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 5 (integer fourier) caption byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 5 (integer fourier) shell byte-identical to v0.4.3
+PASS 1280x800 non-CA sample 5 (integer fourier) state byte-identical to v0.4.3
+PASS 375x812 non-CA sample 0 (factorial fourier) addr byte-identical to v0.4.3
+PASS 375x812 non-CA sample 0 (factorial fourier) stage byte-identical to v0.4.3
+PASS 375x812 non-CA sample 0 (factorial fourier) cards byte-identical to v0.4.3
+PASS 375x812 non-CA sample 0 (factorial fourier) caption byte-identical to v0.4.3
+PASS 375x812 non-CA sample 0 (factorial fourier) shell byte-identical to v0.4.3
+PASS 375x812 non-CA sample 0 (factorial fourier) state byte-identical to v0.4.3
+PASS 375x812 non-CA sample 1 (factorial clifford) addr byte-identical to v0.4.3
+PASS 375x812 non-CA sample 1 (factorial clifford) stage byte-identical to v0.4.3
+PASS 375x812 non-CA sample 1 (factorial clifford) cards byte-identical to v0.4.3
+PASS 375x812 non-CA sample 1 (factorial clifford) caption byte-identical to v0.4.3
+PASS 375x812 non-CA sample 1 (factorial clifford) shell byte-identical to v0.4.3
+PASS 375x812 non-CA sample 1 (factorial clifford) state byte-identical to v0.4.3
+PASS 375x812 non-CA sample 2 (integer hopf) addr byte-identical to v0.4.3
+PASS 375x812 non-CA sample 2 (integer hopf) stage byte-identical to v0.4.3
+PASS 375x812 non-CA sample 2 (integer hopf) cards byte-identical to v0.4.3
+PASS 375x812 non-CA sample 2 (integer hopf) caption byte-identical to v0.4.3
+PASS 375x812 non-CA sample 2 (integer hopf) shell byte-identical to v0.4.3
+PASS 375x812 non-CA sample 2 (integer hopf) state byte-identical to v0.4.3
+PASS 375x812 non-CA sample 3 (integer clifford) addr byte-identical to v0.4.3
+PASS 375x812 non-CA sample 3 (integer clifford) stage byte-identical to v0.4.3
+PASS 375x812 non-CA sample 3 (integer clifford) cards byte-identical to v0.4.3
+PASS 375x812 non-CA sample 3 (integer clifford) caption byte-identical to v0.4.3
+PASS 375x812 non-CA sample 3 (integer clifford) shell byte-identical to v0.4.3
+PASS 375x812 non-CA sample 3 (integer clifford) state byte-identical to v0.4.3
+PASS 375x812 non-CA sample 4 (factorial panels) addr byte-identical to v0.4.3
+PASS 375x812 non-CA sample 4 (factorial panels) stage byte-identical to v0.4.3
+PASS 375x812 non-CA sample 4 (factorial panels) cards byte-identical to v0.4.3
+PASS 375x812 non-CA sample 4 (factorial panels) caption byte-identical to v0.4.3
+PASS 375x812 non-CA sample 4 (factorial panels) shell byte-identical to v0.4.3
+PASS 375x812 non-CA sample 4 (factorial panels) state byte-identical to v0.4.3
+PASS 375x812 non-CA sample 5 (integer fourier) addr byte-identical to v0.4.3
+PASS 375x812 non-CA sample 5 (integer fourier) stage byte-identical to v0.4.3
+PASS 375x812 non-CA sample 5 (integer fourier) cards byte-identical to v0.4.3
+PASS 375x812 non-CA sample 5 (integer fourier) caption byte-identical to v0.4.3
+PASS 375x812 non-CA sample 5 (integer fourier) shell byte-identical to v0.4.3
+PASS 375x812 non-CA sample 5 (integer fourier) state byte-identical to v0.4.3
+
+216 passed, 6 failed

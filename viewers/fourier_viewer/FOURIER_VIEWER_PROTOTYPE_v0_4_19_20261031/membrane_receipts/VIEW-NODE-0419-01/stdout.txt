@@ -1,0 +1,2 @@
+flags 60, vertices 20, left and right moves written to a5_moves_v0419.json
+SUMMARY dump-a5-moves-v0419: 1 passed, 0 failed

@@ -1,0 +1,123 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:robin:fourier:contact-sweep:snapshot:0.2.0",
+  "title": "Exact Fourier contact-sweep snapshot v0.2",
+  "description": "Structural validation must be followed by the semantic checks in the companion specification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "kind", "convention", "source", "config", "position", "coverage", "events", "fractions", "neighbors", "counts", "selected_event_id"],
+  "properties": {
+    "schema_version": {"const": "0.2.0"},
+    "kind": {"const": "fourier_contact_sweep_snapshot"},
+    "convention": {"const": "CANONICAL_LOWER_AXIS_HALF_TURNS_V1"},
+    "source": {"$ref": "#/$defs/source"},
+    "config": {"$ref": "#/$defs/config"},
+    "position": {
+      "type": "object", "additionalProperties": false,
+      "required": ["cursor_s", "generation_epoch"],
+      "properties": {
+        "cursor_s": {"$ref": "#/$defs/rational"},
+        "generation_epoch": {"$ref": "#/$defs/uint"}
+      }
+    },
+    "coverage": {"enum": ["PARTIAL", "COMPLETE"]},
+    "events": {"type": "array", "minItems": 1, "maxItems": 33152, "items": {"$ref": "#/$defs/event"}},
+    "fractions": {"type": "array", "minItems": 1, "maxItems": 33152, "items": {"$ref": "#/$defs/fraction"}},
+    "neighbors": {"type": "array", "maxItems": 33151, "items": {"$ref": "#/$defs/neighbor"}},
+    "counts": {
+      "type": "object", "additionalProperties": false,
+      "required": ["events_seen", "events_expected", "addresses_seen", "neighbor_pairs"],
+      "properties": {
+        "events_seen": {"$ref": "#/$defs/uint"},
+        "events_expected": {"$ref": "#/$defs/uint"},
+        "addresses_seen": {"$ref": "#/$defs/uint"},
+        "neighbor_pairs": {"$ref": "#/$defs/uint"}
+      }
+    },
+    "selected_event_id": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/event_id"}]}
+  },
+  "allOf": [
+    {
+      "if": {"properties": {"coverage": {"const": "COMPLETE"}}},
+      "then": {"properties": {"neighbors": {"items": {"properties": {"status": {"const": "FAREY_NEIGHBORS"}, "determinant": {"const": "1"}}}}}},
+      "else": {"properties": {"neighbors": {"items": {"properties": {"status": {"const": "OBSERVED_ONLY"}}}}}}
+    }
+  ],
+  "$defs": {
+    "uint": {"type": "string", "maxLength": 128, "pattern": "^(0|[1-9][0-9]*)$"},
+    "positive": {"type": "string", "maxLength": 128, "pattern": "^[1-9][0-9]*$"},
+    "event_id": {"type": "string", "maxLength": 257, "pattern": "^[1-9][0-9]*:(0|[1-9][0-9]*)$"},
+    "fraction_id": {"type": "string", "maxLength": 257, "pattern": "^(0|[1-9][0-9]*)/[1-9][0-9]*$"},
+    "rational": {
+      "type": "object", "additionalProperties": false,
+      "required": ["numerator", "denominator"],
+      "properties": {
+        "numerator": {"$ref": "#/$defs/uint"},
+        "denominator": {"$ref": "#/$defs/positive"}
+      }
+    },
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["host_build", "host_sha256"],
+      "properties": {
+        "host_build": {"type": "string", "minLength": 1, "maxLength": 256},
+        "host_sha256": {"type": "string", "minLength": 64, "maxLength": 64, "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "config": {
+      "type": "object", "additionalProperties": false,
+      "required": ["Q", "base_B", "base_mode", "factorial_index", "comb_m", "t1", "t2", "branch", "n6", "alpha"],
+      "properties": {
+        "Q": {"$ref": "#/$defs/positive"},
+        "base_B": {"$ref": "#/$defs/positive"},
+        "base_mode": {"enum": ["direct", "factorial"]},
+        "factorial_index": {"anyOf": [{"type": "null"}, {"$ref": "#/$defs/positive"}]},
+        "comb_m": {"const": "2"},
+        "t1": {"const": "1"},
+        "t2": {"const": "1"},
+        "branch": {"const": "-1"},
+        "n6": {"enum": ["-1", "1"]},
+        "alpha": {"enum": ["-1", "0", "1"]}
+      },
+      "allOf": [{
+        "if": {"properties": {"base_mode": {"const": "factorial"}}},
+        "then": {"properties": {"factorial_index": {"enum": ["3", "4", "5", "6", "7", "8"]}}},
+        "else": {"properties": {"factorial_index": {"type": "null"}}}
+      }]
+    },
+    "event": {
+      "type": "object", "additionalProperties": false,
+      "required": ["event_id", "shell_N", "tooth_k", "half_turn_j", "spin_s", "coordinate_x", "axis_side"],
+      "properties": {
+        "event_id": {"$ref": "#/$defs/event_id"},
+        "shell_N": {"$ref": "#/$defs/positive"},
+        "tooth_k": {"$ref": "#/$defs/positive"},
+        "half_turn_j": {"$ref": "#/$defs/uint"},
+        "spin_s": {"$ref": "#/$defs/rational"},
+        "coordinate_x": {"$ref": "#/$defs/rational"},
+        "axis_side": {"enum": ["positive_real", "negative_real"]}
+      }
+    },
+    "fraction": {
+      "type": "object", "additionalProperties": false,
+      "required": ["fraction_id", "coordinate_x", "event_ids", "multiplicity"],
+      "properties": {
+        "fraction_id": {"$ref": "#/$defs/fraction_id"},
+        "coordinate_x": {"$ref": "#/$defs/rational"},
+        "event_ids": {"type": "array", "minItems": 1, "maxItems": 256, "uniqueItems": true, "items": {"$ref": "#/$defs/event_id"}},
+        "multiplicity": {"$ref": "#/$defs/positive"}
+      }
+    },
+    "neighbor": {
+      "type": "object", "additionalProperties": false,
+      "required": ["left_id", "right_id", "determinant", "denominator_sum", "status"],
+      "properties": {
+        "left_id": {"$ref": "#/$defs/fraction_id"},
+        "right_id": {"$ref": "#/$defs/fraction_id"},
+        "determinant": {"$ref": "#/$defs/positive"},
+        "denominator_sum": {"$ref": "#/$defs/positive"},
+        "status": {"enum": ["OBSERVED_ONLY", "FAREY_NEIGHBORS"]}
+      }
+    }
+  }
+}

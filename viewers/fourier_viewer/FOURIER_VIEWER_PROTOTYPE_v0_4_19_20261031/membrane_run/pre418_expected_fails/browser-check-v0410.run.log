@@ -1,0 +1,110 @@
+PASS 1280x800 counts unchanged: the 16 states (4 tabs × integer / n! / CA / continuous) give 39/41/39/41/39/41/39/41/39/41/39/41/37/39/37/39, equal to v0.4.9 (39/41/39/41/39/41/39/41/39/41/39/41/37/39/37/39); the drawing tabs are 39/41/39/41
+PASS 1280x800 counts on the n² + 1 track equal the CA counts of v0.4.9 (39/37 vs 39/37)
+FAIL 1280x800 byte-identical to v0.4.9 for 28 states (incl. tilt −1/2): stage, canvas, caption, about, cards, address, hash, state AND exact JSON, state JSON, CSV, Lift JSON, stats (28/28 exports); Panels tab (8 states) differs only by the two new collapsed card elements (0) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=integer&phi3=1&m=8&t1= hstage(2) | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=integer&phi3=1&m=8&t1= hstage(2) | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=49&nMode=integer&phi3=0&m=15&t1=1&t hstage(2) | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=49&nMode=integer&phi3=0&m=15&t1=1&t hstage(2) | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=9&nMode=integer&phi3=0&m=7&t1=1&t2= hstage(2) | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=9&nMode=integer&phi3=0&m=7&t1=1&t2= hstage(2) | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=5040&nMode=integer&phi3=12&m=9&t1=1 hstage(2) | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=5040&nMode=integer&phi3=12&m=9&t1=1 hstage(2)
+PASS 1280x800 PNG export byte-identical to v0.4.9 (4/4)
+FAIL 1280x800 both cards present in group B after the G. Robin card, adjacent, and collapsed on a fresh page; all other cards unchanged (open) orbit-point-index:true contact-sweep:true tooth-contacts:true basel-cone:true reciprocal-record:true pi-b-shell:true g-robin-margin:true branch-primitivity:false poincare-disk:false cayley-m3:true m4-atom:true m5-structure:true m6-walk:true m7-divisor-atom:true mcomb-elliptic-bsd:true carrier-addition:true exact-curve-bsd:true clifford-elliptic-bridge:true arithmetic-fourier:true elliptic-points-exact:false period-lattice-exact:false pen-curvature-exact:false pen-sphere-exact:false
+PASS 1280x800 N = 10 (composite 2·5) branch card: header, 1 of 2 primitive, verdict "N composite: branch c = 2 is repeated ×2 (least such c)", label, c = ±1 note, same-divisors line
+PASS 1280x800 N = 10 branch card repeated lines = core (1, capped at 8)
+PASS 1280x800 N = 10 disk card: 4 Astra points (m | N), 1 cusps, 0 edges drawn; exact rows ζ, cosh d = core; credit, pairing, scope lines; no canvas error
+PASS 1280x800 N = 10 drawn geodesics orthogonal to the rim (max | |C|² − 1 − r² | 5.6e-17), cusp images on the unit circle (≤ 0.0e+0), Astra points inside
+PASS 1280x800 N = 10 amber ink at every Astra point (4/4)
+PASS 1280x800 N = 10 no horizontal scroll with both cards open
+PASS 1280x800 N = 17 (prime) branch card: header, 3 of 3 primitive, verdict "N prime: every branch c = 2…4 is primitive", label, c = ±1 note, same-divisors line
+PASS 1280x800 N = 17 branch card repeated lines = core (0, capped at 8)
+PASS 1280x800 N = 17 disk card: 2 Astra points (m | N), 1 cusps, 0 edges drawn; exact rows ζ, cosh d = core; credit, pairing, scope lines; no canvas error
+PASS 1280x800 N = 17 drawn geodesics orthogonal to the rim (max | |C|² − 1 − r² | 0.0e+0), cusp images on the unit circle (≤ 0.0e+0), Astra points inside
+PASS 1280x800 N = 17 amber ink at every Astra point (2/2)
+PASS 1280x800 N = 17 no horizontal scroll with both cards open
+PASS 1280x800 N = 26 (composite 2·13) branch card: header, 2 of 4 primitive, verdict "N composite: branch c = 2 is repeated ×2 (least such c)", label, c = ±1 note, same-divisors line
+PASS 1280x800 N = 26 branch card repeated lines = core (2, capped at 8)
+PASS 1280x800 N = 26 disk card: 4 Astra points (m | N), 1 cusps, 0 edges drawn; exact rows ζ, cosh d = core; credit, pairing, scope lines; no canvas error
+PASS 1280x800 N = 26 drawn geodesics orthogonal to the rim (max | |C|² − 1 − r² | 2.8e-17), cusp images on the unit circle (≤ 0.0e+0), Astra points inside
+PASS 1280x800 N = 26 amber ink at every Astra point (4/4)
+PASS 1280x800 N = 26 no horizontal scroll with both cards open
+PASS 1280x800 N = 101 (prime) branch card: header, 9 of 9 primitive, verdict "N prime: every branch c = 2…10 is primitive", label, c = ±1 note, same-divisors line
+PASS 1280x800 N = 101 branch card repeated lines = core (0, capped at 8)
+PASS 1280x800 N = 101 disk card: 2 Astra points (m | N), 1 cusps, 0 edges drawn; exact rows ζ, cosh d = core; credit, pairing, scope lines; no canvas error
+PASS 1280x800 N = 101 drawn geodesics orthogonal to the rim (max | |C|² − 1 − r² | 6.9e-18), cusp images on the unit circle (≤ 0.0e+0), Astra points inside
+PASS 1280x800 N = 101 amber ink at every Astra point (2/2)
+PASS 1280x800 N = 101 no horizontal scroll with both cards open
+PASS 1280x800 tessellation colours: across both mirrors (ζ ↦ ζ̄ and ζ ↦ −ζ̄) the parity flips, under the half-turn ζ ↦ −ζ it is kept (124644 interior pixels; violations (float64 rounding on a tile edge, tolerance 20): 6, 2, 6); two tile colours
+PASS 1280x800 gate: t₁ = t₂ = 2 at N = 10 → no verdict with the reason
+PASS 1280x800 gate: t₁ = 1, t₂ = 2 → no verdict with the reason
+PASS 1280x800 gate: t₁ = 1/2, t₂ = 2/3 → no verdict with the reason
+PASS 1280x800 gate: m = 5 at N = 26 (missing c = 3, 4, 5) → no verdict with the reason
+PASS 1280x800 gate: even m = 8 at N = 26 → no verdict with the reason
+PASS 1280x800 gate: N = 0 → no verdict with the reason
+PASS 1280x800 gate: continuous non-integer N → no verdict with the reason
+PASS 1280x800 N = 24 (N − 1 not a square): the branch card still gives its verdict (composite, c = 2 ×2) without the quadratic mark; the disk card says N − 1 = 23 is not a square (idle caption, layer still drawn)
+PASS 1280x800 n₆ = 0: same verdict, the formal-label note appears
+PASS 1280x800 continuous non-integer N: the disk card is idle with the reason and the empty disk is still drawn
+PASS 1280x800 even m = 2 (default-like): no verdict, reason given
+PASS 1280x800 strip buttons: Collapse panels closes all (0/23), Open panels opens all including the two new cards (23/23)
+PASS 1280x800 track entry via the CA preset menu (its last option “n²+1 shells ▸”, 12 options): B = 9, φ₃ = 0, m = 7 (N = 10), address ends &sq=1, the n menu shows n = 3, CA menu and M box hidden
+PASS 1280x800 choosing n = 10: B = 100, φ₃ = 0, m = 21, N = 101; the address is the integer address plus &sq=1
+PASS 1280x800 n = 359 (the cap): B = 128881, m = 719, N = 128 882
+PASS 1280x800 reloading the address with &sq=1 restores the track (menu shown at n = 359)
+PASS 1280x800 the integer button ends the track: no &sq=1, n menu hidden, M box back
+PASS 1280x800 the n menu’s first option returns to the CA presets (B = 5040, address &ca=1, no &sq)
+PASS 1280x800 a B that is not n² (30) ends the track: address without &sq, menu hidden
+PASS 1280x800 refusals: B not n², n! mode, sq=2, repeated sq, n = 360, ca+sq: the state loads, track off (menu hidden), a label says why (the raw address stays in the bar, as for a refused ca=1)
+INFO 1280x800 v0.4.9 reader on an &sq=1 address: {"st":"24","txt":"Address refused: Unknown key sq. — showing defaults."}
+PASS 1280x800 n = 359 (N = 128 882, m = 719) both cards render: composite, c = 2 ×2; disk: orbit points for the divisors of 128 882 (8)
+INFO 1280x800 n = 359: primitivity 2.0 ms, disk data 0.3 ms (uncached, m = 719)
+PASS 1280x800 no page errors
+PASS 375x812 counts unchanged: the 16 states (4 tabs × integer / n! / CA / continuous) give 39/41/39/41/39/41/39/41/39/41/39/41/37/39/37/39, equal to v0.4.9 (39/41/39/41/39/41/39/41/39/41/39/41/37/39/37/39); the drawing tabs are 39/41/39/41
+PASS 375x812 counts on the n² + 1 track equal the CA counts of v0.4.9 (39/37 vs 39/37)
+FAIL 375x812 byte-identical to v0.4.9 for 28 states (incl. tilt −1/2): stage, canvas, caption, about, cards, address, hash, state AND exact JSON, state JSON, CSV, Lift JSON, stats (28/28 exports); Panels tab (8 states) differs only by the two new collapsed card elements (0) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=integer&phi3=1&m=8&t1= hstage(2) | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=integer&phi3=1&m=8&t1= hstage(2) | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=49&nMode=integer&phi3=0&m=15&t1=1&t hstage(2) | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=49&nMode=integer&phi3=0&m=15&t1=1&t hstage(2) | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=9&nMode=integer&phi3=0&m=7&t1=1&t2= hstage(2) | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=9&nMode=integer&phi3=0&m=7&t1=1&t2= hstage(2) | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=5040&nMode=integer&phi3=12&m=9&t1=1 hstage(2) | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=5040&nMode=integer&phi3=12&m=9&t1=1 hstage(2)
+PASS 375x812 PNG export byte-identical to v0.4.9 (4/4)
+FAIL 375x812 both cards present in group B after the G. Robin card, adjacent, and collapsed on a fresh page; all other cards unchanged (open) orbit-point-index:true contact-sweep:true tooth-contacts:true basel-cone:true reciprocal-record:true pi-b-shell:true g-robin-margin:true branch-primitivity:false poincare-disk:false cayley-m3:true m4-atom:true m5-structure:true m6-walk:true m7-divisor-atom:true mcomb-elliptic-bsd:true carrier-addition:true exact-curve-bsd:true clifford-elliptic-bridge:true arithmetic-fourier:true elliptic-points-exact:false period-lattice-exact:false pen-curvature-exact:false pen-sphere-exact:false
+PASS 375x812 N = 10 (composite 2·5) branch card: header, 1 of 2 primitive, verdict "N composite: branch c = 2 is repeated ×2 (least such c)", label, c = ±1 note, same-divisors line
+PASS 375x812 N = 10 branch card repeated lines = core (1, capped at 8)
+PASS 375x812 N = 10 disk card: 4 Astra points (m | N), 1 cusps, 0 edges drawn; exact rows ζ, cosh d = core; credit, pairing, scope lines; no canvas error
+PASS 375x812 N = 10 drawn geodesics orthogonal to the rim (max | |C|² − 1 − r² | 5.6e-17), cusp images on the unit circle (≤ 0.0e+0), Astra points inside
+PASS 375x812 N = 10 amber ink at every Astra point (4/4)
+PASS 375x812 N = 10 no horizontal scroll with both cards open
+PASS 375x812 N = 17 (prime) branch card: header, 3 of 3 primitive, verdict "N prime: every branch c = 2…4 is primitive", label, c = ±1 note, same-divisors line
+PASS 375x812 N = 17 branch card repeated lines = core (0, capped at 8)
+PASS 375x812 N = 17 disk card: 2 Astra points (m | N), 1 cusps, 0 edges drawn; exact rows ζ, cosh d = core; credit, pairing, scope lines; no canvas error
+PASS 375x812 N = 17 drawn geodesics orthogonal to the rim (max | |C|² − 1 − r² | 0.0e+0), cusp images on the unit circle (≤ 0.0e+0), Astra points inside
+PASS 375x812 N = 17 amber ink at every Astra point (2/2)
+PASS 375x812 N = 17 no horizontal scroll with both cards open
+PASS 375x812 N = 26 (composite 2·13) branch card: header, 2 of 4 primitive, verdict "N composite: branch c = 2 is repeated ×2 (least such c)", label, c = ±1 note, same-divisors line
+PASS 375x812 N = 26 branch card repeated lines = core (2, capped at 8)
+PASS 375x812 N = 26 disk card: 4 Astra points (m | N), 1 cusps, 0 edges drawn; exact rows ζ, cosh d = core; credit, pairing, scope lines; no canvas error
+PASS 375x812 N = 26 drawn geodesics orthogonal to the rim (max | |C|² − 1 − r² | 2.8e-17), cusp images on the unit circle (≤ 0.0e+0), Astra points inside
+PASS 375x812 N = 26 amber ink at every Astra point (4/4)
+PASS 375x812 N = 26 no horizontal scroll with both cards open
+PASS 375x812 N = 101 (prime) branch card: header, 9 of 9 primitive, verdict "N prime: every branch c = 2…10 is primitive", label, c = ±1 note, same-divisors line
+PASS 375x812 N = 101 branch card repeated lines = core (0, capped at 8)
+PASS 375x812 N = 101 disk card: 2 Astra points (m | N), 1 cusps, 0 edges drawn; exact rows ζ, cosh d = core; credit, pairing, scope lines; no canvas error
+PASS 375x812 N = 101 drawn geodesics orthogonal to the rim (max | |C|² − 1 − r² | 6.9e-18), cusp images on the unit circle (≤ 0.0e+0), Astra points inside
+PASS 375x812 N = 101 amber ink at every Astra point (2/2)
+PASS 375x812 N = 101 no horizontal scroll with both cards open
+PASS 375x812 tessellation colours: across both mirrors (ζ ↦ ζ̄ and ζ ↦ −ζ̄) the parity flips, under the half-turn ζ ↦ −ζ it is kept (124644 interior pixels; violations (float64 rounding on a tile edge, tolerance 20): 6, 2, 6); two tile colours
+PASS 375x812 gate: t₁ = t₂ = 2 at N = 10 → no verdict with the reason
+PASS 375x812 gate: t₁ = 1, t₂ = 2 → no verdict with the reason
+PASS 375x812 gate: t₁ = 1/2, t₂ = 2/3 → no verdict with the reason
+PASS 375x812 gate: m = 5 at N = 26 (missing c = 3, 4, 5) → no verdict with the reason
+PASS 375x812 gate: even m = 8 at N = 26 → no verdict with the reason
+PASS 375x812 gate: N = 0 → no verdict with the reason
+PASS 375x812 gate: continuous non-integer N → no verdict with the reason
+PASS 375x812 N = 24 (N − 1 not a square): the branch card still gives its verdict (composite, c = 2 ×2) without the quadratic mark; the disk card says N − 1 = 23 is not a square (idle caption, layer still drawn)
+PASS 375x812 n₆ = 0: same verdict, the formal-label note appears
+PASS 375x812 continuous non-integer N: the disk card is idle with the reason and the empty disk is still drawn
+PASS 375x812 even m = 2 (default-like): no verdict, reason given
+PASS 375x812 strip buttons: Collapse panels closes all (0/23), Open panels opens all including the two new cards (23/23)
+PASS 375x812 track entry via the CA preset menu (its last option “n²+1 shells ▸”, 12 options): B = 9, φ₃ = 0, m = 7 (N = 10), address ends &sq=1, the n menu shows n = 3, CA menu and M box hidden
+PASS 375x812 choosing n = 10: B = 100, φ₃ = 0, m = 21, N = 101; the address is the integer address plus &sq=1
+PASS 375x812 n = 359 (the cap): B = 128881, m = 719, N = 128 882
+PASS 375x812 reloading the address with &sq=1 restores the track (menu shown at n = 359)
+PASS 375x812 the integer button ends the track: no &sq=1, n menu hidden, M box back
+PASS 375x812 the n menu’s first option returns to the CA presets (B = 5040, address &ca=1, no &sq)
+PASS 375x812 a B that is not n² (30) ends the track: address without &sq, menu hidden
+PASS 375x812 refusals: B not n², n! mode, sq=2, repeated sq, n = 360, ca+sq: the state loads, track off (menu hidden), a label says why (the raw address stays in the bar, as for a refused ca=1)
+INFO 375x812 v0.4.9 reader on an &sq=1 address: {"st":"24","txt":"Address refused: Unknown key sq. — showing defaults."}
+PASS 375x812 n = 359 (N = 128 882, m = 719) both cards render: composite, c = 2 ×2; disk: orbit points for the divisors of 128 882 (8)
+INFO 375x812 n = 359: primitivity 2.1 ms, disk data 0.2 ms (uncached, m = 719)
+PASS 375x812 no page errors
+
+SUMMARY browser-check-v0410: 100 pass / 4 fail

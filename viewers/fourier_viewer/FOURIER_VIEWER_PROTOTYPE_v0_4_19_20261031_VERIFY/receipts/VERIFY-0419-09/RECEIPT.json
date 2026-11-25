@@ -1,0 +1,6 @@
+{"job":"VERIFY-0419-09","runner":"run_capped_v2.sh","host":"membrane","cwd":"/home/saphir/membrane_compute/viewer/verify_0419","start_utc":"2026-10-31T18:56:12Z","end_utc":"2026-10-31T18:56:12Z","exit":0,
+ "caps":{"cpu":"core 0","nice":19,"mem_mib":4096,"wall_s":1800},
+ "peak_rss_kib":56936,"wall_used":"0:00.08",
+ "library_check_before":"OK","library_check_after":"OK",
+ "prereg_sha256":"d9b61c50a912247e4e2e72c6b4095e33055efd4d2e570f2ba897e5654be2726a",
+ "command":"bash job09.sh "}

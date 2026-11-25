@@ -1,0 +1,14 @@
+PASS R(1) = R_t exactly (log radius of r = 1 is 1 for every L)
+PASS r = e^L maps to 2R_t and r = e^-L to 0 (L = 2.5)
+PASS reciprocal on: R(1/r) = 2R_t − R(r) and R = 1 + ln r / L on 16362 point pairs in 10 states: max error 8.88e-16
+PASS L equals the largest |ln r| of the stack points (error 4.4e-16)
+PASS phases preserved for both halves (cross product of the unit vectors, max 1.2e-16 / 1.9e-16; same direction)
+PASS all drawn stack radii inside [0, 2R_t]
+PASS one half (alpha = 1, no reciprocal): L = 3.2189 = ln max r; largest display radius = 2 R_t (2.000000), N = 1 layer on the throat (1.000000)
+PASS alpha = +1 and alpha = −1 (|n6| = 1, reciprocal on) draw the same picture with the halves exchanged: max coordinate difference 6.7e-16, L 3.2189 / 3.2189
+PASS n6 = 0: 1950 of 1950 stack points at r = 0 counted (no log image), L degenerate -> 1: true
+PASS panel-g-robin.js byte-identical to v0.4.11
+PASS panel-bd.js byte-identical to v0.4.11
+FAIL source files differing from v0.4.11: host-core/comb-numeric.js, host-core/elliptic-exact-core.js, host-core/elliptic-period-core.js, host-core/field-q2-q5-tau.js, host-core/goldbach-core.js, host-core/pen-curvature-core.js, host-core/pen-interval-core.js, host-core/pen-sphere-core.js, host-core/pen-streams-core.js, host-core/rule30-ladder-core.js, instruments/comb-hopf/index.html, instruments/comb-hopf/panel-elliptic.js, instruments/comb-hopf/panel-pens.js, instruments/comb-hopf/panel.js, instruments/comb-hopf/view-clifford.js, instruments/comb-hopf/view-fourier.js, instruments/comb-hopf/view-hopf.js, instruments/comb-hopf/view-panels.js host-core/comb-numeric.js,host-core/elliptic-exact-core.js,host-core/elliptic-period-core.js,host-core/field-q2-q5-tau.js,host-core/goldbach-core.js,host-core/pen-curvature-core.js,host-core/pen-interval-core.js,host-core/pen-sphere-core.js,host-core/pen-streams-core.js,host-core/rule30-ladder-core.js,instruments/comb-hopf/index.html,instruments/comb-hopf/panel-elliptic.js,instruments/comb-hopf/panel-pens.js,instruments/comb-hopf/panel.js,instruments/comb-hopf/view-clifford.js,instruments/comb-hopf/view-fourier.js,instruments/comb-hopf/view-hopf.js,instruments/comb-hopf/view-panels.js
+
+SUMMARY test-v0412: 11 pass, 1 fail

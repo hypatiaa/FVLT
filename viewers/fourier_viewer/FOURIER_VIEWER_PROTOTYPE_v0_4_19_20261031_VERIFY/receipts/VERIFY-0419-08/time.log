@@ -1,0 +1,23 @@
+	Command being timed: "timeout 1800 nice -n 19 taskset -c 0 /home/saphir/.local/bin/node list_honesty.cjs orig/FOURIER_VIEWER_PROTOTYPE_v0_4_19_20261031/build/EXPECTED_FAILS_v0419.txt logs_of_record/baseline_v0418_linux logs_of_record/builder_v0419 root/FOURIER_VIEWER_PROTOTYPE_v0_4_19_20261031/build/_logs"
+	User time (seconds): 0.01
+	System time (seconds): 0.01
+	Percent of CPU this job got: 96%
+	Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.03
+	Average shared text size (kbytes): 0
+	Average unshared data size (kbytes): 0
+	Average stack size (kbytes): 0
+	Average total size (kbytes): 0
+	Maximum resident set size (kbytes): 47808
+	Average resident set size (kbytes): 0
+	Major (requiring I/O) page faults: 0
+	Minor (reclaiming a frame) page faults: 3723
+	Voluntary context switches: 56
+	Involuntary context switches: 37
+	Swaps: 0
+	File system inputs: 0
+	File system outputs: 8
+	Socket messages sent: 0
+	Socket messages received: 0
+	Signals delivered: 0
+	Page size (bytes): 4096
+	Exit status: 0

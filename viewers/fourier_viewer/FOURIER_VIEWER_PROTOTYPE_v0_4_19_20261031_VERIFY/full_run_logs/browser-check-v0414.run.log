@@ -1,0 +1,97 @@
+PASS 1280x800 fourier: counts 39/41/39/41 unchanged, v0.4.14 = v0.4.13 (39/39/41/41/39/39/41/41)
+PASS 1280x800 fourier: counts on the Goldbach track (N = 4, 24, 30, 1448) = 39/39/39/39 (39, no new control)
+PASS 1280x800 clifford: counts 39/41/39/41 unchanged, v0.4.14 = v0.4.13 (39/39/41/41/39/39/41/41)
+PASS 1280x800 clifford: counts on the Goldbach track (N = 4, 24, 30, 1448) = 39/39/39/39 (39, no new control)
+PASS 1280x800 hopf: counts 39/41/39/41 unchanged, v0.4.14 = v0.4.13 (39/39/41/41/39/39/41/41)
+PASS 1280x800 hopf: counts on the Goldbach track (N = 4, 24, 30, 1448) = 39/39/39/39 (39, no new control)
+PASS 1280x800 menu: "Goldbach N ▸" is the last option of the CA preset menu (after "n²+1 shells ▸"): sq|n²+1 shells ▸ ; gb|Goldbach N ▸
+PASS 1280x800 menu: the Goldbach menu lists the back option and every even N = 4…1448 (723 shells)
+PASS 1280x800 menu: choosing it from the CA menu enters the track at N = 24 (B = 11, φ₃ = 0, m = 8), address ends &gb=1, the Goldbach menu replaces the CA menu
+PASS 1280x800 menu: choosing N = 30 sets B = 14, φ₃ = 0, t₂ = 2, m = 9, n₆ = 1, α = 0 (convention B) and keeps s; address &gb=1
+PASS 1280x800 menu: "◂ CA presets" leaves the track: back to CA (B = 5040), address has ca=1 and no gb
+PASS 1280x800 track: a dial leaving the preset (m = 9) ends the track; address drops &gb=1
+PASS 1280x800 identity: the built viewer's pen = G_N(s) for every even N = 4…200 at 8 s values (792 states): max |diff| = 1.22e-14 <= 1e-12; track on, g(N) and "G_N(0) = 2g(N)" readout correct (792/792, 6 s)
+PASS 1280x800 g(N): the viewer's card reads g(N) = #P_N and G_N(0) = 2g(N) equal to independent trial division for all 723 even N = 4…1448 (15 s)
+PASS 1280x800 identity at large N (210 … 1448), 24 states: max |diff| = 2.15e-14
+PASS 1280x800 branch table (DOM, N <= 200): every masked branch chip reads raw (N/2, ∓a_p), primitive ×1 (equal pair ×N/2), unknot exactly for a_p <= 1, T(min,max) with mirror signs, k = p or N − p (1135 chips)
+PASS 1280x800 ghosts, Fourier, N = 24: 6 rays in the pen, 2 ghosted rays drawn, all 8 hit targets, 7 walk vertices, label in the caption
+PASS 1280x800 ghosts, Clifford, N = 24: 6 solid branches + dots, 2 ghosted, one leaf, label in the caption
+PASS 1280x800 ghosts, Hopf base, N = 24: 7 walk vertices, 6 solid dots, 2 ghost dots, caption "no new claim"
+PASS 1280x800 ghosts, Fourier, N = 30: 6 rays in the pen, 3 ghosted rays drawn, all 9 hit targets, 7 walk vertices, label in the caption
+PASS 1280x800 ghosts, Clifford, N = 30: 6 solid branches + dots, 3 ghosted, one leaf, label in the caption
+PASS 1280x800 ghosts, Hopf base, N = 30: 7 walk vertices, 6 solid dots, 3 ghost dots, caption "no new claim"
+PASS 1280x800 ghosts, Fourier, N = 120: 24 rays in the pen, 30 ghosted rays drawn, all 54 hit targets, 25 walk vertices, label in the caption
+PASS 1280x800 ghosts, Clifford, N = 120: 24 solid branches + dots, 30 ghosted, one leaf, label in the caption
+PASS 1280x800 ghosts, Hopf base, N = 120: 25 walk vertices, 24 solid dots, 30 ghost dots, caption "no new claim"
+PASS 1280x800 ghosts, Fourier, N = 210: 38 rays in the pen, 57 ghosted rays drawn, all 95 hit targets, 39 walk vertices, label in the caption
+PASS 1280x800 ghosts, Clifford, N = 210: 38 solid branches + dots, 57 ghosted, one leaf, label in the caption
+PASS 1280x800 ghosts, Hopf base, N = 210: 39 walk vertices, 38 solid dots, 57 ghost dots, caption "no new claim"
+PASS 1280x800 fixture N = 24, s = 4/3: page reads "|W| ≤ bound … not certified zero"; N/2 = 12 is not prime (no equal pair); twin pair (11, 13) is an unknot; (5, 19) is T(7,12)
+PASS 1280x800 guards printed: Interference register, Empty-fiber guard, Unit-fiber guard, "Closure reaches conjugation, not Goldbach." (Rmk II.23.5b), status line; Λ_G and the coprime reference are not shown
+PASS 1280x800 N = 30: N/2 = 15, t₂ = 2, m = 9; branches c = ∓4, ∓2, ∓1 with raw (15, ±8), (15, ±4), (15, ±2); (7, 23) is T(8,15)
+PASS 1280x800 N = 14 (N/2 = 7 prime): the equal pair is present, weight 2, raw (7,0) → primitive (1,0) ×7, unknot; pen at s = 0 is 2g(N) = 2·2
+PASS 1280x800 tilt: a nonzero α_Tilt is REFUSED while the track is on (state unchanged, status says so, track stays on)
+PASS 1280x800 tilt: setting α_Tilt = 0 is allowed on the track
+PASS 1280x800 tilt: the α_Tilt drawer carries the label "α_Tilt is refused on the Goldbach track"
+PASS 1280x800 tilt: the Goldbach shell with α_Tilt = 1/3 and no flag is an ordinary state (track off)
+PASS 1280x800 tilt: entering the track with α_Tilt = 1/3 switches it OFF with the status line "α_Tilt switched off (was 1/3)" (not refused)
+PASS 1280x800 tilt: address with &tilt=1/3&gb=1: flag refused with a label (α_Tilt ≠ 0), loaded without the track
+PASS 1280x800 address: &gb=1 round trip (written, read, reload) in 24/24 states (N = 4, 6, 24, 30, 210, 1448 × four tabs); written only while the track is on
+PASS 1280x800 address refusals: duplicate, gb=2, empty, with ca=1, with sq=1, off the preset, n! mode, φ₃ ≠ 0, N = 1450: each refuses the flag only, with a label (9/9)
+PASS 1280x800 address: other states and the ca / sq tracks write exactly the v0.4.13 address (no gb) (4/4)
+FAIL 1280x800 track off: byte-identical to v0.4.13 for 32 states (incl. the Goldbach shells without the flag, tilt −1/2 too): stage, canvas, caption, about, cards, address, hash and the five exports (32/32) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage
+PASS 1280x800 track off: PNG export byte-identical to v0.4.13 (6/6)
+PASS 1280x800 track off: the CA and n²+1 tracks render byte-identically to v0.4.13 (3/3)
+PASS 1280x800 no horizontal scroll on the track (N = 24, 30, 1448 × four tabs, pair list expanded) (0 overflowing)
+PASS 1280x800 N = 1448 renders on every tab (fourier 594 ms, clifford 1300 ms, hopf 1497 ms, panels 600 ms)
+PASS 1280x800 track on: the five exports and the PNG export run (stats carry the Goldbach line)
+PASS 1280x800: no page errors (0)
+PASS 375x812 fourier: counts 39/41/39/41 unchanged, v0.4.14 = v0.4.13 (39/39/41/41/39/39/41/41)
+PASS 375x812 fourier: counts on the Goldbach track (N = 4, 24, 30, 1448) = 39/39/39/39 (39, no new control)
+PASS 375x812 clifford: counts 39/41/39/41 unchanged, v0.4.14 = v0.4.13 (39/39/41/41/39/39/41/41)
+PASS 375x812 clifford: counts on the Goldbach track (N = 4, 24, 30, 1448) = 39/39/39/39 (39, no new control)
+PASS 375x812 hopf: counts 39/41/39/41 unchanged, v0.4.14 = v0.4.13 (39/39/41/41/39/39/41/41)
+PASS 375x812 hopf: counts on the Goldbach track (N = 4, 24, 30, 1448) = 39/39/39/39 (39, no new control)
+PASS 375x812 menu: "Goldbach N ▸" is the last option of the CA preset menu (after "n²+1 shells ▸"): sq|n²+1 shells ▸ ; gb|Goldbach N ▸
+PASS 375x812 menu: the Goldbach menu lists the back option and every even N = 4…1448 (723 shells)
+PASS 375x812 menu: choosing it from the CA menu enters the track at N = 24 (B = 11, φ₃ = 0, m = 8), address ends &gb=1, the Goldbach menu replaces the CA menu
+PASS 375x812 menu: choosing N = 30 sets B = 14, φ₃ = 0, t₂ = 2, m = 9, n₆ = 1, α = 0 (convention B) and keeps s; address &gb=1
+PASS 375x812 menu: "◂ CA presets" leaves the track: back to CA (B = 5040), address has ca=1 and no gb
+PASS 375x812 track: a dial leaving the preset (m = 9) ends the track; address drops &gb=1
+PASS 375x812 identity: the built viewer's pen = G_N(s) for every even N = 4…200 at 8 s values (792 states): max |diff| = 1.22e-14 <= 1e-12; track on, g(N) and "G_N(0) = 2g(N)" readout correct (792/792, 6 s)
+PASS 375x812 g(N): the viewer's card reads g(N) = #P_N and G_N(0) = 2g(N) equal to independent trial division for all 723 even N = 4…1448 (14 s)
+PASS 375x812 identity at large N (210 … 1448), 24 states: max |diff| = 2.15e-14
+PASS 375x812 branch table (DOM, N <= 200): every masked branch chip reads raw (N/2, ∓a_p), primitive ×1 (equal pair ×N/2), unknot exactly for a_p <= 1, T(min,max) with mirror signs, k = p or N − p (1135 chips)
+PASS 375x812 ghosts, Fourier, N = 24: 6 rays in the pen, 2 ghosted rays drawn, all 8 hit targets, 7 walk vertices, label in the caption
+PASS 375x812 ghosts, Clifford, N = 24: 6 solid branches + dots, 2 ghosted, one leaf, label in the caption
+PASS 375x812 ghosts, Hopf base, N = 24: 7 walk vertices, 6 solid dots, 2 ghost dots, caption "no new claim"
+PASS 375x812 ghosts, Fourier, N = 30: 6 rays in the pen, 3 ghosted rays drawn, all 9 hit targets, 7 walk vertices, label in the caption
+PASS 375x812 ghosts, Clifford, N = 30: 6 solid branches + dots, 3 ghosted, one leaf, label in the caption
+PASS 375x812 ghosts, Hopf base, N = 30: 7 walk vertices, 6 solid dots, 3 ghost dots, caption "no new claim"
+PASS 375x812 ghosts, Fourier, N = 120: 24 rays in the pen, 30 ghosted rays drawn, all 54 hit targets, 25 walk vertices, label in the caption
+PASS 375x812 ghosts, Clifford, N = 120: 24 solid branches + dots, 30 ghosted, one leaf, label in the caption
+PASS 375x812 ghosts, Hopf base, N = 120: 25 walk vertices, 24 solid dots, 30 ghost dots, caption "no new claim"
+PASS 375x812 ghosts, Fourier, N = 210: 38 rays in the pen, 57 ghosted rays drawn, all 95 hit targets, 39 walk vertices, label in the caption
+PASS 375x812 ghosts, Clifford, N = 210: 38 solid branches + dots, 57 ghosted, one leaf, label in the caption
+PASS 375x812 ghosts, Hopf base, N = 210: 39 walk vertices, 38 solid dots, 57 ghost dots, caption "no new claim"
+PASS 375x812 fixture N = 24, s = 4/3: page reads "|W| ≤ bound … not certified zero"; N/2 = 12 is not prime (no equal pair); twin pair (11, 13) is an unknot; (5, 19) is T(7,12)
+PASS 375x812 guards printed: Interference register, Empty-fiber guard, Unit-fiber guard, "Closure reaches conjugation, not Goldbach." (Rmk II.23.5b), status line; Λ_G and the coprime reference are not shown
+PASS 375x812 N = 30: N/2 = 15, t₂ = 2, m = 9; branches c = ∓4, ∓2, ∓1 with raw (15, ±8), (15, ±4), (15, ±2); (7, 23) is T(8,15)
+PASS 375x812 N = 14 (N/2 = 7 prime): the equal pair is present, weight 2, raw (7,0) → primitive (1,0) ×7, unknot; pen at s = 0 is 2g(N) = 2·2
+PASS 375x812 tilt: a nonzero α_Tilt is REFUSED while the track is on (state unchanged, status says so, track stays on)
+PASS 375x812 tilt: setting α_Tilt = 0 is allowed on the track
+PASS 375x812 tilt: the α_Tilt drawer carries the label "α_Tilt is refused on the Goldbach track"
+PASS 375x812 tilt: the Goldbach shell with α_Tilt = 1/3 and no flag is an ordinary state (track off)
+PASS 375x812 tilt: entering the track with α_Tilt = 1/3 switches it OFF with the status line "α_Tilt switched off (was 1/3)" (not refused)
+PASS 375x812 tilt: address with &tilt=1/3&gb=1: flag refused with a label (α_Tilt ≠ 0), loaded without the track
+PASS 375x812 address: &gb=1 round trip (written, read, reload) in 24/24 states (N = 4, 6, 24, 30, 210, 1448 × four tabs); written only while the track is on
+PASS 375x812 address refusals: duplicate, gb=2, empty, with ca=1, with sq=1, off the preset, n! mode, φ₃ ≠ 0, N = 1450: each refuses the flag only, with a label (9/9)
+PASS 375x812 address: other states and the ca / sq tracks write exactly the v0.4.13 address (no gb) (4/4)
+FAIL 375x812 track off: byte-identical to v0.4.13 for 32 states (incl. the Goldbach shells without the flag, tilt −1/2 too): stage, canvas, caption, about, cards, address, hash and the five exports (32/32) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=in hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage | panels #v=fv-comb-hopf/0.2&shellMode=integer&n1=4&B=11&nMode=intege hstage
+PASS 375x812 track off: PNG export byte-identical to v0.4.13 (6/6)
+PASS 375x812 track off: the CA and n²+1 tracks render byte-identically to v0.4.13 (3/3)
+PASS 375x812 no horizontal scroll on the track (N = 24, 30, 1448 × four tabs, pair list expanded) (0 overflowing)
+PASS 375x812 N = 1448 renders on every tab (fourier 591 ms, clifford 1272 ms, hopf 1436 ms, panels 591 ms)
+PASS 375x812 track on: the five exports and the PNG export run (stats carry the Goldbach line)
+PASS 375x812: no page errors (0)
+SUMMARY browser-check-v0414 94 passed, 2 failed

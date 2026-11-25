@@ -1,0 +1,76 @@
+PASS 1280x800 fourier: counts 39/41/39/41 unchanged (v0.4.13 off / log on / v0.4.12 = 39/39/39/41/41/41/39/39/39/41/41/41)
+PASS 1280x800 clifford: counts 39/41/39/41 unchanged (v0.4.13 off / log on / v0.4.12 = 39/39/39/41/41/41/39/39/39/41/41/41)
+PASS 1280x800 hopf: counts 39/41/39/41 unchanged (v0.4.13 off / log on / v0.4.12 = 39/39/39/41/41/41/39/39/39/41/41/41)
+FAIL 1280x800 fl off: byte-identical to v0.4.12 for 36 states (tilt -1/2 too): stage, canvas, caption, about, cards, address, hash and the five exports (36/36) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=integer&phi3 hstage | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=integer&phi3 hstage
+PASS 1280x800 fl off: PNG export byte-identical to v0.4.12 (12/12)
+PASS 1280x800 fl on: stack canvas identical to v0.4.12 in 6 of 6 states
+PASS 1280x800 fl on: the five exports equal the fl off exports (key aside) in 3 of 3 states
+PASS 1280x800 pen is a linear (similarity) image of the linear walk: one scale k, same directions, max deviation 0.0920 px, 7/7 states
+PASS 1280x800 tip to tail: each drawn step vector equals a drawn tooth vector (multiset match), max mismatch 0.0100 px, 7/7 states
+PASS 1280x800 scale bar present, labelled "pen u" (+ caption line), length = u x pen scale, 7/7 states
+PASS 1280x800 caption carries the required sentence, 7/7 states
+PASS 1280x800 pen largest extent = 1/2 throat radius (to 0.5 px), 7/7 states
+PASS 1280x800 address has no fl key while the layer is off
+PASS 1280x800 toggle writes fl=1, shows log-radius, throat, rings, pen-scale; caption has the v0.4.12 wording
+PASS 1280x800 R(1) = R_t: throat radius 100.8 = 100.8; log rings R_t(1 + k/L)
+PASS 1280x800 reload restores the log view
+PASS 1280x800 toggling off restores the off state byte for byte
+PASS 1280x800 fl inert with the Full stack off
+PASS 1280x800 n6 = 0: stack points at r = 0 counted (1300) and labelled
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"5","phi3":"100","m" view fs=1;fr=1;fl=1 (tilt 1/2): teeth 5, walk true, scale bar true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"5","phi3":"100","m" view fs=1;fr=1;fl=1;ff=1 (tilt 1/2): teeth 5, walk true, scale bar true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"5","phi3":"100","m" view fs=1;fr=1;fl=1;fp=1;fd=1 (tilt 1/2): teeth 5, walk true, scale bar true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m": view fs=1;fr=1;fl=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m": view fs=1;fr=1;fl=1;ff=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m": view fs=1;fr=1;fl=1;fp=1;fd=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m": view fs=1;fr=1;fl=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m": view fs=1;fr=1;fl=1;ff=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m": view fs=1;fr=1;fl=1;fp=1;fd=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"43/2","m view fs=1;fr=1;fl=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"43/2","m view fs=1;fr=1;fl=1;ff=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 1280x800 extra state {"shellMode":"factorial","n1":"4","phi3":"43/2","m view fs=1;fr=1;fl=1;fp=1;fd=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 1280x800 alpha = 1 stack still at R(r): ink at log positions, primary 186,186 reciprocal 186,186; mirror error 6.7e-16
+PASS 1280x800 alpha = -1 stack still at R(r): ink at log positions, primary 186,186 reciprocal 186,186; mirror error 4.4e-16
+PASS 1280x800 clifford: fl changes nothing in this view
+PASS 1280x800 hopf: fl changes nothing in this view
+PASS 1280x800 no horizontal scroll with the Layers menu open and log on (1265 <= 1280)
+PASS 1280x800 no page errors
+PASS 375x812 fourier: counts 39/41/39/41 unchanged (v0.4.13 off / log on / v0.4.12 = 39/39/39/41/41/41/39/39/39/41/41/41)
+PASS 375x812 clifford: counts 39/41/39/41 unchanged (v0.4.13 off / log on / v0.4.12 = 39/39/39/41/41/41/39/39/39/41/41/41)
+PASS 375x812 hopf: counts 39/41/39/41 unchanged (v0.4.13 off / log on / v0.4.12 = 39/39/39/41/41/41/39/39/39/41/41/41)
+FAIL 375x812 fl off: byte-identical to v0.4.12 for 36 states (tilt -1/2 too): stage, canvas, caption, about, cards, address, hash and the five exports (36/36) panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=integer&phi3 hstage | panels #v=fv-comb-hopf/0.2&shellMode=factorial&n1=7&B=5040&nMode=integer&phi3 hstage
+PASS 375x812 fl off: PNG export byte-identical to v0.4.12 (12/12)
+PASS 375x812 fl on: stack canvas identical to v0.4.12 in 6 of 6 states
+PASS 375x812 fl on: the five exports equal the fl off exports (key aside) in 3 of 3 states
+PASS 375x812 pen is a linear (similarity) image of the linear walk: one scale k, same directions, max deviation 0.0920 px, 7/7 states
+PASS 375x812 tip to tail: each drawn step vector equals a drawn tooth vector (multiset match), max mismatch 0.0100 px, 7/7 states
+PASS 375x812 scale bar present, labelled "pen u" (+ caption line), length = u x pen scale, 7/7 states
+PASS 375x812 caption carries the required sentence, 7/7 states
+PASS 375x812 pen largest extent = 1/2 throat radius (to 0.5 px), 7/7 states
+PASS 375x812 address has no fl key while the layer is off
+PASS 375x812 toggle writes fl=1, shows log-radius, throat, rings, pen-scale; caption has the v0.4.12 wording
+PASS 375x812 R(1) = R_t: throat radius 100.8 = 100.8; log rings R_t(1 + k/L)
+PASS 375x812 reload restores the log view
+PASS 375x812 toggling off restores the off state byte for byte
+PASS 375x812 fl inert with the Full stack off
+PASS 375x812 n6 = 0: stack points at r = 0 counted (1300) and labelled
+PASS 375x812 extra state {"shellMode":"factorial","n1":"5","phi3":"100","m" view fs=1;fr=1;fl=1 (tilt 1/2): teeth 5, walk true, scale bar true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"5","phi3":"100","m" view fs=1;fr=1;fl=1;ff=1 (tilt 1/2): teeth 5, walk true, scale bar true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"5","phi3":"100","m" view fs=1;fr=1;fl=1;fp=1;fd=1 (tilt 1/2): teeth 5, walk true, scale bar true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m": view fs=1;fr=1;fl=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m": view fs=1;fr=1;fl=1;ff=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m": view fs=1;fr=1;fl=1;fp=1;fd=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m": view fs=1;fr=1;fl=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m": view fs=1;fr=1;fl=1;ff=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"22","m": view fs=1;fr=1;fl=1;fp=1;fd=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"43/2","m view fs=1;fr=1;fl=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"43/2","m view fs=1;fr=1;fl=1;ff=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 375x812 extra state {"shellMode":"factorial","n1":"4","phi3":"43/2","m view fs=1;fr=1;fl=1;fp=1;fd=1 (tilt 1/2): teeth 2, walk true, scale bar true
+PASS 375x812 alpha = 1 stack still at R(r): ink at log positions, primary 186,186 reciprocal 186,186; mirror error 6.7e-16
+PASS 375x812 alpha = -1 stack still at R(r): ink at log positions, primary 186,186 reciprocal 186,186; mirror error 4.4e-16
+PASS 375x812 clifford: fl changes nothing in this view
+PASS 375x812 hopf: fl changes nothing in this view
+PASS 375x812 no horizontal scroll with the Layers menu open and log on (360 <= 375)
+PASS 375x812 no page errors
+
+SUMMARY browser-check-v0413: 72 pass, 2 fail

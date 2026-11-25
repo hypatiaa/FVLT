@@ -1,0 +1,210 @@
+[
+  {
+    "id": "tate-c4-b3",
+    "status": "SOURCE_REPORTED_CANDIDATES_ONLY",
+    "script": "E=ellinit([1,-3,-3,0,0]);print(elltors(E));print(ellorder(E,[0,0]));quit\n",
+    "stdout": "? [8, [4, 2], [[0, 3], [-1, 2]]]\n4\n",
+    "runtimeFiles": {
+      "gp-sta.js": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+        "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+      },
+      "gp-sta.wasm": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+        "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+      }
+    }
+  },
+  {
+    "id": "tate-c4-rational",
+    "status": "SOURCE_REPORTED_CANDIDATES_ONLY",
+    "script": "E=ellinit([1,-15/16,-15/16,0,0]);print(elltors(E));print(ellorder(E,[0,0]));quit\n",
+    "stdout": "? [8, [4, 2], [[0, 15/16], [3/8, 9/32]]]\n4\n",
+    "runtimeFiles": {
+      "gp-sta.js": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+        "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+      },
+      "gp-sta.wasm": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+        "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+      }
+    }
+  },
+  {
+    "id": "tate-c5",
+    "status": "SOURCE_REPORTED_CANDIDATES_ONLY",
+    "script": "E=ellinit([-1,-2,-2,0,0]);print(elltors(E));print(ellorder(E,[0,0]));quit\n",
+    "stdout": "? [5, [5], [[0, 2]]]\n5\n",
+    "runtimeFiles": {
+      "gp-sta.js": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+        "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+      },
+      "gp-sta.wasm": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+        "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+      }
+    }
+  },
+  {
+    "id": "tate-c6",
+    "status": "SOURCE_REPORTED_CANDIDATES_ONLY",
+    "script": "E=ellinit([-1,-6,-6,0,0]);print(elltors(E));print(ellorder(E,[0,0]));quit\n",
+    "stdout": "? [6, [6], [[0, 6]]]\n6\n",
+    "runtimeFiles": {
+      "gp-sta.js": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+        "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+      },
+      "gp-sta.wasm": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+        "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+      }
+    }
+  },
+  {
+    "id": "tate-c7",
+    "status": "SOURCE_REPORTED_CANDIDATES_ONLY",
+    "script": "E=ellinit([-5,-18,-18,0,0]);print(elltors(E));print(ellorder(E,[0,0]));quit\n",
+    "stdout": "? [7, [7], [[0, 18]]]\n7\n",
+    "runtimeFiles": {
+      "gp-sta.js": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+        "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+      },
+      "gp-sta.wasm": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+        "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+      }
+    }
+  },
+  {
+    "id": "tate-c8-noncyclic",
+    "status": "SOURCE_REPORTED_CANDIDATES_ONLY",
+    "script": "E=ellinit([-7/3,-10,-10,0,0]);print(elltors(E));print(ellorder(E,[0,0]));quit\n",
+    "stdout": "? [16, [8, 2], [[0, 10], [-10/9, 100/27]]]\n8\n",
+    "runtimeFiles": {
+      "gp-sta.js": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+        "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+      },
+      "gp-sta.wasm": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+        "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+      }
+    }
+  },
+  {
+    "id": "tate-c8",
+    "status": "SOURCE_REPORTED_CANDIDATES_ONLY",
+    "script": "E=ellinit([1/3,-1,-1,0,0]);print(elltors(E));print(ellorder(E,[0,0]));quit\n",
+    "stdout": "? [8, [8], [[0, 1]]]\n8\n",
+    "runtimeFiles": {
+      "gp-sta.js": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+        "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+      },
+      "gp-sta.wasm": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+        "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+      }
+    }
+  },
+  {
+    "id": "tate-c9",
+    "status": "SOURCE_REPORTED_CANDIDATES_ONLY",
+    "script": "E=ellinit([-17,-126,-126,0,0]);print(elltors(E));print(ellorder(E,[0,0]));quit\n",
+    "stdout": "? [9, [9], [[0, 126]]]\n9\n",
+    "runtimeFiles": {
+      "gp-sta.js": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+        "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+      },
+      "gp-sta.wasm": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+        "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+      }
+    }
+  },
+  {
+    "id": "tate-c10",
+    "status": "SOURCE_REPORTED_CANDIDATES_ONLY",
+    "script": "E=ellinit([31,-270,-270,0,0]);print(elltors(E));print(ellorder(E,[0,0]));quit\n",
+    "stdout": "? [10, [10], [[0, 270]]]\n10\n",
+    "runtimeFiles": {
+      "gp-sta.js": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+        "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+      },
+      "gp-sta.wasm": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+        "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+      }
+    }
+  },
+  {
+    "id": "tate-c12-a",
+    "status": "SOURCE_REPORTED_CANDIDATES_ONLY",
+    "script": "E=ellinit([293/8,-3705/16,-3705/16,0,0]);print(elltors(E));print(ellorder(E,[0,0]));quit\n",
+    "stdout": "? [12, [12], [[0, 3705/16]]]\n12\n",
+    "runtimeFiles": {
+      "gp-sta.js": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+        "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+      },
+      "gp-sta.wasm": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+        "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+      }
+    }
+  },
+  {
+    "id": "tate-c12-b",
+    "status": "SOURCE_REPORTED_CANDIDATES_ONLY",
+    "script": "E=ellinit([1063/27,-25900/81,-25900/81,0,0]);print(elltors(E));print(ellorder(E,[0,0]));quit\n",
+    "stdout": "? [12, [12], [[0, 25900/81]]]\n12\n",
+    "runtimeFiles": {
+      "gp-sta.js": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+        "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+      },
+      "gp-sta.wasm": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+        "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+      }
+    }
+  },
+  {
+    "id": "tate-c2-c6",
+    "status": "SOURCE_REPORTED_CANDIDATES_ONLY",
+    "script": "E=ellinit([11/5,-6/25,-6/25,0,0]);print(elltors(E));print(ellorder(E,[0,0]));quit\n",
+    "stdout": "? [12, [6, 2], [[0, 6/25], [2/25, 4/125]]]\n6\n",
+    "runtimeFiles": {
+      "gp-sta.js": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+        "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+      },
+      "gp-sta.wasm": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+        "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+      }
+    }
+  },
+  {
+    "id": "tate-c2-c8",
+    "status": "SOURCE_REPORTED_CANDIDATES_ONLY",
+    "script": "E=ellinit([31/70,-39/49,-39/49,0,0]);print(elltors(E));print(ellorder(E,[0,0]));quit\n",
+    "stdout": "? [16, [8, 2], [[0, 39/49], [-78/175, 3042/6125]]]\n8\n",
+    "runtimeFiles": {
+      "gp-sta.js": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+        "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+      },
+      "gp-sta.wasm": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+        "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+      }
+    }
+  }
+]

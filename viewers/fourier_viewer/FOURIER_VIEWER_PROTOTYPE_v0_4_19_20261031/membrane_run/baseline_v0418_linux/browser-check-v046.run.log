@@ -1,0 +1,23 @@
+COUNT 1280x800 fourier integer 39 n! 41 CA 39 continuous 41
+PASS 1280x800 fourier: integer 39 (<=41), n! 41, CA 39, continuous 41
+COUNT 1280x800 clifford integer 39 n! 41 CA 39 continuous 41
+PASS 1280x800 clifford: integer 39 (<=41), n! 41, CA 39, continuous 41
+COUNT 1280x800 hopf integer 39 n! 41 CA 39 continuous 41
+PASS 1280x800 hopf: integer 39 (<=41), n! 41, CA 39, continuous 41
+PASS 1280x800 n! shows group, integer hides it, back to n! shows it again with n1 = 6, enabled
+PASS 1280x800 n1 stays in the state and the integer-mode address
+PASS 1280x800 CA hides group; CA -> integer keeps it hidden
+PASS 1280x800 address line, URL and state identical to v0.4.5 (7/7)
+PASS 1280x800 no page errors
+COUNT 375x812 fourier integer 39 n! 41 CA 39 continuous 41
+PASS 375x812 fourier: integer 39 (<=41), n! 41, CA 39, continuous 41
+COUNT 375x812 clifford integer 39 n! 41 CA 39 continuous 41
+PASS 375x812 clifford: integer 39 (<=41), n! 41, CA 39, continuous 41
+COUNT 375x812 hopf integer 39 n! 41 CA 39 continuous 41
+PASS 375x812 hopf: integer 39 (<=41), n! 41, CA 39, continuous 41
+PASS 375x812 n! shows group, integer hides it, back to n! shows it again with n1 = 6, enabled
+PASS 375x812 n1 stays in the state and the integer-mode address
+PASS 375x812 CA hides group; CA -> integer keeps it hidden
+PASS 375x812 address line, URL and state identical to v0.4.5 (7/7)
+PASS 375x812 no page errors
+16 passed, 0 failed

@@ -1,0 +1,15 @@
+# Exact local-structure and clique certificate
+
+For an additive abelian group G and a symmetric finite connection set S excluding0, adjacency is y-x in S. The allowed contexts are Z with S=+-P, a finite cyclic group with a collision-free nonzero image of +-P, or a product of cyclic exponent groups with S consisting of every nonzero single-coordinate vector. All are simple undirected translation-invariant graphs. The singleton/empty-connection case is included.
+
+Translate the inspected origin to0. H is the graph induced on S. Every edge of H, together with0, is a unique triangle through0; therefore trianglesThroughOrigin=|E(H)| and orderedAdjacentPairs=2|E(H)|. These are local counts, not the total number of triangles in an infinite graph.
+
+For any t in G, define U={a in S:a-t in S}, V={a in S:a+t in S}. The desired boundary is U\V, whether or not t belongs to S. When t belongs to S, U and V are H-neighborhoods. Inversion exchanges U and V, so |U\V|=|V\U| and the symmetric difference has twice that size. The implementation computes the full sets instead of assuming t is a vertex of H.
+
+Every clique of G can be translated to contain0. Its other vertices form a clique of H; conversely every H-clique plus0 is a clique of G. Thus omega(G)=1+omega(H), including omega(H)=0 when H is empty. Translating the witness back yields the full-graph certificate at any inspected address.
+
+Search starts from a verified greedy H-clique and a proper greedy coloring of H. In any proper coloring a clique uses at most one vertex of each color, so the color count bounds omega(H). A search frame (R,P) represents all extensions of the already verified clique R using candidate vertices P. Branching on v partitions extensions into those without v and those with v; the latter retain only candidates adjacent to v. The coloring bound |R|+colors(P) is valid for each frame. Pruned frames cannot beat the best witnessed clique. The maximum of the witnessed size and the remaining-frame bounds is therefore a valid global upper bound. Bounds agreeing proves the maximum without reliance on elapsed time.
+
+Packets do not trust an imported frontier or a supplied EXACT label. They rebuild H and the initial search state, execute the deterministic number of recorded steps within a cap, and compare the entire resulting record. No elapsed-time field is used as proof. Proper root coloring, clique adjacency, and both bounds are additionally checked against independent small brute-force constructions in the suite.
+
+For lifting, let M=max(P). If |x|<q-M, no nonzero multiple of q can make x congruent to an element of +-P; equivalently q>M+|x| suffices to compare membership. Apply this to all five positions u+jt, j=-2..2, or all positions a+-t in a general boundary. When u,t and a lie in +-P, the corresponding uniform sufficient bounds are q>4M and q>3M. Strict inequalities and empty P are handled explicitly. These are sufficient graph comparisons, not statements about spectral minima or external asymptotic theorems.

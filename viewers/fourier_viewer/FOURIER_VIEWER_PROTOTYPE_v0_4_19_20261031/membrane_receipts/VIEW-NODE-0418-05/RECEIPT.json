@@ -1,0 +1,6 @@
+{"job":"VIEW-NODE-0418-05","runner":"run_capped_v2.sh","host":"membrane","cwd":"/home/saphir/membrane_compute/viewer/v0_4_18","start_utc":"2026-10-31T12:39:26Z","end_utc":"2026-10-31T12:39:26Z","exit":0,
+ "caps":{"cpu":"core 0","nice":19,"mem_mib":4096,"wall_s":1800},
+ "peak_rss_kib":45548,"wall_used":"0:00.02",
+ "library_check_before":"OK","library_check_after":"OK",
+ "prereg_sha256":"bf2e28cdf55394e991f69c8696a7a7a24647f86689677652e1e364b12c201fa8",
+ "command":"/home/saphir/.local/bin/node host-core/test-v0418-fixups.cjs "}

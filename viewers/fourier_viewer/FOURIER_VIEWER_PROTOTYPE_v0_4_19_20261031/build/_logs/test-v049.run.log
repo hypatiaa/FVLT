@@ -1,0 +1,26 @@
+PASS frozen old instrument sha256 b4cee4e30a75… (read only)
+PASS plane: old buildFullStack() = new stack points for 39 states (n1 3/4/5 × α −1/0/1/1/2 × m 2/3/7, +3 with n6 −1, 1/2, t1 1/2, 3, t2 2, −1): 747238 points, max |Δ|/max(1,|ρ_N|) = 1.78e-14
+PASS exact: stack residues (N t1 + c t2) s/N mod 2 equal comb-core teeth() phases exactly (714 points)
+PASS Clifford: old lift stack (PlaneCliffordLiftCore exact lane where it applies, ContinuousRadialDisplayV1 otherwise; host head selection, budget 12,000 − m) = new stack lift, 39 states, max rel |Δ| 9.38e-14
+PASS lattice: (s, φ₃) cells identical for m = 2, 3, 7, 30 at n1 = 6 (step 3, 241² cells)
+PASS lattice: above m = 30 the host bucket thins it (m = 31: gridCap 56207, step 4), deterministic
+PASS lattice n1 = 3: m 2 vs 7 identical (step 1, 56 cells, 8 N = 0 cells)
+PASS lattice n1 = 4: m 2 vs 7 identical (step 1, 650 cells, 26 N = 0 cells)
+PASS lattice n1 = 5: m 2 vs 7 identical (step 1, 14762 cells, 122 N = 0 cells)
+PASS thinning: B = 6,227,020,800, m = 30: step 25838261, 58081 cells ≤ cap 58081, two builds byte-identical
+PASS thinning: n1 = 7 (B = 5040): step 21 (ceil(5041/241)), 241² lattice values
+PASS key ignores φ₃, s, α_Tilt, nMode, tab and view
+PASS α_Tilt does not change the stack (teeth only)
+PASS key changes with α, n6, t1, t2, m, shell
+PASS n6 = 0: every stack point at the origin (zeroAmplitude flagged)
+PASS N = 0 column (φ₃ = B + 1) counted, not drawn: 26 cells
+PASS B = 1: lattice {0,1,2}², 6 cells with N > 0
+PASS fraction stack (plane): 228 heads, all on |z| = |ρ| (N = 4)
+PASS fraction stack (plane): each head equals the comb-core tooth at its s = j/q
+PASS fraction stack idle with reason for a non-integer gearbox: fraction stack idle — integer gearbox required for the certified fraction-stack register
+PASS label note (2): planar separation |V_N − V_M| ≥ |N − M| on 4 fixed layers (s = 1, 2, 3, 7; c = +1; N = 1 … 121): 29040 pairs (numerical, float64)
+PASS label note: the phase of each layer point is exactly π·a/N + π·s mod 2 (carrier e^{iπs}), from the exact residues (484/484 points, exact)
+PASS label note (3): chordal identity |H(w) − H(v)| = 2|w − v|/(√(1+|w|²)√(1+|v|²)) with this viewer’s host chart (comb-numeric hopf, scale 1): 29040 pairs, max rel deviation 3.4e-14 (numerical)
+PASS label note (6): nearest-point separation ≥ L_N = 2/(√(1+N²)√(1+(N+1)²)) on the sphere: 58080 ordered pairs (numerical)
+PASS host chart = H of the note: H(w) = (2Re w, 2Im w, |w|² − 1)/(1+|w|²)
+v0.4.9 unit check: 25 pass / 0 fail

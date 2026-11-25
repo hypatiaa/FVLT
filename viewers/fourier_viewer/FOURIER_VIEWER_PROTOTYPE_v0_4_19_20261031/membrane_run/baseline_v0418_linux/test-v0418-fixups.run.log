@@ -1,0 +1,12 @@
+PASS y² = x³ + 5 at p = 5: reduction type by the tangent cone = additive (additive (cusp))
+PASS y² = x³ + 5 at p = 5: second route, p | c4 = 0 and p | Δ = −10800 (additive)
+PASS y² = x³ + 5 at p = 5: a_p = 0 (the reference value for additive reduction) by route (i), naive count 6 = p + 1
+PASS y² = x³ + 5 at p = 5: a_p = 0 by route (ii), the character sum
+PASS y² = x³ + 5 at p = 5: the label shown is "additive", not "additive multiplicative" (the label rule of panel-elliptic.js, v0.4.18)
+PASS 27a1: y² + y = x³ − 7 at p = 3: reduction type by the tangent cone = additive (additive (cusp))
+PASS 27a1: y² + y = x³ − 7 at p = 3: second route, p | c4 = 0 and p | Δ = −19683 (additive)
+PASS 27a1: y² + y = x³ − 7 at p = 3: a_p = 0 (the reference value for additive reduction) by route (i), naive count 4 = p + 1
+PASS 27a1: y² + y = x³ − 7 at p = 3: a_p = 0 by route (ii), the character sum
+PASS 27a1: y² + y = x³ − 7 at p = 3: the label shown is "additive", not "additive multiplicative" (the label rule of panel-elliptic.js, v0.4.18)
+PASS y² = x³ + 5 at p = 7: good reduction (p ∤ Δ), routes agree: a_p = 1
+SUMMARY test-v0418-fixups: 11 passed, 0 failed

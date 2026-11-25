@@ -1,0 +1,2 @@
+VERIFY-0419-09 (independent verifier of Fourier viewer v0.4.19). Mutation test of test-v0419-fixups: in a scratch copy, redLabel of panel-elliptic.js is
+changed to label additive reduction "additive multiplicative" (the v0.4.17 bug); the unchanged test must then FAIL (exit 1), and the untouched copy must pass 10/0.

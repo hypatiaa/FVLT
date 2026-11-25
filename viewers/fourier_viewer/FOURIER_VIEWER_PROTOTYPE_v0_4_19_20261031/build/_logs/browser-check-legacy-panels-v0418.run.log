@@ -1,0 +1,6 @@
+PASS v0.4.16 reference page present and unchanged (sha256 1da7dc8f…) at /home/saphir/membrane_compute/viewer/mirror/FOURIER_VIEWER_PROTOTYPE_v0_4_16_20261028/dist/comb-hopf.html
+PASS 1280x800 identical to v0.4.16 on 7 states (stage, caption, cards, address, html stage); on the Panels tab after removing the 4 cards of v0.4.17/v0.4.18, the group-E heading, and mapping the decided D heading back
+FAIL 1280x800 D1 on: stage, caption, address identical to v0.4.16; the cards differ only by the one "see also" paragraph of D1
+PASS 375x812 identical to v0.4.16 on 7 states (stage, caption, cards, address, html stage); on the Panels tab after removing the 4 cards of v0.4.17/v0.4.18, the group-E heading, and mapping the decided D heading back
+FAIL 375x812 D1 on: stage, caption, address identical to v0.4.16; the cards differ only by the one "see also" paragraph of D1
+SUMMARY browser-check-legacy-panels-v0418: 3 passed, 2 failed

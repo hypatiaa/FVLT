@@ -1,0 +1,50 @@
+PASS cold period computation at D = 100 (W = 381 bits): 6 ms 632 µs (process.hrtime.bigint); under 2 s
+PASS D = 50: W = 215 working bits; Δ = 37 > 0; not refused
+PASS D = 50: e1 enclosure meets the Sage string ± 10^−105 and has width ≤ 10^−50 (width = 1·2^−215 ≤ 10^−64)
+PASS D = 50: e1 guaranteed digits (50 places) = the Sage string rounded to the same places
+PASS D = 50: e2 enclosure meets the Sage string ± 10^−105 and has width ≤ 10^−50 (width = 1·2^−215 ≤ 10^−64)
+PASS D = 50: e2 guaranteed digits (50 places) = the Sage string rounded to the same places
+PASS D = 50: e3 enclosure meets the Sage string ± 10^−105 and has width ≤ 10^−50 (width = 1·2^−215 ≤ 10^−64)
+PASS D = 50: e3 guaranteed digits (50 places) = the Sage string rounded to the same places
+PASS D = 50: w1 enclosure meets the Sage string ± 10^−105 and has width ≤ 10^−50 (width = 1524·2^−215 ≤ 10^−61)
+PASS D = 50: w1 guaranteed digits (50 places) = the Sage string rounded to the same places
+PASS D = 50: w2_over_i enclosure meets the Sage string ± 10^−105 and has width ≤ 10^−50 (width = 1246·2^−215 ≤ 10^−61)
+PASS D = 50: w2_over_i guaranteed digits (50 places) = the Sage string rounded to the same places
+PASS D = 50: Omega enclosure meets the Sage string ± 10^−58 and has width ≤ 10^−50 (width = 3048·2^−215 ≤ 10^−61)
+PASS D = 50: Omega guaranteed digits (50 places) = the Sage string rounded to the same places
+PASS D = 50: Omega = 2·w1 exactly as intervals, and 2·(w1 string) lies in the Omega enclosure ± 2·10^−105
+PASS D = 50: tau/i = (w2/i)/w1 is consistent: tau/i · w1 meets w2/i (interval product)
+PASS D = 50: roots ordered e1 > e2 > e3 with disjoint enclosures
+PASS D = 50: Vieta on the enclosures of 4x³ − 4x + 1: e1+e2+e3 ∋ 0, e1e2+e1e3+e2e3 ∋ −1, e1e2e3 ∋ −1/4
+PASS D = 50: AGM(√(e1−e3), √(e1−e2)) step table monotone over 7 rows: a_n.hi non-increasing, b_n.lo non-decreasing, b_n.lo ≤ a_n.hi; stop gap ≤ 16 ulps
+PASS D = 50: AGM(√(e1−e3), √(e2−e3)) step table monotone over 7 rows: a_n.hi non-increasing, b_n.lo non-decreasing, b_n.lo ≤ a_n.hi; stop gap ≤ 16 ulps
+PASS D = 100: W = 381 working bits; Δ = 37 > 0; not refused
+PASS D = 100: e1 enclosure meets the Sage string ± 10^−105 and has width ≤ 10^−100 (width = 1·2^−381 ≤ 10^−114)
+PASS D = 100: e1 guaranteed digits (100 places) = the Sage string rounded to the same places
+PASS D = 100: e2 enclosure meets the Sage string ± 10^−105 and has width ≤ 10^−100 (width = 1·2^−381 ≤ 10^−114)
+PASS D = 100: e2 guaranteed digits (100 places) = the Sage string rounded to the same places
+PASS D = 100: e3 enclosure meets the Sage string ± 10^−105 and has width ≤ 10^−100 (width = 1·2^−381 ≤ 10^−114)
+PASS D = 100: e3 guaranteed digits (100 places) = the Sage string rounded to the same places
+PASS D = 100: w1 enclosure meets the Sage string ± 10^−105 and has width ≤ 10^−100 (width = 2681·2^−381 ≤ 10^−111)
+PASS D = 100: w1 guaranteed digits (100 places) = the Sage string rounded to the same places
+PASS D = 100: w2_over_i enclosure meets the Sage string ± 10^−105 and has width ≤ 10^−100 (width = 2195·2^−381 ≤ 10^−111)
+PASS D = 100: w2_over_i guaranteed digits (100 places) = the Sage string rounded to the same places
+PASS D = 100: Omega enclosure meets the Sage string ± 10^−58 and has width ≤ 10^−100 (width = 5362·2^−381 ≤ 10^−110)
+PASS D = 100: Omega guaranteed digits (100 places) = the Sage string rounded to the same places (compared at 56 places: the Omega string has 58)
+PASS D = 100: Omega = 2·w1 exactly as intervals, and 2·(w1 string) lies in the Omega enclosure ± 2·10^−105
+PASS D = 100: tau/i = (w2/i)/w1 is consistent: tau/i · w1 meets w2/i (interval product)
+PASS D = 100: roots ordered e1 > e2 > e3 with disjoint enclosures
+PASS D = 100: Vieta on the enclosures of 4x³ − 4x + 1: e1+e2+e3 ∋ 0, e1e2+e1e3+e2e3 ∋ −1, e1e2e3 ∋ −1/4
+PASS D = 100: AGM(√(e1−e3), √(e1−e2)) step table monotone over 8 rows: a_n.hi non-increasing, b_n.lo non-decreasing, b_n.lo ≤ a_n.hi; stop gap ≤ 16 ulps
+PASS D = 100: AGM(√(e1−e3), √(e2−e3)) step table monotone over 8 rows: a_n.hi non-increasing, b_n.lo non-decreasing, b_n.lo ≤ a_n.hi; stop gap ≤ 16 ulps
+PASS the AGM bound is reported in the record: stopped at n = 7 when a_n.hi − b_n.lo ≤ 16·2^−W; the true AGM M satisfies b_n ≤ M ≤ a_n for every n (b_n increasing, a_n decreasing), so M ∈ [b_n.lo, a_n.hi]
+PASS π (Machin, 80 + 24 terms) meets an independent Euler-formula enclosure 4 atan(1/2) + 4 atan(1/3), width ≤ 10^−100
+PASS π digits at D = 100, point removed, begin with the integer 314159265358979323846264338327950288419716939937510 (3 and the first 50 places, a well-known constant)
+PASS every D = 10 … 100: all seven readouts print D guaranteed places and have width ≤ 10^−D
+PASS D outside 10 … 100 or not an integer is refused
+PASS Δ < 0 (11a1, Δ = -161051): refused with the label “Δ < 0: not implemented in the exact register”, no numbers
+PASS Δ = 0 (y² = x³): refused (singular)
+PASS y² = x³ − x: exact roots 1, 0, −1 found as point intervals; w1 and w2/i agree (square lattice, τ = i)
+PASS isqrt and isqrtCeil are exact floor and ceiling square roots on 2000 test values
+PASS no-float-elliptic scan passes on all 8 new files (8 clean)
+SUMMARY test-elliptic-period: 49 passed, 0 failed

@@ -1,0 +1,1 @@
+VIEW-SAGE-0419-02 (Fourier viewer v0.4.19 builder). Rerun of VIEW-SAGE-0419-01 after fixing its last line: sys.exit(0) on a preparsed Sage Integer printed 0 and exited 1 although all 8 checks passed. Same input a5_moves_v0419.json, same checks. Expected: 8 passed, 0 failed, exit 0.

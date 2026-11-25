@@ -1,0 +1,1 @@
+VIEW-NODE-0419-05 (Fourier viewer v0.4.19 builder). Runs build/no-float-v0419.cjs: the static no-float scan of the 17 code files changed or added in v0.4.19 (view-clifford.js excluded by the brief). Expected: 17 passed, 0 failed.

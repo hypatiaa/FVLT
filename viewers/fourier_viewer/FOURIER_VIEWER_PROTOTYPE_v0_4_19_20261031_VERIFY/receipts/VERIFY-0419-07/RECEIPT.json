@@ -1,0 +1,6 @@
+{"job":"VERIFY-0419-07","runner":"run_capped_v2.sh","host":"membrane","cwd":"/home/saphir/membrane_compute/viewer/verify_0419","start_utc":"2026-10-31T18:56:02Z","end_utc":"2026-10-31T18:56:03Z","exit":0,
+ "caps":{"cpu":"core 0","nice":19,"mem_mib":4096,"wall_s":1800},
+ "peak_rss_kib":48612,"wall_used":"0:00.30",
+ "library_check_before":"OK","library_check_after":"OK",
+ "prereg_sha256":"527ed906fcb3eb9ec466d30e4f6fbccef9798dfe8729153d5de93f958742a036",
+ "command":"bash ef_inject.sh root/FOURIER_VIEWER_PROTOTYPE_v0_4_19_20261031 ef07 "}

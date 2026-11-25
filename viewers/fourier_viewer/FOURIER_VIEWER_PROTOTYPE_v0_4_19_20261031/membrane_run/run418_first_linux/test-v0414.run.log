@@ -1,0 +1,23 @@
+PASS g(N) and the pair list match independent trial division for all 723 even N = 4…1448 (0 mismatches)
+PASS every even N = 4…1448 needs m <= 720 (max m = 719, reach 723/723); N = 1450 is refused
+PASS sum of mask weights = 2g(N) for every even N <= 1448 (G_N(0) = 2g(N), exact integers) (0 bad)
+PASS convention B: t2 = 2 iff N/2 odd, parity of m follows N/2, N = 4 uses m = 3 (0 bad); every +-a_p is in comb(m) (0 bad)
+PASS N/2 odd: the unmasked comb t2 = 2 consists only of odd candidate pairs (e, N - e) (convention B)
+PASS pen = G_N(s) through the built core: N = 4…200 (even), 16 s values, 1584 states: max |diff| = 5.42e-14 (N/2 even 2.3e-14, N/2 odd 5.4e-14) <= 1e-12
+PASS R21 gate open in all 1584 states; W(0) = 2g(N) in every N
+PASS pen = G_N(s) at large N (210 … 1448), 60 states: max |diff| = 3.62e-14
+PASS R_N(s) real: max |Im(W e^{-i pi s})| = 1.9e-14, max |Re - 2 sum cos(2 pi a_p s/N)| = 3.4e-14 (1584 states)
+PASS fixture N = 24, s = 4/3: |pen| = 4.58e-16 <= viewer bound 3.55e-14; the unmasked comb has |W| = 1.000
+PASS ghosted teeth (weight 0) do not enter the pen: the pen is the sum over kept teeth only; giving a ghost weight changes it
+PASS masked branches N <= 200 (1135 rows): raw (N/2, ∓a_p), k = p / N−p, ×1 (equal pair ×N/2), unknot iff a_p <= 1, T(min,max) otherwise with mirror signs (1094 torus-knot rows) (0 bad)
+PASS twin-pair unknots for N <= 200 are N = 8, 12, 24, 36, 60, 84, 120, 144 (a_p = 1)
+PASS exact phases of kept teeth = 2es/N mod 2 and k_c = e (= p or N − p) as exact rationals
+PASS empty fibre (injected): g = 0, emptyFiber flag, every weight 0, the pen is exactly 0 at every vertex
+PASS empty fibre guard text is the kernel wording ("makes no Goldbach-coverage claim"), and no even N in 4…1444 has an empty fibre (finite computation, not a claim)
+PASS tilt: core refuses the mask with alpha_Tilt != 0 (compute refuses with a reason; match says tilt)
+PASS match: every even N = 4…1448 round-trips through patchFor/initial; 8 off-preset states are not matched (--------)
+PASS track off: comb-numeric compute equals the v0.4.13 core byte for byte (18/18 states, tilt 0, -1/2, 1)
+FAIL comb-core.js, orbit-core.js, fraction-stack-core.js, stack-core.js, gearbox-core.js, shell-core.js, ca-core.js, exact-lib unchanged against v0.4.13
+PASS only the expected files differ from v0.4.13: host-core/comb-numeric.js, instruments/comb-hopf/panel.js, instruments/comb-hopf/view-fourier.js, instruments/comb-hopf/view-clifford.js, instruments/comb-hopf/view-hopf.js, instruments/comb-hopf/index.html (+ new host-core/goldbach-core.js)
+PASS guards printed verbatim from kernel v3.2.6: interference register, empty-fiber guard, "Closure reaches conjugation, not Goldbach."
+SUMMARY test-v0414 21 passed, 1 failed

@@ -1,0 +1,8 @@
+INFO baseline FAIL line not in the v0.4.19 list (test-v042): FAIL Fix 1 scope (source): host-core/comb-core.js differs from v0.4.1 by exactly one added line (the N = 0 branch of wilsonN); every other host-core module and 
+INFO baseline FAIL line not in the v0.4.19 list (test-v0412): FAIL source files differing from v0.4.11: host-core/comb-numeric.js, host-core/elliptic-exact-core.js, host-core/elliptic-period-core.js, host-core/field-q2-q5-
+INFO baseline FAIL line not in the v0.4.19 list (test-v0413): FAIL source files differing from v0.4.12: host-core/comb-numeric.js, host-core/elliptic-exact-core.js, host-core/elliptic-period-core.js, host-core/field-q2-q5-
+INFO list: 51 suites, 86 [baseline] lines, 17 [new card] lines
+PASS every [baseline] line is in the same suite of the v0.4.18 Linux baseline logs; no [new card] line is there
+PASS FAIL-line multiset of every suite in logs_of_record/builder_v0419 equals the list
+PASS FAIL-line multiset of every suite in root/FOURIER_VIEWER_PROTOTYPE_v0_4_19_20261031/build/_logs equals the list
+SUMMARY list_honesty: 3 passed, 0 failed

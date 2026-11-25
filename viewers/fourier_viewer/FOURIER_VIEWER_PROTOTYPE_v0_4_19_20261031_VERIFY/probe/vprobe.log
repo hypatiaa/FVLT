@@ -1,0 +1,100 @@
+D1 1280x800 j=30 q=1 attrs {"per":"4096","sub":"1","n":"99267","evsteps":"3070","parts":"32","min":"32","fwd":"3070","notfwd":"0","endB":"1/1","endF":"3070/1"}
+D1 1280x800 j=30 q=1 captions ["row 30, rule 30, q = 1: S_30 = 3070, closes after 1 turn","fibre constant (q = 1): the sampled fibre N_j(t)/1 is 0 mod 1 at every t; the declared lift still draws each event as one full forward fibre loop (2π/q = 2π)"]
+PASS D1 1280x800 j=30 q=1: pieces min 32 >= 32, not-forward 0, end = core end 1/1 | 3070/1
+SHOT v_1280x800_d1_r30_j30_q1.png
+D1 1280x800 j=30 q=2 attrs {"per":"4096","sub":"1","n":"50147","evsteps":"3070","parts":"16","min":"16","fwd":"3070","notfwd":"0","endB":"1/1","endF":"1535/1"}
+D1 1280x800 j=30 q=2 captions []
+PASS D1 1280x800 j=30 q=2: pieces min 16 >= 16, not-forward 0, end = core end 1/1 | 1535/1
+SHOT v_1280x800_d1_r30_j30_q2.png
+D1 1280x800 j=34 q=2 attrs {"per":"4096","sub":"1","n":"99483","evsteps":"6086","parts":"16","min":"16","fwd":"6086","notfwd":"0","endB":"2/1","endF":"3043/1"}
+D1 1280x800 j=34 q=2 captions []
+PASS D1 1280x800 j=34 q=2: pieces min 16 >= 16, not-forward 0, end = core end 2/1 | 3043/1
+SHOT v_1280x800_d1_r30_j34_q2.png
+D1 1280x800 j=26 q=1 attrs {"per":"1024","sub":"1","n":"24833","evsteps":"768","parts":"32","min":"32","fwd":"768","notfwd":"0","endB":"1/1","endF":"768/1"}
+D1 1280x800 j=26 q=1 captions ["row 26, rule 30, q = 1: S_26 = 768, closes after 1 turn","fibre constant (q = 1): the sampled fibre N_j(t)/1 is 0 mod 1 at every t; the declared lift still draws each event as one full forward fibre loop (2π/q = 2π)"]
+PASS D1 1280x800 j=26 q=1: pieces min 32 >= 32, not-forward 0, end = core end 1/1 | 768/1
+SHOT v_1280x800_d1_r30_j26_q1.png
+PASS 6a 1280x800 sphere card: follow and W shown disabled with "not used on this card"
+SPH 1280x800 T1328 read: register: guaranteed balls (one orthogonal step matrix per sign, radius linear in T), P = 96 bits, final radius 30543·2^−96 · coverage 406/432 cells (certain) · uncertain cells: 0 · enclosure wider than ¼ px: 0 of 1329 · pixel undecided: 0 · tooth events (q = r = 1): 339 · compute 18 ms, draw 4 ms
+SPH 1280x800 ds {"role":"pen-cv-sph","points":"1329","uncertified":"0","undecided":"0","teeth":"339","events":"339","arcPoints":"0","edges":"chords"} amber 3524
+SHOT v_1280x800_sph_r30_T1328_teeth_on.png
+PASS 6c 1280x800 tooth-events toggle ok: on draws 339 dots (3524 amber px), off draws 0 (2100 amber px), event count still printed
+SHOT v_1280x800_sph_r30_T1328_teeth_off.png
+DISK 1280x800 T512 register: guaranteed intervals, block floating, P = 192 bits · follow the pen, last W = 200 steps (trail P = 160 bits) · enclosure wider than ¼ px: 0 of 2671 · pixel undecided: 55 · P doubled 0 times · {5,4} patch: 334 edges (exact BFS, depth 8) · compute 3 ms, draw 12 ms
+DISK 1280x800 T512 ds {"u":"0","und":"55","pts":"2671","dbl":"0","cap":"0"}
+PASS 4a 1280x800 disk T=512: "enclosure wider than ¼ px: 0" and "pixel undecided: 55" printed and equal to attributes
+DISK 1280x800 T4096 register: guaranteed intervals, block floating, P = 640 bits · follow the pen, last W = 200 steps (trail P = 160 bits) · enclosure wider than ¼ px: 0 of 2671 · pixel undecided: 48 · P doubled 0 times · {5,4} patch: 334 edges (exact BFS, depth 8) · compute 24 ms, draw 12 ms
+DISK 1280x800 T4096 ds {"u":"0","und":"48","pts":"2671","dbl":"0","cap":"0"}
+PASS 4a 1280x800 disk T=4096: "enclosure wider than ¼ px: 0" and "pixel undecided: 48" printed and equal to attributes
+PASS 4b 1280x800 threshold 50 places: doublings 2, cap 1, cap note shown
+DODECA 1280x800 ds {"role":"pen-cv-sph","points":"10625","uncertified":"0","undecided":"0","teeth":"339","events":"339","arcPoints":"9296","edges":"arcs"}
+DODECA 1280x800 note: Dodecahedron preset, exact in ℚ(√3, √5): cos θ = 1/2, sin θ = √3/2, cos α = √5/3, sin α = 2/3. Shown exactly (host-core/test-pen-sphere.cjs): five lefts (or five rights) close a pentagonal face; the moves reach exactly 60 flags on 20 vertices, every vertex with three neighbours at cos α = √5/3; they generate a group of order 60 isomorphic to A₅ (explicit isomorphism, is_isomorphic(AlternatingGroup(5)) in Sage: the v0.4.18 verifier’s job VERIFY-0418-18, receipt 9a77f4ca…, and this build’s job VIEW-SAGE-0419-02 on the build’s own two moves, receipt 46dd9ccc…); its element orders (1, 15, 20, 24 elements of order 1, 2, 3, 5) are those of A₅. So every stream walks the edges of a spherical dodecahedron. Edges are drawn as great-circle arcs (8 pieces each; the interior points are normalised by intervals and counted with the other points).
+DODECA 1280x800 read: register: exact in K = ℚ(√3, √5) · coverage 20/432 cells (certain) · uncertain cells: 0 · enclosure wider than ¼ px: 0 of 10625 · pixel undecided: 0 · tooth events (q = r = 1): 339 · compute 128 ms, draw 20 ms
+PASS 5a/6d 1280x800 dodecahedron: edges = arcs, 7 interior points per step (arcPoints = 7·T), note says "isomorphic to A₅" with VERIFY-0419-?? no: cites VERIFY-0418-18 and the build job; element orders kept
+SHOT v_1280x800_sph_dodeca_T1328_arcs.png
+LEAN Lean: FVLTS4sSqueezeCornersV1 (library v15: the squeeze glues the corners along XOR fibres), FVLTS4sRule150PenV1.pen_confined (library v16: the planar Rule 150 pen stays in |x| ≤ 3, |y| ≤ 2); Codex-reviewed (PASS WITH FLAGS, #1310 / #1318).
+CREDIT Idea credit: saphir (Rule 30 written on surfaces; the spherical Fourier pen; the sphere squeeze; the Goldbach work). Pen pages and the curvature-pen rule: the Rule 30 skeleton seat. Lean reviews: Codex (PASS WITH FLAGS; #1310 for library v15, #1318 for library v16).
+PASS 5b 1280x800 Codex wording: "Codex-reviewed (PASS WITH FLAGS, #1310 / #1318)", "both Codex-reviewed" gone, credit consistent
+GB 1280x800 strips [{"role":"pen-strip-p1","w":260,"k":"80","n":"10"},{"role":"pen-strip-0","w":260,"k":"80","n":"10"},{"role":"pen-strip-m1","w":260,"k":"80","n":"10"},{"role":"pen-strip-sph","w":320,"k":"73","n":"10"}]
+GB 1280x800 notes ["Shell ticks: ticks every 80 shells (consecutive shell ticks would be closer than 3 px).","Shell ticks: ticks every 73 shells (consecutive shell ticks would be closer than 3 px)."]
+GB 1280x800 order ["Tooth order (decided by saphir, 2026-10-31: both sides): the teeth of the shell’s comb by |c| ascending with +c before −c (odd m, N ≡ 2 mod 4 and N = 4: c = 0, 1, −1, 2, −2, …; even m, N ≡ 0 mod 4 with N ≥ 8, has no c = 0 tooth: 1, −1, 3, −3, …), so every prime pair p ≠ N − p is counted twice, at +c and at −c, and the equal pair p = N/2 once: #+ = 2·g(N) − δ. Each shell is drawn in this order, shell after shell.","Tooth order (decided by saphir, 2026-10-31: both sides): the teeth of the shell’s comb by |c| ascending with +c before −c (odd m, N ≡ 2 mod 4 and N = 4: c = 0, 1, −1, 2, −2, …; even m, N ≡ 0 mod 4 with N ≥ 8, has no c = 0 tooth: 1, −1, 3, −3, …), so every prime pair p ≠ N − p is counted twice, at +c and at −c, and the equal pair p = N/2 once: #+ = 2·g(N) − δ. Each shell is drawn in this order, shell after shell."]
+GB 1280x800 readout Goldbach run N = 4, 6, … 1448: 723 shells, 257430 teeth; + signs: 30534, − signs: 226896; Σg(N) = 15331; #+ = 30534 = 2·Σg(N) − Σδ = 2·15331 − 128 — holds (exact); net turning −196362·90°. Shell boundaries: amber ticks on the strips (not signs).
+GB own k for pen-strip-p1 (W 260): 80, drawn 10
+GB own k for pen-strip-0 (W 260): 80, drawn 10
+GB own k for pen-strip-m1 (W 260): 80, drawn 10
+GB own k for pen-strip-sph (W 320): 73, drawn 10
+PASS 6b 1280x800 run to 1448: every strip k = own smallest k and drawn count; note "ticks every k shells" printed; order sentence on card
+SHOT v_1280x800_curv_gbrun_1448.png
+SHOT v_1280x800_sph_gbrun_1448.png
+PASS 1280x800 no page errors
+D1 375x812 j=30 q=1 attrs {"per":"4096","sub":"1","n":"99267","evsteps":"3070","parts":"32","min":"32","fwd":"3070","notfwd":"0","endB":"1/1","endF":"3070/1"}
+D1 375x812 j=30 q=1 captions ["row 30, rule 30, q = 1: S_30 = 3070, closes after 1 turn","fibre constant (q = 1): the sampled fibre N_j(t)/1 is 0 mod 1 at every t; the declared lift still draws each event as one full forward fibre loop (2π/q = 2π)"]
+PASS D1 375x812 j=30 q=1: pieces min 32 >= 32, not-forward 0, end = core end 1/1 | 3070/1
+SHOT v_375x812_d1_r30_j30_q1.png
+D1 375x812 j=30 q=2 attrs {"per":"4096","sub":"1","n":"50147","evsteps":"3070","parts":"16","min":"16","fwd":"3070","notfwd":"0","endB":"1/1","endF":"1535/1"}
+D1 375x812 j=30 q=2 captions []
+PASS D1 375x812 j=30 q=2: pieces min 16 >= 16, not-forward 0, end = core end 1/1 | 1535/1
+SHOT v_375x812_d1_r30_j30_q2.png
+D1 375x812 j=34 q=2 attrs {"per":"4096","sub":"1","n":"99483","evsteps":"6086","parts":"16","min":"16","fwd":"6086","notfwd":"0","endB":"2/1","endF":"3043/1"}
+D1 375x812 j=34 q=2 captions []
+PASS D1 375x812 j=34 q=2: pieces min 16 >= 16, not-forward 0, end = core end 2/1 | 3043/1
+SHOT v_375x812_d1_r30_j34_q2.png
+D1 375x812 j=26 q=1 attrs {"per":"1024","sub":"1","n":"24833","evsteps":"768","parts":"32","min":"32","fwd":"768","notfwd":"0","endB":"1/1","endF":"768/1"}
+D1 375x812 j=26 q=1 captions ["row 26, rule 30, q = 1: S_26 = 768, closes after 1 turn","fibre constant (q = 1): the sampled fibre N_j(t)/1 is 0 mod 1 at every t; the declared lift still draws each event as one full forward fibre loop (2π/q = 2π)"]
+PASS D1 375x812 j=26 q=1: pieces min 32 >= 32, not-forward 0, end = core end 1/1 | 768/1
+SHOT v_375x812_d1_r30_j26_q1.png
+PASS 6a 375x812 sphere card: follow and W shown disabled with "not used on this card"
+SPH 375x812 T1328 read: register: guaranteed balls (one orthogonal step matrix per sign, radius linear in T), P = 96 bits, final radius 30543·2^−96 · coverage 406/432 cells (certain) · uncertain cells: 0 · enclosure wider than ¼ px: 0 of 1329 · pixel undecided: 0 · tooth events (q = r = 1): 339 · compute 19 ms, draw 4 ms
+SPH 375x812 ds {"role":"pen-cv-sph","points":"1329","uncertified":"0","undecided":"0","teeth":"339","events":"339","arcPoints":"0","edges":"chords"} amber 3524
+SHOT v_375x812_sph_r30_T1328_teeth_on.png
+PASS 6c 375x812 tooth-events toggle ok: on draws 339 dots (3524 amber px), off draws 0 (2100 amber px), event count still printed
+SHOT v_375x812_sph_r30_T1328_teeth_off.png
+DISK 375x812 T512 register: guaranteed intervals, block floating, P = 192 bits · follow the pen, last W = 200 steps (trail P = 160 bits) · enclosure wider than ¼ px: 0 of 2671 · pixel undecided: 55 · P doubled 0 times · {5,4} patch: 334 edges (exact BFS, depth 8) · compute 2 ms, draw 12 ms
+DISK 375x812 T512 ds {"u":"0","und":"55","pts":"2671","dbl":"0","cap":"0"}
+PASS 4a 375x812 disk T=512: "enclosure wider than ¼ px: 0" and "pixel undecided: 55" printed and equal to attributes
+DISK 375x812 T4096 register: guaranteed intervals, block floating, P = 640 bits · follow the pen, last W = 200 steps (trail P = 160 bits) · enclosure wider than ¼ px: 0 of 2671 · pixel undecided: 48 · P doubled 0 times · {5,4} patch: 334 edges (exact BFS, depth 8) · compute 24 ms, draw 12 ms
+DISK 375x812 T4096 ds {"u":"0","und":"48","pts":"2671","dbl":"0","cap":"0"}
+PASS 4a 375x812 disk T=4096: "enclosure wider than ¼ px: 0" and "pixel undecided: 48" printed and equal to attributes
+PASS 4b 375x812 threshold 50 places: doublings 2, cap 1, cap note shown
+DODECA 375x812 ds {"role":"pen-cv-sph","points":"10625","uncertified":"0","undecided":"0","teeth":"339","events":"339","arcPoints":"9296","edges":"arcs"}
+DODECA 375x812 note: Dodecahedron preset, exact in ℚ(√3, √5): cos θ = 1/2, sin θ = √3/2, cos α = √5/3, sin α = 2/3. Shown exactly (host-core/test-pen-sphere.cjs): five lefts (or five rights) close a pentagonal face; the moves reach exactly 60 flags on 20 vertices, every vertex with three neighbours at cos α = √5/3; they generate a group of order 60 isomorphic to A₅ (explicit isomorphism, is_isomorphic(AlternatingGroup(5)) in Sage: the v0.4.18 verifier’s job VERIFY-0418-18, receipt 9a77f4ca…, and this build’s job VIEW-SAGE-0419-02 on the build’s own two moves, receipt 46dd9ccc…); its element orders (1, 15, 20, 24 elements of order 1, 2, 3, 5) are those of A₅. So every stream walks the edges of a spherical dodecahedron. Edges are drawn as great-circle arcs (8 pieces each; the interior points are normalised by intervals and counted with the other points).
+DODECA 375x812 read: register: exact in K = ℚ(√3, √5) · coverage 20/432 cells (certain) · uncertain cells: 0 · enclosure wider than ¼ px: 0 of 10625 · pixel undecided: 0 · tooth events (q = r = 1): 339 · compute 128 ms, draw 20 ms
+PASS 5a/6d 375x812 dodecahedron: edges = arcs, 7 interior points per step (arcPoints = 7·T), note says "isomorphic to A₅" with VERIFY-0419-?? no: cites VERIFY-0418-18 and the build job; element orders kept
+SHOT v_375x812_sph_dodeca_T1328_arcs.png
+LEAN Lean: FVLTS4sSqueezeCornersV1 (library v15: the squeeze glues the corners along XOR fibres), FVLTS4sRule150PenV1.pen_confined (library v16: the planar Rule 150 pen stays in |x| ≤ 3, |y| ≤ 2); Codex-reviewed (PASS WITH FLAGS, #1310 / #1318).
+CREDIT Idea credit: saphir (Rule 30 written on surfaces; the spherical Fourier pen; the sphere squeeze; the Goldbach work). Pen pages and the curvature-pen rule: the Rule 30 skeleton seat. Lean reviews: Codex (PASS WITH FLAGS; #1310 for library v15, #1318 for library v16).
+PASS 5b 375x812 Codex wording: "Codex-reviewed (PASS WITH FLAGS, #1310 / #1318)", "both Codex-reviewed" gone, credit consistent
+GB 375x812 strips [{"role":"pen-strip-p1","w":260,"k":"80","n":"10"},{"role":"pen-strip-0","w":260,"k":"80","n":"10"},{"role":"pen-strip-m1","w":260,"k":"80","n":"10"},{"role":"pen-strip-sph","w":320,"k":"73","n":"10"}]
+GB 375x812 notes ["Shell ticks: ticks every 80 shells (consecutive shell ticks would be closer than 3 px).","Shell ticks: ticks every 73 shells (consecutive shell ticks would be closer than 3 px)."]
+GB 375x812 order ["Tooth order (decided by saphir, 2026-10-31: both sides): the teeth of the shell’s comb by |c| ascending with +c before −c (odd m, N ≡ 2 mod 4 and N = 4: c = 0, 1, −1, 2, −2, …; even m, N ≡ 0 mod 4 with N ≥ 8, has no c = 0 tooth: 1, −1, 3, −3, …), so every prime pair p ≠ N − p is counted twice, at +c and at −c, and the equal pair p = N/2 once: #+ = 2·g(N) − δ. Each shell is drawn in this order, shell after shell.","Tooth order (decided by saphir, 2026-10-31: both sides): the teeth of the shell’s comb by |c| ascending with +c before −c (odd m, N ≡ 2 mod 4 and N = 4: c = 0, 1, −1, 2, −2, …; even m, N ≡ 0 mod 4 with N ≥ 8, has no c = 0 tooth: 1, −1, 3, −3, …), so every prime pair p ≠ N − p is counted twice, at +c and at −c, and the equal pair p = N/2 once: #+ = 2·g(N) − δ. Each shell is drawn in this order, shell after shell."]
+GB 375x812 readout Goldbach run N = 4, 6, … 1448: 723 shells, 257430 teeth; + signs: 30534, − signs: 226896; Σg(N) = 15331; #+ = 30534 = 2·Σg(N) − Σδ = 2·15331 − 128 — holds (exact); net turning −196362·90°. Shell boundaries: amber ticks on the strips (not signs).
+GB own k for pen-strip-p1 (W 260): 80, drawn 10
+GB own k for pen-strip-0 (W 260): 80, drawn 10
+GB own k for pen-strip-m1 (W 260): 80, drawn 10
+GB own k for pen-strip-sph (W 320): 73, drawn 10
+PASS 6b 375x812 run to 1448: every strip k = own smallest k and drawn count; note "ticks every k shells" printed; order sentence on card
+SHOT v_375x812_curv_gbrun_1448.png
+SHOT v_375x812_sph_gbrun_1448.png
+PASS 375x812 no page errors
+SUMMARY vprobe-0419: 26 passed, 0 failed
+EXIT=0

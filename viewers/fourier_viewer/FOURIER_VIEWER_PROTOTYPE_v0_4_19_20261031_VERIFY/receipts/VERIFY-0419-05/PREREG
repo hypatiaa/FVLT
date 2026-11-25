@@ -1,0 +1,2 @@
+VERIFY-0419-05 (independent verifier of Fourier viewer v0.4.19). Sage: decides exactly in Q(sqrt3, sqrt5) the 10 arc coordinates left undecided by
+intervals in VERIFY-0419-04 (build enclosure [0,0]): expected the exact coordinate is 0 in every such case, and no exact 0 has a non-point enclosure. PASS expected.

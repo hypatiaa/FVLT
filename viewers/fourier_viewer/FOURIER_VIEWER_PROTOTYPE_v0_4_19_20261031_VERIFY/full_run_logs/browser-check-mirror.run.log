@@ -1,0 +1,123 @@
+PASS 375x812 T-MA preset 0 (N = 5, m = 5, t₁ = 1, t₂ = 1, s = 1/3): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2, ±2: 4 of M = 4)
+PASS 375x812 T-MA preset 0 (N = 5, m = 5, t₁ = 1, t₂ = 1, s = 1/3): every drawn event lies on a reference longitude within 1e-9 (worst 1.57e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 375x812 T-MA preset 0 (N = 5, m = 5, t₁ = 1, t₂ = 1, s = 1/3): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 375x812 T-MA preset 0 (N = 5, m = 5, t₁ = 1, t₂ = 1, s = 1/3): caption line carries the label "c = 0 · carrier tooth"
+PASS 375x812 T-MA preset 1 (N = 5, m = 6, t₁ = 1, t₂ = 1, s = 1/3): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2, ±3: 6 of M = 6, ±5: 2 of M = 2)
+PASS 375x812 T-MA preset 1 (N = 5, m = 6, t₁ = 1, t₂ = 1, s = 1/3): every drawn event lies on a reference longitude within 1e-9 (worst 2.36e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 375x812 T-MA preset 1 (N = 5, m = 6, t₁ = 1, t₂ = 1, s = 1/3): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 375x812 T-MA preset 1 (N = 5, m = 6, t₁ = 1, t₂ = 1, s = 1/3): caption line carries the label "reference carrier · no tooth"
+PASS 375x812 T-MA preset 2 (N = 5, m = 6, t₁ = 1, t₂ = 1, s = 0): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2, ±3: 6 of M = 6, ±5: 2 of M = 2)
+PASS 375x812 T-MA preset 2 (N = 5, m = 6, t₁ = 1, t₂ = 1, s = 0): every drawn event lies on a reference longitude within 1e-9 (worst 2.36e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 375x812 T-MA preset 2 (N = 5, m = 6, t₁ = 1, t₂ = 1, s = 0): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 375x812 T-MA preset 2 (N = 5, m = 6, t₁ = 1, t₂ = 1, s = 0): caption line carries the label "reference carrier · no tooth"
+PASS 375x812 T-MA preset 3 (N = 4, m = 7, t₁ = 1, t₂ = 1, s = 4/7): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2, ±2: 2 of M = 2, ±3: 6 of M = 6)
+PASS 375x812 T-MA preset 3 (N = 4, m = 7, t₁ = 1, t₂ = 1, s = 4/7): every drawn event lies on a reference longitude within 1e-9 (worst 2.36e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 375x812 T-MA preset 3 (N = 4, m = 7, t₁ = 1, t₂ = 1, s = 4/7): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 375x812 T-MA preset 3 (N = 4, m = 7, t₁ = 1, t₂ = 1, s = 4/7): caption line carries the label "c = 0 · carrier tooth"
+PASS 375x812 T-MA preset 4 (N = 8, m = 4, t₁ = 1/2, t₂ = 1, s = 1): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2, ±3: 6 of M = 6)
+PASS 375x812 T-MA preset 4 (N = 8, m = 4, t₁ = 1/2, t₂ = 1, s = 1): every drawn event lies on a reference longitude within 1e-9 (worst 2.36e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 375x812 T-MA preset 4 (N = 8, m = 4, t₁ = 1/2, t₂ = 1, s = 1): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 375x812 T-MA preset 4 (N = 8, m = 4, t₁ = 1/2, t₂ = 1, s = 1): caption line carries the label "reference carrier · no tooth"
+PASS 375x812 T-MA preset 5 (N = 6, m = 3, t₁ = 2, t₂ = 1/3, s = -5/2): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 1 in a partial window of M = 2)
+PASS 375x812 T-MA preset 5 (N = 6, m = 3, t₁ = 2, t₂ = 1/3, s = -5/2): every drawn event lies on a reference longitude within 1e-9 (worst 1.57e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 375x812 T-MA preset 5 (N = 6, m = 3, t₁ = 2, t₂ = 1/3, s = -5/2): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 375x812 T-MA preset 5 (N = 6, m = 3, t₁ = 2, t₂ = 1/3, s = -5/2): caption line carries the label "c = 0 · carrier tooth"
+PASS 375x812 T-MA preset 6 (N = 3, m = 8, t₁ = 3/2, t₂ = -3/2, s = 7/3, n₆ = −1): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2, ±3: 2 of M = 2, ±5: 10 of M = 10, ±7: 14 of M = 14)
+PASS 375x812 T-MA preset 6 (N = 3, m = 8, t₁ = 3/2, t₂ = -3/2, s = 7/3, n₆ = −1): every drawn event lies on a reference longitude within 1e-9 (worst 2.22e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 375x812 T-MA preset 6 (N = 3, m = 8, t₁ = 3/2, t₂ = -3/2, s = 7/3, n₆ = −1): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 375x812 T-MA preset 6 (N = 3, m = 8, t₁ = 3/2, t₂ = -3/2, s = 7/3, n₆ = −1): caption line carries the label "reference carrier · no tooth"
+PASS 375x812 T-MA preset 7 (N = 2, m = 2, t₁ = 1, t₂ = 1, s = 1): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2)
+PASS 375x812 T-MA preset 7 (N = 2, m = 2, t₁ = 1, t₂ = 1, s = 1): every drawn event lies on a reference longitude within 1e-9 (worst 1.57e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 375x812 T-MA preset 7 (N = 2, m = 2, t₁ = 1, t₂ = 1, s = 1): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 375x812 T-MA preset 7 (N = 2, m = 2, t₁ = 1, t₂ = 1, s = 1): caption line carries the label "reference carrier · no tooth"
+PASS 375x812 T-MA preset 8 (N = 10, m = 5, t₁ = -1, t₂ = 2, s = 0): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2, ±2: 4 of M = 4)
+PASS 375x812 T-MA preset 8 (N = 10, m = 5, t₁ = -1, t₂ = 2, s = 0): every drawn event lies on a reference longitude within 1e-9 (worst 0.00e+0), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 375x812 T-MA preset 8 (N = 10, m = 5, t₁ = -1, t₂ = 2, s = 0): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 375x812 T-MA preset 8 (N = 10, m = 5, t₁ = -1, t₂ = 2, s = 0): caption line carries the label "c = 0 · carrier tooth"
+PASS 375x812 T-MA preset 9 (N = 43/2, m = 4, t₁ = 1, t₂ = 1, s = 1/3): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 in a partial window of M = 4, ±3: 5 in a partial window of M = 12)
+PASS 375x812 T-MA preset 9 (N = 43/2, m = 4, t₁ = 1, t₂ = 1, s = 1/3): every drawn event lies on a reference longitude within 1e-9 (worst 1.57e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 375x812 T-MA preset 9 (N = 43/2, m = 4, t₁ = 1, t₂ = 1, s = 1/3): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 375x812 T-MA preset 9 (N = 43/2, m = 4, t₁ = 1, t₂ = 1, s = 1/3): caption line carries the label "reference carrier · no tooth"
+PASS 375x812 T-MA preset 10 (N = 5, m = 5, t₁ = 0, t₂ = 1, s = 1/3): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2, ±2: 2 of M = 2)
+PASS 375x812 T-MA preset 10 (N = 5, m = 5, t₁ = 0, t₂ = 1, s = 1/3): every drawn event lies on a reference longitude within 1e-9 (worst 1.57e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 375x812 T-MA preset 10 (N = 5, m = 5, t₁ = 0, t₂ = 1, s = 1/3): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 375x812 T-MA preset 10 (N = 5, m = 5, t₁ = 0, t₂ = 1, s = 1/3): caption line carries the label "c = 0 · carrier tooth"
+PASS 375x812 odd comb: Layers menu has the "Mirror axis" toggle (pressed by default), the parity line "mirror c ↦ −c fixes 1 tooth (c = 0): pants (mnemonic) · c = 0 · carrier tooth" and the ±1 line
+PASS 375x812 odd comb with the Layers menu open: no visible text below 13 px (smallest 13.000 px)
+PASS 375x812 even comb: Layers menu has the "Mirror axis" toggle (pressed by default), the parity line "mirror c ↦ −c fixes 0 teeth: line between c = ∓1 (mnemonic) · reference carrier · no tooth" and the ±1 line
+PASS 375x812 even comb with the Layers menu open: no visible text below 13 px (smallest 13.000 px)
+PASS 375x812 toggle off: no longitudes, no event marks, no caption phrase, view key cm=0 in the address, the exact export byte-identical, the pair line still gives the exact M and says "layer off"
+PASS 375x812 toggle on again: longitudes and the 10 event marks of the Z6 comb back, cm back to its default (not in the address)
+PASS 375x812 after a camera drag: still 10 event marks, moved on screen, each on a reference longitude within 1e-9
+PASS 375x812 guard t₂ = 0: no event marks, the longitudes still drawn, the pair line says the trajectories coincide continuously
+PASS 375x812 guard t₁ = 0: the c = 0 tooth is labelled stationary (a point, not the whole longitude); the pair line says both images are the same transverse circle and gives no image-intersection number
+PASS 375x812 guard ρ = 0 (collapsed leaf): no longitudes, no events, a full degenerate caption line says so
+PASS 375x812 R4 t₁·s ∈ ℤ (N = 5, m = 6, t₁ = t₂ = 1, s = 1): the mirror axis is drawn on the real axis (horizontal) and the caption says "mirror axis = real axis (t₁·s ∈ ℤ)" after Q-res
+PASS 375x812 R4 review counterexample (N = 5, offsets ±1, ±3, ±5, t₁ = 1/2, t₂ = 1, s = 1, ρ = 1): resultant −i (numerical), the drawn mirror axis is the carrier line e^{iπ/2}·ℝ (vertical), not the real axis, and the caption makes no real-axis claim
+PASS 375x812 Fourier tab with the mirror axis: no visible text below 13 px (smallest 13.000 px)
+PASS 375x812 R4 Fourier "Mirror axis" toggle off removes the line (view key fm=0)
+FAIL 375x812 v0.4 menu inventory: Fourier Layers = Teeth, Walk, Amber polygon, ÷ Divisors, Mirror axis (5); Clifford pressed layers with swatches = leaf, s-orbits, Grid, Mirror axis (4) {"f":["Teeth","Walk","Amber polygon","÷ Divisors","Mirror axis","○ Full stack","○ Fraction stack"],"c":["leaf","orb","grid","mirror"]}
+PASS 375x812 no horizontal scroll
+PASS 375x812 no console or page errors in the mirror checks
+PASS 1280x800 T-MA preset 0 (N = 5, m = 5, t₁ = 1, t₂ = 1, s = 1/3): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2, ±2: 4 of M = 4)
+PASS 1280x800 T-MA preset 0 (N = 5, m = 5, t₁ = 1, t₂ = 1, s = 1/3): every drawn event lies on a reference longitude within 1e-9 (worst 1.57e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 1280x800 T-MA preset 0 (N = 5, m = 5, t₁ = 1, t₂ = 1, s = 1/3): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 1280x800 T-MA preset 0 (N = 5, m = 5, t₁ = 1, t₂ = 1, s = 1/3): caption line carries the label "c = 0 · carrier tooth"
+PASS 1280x800 T-MA preset 1 (N = 5, m = 6, t₁ = 1, t₂ = 1, s = 1/3): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2, ±3: 6 of M = 6, ±5: 2 of M = 2)
+PASS 1280x800 T-MA preset 1 (N = 5, m = 6, t₁ = 1, t₂ = 1, s = 1/3): every drawn event lies on a reference longitude within 1e-9 (worst 2.36e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 1280x800 T-MA preset 1 (N = 5, m = 6, t₁ = 1, t₂ = 1, s = 1/3): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 1280x800 T-MA preset 1 (N = 5, m = 6, t₁ = 1, t₂ = 1, s = 1/3): caption line carries the label "reference carrier · no tooth"
+PASS 1280x800 T-MA preset 2 (N = 5, m = 6, t₁ = 1, t₂ = 1, s = 0): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2, ±3: 6 of M = 6, ±5: 2 of M = 2)
+PASS 1280x800 T-MA preset 2 (N = 5, m = 6, t₁ = 1, t₂ = 1, s = 0): every drawn event lies on a reference longitude within 1e-9 (worst 2.36e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 1280x800 T-MA preset 2 (N = 5, m = 6, t₁ = 1, t₂ = 1, s = 0): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 1280x800 T-MA preset 2 (N = 5, m = 6, t₁ = 1, t₂ = 1, s = 0): caption line carries the label "reference carrier · no tooth"
+PASS 1280x800 T-MA preset 3 (N = 4, m = 7, t₁ = 1, t₂ = 1, s = 4/7): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2, ±2: 2 of M = 2, ±3: 6 of M = 6)
+PASS 1280x800 T-MA preset 3 (N = 4, m = 7, t₁ = 1, t₂ = 1, s = 4/7): every drawn event lies on a reference longitude within 1e-9 (worst 2.36e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 1280x800 T-MA preset 3 (N = 4, m = 7, t₁ = 1, t₂ = 1, s = 4/7): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 1280x800 T-MA preset 3 (N = 4, m = 7, t₁ = 1, t₂ = 1, s = 4/7): caption line carries the label "c = 0 · carrier tooth"
+PASS 1280x800 T-MA preset 4 (N = 8, m = 4, t₁ = 1/2, t₂ = 1, s = 1): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2, ±3: 6 of M = 6)
+PASS 1280x800 T-MA preset 4 (N = 8, m = 4, t₁ = 1/2, t₂ = 1, s = 1): every drawn event lies on a reference longitude within 1e-9 (worst 2.36e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 1280x800 T-MA preset 4 (N = 8, m = 4, t₁ = 1/2, t₂ = 1, s = 1): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 1280x800 T-MA preset 4 (N = 8, m = 4, t₁ = 1/2, t₂ = 1, s = 1): caption line carries the label "reference carrier · no tooth"
+PASS 1280x800 T-MA preset 5 (N = 6, m = 3, t₁ = 2, t₂ = 1/3, s = -5/2): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 1 in a partial window of M = 2)
+PASS 1280x800 T-MA preset 5 (N = 6, m = 3, t₁ = 2, t₂ = 1/3, s = -5/2): every drawn event lies on a reference longitude within 1e-9 (worst 1.57e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 1280x800 T-MA preset 5 (N = 6, m = 3, t₁ = 2, t₂ = 1/3, s = -5/2): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 1280x800 T-MA preset 5 (N = 6, m = 3, t₁ = 2, t₂ = 1/3, s = -5/2): caption line carries the label "c = 0 · carrier tooth"
+PASS 1280x800 T-MA preset 6 (N = 3, m = 8, t₁ = 3/2, t₂ = -3/2, s = 7/3, n₆ = −1): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2, ±3: 2 of M = 2, ±5: 10 of M = 10, ±7: 14 of M = 14)
+PASS 1280x800 T-MA preset 6 (N = 3, m = 8, t₁ = 3/2, t₂ = -3/2, s = 7/3, n₆ = −1): every drawn event lies on a reference longitude within 1e-9 (worst 2.22e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 1280x800 T-MA preset 6 (N = 3, m = 8, t₁ = 3/2, t₂ = -3/2, s = 7/3, n₆ = −1): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 1280x800 T-MA preset 6 (N = 3, m = 8, t₁ = 3/2, t₂ = -3/2, s = 7/3, n₆ = −1): caption line carries the label "reference carrier · no tooth"
+PASS 1280x800 T-MA preset 7 (N = 2, m = 2, t₁ = 1, t₂ = 1, s = 1): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2)
+PASS 1280x800 T-MA preset 7 (N = 2, m = 2, t₁ = 1, t₂ = 1, s = 1): every drawn event lies on a reference longitude within 1e-9 (worst 1.57e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 1280x800 T-MA preset 7 (N = 2, m = 2, t₁ = 1, t₂ = 1, s = 1): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 1280x800 T-MA preset 7 (N = 2, m = 2, t₁ = 1, t₂ = 1, s = 1): caption line carries the label "reference carrier · no tooth"
+PASS 1280x800 T-MA preset 8 (N = 10, m = 5, t₁ = -1, t₂ = 2, s = 0): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2, ±2: 4 of M = 4)
+PASS 1280x800 T-MA preset 8 (N = 10, m = 5, t₁ = -1, t₂ = 2, s = 0): every drawn event lies on a reference longitude within 1e-9 (worst 0.00e+0), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 1280x800 T-MA preset 8 (N = 10, m = 5, t₁ = -1, t₂ = 2, s = 0): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 1280x800 T-MA preset 8 (N = 10, m = 5, t₁ = -1, t₂ = 2, s = 0): caption line carries the label "c = 0 · carrier tooth"
+PASS 1280x800 T-MA preset 9 (N = 43/2, m = 4, t₁ = 1, t₂ = 1, s = 1/3): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 in a partial window of M = 4, ±3: 5 in a partial window of M = 12)
+PASS 1280x800 T-MA preset 9 (N = 43/2, m = 4, t₁ = 1, t₂ = 1, s = 1/3): every drawn event lies on a reference longitude within 1e-9 (worst 1.57e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 1280x800 T-MA preset 9 (N = 43/2, m = 4, t₁ = 1, t₂ = 1, s = 1/3): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 1280x800 T-MA preset 9 (N = 43/2, m = 4, t₁ = 1, t₂ = 1, s = 1/3): caption line carries the label "reference carrier · no tooth"
+PASS 1280x800 T-MA preset 10 (N = 5, m = 5, t₁ = 0, t₂ = 1, s = 1/3): drawn same-time events per pair equal the exact M = P·|c·t₂|/N (±1: 2 of M = 2, ±2: 2 of M = 2)
+PASS 1280x800 T-MA preset 10 (N = 5, m = 5, t₁ = 0, t₂ = 1, s = 1/3): every drawn event lies on a reference longitude within 1e-9 (worst 1.57e-16), on β = 0 for even k and β = π for odd k, and it is drawn on the canvas (its centre or ring pixel; marks of different pairs can share a point and overlap)
+PASS 1280x800 T-MA preset 10 (N = 5, m = 5, t₁ = 0, t₂ = 1, s = 1/3): both reference longitudes drawn (β = 0 and β = π stubs, two canvas runs of 361 points, labels "β = 0" and "β = π"), independent of whether a tooth traverses them
+PASS 1280x800 T-MA preset 10 (N = 5, m = 5, t₁ = 0, t₂ = 1, s = 1/3): caption line carries the label "c = 0 · carrier tooth"
+PASS 1280x800 odd comb: Layers menu has the "Mirror axis" toggle (pressed by default), the parity line "mirror c ↦ −c fixes 1 tooth (c = 0): pants (mnemonic) · c = 0 · carrier tooth" and the ±1 line
+PASS 1280x800 odd comb with the Layers menu open: no visible text below 13 px (smallest 13.000 px)
+PASS 1280x800 even comb: Layers menu has the "Mirror axis" toggle (pressed by default), the parity line "mirror c ↦ −c fixes 0 teeth: line between c = ∓1 (mnemonic) · reference carrier · no tooth" and the ±1 line
+PASS 1280x800 even comb with the Layers menu open: no visible text below 13 px (smallest 13.000 px)
+PASS 1280x800 toggle off: no longitudes, no event marks, no caption phrase, view key cm=0 in the address, the exact export byte-identical, the pair line still gives the exact M and says "layer off"
+PASS 1280x800 toggle on again: longitudes and the 10 event marks of the Z6 comb back, cm back to its default (not in the address)
+PASS 1280x800 after a camera drag: still 10 event marks, moved on screen, each on a reference longitude within 1e-9
+PASS 1280x800 guard t₂ = 0: no event marks, the longitudes still drawn, the pair line says the trajectories coincide continuously
+PASS 1280x800 guard t₁ = 0: the c = 0 tooth is labelled stationary (a point, not the whole longitude); the pair line says both images are the same transverse circle and gives no image-intersection number
+PASS 1280x800 guard ρ = 0 (collapsed leaf): no longitudes, no events, a full degenerate caption line says so
+PASS 1280x800 R4 t₁·s ∈ ℤ (N = 5, m = 6, t₁ = t₂ = 1, s = 1): the mirror axis is drawn on the real axis (horizontal) and the caption says "mirror axis = real axis (t₁·s ∈ ℤ)" after Q-res
+PASS 1280x800 R4 review counterexample (N = 5, offsets ±1, ±3, ±5, t₁ = 1/2, t₂ = 1, s = 1, ρ = 1): resultant −i (numerical), the drawn mirror axis is the carrier line e^{iπ/2}·ℝ (vertical), not the real axis, and the caption makes no real-axis claim
+PASS 1280x800 Fourier tab with the mirror axis: no visible text below 13 px (smallest 13.000 px)
+PASS 1280x800 R4 Fourier "Mirror axis" toggle off removes the line (view key fm=0)
+FAIL 1280x800 v0.4 menu inventory: Fourier Layers = Teeth, Walk, Amber polygon, ÷ Divisors, Mirror axis (5); Clifford pressed layers with swatches = leaf, s-orbits, Grid, Mirror axis (4) {"f":["Teeth","Walk","Amber polygon","÷ Divisors","Mirror axis","○ Full stack","○ Fraction stack"],"c":["leaf","orb","grid","mirror"]}
+PASS 1280x800 no horizontal scroll
+PASS 1280x800 no console or page errors in the mirror checks
+browser-check-mirror: 120 passed, 2 failed

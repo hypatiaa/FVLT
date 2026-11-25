@@ -1,0 +1,169 @@
+PASS R20 #245: N=1 m=720 t1=-3 t2=-2 s=-1 forward -> -1439/1440
+PASS R20 #245: N=13!+1 m=7 t1=t2=3 s=1e6 both directions, no ALIGN skipped
+PASS R20 (i) N=1 m=3 t1=t2=1 s0=1 forward: no movement (limit)
+PASS R20 (ii) N=1 m=3 t1=0 t2=1 s0=0: refused (4e), no snap
+PASS R20 (iii) N=1 m=3 t1=1 t2=3 s0=1/2 forward -> 8/9
+PASS R20 (iv) finite stop set {0,1}, range [0,1], s0=1 forward: no movement, not a refusal
+PASS R20 (iv) positive control: s0=0 forward lands on stop 1
+PASS R20 (v) integer stops, range [-1,1], s0=1 forward: no movement, no wrap
+PASS R20 (v) negative control: s0=0 forward lands on stop 1
+PASS R20 4a: from a stop, with room, never stays put
+PASS R20 4b: coincident families reported, ALIGN primary
+PASS R20 4c: range-limit landing (stop beyond limit, s0 inside)
+PASS R20 4c: limit that is itself a stop is outcome 2
+PASS R20 4d: no stepping wrap (period-2 walk, step at limit)
+PASS R20 4e: refusal arises for N<=0, t1=0, t2=0, non-integer gears; negative control: integer gears active
+PASS R20 4f: no size cutoff (s0=10^40 steps exactly, agrees with reference)
+PASS R20 PAIR (m=2): integer lattice, guard N>0 only
+PASS R20 labels: ALIGN stop (t₁·s ∈ ℤ) wording, no bare "contact"
+     sweep: 5000 states x2 dirs, stops 6721, range-limit 1524, none 1713, dense(m>=300) 2258, mismatches 0
+PASS R20 random sweep >= 5000 states, both directions vs independent reference (incl. m up to 720)
+PASS R21 D1 witness: B=4! N=24 m=3 t1=1/3 t2=1/2 typed 49 -> kept (gate closed), s_typed=s_eff=49
+PASS R21 invariant wrap: N=25 typed 51 -> s_typed=51, s_eff=1 (mod 2N), E=25; boundary reps (-N,N]
+PASS page defaults (v0.1.1, match the old viewer): n1=4 alpha=1 n6=1 t1=t2=1 m=2 phi3=23, N=2, E=2
+PASS R21 typed entry accepts decimals, fractions and products
+PASS R21 wrap needs N>0: at N=0 s_eff=s_typed
+PASS R21 dial changes: t1 change closing the gate returns s_eff to s_typed and E grows
+PASS R21 dial changes: gate re-opens, E shrinks back
+PASS R21 play through N=0 (phi3 0..B+1): s_typed never changes; range recomputed
+PASS R21 random dial changes never rewrite s_typed (500 steps) and always satisfy the address validation
+PASS R21-S: N=1 PAIR period-2 rep: forward 0 -> 1 commits s_typed=s_eff=1 (no rewrap), then no movement; E fixed
+PASS R21-R: N=1 PAIR no wrap: type 3 -> E=3; back -> 2, E=3; export/reload; forward -> 3
+PASS R21-R controls: E<|sEff|, E<N, non-exact E are each refused as a whole
+PASS R21-EFF-REPLAY: type 0, back -> -1 (no wrap), back -> none; reload keeps -1/-1; back -> none
+PASS R21-EFF-REPLAY mirror: type 0, forward -> 1, reload, forward -> none
+PASS R21 two histories: freshly typed -1 stores s_eff=+1, stepped -1 stores s_eff=-1; each reloads to its own next step
+PASS R21-EFF-REPLAY controls: s_eff neither s_typed nor invariant rep -> refused; s_eff outside [-E,E] -> refused
+PASS R21 unchanged outcomes: refusal and no-movement leave state and export bytes identical
+PASS R21 wrap gate is decided over the drawn objects (planar walk + S3 lift): k_c, N*t1, c*t2 all integral; independent of the tab
+PASS R21 step from stepped state: E never recomputed by a run of steps
+PASS address round trip, tab and view carried
+PASS address refusals: version, unknown key, missing key, duplicate key, non-canonical, bad tab
+PASS exact export excludes tab and view; state export includes them
+PASS exact export is canonical (parse/serialise identity) with trailing LF; changing tab leaves its bytes unchanged
+PASS exact export carries k_c, phases, orders, spread, flags, last step with families
+PASS import JSON path round trip and duplicate-key refusal
+PASS phase order: phase 0 -> 1, phase 1 -> 2, 1/2 -> 4, phases reduced into (-1,1]
+PASS teeth: offsets odd/even, k_c = N t1 + c t2
+PASS spread and alignment flags (exact)
+PASS gearbox: Wilson prime witness n1=4 m=5 g=0; composite exclusion n1=5 m=6
+PASS gearbox: N=0 hold, prev/next gear, signatures
+PASS two distinct Wilson readouts: shell-N test and the order-m witness are separate fields
+PASS shell-N Wilson readout: prime 13 -> prime; 12 -> not; 10001 -> not evaluated
+     numeric: 500 states checked, worst unit-norm error 3.33e-16
+PASS numerical: gate residual within bound, Hopf points unit norm (<1e-12) for 500 random states
+PASS numerical: south pole at W0, tooth latitude (rho^2-1)/(rho^2+1) at host chart; rho=0 labelled, underflow refused
+PASS numerical: N=0 gives the empty state
+PASS numerical values carry a stated bound
+     K_m flags: 166 zero-kernel states among 2000, disagreements 0
+PASS SPREAD/ALIGN exact flags vs numerical |K_m| < 1e-9 at 2000 random states (any disagreement fails)
+PASS gate fixtures G-HOPF-BASE-S2-01 (5 fixtures)
+     chart-compat worst 6.39e-16 over 300
+PASS G-HOPF-BASE-S2-CHART-COMPAT: S2 from the S3 lift equals fromAffine(tooth z) within 1e-10 (300 random states)
+PASS S3 lift: z1/z2 = rho e^{i pi k s/N} (numerical) and carrier gets +1 when n6<0
+PASS stereographic projection statuses: finite, AT_INFINITY (exact north pole), CLIPPED_NEAR_POLE
+     gearbox differences: 0
+PASS gearbox analyze() vs frozen v0.3.2 gearbox.js on 2000 random states (read-only load)
+PASS Wilson shell-N test N=2..200 vs trial-division primality
+PASS Wilson order-m witness p=2..200: PRIME iff (p-1)!+1 = 0 mod p, phi relation consistent
+PASS Wilson order-m witness: residue (n1)!+1 mod p, n1=p-1 (p=7: 0; p=9: 8!+1 mod 9)
+PASS divisors: T=12,B=24 -> {1,2,3,4,6,12}
+PASS divisors: prime s tagged PRIME, unit tagged unit, t2=2 uses "NOT Div(s)"
+PASS divisors: non-integer t2*s -> no shell aligns (no round(s) shadow); s=0 and t2=0 degenerate labels
+PASS divisors: shell truncation (T=1000, B+1=25 keeps divisors <= 25) tagged shell-truncated
+PASS divisors: refusal above the size limit 10^18; limit itself accepted; large factorisation verified
+PASS divisors: negative T uses |T|; negative s is not Div(s)
+PASS contrast exact at N=5,6,7,30 (hand-computed totients)
+PASS shell bracket: N=4 TWIN, N=8 LEFT_PRIME, N=6 TWIN, N=9 NULL, N=10 RIGHT_PRIME
+PASS shell-core totient/tau/isPrime spot checks (Carmichael 561, Mersenne 2^61-1, big semiprime)
+PASS fraction stack fixture: B=24 N=9 m=5 s=72/5 -> q=5, 630 heads, 10 pages, spread-zero columns 18/5,36/5,54/5,72/5,108/5
+PASS fraction stack: 10 azimuth pages u = j*pi/5 (j mod 10) ; 90/5 = 18 is an alignment pole, not a zero
+PASS fraction stack lattice q: s=136/25 -> 25; integer spin fallback odd m (q=m|t2|/gcd(2N,m|t2|)) and even m
+PASS fraction stack gates: N=10 m=5 idle (integer stops), N<=0, non-integer gears, q=61 cap
+     fraction-stack columns checked 9830, spread-zero 219, disagreements 0
+PASS fraction stack: exact spread-zero equals the host Number port (fractionSpinSpreadZero) and numerical |K_m| < 1e-9, 200 random lattices
+PASS fraction stack selection: count = min(raw,4000); even indices floor(i*raw/4000); huge raw never materialised (13!, q=60, m=720)
+PASS fraction stack numerical points are finite unit-consistent S3 projections (display only)
+PASS contrastBand: exact thresholds 3 and 2 (strict): 3 -> warn/no lock, 2 -> dim, 3+1e-40 -> defend/lock although the float is 3, 2+1e-40 -> warn
+PASS contrastBand agrees with independent BigInt cross-multiplication for every shell N = 2..400 (and the known fixtures N=5,6,7,30)
+PASS panel.js decides colour band and lock through SH.contrastBand, not from the float decimal
+PASS wrapKept (R21.2): D1 shell N=24 gate closed: 49 -> label; -24 -> label (wrap would give 24); 5, 24, -23, 0, 47/2 -> no label; 25 -> label
+PASS wrapKept: false when the gate is open (wrap applied, not kept), false at N=0; label state is exactly "gate closed and center(s_typed) != s_typed" over 1500 random states
+PASS PAIR guard (owner decision 2026-10-13): m=2 stepping is active for any t1,t2 (0, non-integer) when N>0, mode PAIR, stops at integers; refused at N<=0
+FAIL fv-build-pins block in dist page equals the sha256 of every inlined module file
+PASS orbit example state: N = 4, rho = 1
+PASS orbit period is the exact lcm(2/|t1|, 2N/|c t2|) for every tooth (BigInt rationals)
+PASS orbit example: every step advances u and v by at most 2 degrees; closed full period; no partial
+PASS orbit example: each of the 7 teeth has a drawn orbit (c = 0 carrier has none only if rate 0)
+PASS orbit window too long for 4,000 points at 2 degrees: partial, exactly 4,000 points, centred on s
+PASS orbit pole break: a point at the pole projects to null (the view splits the polyline there)
+FAIL reference export is readable and is the m=7, N=4, s=4/7 state
+FAIL orbit branches reproduce the export orbitBranches exactly (raw winding, divisor, primitive winding, canonical type, 7 entries)
+FAIL lift branches reproduce exactRationalLift.branches exactly (raw_rate, scale, cleared rate, factor, primitive, closure period, k_c, class, type, chi); c is a string in the new export
+PASS closure periods c = -3 -> 8, c = -2 -> 4, c = 0 -> 2 (addendum 5 s1.3) and k_c = N t1 + c t2
+PASS every Lift JSON branch value is an exact string, rational object or boolean (the canonical serializer refuses JS numbers)
+FAIL generated field at the reference state is Q(zeta_14) and the shell reference Q(zeta_24): both equal the export
+FAIL ambient field derived from the definitions (carrier and offset phases separately, brute force) at the reference state is Q(zeta_14); the export states Q(zeta_56): difference recorded, not forced (56 = lcm(14, 2N))
+PASS ambient field equals the brute-force least n over 1,500 random states; generated divides ambient
+PASS generated field equals the brute-force least n over the tooth phases e^{i pi k_c s/N} (1,500 random states)
+PASS rho = 0 (n6 = 0): "zero amplitude — no generated field", ambient still defined; N = 0: field undefined
+PASS field line at the reference state: generated by the phase factors Q(zeta_14) and phase container (convention) Q(zeta_56), labelled as addendum 7 F7 specifies; N is not repeated in the line
+FAIL phase container equals the frozen export ambient Q(zeta_56) at the reference state, with the full factor 2qN = 2*7*4
+PASS phase container holds every tooth phase exp(i pi k s/N), contains the generated field, and carries D (lcm of the k_c denominators) when some k_c is not an integer (2,000 random states incl. fractional t1, t2)
+PASS exact JSON and Lift cyclotomic_field name the fields generated and phase_container, with host_ambient_equivalent
+PASS fractional k_c (L_k = 3): phase container C = 2*q*N*L_k = 120 (factor 2qN*L_k) and host_ambient_equivalent is false
+PASS closure period is the least s > 0 at which both phases return mod 2 (brute force over the carrier return times j*2/|t1|, or the offset return times when t1 = 0; 600 random states)
+PASS primitive winding has gcd 1; cleared = d * primitive; d = gcd of the cleared rate; cleared = L * raw with L the lcm of the denominators (800 random states, rational gears)
+PASS knot class: UNKNOT iff |p| <= 1 or |q| <= 1; otherwise T(min,max) with chirality sign(p q); chi = sign(p q), "0" when p q = 0 (random)
+PASS mirror (t2 -> -t2) keeps the torus type and flips the chirality sign of every nontrivial branch
+PASS stationary and undefined branches are labelled, never omitted: t1 = t2 = 0 -> all stationary; N = 0 -> all undefined; t1 = 0, t2 != 0 -> c = 0 stationary, others UNKNOT (0,+-1)
+PASS rational gears: the cleared rate uses the common denominator L (t1 = 1/2, t2 = 1/3, N = 4, c = 1: raw (2, -1/3), L = 3, cleared (6, -1))
+PASS chip text carries c, raw, primitive, multiplicity and type (reference c = -3 and c = -2)
+PASS branch visibility codes round-trip over random subsets and survive the state address; the exact export does not contain them
+PASS edge curve: at least 32 samples, consecutive sphere points at most 2 degrees apart, endpoints are the mapped vertices (short and long edges)
+PASS edge curve: every sample is the fromAffine image of a point of the planar segment (inverse stereographic collinearity): the true curve, not a chord
+PASS edge curve: the polyline is broken near the north pole (null samples), finite steps keep the 2-degree bound, and the chart scale divides the plane
+PASS edge curve: a zero-length edge is one repeated point (no division by zero, no null)
+PASS comb walk at the example state: all 7 edges are curves of more than 32 samples with step <= 2 degrees, ending at the mapped vertices
+PASS gates: the five gate keys exist; prime_pair is SEPARATE_GATE and rank4_smith_monodromy is OUT_OF_SCOPE, with the reasons of addendum 7
+PASS gate exact_rational_lift PASS at the reference state (t1, t2, s exact rationals)
+PASS gate exact_rational_lift FAIL when s (or t1) is not an exact rational: it lists the failing names
+PASS gate closed_orbits PASS at the reference state (all 7 branches have a finite exact closure period)
+PASS gate closed_orbits FAIL when both gears are 0 (every branch stationary) and lists all c; FAIL at N = 0 (undefined branches)
+PASS gate closed_orbits is per branch: t1 = 0, t2 = 1, m = 5 makes only the tooth c = 0 stationary: FAIL listing exactly c = 0
+PASS gate integral_frequencies PASS at the reference state (every k_c an integer)
+PASS gate integral_frequencies FAIL for t1 = 1/3 at N = 4, m = 3 (k_c = 4/3 + c): all three branches listed
+PASS gate integral_frequencies is per branch: t2 = 1/2, t1 = 1, N = 4: m = 4 (k_c = 4 + c/2, c odd) fails for every c; m = 5 fails only for c = -1, 1
+PASS gates are never constant: over 600 random states each computed gate takes both PASS and FAIL, and agrees with a direct definition
+PASS rho irrational flag: N = 2, alpha = 1/2 irrational (sqrt 2); N = 4, alpha = 1/2 rational (2); alpha integer, n6 = 0 and N = 1 rational; export carries rho_irrational
+PASS fix round 2026-10-14: N = 2, m = 2, t1 = 1, t2 = 2: tooth c = -1 has k_c = 0 but is baseFixed (not stationary): s2 empty, s3 finite, period 2; c = +1 moves normally
+PASS fix round 2026-10-14: t1 = 0, t2 = 0 keeps every tooth stationary; t1 = 0, t2 = 1, m = 3: c = 0 stationary, the others moving
+PASS v0.3 resolve: nMode default integer; continuous phi3 accepts 7/2, 3.5 and 0 (stored as canonical exact text); Nq always, N only on a shell, Nint; integer mode still refuses 7/2; continuous range 0..B+1
+     rational-N phases: 1000 states (682 between shells), numerical teeth compared in 1000, mismatches 0
+PASS v0.3 rational-N phases equal a direct computation (k_c = N t1 + c t2, phase k_c s/N mod 2, carrier t1 s (+1 if n6 < 0), offset -c t2 s/N, every order), and the numerical tooth equals rho*exp(i pi k_c s/N) from floats (1,000 random rational-N states, more than 500 of them between shells)
+     rational-N K_m flags: 177 zero-kernel states among 2000, disagreements 0
+PASS v0.3 ALIGN and SPREAD flags with rational N (exact, Nq in the existing formulas) agree with the numerical kernel |K_m(beta)| < 1e-9, beta = pi t2 s/N (2,000 random states)
+PASS v0.3 handoff 2.1 (R20, named state N = 7/2, m = 5, t1 = t2 = 1, s = 1/3): SPREAD refused (4e) "SPREAD needs an integer gearbox: N = 7/2"; forward lands on the ALIGN stop 1, backward on 0; label carries the refusal; no ALIGN stop skipped
+PASS v0.3 handoff 2.1: 40 forward and 40 backward steps between shells (N = 43/2, m = 7, t1 = 2, t2 = 3) visit only ALIGN stops s in Z/2 and never a SPREAD stop; on the integer shell N = 21 of the same continuous mode SPREAD families are back (no refusal)
+PASS v0.3 handoff 2.1: PAIR (m = 2) works between shells as now (N = 7/2, s = 1/3: forward 1, backward 0, no refusal); refusals for t1 = 0 or non-integer gears are unchanged (4e with their own reason)
+PASS v0.3 handoff 2.2 (R21) closed case N = 7/2, t1 = t2 = 1, m = 3: k_c = 7/2 + c not integers, gate closed; typed 9 is kept (s_eff = s_typed = 9, E = 9) and "kept: wrap not invariant here" applies; typed 3 (own representative) has no label
+PASS v0.3 handoff 2.2 open case N = 7/2, t1 = t2 = 2, m = 3: k_c = 7 + 2c, N t1 = 7, c t2 = 2c integers, gate open; typed 9 -> s_eff = 2 (mod 2N = 7), E = 7/2; the wrap is invariant: exact tooth, carrier and offset phases equal at s and s + 2N, floats of exp(i pi k_c s/N) and the numerical walk endpoints equal within the bound
+PASS v0.3 handoff 2.3 orbits with rational N = 7/2 (t1 = t2 = 1, m = 3): raw rate (7/2, -c), L = 2, cleared (7, -2c), c = 1: primitive (7,-2), T(2,7)-; closure periods c = +-1: 14, c = 0: 2 (exact)
+PASS v0.3 handoff 2.3 closure period with rational N is the least s > 0 at which both phases return mod 2 (brute force over the carrier return grid, 600 random rational-N states); numeric orbitPeriod agrees
+PASS v0.3 handoff 2.3 long-period rational case N = 1234567/1000 (B = 2000, m = 3, t1 = t2 = 1): orbits c = +-1 are partial (4,000 points) and the record keeps the exact closure period 2469134 (orbit period text, branch closure period and Lift closure_period_s)
+PASS v0.3 handoff 2.4 phase container generalised: N = a/b, s = p/q, C = 2*q*a*L_k; the order of every phase factor divides C, C = 2qN*L_k on a shell, generated = brute-force least n, host_ambient_equivalent iff N integer and L_k = 1 (1,500 random states, mostly between shells)
+PASS v0.3 handoff 2.4 named state N = 7/2, t1 = t2 = 1, m = 3, s = 1/3: k_c = 5/2, 7/2, 9/2 (L_k = 2), a = 7, q = 3: C = 84, host_ambient_equivalent false, factor 2qa*L_k, formula "C = 2*q*a*L_k (N = a/b in lowest terms)", N "7/2" in the JSON; generated Q(zeta_42)
+PASS v0.3 handoff 2.5 fraction stack: idle between shells with the label (N = 9/2, m = 5, s = 72/5); the integer shell N = 9 in continuous mode gives the integer-mode lattice (q = 5, 630 heads)
+PASS v0.3 handoff 2.6 registers: rho = n6*N^alpha is numerical from the float of Nq (N = 7/2, alpha = 1/2: sqrt 3.5 within the bound); rho_irrational is decided exactly from BigInts (7/2, 1/2: true; 9/4, 1/2: false; 8/27, 1/3 and 2/3: false; 9/4, 1/3: true; N = 1 never); the exact export of a between-shells state has no decimal float in it (the schema id aside)
+PASS v0.3 numerical bound uses |ln N| (N = 1/2 between shells: positive, finite; N >= 1: the old formula 8(m + 2 + |alpha|(1 + ln N)) eps max(rho,1))
+PASS v0.3 integer-only readouts switch off between shells with the label "between shells: N = 7/2; shell arithmetic undefined": both Wilson readouts, gearbox (BETWEEN_SHELLS, eligible false, no residency), divisors, shell contrast and bracket, Lift integral_frequencies (NOT_EVALUATED, reason), prime_pair reason; exports carry nMode, N "7/2", N_integer false
+PASS v0.3 continuous mode on an integer shell equals integer mode: for 400 random integer-shell states the continuous copy gives identical teeth, readouts, stop set, gates, branches, cyclotomic JSON, divisors and exact export apart from nMode
+PASS v0.3 address round trip with nMode = continuous and fractional phi3 (7/2); state JSON round trip; refusals: phi3 "3.5" in an address (non-canonical), phi3 7/2 with nMode integer, a 0.2 address without nMode, an unknown nMode
+PASS v0.3 0.1 address upgrade (the only upgrade rule): a v0.2-era address without nMode loads as nMode = integer, every other key unchanged, and re-encodes as 0.2; a 0.1 address carrying nMode is refused; a 0.1 state JSON is refused (unknown schema)
+PASS v0.3 mode switch: integer -> continuous keeps phi3 (23 stays 23); continuous -> integer rounds a non-integer phi3 to the nearest shell and says so (7/2 -> 4 tie upward, 13/4 -> 3, 27/4 -> 7), never silently; an integer phi3 switches without a note
+PASS v0.3 phi3 arrows snap to the next integer shell (continuous 7/2: N - 1 -> 4, N + 1 -> 3; at a shell 4: -> 5 and 3); integer mode unchanged (phi3 +-1, clamped to 0..B+1); Play N: +1 per tick (integer), +1/100 (continuous), null at B + 1
+PASS v0.3 N = 0 in continuous mode (phi3 = B + 1 exactly) is the empty state as today; N between 0 and 1 (phi3 = 49/2) is not empty and is between shells
+PASS v0.3 step 2 (F2): the warning-line short form is exactly "between shells: shell arithmetic undefined" (no fraction); the full label is unchanged and is what the readouts, Wilson, gearbox, divisors, fraction stack, exact export (betweenShells, shell.status) and the Lift gate reason carry at N = 11/4
+PASS v0.3 step 2 (F2): the SPREAD refusal between shells is unchanged in the core (stop set, step record, step label, exact export stepping) at N = 11/4, m = 5, s = 1/3; only its place on the page moved
+PASS v0.3 step 2 (F6): the build-pins block of the dist page has its own id fv-comb-hopf-build/0.1, pairwise distinct from the exact-export id, the state-export id (read from real exports) and the address id
+test-core: 153 passed, 7 failed

@@ -1,0 +1,1 @@
+'use strict';onmessage=async e=>{const {job,action}=e.data;try{const packet=action==='replay'?(await McombFCAPacketV1.replay(e.data.bytes)).packet:action==='derive'?await McombFCAPacketV1.construct(e.data.atomBytes,e.data.options):null;if(!packet)throw Error('Unknown FCA job');postMessage({job,packet});}catch(err){postMessage({job,error:err.message});}};

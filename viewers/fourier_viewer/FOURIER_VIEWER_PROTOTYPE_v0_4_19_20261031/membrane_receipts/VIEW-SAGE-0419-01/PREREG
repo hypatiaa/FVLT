@@ -1,0 +1,1 @@
+VIEW-SAGE-0419-01 (Fourier viewer v0.4.19 builder, Opus 5.5 subagent). Runs build/sage-a5-v0419.sage on a5_moves_v0419.json (written by VIEW-NODE-0419-01 from the build own dodecahedron moves): order 60, is_isomorphic(AlternatingGroup(5)), isomorphism_to, element-order profile 1:1 2:15 3:20 5:24, both moves of order 5, regular action, simple. Expected: 8 passed, 0 failed.

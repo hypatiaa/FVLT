@@ -1,0 +1,11 @@
+PASS panel-elliptic.js (sha256 e6b379cc253226bdf008d79d19155ef2ee7d0e524ab05f925368c809da5423dd) runs in a vm context and exports FVEllipticCards.redLabel and redShort (registered panels: elliptic-points-exact, period-lattice-exact)
+PASS the real redLabel: additive → "additive", nonsplit → "nonsplit multiplicative", split → "split multiplicative", good → "good"; redShort: additive → "additive", split → "split mult."
+PASS y² = x³ + 5 at p = 5: reduction type by the tangent cone = additive (additive (cusp))
+PASS y² = x³ + 5 at p = 5: a_p = 0 by route (i), naive count 6 = p + 1, and by route (ii), the character sum
+PASS y² = x³ + 5 at p = 5: the real redLabel of panel-elliptic.js gives "additive" (not "additive multiplicative")
+PASS 27a1: y² + y = x³ − 7 at p = 3: reduction type by the tangent cone = additive (additive (cusp))
+PASS 27a1: y² + y = x³ − 7 at p = 3: a_p = 0 by route (i), naive count 4 = p + 1, and by route (ii), the character sum
+PASS 27a1: y² + y = x³ − 7 at p = 3: the real redLabel of panel-elliptic.js gives "additive" (not "additive multiplicative")
+PASS y² = x³ + 5 at p = 7: good reduction (p ∤ Δ), routes agree: a_p = 1; the real redLabel gives "good"
+PASS 37a1 at p = 37: multiplicative reduction (nonsplit), the real redLabel gives "nonsplit multiplicative"
+SUMMARY test-v0419-fixups: 10 passed, 0 failed

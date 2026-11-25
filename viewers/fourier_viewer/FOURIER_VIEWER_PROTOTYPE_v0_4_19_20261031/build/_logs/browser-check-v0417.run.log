@@ -1,0 +1,84 @@
+PASS v0.4.16 reference page present and unchanged (sha256 1da7dc8f…)
+FAIL 1280x800 identical to v0.4.16 on 6 states (stage, caption, cards, address, html stage); on the Panels tab the only difference is the two new card elements {"tab":"panels"} new=2 | {"tab":"panels","shellMode":"integer","B":"24"} new=2
+FAIL 1280x800 both cards in group D after the legacy D placeholders, adjacent, collapsed on a fresh page (23 cards) orbit-point-index:true:true contact-sweep:true:true tooth-contacts:true:true basel-cone:true:true reciprocal-record:true:true pi-b-shell:true:true g-robin-margin:true:false branch-primitivity:false:false poincare-disk:false:false cayley-m3:true:true m4-atom:true:true m5-structure:true:true m6-walk:true:true m7-divisor-atom:true:true mcomb-elliptic-bsd:true:true carrier-addition:true:true exact-curve-bsd:true:true clifford-elliptic-bridge:true:true arithmetic-fourier:true:true elliptic-points-exact:false:false period-lattice-exact:false:false pen-curvature-exact:false:false pen-sphere-exact:false:false
+PASS 1280x800 the legacy group-D placeholders mcomb-elliptic-bsd and clifford-elliptic-bridge are still present and still "not yet rebuilt"
+PASS 1280x800 card titles carry the word "exact"
+PASS 1280x800 opened cards render (points card and period card bodies present)
+PASS 1280x800 k = 1: 1P = (0, −1) (exact, over ℚ), 1 steps with case labels p1inf
+PASS 1280x800 k = 5: 5P = (1/4, −3/8) (exact, over ℚ), 4 steps with case labels p1inf>doubling>doubling>generic
+PASS 1280x800 k = 10: 10P = (161/16, 2001/64) (exact, over ℚ), 5 steps with case labels p1inf>doubling>doubling>generic>doubling
+PASS 1280x800 k = 10 matches the Sage fixture 10P = (161/16, 2001/64)
+PASS 1280x800 p = 5: scatter of 8 points drawn (O as the marker outside the grid), P1/P2 lists 8 points of the group, no draw error, cyan ink present
+PASS 1280x800 p = 5: good reduction, no singular mark, #E(F_5) = 8
+PASS 1280x800 p = 5: no horizontal page scroll
+PASS 1280x800 p = 37: scatter of 39 points drawn (O as the marker outside the grid), P1/P2 lists 38 points of the group, no draw error, cyan ink present
+PASS 1280x800 p = 37 (bad): singular point (5, 18) drawn and labelled; reduction nonsplit multiplicative; warning line present; count line states 39 points in all, 38 nonsingular
+PASS 1280x800 p = 37: no horizontal page scroll
+PASS 1280x800 p = 97: scatter of 94 points drawn (O as the marker outside the grid), P1/P2 lists 94 points of the group, no draw error, cyan ink present
+PASS 1280x800 p = 97: good reduction, no singular mark, #E(F_97) = 94
+PASS 1280x800 p = 97: no horizontal page scroll
+PASS 1280x800 p = 5, P1 = O, P2 = (0, 4): exactly one highlighted row, the case "P1 = O" (p1inf), sum (0, 4)
+PASS 1280x800 p = 5, P1 = (0, 4), P2 = O: exactly one highlighted row, the case "P2 = O" (p2inf), sum (0, 4)
+PASS 1280x800 p = 5, P1 = (2, 2), P2 = (2, 2): exactly one highlighted row, the case "P2 = −P1" (opposite), sum O
+PASS 1280x800 p = 5, P1 = (0, 4), P2 = (1, 0): exactly one highlighted row, the case "generic" (generic), sum (0, 0)
+PASS 1280x800 p = 5, P1 = (0, 4), P2 = (0, 4): exactly one highlighted row, the case "doubling" (doubling), sum (1, 4)
+PASS 1280x800 a_p table: 25 rows equal to both core routes; agree = yes on 24 odd p, "route (i) only" at p = 2
+PASS 1280x800 a_p table: p = 37 labelled nonsplit multiplicative, every other row good
+PASS 1280x800 D = 10: the seven readouts equal the core digits and widths, each with 10 guaranteed places
+PASS 1280x800 D = 10: AGM step tables have 6 and 5 rows; the cell is drawn (130 × 106 px); Ω reason shown
+PASS 1280x800 D = 10: compute time shown (2 ms) and under 2000 ms; no horizontal scroll
+PASS 1280x800 D = 50: the seven readouts equal the core digits and widths, each with 50 guaranteed places
+PASS 1280x800 D = 50: AGM step tables have 7 and 7 rows; the cell is drawn (130 × 106 px); Ω reason shown
+PASS 1280x800 D = 50: compute time shown (0 ms) and under 2000 ms; no horizontal scroll
+PASS 1280x800 D = 100: the seven readouts equal the core digits and widths, each with 100 guaranteed places
+PASS 1280x800 D = 100: AGM step tables have 8 and 8 rows; the cell is drawn (130 × 106 px); Ω reason shown
+PASS 1280x800 D = 100: compute time shown (4 ms) and under 2000 ms; no horizontal scroll
+PASS 1280x800 curve 11a1: the refusal label "Δ < 0: not implemented in the exact register" is visible and no readout is shown
+PASS 1280x800 no horizontal page scroll with both cards open
+PASS 1280x800 Collapse / Open panels: both cards reopen with their dials kept (k = 10, D = 100)
+PASS 1280x800 no page errors and no console errors
+FAIL 375x812 identical to v0.4.16 on 6 states (stage, caption, cards, address, html stage); on the Panels tab the only difference is the two new card elements {"tab":"panels"} new=2 | {"tab":"panels","shellMode":"integer","B":"24"} new=2
+FAIL 375x812 both cards in group D after the legacy D placeholders, adjacent, collapsed on a fresh page (23 cards) orbit-point-index:true:true contact-sweep:true:true tooth-contacts:true:true basel-cone:true:true reciprocal-record:true:true pi-b-shell:true:true g-robin-margin:true:false branch-primitivity:false:false poincare-disk:false:false cayley-m3:true:true m4-atom:true:true m5-structure:true:true m6-walk:true:true m7-divisor-atom:true:true mcomb-elliptic-bsd:true:true carrier-addition:true:true exact-curve-bsd:true:true clifford-elliptic-bridge:true:true arithmetic-fourier:true:true elliptic-points-exact:false:false period-lattice-exact:false:false pen-curvature-exact:false:false pen-sphere-exact:false:false
+PASS 375x812 the legacy group-D placeholders mcomb-elliptic-bsd and clifford-elliptic-bridge are still present and still "not yet rebuilt"
+PASS 375x812 card titles carry the word "exact"
+PASS 375x812 opened cards render (points card and period card bodies present)
+PASS 375x812 k = 1: 1P = (0, −1) (exact, over ℚ), 1 steps with case labels p1inf
+PASS 375x812 k = 5: 5P = (1/4, −3/8) (exact, over ℚ), 4 steps with case labels p1inf>doubling>doubling>generic
+PASS 375x812 k = 10: 10P = (161/16, 2001/64) (exact, over ℚ), 5 steps with case labels p1inf>doubling>doubling>generic>doubling
+PASS 375x812 k = 10 matches the Sage fixture 10P = (161/16, 2001/64)
+PASS 375x812 p = 5: scatter of 8 points drawn (O as the marker outside the grid), P1/P2 lists 8 points of the group, no draw error, cyan ink present
+PASS 375x812 p = 5: good reduction, no singular mark, #E(F_5) = 8
+PASS 375x812 p = 5: no horizontal page scroll
+PASS 375x812 p = 37: scatter of 39 points drawn (O as the marker outside the grid), P1/P2 lists 38 points of the group, no draw error, cyan ink present
+PASS 375x812 p = 37 (bad): singular point (5, 18) drawn and labelled; reduction nonsplit multiplicative; warning line present; count line states 39 points in all, 38 nonsingular
+PASS 375x812 p = 37: no horizontal page scroll
+PASS 375x812 p = 97: scatter of 94 points drawn (O as the marker outside the grid), P1/P2 lists 94 points of the group, no draw error, cyan ink present
+PASS 375x812 p = 97: good reduction, no singular mark, #E(F_97) = 94
+PASS 375x812 p = 97: no horizontal page scroll
+PASS 375x812 p = 5, P1 = O, P2 = (0, 4): exactly one highlighted row, the case "P1 = O" (p1inf), sum (0, 4)
+PASS 375x812 p = 5, P1 = (0, 4), P2 = O: exactly one highlighted row, the case "P2 = O" (p2inf), sum (0, 4)
+PASS 375x812 p = 5, P1 = (2, 2), P2 = (2, 2): exactly one highlighted row, the case "P2 = −P1" (opposite), sum O
+PASS 375x812 p = 5, P1 = (0, 4), P2 = (1, 0): exactly one highlighted row, the case "generic" (generic), sum (0, 0)
+PASS 375x812 p = 5, P1 = (0, 4), P2 = (0, 4): exactly one highlighted row, the case "doubling" (doubling), sum (1, 4)
+PASS 375x812 a_p table: 25 rows equal to both core routes; agree = yes on 24 odd p, "route (i) only" at p = 2
+PASS 375x812 a_p table: p = 37 labelled nonsplit multiplicative, every other row good
+PASS 375x812 D = 10: the seven readouts equal the core digits and widths, each with 10 guaranteed places
+PASS 375x812 D = 10: AGM step tables have 6 and 5 rows; the cell is drawn (130 × 106 px); Ω reason shown
+PASS 375x812 D = 10: compute time shown (1 ms) and under 2000 ms; no horizontal scroll
+PASS 375x812 D = 50: the seven readouts equal the core digits and widths, each with 50 guaranteed places
+PASS 375x812 D = 50: AGM step tables have 7 and 7 rows; the cell is drawn (130 × 106 px); Ω reason shown
+PASS 375x812 D = 50: compute time shown (0 ms) and under 2000 ms; no horizontal scroll
+PASS 375x812 D = 100: the seven readouts equal the core digits and widths, each with 100 guaranteed places
+PASS 375x812 D = 100: AGM step tables have 8 and 8 rows; the cell is drawn (130 × 106 px); Ω reason shown
+PASS 375x812 D = 100: compute time shown (5 ms) and under 2000 ms; no horizontal scroll
+PASS 375x812 curve 11a1: the refusal label "Δ < 0: not implemented in the exact register" is visible and no readout is shown
+PASS 375x812 no horizontal page scroll with both cards open
+PASS 375x812 Collapse / Open panels: both cards reopen with their dials kept (k = 10, D = 100)
+PASS 375x812 no page errors and no console errors
+TIMING 1280x800 D = 10: page compute 2 ms, dial round trip 4 ms
+TIMING 1280x800 D = 50: page compute 0 ms, dial round trip 1 ms
+TIMING 1280x800 D = 100: page compute 4 ms, dial round trip 6 ms
+TIMING 375x812 D = 10: page compute 1 ms, dial round trip 4 ms
+TIMING 375x812 D = 50: page compute 0 ms, dial round trip 2 ms
+TIMING 375x812 D = 100: page compute 5 ms, dial round trip 7 ms
+SUMMARY browser-check-v0417: 73 passed, 4 failed

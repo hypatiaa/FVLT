@@ -1,0 +1,56 @@
+PASS fixture source hashes recorded (densities 72d0bd14…, lemma fa24e806…, manifest 677bfe28…)
+PASS pinned sources still match their sha256 (read only; 3 of 3 present)
+PASS rule 30: per_35 = 8192 (fixture) = core 8192 = reference 8192
+PASS rule 30: core orbit = reference orbit mod 2^35 (all 8192 states)
+PASS rule 30: per_{j+1} for every j = 0 … 34 matches the fixture
+PASS rule 30: ones over per_{j+1} for every j matches the fixture (and density, excess)
+PASS rule 30: doubling set (j in 1 … 34) = fixture [1, 3, 4, 6, 7, 9, 15, 16, 24, 25, 27, 29, 34]
+PASS rule 30: j = 0 is a stall (per_0 = per_1 = 1, S_0 = 0, ψ_0 ≡ 0)
+PASS rule 30: stall rows 21, of which density exactly 1/2: 5
+PASS rule 30: stall-row mean / max |ones − zeros|/per as printed (0.0342, 0.2500; exact rational, rounded half-up to 4 places for the comparison only)
+PASS rule 30: F1 A(j,t) = (A(j,0) + N_j(t)) mod 2 for all t < per_35, j ≤ 34 (A from the reference orbit)
+PASS rule 30: N_j(t) by direct count of ψ_j(s) = 1 over s < t (ψ from the reference orbit) for t ≤ 2·per_35
+PASS rule 30: lift_iff per_{j+1} = 2·per_j ⇔ S_j odd (else per_{j+1} = per_j), every j ≤ 34
+PASS rule 30: S_j is the same from every starting point on the base cycle (all windows of length per_j, j ≤ 34)
+PASS rule 30: antiperiodicity lemma on doubling rows: A(j, t + per_j) = 1 − A(j, t) for t < per_j, hence ones = per_{j+1}/2
+PASS rule 30: lifted curve closes after k = q/gcd(q,S_j) turns, and not earlier, for every j ≤ 34 and q ∈ {1,2,4,8}
+PASS rule 30: lifted curve is monotone: base strictly increasing, fibre never decreasing, fibre step = 1/(q·sub) on events only (sub = 3, j ≤ 12)
+PASS rule 90: per_35 = 32 (fixture) = core 32 = reference 32
+PASS rule 90: core orbit = reference orbit mod 2^35 (all 32 states)
+PASS rule 90: per_{j+1} for every j = 0 … 34 matches the fixture
+PASS rule 90: ones over per_{j+1} for every j matches the fixture (and density, excess)
+PASS rule 90: doubling set (j in 1 … 34) = fixture [2, 4, 8, 16, 32]
+PASS rule 90: j = 0 is a stall (per_0 = per_1 = 1, S_0 = 0, ψ_0 ≡ 0)
+PASS rule 90: stall rows 29, of which density exactly 1/2: 0
+PASS rule 90: stall-row mean / max |ones − zeros|/per as printed (0.8405, 1.0000; exact rational, rounded half-up to 4 places for the comparison only)
+PASS rule 90: F1 A(j,t) = (A(j,0) + N_j(t)) mod 2 for all t < per_35, j ≤ 34 (A from the reference orbit)
+PASS rule 90: N_j(t) by direct count of ψ_j(s) = 1 over s < t (ψ from the reference orbit) for t ≤ 2·per_35
+PASS rule 90: lift_iff per_{j+1} = 2·per_j ⇔ S_j odd (else per_{j+1} = per_j), every j ≤ 34
+PASS rule 90: S_j is the same from every starting point on the base cycle (all windows of length per_j, j ≤ 34)
+PASS rule 90: antiperiodicity lemma on doubling rows: A(j, t + per_j) = 1 − A(j, t) for t < per_j, hence ones = per_{j+1}/2
+PASS rule 90: lifted curve closes after k = q/gcd(q,S_j) turns, and not earlier, for every j ≤ 34 and q ∈ {1,2,4,8}
+PASS rule 90: lifted curve is monotone: base strictly increasing, fibre never decreasing, fibre step = 1/(q·sub) on events only (sub = 3, j ≤ 12)
+PASS rule 150: per_35 = 64 (fixture) = core 64 = reference 64
+PASS rule 150: core orbit = reference orbit mod 2^35 (all 64 states)
+PASS rule 150: per_{j+1} for every j = 0 … 34 matches the fixture
+PASS rule 150: ones over per_{j+1} for every j matches the fixture (and density, excess)
+PASS rule 150: doubling set (j in 1 … 34) = fixture [1, 2, 4, 8, 16, 32]
+PASS rule 150: j = 0 is a stall (per_0 = per_1 = 1, S_0 = 0, ψ_0 ≡ 0)
+PASS rule 150: stall rows 28, of which density exactly 1/2: 1
+PASS rule 150: stall-row mean / max |ones − zeros|/per as printed (0.5402, 0.9375; exact rational, rounded half-up to 4 places for the comparison only)
+PASS rule 150: F1 A(j,t) = (A(j,0) + N_j(t)) mod 2 for all t < per_35, j ≤ 34 (A from the reference orbit)
+PASS rule 150: N_j(t) by direct count of ψ_j(s) = 1 over s < t (ψ from the reference orbit) for t ≤ 2·per_35
+PASS rule 150: lift_iff per_{j+1} = 2·per_j ⇔ S_j odd (else per_{j+1} = per_j), every j ≤ 34
+PASS rule 150: S_j is the same from every starting point on the base cycle (all windows of length per_j, j ≤ 34)
+PASS rule 150: antiperiodicity lemma on doubling rows: A(j, t + per_j) = 1 − A(j, t) for t < per_j, hence ones = per_{j+1}/2
+PASS rule 150: lifted curve closes after k = q/gcd(q,S_j) turns, and not earlier, for every j ≤ 34 and q ∈ {1,2,4,8}
+PASS rule 150: lifted curve is monotone: base strictly increasing, fibre never decreasing, fibre step = 1/(q·sub) on events only (sub = 3, j ≤ 12)
+PASS card rule 30, j = 3, q = 2: per_3 = 2, S_3 odd, closes after 2 turns, monodromy nontrivial (doubling)
+PASS card rule 30, j = 5, q = 2: S_5 even, closes after 1 turn, trivial (stall)
+PASS card rule 90, j = 3: density 0 and S_3 = 0 (pure base circle), both labelled
+PASS card j = 0: per_0 = 1, S_0 = 0, k = 1 at every q, labelled j0
+PASS card q = 1: "fibre constant (q = 1)" and k = 1 for every rule and j
+PASS card label text: "row 3, rule 30, q = 4: S_3 = 1, closes after 4 turns"
+PASS dial refusals: rule 110, j = 35, q = 3 throw
+PASS the core has no float token and no DOM access (lexical check of the source, comments stripped)
+SUMMARY test-rule30-ladder: 55 passed, 0 failed

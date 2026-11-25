@@ -1,0 +1,12 @@
+PASS test-v0410: the FAIL lines equal the expected list (3 expected, 3 found)
+PASS test-v0411: the FAIL lines equal the expected list (1 expected, 1 found)
+FAIL test-v0412: the FAIL lines equal the expected list (1 expected, 1 found)  UNEXPECTED: FAIL source files differing from v0.4.11: host-core/comb-numeric.js, host-core/d1-event-pieces.js, host-core/elliptic-exact-core.js, host-core/elliptic-period-core.js, host-core/field-q2-q5-tau.js, ho MISSING: FAIL source files differing from v0.4.11: host-core/comb-numeric.js, host-core/elliptic-exact-core.js, host-core/elliptic-period-core.js, host-core/field-q2-q5-tau.js, host-core/goldbach-core.js, host
+FAIL test-v0413: the FAIL lines equal the expected list (1 expected, 1 found)  UNEXPECTED: FAIL source files differing from v0.4.12: host-core/comb-numeric.js, host-core/d1-event-pieces.js, host-core/elliptic-exact-core.js, host-core/elliptic-period-core.js, host-core/field-q2-q5-tau.js, ho MISSING: FAIL source files differing from v0.4.12: host-core/comb-numeric.js, host-core/elliptic-exact-core.js, host-core/elliptic-period-core.js, host-core/field-q2-q5-tau.js, host-core/goldbach-core.js, host
+PASS test-v0414: the FAIL lines equal the expected list (1 expected, 1 found)
+PASS browser-check-v0410: the FAIL lines equal the expected list (4 expected, 4 found)
+PASS browser-check-v0411: the FAIL lines equal the expected list (2 expected, 2 found)
+PASS browser-check-v0412: the FAIL lines equal the expected list (2 expected, 2 found)
+PASS browser-check-v0413: the FAIL lines equal the expected list (2 expected, 2 found)
+PASS browser-check-v0414: the FAIL lines equal the expected list (2 expected, 2 found)
+PASS browser-check-v0417: the FAIL lines equal the expected list (4 expected, 4 found)
+SUMMARY check-expected-fails-v0418: 9 passed, 2 failed

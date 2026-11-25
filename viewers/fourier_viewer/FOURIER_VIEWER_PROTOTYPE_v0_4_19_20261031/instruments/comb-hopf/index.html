@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Divisor comb · Fourier instrument</title>
+<style>
+/* ---- look and feel: one block of CSS variables (swap this block to restyle; no logic depends on it) ---- */
+:root{
+  color-scheme:dark;
+  --scale:1;
+  --bg-deep:#0c0c18; --bg-panel:#131321; --bg-inset:#08080f; --bg-card:#0e0e1a;
+  --line-grid:#2e2e4a; --line-axis:#45456a;
+  --text-dim:#9a9ab8; --text-mid:#b4b4cc; --text-bright:#d4d4e8;   /* host --text-dim #6a6a86 and --text-mid #9999b3 raised for WCAG AA */
+  --accent-z1:#00e5ff; --accent-z2:#ff5e6c; --accent-z0:#a855f7; --accent-z0-text:#c084fc;
+  --accent-warn:#fbbf24; --accent-good:#10b981; --accent-defend:#ff6b6b;
+  --accent-spine:#f59e0b; --accent-purple:#a855f7;
+  --poly-stroke:#a08000; --poly-text:#c9a227;
+  --font-mono:ui-monospace, SFMono-Regular, Menlo, Consolas, 'JetBrains Mono', 'Segoe UI Symbol', monospace;   /* 'Segoe UI Symbol' named explicitly: the symbol glyphs (arrows, info, full view) were found by the system font fallback, 90 ms of first layout; a named family is found in a few ms */
+  --font-serif:Georgia, 'Cormorant Garamond', 'Times New Roman', serif;
+  /* text floor: every font-size below is wrapped in max(13px, ...) so no A-/A+ setting can render text under 13 px */
+  --fs-xs:max(13px,.8125rem); --fs-sm:max(13px,.875rem); --fs-md:max(13px,.9375rem);
+}
+/* the page is always taller than the window: reserve the scrollbar so the picture does not resize (and re-render) when the cards arrive; the maximised view fills the window */
+html{font-size:calc(16px * var(--scale));scrollbar-gutter:stable}
+html:has(body.maxlock){scrollbar-gutter:auto}
+*{box-sizing:border-box}
+body{margin:0;padding:16px 24px;background:var(--bg-deep);background-image:radial-gradient(circle at 12% 8%,rgba(0,229,255,0.05),transparent 40%),radial-gradient(circle at 88% 92%,rgba(255,94,108,0.05),transparent 40%);
+  color:var(--text-bright);font:max(13px,1rem)/1.5 var(--font-mono);overflow-wrap:anywhere}
+h1{font:500 max(13px,1.5rem)/1.2 var(--font-serif);margin:0}
+.header{max-width:1200px;margin:0 auto 6px;padding-bottom:2px;border-bottom:1px solid var(--line-axis)}
+.hrow{display:flex;align-items:center;justify-content:space-between;gap:6px 12px;flex-wrap:wrap}
+.formula{margin:2px 0 0;color:var(--text-mid);font-size:var(--fs-sm)}
+.size{display:flex;gap:4px;align-items:center;font-size:var(--fs-sm);color:var(--text-mid);flex:0 0 auto;white-space:nowrap}#sizeVal{display:inline-block;min-width:3.2em;white-space:nowrap;text-align:right}
+main{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:14px;align-items:start}
+.panel{background:var(--bg-panel);border:1px solid var(--line-grid);border-radius:6px;padding:12px;min-width:0}
+.panel-label{font-size:var(--fs-xs);text-transform:uppercase;letter-spacing:.08em;color:var(--text-dim);margin-bottom:8px}
+.panel-sub{font-size:var(--fs-sm);color:var(--text-mid);margin:8px 0 2px}
+button,input,select,textarea{font:inherit;color:var(--text-bright);background:var(--bg-inset);border:1px solid var(--line-grid);border-radius:4px;padding:6px 8px;min-height:2.5rem;min-width:0}
+button{cursor:pointer;min-width:2.5rem}
+button:hover,input:hover,select:hover,button:focus,input:focus,select:focus,textarea:focus{border-color:var(--accent-z1);outline:none}
+button[aria-pressed="true"]{background:var(--accent-z1);color:var(--bg-deep);border-color:var(--accent-z1)}
+button.primary{background:var(--accent-spine);color:var(--bg-deep);border-color:var(--accent-spine)}
+button:disabled{opacity:.5;cursor:default}
+input[type=range]{accent-color:var(--accent-z1);padding:0;width:100%;min-height:2.5rem}
+.lbl{font-size:var(--fs-sm);color:var(--text-mid);margin-bottom:4px}
+.row{display:flex;gap:6px;align-items:center;margin-bottom:4px}.row.wrap{flex-wrap:wrap}.row input[type=text]{flex:1;width:0}
+.row select{flex:1}
+.rowx{display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center;margin-bottom:6px}
+.inl{display:flex;gap:4px;align-items:center;font-size:var(--fs-sm)}
+.track{position:relative;flex:1;min-width:0}.marks{position:relative;height:8px}.marks i{position:absolute;top:0;width:2px;height:8px;background:var(--accent-warn)}
+.marks i.sh{width:1px;height:5px;background:var(--text-dim)}   /* v0.3: integer shells on the phi3 track in continuous mode */
+#phirow{flex-wrap:wrap}#phirow #nmode_btn{padding:6px 3px;white-space:nowrap}#phirow .gchip .glab{padding:6px 4px}   /* step 2 (F1): the φ₃ label is a chip; its exact box lives in the φ₃ drawer */
+#phidrawer .drawer{background:var(--bg-inset);border:1px solid var(--line-grid);border-radius:4px;padding:4px 6px;margin-bottom:6px}#phidrawer #phi_range{flex:1 1 100%}#phidrawer .lab{min-width:0}
+.read{font-size:var(--fs-md);color:var(--text-mid)}.read b{color:var(--text-bright)}
+button[aria-disabled="true"]{opacity:.45}.dim{color:var(--text-dim)}.warn{color:var(--accent-warn)}.note{font-size:var(--fs-md);color:var(--text-mid);margin:4px 0}.mono{word-break:break-word;font-size:var(--fs-md)}
+/* shell row */
+#shellrow input#Mbox{width:7.5rem;flex:0 1 7.5rem}#shellrow select{width:4.5rem}#shellrow select#ca_sel{width:6.2rem}#shellrow select#sq_sel{width:8.5rem}
+#shellrow .n1grp{display:inline-flex;align-items:stretch}#shellrow .n1grp>*{border-radius:0;margin:0}#shellrow .n1grp>:first-child{border-radius:4px 0 0 4px}#shellrow .n1grp>:last-child{border-radius:0 4px 4px 0}#shellrow .n1grp button{min-width:2rem;padding:6px 2px}
+#shell_read{margin-left:auto}
+#stage text{font-size:calc(max(13px,13px*var(--scale))/var(--svgk,1))}
+.chips5{display:flex;flex-wrap:wrap;gap:4px 6px;margin-bottom:6px}
+.gchip{display:inline-flex;align-items:stretch}.gchip>*{border-radius:0;margin:0}.gchip>:first-child{border-radius:4px 0 0 4px}.gchip>:last-child{border-radius:0 4px 4px 0}.gchip>:only-child{border-radius:4px}
+.gchip .glab{min-width:2.5rem;padding:6px 8px;color:var(--accent-z1);white-space:nowrap}.gchip button:not(.glab){min-width:2rem;padding:6px 2px}.srow.drawer{flex-wrap:wrap}.srow.drawer input[type=text]{flex:0 1 4.6rem;width:4.6rem;text-align:center}.srow.drawer .track{flex:1 1 6rem}
+.gchip .glab[aria-expanded="true"]{background:var(--accent-z1);color:var(--bg-deep)}
+#drawer .drawer{background:var(--bg-inset);border:1px solid var(--line-grid);border-radius:4px;padding:4px 6px;margin-bottom:6px}
+/* view row, strip, frame */
+#tabs{display:flex;gap:4px;margin-bottom:6px;flex-wrap:wrap}#tabs button{flex:1 1 4rem;padding:6px 4px}
+#toolbar{display:flex;gap:4px;flex-wrap:wrap;margin:6px 0;align-items:center}
+.svg-frame{background:var(--bg-deep);border:1px solid var(--line-grid);border-radius:4px;cursor:grab;touch-action:none;user-select:none;position:relative;max-width:640px;margin:0 auto}
+.svg-frame svg{display:block;width:100%;height:auto;touch-action:none}
+.svg-frame #stagecv{position:absolute;left:0;top:0;width:100%;height:100%;pointer-events:none;display:block}.svg-frame svg{position:relative}   /* canvas layer under the thin SVG overlay (performance round) */
+.frameclose{display:none;position:absolute;top:8px;right:8px;z-index:60}
+.svg-frame.maxed{position:fixed;inset:0;z-index:50;border-radius:0;border:0;display:flex;align-items:center;justify-content:center;max-width:none;margin:0}
+.svg-frame.maxed svg,.svg-frame:fullscreen svg,.svg-frame:-webkit-full-screen svg{width:100%;height:100%}
+.svg-frame:fullscreen,.svg-frame:-webkit-full-screen{display:flex;align-items:center;justify-content:center;max-width:none;margin:0}
+.svg-frame.maxed .frameclose,.svg-frame.full .frameclose{display:block}
+body.maxlock{overflow:hidden}
+#caption{margin:4px 0}#caption p{margin:2px 0;font-size:var(--fs-md);white-space:normal}#caption p.ell{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer;min-height:1.5em}#caption.open p.ell{white-space:normal;overflow:visible}
+/* sliders and transport */
+.srow{display:flex;align-items:center;gap:4px;margin-bottom:4px}.srow .lab{min-width:3.4rem;font-size:var(--fs-sm);color:var(--text-mid)}
+.srow .track{flex:1}.srow input[type=text]{flex:0 1 6.5rem;width:6.5rem}
+#transport{display:flex;gap:4px;align-items:center;flex-wrap:wrap;margin:4px 0 6px}
+#htmlstage{min-height:120px;margin:6px 0}.pmod{background:var(--bg-card);border:1px solid var(--line-grid);border-radius:4px;padding:6px 10px;margin-bottom:6px}.pmod summary{cursor:pointer;min-height:2.5rem;display:flex;align-items:center}
+.cards{display:grid;grid-template-columns:minmax(0,1fr);gap:10px}
+.cards[data-preview]{opacity:.82}.cards[data-preview]::before{content:"preview · cards update 4 times a second and on release";color:var(--text-dim);font-size:var(--fs-xs)}   /* slider drag: the cards may be catching up with the picture */
+.card{background:var(--bg-card)}
+.kv{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:4px 10px;font-size:var(--fs-md)}.kv span{color:var(--text-mid)}.kv b{font-weight:500;word-break:break-word}
+.scroll{overflow-x:auto;max-height:420px;overflow-y:auto}
+table.ph{border-collapse:collapse;width:100%;font-size:var(--fs-md)}table.ph th{color:var(--text-mid);font-weight:400;text-align:left;padding:6px;white-space:nowrap;border-bottom:1px solid var(--line-axis);position:sticky;top:0;background:var(--bg-card)}
+table.ph td{padding:9px 6px;border-bottom:1px solid var(--line-grid);white-space:nowrap}table.ph tr[data-act]{cursor:pointer}table.ph tr.sel{background:rgba(0,229,255,0.1)}
+[hidden]{display:none!important}
+#exports textarea{width:100%;height:100px;font-size:var(--fs-sm)}
+#status,#msg{color:var(--accent-warn);min-height:1.2em;font-size:var(--fs-md)}
+sub,sup{font-size:max(13px,.93em);line-height:0}
+.info{min-width:2.5rem;border-radius:50%;padding:0;border-color:transparent;background:transparent;color:var(--text-dim)}.info:hover,.info:focus,.info[aria-expanded="true"]{border-color:var(--accent-z1);color:var(--text-bright)}.aboutwrap{margin-top:6px}.about{border-top:1px solid var(--line-grid);padding-top:6px}
+#menu .menu{background:var(--bg-inset);border:1px solid var(--line-grid);border-radius:4px;padding:6px;margin-bottom:6px;display:flex;flex-wrap:wrap;gap:4px 6px;align-items:center}#menu .menu>.panel-sub,#menu .menu>.row,#menu .menu>.chips{flex:1 1 100%;margin:2px 0}
+.mi{display:inline-flex;gap:6px;align-items:center;font-size:var(--fs-sm);color:var(--text-mid)}.mi select{min-width:7rem}
+.sws{display:inline-flex;gap:2px;margin-left:5px;vertical-align:middle}.sws i{display:inline-block;width:.8rem;height:.8rem;border-radius:2px;border:1px solid var(--bg-deep)}
+#toolbar{gap:3px}#toolbar button{padding:6px 5px;min-width:2.2rem}#toolbar .info{min-width:2.2rem}
+#menu .chips{display:flex;flex-wrap:wrap;gap:6px;max-height:440px;overflow-y:auto;margin-top:6px}
+#branchcard .chips{display:flex;flex-wrap:wrap;gap:6px;max-height:440px;overflow-y:auto;margin-top:6px}
+.chip{text-align:left;white-space:nowrap;border-width:2px;border-style:solid;user-select:none;touch-action:manipulation}
+.chip[aria-pressed="true"]{background:var(--bg-inset)}
+.chip[aria-pressed="false"]{border-style:dashed;border-width:1px;background:transparent}
+#expmenu{margin-top:4px}#expmenu>div,#expmenu>textarea,#expmenu>.read{flex:1 1 100%}
+@media(max-width:860px){main{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:480px){#caption p{font-size:var(--fs-xs)}.rowx,.chips5,#tabs,#toolbar{margin-bottom:3px}#toolbar{margin-top:3px}#transport{margin:2px 0 3px}.srow{margin-bottom:2px}body{padding:6px 10px}h1{font-size:max(13px,1.1rem)}.hrow{flex-wrap:nowrap}.panel{padding:8px}#shellrow select{width:3.6rem}#shellrow button{padding:6px 4px;min-width:2.25rem}.hide-s{display:none}#tabs button{flex:1 1 auto;white-space:nowrap;padding:6px 2px;min-width:0}#shell_read{margin-left:0}
+  /* amended 2026-10-14, saphir F2: when a warning line is present the caption block is tighter on a phone (margins 4/2 px -> 1 px; font size and line height unchanged, warnings still never ellipsized) */
+  #caption:has(p.warnline){margin:1px 0}#caption:has(p.warnline) p{margin:1px 0}}
+.rhm{font-size:var(--fs-md);min-width:0;overflow-wrap:anywhere}.rhm .rhm-dim{color:var(--text-dim)}.rhm .rhm-good{color:var(--accent-good)}.rhm .rhm-bad{color:var(--accent-defend)}.rhm .rhm-warn{color:var(--accent-warn)}
+.rhm .rhm-exact{font-family:ui-monospace,Consolas,monospace;font-size:13px;overflow-wrap:anywhere}.rhm .rhm-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:8px;margin-top:6px}
+.rhm .rhm-box{border:1px solid var(--line-grid);border-radius:4px;padding:6px 8px;min-width:0}.rhm .rhm-h3{margin:0 0 4px;font-size:var(--fs-md);color:var(--text-bright)}.rhm h4{margin:0 0 4px;font-size:var(--fs-md);color:var(--text-mid);font-weight:600}.rhm .rhm-wide{grid-column:1/-1}
+.rhm .rhm-kv{display:grid;grid-template-columns:minmax(6rem,34%) minmax(0,1fr);gap:2px 10px;margin:0}.rhm .rhm-kv dt{color:var(--text-dim)}.rhm .rhm-kv dd{margin:0}
+.rhm .rhm-badge{display:inline-block;padding:0 6px;border:1px solid var(--line-grid);border-radius:3px;font-weight:600}.rhm .rhm-scroll{overflow-x:auto;max-width:100%}
+.rhm table{border-collapse:collapse;font-variant-numeric:tabular-nums}.rhm td,.rhm th{border:1px solid var(--line-grid);padding:2px 8px;text-align:right}.rhm th{color:var(--text-dim);font-weight:500}
+.rhm .rhm-row{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;margin-top:6px}.rhm details summary{cursor:pointer;color:var(--text-dim)}.rhm pre{white-space:pre-wrap;word-break:break-all;margin:4px 0 0;font-size:13px}.rhm dd{min-width:0;overflow-wrap:anywhere}.rhm dt{min-width:0;overflow-wrap:break-word}@media(max-width:480px){.rhm .rhm-kv{grid-template-columns:minmax(0,1fr)}.rhm .rhm-kv dd{margin:0 0 4px}}
+</style>
+</head>
+<body>
+<div class="header"><div class="hrow"><h1>Divisor comb · Fourier instrument</h1>
+<div class="size"><button type="button" id="sizeDn" aria-label="smaller text">A−</button><button type="button" id="sizeUp" aria-label="larger text">A+</button><span id="sizeVal">100%</span></div></div>
+<p class="formula" id="formula">z_c = n₆·N^α·exp(i·k_c·s·π/N)</p></div>
+<main>
+<section class="panel" id="inst">
+<div id="shellrow" class="rowx"></div>
+<div id="gearrow"></div>
+<div id="tabs" role="tablist"></div>
+<div id="caption" aria-live="polite"></div>
+<div class="svg-frame" id="frame"><canvas id="stagecv" aria-hidden="true"></canvas><svg id="stage" viewBox="0 0 640 480" role="img" aria-label="active view window"></svg><button type="button" id="frameClose" class="frameclose" aria-label="close full view">✕ Close</button></div>
+<div id="toolbar"></div>
+<div id="menu"></div>
+<div id="about"></div>
+<div id="sliders"></div>
+<div id="transport"></div>
+<div id="htmlstage" style="display:none"></div>
+<section id="exports">
+<div class="rowx"><button type="button" data-act="xpng" class="primary">Export PNG</button><button type="button" data-act="expmenu" id="expBtn" aria-expanded="false" aria-haspopup="true">Export ▾</button><span class="read" id="xhash"></span></div>
+<div id="expmenu" class="menu" hidden>
+<button type="button" data-act="xjson">Export JSON</button><button type="button" data-act="xstate">Export state</button><button type="button" data-act="xcsv">Export CSV</button><button type="button" data-act="xlift">Export Lift JSON</button><button type="button" data-act="xpair">Export pair</button><button type="button" data-act="xstats">Copy stats</button><button type="button" data-act="xformula">Copy formula</button><button type="button" data-act="impshow" id="impShow" aria-expanded="false">Import…</button>
+<div id="imp" hidden><div class="panel-sub">Import state (paste a state address, a state JSON or an exact JSON)</div><textarea id="imptxt" aria-label="paste a state to import" spellcheck="false"></textarea><div class="row"><button type="button" data-act="ximport" id="impBtn">Load</button></div><div class="read" id="impmsg" aria-live="polite"></div></div>
+<textarea id="xout" readonly aria-label="export text"></textarea><div class="read">state address: <span id="addr"></span></div>
+</div>
+<div id="msg"></div></section>
+<div id="status"></div>
+</section>
+<aside class="cards" id="cards"></aside>
+</main>
+<script src="../../exact-lib/exact-lib-0.2.0.js"></script>
+<script src="../../host-core/gearbox-core.js"></script>
+<script src="../../host-core/shell-core.js"></script>
+<script src="../../host-core/comb-core.js"></script>
+<script src="../../host-core/orbit-core.js"></script>
+<script src="../../host-core/fraction-stack-core.js"></script>
+<script src="../../host-core/comb-numeric.js"></script>
+<script src="../../host-core/stack-core.js"></script>
+<script src="../../host-core/rhm-core.js"></script>
+<script src="../../host-core/ca-core.js"></script>
+<script src="../../host-core/goldbach-core.js"></script>
+<script src="../../host-core/branch-disk-core.js"></script>
+<script src="../../host-core/rule30-ladder-core.js"></script>
+<script src="../../host-core/d1-event-pieces.js"></script>
+<script src="../../host-core/elliptic-exact-core.js"></script>
+<script src="../../host-core/elliptic-period-core.js"></script>
+<script src="../../host-core/pen-interval-core.js"></script>
+<script src="../../host-core/field-q2-q5-tau.js"></script>
+<script src="../../host-core/pen-streams-core.js"></script>
+<script src="../../host-core/pen-curvature-core.js"></script>
+<script src="../../host-core/pen-sphere-core.js"></script>
+<script src="views-common.js"></script>
+<script src="view-fourier.js"></script>
+<script src="view-clifford.js"></script>
+<script src="view-hopf.js"></script>
+<script src="panel-g-robin.js"></script>
+<script src="view-panels.js"></script>
+<script src="panel-bd.js"></script>
+<script src="panel-elliptic.js"></script>
+<script src="panel-pens.js"></script>
+<script src="panel.js"></script>
+</body>
+</html>

@@ -1,0 +1,158 @@
+[
+ [
+  "host-core/pen-interval-core.js",
+  {
+   "/ on non-BigInt?": [
+    9,
+    16,
+    36,
+    46,
+    54,
+    68,
+    85
+   ]
+  }
+ ],
+ [
+  "host-core/pen-curvature-core.js",
+  {
+   "/ on non-BigInt?": [
+    114
+   ]
+  }
+ ],
+ [
+  "host-core/pen-sphere-core.js",
+  {}
+ ],
+ [
+  "host-core/d1-event-pieces.js",
+  {}
+ ],
+ [
+  "instruments/comb-hopf/panel-pens.js",
+  {
+   "Number(": [
+    13
+   ],
+   "/ on non-BigInt?": [
+    39,
+    43,
+    45,
+    50,
+    57,
+    58,
+    66,
+    67,
+    98,
+    125,
+    166,
+    205,
+    282
+   ]
+  }
+ ],
+ [
+  "host-core/test-v0419-goldbach-order.cjs",
+  {}
+ ],
+ [
+  "host-core/test-v0419-fixups.cjs",
+  {
+   "/ on non-BigInt?": [
+    28
+   ]
+  }
+ ],
+ [
+  "host-core/test-v0419-pens.cjs",
+  {}
+ ],
+ [
+  "build/check-expected-fails-v0419.cjs",
+  {
+   "/ on non-BigInt?": [
+    19,
+    20,
+    23,
+    25,
+    26,
+    28,
+    29,
+    30,
+    31,
+    35,
+    44,
+    50
+   ]
+  }
+ ],
+ [
+  "build/browser-check-d1-v0419.cjs",
+  {
+   "/ on non-BigInt?": [
+    24,
+    61
+   ]
+  }
+ ],
+ [
+  "build/browser-check-v0419.cjs",
+  {
+   "/ on non-BigInt?": [
+    23,
+    25,
+    37,
+    40,
+    46,
+    49,
+    54,
+    73,
+    75,
+    84,
+    86
+   ]
+  }
+ ],
+ [
+  "build/make-expected-fails-v0419.cjs",
+  {
+   "/ on non-BigInt?": [
+    12,
+    24,
+    26
+   ]
+  }
+ ],
+ [
+  "build/selftest-expected-fails-v0419.cjs",
+  {
+   "/ on non-BigInt?": [
+    26,
+    31
+   ]
+  }
+ ],
+ [
+  "build/dump-a5-moves-v0419.cjs",
+  {}
+ ],
+ [
+  "build/shots-v0419.cjs",
+  {}
+ ],
+ [
+  "view-clifford.js (added lines: 12)",
+  {
+   "Math.": [
+    "const a=Math.SQRT1_2,b=Math.SQRT1_2,pj=RL.perN(rule,j),sub=Math.max(1,Math.ceil(720/pj)),c=RL.curve(rule,j,q,{sub}),cd=RL.card(rule,j,q);"
+   ],
+   "/ on non-BigInt?": [
+    "const a=Math.SQRT1_2,b=Math.SQRT1_2,pj=RL.perN(rule,j),sub=Math.max(1,Math.ceil(720/pj)),c=RL.curve(rule,j,q,{sub}),cd=RL.card(rule,j,q);"
+   ],
+   "decimal literal": [
+    "if(g.samples){let ns=0;for(let s=0;s<c.steps;s++){const i=g.pc.starts[s],x=B[3*i],y=B[3*i+1];o+=V.cvDot(x,y,2.6,g.ev[i]?RLE:RLC,1,'',0.8,'',"
+   ]
+  }
+ ]
+]
