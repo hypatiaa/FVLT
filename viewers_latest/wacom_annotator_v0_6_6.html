@@ -1,0 +1,1040 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wacom Annotator v0.6.6</title>
+<style>
+  :root {
+    --bg: #161514;
+    --panel: #22201e;
+    --border: #383430;
+    --text: #ede8df;
+    --muted: #9e9689;
+    --accent: #e09f5a;
+  }
+  * { box-sizing: border-box; user-select: none; -webkit-user-select: none; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 13px/1.4 system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+    height: 100vh; display: flex; flex-direction: column; overflow: hidden;
+  }
+  header {
+    background: var(--panel); border-bottom: 1px solid var(--border);
+    padding: 8px 14px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+    z-index: 10;
+  }
+  .title { font-weight: 700; font-size: 14px; color: var(--accent); margin-right: 4px; }
+  .group {
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    padding-right: 12px; border-right: 1px solid var(--border);
+  }
+  .group:last-child { border-right: none; }
+  button {
+    background: #2d2a27; color: var(--text); border: 1px solid #45403b;
+    padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 12px;
+    display: inline-flex; align-items: center; gap: 5px; transition: 0.12s;
+  }
+  button:hover { background: #3a3632; }
+  button:disabled { opacity: 0.45; cursor: default; }
+  button.active { background: #4a3828; border-color: var(--accent); color: #fff; font-weight: 600; }
+  button.primary { background: #2c6e49; border-color: #4c956c; color: #fff; font-weight: 600; }
+  button.primary:hover { background: #368559; }
+  .swatch { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  input[type="range"] { width: 95px; accent-color: var(--accent); cursor: pointer; }
+  .lbl { color: var(--muted); font-size: 11px; }
+  .val { font-variant-numeric: tabular-nums; min-width: 28px; display: inline-block; font-size: 11px; }
+  .field { background: #2d2a27; color: #ede8df; border: 1px solid #45403b; border-radius: 5px; padding: 4px; user-select: text; -webkit-user-select: text; }
+  #workspace {
+    flex: 1; position: relative; overflow: hidden; background: #100f0e;
+    touch-action: none; cursor: crosshair;
+  }
+  #stage {
+    position: absolute; top: 0; left: 0; transform-origin: 0 0;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.65);
+  }
+  canvas {
+    position: absolute; top: 0; left: 0;
+    image-rendering: auto;
+  }
+  #empty {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    padding: 16px; pointer-events: none;
+  }
+  #empty div {
+    max-width: 460px; text-align: center; color: var(--muted); font-size: 14px; line-height: 1.5;
+    border: 1px dashed var(--border); border-radius: 8px; padding: 18px 20px; background: rgba(34, 32, 30, 0.6);
+  }
+  #empty b { color: var(--text); }
+  #hud {
+    position: fixed; bottom: 12px; left: 14px;
+    background: rgba(24, 22, 20, 0.88); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 6px; font-size: 12px; color: var(--muted);
+    pointer-events: none; display: flex; gap: 4px 16px; flex-wrap: wrap; z-index: 20; max-width: calc(58vw - 28px);
+  }
+  #hud b { color: var(--text); font-variant-numeric: tabular-nums; }
+  #help {
+    position: fixed; bottom: 12px; right: 14px;
+    background: rgba(24, 22, 20, 0.88); border: 1px solid var(--border);
+    padding: 6px 12px; border-radius: 6px; font-size: 11px; color: var(--muted);
+    pointer-events: none; z-index: 20; max-width: calc(42vw - 28px);
+  }
+  @media (max-width: 760px) {
+    header { max-height: 42vh; overflow-y: auto; padding: 8px 10px; gap: 8px; }
+    .group { padding-right: 8px; }
+    #help { display: none; }
+    #hud { left: 8px; bottom: 8px; gap: 2px 10px; font-size: 11px; max-width: calc(100vw - 16px); }
+  }
+</style>
+</head>
+<body>
+<header>
+  <span class="title">Wacom Annotator v0.6.6</span>
+
+  <div class="group" title="Everything is opened from local files; nothing is fetched from the network">
+    <button id="btnOpenImage" class="primary" title="Open a local image file. Its width, height and sha256 become the frame of the strokes.">Open image…</button>
+    <input type="file" id="imgIn" accept="image/*" style="display:none">
+    <button id="btnOpenOverlay" title="Optional: a second image drawn over the first as a backdrop (same aspect ratio). It is not part of the frame.">Open overlay…</button>
+    <input type="file" id="ovIn" accept="image/*" style="display:none">
+    <button id="btnLoadFile" title="Open a strokes file: an old mcomb-wacom-annotations-v1 file or an mcomb-annotation/0.6 export. It must belong to the opened image.">Open strokes…</button>
+    <input type="file" id="fileIn" accept=".json,application/json" style="display:none">
+  </div>
+
+  <div class="group" title="Choose Wacom brush role">
+    <span class="lbl">Tool:</span>
+    <button class="tool active" data-tool="contour"><span class="swatch" style="background:#ff2e2e"></span>Contour (Red)</button>
+    <button class="tool" data-tool="specular"><span class="swatch" style="background:#00e5ff"></span>Highlight / Glint (Cyan)</button>
+    <button class="tool" data-tool="shadow"><span class="swatch" style="background:#2ecc71"></span>Shadow / Grain (Green)</button>
+    <button class="tool" data-tool="erase_note"><span class="swatch" style="background:#f1c40f"></span>Remove / Fix (Yellow)</button>
+    <button class="tool" data-tool="direct_ink"><span class="swatch" style="background:#141210;border:1px solid #fff"></span>Direct Ink Pen</button>
+    <button class="tool" data-tool="eraser">Eraser (or Pen Tail)</button>
+    <button class="tool" data-tool="pan">Pan Hand (Space)</button>
+  </div>
+
+  <div class="group">
+    <span class="lbl">Size:</span>
+    <input type="range" id="sizeSlider" min="0.5" max="16" step="0.5" value="2.5">
+    <span class="val" id="sizeVal">2.5px</span>
+  </div>
+
+  <div class="group" title="Blend between the image (0%) and the overlay (100%); needs an overlay">
+    <span class="lbl">View:</span>
+    <button id="btnSrc" style="padding:3px 7px">Image (0%)</button>
+    <input type="range" id="blendSlider" min="0" max="100" step="1" value="75">
+    <button id="btnV05" style="padding:3px 7px">Overlay (100%)</button>
+    <span class="val" id="blendVal">75%</span>
+    <button id="btnSideBySide" title="Toggle side-by-side image | overlay view">Side-by-Side</button>
+  </div>
+
+  <div class="group">
+    <span class="lbl">Zoom:</span>
+    <button data-preset="fit">Fit</button>
+    <button data-preset="one">1:1</button>
+  </div>
+
+  <div class="group">
+    <button id="btnUndo" title="Ctrl+Z">Undo</button>
+    <button id="btnRedo" title="Ctrl+Y">Redo</button>
+    <button id="btnClear">Clear</button>
+    <button id="btnSave" title="Saves an annotated PNG and the old-format stroke JSON to your Downloads folder">Save PNG + old JSON</button>
+  </div>
+
+  <div class="group" id="v06group" title="annotator v0.6: layer, touch-up purpose, F3 denominator bound, export">
+    <span class="lbl">Layer:</span>
+    <select id="layerSel" class="field">
+      <option value="block_in">block_in</option>
+      <option value="white_pass">white_pass</option>
+      <option value="touch_up" selected>touch_up</option>
+    </select>
+    <span class="lbl">Purpose:</span>
+    <input type="text" id="purposeBox" class="field" placeholder="touch-up purpose" style="width:150px">
+    <span class="lbl">Q:</span>
+    <input type="number" id="qmaxBox" class="field" value="64" min="1" step="1" style="width:56px">
+    <button id="btnExport06" class="primary" title="Exports mcomb-annotation/0.6 JSON (measurement samples + F3 frozen rationals + anchors) in the frame of the opened image">Export v0.6 JSON</button>
+    <button id="btnRefreeze" title="Explicitly re-freeze loaded strokes at the current Q on the next export (linked to their parent freeze)">Re-freeze loaded at Q</button>
+    <span id="loadPrompt" style="display:none;align-items:center;gap:6px">
+      <span class="lbl">Layer for this batch:</span>
+      <select id="loadLayer" class="field">
+        <option value="">choose…</option><option value="block_in">block_in</option><option value="white_pass">white_pass</option><option value="touch_up">touch_up</option>
+      </select>
+      <button id="btnLoadApply" class="primary">Load</button>
+      <button id="btnLoadCancel">Cancel</button>
+    </span>
+    <span id="loadMsg" class="lbl"></span>
+  </div>
+</header>
+
+<div id="workspace">
+  <div id="stage">
+    <canvas id="cvBase"></canvas>
+    <canvas id="cvDraw"></canvas>
+    <canvas id="cvCursor" style="pointer-events:none"></canvas>
+  </div>
+  <div id="empty"><div>
+    <b>No image open.</b><br>
+    Use <b>Open image…</b> to choose a local image file. Its width, height and sha256 become the frame of your strokes (origin top-left, y down).<br>
+    Then draw, or use <b>Open strokes…</b> to load strokes made on the same image.<br>
+    Example files are in the <b>examples</b> folder next to this page.
+  </div></div>
+</div>
+
+<div id="hud">
+  <span>Image: <b id="hudImg">none</b></span>
+  <span>XY: <b id="hudXY">—</b></span>
+  <span>Pointer: <b id="hudPtr">—</b></span>
+  <span>Pressure: <b id="hudPrs">—</b></span>
+  <span>Strokes: <b id="hudCnt">0</b></span>
+</div>
+
+<div id="help">
+  <b>Wacom tips:</b> Barrel/Middle-drag or <b>Space+drag</b> to pan · <b>Wheel</b> to zoom · <b>Q</b> toggle image/overlay · <b>Ctrl+Z</b> Undo · Flip pen to erase
+</div>
+
+<script>
+// v0.6.6: a general instrument. Nothing is embedded: the image, an optional overlay and strokes are opened from local files.
+// The frame of the strokes is the opened image: width, height (y down, origin top-left) and the sha256 of its file bytes.
+let W = 0, H = 0;          // frame of the opened image (0 = no image)
+let img = null;            // { name, sha256, width, height } of the opened image
+let overlay = null;        // { name, sha256, width, height } of the optional overlay (a backdrop only)
+
+const TOOLS = {
+  contour:    { color: '#ff2e2e', alpha: 0.92, label: 'Contour' },
+  specular:   { color: '#00e5ff', alpha: 0.92, label: 'Highlight / Glint' },
+  shadow:     { color: '#2ecc71', alpha: 0.85, label: 'Shadow / Grain' },
+  erase_note: { color: '#f1c40f', alpha: 0.88, label: 'Remove / Fix' },
+  direct_ink: { color: '#141210', alpha: 0.96, label: 'Direct Ink' },
+  eraser:     { color: '#000000', alpha: 1.00, label: 'Eraser', erase: true }
+};
+
+let currentTool = 'contour';
+let baseSize = 2.5;
+let blend = 0.75;
+let sideBySide = false;
+
+let strokes = [];
+let redoStack = [];
+let activeStroke = null;
+
+// Viewport transform
+let scale = 1, panX = 0, panY = 0;
+let isPanning = false, spaceDown = false, panStartX = 0, panStartY = 0;
+
+const stage = document.getElementById('stage');
+const cvBase = document.getElementById('cvBase');
+const cvDraw = document.getElementById('cvDraw');
+const cvCursor = document.getElementById('cvCursor');
+const ctxBase = cvBase.getContext('2d');
+const ctxDraw = cvDraw.getContext('2d');
+const ctxCursor = cvCursor.getContext('2d');
+
+let imgSrc = null;   // decoded image element of the opened image
+let imgOv = null;    // decoded overlay element
+let imgUrl = null, ovUrl = null;
+
+function updateStageSize() {
+  const totalW = sideBySide && overlay ? (W * 2 + 12) : W;
+  stage.style.width = totalW + 'px';
+  stage.style.height = H + 'px';
+  for (const cv of [cvBase, cvDraw, cvCursor]) {
+    cv.width = totalW;
+    cv.height = H;
+  }
+  renderBase();
+  renderAllStrokes();
+}
+
+function renderBase() {
+  const totalW = cvBase.width;
+  ctxBase.clearRect(0, 0, totalW, cvBase.height);
+  if (!img || !imgSrc) return;
+  if (sideBySide && overlay) {
+    ctxBase.fillStyle = '#333';
+    ctxBase.fillRect(0, 0, totalW, H);
+    ctxBase.globalAlpha = 1;
+    ctxBase.drawImage(imgSrc, 0, 0, W, H);
+    ctxBase.drawImage(imgOv, W + 12, 0, W, H);
+  } else {
+    ctxBase.globalAlpha = 1;
+    ctxBase.drawImage(imgSrc, 0, 0, W, H);
+    if (overlay && blend > 0) {
+      ctxBase.globalAlpha = blend;
+      ctxBase.drawImage(imgOv, 0, 0, W, H);
+    }
+    ctxBase.globalAlpha = 1;
+  }
+}
+
+function drawSingleStroke(ctx, s, offsetX = 0) {
+  const pts = s.pts;
+  if (!pts.length) return;
+  const spec = TOOLS[s.tool] || TOOLS.contour;
+  ctx.save();
+  if (spec.erase) {
+    ctx.globalCompositeOperation = 'destination-out';
+    ctx.strokeStyle = 'rgba(0,0,0,1)';
+    ctx.fillStyle = 'rgba(0,0,0,1)';
+  } else {
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.strokeStyle = spec.color;
+    ctx.fillStyle = spec.color;
+    ctx.globalAlpha = spec.alpha;
+  }
+  ctx.lineCap = 'round';
+  ctx.lineJoin = 'round';
+
+  if (pts.length === 1) {
+    const p = pts[0];
+    const r = Math.max(0.4, s.size * (0.35 + 0.85 * p[2]) * 0.5);
+    ctx.beginPath();
+    ctx.arc(p[0] + offsetX, p[1], r, 0, Math.PI * 2);
+    ctx.fill();
+  } else {
+    for (let i = 1; i < pts.length; i++) {
+      const p0 = pts[i - 1], p1 = pts[i];
+      const pr = 0.5 * (p0[2] + p1[2]);
+      ctx.lineWidth = Math.max(0.5, s.size * (0.3 + 0.95 * pr));
+      ctx.beginPath();
+      ctx.moveTo(p0[0] + offsetX, p0[1]);
+      ctx.lineTo(p1[0] + offsetX, p1[1]);
+      ctx.stroke();
+    }
+  }
+  ctx.restore();
+}
+
+function renderAllStrokes() {
+  ctxDraw.clearRect(0, 0, cvDraw.width, cvDraw.height);
+  const twin = sideBySide && overlay;
+  for (const s of strokes) {
+    drawSingleStroke(ctxDraw, s, 0);
+    if (twin) drawSingleStroke(ctxDraw, s, W + 12);
+  }
+  if (activeStroke) {
+    drawSingleStroke(ctxDraw, activeStroke, 0);
+    if (twin) drawSingleStroke(ctxDraw, activeStroke, W + 12);
+  }
+  document.getElementById('hudCnt').textContent = strokes.length;
+}
+
+function applyTransform() {
+  stage.style.transform = `translate(${panX}px, ${panY}px) scale(${scale})`;
+}
+
+function zoomToBox(x0, y0, x1, y1) {
+  const ws = document.getElementById('workspace').getBoundingClientRect();
+  const bw = x1 - x0, bh = y1 - y0;
+  if (!(bw > 0 && bh > 0)) return;
+  scale = Math.max(0.02, Math.min((ws.width - 40) / bw, (ws.height - 40) / bh));
+  panX = (ws.width - bw * scale) * 0.5 - x0 * scale;
+  panY = (ws.height - bh * scale) * 0.5 - y0 * scale;
+  applyTransform();
+}
+
+function setPreset(name) {
+  if (!img) return;
+  const totalW = sideBySide && overlay ? (W * 2 + 12) : W;
+  if (name === 'one') {
+    const ws = document.getElementById('workspace').getBoundingClientRect();
+    scale = 1; panX = (ws.width - totalW) * 0.5; panY = (ws.height - H) * 0.5; applyTransform();
+  } else zoomToBox(0, 0, totalW, H);
+}
+
+function clientToSource(clientX, clientY) {
+  const r = stage.getBoundingClientRect();
+  let x = (clientX - r.left) / scale;
+  let y = (clientY - r.top) / scale;
+  if (sideBySide && overlay && x > W + 6) x -= (W + 12);
+  return [Math.round(x * 100) / 100, Math.round(y * 100) / 100];
+}
+
+function drawCursorRing(x, y, r, color) {
+  ctxCursor.clearRect(0, 0, cvCursor.width, cvCursor.height);
+  const drawAt = (ox) => {
+    ctxCursor.beginPath();
+    ctxCursor.arc(x + ox, y, Math.max(1.5 / scale, r), 0, Math.PI * 2);
+    ctxCursor.strokeStyle = color;
+    ctxCursor.lineWidth = 1.5 / scale;
+    ctxCursor.stroke();
+  };
+  drawAt(0);
+  if (sideBySide && overlay) drawAt(W + 12);
+}
+
+const wsEl = document.getElementById('workspace');
+
+wsEl.addEventListener('pointerdown', (e) => {
+  e.preventDefault();
+  wsEl.setPointerCapture(e.pointerId);
+  if (spaceDown || currentTool === 'pan' || e.button === 1 || e.button === 2) {
+    isPanning = true;
+    panStartX = e.clientX - panX;
+    panStartY = e.clientY - panY;
+    return;
+  }
+  if (!img) { setMsg('open an image first: strokes are recorded in the pixel frame of an image'); return; }
+  // Wacom tail eraser button (button 5 or buttons === 32) automatically uses eraser
+  const isPenEraser = (e.button === 5 || (e.buttons & 32) !== 0);
+  const toolToUse = isPenEraser ? 'eraser' : currentTool;
+  const [x, y] = clientToSource(e.clientX, e.clientY);
+  const pr = e.pointerType === 'pen' ? (e.pressure || 0.5) : 0.65;
+  activeStroke = {
+    tool: toolToUse,
+    size: toolToUse === 'eraser' ? baseSize * 2.5 : baseSize,
+    pointerType: e.pointerType,
+    pts: [[x, y, Math.round(pr * 1000) / 1000]]
+  };
+  tsOf.set(activeStroke, [e.timeStamp]);
+  metaOf.set(activeStroke, { layer: layerSel.value, purpose: purposeBox.value });
+  renderAllStrokes();
+});
+
+wsEl.addEventListener('pointermove', (e) => {
+  if (isPanning) {
+    panX = e.clientX - panStartX;
+    panY = e.clientY - panStartY;
+    applyTransform();
+    return;
+  }
+  if (!img) return;
+  const [hx, hy] = clientToSource(e.clientX, e.clientY);
+  document.getElementById('hudXY').textContent = `(${hx.toFixed(1)}, ${hy.toFixed(1)})`;
+  document.getElementById('hudPtr').textContent = e.pointerType || 'mouse';
+  document.getElementById('hudPrs').textContent = (e.pressure || 0).toFixed(2);
+
+  const spec = TOOLS[currentTool] || { color: '#fff' };
+  drawCursorRing(hx, hy, baseSize * 0.5, spec.color || '#fff');
+
+  if (!activeStroke) return;
+
+  const events = e.getCoalescedEvents ? e.getCoalescedEvents() : [e];
+  for (const ev of events) {
+    const [x, y] = clientToSource(ev.clientX, ev.clientY);
+    const pr = ev.pointerType === 'pen' ? (ev.pressure || 0.5) : 0.65;
+    const last = activeStroke.pts[activeStroke.pts.length - 1];
+    if (!last || Math.hypot(x - last[0], y - last[1]) >= 0.25) {
+      activeStroke.pts.push([x, y, Math.round(pr * 1000) / 1000]);
+      tsOf.get(activeStroke).push(ev.timeStamp);
+    }
+  }
+  renderAllStrokes();
+});
+
+function endPointer(e) {
+  if (isPanning) { isPanning = false; return; }
+  if (activeStroke) {
+    strokes.push(activeStroke);
+    activeStroke = null;
+    redoStack = [];
+    renderAllStrokes();
+  }
+}
+wsEl.addEventListener('pointerup', endPointer);
+wsEl.addEventListener('pointercancel', endPointer);
+wsEl.addEventListener('contextmenu', e => e.preventDefault());
+
+wsEl.addEventListener('wheel', (e) => {
+  e.preventDefault();
+  if (!img) return;
+  const factor = e.deltaY < 0 ? 1.16 : (1 / 1.16);
+  const newScale = Math.min(18, Math.max(0.05, scale * factor));
+  const r = wsEl.getBoundingClientRect();
+  const mx = e.clientX - r.left, my = e.clientY - r.top;
+  panX = mx - (mx - panX) * (newScale / scale);
+  panY = my - (my - panY) * (newScale / scale);
+  scale = newScale;
+  applyTransform();
+}, { passive: false });
+
+// Toolbar bindings
+document.querySelectorAll('.tool').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.tool').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentTool = btn.dataset.tool;
+  });
+});
+
+const sizeSlider = document.getElementById('sizeSlider');
+sizeSlider.addEventListener('input', () => {
+  baseSize = parseFloat(sizeSlider.value);
+  document.getElementById('sizeVal').textContent = baseSize.toFixed(1) + 'px';
+});
+
+const blendSlider = document.getElementById('blendSlider');
+function setBlend(val) {
+  blend = val / 100;
+  blendSlider.value = val;
+  document.getElementById('blendVal').textContent = Math.round(val) + '%';
+  renderBase();
+}
+blendSlider.addEventListener('input', () => setBlend(parseFloat(blendSlider.value)));
+document.getElementById('btnSrc').addEventListener('click', () => setBlend(0));
+document.getElementById('btnV05').addEventListener('click', () => setBlend(100));
+
+document.getElementById('btnSideBySide').addEventListener('click', (e) => {
+  if (!overlay) { setMsg('side-by-side needs an overlay: use Open overlay…'); return; }
+  sideBySide = !sideBySide;
+  e.currentTarget.classList.toggle('active', sideBySide);
+  updateStageSize();
+  setPreset('fit');
+});
+
+document.querySelectorAll('[data-preset]').forEach(btn => {
+  btn.addEventListener('click', () => setPreset(btn.dataset.preset));
+});
+
+function undo() {
+  if (strokes.length) { redoStack.push(strokes.pop()); renderAllStrokes(); }
+}
+function redo() {
+  if (redoStack.length) { strokes.push(redoStack.pop()); renderAllStrokes(); }
+}
+document.getElementById('btnUndo').addEventListener('click', undo);
+document.getElementById('btnRedo').addEventListener('click', redo);
+document.getElementById('btnClear').addEventListener('click', () => {
+  if (strokes.length && confirm('Clear all strokes?')) {
+    redoStack.push(...strokes);
+    strokes = [];
+    renderAllStrokes();
+  }
+});
+
+// Save annotated PNG + old-format vector JSON
+function saveOutputs() {
+  if (!img) { setMsg('open an image first'); return; }
+  // 1. PNG: image + strokes, or (with an overlay) image + strokes | overlay + strokes
+  const twin = !!overlay;
+  const outCv = document.createElement('canvas');
+  outCv.width = twin ? W * 2 + 12 : W;
+  outCv.height = H;
+  const ox = outCv.getContext('2d');
+  ox.fillStyle = '#333';
+  ox.fillRect(0, 0, outCv.width, outCv.height);
+  ox.drawImage(imgSrc, 0, 0, W, H);
+  if (twin) ox.drawImage(imgOv, W + 12, 0, W, H);
+  const stCv = document.createElement('canvas');
+  stCv.width = outCv.width;
+  stCv.height = outCv.height;
+  const stOx = stCv.getContext('2d');
+  for (const s of strokes) {
+    drawSingleStroke(stOx, s, 0);
+    if (twin) drawSingleStroke(stOx, s, W + 12);
+  }
+  ox.drawImage(stCv, 0, 0);
+  const aPng = document.createElement('a');
+  aPng.download = 'wacom_annotated.png';
+  aPng.href = outCv.toDataURL('image/png');
+  aPng.click();
+
+  // 2. Old-format vector JSON (mcomb-wacom-annotations-v1): unchanged shape
+  const payload = {
+    schema: 'mcomb-wacom-annotations-v1',
+    created_at: new Date().toISOString(),
+    source_size: [W, H],
+    stroke_count: strokes.length,
+    strokes
+  };
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const aJson = document.createElement('a');
+  aJson.download = 'wacom_strokes.json';
+  aJson.href = URL.createObjectURL(blob);
+  setTimeout(() => aJson.click(), 250);
+}
+document.getElementById('btnSave').addEventListener('click', saveOutputs);
+
+// ===== v0.6 export =====
+// Side tables keep the stroke objects (and so the old-format JSON) unchanged.
+const tsOf = new WeakMap();    // stroke -> [t per sample] (event.timeStamp, ms, DOMHighResTimeStamp)
+const metaOf = new WeakMap();  // stroke -> {layer, purpose}
+const V06_SCHEMA_DELTA_SHA256 = 'a70905490bca2b8adb6e3f132a8c41f916f1f6f2424f982f9d89c6fa05dc3550';
+const V06_EXPORTER = 'wacom_annotator_v0_6_6/0.6.6';
+const V06_PROFILE = 'wacom_annotator_v0_6_6';
+const V06_LAYERS = ['block_in', 'white_pass', 'touch_up'];
+const layerSel = document.getElementById('layerSel');
+const purposeBox = document.getElementById('purposeBox');
+const qmaxBox = document.getElementById('qmaxBox');
+// typing in the v0.6 fields must not trigger Space-pan / Q-toggle / Ctrl shortcuts
+for (const el of [purposeBox, qmaxBox, layerSel]) {
+  for (const ev of ['keydown', 'keyup']) el.addEventListener(ev, e => e.stopPropagation());
+}
+
+function bgcd(a, b) { while (b) { [a, b] = [b, a % b]; } return a; }
+
+// Exact decode of an IEEE-754 binary64 into a reduced fraction (sign, num, den).
+function f3Decode(x) {
+  if (typeof x !== 'number' || !isFinite(x)) throw new Error('F3: NaN/Infinity rejected');
+  const dv = new DataView(new ArrayBuffer(8));
+  dv.setFloat64(0, x);
+  const bits = dv.getBigUint64(0);
+  const neg = (bits >> 63n) === 1n;
+  const ex = Number((bits >> 52n) & 0x7ffn);
+  const frac = bits & ((1n << 52n) - 1n);
+  let mant, e;
+  if (ex === 0) { mant = frac; e = -1074; } else { mant = frac | (1n << 52n); e = ex - 1075; }
+  let num = mant, den = 1n;
+  if (e >= 0) num = mant << BigInt(e); else den = 1n << BigInt(-e);
+  const g = bgcd(num, den) || 1n;
+  num /= g; den /= g;
+  if (num === 0n) return { neg: false, num: 0n, den: 1n };   // -0 -> 0
+  return { neg, num, den };
+}
+
+// F3 (SCHEMA v0.5 3.13.3): convergents + semiconvergents with den <= Q, plus floor and ceil;
+// min error, then smaller denominator, then smaller numerator; sign restored.
+function f3Freeze(x, Q) {
+  Q = BigInt(Q);
+  if (Q < 1n) throw new Error('F3: Qmax must be a positive integer');
+  const { neg, num: n, den: d } = f3Decode(x);
+  const cands = [];
+  const fl = n / d;
+  cands.push([fl, 1n]);
+  cands.push([n % d === 0n ? fl : fl + 1n, 1n]);
+  let a_n = n, a_d = d;
+  let h2 = 0n, k2 = 1n, h1 = 1n, k1 = 0n;
+  while (a_d !== 0n) {
+    const a = a_n / a_d;
+    if (k1 !== 0n) {
+      for (let j = 1n; j <= a; j++) {
+        const p = h2 + j * h1, q = k2 + j * k1;
+        if (q > Q) break;
+        cands.push([p, q]);
+      }
+    }
+    const h = h2 + a * h1, k = k2 + a * k1;
+    h2 = h1; k2 = k1; h1 = h; k1 = k;
+    if (k1 === 0n) { /* cannot happen */ }
+    if (k1 > Q) break;
+    const r = a_n - a * a_d;
+    a_n = a_d; a_d = r;
+  }
+  if (k1 <= Q && k1 !== 0n) cands.push([h1, k1]);  // final convergent (exact value) if within Q
+  let best = null;
+  for (const [p, q] of cands) {
+    if (q > Q || q < 1n) continue;
+    // error numerator over common denominator d*q
+    let err = n * q - p * d; if (err < 0n) err = -err;
+    const errDen = d * q;
+    if (best === null) { best = { p, q, err, errDen }; continue; }
+    const lhs = err * best.errDen, rhs = best.err * errDen;
+    let better = false;
+    if (lhs < rhs) better = true;
+    else if (lhs === rhs) {
+      if (q < best.q) better = true;
+      else if (q === best.q && p < best.p) better = true;
+    }
+    if (better) best = { p, q, err, errDen };
+  }
+  return { p: neg && best.p !== 0n ? -best.p : best.p, q: best.q };
+}
+
+function ratText(p, q) { return q === 1n ? String(p) : p + '/' + q; }
+
+// Anchor per SCHEMA v0.6 delta, canonical rule. A rational Cartesian point (x, y) is
+// K(x,0,y,0) (r1=x, s1=0, r2=y, s2=0). It has s1=0 and r2=0 iff y=0, and then the
+// canonical form is the epoint (a,b) = (r1 - s2, 2*s2) = (x, 0).
+function anchorFor(xs, ys) {
+  if (ys === '0') return { json: [xs, '0'], text: xs + ',0' };
+  return { json: { K: [xs, '0', ys, '0'] }, text: 'K(' + xs + ',0,' + ys + ',0)' };
+}
+
+async function sha256Bytes(u8) {
+  try {
+    const d = await crypto.subtle.digest('SHA-256', u8);
+    return Array.from(new Uint8Array(d)).map(b => b.toString(16).padStart(2, '0')).join('');
+  } catch (err) { return null; }
+}
+
+// ---- frame declaration (v0.6.6: from the opened image), strict Q, freeze lineage, TU id map, split provenance ----
+const Q_CAP = 4096;   // operational cap for Qmax (validator uses the same cap)
+const RECORDED_AS = 'x,y rounded to 0.01 px; pressure rounded to 0.001 (zero pen pressure becomes 0.5, non-pen pressure 0.65); samples kept when moved >= 0.25 px; processed measurements, not raw digitizer events';
+const F3_ORDER = 'F3 is applied to the measured x,y in the pixel frame, BEFORE any map. Qmax bounds the denominators of the pixel-frame x and y. A target-frame anchor must be recomputed by the exact map from the frozen pixel point, not re-frozen. For this adapter X = x and Y = H - y keep the pixel-frame denominators (H is an integer).';
+function adapterFor(h) {
+  return {
+    status: 'declared, NOT applied: exported points and anchors are in the pixel frame',
+    A: [['1', '0'], ['0', '-1']],
+    b: ['0', String(h)],
+    formula: 'X = x, Y = H - y',
+    H: String(h),
+    convention: 'continuous canvas-boundary convention. H - 1 - y would be a pixel-centre-index convention and is NOT used'
+  };
+}
+// the frame this page writes: the pixel frame of the opened image, named by its sha256
+function imageFrame() {
+  return {
+    name: 'image_pixel_frame_v1',
+    origin: 'top-left',
+    x_axis: 'right',
+    y_axis: 'down',
+    units: 'image pixels, continuous canvas coordinates (pixel boundaries, not pixel-centre indices)',
+    width: W,
+    height: H,
+    image_sha256: img.sha256,
+    recorded_as: RECORDED_AS,
+    adapter_to_y_up: adapterFor(H),
+    f3_order: F3_ORDER
+  };
+}
+// the frame object exactly as v0.6.2 to v0.6.5 wrote it (accepted on load when the opened image has the file's size and hash)
+function legacyFrame() {
+  return {
+    name: 'source_pixel_frame_v1',
+    origin: 'top-left',
+    x_axis: 'right',
+    y_axis: 'down',
+    units: 'source image pixels, continuous canvas coordinates (pixel boundaries, not pixel-centre indices)',
+    width: W,
+    height: H,
+    recorded_as: RECORDED_AS,
+    adapter_to_y_up: adapterFor(H),
+    f3_order: F3_ORDER
+  };
+}
+function parseQ(text) {
+  const t = String(text).trim();
+  if (!/^[1-9][0-9]{0,6}$/.test(t)) throw new Error('Q must be a positive integer (digits only), got "' + t + '"');
+  const q = Number(t);
+  if (q > Q_CAP) throw new Error('Q must be <= ' + Q_CAP);
+  return q;
+}
+function freezePoints(pts, Q) {
+  return pts.map(p => {
+    const fx = f3Freeze(p[0], Q), fy = f3Freeze(p[1], Q);
+    const xs = ratText(fx.p, fx.q), ys = ratText(fy.p, fy.q);
+    const an = anchorFor(xs, ys);
+    return { x: xs, y: ys, anchor: an.json, anchor_text: an.text };
+  });
+}
+
+async function buildExportV06() {
+  const Q = parseQ(qmaxBox.value);
+  if (!img || !imgSrc) throw new Error('open an image first: the export frame is the opened image');
+  if (imgSrc.naturalWidth !== W || imgSrc.naturalHeight !== H) throw new Error('opened image size differs from W x H');
+  let tuCount = 0;
+  const out = [], idMap = [];
+  strokes.forEach((s, i) => {
+    const meta = metaOf.get(s);
+    if (!meta) throw new Error('stroke S-' + (i + 1) + ' has no layer');
+    const ts = tsOf.get(s);
+    const layer = meta.layer;
+    let tuId = null;
+    if (layer === 'touch_up') { tuCount += 1; tuId = 'TU-' + tuCount; }   // export-local, gapless
+    const rows = s.pts.map((p, k) => [p[0], p[1], p[2], ts ? ts[k] : null]);
+    let qmax, frozenPts, freeze;
+    if (meta.frozen) {
+      qmax = meta.frozen.qmax;
+      frozenPts = JSON.parse(JSON.stringify(meta.frozen.points));
+      freeze = { kind: 'preserved', qmax, parent: { file_sha256: meta.frozen.parentSha, qmax, stroke_id: meta.frozen.parentStrokeId } };
+    } else {
+      qmax = Q;
+      frozenPts = freezePoints(s.pts, Q);
+      freeze = meta.freezeParent ? { kind: 'refreeze', qmax: Q, parent: meta.freezeParent } : { kind: 'new', qmax: Q, parent: null };
+    }
+    const id = 'S-' + (i + 1);
+    if (meta.receipt) idMap.push({
+      export_stroke_id: id, export_touch_up_id: tuId,
+      original_stroke_id: meta.origId || null, original_touch_up_id: meta.origTu || null,
+      original_index: Number.isInteger(meta.origIndex) ? meta.origIndex : null,
+      file_sha256: meta.receipt.file_sha256
+    });
+    out.push({
+      id, tool: s.tool, size: s.size, pointer_type: s.pointerType,
+      layer, touch_up_id: tuId, purpose: meta.purpose || '',
+      qmax, freeze,
+      import_receipt: meta.receipt || null,
+      source_claims: meta.claims || null,
+      samples: { register: 'measurement', fields: ['x', 'y', 'pressure', 't'], rows },
+      frozen: { register: 'frozen_exact', rule: 'F3 (SCHEMA v0.5 3.13.3), Qmax=' + qmax, points: frozenPts }
+    });
+  });
+  return {
+    header: { format: 'mcomb-annotation/0.6', schema_delta_sha256: V06_SCHEMA_DELTA_SHA256, profile: V06_PROFILE, frame: imageFrame() },
+    prov: {
+      author: 'saphir', author_authenticated: false,
+      device: 'wacom', device_authenticated: false,
+      labels_note: 'author and device are configured labels written by the exporter, not authenticated facts; pointer_type per stroke is what the browser reported',
+      tool: V06_PROFILE,
+      source_image_sha256: img.sha256,
+      source_image_sha256_note: 'sha256 of the image file bytes as opened in this page; equal to header.frame.image_sha256',
+      source_image_name: img.name,
+      render_image_sha256: overlay ? overlay.sha256 : null,
+      render_image_note: overlay ? 'sha256 of the optional overlay image file (' + overlay.name + '), a backdrop only, not part of the frame' : 'no overlay image was open',
+      timestamp: new Date().toISOString(),
+      timestamp_note: 'export time, UTC',
+      exporter_version: V06_EXPORTER
+    },
+    source_size: [W, H],
+    qmax: Q,
+    qmax_note: 'Q used for strokes frozen at this export (freeze.kind new or refreeze); preserved strokes keep their own qmax',
+    t_note: 't is a DOMHighResTimeStamp (ms) from the event session that recorded it, not UTC; different sessions have different origins',
+    stroke_count: out.length,
+    id_map: idMap,
+    strokes: out
+  };
+}
+
+async function saveV06() {
+  const payload = await buildExportV06();
+  const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json' });
+  const a = document.createElement('a');
+  a.download = 'wacom_annotation_v0_6.json';
+  a.href = URL.createObjectURL(blob);
+  a.click();
+}
+document.getElementById('btnExport06').addEventListener('click', () => { saveV06().catch(e => { setMsg('export refused: ' + e.message); }); });
+
+// ===== open image / overlay (local files only) =====
+const loadPrompt = document.getElementById('loadPrompt');
+const loadLayer = document.getElementById('loadLayer');
+const loadMsg = document.getElementById('loadMsg');
+const fileIn = document.getElementById('fileIn');
+const imgIn = document.getElementById('imgIn');
+const ovIn = document.getElementById('ovIn');
+let pendingLoad = null;
+function setMsg(m) { loadMsg.textContent = m; }
+function decodeImage(bytes, type) {
+  return new Promise((res, rej) => {
+    const el = new Image();
+    const url = URL.createObjectURL(new Blob([bytes], { type: type || 'application/octet-stream' }));
+    el.onload = () => res({ el, url });
+    el.onerror = () => { URL.revokeObjectURL(url); rej(new Error('the browser could not decode this file as an image')); };
+    el.src = url;
+  });
+}
+function updateImageUi() {
+  document.getElementById('empty').style.display = img ? 'none' : 'flex';
+  const hi = document.getElementById('hudImg');
+  hi.textContent = img ? img.name + ' · ' + W + '×' + H + (overlay ? ' + overlay' : '') : 'none';
+  hi.title = img ? 'sha256 ' + img.sha256 + (overlay ? '; overlay ' + overlay.name + ' sha256 ' + overlay.sha256 : '') : '';
+  for (const id of ['btnSrc', 'btnV05', 'btnSideBySide']) document.getElementById(id).disabled = !overlay;
+  blendSlider.disabled = !overlay;
+  document.getElementById('btnOpenOverlay').disabled = !img;
+}
+async function openImageFile(f) {
+  const bytes = new Uint8Array(await f.arrayBuffer());
+  const sha = await sha256Bytes(bytes);
+  if (!sha) throw new Error('cannot compute the image sha256 in this browser (crypto.subtle), so the image cannot name a frame; not opened');
+  const different = !img || sha !== img.sha256;
+  if (different && strokes.length) throw new Error(strokes.length + ' strokes are in the frame of ' + img.name + '. Clear them before opening a different image');
+  const { el, url } = await decodeImage(bytes, f.type);
+  const w = el.naturalWidth, h = el.naturalHeight;
+  if (!(w > 0 && h > 0)) { URL.revokeObjectURL(url); throw new Error('the image has no size'); }
+  if (imgUrl) URL.revokeObjectURL(imgUrl);
+  imgSrc = el; imgUrl = url;
+  if (different) { redoStack = []; if (pendingLoad) { pendingLoad = null; loadPrompt.style.display = 'none'; } }
+  img = { name: f.name, sha256: sha, width: w, height: h };
+  W = w; H = h;
+  let note = '';
+  if (overlay && overlay.width * H !== overlay.height * W) { overlay = null; imgOv = null; sideBySide = false; document.getElementById('btnSideBySide').classList.remove('active'); note = '; the overlay was closed (other aspect ratio)'; }
+  setMsg('opened image ' + f.name + ': ' + W + ' x ' + H + ' px, sha256 ' + sha + note);   // first: the message can change the header height
+  updateImageUi();
+  updateStageSize();
+  setPreset('fit');
+}
+async function openOverlayFile(f) {
+  if (!img) throw new Error('open the image first; the overlay is drawn over it');
+  const bytes = new Uint8Array(await f.arrayBuffer());
+  const sha = await sha256Bytes(bytes);
+  const { el, url } = await decodeImage(bytes, f.type);
+  const w = el.naturalWidth, h = el.naturalHeight;
+  if (!(w > 0 && h > 0) || w * H !== h * W) { URL.revokeObjectURL(url); throw new Error('overlay is ' + w + ' x ' + h + '; its aspect ratio differs from the image ' + W + ' x ' + H + '; refused'); }
+  if (ovUrl) URL.revokeObjectURL(ovUrl);
+  imgOv = el; ovUrl = url;
+  overlay = { name: f.name, sha256: sha, width: w, height: h };
+  updateStageSize();
+  updateImageUi();
+  setMsg('opened overlay ' + f.name + ': ' + w + ' x ' + h + ' px (drawn scaled to the ' + W + ' x ' + H + ' frame; a backdrop only), sha256 ' + sha);
+}
+document.getElementById('btnOpenImage').addEventListener('click', () => imgIn.click());
+document.getElementById('btnOpenOverlay').addEventListener('click', () => ovIn.click());
+imgIn.addEventListener('change', async () => {
+  const f = imgIn.files && imgIn.files[0];
+  if (f) { try { await openImageFile(f); } catch (e) { setMsg('cannot open image ' + f.name + ': ' + e.message); } }
+  imgIn.value = '';
+});
+ovIn.addEventListener('change', async () => {
+  const f = ovIn.files && ovIn.files[0];
+  if (f) { try { await openOverlayFile(f); } catch (e) { setMsg('cannot open overlay ' + f.name + ': ' + e.message); } }
+  ovIn.value = '';
+});
+
+// ===== load strokes from a file (they must belong to the opened image) =====
+// exporter-valid domains, shared by both import paths (same as validate_export.cjs)
+const COORD_LIMIT = 1e7;
+const SIZE_MAX = 40;   // slider max 16, eraser draws at 2.5x
+const isToolName = (t) => typeof t === 'string' && Object.hasOwn(TOOLS, t);   // own property only: not constructor/toString/__proto__
+const sizeOk = (v) => Number.isFinite(v) && v > 0 && v <= SIZE_MAX;
+const coordOk = (v) => Number.isFinite(v) && Math.abs(v) <= COORD_LIMIT;
+const pressureOk = (v) => Number.isFinite(v) && v >= 0 && v <= 1;
+function checkLegacyStrokes(arr) {
+  if (!Array.isArray(arr) || !arr.length) throw new Error('no strokes');
+  arr.forEach((s, i) => {
+    if (!s || !isToolName(s.tool)) throw new Error('stroke ' + i + ': unknown tool');
+    if (!sizeOk(s.size)) throw new Error('stroke ' + i + ': size must be in (0, ' + SIZE_MAX + ']');
+    if (!Array.isArray(s.pts) || !s.pts.length) throw new Error('stroke ' + i + ' malformed');
+    for (const p of s.pts) {
+      if (!Array.isArray(p) || p.length < 3 || !coordOk(p[0]) || !coordOk(p[1])) throw new Error('stroke ' + i + ' has a bad point (coordinates finite, |v| <= ' + COORD_LIMIT + ')');
+      if (!pressureOk(p[2])) throw new Error('stroke ' + i + ' has pressure outside [0, 1]');
+    }
+  });
+}
+function startLegacyLoad(arr, name, sha, hdr) {
+  checkLegacyStrokes(arr);
+  if (!hdr || !Array.isArray(hdr.source_size) || hdr.source_size[0] !== W || hdr.source_size[1] !== H) throw new Error('source_size ' + JSON.stringify(hdr && hdr.source_size) + ' differs from the opened image ' + W + 'x' + H + '; refused (strokes from another image are not loaded)');
+  pendingLoad = { arr, name, sha, hdr };
+  loadLayer.value = '';
+  loadPrompt.style.display = 'inline-flex';
+  setMsg(arr.length + ' strokes from ' + name + ': choose ONE layer for the whole batch');
+}
+document.getElementById('btnLoadApply').addEventListener('click', () => {
+  if (!pendingLoad) return;
+  if (!V06_LAYERS.includes(loadLayer.value)) { setMsg('choose a layer first'); return; }
+  const { arr, name, sha, hdr } = pendingLoad;
+  const nowIso = new Date().toISOString();
+  for (const [oi, s] of arr.entries()) {
+    const st = { tool: s.tool, size: s.size, pointerType: s.pointerType || 'unknown', pts: s.pts.map(p => [p[0], p[1], p[2]]) };
+    metaOf.set(st, { layer: loadLayer.value, purpose: '', origIndex: oi, origId: null, origTu: null,
+      receipt: {
+        loaded_from: name, file_sha256: sha, imported_at: nowIso, original_format: 'legacy',
+        source_size_checked: true, source_image_sha256_verified: null,
+        identity_level: 'size_only_unverified',
+        frame_note: 'legacy file carries no image hash or frame declaration; its size matches the opened image, so that image\'s pixel frame is assumed',
+        sample_time_note: 'legacy file has no sample times; t is null'
+      },
+      claims: { file_schema: hdr.schema, file_created_at: hdr.created_at, file_source_size: hdr.source_size, original_index: oi, pointerType: s.pointerType } });
+    strokes.push(st);
+  }
+  redoStack = [];
+  renderAllStrokes();
+  setMsg('loaded ' + arr.length + ' strokes from ' + name + ' as ' + loadLayer.value);
+  pendingLoad = null; loadPrompt.style.display = 'none';
+});
+document.getElementById('btnLoadCancel').addEventListener('click', () => { pendingLoad = null; loadPrompt.style.display = 'none'; setMsg('load cancelled'); });
+document.getElementById('btnLoadFile').addEventListener('click', () => fileIn.click());
+const CANON_RAT = /^(0|-?[1-9][0-9]{0,30}(\/[1-9][0-9]{0,30})?)$/;
+function canonRatOk(s) {
+  if (typeof s !== 'string' || !CANON_RAT.test(s)) return false;
+  const [a, b] = s.split('/');
+  if (b === undefined) return true;
+  if (b === '1') return false;
+  const g = bgcd(BigInt(a) < 0n ? -BigInt(a) : BigInt(a), BigInt(b));
+  return g === 1n;
+}
+// Refusal rule (saphir): a file whose frame or image differs from the OPENED image is refused, with a plain message.
+function checkFileFrame(J) {
+  const F = J.header.frame;
+  if (F === undefined) return;   // pre-0.6.2 file: no frame; size and image hash are checked below
+  if (!F || typeof F !== 'object' || Array.isArray(F)) throw new Error('header.frame is not an object; refused');
+  if (F.width !== W || F.height !== H) throw new Error('the file\'s frame is ' + F.width + ' x ' + F.height + ' but the opened image is ' + W + ' x ' + H + '; refused (strokes from another image are not loaded)');
+  if (F.name === 'image_pixel_frame_v1') {
+    if (F.image_sha256 !== img.sha256) throw new Error('the file\'s frame image_sha256 ' + F.image_sha256 + ' differs from the opened image (' + img.sha256 + '); refused (strokes from another image are not loaded)');
+    if (JSON.stringify(F) !== JSON.stringify(imageFrame())) throw new Error('declared frame differs from the frame of the opened image; a declared transform is not supported, so the file is refused');
+  } else if (F.name === 'source_pixel_frame_v1') {
+    if (JSON.stringify(F) !== JSON.stringify(legacyFrame())) throw new Error('declared frame differs from the frame of the opened image; a declared transform is not supported, so the file is refused');
+  } else throw new Error('declared frame differs: unknown frame name ' + JSON.stringify(F.name) + '; refused');
+}
+async function loadV06(J, name, sha) {
+  if (J.header.schema_delta_sha256 !== V06_SCHEMA_DELTA_SHA256) throw new Error('schema_delta_sha256 mismatch');
+  checkFileFrame(J);
+  if (!Array.isArray(J.source_size) || J.source_size[0] !== W || J.source_size[1] !== H) throw new Error('source_size ' + JSON.stringify(J.source_size) + ' differs from the opened image ' + W + 'x' + H + '; refused (strokes from another image are not loaded)');
+  const fileSrc = J.prov && J.prov.source_image_sha256;
+  const ours = img.sha256;
+  if (typeof fileSrc !== 'string' || fileSrc !== ours) throw new Error('source_image_sha256 ' + fileSrc + ' differs from the opened image (' + ours + '); refused (strokes from another image are not loaded)');
+  const staged = [];
+  const nowIso = new Date().toISOString();
+  J.strokes.forEach((s, i) => {
+    const bad = (m) => { throw new Error('stroke ' + i + ': ' + m); };
+    if (!s || typeof s !== 'object') bad('not an object');
+    if (!V06_LAYERS.includes(s.layer)) bad('layer');
+    if (!isToolName(s.tool)) bad('unknown tool');
+    if (!sizeOk(s.size)) bad('size must be in (0, ' + SIZE_MAX + ']');
+    if (s.purpose !== undefined && typeof s.purpose !== 'string') bad('purpose');
+    const rows = s.samples && s.samples.rows;
+    if (!Array.isArray(rows) || !rows.length) bad('no samples');
+    if (s.samples.register !== 'measurement') bad('samples.register must be "measurement" (contradictory declarations are refused, not normalised)');
+    if (JSON.stringify(s.samples.fields) !== '["x","y","pressure","t"]') bad('samples.fields must be exactly [x,y,pressure,t] in that order');
+    for (const r of rows) {
+      if (!Array.isArray(r) || r.length !== 4 || !coordOk(r[0]) || !coordOk(r[1]) || !Number.isFinite(r[2]) || r[2] < 0 || r[2] > 1 || (r[3] !== null && !Number.isFinite(r[3]))) bad('bad sample row');
+    }
+    const qmax = s.qmax !== undefined ? s.qmax : J.qmax;
+    if (!Number.isInteger(qmax) || qmax < 1 || qmax > Q_CAP) bad('qmax');
+    if (!s.frozen || s.frozen.rule !== 'F3 (SCHEMA v0.5 3.13.3), Qmax=' + qmax) bad('frozen.rule contradicts qmax');
+    const fz = s.frozen && s.frozen.points;
+    if (!s.frozen || s.frozen.register !== 'frozen_exact' || !Array.isArray(fz) || fz.length !== rows.length) bad('frozen points missing or wrong count');
+    fz.forEach((f, k) => {
+      if (!f || !canonRatOk(f.x) || !canonRatOk(f.y)) bad('non-canonical frozen value at point ' + k);
+      const fx = f3Freeze(rows[k][0], qmax), fy = f3Freeze(rows[k][1], qmax);
+      if (ratText(fx.p, fx.q) !== f.x || ratText(fy.p, fy.q) !== f.y) bad('frozen value disagrees with F3 at Q=' + qmax + ' (point ' + k + ')');
+      const an = anchorFor(f.x, f.y);
+      if (JSON.stringify(an.json) !== JSON.stringify(f.anchor) || an.text !== f.anchor_text) bad('anchor not canonical at point ' + k);
+    });
+    let origTu = null;
+    if (s.touch_up_id !== null && s.touch_up_id !== undefined) { if (typeof s.touch_up_id !== 'string' || !/^TU-[1-9][0-9]{0,8}$/.test(s.touch_up_id)) bad('touch_up_id'); origTu = s.touch_up_id; }
+    let origId = null;
+    if (s.id !== undefined) { if (typeof s.id !== 'string' || !/^S-[1-9][0-9]{0,8}$/.test(s.id)) bad('id'); origId = s.id; }
+    const st = { tool: s.tool, size: s.size, pointerType: typeof s.pointer_type === 'string' ? s.pointer_type : 'unknown', pts: rows.map(r => [r[0], r[1], r[2]]) };
+    const tsArr = rows.map(r => r[3]);
+    const claims = JSON.parse(JSON.stringify(s));
+    delete claims.samples; delete claims.frozen;
+    claims.file_header = JSON.parse(JSON.stringify(J.header));
+    claims.file_prov = J.prov ? JSON.parse(JSON.stringify(J.prov)) : null;
+    claims.file_source_size = J.source_size;
+    staged.push([st, tsArr, {
+      layer: s.layer, purpose: s.purpose || '',
+      receipt: {
+        loaded_from: name, file_sha256: sha, imported_at: nowIso, original_format: 'mcomb-annotation/0.6',
+        source_size_checked: true, source_image_sha256_verified: ours,
+        identity_level: J.header.frame ? 'image_hash_verified_frame_declared' : 'image_hash_verified_frame_assumed',
+        frame_note: J.header.frame ? 'frame declared and equal to the frame of the opened image' : 'frame not declared in the file (pre-0.6.2); same image hash and size, so the pixel frame of the opened image is assumed',
+        t_note: 'sample t values are kept from the file and belong to the session that recorded them'
+      },
+      claims, origId, origTu, origIndex: i,
+      frozen: { qmax, points: JSON.parse(JSON.stringify(fz)), parentSha: sha, parentStrokeId: origId }
+    }]);
+  });
+  for (const [st, tsArr, meta] of staged) { tsOf.set(st, tsArr); metaOf.set(st, meta); strokes.push(st); }
+  redoStack = [];
+  pendingLoad = null; loadPrompt.style.display = 'none';
+  renderAllStrokes();
+  setMsg('loaded ' + staged.length + ' strokes from ' + name + ' (frozen values and Q preserved; layers, purposes kept; source claims stored apart from the import receipt)');
+}
+document.getElementById('btnRefreeze').addEventListener('click', () => {
+  let n = 0;
+  for (const s of strokes) {
+    const m = metaOf.get(s);
+    if (m && m.frozen) { m.freezeParent = { file_sha256: m.frozen.parentSha, qmax: m.frozen.qmax, stroke_id: m.frozen.parentStrokeId }; delete m.frozen; n++; }
+  }
+  setMsg(n + ' loaded strokes will be re-frozen at the current Q on export, linked to their parent freeze');
+});
+fileIn.addEventListener('change', async () => {
+  const f = fileIn.files && fileIn.files[0];
+  if (!f) return;
+  try {
+    if (!img) throw new Error('open the image first: strokes are recorded in the pixel frame of an image');
+    const bytes = new Uint8Array(await f.arrayBuffer());
+    const sha = await sha256Bytes(bytes);
+    let J;
+    try { J = JSON.parse(new TextDecoder().decode(bytes)); } catch (e) { throw new Error('not valid JSON'); }
+    if (J && J.header && J.header.format === 'mcomb-annotation/0.6' && Array.isArray(J.strokes)) await loadV06(J, f.name, sha);
+    else if (J && J.schema === 'mcomb-wacom-annotations-v1' && Array.isArray(J.strokes)) startLegacyLoad(J.strokes, f.name, sha, J);
+    else throw new Error('unrecognised format (need mcomb-wacom-annotations-v1 or mcomb-annotation/0.6)');
+  } catch (e) { setMsg('cannot load ' + f.name + ': ' + e.message); }
+  fileIn.value = '';
+});
+// ===== end v0.6 =====
+
+window.addEventListener('keydown', (e) => {
+  if (e.code === 'Space') { spaceDown = true; }
+  else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'z') { e.preventDefault(); undo(); }
+  else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'y') { e.preventDefault(); redo(); }
+  else if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 's') { e.preventDefault(); saveOutputs(); }
+  else if (e.key.toLowerCase() === 'q' && overlay) { setBlend(blend > 0.5 ? 0 : 100); }
+});
+window.addEventListener('keyup', (e) => {
+  if (e.code === 'Space') spaceDown = false;
+});
+
+updateImageUi();
+updateStageSize();
+</script>
+</body>
+</html>

@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Spherical Fourier Pen</title>
+<style>
+:root{
+  --bg:#f7f6f2; --panel:#ffffff; --ink:#1d1d1f; --muted:#5f6368; --line:#d9d6cf;
+  --pen:#c2410c; --block:#1f6feb; --sphere:#eef0f3; --grid:#c9ced6; --ok:#15803d; --bad:#b91c1c;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121316; --panel:#1b1d21; --ink:#e8e8ea; --muted:#a0a4ab; --line:#2e3138;
+    --pen:#fb923c; --block:#6ea8ff; --sphere:#22252b; --grid:#3a3f48; --ok:#4ade80; --bad:#f87171;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121316; --panel:#1b1d21; --ink:#e8e8ea; --muted:#a0a4ab; --line:#2e3138;
+  --pen:#fb923c; --block:#6ea8ff; --sphere:#22252b; --grid:#3a3f48; --ok:#4ade80; --bad:#f87171;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:16px}
+h1{font-size:1.35rem;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 14px}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 18px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:14px}
+.controls label{display:block;font-size:.85rem;color:var(--muted)}
+.controls input[type=range],.controls select{width:100%}
+.controls select{font:inherit;padding:4px}
+.val{color:var(--ink);font-variant-numeric:tabular-nums}
+.btns{display:flex;gap:8px;align-items:end;flex-wrap:wrap}
+button{font:inherit;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px;min-width:0}
+.card h2{font-size:1rem;margin:0 0 2px}
+.meta{font-size:.82rem;color:var(--muted);margin:0 0 6px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+canvas{width:100%;height:auto;display:block;touch-action:none}
+.notes{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:14px;font-size:.9rem}
+.notes h3{font-size:.95rem;margin:.2em 0 .3em}
+.tag{display:inline-block;font-size:.72rem;border:1px solid var(--line);border-radius:6px;padding:0 6px;margin-right:4px;color:var(--muted)}
+.exact{font-family:ui-monospace,Consolas,monospace;font-size:.8rem;overflow-wrap:anywhere}
+.ok{color:var(--ok)} .bad{color:var(--bad)}
+code{font-size:.85em}
+</style>
+</head>
+<body>
+<main>
+<h1>Spherical Fourier pen</h1>
+<p class="sub">FVLT's Fourier pen, which turns by a fixed root of unity and lets the signal set the step, drawn in the plane (exact) and on the sphere. v0.1.1 · roots of unity only, no degrees · v0.1.2: watch the pen walk · v0.1.3: full screen with camera controls · v0.1.4: {p,q} skeletons where the Fourier pen can walk them · v0.1.5: move (pan) in every full-screen view · v0.1.6: step counter on every view · v0.1.7: export each run as JSON for video</p>
+
+<section class="controls" aria-label="Controls">
+  <div><label for="sig">Signal c<sub>t</sub></label><select id="sig">
+    <option value="r30spin">Rule 30 centre, spin (black +1, white −1)</option>
+    <option value="r30bit">Rule 30 centre, bit (black 1, white 0)</option>
+    <option value="r150spin">Rule 150 centre, spin</option>
+    <option value="coin">Fair coin, spin (seed 1)</option>
+    <option value="legendre">Legendre symbol (t/P), Gauss sum</option>
+  </select></div>
+  <div><label for="P">Turn denominator P <span class="val" id="Pv"></span></label><input id="P" type="range" min="2" max="64" step="1" value="13"></div>
+  <div><label for="k">Frequency k <span class="val" id="kv"></span></label><input id="k" type="range" min="0" max="63" step="1" value="1"></div>
+  <div><label for="T">Steps n <span class="val" id="Tv"></span></label><input id="T" type="range" min="1" max="1024" step="1" value="13"></div>
+  <div><label for="a">Sphere step <span class="val" id="av"></span></label><input id="a" type="range" min="1" max="48" step="1" value="4"></div>
+  <div><label for="skel">Sphere step from {p,q} <span class="val" id="skelv"></span></label><select id="skel">
+    <option value="">free (step slider)</option>
+    <optgroup label="even q: the Fourier pen stays on the skeleton">
+      <option value="3,4">{3,4} octahedron</option>
+      <option value="2,4">{2,4} hosohedron (degenerate)</option>
+      <option value="2,6">{2,6} hosohedron (degenerate)</option>
+      <option value="4,2">{4,2} dihedron (degenerate)</option>
+      <option value="6,2">{6,2} dihedron (degenerate)</option>
+    </optgroup>
+    <optgroup label="odd q: shown to leave the skeleton">
+      <option value="3,3">{3,3} tetrahedron</option>
+      <option value="4,3">{4,3} cube</option>
+      <option value="5,3">{5,3} dodecahedron</option>
+      <option value="3,5">{3,5} icosahedron</option>
+    </optgroup>
+  </select></div>
+  <div><label for="spd">Play speed <span class="val" id="spdv"></span></label><input id="spd" type="range" min="0" max="11" step="1" value="4"></div>
+  <div><label><input id="spin" type="checkbox" checked> Turn the sphere while playing</label></div>
+  <div class="btns"><button id="slower">− Slower</button><button id="play">Play</button><button id="faster">Faster +</button><button id="stepbtn">Step ▸</button><button id="restart">Restart</button><button id="fullp">n = P</button><button id="reset">Reset view</button><button id="theme">Theme</button></div>
+</section>
+
+<section class="grid">
+  <div class="card">
+    <h2 style="color:var(--pen)">Plane: the Fourier pen (exact)</h2>
+    <p class="meta" id="mp"></p>
+    <canvas id="cp" width="640" height="640" aria-label="Planar Fourier pen"></canvas>
+    <p class="meta exact" id="ex"></p>
+  </div>
+  <div class="card">
+    <h2 style="color:var(--pen)">Sphere: the spherical Fourier pen</h2>
+    <p class="meta" id="ms"></p>
+    <canvas id="cs" width="640" height="640" aria-label="Spherical Fourier pen"></canvas>
+    <p class="meta" id="lim"></p>
+  </div>
+</section>
+
+<section class="notes">
+  <h3>The pen</h3>
+  <p>The library's <code>FVLTTurnFourierPenV1.pen</code> (Lean, in the Rule 30 theorem library) is</p>
+  <p style="text-align:center">pen(n) = Σ<sub>t&lt;n</sub> c<sub>t</sub> · ζ<sub>P</sub><sup>k·t</sup>, &nbsp; ζ<sub>P</sub> = e<sup>2πi/P</sup>.</p>
+  <p>As a pen: walk a step of length c<sub>t</sub> along the current heading, then turn by the fixed root of unity ζ<sub>P</sub><sup>k</sup>, k/P of a turn. The signal is the <b>step</b>; the <b>turn</b> is fixed. That is the opposite of the turtle pens, where the signal is the turn. Because the signal multiplies a root-of-unity character, pen(n) is a character sum, the shape of a Gauss sum. With c<sub>t</sub> = (t/P), the Legendre symbol, and P prime, pen(P) is exactly the classical quadratic Gauss sum g(k), and |g(k)|² = P for k ≢ 0. Blue dots mark the pen at whole turns n = P, 2P, 3P, …. The library proves that a signal is eventually periodic exactly when the steps between these dots eventually become constant (<code>eventually_periodic_iff_uniform_constant_steps</code>, <code>boolean_period_iff_uniform_spin_steps</code>).</p>
+  <p><b>On the sphere</b> the same rule runs as a pen on S²: walk the arc c<sub>t</sub>·α along the heading (backwards for −1, not at all for 0), then turn by ζ<sub>P</sub><sup>k</sup>. The step α is itself a root of unity, ζ<sub>384</sub><sup>a</sup>, a/384 of a turn. Each step is a rotation of the sphere, so the pen's state after n steps is an ordered product of rotations rather than a sum. The order now matters: the sphere pen is the non-commutative version of the character sum. As α → 0 it flattens back to the plane: near the start point the sphere path, divided by α, approaches pen(n). The card reports how close it is at the current α.</p>
+  <h3>Watching the pen walk (v0.1.2)</h3>
+  <p><b>Play</b> moves the pen smoothly along each step, from one step every five seconds up to twenty steps a second; it starts at one step a second, and − Slower and Faster + change it while it walks. While it walks, the whole path is drawn faintly, the part already walked is highlighted, the last six steps are bold, and the pen is ringed; in the plane the scale is held fixed so the picture does not zoom. A step of length 0 (a white cell in the bit signal) is a turn only, so the pen pauses in place for that step. <b>Pause</b>, <b>Step ▸</b> and <b>Restart</b> work as in the turtle pens. This is still the FVLT Fourier pen: the signal sets the step and the turn is the fixed root of unity ζ<sub>P</sub><sup>k</sup>.</p>
+  <h3>Full screen (this version)</h3>
+  <p>Every view has a <b>⛶ Full screen</b> button in its top corner. In full screen the view fills the screen with its own controls: <b>− Slower, Play, Faster +, Step ▸, Restart</b> and the current speed, plus camera controls. Spheres turn with ⟲ ⟳ ▲ ▼ or by dragging; every view moves with ◀ ▶ ▲ ▼ or a two-finger drag (flat views also by a one-finger drag); every view zooms with − and +, a two-finger pinch, or the mouse wheel. <b>Reset camera</b> returns the view to its start, and <b>✕ Exit</b> (or Escape) leaves full screen.</p>
+  <h3>{p,q} skeletons (v0.1.4)</h3>
+  <p>The sphere step can be set from a regular tiling {p,q}: cos(ℓ/2) = Re ζ<sub>2p</sub> / Im ζ<sub>2q</sub>, the same formula as the curvature pen. The faint lines are that tiling's skeleton, and the line under the selector says whether the Fourier pen stays on it.</p>
+  <p><b>Why only even q works.</b> The Fourier pen's turn is fixed: it does not depend on the signal. After an edge the pen faces straight on; a fixed turn then has to point along an edge at every vertex, and a step of −1 (or a pause, for the bit signal) has to as well. At a vertex the q edges are 1/q of a turn apart, and "straight on" is half a turn from the edge just walked. Half a turn is a whole number of 1/q turns exactly when q is even. So for even q (the octahedron {3,4}, and the degenerate hosohedra and dihedra) the pen with turn ζ<sub>q</sub> stays on the skeleton for every signal. For odd q (tetrahedron, cube, dodecahedron, icosahedron) no fixed turn can: those are offered to show the pen leaving. The turtle pens reach odd q because their turn follows the sign. This is a real difference between the two kinds of pen.</p>
+  <h3>Export a run (fvlt-pen-run/0.1)</h3>
+  <p>Every view has a <b>⇩ Run JSON</b> button, on the page and in full screen. It saves the run as it is now: the stream (signs, seed, tooth events), the rule and its exact labels, the geometry (skeleton, lattice or tiling patch), the path for every step, the camera, the play speed, and statistics for every step (vertices, edges, tooth events, distance) with final totals. The renderer <code>pen_tools/render_pen_run_v0_1.py</code> turns such a file into a video like the Platonic-solid videos.</p>
+  <h3>Status</h3>
+  <p><span class="tag">exact</span>The plane card computes pen(n) exactly in ℤ[ζ<sub>P</sub>] as the residue vector a<sub>r</sub> = Σ<sub>t&lt;n, kt ≡ r (mod P)</sub> c<sub>t</sub> (the library's <code>step_eq_residue_sum</code> form); the picture is drawn from it. For prime P the page also computes |pen(n)|² exactly in ℤ[ζ<sub>P</sub>] and reports it as an integer when it is one.
+  <span class="tag">exact · Lean</span>Pen definition and the periodicity criteria: <code>FVLTTurnFourierPenV1</code> (library v19).
+  <span class="tag">drawing</span>Every turn and step is a root of unity, written as ζ<sub>N</sub><sup>m</sup> or as m/N of a turn; the page shows no degrees. The sphere path is floating-point rendering of those rotations. Its shape is a picture, not evidence about periodicity. The flat-limit figure is a FINITE numerical comparison.</p>
+  <p style="color:var(--muted)">Credits: saphir — the Fourier pen, the spherical Fourier pen, and Rule 30 written on surfaces. Gauss (Gauss sums). FVLT: the framework was assembled by Robin Miller; its components are classical results of others. Built by skeleton (Claude Opus 5.5), 2026-10-31.</p>
+</section>
+</main>
+
+<script>
+"use strict";
+// ---- full-screen views with playback and camera controls (shared by the pen viewers) ----
+// v0.4: every view exports its run as JSON (fvlt-pen-run/0.1), with per-step statistics, for the video renderer.
+// v0.3: a step counter on every view, on the page and in full screen.
+// v0.2: every view pans (buttons, one-finger drag on flat views, two-finger drag on all); the pan is applied to the
+// canvas itself each time a frame is cleared, so it works for spheres, planes and disks without touching their drawing code.
+const CAMZ={}, CAMP={};                       // per-view zoom factor and pan offset (fraction of the canvas width)
+function zoomOf(id){ return CAMZ[id]||1; }
+function panOf(id){ return [0,0]; }           // kept for the drawing hooks of v0.1; the pan now lives in the canvas transform
+// ---- run export (fvlt-pen-run/0.1) ----
+// per-step statistics from a path: distinct vertices and edges reached, cumulative tooth events, distance from the start
+function pathStats(points, tooth, dist){
+  const key=p=>p.map(x=>Math.round(x*1e6)).join(','), vs=new Set(), es=new Set(), out={vertices:[], edges:[], tooth:[], distance:[]};
+  let tc=0;
+  for(let t=0;t<points.length;t++){
+    vs.add(key(points[t])); if(t>0){ const a=key(points[t-1]), b=key(points[t]); if(a!==b) es.add(a<b?a+'|'+b:b+'|'+a); }
+    if(t>0 && tooth && tooth[t-1]) tc++;
+    out.vertices.push(vs.size); out.edges.push(es.size); out.tooth.push(tc);
+    out.distance.push(dist ? dist[t] : Math.hypot(...points[t].map((x,i)=>x-points[0][i])));
+  }
+  return out;
+}
+const r6=x=>Math.round(x*1e9)/1e9;
+function downloadRun(v){
+  let run; try{ run=exportRun(v.id); }catch(e){ alert('Export failed: '+e.message); return; }
+  run.schema='fvlt-pen-run/0.1'; run.created=new Date().toISOString();
+  run.view=Object.assign({id:v.id, title:v.title, kind:v.kind}, run.view||{});
+  run.camera=Object.assign({yaw:r6(yaw), pitch:r6(pitch), zoom:zoomOf(v.id), pan:CAMP[v.id]||[0,0]}, run.camera||{});
+  run.credits='saphir: Rule 30 written on surfaces, the polyhedra, the {p,q} vision. FVLT: the framework was assembled by Robin Miller; its components are classical results of others. Built by skeleton (Claude Opus 5.5).';
+  run.status=run.status||'drawing register: coordinates are floating point unless marked exact; counts are FINITE readouts, not proofs.';
+  const name=(run.file_stub||('pen_run_'+v.id))+'_'+new Date().toISOString().slice(0,19).replace(/[:T]/g,'-')+'.json';
+  const blob=new Blob([JSON.stringify(run)],{type:'application/json'}), a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000);
+  window.lastRun=run; return run;
+}
+function setupFullscreen(VIEWS){
+  const Y0=yaw, P0=pitch, byId=id=>document.getElementById(id);
+  const st=document.createElement('style');
+  st.textContent=`.fsbox{position:relative}
+.fsopen{position:absolute;top:6px;right:6px;font-size:.8rem;padding:4px 8px;opacity:.9;z-index:2}
+.fsbar,.fstitle{display:none}
+.fsbox.fs-on{position:fixed;inset:0;z-index:1000;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;gap:6px;overflow:auto}
+.fsbox.fs-on canvas{width:min(calc(100vw - 16px),calc(100vh - 220px))!important;height:auto!important;flex:0 0 auto}
+.fsbox.fs-on .fsopen{display:none}
+.fsbox.fs-on .fstitle{display:block;font-weight:600}
+.fsbox.fs-on .fsbar{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;max-width:100%}
+.fsbar button{min-width:44px;min-height:40px;font-size:1rem}
+.fsbar .fsspd{font-size:.85rem;color:var(--muted);min-width:9em;text-align:center}
+.fsbar .fslab{font-size:.8rem;color:var(--muted)}
+.fsstep{position:absolute;left:6px;top:6px;z-index:2;font-size:.85rem;font-variant-numeric:tabular-nums;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:2px 8px;opacity:.92;pointer-events:none}
+.fsbox.fs-on .fsstep{position:static;font-size:1rem;opacity:1}
+.fsexport{position:absolute;top:6px;right:118px;font-size:.8rem;padding:4px 8px;opacity:.9;z-index:2}
+.fsbox.fs-on .fsexport{display:none}`;
+  document.head.appendChild(st);
+  const boxes=[];
+  for(const v of VIEWS){
+    const cv=byId(v.id), box=document.createElement('div'); box.className='fsbox';
+    cv.parentNode.insertBefore(box,cv); box.appendChild(cv);
+    // the pan: after every full clear, draw through a translation
+    const g=cv.getContext('2d'), clear0=g.clearRect.bind(g);
+    g.clearRect=function(x,y,w,h){ g.setTransform(1,0,0,1,0,0); clear0(0,0,cv.width,cv.height); const p=CAMP[v.id]||[0,0]; g.setTransform(1,0,0,1,p[0]*cv.width,p[1]*cv.width); };
+    const open=document.createElement('button'); open.className='fsopen'; open.textContent='⛶ Full screen'; open.setAttribute('aria-label','Full screen: '+v.title);
+    box.insertBefore(open,cv);
+    if(typeof exportRun==='function'){ const ex=document.createElement('button'); ex.className='fsexport'; ex.textContent='⇩ Run JSON'; ex.setAttribute('aria-label','Export this run as JSON: '+v.title); ex.addEventListener('click',()=>downloadRun(v)); box.insertBefore(ex,cv); }
+    const title=document.createElement('div'); title.className='fstitle'; title.textContent=v.title; box.insertBefore(title,cv);
+    const badge=document.createElement('div'); badge.className='fsstep'; badge.setAttribute('aria-live','off'); box.insertBefore(badge,cv);
+    const row1=document.createElement('div'), row2=document.createElement('div'), row3=document.createElement('div');
+    row1.className=row2.className=row3.className='fsbar';
+    row1.innerHTML='<button data-p="slower">− Slower</button><button data-p="play">Play</button><button data-p="faster">Faster +</button><button data-p="stepbtn">Step ▸</button><button data-p="restart">Restart</button><span class="fsspd"></span>';
+    row2.innerHTML='<span class="fslab">Move</span><button data-c="pl" aria-label="Move left">◀</button><button data-c="pr" aria-label="Move right">▶</button><button data-c="pu" aria-label="Move up">▲</button><button data-c="pd" aria-label="Move down">▼</button><span class="fslab">Zoom</span><button data-c="zout" aria-label="Zoom out">−</button><button data-c="zin" aria-label="Zoom in">+</button>';
+    row3.innerHTML=(v.kind==='sphere' ? '<span class="fslab">Turn</span><button data-c="left" aria-label="Turn left">⟲</button><button data-c="right" aria-label="Turn right">⟳</button><button data-c="up" aria-label="Tilt up">⤒</button><button data-c="down" aria-label="Tilt down">⤓</button>' : '')
+      +'<button data-c="reset">Reset camera</button>'+(typeof exportRun==='function'?'<button data-c="export">⇩ Run JSON</button>':'')+'<button data-c="exit">✕ Exit</button>';
+    box.appendChild(row1); box.appendChild(row2); box.appendChild(row3);
+    const b={v, cv, box, row1, badge, api:false}; boxes.push(b);
+    open.addEventListener('click',()=>enter(b));
+    row1.addEventListener('click',e=>{ const p=e.target.dataset&&e.target.dataset.p; if(p && byId(p)) byId(p).click(); sync(); });
+    for(const r of [row2,row3]) r.addEventListener('click',e=>{ const c=e.target.dataset&&e.target.dataset.c; if(c) camera(b,c); });
+    // gestures: wheel and pinch zoom; two fingers also pan; one finger pans a flat view (spheres turn by one-finger drag)
+    const ptrs=new Map(); let two=null, drag0=null;
+    cv.addEventListener('wheel',e=>{ if(!box.classList.contains('fs-on')) return; e.preventDefault(); zoomBy(v.id, Math.exp(-e.deltaY*0.0015)); },{passive:false});
+    cv.addEventListener('pointerdown',e=>{ ptrs.set(e.pointerId,[e.clientX,e.clientY]);
+      if(ptrs.size===2){ const [a,c]=[...ptrs.values()]; two={d:Math.hypot(a[0]-c[0],a[1]-c[1]), z:zoomOf(v.id), m:[(a[0]+c[0])/2,(a[1]+c[1])/2], p:(CAMP[v.id]||[0,0]).slice()}; drag0=null; }
+      else if(v.kind!=='sphere'){ drag0=[e.clientX,e.clientY,...(CAMP[v.id]||[0,0])]; } });
+    cv.addEventListener('pointermove',e=>{ if(!ptrs.has(e.pointerId)) return; ptrs.set(e.pointerId,[e.clientX,e.clientY]); const w=cv.clientWidth||1;
+      if(ptrs.size===2 && two){ const [a,c]=[...ptrs.values()];
+        CAMZ[v.id]=Math.max(0.25,Math.min(12,two.z*Math.hypot(a[0]-c[0],a[1]-c[1])/Math.max(1,two.d)));
+        CAMP[v.id]=[two.p[0]+((a[0]+c[0])/2-two.m[0])/w, two.p[1]+((a[1]+c[1])/2-two.m[1])/w]; render(); }
+      else if(drag0){ CAMP[v.id]=[drag0[2]+(e.clientX-drag0[0])/w, drag0[3]+(e.clientY-drag0[1])/w]; render(); } });
+    const up=e=>{ ptrs.delete(e.pointerId); if(ptrs.size<2) two=null; if(ptrs.size===0) drag0=null; };
+    cv.addEventListener('pointerup',up); cv.addEventListener('pointercancel',up);
+  }
+  function zoomBy(id,f){ CAMZ[id]=Math.max(0.25,Math.min(12,zoomOf(id)*f)); render(); }
+  function camera(b,c){ const id=b.v.id, P=CAMP[id]||[0,0], d=0.1;
+    if(c==='left') yaw-=0.25; else if(c==='right') yaw+=0.25;
+    else if(c==='up') pitch=Math.max(-1.5,pitch-0.2); else if(c==='down') pitch=Math.min(1.5,pitch+0.2);
+    else if(c==='pl') CAMP[id]=[P[0]+d,P[1]]; else if(c==='pr') CAMP[id]=[P[0]-d,P[1]];
+    else if(c==='pu') CAMP[id]=[P[0],P[1]+d]; else if(c==='pd') CAMP[id]=[P[0],P[1]-d];
+    else if(c==='zin') return zoomBy(id,1.25); else if(c==='zout') return zoomBy(id,0.8);
+    else if(c==='reset'){ CAMZ[id]=1; CAMP[id]=[0,0]; if(b.v.kind==='sphere'){ yaw=Y0; pitch=P0; } }
+    else if(c==='exit') return leaveFs(b);
+    else if(c==='export') return downloadRun(b.v);
+    render(); }
+  function enter(b){
+    for(const o of boxes) if(o!==b && o.box.classList.contains('fs-on')) leaveFs(o);
+    b.box.classList.add('fs-on'); document.body.style.overflow='hidden';
+    const rq=b.box.requestFullscreen||b.box.webkitRequestFullscreen;
+    if(rq){ try{ const p=rq.call(b.box); b.api=true; if(p&&p.catch) p.catch(()=>{ b.api=false; }); }catch(e){ b.api=false; } }
+    sync(); render(); }
+  function leaveFs(b){
+    if(!b.box.classList.contains('fs-on')) return;
+    b.box.classList.remove('fs-on'); document.body.style.overflow='';
+    const fe=document.fullscreenElement||document.webkitFullscreenElement;
+    if(fe){ const ex=document.exitFullscreen||document.webkitExitFullscreen; try{ ex&&ex.call(document); }catch(e){} }
+    b.api=false; render(); }
+  const onFs=()=>{ const fe=document.fullscreenElement||document.webkitFullscreenElement; if(!fe) for(const b of boxes) if(b.api) leaveFs(b); };
+  document.addEventListener('fullscreenchange',onFs); document.addEventListener('webkitfullscreenchange',onFs);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') for(const b of boxes) leaveFs(b); });
+  function sync(){ for(const b of boxes){ const pb=b.row1.querySelector('[data-p="play"]'), sp=b.row1.querySelector('.fsspd');
+    if(byId('play')) pb.textContent=byId('play').textContent; if(byId('spdv')) sp.textContent=byId('spdv').textContent; } }
+  setInterval(sync,250);
+  // the step the pen is on: during playback the step in progress, otherwise the whole run
+  function stepText(){ if(typeof shown==='undefined' || !shown) return ''; const total= shown.T!==undefined ? shown.T : shown.n;
+    if(pos===null) return 'step '+total+' of '+total+' (whole path)';
+    const n=Math.min(total, Math.floor(pos)); return 'step '+n+' of '+total+(playing?'':' · paused'); }
+  let lastStep='';
+  function showSteps(){ const t=stepText(); if(t===lastStep) return; lastStep=t; for(const b of boxes) b.badge.textContent=t; }
+  (function loop(){ showSteps(); setTimeout(loop,100); })();
+  window.PenFullscreen={boxes, enter, leaveFs, camera, zoomBy};
+}
+// ---- signals (exact integers) ----
+function centre(rule, T){
+  const W=2*T+5, mid=T+2; let a=new Uint8Array(W), b=new Uint8Array(W); a[mid]=1;
+  const c=new Uint8Array(T);
+  for(let t=0;t<T;t++){
+    c[t]=a[mid];
+    for(let i=1;i<W-1;i++){ const L=a[i-1],C=a[i],R=a[i+1]; b[i]= rule===150 ? (L^C^R) : (L^(C|R)); }
+    b[0]=0; b[W-1]=0; const tmp=a; a=b; b=tmp;
+  }
+  return c;
+}
+function coin(T, seed){
+  let x=(seed>>>0)||1; const s=new Int8Array(T);
+  for(let t=0;t<T;t++){ x^=x<<13; x>>>=0; x^=x>>>17; x^=x<<5; x>>>=0; s[t]=(x&1)?1:-1; }
+  return s;
+}
+function isPrime(n){ if(n<2) return false; for(let d=2;d*d<=n;d++) if(n%d===0) return false; return true; }
+function legendre(t, p){ // (t/p) by Euler's criterion, exact integer arithmetic
+  t%=p; if(t===0) return 0; let r=1, b=t, e=(p-1)/2;
+  while(e>0){ if(e&1) r=r*b%p; b=b*b%p; e>>=1; }
+  return r===1 ? 1 : -1;
+}
+function signal(kind, T, P){
+  const c=new Int32Array(T);
+  if(kind==='r30spin'||kind==='r30bit'||kind==='r150spin'){
+    const x=centre(kind==='r150spin'?150:30, T);
+    for(let t=0;t<T;t++) c[t]= kind==='r30bit' ? x[t] : (x[t]?1:-1);
+  } else if(kind==='coin'){ const s=coin(T,1); for(let t=0;t<T;t++) c[t]=s[t]; }
+  else { for(let t=0;t<T;t++) c[t]=legendre(t,P); }
+  return c;
+}
+// ---- exact plane pen in Z[zeta_P]: residue vector a_r ----
+function residues(c, P, k, n){
+  const a=new Array(P).fill(0);
+  for(let t=0;t<n;t++) a[(k*t)%P]+=c[t];
+  return a;
+}
+// |sum a_r zeta^r|^2 = sum_d b_d zeta^d with b_d = sum_r a_{r+d} a_r; for prime P it is an integer
+// iff b_d is constant for d != 0, and then equals b_0 - b_1.
+function normSquaredExact(a, P){
+  const b=new Array(P).fill(0);
+  for(let d=0;d<P;d++) for(let r=0;r<P;r++) b[d]+=a[(r+d)%P]*a[r];
+  let flat=true; for(let d=2;d<P;d++) if(b[d]!==b[1]) flat=false;
+  return {b, integer: flat ? b[0]-b[1] : null};
+}
+function planePath(c, P, k, n){
+  const pts=[[0,0]]; let x=0, y=0;
+  for(let t=0;t<n;t++){ const ph=2*Math.PI*((k*t)%P)/P; x+=c[t]*Math.cos(ph); y+=c[t]*Math.sin(ph); pts.push([x,y]); }
+  return pts;
+}
+// ---- sphere pen: walk c_t*alpha along heading, then turn 2*pi*k/P ----
+const cross=(u,v)=>[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];
+function spherePath(c, P, k, n, alpha){
+  let x=[0,0,1], v=[1,0,0]; const pts=[x.slice()], phi=2*Math.PI*k/P, cp=Math.cos(phi), sp=Math.sin(phi);
+  for(let t=0;t<n;t++){
+    const s=c[t]*alpha, ca=Math.cos(s), sa=Math.sin(s);
+    const nx=[ca*x[0]+sa*v[0], ca*x[1]+sa*v[1], ca*x[2]+sa*v[2]];
+    const nv=[-sa*x[0]+ca*v[0], -sa*x[1]+ca*v[1], -sa*x[2]+ca*v[2]];
+    const nn=Math.hypot(...nx); x=nx.map(q=>q/nn);
+    const d=nv[0]*x[0]+nv[1]*x[1]+nv[2]*x[2]; let vv=[nv[0]-d*x[0],nv[1]-d*x[1],nv[2]-d*x[2]];
+    const nm=Math.hypot(...vv); vv=vv.map(q=>q/nm);
+    const w=cross(x,vv); v=[cp*vv[0]+sp*w[0], cp*vv[1]+sp*w[1], cp*vv[2]+sp*w[2]];
+    pts.push(x.slice());
+  }
+  return pts;
+}
+// ---- {p,q} skeletons: edge from cos(l/2) = Re zeta_2p / Im zeta_2q; the turtle's flag machine gives the skeleton ----
+function pqEdgeCos(p,q){ const r=Math.cos(Math.PI/p)/Math.sin(Math.PI/q); return 2*r*r-1; }   // cos l (sphere only)
+function skeleton(p,q){
+  const ca=pqEdgeCos(p,q), sa=Math.sqrt(Math.max(0,1-ca*ca)), th=Math.PI*(q-2)/q, tol=1e-7, verts=[], states=[], edges=new Set();
+  const near=(a,b)=>Math.abs(a[0]-b[0])<tol&&Math.abs(a[1]-b[1])<tol&&Math.abs(a[2]-b[2])<tol;
+  const vIdx=p=>{ for(let i=0;i<verts.length;i++) if(near(verts[i],p)) return i; verts.push(p); return verts.length-1; };
+  const sIdx=(x,v)=>{ for(let i=0;i<states.length;i++) if(near(states[i].x,x)&&near(states[i].v,v)) return i; states.push({x,v}); return states.length-1; };
+  // start one turn before heading +x, so the Fourier pen's first step (along +x) runs along an edge for every q
+  sIdx([0,0,1],[Math.cos(th),-Math.sin(th),0]); vIdx([0,0,1]);
+  for(let i=0;i<states.length && states.length<4000;i++) for(const sg of [1,-1]){
+    const {x,v}=states[i], t=sg*th, w=cross(x,v), u=[Math.cos(t)*v[0]+Math.sin(t)*w[0],Math.cos(t)*v[1]+Math.sin(t)*w[1],Math.cos(t)*v[2]+Math.sin(t)*w[2]];
+    const nx=[ca*x[0]+sa*u[0],ca*x[1]+sa*u[1],ca*x[2]+sa*u[2]], nv=[-sa*x[0]+ca*u[0],-sa*x[1]+ca*u[1],-sa*x[2]+ca*u[2]];
+    const a=vIdx(x), b=vIdx(nx); edges.add(a<b?a+','+b:b+','+a); sIdx(nx,nv); }
+  return {verts, edges:[...edges].map(e=>e.split(',').map(Number)), ca};
+}
+function offSkeleton(pts, K){ // first step at which the pen is not on a skeleton vertex, and the largest miss
+  let worst=0, first=-1;
+  for(let t=0;t<pts.length;t++){ let m=Infinity; for(const v of K.verts) m=Math.min(m, Math.hypot(pts[t][0]-v[0],pts[t][1]-v[1],pts[t][2]-v[2]));
+    if(m>worst) worst=m; if(m>1e-6 && first<0) first=t; }
+  return {first, worst};
+}
+window.SphericalFourierPen={skeleton, offSkeleton, pqEdgeCos, centre, signal, legendre, residues, normSquaredExact, planePath, spherePath};
+
+// ---- rendering ----
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+let yaw=0.6, pitch=-0.95, shown=null, playing=false, raf=0, pos=null, lastT=0;
+const TRAIL=6; // steps drawn bold behind the moving pen
+function rot(p){ const cy=Math.cos(yaw), sy=Math.sin(yaw), cp=Math.cos(pitch), sp=Math.sin(pitch);
+  const x1=cy*p[0]+sy*p[1], y1=-sy*p[0]+cy*p[1]; return [x1, cp*y1-sp*p[2], sp*y1+cp*p[2]]; }
+function drawPlane(cv, pts, P, upto){
+  const g=cv.getContext('2d'), W=cv.width; g.clearRect(0,0,W,W);
+  const walking=pos!==null, last=pts.length-1, n=Math.min(Math.floor(upto), last), frac=n<last?Math.min(1,upto-n):0;
+  // while walking, the scale is fixed by the whole path so the picture does not zoom as the pen moves
+  const span=walking?last:n; let mx=1; for(let i=0;i<=span;i++) mx=Math.max(mx, Math.abs(pts[i][0]), Math.abs(pts[i][1]));
+  const S=W*0.44/mx*zoomOf(cv.id), cx=W/2+panOf(cv.id)[0]*W, cy=W/2+panOf(cv.id)[1]*W, X=p=>cx+S*p[0], Y=p=>cy-S*p[1];
+  g.strokeStyle=css('--grid'); g.lineWidth=1; g.beginPath(); g.moveTo(0,cy); g.lineTo(W,cy); g.moveTo(cx,0); g.lineTo(cx,W); g.stroke();
+  const line=(from,to,alpha,lw)=>{ if(to<=from) return; g.globalAlpha=alpha; g.lineWidth=lw; g.beginPath(); g.moveTo(X(pts[from]),Y(pts[from])); for(let i=from+1;i<=to;i++) g.lineTo(X(pts[i]),Y(pts[i])); g.stroke(); };
+  g.strokeStyle=css('--pen');
+  if(walking){ line(0,last,0.13,1.4); line(0,Math.max(0,n-TRAIL),0.5,1.8); line(Math.max(0,n-TRAIL),n,1,3.6); }
+  else line(0,n,1,1.8);
+  let e=pts[n];
+  if(walking && frac>0){ const b=pts[n+1]; e=[e[0]+(b[0]-e[0])*frac, e[1]+(b[1]-e[1])*frac];
+    g.globalAlpha=1; g.lineWidth=3.6; g.beginPath(); g.moveTo(X(pts[n]),Y(pts[n])); g.lineTo(X(e),Y(e)); g.stroke(); }
+  g.globalAlpha=1; g.fillStyle=css('--block'); for(let i=P;i<=n;i+=P){ g.beginPath(); g.arc(X(pts[i]), Y(pts[i]), 4, 0, 2*Math.PI); g.fill(); }
+  g.fillStyle=css('--ink'); g.beginPath(); g.arc(X(e), Y(e), walking?7:4.5, 0, 2*Math.PI); g.fill();
+  if(walking){ g.strokeStyle=css('--pen'); g.lineWidth=2.5; g.beginPath(); g.arc(X(e), Y(e), 12, 0, 2*Math.PI); g.stroke(); }
+  g.fillStyle=css('--muted'); g.font='22px system-ui'; g.fillText('scale: '+(mx).toFixed(1)+' per half-width', 12, W-14);
+}
+function arcPts(a,b){
+  const d=Math.max(-1,Math.min(1,a[0]*b[0]+a[1]*b[1]+a[2]*b[2])), w=Math.acos(d);
+  if(w<1e-9) return [a,b]; const m=Math.max(1,Math.ceil(w/(Math.PI/36))), sw=Math.sin(w), out=[a];
+  for(let j=1;j<=m;j++){ const t=j/m, p=Math.sin((1-t)*w)/sw, q=Math.sin(t*w)/sw; out.push([p*a[0]+q*b[0],p*a[1]+q*b[1],p*a[2]+q*b[2]]); }
+  return out;
+}
+function drawSphere(cv, pts, P, upto){
+  const g=cv.getContext('2d'), W=cv.width, R=W*0.44*zoomOf(cv.id), cx=W/2, cy=W/2; g.clearRect(0,0,W,W);
+  g.fillStyle=css('--sphere'); g.beginPath(); g.arc(cx,cy,R,0,2*Math.PI); g.fill();
+  g.strokeStyle=css('--grid'); g.lineWidth=1;
+  for(let kk=-2;kk<=2;kk++){ const z=kk/3, rr=Math.sqrt(1-z*z); g.beginPath(); let pen=false;
+    for(let j=0;j<=96;j++){ const a=2*Math.PI*j/96, p=rot([rr*Math.cos(a),rr*Math.sin(a),z]);
+      if(p[1]<0){pen=false;continue;} if(!pen){g.moveTo(cx+R*p[0],cy-R*p[2]);pen=true;} else g.lineTo(cx+R*p[0],cy-R*p[2]); } g.stroke(); }
+  if(shown && shown.K){ g.strokeStyle=css('--muted');
+    for(const [a,b] of shown.K.edges){ const A=shown.K.verts[a], B=shown.K.verts[b], d=Math.max(-1,Math.min(1,A[0]*B[0]+A[1]*B[1]+A[2]*B[2])), w=Math.acos(d);
+      if(Math.PI-w<1e-6) continue;   // antipodal (hosohedron) edges: their great circle is not fixed by the endpoints
+      const ps=arcPts(A,B).map(rot);
+      for(let j=0;j<ps.length-1;j++){ const front=(ps[j][1]+ps[j+1][1])/2>=0; g.globalAlpha=front?0.3:0.08; g.lineWidth=1;
+        g.beginPath(); g.moveTo(cx+R*ps[j][0],cy-R*ps[j][2]); g.lineTo(cx+R*ps[j+1][0],cy-R*ps[j+1][2]); g.stroke(); } }
+    g.globalAlpha=1; }
+  const walking=pos!==null, last=pts.length-1, n=Math.min(Math.floor(upto), last), frac=n<last?Math.min(1,upto-n):0;
+  const seg=(a,b,fa,ba,lw)=>{ const ps=arcPts(a,b).map(rot);
+    for(let j=0;j<ps.length-1;j++){ const front=(ps[j][1]+ps[j+1][1])/2>=0; g.globalAlpha=front?fa:ba; g.lineWidth=front?lw:1;
+      g.beginPath(); g.moveTo(cx+R*ps[j][0],cy-R*ps[j][2]); g.lineTo(cx+R*ps[j+1][0],cy-R*ps[j+1][2]); g.stroke(); } };
+  g.strokeStyle=css('--pen');
+  if(walking) for(let i=n;i<last;i++) seg(pts[i],pts[i+1],0.13,0.04,1.4);              // the path still to come, dimmed
+  for(let i=0;i<n;i++){ const recent=walking && i>=n-TRAIL; seg(pts[i],pts[i+1], walking?(recent?1:0.5):0.95, walking?(recent?0.35:0.12):0.18, recent?3.6:1.8); }
+  let m=pts[n];
+  if(walking && frac>0){ const a=pts[n], b=pts[n+1], d=Math.max(-1,Math.min(1,a[0]*b[0]+a[1]*b[1]+a[2]*b[2])), w=Math.acos(d);
+    if(w>1e-9){ const sw=Math.sin(w), p=Math.sin((1-frac)*w)/sw, q=Math.sin(frac*w)/sw; m=[p*a[0]+q*b[0],p*a[1]+q*b[1],p*a[2]+q*b[2]]; seg(a,m,1,0.35,3.6); } }
+  g.globalAlpha=1; g.fillStyle=css('--block');
+  for(let i=P;i<=n;i+=P){ const p=rot(pts[i]); g.globalAlpha=p[1]>=0?1:0.3; g.beginPath(); g.arc(cx+R*p[0],cy-R*p[2],4,0,2*Math.PI); g.fill(); }
+  const e=rot(m); g.globalAlpha=e[1]>=0?1:0.45; g.fillStyle=css('--ink'); g.beginPath(); g.arc(cx+R*e[0],cy-R*e[2],walking?7:4.5,0,2*Math.PI); g.fill();
+  if(walking){ g.strokeStyle=css('--pen'); g.lineWidth=2.5; g.beginPath(); g.arc(cx+R*e[0],cy-R*e[2],12,0,2*Math.PI); g.stroke(); }
+  g.globalAlpha=1;
+}
+const SUB="₀₁₂₃₄₅₆₇₈₉", SUP="⁰¹²³⁴⁵⁶⁷⁸⁹";
+function sub(n){ return String(n).split("").map(d=>SUB[+d]).join(""); }
+function sup(n){ return String(n).split("").map(d=>SUP[+d]).join(""); }
+function fmtVec(a){ return '('+a.join(', ')+')'; }
+function compute(){
+  const P=+document.getElementById('P').value;
+  const kEl=document.getElementById('k'); kEl.max=P-1; if(+kEl.value>P-1) kEl.value=P-1;
+  const k=+kEl.value, n=+document.getElementById('T').value, ak=+document.getElementById('a').value, kind=document.getElementById('sig').value;
+  const sk=document.getElementById('skel').value, pq=sk?sk.split(',').map(Number):null, K=pq?skeleton(pq[0],pq[1]):null;
+  const alpha= K ? Math.acos(Math.max(-1,Math.min(1,K.ca))) : 2*Math.PI*ak/384;
+  document.getElementById('Pv').textContent=P+(isPrime(P)?' (prime)':'');
+  document.getElementById('kv').textContent=k+'  (turn ζ'+sub(P)+(k===1?'':sup(k))+' = '+k+'/'+P+' of a turn)';
+  document.getElementById('Tv').textContent=n;
+  document.getElementById('av').textContent= K ? 'set by {'+pq[0]+','+pq[1]+'} (slider not used)' : 'ζ₃₈₄'+sup(ak)+' = '+ak+'/384 of a turn';
+  const c=signal(kind, n, P), a=residues(c,P,k,n);
+  const pp=planePath(c,P,k,n), sp=spherePath(c,P,k,n,alpha);
+  shown={P, n, pp, sp, K};
+  if(K){ const off=offSkeleton(sp,K), p=pq[0], q=pq[1];
+    document.getElementById('skelv').textContent= off.first<0
+      ? '· on the {'+p+','+q+'} skeleton at every step (largest miss '+off.worst.toExponential(1)+')'
+      : '· leaves the {'+p+','+q+'} skeleton at step '+off.first+(q%2? ' (odd q: a fixed turn cannot keep the pen on the edges)':''); }
+  else document.getElementById('skelv').textContent='';
+  const end=pp[n];
+  document.getElementById('mp').textContent=`n=${n} · pen(n) ≈ ${end[0].toFixed(4)} ${end[1]>=0?'+':'−'} ${Math.abs(end[1]).toFixed(4)} i · |pen(n)| ≈ ${Math.hypot(end[0],end[1]).toFixed(4)} · blue dots at n = P, 2P, …`;
+  let ex='exact: pen(n) = Σ a_r ζ^r with a = '+(P<=32?fmtVec(a):'(vector of length '+P+')');
+  if(isPrime(P)){
+    const N=normSquaredExact(a,P);
+    ex+= N.integer!==null ? ` · |pen(n)|² = ${N.integer} exactly (in ℤ[ζ_${P}])` : ' · |pen(n)|² is not an integer here';
+    if(kind==='legendre' && n===P && k%P!==0){
+      const good=N.integer===P;
+      ex+=` · Gauss sum check |g(${k})|² = P: <span class="${good?'ok':'bad'}">${good?'holds':'FAILS'}</span>`;
+    }
+  } else if(kind==='legendre') ex+=' · Legendre symbol needs P prime';
+  document.getElementById('ex').innerHTML=ex;
+  // flat limit: the sphere path near the pole, divided by alpha, against the plane pen
+  const s=sp[n], th=Math.acos(Math.max(-1,Math.min(1,s[2]))), r=Math.hypot(s[0],s[1]);
+  const lx= r>1e-12 ? s[0]/r*th/alpha : 0, ly= r>1e-12 ? s[1]/r*th/alpha : 0;
+  const err=Math.hypot(lx-end[0], ly-end[1]);
+  document.getElementById('ms').textContent=`n=${n} · step ${K ? 'cos ℓ = '+K.ca.toFixed(6)+' from {'+pq[0]+','+pq[1]+'}' : 'ζ₃₈₄'+sup(ak)} · turn ζ${sub(P)}${k===1?"":sup(k)} · pen at height z = ${s[2].toFixed(4)} (start z = 1)`;
+  document.getElementById('lim').textContent=`flat limit (FINITE): sphere end mapped back by the azimuthal equidistant chart and divided by α lands ${err.toFixed(4)} from pen(n) (|pen(n)| ≈ ${Math.hypot(end[0],end[1]).toFixed(2)}); smaller α makes this smaller.`;
+}
+document.getElementById('skel').addEventListener('change',()=>{
+  const v=document.getElementById('skel').value;
+  if(v){ const [p,q]=v.split(',').map(Number); document.getElementById('P').value= q%2===0 ? q : 2*q; compute(); document.getElementById('k').value= q%2===0 ? 1 : q+2; }
+  leave(); compute(); render(); });
+['P','k','a'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{ if(document.getElementById('skel').value){ document.getElementById('skel').value=''; leave(); compute(); render(); } }));
+function render(upto){ if(!shown) return; const u=upto ?? (pos!==null ? pos : shown.n);
+  drawPlane(document.getElementById('cp'), shown.pp, shown.P, u); drawSphere(document.getElementById('cs'), shown.sp, shown.P, u); }
+function stop(){ playing=false; cancelAnimationFrame(raf); document.getElementById('play').textContent='Play'; }
+function leave(){ stop(); pos=null; }   // a settings change leaves playback and shows the whole path again
+// speed ladder, steps per second: one step every 5 s up to 20 steps a second; default one step a second
+const SPEEDS=[0.2,0.25,1/3,0.5,1,1.5,2,3,5,8,12,20];
+function speed(){ return SPEEDS[+document.getElementById('spd').value]; }
+function showSpeed(){ const v=speed(); document.getElementById('spdv').textContent = v<1 ? 'one step every '+Math.round(1/v)+' seconds' : v===1 ? 'one step a second' : v+' steps a second'; }
+function nudge(d){ const e=document.getElementById('spd'); e.value=Math.max(0,Math.min(SPEEDS.length-1,+e.value+d)); showSpeed(); }
+document.getElementById('spd').addEventListener('input',showSpeed);
+document.getElementById('slower').addEventListener('click',()=>nudge(-1));
+document.getElementById('faster').addEventListener('click',()=>nudge(1));
+document.getElementById('stepbtn').addEventListener('click',()=>{ stop(); if(pos===null) pos=0; pos=Math.min(shown.n, Math.floor(pos)+1); render(pos); });
+document.getElementById('restart').addEventListener('click',()=>{ stop(); pos=0; render(pos); });
+showSpeed();
+['P','k','T','a','sig'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{leave();compute();render();}));
+document.getElementById('sig').addEventListener('change',()=>{leave();compute();render();});
+document.getElementById('fullp').addEventListener('click',()=>{ document.getElementById('T').value=document.getElementById('P').value; leave(); compute(); render(); });
+document.getElementById('play').addEventListener('click',()=>{
+  if(playing){ stop(); render(); return; }
+  if(pos===null || pos>=shown.n) pos=0;
+  playing=true; document.getElementById('play').textContent='Pause'; lastT=performance.now();
+  const tick=now=>{ if(!playing) return; const dt=Math.min(0.1,(now-lastT)/1000); lastT=now;
+    pos=Math.min(shown.n, pos+dt*speed()); if(document.getElementById('spin').checked) yaw+=0.25*dt;
+    render(pos); if(pos<shown.n) raf=requestAnimationFrame(tick); else stop(); };
+  const step=()=>{ raf=requestAnimationFrame(tick); };
+  step();
+});
+document.getElementById('reset').addEventListener('click',()=>{ yaw=0.6; pitch=-0.95; render(); });
+document.getElementById('theme').addEventListener('click',()=>{
+  const r=document.documentElement, cur=r.getAttribute('data-theme');
+  const dark= cur ? cur==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  r.setAttribute('data-theme', dark?'light':'dark'); render();
+});
+{ const cv=document.getElementById('cs'); let drag=null;
+  cv.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY,yaw,pitch]; cv.setPointerCapture(e.pointerId);});
+  cv.addEventListener('pointermove',e=>{ if(!drag) return; yaw=drag[2]+(e.clientX-drag[0])*0.01; pitch=Math.max(-1.5,Math.min(1.5,drag[3]+(e.clientY-drag[1])*0.01)); render(); });
+  cv.addEventListener('pointerup',()=>drag=null); }
+compute(); render();
+const PEN_VERSION="v0.1.7";
+// ---- run export for the spherical Fourier pen (fvlt-pen-run/0.1) ----
+function exportRun(id){
+  const P=shown.P, n=shown.n, k=+document.getElementById('k').value, kind=document.getElementById('sig').value, c=signal(kind,n,P);
+  const sname={r30spin:'Rule 30 centre, spin', r30bit:'Rule 30 centre, bit', r150spin:'Rule 150 centre, spin', coin:'Fair coin, spin', legendre:'Legendre symbol (t/P)'}[kind];
+  const base={viewer:{name:'Spherical Fourier pen', version:PEN_VERSION}, stream:{name:sname, T:n, values:Array.from(c)},
+    rule:{kind:'fourier', P, k, turn_fraction:[k,P], turn:'zeta_'+P+'^'+k, formula:'pen(n) = sum over t < n of c_t zeta_P^(k t)'},
+    playback:{steps_per_second:speed()}};
+  if(id==='cp'){ const a=residues(c,P,k,n), st=pathStats(shown.pp, null), end=shown.pp[n];
+    return Object.assign(base,{file_stub:'fourier_plane_'+kind+'_P'+P+'_k'+k, view:{kind:'fourier-plane'},
+      title:'Fourier pen · '+sname, subtitle:'turn ζ'+sub(P)+(k===1?'':sup(k))+' = '+k+'/'+P+' of a turn · exact in ℤ[ζ'+sub(P)+']',
+      exact:{residue_vector:a, norm_squared: isPrime(P) ? normSquaredExact(a,P).integer : null},
+      path:{points:shown.pp.map(p=>p.map(r6)), block_every:P},
+      stats:{per_step:st, final:{steps:n, distinct_points:st.vertices[n], end:end.map(r6), modulus:r6(Math.hypot(end[0],end[1]))}}}); }
+  if(id==='cs'){ const K=shown.K, sk=document.getElementById('skel').value, st=pathStats(shown.sp, null);
+    return Object.assign(base,{file_stub:'fourier_sphere_'+kind+(sk?'_'+sk.replace(',','_'):''), view:{kind:'sphere'},
+      title:'Spherical Fourier pen · '+sname, subtitle: K ? 'step from {'+sk+'} · skeleton dimmed' : 'step ζ₃₈₄'+sup(+document.getElementById('a').value),
+      sphere:{step: K ? {from_pq:sk, cos_edge:K.ca} : {fraction:[+document.getElementById('a').value,384]}}, camera:{edgeMode:'arc'},
+      geometry: K ? {verts:K.verts.map(p=>p.map(r6)), edges:K.edges} : null,
+      path:{points:shown.sp.map(p=>p.map(r6)), block_every:P},
+      stats:{per_step:st, final:{steps:n, distinct_points:st.vertices[n], skeleton:document.getElementById('skelv').textContent.replace(/^·\s*/,'')||null}}}); }
+  throw new Error('unknown view '+id);
+}
+setupFullscreen([{"id":"cp","kind":"plane","title":"Plane: the Fourier pen (exact)"},{"id":"cs","kind":"sphere","title":"Sphere: the spherical Fourier pen"}]);
+</script>
+</body>
+</html>

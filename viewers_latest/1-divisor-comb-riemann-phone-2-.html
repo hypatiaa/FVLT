@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Divisor comb walk — Riemann sphere</title>
+<style>
+  :root{color-scheme:light dark;font:16px/1.5 system-ui,sans-serif;--fg:#193247;--bg:#f7fafc;--grid:#8696a4;--walk:#1565c0;--equator:#b15c00;--endpoint:#872dac}
+  @media(prefers-color-scheme:dark){:root{--fg:#e0ebf2;--bg:#14212b;--grid:#7e929f;--walk:#79b7ff;--equator:#ffc27a;--endpoint:#dbb2ff}}
+  *{box-sizing:border-box} body{margin:0;padding:20px;background:var(--bg);color:var(--fg)} main{max-width:1120px;margin:auto}
+  h1{font-size:1.45rem;margin:0 0 6px} h2{font-size:1.05rem;margin:12px 0 0} p{margin:6px 0 15px;max-width:78ch}
+  .controls{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px;margin:18px 0}
+  label{display:flex;flex-direction:column;gap:5px;font-size:.9rem} input,select,button{font:inherit;color:inherit;min-width:0;padding:7px;border:1px solid var(--grid);border-radius:5px;background:transparent}
+  .signed-field{min-width:0}.signed-field label{margin-bottom:5px}.signed-input{display:flex;gap:6px}.signed-input input{width:100%;flex:1}.signed-input button{flex:0 0 42px}
+  button{cursor:pointer;min-height:40px} .views{display:grid;grid-template-columns:1.2fr 1fr;gap:24px}.views>section{min-width:0}
+  canvas{display:block;width:100%;height:390px;touch-action:none} #plane{height:390px;touch-action:auto}
+  .legend,.camera{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:.88rem}.legend{margin:4px 0 12px}
+  .range{margin:16px 0 10px}.range input{width:100%;padding:0;min-height:32px}
+  .readouts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px 18px;margin:15px 0}
+  .readouts div{overflow-wrap:anywhere}.readouts strong{display:block;font-size:.8rem;font-weight:500}.readouts output{font-family:ui-monospace,monospace;font-size:.9rem}
+  #status,#certificate,#error{overflow-wrap:anywhere} #error{color:var(--endpoint)}.small{font-size:.86rem}.walk{color:var(--walk)}.equator{color:var(--equator)}.endpoint{color:var(--endpoint)}
+  .table-wrap{overflow-x:auto}table{border-collapse:collapse;width:100%;font-size:.85rem}th,td{text-align:right;padding:7px;border-bottom:1px solid var(--grid);white-space:nowrap}tr.selected{background:color-mix(in srgb,var(--endpoint) 12%,transparent)}details{margin:16px 0}summary{cursor:pointer}
+  @media(max-width:650px){body{padding:14px}.controls{grid-template-columns:repeat(2,minmax(0,1fr))}.views{grid-template-columns:1fr;gap:12px}canvas,#plane{height:310px}.readouts{grid-template-columns:1fr}.camera button{min-height:44px}}
+  .gear-steps{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:5px;margin-top:6px}.gear-steps button{touch-action:none;user-select:none;min-height:44px}.gearbox{border:1px solid var(--grid);border-radius:8px;padding:12px;margin:16px 0}.gearbox h2{margin-top:0}.gearbox .readouts{margin:10px 0}.gearbox .camera{margin:10px 0}.gearbox[data-tone="wilson"]{border-color:#138653}.gearbox[data-tone="resident"]{border-color:#b15c00}.gearbox output{overflow-wrap:anywhere}.gearbox .switch{display:inline-flex;flex-direction:row;align-items:center}.gearbox[data-tone="wilson"] #gear-label{color:#138653;font-weight:600}
+  [hidden]{display:none!important}.fv-controls{border:1px solid var(--grid);border-radius:8px;padding:12px;margin:14px 0}.fv-row{display:flex;flex-wrap:wrap;align-items:center;gap:7px;margin:9px 0}.fv-row input[type=text]{width:115px}.fv-row button{min-height:44px}.fv-controls button[aria-pressed=true]{background:var(--walk);color:var(--bg);border-color:var(--walk)}.fv-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px 16px}.fv-field{min-width:0}.fv-slider{display:grid;grid-template-columns:44px minmax(0,1fr) 44px;gap:7px;align-items:center}.fv-slider input{width:100%;padding:0;min-height:40px}.fv-slider button{touch-action:none;user-select:none;min-height:44px}.fv-field input[type=range]{min-width:0}.fv-mode-note{font-size:.84rem;overflow-wrap:anywhere}.fv-number-buttons{display:flex;flex-wrap:wrap;gap:4px}.fv-number-buttons button{min-width:37px;padding:5px}.fv-controls output{overflow-wrap:anywhere}.fv-controls details{margin:8px 0}.fv-speed{font-size:.85rem}@media(max-width:650px){.fv-grid{grid-template-columns:1fr}.fv-controls{padding:10px}.fv-row{gap:5px}.fv-row input[type=text]{width:100px}}
+</style>
+<main>
+  <h1>Divisor comb walk on the Riemann sphere</h1>
+  <p>The comb’s teeth, added head-to-tail in their Fourier order. Each partial sum appears in the plane and on the sphere.</p>
+  <p id="startup-status" role="alert">The interactive view has not started. Enable JavaScript to calculate the comb walk.</p><div id="fv-controls" class="fv-controls"></div>
+  <div class="controls" hidden>
+    <label>Shell base<select id="shellMode"><option value="factorial">Factorial n₁!</option><option value="integer">Integer M</option></select></label>
+    <label>Factorial index n₁<input id="n1" type="text" inputmode="numeric" value="4"></label>
+    <label>Integer base M<input id="base" type="text" inputmode="numeric" value="24" disabled></label>
+    <div class="signed-field"><label for="phi3">Shell position φ₃</label><div class="signed-input"><input id="phi3" type="text" inputmode="text" value="1"><button type="button" data-sign-target="phi3" aria-label="Change sign of shell position">±</button></div></div>
+    <label>Comb teeth m<input id="combM" type="text" inputmode="numeric" value="2"></label>
+    <div class="signed-field"><label for="t1">Carrier t₁</label><div class="signed-input"><input id="t1" type="text" inputmode="text" value="0"><button type="button" data-sign-target="t1" aria-label="Change sign of carrier">±</button></div></div>
+    <div class="signed-field"><label for="t2">Spread t₂</label><div class="signed-input"><input id="t2" type="text" inputmode="text" value="-1"><button type="button" data-sign-target="t2" aria-label="Change sign of spread">±</button></div></div>
+    <div class="signed-field"><label for="n6">Radius sign / scale n₆</label><div class="signed-input"><input id="n6" type="text" inputmode="text" value="1"><button type="button" data-sign-target="n6" aria-label="Change sign of radius">±</button></div></div>
+    <div class="signed-field"><label for="alpha">Radius exponent α</label><div class="signed-input"><input id="alpha" type="text" inputmode="text" value="1"><button type="button" data-sign-target="alpha" aria-label="Change sign of exponent">±</button></div></div>
+    <div class="signed-field"><label for="s">Spin s</label><div class="signed-input"><input id="s" type="text" inputmode="text" autocomplete="off" spellcheck="false" value="2"><button type="button" data-sign-target="s" aria-label="Change sign of spin s">±</button></div></div>
+  </div>
+  <p class="small">N = B + 1 − φ₃. Each tooth has k<sub>c</sub> = N·t₁ + c·t₂ and z<sub>c</sub> = n₆·N<sup>α</sup>·exp(iπk<sub>c</sub>s/N). Spin and gearbox accept signed decimals or fractions.</p>
+  <p id="coupling" class="small"></p>
+  <p id="amplitude" class="small"></p>
+  <div id="error" role="alert"></div>
+  <p id="status" aria-live="polite"></p>
+  <section id="gearbox" class="gearbox" aria-label="Spectral gearbox">
+    <h2>Spectral gearbox</h2>
+    <p>This box asks: <strong>does the current shell N contain an evenly spaced cycle of m positions?</strong> It connects that divisibility check to the reference cycle drawn on the sphere.</p>
+    <p id="gear-explanation" class="small" aria-live="polite"></p>
+    <details id="gear-help">
+      <summary>How to read this box and use its buttons</summary>
+      <p><strong>Two numbers, two different questions.</strong> N is the current shell size. m is the number of teeth in your comb, and the size of the reference cycle. “Order m is prime” describes m. The separate “Wilson readout for shell N” describes N.</p>
+      <p><strong>Resident means “fits exactly.”</strong> When m divides N with no remainder, you can choose m evenly spaced positions around an N-position circle. Their spacing is N/m, called the stride. With m = 2 and N = 700, the two positions are 350 apart. This is why your screenshot has an amber cycle.</p>
+      <p><strong>Gear g moves through shell sizes.</strong> g is the same control as φ₃, and N = B + 1 − g. Increasing g by one decreases N by one. The first resident gear is g₀ = (B + 1) mod m; later resident gears are m steps apart, while N remains positive.</p>
+      <p><strong>Order spectrum describes the cycle size m.</strong> φ(m), Euler’s totient, counts the step sizes from 1 to m − 1 that visit every position of an m-cycle before returning. The defect, m − 1 − φ(m), counts the remaining step sizes. For m ≥ 2, defect zero means m is prime. This φ(m) is a counting function; it is different from the shell control φ₃.</p>
+      <p><strong>The buttons:</strong></p>
+      <ul>
+        <li><strong>Previous resident / Next resident</strong> jump backward or forward in g to a shell divisible by m. “Next” increases g and decreases N.</li>
+        <li><strong>m = n₁ + 1</strong> sets the tooth count one above the selected factorial index. It does not change the base mode.</li>
+        <li><strong>g = 0</strong> returns to N = B + 1.</li>
+        <li><strong>Show amber resident cycle</strong> toggles the divisibility reference drawing. The blue walk is unchanged.</li>
+      </ul>
+      <p><strong>Why Wilson belongs here.</strong> Choose a factorial base B = n₁!, then set m = n₁ + 1 and g = 0. Now N = (m − 1)! + 1. Wilson’s theorem says m divides this N exactly when m is prime. In that setting, a resident cycle is green and witnesses primality of <strong>m</strong>.</p>
+      <p>For example: choose 4!, press <strong>m = n₁ + 1</strong>, then <strong>g = 0</strong>. You get m = 5 and N = 25. The green cycle witnesses that <strong>5 is prime</strong>; 25 remains composite.</p>
+      <p><strong>What the picture shows.</strong> Amber means an exact divisibility relation; green means the special Wilson relation also holds. The overlay is a regular reference cycle, projected onto the sphere. The blue path is the actual comb walk, which also depends on spin, carrier and spread. The reference cycle does not assert that the blue walk closes or that all its teeth coincide.</p>
+    </details>
+    <p class="small">Gear g is the shell position φ₃. A resident gear satisfies m | N, with N = B + 1 − g.</p>
+    <div class="camera"><button id="gear-previous" type="button">Previous resident</button><button id="gear-next" type="button">Next resident</button><button id="gear-successor" type="button">m = n₁ + 1</button><button id="gear-zero" type="button">g = 0</button></div>
+    <div class="readouts"><div><strong>Order spectrum</strong><output id="gear-spectrum"></output></div><div><strong>First resident gear</strong><output id="gear-first"></output></div><div><strong>Current residency</strong><output id="gear-residency"></output></div><div><strong>Wilson setting</strong><output id="gear-wilson"></output></div></div>
+    <p id="gear-label" class="small" aria-live="polite"></p>
+    <label class="switch small"><input id="gear-overlay" type="checkbox" checked> Show amber resident cycle</label>
+    <p class="small">Green marks an exact Wilson witness at factorial base, m = n₁ + 1 and g = 0. Amber marks residency only. The cycle is a reference polygon, separate from the head-to-tail walk.</p>
+  </section>
+  <div class="views">
+    <section><h2>3D sphere</h2><canvas id="sphere" aria-label="Rotatable sphere showing partial sums of the divisor comb"></canvas>
+      <div class="legend"><span class="walk">— Comb walk</span><span class="equator">— Equator: |W| = ρ</span><span class="endpoint">● Selected sum</span><span id="gear-cycle-legend"></span></div>
+      <div class="camera"><button id="left" type="button">Rotate left</button><button id="right" type="button">Rotate right</button><button id="up" type="button">Tilt up</button><button id="down" type="button">Tilt down</button><button id="bottom" type="button">View bottom</button><button id="top" type="button">View top</button><button id="reset" type="button">Reset view</button></div>
+    </section>
+    <section><h2>Matching planar walk</h2><canvas id="plane" aria-label="Head-to-tail partial sums of the ordered Fourier comb teeth"></canvas>
+      <p class="small">Both views use W/ρ, where ρ = |n₆|·N<sup>α</sup> is one tooth’s length. The equator is a scale reference. Divisor contact is reported below. At n₆ = 0 all phasors collapse to zero.</p>
+    </section>
+  </div>
+  <label class="range">Teeth accumulated <output id="tlabel">2 / 2</output><input id="t" type="range" min="0" max="2" value="2" step="1"></label>
+  <div class="readouts" aria-live="polite">
+    <div><strong>Selected physical partial sum Wₜ</strong><output id="wvalue"></output></div>
+    <div><strong>Selected sphere coordinates (numerical)</strong><output id="qvalue"></output></div>
+    <div><strong>Endpoint |W| / ρ</strong><output id="magnitude"></output></div>
+    <div><strong>Wilson readout for shell N</strong><output id="wilson"></output></div>
+  </div>
+  <p id="certificate" class="small"></p>
+  <details><summary>Ordered teeth and partial sums</summary><div class="table-wrap"><table><thead><tr><th>Step</th><th>Offset c</th><th>k<sub>c</sub></th><th>Tooth z<sub>c</sub></th><th>Sum Wₜ</th></tr></thead><tbody id="teeth"></tbody></table></div></details>
+  <p class="small">South pole: W = 0. Equator: |W| = ρ. North pole represents infinity. Latitude records the normalized magnitude and longitude records phase. The walk has m steps, one per tooth.</p>
+  <p class="small">Drag the sphere or use the rotation buttons. This standalone view uses the Fourier comb formulas; it does not live-sync with another viewer tab.</p>
+</main>
+<script id="comb-core.js">(function(root){
+  'use strict';
+  const abs=n=>n<0n?-n:n;
+  function gcd(a,b){a=abs(a);b=abs(b);while(b){const t=a%b;a=b;b=t;}return a;}
+  function rat(n,d=1n){if(!d)throw Error('A fraction cannot have a zero denominator.');const g=gcd(n,d),sign=d<0n?-1n:1n;return {n:n/g*sign,d:d/g*sign};}
+  function parse(text){
+    const value=String(text).trim().replace(/−/g,'-'),parts=value.split('/');
+    if(parts.length===2){if(!/^[+-]?\d+$/.test(parts[0])||!/^[+-]?\d+$/.test(parts[1]))throw Error('Use integers on either side of /.');return rat(BigInt(parts[0]),BigInt(parts[1]));}
+    const match=/^([+-]?)(\d*)(?:\.(\d*))?$/.exec(value);
+    if(!match||(!match[2]&&!match[3]))throw Error('Use a signed decimal or fraction: '+value);
+    const digits=match[3]||'';return rat(BigInt((match[2]||'0')+digits)*(match[1]==='-'?-1n:1n),10n**BigInt(digits.length));
+  }
+  const add=(a,b)=>rat(a.n*b.d+b.n*a.d,a.d*b.d),mul=(a,b)=>rat(a.n*b.n,a.d*b.d);
+  const text=q=>q.d===1n?String(q.n):q.n+'/'+q.d;
+  const number=q=>Number(q.n)/Number(q.d);
+  function integer(value){const q=parse(value);if(q.d!==1n)throw Error('An integer is required: '+value);return q.n;}
+  function factorial(n){let value=1n;for(let k=2n;k<=n;k++)value*=k;return value;}
+  function offsets(m){return Array.from({length:m},(_,i)=>m%2?i-Math.floor(m/2):2*i-m+1);}
+  function angle(q){const period=2n*q.d;let r=((q.n%period)+period)%period;if(r>q.d)r-=period;return Math.PI*number(rat(r,q.d));}
+  function wilson(N){
+    if(N<2n)return {checked:true,prime:false,residue:0n,label:'N = 1 is not prime.'};
+    if(N>10000n)return {checked:false,prime:null,residue:null,label:'Wilson readout not evaluated above N = 10,000; the comb still draws.'};
+    let w=1n;for(let k=2n;k<N;k++){w=w*k%N;if(w===0n)break;}
+    return {checked:true,prime:w===N-1n,residue:w,label:'(N−1)! mod N = '+w+' · '+(w===N-1n?'prime':'not prime')+' (Wilson)'};
+  }
+  function compute(values){
+    const n1=integer(values.n1),m=Number(integer(values.combM));
+    if(n1<3n||n1>13n)throw Error('Factorial index n₁ must be 3–13.');
+    if(!Number.isInteger(m)||m<2||m>720)throw Error('Comb tooth count m must be 2–720.');
+    const B=values.shellMode==='integer'?integer(values.base):factorial(n1);
+    if(B<2n||B>6227020800n)throw Error('Shell base must be 2–6,227,020,800.');
+    const phi3=integer(values.phi3),N=B+1n-phi3;
+    if(phi3<0n||phi3>B+1n)throw Error('Shell position φ₃ must be 0 through B + 1.');
+    if(N===0n)throw Error('N = 0: the Fourier comb has no angular denominator, so no walk is defined.');
+    const t1=parse(values.t1),t2=parse(values.t2),s=parse(values.s),n6=parse(values.n6),alpha=parse(values.alpha);
+    const a=number(alpha),r6=number(n6);
+    if(!Number.isFinite(a)||!Number.isFinite(r6)||Math.abs(a)>8||Math.abs(r6)>8)throw Error('Radius controls α and n₆ must be between −8 and 8.');
+    const radius=r6===0?0:r6*Math.pow(Number(N),a),scale=Math.abs(radius)||1;
+    if(!Number.isFinite(radius))throw Error('Physical radius is outside the numerical drawing range.');
+    const walk=[{re:0,im:0}];
+    const teeth=offsets(m).map(c=>{
+      const k=add(mul(rat(N),t1),mul(rat(BigInt(c)),t2)),phase=mul(mul(k,s),rat(1n,N));
+      const theta=angle(phase),z={re:radius*Math.cos(theta),im:radius*Math.sin(theta)};
+      const previous=walk[walk.length-1];walk.push({re:previous.re+z.re,im:previous.im+z.im});
+      return {c,k,phase,z};
+    });
+    const spread=mul(mul(t2,s),rat(1n,N)),pairContact=spread.d===1n;
+    const allAligned=m%2?pairContact&&spread.n%2n===0n:pairContact;
+    return {B,N,phi3,n1,m,t1,t2,s,n6,alpha,radius,scale,teeth,walk,endpoint:walk[m],spread,pairContact,allAligned,zeroProduct:t2.n===0n||s.n===0n,wilson:wilson(N)};
+  }
+  function sphere(w,scale){
+    if(!(scale>0)||!Number.isFinite(scale))throw Error('A positive finite projection scale is required.');
+    const x=w.re/scale,y=w.im/scale,q=x*x+y*y,d=1+q;
+    return [2*x/d,2*y/d,(q-1)/d];
+  }
+  function edge(a,b,scale,samples=32){return Array.from({length:samples+1},(_,i)=>{const t=i/samples;return sphere({re:a.re*(1-t)+b.re*t,im:a.im*(1-t)+b.im*t},scale);});}
+  function inverse(q,scale){const d=1-q[2];return d>0?{re:scale*q[0]/d,im:scale*q[1]/d}:null;}
+  const api={parse,rat,text,integer,offsets,compute,sphere,edge,inverse};
+  if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.CombRiemann=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+</script>
+<script id="gearbox.js">(function(root){
+  'use strict';
+  const C=typeof module!=='undefined'&&module.exports?require('./comb-core.js'):root.CombRiemann;
+  function gcd(a,b){while(b){const t=a%b;a=b;b=t;}return a;}
+  const mod=(a,m)=>((a%m)+m)%m;
+  function analyze(values){
+    const n1=C.integer(values.n1),m=C.integer(values.combM),g=C.integer(values.phi3);
+    if(n1<3n||n1>13n)throw Error('Factorial index n₁ must be 3–13.');
+    if(m<2n||m>720n)throw Error('Comb tooth count m must be 2–720.');
+    let B=1n;for(let k=2n;k<=n1;k++)B*=k;
+    const factorial=values.shellMode==='factorial';if(!factorial)B=C.integer(values.base);
+    if(B<2n||B>6227020800n||g<0n||g>B+1n)throw Error('Shell or gear outside the supported domain.');
+    const N=B+1n-g,first=(B+1n)%m;
+    let phi=0n;for(let k=1n;k<m;k++)if(gcd(k,m)===1n)phi++;
+    const defect=m-1n-phi,prime=defect===0n,eligible=N>0n&&factorial&&m===n1+1n&&g===0n;
+    const remainder=N>0n?N%m:null,resident=N>0n?remainder===0n:null,stride=resident?N/m:null;
+    const agreement=eligible?prime===resident:null;
+    let code='DEGENERATE_AMBIENT_HOLD',label='N = 0: no cyclic ambient group or resident cycle.',tone='hold';
+    if(N>0n){
+      if(eligible&&agreement!==true){code='WILSON_INCONSISTENT_HOLD';label='Wilson consistency failure: hold.';}
+      else if(eligible&&prime&&resident){code='WILSON_PRIME_RESIDENT';tone='wilson';label='Wilson prime witness: m = '+m+' divides '+n1+'! + 1 = '+N+'.';}
+      else if(eligible&&!prime&&!resident){code='WILSON_COMPOSITE_EXCLUDED';tone='neutral';label='Wilson composite exclusion: m = '+m+' does not divide '+n1+'! + 1 = '+N+'.';}
+      else if(resident){code=prime?'PRIME_RESIDENT_OFF_WILSON':'COMPOSITE_RESIDENT';tone='resident';label='Resident cycle: m = '+m+' divides N = '+N+'. Off the Wilson setting, residency alone is not a primality witness.';}
+      else{code=prime?'PRIME_NOT_RESIDENT':'COMPOSITE_NOT_RESIDENT';tone='neutral';label='Not resident: N mod m = '+remainder+'. No resident cycle.';}
+    }
+    const nextDelta=mod(first-g,m)||m,previousDelta=mod(g-first,m)||m;
+    const next=g+nextDelta<=B?g+nextDelta:null,previous=g-previousDelta>=0n?g-previousDelta:null;
+    const signature=factorial&&m===n1+1n?(prime&&first===0n?'WILSON_PRIME_ZERO':m===4n&&first===3n?'P4_EXCEPTION_THREE':m>=6n&&!prime&&first===1n?'COMPOSITE_ONE':'GENERAL_GEARBOX'):'GENERAL_GEARBOX';
+    return {B,N,n1,m,g,phi,defect,prime,first,remainder,resident,stride,eligible,agreement,code,label,tone,previous,next,signature};
+  }
+  function step(value,denominator,direction){const q=C.parse(value),d=C.integer(denominator);if(d<1n||d>7n||![1,-1].includes(direction))throw Error('Invalid gearbox navigation step.');return C.text(C.rat(q.n*d+BigInt(direction)*q.d,q.d*d));}
+  function cycle(m){const points=[];for(let j=0;j<=Number(m);j++){const a=-Math.PI/2+2*Math.PI*j/Number(m);points.push({re:Math.cos(a),im:Math.sin(a)});}return points;}
+  const api={analyze,step,cycle};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.CombGearbox=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+</script>
+<script id="demo.js">'use strict';
+(function(){
+  const $=id=>document.getElementById(id),C=CombRiemann;
+  let result=null,yaw=-0.55,pitch=-0.9,selected=2;
+  const fmt=x=>Number.isFinite(x)?Number(x.toPrecision(7)).toString():'undefined';
+  const complex=w=>fmt(w.re)+' + ('+fmt(w.im)+')i';
+  const color=name=>getComputedStyle(document.documentElement).getPropertyValue(name).trim();
+  function prepare(canvas){
+    const width=canvas.clientWidth,height=canvas.clientHeight,dpr=window.devicePixelRatio||1;
+    canvas.width=Math.round(width*dpr);canvas.height=Math.round(height*dpr);
+    const ctx=canvas.getContext('2d');ctx.setTransform(dpr,0,0,dpr,0,0);ctx.clearRect(0,0,width,height);
+    return {ctx,width,height,cx:width/2,cy:height/2,scale:Math.min(width,height)*0.4};
+  }
+  function camera(p){const x=Math.cos(yaw)*p[0]-Math.sin(yaw)*p[1],y=Math.sin(yaw)*p[0]+Math.cos(yaw)*p[1];return [x,Math.cos(pitch)*y-Math.sin(pitch)*p[2],Math.sin(pitch)*y+Math.cos(pitch)*p[2]];}
+  function turn(dyaw,dpitch){const wrap=a=>Math.atan2(Math.sin(a),Math.cos(a));yaw=wrap(yaw+dyaw);pitch=wrap(pitch+dpitch);drawSphere();}
+  function stroke3(view,points,stroke,width){
+    const ctx=view.ctx;let last=null;
+    for(const p of points){const q=camera(p);if(last){ctx.globalAlpha=(last[2]+q[2])/2<0?0.34:0.9;ctx.strokeStyle=stroke;ctx.lineWidth=width;ctx.beginPath();ctx.moveTo(view.cx+last[0]*view.scale,view.cy-last[1]*view.scale);ctx.lineTo(view.cx+q[0]*view.scale,view.cy-q[1]*view.scale);ctx.stroke();}last=q;}ctx.globalAlpha=1;
+  }
+  function drawSphere(){
+    window.__combCamera={yaw,pitch,southDepth:camera([0,0,-1])[2],northDepth:camera([0,0,1])[2]};
+    const v=prepare($('sphere')),ctx=v.ctx;
+    for(let lat=-3;lat<=3;lat++){if(lat===0)continue;const a=lat*Math.PI/8,points=[];for(let i=0;i<=96;i++){const b=i*2*Math.PI/96;points.push([Math.cos(a)*Math.cos(b),Math.cos(a)*Math.sin(b),Math.sin(a)]);}stroke3(v,points,color('--grid'),0.8);}
+    for(let lon=0;lon<12;lon++){const a=lon*2*Math.PI/12,points=[];for(let i=0;i<=64;i++){const b=-Math.PI/2+i*Math.PI/64;points.push([Math.cos(b)*Math.cos(a),Math.cos(b)*Math.sin(a),Math.sin(b)]);}stroke3(v,points,color('--grid'),0.7);}
+    const eq=[];for(let i=0;i<=128;i++){const a=i*2*Math.PI/128;eq.push([Math.cos(a),Math.sin(a),0]);}stroke3(v,eq,color('--equator'),2);
+    const cycle=window.__gearCycle;if(cycle){const stroke=cycle.tone==='wilson'?'#138653':'#b15c00';for(let i=1;i<cycle.points.length;i++)stroke3(v,C.edge(cycle.points[i-1],cycle.points[i],1),stroke,cycle.tone==='wilson'?3:2);}
+    if(result){for(let i=1;i<=selected;i++)stroke3(v,C.edge(result.walk[i-1],result.walk[i],result.scale),color('--walk'),2.5);const c=camera(C.sphere(result.walk[selected],result.scale));ctx.fillStyle=color('--endpoint');ctx.beginPath();ctx.arc(v.cx+c[0]*v.scale,v.cy-c[1]*v.scale,5,0,2*Math.PI);ctx.fill();}
+    for(const [z,label] of [[1,'North: large |W|'],[-1,'South: W = 0']]){const q=camera([0,0,z]);if(q[2]<0&&Math.hypot(q[0],q[1])*v.scale<32)continue;ctx.fillStyle=color('--fg');ctx.font='12px system-ui';ctx.textAlign='center';ctx.fillText(label,v.cx+q[0]*v.scale,v.cy-q[1]*v.scale+(z===1?-10:19));}
+  }
+  function drawPlane(){
+    const v=prepare($('plane')),ctx=v.ctx,den=result?result.scale:1;let extent=1.25;
+    if(result)for(let i=0;i<=selected;i++)extent=Math.max(extent,Math.abs(result.walk[i].re/den)*1.15,Math.abs(result.walk[i].im/den)*1.15);
+    const scale=v.scale/extent;
+    ctx.strokeStyle=color('--grid');ctx.lineWidth=0.7;ctx.beginPath();ctx.moveTo(12,v.cy);ctx.lineTo(v.width-12,v.cy);ctx.moveTo(v.cx,12);ctx.lineTo(v.cx,v.height-12);ctx.stroke();
+    ctx.strokeStyle=color('--equator');ctx.lineWidth=2;ctx.beginPath();ctx.arc(v.cx,v.cy,scale,0,2*Math.PI);ctx.stroke();
+    ctx.fillStyle=color('--fg');ctx.font='12px system-ui';ctx.textAlign='center';ctx.fillText(result&&result.radius===0?'ρ = 0: scale fallback 1':'|W| = ρ',v.cx,v.cy-scale-10);
+    const cycle=window.__gearCycle;if(cycle){ctx.strokeStyle=cycle.tone==='wilson'?'#138653':'#b15c00';ctx.lineWidth=cycle.tone==='wilson'?3:2;ctx.beginPath();cycle.points.forEach((z,i)=>{const x=v.cx+z.re*scale,y=v.cy-z.im*scale;if(i)ctx.lineTo(x,y);else ctx.moveTo(x,y);});ctx.stroke();}
+    if(result){ctx.strokeStyle=color('--walk');ctx.lineWidth=2.5;ctx.beginPath();result.walk.slice(0,selected+1).forEach((w,i)=>{const x=v.cx+w.re/den*scale,y=v.cy-w.im/den*scale;if(i)ctx.lineTo(x,y);else ctx.moveTo(x,y);});ctx.stroke();const w=result.walk[selected];ctx.fillStyle=color('--endpoint');ctx.beginPath();ctx.arc(v.cx+w.re/den*scale,v.cy-w.im/den*scale,5,0,2*Math.PI);ctx.fill();}
+  }
+  function render(){
+    if(result){
+      selected=Math.min(Math.max(0,Number($('t').value)||0),result.m);$('t').max=result.m;$('t').value=selected;$('t').disabled=false;$('tlabel').textContent=selected+' / '+result.m;
+      $('status').textContent=result.m+' Fourier teeth → '+result.m+' head-to-tail steps · offsets in ascending order.';
+      $('magnitude').textContent=result.radius===0?'undefined (ρ = 0; W = 0)':fmt(Math.hypot(result.endpoint.re,result.endpoint.im)/result.scale);
+      $('wilson').textContent=result.wilson.label;
+      $('certificate').textContent='Exact resident-pair contact: t₂·s/N = '+C.text(result.spread)+' · '+(result.pairContact?'integer: yes':'integer: no')+'. All '+result.m+' tooth directions coincide: '+(result.allAligned?'yes':'no')+'.'+(result.zeroProduct?' Zero product: every positive N divides zero; this does not isolate divisors of a nonzero integer.':'')+(result.radius===0?' Zero amplitude: directions are formal; all drawn teeth are zero.':'');
+      if(window.__continuousSpin)$('certificate').textContent='Numerical spin from animation. Apply a typed spin or use the spin stepper for an exact contact readout.';
+      const q=C.sphere(result.walk[selected],result.scale);$('wvalue').textContent=complex(result.walk[selected]);$('qvalue').textContent=q.map(fmt).join(', ');
+      for(const row of $('teeth').children)row.classList.toggle('selected',Number(row.dataset.step)===selected);
+      window.__comb3D={B:String(result.B),N:String(result.N),m:result.m,walk:result.walk,teeth:result.teeth.map(z=>({c:z.c,k:C.text(z.k),z:z.z})),endpoint:result.endpoint,scale:result.scale,radius:result.radius,pairContact:window.__continuousSpin?null:result.pairContact,selected,spherePoint:q};
+    }drawSphere();drawPlane();
+  }
+  function update(){
+    try{
+      $('coupling').textContent='';$('amplitude').textContent='';const values={};for(const id of ['shellMode','n1','base','phi3','combM','t1','t2','n6','alpha','s'])values[id]=$(id).value.trim().replace(/^−/,'-');
+      $('n1').disabled=values.shellMode==='integer';$('base').disabled=values.shellMode!=='integer';
+      const wasEnd=Number($('t').value)===Number($('t').max);result=C.compute(values);
+      $('coupling').textContent='B = '+result.B+' · N = '+result.N+' · comb m = '+result.m+' · s = '+C.text(result.s);
+      $('amplitude').textContent='Signed tooth radius = '+fmt(result.radius)+' · '+(result.radius===0?'ρ = 0; display scale 1 keeps the zero walk defined.':'sphere scale ρ = '+fmt(result.scale)+'.');
+      $('teeth').replaceChildren();result.teeth.forEach((tooth,i)=>{const row=document.createElement('tr');row.dataset.step=i+1;for(const value of [i+1,tooth.c,C.text(tooth.k),complex(tooth.z),complex(result.walk[i+1])]){const cell=document.createElement('td');cell.textContent=value;row.append(cell);}$('teeth').append(row);});
+      if(wasEnd)$('t').value=$('t').max=result.m;$('error').textContent='';render();
+    }catch(e){result=null;$('error').textContent=e.message;$('status').textContent='No computed walk for these inputs.';$('wvalue').textContent=$('qvalue').textContent=$('magnitude').textContent=$('wilson').textContent='undefined';$('certificate').textContent='';$('teeth').replaceChildren();$('t').disabled=true;$('tlabel').textContent='Unavailable';window.__comb3D=null;drawSphere();drawPlane();}
+  }
+  for(const id of ['shellMode','n1','base','phi3','combM','t1','t2','n6','alpha','s'])$(id).addEventListener('input',update);
+  for(const button of document.querySelectorAll('[data-sign-target]'))button.addEventListener('click',()=>{const field=$(button.dataset.signTarget),value=field.value.trim().replace(/^−/,'-');field.value=value.startsWith('-')?value.slice(1):'-'+value.replace(/^\+/,'');field.dispatchEvent(new Event('input',{bubbles:true}));field.focus();});
+  $('t').addEventListener('input',render);
+  for(const [id,dy,dp] of [['left',-0.25,0],['right',0.25,0],['up',0,0.15],['down',0,-0.15]])$(id).addEventListener('click',()=>turn(dy,dp));
+  $('bottom').addEventListener('click',()=>{yaw=0;pitch=Math.PI;drawSphere();});$('top').addEventListener('click',()=>{yaw=0;pitch=0;drawSphere();});$('reset').addEventListener('click',()=>{yaw=-0.55;pitch=-0.9;drawSphere();});
+  let drag=null;$('sphere').addEventListener('pointerdown',e=>{drag={x:e.clientX,y:e.clientY};$('sphere').setPointerCapture(e.pointerId);});
+  $('sphere').addEventListener('pointermove',e=>{if(!drag)return;const dx=(e.clientX-drag.x)/140,dy=(e.clientY-drag.y)/140;drag={x:e.clientX,y:e.clientY};turn(dx,dy);});for(const name of ['pointerup','pointercancel','lostpointercapture'])$('sphere').addEventListener(name,()=>{drag=null;});
+  document.addEventListener('gearbox-change',render);
+  new ResizeObserver(()=>render()).observe(document.querySelector('.views'));if(window.matchMedia)window.matchMedia('(prefers-color-scheme:dark)').addEventListener('change',render);update();
+})();
+</script>
+<script id="gear-ui.js">'use strict';
+(function(){
+  const $=id=>document.getElementById(id),G=CombGearbox;
+  let current=null,delay=null,repeat=null;
+  const stop=()=>{clearTimeout(delay);clearInterval(repeat);delay=repeat=null;};
+  const fail=e=>{$('error').textContent=e.message;};
+  function commit(id,value){$(id).value=value;$(id).dispatchEvent(new Event('input',{bubbles:true}));}
+  function drawCycle(){
+    const visible=current&&current.resident&&(current.tone==='wilson'||$('gear-overlay').checked);
+    window.__gearCycle=visible?{tone:current.tone,code:current.code,points:G.cycle(current.m)}:null;
+    $('gear-cycle-legend').textContent=visible?(current.tone==='wilson'?'— Green Wilson cycle':'— Amber resident cycle'):'';
+    $('gear-cycle-legend').style.color=current&&current.tone==='wilson'?'#138653':'#b15c00';
+    document.dispatchEvent(new Event('gearbox-change'));
+  }
+  function update(){
+    try{
+      const values={};for(const id of ['shellMode','n1','base','phi3','combM'])values[id]=$(id).value;
+      current=G.analyze(values);window.__combGearbox=current;$('gearbox').dataset.tone=current.tone;
+      $('gear-explanation').textContent=current.N===0n?'At N = 0 there is no positive shell to fit a cycle into. Increase N to use this box.':current.tone==='wilson'?'Here m = '+current.m+' divides '+current.n1+'! + 1 = '+current.N+'. Green witnesses that m = '+current.m+' is prime. It does not claim that the shell N = '+current.N+' is prime.':current.resident?'Here '+current.N+' ÷ '+current.m+' = '+current.stride+' exactly: '+current.m+' positions fit, spaced '+current.stride+' apart. Amber shows this divisibility. The order-spectrum result concerns m = '+current.m+'; it does not certify N = '+current.N+' as prime.':'Here N = '+current.N+' leaves remainder '+current.remainder+' when divided by m = '+current.m+'. An evenly spaced '+current.m+'-position cycle does not fit this shell, so no resident overlay is drawn.';
+      $('gear-spectrum').textContent='φ('+current.m+') = '+current.phi+' · defect = '+current.defect+' · order m is '+(current.prime?'prime':'composite');
+      $('gear-first').textContent='g₀ = (B + 1) mod m = '+current.first+(current.first>current.B?' · no positive-N resident in this shell':' · repeats every '+current.m+' gears');
+      $('gear-residency').textContent=current.remainder===null?'Undefined at N = 0':'N mod m = '+current.remainder+(current.resident?' · resident · stride N/m = '+current.stride:' · not resident');
+      $('gear-wilson').textContent=current.eligible?'Eligible · '+(current.agreement?'exact agreement':'HOLD'):'Requires factorial base, m = n₁ + 1, g = 0 and N > 0';
+      $('gear-label').textContent=current.label;$('gear-previous').disabled=current.previous===null;$('gear-next').disabled=current.next===null;
+    }catch(e){current=null;window.__combGearbox=null;$('gearbox').dataset.tone='hold';$('gear-explanation').textContent='Apply valid shell and tooth-count values to read this box.';for(const id of ['gear-spectrum','gear-first','gear-residency','gear-wilson'])$(id).textContent='Unavailable';$('gear-label').textContent=e.message;$('gear-previous').disabled=$('gear-next').disabled=true;}
+    drawCycle();
+  }
+  for(const field of ['t1','t2']){
+    const row=document.createElement('div');row.className='gear-steps';
+    const prev=document.createElement('button'),next=document.createElement('button'),select=document.createElement('select');
+    prev.type=next.type='button';prev.id=field+'-prev';next.id=field+'-next';prev.textContent='−';next.textContent='+';
+    select.id=field+'-step';select.setAttribute('aria-label',(field==='t1'?'Carrier':'Spread')+' step');
+    for(let d=1;d<=7;d++){const option=document.createElement('option');option.value=d;option.textContent=d===1?'Δ1':'Δ1/'+d;select.append(option);}select.value=field==='t1'?'4':'2';
+    row.append(prev,select,next);$(field).closest('.signed-field').append(row);
+    function labels(){for(const [button,dir] of [[prev,-1],[next,1]]){const name=(dir<0?'Decrease ':'Increase ')+(field==='t1'?'carrier t₁':'spread t₂')+' by '+(select.value==='1'?'1':'1/'+select.value);button.setAttribute('aria-label',name);button.title=name+'; hold to repeat';}}
+    select.addEventListener('change',()=>{stop();labels();});labels();
+    for(const [button,dir] of [[prev,-1],[next,1]]){
+      const step=()=>{try{commit(field,G.step($(field).value,select.value,dir));return true;}catch(e){stop();fail(e);return false;}};
+      button.addEventListener('pointerdown',e=>{if(e.button!==0)return;stop();e.preventDefault();button.focus();button.setPointerCapture(e.pointerId);if(!step())return;delay=setTimeout(()=>{if(step())repeat=setInterval(step,180);},450);});
+      for(const event of ['pointerup','pointercancel','lostpointercapture'])button.addEventListener(event,stop);
+      button.addEventListener('click',e=>{if(e.detail===0)step();});
+    }
+  }
+  window.addEventListener('blur',stop);document.addEventListener('visibilitychange',()=>{if(document.hidden)stop();});
+  for(const id of ['shellMode','n1','base','phi3','combM'])$(id).addEventListener('input',update);
+  $('gear-overlay').addEventListener('change',drawCycle);
+  for(const [id,key] of [['gear-previous','previous'],['gear-next','next']])$(id).addEventListener('click',()=>{if(current&&current[key]!==null)commit('phi3',String(current[key]));});
+  $('gear-successor').addEventListener('click',()=>{try{const n=CombRiemann.integer($('n1').value);if(n<3n||n>13n)throw Error('Factorial index n₁ must be 3–13.');commit('combM',String(n+1n));}catch(e){fail(e);}});
+  $('gear-zero').addEventListener('click',()=>commit('phi3','0'));
+  update();
+})();
+</script>
+<script id="control-math.js">(function(root){
+ 'use strict';
+ const C=typeof module!=='undefined'&&module.exports?require('./comb-core.js'):root.CombRiemann;
+ const abs=x=>x<0n?-x:x,floor=(n,d)=>n>=0n?n/d:-((-n+d-1n)/d),ceil=(n,d)=>-floor(-n,d);
+ function spin(raw){return String(raw).split('*').reduce((a,b)=>{const q=C.parse(b);return C.rat(a.n*q.n,a.d*q.d);},C.rat(1n));}
+ function center(q,N){if(N===0n)return C.rat(0n);const half=N*q.d;let n=q.n%(2n*half);if(n>half)n-=2n*half;if(n< -half)n+=2n*half;return C.rat(n,q.d);}
+ function nextSpin(raw,N,m,t1,t2,direction){
+  const s=spin(raw),a=C.parse(t1),b=C.parse(t2),dir=BigInt(direction);let q,kind='integer snap';
+  if(N>0n&&m>=3&&a.d===1n&&b.d===1n&&a.n&&b.n){
+   const M=BigInt(m),A=abs(a.n),B=abs(b.n),D=M*A*B;
+   function next(offset,step){const numerator=s.n*D-offset*s.d,den=s.d*step,k=dir>0n?floor(numerator,den)+1n:ceil(numerator,den)-1n;return offset+k*step;}
+   let best=next(0n,M*B);kind='ALIGN';const spacing=(m%2?2n:1n)*N*A;
+   for(let j=1n;j<M;j++){const value=next(spacing*j,spacing*M);if(dir>0n?value<best:value>best){best=value;kind='SPREAD';}}
+   q=C.rat(best,D);
+  }else{
+   const nearest=floor(2n*s.n+s.d,2n*s.d),near=abs(s.n-nearest*s.d)*1000n<s.d;
+   q=C.rat(near?nearest+dir:dir>0n?ceil(s.n,s.d):floor(s.n,s.d));
+  }
+  if(q.n> N*q.d){q=C.rat(N);kind='upper range limit';}if(q.n< -N*q.d){q=C.rat(-N);kind='lower range limit';}
+  return {value:C.text(q),kind};
+ }
+ function snap(raw,denominator){const q=C.parse(raw),d=BigInt(denominator),a=abs(q.n)*d;const n=(a*2n+q.d)/(2n*q.d)*(q.n<0n?-1n:1n);return C.text(C.rat(n,d));}
+ const api={spin,center,nextSpin,snap};if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.FourierControlMath=api;
+})(typeof globalThis!=='undefined'?globalThis:this);
+</script>
+<script id="fourier-controls.js">'use strict';
+(function(){
+ const $=id=>document.getElementById(id),C=CombRiemann,G=CombGearbox,M=FourierControlMath;
+ const fields=['shellMode','n1','base','phi3','combM','t1','t2','n6','alpha','s'],laneFields=['combM','t1','t2','n6','alpha'];
+ const read=()=>Object.fromEntries(fields.map(id=>[id,$(id).value]));
+ let mode='preset',internal=false,holdDelay=null,holdRepeat=null,frame=null,playN=false,playS=false,last=0,accum=0,speed=1;
+ const lanes={preset:{},continuous:{}};for(const name of laneFields)lanes.preset[name]=lanes.continuous[name]=$(name).value;
+ const stepDen={t1:'4',t2:'2'};
+ const options=Array.from({length:7},(_,i)=>'<option value="'+(i+1)+'">Δ'+(i?'1/'+(i+1):'1')+'</option>').join('');
+ $('fv-controls').innerHTML=`
+ <div class="fv-row"><strong>Base</strong><button id="fv-factorial" type="button">n!</button><button id="fv-integer" type="button">Integer</button><span id="fv-shell-label"></span></div>
+ <div id="fv-factorials" class="fv-number-buttons" role="group" aria-label="Factorial index"></div>
+ <div id="fv-base-row" class="fv-row" hidden><label for="fv-base">M</label><input id="fv-base" type="text" inputmode="numeric"><button id="fv-base-apply" type="button">Apply</button></div>
+ <details open><summary>Gearbox and radius</summary>
+ <div class="fv-row"><button id="fv-preset" type="button">Presets</button><button id="fv-continuous" type="button">Continuous</button></div>
+ <div class="fv-grid" id="fv-radial"></div><div class="fv-grid" id="fv-gears"></div>
+ <div class="fv-row"><label for="fv-m">Phasors m</label><button id="fv-m-prev" type="button" aria-label="Remove one phasor">◀</button><input id="fv-m" type="text" inputmode="numeric"><button id="fv-m-next" type="button" aria-label="Add one phasor">▶</button><button id="fv-m-apply" type="button">Apply</button><span class="small">2–720</span></div>
+ <input id="fv-m-range" type="range" min="2" max="720" step="1" aria-label="Phasor count" style="width:100%" hidden>
+ </details>
+ <div class="fv-field"><label for="fv-N">Shell N <output id="fv-N-label"></output></label><div class="fv-slider"><button id="fv-N-prev" type="button" aria-label="N minus one">◀</button><input id="fv-N" type="range" min="0" max="25" step="1"><button id="fv-N-next" type="button" aria-label="N plus one">▶</button></div></div>
+ <div class="fv-field"><label for="fv-s-range">Spin s <output id="fv-s-label"></output></label><div class="fv-slider"><button id="fv-s-prev" type="button" aria-label="Previous structural spin stop">◀</button><input id="fv-s-range" type="range" min="-24" max="24" step="0.01"><button id="fv-s-next" type="button" aria-label="Next structural spin stop">▶</button></div><div class="fv-row"><label for="fv-s">Set s</label><input id="fv-s" type="text" placeholder="−3/2 or 2*3/4"><button id="fv-s-apply" type="button">Apply</button></div></div>
+ <div class="fv-row"><button id="fv-play-N" type="button">▶ N</button><button id="fv-play-s" type="button">▶ s</button><button id="fv-reset-N" type="button">Reset N</button><button id="fv-slower" type="button">½×</button><button id="fv-speed-one" type="button">1×</button><button id="fv-faster" type="button">2×</button><output id="fv-speed" class="fv-speed">1× speed</output></div>
+ <p id="fv-note" class="fv-mode-note" aria-live="polite">Enter applies typed values. Arrow keys move N; Shift + arrows move spin.</p>`;
+ for(let n=3;n<=13;n++){const b=document.createElement('button');b.type='button';b.textContent=n;b.id='fv-n1-'+n;b.setAttribute('aria-label','Factorial index '+n);b.addEventListener('click',()=>{const v=read();let B=1n;for(let k=2n;k<=BigInt(n);k++)B*=k;commit({n1:String(n),phi3:String(BigInt(v.phi3)>B+1n?B+1n:BigInt(v.phi3))});});$('fv-factorials').append(b);}
+ for(const id of ['alpha','n6']){
+  const label=id==='alpha'?'Exponent α':'Radius n₆',div=document.createElement('div');div.className='fv-field';
+  div.innerHTML='<label>'+label+' <output id="fv-'+id+'-value"></output></label><div id="fv-'+id+'-presets" class="fv-row">'+[-1,0,1].map(n=>'<button type="button" id="fv-'+id+'-'+n+'" data-radius="'+id+'" data-value="'+n+'">'+(n>0?'+1':n)+'</button>').join('')+'</div><div id="fv-'+id+'-continuous" class="fv-slider" hidden><button id="fv-'+id+'-prev" type="button" aria-label="Decrease '+label+' by 0.01">−</button><input id="fv-'+id+'-range" type="range" min="-8" max="8" step="0.01" aria-label="'+label+'"><button id="fv-'+id+'-next" type="button" aria-label="Increase '+label+' by 0.01">+</button></div>';
+  $('fv-radial').append(div);
+ }
+ for(const id of ['t1','t2']){
+  const label=id==='t1'?'Carrier t₁':'Spread t₂',div=document.createElement('div');div.className='fv-field';
+  div.innerHTML='<label for="fv-'+id+'">'+label+'</label><div class="fv-row"><button id="fv-'+id+'-prev" type="button" aria-label="Decrease '+label+'">◀</button><input id="fv-'+id+'" type="text"><select id="fv-'+id+'-step" aria-label="'+label+' step">'+options+'</select><button id="fv-'+id+'-next" type="button" aria-label="Increase '+label+'">▶</button></div><input id="fv-'+id+'-range" type="range" min="-100" max="100" step="any" style="width:100%" aria-label="'+label+' slider" hidden>';
+  $('fv-gears').append(div);$('fv-'+id+'-step').value=stepDen[id];
+ }
+ function note(text){$('fv-note').textContent=text;}
+ function sync(){
+  const v=read();let g;try{g=G.analyze(v);}catch(e){return;}
+  $('fv-factorial').setAttribute('aria-pressed',v.shellMode==='factorial');$('fv-integer').setAttribute('aria-pressed',v.shellMode==='integer');$('fv-factorials').hidden=v.shellMode!=='factorial';$('fv-base-row').hidden=v.shellMode!=='integer';$('fv-base').value=v.base;
+  for(let n=3;n<=13;n++)$('fv-n1-'+n).setAttribute('aria-pressed',Number(v.n1)===n);
+  $('fv-shell-label').textContent='B = '+g.B;
+  $('fv-preset').setAttribute('aria-pressed',mode==='preset');$('fv-continuous').setAttribute('aria-pressed',mode==='continuous');
+  for(const id of ['alpha','n6']){const q=C.parse(v[id]);$('fv-'+id+'-value').textContent=C.text(q);$('fv-'+id+'-presets').hidden=mode!=='preset';$('fv-'+id+'-continuous').hidden=mode!=='continuous';$('fv-'+id+'-range').value=Number(q.n)/Number(q.d);for(const n of [-1,0,1])$('fv-'+id+'-'+n).setAttribute('aria-pressed',q.n===BigInt(n)*q.d);}
+  for(const id of ['t1','t2']){$('fv-'+id).value=v[id];$('fv-'+id+'-range').hidden=mode!=='continuous';const q=C.parse(v[id]);$('fv-'+id+'-range').value=Number(q.n)/Number(q.d);}
+  $('fv-m').value=v.combM;$('fv-m-range').value=v.combM;$('fv-m-range').hidden=mode!=='continuous';$('fv-m-prev').disabled=Number(v.combM)<=2;$('fv-m-next').disabled=Number(v.combM)>=720;
+  $('fv-N').max=String(g.B+1n);$('fv-N').value=String(g.N);$('fv-N-label').textContent='N = '+g.N+' · φ₃ = '+g.g;$('fv-N-prev').disabled=g.N===0n;$('fv-N-next').disabled=g.N===g.B+1n;
+  $('fv-s').value=v.s;$('fv-s-range').min=String(-g.N);$('fv-s-range').max=String(g.N);const q=C.parse(v.s);$('fv-s-range').value=Number(q.n)/Number(q.d);$('fv-s-label').textContent=v.s+' · range −'+g.N+' … '+g.N+(window.__continuousSpin?' · numerical spin':'');$('fv-s-prev').disabled=g.N===0n||q.n<=-g.N*q.d;$('fv-s-next').disabled=g.N===0n||q.n>=g.N*q.d;
+  for(const id of laneFields)lanes[mode][id]=v[id];window.__fvControls={mode,values:v,playingN:playN,playingS:playS,continuousSpin:!!window.__continuousSpin,speed};
+ }
+ function commit(patch,exactSpin=false){
+  try{
+   const next={...read(),...patch},g=G.analyze(next);for(const id of ['t1','t2'])next[id]=C.text(C.parse(next[id]));
+   for(const id of ['alpha','n6']){const q=C.parse(next[id]),n=Number(q.n)/Number(q.d);if(!Number.isFinite(n)||Math.abs(n)>8)throw Error(id+' must be between −8 and 8.');}
+   next.s=C.text(M.center(M.spin(next.s),g.N));
+   if(exactSpin)window.__continuousSpin=false;
+   internal=true;for(const id of fields)$(id).value=next[id];$('phi3').dispatchEvent(new Event('input',{bubbles:true}));internal=false;sync();return true;
+  }catch(e){internal=false;note('Not applied: '+e.message+' Previous values retained.');return false;}
+ }
+ function stopHold(){clearTimeout(holdDelay);clearInterval(holdRepeat);holdDelay=holdRepeat=null;}
+ function hold(id,action){const b=$(id);b.addEventListener('pointerdown',e=>{if(e.button!==0)return;e.preventDefault();stopHold();b.focus();b.setPointerCapture(e.pointerId);action();holdDelay=setTimeout(()=>{action();holdRepeat=setInterval(action,180);},450);});for(const name of ['pointerup','pointercancel','lostpointercapture'])b.addEventListener(name,stopHold);b.addEventListener('click',e=>{if(e.detail===0)action();});}
+ function typed(id,action){$(id).addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();action();}});}
+ function setShell(modeValue){const v=read();let B=BigInt(v.base);if(modeValue==='factorial'){B=1n;for(let k=2n;k<=BigInt(v.n1);k++)B*=k;}commit({shellMode:modeValue,phi3:String(BigInt(v.phi3)>B+1n?B+1n:BigInt(v.phi3))});}
+ $('fv-factorial').addEventListener('click',()=>setShell('factorial'));$('fv-integer').addEventListener('click',()=>setShell('integer'));
+ const applyBase=()=>{try{const B=C.integer($('fv-base').value),old=BigInt($('phi3').value);commit({base:String(B),phi3:String(old>B+1n?B+1n:old)});}catch(e){note('Not applied: '+e.message);}};typed('fv-base',applyBase);$('fv-base-apply').addEventListener('click',applyBase);
+ for(const nextMode of ['preset','continuous'])$('fv-'+nextMode).addEventListener('click',()=>{if(nextMode===mode)return;stopHold();const previous=mode;mode=nextMode;if(!commit(lanes[nextMode]))mode=previous;sync();note(mode==='continuous'?'Continuous radius controls; gearbox sliders snap to the selected exact fraction.':'Preset radius controls. Exact fractional gearbox values are retained.');});
+ for(const b of document.querySelectorAll('[data-radius]'))b.addEventListener('click',()=>commit({[b.dataset.radius]:b.dataset.value}));
+ for(const id of ['alpha','n6']){$('fv-'+id+'-range').addEventListener('input',e=>commit({[id]:e.target.value}));for(const dir of [-1,1])hold('fv-'+id+(dir<0?'-prev':'-next'),()=>{const q=C.parse($(id).value),next=C.rat(q.n*100n+BigInt(dir)*q.d,q.d*100n);const n=Math.max(-8,Math.min(8,Number(next.n)/Number(next.d)));commit({[id]:n.toFixed(2)});});}
+ for(const id of ['t1','t2']){
+  typed('fv-'+id,()=>{if(commit({[id]:$('fv-'+id).value}))note('Applied exact '+id+' = '+$(id).value);});$('fv-'+id+'-step').addEventListener('change',e=>stepDen[id]=e.target.value);
+  for(const dir of [-1,1])hold('fv-'+id+(dir<0?'-prev':'-next'),()=>commit({[id]:G.step($(id).value,stepDen[id],dir)}));
+  $('fv-'+id+'-range').addEventListener('input',e=>commit({[id]:M.snap(e.target.value,stepDen[id])}));
+ }
+ const applyM=()=>commit({combM:$('fv-m').value});typed('fv-m',applyM);$('fv-m-apply').addEventListener('click',applyM);for(const dir of [-1,1])hold('fv-m'+(dir<0?'-prev':'-next'),()=>commit({combM:String(Math.max(2,Math.min(720,Number($('combM').value)+dir)))}));$('fv-m-range').addEventListener('input',e=>commit({combM:e.target.value}));
+ function shellStep(dir){const g=G.analyze(read()),n=g.N+BigInt(dir);commit({phi3:String(g.B+1n-(n<0n?0n:n>g.B+1n?g.B+1n:n))});}
+ for(const dir of [-1,1])hold('fv-N'+(dir<0?'-prev':'-next'),()=>shellStep(dir));$('fv-N').addEventListener('input',e=>{const g=G.analyze(read());commit({phi3:String(g.B+1n-BigInt(e.target.value))});});
+ function spinStep(dir){const v=read(),g=G.analyze(v),stop=M.nextSpin(v.s,g.N,Number(v.combM),v.t1,v.t2,dir);commit({s:stop.value},true);note(stop.kind+' · s = '+$('s').value);}
+ for(const dir of [-1,1])hold('fv-s'+(dir<0?'-prev':'-next'),()=>spinStep(dir));$('fv-s-range').addEventListener('input',e=>commit({s:e.target.value},true));
+ const applyS=()=>{const entered=$('fv-s').value;if(commit({s:entered},true))note('Applied s = '+$('s').value+' in the centered range.');};typed('fv-s',applyS);$('fv-s-apply').addEventListener('click',applyS);
+ function playLabels(){$('fv-play-N').textContent=playN?'⏹ N':'▶ N';$('fv-play-s').textContent=playS?'⏹ s':'▶ s';$('fv-play-N').setAttribute('aria-pressed',playN);$('fv-play-s').setAttribute('aria-pressed',playS);$('fv-speed').textContent=speed+'× speed';sync();}
+ function stopPlay(){playN=playS=false;cancelAnimationFrame(frame);frame=null;playLabels();}
+ function tick(now){frame=null;if(!playN&&!playS)return;if(now-last>=40){const dt=Math.min(0.15,(now-last)/1000);last=now;const v=read(),g=G.analyze(v),patch={};if(playN){accum+=Number(g.B)/10*speed*dt;if(accum>=1){const steps=Math.floor(accum);accum-=steps;const next=g.g-BigInt(steps);patch.phi3=String(next<0n?g.B+1n:next);}}if(playS){const q=C.parse(v.s),carrier=C.parse(v.t1),rate=1/Math.max(1,Math.abs(Number(carrier.n)/Number(carrier.d)));patch.s=(Number(q.n)/Number(q.d)+rate*speed*dt).toFixed(10);window.__continuousSpin=true;}commit(patch);}frame=requestAnimationFrame(tick);}
+ for(const which of ['N','s'])$('fv-play-'+which).addEventListener('click',()=>{if(which==='N')playN=!playN;else playS=!playS;if(playN||playS){if(frame===null){last=performance.now();accum=0;frame=requestAnimationFrame(tick);}}else{cancelAnimationFrame(frame);frame=null;}playLabels();});
+ $('fv-reset-N').addEventListener('click',()=>{stopPlay();const g=G.analyze(read());commit({phi3:String(g.B+1n)});});
+ for(const [id,fn] of [['fv-slower',()=>Math.max(.1,speed/2)],['fv-speed-one',()=>1],['fv-faster',()=>Math.min(20,speed*2)]])$(id).addEventListener('click',()=>{speed=fn();playLabels();});
+ window.addEventListener('keydown',e=>{if(!['ArrowLeft','ArrowRight'].includes(e.key)||['INPUT','SELECT','TEXTAREA'].includes(document.activeElement.tagName))return;e.preventDefault();stopPlay();if(e.shiftKey)spinStep(e.key==='ArrowRight'?1:-1);else shellStep(e.key==='ArrowRight'?1:-1);});
+ for(const id of fields)$(id).addEventListener('input',()=>{if(!internal){if(id==='s')window.__continuousSpin=false;commit({});}});
+ $('fv-controls').addEventListener('focusin',e=>{if(e.target.matches('input[type=text]'))stopPlay();});
+ window.addEventListener('blur',()=>{stopHold();stopPlay();});document.addEventListener('visibilitychange',()=>{if(document.hidden){stopHold();stopPlay();}});
+ $('certificate').insertAdjacentElement('afterend',$('gearbox'));
+ sync();playLabels();
+})();
+</script>
+<script>if(window.__comb3D)document.getElementById("startup-status").hidden=true;</script></html>

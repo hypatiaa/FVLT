@@ -1,0 +1,944 @@
+<meta charset="utf-8">
+<!--
+DIAL LEDGER (v3; additive successor of farey_helix_family_super_v2.html, which is untouched).
+Exact register: contact-edge labels n,m,N,cofactor,tau are BigInt/integer arithmetic. Drawing register: positions/colours (floats).
+v2 controls (all unchanged): Max order n; Top height; Twist count k; Farey order F_N; Cylinders; Integer spine; Factorial heights;
+ Farey ticks; Farey contact edges (det 1); Multiples n.Z; Reciprocal winding; Radial spokes; Chord polygon; Smooth helix curve;
+ Auto-rotate; Top-down view; Visible-order pills; zoom + / - / fit; click bead = select; mouse drag orbit (side view); wheel zoom.
+v3 additions: (1) hover over a contact edge -> readout of n=ac+bd, m=c^2+d^2, N=n^2+1, cofactor N/m, tau(N);
+ (2) selecting a bead lists every incident edge with the same readout; (3) "shell filter: n = __" checkbox + integer input dims every
+ contact edge with a different n (edges with n equal are drawn orange); (4) red banner if m does not divide n^2+1 for a drawn edge.
+Convention: (a,c),(b,d) = (height numerator, order) of each reduced endpoint fraction, heights unreduced = taken as drawn (0<a/c<1, not mod 1).
+ At twist k the bead drawn is j=a*k of Gamma_c; n,m use the HEIGHT numerator a (det ad-bc=+-1), not j, because with j the determinant is k and the
+ identity would be m | n^2+k^2. The readout shows both a and j.
+Source: s6_atom/FABLE_REVIEW_LANDAU_GASKET_HELICOID_20261021/REVIEW.md section 10.
+-->
+<h2 class="sr-only">Interactive 3D explorer for the Farey-rooted helix family — assigns each rational bead j/n a height j/n and a root-of-unity phase, with toggleable cylinders, integer spine, factorial heights, per-helix visibility, det-1 Farey contact edges (contact as adjacency, never incidence), and the reciprocal tower: multiples n·ℤ marked at every n-th integer height as the n/1 residence exchanged with 1/n around the unit.</h2>
+
+<div id="fail-banner" style="display:none; background:#c0392b; color:#fff; font-size:12px; font-family:var(--font-mono); padding:6px 10px; border-radius:6px; margin:0 0 8px;"></div>
+<div style="display: grid; grid-template-columns: 220px 1fr; gap: 16px; margin: 0 0 1rem;">
+
+  <div style="display: flex; flex-direction: column; gap: 14px;">
+    <div>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+        <label style="font-size: 13px; color: var(--color-text-secondary);">Max order n</label>
+        <span id="maxN-out" style="font-size: 13px; font-weight: 500;">7</span>
+      </div>
+      <input id="maxN" type="range" min="2" max="13" value="7" step="1" style="width: 100%;" />
+    </div>
+
+    <div>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+        <label style="font-size: 13px; color: var(--color-text-secondary);">Top height (units)</label>
+        <span id="topH-out" style="font-size: 13px; font-weight: 500;">6</span>
+      </div>
+      <input id="topH" type="range" min="1" max="24" value="6" step="1" style="width: 100%;" />
+      <div id="topH-label" style="font-size: 11px; color: var(--color-text-tertiary); margin-top: 4px;">heights 0 → 6</div>
+    </div>
+
+    <div>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+        <label style="font-size: 13px; color: var(--color-text-secondary);">Twist count k</label>
+        <span id="twist-out" style="font-size: 13px; font-weight: 500;">1</span>
+      </div>
+      <input id="twist" type="range" min="1" max="4" value="1" step="1" style="width: 100%;" />
+    </div>
+
+    <div>
+      <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 6px;">
+        <label style="font-size: 13px; color: var(--color-text-secondary);">Farey order F_N</label>
+        <span id="fareyN-out" style="font-size: 13px; font-weight: 500;">7</span>
+      </div>
+      <input id="fareyN" type="range" min="1" max="13" value="7" step="1" style="width: 100%;" />
+      <div id="fareyN-label" style="font-size: 11px; color: var(--color-text-tertiary); margin-top: 4px;">|F_7| = ?</div>
+    </div>
+
+    <div style="border-top: 0.5px solid var(--color-border-tertiary); padding-top: 12px; display: flex; flex-direction: column; gap: 8px;">
+      <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+        <input id="opt-cyls" type="checkbox" />
+        <span>Cylinders (radius 1/n)</span>
+      </label>
+      <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+        <input id="opt-spine" type="checkbox" checked />
+        <span>Integer spine</span>
+      </label>
+      <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+        <input id="opt-fact" type="checkbox" checked />
+        <span>Factorial heights</span>
+      </label>
+      <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+        <input id="opt-farey" type="checkbox" checked />
+        <span>Farey ticks on spine</span>
+      </label>
+      <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;" title="det-1 / Farey-neighbor pairs among interior beads (punctured (0,1) — the same fraction register as the atom witness's phase layer). By Lemma 9.3a distinct helices share no points, so contact can never appear as incidence here; adjacency edges are the faithful rendering. Click a bead to highlight its det-1 partners.">
+        <input id="opt-contacts" type="checkbox" checked />
+        <span>Farey contact edges (det 1)</span>
+      </label>
+      <label style="display: flex; align-items: center; gap: 6px; font-size: 13px; cursor: pointer;" title="Dims every contact edge whose shell n = ac+bd differs from the integer given.">
+        <input id="opt-shell" type="checkbox" />
+        <span>shell filter: n =</span>
+        <input id="shell-n" type="number" min="1" step="1" value="5" style="width: 64px;" />
+      </label>
+      <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+        <input id="opt-mult" type="checkbox" checked />
+        <span>Multiples n·ℤ (reciprocal tower)</span>
+      </label>
+      <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+        <input id="opt-recip" type="checkbox" checked />
+        <span>Reciprocal winding (throat at 1/1)</span>
+      </label>
+      <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+        <input id="opt-radial" type="checkbox" checked />
+        <span>Radial spokes</span>
+      </label>
+      <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+        <input id="opt-cmap" type="checkbox" checked />
+        <span>Chord polygon (bead-to-bead)</span>
+      </label>
+      <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+        <input id="opt-smooth" type="checkbox" />
+        <span>Smooth helix curve</span>
+      </label>
+      <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+        <input id="opt-spin" type="checkbox" />
+        <span>Auto-rotate</span>
+      </label>
+      <label style="display: flex; align-items: center; gap: 8px; font-size: 13px; cursor: pointer;">
+        <input id="opt-top" type="checkbox" checked />
+        <span>Top-down view</span>
+      </label>
+    </div>
+
+    <div style="border-top: 0.5px solid var(--color-border-tertiary); padding-top: 12px;">
+      <div style="font-size: 12px; color: var(--color-text-secondary); margin-bottom: 6px;">Visible orders</div>
+      <div id="order-toggles" style="display: flex; flex-wrap: wrap; gap: 4px;"></div>
+    </div>
+  </div>
+
+  <div id="canvas-wrap" style="position: relative; height: 560px; background: var(--color-background-secondary); border-radius: var(--border-radius-lg); overflow: hidden;">
+    <div id="readout" style="position: absolute; top: 10px; left: 12px; font-size: 11px; color: var(--color-text-secondary); font-family: var(--font-mono); pointer-events: none; line-height: 1.5;"></div>
+    <div id="hover" style="position: absolute; bottom: 10px; left: 12px; font-size: 11px; color: var(--color-text-secondary); font-family: var(--font-mono); pointer-events: none;"></div>
+    <div style="position: absolute; top: 10px; right: 10px; display: flex; flex-direction: column; gap: 4px;">
+      <button id="zoom-in" style="width: 32px; height: 32px; padding: 0; font-size: 18px; line-height: 1;" title="Zoom in">+</button>
+      <button id="zoom-out" style="width: 32px; height: 32px; padding: 0; font-size: 18px; line-height: 1;" title="Zoom out">−</button>
+      <button id="zoom-reset" style="width: 32px; height: 32px; padding: 0; font-size: 11px; line-height: 1;" title="Reset zoom">fit</button>
+    </div>
+  </div>
+
+</div>
+
+<div style="font-size: 11px; color: var(--color-text-tertiary); line-height: 1.5; margin: 0 0 1rem; padding: 10px 12px; border: 0.5px solid var(--color-border-tertiary); border-radius: 8px;">
+  <b>One rational skeleton, many bodies.</b> Every reduced fraction a/q here is a single object under a single contact law &mdash; Farey adjacency, |as &minus; cq| = 1. The registers render it differently: as an adjacency graph (combinatorial); as circles kissing exactly at Farey neighbors (Ford); as a gasket-style disk packing (M&ouml;bius view &mdash; tangency preserved, angle register given up); as tangent ovals wrapped by z &rarr; e^(2&pi;iz) (exponential lift &mdash; tangency <i>and</i> phase preserved); and as beads on the lifted helix family, where by Lemma 9.3a contact can never appear as incidence and is drawn as edges instead. Instruments differ only in admission: this viewer admits fractions by Farey order (additive spine), the atom witness by cyclic orders (multiplicative content). Same rationals, same contact law, different geometries &mdash; no view is the object.
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+(function() {
+  const COLORS = [
+    null,                  // n = 0 unused
+    '#888780',             // n = 1 spine (gray)
+    '#534AB7',             // n = 2 purple
+    '#1D9E75',             // n = 3 teal
+    '#D85A30',             // n = 4 coral
+    '#185FA5',             // n = 5 blue
+    '#BA7517',             // n = 6 amber
+    '#A32D2D',             // n = 7 red
+    '#0F6E56',             // n = 8 teal-dark
+    '#3C3489',             // n = 9 purple-dark
+    '#993C1D',             // n = 10 coral-dark
+    '#0C447C',             // n = 11 blue-dark
+    '#854F0B',             // n = 12 amber-dark
+    '#993556',             // n = 13 pink
+  ];
+
+  const wrap = document.getElementById('canvas-wrap');
+  const W = wrap.clientWidth, H = wrap.clientHeight;
+
+  const scene = new THREE.Scene();
+  scene.background = null;
+
+  const camera = new THREE.PerspectiveCamera(45, W / H, 0.01, 50);
+  // orthographic camera for top-down isometric view (no perspective foreshortening)
+  // size will be reset in updateCam() based on construction extent
+  const orthoCam = new THREE.OrthographicCamera(-1.5, 1.5, 1.5, -1.5, 0.01, 50);
+  let activeCam = camera;
+  const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(W, H);
+  wrap.appendChild(renderer.domElement);
+
+  // Soft white-ish lighting (works in both modes since we use vertex colors / unlit materials)
+  scene.add(new THREE.AmbientLight(0xffffff, 1.0));
+
+  // ---- minimal trackball-style orbit controls (no external dep) ----
+  let camR = 1.8, camTheta = 0.6, camPhi = 1.0;   // spherical (perspective)
+  let orthoSpan = 1.25;                            // half-height of ortho frustum (zoom)
+  const target = new THREE.Vector3(0, 0, 0.5);
+
+  function updateCam() {
+    if (state && state.topDown) {
+      activeCam = orthoCam;
+      const w = wrap.clientWidth, h = wrap.clientHeight;
+      const aspect = (w > 0 && h > 0) ? (w / h) : 1.0;
+      orthoCam.left   = -orthoSpan * aspect;
+      orthoCam.right  =  orthoSpan * aspect;
+      orthoCam.top    =  orthoSpan;
+      orthoCam.bottom = -orthoSpan;
+      orthoCam.near = 0.01;
+      orthoCam.far  = 50;
+      orthoCam.position.set(target.x, target.y, target.z + 5);
+      orthoCam.up.set(0, 1, 0);
+      orthoCam.lookAt(target);
+      orthoCam.updateProjectionMatrix();
+    } else {
+      activeCam = camera;
+      const x = camR * Math.sin(camPhi) * Math.cos(camTheta);
+      const y = camR * Math.sin(camPhi) * Math.sin(camTheta);
+      const z = camR * Math.cos(camPhi);
+      camera.position.set(x + target.x, y + target.y, z + target.z);
+      camera.up.set(0, 0, 1);
+      camera.lookAt(target);
+    }
+  }
+
+  let dragging = false, lx = 0, ly = 0;
+  renderer.domElement.addEventListener('mousedown', e => { dragging = true; lx = e.clientX; ly = e.clientY; });
+  window.addEventListener('mouseup', () => { dragging = false; });
+  window.addEventListener('mousemove', e => {
+    if (!dragging) return;
+    if (state && state.topDown) return;  // no orbit in orthographic top-down view
+    const dx = e.clientX - lx, dy = e.clientY - ly;
+    lx = e.clientX; ly = e.clientY;
+    camTheta -= dx * 0.005;
+    camPhi = Math.max(0.05, Math.min(Math.PI - 0.05, camPhi - dy * 0.005));
+    updateCam();
+  });
+  renderer.domElement.addEventListener('wheel', e => {
+    e.preventDefault();
+    if (state && state.topDown) {
+      const factor = 1 + e.deltaY * 0.0015;
+      orthoSpan = Math.max(0.1, Math.min(8, orthoSpan * factor));
+      updateCam();
+    } else {
+      camR = Math.max(0.4, Math.min(8, camR * (1 + e.deltaY * 0.001)));
+      updateCam();
+    }
+  }, { passive: false });
+
+  // ---- state ----
+  const state = {
+    maxN: 7,
+    topHeight: 6,       // top height in plain units (factorial levels remain as marker rings)
+    twist: 1,
+    showCylinders: false,
+    showSpine: true,
+    showFactorials: true,
+    showRadial: true,
+    showChords: true,
+    showSmooth: false,
+    showFarey: true,
+    showMultiples: true,
+    showReciprocal: true,
+    fareyN: 7,
+    showContacts: true,   // det-1 contact edges among interior beads (first window)
+    shellFilter: false, shellN: 5,
+    selectedFrac: null,   // 'a/q' key of the selected bead, or null (same key register as the atom witness)
+    autoSpin: false,
+    topDown: true,
+    visibleOrders: new Set([1, 2, 3, 4, 5, 6, 7]),
+  };
+
+  // now that state exists, position the camera
+  updateCam();
+
+  let group = new THREE.Group();
+  scene.add(group);
+  let lastSelEdges = [];
+  let lastContactEdgeCount = 0;  // det-1 edges drawn in the last rebuild
+  let lastTopH = null;  // tracks stack height so side-view camera refits only when it changes
+
+  function clearGroup() {
+    while (group.children.length) {
+      const c = group.children.pop();
+      if (c.geometry) c.geometry.dispose();
+      if (c.material) {
+        if (Array.isArray(c.material)) c.material.forEach(m => m.dispose());
+        else c.material.dispose();
+      }
+    }
+  }
+
+  function gcd(a, b) { while (b) { [a, b] = [b, a % b]; } return a; }
+  // exact integer helpers (BigInt) for the divisor readout
+  function tau(N) { let t = 1n, x = N; for (let p = 2n; p * p <= x; p++) { let e = 0n; while (x % p === 0n) { x /= p; e++; } t *= (e + 1n); } if (x > 1n) t *= 2n; return t; }
+  // edge between (a/c) and (b/d): a,b = height numerators, c,d = orders
+  function edgeInfo(a, c, b, d, k) {
+    const A = BigInt(a), C = BigInt(c), B = BigInt(b), D = BigInt(d);
+    const n = A * C + B * D, m = C * C + D * D, N = n * n + 1n;
+    return { a, c, b, d, k, n, m, N, ok: N % m === 0n, cof: N / m, tau: tau(N) };
+  }
+  function edgeText(e) {
+    return `edge (${e.a}/${e.c}, ${e.b}/${e.d}): shell n = ac+bd = ${e.n}, divisor m = c²+d² = ${e.m} of n²+1 = ${e.N}, cofactor (n²+1)/m = ${e.cof}, τ(n²+1) = ${e.tau}` + (e.k > 1 ? ` [twist ${e.k}: beads j=${e.a * e.k} of Γ_${e.c}, j=${e.b * e.k} of Γ_${e.d}; n,m from height numerators]` : ` [beads j=${e.a} of Γ_${e.c}, j=${e.b} of Γ_${e.d}]`);
+  }
+  function factorial(n) { let r = 1; for (let i = 2; i <= n; i++) r *= i; return r; }
+
+  // Build Farey sequence F_N within [0, 1] — reduced fractions j/n with 1 <= n <= N, 0 <= j <= n.
+  // Returns sorted array of {value, j, n}.
+  function fareySequence(N) {
+    const seen = new Set();
+    const out = [];
+    for (let n = 1; n <= N; n++) {
+      for (let j = 0; j <= n; j++) {
+        if (gcd(j, n) !== 1 && !(j === 0 && n === 1) && !(j === 1 && n === 1)) continue;
+        // Above keeps only reduced fractions; 0/1 and 1/1 included by definition.
+        const v = j / n;
+        const key = `${j}/${n}`;
+        if (seen.has(key)) continue;
+        seen.add(key);
+        out.push({ value: v, j, n });
+      }
+    }
+    out.sort((a, b) => a.value - b.value);
+    return out;
+  }
+
+  // build the scene from state
+  function rebuild() {
+    clearGroup();
+    const topH = state.topHeight;
+    const twist = state.twist;
+
+    // axis (the Farey spine — the n=1 case)
+    if (state.showSpine && state.visibleOrders.has(1)) {
+      const axisGeom = new THREE.BufferGeometry().setFromPoints([
+        new THREE.Vector3(0, 0, 0),
+        new THREE.Vector3(0, 0, topH),
+      ]);
+      const axisMat = new THREE.LineBasicMaterial({ color: 0x888780, linewidth: 2 });
+      group.add(new THREE.Line(axisGeom, axisMat));
+
+      // integer beads on spine
+      for (let j = 0; j <= topH; j++) {
+        const sph = new THREE.Mesh(
+          new THREE.SphereGeometry(0.018, 12, 12),
+          new THREE.MeshBasicMaterial({ color: 0x444441 })
+        );
+        sph.position.set(0, 0, j);
+        group.add(sph);
+      }
+    }
+
+    // Farey ticks along the spine
+    if (state.showFarey) {
+      const farey = fareySequence(state.fareyN);
+
+      // Reference scale: largest visible helix radius. The biggest helix is the smallest visible n >= 2.
+      // Ticks sit on the spine; we want them to extend a meaningful fraction of the way out
+      // toward the largest cylinder so they're legible alongside the construction.
+      let nMinVisible = Infinity;
+      for (let n = 2; n <= state.maxN; n++) {
+        if (state.visibleOrders.has(n)) { nMinVisible = n; break; }
+      }
+      const refRadius = isFinite(nMinVisible) ? (1 / nMinVisible) : 0.5;
+
+      for (const f of farey) {
+        // Tick length: fraction of refRadius, scaled inversely with Farey denominator.
+        // 1/2 (longest) reaches ~40% of refRadius; high-denom fractions stay short.
+        const tickLen = refRadius * (0.10 + 0.30 / f.n);
+
+        // Color by reduced denominator: this matches the helix color palette,
+        // so a Farey tick at 1/3 reads in the same color as the n=3 helix's beads.
+        // Fall back to neutral gray if denominator exceeds palette range.
+        const denomColor = COLORS[f.n] || '#5F5E5A';
+
+        const tickMat = new THREE.LineBasicMaterial({
+          color: denomColor, transparent: true, opacity: 0.95,
+        });
+        const fareyBeadMat = new THREE.MeshBasicMaterial({ color: denomColor });
+        // Bead size also scales with refRadius so it doesn't look out of place at different zoom levels.
+        const fareyBeadGeom = new THREE.SphereGeometry(refRadius * (0.020 + 0.024 / f.n), 10, 10);
+
+        // repeat per integer interval up to topH
+        for (let unit = 0; unit < topH; unit++) {
+          const z = unit + f.value;
+          if (z > topH + 1e-9) break;
+
+          // horizontal tick (in the +x direction so it reads in top-down view too)
+          const tickGeom = new THREE.BufferGeometry().setFromPoints([
+            new THREE.Vector3(-tickLen, 0, z),
+            new THREE.Vector3(tickLen, 0, z),
+          ]);
+          group.add(new THREE.Line(tickGeom, tickMat));
+
+          // tiny bead at the tick center on the spine
+          const sph = new THREE.Mesh(fareyBeadGeom, fareyBeadMat);
+          sph.position.set(0, 0, z);
+          sph.userData = { fareyJ: f.j, fareyN: f.n, height: z, fareyTick: true };
+          group.add(sph);
+        }
+      }
+    }
+
+    // Farey contact edges — the det-1 layer (Chris's translation rule: circle
+    // tangency in Ford space <-> adjacency/contact edge in helix space). Interior
+    // fractions only (0 < a/q < 1, q >= 2): the punctured set, the SAME fraction
+    // register as the atom witness's phase layer. By Lemma 9.3a the helices
+    // themselves never touch, so contact is rendered as edges, never incidence.
+    // The bead carrying value a/q at twist k is bead j = a*k of Gamma_q (height
+    // a/q always; angle 2*pi*a*k/q — the twist stratum's own seating).
+    lastContactEdgeCount = 0;
+    lastSelEdges = [];
+    const failed = [];
+    if (state.showContacts) {
+      const fareyC = fareySequence(state.fareyN)
+        .filter(f => f.n >= 2 && f.j >= 1 && f.j < f.n);
+      const posOf = f => {
+        const j2 = f.j * state.twist;
+        const ang = 2 * Math.PI * j2 / f.n;
+        return new THREE.Vector3(Math.cos(ang) / f.n, Math.sin(ang) / f.n, f.j / f.n);
+      };
+      const selKey = state.selectedFrac;
+      for (let i = 0; i < fareyC.length; i++) {
+        for (let k2 = i + 1; k2 < fareyC.length; k2++) {
+          const A = fareyC[i], B = fareyC[k2];
+          if (Math.abs(A.j * B.n - B.j * A.n) !== 1) continue;
+          if (!state.visibleOrders.has(A.n) || !state.visibleOrders.has(B.n)) continue;
+          const keyA = A.j + '/' + A.n, keyB = B.j + '/' + B.n;
+          const touchesSel = !!selKey && (keyA === selKey || keyB === selKey);
+          lastContactEdgeCount++;
+          const info = edgeInfo(A.j, A.n, B.j, B.n, state.twist);
+          if (!info.ok) failed.push(`(${A.j}/${A.n}, ${B.j}/${B.n}): m=${info.m} does not divide n²+1=${info.N}`);
+          if (touchesSel) lastSelEdges.push(info);
+          const shellMatch = !state.shellFilter || info.n === BigInt(state.shellN);
+          let col = touchesSel ? 0x534AB7 : 0x8a8880, op = selKey ? (touchesSel ? 0.95 : 0.08) : 0.4;
+          if (state.shellFilter) { if (shellMatch) { col = 0xE07B00; op = 0.95; } else op = 0.04; }
+          const mat = new THREE.LineBasicMaterial({ color: col, transparent: true, opacity: op });
+          const geom = new THREE.BufferGeometry().setFromPoints([posOf(A), posOf(B)]);
+          const line = new THREE.Line(geom, mat);
+          line.userData = { contactEdge: true, pair: [keyA, keyB], info };
+          group.add(line);
+        }
+      }
+    }
+
+    {
+      const bn = document.getElementById('fail-banner');
+      if (failed.length) { bn.style.display = 'block'; bn.textContent = 'FAIL — divisor identity violated (report to saphir, do not patch): ' + failed.join('; '); }
+      else { bn.style.display = 'none'; bn.textContent = ''; }
+    }
+
+    // Multiples n·ℤ — the reciprocal (lower) tower of the residence order.
+    // For each visible order n, mark the heights n, 2n, 3n, ... ≤ topH: the residence
+    // set nℤ, exchanged with (1/n)ℤ by reciprocal inversion around the unit.
+    // Since nℤ ⊂ (1/n)ℤ, each mark coincides with a bead of Γ_n at phase 0
+    // (bead j = twist·n²·m, the +x point of its cylinder). Display: enlarged bead
+    // at (1/n, 0, m·n) plus a horizontal ring of radius 1/n — the n/1 residence
+    // shown at the radius of its reciprocal partner 1/n, making the tower
+    // exchange visible on the same cylinder.
+    if (state.showMultiples) {
+      for (let n = 2; n <= state.maxN; n++) {
+        if (!state.visibleOrders.has(n)) continue;
+        const r = 1 / n;
+        const color = COLORS[n] || '#888780';
+        const markGeom = new THREE.SphereGeometry(0.06 * r * 2.4, 14, 14);
+        const markMat = new THREE.MeshBasicMaterial({ color: color });
+        const drawRings = (topH / n) <= 120;  // performance guard on tall stacks
+        for (let m = 1; m * n <= topH; m++) {
+          const h = m * n;
+          const mark = new THREE.Mesh(markGeom, markMat);
+          mark.position.set(r, 0, h);
+          mark.userData = { multN: n, multM: m, height: h };
+          group.add(mark);
+          if (drawRings) {
+            const pts = [];
+            for (let i = 0; i <= 48; i++) {
+              const a = (i / 48) * Math.PI * 2;
+              pts.push(new THREE.Vector3(r * Math.cos(a), r * Math.sin(a), h));
+            }
+            const ringGeom = new THREE.BufferGeometry().setFromPoints(pts);
+            const ringMat = new THREE.LineBasicMaterial({
+              color: color, transparent: true, opacity: 0.55,
+            });
+            group.add(new THREE.Line(ringGeom, ringMat));
+          }
+        }
+      }
+    }
+
+    // Reciprocal winding — the opposite side of the construction, starting at the
+    // unit 1/1 and going toward infinity. The reciprocal map x ↦ 1/x acts on
+    // reduced beads as the index TRANSPOSE: bead j of Γ_n ↦ bead n of Γ_j
+    // (height j/n ↦ n/j, cylinder 1/n ↦ 1/j, phase ζ_n^j ↦ ζ_j^n). The fixed
+    // rational is 1/1: the THROAT is the unit-height plane, threaded by every
+    // helix at phase 0 (−1/1 is its mirror on the signed sheet, not drawn here).
+    // For each order n, the reciprocal winding starts at the throat and threads
+    // down the cylinder family — n/(n−1) on Γ_{n−1}, n/(n−2) on Γ_{n−2}, … —
+    // while rising, landing on the spine at n/1 (height n). Witnesses 2/3 ↔ 3/2
+    // are the first interior pair straddling the throat.
+    if (state.showReciprocal && topH >= 1) {
+      // LOG-MIRROR RENDERING (throat at the unit tip): value x is placed at
+      // height 1 + ln(x) with radius |ln(x)|. The reciprocal map x ↦ 1/x is then
+      // an EXACT reflection through the unit point (0,0,1): the pair x, 1/x sit
+      // at heights 1 ± ln(x) with the same radius, forming a tip-to-tip double
+      // cone (hourglass) whose waist is the single point 1/1. Each bead keeps
+      // its own root-of-unity angle; the mirror symmetry lives in (height,
+      // radius). The lower sheet passes through height 0 ("through the zero")
+      // on its way toward value 0 at −∞; integers n/1 march along +X on the
+      // upper sheet at radius ln(n). Native to the exponent completion:
+      // reciprocal = exponent negation = reflection.
+      const throatBead = new THREE.Mesh(
+        new THREE.SphereGeometry(0.045, 12, 12),
+        new THREE.MeshBasicMaterial({ color: 0x444441 })
+      );
+      throatBead.position.set(0, 0, 1);
+      throatBead.userData = { throat: true, height: 1 };
+      group.add(throatBead);
+
+      // faint double-cone guide rings, mirrored about the unit tip
+      {
+        const ringMat = new THREE.LineBasicMaterial({ color: 0xb4b2a9, transparent: true, opacity: 0.25 });
+        const tMax = Math.log(state.maxN) + 0.4;
+        for (let t = 0.5; t <= tMax; t += 0.5) {
+          for (const sgn of [1, -1]) {
+            const pts = [];
+            for (let i = 0; i <= 48; i++) {
+              const a = (i / 48) * Math.PI * 2;
+              pts.push(new THREE.Vector3(t * Math.cos(a), t * Math.sin(a), 1 + sgn * t));
+            }
+            const g = new THREE.BufferGeometry().setFromPoints(pts);
+            group.add(new THREE.Line(g, ringMat));
+          }
+        }
+      }
+
+      // Two mirror threads per order, BOTH moving in fractions — no coprimality
+      // filter, no integer jumping:
+      //   thread A: the bead ladder of Γ_n itself in the log register — values
+      //     j/n for ALL j ≥ 1, stepping by exactly 1/n per bead;
+      //   thread B: its reciprocal image — the harmonic sequence n/j, stepping
+      //     by n/(j(j+1)) per bead.
+      // Each thread crosses the throat at j = n (value 1) and continues past it;
+      // A and B are exact reflections of one another through the unit tip.
+      for (let n = 2; n <= state.maxN; n++) {
+        if (!state.visibleOrders.has(n)) continue;
+        const color = new THREE.Color(COLORS[n] || 0x888780);
+        const jTot = twist * n * topH;          // same bead range as the helix itself
+        const ptsA = [], ptsB = [];
+        for (let j = 1; j <= jTot; j++) {
+          for (const side of ['A', 'B']) {
+            const v = side === 'A' ? j / n : n / j;   // ladder / harmonic reciprocal
+            const t = Math.log(v);                     // signed; 0 at the throat
+            const z = 1 + t;
+            const ang = 2 * Math.PI * v;               // character angle of the value
+            const p = new THREE.Vector3(Math.abs(t) * Math.cos(ang), Math.abs(t) * Math.sin(ang), z);
+            (side === 'A' ? ptsA : ptsB).push(p);
+            // beads: draw only near the throat where structure is legible
+            if (j <= 8 * n) {
+              const bead = new THREE.Mesh(
+                new THREE.SphereGeometry(Math.min(0.018 + 0.014 * Math.abs(t), 0.09), 10, 10),
+                new THREE.MeshBasicMaterial({ color: color, transparent: side === 'A', opacity: side === 'A' ? 0.55 : 1.0 })
+              );
+              bead.position.copy(p);
+              bead.userData = side === 'A'
+                ? { recipN: j, recipJ: n, height: z, logReg: true }   // value j/n
+                : { recipN: n, recipJ: j, height: z, logReg: true };  // value n/j
+              group.add(bead);
+            }
+          }
+        }
+        const mkLine = (pts, dashed) => {
+          if (pts.length < 2) return;
+          const lineGeom = new THREE.BufferGeometry().setFromPoints(pts);
+          const lineMat = dashed
+            ? new THREE.LineDashedMaterial({ color: color, dashSize: 0.04, gapSize: 0.03, transparent: true, opacity: 0.8 })
+            : new THREE.LineBasicMaterial({ color: color, transparent: true, opacity: 0.5 });
+          const line = new THREE.Line(lineGeom, lineMat);
+          if (dashed) line.computeLineDistances();
+          group.add(line);
+        };
+        mkLine(ptsA, false);  // the ladder, solid faint
+        mkLine(ptsB, true);   // the reciprocal image, dashed
+      }
+    }
+
+    // factorial-height markers (horizontal rings at 1!, 2!, 3!, … within the window)
+    if (state.showFactorials) {
+      for (let k = 1; k <= 8; k++) {
+        const h = factorial(k);
+        if (h > topH) break;
+        const ringGeom = new THREE.BufferGeometry();
+        const pts = [];
+        const RING_R = 1.05; // slightly bigger than the largest cylinder (radius 1)
+        for (let i = 0; i <= 64; i++) {
+          const a = (i / 64) * Math.PI * 2;
+          pts.push(new THREE.Vector3(RING_R * Math.cos(a), RING_R * Math.sin(a), h));
+        }
+        ringGeom.setFromPoints(pts);
+        const ringMat = new THREE.LineDashedMaterial({
+          color: 0xb4b2a9,
+          dashSize: 0.05,
+          gapSize: 0.04,
+        });
+        const ring = new THREE.Line(ringGeom, ringMat);
+        ring.computeLineDistances();
+        group.add(ring);
+      }
+    }
+
+    // cylinders (visual aid)
+    if (state.showCylinders) {
+      for (let n = 2; n <= state.maxN; n++) {
+        if (!state.visibleOrders.has(n)) continue;
+        const r = 1 / n;
+        const cylGeom = new THREE.CylinderGeometry(r, r, topH, 48, 1, true);
+        // CylinderGeometry is along Y; rotate so it's along Z
+        cylGeom.rotateX(Math.PI / 2);
+        cylGeom.translate(0, 0, topH / 2);
+        const cylMat = new THREE.MeshBasicMaterial({
+          color: COLORS[n] || 0x888780,
+          transparent: true,
+          opacity: 0.04,
+          side: THREE.DoubleSide,
+          depthWrite: false,
+        });
+        const cyl = new THREE.Mesh(cylGeom, cylMat);
+        group.add(cyl);
+      }
+    }
+
+    // helices, beads, radial spokes, chords — for each n
+    for (let n = 2; n <= state.maxN; n++) {
+      if (!state.visibleOrders.has(n)) continue;
+      const color = new THREE.Color(COLORS[n] || 0x888780);
+      const r = 1 / n;
+
+      // total beads from j = 0 (height 0) up to j_max where height = j/(twist*n) ... wait, twist convention:
+      // standard: bead j on helix n at height j/n, angle 2πj/n.
+      // twist k: height j/(k*n), angle 2πj/n. To reach top height topH, j_max = k*n*topH.
+      const jMax = twist * n * topH;
+
+      // ---- the smooth helix curve (sub-stepped between beads) ----
+      if (state.showSmooth) {
+        const SUB = 24;
+        const curvePts = [];
+        const totalSteps = jMax * SUB;
+        for (let s = 0; s <= totalSteps; s++) {
+          const j = s / SUB;
+          const angle = (2 * Math.PI * j) / n;
+          const z = j / (twist * n);
+          curvePts.push(new THREE.Vector3(r * Math.cos(angle), r * Math.sin(angle), z));
+        }
+        const curveGeom = new THREE.BufferGeometry().setFromPoints(curvePts);
+        const curveMat = new THREE.LineBasicMaterial({
+          color: color, transparent: true, opacity: 0.45,
+        });
+        group.add(new THREE.Line(curveGeom, curveMat));
+      }
+
+      // ---- beads ----
+      // Bead radius scales with cylinder radius (1/n), so smaller helices have proportionally smaller beads.
+      // Base coefficient 0.06 chosen so n=2 (radius 1/2) gets bead radius ~0.03 — visible without crowding.
+      const beadRadius = 0.06 * r;
+      const beadGeom = new THREE.SphereGeometry(beadRadius, 14, 14);
+      const beadMat = new THREE.MeshBasicMaterial({ color: color });
+      for (let j = 0; j <= jMax; j++) {
+        const angle = (2 * Math.PI * j) / n;
+        const z = j / (twist * n);
+        const x = r * Math.cos(angle);
+        const y = r * Math.sin(angle);
+
+        const sph = new THREE.Mesh(beadGeom, beadMat);
+        sph.position.set(x, y, z);
+        sph.userData = { n, j, twist, frac: `${j}/${twist * n}`, height: z };
+        group.add(sph);
+
+        // radial spoke from spine to bead
+        if (state.showRadial) {
+          const spkGeom = new THREE.BufferGeometry().setFromPoints([
+            new THREE.Vector3(0, 0, z), new THREE.Vector3(x, y, z),
+          ]);
+          const spkMat = new THREE.LineBasicMaterial({
+            color: color, transparent: true, opacity: 0.25,
+          });
+          group.add(new THREE.Line(spkGeom, spkMat));
+        }
+      }
+
+      // ---- chord polygon between consecutive beads (the primary trace from the GeoGebra construction) ----
+      if (state.showChords) {
+        const chordPts = [];
+        for (let j = 0; j <= jMax; j++) {
+          const angle = (2 * Math.PI * j) / n;
+          const z = j / (twist * n);
+          chordPts.push(new THREE.Vector3(r * Math.cos(angle), r * Math.sin(angle), z));
+        }
+        const chordGeom = new THREE.BufferGeometry().setFromPoints(chordPts);
+        const chordMat = new THREE.LineBasicMaterial({ color: color, linewidth: 2 });
+        group.add(new THREE.Line(chordGeom, chordMat));
+      }
+    }
+
+    // re-center camera target on midpoint of stack
+    target.set(0, 0, topH / 2);
+    // widen clipping planes for tall stacks so high windings aren't culled
+    camera.far = Math.max(50, topH * 4);
+    camera.updateProjectionMatrix();
+    orthoCam.far = Math.max(50, topH * 4);
+    if (state.topDown) {
+      camTheta = 0.0; camPhi = 0.001;
+      camR = Math.max(1.6, topH * 1.2);
+      // the log-mirror double cone reaches radius ≈ ln(maxN); widen the frame to hold it
+      if (lastTopH !== topH) {
+        orthoSpan = state.showReciprocal ? Math.max(1.25, Math.log(state.maxN) + 0.8) : 1.25;
+      }
+    } else {
+      camPhi = Math.min(Math.max(camPhi, 0.4), Math.PI - 0.4);
+      // refit camera distance when the stack height changes (side view was
+      // previously never refit, so tall stacks overflowed the frame); the
+      // log-mirror hourglass adds ≈ ±(ln maxN) around the unit
+      if (lastTopH !== topH) camR = Math.max(1.8, topH * 0.85, state.showReciprocal ? 5.5 : 0);
+    }
+    lastTopH = topH;
+    updateCam();
+    updateReadout();
+  }
+
+  function updateReadout() {
+    const topH = state.topHeight;
+    const lines = [
+      `top height: ${topH} (units)`,
+      `max order: ${state.maxN}`,
+      `twist k: ${state.twist}`,
+    ];
+    // residence readout (viewer-fidelity fix, locked 2026-07-05): pitch is 1, so
+    // every helix closes at every integer height trivially — the factorial
+    // statement is about denominator residence, not curve closure. With unit
+    // heights, key the statement to the largest factorial rung inside the window.
+    let kk = 1;
+    while (factorial(kk + 1) <= topH) kk++;
+    let lcmK = 1;
+    for (let i = 2; i <= kk; i++) lcmK = lcmK * i / gcd(lcmK, i);
+    lines.push(`residence: all denominators ≤ ${kk} are hosted at lcm(1,…,${kk}) = ${lcmK}, canonically at ${kk}! = ${factorial(kk)} (window rung)`);
+    if (state.maxN > kk) {
+      lines.push(`orders ${kk + 1}…${state.maxN} not hosted at this rung (raise top height)`);
+    }
+    if (state.showMultiples) {
+      lines.push(`reciprocal tower: n·ℤ marks at heights m·n ≤ ${topH}`);
+      lines.push(`(1/n ↔ n/1 exchanged around the unit)`);
+    }
+    if (state.showReciprocal && topH >= 1) {
+      lines.push(`log mirror: x ↔ 1/x reflected through the throat 1/1 (heights 1 ± ln x, radius ln x)`);
+    }
+    if (state.showContacts) {
+      lines.push(`contact layer: ${lastContactEdgeCount} det-1 edges (interior F_${state.fareyN}; Lemma 9.3a — contact as adjacency, never incidence)`);
+      if (state.selectedFrac) {
+        lines.push(`selected: ${state.selectedFrac} — det-1 partners highlighted (click again to clear)`);
+        for (const e of lastSelEdges) lines.push(edgeText(e));
+      }
+    }
+    document.getElementById('readout').innerHTML = lines.map(s => `<div>${s}</div>`).join('');
+  }
+
+  // ---- raycast for hover info ----
+  const raycaster = new THREE.Raycaster();
+  raycaster.params.Points = { threshold: 0.05 };
+  const mouse = new THREE.Vector2();
+  const hoverEl = document.getElementById('hover');
+  renderer.domElement.addEventListener('mousemove', e => {
+    const rect = renderer.domElement.getBoundingClientRect();
+    mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+    raycaster.setFromCamera(mouse, activeCam);
+    const hits = raycaster.intersectObjects(group.children, false)
+      .filter(h => h.object.userData && (h.object.userData.n || h.object.userData.fareyTick || h.object.userData.multN || h.object.userData.recipN || h.object.userData.throat));
+    raycaster.params.Line = { threshold: 0.012 };
+    const eh = raycaster.intersectObjects(group.children, false).filter(h => h.object.userData && h.object.userData.contactEdge);
+    if (!hits.length && eh.length) {
+      hoverEl.innerHTML = edgeText(eh[0].object.userData.info);
+    } else if (hits.length) {
+      const u = hits[0].object.userData;
+      if (u.throat) {
+        hoverEl.innerHTML = `throat: 1/1 — tip of the double cone; fixed point of x ↔ 1/x`;
+      } else if (u.recipN) {
+        hoverEl.innerHTML = `${u.logReg ? 'log register — ' : ''}${u.recipN}/${u.recipJ} = 1/(${u.recipJ}/${u.recipN}), z=${u.height.toFixed(4)} — bead ${u.recipN} of Γ_${u.recipJ}`;
+      } else if (u.multN) {
+        const j = state.twist * u.multN * u.multN * u.multM;
+        hoverEl.innerHTML = `n·ℤ: ${u.multN}·${u.multM} = ${u.height} (reciprocal tower; = bead j=${j} of Γ_${u.multN})`;
+      } else if (u.fareyTick) {
+        hoverEl.innerHTML = `Farey: ${u.fareyJ}/${u.fareyN}, height=${u.height.toFixed(4)}`;
+      } else {
+        const reduced = (function() {
+          const g = gcd(u.j, u.twist * u.n);
+          return g > 0 ? `${u.j / g}/${(u.twist * u.n) / g}` : u.frac;
+        })();
+        hoverEl.innerHTML = `n=${u.n}, j=${u.j}, height=${u.height.toFixed(4)}, frac=${u.frac}${reduced !== u.frac ? ` (= ${reduced})` : ''}`;
+      }
+    } else {
+      hoverEl.innerHTML = '';
+    }
+  });
+
+  // ---- click-to-select a bead: highlight its det-1 partners ----
+  // Same 'a/q' key register as the atom witness's contacts panel, so a pair can
+  // be carried between the two instruments by its key.
+  let downX = 0, downY = 0;
+  renderer.domElement.addEventListener('mousedown', e => { downX = e.clientX; downY = e.clientY; });
+  renderer.domElement.addEventListener('click', e => {
+    if (Math.hypot(e.clientX - downX, e.clientY - downY) > 6) return;  // drag, not click
+    const rect = renderer.domElement.getBoundingClientRect();
+    mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+    mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+    raycaster.setFromCamera(mouse, activeCam);
+    const hits = raycaster.intersectObjects(group.children, false)
+      .filter(h => h.object.userData && (h.object.userData.n || h.object.userData.fareyTick));
+    let key = null;
+    if (hits.length) {
+      const u = hits[0].object.userData;
+      if (u.fareyTick) {
+        if (u.fareyN >= 2) key = u.fareyJ + '/' + u.fareyN;
+      } else if (u.n) {
+        // helix bead j of Gamma_n at twist k carries value j/(k*n); reduce it
+        const den = u.twist * u.n;
+        const g = gcd(u.j, den);
+        const a = u.j / g, q = den / g;
+        const v = a / q;
+        if (q >= 2 && v > 0 && v < 1) key = a + '/' + q;
+      }
+    }
+    if (key === null) {
+      if (state.selectedFrac !== null) { state.selectedFrac = null; rebuild(); }
+      return;
+    }
+    state.selectedFrac = (state.selectedFrac === key) ? null : key;
+    rebuild();
+  });
+
+  // ---- order toggle pills ----
+  function rebuildOrderToggles() {
+    const host = document.getElementById('order-toggles');
+    host.innerHTML = '';
+    for (let n = 1; n <= state.maxN; n++) {
+      const btn = document.createElement('button');
+      btn.textContent = `n=${n}`;
+      btn.style.cssText = `
+        font-size: 11px; padding: 3px 8px; border-radius: var(--border-radius-md);
+        border: 0.5px solid var(--color-border-tertiary);
+        background: ${state.visibleOrders.has(n) ? (COLORS[n] || '#888780') : 'transparent'};
+        color: ${state.visibleOrders.has(n) ? '#ffffff' : 'var(--color-text-secondary)'};
+        cursor: pointer; font-family: var(--font-mono);
+      `;
+      btn.addEventListener('click', () => {
+        if (state.visibleOrders.has(n)) state.visibleOrders.delete(n);
+        else state.visibleOrders.add(n);
+        rebuildOrderToggles();
+        rebuild();
+      });
+      host.appendChild(btn);
+    }
+  }
+
+  // ---- wire controls ----
+  const maxNInput = document.getElementById('maxN');
+  const topHInput = document.getElementById('topH');
+  const twistInput = document.getElementById('twist');
+
+  maxNInput.addEventListener('input', e => {
+    state.maxN = parseInt(e.target.value, 10);
+    document.getElementById('maxN-out').textContent = state.maxN;
+    // auto-add new orders to visible
+    for (let n = 1; n <= state.maxN; n++) state.visibleOrders.add(n);
+    rebuildOrderToggles();
+    rebuild();
+  });
+
+  topHInput.addEventListener('input', e => {
+    state.topHeight = parseInt(e.target.value, 10);
+    document.getElementById('topH-out').textContent = state.topHeight;
+    document.getElementById('topH-label').textContent = `heights 0 → ${state.topHeight}`;
+    rebuild();
+  });
+
+  twistInput.addEventListener('input', e => {
+    state.twist = parseInt(e.target.value, 10);
+    document.getElementById('twist-out').textContent = state.twist;
+    rebuild();
+  });
+
+  document.getElementById('opt-cyls').addEventListener('change', e => { state.showCylinders = e.target.checked; rebuild(); });
+  document.getElementById('opt-spine').addEventListener('change', e => { state.showSpine = e.target.checked; rebuild(); });
+  document.getElementById('opt-fact').addEventListener('change', e => { state.showFactorials = e.target.checked; rebuild(); });
+  document.getElementById('opt-farey').addEventListener('change', e => { state.showFarey = e.target.checked; rebuild(); });
+  document.getElementById('opt-contacts').addEventListener('change', e => { state.showContacts = e.target.checked; rebuild(); });
+
+  document.getElementById('opt-shell').addEventListener('change', e => { state.shellFilter = e.target.checked; rebuild(); });
+  document.getElementById('shell-n').addEventListener('input', e => { const v = parseInt(e.target.value, 10); if (v >= 1) { state.shellN = v; if (state.shellFilter) rebuild(); } });
+
+  document.getElementById('fareyN').addEventListener('input', e => {
+    state.fareyN = parseInt(e.target.value, 10);
+    document.getElementById('fareyN-out').textContent = state.fareyN;
+    const count = fareySequence(state.fareyN).length;
+    document.getElementById('fareyN-label').textContent = `|F_${state.fareyN}| = ${count} reduced fractions in [0,1]`;
+    rebuild();
+  });
+  document.getElementById('opt-mult').addEventListener('change', e => { state.showMultiples = e.target.checked; rebuild(); });
+  document.getElementById('opt-recip').addEventListener('change', e => { state.showReciprocal = e.target.checked; rebuild(); });
+  document.getElementById('opt-radial').addEventListener('change', e => { state.showRadial = e.target.checked; rebuild(); });
+  document.getElementById('opt-cmap').addEventListener('change', e => { state.showChords = e.target.checked; rebuild(); });
+  document.getElementById('opt-smooth').addEventListener('change', e => { state.showSmooth = e.target.checked; rebuild(); });
+  document.getElementById('opt-spin').addEventListener('change', e => { state.autoSpin = e.target.checked; });
+  document.getElementById('opt-top').addEventListener('change', e => {
+    state.topDown = e.target.checked;
+    if (!state.topDown) { camPhi = 1.0; camTheta = 0.6; }
+    rebuild();
+  });
+
+  // Zoom buttons — work for both ortho and perspective cameras
+  function zoomBy(factor) {
+    if (state.topDown) {
+      orthoSpan = Math.max(0.1, Math.min(8, orthoSpan * factor));
+    } else {
+      camR = Math.max(0.4, Math.min(8, camR * factor));
+    }
+    updateCam();
+  }
+  document.getElementById('zoom-in').addEventListener('click', () => zoomBy(0.8));
+  document.getElementById('zoom-out').addEventListener('click', () => zoomBy(1.25));
+  document.getElementById('zoom-reset').addEventListener('click', () => {
+    if (state.topDown) {
+      orthoSpan = 1.25;
+    } else {
+      camR = Math.max(1.8, state.topHeight * (state.showReciprocal ? 1.7 : 0.85));
+    }
+    updateCam();
+  });
+
+  rebuildOrderToggles();
+  // initialize farey label
+  document.getElementById('fareyN-label').textContent = `|F_${state.fareyN}| = ${fareySequence(state.fareyN).length} reduced fractions in [0,1]`;
+  rebuild();
+
+  // ---- animation loop ----
+  function animate() {
+    requestAnimationFrame(animate);
+    if (state.autoSpin) {
+      camTheta += 0.003;
+      updateCam();
+    }
+    renderer.render(scene, activeCam);
+  }
+  animate();
+
+  // resize handler (in case the iframe gets re-laid)
+  const ro = new ResizeObserver(() => {
+    const w = wrap.clientWidth, h = wrap.clientHeight;
+    if (w > 0 && h > 0) {
+      camera.aspect = w / h;
+      camera.updateProjectionMatrix();
+      renderer.setSize(w, h);
+      // ortho camera frustum depends on aspect — recompute via updateCam if it's active
+      if (state.topDown) updateCam();
+    }
+  });
+  ro.observe(wrap);
+})();
+</script>

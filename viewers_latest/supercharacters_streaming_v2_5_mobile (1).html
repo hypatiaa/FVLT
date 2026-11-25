@@ -1,0 +1,3412 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>FVLT Explorer — v2.5 semigroup-apery-fix</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react/18.2.0/umd/react.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/react-dom/18.2.0/umd/react-dom.production.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/7.23.5/babel.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #08080e; overflow: hidden; font-family: 'Courier New', monospace; color: #c8c8d0; }
+    input[type="range"] { -webkit-appearance: none; appearance: none; background: transparent; width: 100%; }
+    input[type="range"]::-webkit-slider-thumb {
+      -webkit-appearance: none; width: 12px; height: 12px; border-radius: 50%;
+      background: #fff; cursor: pointer; margin-top: -4px;
+    }
+    input[type="range"]::-webkit-slider-runnable-track { height: 4px; border-radius: 2px; }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0a12; }
+    ::-webkit-scrollbar-thumb { background: #2a2a3e; border-radius: 3px; }
+    /* ── Mobile: let the page scroll vertically and grow touch targets ── */
+    @media (max-width: 820px) {
+      html, body { overflow-x: hidden; overflow-y: auto; -webkit-text-size-adjust: 100%; }
+      input[type="range"]::-webkit-slider-thumb { width: 18px; height: 18px; margin-top: -7px; }
+      input[type="range"]::-webkit-slider-runnable-track { height: 5px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script type="text/babel">
+    const { useState, useMemo, useEffect, useRef, useCallback } = React;
+    const PI = Math.PI;
+    const MAX_FREE_N = 1000000000;  // allow 30030^2 = 901,800,900 in streaming mode
+
+    // Throttle hook — limits recomputation to one rAF per frame
+    function useThrottledValue(value, delay) {
+      const [throttled, setThrottled] = useState(value);
+      const lastUpdate = useRef(0);
+      const rafId = useRef(null);
+      useEffect(() => {
+        const now = performance.now();
+        if (now - lastUpdate.current >= (delay || 16)) {
+          lastUpdate.current = now;
+          setThrottled(value);
+        } else {
+          if (rafId.current) cancelAnimationFrame(rafId.current);
+          rafId.current = requestAnimationFrame(() => {
+            lastUpdate.current = performance.now();
+            setThrottled(value);
+          });
+        }
+        return () => { if (rafId.current) cancelAnimationFrame(rafId.current); };
+      }, [value, delay]);
+      return throttled;
+    }
+
+    // ═══════════════════════════════════════════════════════════════
+    // FVLT EXPLORER — aligned to kernel v2.3
+    // ═══════════════════════════════════════════════════════════════
+    //
+    // "The structure is the algorithm." (§1.1)
+    //
+    // v2.3 additions (March 31, 2026):
+    //   §4.4: Chirality fix — n₆ now applies y-axis mirror (was dead code in v1.5.4)
+    //         computeState: sign(n6) negates real components of z₁, z₂
+    //         ClassificationGrid: chirality propagated to periodic table
+    //
+    // v1.5.4 additions:
+    //   §8.4: Basis–Complement Duality (Thm 8.14 — φ(∏B') = k!)
+    //   §8.5: Numerical Semigroup ⟨B'⟩ (Thm 8.22 — F(B') = ∏B)
+    //   §10.7: CRT Duality Speedups (Thm 10.11–10.14)
+    //   §13: Fock Space Representation (Thm 13.12 — E_N = 2⟨x|N̂_cop|x⟩)
+    //
+    // Coprimality: p > k  (Theorem 2.3, O(1))
+    // Purity:      guaranteed by Theorem 6.2
+    // Navigation:  O(log q) via Stern-Brocot (Theorem 10.3)
+    // Sub-shell:   Thm 8.4 — Vernier, unitarity, E_q valid at any N ∈ ℤ⁺
+    // Classification: Thm 8.8 — gcd(M,N) classifies geometry into 𝒫(B)
+    // CRT duality: Thm 10.11 — c_{720720}(s) = c_{720}(s) · c_{1001}(s)
+    //
+    // NO trial division. NO runtime GCD. NO smoothness heuristics.
+    // ═══════════════════════════════════════════════════════════════
+
+
+    // ──────────────────────────────────────────────────────────────
+    // §2 — FACTORIAL LATTICE (Definition 2.1)
+    // ──────────────────────────────────────────────────────────────
+
+    const SHELLS = [
+      { k: 2, N: 2,     phi: 1 },
+      { k: 3, N: 6,     phi: 2 },
+      { k: 4, N: 24,    phi: 8 },
+      { k: 5, N: 120,   phi: 32 },
+      { k: 6, N: 720,   phi: 192 },
+      { k: 7, N: 5040,  phi: 1152 },
+    ];
+
+    // Definition 3.1: Additive Trilattice T = {N-, N0, N+}
+    const TRI = {
+      2: [
+        { n: 1,    f: '1',           mu: 1,  label: '-1' },
+        { n: 2,    f: '2',           mu: -1, label: '0'  },
+        { n: 3,    f: '3',           mu: -1, label: '+1' },
+      ],
+      3: [
+        { n: 5,    f: '5',           mu: -1, label: '-1' },
+        { n: 6,    f: '2\u00B73',    mu: 1,  label: '0'  },
+        { n: 7,    f: '7',           mu: -1, label: '+1' },
+      ],
+      4: [
+        { n: 23,   f: '23',          mu: -1, label: '-1' },
+        { n: 24,   f: '2\u00B3\u00B73',      mu: 0,  label: '0'  },
+        { n: 25,   f: '5\u00B2',     mu: 0,  label: '+1' },
+      ],
+      5: [
+        { n: 119,  f: '7\u00B717',   mu: 1,  label: '-1' },
+        { n: 120,  f: '2\u00B3\u00B73\u00B75',  mu: 0,  label: '0'  },
+        { n: 121,  f: '11\u00B2',    mu: 0,  label: '+1' },
+      ],
+      6: [
+        { n: 719,  f: '719',         mu: -1, label: '-1' },
+        { n: 720,  f: '2\u2074\u00B73\u00B2\u00B75', mu: 0,  label: '0'  },
+        { n: 721,  f: '7\u00B7103',  mu: 1,  label: '+1' },
+      ],
+      7: [
+        { n: 5039, f: '5039',        mu: -1, label: '-1' },
+        { n: 5040, f: '2\u2074\u00B73\u00B2\u00B75\u00B77', mu: 0,  label: '0'  },
+        { n: 5041, f: '71\u00B2',    mu: 0,  label: '+1' },
+      ],
+    };
+
+    const TRI_COLORS = ['#22d3ee', '#4ade80', '#f472b6'];
+
+
+    // ──────────────────────────────────────────────────────────────
+    // §5 — RAMANUJAN SUBSPACE DECOMPOSITION
+    // Number-theoretic basis: divisors, φ, μ, c_q, â_q, E_q
+    // ──────────────────────────────────────────────────────────────
+
+    function gcd(a, b) { a = Math.abs(a); b = Math.abs(b); while (b) { [a, b] = [b, a % b]; } return a; }
+
+    function divisors(n) {
+      if (n <= 0) return [1];
+      const d = [];
+      for (let i = 1; i * i <= n; i++) {
+        if (n % i === 0) { d.push(i); if (i !== n / i) d.push(n / i); }
+      }
+      return d.sort((a, b) => a - b);
+    }
+
+    function eulerPhi(n) {
+      if (n <= 1) return 1;
+      let result = n, m = n;
+      for (let p = 2; p * p <= m; p++) {
+        if (m % p === 0) {
+          while (m % p === 0) m /= p;
+          result -= result / p;
+        }
+      }
+      if (m > 1) result -= result / m;
+      return Math.round(result);
+    }
+
+    // Factorial shell index: returns the arrangement-number index n such that
+    // n! === N, else null. This is the SOURCE OF TRUTH for factorial-shell
+    // labels — NOT the largest prime factor of N. They diverge whenever n is
+    // composite (e.g. 4! = 24, 6! = 720), and 720 = 6! = |S_6| is the home shell.
+    function factorialIndexForN(N) {
+      let f = 1;
+      for (let n = 0; n <= 12; n++) {
+        if (n > 0) f *= n;
+        if (f === N) return n;       // first match: 1 -> 0! (=1)
+        if (f > N) break;
+      }
+      return null;
+    }
+
+    // Exponent profile [a1,...,ar] of N = prod p_i^a_i (multiset; order irrelevant
+    // for the multinomial). 720 -> [4,2,1]; 210 -> [1,1,1,1]; primes -> [1].
+    function exponentProfile(N) {
+      let m = Math.abs(Math.trunc(N));
+      if (m <= 1) return [];
+      const exps = [];
+      for (let p = 2; p * p <= m; p++) {
+        if (m % p === 0) { let a = 0; while (m % p === 0) { m /= p; a++; } exps.push(a); }
+      }
+      if (m > 1) exps.push(1);
+      return exps;
+    }
+
+    // Maximal-chain (route) count through Div(N) from its exponent profile:
+    //   Omega! / (a1! a2! ... ar!),  Omega = sum a_i.
+    // Counts ordered exponent-increment histories 1 -> N through the lattice.
+    // This is NOT factorialIndexForN: it asks how many routes exist through
+    // Div(N), not whether N itself equals some n!. Computed in BigInt so large
+    // profiles never overflow Number. Squarefree [1,...,1] gives r! (Q_r); a
+    // non-squarefree profile does NOT carry the full S_r chain symmetry.
+    function maximalChainCountFromExponents(exponents) {
+      const fact = (m) => { let f = 1n; for (let i = 2n; i <= BigInt(m); i++) f *= i; return f; };
+      const Omega = exponents.reduce((s, a) => s + a, 0);
+      let denom = 1n;
+      for (const a of exponents) denom *= fact(a);
+      return fact(Omega) / denom;   // BigInt
+    }
+
+    function mobius(n) {
+      if (n <= 0) return 0;
+      if (n === 1) return 1;
+      let factors = 0, m = n;
+      for (let p = 2; p * p <= m; p++) {
+        if (m % p === 0) {
+          m /= p;
+          if (m % p === 0) return 0;
+          factors++;
+        }
+      }
+      if (m > 1) factors++;
+      return (factors % 2 === 0) ? 1 : -1;
+    }
+
+    function coprimeSet(q) {
+      if (q <= 1) return [1];
+      const K = [];
+      for (let k = 1; k < q; k++) {
+        if (gcd(k, q) === 1) K.push(k);
+      }
+      return K;
+    }
+
+    function ramanujanSum(q, n) {
+      if (q <= 0) return 0;
+      if (q === 1) return 1;
+      const g = gcd(n, q);
+      const qg = q / g;
+      const mu_qg = mobius(qg);
+      if (mu_qg === 0) return 0;
+      return mu_qg * eulerPhi(q) / eulerPhi(qg);
+    }
+
+    // ─── Transform budget no longer needed ─────────────────────────────
+    // We now compute E_q via the Hölder closed form (kernel Def 5.1):
+    //
+    //   E_q(x) = |⟨x, c_q⟩|² / ‖c_q‖²  =  (Σ_n x(n)·c_q(n+1))² / (L²·φ(q))
+    //
+    // This is the Wintner / Ramanujan-Fourier coefficient energy aligned with
+    // the kernel and verified in verify_supercharacter.py Test 6 against the
+    // Rmk 5.7a closed form E_q(χ_n) = μ(q)²φ(n)²/(n²φ(q)).
+    //
+    // Cost: O(L) per divisor via precomputed c_q period; O(L·τ(N)) total.
+    // Tractable at N=720720: ~720720 · 240 = 173M ops, ~1-2 sec in browser.
+    //
+    // Note: the source viewer's inner DFT-over-coprime-k loop computed a
+    // *subspace* energy  S_q = (1/L²) Σ_{k∈K(q)} |Σ_t x[t]e^{-2πikt/q}|²
+    // (Def 5.5e), which is NOT a constant multiple of the coherent form above.
+    // Relation (verified): coherent C_q = |Σ_k X_q(k)|²/(L²φ(q)) ≤ subspace S_q
+    // by Cauchy–Schwarz, with equality iff all coprime-k components X_q(k) are
+    // equal — true for Galois-symmetric arithmetic signals (e.g. χ_n: C_q=S_q
+    // for all q) but FALSE in general: on μ and φ the ratio C_q/S_q ranges
+    // ~0.0002–1.0 across q (=1 only at q=2, the single-coprime-residue case).
+    // The two energies differ in PHASE-COHERENCE: S_q is phase-blind (a
+    // phase-shuffle preserving each |X_q(k)| leaves S_q fixed while C_q
+    // collapses), which is why the coherent Hölder/Wintner form is the
+    // kernel-canonical version and the one that survives a phase-shuffle guard.
+    const MAX_Q_FOR_KSETS = 1000000;  // effectively unused now (legacy)
+    const TRANSFORM_BUDGET = Infinity;
+
+    // Large-N guardrail: the manual Samples(M) control is a mathematical
+    // sampling modulus/classification parameter, but SVG rendering must never
+    // try to draw hundreds of millions of polyline vertices.  Keep M intact
+    // for gcd/star diagnostics; cap only the number of trace points drawn.
+    const MAX_TRACE_POINTS = 12000;
+    function tracePointCount(m) {
+      const v = Math.floor(Number(m));
+      if (!Number.isFinite(v)) return 2000;
+      return Math.max(3, Math.min(MAX_TRACE_POINTS, v));
+    }
+
+    function buildDivisorData(N) {
+      const divs = divisors(N);
+      const phis = {};
+      const kSets = {};
+      for (const q of divs) {
+        phis[q] = eulerPhi(q);
+        // kSets no longer needed for E_q via Hölder; retained as empty for
+        // any downstream code that still reads it.
+        kSets[q] = null;
+      }
+      return { divs, phis, kSets, skippedDivs: [] };
+    }
+
+    // Forward transform — kernel Def 5.1 (Wintner / Rmk 5.7a aligned)
+    // v2.4 streaming patch + v2.4.1 prime-count shortcut:
+    //   • Exact same formula as before.
+    //   • For arrays/custom signals, keeps the old call shape.
+    //   • For generated signals at large L, uses signature aggregation:
+    //       A_σ = Σ_{n : signature_N(n+1)=σ} x(n)
+    //       S_q = Σ_σ A_σ · c_q(σ)
+    //     Since q | N, c_q(n+1) depends only on gcd(q,n+1), hence only on
+    //     the capped valuation signature over the prime support of N.
+    //   • This removes full signal materialization and prevents fatal
+    //     Float64Array(q) period tables for large q.
+
+    const STREAM_THRESHOLD = 250000;       // above this, generated signals stream
+    const STREAM_CHUNK_SIZE = 1000000;     // segmented sieve / aggregation block
+    const MAX_PERIOD_TABLE = 1000000;      // hard cap for legacy period tables
+
+    const _primeCache = { limit: 1, primes: [] };
+    function simplePrimesUpTo(limit) {
+      limit = Math.max(1, Math.floor(limit));
+      if (_primeCache.limit >= limit) return _primeCache.primes.filter(p => p <= limit);
+      const sieve = new Uint8Array(limit + 1);
+      const primes = [];
+      for (let i = 2; i <= limit; i++) {
+        if (!sieve[i]) {
+          primes.push(i);
+          if (i * i <= limit) for (let j = i * i; j <= limit; j += i) sieve[j] = 1;
+        }
+      }
+      _primeCache.limit = limit;
+      _primeCache.primes = primes;
+      return primes;
+    }
+
+
+    // Exact prime-counting shortcut for the prime-indicator signal.
+    // For a prime t, the valuation signature over the prime support of N is:
+    //   • one-hot if t is itself one of the support primes;
+    //   • the zero signature for every other prime.
+    // Therefore the prime signal can be aggregated into signatures using only
+    // π(L), without segmented sieving over all 1..L. This is the key fix for
+    // N = 30030² = 901,800,900.
+    const LEHMER_SIEVE_LIMIT = 5000000;
+    const _lehmer = { ready: false, primes: [], pi: null, phiCache: new Map(), piCache: new Map() };
+
+    function initLehmerPrimePi() {
+      if (_lehmer.ready) return;
+      const limit = LEHMER_SIEVE_LIMIT;
+      const sieve = new Uint8Array(limit + 1);
+      const pi = new Int32Array(limit + 1);
+      const primes = [];
+      for (let i = 2; i <= limit; i++) {
+        if (!sieve[i]) {
+          primes.push(i);
+          if (i * i <= limit) for (let j = i * i; j <= limit; j += i) sieve[j] = 1;
+        }
+        pi[i] = primes.length;
+      }
+      _lehmer.primes = primes;
+      _lehmer.pi = pi;
+      _lehmer.ready = true;
+    }
+
+    function phiLehmer(x, s) {
+      x = Math.floor(x); s = Math.floor(s);
+      if (s === 0) return x;
+      if (s === 1) return x - Math.floor(x / 2);
+      // Small-table memoization keeps the recursive Lehmer calls cheap.
+      if (s < 100 && x < 100000) {
+        const key = x + ',' + s;
+        if (_lehmer.phiCache.has(key)) return _lehmer.phiCache.get(key);
+        const val = phiLehmer(x, s - 1) - phiLehmer(Math.floor(x / _lehmer.primes[s - 1]), s - 1);
+        _lehmer.phiCache.set(key, val);
+        return val;
+      }
+      return phiLehmer(x, s - 1) - phiLehmer(Math.floor(x / _lehmer.primes[s - 1]), s - 1);
+    }
+
+    function primePiExact(x) {
+      x = Math.floor(x);
+      if (x < 2) return 0;
+      initLehmerPrimePi();
+      if (x <= LEHMER_SIEVE_LIMIT) return _lehmer.pi[x];
+      if (_lehmer.piCache.has(x)) return _lehmer.piCache.get(x);
+
+      const x14 = Math.floor(Math.sqrt(Math.sqrt(x)));
+      const x12 = Math.floor(Math.sqrt(x));
+      const x13 = Math.floor(Math.cbrt(x));
+      const a = primePiExact(x14);
+      const b = primePiExact(x12);
+      const c = primePiExact(x13);
+
+      let sum = phiLehmer(x, a) + ((b + a - 2) * (b - a + 1)) / 2;
+      for (let i = a; i < b; i++) {
+        const w = Math.floor(x / _lehmer.primes[i]);
+        sum -= primePiExact(w);
+        if (i < c) {
+          const lim = primePiExact(Math.floor(Math.sqrt(w)));
+          for (let j = i; j < lim; j++) {
+            sum -= primePiExact(Math.floor(w / _lehmer.primes[j])) - j;
+          }
+        }
+      }
+      sum = Math.floor(sum);
+      _lehmer.piCache.set(x, sum);
+      return sum;
+    }
+
+    function aggregatePrimeIndicatorBySignature(L, plan) {
+      const A = new Float64Array(plan.sigCount);
+      const piL = primePiExact(L);
+      let supportPrimeHits = 0;
+      for (let i = 0; i < plan.factors.length; i++) {
+        const p = plan.factors[i].p;
+        if (p <= L) {
+          A[signatureIndexOf(p, plan)] += 1;
+          supportPrimeHits++;
+        }
+      }
+      A[0] = Math.max(0, piL - supportPrimeHits);
+      return A;
+    }
+
+    function factorExponents(n) {
+      const factors = [];
+      let m = Math.abs(Math.floor(n));
+      if (m <= 1) return factors;
+      for (let p = 2; p * p <= m; p += (p === 2 ? 1 : 2)) {
+        if (m % p === 0) {
+          let a = 0;
+          while (m % p === 0) { a++; m = Math.floor(m / p); }
+          factors.push({ p, a });
+        }
+      }
+      if (m > 1) factors.push({ p: m, a: 1 });
+      return factors;
+    }
+
+    function phiFromExpVector(vec, factors) {
+      let out = 1;
+      for (let i = 0; i < factors.length; i++) {
+        const a = vec[i] || 0;
+        if (a <= 0) continue;
+        const p = factors[i].p;
+        out *= Math.pow(p, a - 1) * (p - 1);
+      }
+      return out;
+    }
+
+    function buildSignaturePlan(N, divData) {
+      const factors = factorExponents(N);
+      const strides = [];
+      let sigCount = 1;
+      for (const f of factors) { strides.push(sigCount); sigCount *= (f.a + 1); }
+
+      const divs = divData.divs;
+      const qVecs = divs.map(q => {
+        let m = q;
+        const v = new Int8Array(factors.length);
+        for (let i = 0; i < factors.length; i++) {
+          const p = factors[i].p;
+          while (m % p === 0) { v[i]++; m = Math.floor(m / p); }
+        }
+        return v;
+      });
+
+      const sigVecs = Array.from({ length: sigCount }, (_, idx) => {
+        const v = new Int8Array(factors.length);
+        let x = idx;
+        for (let i = factors.length - 1; i >= 0; i--) {
+          const base = factors[i].a + 1;
+          v[i] = Math.floor(x / strides[i]) % base;
+        }
+        return v;
+      });
+
+      // C table is signature-major: C[sigIndex * numDivs + qIndex]
+      const C = new Float64Array(sigCount * divs.length);
+      for (let si = 0; si < sigCount; si++) {
+        const svec = sigVecs[si];
+        const row = si * divs.length;
+        for (let qi = 0; qi < divs.length; qi++) {
+          const qv = qVecs[qi];
+          let mu = 1, phiDen = 1, zero = false;
+          for (let j = 0; j < factors.length; j++) {
+            const diff = qv[j] - Math.min(qv[j], svec[j]); // exponent of q/gcd(q,t)
+            if (diff > 1) { zero = true; break; }
+            if (diff === 1) { mu = -mu; phiDen *= (factors[j].p - 1); }
+          }
+          C[row + qi] = zero ? 0 : mu * divData.phis[divs[qi]] / phiDen;
+        }
+      }
+
+      return { factors, strides, sigCount, divs, C };
+    }
+
+    function signatureIndexOf(t, plan) {
+      let idx = 0;
+      for (let i = 0; i < plan.factors.length; i++) {
+        const p = plan.factors[i].p, maxA = plan.factors[i].a;
+        let v = 0;
+        while (v < maxA && t % p === 0) { v++; t = Math.floor(t / p); }
+        idx += v * plan.strides[i];
+      }
+      return idx;
+    }
+
+    function signalValue(kind, zeroBasedIndex, L) {
+      const t = zeroBasedIndex + 1;
+      if (kind === 'period-5') return Math.cos(2 * PI * t / 5);
+      if (kind === 'period-6') return Math.cos(2 * PI * t / 6);
+      if (kind === 'period-12') return Math.cos(2 * PI * t / 12);
+      if (kind === 'period-30') return Math.cos(2 * PI * t / 30);
+      if (kind === 'impulse') return zeroBasedIndex === 0 ? 1 : 0;
+      if (kind === 'step') return zeroBasedIndex < L / 2 ? 1 : -1;
+      if (kind === 'ramp') return t / L;
+      if (kind === 'noise') return Math.random() * 2 - 1;
+      return 0;
+    }
+
+    function segmentedArithmetic(lo, hi) {
+      // Inclusive integer range [lo, hi], for signal values indexed by t=n+1.
+      const len = hi - lo + 1;
+      const rem = new Int32Array(len);
+      const phi = new Float64Array(len);
+      const mu = new Int8Array(len);
+      for (let i = 0; i < len; i++) {
+        const v = lo + i;
+        rem[i] = v;
+        phi[i] = v;
+        mu[i] = 1;
+      }
+      if (lo === 1) { phi[0] = 1; mu[0] = 1; }
+
+      const primes = simplePrimesUpTo(Math.floor(Math.sqrt(hi)) + 1);
+      for (const p of primes) {
+        let first = Math.max(p * p, Math.ceil(lo / p) * p);
+        for (let x = first; x <= hi; x += p) {
+          const i = x - lo;
+          if (rem[i] % p !== 0) continue;
+          phi[i] -= phi[i] / p;
+          let cnt = 0;
+          while (rem[i] % p === 0) { rem[i] = Math.floor(rem[i] / p); cnt++; }
+          if (cnt > 1) mu[i] = 0;
+          else if (mu[i] !== 0) mu[i] = -mu[i];
+        }
+      }
+      for (let i = 0; i < len; i++) {
+        const n = lo + i;
+        if (n === 1) { phi[i] = 1; mu[i] = 1; continue; }
+        if (rem[i] > 1) {
+          phi[i] -= phi[i] / rem[i];
+          if (mu[i] !== 0) mu[i] = -mu[i];
+        }
+      }
+      return { phi, mu };
+    }
+
+    function aggregateSignalBySignature(desc, plan) {
+      const L = desc.L;
+      if (desc.kind === 'prime-indicator') {
+        return aggregatePrimeIndicatorBySignature(L, plan);
+      }
+      const A = new Float64Array(plan.sigCount);
+      const arithmetic = desc.kind === 'mobius-fn' || desc.kind === 'euler-phi';
+
+      if (Array.isArray(desc.values) || ArrayBuffer.isView(desc.values)) {
+        for (let i = 0; i < desc.values.length; i++) {
+          const si = signatureIndexOf(i + 1, plan);
+          A[si] += desc.values[i];
+        }
+        return A;
+      }
+
+      for (let start = 1; start <= L; start += STREAM_CHUNK_SIZE) {
+        const end = Math.min(L, start + STREAM_CHUNK_SIZE - 1);
+        if (arithmetic) {
+          const seg = segmentedArithmetic(start, end);
+          for (let t = start; t <= end; t++) {
+            const i = t - start;
+            let x = 0;
+            if (desc.kind === 'prime-indicator') x = (t >= 2 && seg.phi[i] === t - 1) ? 1 : 0;
+            else if (desc.kind === 'mobius-fn') x = seg.mu[i];
+            else x = seg.phi[i];
+            if (x !== 0) A[signatureIndexOf(t, plan)] += x;
+          }
+        } else {
+          for (let t = start; t <= end; t++) {
+            const x = signalValue(desc.kind, t - 1, L);
+            if (x !== 0) A[signatureIndexOf(t, plan)] += x;
+          }
+        }
+      }
+      return A;
+    }
+
+    function forwardTransformDescriptor(desc, N, divData) {
+      const plan = buildSignaturePlan(N, divData);
+      const A = aggregateSignalBySignature(desc, plan);
+      const L = desc.L;
+      const aHat = {}, Eq = {};
+      let totalE = 0;
+
+      for (let qi = 0; qi < plan.divs.length; qi++) {
+        let sum = 0;
+        for (let si = 0; si < plan.sigCount; si++) {
+          sum += A[si] * plan.C[si * plan.divs.length + qi];
+        }
+        const q = plan.divs[qi];
+        aHat[q] = sum / (L * divData.phis[q]);
+        Eq[q] = (sum * sum) / (L * L * divData.phis[q]);
+        totalE += Eq[q];
+      }
+      return { aHat, Eq, totalE, L, streamed: true, aggregated: true, signatureCount: plan.sigCount };
+    }
+
+    function forwardTransform(signalOrDesc, N, divData) {
+      if (!signalOrDesc) return null;
+      // Streaming descriptor path for generated signals.
+      if (signalOrDesc.kind && signalOrDesc.L) {
+        return forwardTransformDescriptor(signalOrDesc, N, divData);
+      }
+
+      const signal = signalOrDesc;
+      const { divs, phis } = divData;
+      const L = signal.length;
+
+      // For arrays, still use the signature path when divisor support is known.
+      // This also prevents large q period-table allocation.
+      if (L > STREAM_THRESHOLD || divs.some(q => q > MAX_PERIOD_TABLE)) {
+        return forwardTransformDescriptor({ kind: 'array', L, values: signal }, N, divData);
+      }
+
+      const aHat = {}, Eq = {};
+      let totalE = 0;
+
+      for (const q of divs) {
+        let sum = 0;
+        if (q <= Math.min(L, MAX_PERIOD_TABLE)) {
+          const cq = new Float64Array(q);
+          for (let r = 0; r < q; r++) cq[r] = ramanujanSum(q, r);
+          for (let n = 0; n < L; n++) sum += signal[n] * cq[(n + 1) % q];
+        } else {
+          // Allocation-safe inline fallback.
+          for (let n = 0; n < L; n++) sum += signal[n] * ramanujanSum(q, n + 1);
+        }
+
+        aHat[q] = sum / (L * phis[q]);
+        Eq[q] = (sum * sum) / (L * L * phis[q]);
+        totalE += Eq[q];
+      }
+
+      return { aHat, Eq, totalE, L, streamed: false };
+    }
+
+    // ── Sieve-based signal generators ──────────────────────────────
+    // For Primes / μ(n) / φ(n), use linear sieves rather than per-element
+    // trial division (which is O(L·√L) and crashes the browser at large L).
+    // The sieve approach is O(L log log L) per signal, matching the cached
+    // sieve in fvlt_fourier_final.html.
+
+    let _sieveCache = { L: 0, primes: null, mu: null, phi: null };
+
+    function buildSieves(L) {
+      if (_sieveCache.L >= L) return _sieveCache;
+      // Smallest-prime-factor (SPF) sieve — O(L log log L)
+      const spf = new Int32Array(L + 1);
+      for (let i = 2; i <= L; i++) {
+        if (spf[i] === 0) {
+          for (let j = i; j <= L; j += i) {
+            if (spf[j] === 0) spf[j] = i;
+          }
+        }
+      }
+      // Prime indicator: spf[i] === i for primes
+      const primes = new Uint8Array(L + 1);
+      for (let i = 2; i <= L; i++) primes[i] = (spf[i] === i) ? 1 : 0;
+      // Möbius via SPF — O(L)
+      const mu = new Int8Array(L + 1);
+      mu[1] = 1;
+      for (let n = 2; n <= L; n++) {
+        const p = spf[n];
+        const m = n / p;
+        if (m % p === 0) mu[n] = 0;
+        else mu[n] = -mu[m];
+      }
+      // Euler totient via SPF — O(L)
+      const phi = new Int32Array(L + 1);
+      phi[1] = 1;
+      for (let n = 2; n <= L; n++) {
+        const p = spf[n];
+        const m = n / p;
+        if (m % p === 0) phi[n] = phi[m] * p;
+        else phi[n] = phi[m] * (p - 1);
+      }
+      _sieveCache = { L, primes, mu, phi };
+      return _sieveCache;
+    }
+
+    // Test signal generators
+    const SIGNALS = {
+      'period-5': (L) => Array.from({ length: L }, (_, i) => Math.cos(2 * PI * (i + 1) / 5)),
+      'period-6': (L) => Array.from({ length: L }, (_, i) => Math.cos(2 * PI * (i + 1) / 6)),
+      'period-12': (L) => Array.from({ length: L }, (_, i) => Math.cos(2 * PI * (i + 1) / 12)),
+      'period-30': (L) => Array.from({ length: L }, (_, i) => Math.cos(2 * PI * (i + 1) / 30)),
+      'impulse': (L) => Array.from({ length: L }, (_, i) => i === 0 ? 1 : 0),
+      'step': (L) => Array.from({ length: L }, (_, i) => i < L / 2 ? 1 : -1),
+      'ramp': (L) => Array.from({ length: L }, (_, i) => (i + 1) / L),
+      'noise': (L) => Array.from({ length: L }, () => Math.random() * 2 - 1),
+      'prime-indicator': (L) => {
+        const s = buildSieves(L);
+        const out = new Float64Array(L);
+        for (let i = 0; i < L; i++) out[i] = s.primes[i + 1];
+        return out;
+      },
+      'mobius-fn': (L) => {
+        const s = buildSieves(L);
+        const out = new Float64Array(L);
+        for (let i = 0; i < L; i++) out[i] = s.mu[i + 1];
+        return out;
+      },
+      'euler-phi': (L) => {
+        const s = buildSieves(L);
+        const out = new Float64Array(L);
+        for (let i = 0; i < L; i++) out[i] = s.phi[i + 1];
+        return out;
+      },
+    };
+
+
+    // ──────────────────────────────────────────────────────────────
+    // §8.2 — SUB-SHELL EXTENSION (Theorem 8.4)
+    // §8.3 — PRIMORIAL SAMPLING CLASSIFICATION (Theorem 8.8)
+    // ──────────────────────────────────────────────────────────────
+
+    // Definition 8.7: Shared Prime Set Σ(M, N)
+    function sharedPrimeSet(M, N) {
+      const g = gcd(M, N);
+      const primes = [];
+      let m = g;
+      for (let p = 2; p * p <= m; p++) {
+        if (m % p === 0) {
+          primes.push(p);
+          while (m % p === 0) m /= p;
+        }
+      }
+      if (m > 1) primes.push(m);
+      return primes;
+    }
+
+    // Prime basis B for shell S_k: primes ≤ k
+    function primeBasis(k) {
+      const B = [];
+      for (let p = 2; p <= k; p++) {
+        let isPrime = true;
+        for (let j = 2; j * j <= p; j++) { if (p % j === 0) { isPrime = false; break; } }
+        if (isPrime) B.push(p);
+      }
+      return B;
+    }
+
+    // Distinct primes dividing n — the natural prime basis B(N) for free-N input
+    function distinctPrimes(n) {
+      const out = [];
+      let m = Math.abs(n);
+      if (m <= 1) return out;
+      for (let p = 2; p * p <= m; p++) {
+        if (m % p === 0) {
+          out.push(p);
+          while (m % p === 0) m /= p;
+        }
+      }
+      if (m > 1) out.push(m);
+      return out;
+    }
+
+    // Complement primes: the next r primes strictly greater than max(B)
+    // (or starting from 2 if B is empty).
+    function complementPrimes(B, r) {
+      const Bp = [];
+      let n = B.length === 0 ? 2 : B[B.length - 1] + 1;
+      while (Bp.length < r) {
+        let p = true;
+        for (let j = 2; j * j <= n; j++) if (n % j === 0) { p = false; break; }
+        if (p) Bp.push(n);
+        n++;
+      }
+      return Bp;
+    }
+
+    // Primorial: product of prime basis
+    function primorial(B) {
+      return B.reduce((acc, p) => acc * p, 1);
+    }
+
+    // Theorem 8.8a: Star polygon order = M / gcd(M, N)
+    function starOrder(M, N) {
+      return M / gcd(M, N);
+    }
+
+    // Geometry label from star order
+    function geometryLabel(star, sigma) {
+      if (star === 1) return 'Degenerate (line)';
+      if (star === 2) return 'Two-phase';
+      if (star === 3) return 'Triangular';
+      if (star === 5) return 'Five-phase polygon';
+      if (star === 6) return 'Pentagonal star';
+      if (star === 10) return 'Trefoil';
+      if (star === 15) return 'Two-fold loops';
+      if (sigma.length === 0) return 'Dense star (circle)';
+      return `Star {${star}}`;
+    }
+
+    // Shared prime set display
+    function sigmaLabel(sigma) {
+      if (sigma.length === 0) return '\u2205';
+      return '{' + sigma.join(',') + '}';
+    }
+
+    // Color for shared class — full 𝒫({2,3,5,7,11})
+    const CLASS_COLORS = {
+      '': '#e0e0e0',        // ∅
+      '2': '#22d3ee',
+      '3': '#4ade80',
+      '5': '#fbbf24',
+      '7': '#a78bfa',
+      '11': '#fb923c',
+      '2,3': '#38bdf8',
+      '2,5': '#f472b6',
+      '2,7': '#67e8f9',
+      '2,11': '#5eead4',
+      '3,5': '#f97316',
+      '3,7': '#86efac',
+      '3,11': '#bef264',
+      '5,7': '#e879f9',
+      '5,11': '#fcd34d',
+      '7,11': '#c4b5fd',
+      '2,3,5': '#ef4444',
+      '2,3,7': '#60a5fa',
+      '2,3,11': '#34d399',
+      '2,5,7': '#f9a8d4',
+      '2,5,11': '#fca5a5',
+      '2,7,11': '#7dd3fc',
+      '3,5,7': '#fdba74',
+      '3,5,11': '#d9f99d',
+      '3,7,11': '#a5b4fc',
+      '5,7,11': '#fde68a',
+      '2,3,5,7': '#f87171',
+      '2,3,5,11': '#fb7185',
+      '2,3,7,11': '#818cf8',
+      '2,5,7,11': '#e9d5ff',
+      '3,5,7,11': '#fed7aa',
+      '2,3,5,7,11': '#dc2626',
+    };
+
+    function classColor(sigma) {
+      const key = sigma.join(',');
+      return CLASS_COLORS[key] || '#888';
+    }
+
+    // Simple factorization for display (works for N < ~10^6)
+    function factorize(n) {
+      if (n <= 1) return String(n);
+      const sups = '\u2070\u00B9\u00B2\u00B3\u2074\u2075\u2076\u2077\u2078\u2079';
+      const toSup = (num) => String(num).split('').map(c => sups[parseInt(c)]).join('');
+      const factors = [];
+      let m = n;
+      for (let p = 2; p * p <= m; p++) {
+        if (m % p === 0) {
+          let exp = 0;
+          while (m % p === 0) { exp++; m /= p; }
+          factors.push(exp === 1 ? String(p) : `${p}${toSup(exp)}`);
+        }
+      }
+      if (m > 1) factors.push(String(m));
+      if (factors.length === 0) return String(n);
+      return factors.join('\u00B7');
+    }
+
+    // Better factorization with proper superscripts
+    function factorizeDisplay(n) {
+      if (n <= 1) return String(n);
+      const sups = '\u2070\u00B9\u00B2\u00B3\u2074\u2075\u2076\u2077\u2078\u2079';
+      const toSup = (num) => String(num).split('').map(c => sups[parseInt(c)]).join('');
+      const factors = [];
+      let m = n;
+      for (let p = 2; p * p <= m; p++) {
+        if (m % p === 0) {
+          let exp = 0;
+          while (m % p === 0) { exp++; m /= p; }
+          factors.push(exp === 1 ? String(p) : `${p}${toSup(exp)}`);
+        }
+      }
+      if (m > 1) factors.push(String(m));
+      if (factors.length === 0) return String(n);
+      return factors.join('\u00B7');
+    }
+
+    // Is prime?
+    function isPrime(n) {
+      if (n < 2) return false;
+      for (let i = 2; i * i <= n; i++) if (n % i === 0) return false;
+      return true;
+    }
+
+
+    // ──────────────────────────────────────────────────────────────
+    // §8.4 — BASIS–COMPLEMENT DUALITY (Theorem 8.14)
+    // §8.5 — NUMERICAL SEMIGROUP ⟨B'⟩ (Theorem 8.22)
+    // §10.7 — CRT DUALITY SPEEDUPS (Theorems 10.11–10.14)
+    // ──────────────────────────────────────────────────────────────
+
+    // Definition 8.12: Prime complement B' = first r primes > k
+    function primeComplement(k, r) {
+      const Bp = [];
+      let n = k + 1;
+      while (Bp.length < r) {
+        if (isPrime(n)) Bp.push(n);
+        n++;
+      }
+      return Bp;
+    }
+
+    // Definition 8.13: Generator product P_r = ∏B'
+    function generatorProduct(Bp) {
+      return Bp.reduce((acc, p) => acc * p, 1);
+    }
+
+    // ── Apéry-set semigroup core (v2.5 crash-fix) ──────────────────────
+    // The legacy implementation brute-forced a Uint8Array(g_min·g_max).
+    // For canonical small-prime B' (e.g. {7,11,13}) that bound is tiny, but
+    // for any N whose largest prime factor is large (e.g. N=30029 → B'≈
+    // {30047,30059,30071}) the bound is ≈N² ≈ 9·10⁸ bytes — a hard OOM/freeze.
+    // The Apéry / round-robin (Nijenhuis–Wilf) method computes the Frobenius
+    // number, genus, and conductor in memory O(min generator) and time
+    // O(min·#gens), exact for any number of generators with gcd 1.  Validated
+    // against the old brute force on ⟨3,5⟩,⟨7,11,13⟩,⟨17,19,23⟩,⟨4,6,9⟩ in
+    // verify_apery.mjs (companion). Verify-before-assert: no hand-waved counts.
+    const APERY_MEM_BUDGET = 2000000;   // refuse Apéry if min generator exceeds this
+    const GAP_LIST_DISPLAY_MAX = 256;   // never materialize a gap list larger than this
+
+    function aperySemigroup(gens) {
+      const g = (gens || []).filter(x => x > 0);
+      if (g.length === 0) return { ok: true, frob: 0, genus: 0, conductor: 1, a: 0, dist: null };
+      const a = Math.min(...g);
+      if (a === 1) return { ok: true, frob: -1, genus: 0, conductor: 0, a: 1, dist: null }; // ⟨1,…⟩ = ℕ₀
+      if (a > APERY_MEM_BUDGET) return { ok: false, reason: 'min-generator-too-large', a };
+      const INF = Infinity;
+      const dist = new Float64Array(a).fill(INF);  // dist[r] = least semigroup elt ≡ r (mod a)
+      dist[0] = 0;
+      const moves = g.filter(x => x % a !== 0);     // generators that change the residue
+      // Binary min-heap Dijkstra over the a residue classes — O((a+a·#moves)·log a),
+      // not the O(a²) of a linear-scan min (which froze ~1.6s at a≈30047).
+      const heap = [[0, 0]];                          // [dist, residue]
+      const swap = (i, j) => { const t = heap[i]; heap[i] = heap[j]; heap[j] = t; };
+      const push = (item) => {
+        heap.push(item); let i = heap.length - 1;
+        while (i > 0) { const p = (i - 1) >> 1; if (heap[p][0] <= heap[i][0]) break; swap(i, p); i = p; }
+      };
+      const pop = () => {
+        const top = heap[0], last = heap.pop();
+        if (heap.length) { heap[0] = last; let i = 0; const n = heap.length;
+          for (;;) { let s = i, l = 2*i+1, r = 2*i+2;
+            if (l < n && heap[l][0] < heap[s][0]) s = l;
+            if (r < n && heap[r][0] < heap[s][0]) s = r;
+            if (s === i) break; swap(i, s); i = s; } }
+        return top;
+      };
+      const done = new Uint8Array(a);
+      while (heap.length) {
+        const [du, u] = pop();
+        if (done[u]) continue;
+        done[u] = 1;
+        for (const m of moves) { const v = (u + m) % a; const nd = du + m; if (nd < dist[v]) { dist[v] = nd; push([nd, v]); } }
+      }
+      let mx = 0, sum = 0;
+      for (let r = 0; r < a; r++) {
+        if (dist[r] === INF) return { ok: true, frob: Infinity, genus: Infinity, conductor: Infinity, a, dist }; // gcd≠1
+        if (dist[r] > mx) mx = dist[r];
+        sum += dist[r];
+      }
+      const frob = mx - a;
+      const genus = Math.round(sum / a - (a - 1) / 2);
+      return { ok: true, frob, genus, conductor: frob + 1, a, dist };
+    }
+
+    // Enumerate gaps ONLY when the genus is small enough to display. Uses the
+    // Apéry array: k is a gap iff k < dist[k mod a]. Never allocates O(F).
+    function gapsFromApery(ap, limit) {
+      if (!ap || !ap.ok || !ap.dist || !Number.isFinite(ap.frob)) return { gaps: [], truncated: !ap || !ap.ok };
+      const cap = (limit == null) ? GAP_LIST_DISPLAY_MAX : limit;
+      const gaps = [];
+      const a = ap.a;
+      for (let k = 1; k <= ap.frob; k++) {
+        if (k < ap.dist[k % a]) {
+          if (gaps.length >= cap) return { gaps, truncated: true };
+          gaps.push(k);
+        }
+      }
+      return { gaps, truncated: false };
+    }
+
+    // Theorem 8.22: Frobenius number for ⟨B'⟩ (Apéry; was brute force).
+    function frobeniusNumber(gens) {
+      const ap = aperySemigroup(gens);
+      return (ap.ok && Number.isFinite(ap.frob)) ? ap.frob : 0;
+    }
+
+    // Theorem 8.23: Gap census for ⟨B'⟩. Returns frob/genus/conductor always;
+    // the explicit gap list is materialized only when small (display safe).
+    function semigroupGaps(gens) {
+      const ap = aperySemigroup(gens);
+      if (!ap.ok) {
+        return { frob: null, genus: null, conductor: null, gaps: [], gapsTruncated: true,
+                 computable: false, reason: ap.reason };
+      }
+      const { gaps, truncated } = gapsFromApery(ap, GAP_LIST_DISPLAY_MAX);
+      return { frob: ap.frob, genus: ap.genus, conductor: ap.conductor,
+               gaps, gapsTruncated: truncated, computable: true };
+    }
+
+    // Remark 8.24: Semigroup coverage of a coprime spectrum. Defense-in-depth:
+    // refuse the reachable-array allocation if the spectrum range is large,
+    // independent of any caller-side guard (Chris audit point, v2.5).
+    function semigroupCoverage(coprimes, gens) {
+      if (!gens || gens.length === 0) return { representable: 0, total: coprimes.length, nonRep: coprimes, computable: true };
+      const maxVal = Math.max(...coprimes, 1);
+      if (maxVal > APERY_MEM_BUDGET) {
+        return { representable: 0, total: coprimes.length, nonRep: [], computable: false, reason: 'spectrum-range-too-large' };
+      }
+      const reachable = new Uint8Array(maxVal + 1);
+      reachable[0] = 1;
+      for (const g of gens) {
+        for (let i = g; i <= maxVal; i++) {
+          if (reachable[i - g]) reachable[i] = 1;
+        }
+      }
+      const nonRep = coprimes.filter(k => !reachable[k]);
+      return { representable: coprimes.length - nonRep.length, total: coprimes.length, nonRep, computable: true };
+    }
+
+    // Is B an initial segment of the primes (2,3,5,7,…)? Governs the §8.5
+    // CANONICAL vs GENERIC regime label — separate from whether F(B')=∏B holds.
+    function isInitialPrimeSegment(B) {
+      if (!B || B.length === 0) return false;
+      let n = 2, idx = 0;
+      while (idx < B.length) {
+        let pr = true;
+        for (let j = 2; j * j <= n; j++) if (n % j === 0) { pr = false; break; }
+        if (pr) { if (B[idx] !== n) return false; idx++; }
+        n++;
+      }
+      return true;
+    }
+
+    // Theorem 10.11: CRT Ramanujan extension — c_{P_r}(s) via O(1) gcd lookup
+    // Since 1001 is squarefree with 8 divisors, c_q(s) = μ(q/gcd(q,s)) · φ(q)/φ(q/gcd(q,s))
+    function buildCRTLookup(Pr) {
+      const divsPr = divisors(Pr);
+      // Build lookup: for each divisor d of P_r, store c_{P_r} value when gcd(P_r, s) = d
+      // c_{P_r}(s) = μ(P_r/d) · φ(P_r) / φ(P_r/d) where d = gcd(P_r, s)
+      const lookup = {};
+      const phiPr = eulerPhi(Pr);
+      for (const d of divsPr) {
+        const qd = Pr / d;
+        const mu_qd = mobius(qd);
+        if (mu_qd === 0) { lookup[d] = 0; continue; }
+        lookup[d] = mu_qd * phiPr / eulerPhi(qd);
+      }
+      return { divsPr, lookup, phiPr };
+    }
+
+    // Compute E_q at divisors of P_r (the dual lattice probes)
+    // Kernel Def 5.1 (Wintner), Hölder closed form — O(L·τ(P_r)) total.
+    function dualForwardTransform(signal, Pr, dualDivData) {
+      // Same transform, routed through the streaming/signature-safe engine.
+      const spec = forwardTransform(signal, Pr, dualDivData);
+      if (!spec) return null;
+      if (spec.Eq && spec.Eq[1] !== undefined) spec.Eq[1] = 0; // legacy display convention for dual probes
+      spec.totalE = Object.keys(spec.Eq).reduce((acc, q) => acc + (Number(q) === 1 ? 0 : spec.Eq[q]), 0);
+      return spec;
+    }
+
+    // Precompute dual lattice info for ambient N
+    // B = distinct primes of N; B' = next 3 primes after max(B); P_r = ∏B'.
+    // The complement-size r=3 matches the source FVLT 720/1001 architecture
+    // (Theorem 8.14: ϕ(∏B') = k! at canonical N=720) and bounds P_r so the
+    // dual divisor data stays cheap to enumerate at any N.
+    function buildDualInfo(N) {
+      const B = distinctPrimes(N);
+      const Bp = complementPrimes(B, 3);
+      const Pr = generatorProduct(Bp);
+      const phiPr = eulerPhi(Pr);
+      const divsPr = divisors(Pr);
+      const crtLookup = buildCRTLookup(Pr);
+      const sgInfo = semigroupGaps(Bp);
+      const frobN = (sgInfo.computable && Number.isFinite(sgInfo.frob)) ? sgInfo.frob : null;
+      const dualDivData = buildDivisorData(Pr);
+      const primorialB = primorial(B);
+      // Regime label is about B (is N in the §8.5 canonical regime?), and is
+      // separate from whether the Thm 8.22 identity F(B')=∏B actually holds.
+      const canonicalRegime = isInitialPrimeSegment(B);
+      const thm822Holds = (frobN !== null) && (frobN === primorialB);
+      return {
+        B, Bp, Pr, phiPr, divsPr, crtLookup, sgInfo, frobN,
+        dualDivData,
+        primorialB,
+        canonicalRegime,
+        thm822Holds,
+      };
+    }
+
+
+    // ──────────────────────────────────────────────────────────────
+    // §4, §5, §10.6 — VERNIER PHASOR SYSTEM
+    // ──────────────────────────────────────────────────────────────
+
+    function computeState(N, s, alpha, t1, t2, n6) {
+      if (n6 === 0 || N === 0) {
+        return { z1r:0, z1i:0, z2r:0, z2i:0, Zr:0, Zi:0, Cr:0, Ci:0,
+                 Zm:0, Cm:0, unitL:0, unitR:0, k1:0, k2:0, amp:0 };
+      }
+      const k1 = N * t1 - t2;
+      const k2 = N * t1 + t2;
+
+      const th1 = (k1 * s * PI) / N;
+      const th2 = (k2 * s * PI) / N;
+
+      const absAmp = Math.pow(Math.abs(n6 * N), alpha);
+      const z1r_raw = absAmp * Math.cos(th1), z1i = absAmp * Math.sin(th1);
+      const z2r_raw = absAmp * Math.cos(th2), z2i = absAmp * Math.sin(th2);
+
+      // §4.4 Chirality: n6 = ±1 mirrors across y-axis (negate real components)
+      const sign = Math.sign(n6);
+      const z1r = sign * z1r_raw;
+      const z2r = sign * z2r_raw;
+
+      const Zr = z1r + z2r, Zi = z1i + z2i;
+      const Cr = z1r - z2r, Ci = z1i - z2i;
+
+      const Zm = Math.sqrt(Zr * Zr + Zi * Zi);
+      const Cm = Math.sqrt(Cr * Cr + Ci * Ci);
+
+      const unitL = Zm * Zm + Cm * Cm;
+      const unitR = 4 * Math.pow(Math.abs(n6 * N), 2 * alpha);
+
+      return { z1r, z1i, z2r, z2i, Zr, Zi, Cr, Ci, Zm, Cm, unitL, unitR, k1, k2, amp: absAmp };
+    }
+
+
+    // ──────────────────────────────────────────────────────────────
+    // PHASE 1: CUMULATIVE WALK ENGINE (Integration Plan §Phase 1)
+    // Viewer v9.3 O(S) accumulator pattern with split α parameters.
+    //
+    // alphaTilt: spectral tilt (shape knob) — weights step k by k^alphaTilt
+    // alphaAmp:  global amplitude (zoom knob) — scales output by |n6·N|^alphaAmp
+    //
+    // Returns computeState-compatible format + walkPath + walk diagnostics.
+    // Walk runs at FIXED spin s, accumulating k = 1..maxK harmonic steps.
+    // ──────────────────────────────────────────────────────────────
+
+    function computeWalk(N, s, alphaTilt, t1, t2, n6, maxK, alphaAmp) {
+      // Zero guard — match computeState behavior
+      const zero = { z1r:0, z1i:0, z2r:0, z2i:0, Zr:0, Zi:0, Cr:0, Ci:0,
+                     Zm:0, Cm:0, unitL:0, unitR:0, k1:0, k2:0, amp:0,
+                     walkPath:[], walkSteps:0, r1:0, r2:0, gap:0, viscosity:0,
+                     isometry:{ label:'CIRCLE', sub:'Degenerate', color:'#FFE66D', symbol:'\u25CB' } };
+      if (n6 === 0 || N === 0 || maxK <= 0) return zero;
+
+      const k1 = N * t1 - t2;
+      const k2 = N * t1 + t2;
+      const sign = Math.sign(n6) || 1;  // §4.4: chirality = y-axis mirror
+      const omega = (s * PI) / N;
+
+      // Pre-compute coefficients — ALWAYS positive chirality in the walk.
+      // Chirality is applied as real-part mirror AFTER accumulation (matching computeState §4.4).
+      const coeff1 = (omega * k1) / N;
+      const coeff2 = (omega * k2) / N;
+
+      // Running accumulators (the "cursor" of the walk)
+      let wz1r = 0, wz1i = 0, wz2r = 0, wz2i = 0;
+
+      // Walk path: raw coordinates (no alphaAmp, no chirality mirror) for intrinsic geometry
+      const walkPath = [{ k:0, z1r:0, z1i:0, z2r:0, z2i:0, Zr:0, Zi:0, Cr:0, Ci:0, coherence:0.5 }];
+
+      // Track midpoint radius for isometry classification
+      const halfK = Math.floor(maxK / 2);
+      let midR1 = 0, midR2 = 0;
+      // Track walk extent for z-scaling
+      let walkMaxR = 0;
+
+      for (let k = 1; k <= maxK; k++) {
+        const wk = alphaTilt === 0 ? 1 : Math.pow(k, alphaTilt);
+
+        const arg1 = k * coeff1;
+        const arg2 = k * coeff2;
+
+        // z1 component (positive chirality always)
+        wz1r += wk * Math.cos(arg1);
+        wz1i += wk * Math.sin(arg1);
+
+        // z2 component (y inverted — Viewer v9.3 convention)
+        wz2r += wk * Math.cos(arg2);
+        wz2i += wk * -Math.sin(arg2);
+
+        // Snapshot at midpoint for isometry measurement
+        if (k === halfK) {
+          midR1 = Math.sqrt(wz1r * wz1r + wz1i * wz1i);
+          midR2 = Math.sqrt(wz2r * wz2r + wz2i * wz2i);
+        }
+
+        // §4.4 Chirality: apply y-axis mirror (negate real parts) for walkPath storage
+        const cz1r = sign * wz1r, cz2r = sign * wz2r;
+        const sZr = cz1r + cz2r, sZi = wz1i + wz2i;
+        const sCr = cz1r - cz2r, sCi = wz1i - wz2i;
+        const Zm2 = sZr * sZr + sZi * sZi;
+        const Cm2 = sCr * sCr + sCi * sCi;
+        const total = Zm2 + Cm2;
+        const coherence = total > 1e-18 ? Zm2 / total : 0.5;
+        walkPath.push({ k, z1r: cz1r, z1i: wz1i, z2r: cz2r, z2i: wz2i,
+                        Zr: sZr, Zi: sZi, Cr: sCr, Ci: sCi, coherence });
+
+        // Track max extent for 3D z-scaling
+        const r = Math.sqrt(Math.max(wz1r*wz1r + wz1i*wz1i, wz2r*wz2r + wz2i*wz2i));
+        if (r > walkMaxR) walkMaxR = r;
+      }
+
+      // Walk-specific metrics (raw, before alphaAmp — chirality doesn't affect magnitudes)
+      const rawR1 = Math.sqrt(wz1r * wz1r + wz1i * wz1i);
+      const rawR2 = Math.sqrt(wz2r * wz2r + wz2i * wz2i);
+      const rawGap = Math.sqrt((wz1r - wz2r) ** 2 + (wz1i - wz2i) ** 2);
+
+      // Isometry classification from geometric measurement (not just alpha thresholds)
+      // Compare endpoint radius to midpoint radius: expanding, closed, or contracting
+      const midR = midR1 + midR2;
+      const endR = rawR1 + rawR2;
+      let isometry;
+      if (midR < 1e-9) {
+        // Degenerate (spin = 0 throat — all steps collinear)
+        isometry = { label: 'LINE', sub: 'Degenerate \u2022 Throat', color: '#888', symbol: '\u2014' };
+      } else {
+        const drift = (endR - midR) / midR;
+        if (drift > 0.15) {
+          isometry = { label: 'SPIRAL', sub: 'Parabolic \u2022 Expanding', color: '#FF6B6B', symbol: '\u27E9' };
+        } else if (drift < -0.15) {
+          isometry = { label: 'HELIX', sub: 'Hyperbolic \u2022 Contracting', color: '#4ECDC4', symbol: '\u27E8' };
+        } else {
+          isometry = { label: 'CIRCLE', sub: 'Elliptic \u2022 Closed', color: '#FFE66D', symbol: '\u25CB' };
+        }
+      }
+
+      // Apply alphaAmp (global amplitude — the Explorer's original α)
+      const amp = alphaAmp === 0 ? 1 : Math.pow(Math.abs(n6 * N), alphaAmp);
+      // §4.4: chirality mirror on real parts (matching computeState)
+      const z1r = amp * sign * wz1r, z1i = amp * wz1i;
+      const z2r = amp * sign * wz2r, z2i = amp * wz2i;
+
+      // Envelope and clinamen (computeState-compatible)
+      const Zr = z1r + z2r, Zi = z1i + z2i;
+      const Cr = z1r - z2r, Ci = z1i - z2i;
+      const Zm = Math.sqrt(Zr * Zr + Zi * Zi);
+      const Cm = Math.sqrt(Cr * Cr + Ci * Ci);
+      const unitL = Zm * Zm + Cm * Cm;
+      const unitR = 4 * amp * amp;  // Walk unitarity reference (not same as single-eval)
+
+      const r1 = amp * rawR1;
+      const r2 = amp * rawR2;
+      const gap = amp * rawGap;
+      const viscosity = r1 > 1e-9 ? gap / r1 : 0;
+
+      return {
+        // computeState-compatible fields
+        z1r, z1i, z2r, z2i, Zr, Zi, Cr, Ci, Zm, Cm, unitL, unitR, k1, k2, amp,
+        // Walk-specific fields
+        walkPath, walkSteps: maxK, walkMaxR, r1, r2, gap, viscosity, isometry,
+        alphaTilt, alphaAmp
+      };
+    }
+
+
+    // ──────────────────────────────────────────────────────────────
+    // PHASE 2: DUAL CHIRALITY WALK (Integration Plan §Phase 2)
+    // §4.4: Chirality is a y-axis mirror (negate real parts).
+    // Plus branch: n6=+1 (walk as computed). Minus branch: negate z1r, z2r.
+    // Kakeya gap = distance between point and its y-axis reflection = 2|Re(z)|.
+    // U(1) midpoint sits on the imaginary axis (Re=0).
+    // ──────────────────────────────────────────────────────────────
+
+    function computeWalkDual(N, s, alphaTilt, t1, t2, maxK, alphaAmp) {
+      if (N === 0 || maxK <= 0) return null;
+
+      const k1 = N * t1 - t2;
+      const k2 = N * t1 + t2;
+      const omega = (s * PI) / N;
+
+      // Single set of coefficients — always positive chirality
+      const c1 = (omega * k1) / N;
+      const c2 = (omega * k2) / N;
+
+      // Running accumulators for plus chirality only
+      let pz1r = 0, pz1i = 0, pz2r = 0, pz2i = 0;
+
+      const points = [{
+        k: 0,
+        plus: { z1r: 0, z1i: 0, z2r: 0, z2i: 0 },
+        minus: { z1r: 0, z1i: 0, z2r: 0, z2i: 0 },
+        kakeya: { gap: 0, u1r: 0, u1i: 0, u1slowR: 0, u1slowI: 0 },
+        viscosity: 0
+      }];
+
+      for (let k = 1; k <= maxK; k++) {
+        const wk = alphaTilt === 0 ? 1 : Math.pow(k, alphaTilt);
+
+        const a1 = k * c1, a2 = k * c2;
+        pz1r += wk * Math.cos(a1); pz1i += wk * Math.sin(a1);
+        pz2r += wk * Math.cos(a2); pz2i += wk * -Math.sin(a2);
+
+        // §4.4: Minus chirality = y-axis mirror of plus (negate real parts)
+        const mz1r = -pz1r, mz1i = pz1i;
+        const mz2r = -pz2r, mz2i = pz2i;
+
+        // Kakeya gap between z1 chiralities: distance between (pz1r,pz1i) and (-pz1r,pz1i) = 2|pz1r|
+        const gap = 2 * Math.abs(pz1r);
+        const pr1 = Math.sqrt(pz1r * pz1r + pz1i * pz1i);
+
+        points.push({
+          k,
+          plus: { z1r: pz1r, z1i: pz1i, z2r: pz2r, z2i: pz2i },
+          minus: { z1r: mz1r, z1i: mz1i, z2r: mz2r, z2i: mz2i },
+          kakeya: {
+            gap,
+            u1r: 0, u1i: pz1i,                    // U(1) fast midpoint: always on y-axis
+            u1slowR: 0, u1slowI: pz2i              // U(1) slow midpoint: always on y-axis
+          },
+          viscosity: pr1 > 1e-9 ? gap / pr1 : 0
+        });
+      }
+
+      // Apply alphaAmp for screen coordinates
+      const amp = alphaAmp === 0 ? 1 : Math.pow(Math.abs(N), alphaAmp);
+
+      return { points, amp, k1, k2 };
+    }
+
+
+    // ──────────────────────────────────────────────────────────────
+    // PHASE 1.5: 3D CAMERA PROJECTION
+    // z = coherence fraction, scaled by walk extent.
+    // rotation = azimuth (spin around z-axis), tilt = elevation from top.
+    // tilt = 0 → existing 2D view. tilt > 0 → coherence dimension visible.
+    // ──────────────────────────────────────────────────────────────
+
+    function project3D(x, y, z, rotation, tilt) {
+      const cr = Math.cos(rotation), sr = Math.sin(rotation);
+      const ct = Math.cos(tilt), st = Math.sin(tilt);
+      // Rotate around z-axis (azimuth)
+      const rx = x * cr + y * sr;
+      const ry = -x * sr + y * cr;
+      // Tilt: rotate (ry, z) around x-axis (elevation)
+      return [rx, ry * ct + z * st];
+    }
+
+    // Build SVG path from walkPath entries using 3D projection
+    // phasor: 'z1' or 'z2' selects which phasor to trace
+    function walkToPath3D(walkPath, amp, walkMaxR, phasor, cx, cy, sc, rotation, tilt) {
+      const zScale = walkMaxR > 1e-9 ? walkMaxR * 0.6 : 1;  // coherence fills ~60% of walk extent
+      let d = '';
+      for (let i = 0; i < walkPath.length; i++) {
+        const p = walkPath[i];
+        const wx = amp * (phasor === 'z1' ? p.z1r : p.z2r);
+        const wy = amp * (phasor === 'z1' ? p.z1i : p.z2i);
+        const wz = (p.coherence - 0.5) * zScale;  // center at 0.5 so walk straddles the plane
+        const [px, py] = project3D(wx, wy, wz, rotation, tilt);
+        d += (i === 0 ? 'M' : 'L') + (cx + px * sc).toFixed(1) + ',' + (cy - py * sc).toFixed(1);
+      }
+      return d;
+    }
+
+    // Build SVG path for envelope (Z = z1+z2) walk using 3D projection
+    function walkEnvToPath3D(walkPath, amp, walkMaxR, cx, cy, sc, rotation, tilt) {
+      const zScale = walkMaxR > 1e-9 ? walkMaxR * 0.6 : 1;
+      let d = '';
+      for (let i = 0; i < walkPath.length; i++) {
+        const p = walkPath[i];
+        const wx = amp * p.Zr;
+        const wy = amp * p.Zi;
+        const wz = (p.coherence - 0.5) * zScale;
+        const [px, py] = project3D(wx, wy, wz, rotation, tilt);
+        d += (i === 0 ? 'M' : 'L') + (cx + px * sc).toFixed(1) + ',' + (cy - py * sc).toFixed(1);
+      }
+      return d;
+    }
+
+
+    // ──────────────────────────────────────────────────────────────
+    // TRACE GENERATION
+    // ──────────────────────────────────────────────────────────────
+
+    function generateTrace(engineMode, N, alpha, alphaTilt, alphaAmp, t1, t2, n6, walkSteps, nPts, sEnd) {
+      const zT = [], cT = [];
+      const zEven = [], cEven = [], zOdd = [], cOdd = [];
+      for (let i = 0; i <= nPts; i++) {
+        const si = (i / nPts) * sEnd;
+        const st = engineMode === 'walk'
+          ? computeWalk(N, si, alphaTilt, t1, t2, n6, walkSteps, alphaAmp)
+          : computeState(N, si, alpha, t1, t2, n6);
+        zT.push(st.Zr, st.Zi);
+        cT.push(st.Cr, st.Ci);
+        if (i % 2 === 0) { zEven.push(st.Zr, st.Zi); cEven.push(st.Cr, st.Ci); }
+        else { zOdd.push(st.Zr, st.Zi); cOdd.push(st.Cr, st.Ci); }
+      }
+      let mnx = Infinity, mxx = -Infinity, mny = Infinity, mxy = -Infinity;
+      for (let i = 0; i < zT.length; i += 2) {
+        mnx = Math.min(mnx, zT[i], cT[i]); mxx = Math.max(mxx, zT[i], cT[i]);
+        mny = Math.min(mny, zT[i+1], cT[i+1]); mxy = Math.max(mxy, zT[i+1], cT[i+1]);
+      }
+      return { zT, cT, zEven, cEven, zOdd, cOdd, bbox: { mnx, mxx, mny, mxy } };
+    }
+
+    function toPath(arr, cx, cy, sc) {
+      let d = '';
+      for (let i = 0; i < arr.length; i += 2) {
+        d += (i === 0 ? 'M' : 'L') + (cx + arr[i] * sc).toFixed(1) + ',' + (cy - arr[i+1] * sc).toFixed(1);
+      }
+      return d;
+    }
+
+
+    // ──────────────────────────────────────────────────────────────
+    // UI HELPERS
+    // ──────────────────────────────────────────────────────────────
+
+    const Btn = ({ active, onClick, children, color = '#4ade80', w, small }) => (
+      <button onClick={onClick} style={{
+        padding: small ? '3px 6px' : '5px 10px', minWidth: w || 'auto',
+        background: active ? color : '#12121a', border: '1px solid #2a2a3e',
+        borderRadius: 4, color: active ? '#000' : '#888',
+        fontSize: small ? 9 : 10, fontFamily: 'inherit', cursor: 'pointer',
+        fontWeight: active ? 'bold' : 'normal',
+      }}>{children}</button>
+    );
+
+    const Sec = ({ title, note, children }) => (
+      <div style={{ marginBottom: 14 }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: 5 }}>
+          <span style={{ fontSize: 10, color: '#4ade80', letterSpacing: 1, textTransform: 'uppercase' }}>{title}</span>
+          {note && <span style={{ fontSize: 9, color: '#555' }}>{note}</span>}
+        </div>
+        {children}
+      </div>
+    );
+
+    const Met = ({ label, value, note, color = '#e0e0e0', sub }) => (
+      <div style={{ padding: '5px 8px', background: '#0c0c16', borderRadius: 4, marginBottom: 3, border: '1px solid #1a1a2e' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline' }}>
+          <span style={{ fontSize: 9, color: '#666' }}>{label}</span>
+          {note && <span style={{ fontSize: 8, color: '#444' }}>{note}</span>}
+        </div>
+        <div style={{ fontSize: 14, fontWeight: 'bold', color, marginTop: 1 }}>
+          {typeof value === 'number' ? (Math.abs(value) < 0.001 && value !== 0 ? value.toExponential(3) :
+           Math.abs(value) > 99999 ? value.toExponential(3) : value.toFixed(4)) : value}
+        </div>
+        {sub && <div style={{ fontSize: 9, color: '#555', marginTop: 1 }}>{sub}</div>}
+      </div>
+    );
+
+    function fmtN(v) {
+      if (v === undefined || v === null) return '?';
+      return typeof v === 'number' ? v.toLocaleString() : String(v);
+    }
+
+
+    // ══════════════════════════════════════════════════════════════
+    // PRIMORIAL CLASSIFICATION PANEL (Theorem 8.8)
+    // ══════════════════════════════════════════════════════════════
+
+    function PrimorialPanel({ N, N0, k, M, B, samplesM, samplesAuto }) {
+      const sigma = useMemo(() => sharedPrimeSet(M, Math.abs(N)), [M, N]);
+      const g = useMemo(() => gcd(M, Math.abs(N)), [M, N]);
+      const star = M / g;
+      const dN = useMemo(() => divisors(Math.abs(N) || 1).length, [N]);
+      const absN = Math.abs(N) || 1;
+      const phiN = useMemo(() => eulerPhi(absN), [absN]);
+      const col = classColor(sigma);
+      const geoLabel = geometryLabel(star, sigma);
+
+      // Scanner: compute all 8 classes near current operating shell
+      const scanCenter = Math.abs(N) || N0;
+      const scanResults = useMemo(() => {
+        if (scanCenter < 2) return [];
+        // Find representative N for each class near operating shell
+        const results = [];
+        const seen = new Set();
+        // Sweep ±200 around operating shell to find all 8 classes
+        const start = Math.max(2, scanCenter - 200);
+        const end = Math.min(scanCenter + 200, scanCenter * 2);
+        for (let n = start; n <= end && results.length < 8; n++) {
+          const sig = sharedPrimeSet(M, n);
+          const key = sig.join(',');
+          if (!seen.has(key)) {
+            seen.add(key);
+            const gg = gcd(M, n);
+            results.push({
+              N: n,
+              sigma: sig,
+              sigmaKey: key,
+              g: gg,
+              star: M / gg,
+              dN: divisors(n).length,
+              phi: eulerPhi(n),
+              phi3: N0 - n,
+              color: classColor(sig),
+            });
+          }
+        }
+        return results.sort((a, b) => a.sigma.length - b.sigma.length || a.N - b.N);
+      }, [scanCenter, N0, M]);
+
+      return (
+        <div style={{ padding: '6px 8px', background: '#0c0c16', borderRadius: 4,
+                      border: `1px solid ${col}33` }}>
+          {/* Current classification */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 4 }}>
+            <span style={{ fontSize: 11, fontWeight: 'bold', color: col }}>
+              {'\u03A3'} = {sigmaLabel(sigma)}
+            </span>
+            <span style={{ fontSize: 9, color: '#888' }}>
+              star {'{' + star + '}'} · d(N)={dN}
+            </span>
+          </div>
+
+          <div style={{ fontSize: 10, color: '#aaa', marginBottom: 3 }}>
+            {geoLabel}
+          </div>
+
+          {/* Geometric–arithmetic inversion indicator (Thm 8.8b) */}
+          <div style={{ display: 'flex', gap: 8, marginBottom: 5, fontSize: 9 }}>
+            <div style={{ flex: 1 }}>
+              <div style={{ color: '#666', marginBottom: 1 }}>Geometry</div>
+              <div style={{ height: 6, background: '#1a1a2e', borderRadius: 3, overflow: 'hidden' }}>
+                <div style={{ height: '100%', width: `${Math.min(100, (star / M) * 100)}%`,
+                              background: col, borderRadius: 3,
+                              transition: 'width 0.3s' }} />
+              </div>
+              <div style={{ color: '#555', marginTop: 1 }}>{star}/{M} phases</div>
+            </div>
+            <div style={{ flex: 1 }}>
+              <div style={{ color: '#666', marginBottom: 1 }}>Arithmetic</div>
+              <div style={{ height: 6, background: '#1a1a2e', borderRadius: 3, overflow: 'hidden' }}>
+                <div style={{ height: '100%', width: `${Math.min(100, (dN / 30) * 100)}%`,
+                              background: '#a78bfa', borderRadius: 3,
+                              transition: 'width 0.3s' }} />
+              </div>
+              <div style={{ color: '#555', marginTop: 1 }}>{dN} divisors</div>
+            </div>
+          </div>
+
+          {/* Detail row */}
+          <div style={{ fontSize: 8, color: '#555', marginBottom: 4 }}>
+            gcd({M}, {fmtN(absN)}) = {g} · {'\u03C6'}(N) = {phiN}
+            {absN !== N0 && ` · N = ${fmtN(N0)} \u2212 ${fmtN(N0 - absN)}`}
+            {isPrime(absN) && <span style={{ color: '#ef4444', marginLeft: 4 }}>prime</span>}
+          </div>
+
+          {/* Show rendering-M classification when it differs from primorial */}
+          {!samplesAuto && samplesM !== M && (() => {
+            const rg = gcd(samplesM, absN);
+            const rStar = samplesM / rg;
+            const rSigma = sharedPrimeSet(samplesM, absN);
+            return (
+              <div style={{ fontSize: 8, color: '#fbbf24', marginBottom: 4, padding: '2px 4px',
+                            background: '#1a1a0e', borderRadius: 2, border: '1px solid #332d00' }}>
+                Rendering M={samplesM}: gcd={rg} · {'\u03A3'}={sigmaLabel(rSigma)} · star({rStar})
+              </div>
+            );
+          })()}
+
+          {/* Mini classification table */}
+          {scanResults.length > 0 && (
+            <div style={{ marginTop: 4 }}>
+              <div style={{ fontSize: 8, color: '#555', letterSpacing: 1, marginBottom: 3 }}>
+                𝒫(B) CLASSES NEAR {fmtN(absN !== N0 ? absN : N0)}
+              </div>
+              <div style={{ maxHeight: 110, overflowY: 'auto' }}>
+                {scanResults.map((r, i) => {
+                  const isCurrent = r.N === absN;
+                  return (
+                    <div key={i} style={{
+                      display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                      fontSize: 9, padding: '2px 4px', marginBottom: 1,
+                      background: isCurrent ? `${r.color}18` : 'transparent',
+                      borderRadius: 2,
+                      border: isCurrent ? `1px solid ${r.color}44` : '1px solid transparent',
+                    }}>
+                      <span style={{ color: r.color, fontWeight: 'bold', minWidth: 48 }}>
+                        {sigmaLabel(r.sigma)}
+                      </span>
+                      <span style={{ color: isCurrent ? '#fff' : '#888', minWidth: 36 }}>
+                        {r.N}
+                      </span>
+                      <span style={{ color: '#555', minWidth: 22, textAlign: 'center' }}>
+                        {'{' + r.star + '}'}
+                      </span>
+                      <span style={{ color: '#a78bfa', minWidth: 18, textAlign: 'right' }}>
+                        d={r.dN}
+                      </span>
+                      {isCurrent && <span style={{ color: r.color, fontSize: 8 }}>{'\u25C0'}</span>}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          )}
+        </div>
+      );
+    }
+
+
+    // ══════════════════════════════════════════════════════════════
+    // CLASSIFICATION GRID OVERLAY (Theorem 8.8 — visual periodic table)
+    // ══════════════════════════════════════════════════════════════
+
+    function ClassificationGrid({ onClose, N0, currentN, k, n6 }) {
+      const ALL_PRIMES = [2, 3, 5, 7, 11];
+      const [basisLevel, setBasisLevel] = useState(
+        Math.max(ALL_PRIMES.indexOf(ALL_PRIMES.filter(p => p <= k).pop()) + 1, 1)
+      );
+      const [nPts, setNPts] = useState(400);
+      const [proportionalSampling, setProportionalSampling] = useState(false);
+      const [searchRadius, setSearchRadius] = useState(5000);
+      const canvasRefs = useRef({});
+
+      const B = useMemo(() => ALL_PRIMES.slice(0, basisLevel), [basisLevel]);
+      const M = useMemo(() => B.reduce((a, p) => a * p, 1), [B]);
+      const numClasses = 1 << B.length;
+
+      // Generate all subsets
+      const subsets = useMemo(() => {
+        const result = [];
+        for (let mask = 0; mask < numClasses; mask++) {
+          const sub = [];
+          for (let i = 0; i < B.length; i++) {
+            if (mask & (1 << i)) sub.push(B[i]);
+          }
+          result.push(sub);
+        }
+        return result.sort((a, b) => a.length - b.length || a.join(',').localeCompare(b.join(',')));
+      }, [B, numClasses]);
+
+      // Find example N for each subset
+      const cells = useMemo(() => {
+        const needed = new Map();
+        subsets.forEach(s => needed.set(s.join(','), { sigma: s, N: null }));
+
+        for (let offset = 0; offset <= searchRadius; offset++) {
+          for (const sign of [0, 1]) {
+            const n = sign === 0 ? N0 + offset : N0 - offset;
+            if (n < 2) continue;
+            const g = gcd(M, n);
+            const sp = [];
+            let gg = g;
+            for (const p of B) { if (gg % p === 0) { sp.push(p); while (gg % p === 0) gg /= p; } }
+            const key = sp.join(',');
+            const entry = needed.get(key);
+            if (entry && entry.N === null) entry.N = n;
+          }
+          let allFound = true;
+          for (const v of needed.values()) { if (v.N === null) { allFound = false; break; } }
+          if (allFound) break;
+        }
+
+        return subsets.map(s => {
+          const key = s.join(',');
+          const entry = needed.get(key);
+          const n = entry ? entry.N : null;
+          if (!n) return { sigma: s, N: null, star: 0, d: 0, fact: '?', isCurrent: false };
+          const g = gcd(M, n);
+          const star = M / g;
+          let d = 0;
+          for (let i = 1; i * i <= n; i++) { if (n % i === 0) d += (i * i === n) ? 1 : 2; }
+          return { sigma: s, N: n, star, d, g, fact: factorizeDisplay(n), isCurrent: n === Math.abs(currentN) };
+        });
+      }, [subsets, N0, M, searchRadius, currentN, B]);
+
+      // Draw canvases after render
+      useEffect(() => {
+        cells.forEach((c, idx) => {
+          const canvas = canvasRefs.current[idx];
+          if (!canvas || !c.N) return;
+          const ctx = canvas.getContext('2d');
+          const w = canvas.width, h = canvas.height;
+          const cx = w / 2, cy = h / 2;
+          const sc = (w / 2) * 0.42;
+
+          ctx.fillStyle = '#08080c';
+          ctx.fillRect(0, 0, w, h);
+
+          // Grid
+          ctx.strokeStyle = '#111118';
+          ctx.lineWidth = 0.5;
+          ctx.beginPath();
+          ctx.moveTo(cx, 2); ctx.lineTo(cx, h - 2);
+          ctx.moveTo(2, cy); ctx.lineTo(w - 2, cy);
+          ctx.stroke();
+
+          // Circles
+          ctx.strokeStyle = '#151520';
+          ctx.beginPath(); ctx.arc(cx, cy, sc, 0, Math.PI * 2); ctx.stroke();
+          ctx.beginPath(); ctx.arc(cx, cy, sc * 2, 0, Math.PI * 2); ctx.stroke();
+
+          const N = c.N;
+          const sEnd = N;
+          const chiralSign = n6 || 1;
+          const cellPts = proportionalSampling ? Math.max(100, Math.round(nPts * N / N0)) : nPts;
+          const drawTrace = (getX, getY, color, alpha) => {
+            ctx.strokeStyle = color;
+            ctx.globalAlpha = alpha;
+            ctx.lineWidth = 0.6;
+            ctx.beginPath();
+            for (let i = 0; i <= cellPts; i++) {
+              const s = (i / cellPts) * sEnd;
+              const th1 = ((N - 1) * s * Math.PI) / N;
+              const th2 = ((N + 1) * s * Math.PI) / N;
+              const x = cx + chiralSign * getX(th1, th2) * sc;
+              const y = cy - getY(th1, th2) * sc;
+              if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+            }
+            ctx.stroke();
+            ctx.globalAlpha = 1;
+          };
+
+          // Arms
+          drawTrace((t1, t2) => Math.cos(t1), (t1, t2) => Math.sin(t1), '#4ade80', 0.12);
+          drawTrace((t1, t2) => Math.cos(t2), (t1, t2) => Math.sin(t2), '#4ade80', 0.12);
+          // C
+          drawTrace((t1, t2) => Math.cos(t1) - Math.cos(t2), (t1, t2) => Math.sin(t1) - Math.sin(t2), '#f59e0b', 0.45);
+          // Z
+          drawTrace((t1, t2) => Math.cos(t1) + Math.cos(t2), (t1, t2) => Math.sin(t1) + Math.sin(t2), '#22d3ee', 0.65);
+        });
+      }, [cells, nPts, proportionalSampling, N0, n6]);
+
+      const basisLabels = [
+        { primes: [2], label: 'P\u2082', n: 1 },
+        { primes: [2,3], label: 'P\u2083', n: 2 },
+        { primes: [2,3,5], label: 'P\u2085', n: 3 },
+        { primes: [2,3,5,7], label: 'P\u2087', n: 4 },
+        { primes: [2,3,5,7,11], label: 'P\u2081\u2081', n: 5 },
+      ];
+
+      return (
+        <div style={{
+          position: 'fixed', top: 0, left: 0, right: 0, bottom: 0,
+          background: 'rgba(4,4,8,0.95)', zIndex: 1000,
+          display: 'flex', flexDirection: 'column', overflow: 'hidden',
+        }}>
+          {/* Header */}
+          <div style={{
+            padding: '8px 12px', borderBottom: '1px solid #1a1a2e',
+            display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+            flexShrink: 0, background: '#08080e', flexWrap: 'wrap', gap: 8,
+          }}>
+            <div style={{ whiteSpace: 'nowrap' }}>
+              <span style={{ fontSize: 13, fontWeight: 'bold', color: '#22d3ee', letterSpacing: 2 }}>
+                {'\u00A7'}8.3 PRIMORIAL CLASSIFICATION
+              </span>
+              <span style={{ fontSize: 10, color: '#555', marginLeft: 12 }}>
+                Thm 8.8 · B={'{'}{B.join(',')}{'}'}  · M={M} · |𝒫(B)|={numClasses}
+              </span>
+            </div>
+            <div style={{ display: 'flex', gap: 6, alignItems: 'center', flexWrap: 'wrap' }}>
+              {basisLabels.map(bl => (
+                <button key={bl.n} onClick={() => setBasisLevel(bl.n)} style={{
+                  padding: '3px 7px', background: basisLevel === bl.n ? '#22d3ee' : '#12121a',
+                  border: '1px solid #2a2a3e', borderRadius: 3,
+                  color: basisLevel === bl.n ? '#000' : '#888', fontSize: 10,
+                  fontFamily: 'inherit', cursor: 'pointer', fontWeight: basisLevel === bl.n ? 'bold' : 'normal',
+                }}>{bl.label}</button>
+              ))}
+              <span style={{ color: '#333' }}>|</span>
+              <button onClick={() => setNPts(n => Math.max(2, n - 1))} style={{
+                width: 20, height: 20, background: '#12121a', border: '1px solid #2a2a3e',
+                borderRadius: 3, color: '#888', cursor: 'pointer', fontSize: 11, fontFamily: 'inherit',
+              }}>{'\u2212'}</button>
+              <span style={{ fontSize: 10, color: '#22d3ee', width: 30, textAlign: 'center' }}>{nPts}</span>
+              <button onClick={() => setNPts(n => Math.min(3000, n + 1))} style={{
+                width: 20, height: 20, background: '#12121a', border: '1px solid #2a2a3e',
+                borderRadius: 3, color: '#888', cursor: 'pointer', fontSize: 11, fontFamily: 'inherit',
+              }}>+</button>
+              <input type="range" min={2} max={3000} value={nPts}
+                onChange={e => setNPts(parseInt(e.target.value))}
+                style={{ width: 60, accentColor: '#f59e0b' }} />
+              <span style={{ color: '#333' }}>|</span>
+              <label style={{ display: 'flex', alignItems: 'center', gap: 4, cursor: 'pointer', fontSize: 10 }}>
+                <input type="checkbox" checked={proportionalSampling} onChange={e => setProportionalSampling(e.target.checked)} />
+                <span style={{ color: proportionalSampling ? '#4ade80' : '#666' }}>Proportional</span>
+              </label>
+              <span style={{ color: '#333' }}>|</span>
+              <button onClick={onClose} style={{
+                padding: '3px 10px', background: '#1a1a2e', border: '1px solid #2a2a3e',
+                borderRadius: 3, color: '#888', fontSize: 11, cursor: 'pointer', fontFamily: 'inherit',
+              }}>{'\u2715'} Close</button>
+            </div>
+          </div>
+
+          {/* Grid */}
+          <div style={{
+            flex: 1, overflow: 'auto', padding: '8px 4px',
+            display: 'grid',
+            gridTemplateColumns: `repeat(auto-fill, minmax(${numClasses <= 8 ? 220 : numClasses <= 16 ? 180 : 160}px, 1fr))`,
+            gap: 4, alignContent: 'start',
+          }}>
+            {cells.map((c, idx) => (
+              <div key={idx} style={{
+                background: '#0a0a14',
+                border: `1px solid ${c.isCurrent ? classColor(c.sigma) + '88' : '#1a1a2e'}`,
+                borderRadius: 4, overflow: 'hidden',
+              }}>
+                {/* Cell header */}
+                <div style={{
+                  padding: '4px 6px 3px', borderBottom: '1px solid #12121e',
+                  display: 'flex', justifyContent: 'space-between', alignItems: 'baseline',
+                }}>
+                  <span style={{ fontSize: 11, fontWeight: 600, color: classColor(c.sigma) }}>
+                    {'\u03A3'} = {c.sigma.length === 0 ? '\u2205' : '{' + c.sigma.join(',') + '}'}
+                  </span>
+                  <span style={{ fontSize: 10, color: '#22d3ee' }}>
+                    {'{' + c.star + '}'}
+                  </span>
+                </div>
+                {/* Canvas */}
+                <div style={{ aspectRatio: '1', background: '#08080c' }}>
+                  {c.N ? (
+                    <canvas ref={el => { if (el) canvasRefs.current[idx] = el; }}
+                      width={300} height={300}
+                      style={{ width: '100%', height: '100%', display: 'block' }} />
+                  ) : (
+                    <div style={{ width: '100%', height: '100%', display: 'flex',
+                      alignItems: 'center', justifyContent: 'center', color: '#333', fontSize: 10 }}>
+                      Not found in range
+                    </div>
+                  )}
+                </div>
+                {/* Footer */}
+                <div style={{
+                  padding: '3px 6px 4px', fontSize: 9, color: '#555',
+                  display: 'flex', justifyContent: 'space-between',
+                  borderTop: '1px solid #12121e',
+                }}>
+                  <span style={{ color: c.isCurrent ? '#fff' : '#888' }}>N={c.N || '?'}</span>
+                  <span style={{ color: '#666' }}>{c.fact}</span>
+                  <span style={{ color: '#a78bfa' }}>d={c.d}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Footer legend */}
+          <div style={{
+            padding: '8px 20px', borderTop: '1px solid #1a1a2e', fontSize: 10, color: '#555',
+            display: 'flex', gap: 20, alignItems: 'center', flexWrap: 'wrap', flexShrink: 0, background: '#08080e',
+          }}>
+            <span><span style={{ color: '#22d3ee' }}>{'\u2500\u2500'}</span> Z (envelope)</span>
+            <span><span style={{ color: '#f59e0b' }}>{'\u2500\u2500'}</span> C (clinamen)</span>
+            <span><span style={{ color: '#4ade80' }}>{'\u2500\u2500'}</span> Arms (z{'\u2081'}, z{'\u2082'})</span>
+            <span style={{ marginLeft: isMobile ? 0 : 'auto' }}>
+              N{'\u2080'} = {fmtN(N0)} · Ref shell {factorialIndex !== null ? factorialIndex + '!' : 'sub-shell'}
+              {'  ·  maximal chains in Div(N'}{'\u2080'}{'): '}
+              {fmtN(chainCount <= BigInt(Number.MAX_SAFE_INTEGER) ? Number(chainCount) : chainCount.toString())}
+              {chainSquarefree && <> {'='} {chainExps.length}! {'\u00B7'} Q{String(chainExps.length).split('').map(d => String.fromCharCode(0x2080 + (+d))).join('')}
+                <span style={{ color: '#3a3a4a' }}> {'\u00B7'} atom sym S{String(chainExps.length).split('').map(d => String.fromCharCode(0x2080 + (+d))).join('')}</span></>}
+            </span>
+          </div>
+        </div>
+      );
+    }
+
+
+    // ══════════════════════════════════════════════════════════════
+    // MAIN COMPONENT
+    // ══════════════════════════════════════════════════════════════
+
+    function FVLTExplorer() {
+      // ── Responsive: track narrow viewports so the layout can stack ──
+      const [isMobile, setIsMobile] = useState(
+        typeof window !== 'undefined' && window.innerWidth < 820
+      );
+      useEffect(() => {
+        const onResize = () => setIsMobile(window.innerWidth < 820);
+        window.addEventListener('resize', onResize);
+        window.addEventListener('orientationchange', onResize);
+        return () => {
+          window.removeEventListener('resize', onResize);
+          window.removeEventListener('orientationchange', onResize);
+        };
+      }, []);
+
+      // Free N input — any positive integer
+      const [N_raw, setN_raw] = useState(720);
+      const [nInput, setNInput] = useState('720');
+
+      // §4: Spin
+      const [s, setS] = useState(0);
+      const [animating, setAnimating] = useState(false);
+      const [animSpeed, setAnimSpeed] = useState(1);
+
+      // §5: Alpha (single-evaluation mode)
+      const [alpha, setAlpha] = useState(0);
+
+      // Phase 1: Walk engine parameters (legacy — dead code with walk removed)
+      const [alphaTilt, setAlphaTilt] = useState(0);
+      const [alphaAmp, setAlphaAmp] = useState(0);
+      const [walkSteps, setWalkSteps] = useState(200);
+
+      // §10.6: Torus walk (gear teeth) — these stay
+      const [t1, setT1] = useState(1);
+      const [t2, setT2] = useState(1);
+
+      // §4.4: Chirality
+      const [n6, setN6] = useState(1);
+
+      // Removed UI — pinned to defaults so dead-code paths don't fire
+      const showTri = false;
+      const triFocus = 0;
+      const phi3enabled = false;
+      const phi3 = 0;
+      const phi1 = 0;
+      const engineMode = 'single';
+      const showBothChiralities = false;
+
+      // N == N_raw (no trilattice offset, no sub-shell)
+      const triBase = N_raw;
+      const n7 = 0;
+      const N = useThrottledValue(N_raw, 60);
+
+      // Effective k for §8.3 / §10.7 labels: largest prime factor of N
+      // (so "p > k" rule in Thm 2.3 reads correctly for any N).
+      const k = useMemo(() => {
+        const ps = distinctPrimes(Math.abs(N) || 1);
+        return ps.length === 0 ? 1 : ps[ps.length - 1];
+      }, [N]);
+
+      // §8.3: Primorial classification — B = distinct primes of N (free-N generalization)
+      const B = useMemo(() => distinctPrimes(Math.abs(N) || 1), [N]);
+      const M = useMemo(() => primorial(B), [B]);
+
+      // §8.4–8.5, §10.7: Basis–complement duality and CRT extension
+      const dualInfo = useMemo(() => buildDualInfo(Math.abs(N) || 1), [N]);
+      const [showCRT, setShowCRT] = useState(true);
+
+      // For N0 (legacy references): treat as absN
+      const N0 = Math.abs(N) || 1;
+      // Factorial-shell index for display labels (source of truth; NOT k, the
+      // largest prime factor — those diverge at 4! and 6!). 720 -> 6, 30 -> null.
+      const factorialIndex = factorialIndexForN(N0);
+      // Route-count register (separate from the factorial-shell register):
+      // maximal chains through Div(N0). 720 -> 105, 30030 -> 720, 210 -> 24.
+      const chainExps = useMemo(() => exponentProfile(N0), [N0]);
+      const chainCount = useMemo(() => maximalChainCountFromExponents(chainExps), [chainExps]);
+      const chainSquarefree = chainExps.length > 0 && chainExps.every(a => a === 1);
+      // For shell.phi (legacy reference): use eulerPhi(N)
+      const shell = { N: N0, phi: eulerPhi(N0), k };
+
+      // §8: Sampling
+      const [samplesAuto, setSamplesAuto] = useState(true);
+      const [samplesM, setSamplesM] = useState(720);
+
+      // Display toggles
+      const [showZ, setShowZ] = useState(true);
+      const [showC, setShowC] = useState(true);
+      const [showArms, setShowArms] = useState(true);
+      const [showEven, setShowEven] = useState(true);
+      const [showOdd, setShowOdd] = useState(true);
+
+      // §5.x Calibration: sweep results (legacy, walk-only — kept for binding safety)
+      const [calibResult, setCalibResult] = useState(null);
+
+      // §5.5: Signal / E_q measurement layer
+      const [signalType, setSignalType] = useState('none');
+      const [signalCustom, setSignalCustom] = useState('');
+      const [signalLength, setSignalLength] = useState(0);
+
+      // §8.3: Classification panel toggle
+      const [showClassification, setShowClassification] = useState(true);
+      const [showGrid, setShowGrid] = useState(false);
+
+      // Divisor data for current shell
+      // Cheap: divisor list only (O(√N)). Full coprime sets deferred until signal active.
+      const divList = useMemo(() => divisors(Math.abs(N) || 1), [N]);
+      const isPrime = divList.length === 2;  // exactly {1, N}
+      const divData = useMemo(() => {
+        if (signalType === 'none' && engineMode !== 'walk') {
+          // Lightweight: only divisor list + phis (no coprime sets)
+          const divs = divList;
+          const phis = {};
+          for (const q of divs) phis[q] = eulerPhi(q);
+          return { divs, phis, kSets: {} };
+        }
+        return buildDivisorData(Math.abs(N) || 1);
+      }, [N, divList, signalType, engineMode]);
+
+      // Generate signal descriptor.
+      // Large generated signals are NOT materialized. They stream through the
+      // signature aggregator in forwardTransform(). Custom input remains an array.
+      const signal = useMemo(() => {
+        const L = (signalLength > 0 ? signalLength : Math.abs(N)) || 1;
+        if (signalType === 'none') return null;
+        if (signalType === 'custom') {
+          try {
+            const vals = signalCustom.split(/[,\s]+/).filter(s => s.length > 0).map(Number);
+            return vals.length > 0 && vals.every(v => !isNaN(v)) ? vals : null;
+          } catch { return null; }
+        }
+        if (SIGNALS[signalType]) {
+          if (L > STREAM_THRESHOLD) return { kind: signalType, L };
+          return SIGNALS[signalType](L);
+        }
+        return null;
+      }, [signalType, signalCustom, signalLength, N]);
+
+      const signalL = signal ? (signal.L || signal.length || 0) : 0;
+
+      // Forward transform
+      const spectrum = useMemo(() => {
+        if (!signal || signalL === 0) return null;
+        return forwardTransform(signal, Math.abs(N) || 1, divData);
+      }, [signal, signalL, N, divData]);
+
+      // §10.7: CRT dual-lattice E_q probes (at divisors of P_r)
+      const dualSpectrum = useMemo(() => {
+        if (!signal || signalL === 0 || !showCRT) return null;
+        return dualForwardTransform(signal, dualInfo.Pr, dualInfo.dualDivData);
+      }, [signal, signalL, showCRT, dualInfo]);
+
+      // §10.7 Remark 8.24: Semigroup coverage of current coprime spectrum
+      const sgCoverage = useMemo(() => {
+        if (!dualInfo || !dualInfo.Bp || !showCRT || (signalType === 'none' && engineMode !== 'walk')) return null;
+        const absNVal = Math.abs(N) || 1;
+        if (absNVal > 5000) return null; // skip for very large N
+        const coprimes = coprimeSet(absNVal);
+        return semigroupCoverage(coprimes, dualInfo.Bp);
+      }, [N, dualInfo, showCRT, signalType, engineMode]);
+
+      // Zoom and pan
+      const [zoom, setZoom] = useState(1);
+      const [panX, setPanX] = useState(0);
+      const [panY, setPanY] = useState(0);
+      const [dragging, setDragging] = useState(false);
+      const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+
+      // Phase 1.5: 3D camera — rotation (azimuth) and tilt (elevation from top)
+      const [camRotation, setCamRotation] = useState(0);     // radians, 0 = default view
+      const [camTilt, setCamTilt] = useState(0);              // radians, 0 = 2D top-down
+      const is3D = engineMode === 'walk' && Math.abs(camTilt) > 0.001;
+
+      const svgRef = useRef(null);
+
+      const W = 560, H = 540;
+      const cx = W / 2, cy = H / 2;
+
+      useEffect(() => {
+        if (s > 2 * N0) setS(0);
+      }, [N0]);
+
+      useEffect(() => {
+        if (!animating) return;
+        const step = Math.max(0.2, Math.abs(N) / 2000) * animSpeed;
+        const id = setInterval(() => {
+          setS(prev => prev + step > 2 * Math.abs(N) ? 0 : prev + step);
+        }, 25);
+        return () => clearInterval(id);
+      }, [animating, N, animSpeed]);
+
+      const handleWheel = useCallback((e) => {
+        e.preventDefault();
+        const factor = e.deltaY < 0 ? 1.15 : 1 / 1.15;
+        setZoom(z => Math.max(0.1, Math.min(50, z * factor)));
+      }, []);
+
+      const handleMouseDown = useCallback((e) => {
+        if (e.button !== 0) return;
+        setDragging(true);
+        setDragStart({ x: e.clientX, y: e.clientY, panX0: panX, panY0: panY,
+                       rot0: camRotation, tilt0: camTilt });
+      }, [panX, panY, camRotation, camTilt]);
+
+      const handleMouseMove = useCallback((e) => {
+        if (!dragging) return;
+        const dx = e.clientX - dragStart.x;
+        const dy = e.clientY - dragStart.y;
+        if (is3D) {
+          // 3D walk mode: drag orbits the camera
+          setCamRotation(dragStart.rot0 + dx * 0.01);
+          setCamTilt(Math.max(0, Math.min(PI / 2, dragStart.tilt0 + dy * 0.005)));
+        } else {
+          // 2D mode: drag pans
+          setPanX(dragStart.panX0 + dx);
+          setPanY(dragStart.panY0 + dy);
+        }
+      }, [dragging, dragStart, is3D]);
+
+      const handleMouseUp = useCallback(() => setDragging(false), []);
+
+      const resetView = useCallback(() => {
+        setZoom(1); setPanX(0); setPanY(0);
+        setCamRotation(0); setCamTilt(0);
+      }, []);
+
+      useEffect(() => {
+        const el = svgRef.current;
+        if (!el) return;
+        el.addEventListener('wheel', handleWheel, { passive: false });
+        return () => el.removeEventListener('wheel', handleWheel);
+      }, [handleWheel]);
+
+      // Trace computation
+      const absN = Math.abs(N) || 1;
+      const sEnd = 2 * absN;  // Full period is 2N for Vernier system
+      const nPts = useMemo(() => {
+        if (!samplesAuto) return tracePointCount(samplesM);
+        const base = Math.min(6000, Math.max(2000, absN * 4 + Math.abs(t2) * 10));
+        // Reduce points when sub-shell is active (4 traces recompute per slider tick)
+        return (phi3enabled && n7 !== 0) ? Math.min(base, 2000) : base;
+      }, [absN, t2, samplesAuto, samplesM, phi3enabled, n7]);
+
+      const mainTrace = useMemo(
+        () => generateTrace(engineMode, N, alpha, alphaTilt, alphaAmp, t1, t2, n6, walkSteps, nPts, sEnd),
+        [engineMode, N, alpha, alphaTilt, alphaAmp, t1, t2, n6, walkSteps, nPts, sEnd]
+      );
+
+      // Dynamic trilattice: use operating shell N when sub-shell active, else factorial TRI[k]
+      const tri = useMemo(() => {
+        const factorialTri = TRI[k];
+        if (!phi3enabled || n7 === 0) return factorialTri;
+        // Sub-shell active: compute trilattice around operating shell N
+        const absN = Math.abs(N) || 1;
+        return [
+          { n: absN - 1, f: factorizeDisplay(absN - 1), mu: mobius(absN - 1), label: '-1' },
+          { n: absN,     f: factorizeDisplay(absN),     mu: mobius(absN),     label: '0'  },
+          { n: absN + 1, f: factorizeDisplay(absN + 1), mu: mobius(absN + 1), label: '+1' },
+        ];
+      }, [k, phi3enabled, n7, N]);
+      const triTraces = useMemo(() => {
+        if (!showTri || !tri) return null;
+        return tri.map(member => {
+          const memberN = member.n;
+          const memberEnd = 2 * memberN;  // Full period is 2N
+          // Mirror main lattice sampling settings
+          const memberPts = samplesAuto
+            ? Math.min((phi3enabled && n7 !== 0) ? 1500 : 6000, Math.max(2000, memberN * 4 + Math.abs(t2) * 10))
+            : tracePointCount(samplesM);
+          return generateTrace(engineMode, memberN, alpha, alphaTilt, alphaAmp, t1, t2, n6, walkSteps, memberPts, memberEnd);
+        });
+      }, [showTri, tri, engineMode, alpha, alphaTilt, alphaAmp, t1, t2, n6, walkSteps, samplesAuto, samplesM, phi3enabled, n7]);
+
+      const sc = useMemo(() => {
+        let mnx = mainTrace.bbox.mnx, mxx = mainTrace.bbox.mxx;
+        let mny = mainTrace.bbox.mny, mxy = mainTrace.bbox.mxy;
+        if (triTraces) {
+          for (const tt of triTraces) {
+            mnx = Math.min(mnx, tt.bbox.mnx); mxx = Math.max(mxx, tt.bbox.mxx);
+            mny = Math.min(mny, tt.bbox.mny); mxy = Math.max(mxy, tt.bbox.mxy);
+          }
+        }
+        const span = Math.max(mxx - mnx, mxy - mny, 0.001);
+        return (Math.min(W, H) - 60) / span;
+      }, [mainTrace, triTraces]);
+
+      const cur = useMemo(() => (
+        engineMode === 'walk'
+          ? computeWalk(N, s, alphaTilt, t1, t2, n6, walkSteps, alphaAmp)
+          : computeState(N, s, alpha, t1, t2, n6)
+      ), [engineMode, N, s, alpha, alphaTilt, alphaAmp, t1, t2, n6, walkSteps]);
+
+      const triCur = useMemo(() => {
+        if (!showTri || !tri) return null;
+        return tri.map(m => (
+          engineMode === 'walk'
+            ? computeWalk(m.n, s, alphaTilt, t1, t2, n6, walkSteps, alphaAmp)
+            : computeState(m.n, s, alpha, t1, t2, n6)
+        ));
+      }, [showTri, tri, engineMode, s, alpha, alphaTilt, alphaAmp, t1, t2, n6, walkSteps]);
+
+      // Phase 2: Dual chirality walk (both n6=+1 and n6=-1)
+      const curDual = useMemo(() => {
+        if (!showBothChiralities || engineMode !== 'walk') return null;
+        return computeWalkDual(N, s, alphaTilt, t1, t2, walkSteps, alphaAmp);
+      }, [showBothChiralities, engineMode, N, s, alphaTilt, t1, t2, walkSteps, alphaAmp]);
+
+      // ════════════════════════════════════════════════════════════
+      // PHASE 3: Walk-derived E_q spectrum
+      // Canonical projection rule (Chris): compute E_q from INCREMENT
+      // series ΔZ(k), ΔC(k) — not from cumulative walk.
+      // Complex signal: run real and imaginary parts separately, sum E_q.
+      // ════════════════════════════════════════════════════════════
+
+      const walkSpectrum = useMemo(() => {
+        try {
+          if (engineMode !== 'walk' || !cur.walkPath || cur.walkPath.length < 3) return null;
+          if (!divData.kSets || Object.keys(divData.kSets).length === 0) return null;
+          const wp = cur.walkPath;
+          const L = wp.length - 1;
+          if (L < 2) return null;
+
+          const dZr = new Array(L);
+          const dZi = new Array(L);
+          for (let k = 0; k < L; k++) {
+            dZr[k] = wp[k + 1].Zr - wp[k].Zr;
+            dZi[k] = wp[k + 1].Zi - wp[k].Zi;
+          }
+
+          const specR = forwardTransform(dZr, Math.abs(N) || 1, divData);
+          const specI = forwardTransform(dZi, Math.abs(N) || 1, divData);
+
+          const Eq = {};
+          let totalE = 0;
+          for (const q of divData.divs) {
+            const eq = (specR.Eq[q] || 0) + (specI.Eq[q] || 0);
+            Eq[q] = eq;
+            totalE += eq;
+          }
+
+          return { Eq, totalE, L, aHat: specR.aHat };
+        } catch (e) { console.error('walkSpectrum error:', e); return null; }
+      }, [engineMode, cur, N, divData]);
+
+      const walkDualSpectrum = useMemo(() => {
+        try {
+          if (engineMode !== 'walk' || !cur.walkPath || cur.walkPath.length < 3 || !showCRT) return null;
+          if (!dualInfo || !dualInfo.dualDivData) return null;
+          const wp = cur.walkPath;
+          const L = wp.length - 1;
+          if (L < 2) return null;
+
+          const dZr = new Array(L);
+          const dZi = new Array(L);
+          for (let k = 0; k < L; k++) {
+            dZr[k] = wp[k + 1].Zr - wp[k].Zr;
+            dZi[k] = wp[k + 1].Zi - wp[k].Zi;
+          }
+
+          const specR = dualForwardTransform(dZr, dualInfo.Pr, dualInfo.dualDivData);
+          const specI = dualForwardTransform(dZi, dualInfo.Pr, dualInfo.dualDivData);
+
+          const Eq = {};
+          let totalE = 0;
+          for (const q of dualInfo.dualDivData.divs) {
+            const eq = (specR.Eq[q] || 0) + (specI.Eq[q] || 0);
+            Eq[q] = eq;
+            totalE += eq;
+          }
+
+          return { Eq, totalE };
+        } catch (e) { console.error('walkDualSpectrum error:', e); return null; }
+      }, [engineMode, cur, showCRT, dualInfo]);
+
+      // Active spectrum: walk-derived in walk mode, signal-derived in single mode
+      const activeSpectrum = engineMode === 'walk' ? walkSpectrum : spectrum;
+      const activeDualSpectrum = engineMode === 'walk' ? walkDualSpectrum : dualSpectrum;
+
+      // ════════════════════════════════════════════════════════════
+      // §5.x CALIBRATION SWEEP (Remark 5.x.18)
+      // Sweep αTilt, record E_q, compute slopes, compare against ψ_N(q).
+      // ════════════════════════════════════════════════════════════
+
+      const runCalibration = () => {
+        try {
+          const absN = Math.abs(N) || 1;
+          const dd = buildDivisorData(absN);
+          const grid = [-1, -0.75, -0.5, -0.25, 0, 0.25, 0.5, 0.75, 1];
+          const sweepData = {};  // αTilt → { Eq: {q→val}, totalE, normalized: {q→val} }
+
+          for (const aTilt of grid) {
+            const w = computeWalk(absN, s, aTilt, t1, t2, n6, walkSteps, alphaAmp);
+            if (!w.walkPath || w.walkPath.length < 3) continue;
+            const wp = w.walkPath;
+            const L = wp.length - 1;
+            if (L < 2) continue;
+
+            const dZr = new Array(L), dZi = new Array(L);
+            for (let k = 0; k < L; k++) {
+              dZr[k] = wp[k + 1].Zr - wp[k].Zr;
+              dZi[k] = wp[k + 1].Zi - wp[k].Zi;
+            }
+
+            const specR = forwardTransform(dZr, absN, dd);
+            const specI = forwardTransform(dZi, absN, dd);
+
+            const Eq = {};
+            let totalE = 0;
+            for (const q of dd.divs) {
+              const eq = (specR.Eq[q] || 0) + (specI.Eq[q] || 0);
+              Eq[q] = eq;
+              totalE += eq;
+            }
+
+            const normalized = {};
+            for (const q of dd.divs) {
+              normalized[q] = totalE > 1e-18 ? Eq[q] / totalE : 1 / dd.divs.length;
+            }
+
+            sweepData[aTilt] = { Eq, totalE, normalized };
+          }
+
+          // Compute central difference slope at α=0 using h=0.25
+          const h = 0.25;
+          const s0p = sweepData[h], s0m = sweepData[-h];
+          const slopes = {};
+          if (s0p && s0m) {
+            for (const q of dd.divs) {
+              const logP = Math.log(Math.max(s0p.normalized[q], 1e-30));
+              const logM = Math.log(Math.max(s0m.normalized[q], 1e-30));
+              slopes[q] = (logP - logM) / (2 * h);
+            }
+          }
+
+          // Formal prediction: ψ_N(q) = ln(q/√N)
+          const halfLogN = 0.5 * Math.log(absN);
+          const psi = {};
+          for (const q of dd.divs) psi[q] = Math.log(q) - halfLogN;
+          const E0psi = dd.divs.reduce((s, q) => s + psi[q], 0) / dd.divs.length;
+          const predicted = {};
+          for (const q of dd.divs) predicted[q] = psi[q] - E0psi;
+
+          // Sign agreement count
+          let signAgree = 0, signTotal = 0;
+          for (const q of dd.divs) {
+            if (slopes[q] !== undefined && Math.abs(slopes[q]) > 1e-8 && Math.abs(predicted[q]) > 1e-8) {
+              signTotal++;
+              if (Math.sign(slopes[q]) === Math.sign(predicted[q])) signAgree++;
+            }
+          }
+
+          setCalibResult({
+            divs: dd.divs, grid, sweepData, slopes, predicted, psi,
+            signAgree, signTotal, N: absN, s, walkSteps,
+            t1, t2, n6, alphaAmp
+          });
+        } catch (e) {
+          console.error('Calibration error:', e);
+          setCalibResult({ error: e.message });
+        }
+      };
+
+      const naturalChirality = N % 2 === 0 ? '+1 right' : '\u22121 left';
+      const envPeriod = t2 !== 0 ? Math.abs(N) / Math.abs(t2) : Infinity;
+      const firstPinch = t2 !== 0 ? Math.abs(N) / (2 * Math.abs(t2)) : Infinity;
+      const pinchCount = Math.abs(t2);
+
+      const sPresets = [
+        { l: 's=0', v: 0 },
+        { l: 'Pinch', v: firstPinch },
+        { l: 'Return', v: envPeriod },
+        { l: 'N/2', v: Math.abs(N) / 2 },
+        { l: 'N', v: Math.abs(N) },
+      ].filter(p => isFinite(p.v) && p.v <= 2 * Math.abs(N));
+
+      const torusPresets = [
+        { l: 'Standard', a: 1, b: 1 },
+        { l: 'Codon', a: 1, b: Math.round(Math.abs(N) / 3) },
+        { l: 'Dinuc', a: 1, b: Math.round(Math.abs(N) / 2) },
+        { l: '2-wind', a: 2, b: 1 },
+        { l: 'Link', a: 2, b: 2 },
+        // §10.7 Theorem 10.13: CRT lattice selection
+        ...(k === 6 ? [
+          { l: 'Dual\u2082', a: 1, b: 720, crt: true },   // t₂=720 → envelope probes 1001 lattice
+          { l: 'Std\u2082', a: 1, b: 1001, crt: true },    // t₂=1001 → envelope probes 720 lattice
+        ] : []),
+      ];
+
+      const sx = v => cx + v * sc;
+      const sy = v => cy - v * sc;
+
+      // Sub-shell status (Remark 8.5)
+      // Factorial only when at N₀ (triFocus=0) with no sub-shell offset (n7=0)
+      const isFactorial = n7 === 0 && triFocus === 0;
+      const subShellStatus = isFactorial ? 'factorial' : (triFocus !== 0 ? 'trilattice' : 'sub-shell');
+
+      // Envelope chart
+      const envW = 560, envH = 120;
+      const envData = useMemo(() => {
+        const pts = 400;
+        const maxAmp = 2 * Math.abs(cur.amp || 1);
+        const yscale = maxAmp > 0 ? (envH - 30) / maxAmp : 1;
+        const makeLines = (Nval) => {
+          const zL = [], cL = [];
+          const ampVal = Math.pow(Math.abs(n6 * Nval), alpha);
+          for (let i = 0; i <= pts; i++) {
+            const si = (i / pts) * sEnd;
+            const ex = 10 + (i / pts) * (envW - 20);
+            const envZ = 2 * ampVal * Math.abs(Math.cos(Math.abs(t2) * PI * si / Nval));
+            const envC = 2 * ampVal * Math.abs(Math.sin(Math.abs(t2) * PI * si / Nval));
+            zL.push(`${i === 0 ? 'M' : 'L'}${ex.toFixed(1)},${(envH - 15 - envZ * yscale).toFixed(1)}`);
+            cL.push(`${i === 0 ? 'M' : 'L'}${ex.toFixed(1)},${(envH - 15 - envC * yscale).toFixed(1)}`);
+          }
+          return { zLine: zL.join(''), cLine: cL.join('') };
+        };
+        const main = makeLines(N);
+        const triEnv = (showTri && tri) ? tri.map(m => makeLines(m.n)) : null;
+        return { main, triEnv, maxAmp, yscale };
+      }, [N, t2, cur.amp, sEnd, alpha, n6, showTri, tri]);
+
+      const envSx = 10 + (Math.min(s, sEnd) / (sEnd || 1)) * (envW - 20);
+
+
+      // ══════════════════════════════════════════════════════════
+      // RENDER
+      // ══════════════════════════════════════════════════════════
+
+      return (
+        <React.Fragment>
+        <div style={{ display: 'flex',
+                      flexDirection: isMobile ? 'column' : 'row',
+                      height: isMobile ? 'auto' : '100vh',
+                      minHeight: isMobile ? '100vh' : undefined,
+                      overflow: isMobile ? 'visible' : 'hidden' }}>
+
+          {/* ─── LEFT SIDEBAR (controls below canvas on mobile) ── */}
+          <div style={{ width: isMobile ? '100%' : 290, padding: '10px 12px', background: '#0b0b14',
+                        order: isMobile ? 2 : 0,
+                        borderRight: isMobile ? 'none' : '1px solid #1a1a2e',
+                        borderTop: isMobile ? '1px solid #1a1a2e' : 'none',
+                        overflowY: isMobile ? 'visible' : 'auto', flexShrink: 0 }}>
+
+            <div style={{ marginBottom: 14 }}>
+              <div style={{ fontSize: 13, color: '#4ade80', letterSpacing: 2, fontWeight: 'bold' }}>FVLT EXPLORER</div>
+              <div style={{ fontSize: 9, color: '#555', marginTop: 2 }}>
+                kernel v2.3 — "The structure is the algorithm"
+              </div>
+            </div>
+
+            {/* §2: Shell — free N input */}
+            <Sec title="Shell" note="Def 2.1 · any N ≥ 1">
+              <div style={{ display: 'flex', gap: 4, marginBottom: 6 }}>
+                <input type="text" value={nInput}
+                       onChange={e => setNInput(e.target.value.replace(/[^\d]/g, ''))}
+                       onKeyDown={e => {
+                         if (e.key === 'Enter') {
+                           const v = parseInt(nInput, 10);
+                           if (Number.isFinite(v) && v >= 1 && v <= MAX_FREE_N) {
+                             setN_raw(v); setSamplesM(v);
+                           } else { setNInput(String(N_raw)); }
+                         }
+                       }}
+                       onBlur={() => {
+                         const v = parseInt(nInput, 10);
+                         if (Number.isFinite(v) && v >= 1 && v <= MAX_FREE_N) {
+                           setN_raw(v); setSamplesM(v);
+                         } else { setNInput(String(N_raw)); }
+                       }}
+                       style={{ flex: 1, background: '#0c0c16', border: '1px solid #2a2a3e',
+                                color: '#22d3ee', fontSize: 14, padding: '4px 8px', borderRadius: 3,
+                                fontFamily: 'inherit', outline: 'none', textAlign: 'center' }} />
+                <Btn onClick={() => {
+                  const v = parseInt(nInput, 10);
+                  if (Number.isFinite(v) && v >= 1 && v <= MAX_FREE_N) {
+                    setN_raw(v); setSamplesM(v);
+                  }
+                }} color="#4ade80">set</Btn>
+              </div>
+              <div style={{ marginBottom: 5 }}>
+                {[
+                  // factorial shells, named by the lattice they load (Div(n!));
+                  // the factorial identity itself shows in the footer as "Ref shell n!"
+                  [ { l: 'Div(2)', N: 2 }, { l: 'Div(24)', N: 24 },
+                    { l: 'Div(120)', N: 120 }, { l: 'Div(720)', N: 720 }, { l: 'Div(5040)', N: 5040 } ],
+                  // primorial Boolean lattices Q_r = Div(p1..pr), squarefree -> r! chains
+                  [ { l: 'Q\u2082', N: 6 }, { l: 'Q\u2083', N: 30 }, { l: 'Q\u2084', N: 210 },
+                    { l: 'Q\u2085', N: 2310 }, { l: 'Q\u2086', N: 30030 }, { l: 'Q\u2087', N: 510510 } ],
+                  // other lattices
+                  [ { l: '1001', N: 1001 }, { l: '720720', N: 720720 }, { l: '30030\u00B2', N: 901800900 } ],
+                ].map((row, ri) => (
+                  <div key={ri} style={{ display: 'flex', gap: 3, flexWrap: 'wrap', marginBottom: 3 }}>
+                    {row.map(sh => (
+                      <Btn key={sh.N} active={N_raw === sh.N}
+                           onClick={() => { setN_raw(sh.N); setNInput(String(sh.N)); setSamplesM(sh.N); }}
+                           color="#22d3ee" small>
+                        {sh.l}
+                      </Btn>
+                    ))}
+                  </div>
+                ))}
+              </div>
+              <div style={{ padding: '5px 8px', background: '#0c0c16', borderRadius: 4, border: '1px solid #1a1a2e' }}>
+                <span style={{ color: '#22d3ee', fontSize: 16, fontWeight: 'bold' }}>
+                  N = {fmtN(N_raw)}
+                </span>
+                <span style={{ color: '#a78bfa', fontSize: 11, marginLeft: 8 }}>
+                  {factorizeDisplay(N_raw)}
+                </span>
+                <div style={{ fontSize: 9, color: '#666', marginTop: 4, lineHeight: 1.55 }}>
+                  |Div(N)| = τ(N) = <span style={{ color: '#22d3ee' }}>{divList.length}</span>{'  '}
+                  φ(N) = <span style={{ color: '#22d3ee' }}>{fmtN(eulerPhi(absN))}</span>{'  '}
+                  μ(N) = <span style={{ color: mobius(absN) === 0 ? '#666' : (mobius(absN) > 0 ? '#22d3ee' : '#f472b6') }}>{mobius(absN)}</span><br/>
+                  ω(N) = <span style={{ color: '#22d3ee' }}>{B.length}</span>{'  '}
+                  rad(N) = <span style={{ color: '#22d3ee' }}>{fmtN(M)}</span>
+                  {isPrime && <span style={{ color: '#f472b6', marginLeft: 6 }}>· prime</span>}
+                </div>
+              </div>
+            </Sec>
+
+
+
+            {/* §4: Spin */}
+            <Sec title={'Spin (s)'} note={'\u00A74'}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 5 }}>
+                <input type="range" min={0} max={2 * absN} step={Math.max(0.01, absN / 5000)}
+                  value={s} onChange={e => setS(+e.target.value)}
+                  style={{ flex: 1, background: `linear-gradient(90deg, #f472b6 ${s/(2*absN)*100}%, #222 0)` }} />
+                <span style={{ fontSize: 12, color: '#f472b6', minWidth: 50, textAlign: 'right' }}>
+                  {s < 1000 ? s.toFixed(1) : s.toFixed(0)}
+                </span>
+              </div>
+              <div style={{ display: 'flex', gap: 3, flexWrap: 'wrap', marginBottom: 5 }}>
+                {sPresets.map(p => (
+                  <Btn key={p.l} active={Math.abs(s - p.v) < 0.5} onClick={() => setS(p.v)} color="#f472b6" small>{p.l}</Btn>
+                ))}
+              </div>
+              <Btn active={animating} onClick={() => setAnimating(!animating)} color="#f472b6" w="100%">
+                {animating ? '\u25A0 STOP' : '\u25B6 ANIMATE'}
+              </Btn>
+              <div style={{ marginTop: 5 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9, color: '#888', marginBottom: 2 }}>
+                  <span>Speed</span><span style={{ color: '#f472b6' }}>{animSpeed.toFixed(2)}{'\u00D7'}</span>
+                </div>
+                <input type="range" min={0.05} max={3} step={0.05} value={animSpeed}
+                  onChange={e => setAnimSpeed(+e.target.value)}
+                  style={{ width: '100%', background: `linear-gradient(90deg, #f472b6 ${animSpeed/3*100}%, #222 0)` }} />
+                <div style={{ display: 'flex', gap: 3, marginTop: 3 }}>
+                  {[[0.1,'0.1\u00D7'],[0.25,'\u00BC\u00D7'],[0.5,'\u00BD\u00D7'],[1,'1\u00D7'],[2,'2\u00D7']].map(([v,l]) => (
+                    <Btn key={v} active={Math.abs(animSpeed - v) < 0.03} onClick={() => setAnimSpeed(v)} color="#f472b6" small>{l}</Btn>
+                  ))}
+                </div>
+              </div>
+            </Sec>
+
+            {/* §5: A (amplitude) — single-eval engine */}
+              <Sec title={'\u03B1 (amplitude)'} note={'\u00A75'}>
+                <div style={{ marginBottom: 4 }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9, color: '#888', marginBottom: 2 }}>
+                    <span>{'\u03B1'} exponent</span>
+                    <span style={{ color: '#888' }}>{alpha.toFixed(2)}</span>
+                  </div>
+                  <input type="range" min={-2} max={2} step={0.01} value={alpha}
+                    onChange={e => setAlpha(+e.target.value)}
+                    style={{ background: `linear-gradient(90deg, #888 ${(alpha + 2) / 4 * 100}%, #222 0)` }} />
+                  <div style={{ fontSize: 8, color: '#444', marginTop: 1 }}>
+                    Single-eval: |n{'\u2086'}{'\u00B7'}N|{'\u1D45'}. Uniform scaling — invisible under viewport auto-fit.
+                  </div>
+                </div>
+              </Sec>
+            {/* §10.6: Torus walk */}
+            <Sec title="Torus Walk" note={'\u00A710.6 Def 10.4'}>
+              <div style={{ marginBottom: 6 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9, color: '#888', marginBottom: 2 }}>
+                  <span>t{'\u2081'} (winds)</span><span style={{ color: '#22d3ee' }}>{t1}</span>
+                </div>
+                <input type="range" min={-5} max={5} step={1} value={t1}
+                  onChange={e => setT1(+e.target.value)}
+                  style={{ background: `linear-gradient(90deg, #22d3ee ${(t1+5)/10*100}%, #222 0)` }} />
+              </div>
+              <div style={{ marginBottom: 6 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9, color: '#888', marginBottom: 2 }}>
+                  <span>t{'\u2082'} (steps)</span>
+                  <input type="number" value={t2}
+                    onChange={e => setT2(parseInt(e.target.value) || 0)}
+                    style={{ width: 60, background: '#0c0c16', border: '1px solid #2a2a3e',
+                             borderRadius: 3, color: '#f472b6', fontSize: 11, textAlign: 'center', padding: '2px' }} />
+                </div>
+                <input type="range" min={-Math.min(50, Math.ceil(absN/2))} max={Math.min(50, Math.ceil(absN/2))}
+                  step={1} value={Math.max(-50, Math.min(50, t2))}
+                  onChange={e => setT2(+e.target.value)}
+                  style={{ background: `linear-gradient(90deg, #f472b6 ${(t2+50)/100*100}%, #222 0)` }} />
+              </div>
+              <div style={{ display: 'flex', gap: 3, flexWrap: 'wrap' }}>
+                {torusPresets.map(p => (
+                  <Btn key={p.l} active={t1 === p.a && t2 === p.b}
+                    onClick={() => { setT1(p.a); setT2(p.b); }} color="#fbbf24" small>{p.l}</Btn>
+                ))}
+              </div>
+              <div style={{ fontSize: 9, color: '#555', marginTop: 3 }}>
+                k{'\u2081'}={fmtN(cur.k1)} | k{'\u2082'}={fmtN(cur.k2)} |
+                Period={isFinite(envPeriod) ? envPeriod.toFixed(1) : '\u221E'} | Pinches={pinchCount}
+              </div>
+            </Sec>
+
+            {/* §4.4: Chirality */}
+            <Sec title="Chirality" note="Thm 4.6">
+              <div style={{ display: 'flex', gap: 4, marginBottom: 3 }}>
+                {[[-1, 'Left (\u22121)'], [0, 'Off (0)'], [1, 'Right (+1)']].map(([v, lbl]) => (
+                  <Btn key={v} active={n6 === v} onClick={() => setN6(v)} color="#f97316" w="33%">{lbl}</Btn>
+                ))}
+              </div>
+              <div style={{ fontSize: 9, color: '#555' }}>Natural: ({'\u2212'}1)^{fmtN(N)} = {naturalChirality}</div>
+            </Sec>
+
+            {/* §8.3: Primorial Classification (Theorem 8.8) */}
+            <Sec title={'\u00A78.3 Classification'} note={`Thm 8.8 \u2022 \u220FB=${M}`}>
+              <div style={{ display: 'flex', gap: 6, alignItems: 'center', marginBottom: 6 }}>
+                <label style={{ display: 'flex', gap: 4, alignItems: 'center', cursor: 'pointer', fontSize: 10 }}>
+                  <input type="checkbox" checked={showClassification} onChange={e => setShowClassification(e.target.checked)} />
+                  <span style={{ color: showClassification ? '#4ade80' : '#666' }}>
+                    𝒫(B) panel
+                  </span>
+                </label>
+                <span style={{ fontSize: 8, color: '#555' }}>
+                  B = {'{'}{B.join(',')}{'}'}  M = {M}
+                </span>
+              </div>
+              <button onClick={() => setShowGrid(true)} style={{
+                width: '100%', padding: '6px 10px', background: '#12121a',
+                border: '1px solid #2a2a3e', borderRadius: 4, color: '#22d3ee',
+                fontSize: 10, cursor: 'pointer', fontFamily: 'inherit',
+                letterSpacing: 1, marginBottom: 6,
+              }}>
+                {'\u25A6'} OPEN PERIODIC TABLE ({1 << B.length} classes)
+              </button>
+              {showClassification && (
+                <PrimorialPanel N={N} N0={N0} k={k} M={M} B={B} samplesM={samplesM} samplesAuto={samplesAuto} />
+              )}
+            </Sec>
+
+            {/* Display */}
+            <Sec title="Display">
+              <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
+                <label style={{ display: 'flex', gap: 4, alignItems: 'center', cursor: 'pointer', fontSize: 10 }}>
+                  <input type="checkbox" checked={showZ} onChange={e => setShowZ(e.target.checked)} />
+                  <span style={{ color: '#4ade80' }}>Z</span>
+                </label>
+                <label style={{ display: 'flex', gap: 4, alignItems: 'center', cursor: 'pointer', fontSize: 10 }}>
+                  <input type="checkbox" checked={showC} onChange={e => setShowC(e.target.checked)} />
+                  <span style={{ color: '#f97316' }}>C</span>
+                </label>
+                <label style={{ display: 'flex', gap: 4, alignItems: 'center', cursor: 'pointer', fontSize: 10 }}>
+                  <input type="checkbox" checked={showArms} onChange={e => setShowArms(e.target.checked)} />
+                  <span style={{ color: '#888' }}>Arms</span>
+                </label>
+              </div>
+              <div style={{ display: 'flex', gap: 10, marginTop: 4 }}>
+                <label style={{ display: 'flex', gap: 4, alignItems: 'center', cursor: 'pointer', fontSize: 10 }}>
+                  <input type="checkbox" checked={showEven} onChange={e => setShowEven(e.target.checked)} />
+                  <span style={{ color: '#22d3ee' }}>Even</span>
+                </label>
+                <label style={{ display: 'flex', gap: 4, alignItems: 'center', cursor: 'pointer', fontSize: 10 }}>
+                  <input type="checkbox" checked={showOdd} onChange={e => setShowOdd(e.target.checked)} />
+                  <span style={{ color: '#f472b6' }}>Odd</span>
+                </label>
+                <span style={{ fontSize: 9, color: '#555' }}>parity split</span>
+              </div>
+            </Sec>
+
+            {/* §8: Sampling */}
+            <Sec title="Samples (M)" note="Thm 8.1/8.8">
+              <div style={{ display: 'flex', gap: 6, alignItems: 'center', marginBottom: 6 }}>
+                <label style={{ display: 'flex', gap: 4, alignItems: 'center', cursor: 'pointer', fontSize: 10 }}>
+                  <input type="checkbox" checked={samplesAuto} onChange={e => setSamplesAuto(e.target.checked)} />
+                  <span style={{ color: samplesAuto ? '#4ade80' : '#666' }}>Auto</span>
+                </label>
+                {!samplesAuto && (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: 3 }}>
+                    <button onClick={() => setSamplesM(m => Math.max(3, m - 1))}
+                      style={{ width: 18, height: 18, background: '#12121a', border: '1px solid #2a2a3e',
+                               borderRadius: 3, color: '#fbbf24', cursor: 'pointer', fontSize: 12,
+                               lineHeight: '16px', padding: 0, fontFamily: 'inherit' }}>{'\u25BC'}</button>
+                    <input type="number" value={samplesM} min={3} max={1000000000}
+                      onChange={e => {
+                        const v = parseInt(e.target.value);
+                        setSamplesM(Number.isFinite(v) ? Math.max(3, Math.min(1000000000, v)) : 3);
+                      }}
+                      style={{ width: 60, background: '#0c0c16', border: '1px solid #2a2a3e',
+                               borderRadius: 3, color: '#fbbf24', fontSize: 11, textAlign: 'center', padding: '2px' }} />
+                    <button onClick={() => setSamplesM(m => Math.min(1000000000, m + 1))}
+                      style={{ width: 18, height: 18, background: '#12121a', border: '1px solid #2a2a3e',
+                               borderRadius: 3, color: '#fbbf24', cursor: 'pointer', fontSize: 12,
+                               lineHeight: '16px', padding: 0, fontFamily: 'inherit' }}>{'\u25B2'}</button>
+                  </div>
+                )}
+              </div>
+              {!samplesAuto && <>
+                <input type="range" min={3} max={Math.min(2000, absN * 2)} step={1} value={Math.min(samplesM, absN * 2)}
+                  onChange={e => setSamplesM(+e.target.value)}
+                  style={{ width: '100%', marginBottom: 4,
+                           background: `linear-gradient(90deg, #fbbf24 ${samplesM/Math.min(2000,absN*2)*100}%, #222 0)` }} />
+                <div style={{ display: 'flex', gap: 3, flexWrap: 'wrap', marginBottom: 4 }}>
+                  {[3, 4, 5, 6, 7, 8, 12, 24, 30, 60, 120, 360].filter(v => v <= absN * 2).map(v => (
+                    <Btn key={v} active={samplesM === v} onClick={() => setSamplesM(v)} color="#fbbf24" small>{v}</Btn>
+                  ))}
+                </div>
+                {(() => {
+                  const g = gcd(samplesM, absN);
+                  const isDivisor = absN % samplesM === 0;
+                  const isCoprime = g === 1;
+                  const sigma = sharedPrimeSet(samplesM, absN);
+                  return (
+                    <div style={{ fontSize: 9, color: '#888' }}>
+                      M={samplesM} | gcd(M,N)={g} | {'\u03A3'}={sigmaLabel(sigma)}
+                      {isDivisor && <span style={{ color: '#4ade80' }}> | M|N {'\u2192'} regular {samplesM}-gon</span>}
+                      {isCoprime && !isDivisor && <span style={{ color: '#22d3ee' }}> | coprime {'\u2192'} dense star</span>}
+                      {!isDivisor && !isCoprime && <span style={{ color: '#fbbf24' }}> | star {'{'}{samplesM/g}{'}'}</span>}
+                      {samplesM > MAX_TRACE_POINTS && <span style={{ color: '#888' }}> | SVG trace capped at {MAX_TRACE_POINTS.toLocaleString()} pts</span>}
+                    </div>
+                  );
+                })()}
+              </>}
+            </Sec>
+
+            {/* §5.5: Signal / E_q */}
+            <Sec title={'Signal \u2192 E_q'} note="Def 5.5">
+              <div style={{ display: 'flex', gap: 3, flexWrap: 'wrap', marginBottom: 4 }}>
+                <Btn active={signalType === 'none'} onClick={() => setSignalType('none')} color="#a78bfa" small>Off</Btn>
+                <Btn active={signalType === 'period-5'} onClick={() => setSignalType('period-5')} color="#a78bfa" small>P=5</Btn>
+                <Btn active={signalType === 'period-6'} onClick={() => setSignalType('period-6')} color="#a78bfa" small>P=6</Btn>
+                <Btn active={signalType === 'period-12'} onClick={() => setSignalType('period-12')} color="#a78bfa" small>P=12</Btn>
+                <Btn active={signalType === 'period-30'} onClick={() => setSignalType('period-30')} color="#a78bfa" small>P=30</Btn>
+              </div>
+              <div style={{ display: 'flex', gap: 3, flexWrap: 'wrap', marginBottom: 4 }}>
+                <Btn active={signalType === 'impulse'} onClick={() => setSignalType('impulse')} color="#a78bfa" small>Impulse</Btn>
+                <Btn active={signalType === 'step'} onClick={() => setSignalType('step')} color="#a78bfa" small>Step</Btn>
+                <Btn active={signalType === 'ramp'} onClick={() => setSignalType('ramp')} color="#a78bfa" small>Ramp</Btn>
+                <Btn active={signalType === 'noise'} onClick={() => setSignalType('noise')} color="#a78bfa" small>Noise</Btn>
+              </div>
+              <div style={{ display: 'flex', gap: 3, flexWrap: 'wrap', marginBottom: 4 }}>
+                <Btn active={signalType === 'prime-indicator'} onClick={() => setSignalType('prime-indicator')} color="#a78bfa" small>Primes</Btn>
+                <Btn active={signalType === 'mobius-fn'} onClick={() => setSignalType('mobius-fn')} color="#a78bfa" small>{'\u03BC'}(n)</Btn>
+                <Btn active={signalType === 'euler-phi'} onClick={() => setSignalType('euler-phi')} color="#a78bfa" small>{'\u03C6'}(n)</Btn>
+                <Btn active={signalType === 'custom'} onClick={() => setSignalType('custom')} color="#a78bfa" small>Custom</Btn>
+              </div>
+              {signalType === 'custom' && (
+                <textarea value={signalCustom} onChange={e => setSignalCustom(e.target.value)}
+                  placeholder="1, 0, -1, 0.5, ..."
+                  style={{ width: '100%', height: 36, background: '#0c0c16', border: '1px solid #2a2a3e',
+                           borderRadius: 3, color: '#a78bfa', fontSize: 10, padding: 4, fontFamily: 'inherit',
+                           resize: 'vertical', marginBottom: 4 }} />
+              )}
+              {signalType !== 'none' && signalType !== 'custom' && (
+                <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+                  <span style={{ fontSize: 9, color: '#666' }}>L =</span>
+                  <input type="number" value={signalLength || Math.abs(N)} min={1} max={1000000000}
+                    onChange={e => setSignalLength(Math.max(0, parseInt(e.target.value) || 0))}
+                    style={{ width: 95, background: '#0c0c16', border: '1px solid #2a2a3e',
+                             borderRadius: 3, color: '#a78bfa', fontSize: 10, textAlign: 'center', padding: '2px' }} />
+                  <span style={{ fontSize: 8, color: '#555' }}>signal length (0=N)</span>
+                </div>
+              )}
+              {signal && spectrum && engineMode !== 'walk' && (
+                <div style={{ fontSize: 9, color: '#888' }}>
+                  L={signalL} samples | {divData.divs.length} divisors | {'\u03A3'}E_q = {spectrum.totalE.toFixed(3)}{spectrum.streamed ? ` | streamed ${spectrum.signatureCount || ''} sig` : ''}{signalType === 'prime-indicator' ? ' | π(L) shortcut' : ''}
+                  {dualSpectrum && ` + ${dualInfo.divsPr.length - 1} CRT`}
+                </div>
+              )}
+              {engineMode === 'walk' && walkSpectrum && (
+                <div style={{ fontSize: 9, color: '#a78bfa' }}>
+                  Walk {'\u0394'}Z: L={walkSpectrum.L} increments | {divData.divs.length} divisors | {'\u03A3'}E_q = {walkSpectrum.totalE.toFixed(3)}
+                  {walkDualSpectrum && ` + ${dualInfo.divsPr.length - 1} CRT`}
+                </div>
+              )}
+            </Sec>
+
+            {/* §10.7: CRT Dual-Lattice Extension */}
+            <Sec title={'\u00A710.7 CRT Duality'} note="Thm 10.11\u201310.14">
+                <div style={{ padding: '6px 8px', background: showCRT ? '#1a0c0c' : '#0c0c16',
+                              borderRadius: 4, border: `1px solid ${showCRT ? '#ff6b6b44' : '#1a1a2e'}` }}>
+                  <div style={{ display: 'flex', gap: 6, alignItems: 'center', marginBottom: showCRT ? 6 : 0 }}>
+                    <label style={{ display: 'flex', gap: 4, alignItems: 'center', cursor: 'pointer', fontSize: 10 }}>
+                      <input type="checkbox" checked={showCRT} onChange={e => setShowCRT(e.target.checked)} />
+                      <span style={{ color: showCRT ? '#ff6b6b' : '#666' }}>Dual E_q probes</span>
+                    </label>
+                    {showCRT && (
+                      <span style={{ fontSize: 8, color: '#ff6b6b', fontStyle: 'italic' }}>
+                        {dualInfo.divsPr.length - 1} orthogonal layers
+                      </span>
+                    )}
+                  </div>
+                  {showCRT && (
+                    <>
+                      {/* Basis–Complement display */}
+                      <div style={{ fontSize: 9, color: '#888', marginBottom: 3 }}>
+                        <span style={{ color: '#4ade80' }}>B = {'{'}{B.join(',')}{'}'}  </span>
+                        <span style={{ color: '#ff6b6b' }}>B{'\u2032'} = {'{'}{dualInfo.Bp.join(',')}{'}'}  </span>
+                      </div>
+                      <div style={{ fontSize: 9, color: '#888', marginBottom: 3 }}>
+                        P{'\u2083'} = {dualInfo.Bp.join('\u00B7')} = {dualInfo.Pr}
+                        {' · '}{'\u03C6'}(P{'\u2083'}) = {dualInfo.phiPr}
+                        {dualInfo.phiPr === N0 && factorialIndex !== null && <span style={{ color: '#4ade80' }}> = {factorialIndex}! {'\u2713'}</span>}
+                      </div>
+                      {/* Frobenius bridge (Theorem 8.22) — strict regime label */}
+                      <div style={{ fontSize: 9, color: '#888', marginBottom: 3 }}>
+                        <span style={{ color: dualInfo.canonicalRegime ? '#4ade80' : '#fbbf24' }}>
+                          [{dualInfo.canonicalRegime ? 'CANONICAL' : 'GENERIC'}]
+                        </span>{' '}
+                        F(B{'\u2032'}) = {dualInfo.frobN === null ? '\u2014' : dualInfo.frobN}
+                        {dualInfo.thm822Holds && (
+                          <span style={{ color: '#4ade80' }}> = {'\u220F'}B = {B.join('\u00B7')} {'\u2713'} (Thm 8.22)</span>
+                        )}
+                        {dualInfo.sgInfo.computable && (
+                          <>{' · genus '}{dualInfo.sgInfo.genus}{' · cond '}{dualInfo.sgInfo.conductor}</>
+                        )}
+                        {!dualInfo.canonicalRegime && (
+                          <span style={{ color: '#666' }}> · computed semigroup, out of canonical theorem range</span>
+                        )}
+                      </div>
+                      {/* Semigroup coverage (Remark 8.24) */}
+                      {sgCoverage && sgCoverage.computable && isFactorial && (
+                        <div style={{ fontSize: 9, color: '#888', marginBottom: 3 }}>
+                          Semigroup: {sgCoverage.representable}/{sgCoverage.total} coprimes
+                          {' ('}{(sgCoverage.representable/sgCoverage.total*100).toFixed(1)}%)
+                          {sgCoverage.nonRep.length > 0 && (
+                            <span style={{ color: '#666' }}> gaps at {'{'}{sgCoverage.nonRep.join(',')}{'}'}  </span>
+                          )}
+                        </div>
+                      )}
+                      {/* Dual spectrum summary */}
+                      {activeDualSpectrum && (
+                        <div style={{ fontSize: 9, color: '#888', marginTop: 4, padding: '3px 5px',
+                                      background: '#120c0c', borderRadius: 3, border: '1px solid #2a1a1a' }}>
+                          <div style={{ color: '#ff6b6b', fontSize: 8, letterSpacing: 0.5, marginBottom: 2 }}>
+                            GENERATOR SCREEN (Thm 10.12 · 14 DFT evals)
+                          </div>
+                          {dualInfo.Bp.map(p => {
+                            const eq = activeDualSpectrum.Eq[p] || 0;
+                            const active = eq > 1e-8;
+                            return (
+                              <div key={p} style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9 }}>
+                                <span style={{ color: active ? '#ff6b6b' : '#444' }}>E{'\u2099'}(q={p})</span>
+                                <span style={{ color: active ? '#fff' : '#333' }}>{eq.toFixed(4)}</span>
+                                <span style={{ color: active ? '#ff6b6b' : '#333', fontSize: 8 }}>
+                                  {active ? '\u25CF active' : '\u25CB silent'}
+                                </span>
+                              </div>
+                            );
+                          })}
+                          <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: 9, marginTop: 2,
+                                        borderTop: '1px solid #2a1a1a', paddingTop: 2 }}>
+                            <span style={{ color: '#888' }}>{'\u03A3'}E_q(dual)</span>
+                            <span style={{ color: '#ff6b6b' }}>{activeDualSpectrum.totalE.toFixed(4)}</span>
+                          </div>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              </Sec>
+
+
+            <div style={{ height: 1, background: '#1a1a2e', margin: '8px 0' }} />
+
+            {/* ─── METRICS ──────────────────────────────────────── */}
+            <Met label={"|Z(s)| \u2014 envelope"} value={cur.Zm} note="Thm 4.3/10.5" color="#4ade80"
+              sub={`2|N\u1D45|\u00B7|cos(t\u2082\u03C0s/N)| = ${(2*Math.abs(cur.amp)*Math.abs(Math.cos(Math.abs(t2)*PI*s/absN))).toFixed(4)}`} />
+            <Met label={"|C(s)| \u2014 clinamen"} value={cur.Cm} note="Thm 4.8/10.5" color="#f97316"
+              sub={`2|N\u1D45|\u00B7|sin(t\u2082\u03C0s/N)| = ${(2*Math.abs(cur.amp)*Math.abs(Math.sin(Math.abs(t2)*PI*s/absN))).toFixed(4)}`} />
+            <Met label={"|Z|\u00B2 + |C|\u00B2"} value={cur.unitL} note="Thm 4.9/8.4(ii)" 
+              color={Math.abs(cur.unitL - cur.unitR) < 1e-6 ? '#4ade80' : '#ef4444'}
+              sub={`4\u00B7(n\u2086\u00B7N)^{2\u03B1} = ${cur.unitR.toFixed(4)} ${Math.abs(cur.unitL - cur.unitR) < 1e-6 ? '\u2713' : '\u2717'}${!isFactorial ? ' (Thm 8.4)' : ''}`} />
+
+            <Met label="First pinch" value={isFinite(firstPinch) ? firstPinch.toFixed(2) : '\u221E'}
+              note="Thm 4.5/10.7" color="#fbbf24"
+              sub={`s = N/(2t\u2082) | Period = ${isFinite(envPeriod) ? envPeriod.toFixed(1) : '\u221E'}`} />
+
+            <div style={{ padding: '5px 8px', background: '#0c0c16', borderRadius: 4, border: '1px solid #1a1a2e', marginTop: 3 }}>
+              <div style={{ fontSize: 9, color: '#666', marginBottom: 2 }}>
+                {isFactorial ? 'COPRIMALITY (Thm 2.3)' : isPrime ? 'COPRIMALITY (Prime)' : 'COPRIMALITY (Sub-shell)'}
+              </div>
+              <div style={{ fontSize: 10, color: isFactorial || isPrime ? '#4ade80' : '#f97316' }}>
+                {isFactorial
+                  ? <>gcd(p, {factorialIndex !== null ? factorialIndex + '!' : fmtN(N0)}) = 1 {'\u27FA'} p {'>'} {k}</>
+                  : isPrime
+                    ? <>N = {fmtN(absN)} prime {'\u27FA'} all p {'<'} N coprime</>
+                    : <>N = {fmtN(absN)} = {factorizeDisplay(absN)} — gcd required</>
+                }
+              </div>
+              <div style={{ fontSize: 9, color: '#555', marginTop: 1 }}>
+                {isFactorial 
+                  ? 'O(1) — single comparison, zero division' 
+                  : isPrime 
+                    ? 'O(1) — primality already known from d(N) = 2'
+                    : 'Remark 8.5 — structural shortcuts do not transfer'}
+              </div>
+            </div>
+          </div>
+
+          {/* ─── MAIN VISUALIZATION ──────────────────────────── */}
+          <div style={{ flex: isMobile ? 'none' : 1,
+                        width: isMobile ? '100%' : undefined,
+                        order: isMobile ? 1 : 0,
+                        display: 'flex', flexDirection: 'column',
+                        overflow: isMobile ? 'visible' : 'hidden' }}>
+
+            {/* Complex plane */}
+            <div style={{ flex: isMobile ? 'none' : 1,
+                          height: isMobile ? 'min(96vw, 70vh)' : undefined,
+                          position: 'relative', background: '#06060a', overflow: 'hidden' }}>
+              <svg ref={svgRef} width="100%" height="100%" viewBox={`0 0 ${W} ${H}`}
+                style={{ display: 'block', cursor: dragging ? 'grabbing' : (is3D ? 'move' : 'grab') }}
+                onMouseDown={handleMouseDown} onMouseMove={handleMouseMove}
+                onMouseUp={handleMouseUp} onMouseLeave={handleMouseUp}>
+                <defs>
+                  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+                    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#0e0e18" strokeWidth="0.5" />
+                  </pattern>
+                </defs>
+                <rect width={W} height={H} fill="url(#grid)" />
+
+                <g transform={`translate(${cx + panX}, ${cy + panY}) scale(${zoom}) translate(${-cx}, ${-cy})`}>
+                <line x1={0} y1={cy} x2={W} y2={cy} stroke="#1a1a2e" strokeWidth={1} />
+                <line x1={cx} y1={0} x2={cx} y2={H} stroke="#1a1a2e" strokeWidth={1} />
+
+                {/* Phase 1.5: 3D walk rendering — when tilt > 0 in walk mode */}
+                {is3D && cur.walkPath && cur.walkPath.length > 1 && (() => {
+                  const wAmp = cur.amp || 1;
+                  const wMaxR = cur.walkMaxR || 1;
+                  // z1 walk (cyan)
+                  const z1d = walkToPath3D(cur.walkPath, wAmp, wMaxR, 'z1', cx, cy, sc, camRotation, camTilt);
+                  // z2 walk (pink)
+                  const z2d = walkToPath3D(cur.walkPath, wAmp, wMaxR, 'z2', cx, cy, sc, camRotation, camTilt);
+                  // envelope walk (green)
+                  const zEd = walkEnvToPath3D(cur.walkPath, wAmp, wMaxR, cx, cy, sc, camRotation, camTilt);
+                  // Walk endpoint dots projected into 3D
+                  const last = cur.walkPath[cur.walkPath.length - 1];
+                  const zScale = wMaxR > 1e-9 ? wMaxR * 0.6 : 1;
+                  const endCoh = (last.coherence - 0.5) * zScale;
+                  const [z1px, z1py] = project3D(wAmp * last.z1r, wAmp * last.z1i, endCoh, camRotation, camTilt);
+                  const [z2px, z2py] = project3D(wAmp * last.z2r, wAmp * last.z2i, endCoh, camRotation, camTilt);
+                  const [Zpx, Zpy] = project3D(wAmp * last.Zr, wAmp * last.Zi, endCoh, camRotation, camTilt);
+                  // Ground plane shadow (coherence = 0, faint)
+                  const z1gd = walkToPath3D(cur.walkPath.map(p => ({...p, coherence: 0.5})), wAmp, wMaxR, 'z1', cx, cy, sc, camRotation, camTilt);
+                  const z2gd = walkToPath3D(cur.walkPath.map(p => ({...p, coherence: 0.5})), wAmp, wMaxR, 'z2', cx, cy, sc, camRotation, camTilt);
+                  // Vertical axis indicator
+                  const [ax0x, ax0y] = project3D(0, 0, -zScale * 0.5, camRotation, camTilt);
+                  const [ax1x, ax1y] = project3D(0, 0, zScale * 0.5, camRotation, camTilt);
+                  return (
+                    <>
+                      {/* Ground shadows */}
+                      <path d={z1gd} fill="none" stroke="#22d3ee" strokeWidth={0.5} opacity={0.15} />
+                      <path d={z2gd} fill="none" stroke="#f472b6" strokeWidth={0.5} opacity={0.12} />
+                      {/* Coherence axis */}
+                      <line x1={cx + ax0x * sc} y1={cy - ax0y * sc} x2={cx + ax1x * sc} y2={cy - ax1y * sc}
+                        stroke="#a78bfa" strokeWidth={0.8} opacity={0.4} strokeDasharray="4,4" />
+                      <text x={cx + ax1x * sc + 4} y={cy - ax1y * sc - 4} fill="#a78bfa" fontSize={8} opacity={0.6}>coh</text>
+                      {/* z1 walk (cyan) */}
+                      <path d={z1d} fill="none" stroke="#22d3ee" strokeWidth={1.5} opacity={0.8} />
+                      {/* z2 walk (pink) */}
+                      <path d={z2d} fill="none" stroke="#f472b6" strokeWidth={1.2} opacity={0.7} />
+                      {/* Envelope walk (green) */}
+                      {showZ && <path d={zEd} fill="none" stroke="#4ade80" strokeWidth={1} opacity={0.5} />}
+                      {/* Endpoint dots */}
+                      <circle cx={cx + z1px * sc} cy={cy - z1py * sc} r={4} fill="#22d3ee" stroke="#000" strokeWidth={1} />
+                      <circle cx={cx + z2px * sc} cy={cy - z2py * sc} r={4} fill="#f472b6" stroke="#000" strokeWidth={1} />
+                      {showZ && <circle cx={cx + Zpx * sc} cy={cy - Zpy * sc} r={5} fill="#4ade80" stroke="#fff" strokeWidth={1.5} />}
+                      {/* Labels */}
+                      <text x={cx + z1px * sc + 8} y={cy - z1py * sc - 6} fill="#22d3ee" fontSize={9}>z{'\u2081'}</text>
+                      <text x={cx + z2px * sc + 8} y={cy - z2py * sc - 6} fill="#f472b6" fontSize={9}>z{'\u2082'}</text>
+                    </>
+                  );
+                })()}
+
+                {/* Existing 2D traces — hidden when 3D walk is active */}
+                {!is3D && <>
+
+                {/* Trilattice traces */}
+                {showTri && triTraces && triTraces.map((tt, i) => (
+                  <React.Fragment key={i}>
+                    {showEven && showOdd && showZ && <path d={toPath(tt.zT, cx, cy, sc)} fill="none"
+                      stroke={TRI_COLORS[i]} strokeWidth={1} opacity={0.4} />}
+                    {showEven && showOdd && showC && <path d={toPath(tt.cT, cx, cy, sc)} fill="none"
+                      stroke={TRI_COLORS[i]} strokeWidth={0.8} opacity={0.25} strokeDasharray="4,3" />}
+                    {showEven && !showOdd && showZ && <path d={toPath(tt.zEven, cx, cy, sc)} fill="none"
+                      stroke={TRI_COLORS[i]} strokeWidth={1} opacity={0.5} />}
+                    {showEven && !showOdd && showC && <path d={toPath(tt.cEven, cx, cy, sc)} fill="none"
+                      stroke={TRI_COLORS[i]} strokeWidth={0.8} opacity={0.35} strokeDasharray="4,3" />}
+                    {!showEven && showOdd && showZ && <path d={toPath(tt.zOdd, cx, cy, sc)} fill="none"
+                      stroke={TRI_COLORS[i]} strokeWidth={1} opacity={0.5} />}
+                    {!showEven && showOdd && showC && <path d={toPath(tt.cOdd, cx, cy, sc)} fill="none"
+                      stroke={TRI_COLORS[i]} strokeWidth={0.8} opacity={0.35} strokeDasharray="4,3" />}
+                  </React.Fragment>
+                ))}
+
+                {/* Main traces */}
+                {!showTri && showEven && showOdd && showZ && <path d={toPath(mainTrace.zT, cx, cy, sc)} fill="none" stroke="#4ade80" strokeWidth={1.2} opacity={0.6} />}
+                {!showTri && showEven && showOdd && showC && <path d={toPath(mainTrace.cT, cx, cy, sc)} fill="none" stroke="#f97316" strokeWidth={1.2} opacity={0.6} />}
+                {!showTri && showEven && !showOdd && showZ && <path d={toPath(mainTrace.zEven, cx, cy, sc)} fill="none" stroke="#22d3ee" strokeWidth={1.2} opacity={0.7} />}
+                {!showTri && showEven && !showOdd && showC && <path d={toPath(mainTrace.cEven, cx, cy, sc)} fill="none" stroke="#22d3ee" strokeWidth={1} opacity={0.5} strokeDasharray="4,2" />}
+                {!showTri && !showEven && showOdd && showZ && <path d={toPath(mainTrace.zOdd, cx, cy, sc)} fill="none" stroke="#f472b6" strokeWidth={1.2} opacity={0.7} />}
+                {!showTri && !showEven && showOdd && showC && <path d={toPath(mainTrace.cOdd, cx, cy, sc)} fill="none" stroke="#f472b6" strokeWidth={1} opacity={0.5} strokeDasharray="4,2" />}
+                {showTri && phi3enabled && n7 !== 0 && showZ && (
+                  <path d={toPath(mainTrace.zT, cx, cy, sc)} fill="none" stroke="#f97316" strokeWidth={1} opacity={0.5} strokeDasharray="6,3" />
+                )}
+
+                {/* Phase 2: Dual chirality — Kakeya needles and mirror walk */}
+                {!showTri && showBothChiralities && curDual && curDual.points.length > 1 && (() => {
+                  const a = curDual.amp || 1;
+                  const pts = curDual.points;
+                  const last = pts[pts.length - 1];
+                  // Build mirror chirality z1 path
+                  let mirrorD = '';
+                  for (let i = 0; i < pts.length; i++) {
+                    const p = pts[i];
+                    mirrorD += (i === 0 ? 'M' : 'L') +
+                      (cx + p.minus.z1r * a * sc).toFixed(1) + ',' +
+                      (cy - p.minus.z1i * a * sc).toFixed(1);
+                  }
+                  // Build U(1) midpoint trail
+                  let u1D = '';
+                  for (let i = 0; i < pts.length; i++) {
+                    const p = pts[i];
+                    u1D += (i === 0 ? 'M' : 'L') +
+                      (cx + p.kakeya.u1r * a * sc).toFixed(1) + ',' +
+                      (cy - p.kakeya.u1i * a * sc).toFixed(1);
+                  }
+                  return (
+                    <>
+                      {/* Kakeya needles — yellow lines between plus/minus z1 at each step */}
+                      <g opacity={0.25}>
+                        {pts.map((p, i) => {
+                          const gap = p.kakeya.gap * a * sc;
+                          if (gap < 2) return null;
+                          return <line key={i}
+                            x1={cx + p.plus.z1r * a * sc} y1={cy - p.plus.z1i * a * sc}
+                            x2={cx + p.minus.z1r * a * sc} y2={cy - p.minus.z1i * a * sc}
+                            stroke="#FFE66D" strokeWidth={1} />;
+                        })}
+                      </g>
+                      {/* Mirror chirality z1 path (green) */}
+                      <path d={mirrorD} fill="none" stroke="#00FFAA" strokeWidth={1.5} opacity={0.6} />
+                      {/* U(1) midpoint trail (magenta) */}
+                      <path d={u1D} fill="none" stroke="#FF00FF" strokeWidth={2} opacity={0.8} />
+                      {/* Current Kakeya needle (thick yellow) */}
+                      <line
+                        x1={cx + last.plus.z1r * a * sc} y1={cy - last.plus.z1i * a * sc}
+                        x2={cx + last.minus.z1r * a * sc} y2={cy - last.minus.z1i * a * sc}
+                        stroke="#FFE66D" strokeWidth={3} opacity={0.8} />
+                      {/* U(1) midpoint diamond (magenta) */}
+                      <g transform={`translate(${cx + last.kakeya.u1r * a * sc}, ${cy - last.kakeya.u1i * a * sc})`}>
+                        <polygon points="0,-6 6,0 0,6 -6,0" fill="#FF00FF" stroke="#fff" strokeWidth={1.5} />
+                      </g>
+                      {/* Mirror chirality z1 endpoint dot */}
+                      <circle cx={cx + last.minus.z1r * a * sc} cy={cy - last.minus.z1i * a * sc}
+                        r={4} fill="#00FFAA" stroke="#fff" strokeWidth={1} />
+                    </>
+                  );
+                })()}
+
+                {/* Phasor arms — hide when trilattice overlay is active */}
+                {!showTri && showArms && n6 !== 0 && <>
+                  <line x1={cx} y1={cy} x2={sx(cur.z1r)} y2={sy(cur.z1i)} stroke="#22d3ee" strokeWidth={1} opacity={0.7} />
+                  <line x1={cx} y1={cy} x2={sx(cur.z2r)} y2={sy(cur.z2i)} stroke="#f472b6" strokeWidth={1} opacity={0.7} />
+                  <line x1={sx(cur.z1r)} y1={sy(cur.z1i)} x2={sx(cur.Zr)} y2={sy(cur.Zi)} stroke="#22d3ee" strokeWidth={0.5} strokeDasharray="3,3" opacity={0.3} />
+                  <line x1={sx(cur.z2r)} y1={sy(cur.z2i)} x2={sx(cur.Zr)} y2={sy(cur.Zi)} stroke="#f472b6" strokeWidth={0.5} strokeDasharray="3,3" opacity={0.3} />
+                </>}
+
+                {/* Trilattice current Z and C dots */}
+                {showTri && triCur && tri.map((m, i) => (
+                  <React.Fragment key={`tri-dot-${i}`}>
+                    {showZ && <circle cx={sx(triCur[i].Zr)} cy={sy(triCur[i].Zi)} r={5}
+                      fill={TRI_COLORS[i]} stroke="#000" strokeWidth={1} opacity={0.8} />}
+                    {showZ && <text x={sx(triCur[i].Zr) + 8} y={sy(triCur[i].Zi) - 6}
+                      fill={TRI_COLORS[i]} fontSize={9} fontWeight="bold">{m.label}</text>}
+                    {showC && <circle cx={sx(triCur[i].Cr)} cy={sy(triCur[i].Ci)} r={4}
+                      fill={TRI_COLORS[i]} stroke="#000" strokeWidth={1} opacity={0.5} />}
+                    {showC && <text x={sx(triCur[i].Cr) + 8} y={sy(triCur[i].Ci) - 6}
+                      fill={TRI_COLORS[i]} fontSize={8} opacity={0.6}>{m.label}c</text>}
+                  </React.Fragment>
+                ))}
+
+                {/* Main dots — hide when trilattice overlay is active */}
+                {!showTri && (
+                  <>
+                    <circle cx={sx(cur.z1r)} cy={sy(cur.z1i)} r={4} fill="#22d3ee" stroke="#000" strokeWidth={1} />
+                    <circle cx={sx(cur.z2r)} cy={sy(cur.z2i)} r={4} fill="#f472b6" stroke="#000" strokeWidth={1} />
+                    {showZ && <circle cx={sx(cur.Zr)} cy={sy(cur.Zi)} r={6} fill="#4ade80" stroke="#fff" strokeWidth={1.5} />}
+                    {showC && <circle cx={sx(cur.Cr)} cy={sy(cur.Ci)} r={6} fill="#f97316" stroke="#fff" strokeWidth={1.5} />}
+                  </>
+                )}
+                </>}
+                {/* end of 2D traces conditional */}
+
+                <circle cx={cx} cy={cy} r={2.5} fill="#888" />
+
+                {/* Labels — hide when trilattice overlay is active or 3D walk active */}
+                {!is3D && !showTri && (
+                  <>
+                    <text x={sx(cur.z1r) + 8} y={sy(cur.z1i) - 6} fill="#22d3ee" fontSize={9}>z{'\u2081'}</text>
+                    <text x={sx(cur.z2r) + 8} y={sy(cur.z2i) - 6} fill="#f472b6" fontSize={9}>z{'\u2082'}</text>
+                    {showZ && <text x={sx(cur.Zr) + 8} y={sy(cur.Zi) - 8} fill="#4ade80" fontSize={10} fontWeight="bold">Z</text>}
+                    {showC && <text x={sx(cur.Cr) + 8} y={sy(cur.Ci) - 8} fill="#f97316" fontSize={10} fontWeight="bold">C</text>}
+                  </>
+                )}
+
+                </g>
+
+                {/* HUD */}
+                <text x={8} y={16} fill={triFocus === -1 ? '#22d3ee' : triFocus === 1 ? '#f472b6' : '#4ade80'} fontSize={11} fontWeight="bold">
+                  Div({fmtN(N)})  s={s < 100 ? s.toFixed(2) : s.toFixed(0)}
+                  {triFocus !== 0 && <tspan fill={triFocus === -1 ? '#22d3ee' : '#f472b6'} fontSize={9}>  [{triFocus === -1 ? 'N\u208B' : 'N\u208A'}]</tspan>}
+                  {triFocus === 0 && !isFactorial && <tspan fill="#f97316" fontSize={9}>  [sub-shell]</tspan>}
+                </text>
+                <text x={8} y={30} fill="#555" fontSize={9}>
+                  {engineMode === 'walk'
+                    ? <>{'\u03B1'}Tilt={alphaTilt.toFixed(2)}  steps={walkSteps}  {is3D && `cam=${(camTilt*180/PI).toFixed(0)}\u00B0/${(camRotation*180/PI).toFixed(0)}\u00B0  `}t{'\u2081'}={t1}  t{'\u2082'}={t2}  n{'\u2086'}={n6}  |  k{'\u2081'}={fmtN(cur.k1)}  k{'\u2082'}={fmtN(cur.k2)}</>
+                    : <>{'\u03B1'}={alpha}  t{'\u2081'}={t1}  t{'\u2082'}={t2}  n{'\u2086'}={n6}  |  k{'\u2081'}={fmtN(cur.k1)}  k{'\u2082'}={fmtN(cur.k2)}</>
+                  }
+                </text>
+                <text x={8} y={44} fill="#444" fontSize={9}>
+                  |Z|={cur.Zm.toFixed(3)}  |C|={cur.Cm.toFixed(3)}  |Z|{'\u00B2'}+|C|{'\u00B2'}={cur.unitL.toFixed(4)} {Math.abs(cur.unitL - cur.unitR) < 1e-6 ? '\u2713' : ''}
+                  {!isFactorial && `  \u03A3=${sigmaLabel(sharedPrimeSet(samplesAuto ? M : samplesM, absN))} star(${starOrder(samplesAuto ? M : samplesM, absN)})`}
+                </text>
+              </svg>
+
+              {/* Zoom controls */}
+              <div style={{ position: 'absolute', top: 8, right: 8, display: 'flex', gap: 3,
+                            background: 'rgba(6,6,10,0.85)', borderRadius: 4, padding: '3px 5px', alignItems: 'center' }}>
+                <span style={{ fontSize: 9, color: '#666', marginRight: 3 }}>{(zoom * 100).toFixed(0)}%</span>
+                <button onClick={() => setZoom(z => Math.min(50, z * 1.3))}
+                  style={{ width: 22, height: 22, background: '#12121a', border: '1px solid #2a2a3e',
+                           borderRadius: 3, color: '#888', cursor: 'pointer', fontSize: 12, lineHeight: '20px' }}>+</button>
+                <button onClick={() => setZoom(z => Math.max(0.1, z / 1.3))}
+                  style={{ width: 22, height: 22, background: '#12121a', border: '1px solid #2a2a3e',
+                           borderRadius: 3, color: '#888', cursor: 'pointer', fontSize: 12, lineHeight: '20px' }}>{'\u2212'}</button>
+                <button onClick={resetView}
+                  style={{ width: 22, height: 22, background: '#12121a', border: '1px solid #2a2a3e',
+                           borderRadius: 3, color: '#888', cursor: 'pointer', fontSize: 10, lineHeight: '20px' }}>{'\u21BA'}</button>
+              </div>
+
+              {/* Legend */}
+              <div style={{ position: 'absolute', bottom: 8, right: 8, padding: '6px 10px',
+                            background: 'rgba(6,6,10,0.85)', borderRadius: 4, fontSize: 9 }}>
+                {showTri ? (
+                  tri.map((m, i) => (
+                    <span key={i} style={{ color: TRI_COLORS[i], marginRight: 8 }}>
+                      {'\u25CF'} {m.label} (N={fmtN(m.n)})
+                    </span>
+                  ))
+                ) : (<>
+                  <span style={{ color: '#22d3ee' }}>{'\u25CF'} z{'\u2081'}</span>{' '}
+                  <span style={{ color: '#f472b6' }}>{'\u25CF'} z{'\u2082'}</span>{' '}
+                  <span style={{ color: '#4ade80' }}>{'\u25CF'} Z</span>{' '}
+                  <span style={{ color: '#f97316' }}>{'\u25CF'} C</span>
+                </>)}
+              </div>
+            </div>
+
+            {/* ── Envelope chart ──────────────────────────────── */}
+            <div style={{ height: envH + 4, background: '#06060a', borderTop: '1px solid #1a1a2e' }}>
+              <svg width="100%" height={envH} viewBox={`0 0 ${envW} ${envH}`} style={{ display: 'block' }}>
+                <line x1={10} y1={envH - 15} x2={envW - 10} y2={envH - 15} stroke="#1a1a2e" strokeWidth={0.5} />
+
+                {showTri && envData.triEnv && envData.triEnv.map((te, i) => (
+                  <React.Fragment key={`tri-env-${i}`}>
+                    {showZ && <path d={te.zLine} fill="none" stroke={TRI_COLORS[i]} strokeWidth={1} opacity={0.5} />}
+                    {showC && <path d={te.cLine} fill="none" stroke={TRI_COLORS[i]} strokeWidth={0.7} opacity={0.3} strokeDasharray="3,2" />}
+                  </React.Fragment>
+                ))}
+
+                {!showTri && showZ && <path d={envData.main.zLine} fill="none" stroke="#4ade80" strokeWidth={1.2} opacity={0.8} />}
+                {!showTri && showC && <path d={envData.main.cLine} fill="none" stroke="#f97316" strokeWidth={1.2} opacity={0.8} />}
+
+                <line x1={envSx} y1={5} x2={envSx} y2={envH - 15} stroke="#f472b6" strokeWidth={1} opacity={0.7} />
+                <circle cx={envSx} cy={5} r={3} fill="#f472b6" />
+
+                {t2 !== 0 && Array.from({ length: Math.min(pinchCount, 40) }, (_, i) => {
+                  const sp = (i + 0.5) * envPeriod;
+                  if (sp > sEnd) return null;
+                  const px = 10 + (sp / sEnd) * (envW - 20);
+                  return <line key={i} x1={px} y1={envH - 18} x2={px} y2={envH - 12} stroke="#fbbf24" strokeWidth={1} opacity={0.4} />;
+                })}
+
+                {showTri ? (
+                  tri.map((m, i) => (
+                    <text key={i} x={12 + i * 60} y={12} fill={TRI_COLORS[i]} fontSize={8}>{m.label}</text>
+                  ))
+                ) : (<>
+                  <text x={12} y={12} fill="#4ade80" fontSize={8}>|Z(s)|</text>
+                  <text x={55} y={12} fill="#f97316" fontSize={8}>|C(s)|</text>
+                </>)}
+                <text x={envW - 80} y={12} fill="#555" fontSize={8}>Thm 10.5/10.6</text>
+                <text x={12} y={envH - 4} fill="#444" fontSize={7}>0</text>
+                <text x={envW - 22} y={envH - 4} fill="#444" fontSize={7}>{fmtN(Math.round(sEnd))}</text>
+                <text x={envW / 2} y={envH - 2} fill="#444" fontSize={8} textAnchor="middle">s {'\u2192'} [0, N]</text>
+              </svg>
+            </div>
+
+            {/* ── E_q Spectrum chart ──────────────────────────── */}
+            {activeSpectrum && !activeSpectrum.skipped && (() => {
+              const hasDual = showCRT && activeDualSpectrum && !activeDualSpectrum.skipped && dualInfo;
+              const primaryDivs = divData.divs;
+              const dualDivs = hasDual ? dualInfo.divsPr.filter(q => q > 1) : [];
+              const nPrimary = primaryDivs.length;
+              const nDual = dualDivs.length;
+              const eqH = hasDual ? 220 : 180;
+              const barMarginL = 44, barMarginR = 10, barMarginT = hasDual ? 38 : 22, barMarginB = 38;
+              const plotH = eqH - barMarginT - barMarginB;
+
+              // Split the horizontal space: primary gets ~70%, dual gets ~30% (with gap)
+              const gapW = hasDual ? 18 : 0;
+              const totalPlotW = envW - barMarginL - barMarginR - gapW;
+              const primaryW = hasDual ? totalPlotW * 0.72 : totalPlotW;
+              const dualW = hasDual ? totalPlotW * 0.28 : 0;
+              const dualStartX = barMarginL + primaryW + gapW;
+
+              // Independent scales
+              const maxPrimary = Math.max(...primaryDivs.map(q => Math.abs(activeSpectrum.Eq[q] || 0)), 1e-10);
+              const maxDual = hasDual ? Math.max(...dualDivs.map(q => Math.abs((activeDualSpectrum.Eq[q]) || 0)), 1e-10) : 1;
+
+              const primaryBarStep = primaryW / nPrimary;
+              const primaryBarW = Math.max(3, primaryBarStep * 0.75);
+              const dualBarStep = hasDual ? dualW / nDual : 0;
+              const dualBarW = hasDual ? Math.max(4, dualBarStep * 0.7) : 0;
+
+              const barColor = (q, side) => {
+                if (side === 'dual') {
+                  if (q % 7 === 0 && q % 11 === 0 && q % 13 === 0) return '#ff6b6b';
+                  if (q % 77 === 0) return '#ff9ff3';
+                  if (q % 91 === 0) return '#feca57';
+                  if (q % 143 === 0) return '#ff9f43';
+                  if (q % 7 === 0) return '#ee5a24';
+                  if (q % 11 === 0) return '#f368e0';
+                  if (q % 13 === 0) return '#ff6348';
+                  return '#c44569';
+                }
+                if (q === 1) return '#888';
+                if (q % 2 === 0) return '#22d3ee';
+                if (q % 3 === 0) return '#4ade80';
+                if (q % 5 === 0) return '#fbbf24';
+                if (q % 7 === 0) return '#f472b6';
+                return '#a78bfa';
+              };
+
+              // Top-3 per section (independent)
+              const primarySorted = primaryDivs.map((q, i) => ({ q, eq: activeSpectrum.Eq[q] || 0, i })).sort((a, b) => b.eq - a.eq);
+              const primaryTop3 = new Set(primarySorted.slice(0, 3).map(x => x.q));
+              const dualSorted = dualDivs.map((q, i) => ({ q, eq: activeDualSpectrum ? (activeDualSpectrum.Eq[q] || 0) : 0, i })).sort((a, b) => b.eq - a.eq);
+              const dualTop3 = new Set(dualSorted.slice(0, 3).map(x => x.q));
+
+              const primaryLabelSkip = nPrimary <= 20 ? 1 : nPrimary <= 40 ? 2 : 3;
+
+              // Fock readout (Theorem 13.12): E_N = 2⟨x|N̂_cop|x⟩
+              const absNVal = Math.abs(N) || 1;
+              const halfModes = Math.floor(eulerPhi(absNVal) / 2);
+              const E_N = activeSpectrum.Eq[absNVal] || 0;
+              const nCopOcc = E_N / 2;
+
+              const fmtAxis = (val) => val > 10000 ? (val/1000).toFixed(0)+'k' : val > 100 ? val.toFixed(0) : val > 1 ? val.toFixed(1) : val.toFixed(2);
+
+              return (
+                <div style={{ height: eqH + 4, background: '#06060a', borderTop: '1px solid #2a1a3e' }}>
+                  <svg width="100%" height={eqH} viewBox={`0 0 ${envW} ${eqH}`} style={{ display: 'block' }}>
+
+                    {/* ═══ PRIMARY PANEL (left) ═══ */}
+                    <rect x={barMarginL - 2} y={barMarginT - 2} width={primaryW + 4} height={plotH + 4}
+                      fill="#06060a" stroke="#1a1a2e" strokeWidth={0.5} rx={2} />
+                    {/* Primary y-axis */}
+                    <line x1={barMarginL} y1={barMarginT + plotH} x2={barMarginL + primaryW}
+                      y2={barMarginT + plotH} stroke="#1a1a2e" strokeWidth={0.5} />
+                    <line x1={barMarginL} y1={barMarginT} x2={barMarginL}
+                      y2={barMarginT + plotH} stroke="#1a1a2e" strokeWidth={0.5} />
+                    {[0.25, 0.5, 0.75, 1].map(frac => {
+                      const gy = barMarginT + plotH * (1 - frac);
+                      return (
+                        <React.Fragment key={'p'+frac}>
+                          <line x1={barMarginL} y1={gy} x2={barMarginL + primaryW}
+                            y2={gy} stroke="#121218" strokeWidth={0.5} />
+                          <text x={barMarginL - 4} y={gy + 3} fill="#444" fontSize={7} textAnchor="end">
+                            {fmtAxis(maxPrimary * frac)}
+                          </text>
+                        </React.Fragment>
+                      );
+                    })}
+                    <text x={barMarginL - 4} y={barMarginT + plotH + 3} fill="#444" fontSize={7} textAnchor="end">0</text>
+
+                    {/* Primary bars */}
+                    {primaryDivs.map((q, i) => {
+                      const eq = activeSpectrum.Eq[q] || 0;
+                      const frac = Math.abs(eq) / maxPrimary;
+                      const h = frac * plotH;
+                      const x = barMarginL + i * primaryBarStep + (primaryBarStep - primaryBarW) / 2;
+                      const y = barMarginT + plotH - h;
+                      const isTop = primaryTop3.has(q);
+                      const showLabel = i % primaryLabelSkip === 0 || isTop;
+                      return (
+                        <React.Fragment key={'pq'+q}>
+                          <rect x={x} y={y} width={primaryBarW} height={Math.max(0.5, h)}
+                            fill={barColor(q, 'primary')} opacity={isTop ? 1 : 0.7}
+                            stroke={isTop ? '#fff' : 'none'} strokeWidth={isTop ? 0.5 : 0} />
+                          {isTop && h > 8 && (
+                            <text x={x + primaryBarW / 2} y={y - 3}
+                              fill={barColor(q, 'primary')} fontSize={7} textAnchor="middle" fontWeight="bold">
+                              {fmtAxis(eq)}
+                            </text>
+                          )}
+                          {showLabel && (
+                            <text x={x + primaryBarW / 2} y={barMarginT + plotH + (nPrimary > 20 ? 16 : 12)}
+                              fill={isTop ? '#ccc' : '#555'} fontSize={nPrimary > 30 ? 6 : 7}
+                              textAnchor={nPrimary > 20 ? 'start' : 'middle'}
+                              fontWeight={isTop ? 'bold' : 'normal'}
+                              transform={nPrimary > 20 ? `rotate(50, ${x + primaryBarW/2}, ${barMarginT + plotH + 16})` : ''}>
+                              {q}
+                            </text>
+                          )}
+                        </React.Fragment>
+                      );
+                    })}
+
+                    {/* ═══ DUAL PANEL (right) ═══ */}
+                    {hasDual && <>
+                      {/* Distinct background */}
+                      <rect x={dualStartX - 4} y={barMarginT - 2} width={dualW + 8} height={plotH + 4}
+                        fill="#0c0608" stroke="#3a1a2a" strokeWidth={0.7} rx={3} />
+                      {/* Dual section label */}
+                      <text x={dualStartX + dualW / 2} y={barMarginT + 8} fill="#ff6b6b" fontSize={7}
+                        textAnchor="middle" fontWeight="bold" opacity={0.7}>
+                        CRT {dualInfo.Pr}
+                      </text>
+                      {/* Dual y-axis (right side) */}
+                      <line x1={dualStartX + dualW + 2} y1={barMarginT} x2={dualStartX + dualW + 2}
+                        y2={barMarginT + plotH} stroke="#3a1a2a" strokeWidth={0.5} />
+                      <line x1={dualStartX - 2} y1={barMarginT + plotH} x2={dualStartX + dualW + 2}
+                        y2={barMarginT + plotH} stroke="#3a1a2a" strokeWidth={0.5} />
+                      {[0.25, 0.5, 0.75, 1].map(frac => {
+                        const gy = barMarginT + plotH * (1 - frac);
+                        return (
+                          <React.Fragment key={'d'+frac}>
+                            <line x1={dualStartX - 2} y1={gy} x2={dualStartX + dualW + 2}
+                              y2={gy} stroke="#1a0c14" strokeWidth={0.5} />
+                            <text x={dualStartX + dualW + 6} y={gy + 3} fill="#663344" fontSize={6} textAnchor="start">
+                              {fmtAxis(maxDual * frac)}
+                            </text>
+                          </React.Fragment>
+                        );
+                      })}
+
+                      {/* Dual bars */}
+                      {dualDivs.map((q, i) => {
+                        const eq = activeDualSpectrum.Eq[q] || 0;
+                        const frac = Math.abs(eq) / maxDual;
+                        const h = frac * plotH;
+                        const x = dualStartX + i * dualBarStep + (dualBarStep - dualBarW) / 2;
+                        const y = barMarginT + plotH - h;
+                        const isTop = dualTop3.has(q);
+                        return (
+                          <React.Fragment key={'dq'+q}>
+                            <rect x={x} y={y} width={dualBarW} height={Math.max(0.5, h)}
+                              fill={barColor(q, 'dual')} opacity={isTop ? 1 : 0.85}
+                              stroke={isTop ? '#fff' : barColor(q, 'dual')}
+                              strokeWidth={isTop ? 0.6 : 0.3} rx={1} />
+                            {isTop && h > 8 && (
+                              <text x={x + dualBarW / 2} y={y - 3}
+                                fill={barColor(q, 'dual')} fontSize={7} textAnchor="middle" fontWeight="bold">
+                                {fmtAxis(eq)}
+                              </text>
+                            )}
+                            <text x={x + dualBarW / 2} y={barMarginT + plotH + 12}
+                              fill={isTop ? '#ff6b6b' : '#553344'} fontSize={7}
+                              textAnchor="middle" fontWeight={isTop ? 'bold' : 'normal'}>
+                              {q}
+                            </text>
+                          </React.Fragment>
+                        );
+                      })}
+                    </>}
+
+                    {/* Header: title + legend */}
+                    <text x={12} y={14} fill="#a78bfa" fontSize={10} fontWeight="bold">
+                      E_q spectrum{engineMode === 'walk' ? ' (walk \u0394Z)' : ''}
+                    </text>
+                    <text x={110} y={14} fill="#888" fontSize={8}>
+                      <tspan fill="#888">{'\u25CF'}1</tspan>
+                      {'  '}<tspan fill="#22d3ee">{'\u25CF'}2</tspan>
+                      {'  '}<tspan fill="#4ade80">{'\u25CF'}3</tspan>
+                      {'  '}<tspan fill="#fbbf24">{'\u25CF'}5</tspan>
+                      {'  '}<tspan fill="#f472b6">{'\u25CF'}7</tspan>
+                      {'  '}<tspan fill="#a78bfa">{'\u25CF'}p{'>'}7</tspan>
+                      {hasDual && <>{'  '}<tspan fill="#ff6b6b">{'\u25CF'}CRT</tspan></>}
+                    </text>
+                    <text x={envW - 55} y={14} fill="#555" fontSize={8}>Def 5.5b</text>
+
+                    {/* §8.4 Duality context line (when CRT active) */}
+                    {hasDual && (
+                      <text x={12} y={26} fill="#ff6b6b" fontSize={7.5} opacity={0.8}>
+                        {'§10.7 CRT: B\u2032={'}{dualInfo.Bp.join(',')}{'}'}
+                        {' · P\u2083='}{dualInfo.Pr}
+                        {' · \u03C6(P\u2083)='}{dualInfo.phiPr}{dualInfo.phiPr === N0 ? '=N\u2080' : ''}
+                        {' · F(B\u2032)='}{dualInfo.frobN === null ? '\u2014' : dualInfo.frobN}{dualInfo.thm822Holds ? '=\u220FB' : ''}
+                        {' · '}{halfModes}{' modes'}
+                        {' · \u27E8N\u0302\u209c\u2092\u209a\u27E9='}{nCopOcc.toFixed(3)}
+                      </text>
+                    )}
+
+                    {/* Footer */}
+                    <text x={barMarginL + primaryW / 2} y={eqH - 3} fill="#444" fontSize={8} textAnchor="middle">
+                      {primaryDivs.length} div of {fmtN(absNVal)}
+                      {!isFactorial && ` · \u03A3=${sigmaLabel(sharedPrimeSet(M, absN))}`}
+                    </text>
+                    {hasDual && (
+                      <text x={dualStartX + dualW / 2} y={eqH - 3} fill="#663344" fontSize={7} textAnchor="middle">
+                        {dualDivs.length} div of {fmtN(dualInfo.Pr)}
+                      </text>
+                    )}
+                  </svg>
+                </div>
+              );
+            })()}
+          </div>
+        </div>
+
+        {/* Classification grid overlay */}
+        {showGrid && (
+          <ClassificationGrid
+            onClose={() => setShowGrid(false)}
+            N0={N0}
+            currentN={N}
+            k={k}
+            n6={n6}
+          />
+        )}
+        </React.Fragment>
+      );
+    }
+
+    ReactDOM.render(<FVLTExplorer />, document.getElementById('root'));
+  </script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Fraction Link</title>
+<style>
+:root{
+  --bg:#fbfaf7; --panel:#ffffff; --ink:#1d1f24; --muted:#5d6370; --line:#d9d6cf;
+  --faint:#b9b5ac; --ford:#3a6ea5; --sel:#c2571a; --nb:#534ab7; --kiss:#1d1f24; --atom:#2f8f5b;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171b; --panel:#1d2026; --ink:#e7e5e0; --muted:#9aa0ab; --line:#343841;
+    --faint:#4d535e; --ford:#6fa0d8; --sel:#f08a4b; --nb:#9d93f0; --kiss:#e7e5e0; --atom:#5cc48c;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171b; --panel:#1d2026; --ink:#e7e5e0; --muted:#9aa0ab; --line:#343841;
+  --faint:#4d535e; --ford:#6fa0d8; --sel:#f08a4b; --nb:#9d93f0; --kiss:#e7e5e0; --atom:#5cc48c;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:1100px;margin:0 auto;padding:16px}
+h1{font-size:1.4rem;margin:.2em 0 .1em}
+h2{font-size:1rem;margin:0 0 .3em}
+p{margin:.4em 0}
+.sub{color:var(--muted)}
+.row{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:10px 0}
+label{color:var(--muted);font-size:.92rem}
+input[type=number]{width:120px;font:inherit;padding:2px 4px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+@media (max-width:720px){.grid{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px}
+.card p{font-size:.85rem;color:var(--muted);margin:.2em 0 .4em}
+canvas{display:block;width:100%;height:auto;touch-action:manipulation;cursor:pointer}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:14px;padding:2px 10px;font:inherit;font-size:.88rem;cursor:pointer}
+.chip.on{border-color:var(--sel);color:var(--sel);font-weight:600}
+.chip.atom{border-color:var(--atom)}
+.read{font-variant-numeric:tabular-nums;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.88rem;overflow-wrap:anywhere}
+.read b{color:var(--sel)}
+.pass{color:var(--atom);font-weight:600}.fail{color:#c0392b;font-weight:600}
+</style>
+</head>
+<body>
+<main>
+<h1>Fraction Link</h1>
+<p class="sub">v0.1 · 2026-11-01 · One fraction, four realizations. Pick a fraction once (tap any panel or a chip) and every view highlights where it lives: the helix family seen from above, the exponential lift (FVLT), the Cayley disk, and the divisor atom Div(N). Idea from Codex's note on saphir's helix screenshot; the views are saphir's. Exact register for every address and identity below; drawing register for pixels only.</p>
+
+<div class="row">
+  <label>atom N <input id="N" type="number" min="2" step="1" value="720"></label>
+  <label>Farey order Q <input id="Q" type="number" min="2" max="12" step="1" value="7"></label>
+  <span class="sub" id="atomLine"></span>
+</div>
+<div class="chips" id="chips"></div>
+
+<div class="read" id="read" style="margin:12px 0"></div>
+
+<div class="grid">
+  <div class="card"><h2>Helix family, top view</h2><p>Ring n has radius 1/n; bead j sits at ζ<sub>n</sub><sup>j</sup>. A fraction a/q occurs on every ring n = kq as bead j = ka (all ringed). Straight chords: det-1 contacts (adjacency, never incidence).</p><canvas id="cvH" width="760" height="760"></canvas></div>
+  <div class="card"><h2>Exponential lift (FVLT)</h2><p>w = e<sup>2πiz</sup>: cusp at the centre, a/q at ζ<sub>q</sub><sup>a</sup>, Ford discs as ovals, Farey edges as petals and one spoke. Kisses at e<sup>−2π/m</sup>·ζ<sub>m</sub><sup>n</sup>.</p><canvas id="cvL" width="760" height="760"></canvas></div>
+  <div class="card"><h2>Cayley disk</h2><p>w = (z − i)/(z + i): centre i, cusp at 1, a/q at the Pythagorean point ((a² − q²), −2aq)/(a² + q²). Farey edges are circles orthogonal to the rim; translates |k| ≤ 3 faint.</p><canvas id="cvC" width="760" height="760"></canvas></div>
+  <div class="card"><h2>Atom Div(N)</h2><p>Each prime power p<sup>a</sup> has cyclic order a + 1; exponent e gives the phase e/(a + 1). A divisor carries a/q when one of its exponents reduces to it. Bars: exponent lattice per prime, carriers marked.</p><canvas id="cvA" width="760" height="760"></canvas></div>
+</div>
+
+<div class="card" style="margin-top:12px"><h2>Self-test</h2><div class="read" id="selfTest">running…</div></div>
+<p class="sub">Limits: a viewer, not a proof; no standing anywhere. The three source viewers (Farey helix family super v3, Farey Horocycle Disk v0.4, atom viewer wl3) are unchanged; this page re-draws their shared objects from the same arithmetic. Credits: the framework was assembled by Robin Miller; its components are classical results of others (Farey, Ford, Cayley). Linked-readout idea: Codex.</p>
+</main>
+
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const B=BigInt;
+const gcd=(a,b)=>{a=Math.abs(a);b=Math.abs(b);while(b){[a,b]=[b,a%b]}return a};
+const COLORS=['#888780','#5F5E5A','#534AB7','#1D9E75','#BA7517','#185FA5','#D85A30','#A32D2D','#0F6E56','#3C3489','#8a5a83','#1D9E75','#D85A30','#185FA5'];
+
+// ---------- exact arithmetic of the shared objects ----------
+function factor(N){const f=[];let x=B(N);for(let p=2n;p*p<=x;p++){if(x%p===0n){let a=0;while(x%p===0n){x/=p;a++}f.push({p:Number(p),a})}}if(x>1n)f.push({p:Number(x),a:1});return f}
+function atomFractions(fac){ // phase content F: reduced e/(a+1), e = 1..a, with contributing (p, e)
+  const m=new Map();for(const {p,a} of fac){const n=a+1;for(let e=1;e<=a;e++){const g=gcd(e,n),key=(e/g)+"/"+(n/g);if(!m.has(key))m.set(key,{a:e/g,q:n/g,src:[]});m.get(key).src.push({p,e,n})}}
+  return [...m.values()].sort((u,v)=>u.a*v.q-v.a*u.q)}
+function fareyList(Q){const F=[];for(let q=1;q<=Q;q++)for(let a=0;a<=q;a++)if(gcd(a,q)===1)F.push([a,q]);F.sort((u,v)=>u[0]*v[1]-v[0]*u[1]);return F}
+function fareyEdges(Q){const seen=new Set(),E=[];for(let k=1;k<=Q;k++){const F=fareyList(k);for(let i=0;i+1<F.length;i++){const key=F[i]+"|"+F[i+1];if(!seen.has(key)){seen.add(key);E.push([F[i],F[i+1]])}}}return E}
+function midpoint(a,q,c,s){const A=B(a),Q=B(q),C=B(c),S=B(s),n=A*Q+C*S,m=Q*Q+S*S;return {n,m,ok:n*n+1n===(A*A+C*C)*m,det:Number(C*Q-A*S)}}
+function cayleyPt(a,q){return {x:[B(a*a-q*q),B(a*a+q*q)],y:[B(-2*a*q),B(a*a+q*q)]}} // exact rational coordinates (num, den)
+const red=(n,d)=>{const g=gcd(n,d)||1;return [n/g,d/g]};
+const frac=(n,d)=>{const [x,y]=red(n,d);return y===1?String(x):x+"/"+y};
+
+// ---------- state ----------
+const S={N:720,Q:7,fac:[],F:[],sel:[1,2]};
+function readInputs(){let N=Math.floor(+$("N").value);if(!(N>=2)||N>1e12)N=720;let Q=Math.floor(+$("Q").value);if(!(Q>=2))Q=7;Q=Math.min(12,Q);
+  S.N=N;S.Q=Q;S.fac=factor(N);S.F=atomFractions(S.fac);
+  $("atomLine").textContent=`N = ${S.fac.map(f=>f.p+(f.a>1?"^"+f.a:"")).join("·")}, cyclic orders (${S.fac.map(f=>f.a+1).join(", ")}), |F| = ${S.F.length}`}
+function chips(){const set=new Map();for(const f of S.F)set.set(f.a+"/"+f.q,{a:f.a,q:f.q,atom:true});
+  for(const [a,q] of fareyList(S.Q))if(a>0&&a<q&&!set.has(a+"/"+q))set.set(a+"/"+q,{a,q,atom:false});
+  const L=[...set.values()].sort((u,v)=>u.a*v.q-v.a*u.q);
+  $("chips").innerHTML=L.map(f=>`<button class="chip${f.atom?' atom':''}${f.a===S.sel[0]&&f.q===S.sel[1]?' on':''}" data-a="${f.a}" data-q="${f.q}">${f.a}/${f.q}</button>`).join("");
+  $("chips").querySelectorAll(".chip").forEach(b=>b.onclick=()=>select(+b.dataset.a,+b.dataset.q))}
+function select(a,q){[a,q]=red(a,q);if(q<1)return;a=((a%q)+q)%q;S.sel=[a,q];chips();drawAll()}
+const isSel=(a,q)=>{const [x,y]=red(a,q);return x===S.sel[0]&&y===S.sel[1]};
+
+// ---------- drawing helpers ----------
+function prep(id){const cv=$(id),ctx=cv.getContext("2d"),W=cv.width;ctx.clearRect(0,0,W,W);return {cv,ctx,W,c:W/2,R:W/2-14}}
+function dot(ctx,x,y,r,col){ctx.fillStyle=col;ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.fill()}
+function ring(ctx,x,y,r,col,w){ctx.strokeStyle=col;ctx.lineWidth=w;ctx.beginPath();ctx.arc(x,y,r,0,7);ctx.stroke()}
+function neighbours(a,q,Q){const out=[];for(const [c,s] of fareyList(Math.max(Q,q)))if(Math.abs(c*q-a*s)===1)out.push([c,s]);return out}
+const hits={cvH:[],cvL:[],cvC:[],cvA:[]};
+
+// ---------- 1. helix family top view ----------
+function drawHelix(){const {ctx,W,c,R}=prep("cvH");const nMax=Math.max(S.Q,S.sel[1]),sc=R/0.5*0.98;hits.cvH=[];
+  const P=(j,n)=>[c+sc*Math.cos(2*Math.PI*j/n)/n,c-sc*Math.sin(2*Math.PI*j/n)/n];
+  for(let n=2;n<=nMax;n++)ring(ctx,c,c,sc/n,css('--faint'),1);
+  // det-1 contact chords among interior reduced beads
+  const inner=fareyList(nMax).filter(([a,q])=>a>0&&a<q);
+  for(let i=0;i<inner.length;i++)for(let k=i+1;k<inner.length;k++){const [a,q]=inner[i],[b,s]=inner[k];if(Math.abs(a*s-b*q)!==1)continue;
+    const on=isSel(a,q)||isSel(b,s),[x1,y1]=P(a,q),[x2,y2]=P(b,s);ctx.strokeStyle=on?css('--nb'):css('--faint');ctx.globalAlpha=on?0.95:0.45;ctx.lineWidth=on?2.2:1;ctx.beginPath();ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);ctx.stroke();ctx.globalAlpha=1}
+  for(let n=2;n<=nMax;n++)for(let j=0;j<n;j++){const [x,y]=P(j,n),col=COLORS[n%COLORS.length];dot(ctx,x,y,Math.max(3,9-n*0.4),col);hits.cvH.push({x,y,a:j,q:n});
+    if(isSel(j,n))ring(ctx,x,y,13,css('--sel'),3)}
+  dot(ctx,c,c,5,css('--ink'))}
+
+// ---------- 2. exponential lift ----------
+function drawLift(){const {ctx,c,R}=prep("cvL");hits.cvL=[];const Q=Math.max(S.Q,S.sel[1]);
+  const P=(x,y)=>{const r=R*Math.exp(-2*Math.PI*y),t=2*Math.PI*x;return [c+r*Math.cos(t),c-r*Math.sin(t)]};
+  ring(ctx,c,c,R,css('--ink'),2);
+  const geo=(x1,x2,col,w,al)=>{const c0=(x1+x2)/2,r0=Math.abs(x2-x1)/2;ctx.strokeStyle=col;ctx.lineWidth=w;ctx.globalAlpha=al;ctx.beginPath();for(let s=0;s<=72;s++){const th=Math.PI*s/72,[u,v]=P(c0-r0*Math.cos(th),r0*Math.sin(th));s?ctx.lineTo(u,v):ctx.moveTo(u,v)}ctx.stroke();ctx.globalAlpha=1};
+  for(const [[a,q],[b,s]] of fareyEdges(Q))geo(a/q,b/s,css('--faint'),1,0.6);
+  ctx.strokeStyle=css('--faint');ctx.beginPath();ctx.moveTo(c+R,c);ctx.lineTo(c,c);ctx.stroke(); // spoke 0/1 -> cusp
+  const oval=(a,q,col,w,fill)=>{const rho=1/(2*q*q),t=a/q;ctx.beginPath();for(let s=0;s<=160;s++){const th=-Math.PI/2+2*Math.PI*s/160,[u,v]=P(t+rho*Math.cos(th),rho*(1+Math.sin(th)));s?ctx.lineTo(u,v):ctx.moveTo(u,v)}ctx.closePath();if(fill){ctx.globalAlpha=0.16;ctx.fillStyle=col;ctx.fill();ctx.globalAlpha=1}ctx.strokeStyle=col;ctx.lineWidth=w;ctx.stroke()};
+  for(const [a,q] of fareyList(Q))if(a<q){const atom=S.F.some(f=>f.a===a&&f.q===q);oval(a,q,atom?css('--atom'):css('--ford'),atom?1.8:1,false);const [x,y]=P(a/q,0);hits.cvL.push({x,y,a,q})}
+  const [sa,sq]=S.sel;oval(sa,sq,css('--sel'),3,true);
+  for(const [c2,s2] of neighbours(sa,sq,Q)){geo(sa/sq,c2/s2,css('--nb'),2.4,0.95);const mp=midpoint(sa,sq,c2,s2),[x,y]=P(Number(mp.n)/Number(mp.m),1/Number(mp.m));dot(ctx,x,y,5,css('--kiss'))}
+  const [x,y]=P(sa/sq,0);dot(ctx,x,y,7,css('--sel'));dot(ctx,c,c,5,css('--ink'))}
+
+// ---------- 3. Cayley disk ----------
+function drawCayley(){const {ctx,c,R}=prep("cvC");hits.cvC=[];const Q=Math.max(S.Q,S.sel[1]),K=3;
+  const P=(x,y)=>{const d=x*x+(y+1)*(y+1);return [c+R*(x*x+y*y-1)/d,c+R*2*x/d]};
+  ring(ctx,c,c,R,css('--ink'),2);
+  const geo=(x1,x2,col,w,al)=>{const c0=(x1+x2)/2,r0=Math.abs(x2-x1)/2;ctx.strokeStyle=col;ctx.lineWidth=w;ctx.globalAlpha=al;ctx.beginPath();for(let s=0;s<=72;s++){const th=Math.PI*s/72,[u,v]=P(c0-r0*Math.cos(th),r0*Math.sin(th));s?ctx.lineTo(u,v):ctx.moveTo(u,v)}ctx.stroke();ctx.globalAlpha=1};
+  const vert=(x0,col,w,al)=>{ctx.strokeStyle=col;ctx.lineWidth=w;ctx.globalAlpha=al;ctx.beginPath();for(let s=0;s<=80;s++){const [u,v]=P(x0,Math.tan(Math.PI/2*s/81)*0.6);s?ctx.lineTo(u,v):ctx.moveTo(u,v)}ctx.stroke();ctx.globalAlpha=1};
+  const E=fareyEdges(Q);for(let k=-K;k<K;k++){for(const [[a,q],[b,s]] of E)geo(a/q+k,b/s+k,css('--faint'),1,k===0?0.7:0.35);vert(k,css('--faint'),1,0.5)}
+  const disc=(x0,q,col,w,fill,al=1)=>{const d=1/(q*q),rr=d/(d+1+x0*x0),[u,v]=P(x0,0);const X=c+(1-rr)*(u-c),Y=c+(1-rr)*(v-c);ctx.globalAlpha=al;ctx.beginPath();ctx.arc(X,Y,R*rr,0,7);if(fill){ctx.globalAlpha=0.16*al;ctx.fillStyle=col;ctx.fill();ctx.globalAlpha=al}ctx.strokeStyle=col;ctx.lineWidth=w;ctx.stroke();ctx.globalAlpha=1};
+  for(const [a,q] of fareyList(Q))if(a<q){const atom=S.F.some(f=>f.a===a&&f.q===q);for(let k=-K;k<K;k++)disc(a/q+k,q,atom?css('--atom'):css('--ford'),k===0?(atom?1.8:1):0.8,false,k===0?1:0.4);const [x,y]=P(a/q,0);hits.cvC.push({x,y,a,q})}
+  const [sa,sq]=S.sel;for(let k=-K;k<K;k++)disc(sa/sq+k,sq,css('--sel'),k===0?3:1.4,true,k===0?1:0.5);
+  for(const [c2,s2] of neighbours(sa,sq,Q)){geo(sa/sq,c2/s2,css('--nb'),2.4,0.95);const mp=midpoint(sa,sq,c2,s2),[x,y]=P(Number(mp.n)/Number(mp.m),1/Number(mp.m));dot(ctx,x,y,5,css('--kiss'))}
+  const [x,y]=P(sa/sq,0);dot(ctx,x,y,7,css('--sel'));dot(ctx,c,c,6,css('--ink'))}
+
+// ---------- 4. atom ----------
+function carriers(){ // divisors of N carrying the selected fraction; exact enumeration when tau(N) is modest
+  const [sa,sq]=S.sel,fac=S.fac;let tau=1;for(const f of fac)tau*=f.a+1;
+  const hit=fac.map(f=>{const n=f.a+1;return (n%sq===0)?sa*(n/sq):null}); // exponent e with e/n = a/q, if any
+  if(tau>20000)return {tau,count:null,hit};
+  let count=0,list=[];const ex=fac.map(()=>0);
+  const rec=i=>{if(i===fac.length){if(fac.some((f,k)=>hit[k]!==null&&ex[k]===hit[k])){count++;if(list.length<24){let d=1n;fac.forEach((f,k)=>d*=B(f.p)**B(ex[k]));list.push(d.toString())}}return}
+    for(let e=0;e<=fac[i].a;e++){ex[i]=e;rec(i+1)}};rec(0);return {tau,count,list,hit}}
+function drawAtom(){const {ctx,W}=prep("cvA");hits.cvA=[];const fac=S.fac,[sa,sq]=S.sel;const m=fac.length;if(!m)return;
+  const top=60,bot=W-70,colW=(W-60)/m;ctx.font="22px system-ui";ctx.textAlign="center";
+  fac.forEach((f,i)=>{const n=f.a+1,x=40+colW*(i+0.5),h=(bot-top)/Math.max(1,f.a);
+    ctx.fillStyle=css('--ink');ctx.fillText(f.p+(f.a>1?"^"+f.a:""),x,bot+40);
+    ctx.strokeStyle=css('--faint');ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x,bot);ctx.lineTo(x,f.a?bot-h*f.a:bot);ctx.stroke();
+    for(let e=0;e<=f.a;e++){const y=bot-h*e,[ra,rq]=red(e,n),on=e>0&&ra===sa&&rq===sq;
+      dot(ctx,x,y,on?13:8,e===0?css('--faint'):(on?css('--sel'):COLORS[n%COLORS.length]));
+      if(e>0){ctx.fillStyle=css('--muted');ctx.font="18px system-ui";ctx.textAlign="left";ctx.fillText(frac(e,n),x+16,y+6);ctx.textAlign="center";ctx.font="22px system-ui";hits.cvA.push({x,y,a:ra,q:rq})}}});
+  ctx.fillStyle=css('--muted');ctx.font="18px system-ui";ctx.fillText("exponent e (bottom e = 0); label e/(a+1) reduced",W/2,30)}
+
+// ---------- readout ----------
+function readout(){const [a,q]=S.sel,Q=Math.max(S.Q,q),nMax=Q;
+  const occ=[];for(let n=q;n<=nMax;n+=q)occ.push(`ring ${n}: bead ${a*(n/q)}`);
+  const cp=cayleyPt(a,q);
+  const nb=neighbours(a,q,Q).map(([c2,s2])=>{const mp=midpoint(a,q,c2,s2),g=gcd(Number(mp.n),Number(mp.m));return {c2,s2,mp,txt:`${a}/${q}–${c2}/${s2}: midpoint (${mp.n} + i)/${mp.m}; lift e<sup>−2π/${mp.m}</sup>·ζ<sub>${Number(mp.m)/g}</sub><sup>${Number(mp.n)/g}</sup>`}});
+  const allOk=nb.every(x=>x.mp.ok&&Math.abs(x.mp.det)===1);
+  const ca=carriers(),inF=S.F.find(f=>f.a===a&&f.q===q);
+  const src=inF?inF.src.map(s=>`${s.p}: e = ${s.e} of order ${s.n}`).join("; "):"none (not in the atom's phase content)";
+  $("read").innerHTML=`<b>${a}/${q}</b> · helix family: ${occ.join(", ")||"ring "+q+" not drawn"} (reduced home: ring ${q}, bead ${a}).<br>`+
+    `Lift: ζ<sub>${q}</sub><sup>${a}</sup>, Ford oval of radius-law ρ = 1/(2·${q}²). Cayley: (${frac(Number(cp.x[0]),Number(cp.x[1]))}, ${frac(Number(cp.y[0]),Number(cp.y[1]))}), Ford circle radius 1/(1 + ${a}² + ${q}²) = 1/${1+a*a+q*q}.<br>`+
+    `det-1 neighbours to order ${Q} (${nb.length}): ${nb.map(x=>x.txt).join("; ")}. Identity n² + 1 = (a² + c²)·m: <span class="${allOk?'pass':'fail'}">${allOk?"all exact":"FAIL"}</span>.<br>`+
+    `Atom Div(${S.N}): contributed by ${src}. Carrier divisors: `+(ca.count===null?`τ(N) = ${ca.tau} too large to list`:`${ca.count} of τ(N) = ${ca.tau}`+(ca.count?` (${ca.list.join(", ")}${ca.count>ca.list.length?", …":""})`:""))+`.`}
+
+function drawAll(){drawHelix();drawLift();drawCayley();drawAtom();readout()}
+
+// ---------- picking: tap any panel ----------
+for(const id of ["cvH","cvL","cvC","cvA"])$(id).addEventListener("click",ev=>{const cv=$(id),r=cv.getBoundingClientRect(),x=(ev.clientX-r.left)*cv.width/r.width,y=(ev.clientY-r.top)*cv.height/r.height;
+  let best=null,bd=40*40;for(const h of hits[id]){const d=(h.x-x)**2+(h.y-y)**2;if(d<bd){bd=d;best=h}}if(best&&!(best.a===0&&id!=="cvA"))select(best.a,best.q)});
+["N","Q"].forEach(id=>$(id).addEventListener("change",()=>{readInputs();chips();drawAll()}));
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",drawAll);
+
+// ---------- self-test (exact) ----------
+function selfTest(){const out=[],ok=(n,c,x="")=>out.push(`<span class="${c?'pass':'fail'}">${c?'✓':'✗'}</span> ${n}${x?" — "+x:""}`);
+  let g=true,cnt=0;for(const [[a,q],[c,s]] of fareyEdges(12)){const mp=midpoint(a,q,c,s);if(!(mp.ok&&mp.det===1))g=false;cnt++}
+  ok("every Farey edge to order 12: cq − as = 1 and n² + 1 = (a² + c²)·m",g,`${cnt} edges`);
+  g=true;for(const [[a,q],[c,s]] of fareyEdges(12)){const {n,m}=midpoint(a,q,c,s),L=2n*B(q)*B(s);const X=L*n-(B(a)*B(s)+B(c)*B(q))*m,Y=L,R=m;if(X*X+Y*Y!==R*R)g=false}
+  ok("each midpoint (n + i)/m lies exactly on its Farey edge (semicircle)",g);
+  g=true;for(const [a,q] of fareyList(12)){const p=cayleyPt(a,q);if(p.x[0]*p.x[0]+p.y[0]*p.y[0]!==p.x[1]*p.x[1])g=false}
+  ok("Cayley points ((a² − q²), −2aq)/(a² + q²) lie exactly on the unit circle",g);
+  const f720=atomFractions(factor(720)).map(f=>f.a+"/"+f.q).join(",");ok("Div(720) phase content = 1/5, 1/3, 2/5, 1/2, 3/5, 2/3, 4/5",f720==="1/5,1/3,2/5,1/2,3/5,2/3,4/5",f720);
+  const sv=S.sel,sN=S.N,sF=S.F,sfac=S.fac;S.fac=factor(720);S.F=atomFractions(S.fac);S.sel=[1,2];const c12=carriers();S.sel=[1,3];const c13=carriers();S.sel=sv;S.fac=sfac;S.F=sF;
+  ok("carriers of 1/2 in Div(720) = 2⁴·3²·5 (orders 5, 3, 2): only 5¹ gives 1/2 → 5·3 = 15 of 30",c12.count===15&&c12.tau===30,`${c12.count}`);
+  ok("carriers of 1/3 in Div(720): exponent of 3 is 1 → 10 of 30",c13.count===10,`${c13.count}`);
+  const pass=out.filter(s=>s.includes('pass')).length;$("selfTest").innerHTML=`<b>${pass}/${out.length} passing</b><br>`+out.join("<br>");window.__selfTest={pass,total:out.length}}
+
+readInputs();chips();drawAll();setTimeout(selfTest,20);
+</script>
+</body>
+</html>

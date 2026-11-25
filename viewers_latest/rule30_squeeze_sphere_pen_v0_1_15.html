@@ -1,0 +1,630 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Squeezed Sphere Pen</title>
+<style>
+:root{
+  --bg:#f7f6f2; --panel:#ffffff; --ink:#1d1d1f; --muted:#5f6368; --line:#d9d6cf;
+  --r150:#1f6feb; --r30:#c2410c; --coin:#15803d; --ham:#7c3aed; --tooth:#b91c1c; --sphere:#eef0f3; --grid:#c9ced6;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121316; --panel:#1b1d21; --ink:#e8e8ea; --muted:#a0a4ab; --line:#2e3138;
+    --r150:#6ea8ff; --r30:#fb923c; --coin:#4ade80; --ham:#a78bfa; --tooth:#f87171; --sphere:#22252b; --grid:#3a3f48;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121316; --panel:#1b1d21; --ink:#e8e8ea; --muted:#a0a4ab; --line:#2e3138;
+  --r150:#6ea8ff; --r30:#fb923c; --coin:#4ade80; --ham:#a78bfa; --tooth:#f87171; --sphere:#22252b; --grid:#3a3f48;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1100px;margin:0 auto;padding:16px}
+h1{font-size:1.35rem;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 14px}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 18px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:14px}
+.controls label{display:block;font-size:.85rem;color:var(--muted)}
+.controls input[type=range]{width:100%}
+.controls .val{color:var(--ink);font-variant-numeric:tabular-nums}
+.btns{display:flex;gap:8px;align-items:end;flex-wrap:wrap}
+button{font:inherit;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px}
+.card h2{font-size:1rem;margin:0 0 2px}
+.card .meta{font-size:.82rem;color:var(--muted);margin:0 0 6px;font-variant-numeric:tabular-nums}
+canvas{width:100%;height:auto;display:block;touch-action:none}
+.strip{margin-top:6px}
+.notes{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:14px;font-size:.9rem}
+.notes h3{font-size:.95rem;margin:.2em 0 .3em}
+.tag{display:inline-block;font-size:.72rem;border:1px solid var(--line);border-radius:6px;padding:0 6px;margin-right:4px;color:var(--muted)}
+code{font-size:.85em}
+</style>
+</head>
+<body>
+<main>
+<h1>Squeezed sphere pen</h1>
+<p class="sub">A pen on S² steered by what the squeezed sphere sees: Rule 150, Rule 30, and a fair-coin control, single black seed. v0.1.5 · Platonic presets, exact and messy, saphir's screenshots, an edge-style switch · v0.1.6: roots of unity only, no degrees · v0.1.7: watch the pen walk · v0.1.8: slower speeds, Slower/Faster buttons · v0.1.9: full screen with camera controls · v0.1.10: the general {p,q} formula on every preset · v0.1.11: move (pan) in every full-screen view · v0.1.12: step counter on every view · v0.1.13: export each run as JSON for video · v0.1.14: Hamilton's icosian word and cover times · v0.1.15: Play no longer stalls at step 0</p>
+
+<section class="controls" aria-label="Controls">
+  <div><label for="preset">Preset <span class="val" id="presetv"></span></label><select id="preset" style="width:100%;font:inherit;padding:4px">
+    <option value="free">Free (sliders)</option>
+    <option value="tet">Tetrahedron {3,3}</option>
+    <option value="cube">Cube {4,3}</option>
+    <option value="oct">Octahedron {3,4}</option>
+    <option value="dod">Dodecahedron {5,3}</option>
+    <option value="ico108">Icosahedron {3,5}, sharp turn</option>
+    <option value="ico36">Icosahedron {3,5}, wide turn</option>
+    <option value="cubeDrift">Messy cube (saphir's grid setting)</option>
+    <option value="dodDrift">Messy dodecahedron (saphir's grid setting)</option>
+    <optgroup label="saphir's screenshots, 2026-10-31">
+      <option value="shot0417">04:17 · dodecahedron, T 512, seed 1</option>
+      <option value="shot0424">04:24 · octahedron, T 2048, seed 1</option>
+      <option value="shot0706">07:06 · cube, T 1328, seed 5</option>
+      <option value="shot0830">08:30 · octahedron, T 16, seed 8</option>
+    </optgroup>
+    <optgroup label="Hamilton, 1857">
+      <option value="icosian">Icosian game: dodecahedron, 20 steps</option>
+    </optgroup>
+  </select></div>
+  <div><label for="T">Steps T <span class="val" id="Tv"></span></label><input id="T" type="range" min="4" max="2048" step="4" value="512"></div>
+  <div><label for="a">Step <span class="val" id="av"></span></label><input id="a" type="range" min="1" max="24" step="1" value="3"></div>
+  <div><label for="th">Turn <span class="val" id="thv"></span></label><input id="th" type="range" min="1" max="11" step="1" value="2"></div>
+  <div><label for="seed">Coin seed <span class="val" id="seedv"></span></label><input id="seed" type="number" min="1" max="4294967295" value="1" style="width:100%;font:inherit"></div>
+  <div><label for="spd">Play speed <span class="val" id="spdv"></span></label><input id="spd" type="range" min="0" max="11" step="1" value="3"></div>
+  <div><label><input id="spin" type="checkbox" checked> Turn the view while playing</label></div>
+  <div class="btns"><button id="slower">− Slower</button><button id="play">Play</button><button id="faster">Faster +</button><button id="stepbtn">Step ▸</button><button id="restart">Restart</button><button id="newseed">New seed</button><button id="reset">Reset view</button><button id="theme">Theme</button><button id="edges" aria-pressed="false">Edges: on the sphere</button></div>
+</section>
+
+<section class="grid">
+  <div class="card">
+    <h2 style="color:var(--r150)">Rule 150 (linear)</h2>
+    <p class="meta" id="m150"></p>
+    <canvas id="c150" width="640" height="640" aria-label="Rule 150 pen on the sphere"></canvas>
+    <canvas id="s150" class="strip" width="640" height="34" aria-label="Rule 150 readout strip"></canvas>
+  </div>
+  <div class="card">
+    <h2 style="color:var(--r30)">Rule 30 (Rule 150 + tooth)</h2>
+    <p class="meta" id="m30"></p>
+    <canvas id="c30" width="640" height="640" aria-label="Rule 30 pen on the sphere"></canvas>
+    <canvas id="s30" class="strip" width="640" height="34" aria-label="Rule 30 readout strip"></canvas>
+  </div>
+  <div class="card">
+    <h2 style="color:var(--coin)">Fair coin (control)</h2>
+    <p class="meta" id="mcoin"></p>
+    <canvas id="ccoin" width="640" height="640" aria-label="Fair coin pen on the sphere"></canvas>
+    <canvas id="scoin" class="strip" width="640" height="34" aria-label="Fair coin readout strip"></canvas>
+  </div>
+  <div class="card">
+    <h2 style="color:var(--ham)">Hamilton's icosian word (1857)</h2>
+    <p class="meta" id="mham"></p>
+    <canvas id="cham" width="640" height="640" aria-label="Hamilton's icosian word as a pen on the sphere"></canvas>
+    <canvas id="sham" class="strip" width="640" height="34" aria-label="Hamilton's word strip"></canvas>
+  </div>
+</section>
+
+<section class="notes">
+  <h3>What is drawn</h3>
+  <p>At each time t take the centre pair (q, r) = (x<sub>t</sub>(0), x<sub>t</sub>(1)) and place it on the pair torus at (θ<sub>q</sub>, θ<sub>r</sub>) with white ↦ 1 and black ↦ −1 = ζ<sub>2</sub> (half a turn). Squeezing the torus to the sphere (major radius 0) sends it to (r·σ<sub>q</sub>σ<sub>r</sub>, 0, 0), so the sphere sees one sign s<sub>t</sub> = σ<sub>q</sub>σ<sub>r</sub> = σ(q ⊕ r). The pen turns by s<sub>t</sub>·θ (left on +, right on −) and then walks a geodesic arc α. Red dots on the Rule 30 path mark the tooth: q = r = 1, the corner the squeeze glues to white, where Rule 30's OR differs from XOR.</p>
+  <p><b>Control.</b> The green sphere is driven by a fair coin instead of a rule: each sign is ±1 with probability ½, from a seeded pseudo-random generator (xorshift32, seed shown; "New seed" draws one from the browser's crypto source). If the Rule 30 picture looks like the coin picture, its "continents" are a picture of randomness, not of something specific to Rule 30.
+  <b>Coverage</b> counts the fraction of 432 equal-area cells (24 bands of equal height in z × 18 longitude sectors) the pen has entered. It is a crude summary, not a dimension estimate.</p>
+  <h3>The general formula (v0.1.10)</h3>
+  <p>Every preset is one case of a single formula for the regular tiling {p,q}: the edge ℓ satisfies cos(ℓ/2) = Re ζ<sub>2p</sub> / Im ζ<sub>2q</sub>, and the turn is ζ<sub>2q</sub><sup>±(q−2)</sup>. The table above follows from it. The curvature pen v0.3.0 carries the same formula to the plane and the hyperbolic plane with a {p,q} dial.</p>
+  <h3>Watching the pen walk (v0.1.7)</h3>
+  <p><b>Play</b> now moves the pen smoothly along each edge at the chosen speed, from one step every five seconds up to twenty steps a second; it starts at one step a second, and the − Slower and Faster + buttons beside Play change it while it walks. While it walks, the full solid is dimmed, the path it has taken is highlighted, the last six steps glow brightly, and a red ring flashes when a tooth event (q = r = 1) happens. <b>Pause</b> holds the picture, <b>Step ▸</b> advances one step, and <b>Restart</b> goes back to step 0. Changing any setting leaves playback and shows the whole path again.</p>
+  <h3>Platonic presets</h3>
+  <p>Project a Platonic solid {p,q} radially onto the sphere. Its edges become great-circle arcs of one length α, and the q edges at a vertex meet at equal angles, each 1/q of a turn. A pen arriving along one edge finds the other edges at turns of ±(q − 2j)/(2q) of a turn from straight ahead: the root of unity ζ<sub>2q</sub><sup>q−2j</sup>. So a ± turn by that root of unity, with step α equal to the edge arc, keeps the pen on the solid's skeleton whatever the sign stream says.</p>
+  <div style="overflow-x:auto"><table style="border-collapse:collapse;font-size:.85rem;margin:.3em 0 .6em">
+    <tr><th style="text-align:left;padding:2px 10px 2px 0">Solid</th><th style="text-align:left;padding:2px 10px">cos α (edge arc)</th><th style="text-align:left;padding:2px 10px">step e<sup>iα</sup></th><th style="text-align:left;padding:2px 10px">turn</th><th style="text-align:left;padding:2px 10px">V, E</th></tr>
+    <tr><td>Tetrahedron {3,3}</td><td style="padding:2px 10px">−1/3</td><td style="padding:2px 10px">(−1 + 2√2 i)/3</td><td style="padding:2px 10px">ζ<sub>6</sub> (1/6 turn)</td><td style="padding:2px 10px">4, 6</td></tr>
+    <tr><td>Cube {4,3}</td><td style="padding:2px 10px">1/3</td><td style="padding:2px 10px">(1 + 2√2 i)/3</td><td style="padding:2px 10px">ζ<sub>6</sub></td><td style="padding:2px 10px">8, 12</td></tr>
+    <tr><td>Octahedron {3,4}</td><td style="padding:2px 10px">0</td><td style="padding:2px 10px">i = ζ<sub>4</sub> (1/4 turn)</td><td style="padding:2px 10px">ζ<sub>4</sub> (1/4 turn)</td><td style="padding:2px 10px">6, 12</td></tr>
+    <tr><td>Dodecahedron {5,3}</td><td style="padding:2px 10px">√5/3</td><td style="padding:2px 10px">(√5 + 2i)/3</td><td style="padding:2px 10px">ζ<sub>6</sub></td><td style="padding:2px 10px">20, 30</td></tr>
+    <tr><td>Icosahedron {3,5}</td><td style="padding:2px 10px">1/√5</td><td style="padding:2px 10px">(1 + 2i)/√5</td><td style="padding:2px 10px">ζ<sub>10</sub><sup>3</sup> (3/10 turn, sharp) or ζ<sub>10</sub> (1/10 turn, wide)</td><td style="padding:2px 10px">12, 30</td></tr>
+  </table></div>
+  <p>Only the octahedron's step is a root of unity (i = ζ<sub>4</sub>). The other four steps are unit complex numbers in ℚ(i, √2) or ℚ(i, √5) that are <b>not</b> roots of unity (Niven's theorem), so no grid of ζ<sub>N</sub> steps can reach them: that is why grid settings near them drift.</p>
+  <p>The slider grid has α in 96ths and θ in 24ths of a turn, so only the octahedron sits on it exactly; the others are near grid points, and on the grid they drift off the skeleton over time. A preset uses the exact angles. The page also turns the pen into a <b>finite flag machine</b>: it enumerates every (vertex, heading) state the two moves can reach and then follows the table, so the path cannot drift. The faint lines are the solid's skeleton. Each card reports the vertices and edges its pen has visited, and the number of machine states reachable from the start.</p>
+  <p><b>Messy presets</b> (from v0.1.3) reproduce the grid settings saphir found by hand: the cube with step ζ<sub>96</sub><sup>19</sup> (cos ≈ 0.3214 against the edge's exact 1/3, so slightly too long) and the dodecahedron with step ζ<sub>96</sub><sup>11</sup> (cos ≈ 0.7518 against √5/3 ≈ 0.7454, slightly too short), both turning by ζ<sub>6</sub>. Each step misses the vertex slightly, the error builds, and the drawn solid slowly precesses. The exact solid is drawn faint behind, so the drift shows against it.</p>
+  <p><b>Screenshot presets</b> (from v0.1.4) restore the exact settings of four screenshots saphir took on 2026-10-31: slider positions, step count T and coin seed. Each should reproduce the sign counts shown in the screenshot.</p>
+  <h3>Full screen (this version)</h3>
+  <p>Every view has a <b>⛶ Full screen</b> button in its top corner. In full screen the view fills the screen with its own controls: <b>− Slower, Play, Faster +, Step ▸, Restart</b> and the current speed, plus camera controls. Spheres turn with ⟲ ⟳ ▲ ▼ or by dragging; every view moves with ◀ ▶ ▲ ▼ or a two-finger drag (flat views also by a one-finger drag); every view zooms with − and +, a two-finger pinch, or the mouse wheel. <b>Reset camera</b> returns the view to its start, and <b>✕ Exit</b> (or Escape) leaves full screen.</p>
+  <h3>Hamilton's icosian word (v0.1.14)</h3>
+  <p>In 1857 W. R. Hamilton posed the Icosian game, a round trip along the dodecahedron's edges through all 20 vertices exactly once (a Hamiltonian cycle), and solved it with his icosian calculus: two moves, turn left and turn right, whose group is A<sub>5</sub>. Those are this pen's two moves. His word L L L R R R L R L R, taken twice, is a Hamiltonian cycle; the fourth card plays it, repeated, beside Rule 150, Rule 30 and the coin. On the dodecahedron the card checks the cycle: all 20 vertices once, back at the start at step 20. On other solids the same word is just a periodic sign stream. Every card on an exact preset now also shows its cover times: the first step at which all vertices, and all edges, have been reached. The Icosian game preset is the dodecahedron with 20 steps.</p>
+  <p>Hamiltonian cycles are where the travelling salesman problem starts: on a solid whose edges all have the same length, the shortest round trip through every vertex is exactly a Hamiltonian cycle. Covering every edge is the Chinese postman problem. Nothing here bears on how hard those problems are in general.</p>
+  <h3>Export a run (fvlt-pen-run/0.1)</h3>
+  <p>Every view has a <b>⇩ Run JSON</b> button, on the page and in full screen. It saves the run as it is now: the stream (signs, seed, tooth events), the rule and its exact labels, the geometry (skeleton, lattice or tiling patch), the path for every step, the camera, the play speed, and statistics for every step (vertices, edges, tooth events, distance) with final totals. The renderer <code>pen_tools/render_pen_run_v0_1.py</code> turns such a file into a video like the Platonic-solid videos.</p>
+  <h3>Status</h3>
+  <p><span class="tag">exact · Lean</span>The four-corner squeeze facts are proved in <code>FVLTS4sSqueezeCornersV1</code> (skeleton-authored; Codex review PASS WITH FLAGS, #1310; library v15).
+  <span class="tag">exact · kit</span>Rule 150's centre column from one cell is constantly black (<code>Rule30Realization.center150</code>), so its sign is −σ(x<sub>t</sub>(1)).
+  <span class="tag">drawing</span>The pen path is floating-point rendering; with step and turn both roots of unity the exact register is ℚ(ζ), but this page does not compute in it. The look of the path is a picture, not evidence about periodicity. From v0.1.2 each step is drawn as a great-circle arc, not a straight chord. From v0.1.5 the <b>Edges</b> button switches between the two: <i>on the sphere</i> draws the arc the pen walks; <i>straight</i> draws the chord between the same two points, so with an exact preset the picture is the true Platonic solid (flat faces, straight edges inside the ball). The vertices are the same in both modes.
+  <span class="tag">finite</span>With a preset, the vertex, edge and state counts come from a floating-point enumeration with snapping tolerance 10⁻⁷. They are a FINITE readout, not a proof; the exact register for these solids is ℚ(√2, √3, √5).</p>
+  <p style="color:var(--muted)">Credits: saphir — Rule 30 written on surfaces, the sphere picture, the spherical Fourier pen, and finding the polyhedra the pen draws. Codex — the squeeze identification. FVLT: the framework was assembled by Robin Miller; its components are classical results of others. Built by skeleton (Claude Opus 5.5), 2026-10-31.</p>
+</section>
+</main>
+
+<script>
+"use strict";
+// ---- full-screen views with playback and camera controls (shared by the pen viewers) ----
+// v0.4: every view exports its run as JSON (fvlt-pen-run/0.1), with per-step statistics, for the video renderer.
+// v0.3: a step counter on every view, on the page and in full screen.
+// v0.2: every view pans (buttons, one-finger drag on flat views, two-finger drag on all); the pan is applied to the
+// canvas itself each time a frame is cleared, so it works for spheres, planes and disks without touching their drawing code.
+const CAMZ={}, CAMP={};                       // per-view zoom factor and pan offset (fraction of the canvas width)
+function zoomOf(id){ return CAMZ[id]||1; }
+function panOf(id){ return [0,0]; }           // kept for the drawing hooks of v0.1; the pan now lives in the canvas transform
+// ---- run export (fvlt-pen-run/0.1) ----
+// per-step statistics from a path: distinct vertices and edges reached, cumulative tooth events, distance from the start
+function pathStats(points, tooth, dist){
+  const key=p=>p.map(x=>Math.round(x*1e6)).join(','), vs=new Set(), es=new Set(), out={vertices:[], edges:[], tooth:[], distance:[]};
+  let tc=0;
+  for(let t=0;t<points.length;t++){
+    vs.add(key(points[t])); if(t>0){ const a=key(points[t-1]), b=key(points[t]); if(a!==b) es.add(a<b?a+'|'+b:b+'|'+a); }
+    if(t>0 && tooth && tooth[t-1]) tc++;
+    out.vertices.push(vs.size); out.edges.push(es.size); out.tooth.push(tc);
+    out.distance.push(dist ? dist[t] : Math.hypot(...points[t].map((x,i)=>x-points[0][i])));
+  }
+  return out;
+}
+const r6=x=>Math.round(x*1e9)/1e9;
+function downloadRun(v){
+  let run; try{ run=exportRun(v.id); }catch(e){ alert('Export failed: '+e.message); return; }
+  run.schema='fvlt-pen-run/0.1'; run.created=new Date().toISOString();
+  run.view=Object.assign({id:v.id, title:v.title, kind:v.kind}, run.view||{});
+  run.camera=Object.assign({yaw:r6(yaw), pitch:r6(pitch), zoom:zoomOf(v.id), pan:CAMP[v.id]||[0,0]}, run.camera||{});
+  run.credits='saphir: Rule 30 written on surfaces, the polyhedra, the {p,q} vision. FVLT: the framework was assembled by Robin Miller; its components are classical results of others. Built by skeleton (Claude Opus 5.5).';
+  run.status=run.status||'drawing register: coordinates are floating point unless marked exact; counts are FINITE readouts, not proofs.';
+  const name=(run.file_stub||('pen_run_'+v.id))+'_'+new Date().toISOString().slice(0,19).replace(/[:T]/g,'-')+'.json';
+  const blob=new Blob([JSON.stringify(run)],{type:'application/json'}), a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000);
+  window.lastRun=run; return run;
+}
+function setupFullscreen(VIEWS){
+  const Y0=yaw, P0=pitch, byId=id=>document.getElementById(id);
+  const st=document.createElement('style');
+  st.textContent=`.fsbox{position:relative}
+.fsopen{position:absolute;top:6px;right:6px;font-size:.8rem;padding:4px 8px;opacity:.9;z-index:2}
+.fsbar,.fstitle{display:none}
+.fsbox.fs-on{position:fixed;inset:0;z-index:1000;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;gap:6px;overflow:auto}
+.fsbox.fs-on canvas{width:min(calc(100vw - 16px),calc(100vh - 220px))!important;height:auto!important;flex:0 0 auto}
+.fsbox.fs-on .fsopen{display:none}
+.fsbox.fs-on .fstitle{display:block;font-weight:600}
+.fsbox.fs-on .fsbar{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;max-width:100%}
+.fsbar button{min-width:44px;min-height:40px;font-size:1rem}
+.fsbar .fsspd{font-size:.85rem;color:var(--muted);min-width:9em;text-align:center}
+.fsbar .fslab{font-size:.8rem;color:var(--muted)}
+.fsstep{position:absolute;left:6px;top:6px;z-index:2;font-size:.85rem;font-variant-numeric:tabular-nums;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:2px 8px;opacity:.92;pointer-events:none}
+.fsbox.fs-on .fsstep{position:static;font-size:1rem;opacity:1}
+.fsexport{position:absolute;top:6px;right:118px;font-size:.8rem;padding:4px 8px;opacity:.9;z-index:2}
+.fsbox.fs-on .fsexport{display:none}`;
+  document.head.appendChild(st);
+  const boxes=[];
+  for(const v of VIEWS){
+    const cv=byId(v.id), box=document.createElement('div'); box.className='fsbox';
+    cv.parentNode.insertBefore(box,cv); box.appendChild(cv);
+    // the pan: after every full clear, draw through a translation
+    const g=cv.getContext('2d'), clear0=g.clearRect.bind(g);
+    g.clearRect=function(x,y,w,h){ g.setTransform(1,0,0,1,0,0); clear0(0,0,cv.width,cv.height); const p=CAMP[v.id]||[0,0]; g.setTransform(1,0,0,1,p[0]*cv.width,p[1]*cv.width); };
+    const open=document.createElement('button'); open.className='fsopen'; open.textContent='⛶ Full screen'; open.setAttribute('aria-label','Full screen: '+v.title);
+    box.insertBefore(open,cv);
+    if(typeof exportRun==='function'){ const ex=document.createElement('button'); ex.className='fsexport'; ex.textContent='⇩ Run JSON'; ex.setAttribute('aria-label','Export this run as JSON: '+v.title); ex.addEventListener('click',()=>downloadRun(v)); box.insertBefore(ex,cv); }
+    const title=document.createElement('div'); title.className='fstitle'; title.textContent=v.title; box.insertBefore(title,cv);
+    const badge=document.createElement('div'); badge.className='fsstep'; badge.setAttribute('aria-live','off'); box.insertBefore(badge,cv);
+    const row1=document.createElement('div'), row2=document.createElement('div'), row3=document.createElement('div');
+    row1.className=row2.className=row3.className='fsbar';
+    row1.innerHTML='<button data-p="slower">− Slower</button><button data-p="play">Play</button><button data-p="faster">Faster +</button><button data-p="stepbtn">Step ▸</button><button data-p="restart">Restart</button><span class="fsspd"></span>';
+    row2.innerHTML='<span class="fslab">Move</span><button data-c="pl" aria-label="Move left">◀</button><button data-c="pr" aria-label="Move right">▶</button><button data-c="pu" aria-label="Move up">▲</button><button data-c="pd" aria-label="Move down">▼</button><span class="fslab">Zoom</span><button data-c="zout" aria-label="Zoom out">−</button><button data-c="zin" aria-label="Zoom in">+</button>';
+    row3.innerHTML=(v.kind==='sphere' ? '<span class="fslab">Turn</span><button data-c="left" aria-label="Turn left">⟲</button><button data-c="right" aria-label="Turn right">⟳</button><button data-c="up" aria-label="Tilt up">⤒</button><button data-c="down" aria-label="Tilt down">⤓</button>' : '')
+      +'<button data-c="reset">Reset camera</button>'+(typeof exportRun==='function'?'<button data-c="export">⇩ Run JSON</button>':'')+'<button data-c="exit">✕ Exit</button>';
+    box.appendChild(row1); box.appendChild(row2); box.appendChild(row3);
+    const b={v, cv, box, row1, badge, api:false}; boxes.push(b);
+    open.addEventListener('click',()=>enter(b));
+    row1.addEventListener('click',e=>{ const p=e.target.dataset&&e.target.dataset.p; if(p && byId(p)) byId(p).click(); sync(); });
+    for(const r of [row2,row3]) r.addEventListener('click',e=>{ const c=e.target.dataset&&e.target.dataset.c; if(c) camera(b,c); });
+    // gestures: wheel and pinch zoom; two fingers also pan; one finger pans a flat view (spheres turn by one-finger drag)
+    const ptrs=new Map(); let two=null, drag0=null;
+    cv.addEventListener('wheel',e=>{ if(!box.classList.contains('fs-on')) return; e.preventDefault(); zoomBy(v.id, Math.exp(-e.deltaY*0.0015)); },{passive:false});
+    cv.addEventListener('pointerdown',e=>{ ptrs.set(e.pointerId,[e.clientX,e.clientY]);
+      if(ptrs.size===2){ const [a,c]=[...ptrs.values()]; two={d:Math.hypot(a[0]-c[0],a[1]-c[1]), z:zoomOf(v.id), m:[(a[0]+c[0])/2,(a[1]+c[1])/2], p:(CAMP[v.id]||[0,0]).slice()}; drag0=null; }
+      else if(v.kind!=='sphere'){ drag0=[e.clientX,e.clientY,...(CAMP[v.id]||[0,0])]; } });
+    cv.addEventListener('pointermove',e=>{ if(!ptrs.has(e.pointerId)) return; ptrs.set(e.pointerId,[e.clientX,e.clientY]); const w=cv.clientWidth||1;
+      if(ptrs.size===2 && two){ const [a,c]=[...ptrs.values()];
+        CAMZ[v.id]=Math.max(0.25,Math.min(12,two.z*Math.hypot(a[0]-c[0],a[1]-c[1])/Math.max(1,two.d)));
+        CAMP[v.id]=[two.p[0]+((a[0]+c[0])/2-two.m[0])/w, two.p[1]+((a[1]+c[1])/2-two.m[1])/w]; render(); }
+      else if(drag0){ CAMP[v.id]=[drag0[2]+(e.clientX-drag0[0])/w, drag0[3]+(e.clientY-drag0[1])/w]; render(); } });
+    const up=e=>{ ptrs.delete(e.pointerId); if(ptrs.size<2) two=null; if(ptrs.size===0) drag0=null; };
+    cv.addEventListener('pointerup',up); cv.addEventListener('pointercancel',up);
+  }
+  function zoomBy(id,f){ CAMZ[id]=Math.max(0.25,Math.min(12,zoomOf(id)*f)); render(); }
+  function camera(b,c){ const id=b.v.id, P=CAMP[id]||[0,0], d=0.1;
+    if(c==='left') yaw-=0.25; else if(c==='right') yaw+=0.25;
+    else if(c==='up') pitch=Math.max(-1.5,pitch-0.2); else if(c==='down') pitch=Math.min(1.5,pitch+0.2);
+    else if(c==='pl') CAMP[id]=[P[0]+d,P[1]]; else if(c==='pr') CAMP[id]=[P[0]-d,P[1]];
+    else if(c==='pu') CAMP[id]=[P[0],P[1]+d]; else if(c==='pd') CAMP[id]=[P[0],P[1]-d];
+    else if(c==='zin') return zoomBy(id,1.25); else if(c==='zout') return zoomBy(id,0.8);
+    else if(c==='reset'){ CAMZ[id]=1; CAMP[id]=[0,0]; if(b.v.kind==='sphere'){ yaw=Y0; pitch=P0; } }
+    else if(c==='exit') return leaveFs(b);
+    else if(c==='export') return downloadRun(b.v);
+    render(); }
+  function enter(b){
+    for(const o of boxes) if(o!==b && o.box.classList.contains('fs-on')) leaveFs(o);
+    b.box.classList.add('fs-on'); document.body.style.overflow='hidden';
+    const rq=b.box.requestFullscreen||b.box.webkitRequestFullscreen;
+    if(rq){ try{ const p=rq.call(b.box); b.api=true; if(p&&p.catch) p.catch(()=>{ b.api=false; }); }catch(e){ b.api=false; } }
+    sync(); render(); }
+  function leaveFs(b){
+    if(!b.box.classList.contains('fs-on')) return;
+    b.box.classList.remove('fs-on'); document.body.style.overflow='';
+    const fe=document.fullscreenElement||document.webkitFullscreenElement;
+    if(fe){ const ex=document.exitFullscreen||document.webkitExitFullscreen; try{ ex&&ex.call(document); }catch(e){} }
+    b.api=false; render(); }
+  const onFs=()=>{ const fe=document.fullscreenElement||document.webkitFullscreenElement; if(!fe) for(const b of boxes) if(b.api) leaveFs(b); };
+  document.addEventListener('fullscreenchange',onFs); document.addEventListener('webkitfullscreenchange',onFs);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') for(const b of boxes) leaveFs(b); });
+  function sync(){ for(const b of boxes){ const pb=b.row1.querySelector('[data-p="play"]'), sp=b.row1.querySelector('.fsspd');
+    if(byId('play')) pb.textContent=byId('play').textContent; if(byId('spdv')) sp.textContent=byId('spdv').textContent; } }
+  setInterval(sync,250);
+  // the step the pen is on: during playback the step in progress, otherwise the whole run
+  function stepText(){ if(typeof shown==='undefined' || !shown) return ''; const total= shown.T!==undefined ? shown.T : shown.n;
+    if(pos===null) return 'step '+total+' of '+total+' (whole path)';
+    const n=Math.max(0,Math.min(total, Math.floor(pos))); return 'step '+n+' of '+total+(playing?'':' · paused'); }
+  let lastStep='';
+  function showSteps(){ const t=stepText(); if(t===lastStep) return; lastStep=t; for(const b of boxes) b.badge.textContent=t; }
+  (function loop(){ showSteps(); setTimeout(loop,100); })();
+  window.PenFullscreen={boxes, enter, leaveFs, camera, zoomBy};
+}
+// ---- exact Boolean core (no floats) ----
+function run(rule, T){
+  // returns {q:Uint8Array(T), r:Uint8Array(T)} centre pair x_t(0), x_t(1), single seed at 0
+  const W = 2*T + 5, mid = T + 2;
+  let a = new Uint8Array(W), b = new Uint8Array(W);
+  a[mid] = 1;
+  const q = new Uint8Array(T), r = new Uint8Array(T);
+  for(let t=0;t<T;t++){
+    q[t] = a[mid]; r[t] = a[mid+1];
+    for(let i=1;i<W-1;i++){
+      const L=a[i-1], C=a[i], R=a[i+1];
+      b[i] = rule===150 ? (L^C^R) : (L^(C|R));
+    }
+    b[0]=0; b[W-1]=0;
+    const tmp=a; a=b; b=tmp;
+  }
+  return {q, r};
+}
+function readout(pair){
+  const T = pair.q.length, s = new Int8Array(T), tooth = new Uint8Array(T);
+  for(let t=0;t<T;t++){
+    s[t] = (pair.q[t]^pair.r[t]) ? -1 : 1;     // sigma_q * sigma_r = sigma(q xor r)
+    tooth[t] = pair.q[t] & pair.r[t];          // q AND r
+  }
+  return {s, tooth};
+}
+// ---- drawing register: geodesic turtle on S^2 ----
+const cross=(u,v)=>[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];
+function penPath(s, alpha, theta){
+  let x=[0,0,1], v=[1,0,0];
+  const pts=[x.slice()];
+  const ca=Math.cos(alpha), sa=Math.sin(alpha);
+  for(let t=0;t<s.length;t++){
+    const th = s[t]*theta, ct=Math.cos(th), st=Math.sin(th), w=cross(x,v);
+    v=[ct*v[0]+st*w[0], ct*v[1]+st*w[1], ct*v[2]+st*w[2]];
+    const nx=[ca*x[0]+sa*v[0], ca*x[1]+sa*v[1], ca*x[2]+sa*v[2]];
+    const nv=[-sa*x[0]+ca*v[0], -sa*x[1]+ca*v[1], -sa*x[2]+ca*v[2]];
+    // renormalise (drawing register only)
+    const nn=Math.hypot(...nx); x=nx.map(c=>c/nn);
+    const d=nv[0]*x[0]+nv[1]*x[1]+nv[2]*x[2]; let vv=[nv[0]-d*x[0],nv[1]-d*x[1],nv[2]-d*x[2]];
+    const nm=Math.hypot(...vv); v=vv.map(c=>c/nm);
+    pts.push(x.slice());
+  }
+  return pts;
+}
+const SUP="⁰¹²³⁴⁵⁶⁷⁸⁹"; function sup(n){ return String(n).split("").map(d=>SUP[+d]).join(""); }
+// Hamilton's icosian word: L L L R R R L R L R, twice (one Hamiltonian cycle of the dodecahedron), repeated
+const ICOSIAN='LLLRRRLRLRLLLRRRLRLR';
+function icosianSigns(T){ const s=new Int8Array(T); for(let t=0;t<T;t++) s[t]= ICOSIAN[t%20]==='L' ? 1 : -1; return s; }
+// cover times: the first step at which every vertex, and every edge, of the solid has been reached
+function coverTimes(pts, M){
+  if(!M) return '';
+  const key=p=>p.map(x=>Math.round(x*1e6)).join(','), V=M.verts.length, E=M.edges.length, vs=new Set([key(pts[0])]), es=new Set(); let tv=V===1?0:-1, te=-1;
+  for(let t=1;t<pts.length;t++){ const a=key(pts[t-1]), b=key(pts[t]); vs.add(b); if(a!==b) es.add(a<b?a+'|'+b:b+'|'+a);
+    if(tv<0 && vs.size>=V) tv=t; if(te<0 && es.size>=E){ te=t; break; } }
+  return ' · all '+V+' vertices '+(tv<0?'not yet':'at step '+tv)+' · all '+E+' edges '+(te<0?'not yet':'at step '+te);
+}
+function hamiltonCheck(pts, M){ // on the dodecahedron: does the first cycle visit all 20 vertices once and return?
+  if(!M || M.verts.length!==20 || pts.length<21) return '';
+  const key=p=>p.map(x=>Math.round(x*1e6)).join(','), first=pts.slice(0,20).map(key);
+  const ok = new Set(first).size===20 && key(pts[20])===first[0];
+  return ok ? ' · Hamiltonian cycle: all 20 vertices once, back at the start at step 20 ✓' : ' · Hamiltonian cycle check failed';
+}
+function pqFormula(name){ const m=/\{(\d+),(\d+)\}/.exec(name); if(!m) return ""; const p=+m[1], q=+m[2], r=Math.cos(Math.PI/p)/Math.sin(Math.PI/q);
+  const sb=n=>String(n).split("").map(d=>"₀₁₂₃₄₅₆₇₈₉"[+d]).join("");
+  return "general formula: cos(ℓ/2) = Re ζ"+sb(2*p)+" / Im ζ"+sb(2*q)+" ≈ "+r.toFixed(6)+", so cos ℓ ≈ "+(2*r*r-1).toFixed(6); }
+// ---- Platonic presets: exact edge arcs (cos α) and vertex turns ----
+const PRESETS = {
+  tet:    {name:'Tetrahedron {3,3}',  ca:-1/3,          theta:Math.PI/3,   V:4,  E:6,  alab:'e^{iα} = (−1 + 2√2 i)/3', tlab:'ζ₆ = 1/6 turn'},
+  cube:   {name:'Cube {4,3}',         ca:1/3,           theta:Math.PI/3,   V:8,  E:12, alab:'e^{iα} = (1 + 2√2 i)/3', tlab:'ζ₆ = 1/6 turn'},
+  oct:    {name:'Octahedron {3,4}',   ca:0,             theta:Math.PI/2,   V:6,  E:12, alab:'e^{iα} = i = ζ₄, 1/4 turn', tlab:'ζ₄ = 1/4 turn', ak:24, tk:6},
+  dod:    {name:'Dodecahedron {5,3}', ca:Math.sqrt(5)/3,theta:Math.PI/3,   V:20, E:30, alab:'e^{iα} = (√5 + 2i)/3', tlab:'ζ₆ = 1/6 turn'},
+  ico108: {name:'Icosahedron {3,5}',  ca:1/Math.sqrt(5),theta:3*Math.PI/5, V:12, E:30, alab:'e^{iα} = (1 + 2i)/√5', tlab:'ζ₁₀³ = 3/10 turn'},
+  ico36:  {name:'Icosahedron {3,5}',  ca:1/Math.sqrt(5),theta:Math.PI/5,   V:12, E:30, alab:'e^{iα} = (1 + 2i)/√5', tlab:'ζ₁₀ = 1/10 turn'},
+  // saphir's hand-found grid settings: near an edge arc, so the solid precesses; the exact solid is drawn faint behind
+  cubeDrift: {name:'Messy cube',         grid:true, ak:19, tk:4, T:1328, solid:'cube'},
+  dodDrift:  {name:'Messy dodecahedron', grid:true, ak:11, tk:4, solid:'dod'},
+  // saphir's four screenshots (2026-10-31): exact slider, step-count and coin-seed settings
+  shot0417: {name:'Screenshot 04:17', grid:true, ak:11, tk:4, T:512,  seed:1, solid:'dod'},
+  shot0424: {name:'Screenshot 04:24', grid:true, ak:24, tk:6, T:2048, seed:1, solid:'oct'},
+  shot0706: {name:'Screenshot 07:06', grid:true, ak:19, tk:4, T:1328, seed:5, solid:'cube'},
+  shot0830: {name:'Screenshot 08:30', grid:true, ak:24, tk:6, T:16,   seed:8, solid:'oct'},
+  // Hamilton's Icosian game: the dodecahedron preset with 20 steps, one full icosian cycle
+  icosian: {name:'Dodecahedron {5,3}', ca:Math.sqrt(5)/3, theta:Math.PI/3, V:20, E:30, alab:'e^{iα} = (√5 + 2i)/3', tlab:'ζ₆ = 1/6 turn', T:20}
+};
+// one pen step from state (x, v): turn by s·theta, then walk the arc alpha
+function penStep(x, v, s, ca, sa, theta){
+  const th=s*theta, ct=Math.cos(th), st=Math.sin(th), w=cross(x,v);
+  const u=[ct*v[0]+st*w[0], ct*v[1]+st*w[1], ct*v[2]+st*w[2]];
+  return [[ca*x[0]+sa*u[0], ca*x[1]+sa*u[1], ca*x[2]+sa*u[2]],
+          [-sa*x[0]+ca*u[0], -sa*x[1]+ca*u[1], -sa*x[2]+ca*u[2]]];
+}
+// finite flag machine: enumerate every (vertex, heading) state reachable by the two moves.
+// Each new point is snapped to a stored vertex and heading, so a path read from the table cannot drift.
+function buildMachine(ca, theta, cap=20000){
+  const sa=Math.sqrt(Math.max(0,1-ca*ca)), tol=1e-7;
+  const verts=[], states=[], key=new Map();
+  const near=(a,b)=>Math.abs(a[0]-b[0])<tol&&Math.abs(a[1]-b[1])<tol&&Math.abs(a[2]-b[2])<tol;
+  const vIndex=p=>{ for(let i=0;i<verts.length;i++) if(near(verts[i],p)) return i; verts.push(p); return verts.length-1; };
+  const sIndex=(x,v)=>{
+    const vi=vIndex(x), list=key.get(vi)||[];
+    for(const si of list) if(near(states[si].v,v)) return si;
+    states.push({vi, x:verts[vi], v, next:[-1,-1]}); list.push(states.length-1); key.set(vi,list);
+    return states.length-1;
+  };
+  sIndex([0,0,1],[1,0,0]);
+  for(let i=0;i<states.length;i++){
+    if(states.length>cap) return {finite:false, verts, states};
+    for(const [k,s] of [[0,1],[1,-1]]){
+      const [nx,nv]=penStep(states[i].x, states[i].v, s, ca, sa, theta);
+      states[i].next[k]=sIndex(nx,nv);
+    }
+  }
+  const edges=new Set();
+  for(const st of states) for(const n of st.next){ const a=st.vi, b=states[n].vi; edges.add(a<b?a+','+b:b+','+a); }
+  return {finite:true, verts, states, edges:[...edges].map(e=>e.split(',').map(Number))};
+}
+// read a sign stream through the machine; returns points plus visited vertex and edge counts
+function machinePath(M, s){
+  let st=0; const pts=[M.verts[0]], vs=new Set([0]), es=new Set();
+  for(let t=0;t<s.length;t++){
+    const a=M.states[st].vi; st=M.states[st].next[s[t]>0?0:1]; const b=M.states[st].vi;
+    pts.push(M.verts[b]); vs.add(b); es.add(a<b?a+','+b:b+','+a);
+  }
+  return {pts, V:vs.size, E:es.size};
+}
+// fair-coin control: xorshift32, reproducible from the seed
+function coin(T, seed){
+  let x = (seed>>>0) || 1; const s = new Int8Array(T);
+  for(let t=0;t<T;t++){ x^=x<<13; x>>>=0; x^=x>>>17; x^=x<<5; x>>>=0; s[t] = (x & 1) ? 1 : -1; }
+  return s;
+}
+// coverage: fraction of 432 equal-area cells (24 z-bands x 18 sectors) visited
+function coverage(pts){
+  const seen = new Set();
+  for(const p of pts){
+    const zb = Math.min(23, Math.floor((p[2]+1)/2*24));
+    const ph = Math.atan2(p[1],p[0]); const sb = Math.min(17, Math.floor((ph+Math.PI)/(2*Math.PI)*18));
+    seen.add(zb*18+sb);
+  }
+  return seen.size/432;
+}
+// expose for verification
+window.SqueezePen = {run, readout, penPath, coin, coverage, PRESETS, buildMachine, machinePath};
+
+// ---- rendering ----
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+let yaw=0.6, pitch=0.45, shown=null, playing=false, raf=0, pos=null, lastT=0;
+function rot(p){
+  const cy=Math.cos(yaw), sy=Math.sin(yaw), cp=Math.cos(pitch), sp=Math.sin(pitch);
+  const x1=cy*p[0]+sy*p[1], y1=-sy*p[0]+cy*p[1], z1=p[2];
+  return [x1, cp*y1-sp*z1, sp*y1+cp*z1];   // [screen x, depth, screen y]
+}
+// great-circle arc a→b as screen polyline pieces (long steps are arcs, not chords)
+let edgeMode='arc'; // 'arc' = great-circle arc on the sphere; 'chord' = straight line, the true polyhedron
+function arcPts(a,b){
+  if(edgeMode==='chord') return [a,b];
+  const d=Math.max(-1,Math.min(1,a[0]*b[0]+a[1]*b[1]+a[2]*b[2])), w=Math.acos(d);
+  const n=Math.max(1,Math.ceil(w/(Math.PI/36))), out=[a];
+  if(w<1e-9) return [a,b];
+  const sw=Math.sin(w);
+  for(let k=1;k<=n;k++){ const t=k/n, p=Math.sin((1-t)*w)/sw, q=Math.sin(t*w)/sw; out.push([p*a[0]+q*b[0],p*a[1]+q*b[1],p*a[2]+q*b[2]]); }
+  return out;
+}
+function strokeArc(g,a,b,cx,cy,R,frontAlpha,backAlpha,lw){
+  const ps=arcPts(a,b).map(rot);
+  for(let k=0;k<ps.length-1;k++){
+    const front=(ps[k][1]+ps[k+1][1])/2>=0; g.globalAlpha=front?frontAlpha:backAlpha; g.lineWidth=front?lw:Math.max(1,lw*0.6);
+    g.beginPath(); g.moveTo(cx+R*ps[k][0],cy-R*ps[k][2]); g.lineTo(cx+R*ps[k+1][0],cy-R*ps[k+1][2]); g.stroke();
+  }
+}
+function drawSphere(cv, pts, tooth, color, upto){
+  const g=cv.getContext('2d'), W=cv.width, H=cv.height, R=W*0.44*zoomOf(cv.id), cx=W/2, cy=H/2;
+  g.clearRect(0,0,W,H);
+  g.fillStyle=css('--sphere'); g.beginPath(); g.arc(cx,cy,R,0,2*Math.PI); g.fill();
+  g.strokeStyle=css('--grid'); g.lineWidth=1;
+  for(let k=-2;k<=2;k++){ // latitude circles
+    const z=k/3, rr=Math.sqrt(1-z*z); g.beginPath();
+    for(let j=0;j<=96;j++){const a=2*Math.PI*j/96; const p=rot([rr*Math.cos(a),rr*Math.sin(a),z]); if(p[1]<0){g.moveTo(cx+R*p[0],cy-R*p[2]);continue;} j===0?g.moveTo(cx+R*p[0],cy-R*p[2]):g.lineTo(cx+R*p[0],cy-R*p[2]);} g.stroke();
+  }
+  const walking = pos!==null; // playback mode: dim the solid, highlight the walked path, bright trail, moving pen
+  if(shown && shown.M){ // the solid's skeleton, faint
+    g.strokeStyle=css('--muted');
+    for(const [a,b] of shown.M.edges) strokeArc(g,shown.M.verts[a],shown.M.verts[b],cx,cy,R,walking?0.22:0.35,0.07,1);
+  }
+  const last=pts.length-1, n=Math.max(0,Math.min(Math.floor(upto), last)), frac=n<last?Math.max(0,Math.min(1,upto-n)):0, TRAIL=6;
+  g.strokeStyle=color;
+  for(let i=0;i<n;i++){
+    const recent = walking && i>=n-TRAIL;
+    strokeArc(g,pts[i],pts[i+1],cx,cy,R, walking?(recent?1:0.55):0.95, walking?(recent?0.35:0.12):0.18, walking?(recent?3.4:1.6):1.6);
+  }
+  let m=pts[n];
+  if(walking && frac>0){ m=along(pts[n],pts[n+1],frac); strokeArc(g,pts[n],m,cx,cy,R,1,0.35,3.4); }
+  if(tooth){
+    g.fillStyle=css('--tooth');
+    for(let i=0;i<n;i++) if(tooth[i]){ const p=rot(pts[i]); g.globalAlpha=p[1]>=0?1:0.25; g.beginPath(); g.arc(cx+R*p[0],cy-R*p[2],2.6,0,2*Math.PI); g.fill(); }
+  }
+  g.globalAlpha=1;
+  const e=rot(m); g.fillStyle=css('--ink'); g.globalAlpha=e[1]>=0?1:0.45;
+  g.beginPath(); g.arc(cx+R*e[0],cy-R*e[2],walking?7:4,0,2*Math.PI); g.fill();
+  if(walking){ g.strokeStyle=color; g.lineWidth=2.5; g.beginPath(); g.arc(cx+R*e[0],cy-R*e[2],12,0,2*Math.PI); g.stroke();
+    if(tooth && tooth[n] && frac<0.5){ g.strokeStyle=css('--tooth'); g.lineWidth=3; g.globalAlpha=1-2*frac; const p=rot(pts[n]); g.beginPath(); g.arc(cx+R*p[0],cy-R*p[2],18+20*frac,0,2*Math.PI); g.stroke(); } }
+  g.globalAlpha=1;
+}
+// a point a fraction f of the way along the step a to b: along the arc on the sphere, or along the straight edge
+function along(a,b,f){
+  if(edgeMode==='chord') return [a[0]+(b[0]-a[0])*f, a[1]+(b[1]-a[1])*f, a[2]+(b[2]-a[2])*f];
+  const d=Math.max(-1,Math.min(1,a[0]*b[0]+a[1]*b[1]+a[2]*b[2])), w=Math.acos(d);
+  if(w<1e-9) return a; const sw=Math.sin(w), p=Math.sin((1-f)*w)/sw, q=Math.sin(f*w)/sw;
+  return [p*a[0]+q*b[0], p*a[1]+q*b[1], p*a[2]+q*b[2]];
+}
+function drawStrip(cv, s, tooth, color, upto){
+  const g=cv.getContext('2d'), W=cv.width, H=cv.height; g.clearRect(0,0,W,H);
+  const n=Math.min(upto,s.length), w=W/s.length;
+  for(let t=0;t<n;t++){
+    g.fillStyle = s[t]>0 ? color : css('--line');
+    g.fillRect(t*w, 4, Math.max(w,1), H-14);
+    if(tooth && tooth[t]){ g.fillStyle=css('--tooth'); g.fillRect(t*w, H-8, Math.max(w,1), 6); }
+  }
+}
+function compute(){
+  const T=+document.getElementById('T').value, ak=+document.getElementById('a').value, tk=+document.getElementById('th').value;
+  const pk=document.getElementById('preset').value, P=PRESETS[pk];
+  document.getElementById('Tv').textContent=T;
+  const exact = P && !P.grid;
+  document.getElementById('av').textContent = exact ? `${P.alab} (preset)` : 'ζ₉₆'+sup(ak)+' = '+ak+'/96 turn';
+  document.getElementById('thv').textContent = exact ? `${P.tlab} (preset)` : 'ζ₂₄'+sup(tk)+' = '+tk+'/24 turn';
+  const p150=run(150,T), p30=run(30,T);
+  const r150=readout(p150), r30=readout(p30);
+  const seed=(+document.getElementById('seed').value)>>>0 || 1;
+  document.getElementById('seedv').textContent=seed;
+  const plus=s=>s.reduce((c,v)=>c+(v>0),0), cnt=a=>a.reduce((c,v)=>c+v,0);
+  const cs=coin(T,seed), hs=icosianSigns(T);
+  let extra=()=>'';
+  if(P && P.grid){
+    const S=PRESETS[P.solid], M=buildMachine(S.ca, S.theta), gc=Math.cos(2*Math.PI*P.ak/96), d=gc-S.ca;
+    document.getElementById('presetv').textContent = `grid step ζ₉₆${sup(P.ak)} has cos ${gc.toFixed(4)}; the exact ${S.name} edge has cos ${S.ca.toFixed(4)}: ${Math.abs(d)<1e-12 ? 'on the grid exactly, so no drift' : (d<0 ? 'step slightly too long' : 'step slightly too short')+', so the solid precesses'} · exact solid drawn faint`;
+    const alpha=2*Math.PI*P.ak/96, theta=2*Math.PI*P.tk/24;
+    shown={T, r150, r30, cs, hs, M, path150:penPath(r150.s,alpha,theta), path30:penPath(r30.s,alpha,theta), pathCoin:penPath(cs,alpha,theta), pathHam:penPath(hs,alpha,theta)};
+  } else if(P){
+    const M=buildMachine(P.ca, P.theta);
+    document.getElementById('presetv').textContent = M.finite
+      ? `${M.verts.length} vertices, ${M.edges.length} edges reachable (solid: ${P.V}, ${P.E}) · ${M.states.length} machine states · ${pqFormula(P.name)}`
+      : 'machine did not close (cap reached)';
+    const m150=machinePath(M,r150.s), m30=machinePath(M,r30.s), mc=machinePath(M,cs), mh=machinePath(M,hs);
+    shown={T, r150, r30, cs, hs, M, path150:m150.pts, path30:m30.pts, pathCoin:mc.pts, pathHam:mh.pts};
+    const vis={c150:m150, c30:m30, cc:mc, ch:mh};
+    extra=k=>` · visited ${vis[k].V}/${M.verts.length} vertices, ${vis[k].E}/${M.edges.length} edges`+coverTimes(k==='c150'?shown.path150:k==='c30'?shown.path30:k==='cc'?shown.pathCoin:shown.pathHam, M);
+  } else {
+    document.getElementById('presetv').textContent='';
+    const alpha=2*Math.PI*ak/96, theta=2*Math.PI*tk/24;
+    shown={T, r150, r30, cs, hs, M:null, path150:penPath(r150.s,alpha,theta), path30:penPath(r30.s,alpha,theta), pathCoin:penPath(cs,alpha,theta), pathHam:penPath(hs,alpha,theta)};
+  }
+  const cov=p=>exact?'':` · coverage ${(100*coverage(p)).toFixed(1)}%`;
+  document.getElementById('m150').textContent=`T=${T} · sign + : ${plus(r150.s)}, − : ${T-plus(r150.s)}${cov(shown.path150)}${extra('c150')} · centre always black: ${p150.q.every(v=>v===1)}`;
+  document.getElementById('m30').textContent=`T=${T} · sign + : ${plus(r30.s)}, − : ${T-plus(r30.s)}${cov(shown.path30)}${extra('c30')} · tooth events (q=r=1): ${cnt(r30.tooth)}`;
+  document.getElementById('mcoin').textContent=`T=${T} · sign + : ${plus(cs)}, − : ${T-plus(cs)}${cov(shown.pathCoin)}${extra('cc')} · seed ${seed}`;
+  document.getElementById('mham').textContent=`T=${T} · word LLLRRRLRLR LLLRRRLRLR, repeated · sign + : ${plus(hs)}, − : ${T-plus(hs)}${cov(shown.pathHam)}${extra('ch')}${exact?hamiltonCheck(shown.pathHam, shown.M):''}`;
+}
+function render(upto){
+  if(!shown) return; const u = upto ?? (pos!==null ? pos : shown.T);
+  drawSphere(document.getElementById('c150'), shown.path150, null, css('--r150'), u);
+  drawSphere(document.getElementById('c30'), shown.path30, shown.r30.tooth, css('--r30'), u);
+  drawStrip(document.getElementById('s150'), shown.r150.s, null, css('--r150'), u);
+  drawStrip(document.getElementById('s30'), shown.r30.s, shown.r30.tooth, css('--r30'), u);
+  drawSphere(document.getElementById('ccoin'), shown.pathCoin, null, css('--coin'), u);
+  drawStrip(document.getElementById('scoin'), shown.cs, null, css('--coin'), u);
+  drawSphere(document.getElementById('cham'), shown.pathHam, null, css('--ham'), u);
+  drawStrip(document.getElementById('sham'), shown.hs, null, css('--ham'), u);
+}
+document.getElementById('newseed').addEventListener('click',()=>{
+  let v=1; try{ const a=new Uint32Array(1); crypto.getRandomValues(a); v=a[0]||1; }catch(e){ v=(Date.now()>>>0)||1; }
+  document.getElementById('seed').value=v; leave(); compute(); render();
+});
+document.getElementById('seed').addEventListener('change',()=>{leave();compute();render();});
+document.getElementById('T').addEventListener('input',()=>{leave();compute();render();});
+// moving α or θ by hand leaves the preset
+['a','th'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{document.getElementById('preset').value='free';leave();compute();render();}));
+document.getElementById('preset').addEventListener('change',()=>{
+  const P=PRESETS[document.getElementById('preset').value];
+  if(P && P.ak){ document.getElementById('a').value=P.ak; document.getElementById('th').value=P.tk; }
+  if(P && P.T) document.getElementById('T').value=P.T;
+  if(P && P.seed) document.getElementById('seed').value=P.seed;
+  leave(); compute(); render();
+});
+function stop(){playing=false;cancelAnimationFrame(raf);document.getElementById('play').textContent='Play';}
+// any change of settings leaves playback and shows the whole path again
+function leave(){ stop(); pos=null; }
+document.getElementById('play').addEventListener('click',()=>{
+  if(playing){stop();render();return;}
+  if(pos===null || pos>=shown.T) pos=0;
+  playing=true; document.getElementById('play').textContent='Pause'; lastT=performance.now();
+  const tick=now=>{ if(!playing) return; const dt=Math.max(0,Math.min(0.1,(now-lastT)/1000)); lastT=now;   // v0.1.15: the first frame's clock can be earlier than the click
+    pos=Math.min(shown.T, pos + dt*speed());
+    if(document.getElementById('spin').checked) yaw+=0.25*dt;
+    render(pos); if(pos<shown.T) raf=requestAnimationFrame(tick); else stop(); };
+  raf=requestAnimationFrame(tick);
+});
+document.getElementById('stepbtn').addEventListener('click',()=>{ stop(); if(pos===null) pos=0; pos=Math.min(shown.T, Math.floor(pos)+1); render(pos); });
+document.getElementById('restart').addEventListener('click',()=>{ stop(); pos=0; render(pos); });
+// speed ladder, steps per second: one step every 5 s up to 20 steps a second; default one step a second
+const SPEEDS=[0.2,0.25,1/3,0.5,1,1.5,2,3,5,8,12,20];
+function speed(){ return SPEEDS[+document.getElementById('spd').value]; }
+function showSpeed(){ const v=speed(); document.getElementById('spdv').textContent = v<1 ? 'one step every '+Math.round(1/v)+' seconds' : v===1 ? 'one step a second' : v+' steps a second'; }
+function nudge(d){ const e=document.getElementById('spd'); e.value=Math.max(0,Math.min(SPEEDS.length-1,+e.value+d)); showSpeed(); }
+document.getElementById('spd').max=SPEEDS.length-1; document.getElementById('spd').value=4;
+document.getElementById('spd').addEventListener('input',showSpeed);
+document.getElementById('slower').addEventListener('click',()=>nudge(-1));
+document.getElementById('faster').addEventListener('click',()=>nudge(1));
+showSpeed();
+document.getElementById('edges').addEventListener('click',e=>{
+  edgeMode = edgeMode==='arc' ? 'chord' : 'arc';
+  e.target.textContent = edgeMode==='arc' ? 'Edges: on the sphere' : 'Edges: straight (true polyhedron)';
+  e.target.setAttribute('aria-pressed', edgeMode==='chord'); render();
+});
+document.getElementById('reset').addEventListener('click',()=>{yaw=0.6;pitch=0.45;render();});
+document.getElementById('theme').addEventListener('click',()=>{
+  const r=document.documentElement, cur=r.getAttribute('data-theme');
+  const dark = cur ? cur==='dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+  r.setAttribute('data-theme', dark?'light':'dark'); render();
+});
+for(const id of ['c150','c30','ccoin']){
+  const cv=document.getElementById(id); let drag=null;
+  cv.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY,yaw,pitch];cv.setPointerCapture(e.pointerId);});
+  cv.addEventListener('pointermove',e=>{ if(!drag) return; yaw=drag[2]+(e.clientX-drag[0])*0.01; pitch=Math.max(-1.5,Math.min(1.5,drag[3]+(e.clientY-drag[1])*0.01)); render(); });
+  cv.addEventListener('pointerup',()=>drag=null);
+}
+compute(); render();
+const PEN_VERSION="v0.1.14";
+// ---- run export for the squeezed sphere pen (fvlt-pen-run/0.1) ----
+function exportRun(id){
+  const P=PRESETS[document.getElementById('preset').value], T=shown.T, exact=P && !P.grid;
+  const which={c150:['Rule 150','r150'], c30:['Rule 30','r30'], ccoin:['Fair coin','coin'], cham:["Hamilton's icosian word",'hamilton']}[id];
+  const signs= id==='ccoin' ? shown.cs : id==='cham' ? shown.hs : id==='c150' ? shown.r150.s : shown.r30.s;
+  const tooth= id==='c30' ? Array.from(shown.r30.tooth) : null;
+  const pts= id==='c150' ? shown.path150 : id==='c30' ? shown.path30 : id==='cham' ? shown.pathHam : shown.pathCoin;
+  const ak=+document.getElementById('a').value, tk=+document.getElementById('th').value;
+  const rule= exact ? {kind:'preset', name:P.name, cos_edge:P.ca, step:P.alab, turn:P.tlab}
+                    : {kind:P?'grid preset':'grid', name:P?P.name:'free', step:'zeta_96^'+ak, step_fraction:[ak,96], turn:'zeta_24^'+tk, turn_fraction:[tk,24]};
+  const st=pathStats(pts, tooth), M=shown.M, solid=P ? P.name.replace(/\s*\{.*\}/,'') : '';
+  return {file_stub:'squeeze_'+which[1]+'_'+document.getElementById('preset').value,
+    viewer:{name:'Squeezed sphere pen', version:PEN_VERSION}, view:{kind:'sphere'},
+    title: which[0]+(P ? ' on the '+solid.toLowerCase().replace(/^messy /,'messy ') : ' on the sphere'),
+    subtitle: (P && /\{.*\}/.test(P.name) ? P.name.match(/\{.*\}/)[0]+' · ' : '')+(edgeMode==='chord'?'straight edges: the true polyhedron':'edges on the sphere'),
+    stream:{name:which[0], seed: id==='ccoin' ? ((+document.getElementById('seed').value)>>>0||1) : null, T, signs:Array.from(signs), tooth},
+    rule, camera:{edgeMode}, playback:{steps_per_second:speed()},
+    geometry: M ? {verts:M.verts.map(p=>p.map(r6)), edges:M.edges} : null,
+    path:{points:pts.map(p=>p.map(r6))},
+    stats:{per_step:st, final:{steps:T, vertices:st.vertices[T], edges:st.edges[T], tooth:st.tooth[T],
+      vertices_total:M?M.verts.length:null, edges_total:M?M.edges.length:null, machine_states:M?M.states.length:null}}};
+}
+setupFullscreen([{"id":"c150","kind":"sphere","title":"Rule 150 (linear)"},{"id":"c30","kind":"sphere","title":"Rule 30 (Rule 150 + tooth)"},{"id":"ccoin","kind":"sphere","title":"Fair coin (control)"},{"id":"cham","kind":"sphere","title":"Hamilton's icosian word (1857)"}]);
+</script>
+</body>
+</html>

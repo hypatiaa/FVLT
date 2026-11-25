@@ -1,0 +1,518 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Orbit Viewer</title>
+<!--
+  Mandelbrot orbit viewer v0.1.1 (2026-11-06), an additive successor of v0.1 (VIEWERS_LATEST/mandelbrot_orbit_viewer_v0_1.html,
+  sha256 4132a088…6753, unchanged). Changes, after the independent verify of v0.1 (MANDELBROT_ORBIT_VIEWER_v0_1_VERIFY_20261106):
+    F1  the readout sentence is decided by the escape result first, then by the edge test: an orbit that escaped is never
+        "cannot decide" (it now agrees with the table, e.g. c = -0.75 + 0.01i escapes at step 316).
+    F2  the pen-ring gap measure uses the source's zoom-independent stop rule again (fitted scale, 18 px); the rings drawn may
+        follow the orbit panel's zoom, the reported "from step k, largest gap" numbers do not.
+    F3  the orbit is iterated on the c that was picked or typed; there is no c -> tau -> c float round trip any more (tau is
+        computed from c for display). Exact boundary points such as c = -2, i, -i no longer read "escapes". A found cycle whose
+        own strength is >= 1 is now reported as a repelling cycle instead of "no repeating cycle". New: a small "type c" field.
+    F5  points within 0.002 of the edge whose tau sits on or below the horizon say so in the flat sky, not "outside".
+    F8  c = 0 (lambda = 0): tau's height reads "infinite (the 1/0 cusp)", the turn "not defined", the bubble "above every bubble".
+    F9  React 18.3.1 / ReactDOM 18.3.1 (UMD production min) load from ./vendor/ first, then membrane (LAN, then Tailscale), then
+        agora (LAN, then Tailscale; temporary), then cdnjs, each with a short timeout; if none loads, the page shows what is missing and how to get it, not a blank screen.
+  Not changed (listed in BUILD_REPORT_v0_1_1.md): F4, F6, F7, F10, F11, F12.
+
+  v0.1 (2026-11-04), as written then:
+  Extracted from "The Fraction Fan" v10, section 8 "Watch an orbit" (FRACTION_FAN_20261102/fraction_fan_v10.html),
+  whose maths and readout wording were audited by Codex twice on 2026-11-02. The orbit, cycle test, pen rings,
+  gap measure, bubble lookup and readout sentence are ported unchanged; the step count N is now adjustable.
+  New here: React shell, three panels with zoom/pan cameras, a re-rendered Mandelbrot backdrop at each view,
+  adaptive Ford circles in the flat sky, and a structured readout panel.
+  The idea and the instruments: saphir. The framework was assembled by Robin Miller; its components are classical results of others.
+-->
+<style>
+:root {
+  --paper: #fbfbfd; --ink: #23222b; --muted: #5d5b6c; --rule: #dcdbe6; --violet: #534AB7; --gold: #C98A0B; --plate: #ffffff;
+  --mono: "JetBrains Mono", ui-monospace, Consolas, monospace; --body: system-ui, "Segoe UI", sans-serif;
+  --d-scaffold: #c9c7d4; --d-circle: #a9a7b6; --d-rim: #9b99aa; --d-fan: #534AB7; --d-bubble: #E8A317;
+  --d-spoke: #534AB7; --d-label: #3a3946; --d-mset: #e4e1f3; --d-hl: #E8A317;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #15141b; --ink: #e9e8f2; --muted: #a6a4b8; --rule: #33313f; --violet: #a59cff; --gold: #f0b43c; --plate: #1d1c25;
+    --d-scaffold: #45435a; --d-circle: #5d5b72; --d-rim: #77758c; --d-fan: #a59cff; --d-bubble: #f0b43c; --d-spoke: #a59cff;
+    --d-label: #d6d4e4; --d-mset: #2c2a3c; --d-hl: #f0b43c; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #15141b; --ink: #e9e8f2; --muted: #a6a4b8; --rule: #33313f; --violet: #a59cff; --gold: #f0b43c; --plate: #1d1c25;
+  --d-scaffold: #45435a; --d-circle: #5d5b72; --d-rim: #77758c; --d-fan: #a59cff; --d-bubble: #f0b43c; --d-spoke: #a59cff;
+  --d-label: #d6d4e4; --d-mset: #2c2a3c; --d-hl: #f0b43c; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--body); font-size: 15px; line-height: 1.5;
+  padding: 16px max(16px, env(safe-area-inset-left)) 40px; }
+main { max-width: 1180px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+h1 { font-size: 1.35rem; margin: 0; }
+.sub { color: var(--muted); font-size: .9rem; margin: 0; }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.grid > * { min-width: 0; }
+@media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+@media (max-width: 560px) { .head .tag { flex-basis: 100%; } }
+.plate { background: var(--plate); border: 1px solid var(--rule); border-radius: 6px; padding: 8px; display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+.plate canvas { width: 100%; display: block; touch-action: none; border-radius: 3px; }
+.head { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+.tag { font-family: var(--mono); font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-right: auto; }
+button, .seg button { font-family: var(--mono); font-size: .78rem; color: var(--ink); background: var(--plate); border: 1px solid var(--rule);
+  border-radius: 4px; padding: .25rem .55rem; cursor: pointer; }
+button:hover { border-color: var(--violet); }
+button:focus-visible, input:focus-visible { outline: 2px solid var(--violet); outline-offset: 1px; }
+button[aria-pressed="true"] { border-color: var(--violet); color: var(--violet); font-weight: 600; }
+.cam { font-family: var(--mono); font-size: .7rem; color: var(--muted); }
+.row { display: flex; flex-wrap: wrap; gap: .45rem .9rem; align-items: center; font-size: .85rem; color: var(--muted); }
+.row label { display: inline-flex; align-items: center; gap: .35rem; cursor: pointer; color: var(--ink); }
+.read { font-family: var(--mono); font-size: .82rem; color: var(--muted); margin: 0; }
+table.ro { border-collapse: collapse; font-family: var(--mono); font-size: .8rem; width: 100%; }
+table.ro td { padding: 3px 8px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+table.ro td:first-child { color: var(--muted); white-space: nowrap; width: 1%; }
+.note { font-size: .8rem; color: var(--muted); margin: 0; }
+.wide { grid-column: 1 / -1; }
+</style>
+</head>
+<body>
+<div id="root"><p class="note" id="loading">Loading React 18.3.1 …</p></div>
+<script>
+// ---------- React loader (v0.1.1): ./vendor/ → membrane LAN → membrane Tailscale → agora LAN → agora Tailscale → cdnjs → in-page message ----------
+// Each file gets a short timeout so a missing or unreachable source does not stall the page.
+// Expected bytes (UMD production min, 18.3.1): react sha256 d949f1c3…c4dd, react-dom sha256 35f4f974…6f0d (see vendor/README.md).
+window.REACT_SOURCES = [
+  { name: './vendor/ (next to this page)', base: './vendor/', ms: 3000 },
+  { name: 'membrane, local network', base: 'http://192.168.0.210:8088/vendor/', ms: 2000 },
+  { name: 'membrane, Tailscale', base: 'http://[ts-redact-4]:8088/vendor/', ms: 3000 },
+  { name: 'agora, local network (temporary)', base: 'http://192.168.0.225:8088/vendor/', ms: 2000 },
+  { name: 'agora, Tailscale (temporary)', base: 'http://[ts-redact-5]:8088/vendor/', ms: 3000 },
+  { name: 'cdnjs (internet)', base: 'https://cdnjs.cloudflare.com/ajax/libs/', cdn: true, ms: 8000 },
+];
+(function loadReact() {
+  const files = { react: ['react.production.min.js', 'react/18.3.1/umd/react.production.min.js'],
+                  dom: ['react-dom.production.min.js', 'react-dom/18.3.1/umd/react-dom.production.min.js'] };
+  const tried = [];
+  const loadOne = (url, ms) => new Promise(res => {
+    const s = document.createElement('script'); let done = false;
+    const end = r => { if (done) return; done = true; clearTimeout(t); res(r); };
+    const t = setTimeout(() => end('timed out after ' + ms + ' ms'), ms);
+    s.onload = () => end('ok'); s.onerror = () => end('failed to load');
+    s.src = url; document.head.appendChild(s);
+  });
+  const urlOf = (src, k) => src.base + files[k][src.cdn ? 1 : 0];
+  (async () => {
+    await new Promise(r => document.readyState === 'loading' ? document.addEventListener('DOMContentLoaded', r) : r());   // the app script below is defined by then
+    let from = null;
+    for (const src of window.REACT_SOURCES) {
+      if (!window.React) { const r = await loadOne(urlOf(src, 'react'), src.ms); tried.push([src.name, 'react', r]); if (!window.React) continue; }
+      if (!window.ReactDOM) { const r = await loadOne(urlOf(src, 'dom'), src.ms); tried.push([src.name, 'react-dom', r]); }
+      if (window.React && window.ReactDOM) { from = src.name; break; }
+    }
+    window.__reactLoad = { from, tried, version: window.React && window.React.version, domVersion: window.ReactDOM && window.ReactDOM.version };
+    if (from) { window.startOrbitViewer(); return; }
+    // nothing loaded: say what is missing and how to get it (plain DOM, no React)
+    const root = document.getElementById('root'); root.innerHTML = '';
+    const el = (tag, text, cls) => { const e = document.createElement(tag); if (text) e.textContent = text; if (cls) e.className = cls; return e; };
+    const box = el('div', null, 'plate needs'); box.setAttribute('role', 'alert');
+    box.appendChild(el('h1', 'Watch an orbit: needs React'));
+    box.appendChild(el('p', 'This page draws with React 18.3.1 and ReactDOM 18.3.1, and could not load them from any source. ' +
+      'Missing: ' + (window.React ? '' : 'react.production.min.js ') + (window.ReactDOM ? '' : 'react-dom.production.min.js') + '.'));
+    box.appendChild(el('p', 'To get them, either:'));
+    const ul = el('ul');
+    ul.appendChild(el('li', 'open the copy of this page served from membrane (local network http://192.168.0.210:8088/, Tailscale http://[ts-redact-4]:8088/), or, while it is up, from agora (http://192.168.0.225:8088/, Tailscale http://[ts-redact-5]:8088/), or'));
+    ul.appendChild(el('li', 'put the two files react.production.min.js and react-dom.production.min.js (React 18.3.1, UMD production min, from the /vendor/ folder of either server) in a folder named vendor next to this page, then reload, or'));
+    ul.appendChild(el('li', 'connect to the internet and reload (the page then loads them from cdnjs).'));
+    box.appendChild(ul);
+    box.appendChild(el('p', 'Sources tried:', 'note'));
+    const t = el('ul', null, 'note'); tried.forEach(([n, f, r]) => t.appendChild(el('li', n + ' · ' + f + ' · ' + r))); box.appendChild(t);
+    box.appendChild(el('p', 'The idea and the instruments: saphir. The framework was assembled by Robin Miller; its components are classical results of others.', 'note'));
+    root.appendChild(box);
+  })();
+})();
+</script>
+<script>
+window.startOrbitViewer = () => {
+  const { useState, useRef, useEffect, useMemo, useCallback } = React;
+  const h = React.createElement;
+
+  // ---------- maths, ported unchanged from The Fraction Fan v10 ----------
+  const Q = 8;
+  const gcd = (a, b) => b ? gcd(b, a % b) : a;
+  const fr = []; for (let q = 1; q <= Q; q++) for (let a = 0; a <= q; a++) if (gcd(a, q) === 1) fr.push([a, q]);
+  const pairs = [];
+  for (let i = 0; i < fr.length; i++) for (let j = i + 1; j < fr.length; j++) {
+    const [a, q] = fr[i], [c, s] = fr[j]; if (Math.abs(a * s - c * q) === 1) pairs.push(a / q < c / s ? [fr[i], fr[j]] : [fr[j], fr[i]]);
+  }
+  const isFan = ([[a, q], [c, s]]) => (a === 0) || (c === 1 && s === 1);
+  const semi = (u, v, n = 90) => { const c = (u + v) / 2, r = (v - u) / 2, P = []; for (let k = 0; k <= n; k++) { const t = Math.PI * k / n; P.push([c + r * Math.cos(t), r * Math.sin(t)]); } return P; };
+  const circ = (x, y, r, n = 140) => { const P = []; for (let k = 0; k <= n; k++) { const t = 2 * Math.PI * k / n; P.push([x + r * Math.cos(t), y + r * Math.sin(t)]); } return P; };
+  const lift = ([x, y]) => { const R = Math.exp(-2 * Math.PI * y); return [R * Math.cos(2 * Math.PI * x), R * Math.sin(2 * Math.PI * x)]; };
+  const cmul = (a, b) => [a[0] * b[0] - a[1] * b[1], a[0] * b[1] + a[1] * b[0]];
+  const csqrt = ([a, b]) => { const r = Math.hypot(a, b), s = Math.sqrt((r + a) / 2), t = Math.sqrt(Math.max(0, (r - a) / 2)); return [s, b < 0 ? -t : t]; };
+  const lamOfTau = ([x, y]) => { const R = Math.exp(-2 * Math.PI * y); return [R * Math.cos(2 * Math.PI * x), R * Math.sin(2 * Math.PI * x)]; };
+  const cOfLam = l => { const l2 = cmul(l, l); return [l[0] / 2 - l2[0] / 4, l[1] / 2 - l2[1] / 4]; };
+  const lamOfC = c => { const s = csqrt([1 - 4 * c[0], -4 * c[1]]); return [1 - s[0], -s[1]]; };
+  const tauOfLam = l => { let x = Math.atan2(l[1], l[0]) / (2 * Math.PI); if (x < 0) x += 1; return [x, -Math.log(Math.hypot(l[0], l[1])) / (2 * Math.PI)]; };
+  const bubbleOf = ([x, y]) => { for (let q = 1; q <= 24; q++) for (let p = 0; p <= q; p++) { if (gcd(p, q) !== 1) continue;
+      const r = 1 / (2 * q * q); if (Math.hypot(x - p / q, y - r) < r) return [p, q]; } return null; };
+
+  // the orbit of 0 and its classification (section 8; v0.1.1: no c -> τ -> c round trip, F3)
+  // pick = { tau } for the presets (c is defined from τ, as in the source) or { c } for a tapped or typed c (iterated as given).
+  function computeOrbit(pick, N) {
+    let lam, c, tauEff;
+    if (pick.c) { c = [pick.c[0], pick.c[1]]; lam = lamOfC(c); tauEff = tauOfLam(lam); }
+    else { tauEff = pick.tau; lam = lamOfTau(tauEff); c = cOfLam(lam); }
+    const zs = [lam[0] / 2, lam[1] / 2];
+    const pts = [[0, 0]]; let z = [0, 0], escaped = false, escStep = null;
+    for (let n = 0; n < N; n++) { z = [z[0] * z[0] - z[1] * z[1] + c[0], 2 * z[0] * z[1] + c[1]]; if (Math.hypot(z[0], z[1]) > 4) { escaped = true; escStep = n + 1; break; } pts.push(z); }
+    const rLam = Math.hypot(lam[0], lam[1]), outside = rLam >= 1, nearEdge = Math.abs(rLam - 1) < 2e-3;
+    let cyc = null, cycMu = null, rep = null;   // rep (v0.1.1): the smallest repeat found, kept even when |μ| ≥ 1 (a repelling cycle the orbit landed on)
+    if (outside && !nearEdge && !escaped) {
+      const L = pts.length - 1, d = (a, b) => Math.hypot(a[0] - b[0], a[1] - b[1]);
+      for (let q = 1; q <= 24 && !cyc; q++) {
+        if (L - 3 * q < 0) break;
+        let ok = true; for (let j = 0; j < 2 * q && ok; j++) ok = d(pts[L - j], pts[L - j - q]) < 1e-7;
+        if (!ok) continue;
+        const cand = pts.slice(L - q + 1); let mu = [1, 0]; cand.forEach(p => { mu = cmul(mu, [2 * p[0], 2 * p[1]]); });
+        if (Math.hypot(mu[0], mu[1]) < 1) { cyc = cand; cycMu = Math.hypot(mu[0], mu[1]); } else rep = { q, mu: Math.hypot(mu[0], mu[1]) };
+        break;
+      }
+    }
+    return { tau: tauEff, lam, c, zs, pts, escaped, escStep, rLam, outside, nearEdge, cyc, cycMu, rep, N };
+  }
+
+  // ---------- canvas helpers ----------
+  const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+  const colors = () => ({ scaf: css('--d-scaffold'), circ: css('--d-circle'), rim: css('--d-rim'), fan: css('--d-fan'), bub: css('--d-bubble'),
+    spoke: css('--d-spoke'), lab: css('--d-label'), mset: css('--d-mset'), plate: css('--plate'), hl: css('--d-hl'), mono: css('--mono') || 'monospace' });
+  function prep(cv, w, hgt) {
+    const dpr = window.devicePixelRatio || 1;
+    if (cv.width !== Math.round(w * dpr) || cv.height !== Math.round(hgt * dpr)) { cv.width = Math.round(w * dpr); cv.height = Math.round(hgt * dpr); }
+    cv.style.height = hgt + 'px';
+    const g = cv.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0); g.clearRect(0, 0, w, hgt); g.lineJoin = 'round'; g.lineCap = 'round'; return g;
+  }
+  const path = (g, P, T) => { g.beginPath(); P.forEach((p, k) => { const [X, Y] = T(p); k ? g.lineTo(X, Y) : g.moveTo(X, Y); }); };
+  // camera: world (x, y) -> screen (w/2 + (x - cx) s, h/2 - (y - cy) s)
+  const toScreen = (v, w, hgt) => ([x, y]) => [w / 2 + (x - v.cx) * v.s, hgt / 2 - (y - v.cy) * v.s];
+  const toWorld = (v, w, hgt, X, Y) => [v.cx + (X - w / 2) / v.s, v.cy - (Y - hgt / 2) / v.s];
+
+  // ---------- Mandelbrot backdrop, re-rendered for each view ----------
+  function msetLayer(v, w, hgt, iters, col, res) {
+    const W = Math.max(1, Math.round(w * res)), H = Math.max(1, Math.round(hgt * res));
+    const off = document.createElement('canvas'); off.width = W; off.height = H;
+    const o = off.getContext('2d'), img = o.createImageData(W, H);
+    const hx = col.replace('#', ''), cr = parseInt(hx.slice(0, 2), 16), cg = parseInt(hx.slice(2, 4), 16), cb = parseInt(hx.slice(4, 6), 16);
+    for (let j = 0; j < H; j++) {
+      const b = v.cy - ((j + 0.5) / res - hgt / 2) / v.s;
+      for (let i = 0; i < W; i++) {
+        const a = v.cx + ((i + 0.5) / res - w / 2) / v.s;
+        // exact interior shortcuts: main cardioid and the period-2 disk (same membership as iterating forever)
+        const xq = a - 0.25, qq = xq * xq + b * b;
+        let inside = qq * (qq + xq) <= 0.25 * b * b || (a + 1) * (a + 1) + b * b <= 0.0625;
+        if (!inside) {
+          let x = 0, y = 0, k = 0;
+          for (; k < iters && x * x + y * y <= 4; k++) { const t = x * x - y * y + a; y = 2 * x * y + b; x = t; }
+          inside = k === iters;
+        }
+        if (inside) { const q = 4 * (j * W + i); img.data[q] = cr; img.data[q + 1] = cg; img.data[q + 2] = cb; img.data[q + 3] = 255; }
+      }
+    }
+    o.putImageData(img, 0, 0); return off;
+  }
+
+  // ---------- generic camera hook: wheel zoom at cursor, drag pan, pinch, tap ----------
+  function useCamera(cvRef, size, defaultView, opts) {
+    const [view, setView] = useState(null);           // null = default view
+    const vRef = useRef(null); vRef.current = view || (size.w ? defaultView() : null);
+    const optRef = useRef(opts); optRef.current = opts;
+    useEffect(() => {
+      const cv = cvRef.current; if (!cv) return;
+      const ptrs = new Map(); let start = null, moved = false, pinch = null;
+      const rel = e => { const r = cv.getBoundingClientRect(); return [e.clientX - r.left, e.clientY - r.top]; };
+      const zoomAt = (X, Y, f) => { const v = vRef.current; if (!v) return; const w = cv.clientWidth, hgt = cv.clientHeight;
+        const [x, y] = toWorld(v, w, hgt, X, Y); const s = Math.min(1e13, Math.max(1, v.s * f));
+        setView({ s, cx: x - (X - w / 2) / s, cy: y + (Y - hgt / 2) / s }); };
+      const onWheel = e => { e.preventDefault(); const [X, Y] = rel(e); zoomAt(X, Y, Math.pow(1.0018, -e.deltaY * (e.deltaMode === 1 ? 30 : 1))); };
+      const onDown = e => { try { cv.setPointerCapture(e.pointerId); } catch (_) {} ptrs.set(e.pointerId, rel(e)); moved = false;
+        if (ptrs.size === 1) { start = { p: rel(e), v: vRef.current }; if (optRef.current.dragPicks && optRef.current.onTap) { optRef.current.onTap(toWorld(vRef.current, cv.clientWidth, cv.clientHeight, ...rel(e))); } }
+        if (ptrs.size === 2) { const [a, b] = [...ptrs.values()]; pinch = { d: Math.hypot(a[0] - b[0], a[1] - b[1]), m: [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2], v: vRef.current }; } };
+      const onMove = e => { if (!ptrs.has(e.pointerId)) return; ptrs.set(e.pointerId, rel(e)); const w = cv.clientWidth, hgt = cv.clientHeight;
+        if (ptrs.size === 2 && pinch) { const [a, b] = [...ptrs.values()]; const d = Math.hypot(a[0] - b[0], a[1] - b[1]), m = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+          const v0 = pinch.v, s = Math.min(1e13, Math.max(1, v0.s * d / pinch.d)); const [x, y] = toWorld(v0, w, hgt, pinch.m[0], pinch.m[1]);
+          setView({ s, cx: x - (m[0] - w / 2) / s, cy: y + (m[1] - hgt / 2) / s }); moved = true; return; }
+        if (ptrs.size === 1 && start) { const p = rel(e), dx = p[0] - start.p[0], dy = p[1] - start.p[1]; if (Math.hypot(dx, dy) > 4) moved = true;
+          if (optRef.current.dragPicks && optRef.current.onTap) { optRef.current.onTap(toWorld(vRef.current, w, hgt, ...p)); return; }
+          if (moved) { const v0 = start.v; setView({ s: v0.s, cx: v0.cx - dx / v0.s, cy: v0.cy + dy / v0.s }); } } };
+      const onUp = e => { const p = ptrs.get(e.pointerId); ptrs.delete(e.pointerId);
+        if (ptrs.size < 2) pinch = null;
+        if (ptrs.size === 0) { if (!moved && p && optRef.current.onTap && !optRef.current.dragPicks) optRef.current.onTap(toWorld(vRef.current, cv.clientWidth, cv.clientHeight, ...p)); start = null; } };
+      cv.addEventListener('wheel', onWheel, { passive: false }); cv.addEventListener('pointerdown', onDown); cv.addEventListener('pointermove', onMove);
+      cv.addEventListener('pointerup', onUp); cv.addEventListener('pointercancel', onUp);
+      return () => { cv.removeEventListener('wheel', onWheel); cv.removeEventListener('pointerdown', onDown); cv.removeEventListener('pointermove', onMove);
+        cv.removeEventListener('pointerup', onUp); cv.removeEventListener('pointercancel', onUp); };
+    }, [cvRef.current]);
+    const zoomBy = f => { const v = vRef.current; if (!v) return; setView({ ...v, s: Math.min(1e13, Math.max(1, v.s * f)) }); };
+    return { view: vRef.current, setView, reset: () => setView(null), zoomBy, custom: !!view };
+  }
+
+  function useWidth(ref) {
+    const [w, setW] = useState(0);
+    useEffect(() => { const el = ref.current; if (!el) return; const ro = new ResizeObserver(() => setW(el.clientWidth)); ro.observe(el); setW(el.clientWidth); return () => ro.disconnect(); }, []);
+    return w;
+  }
+  function useTheme() {   // redraw when the colour scheme changes
+    const [t, setT] = useState(0);
+    useEffect(() => { const bump = () => setT(x => x + 1); const mq = matchMedia('(prefers-color-scheme: dark)'); mq.addEventListener?.('change', bump);
+      const mo = new MutationObserver(bump); mo.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+      return () => { mq.removeEventListener?.('change', bump); mo.disconnect(); }; }, []);
+    return t;
+  }
+
+  const CamBar = ({ cam, extra }) => h('div', { className: 'head' }, extra,
+    h('button', { type: 'button', onClick: () => cam.zoomBy(1.6), 'aria-label': 'zoom in' }, '+'),
+    h('button', { type: 'button', onClick: () => cam.zoomBy(1 / 1.6), 'aria-label': 'zoom out' }, '−'),
+    h('button', { type: 'button', onClick: cam.reset, disabled: !cam.custom }, 'reset'));
+  const camText = (v, s0) => v ? `centre ${v.cx.toPrecision(8)}, ${v.cy.toPrecision(8)} · zoom ×${(v.s / s0).toPrecision(4)}` : '';
+
+  // ---------- panel 1: the Mandelbrot set with the fan and the orbit's step trail ----------
+  const W8 = { re0: -1.32, re1: 0.62, im1: 0.97 };
+  function MandelPanel({ model, onPick, theme }) {
+    const wrap = useRef(null), cvRef = useRef(null); const w = useWidth(cvRef), hgt = w;
+    const [dragPicks, setDragPicks] = useState(false);
+    const s0 = w ? w / (W8.re1 - W8.re0) : 1;
+    const def = () => ({ s: s0, cx: (W8.re0 + W8.re1) / 2, cy: W8.im1 - hgt / 2 / s0 });
+    const cam = useCamera(cvRef, { w }, def, { onTap: onPick, dragPicks });
+    const iters = cam.view ? Math.round(160 + 90 * Math.max(0, Math.log2(cam.view.s / s0))) : 160;
+    const viewKey = cam.view ? [cam.view.cx, cam.view.cy, cam.view.s, w, hgt, iters, theme].join('|') : '';
+    const [hiKey, setHiKey] = useState(''); const layer = useRef({ key: '', off: null });
+    useEffect(() => { const t = setTimeout(() => setHiKey(viewKey), 180); return () => clearTimeout(t); }, [viewKey]);   // full resolution once the view is still
+    useEffect(() => {
+      const cv = cvRef.current, v = cam.view; if (!cv || !w || !v) return;
+      const C = colors(), g = prep(cv, w, hgt), P = toScreen(v, w, hgt), T = p => P(cOfLam(lift(p)));
+      const dpr = window.devicePixelRatio || 1, want = hiKey === viewKey ? 'hi' : 'lo';
+      if (layer.current.key !== viewKey + want) layer.current = { key: viewKey + want, off: msetLayer(v, w, hgt, iters, C.mset, want === 'hi' ? dpr : Math.min(dpr, 0.5)) };
+      g.imageSmoothingEnabled = true; g.drawImage(layer.current.off, 0, 0, w, hgt);
+      g.save(); g.globalAlpha = 0.45; g.lineWidth = 0.9;
+      for (const [a, q] of fr) { if (q === 1) continue; g.strokeStyle = C.circ; path(g, circ(a / q, 1 / (2 * q * q), 1 / (2 * q * q)), T); g.stroke(); }
+      for (const p of pairs) if (!isFan(p)) { g.strokeStyle = C.scaf; path(g, semi(p[0][0] / p[0][1], p[1][0] / p[1][1]), T); g.stroke(); }
+      g.strokeStyle = C.bub; g.lineWidth = 1.2; path(g, circ(0, 0.5, 0.5, 400), T); g.stroke();
+      g.strokeStyle = C.fan; g.lineWidth = 1; for (const p of pairs) if (isFan(p)) { path(g, semi(p[0][0] / p[0][1], p[1][0] / p[1][1]), T); g.stroke(); }
+      g.setLineDash([4, 3]); g.beginPath(); g.moveTo(...P([0.25, 0])); g.lineTo(...P([0, 0])); g.stroke(); g.setLineDash([]);
+      g.restore();
+      g.strokeStyle = C.rim; g.lineWidth = 1.2; g.beginPath();
+      for (let k = 0; k <= 1200; k++) { const [X, Y] = P(cOfLam([Math.cos(2 * Math.PI * k / 1200), Math.sin(2 * Math.PI * k / 1200)])); k ? g.lineTo(X, Y) : g.moveTo(X, Y); } g.stroke();
+      // bulb-root labels on the rim
+      g.font = '600 11px ' + C.mono; g.textBaseline = 'middle';
+      for (const [a, q] of [[1, 2], [1, 3], [2, 3], [1, 4], [3, 4], [1, 5], [2, 5], [3, 5], [4, 5]]) {
+        const t = 2 * Math.PI * a / q, l = [Math.cos(t), Math.sin(t)], [X, Y] = P(cOfLam(l));
+        if (X < -20 || X > w + 20 || Y < -20 || Y > hgt + 20) continue;
+        g.fillStyle = C.spoke; g.beginPath(); g.arc(X, Y, 2.4, 0, 2 * Math.PI); g.fill();
+        const n = [l[0] * (1 - l[0]) / 2 - l[1] * (-l[1]) / 2, l[0] * (-l[1]) / 2 + l[1] * (1 - l[0]) / 2], nl = Math.hypot(...n), ux = n[0] / nl, uy = -n[1] / nl;
+        g.textAlign = ux > 0.3 ? 'left' : ux < -0.3 ? 'right' : 'center'; g.lineWidth = 3; g.strokeStyle = C.plate; g.strokeText(a + '/' + q, X + 10 * ux, Y + 10 * uy);
+        g.fillStyle = C.lab; g.fillText(a + '/' + q, X + 10 * ux, Y + 10 * uy);
+      }
+      // the step trail: step n's turn-and-stretch m = z_n + rest, bent as m/2 − m²/4 (inside only, as in the source)
+      const m = model;
+      if (!m.escaped && !m.outside) {
+        const tr = m.pts.slice(0, -1).map(p => cOfLam([p[0] + m.zs[0], p[1] + m.zs[1]])), n = tr.length;
+        g.strokeStyle = C.lab; g.globalAlpha = 0.35; g.lineWidth = 1; g.beginPath(); tr.forEach((q, k) => { const [X, Y] = P(q); k ? g.lineTo(X, Y) : g.moveTo(X, Y); }); g.stroke();
+        tr.forEach((q, k) => { const [X, Y] = P(q); g.fillStyle = k < n * 0.5 ? C.fan : C.bub; g.globalAlpha = 1 - 0.75 * k / n; g.beginPath(); g.arc(X, Y, 2, 0, 2 * Math.PI); g.fill(); });
+        g.globalAlpha = 1;
+      }
+      const [X, Y] = P(m.c); g.strokeStyle = C.lab; g.lineWidth = 3.5; g.beginPath(); g.arc(X, Y, 6, 0, 2 * Math.PI); g.stroke();
+      g.strokeStyle = C.fan; g.lineWidth = 2; g.beginPath(); g.arc(X, Y, 6, 0, 2 * Math.PI); g.stroke();
+      g.beginPath(); g.moveTo(X - 11, Y); g.lineTo(X - 6, Y); g.moveTo(X + 6, Y); g.lineTo(X + 11, Y); g.moveTo(X, Y - 11); g.lineTo(X, Y - 6); g.moveTo(X, Y + 6); g.lineTo(X, Y + 11); g.stroke();
+    }, [model, viewKey, hiKey]);
+    return h('div', { className: 'plate', ref: wrap },
+      h(CamBar, { cam, extra: [h('span', { key: 't', className: 'tag' }, 'Mandelbrot set · fan · orbit trail'),
+        h('button', { key: 'm', type: 'button', 'aria-pressed': !dragPicks, onClick: () => setDragPicks(false), title: 'drag pans, tap picks c' }, 'drag pans'),
+        h('button', { key: 'k', type: 'button', 'aria-pressed': dragPicks, onClick: () => setDragPicks(true), title: 'drag chooses c continuously' }, 'drag picks')] }),
+      h('canvas', { ref: cvRef, style: { cursor: dragPicks ? 'crosshair' : 'grab' }, 'aria-label': 'The Mandelbrot set with the Ford fan bent into the main cardioid; tap to choose c, wheel or pinch to zoom, drag to pan.' }),
+      h('div', { className: 'cam' }, camText(cam.view, s0) + ` · backdrop: points not escaping within ${iters} steps (approximate)`));
+  }
+
+  // ---------- panel 2: the orbit of 0 ----------
+  function OrbitPanel({ model, pen, theme, onPen }) {
+    const wrap = useRef(null), cvRef = useRef(null); const w = useWidth(cvRef), hgt = w;
+    const fitView = () => {
+      const { pts, zs } = model, fit = pts.length > 6 ? pts.slice(3) : pts;
+      const x0 = Math.min(zs[0], ...fit.map(p => p[0])), x1 = Math.max(zs[0], ...fit.map(p => p[0]));
+      const y0 = Math.min(zs[1], ...fit.map(p => p[1])), y1 = Math.max(zs[1], ...fit.map(p => p[1]));
+      const span = Math.max(x1 - x0, y1 - y0, 1e-3) * 1.15; return { s: (w - 20) / span, cx: (x0 + x1) / 2, cy: (y0 + y1) / 2, span };
+    };
+    const cam = useCamera(cvRef, { w }, fitView, {});
+    const [hold, setHold] = useState(false);
+    useEffect(() => { if (!hold) cam.reset(); }, [model.c[0], model.c[1]]);
+    useEffect(() => {
+      const cv = cvRef.current, v = cam.view; if (!cv || !w || !v) return;
+      const C = colors(), g = prep(cv, w, hgt), P = toScreen(v, w, hgt), m = model, { pts, zs, lam } = m, sc = v.s, span = fitView().span;
+      g.lineWidth = 1; g.strokeStyle = C.scaf; g.beginPath(); pts.forEach((p, k) => { const [X, Y] = P(p); k ? g.lineTo(X, Y) : g.moveTo(X, Y); }); g.stroke();
+      const n = pts.length;
+      pts.forEach((p, k) => { const [X, Y] = P(p); g.fillStyle = k < n * 0.5 ? C.fan : C.bub; g.globalAlpha = 1 - 0.7 * k / n; g.beginPath(); g.arc(X, Y, k === 0 ? 3.5 : 2, 0, 2 * Math.PI); g.fill(); });
+      g.globalAlpha = 1;
+      let lock = null, gap = null;
+      if (pen && !m.escaped && !m.outside) {   // frozen-λ rings from the first step whose multiplier z + rest is within 0.05 of λ
+        const s = pts.findIndex(p => Math.hypot(p[0] + zs[0] - lam[0], p[1] + zs[1] - lam[1]) < 0.05);
+        if (s >= 0) {
+          lock = s;
+          // the measure (v0.1.1, F2): the source's stop rule at the FITTED scale (ring within 18 px of rest in the fitted view),
+          // so the reported gap does not depend on the camera's zoom
+          const scFit = fitView().s; let wv = [pts[s][0] - zs[0], pts[s][1] - zs[1]], gmax = 0;
+          for (let k = s; k < pts.length && Math.hypot(wv[0], wv[1]) * scFit > 18; k++) {
+            const pr = [zs[0] + wv[0], zs[1] + wv[1]]; gmax = Math.max(gmax, Math.hypot(pr[0] - pts[k][0], pr[1] - pts[k][1])); wv = cmul(wv, lam); }
+          gap = gmax / span;
+          // the drawing: same rings, stopping where they would pile up at the camera's own scale
+          wv = [pts[s][0] - zs[0], pts[s][1] - zs[1]]; g.strokeStyle = C.lab; g.lineWidth = 1;
+          for (let k = s; k < pts.length && Math.hypot(wv[0], wv[1]) * sc > 18; k++) {
+            const pr = [zs[0] + wv[0], zs[1] + wv[1]];
+            const [X, Y] = P(pr); g.beginPath(); g.arc(X, Y, 3.2, 0, 2 * Math.PI); g.stroke(); wv = cmul(wv, lam); }
+          const [X, Y] = P(pts[s]); g.strokeStyle = C.lab; g.lineWidth = 1.4; g.beginPath(); g.arc(X, Y, 4.5, 0, 2 * Math.PI); g.stroke();
+        }
+      }
+      onPen({ lock, gap });
+      if (!m.escaped) { const [X, Y] = P(zs); g.strokeStyle = C.lab; g.lineWidth = 1.4; g.beginPath(); g.arc(X, Y, 5, 0, 2 * Math.PI); g.stroke(); }
+      g.fillStyle = C.lab; g.font = '600 11px ' + C.mono; g.textBaseline = 'middle';
+      { const [X, Y] = P([0, 0]); g.textAlign = 'left';
+        if (X > 0 && X < w && Y > 0 && Y < hgt) g.fillText('start 0', X + 7, Y - 9); else { g.textBaseline = 'top'; g.fillText('start 0 is off the view', 6, 6); g.textBaseline = 'middle'; } }
+      if (m.cyc) m.cyc.forEach(p => { const [X, Y] = P(p); g.strokeStyle = C.bub; g.lineWidth = 2; g.beginPath(); g.arc(X, Y, 7, 0, 2 * Math.PI); g.stroke(); });
+      const halo = (t, X, Y) => { const tw = g.measureText(t).width; if (X + tw > w - 4) X = Math.max(4, X - tw - 24); g.lineWidth = 3; g.strokeStyle = C.plate; g.strokeText(t, X, Y); g.fillText(t, X, Y); };
+      g.textAlign = 'left';
+      if (!m.escaped) { const [X, Y] = P(zs); halo(m.nearEdge ? 'fixed point, (nearly) neutral' : m.outside ? 'fixed point, pushes away' : 'rest', X + 8, Y + 10); }
+      if (m.cyc) { const [X, Y] = P(m.cyc[m.cyc.length - 1]); halo(m.cyc.length + '-cycle (numerical)', X + 10, Y - 12); }
+      if (m.escaped) { g.textBaseline = 'bottom'; halo('escaped at step ' + m.escStep, 6, hgt - 6); }
+    }, [model, pen, cam.view && cam.view.cx, cam.view && cam.view.cy, cam.view && cam.view.s, w, theme]);
+    const s0 = w ? fitView().s : 1;
+    return h('div', { className: 'plate', ref: wrap },
+      h(CamBar, { cam, extra: [h('span', { key: 't', className: 'tag' }, 'the orbit of 0'),
+        h('label', { key: 'h', className: 'cam', style: { cursor: 'pointer' } }, h('input', { type: 'checkbox', checked: hold, onChange: e => setHold(e.target.checked) }), ' hold view')] }),
+      h('canvas', { ref: cvRef, style: { cursor: 'grab' }, 'aria-label': 'The orbit of 0 under z squared plus c; wheel or pinch to zoom, drag to pan.' }),
+      h('div', { className: 'cam' }, camText(cam.view, s0) + (hold ? ' · view held when c changes' : ' · re-fits when c changes')));
+  }
+
+  // ---------- panel 3: the orbit's place in the flat sky ----------
+  function TauPanel({ model, theme }) {
+    const wrap = useRef(null), cvRef = useRef(null); const w = useWidth(cvRef), hgt = Math.round(w * 0.42);
+    const s0 = w ? w / 1.04 : 1;
+    const def = () => ({ s: s0, cx: 0.5, cy: (hgt / 2 - 18) / s0 });
+    const cam = useCamera(cvRef, { w }, def, {});
+    useEffect(() => {
+      const cv = cvRef.current, v = cam.view; if (!cv || !w || !v) return;
+      const C = colors(), g = prep(cv, w, hgt), T = toScreen(v, w, hgt);
+      const [xa] = toWorld(v, w, hgt, 0, 0), [xb] = toWorld(v, w, hgt, w, 0), yTop = toWorld(v, w, hgt, 0, 0)[1], yBot = toWorld(v, w, hgt, 0, hgt)[1];
+      const base = T([0, 0])[1];
+      // Ford circles: every reduced p/q whose circle is at least about half a pixel across and meets the view
+      const qmax = Math.min(600, Math.floor(Math.sqrt(v.s / 1.0)));
+      const tau = model.tau, bub = model.tau[1] > 0 ? bubbleOf(tau) : null;
+      g.lineWidth = 1; g.strokeStyle = C.circ; g.globalAlpha = 1;
+      for (let q = 1; q <= qmax; q++) { const r = 1 / (2 * q * q); if (2 * r < yBot) continue;
+        for (let p = Math.floor((xa - r) * q); p <= Math.ceil((xb + r) * q); p++) { if (gcd(Math.abs(p), q) !== 1) continue;
+          const [X, Y] = T([p / q, r]); g.beginPath(); g.arc(X, Y, r * v.s, 0, 2 * Math.PI); g.stroke(); } }
+      if (bub) { const [p, q] = bub, r = 1 / (2 * q * q), [X, Y] = T([p / q, r]); g.strokeStyle = C.hl; g.lineWidth = 2.2; g.beginPath(); g.arc(X, Y, r * v.s, 0, 2 * Math.PI); g.stroke(); }
+      // horizon (the rim); below it lies |λ| > 1, outside the cardioid
+      if (base > 0 && base < hgt) { g.fillStyle = C.scaf; g.globalAlpha = 0.18; g.fillRect(0, base, w, hgt - base); g.globalAlpha = 1;
+        g.strokeStyle = C.rim; g.lineWidth = 1.2; g.beginPath(); g.moveTo(0, base); g.lineTo(w, base); g.stroke(); }
+      // labels on the horizon for circles at least 18 px across
+      g.fillStyle = C.lab; g.font = '600 10px ' + C.mono; g.textAlign = 'center'; g.textBaseline = 'top';
+      const ly = Math.min(Math.max(base + 4, 4), hgt - 14);
+      for (let q = 1; q <= qmax; q++) { const r = 1 / (2 * q * q); if (2 * r * v.s < 18) break;
+        for (let p = Math.floor(xa * q); p <= Math.ceil(xb * q); p++) { if (gcd(Math.abs(p), q) !== 1) continue; const [X] = T([p / q, 0]); if (X < 8 || X > w - 8) continue;
+          g.fillText(p + '/' + q, X, ly); } }
+      // τ marker
+      if (tau[1] > 0) { let [X, Y] = T(tau); const clipped = Y < 6; if (clipped) Y = 10;
+        if (X > -10 && X < w + 10) { g.fillStyle = C.fan; g.beginPath(); g.arc(X, Y, 4.5, 0, 2 * Math.PI); g.fill();
+          if (clipped) { g.textBaseline = 'top'; g.fillStyle = C.lab; g.fillText(Number.isFinite(tau[1]) ? '↑ higher' : '↑ infinitely high (λ = 0: the 1/0 cusp)', X, Y + 6); } } }
+      else { g.fillStyle = C.lab; g.textAlign = 'left'; g.textBaseline = 'top';
+        g.fillText(model.nearEdge ? 'c is on or within 0.002 of the cardioid\'s edge: τ sits on or just below the horizon, no marker'   // v0.1.1, F5
+          : 'c is outside the cardioid: τ would sit below the horizon, no marker', 6, 6); }
+    }, [model, cam.view && cam.view.cx, cam.view && cam.view.cy, cam.view && cam.view.s, w, theme]);
+    return h('div', { className: 'plate wide', ref: wrap },
+      h(CamBar, { cam, extra: h('span', { className: 'tag' }, "this orbit's place in the flat sky") }),
+      h('canvas', { ref: cvRef, style: { cursor: 'grab' }, 'aria-label': 'The flat Ford picture with a marker at tau; wheel or pinch to zoom, drag to pan.' }),
+      h('div', { className: 'cam' }, camText(cam.view, s0) + ' · Ford circles drawn down to about a pixel; the gold circle is the bubble containing τ'));
+  }
+
+  // ---------- readouts ----------
+  // the source's readout; v0.1.1: decided by the escape result first, then the edge test (F1); repelling repeat (F3); λ = 0 (F8)
+  function readoutSentence(m, pen, penInfo) {
+    const { c, tau, rLam, nearEdge, escaped, escStep, cyc, cycMu, rep, N } = m, outside = m.outside, top = !Number.isFinite(tau[1]);
+    const close = Math.abs(rLam - 1) < 0.05, dg = close ? 7 : 4, rnd = v => (Math.abs(v) < 0.5 * 10 ** -dg ? 0 : v), fd = v => rnd(v).toFixed(dg);
+    const b = bubbleOf(tau), bs = b ? b[0] + '/' + b[1] : null;
+    const cTxt = 'c ' + (close ? '≈ ' : '= ') + fd(c[0]) + (rnd(c[1]) < 0 ? ' − ' : ' + ') + fd(Math.abs(c[1])) + 'i';
+    if (escaped) return cTxt + (nearEdge
+      ? ' lies within a hair of the cardioid\'s edge, but this orbit escapes: |z| passed 4 at step ' + escStep + ', so c is just outside the Mandelbrot set.'
+      : (outside ? ' is outside the main cardioid: the fixed point pushes away. ' : ' ') + 'This orbit escapes (|z| > 4 at step ' + escStep + ').');
+    if (!outside) return cTxt + ' · long-run turn per step ' + (top ? 'not defined (λ = 0)' : tau[0].toFixed(4)) + ' · long-run shrink ×' + Math.exp(-2 * Math.PI * tau[1]).toFixed(4) + ' per step · ' +
+      (top ? 'τ is infinitely high (the 1/0 cusp), above every bubble: the orbit of 0 never moves' : bs ? 'inside the bubble of ' + bs : 'between the bubbles (denominators up to 24)') +
+      (nearEdge ? ' · very near the edge: the orbit settles extremely slowly' : '') +
+      (pen && penInfo.lock !== null ? ' · rings start at step ' + penInfo.lock + ' (threshold reached); largest gap to the real orbit over the rings drawn: ' + (100 * penInfo.gap).toFixed(1) + '% of the view' : '');
+    if (nearEdge) return cTxt + ' is on or within a hair of the cardioid\'s edge. There the fixed point is neutral or nearly so: it neither clearly pulls nor pushes, and orbits creep extremely slowly. ' + N + ' steps cannot decide what this orbit does.';
+    return cTxt + ' is outside the main cardioid: the fixed point pushes away. ' + (cyc
+      ? 'After ' + N + ' steps the orbit repeats every ' + cyc.length + ' steps (checked over two full rounds, to 10⁻⁷), and that cycle\'s own strength is ' + cycMu.toFixed(3) + ' < 1, so it pulls nearby points in (gold rings). A numerical check, not a proof.'
+      : rep ? 'After ' + N + ' steps the orbit repeats every ' + (rep.q === 1 ? 'step' : rep.q + ' steps') + ' (checked over two full rounds, to 10⁻⁷), but that cycle\'s own strength is ' + rep.mu.toFixed(3) + ' ≥ 1: it pushes nearby points away, so the orbit stays on it only because it landed on it (exactly, or within the rounding so far). A numerical check, not a proof.'
+      : 'The orbit shows no repeating cycle after ' + N + ' steps: it may still be settling slowly, or wander. The turn-and-shrink reading does not apply here.');
+  }
+  const cs = ([a, b], d = 8) => a.toFixed(d) + (b < 0 ? ' − ' : ' + ') + Math.abs(b).toFixed(d) + 'i';
+  function ReadoutTable({ m, pen, penInfo }) {
+    const b = m.tau[1] > 0 ? bubbleOf(m.tau) : null, mult = [2 * m.zs[0], 2 * m.zs[1]];
+    const last = m.pts[m.pts.length - 1], off = Math.hypot(last[0] - m.zs[0], last[1] - m.zs[1]);
+    const status = !m.outside ? 'inside the main cardioid: the fixed point pulls (|λ| < 1)' : m.nearEdge ? 'on or within 0.002 of the edge: neutral or nearly so' : 'outside the main cardioid: the fixed point pushes (|λ| > 1)';
+    const rows = [
+      ['c', cs(m.c)],
+      ['λ (fixed-point strength)', cs(m.lam) + `   |λ| = ${m.rLam.toFixed(8)}`],
+      ['fixed point (rest) = λ/2', cs(m.zs)],
+      ['multiplier at rest 2·rest', cs(mult) + ' (= λ)'],
+      ['τ (flat sky)', Number.isFinite(m.tau[1]) ? `${m.tau[0].toFixed(8)}, height ${m.tau[1].toFixed(8)}` : 'turn not defined, height ∞ (λ = 0: the 1/0 cusp, infinitely high)'],
+      ['long-run turn per step', m.outside ? '— (outside)' : !Number.isFinite(m.tau[1]) ? 'not defined (λ = 0)' : m.tau[0].toFixed(6) + ' of a turn'],
+      ['long-run shrink per step', m.outside ? '— (outside)' : '×' + Math.exp(-2 * Math.PI * m.tau[1]).toFixed(6)],
+      ['bubble containing τ', m.outside ? '— (τ below the horizon)' : !Number.isFinite(m.tau[1]) ? 'none: τ is above every bubble (the 1/0 cusp)' : b ? `${b[0]}/${b[1]} (denominators up to 24)` : 'between the bubbles (denominators up to 24)'],
+      ['status', status],
+      ['steps computed', `${m.N}` + (m.escaped ? ` · escaped (|z| > 4) at step ${m.escStep}` : ' · stayed within |z| ≤ 4')],
+      ['last step’s distance to rest', m.escaped ? '—' : off.toExponential(4)],
+      ['cycle (numerical)', m.cyc ? `${m.cyc.length}-cycle, own strength |μ| = ${m.cycMu.toFixed(6)} < 1` : m.rep ? `${m.rep.q}-cycle reached, own strength |μ| = ${m.rep.mu.toFixed(6)} ≥ 1 (pushes away)` : m.outside && !m.nearEdge && !m.escaped ? 'none found (q ≤ 24, two rounds, 10⁻⁷)' : '—'],
+      ['pen rings', pen ? (penInfo.lock !== null ? `from step ${penInfo.lock}; largest gap ${(100 * penInfo.gap).toFixed(2)}% of the fitted view` : 'threshold 0.05 not reached') : 'off'],
+    ];
+    return h('table', { className: 'ro' }, h('tbody', null, rows.map(([k, v]) => h('tr', { key: k }, h('td', null, k), h('td', null, v)))));
+  }
+
+  // ---------- app ----------
+  const presets = [['near 1/3', [1 / 3 + 0.01, 0.03]], ['near 2/5', [2 / 5 + 0.004, 0.012]], ['near 1/2', [1 / 2 + 0.02, 0.05]],
+    ['near 3/7, slow', [3 / 7 + 0.002, 0.004]], ['golden angle', [(Math.sqrt(5) - 1) / 2, 0.006]]];
+  function App() {
+    const [pick, setPick] = useState({ tau: [1 / 3 + 0.01, 0.03] });   // { tau } from a preset, or { c } as tapped or typed (v0.1.1, F3)
+    const [cRe, setCRe] = useState(''), [cIm, setCIm] = useState(''), [cErr, setCErr] = useState('');
+    const [N, setN] = useState(400);
+    const [pen, setPen] = useState(false);
+    const [penInfo, setPenInfo] = useState({ lock: null, gap: null });
+    const theme = useTheme();
+    const model = useMemo(() => computeOrbit(pick, N), [pick, N]);
+    const onPick = useCallback(c => setPick({ c }), []);
+    const typed = e => { e.preventDefault(); const num = t => { t = t.trim().replace(/−/g, '-'); return t === '' ? 0 : Number(t); };
+      const a = num(cRe), b = num(cIm); if (!Number.isFinite(a) || !Number.isFinite(b)) { setCErr('not a number'); return; } setCErr(''); setPick({ c: [a, b] }); };
+    const onPen = useCallback(p => setPenInfo(o => (o.lock === p.lock && o.gap === p.gap ? o : p)), []);
+    return h('main', null,
+      h('h1', null, 'Watch an orbit'),
+      h('p', { className: 'sub' }, 'Repeat z → z² + c from 0. Inside the main cardioid the orbit settles on one resting point; its long-run turn and shrink are read off τ in the flat sky. Wheel or pinch to zoom, drag to pan, tap the Mandelbrot picture to choose c, or type it.'),
+      h('div', { className: 'row' }, presets.map(([t, v]) => h('button', { key: t, type: 'button', onClick: () => setPick({ tau: v }) }, t)),
+        h('label', null, h('input', { type: 'checkbox', checked: pen, onChange: e => setPen(e.target.checked) }), 'pen rings (frozen λ)'),
+        h('label', null, 'steps ', h('input', { type: 'range', min: 100, max: 20000, step: 100, value: N, onChange: e => setN(+e.target.value), style: { width: '140px' } }), h('span', { className: 'cam' }, N))),
+      h('form', { className: 'row', onSubmit: typed, 'aria-label': 'type c' },
+        h('label', null, 'type c = ', h('input', { id: 'c-re', type: 'text', inputMode: 'decimal', size: 9, placeholder: '-2', value: cRe, onChange: e => setCRe(e.target.value), 'aria-label': 'real part of c' })),
+        h('label', null, '+ ', h('input', { id: 'c-im', type: 'text', inputMode: 'decimal', size: 9, placeholder: '0', value: cIm, onChange: e => setCIm(e.target.value), 'aria-label': 'imaginary part of c' }), ' i'),
+        h('button', { type: 'submit', id: 'c-go' }, 'show'), h('span', { className: 'cam' }, cErr || 'iterated exactly as typed (as a double)')),
+      h('div', { className: 'grid' },
+        h(MandelPanel, { model, onPick, theme }),
+        h(OrbitPanel, { model, pen, theme, onPen }),
+        h(TauPanel, { model, theme })),
+      h('p', { className: 'read', 'aria-live': 'polite' }, readoutSentence(model, pen, penInfo)),
+      h('div', { className: 'plate' }, h('span', { className: 'tag' }, 'readouts'), h(ReadoutTable, { m: model, pen, penInfo })),
+      h('p', { className: 'note' }, 'The trail in the Mandelbrot picture is step n’s turn-and-stretch m = zₙ + rest, bent by m/2 − m²/4; c itself does not move. Early multipliers outside the unit disk can fold under that bending, so those dots are passing values. The pen rings freeze the multiplier at λ from the first step within 0.05 of it; the true multiplier is always λ plus the current offset, so the measured gap is shown. Cycles outside the cardioid are found numerically, not proved.'),
+      h('p', { className: 'note' }, 'Orbit viewer v0.1.1 (2026-11-06). Extracted from The Fraction Fan v10, section 8. The idea and the instruments: saphir. The framework was assembled by Robin Miller; its components are classical results of others.'));
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(h(App));
+};
+</script>
+</body>
+</html>

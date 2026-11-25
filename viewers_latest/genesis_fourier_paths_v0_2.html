@@ -1,0 +1,185 @@
+<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Genesis · Fourier paths</title>
+<style>
+*{box-sizing:border-box}body{margin:0;background:#0c1017;color:#e6ecf4;font:16px/1.5 system-ui,sans-serif}main{max-width:1120px;margin:auto;padding:clamp(15px,4vw,52px)}h1{font:500 clamp(32px,5vw,57px)/1.15 Georgia,serif;margin:5px 0}h2{font-size:17px;margin:0 0 10px}a{color:#8edacc}p{margin:8px 0 16px}.toy-controls,footer{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px}.toy-controls,.panel,details{border:1px solid #303946;background:#141c26;border-radius:10px;padding:16px}.toy-controls{margin:24px 0 14px}label{display:flex;align-items:center;gap:7px;font-size:14px}input{accent-color:#79dcca;min-width:0}select{background:#202b38;color:inherit;border:1px solid #526272;padding:5px;border-radius:4px}article{display:grid;grid-template-columns:2fr 3fr;gap:14px}svg{width:100%;display:block}table{width:100%;border-collapse:collapse;text-align:left}td,th{padding:7px;border-bottom:1px solid #303946}small,summary{color:#c3ccd9}.panel,details{margin-bottom:14px;min-width:0}.read{font:600 18px ui-monospace,monospace;color:#8ee8d6}output{font-variant-numeric:tabular-nums}footer{margin-top:22px;font-size:14px} #identity,#detail{overflow-wrap:anywhere}@media(max-width:660px){article{grid-template-columns:1fr}.panel,.toy-controls{padding:12px} table{font-size:13px}td,th{padding:4px}}
+
+.freq{width:5.2em;font:inherit;color:inherit;background:#202b38;border:1px solid #667889;border-radius:4px;padding:4px}.transport{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0}.transport button{cursor:pointer;font:inherit;color:inherit;background:#213040;border:1px solid #647687;border-radius:5px;padding:5px 12px}.transport button:disabled{opacity:.45;cursor:default}.transport #play{min-width:5em}.key{display:flex;gap:16px;flex-wrap:wrap}.key span:first-child{color:#7fe1ce}.key span:last-child{color:#f4ab68}.key[hidden]{display:none}
+</style><main><h1>Genesis · Fourier paths</h1><p>Follow the roots of unity from a gcd orbit into Alpöge’s weighted path sum.</p><div class="toy-controls">
+<label>Modulus q <select id="toy-q"><option>3</option><option>5</option><option selected>7</option><option>8</option><option>9</option><option>12</option><option>11</option><option>13</option></select></label>
+<label>Tuple length k <select id="toy-k"><option>2</option><option>3</option><option>4</option><option>5</option><option>6</option><option>7</option><option>8</option><option>9</option></select></label>
+<label>Weights <select id="toy-weight"><option value="uniform">All residues equally</option><option value="div">Div(30) label counts</option><option value="signed">Quadratic character ±1, 0</option></select></label>
+<label><input id="overlay" type="checkbox" checked> Overlay two frequencies</label><label>Frequency A <input class="freq" id="freq-a" value="1" type="text" inputmode="text" aria-describedby="freq-help"></label><label id="freq-b-label">Frequency B <input class="freq" id="freq-b" value="2" type="text" inputmode="text" aria-describedby="freq-help"></label><small id="freq-help">Enter any integer. Frequencies repeat modulo q.</small><label id="single-h">Residue dial <input id="toy-h" type="range" min="0" max="6" value="1"><output id="toy-hval"></output></label>
+<label>Orbit <select id="toy-orbit"></select></label></div>
+<article><section class="panel"><h2 id="wheel-heading">Orbit directions</h2><svg id="wheel" viewBox="-125 -115 250 230" role="img" aria-label="Unit circle showing directions at the selected frequency"></svg></section>
+<section class="panel"><h2>Head-to-tail walk</h2><div class="key" id="key"><span>● h=1 · solid</span><span>◇ h=2 · dashed</span></div><svg id="walk" viewBox="0 0 420 250" role="img" aria-label="Weighted residue vectors and their running resultant"></svg><div class="transport"><button id="back" aria-label="Back one step">−1</button><button id="play">Play</button><button id="next" aria-label="Forward one step">+1</button><label>Speed <select id="speed"><option value="2000">0.5×</option><option value="1000" selected>1×</option><option value="500">2×</option><option value="250">4×</option></select></label></div><label>Steps <input id="toy-prefix" type="range" min="0"><output id="steps"></output></label><div class="read" id="result"></div><small id="walk-note"></small></section></article>
+<section class="panel"><h2 id="orbit-heading">Orbit contributions</h2><table><thead><tr><th>gcd</th><th>Conductor</th><th>Ramanujan sum</th><th>Weighted contribution</th></tr></thead><tbody id="rows"></tbody></table><p id="total" class="read"></p><small id="identity"></small></section>
+<details><summary>Path formula and exact weights</summary><p>Each of the k entries ranges over every residue modulo q. For Q = x₁x₂ + ⋯ + xₖ₋₁xₖ, Cᵣ sums the tuple weights ∏ t(xⱼ) with Q ≡ r. The pen draws Cᵣ exp(2πihr/q) in ascending residue order. The zero residue has gcd q and conductor 1.</p><p>If Cᵣ is constant on an orbit, its contribution is exactly that weight times the Ramanujan sum. Otherwise the viewer adds the individually weighted arrows and displays a numerical approximation.</p><div id="detail"></div></details>
+<footer><a href="../genesis-ramanujan.html">Original Ramanujan Genesis</a><a href="https://alpo.ge/remark.pdf#page=3">Alpöge’s remark · footnote 3</a></footer></main><script>    function toyCoefficients(t, k) {
+      const q = t.length;
+      let end = t.map(weight => [weight, ...Array(q-1).fill(0)]);
+      for (let length = 1; length < k; length++) {
+        const next = t.map(() => Array(q).fill(0));
+        for (let a=0; a<q; a++) for (let b=0; b<q; b++)
+          for (let r=0; r<q; r++) next[b][(r+a*b)%q] += end[a][r]*t[b];
+        end = next;
+      }
+      return t.map((_,r) => end.reduce((total,row) => total+row[r],0));
+    }
+    const toy = id => document.getElementById('toy-'+id);
+    let toyWeights, toyCounts;
+    function rebuildToy() {
+      const q = Number(toy('q').value);
+      const signed=toy('weight').querySelector('[value=signed]');
+      signed.disabled=![3,5,7,11,13].includes(q);
+      if(signed.disabled && toy('weight').value==='signed') toy('weight').value='uniform';
+      toyWeights = Array(q).fill(1);
+      if (toy('weight').value === 'div') {
+        toyWeights.fill(0);
+        for (const d of [1,2,3,5,6,10,15,30]) toyWeights[d%q]++;
+      } else if (toy('weight').value === 'signed') {
+        toyWeights.fill(-1); toyWeights[0]=0;
+        for (let x=1; x<q; x++) toyWeights[x*x%q]=1;
+      }
+      toyCounts = toyCoefficients(toyWeights,Number(toy('k').value));
+      toy('h').max = q-1; toy('prefix').max = q; toy('prefix').value = q;
+      const orbit=toy('orbit'), previous=orbit.value;
+      orbit.replaceChildren(new Option('All orbits','all'));
+      for(let d=q;d>=1;d--) if(q%d===0) orbit.add(new Option('gcd = '+d,d));
+      orbit.value=[...orbit.options].some(o=>o.value===previous)?previous:'all';
+      resetPrefix();
+    }
+
+function gcd(a,b){return b?gcd(b,a%b):a}
+function residues(){return toyCounts.map((_,r)=>r).filter(r=>toy('orbit').value==='all'||gcd(r,toyCounts.length)===Number(toy('orbit').value))}
+function resetPrefix(){toy('prefix').max=residues().length;stopPlayback();toy('prefix').value=el('overlay').checked?0:residues().length;drawToy()}
+function ramanujan(m,h){
+  // The sum of all m-th roots at frequency h partitions by exact conductor.
+  let sum=h%m===0?m:0;
+  for(let d=1;d<m;d++) if(m%d===0) sum-=ramanujan(d,h);
+  return sum;
+}
+const el=id=>document.getElementById(id), colors=['#7fe1ce','#efb86f','#a6a0ff','#f694a8','#92bfdc','#aaca80'];
+const pretty=n=>Math.abs(n)<1e-6?'0':Number(n.toFixed(5)).toLocaleString('en-US',{maximumFractionDigits:5});
+const complex=([x,y])=>pretty(x)+(Math.abs(y)>1e-6?(y<0?' − ':' + ')+pretty(Math.abs(y))+'i':'');
+let timer=null;
+function stopPlayback(){
+ clearInterval(timer);
+ timer=null;
+ el('play').textContent='Play';
+}
+function setStep(value){
+ toy('prefix').value=value;
+ drawToy();
+}
+function startPlayback(){
+ stopPlayback();
+ if(+toy('prefix').value===+toy('prefix').max) setStep(0);
+ el('play').textContent='Pause';
+ timer=setInterval(()=>{
+   setStep(+toy('prefix').value+1);
+   if(+toy('prefix').value===+toy('prefix').max) stopPlayback();
+ },Number(el('speed').value));
+}
+const frequencies=[1n,2n];
+function residueFrequency(i,q){
+ const modulus=BigInt(q);
+ return Number((frequencies[i]%modulus+modulus)%modulus);
+}
+function drawToy(){
+ const overlay=el('overlay').checked;
+ const q=toyCounts.length,h=residueFrequency(0,q),h2=residueFrequency(1,q),rs=residues(),n=+toy('prefix').value;
+ const ds=[...new Set(toyCounts.map((_,r)=>gcd(r,q)))].sort((a,b)=>b-a);
+ const color=r=>colors[ds.indexOf(gcd(r,q))%colors.length];
+ const unit=r=>[Math.cos(2*Math.PI*(h*r%q)/q),Math.sin(2*Math.PI*(h*r%q)/q)];
+ const step=(p,r)=>unit(r).map((v,i)=>p[i]+v*toyCounts[r]);
+ const pts=[[0,0]];for(const r of rs)pts.push(step(pts.at(-1),r));
+ const other=[[0,0]];
+ if(overlay) for(const r of rs){
+   const angle=2*Math.PI*(h2*r%q)/q, [x,y]=other.at(-1);
+   other.push([x+toyCounts[r]*Math.cos(angle),y+toyCounts[r]*Math.sin(angle)]);
+ }
+ toy('h').value=h;
+ el('key').children[0].textContent='● h='+frequencies[0]+' · solid';
+ el('key').children[1].textContent='◇ h='+frequencies[1]+' · dashed';
+ el('freq-b-label').style.display=overlay?'flex':'none';
+ el('key').hidden=!overlay;
+ el('single-h').style.display=overlay?'none':'flex';
+ el('wheel-heading').textContent='Orbit directions · h='+h;
+ el('orbit-heading').textContent='Orbit contributions · h='+h;
+ const groups=new Map();
+ for(const r of rs){const phase=h*r%q;if(!groups.has(phase))groups.set(phase,[]);groups.get(phase).push(r)}
+ let wheel='<circle r="82" fill="none" stroke="#657282"/><path d="M-96 0H96 M0 -96V96" stroke="#344150"/>';
+ for(const [phase,group] of groups){
+   const [x,y]=unit(group[0]); const tip=group.join(', ');
+   wheel+='<g><title>Residues '+tip+' · phase '+phase+'/'+q+'</title><path d="M0 0L'+82*x+' '+(-82*y)+'" stroke="'+color(group[0])+'"/><circle cx="'+82*x+'" cy="'+(-82*y)+'" r="4" fill="'+color(group[0])+'"/><text x="'+100*x+'" y="'+(-100*y+4)+'" fill="#dce7f1" font-size="11" text-anchor="middle">'+phase+'/'+q+'</text></g>';
+ }
+ el('wheel').innerHTML=wheel;
+ const bounds=overlay?pts.concat(other):pts;
+ const xs=bounds.map(p=>p[0]),ys=bounds.map(p=>p[1]),xmin=Math.min(...xs),xmax=Math.max(...xs),ymin=Math.min(...ys),ymax=Math.max(...ys);
+ const scale=Math.min(362/Math.max(1,xmax-xmin),195/Math.max(1,ymax-ymin));
+ const project=([x,y])=>[210+(x-(xmin+xmax)/2)*scale,125-(y-(ymin+ymax)/2)*scale];
+ const origin=project(pts[0]), tip=project(pts[n]);
+ let path='<path d="M0 '+origin[1]+'H420 M'+origin[0]+' 0V250" stroke="#344150"/>';
+ for(let i=0;i<n;i++){
+  const [x,y]=project(pts[i]),[u,v]=project(pts[i+1]),ink=overlay?'#7fe1ce':color(rs[i]),angle=Math.atan2(v-y,u-x)*180/Math.PI;
+  path+='<g><title>Residue '+rs[i]+' · weight '+toyCounts[rs[i]]+'</title><path d="M'+x+' '+y+'L'+u+' '+v+'" stroke="'+ink+'" stroke-width="2.5"/>';
+  if(Math.hypot(x-u,y-v)>4)path+='<path d="M-6 -3 L0 0 L-6 3" fill="none" stroke="'+ink+'" stroke-width="2" transform="translate('+u+' '+v+') rotate('+angle+')"/>';
+  path+='</g>';
+ }
+ if(overlay){
+   const coords=other.slice(0,n+1).map(p=>project(p).join(',')).join(' ');
+   const [x,y]=project(other[n]);
+   path+='<polyline points="'+coords+'" fill="none" stroke="#f4ab68" stroke-width="2.6" stroke-dasharray="6 4"/>';
+   path+='<path d="M0 -6L6 0L0 6L-6 0Z" transform="translate('+x+' '+y+')" fill="#141c26" stroke="#f4ab68" stroke-width="2"/>';
+ }
+ el('walk').innerHTML=path+'<path d="M'+origin.join(' ')+'L'+tip.join(' ')+'" stroke="'+(overlay?'none':'white')+'" stroke-dasharray="3 4"/><circle cx="'+tip[0]+'" cy="'+tip[1]+'" r="3" fill="white"/>';
+ toy('hval').value=h;el('steps').value=n+'/'+rs.length;el('result').textContent='Running sum ≈ '+complex(pts[n]);
+ el('back').disabled=n===0;
+ el('next').disabled=n===rs.length;
+ if(overlay){
+   el('result').textContent='A ≈ '+complex(pts[n])+'   ·   B ≈ '+complex(other[n]);
+   const gap=Math.hypot(pts[n][0]-other[n][0],pts[n][1]-other[n][1]);
+   el('walk-note').textContent=(n?'Last residue '+rs[n-1]+' · weight '+toyCounts[rs[n-1]]:'Both pens at the origin')+' · distance between tips ≈ '+pretty(gap);
+ }else el('walk-note').textContent='Dashed line from the origin to the current tip.';
+ let exactTotal=0,allConstant=true;
+ el('rows').innerHTML=ds.map((d,i)=>{
+  const rr=toyCounts.map((_,r)=>r).filter(r=>gcd(r,q)===d),c=ramanujan(q/d,h),w=toyCounts[rr[0]],constant=rr.every(r=>toyCounts[r]===w);
+  allConstant&&=constant;exactTotal+=w*c;
+  return '<tr><td style="color:'+colors[i%colors.length]+'">'+d+'</td><td>'+q/d+'</td><td>'+c+'</td><td>'+(constant?w+' × ('+c+') = '+w*c:'≈ '+complex(rr.reduce(step,[0,0])))+'</td></tr>';
+ }).join('');
+ el('total').textContent='Full S('+h+') '+(allConstant?'= '+exactTotal:'≈ '+complex(toyCounts.map((_,r)=>r).reduce(step,[0,0])));
+ const M=toyWeights.reduce((a,b)=>a+b,0)**Number(toy('k').value),all=q*toyCounts[0];
+ el('identity').textContent='All frequencies · qN = '+all+' = Mᵏ ('+M+') + R ('+(all-M)+')';
+ el('detail').textContent='t = ['+toyWeights.join(', ')+'] · C = ['+toyCounts.join(', ')+']';
+}
+for(const id of ['q','k','weight'])toy(id).onchange=rebuildToy;
+toy('orbit').onchange=resetPrefix;
+toy('prefix').oninput=()=>{stopPlayback();drawToy()};
+toy('h').oninput=()=>{
+ frequencies[0]=BigInt(toy('h').value);
+ el('freq-a').value=frequencies[0];
+ stopPlayback();drawToy();
+};
+['freq-a','freq-b'].forEach((id,i)=>{
+ const input=el(id);
+ input.oninput=()=>{
+   stopPlayback();
+   const value=input.value.trim();
+   if(!/^[+-]?[0-9]+$/.test(value)){
+     input.setCustomValidity('Enter a whole number.');
+     input.setAttribute('aria-invalid','true');
+     return;
+   }
+   input.setCustomValidity('');
+   input.removeAttribute('aria-invalid');
+   frequencies[i]=BigInt(value);
+   drawToy();
+ };
+ input.onblur=()=>{if(!input.validity.valid)input.reportValidity()};
+});
+el('overlay').onchange=()=>{stopPlayback();drawToy()};
+el('next').onclick=()=>{stopPlayback();setStep(+toy('prefix').value+1)};
+el('back').onclick=()=>{stopPlayback();setStep(+toy('prefix').value-1)};
+el('play').onclick=()=>timer===null?startPlayback():stopPlayback();
+el('speed').onchange=()=>{if(timer!==null)startPlayback()};
+rebuildToy();
+</script></html>

@@ -1,0 +1,791 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Polygon Pen</title>
+<style>
+:root{
+  --bg:#f7f6f2; --panel:#ffffff; --ink:#1d1d1f; --muted:#5f6368; --line:#d9d6cf;
+  --pen:#c2410c; --disk:#eef0f3; --grid:#c9ced6; --start:#15803d; --tooth:#b91c1c; --tri:#f59e0b; --clight:52%;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121316; --panel:#1b1d21; --ink:#e8e8ea; --muted:#a0a4ab; --line:#2e3138;
+    --pen:#fb923c; --disk:#22252b; --grid:#3a3f48; --start:#4ade80; --tooth:#f87171; --tri:#fbbf24; --clight:68%;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121316; --panel:#1b1d21; --ink:#e8e8ea; --muted:#a0a4ab; --line:#2e3138;
+  --pen:#fb923c; --disk:#22252b; --grid:#3a3f48; --start:#4ade80; --tooth:#f87171; --tri:#fbbf24; --clight:68%;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:16px}
+h1{font-size:1.35rem;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 14px}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 18px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:14px}
+.controls label{display:block;font-size:.85rem;color:var(--muted)}
+.controls input[type=range],.controls select,.controls input[type=number]{width:100%;font:inherit}
+.corners{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fill,minmax(110px,1fr));gap:6px 12px}
+.dials{grid-column:1/-1;display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:6px 18px}
+.dials:empty{display:none}
+.val{color:var(--ink);font-variant-numeric:tabular-nums}
+.btns{display:flex;gap:8px;align-items:end;flex-wrap:wrap}
+button{font:inherit;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.layout{display:grid;grid-template-columns:minmax(0,3fr) minmax(0,2fr);gap:14px}
+@media (max-width:820px){ .layout{grid-template-columns:minmax(0,1fr)} }
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px;min-width:0}
+.card h2{font-size:1rem;margin:0}
+.card .k{font-size:.8rem;color:var(--muted);margin:0 0 4px;overflow-wrap:anywhere}
+.card .meta{font-size:.82rem;color:var(--muted);margin:0 0 6px;font-variant-numeric:tabular-nums;min-height:2.6em;overflow-wrap:anywhere}
+.hidden{display:none}
+canvas{width:100%;height:auto;display:block;touch-action:none}
+.tri h2{margin-bottom:6px}
+.tri table{width:100%}
+.tri td{vertical-align:top;overflow-wrap:anywhere}
+.dot{display:inline-block;width:.7em;height:.7em;border-radius:50%;margin-right:4px;vertical-align:baseline}
+.surf{font-size:.95rem;margin:.4em 0;padding:6px 8px;border-radius:8px;background:var(--bg)}
+.notes{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:14px;font-size:.9rem}
+.notes h3{font-size:.95rem;margin:.2em 0 .3em}
+.tag{display:inline-block;font-size:.72rem;border:1px solid var(--line);border-radius:6px;padding:0 6px;margin-right:4px;color:var(--muted)}
+.formula{text-align:center;font-size:1.05rem;margin:.4em 0}
+table{border-collapse:collapse;font-size:.85rem} td,th{padding:2px 10px 2px 0;text-align:left}
+</style>
+</head>
+<body>
+<main>
+<h1>Polygon pen</h1>
+<p class="sub">One pen for every shape: the line, the digon, the triangle, the square, the pentagon and on. The dial is a polygon whose corners are parts of a turn. Reflect it in its sides and its copies tile a sphere, a plane or a hyperbolic plane, and the pen walks that tiling. The triangle is the only polygon its corners fix completely. From the square on, the polygon has k − 3 free shape dials, and they appear here as sliders. A corner can also be ideal, ∞: it sits on the circle at infinity with angle 0, and the triangle (p, q, ∞) is the torus-knot triangle. Polygon pen v0.2, a successor of polygon pen v0.1; earlier versions are kept.</p>
+
+<section class="controls" aria-label="Controls">
+  <div><label for="preset">Shape</label><select id="preset"></select></div>
+  <div><label for="k">Number of corners k</label><select id="k"><option value="1">1 · the line</option><option value="2">2 · digon</option><option value="3" selected>3 · triangle</option><option value="4">4 · quadrilateral</option><option value="5">5 · pentagon</option><option value="6">6 · hexagon</option><option value="7">7 · heptagon</option><option value="8">8 · octagon</option></select></div>
+  <div><label for="stream">Stream</label>
+    <select id="stream"><option value="30">Rule 30</option><option value="150">Rule 150</option><option value="coin">Fair coin</option></select></div>
+  <div><label for="T">Steps T <span class="val" id="Tv"></span></label><input id="T" type="range" min="8" max="4096" step="1" value="510"></div>
+  <div class="corners" id="corners" aria-label="Corners"></div>
+  <div class="dials" id="dials" aria-label="Shape dials"></div>
+  <div><label for="seed">Coin seed</label><input id="seed" type="number" min="1" max="4294967295" value="1"></div>
+  <div><label for="win">Disk: follow pen, trail of last <span class="val" id="winv"></span> steps</label><input id="win" type="range" min="30" max="600" step="10" value="240"></div>
+  <div><label for="spd">Play speed <span class="val" id="spdv"></span></label><input id="spd" type="range" min="0" max="11" step="1" value="4"></div>
+  <div><label><input id="spin" type="checkbox" checked> Turn the sphere while playing</label></div>
+  <div class="btns"><button id="slower">− Slower</button><button id="play">Play</button><button id="faster">Faster +</button><button id="stepbtn">Step ▸</button><button id="restart">Restart</button><button id="edges">Edges: straight</button><button id="newseed">New seed</button><button id="theme">Theme</button></div>
+</section>
+
+<section class="layout">
+  <div>
+    <div class="card" id="boxS"><h2>Sphere S² · k = +1</h2><p class="meta" id="mS"></p><canvas id="cS" width="640" height="640" aria-label="Pen on the spherical tiling"></canvas></div>
+    <div class="card" id="boxP"><h2 id="hP">Plane ℝ² · k = 0</h2><p class="meta" id="mP"></p><canvas id="cP" width="640" height="640" aria-label="Pen on the flat tiling"></canvas></div>
+    <div class="card" id="boxH"><h2>Poincaré disk H² · k = −1</h2><p class="meta" id="mH"></p><canvas id="cH" width="640" height="640" aria-label="Pen on the hyperbolic tiling"></canvas></div>
+  </div>
+  <div class="card tri" aria-live="polite"><h2>The polygon</h2><div id="info"></div></div>
+</section>
+
+<section class="notes">
+  <h3>Which surface</h3>
+  <p>A corner n has an angle of 1/(2n) of a turn, the root of unity ζ<sub>2n</sub>. Reflecting the polygon in its sides tiles a surface exactly when every corner is of this kind (Poincaré's polygon theorem; Coxeter). Which surface is one exact comparison of fractions:</p>
+  <p class="formula">1/n<sub>1</sub> + … + 1/n<sub>k</sub> &gt; k − 2 : sphere, &nbsp; = k − 2 : plane, &nbsp; &lt; k − 2 : hyperbolic plane</p>
+  <table>
+    <tr><th>shape</th><th>sphere</th><th>plane</th><th>hyperbolic plane</th></tr>
+    <tr><td>line</td><td>–</td><td>the pen on ℤ: a step left or right, no turning</td><td>–</td></tr>
+    <tr><td>digon</td><td>the lune (n, n): the hosohedron</td><td>none</td><td>none</td></tr>
+    <tr><td>triangle</td><td>(2,3,3), (2,3,4), (2,3,5), (2,2,n)</td><td>(3,3,3), (2,4,4), (2,3,6)</td><td>all the rest</td></tr>
+    <tr><td>quadrilateral</td><td>none</td><td>(2,2,2,2): rectangles</td><td>all the rest</td></tr>
+    <tr><td>pentagon and up</td><td>none</td><td>none</td><td>all of them</td></tr>
+  </table>
+  <h3>Rigid and free</h3>
+  <p>A polygon with k corners has k sides, and closing it up is three equations (where it ends, and which way it faces). With its corners fixed, k − 3 of its sides are therefore free. A triangle has none: its corners decide its sides, by the law of cosines for angles, and each side has an exact cosine. A lune is rigid too: both sides are half a great circle. A rectangle has one free dial, its shape. A pentagon has two, a hexagon three, and so on. The free sides come back as a continuum; the triangle is the one polygon with no continuum in it at all.</p>
+  <p>On the disk, the sliders set the first k − 3 sides as L<sub>0</sub>·e<sup>t</sup>, where L<sub>0</sub> is the side of the regular polygon with the average corner, and the last three sides are solved so the polygon closes (Newton's method; the residual is shown). With all corners equal and every slider at 0, the polygon is regular and its side is exact: cosh(ℓ/2) = Re ζ<sub>2k</sub> / Im ζ<sub>4n</sub>. For the right-angled pentagon this gives cosh ℓ = the golden ratio. The rectangle's dial is its height over its width, chosen from fractions, so the plane stays exact.</p>
+  <h3>The pen</h3>
+  <p>Standing on a corner n, the pen sees 2n edges spaced evenly. It turns to the edge next to the one it came along, left or right as the sign says: (n − 1)/(2n) of a turn, the root of unity ζ<sub>2n</sub><sup>n−1</sup>. Then it walks that edge. The corners it stands on go 1, 2, …, k, 1, … whatever the signs, so the turns and steps repeat with period k, and k lefts walk once round the polygon. The line has no corners: the pen steps one to the left or right.</p>
+  <h3>The ideal corner and torus knots</h3>
+  <p>Let a corner go to infinity: n = ∞, angle 0 of a turn, a point on the circle at infinity. Then 1/p + 1/q + 0 &lt; 1, so the triangle (p, q, ∞) is hyperbolic (except (2, 2, ∞), which is flat). Its rotations form the free product C<sub>p</sub> ∗ C<sub>q</sub>: one rotation of order p at corner p, one of order q at corner q, and their product is parabolic, turning about the ideal corner. This is the group of the torus knot T(p, q) with its centre divided out: the knot group is ⟨x, y | x<sup>p</sup> = y<sup>q</sup>⟩ and x<sup>p</sup> generates the centre (Schreier). T(p, q) is a knot when p and q are coprime and a link of gcd(p, q) circles otherwise. (2, 3, ∞) is the modular group PSL(2, ℤ), and T(2, 3) is the trefoil.</p>
+  <p>The pen cannot reach an ideal corner, which is infinitely far away, so it walks the one finite side, from p to q and back. Around corner p, only every other edge is such a side, so it turns to the next one of those: (p − 2)/(2p) of a turn, ζ<sub>2p</sub><sup>p−2</sup>, left or right as the sign says. At a corner 2 there is only one way on, so the pen goes straight and that sign is not read. These sides form a tree (the Bass–Serre tree of C<sub>p</sub> ∗ C<sub>q</sub>), and the pen never turns back, so every walk is a geodesic in the tree: after t steps it is exactly t edges from the start, whatever the stream. The stream is not lost; it is written down as a reduced word in C<sub>p</sub> ∗ C<sub>q</sub>.</p>
+  <p>For (2, 3, ∞) the word is a path in the Farey tree. Each pass through the 3-corner multiplies by R = [[1, 1], [0, 1]] for + or L = [[1, 0], [1, 1]] for −, in SL(2, ℤ), and R<sup>a₀</sup>L<sup>a₁</sup>R<sup>a₂</sup>… is the continued fraction [a₀; a₁, a₂, …]: the run lengths of the signs read are the partial quotients of the point at infinity the pen heads toward. After a finite run the pen stands at the Farey node (a + b)/(c + d) of M = [[a, b], [c, d]], whose continued fraction is the same with the last term one larger. The page shows them, and the Farey node, exactly.</p>
+  <h3>Exact, numerical, drawing</h3>
+  <p><b>Sphere.</b> A finite flag machine (snapping at 10⁻⁶), as in the triangle pen. <b>Plane.</b> Triangles exact in ℤ[ζ<sub>24</sub>]; rectangles exact as integer pairs (width units, height units); the line exact in ℤ. <b>Disk.</b> SU(1,1) products; the view follows the pen; one tiling patch per corner. Triangles and regular polygons have exact sides; the other polygons are solved numerically. <b>Playback, full screen, step counter and ⇩ Run JSON</b> work as in the other pens; <code>render_pen_run_v0_3.py</code> draws every kind this page saves.</p>
+  <h3>Status</h3>
+  <p id="selftest"></p>
+  <p><span class="tag">classical</span>Reflection groups of polygons, Poincaré's polygon theorem, the angle-sum curvature split, the law of cosines for angles, and the k − 3 dimensional space of hyperbolic polygons with fixed corners, ideal vertices, torus-knot groups, Bass–Serre trees and the Farey tree are classical (Poincaré; Coxeter; Fenchel and Nielsen; Schreier; Serre; Stern and Brocot).
+  <span class="tag">exact</span>The surface choice; plane positions; triangle, lune and regular sides; the torus-knot side cosh c = (1 + Re ζ<sub>2p</sub> Re ζ<sub>2q</sub>) / (Im ζ<sub>2p</sub> Im ζ<sub>2q</sub>); the tree word and, for (2, 3, ∞), the continued fraction and Farey interval (integers).
+  <span class="tag">numerical</span>Disk sides of non-regular polygons with four or more corners (Newton, residual shown).
+  <span class="tag">finite / drawing</span>Flag-machine counts are FINITE readouts; sphere and disk drawings are floating point. Nothing here is evidence about periodicity.</p>
+  <p style="color:var(--muted)">Credits: saphir, for Rule 30 written on surfaces, the vision of one general formula, the triangle, "is there a pen for every shape", and bringing the torus knots (Axiom Math and Yifeng Huang, the Huang–Jiang–Oblomkov conjecture). Poincaré, Coxeter, Schwarz, Fenchel and Nielsen. FVLT: the framework was assembled by Robin Miller; its components are classical results of others. Built by skeleton (Claude Opus 5.5), 2026-11-01; v0.2 the same day.</p>
+</section>
+</main>
+
+<script>
+"use strict";
+// ---- full-screen views with playback and camera controls (shared by the pen viewers) ----
+// v0.4: every view exports its run as JSON (fvlt-pen-run/0.1), with per-step statistics, for the video renderer.
+// v0.3: a step counter on every view, on the page and in full screen.
+// v0.2: every view pans (buttons, one-finger drag on flat views, two-finger drag on all); the pan is applied to the
+// canvas itself each time a frame is cleared, so it works for spheres, planes and disks without touching their drawing code.
+const CAMZ={}, CAMP={};                       // per-view zoom factor and pan offset (fraction of the canvas width)
+function zoomOf(id){ return CAMZ[id]||1; }
+function panOf(id){ return [0,0]; }           // kept for the drawing hooks of v0.1; the pan now lives in the canvas transform
+// ---- run export (fvlt-pen-run/0.1) ----
+// per-step statistics from a path: distinct vertices and edges reached, cumulative tooth events, distance from the start
+function pathStats(points, tooth, dist){
+  const key=p=>p.map(x=>Math.round(x*1e6)).join(','), vs=new Set(), es=new Set(), out={vertices:[], edges:[], tooth:[], distance:[]};
+  let tc=0;
+  for(let t=0;t<points.length;t++){
+    vs.add(key(points[t])); if(t>0){ const a=key(points[t-1]), b=key(points[t]); if(a!==b) es.add(a<b?a+'|'+b:b+'|'+a); }
+    if(t>0 && tooth && tooth[t-1]) tc++;
+    out.vertices.push(vs.size); out.edges.push(es.size); out.tooth.push(tc);
+    out.distance.push(dist ? dist[t] : Math.hypot(...points[t].map((x,i)=>x-points[0][i])));
+  }
+  return out;
+}
+const r6=x=>Math.round(x*1e9)/1e9;
+function downloadRun(v){
+  let run; try{ run=exportRun(v.id); }catch(e){ alert('Export failed: '+e.message); return; }
+  run.schema='fvlt-pen-run/0.1'; run.created=new Date().toISOString();
+  run.view=Object.assign({id:v.id, title:v.title, kind:v.kind}, run.view||{});
+  run.camera=Object.assign({yaw:r6(yaw), pitch:r6(pitch), zoom:zoomOf(v.id), pan:CAMP[v.id]||[0,0]}, run.camera||{});
+  run.credits='saphir: Rule 30 written on surfaces, the polyhedra, the {p,q} vision. FVLT: the framework was assembled by Robin Miller; its components are classical results of others. Built by skeleton (Claude Opus 5.5).';
+  run.status=run.status||'drawing register: coordinates are floating point unless marked exact; counts are FINITE readouts, not proofs.';
+  const name=(run.file_stub||('pen_run_'+v.id))+'_'+new Date().toISOString().slice(0,19).replace(/[:T]/g,'-')+'.json';
+  const blob=new Blob([JSON.stringify(run)],{type:'application/json'}), a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000);
+  window.lastRun=run; return run;
+}
+function setupFullscreen(VIEWS){
+  const Y0=yaw, P0=pitch, byId=id=>document.getElementById(id);
+  const st=document.createElement('style');
+  st.textContent=`.fsbox{position:relative}
+.fsopen{position:absolute;top:6px;right:6px;font-size:.8rem;padding:4px 8px;opacity:.9;z-index:2}
+.fsbar,.fstitle{display:none}
+.fsbox.fs-on{position:fixed;inset:0;z-index:1000;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;gap:6px;overflow:auto}
+.fsbox.fs-on canvas{width:min(calc(100vw - 16px),calc(100vh - 220px))!important;height:auto!important;flex:0 0 auto}
+.fsbox.fs-on .fsopen{display:none}
+.fsbox.fs-on .fstitle{display:block;font-weight:600}
+.fsbox.fs-on .fsbar{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;max-width:100%}
+.fsbar button{min-width:44px;min-height:40px;font-size:1rem}
+.fsbar .fsspd{font-size:.85rem;color:var(--muted);min-width:9em;text-align:center}
+.fsbar .fslab{font-size:.8rem;color:var(--muted)}
+.fsstep{position:absolute;left:6px;top:6px;z-index:2;font-size:.85rem;font-variant-numeric:tabular-nums;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:2px 8px;opacity:.92;pointer-events:none}
+.fsbox.fs-on .fsstep{position:static;font-size:1rem;opacity:1}
+.fsexport{position:absolute;top:6px;right:118px;font-size:.8rem;padding:4px 8px;opacity:.9;z-index:2}
+.fsbox.fs-on .fsexport{display:none}`;
+  document.head.appendChild(st);
+  const boxes=[];
+  for(const v of VIEWS){
+    const cv=byId(v.id), box=document.createElement('div'); box.className='fsbox';
+    cv.parentNode.insertBefore(box,cv); box.appendChild(cv);
+    // the pan: after every full clear, draw through a translation
+    const g=cv.getContext('2d'), clear0=g.clearRect.bind(g);
+    g.clearRect=function(x,y,w,h){ g.setTransform(1,0,0,1,0,0); clear0(0,0,cv.width,cv.height); const p=CAMP[v.id]||[0,0]; g.setTransform(1,0,0,1,p[0]*cv.width,p[1]*cv.width); };
+    const open=document.createElement('button'); open.className='fsopen'; open.textContent='⛶ Full screen'; open.setAttribute('aria-label','Full screen: '+v.title);
+    box.insertBefore(open,cv);
+    if(typeof exportRun==='function'){ const ex=document.createElement('button'); ex.className='fsexport'; ex.textContent='⇩ Run JSON'; ex.setAttribute('aria-label','Export this run as JSON: '+v.title); ex.addEventListener('click',()=>downloadRun(v)); box.insertBefore(ex,cv); }
+    const title=document.createElement('div'); title.className='fstitle'; title.textContent=v.title; box.insertBefore(title,cv);
+    const badge=document.createElement('div'); badge.className='fsstep'; badge.setAttribute('aria-live','off'); box.insertBefore(badge,cv);
+    const row1=document.createElement('div'), row2=document.createElement('div'), row3=document.createElement('div');
+    row1.className=row2.className=row3.className='fsbar';
+    row1.innerHTML='<button data-p="slower">− Slower</button><button data-p="play">Play</button><button data-p="faster">Faster +</button><button data-p="stepbtn">Step ▸</button><button data-p="restart">Restart</button><span class="fsspd"></span>';
+    row2.innerHTML='<span class="fslab">Move</span><button data-c="pl" aria-label="Move left">◀</button><button data-c="pr" aria-label="Move right">▶</button><button data-c="pu" aria-label="Move up">▲</button><button data-c="pd" aria-label="Move down">▼</button><span class="fslab">Zoom</span><button data-c="zout" aria-label="Zoom out">−</button><button data-c="zin" aria-label="Zoom in">+</button>';
+    row3.innerHTML=(v.kind==='sphere' ? '<span class="fslab">Turn</span><button data-c="left" aria-label="Turn left">⟲</button><button data-c="right" aria-label="Turn right">⟳</button><button data-c="up" aria-label="Tilt up">⤒</button><button data-c="down" aria-label="Tilt down">⤓</button>' : '')
+      +'<button data-c="reset">Reset camera</button>'+(typeof exportRun==='function'?'<button data-c="export">⇩ Run JSON</button>':'')+'<button data-c="exit">✕ Exit</button>';
+    box.appendChild(row1); box.appendChild(row2); box.appendChild(row3);
+    const b={v, cv, box, row1, badge, api:false}; boxes.push(b);
+    open.addEventListener('click',()=>enter(b));
+    row1.addEventListener('click',e=>{ const p=e.target.dataset&&e.target.dataset.p; if(p && byId(p)) byId(p).click(); sync(); });
+    for(const r of [row2,row3]) r.addEventListener('click',e=>{ const c=e.target.dataset&&e.target.dataset.c; if(c) camera(b,c); });
+    // gestures: wheel and pinch zoom; two fingers also pan; one finger pans a flat view (spheres turn by one-finger drag)
+    const ptrs=new Map(); let two=null, drag0=null;
+    cv.addEventListener('wheel',e=>{ if(!box.classList.contains('fs-on')) return; e.preventDefault(); zoomBy(v.id, Math.exp(-e.deltaY*0.0015)); },{passive:false});
+    cv.addEventListener('pointerdown',e=>{ ptrs.set(e.pointerId,[e.clientX,e.clientY]);
+      if(ptrs.size===2){ const [a,c]=[...ptrs.values()]; two={d:Math.hypot(a[0]-c[0],a[1]-c[1]), z:zoomOf(v.id), m:[(a[0]+c[0])/2,(a[1]+c[1])/2], p:(CAMP[v.id]||[0,0]).slice()}; drag0=null; }
+      else if(v.kind!=='sphere'){ drag0=[e.clientX,e.clientY,...(CAMP[v.id]||[0,0])]; } });
+    cv.addEventListener('pointermove',e=>{ if(!ptrs.has(e.pointerId)) return; ptrs.set(e.pointerId,[e.clientX,e.clientY]); const w=cv.clientWidth||1;
+      if(ptrs.size===2 && two){ const [a,c]=[...ptrs.values()];
+        CAMZ[v.id]=Math.max(0.25,Math.min(12,two.z*Math.hypot(a[0]-c[0],a[1]-c[1])/Math.max(1,two.d)));
+        CAMP[v.id]=[two.p[0]+((a[0]+c[0])/2-two.m[0])/w, two.p[1]+((a[1]+c[1])/2-two.m[1])/w]; render(); }
+      else if(drag0){ CAMP[v.id]=[drag0[2]+(e.clientX-drag0[0])/w, drag0[3]+(e.clientY-drag0[1])/w]; render(); } });
+    const up=e=>{ ptrs.delete(e.pointerId); if(ptrs.size<2) two=null; if(ptrs.size===0) drag0=null; };
+    cv.addEventListener('pointerup',up); cv.addEventListener('pointercancel',up);
+  }
+  function zoomBy(id,f){ CAMZ[id]=Math.max(0.25,Math.min(12,zoomOf(id)*f)); render(); }
+  function camera(b,c){ const id=b.v.id, P=CAMP[id]||[0,0], d=0.1;
+    if(c==='left') yaw-=0.25; else if(c==='right') yaw+=0.25;
+    else if(c==='up') pitch=Math.max(-1.5,pitch-0.2); else if(c==='down') pitch=Math.min(1.5,pitch+0.2);
+    else if(c==='pl') CAMP[id]=[P[0]+d,P[1]]; else if(c==='pr') CAMP[id]=[P[0]-d,P[1]];
+    else if(c==='pu') CAMP[id]=[P[0],P[1]+d]; else if(c==='pd') CAMP[id]=[P[0],P[1]-d];
+    else if(c==='zin') return zoomBy(id,1.25); else if(c==='zout') return zoomBy(id,0.8);
+    else if(c==='reset'){ CAMZ[id]=1; CAMP[id]=[0,0]; if(b.v.kind==='sphere'){ yaw=Y0; pitch=P0; } }
+    else if(c==='exit') return leaveFs(b);
+    else if(c==='export') return downloadRun(b.v);
+    render(); }
+  function enter(b){
+    for(const o of boxes) if(o!==b && o.box.classList.contains('fs-on')) leaveFs(o);
+    b.box.classList.add('fs-on'); document.body.style.overflow='hidden';
+    const rq=b.box.requestFullscreen||b.box.webkitRequestFullscreen;
+    if(rq){ try{ const p=rq.call(b.box); b.api=true; if(p&&p.catch) p.catch(()=>{ b.api=false; }); }catch(e){ b.api=false; } }
+    sync(); render(); }
+  function leaveFs(b){
+    if(!b.box.classList.contains('fs-on')) return;
+    b.box.classList.remove('fs-on'); document.body.style.overflow='';
+    const fe=document.fullscreenElement||document.webkitFullscreenElement;
+    if(fe){ const ex=document.exitFullscreen||document.webkitExitFullscreen; try{ ex&&ex.call(document); }catch(e){} }
+    b.api=false; render(); }
+  const onFs=()=>{ const fe=document.fullscreenElement||document.webkitFullscreenElement; if(!fe) for(const b of boxes) if(b.api) leaveFs(b); };
+  document.addEventListener('fullscreenchange',onFs); document.addEventListener('webkitfullscreenchange',onFs);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') for(const b of boxes) leaveFs(b); });
+  function sync(){ for(const b of boxes){ const pb=b.row1.querySelector('[data-p="play"]'), sp=b.row1.querySelector('.fsspd');
+    if(byId('play')) pb.textContent=byId('play').textContent; if(byId('spdv')) sp.textContent=byId('spdv').textContent; } }
+  setInterval(sync,250);
+  // the step the pen is on: during playback the step in progress, otherwise the whole run
+  function stepText(){ if(typeof shown==='undefined' || !shown) return ''; const total= shown.T!==undefined ? shown.T : shown.n;
+    if(pos===null) return 'step '+total+' of '+total+' (whole path)';
+    const n=Math.min(total, Math.floor(pos)); return 'step '+n+' of '+total+(playing?'':' · paused'); }
+  let lastStep='';
+  function showSteps(){ const t=stepText(); if(t===lastStep) return; lastStep=t; for(const b of boxes) b.badge.textContent=t; }
+  (function loop(){ showSteps(); setTimeout(loop,100); })();
+  window.PenFullscreen={boxes, enter, leaveFs, camera, zoomBy};
+}
+// ---- streams (exact Boolean) ----
+function caSigns(rule, T){
+  const W=2*T+5, mid=T+2; let a=new Uint8Array(W), b=new Uint8Array(W); a[mid]=1;
+  const s=new Int8Array(T);
+  for(let t=0;t<T;t++){
+    s[t] = (a[mid]^a[mid+1]) ? -1 : 1;
+    for(let i=1;i<W-1;i++){ const L=a[i-1],C=a[i],R=a[i+1]; b[i]= rule===150 ? (L^C^R) : (L^(C|R)); }
+    b[0]=0; b[W-1]=0; const tmp=a; a=b; b=tmp;
+  }
+  return s;
+}
+function coinSigns(T, seed){
+  let x=(seed>>>0)||1; const s=new Int8Array(T);
+  for(let t=0;t<T;t++){ x^=x<<13; x>>>=0; x^=x>>>17; x^=x<<5; x>>>=0; s[t]=(x&1)?1:-1; }
+  return s;
+}
+// ---- the polygon ----
+const KMAX=8, gcd=(a,b)=>b?gcd(b,a%b):a;
+function frac(a,b){ const g=gcd(Math.abs(a),Math.abs(b))||1; return b/g===1 ? String(a/g) : (a/g)+'/'+(b/g); }
+// the exact comparison: sum 1/n against k - 2, as integers over P = product of the n
+function curvature(ns){ const k=ns.length, P=ns.reduce((a,b)=>a*b,1); let s=0; for(const n of ns) s+=P/n; return {sign:Math.sign(s-(k-2)*P), s, P, num:s-(k-2)*P}; }
+const ang=n=>Math.PI/n;                                           // internal radians only: 1/(2n) of a turn
+function sideCos3(ns,i){ const A=ang(ns[i]), B=ang(ns[(i+1)%3]), D=ang(ns[(i+2)%3]); return (Math.cos(A)+Math.cos(B)*Math.cos(D))/(Math.sin(B)*Math.sin(D)); }  // side opposite corner i
+// phase j: the pen stands on corner j and walks the side from corner j to corner j+1
+const cross=(u,v)=>[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];
+const rk=p=>p.map(x=>String(Math.round(x*1e6)+0)).join(',');
+
+// ---- k = +1: the flag machine (lunes and triangles) ----
+function penStep(x, v, s, ca, sa, theta){
+  const th=s*theta, ct=Math.cos(th), st=Math.sin(th), w=cross(x,v);
+  const u=[ct*v[0]+st*w[0], ct*v[1]+st*w[1], ct*v[2]+st*w[2]];
+  return [[ca*x[0]+sa*u[0], ca*x[1]+sa*u[1], ca*x[2]+sa*u[2]], [-sa*x[0]+ca*u[0], -sa*x[1]+ca*u[1], -sa*x[2]+ca*u[2]]];
+}
+function sphereMoves(ns){ const k=ns.length;
+  return ns.map((n,j)=>{ const c= k===2 ? -1 : sideCos3(ns,(j+2)%3); return {at:j, to:(j+1)%k, theta:Math.PI-ang(n), ca:c, sa:Math.sqrt(Math.max(0,1-c*c))}; }); }
+function buildMachine(ns, cap=6000){
+  const ph=sphereMoves(ns), K=ns.length, verts=[], vtype=[], vmap=new Map(), states=[], smap=new Map();
+  const vIndex=(p,t)=>{ const key=t+':'+rk(p); let i=vmap.get(key); if(i===undefined){ i=verts.length; verts.push(p); vtype.push(t); vmap.set(key,i); } return i; };
+  const sIndex=(x,v,j)=>{ const vi=vIndex(x,j), key=vi+'|'+j+'|'+rk(v); let si=smap.get(key);
+    if(si===undefined){ si=states.length; states.push({vi, x:verts[vi], v, j, next:[-1,-1]}); smap.set(key,si); } return si; };
+  sIndex([0,0,1],[1,0,0],0); let finite=true;
+  for(let i=0;i<states.length;i++){ if(states.length>cap){ finite=false; break; }
+    const S=states[i], d=ph[S.j];
+    for(const [q,s] of [[0,1],[1,-1]]){ const [nx,nv]=penStep(S.x,S.v,s,d.ca,d.sa,d.theta); S.next[q]=sIndex(nx,nv,(S.j+1)%K); } }
+  const edges=new Set();
+  for(const st of states) for(const n of st.next) if(n>=0){ const a=st.vi, b=states[n].vi; if(a!==b) edges.add(a<b?a+','+b:b+','+a); }
+  return {finite, ph, verts, vtype, states, edges:[...edges].map(e=>e.split(',').map(Number))};
+}
+function machinePath(M, s){
+  let st=0; const pts=[M.verts[0]], vs=[0], es=[];
+  for(let t=0;t<s.length;t++){ const a=M.states[st].vi; st=M.states[st].next[s[t]>0?0:1]; const b=M.states[st].vi; pts.push(M.verts[b]); vs.push(b); es.push(a<b?a+','+b:b+','+a); }
+  return {pts, vs, es};
+}
+function luneArcs(M, s){ // a lune's sides all join the same two poles; a side is the half great circle from x along u, named by its midpoint u
+  const dep=(S0,sg)=>{ const d=M.ph[S0.j], th=sg*d.theta, ct=Math.cos(th), st=Math.sin(th), w=cross(S0.x,S0.v); return [ct*S0.v[0]+st*w[0], ct*S0.v[1]+st*w[1], ct*S0.v[2]+st*w[2]]; };
+  const all=new Map(); for(const S0 of M.states) for(const sg of [1,-1]){ const u=dep(S0,sg); if(!all.has(rk(u))) all.set(rk(u),[S0.x,u]); }
+  let st=0; const path=[]; for(let t=0;t<s.length;t++){ const S0=M.states[st], sg=s[t]>0?1:-1, u=dep(S0,sg); path.push([S0.x,u,rk(u)]); st=S0.next[sg>0?0:1]; }
+  return {all:[...all.values()], path};
+}
+function sphereCounts(ns, M){ const K=ns.length, V=new Array(K).fill(0); for(const t of M.vtype) V[t]++;
+  const F=ns.map((n,i)=>2*n*V[i]), c=curvature(ns), agree=F.every(f=>f===F[0]);
+  return {V, F, agree, density:frac(F[0]*c.num, 4*c.P), expectedF:frac(4*c.P, c.num)}; }   // F = 4 / (sum 1/n - (k - 2)) for one cover
+
+// ---- k = 0: exact planes ----
+// triangles: positions are integer sums of zeta_24 powers, reduced mod x^8 - x^4 + 1
+const SIDE={'2,3,6':{2:'2',3:'√3',6:'1'}, '2,4,4':{2:'√2',4:'1'}, '3,3,3':{3:'1'}};
+const VEC={'1':[[0,1]], '2':[[0,2]], '√2':[[3,1],[21,1]], '√3':[[2,1],[22,1]]};
+function canon(c){ const r=c.slice(); for(let j=23;j>=8;j--){ if(r[j]){ r[j-4]+=r[j]; r[j-8]-=r[j]; r[j]=0; } } return r.slice(0,8); }
+const ZC=[...Array(24)].map((_,j)=>[Math.cos(Math.PI*j/12), Math.sin(Math.PI*j/12)]);
+function zxy(c){ let x=0,y=0; for(let j=0;j<c.length;j++) if(c[j]){ x+=c[j]*ZC[j][0]; y+=c[j]*ZC[j][1]; } return [x,y]; }
+// rectangles: positions are integer pairs (width units, height units); the shape h/w is an exact fraction
+const ASPECTS=(()=>{ const set=new Map(); for(let q=1;q<=8;q++) for(let p=1;p<=8;p++) if(gcd(p,q)===1) set.set(p+'/'+q,[p,q]); return [...set.values()].sort((a,b)=>a[0]/a[1]-b[0]/b[1]); })();
+function planeModel(ns, aspect){
+  const K=ns.length;
+  if(K===3){ const tab=SIDE[ns.slice().sort((a,b)=>a-b).join(',')]; if(!tab) return null;
+    const ph=ns.map((n,j)=>({at:j, to:(j+1)%3, turn:12*(n-1)/n, side:tab[ns[(j+2)%3]], vec:VEC[tab[ns[(j+2)%3]]]}));
+    const step=(st,s)=>{ const mv=ph[st.j], h=(st.h+(s>0?mv.turn:24-mv.turn))%24, p=st.p.slice(); for(const [q,c] of mv.vec) p[(q+h)%24]+=c; return {p:canon(p).concat(new Array(16).fill(0)), h, j:(st.j+1)%3}; };
+    return {kind:'tri', K, ph, start:()=>({p:new Array(24).fill(0), h:0, j:0}), step, key:st=>canon(st.p).join(), xy:st=>zxy(canon(st.p)), exact:st=>canon(st.p),
+      basis:'zeta_24^j, j = 0..7, reduced mod x^8 - x^4 + 1', sides:ph.map(m=>m.side)}; }
+  if(K===4 && ns.every(n=>n===2)){ const [p,q]=aspect, H=[[1,0],[0,1],[-1,0],[0,-1]];
+    const step=(st,s)=>{ const h=(st.h+(s>0?1:3))%4; return {m:st.m+H[h][0], n:st.n+H[h][1], h, j:(st.j+1)%4}; };
+    return {kind:'rect', K, aspect, start:()=>({m:0,n:0,h:0,j:0}), step, key:st=>st.m+','+st.n, xy:st=>[st.m, st.n*p/q], exact:st=>[st.m, st.n],
+      basis:'integer pairs (m, n): x = m widths, y = n heights; height/width = '+p+'/'+q, sides:['1',frac(p,q),'1',frac(p,q)]}; }
+  return null;
+}
+function planeWalk(PM, s){ let st=PM.start(); const ex=[PM.exact(st)], pts=[PM.xy(st)];
+  for(let t=0;t<s.length;t++){ st=PM.step(st,s[t]); ex.push(PM.exact(st)); pts.push(PM.xy(st)); } return {ex, pts}; }
+function planeTiling(PM, M){
+  const s0=PM.start(), sk=st=>PM.key(st)+'|'+st.h+'|'+st.j, seen=new Set([sk(s0)]), stack=[s0], E=new Map(), V=new Map([[PM.key(s0),[PM.xy(s0),0]]]);
+  while(stack.length && E.size<9000){ const st=stack.pop(), a=PM.xy(st), ak=PM.key(st);
+    for(const sg of [1,-1]){ const nx=PM.step(st,sg), b=PM.xy(nx); if(Math.abs(b[0])>M||Math.abs(b[1])>M) continue;
+      const bk=PM.key(nx), ek=ak<bk?ak+'#'+bk:bk+'#'+ak; if(!E.has(ek)) E.set(ek,[a,b]); if(!V.has(bk)) V.set(bk,[b,nx.j]);
+      const kk=sk(nx); if(!seen.has(kk)){ seen.add(kk); stack.push(nx); } } }
+  return {edges:[...E.values()], verts:[...V.values()]};
+}
+
+// ---- k = -1: SU(1,1) on the Poincare disk ----
+const cm=(a,b)=>[a[0]*b[0]-a[1]*b[1], a[0]*b[1]+a[1]*b[0]], ca=(a,b)=>[a[0]+b[0],a[1]+b[1]], cj=a=>[a[0],-a[1]];
+function mul(g,h){ return {a: ca(cm(g.a,h.a), cm(g.b,cj(h.b))), b: ca(cm(g.a,h.b), cm(g.b,cj(h.a)))}; }
+const ROT = th => ({a:[Math.cos(th/2),Math.sin(th/2)], b:[0,0]});
+const TRANS = L => ({a:[Math.cosh(L/2),0], b:[Math.sinh(L/2),0]});
+function point(g){ const ab=cj(g.a), d=ab[0]*ab[0]+ab[1]*ab[1]; const n=cm(g.b,cj(ab)); return [n[0]/d, n[1]/d]; }
+function act(g,z){ const num=ca(cm(g.a,z),g.b), den=ca(cm(cj(g.b),z),cj(g.a)), d=den[0]*den[0]+den[1]*den[1];
+  return [(num[0]*den[0]+num[1]*den[1])/d, (num[1]*den[0]-num[0]*den[1])/d]; }
+const norm1=g=>{ const m=Math.max(Math.hypot(g.a[0],g.a[1]), Math.hypot(g.b[0],g.b[1])); return m>1e100 ? [{a:[g.a[0]/m,g.a[1]/m], b:[g.b[0]/m,g.b[1]/m]}, Math.log(m)] : [g,0]; };
+function holonomy(ths, Ls){ let g={a:[1,0],b:[0,0]}; for(let j=0;j<ths.length;j++) g=mul(mul(g,ROT(ths[j])),TRANS(Ls[j])); return g; }
+function solve3(A,b){ const d=m=>m[0][0]*(m[1][1]*m[2][2]-m[1][2]*m[2][1])-m[0][1]*(m[1][0]*m[2][2]-m[1][2]*m[2][0])+m[0][2]*(m[1][0]*m[2][1]-m[1][1]*m[2][0]);
+  const D=d(A); if(!(Math.abs(D)>1e-300)) return null; return [0,1,2].map(c=>d(A.map((row,r)=>row.map((x,cc)=>cc===c?b[r]:x)))/D); }
+function regularSide(k, n){ const r=Math.cos(Math.PI/k)/Math.sin(Math.PI/(2*n)); return r>1 ? 2*Math.acosh(r) : null; }   // cosh(l/2) = Re zeta_2k / Im zeta_4n
+// the sides of a hyperbolic polygon with corners ns: k = 3 exact; otherwise the first k-3 sides are L0 e^t, the last three are solved
+function diskSides(ns, ts){
+  const K=ns.length, ths=ns.map(n=>Math.PI-ang(n));
+  if(K===3){ const Ls=ns.map((n,j)=>Math.acosh(Math.max(1,sideCos3(ns,(j+2)%3)))); return {ok:true, exact:'triangle', Ls, ths, residual:0}; }
+  const nbar=K/ns.reduce((a,n)=>a+1/n,0), L0=regularSide(K,nbar)||0.5, regular=ns.every(n=>n===ns[0]) && ts.every(t=>t===0);
+  const fixed=ts.map(t=>L0*Math.exp(t)); let u=[0,1,2].map(()=>Math.log(L0));
+  const F=u=>{ const g=holonomy(ths, fixed.concat(u.map(Math.exp))); return [g.b[0], g.b[1], g.a[1], g.a[0]]; };
+  let f=F(u), it=0;
+  for(; it<100; it++){ const r=Math.hypot(f[0],f[1],f[2]); if(r<1e-14) break;
+    const J=[[],[],[]]; for(let c=0;c<3;c++){ const h=1e-7, u2=u.slice(); u2[c]+=h; const f2=F(u2); for(let q=0;q<3;q++) J[q][c]=(f2[q]-f[q])/h; }
+    const d=solve3(J,[-f[0],-f[1],-f[2]]); if(!d) break; let lam=1, ok=false;
+    for(let s=0;s<40;s++){ const u2=u.map((x,i)=>x+lam*d[i]), f2=F(u2); if(Math.hypot(f2[0],f2[1],f2[2])<r){ u=u2; f=f2; ok=true; break; } lam/=2; } if(!ok) break; }
+  const residual=Math.hypot(f[0],f[1],f[2]), Ls=fixed.concat(u.map(Math.exp));
+  return {ok: residual<1e-10 && f[3]<0 && Ls.every(L=>L>1e-9 && L<60), exact: regular ? 'regular' : null, Ls, ths, residual, L0, nbar, iterations:it};
+}
+function diskMoves(D){ return D.Ls.map((L,j)=>({at:j, to:(j+1)%D.Ls.length, theta:D.ths[j], L, RL:ROT(D.ths[j]), RR:ROT(-D.ths[j]), TE:TRANS(L)})); }
+function diskPen(H, s){
+  let g={a:[1,0],b:[0,0]}, logS=0; const ds=[0], pts=[[0,0]], K=H.length;
+  for(let t=0;t<s.length;t++){ const mv=H[t%K]; g=mul(mul(g, s[t]>0?mv.RL:mv.RR), mv.TE); let l; [g,l]=norm1(g); logS+=l;
+    const am=Math.hypot(g.a[0],g.a[1]); ds.push(logS===0 && am<1e8 ? 2*Math.acosh(Math.max(1,am)) : 2*(Math.log(am)+logS+Math.log(2))); pts.push(point(g)); }
+  return {ds, pts};
+}
+function trailFrom(H, s, u, W){ let P={a:[1,0],b:[0,0]}; const out=[[0,0]], K=H.length;
+  for(let k=u-1;k>=Math.max(0,u-W);k--){ const mv=H[k%K]; P=mul(mul(s[k]>0?mv.RL:mv.RR, mv.TE), P); P=norm1(P)[0];
+    const d=P.a[0]*P.a[0]+P.a[1]*P.a[1], n=cm(P.b,cj(P.a)); out.push([-n[0]/d, -n[1]/d]); }
+  return out; }
+function tilingFrom(H, k0, back){ const K=H.length, key=p=>p[0].toFixed(8)+','+p[1].toFixed(8), edges=new Map(), verts=new Map([[key([0,0]),[[0,0],k0]]]);
+  // back: also seed a frame whose left turn is the edge the pen came along, so a tree shows its half behind the pen too
+  let frontier=[[{a:[1,0],b:[0,0]},k0]].concat(back ? [[ROT(Math.PI-H[k0].theta),k0]] : []); const seen=new Set();
+  for(let d=0; d<60 && edges.size<3000 && frontier.length; d++){ const next=[];
+    for(const [g,k] of frontier) for(const sg of [1,-1]){ const mv=H[k], h=mul(mul(g,sg>0?mv.RL:mv.RR),mv.TE), p0=point(g), p1=point(h);
+      if(Math.hypot(p1[0],p1[1])>0.9993) continue;
+      const ek=[key(p0),key(p1)].sort().join('|'); if(!edges.has(ek)) edges.set(ek,[p0,p1]);
+      if(!verts.has(key(p1))) verts.set(key(p1),[p1,mv.to]);
+      const hk=key(p1)+'|'+key(point(mul(h,TRANS(0.05))))+'|'+((k+1)%K); if(!seen.has(hk)){ seen.add(hk); next.push([h,(k+1)%K]); } }
+    frontier=next; }
+  return {edges:[...edges.values()], verts:[...verts.values()]}; }
+// ---- the ideal corner: n = ∞, written 0. Triangles (p, q, ∞): the pen walks the finite side p–q, a tree ----
+function idealSetup(ns){ const K=ns.length, m=ns.filter(n=>n===0).length;
+  if(K!==3) return {why:'An ideal corner (∞) is offered for triangles in this version: the torus-knot triangle (p, q, ∞).'};
+  if(m>1) return {why:'With two or three ideal corners every side runs out to the circle at infinity, so there is no side the pen can finish walking.'};
+  const i=ns.indexOf(0), a=(i+1)%3, b=(i+2)%3, p=ns[a], q=ns[b], g=gcd(p,q);
+  return {ideal:i, corners:[a,b], p, q, flat: p===2 && q===2, gcd:g, knot: g===1};
+}
+function idealMoves(I){ const th=n=>Math.PI-2*Math.PI/n, c=Math.acosh((1+Math.cos(Math.PI/I.p)*Math.cos(Math.PI/I.q))/(Math.sin(Math.PI/I.p)*Math.sin(Math.PI/I.q)));
+  return [I.p,I.q].map((n,j)=>({at:j, to:1-j, n, theta:th(n), L:c, RL:ROT(th(n)), RR:ROT(-th(n)), TE:TRANS(c)})); }
+// the reduced word in C_p * C_q: x at corner p, y at corner q; a corner 2 reads no sign
+function idealWord(I, s){ const w=[]; for(let t=0;t<s.length;t++){ const n=t%2?I.q:I.p, L=t%2?'y':'x'; w.push(n===2 ? L : L+(s[t]>0?'':'⁻¹')); } return w; }
+// (2, 3, ∞): the signs read at the 3-corner as R (+) and L (−) in SL(2, Z); runs are the partial quotients
+function fareyReadout(I, s, upto){ const ph = I.p===3 ? 0 : 1; let a=1n,b=0n,c=0n,d=1n; const runs=[]; let last=0;
+  for(let t=ph;t<upto;t+=2){ const v=s[t]>0?1:-1; if(v>0){ b=a+b; d=c+d; } else { a=a+b; c=c+d; }
+    if(v===last) runs[runs.length-1]++; else { if(runs.length===0 && v<0) runs.push(0); runs.push(1); last=v; } }
+  return {M:[a,b,c,d], cf:runs, read:runs.reduce((x,y)=>x+y,0)}; }
+function cfOf(num, den){ const out=[]; while(den>0n){ out.push(num/den); [num,den]=[den,num%den]; } return out; }
+function diskGeodesic(z1,z2,steps){
+  const phi=(z,w)=>{ const num=[z[0]-w[0],z[1]-w[1]], den=[1-(w[0]*z[0]+w[1]*z[1]), -(w[0]*z[1]-w[1]*z[0])]; const d=den[0]**2+den[1]**2; return [(num[0]*den[0]+num[1]*den[1])/d,(num[1]*den[0]-num[0]*den[1])/d]; };
+  const inv=(z,w)=>{ const num=[z[0]+w[0],z[1]+w[1]], den=[1+(w[0]*z[0]+w[1]*z[1]), (w[0]*z[1]-w[1]*z[0])]; const d=den[0]**2+den[1]**2; return [(num[0]*den[0]+num[1]*den[1])/d,(num[1]*den[0]-num[0]*den[1])/d]; };
+  const w=phi(z2,z1), r=Math.hypot(w[0],w[1]); if(r<1e-12) return [z1,z2];
+  const A=Math.atanh(Math.min(r,1-1e-16)), out=[];
+  for(let k=0;k<=steps;k++){ const rr=Math.tanh(A*k/steps); out.push(inv([w[0]/r*rr, w[1]/r*rr], z1)); }
+  return out;
+}
+window.PolyPen={idealSetup, idealMoves, idealWord, fareyReadout, cfOf, holonomy, ROT, TRANS, mul, caSigns, coinSigns, curvature, sideCos3, buildMachine, machinePath, sphereCounts, planeModel, planeWalk, planeTiling, diskSides, diskMoves, diskPen, tilingFrom, point, regularSide, ASPECTS};
+
+// ---- drawing ----
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+let yaw=0.6, pitch=0.45, shown=null, playing=false, raf=0, pos=null, lastT=0, edgeMode='chord';
+const TRAIL=6;
+function rot(p){ const cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+  const x1=cy*p[0]+sy*p[1], y1=-sy*p[0]+cy*p[1], z1=p[2]; return [x1, cp*y1-sp*z1, sp*y1+cp*z1]; }
+function along(a,b,f){
+  if(edgeMode==='chord') return [a[0]+(b[0]-a[0])*f, a[1]+(b[1]-a[1])*f, a[2]+(b[2]-a[2])*f];
+  const d=Math.max(-1,Math.min(1,a[0]*b[0]+a[1]*b[1]+a[2]*b[2])), w=Math.acos(d);
+  if(w<1e-9) return a;
+  if(Math.PI-w<1e-6){ // antipodal (hosohedron edge): go over the pole the flag machine started from
+    const m=Math.abs(a[2])<0.9?[0,0,1]:[1,0,0], c=cross(cross(a,m),a), n=Math.hypot(...c), u=c.map(x=>x/n);
+    return [Math.cos(Math.PI*f)*a[0]+Math.sin(Math.PI*f)*u[0], Math.cos(Math.PI*f)*a[1]+Math.sin(Math.PI*f)*u[1], Math.cos(Math.PI*f)*a[2]+Math.sin(Math.PI*f)*u[2]]; }
+  const sw=Math.sin(w), p=Math.sin((1-f)*w)/sw, q=Math.sin(f*w)/sw; return [p*a[0]+q*b[0], p*a[1]+q*b[1], p*a[2]+q*b[2]];
+}
+function strokeEdge(g,a,b,c,R,fa,ba,lw,f=1){
+  const n=edgeMode==='chord'?1:24, pts=[]; for(let k=0;k<=n;k++) pts.push(rot(along(a,b,f*k/n)));
+  for(let k=0;k<n;k++){ const front=(pts[k][1]+pts[k+1][1])/2>=0; g.globalAlpha=front?fa:ba; g.lineWidth=front?lw:Math.max(1,lw*0.6);
+    g.beginPath(); g.moveTo(c+R*pts[k][0],c-R*pts[k][2]); g.lineTo(c+R*pts[k+1][0],c-R*pts[k+1][2]); g.stroke(); }
+}
+function message(cv, lines){
+  const g=cv.getContext('2d'), W=cv.width; g.clearRect(0,0,W,W); g.fillStyle=css('--disk'); g.fillRect(0,0,W,W);
+  g.fillStyle=css('--muted'); g.font='26px system-ui'; g.textAlign='center';
+  lines.forEach((t,i)=>g.fillText(t, W/2, W/2-20+i*36)); g.textAlign='left';
+}
+function frame(upto, last){ const walking=pos!==null, n=Math.min(Math.floor(upto), last), frac=n<last?Math.min(1,upto-n):0; return {walking,n,frac}; }
+const cornerCol=(i,K)=>`hsl(${Math.round(210+360*i/Math.max(1,K))%360} 70% ${css('--clight')})`;
+function fillStartTriangle(g,c,R,tri){
+  const N=12, [A,B,C]=tri, front=new Path2D(), back=new Path2D();
+  const pt=(i,j)=>{ const k=N-i-j, p=[0,1,2].map(d=>(A[d]*k+B[d]*i+C[d]*j)/N); if(edgeMode==='chord') return p; const n=Math.hypot(...p)||1; return p.map(x=>x/n); };
+  const add=(p,q,r)=>{ let n=cross([q[0]-p[0],q[1]-p[1],q[2]-p[2]],[r[0]-p[0],r[1]-p[1],r[2]-p[2]]);
+    const m=[p[0]+q[0]+r[0],p[1]+q[1]+r[1],p[2]+q[2]+r[2]]; if(n[0]*m[0]+n[1]*m[1]+n[2]*m[2]<0) n=n.map(x=>-x);
+    if(Math.hypot(...n)<1e-14) return; const path=rot(n)[1]>=0?front:back, P=[p,q,r].map(rot);
+    path.moveTo(c+R*P[0][0],c-R*P[0][2]); path.lineTo(c+R*P[1][0],c-R*P[1][2]); path.lineTo(c+R*P[2][0],c-R*P[2][2]); path.closePath(); };
+  for(let i=0;i<N;i++) for(let j=0;i+j<N;j++){ add(pt(i,j),pt(i+1,j),pt(i,j+1)); if(i+j<N-1) add(pt(i+1,j),pt(i+1,j+1),pt(i,j+1)); }
+  g.fillStyle=css('--tri'); g.globalAlpha=0.08; g.fill(back); g.globalAlpha=0.3; g.fill(front); g.globalAlpha=1;
+}
+function strokeArc(g,x,u,c,R,fa,ba,lw,f=1){ const n=32, pts=[]; for(let k=0;k<=n;k++){ const a=Math.PI*f*k/n; pts.push(rot([Math.cos(a)*x[0]+Math.sin(a)*u[0], Math.cos(a)*x[1]+Math.sin(a)*u[1], Math.cos(a)*x[2]+Math.sin(a)*u[2]])); }
+  for(let k=0;k<n;k++){ const front=(pts[k][1]+pts[k+1][1])/2>=0; g.globalAlpha=front?fa:ba; g.lineWidth=front?lw:Math.max(1,lw*0.6); g.beginPath(); g.moveTo(c+R*pts[k][0],c-R*pts[k][2]); g.lineTo(c+R*pts[k+1][0],c-R*pts[k+1][2]); g.stroke(); } }
+function drawLune(cv, upto){ // degenerate as a polyhedron (every side joins the same two poles), so always drawn on the sphere
+  const S=shown.S, L=S.lune, g=cv.getContext('2d'), W=cv.width, R=W*0.44*zoomOf(cv.id), c=W/2; g.clearRect(0,0,W,W);
+  g.fillStyle=css('--disk'); g.beginPath(); g.arc(c,c,R,0,2*Math.PI); g.fill();
+  const {walking,n,frac}=frame(upto, L.path.length);
+  g.strokeStyle=css('--muted'); for(const [x,u] of L.all) strokeArc(g,x,u,c,R,walking?0.25:0.35,0.07,1);
+  g.strokeStyle=css('--pen'); for(let i=0;i<n;i++){ const recent=walking && i>=n-TRAIL; strokeArc(g,L.path[i][0],L.path[i][1],c,R,walking?(recent?1:0.5):0.9,walking?(recent?0.35:0.1):0.18,recent?3.4:1.8); }
+  let m=n<L.path.length ? L.path[n][0] : S.path.pts[n];
+  if(walking && frac>0 && n<L.path.length){ const [x,u]=L.path[n], a=Math.PI*frac; strokeArc(g,x,u,c,R,1,0.35,3.4,frac); m=[0,1,2].map(d=>Math.cos(a)*x[d]+Math.sin(a)*u[d]); }
+  for(let i=0;i<S.M.verts.length;i++){ const e=rot(S.M.verts[i]); g.globalAlpha=e[1]>=0?0.95:0.3; g.fillStyle=cornerCol(S.M.vtype[i],2); g.beginPath(); g.arc(c+R*e[0],c-R*e[2],6,0,2*Math.PI); g.fill(); }
+  const e=rot(m); g.globalAlpha=e[1]>=0?1:0.45; g.fillStyle=css('--ink'); g.beginPath(); g.arc(c+R*e[0],c-R*e[2],walking?7:5,0,2*Math.PI); g.fill();
+  if(walking){ g.strokeStyle=css('--pen'); g.lineWidth=2.5; g.beginPath(); g.arc(c+R*e[0],c-R*e[2],12,0,2*Math.PI); g.stroke(); }
+  g.globalAlpha=1;
+}
+function drawSphere(cv, upto){
+  const S=shown.S; if(!S) return; if(S.lune) return drawLune(cv, upto);
+  const g=cv.getContext('2d'), W=cv.width, R=W*0.44*zoomOf(cv.id), c=W/2; g.clearRect(0,0,W,W);
+  g.fillStyle=css('--disk'); g.beginPath(); g.arc(c,c,R,0,2*Math.PI); g.fill();
+  const {walking,n,frac}=frame(upto, S.path.pts.length-1), pts=S.path.pts, M=S.M, K=shown.ns.length;
+  if(K===3) fillStartTriangle(g,c,R,S.start);
+  g.strokeStyle=css('--muted'); for(const [a,b] of M.edges) strokeEdge(g,M.verts[a],M.verts[b],c,R,walking?0.2:0.3,0.06,1);
+  for(let i=0;i<M.verts.length;i++){ const e=rot(M.verts[i]); g.globalAlpha=e[1]>=0?0.9:0.18; g.fillStyle=cornerCol(M.vtype[i],K); g.beginPath(); g.arc(c+R*e[0],c-R*e[2],e[1]>=0?3.6:2,0,2*Math.PI); g.fill(); }
+  g.globalAlpha=1; g.strokeStyle=css('--pen');
+  for(let i=0;i<n;i++){ const recent=walking && i>=n-TRAIL; strokeEdge(g,pts[i],pts[i+1],c,R, walking?(recent?1:0.55):0.95, walking?(recent?0.35:0.12):0.18, recent?3.4:1.6); }
+  let m=pts[n]; if(walking && frac>0){ m=along(pts[n],pts[n+1],frac); strokeEdge(g,pts[n],pts[n+1],c,R,1,0.35,3.4,frac); }
+  const e=rot(m); g.globalAlpha=e[1]>=0?1:0.45; g.fillStyle=css('--ink'); g.beginPath(); g.arc(c+R*e[0],c-R*e[2],walking?7:5,0,2*Math.PI); g.fill();
+  if(walking){ g.strokeStyle=css('--pen'); g.lineWidth=2.5; g.beginPath(); g.arc(c+R*e[0],c-R*e[2],12,0,2*Math.PI); g.stroke(); }
+  g.globalAlpha=1;
+}
+function drawPlane(cv, upto){
+  const P=shown.P; if(!P) return; if(P.line) return drawLine(cv, upto);
+  const g=cv.getContext('2d'), W=cv.width; g.clearRect(0,0,W,W);
+  const pts=P.pts, {walking,n,frac}=frame(upto, pts.length-1), K=shown.ns.length;
+  let mx=2.5; const span=walking?pts.length-1:n; for(let i=0;i<=span;i++) mx=Math.max(mx, Math.abs(pts[i][0]), Math.abs(pts[i][1]));
+  const sc=(W*0.45)/mx*zoomOf(cv.id), c=W/2, X=p=>c+p[0]*sc, Y=p=>c-p[1]*sc;
+  g.fillStyle=css('--disk'); g.fillRect(-W,-W,3*W,3*W);
+  g.fillStyle=css('--tri'); g.globalAlpha=0.3; g.beginPath(); P.start.forEach((p,i)=>i?g.lineTo(X(p),Y(p)):g.moveTo(X(p),Y(p))); g.closePath(); g.fill();
+  g.strokeStyle=css('--grid'); g.lineWidth=1; g.globalAlpha=walking?0.7:1;
+  for(const [a,b] of P.tiling.edges){ g.beginPath(); g.moveTo(X(a),Y(a)); g.lineTo(X(b),Y(b)); g.stroke(); }
+  if(sc>=12) for(const [p,t] of P.tiling.verts){ g.globalAlpha=0.85; g.fillStyle=cornerCol(t,K); g.beginPath(); g.arc(X(p),Y(p),2.8,0,2*Math.PI); g.fill(); }
+  const lw=Math.max(1.2, Math.min(3, sc/8)), from=walking?Math.max(0,n-TRAIL):n;
+  g.strokeStyle=css('--pen'); g.lineWidth=lw; g.globalAlpha=walking?0.45:0.85; g.beginPath();
+  for(let i=0;i<=from;i++){ i?g.lineTo(X(pts[i]),Y(pts[i])):g.moveTo(X(pts[i]),Y(pts[i])); } g.stroke();
+  let ex=pts[n][0], ey=pts[n][1];
+  if(walking){ if(frac>0){ ex+=(pts[n+1][0]-pts[n][0])*frac; ey+=(pts[n+1][1]-pts[n][1])*frac; }
+    g.globalAlpha=1; g.lineWidth=Math.max(3,lw*1.8); g.beginPath();
+    for(let i=from;i<=n;i++){ i===from?g.moveTo(X(pts[i]),Y(pts[i])):g.lineTo(X(pts[i]),Y(pts[i])); } g.lineTo(X([ex,ey]),Y([ex,ey])); g.stroke(); }
+  g.globalAlpha=1; g.fillStyle=css('--start'); g.beginPath(); g.arc(c,c,4,0,2*Math.PI); g.fill();
+  g.fillStyle=css('--ink'); g.beginPath(); g.arc(X([ex,ey]),Y([ex,ey]),walking?7:4,0,2*Math.PI); g.fill();
+  if(walking){ g.strokeStyle=css('--pen'); g.lineWidth=2.5; g.beginPath(); g.arc(X([ex,ey]),Y([ex,ey]),12,0,2*Math.PI); g.stroke(); }
+}
+function drawLine(cv, upto){ // the line: position along the top, time running down the page
+  const P=shown.P, g=cv.getContext('2d'), W=cv.width; g.clearRect(0,0,W,W);
+  const xs=P.ex, {walking,n,frac}=frame(upto, xs.length-1), span=walking?xs.length-1:n;
+  let lo=-3, hi=3; for(let i=0;i<=span;i++){ lo=Math.min(lo,xs[i]); hi=Math.max(hi,xs[i]); }
+  const z=zoomOf(cv.id), sc=(W*0.86)/(hi-lo+2)*z, x0=W/2-(lo+hi)/2*sc, X=v=>x0+v*sc, top=70, dy=Math.min(8,(W-top-30)/Math.max(1,span))*z, Y=t=>top+t*dy;
+  g.fillStyle=css('--disk'); g.fillRect(-W,-W,3*W,3*W);
+  g.strokeStyle=css('--grid'); g.lineWidth=1.5; g.beginPath(); g.moveTo(X(lo-1),40); g.lineTo(X(hi+1),40); g.stroke();
+  g.fillStyle=css('--muted'); g.font='18px system-ui'; g.textAlign='center';
+  const every=Math.max(1,Math.ceil((hi-lo)/16)); for(let v=lo;v<=hi;v++){ g.beginPath(); g.arc(X(v),40,v===0?5:3,0,2*Math.PI); g.fill(); if(v%every===0) g.fillText(String(v),X(v),28); }
+  g.textAlign='left';
+  g.strokeStyle=css('--pen'); g.globalAlpha=walking?0.5:0.85; g.lineWidth=1.6; g.beginPath();
+  for(let i=0;i<=n;i++){ i?g.lineTo(X(xs[i]),Y(i)):g.moveTo(X(xs[i]),Y(i)); } g.stroke();
+  let ex=xs[n]; if(walking && frac>0) ex+= (xs[n+1]-xs[n])*frac;
+  g.globalAlpha=1; g.fillStyle=css('--ink'); g.beginPath(); g.arc(X(ex),40,walking?7:5,0,2*Math.PI); g.fill();
+  if(walking){ g.strokeStyle=css('--pen'); g.lineWidth=2.5; g.beginPath(); g.arc(X(ex),40,12,0,2*Math.PI); g.stroke(); }
+}
+function drawDisk(cv, upto){
+  const Hh=shown.H; if(!Hh) return;
+  const g=cv.getContext('2d'), W=cv.width, R=W*0.46*zoomOf(cv.id), c=W/2; g.clearRect(0,0,W,W);
+  g.fillStyle=css('--disk'); g.beginPath(); g.arc(c,c,R,0,2*Math.PI); g.fill();
+  g.strokeStyle=css('--grid'); g.lineWidth=1; g.beginPath(); g.arc(c,c,R,0,2*Math.PI); g.stroke();
+  const K=Hh.moves.length, {walking,n,frac}=frame(upto, shown.s.length), Wn=+document.getElementById('win').value, ph=n%K, patch=Hh.patch[ph];
+  let view=z=>z;
+  if(walking && frac>0){ const mv=Hh.moves[ph], F=mul(ROT((shown.s[n]>0?1:-1)*mv.theta*frac), TRANS(mv.L*frac)), Fi={a:cj(F.a), b:[-F.b[0],-F.b[1]]}; view=z=>act(Fi,z); }
+  g.strokeStyle=css('--grid'); g.lineWidth=0.8; g.globalAlpha=walking?0.55:0.9;
+  for(const [a0,b0] of patch.edges){ const a=view(a0), b=view(b0); if(Math.hypot(a[0],a[1])>0.995 && Math.hypot(b[0],b[1])>0.995) continue;
+    const seg=diskGeodesic(a,b,8); g.beginPath(); seg.forEach((p,j)=>{ const X=c+R*p[0], Y=c-R*p[1]; j?g.lineTo(X,Y):g.moveTo(X,Y); }); g.stroke(); }
+  g.globalAlpha=0.85;
+  for(const [p0,t] of patch.verts){ const p=view(p0), r=Math.hypot(p[0],p[1]); if(r>0.97) continue; g.fillStyle=cornerCol(t,K); g.beginPath(); g.arc(c+R*p[0],c-R*p[1],Math.max(0.8,3.2*(1-r*r)),0,2*Math.PI); g.fill(); }
+  g.globalAlpha=1;
+  const tr=trailFrom(Hh.moves, shown.s, n, Wn).map(view);
+  for(let j=tr.length-2;j>=0;j--){
+    const a=tr[j+1], b=tr[j]; if(Math.hypot(a[0],a[1])>1-1e-12 && Math.hypot(b[0],b[1])>1-1e-12) continue;
+    const age=j/Math.max(1,tr.length-1), recent=walking && j<TRAIL; g.strokeStyle=`hsl(${20+190*age} 80% 50%)`;
+    g.globalAlpha= recent ? 1 : (walking ? 0.55-0.4*age : 0.9-0.6*age); g.lineWidth= recent ? 3.2 : 1.6-0.8*age;
+    const seg=diskGeodesic(a,b,10); g.beginPath(); seg.forEach((p,q)=>{ const X=c+R*p[0], Y=c-R*p[1]; q?g.lineTo(X,Y):g.moveTo(X,Y); }); g.stroke();
+  }
+  if(walking && frac>0){ g.strokeStyle='hsl(20 80% 50%)'; g.globalAlpha=1; g.lineWidth=3.2; const seg=diskGeodesic(tr[0],[0,0],10); g.beginPath(); seg.forEach((p,q)=>{ const X=c+R*p[0], Y=c-R*p[1]; q?g.lineTo(X,Y):g.moveTo(X,Y); }); g.stroke(); }
+  g.globalAlpha=1; g.fillStyle=css('--ink'); g.beginPath(); g.arc(c,c,walking?7:4.5,0,2*Math.PI); g.fill();
+  if(walking){ g.strokeStyle=css('--pen'); g.lineWidth=2.5; g.beginPath(); g.arc(c,c,12,0,2*Math.PI); g.stroke(); }
+}
+
+// ---- the polygon card ----
+const SUB="₀₁₂₃₄₅₆₇₈₉", SUP="⁰¹²³⁴⁵⁶⁷⁸⁹";
+function sub(n){ return String(n).split("").map(d=>SUB[+d]).join(""); }
+function sup(n){ return String(n).split("").map(d=>SUP[+d]).join(""); }
+const zeta=(N,m)=>'ζ'+sub(N)+(m===1?'':sup(m));
+const NAMES={1:'line',2:'digon',3:'triangle',4:'quadrilateral',5:'pentagon',6:'hexagon',7:'heptagon',8:'octagon'};
+function infoCard(){
+  const ns=shown.ns, K=ns.length;
+  if(K===0) return '<p class="surf">The line has no corners, so there is no turn: each sign moves the pen one step left or right along ℤ. It is the shape with nothing to close. Positions are exact integers.</p>';
+  if(ns.includes(0)) return idealCard(ns);
+  const c=curvature(ns), sname=c.sign>0?'the sphere':c.sign===0?'the plane':'the hyperbolic plane';
+  let h='<p class="surf">'+ns.map(n=>'1/'+n).join(' + ')+' = '+frac(c.s,c.P)+(c.sign>0?' &gt; ':c.sign===0?' = ':' &lt; ')+(K-2)+': '+sname+'</p>';
+  h+='<table><tr><th>corner</th><th>angle</th><th>pen turns</th></tr>';
+  ns.forEach((n,i)=>{ h+='<tr><td><span class="dot" style="background:'+cornerCol(i,K)+'"></span>'+(i+1)+' = '+n+'</td><td>'+frac(1,2*n)+' of a turn · '+zeta(2*n,1)+'</td><td>'+frac(n-1,2*n)+' · '+zeta(2*n,n-1)+'</td></tr>'; });
+  h+='</table><table style="margin-top:6px"><tr><th>side</th><th>length</th></tr>';
+  const sideRow=(j,txt)=>{ h+='<tr><td>'+(j+1)+'–'+((j+1)%K+1)+'</td><td>'+txt+'</td></tr>'; };
+  if(shown.why) return h+'</table><p class="surf">'+shown.why+'</p>';
+  if(c.sign>0){ for(let j=0;j<K;j++){ if(K===2) sideRow(j,'half a great circle: cos = −1, exact'); else { const i=(j+2)%3, a=ns[i], b=ns[(i+1)%3], d=ns[(i+2)%3], x=sideCos3(ns,i);
+      sideRow(j,'cos = (Re '+zeta(2*a,1)+' + Re '+zeta(2*b,1)+' · Re '+zeta(2*d,1)+') / (Im '+zeta(2*b,1)+' · Im '+zeta(2*d,1)+') ≈ '+x.toFixed(9)); } } }
+  else if(c.sign===0){ const P=shown.P; P.model.sides.forEach((s,j)=>sideRow(j, s+' (exact)')); }
+  else { const D=shown.H.D;
+    D.Ls.forEach((L,j)=>{ let t;
+      if(D.exact==='triangle'){ const i=(j+2)%3, a=ns[i], b=ns[(i+1)%3], d=ns[(i+2)%3]; t='cosh = (Re '+zeta(2*a,1)+' + Re '+zeta(2*b,1)+' · Re '+zeta(2*d,1)+') / (Im '+zeta(2*b,1)+' · Im '+zeta(2*d,1)+') ≈ '+Math.cosh(L).toFixed(9); }
+      else if(D.exact==='regular') t='cosh(ℓ/2) = Re '+zeta(2*K,1)+' / Im '+zeta(4*ns[0],1)+' · ℓ ≈ '+L.toFixed(9);
+      else t='ℓ ≈ '+L.toFixed(9)+(j<K-3?' (dial: L₀·e^'+(+shown.ts[j]).toFixed(2)+')':' (solved)');
+      sideRow(j,t); }); }
+  h+='</table>';
+  const free=Math.max(0,K-3);
+  let rig;
+  if(K===3) rig='A triangle is rigid: its corners fix its sides, so it has no free dial.';
+  else if(K===2) rig='A lune is rigid too: both sides are half a great circle. Every side of every lune joins the same two poles, so as a polyhedron it is degenerate (straight edges would all be one diameter); it is always drawn on the sphere.';
+  else if(c.sign===0) rig='Free shape dials: k − 3 = 1. The rectangle’s one dial is its height over its width.';
+  else { rig='Free shape dials: k − 3 = '+free+'. The first '+free+(free>1?' sides are set by the sliders':' side is set by the slider')+'; the last three are solved so the polygon closes';
+    rig+= shown.H && shown.H.D.exact==='regular' ? '. All corners are equal and the sliders are at 0, so this is the regular '+NAMES[K]+', exact.' : ', residual '+(shown.H?shown.H.D.residual.toExponential(1):'')+' (numerical).'; }
+  h+='<p class="k" style="margin-top:6px">'+rig+'</p>';
+  if(K===5 && ns.every(n=>n===2) && shown.H && shown.H.D.exact==='regular') h+='<p class="k">The regular right-angled pentagon: cosh ℓ = 2cosh²(ℓ/2) − 1 = (Re ζ₁₀ / Im ζ₈)²·2 − 1 = φ, the golden ratio ≈ '+Math.cosh(shown.H.D.Ls[0]).toFixed(12)+'.</p>';
+  if(shown.S){ const M=shown.S.M, k=shown.S.counts;
+    h+='<p class="k">The tiling closes: '+M.verts.length+' vertices, '+M.edges.length+' edges, '+M.states.length+' flag states. Polygons counted from each corner, 2n·V: '+k.F.join(', ')+(k.agree?' (they agree)':' (they disagree)')+'; exact count 4 / (Σ 1/n − (k − 2)) = '+k.expectedF+'. FINITE readout.</p>'; }
+  return h;
+}
+
+function idealCard(ns){ const I=shown.ideal; if(I.why) return '<p class="surf">'+I.why+'</p>';
+  const {p,q}=I, P=p*q, s=p+q, sgn=Math.sign(s-P);
+  let h='<p class="surf">1/'+p+' + 1/'+q+' + 0 = '+frac(s,P)+(sgn===0?' = ':' &lt; ')+'1: '+(sgn===0?'flat':'the hyperbolic plane')+'</p>';
+  h+='<table><tr><th>corner</th><th>angle</th><th>pen turns</th></tr>';
+  ns.forEach((n,i)=>{ const j=I.corners.indexOf(i);
+    if(n===0) h+='<tr><td>'+(i+1)+' = ∞</td><td>0 · ideal, on the circle at infinity</td><td>never reached</td></tr>';
+    else h+='<tr><td><span class="dot" style="background:'+cornerCol(j,2)+'"></span>'+(i+1)+' = '+n+'</td><td>'+frac(1,2*n)+' of a turn · '+zeta(2*n,1)+'</td><td>'+(n===2?'0 · straight on, sign not read':frac(n-2,2*n)+' · '+zeta(2*n,n-2))+'</td></tr>'; });
+  h+='</table>';
+  const kn= I.knot ? 'the torus knot T('+p+', '+q+')'+(P===6?' (the trefoil)':'') : 'the torus link T('+p+', '+q+'), '+I.gcd+' circles';
+  h+='<p class="k" style="margin-top:6px">Rotations: C'+sub(p)+' ∗ C'+sub(q)+' = the group of '+kn+' with its centre divided out'+(P===6?' = PSL(2, ℤ), the modular group':'')+'.</p>';
+  if(I.flat) return h+'<p class="k">(2, 2, ∞) is flat: the two corners face each other along a strip. Both corners are 2, so the pen goes straight on at each and reads no sign: it walks a line forever. The infinite dihedral group; T(2, 2) is the Hopf link.</p>';
+  const c=shown.H.moves[0].L;
+  h+='<table style="margin-top:6px"><tr><th>side</th><th>length</th></tr><tr><td>'+p+'–'+q+'</td><td>cosh c = (1 + Re '+zeta(2*p,1)+' · Re '+zeta(2*q,1)+') / (Im '+zeta(2*p,1)+' · Im '+zeta(2*q,1)+') ≈ '+Math.cosh(c).toFixed(9)+(P===6?' = 2/√3':'')+'</td></tr><tr><td>'+p+'–∞, '+q+'–∞</td><td>infinite</td></tr></table>';
+  h+='<p class="k">The sides the pen can walk form a tree, and it never turns back: after t steps it is exactly t edges from the start, for every stream. The stream is kept as a reduced word in C'+sub(p)+' ∗ C'+sub(q)+'.</p>';
+  return h; }
+// ---- presets and controls ----
+const PRESETS=[['1:','the line: the pen on ℤ'], ['2:5,5','lune: ten lunes, the hosohedron'], ['2:3,3','lune: six lunes'],
+  ['3:2,3,5','triangle: icosahedral'], ['3:2,3,4','triangle: octahedral'], ['3:3,3,3','triangle: flat, equilateral'], ['3:2,3,6','triangle: flat, half of an equilateral'], ['3:2,3,7','triangle: hyperbolic, the smallest'],
+  ['4:2,2,2,2','rectangle: flat, one free dial'], ['4:2,2,2,3','quadrilateral: three right angles'], ['4:3,3,3,3','quadrilateral: corners 1/6 of a turn'], ['4:2,3,4,5','quadrilateral: every corner different'],
+  ['5:2,2,2,2,2','pentagon: right-angled (golden when regular)'], ['6:2,2,2,2,2,2','hexagon: right-angled'], ['8:3,3,3,3,3,3,3,3','octagon: corners 1/6 of a turn'],
+  ['3:2,3,0','ideal: the trefoil T(2,3), the modular group'], ['3:2,5,0','ideal: the cinquefoil T(2,5)'], ['3:3,4,0','ideal: the torus knot T(3,4)'], ['3:3,3,0','ideal: the torus link T(3,3), three circles'], ['3:2,2,0','ideal: the Hopf link T(2,2), flat']];
+const byId=id=>document.getElementById(id);
+let DIALT=[], ASPECT=[1,1];
+function buildCorners(){ const box=byId('corners'); box.innerHTML='';
+  for(let i=0;i<KMAX;i++){ const d=document.createElement('div'), l=document.createElement('label'), s=document.createElement('select'); s.id='n'+i;
+    l.htmlFor=s.id; l.textContent='Corner '+(i+1);
+    for(let n=2;n<=12;n++){ const o=document.createElement('option'); o.value=n; o.textContent=n+' · '+frac(1,2*n)+' of a turn'; s.appendChild(o); }
+    { const o=document.createElement('option'); o.value=0; o.textContent='∞ · ideal, 0 of a turn'; s.appendChild(o); }
+    s.value=i<3?[2,3,5][i]:2; d.appendChild(l); d.appendChild(s); d.id='nbox'+i; box.appendChild(d); } }
+function readNs(){ const K=+byId('k').value; if(K===1) return []; return [...Array(K)].map((_,i)=>+byId('n'+i).value); }
+function buildDials(ns){ const box=byId('dials'); box.innerHTML=''; const K=ns.length; if(K<4 || ns.includes(0)) return;
+  const c=curvature(ns);
+  if(c.sign===0){ const d=document.createElement('div'); d.innerHTML='<label for="aspect">Shape dial: height / width <span class="val" id="aspv"></span></label>'; const r=document.createElement('input'); r.type='range'; r.id='aspect'; r.min=0; r.max=ASPECTS.length-1; r.step=1;
+    let idx=ASPECTS.findIndex(a=>a[0]===ASPECT[0]&&a[1]===ASPECT[1]); r.value=idx<0?ASPECTS.findIndex(a=>a[0]===1&&a[1]===1):idx;
+    r.addEventListener('input',()=>{ ASPECT=ASPECTS[+r.value]; leave(); compute(); render(); }); d.appendChild(r); box.appendChild(d); return; }
+  while(DIALT.length<K-3) DIALT.push(0); DIALT.length=K-3;
+  for(let j=0;j<K-3;j++){ const d=document.createElement('div'); d.innerHTML='<label for="t'+j+'">Shape dial '+(j+1)+': side '+(j+1)+'–'+(j+2)+' = L₀·e^t, t = <span class="val" id="tv'+j+'"></span></label>';
+    const r=document.createElement('input'); r.type='range'; r.id='t'+j; r.min=-1.2; r.max=1.2; r.step=0.02; r.value=DIALT[j];
+    r.addEventListener('input',()=>{ DIALT[j]=+r.value; leave(); compute(); render(); }); d.appendChild(r); box.appendChild(d); }
+  if(K>3){ const b=document.createElement('div'), btn=document.createElement('button'); b.className='btns'; btn.textContent='Dials to 0 (regular when the corners are equal)';
+    btn.addEventListener('click',()=>{ DIALT=DIALT.map(()=>0); buildDials(readNs()); leave(); compute(); render(); }); b.appendChild(btn); box.appendChild(b); } }
+function showCorners(){ const K=+byId('k').value; for(let i=0;i<KMAX;i++) byId('nbox'+i).classList.toggle('hidden', i>=K || K===1); }
+function compute(){
+  const ns=readNs(), K=ns.length, T=+byId('T').value, which=byId('stream').value, seed=(+byId('seed').value)>>>0||1;
+  byId('Tv').textContent=T; byId('winv').textContent=byId('win').value;
+  const s = which==='coin' ? coinSigns(T,seed) : caSigns(+which,T);
+  shown={T, s, ns, ts:DIALT.slice(0,Math.max(0,K-3)), S:null, P:null, H:null, why:'', surf:0, ideal:null};
+  if(K===0){ let x=0; const ex=[0]; for(const v of s){ x+=v>0?1:-1; ex.push(x); } shown.P={line:true, ex, pts:ex.map((v,t)=>[v,-t/4])}; shown.surf=0; }
+  else if(ns.includes(0)){ const I=idealSetup(ns); shown.ideal=I;
+    if(I.why){ shown.why=I.why; shown.surf=-1; }
+    else if(I.flat){ const ex=[0]; for(let t=0;t<s.length;t++) ex.push(t+1); shown.P={line:true, ideal:true, ex, pts:ex.map((v,t)=>[v,-t/4])}; shown.surf=0; }
+    else { shown.surf=-1; const moves=idealMoves(I), d=diskPen(moves,s); shown.H={D:{ideal:true, Ls:[moves[0].L,moves[1].L], exact:'ideal'}, moves, ds:d.ds, pts:d.pts, patch:moves.map((_,j)=>tilingFrom(moves,j,true))}; } }
+  else { const c=curvature(ns); shown.surf=c.sign;
+    if(c.sign>0){ if(K===2 && ns[0]!==ns[1]) shown.why='A spherical digon (a lune) has two equal corners: its two sides are both half great circles meeting at opposite poles.';
+      else { const M=buildMachine(ns); if(!M.finite) shown.why='The tiling did not close within the flag cap.';
+        else { shown.S={M, path:machinePath(M,s), start:machinePath(M,new Int8Array(K).fill(1)).pts.slice(0,K), counts:sphereCounts(ns,M)}; if(K===2) shown.S.lune=luneArcs(M,s); } } }
+    else if(c.sign===0){ const PM=planeModel(ns, ASPECT); if(!PM) shown.why='Flat, but this polygon does not tile the plane by reflections.';
+      else { const w=planeWalk(PM,s); let ext=3; for(const p of w.pts) ext=Math.max(ext,Math.abs(p[0]),Math.abs(p[1]));
+        shown.P={model:PM, ex:w.ex, pts:w.pts, tiling:planeTiling(PM, Math.min(ext+3,40)), start:planeWalk(PM,new Int8Array(K-1).fill(1)).pts}; } }
+    else { const D=diskSides(ns, shown.ts); if(!D.ok) shown.why='No hyperbolic '+NAMES[K]+' with these corners and these dial sides closes (Newton did not converge, residual '+D.residual.toExponential(1)+'). Move the dials toward 0.';
+      else { const moves=diskMoves(D), d=diskPen(moves,s); shown.H={D, moves, ds:d.ds, pts:d.pts, patch:moves.map((_,j)=>tilingFrom(moves,j))}; } } }
+  const S=shown.surf;
+  for(const [id,on] of [['boxS',K>0&&S>0],['boxP',K===0||S===0],['boxH',K>0&&S<0]]) byId(id).classList.toggle('hidden',!on);
+  byId('hP').textContent= K===0 ? 'The line ℤ · position across, time down' : shown.ideal ? 'The strip (2, 2, ∞): the tree is a line · position across, time down' : 'Plane ℝ² · k = 0';
+  byId('info').innerHTML=infoCard();
+  const key=K===0?'1:':K+':'+ns.join(','), pre=PRESETS.find(p=>p[0]===key); byId('preset').value= pre ? pre[0] : '';
+}
+function stats(u){
+  const K=shown.ns.length;
+  if(shown.S && shown.S.lune){ const L=shown.S.lune, seen=new Set(L.path.slice(0,u).map(a=>a[2]));
+    byId('mS').textContent=`two poles · half great circles walked ${seen.size}/${L.all.length} · ${shown.S.M.states.length} flag states · step ${u}`; }
+  else if(shown.S){ const S=shown.S, vs=new Set(S.path.vs.slice(0,u+1)), es=new Set(S.path.es.slice(0,u));
+    byId('mS').textContent=`vertices ${vs.size}/${S.M.verts.length} · edges ${es.size}/${S.M.edges.length} · ${S.M.states.length} flag states · step ${u}`; } else byId('mS').textContent=shown.why;
+  if(shown.P){ if(shown.P.line){ const xs=shown.P.ex.slice(0,u+1); byId('mP').textContent=(shown.P.ideal?'every step straight on, no sign read · ':'')+`position ${xs[xs.length-1]} · range ${Math.min(...xs)} … ${Math.max(...xs)} · points visited ${new Set(xs).size} · step ${u}`; }
+    else { const ks=new Set(shown.P.ex.slice(0,u+1).map(c=>c.join())); byId('mP').textContent=`exact positions ${ks.size} · step ${u}`; } } else byId('mP').textContent=shown.why;
+  if(shown.H && shown.ideal){ const I=shown.ideal, dend=shown.H.ds[u], w=idealWord(I, shown.s.slice(0,u)), tail=w.slice(-16).join(' ');
+    let txt=`tree distance ${u} (exact, never returns) · hyperbolic ${dend.toFixed(2)} · word …${tail}`;
+    if(I.p*I.q===6){ const F=fareyReadout(I, shown.s, u), cf=F.cf, show=cf.length>24 ? cf.slice(0,24).join(', ')+', … ('+cf.length+' terms)' : cf.join(', ');
+      const [a,b,c,d]=F.M, digits=String(a>b?a:b).length; txt+=` · continued fraction [${show}] · Farey node ${digits<=12 ? (a+b)+'/'+(c+d)+', between '+b+'/'+d+' and '+a+'/'+c : 'a fraction of '+digits+' digits'}`; }
+    byId('mH').textContent=txt+` · step ${u}`; }
+  else if(shown.H){ const ds=shown.H.ds.slice(0,u+1), dmax=Math.max(...ds), dend=ds[ds.length-1];
+    byId('mH').textContent=`hyperbolic distance: end ${dend.toFixed(2)}, max ${dmax.toFixed(2)} · speed ${(dend/Math.max(1,u)).toFixed(3)} per step · step ${u}`; } else byId('mH').textContent=shown.why;
+}
+function render(upto){
+  if(!shown) return; const u=Math.min(upto ?? (pos!==null ? pos : shown.T), shown.T), K=shown.ns.length;
+  if(K===0 || shown.surf===0) drawPlane(byId('cP'), u); else if(shown.surf>0) drawSphere(byId('cS'), u); else drawDisk(byId('cH'), u);
+  stats(Math.floor(u));
+}
+function selftest(){
+  const res=[];
+  for(const [key] of PRESETS){ const [ks,list]=key.split(':'), K=+ks, ns=list?list.split(',').map(Number):[]; if(K===1){ res.push({key,ok:true}); continue; }
+    if(ns.includes(0)){ const I=idealSetup(ns); if(I.flat){ res.push({key, ok:true}); continue; }
+      // the tree: the first steps visit new points only (checked while the points are well inside the disk)
+      const mv=idealMoves(I), d=diskPen(mv, caSigns(30,200)), seen=new Set(); let ok=true;
+      for(const pt of d.pts){ if(Math.hypot(...pt)>0.999999) break; const kk=pt.map(x=>x.toFixed(9)).join(); if(seen.has(kk)) ok=false; seen.add(kk); }
+      res.push({key, ok: ok && seen.size>3}); continue; }
+    const c=curvature(ns), L=new Int8Array(K).fill(1);
+    if(c.sign>0){ const M=buildMachine(ns), p=machinePath(M,L), k=sphereCounts(ns,M); res.push({key, ok: M.finite && p.vs[K]===p.vs[0] && new Set(p.vs.slice(0,K)).size===K && k.agree && k.density==='1' && String(k.F[0])===k.expectedF}); }
+    else if(c.sign===0){ const PM=planeModel(ns,[1,1]), w=planeWalk(PM,L); res.push({key, ok: w.ex[K].join()===w.ex[0].join() && new Set(w.ex.slice(0,K).map(e=>e.join())).size===K}); }
+    else { const D=diskSides(ns,new Array(Math.max(0,K-3)).fill(0)), d=diskPen(diskMoves(D),L); res.push({key, ok: D.ok && Math.hypot(...d.pts[K])<1e-9 && Math.hypot(...d.pts[1])>1e-3, residual:D.residual}); } }
+  // dials away from 0 still close, and stay closed after many laps
+  const dialChecks=[[[3,3,3,3],[0.6]],[[2,2,2,2,2],[0.5,-0.4]],[[2,3,4,5],[-0.8]],[[2,2,2,2,2,2],[0.8,-0.8,0.3]]].map(([ns,ts])=>{ const D=diskSides(ns,ts), d=diskPen(diskMoves(D),new Int8Array(ns.length*20).fill(1)); return D.ok && Math.hypot(...d.pts[ns.length*20])<1e-6; });
+  // exact checks: the regular side formula and the golden pentagon
+  const reg=Math.abs(diskSides([3,3,3,3],[0]).Ls[0]-regularSide(4,3))<1e-12, phi=(1+Math.sqrt(5))/2, gold=Math.abs(Math.cosh(regularSide(5,2))-phi)<1e-12;
+  const rect=planeModel([2,2,2,2],[2,3]), rw=planeWalk(rect,new Int8Array(4).fill(1)), rectOK=rw.ex[4].join()==='0,0';
+  // ideal checks: the trefoil side is exactly 2/sqrt3; traces in SU(1,1) match traces of R/L words in SL(2,Z); the readout's runs are the continued fraction
+  const I23=idealSetup([2,3,0]), M23=idealMoves(I23), trefoilSide=Math.abs(Math.cosh(M23[0].L)-2/Math.sqrt(3))<1e-12;
+  let traceOK=0, traceN=0; { let z=12345; const rnd=()=>{ z=(Math.imul(z,1103515245)+12345)>>>0; return z>>>16; };
+    for(let r=0;r<200;r++){ const m=1+rnd()%14, s=new Int8Array(2*m); for(let t=0;t<2*m;t++) s[t]=rnd()%2?1:-1;
+      let g={a:[1,0],b:[0,0]}; for(let t=0;t<2*m;t++){ const mv=M23[t%2]; g=mul(mul(g,s[t]>0?mv.RL:mv.RR),mv.TE); }
+      const F=fareyReadout(I23,s,2*m), [a,,,d]=F.M, tr=Number(a+d); traceN++; if(Math.abs(Math.abs(2*g.a[0])-tr)<1e-7*tr) traceOK++; } }
+  const F30=fareyReadout(I23, caSigns(30,1001), 1001), [fa,fb,fc,fd]=F30.M, cf30=cfOf(fa+fb,fc+fd).map(Number), runs1=F30.cf.slice(0,-1).concat([F30.cf[F30.cf.length-1]+1]), cfMatch=JSON.stringify(cf30)===JSON.stringify(runs1);   // the Farey node (a+b)/(c+d) is [a0; a1, ..., an + 1]
+  const bad=res.filter(r=>!r.ok);
+  byId('selftest').textContent=`Self-test: k lefts close the start polygon for ${res.length-bad.length} of ${res.length} presets (line, lunes, triangles, rectangle, and hyperbolic quadrilaterals to octagons)${bad.length?' · FAILED: '+bad.map(r=>r.key).join(' '):' ✓'}; with the dials moved away from 0, ${dialChecks.filter(Boolean).length} of ${dialChecks.length} polygons still close after twenty laps; regular side formula ${reg?'✓':'✗'}; right-angled pentagon cosh ℓ = golden ratio ${gold?'✓':'✗'}; a 2/3 rectangle closes exactly ${rectOK?'✓':'✗'}; ideal corner: trefoil side cosh c = 2/√3 ${trefoilSide?'✓':'✗'}, SU(1,1) traces equal the SL(2, ℤ) traces of the R/L words in ${traceOK} of ${traceN} random walks, Rule 30's runs are the continued fraction of its Farey node, last term plus one, by Euclid's algorithm ${cfMatch?'✓':'✗'}.`;
+  return {res, dialChecks, reg, gold, rectOK, trefoilSide, traceOK, traceN, cfMatch, cf30:F30.cf, cfEuclid:cf30};
+}
+window.PolyPen.selftest=selftest;
+// ---- playback ----
+function stop(){ playing=false; cancelAnimationFrame(raf); document.getElementById('play').textContent='Play'; }
+function leave(){ stop(); pos=null; }
+const SPEEDS=[0.2,0.25,1/3,0.5,1,1.5,2,3,5,8,12,20];
+function speed(){ return SPEEDS[+document.getElementById('spd').value]; }
+function showSpeed(){ const v=speed(); document.getElementById('spdv').textContent = v<1 ? 'one step every '+Math.round(1/v)+' seconds' : v===1 ? 'one step a second' : v+' steps a second'; }
+function nudge(d){ const e=document.getElementById('spd'); e.value=Math.max(0,Math.min(SPEEDS.length-1,+e.value+d)); showSpeed(); }
+document.getElementById('spd').addEventListener('input',showSpeed);
+document.getElementById('slower').addEventListener('click',()=>nudge(-1));
+document.getElementById('faster').addEventListener('click',()=>nudge(1));
+document.getElementById('stepbtn').addEventListener('click',()=>{ stop(); if(pos===null) pos=0; pos=Math.min(shown.T, Math.floor(pos)+1); render(pos); });
+document.getElementById('restart').addEventListener('click',()=>{ stop(); pos=0; render(pos); });
+document.getElementById('play').addEventListener('click',()=>{ if(playing){stop();render();return;}
+  if(pos===null || pos>=shown.T) pos=0;
+  playing=true; document.getElementById('play').textContent='Pause'; lastT=performance.now();
+  const tick=now=>{ if(!playing) return; const dt=Math.max(0,Math.min(0.1,(now-lastT)/1000)); lastT=now;
+    pos=Math.min(shown.T, pos+dt*speed()); if(document.getElementById('spin').checked) yaw+=0.25*dt;
+    render(pos); if(pos<shown.T) raf=requestAnimationFrame(tick); else stop(); };
+  raf=requestAnimationFrame(tick); });
+byId('edges').addEventListener('click',e=>{ edgeMode= edgeMode==='chord'?'arc':'chord'; e.target.textContent= edgeMode==='chord'?'Edges: straight':'Edges: on the sphere'; render(); });
+function fillPresets(){ const el=byId('preset'); el.innerHTML=''; const o0=document.createElement('option'); o0.value=''; o0.textContent='(your own corners)'; el.appendChild(o0);
+  for(const [key,label] of PRESETS){ const [ks,list]=key.split(':'), o=document.createElement('option'); o.value=key; o.textContent=(list?'('+list.split(',').map(n=>n==='0'?'∞':n).join(', ')+')':'line')+' · '+label; el.appendChild(o); } }
+function setShape(key){ const [ks,list]=key.split(':'); byId('k').value=ks; const ns=list?list.split(',').map(Number):[]; ns.forEach((n,i)=>byId('n'+i).value=n); DIALT=[]; ASPECT=[1,1]; showCorners(); buildDials(ns); }
+byId('preset').addEventListener('change',e=>{ if(!e.target.value) return; setShape(e.target.value); leave(); compute(); render(); });
+byId('k').addEventListener('change',()=>{ showCorners(); buildDials(readNs()); leave(); compute(); render(); });
+['T','stream'].forEach(id=>byId(id).addEventListener('input',()=>{ leave(); compute(); render(); }));
+byId('win').addEventListener('input',()=>{ byId('winv').textContent=byId('win').value; render(); });
+byId('seed').addEventListener('change',()=>{ leave(); compute(); render(); });
+byId('newseed').addEventListener('click',()=>{ let v=1; try{const a=new Uint32Array(1); crypto.getRandomValues(a); v=a[0]||1;}catch(e){v=(Date.now()>>>0)||1;}
+  byId('seed').value=v; byId('stream').value='coin'; leave(); compute(); render(); });
+byId('theme').addEventListener('click',()=>{ const r=document.documentElement, cur=r.getAttribute('data-theme');
+  const dark=cur?cur==='dark':matchMedia('(prefers-color-scheme: dark)').matches; r.setAttribute('data-theme',dark?'light':'dark'); compute(); render(); });
+{ const cv=byId('cS'); let drag=null;
+  cv.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY,yaw,pitch];});
+  cv.addEventListener('pointermove',e=>{ if(!drag) return; yaw=drag[2]+(e.clientX-drag[0])*0.01; pitch=Math.max(-1.5,Math.min(1.5,drag[3]+(e.clientY-drag[1])*0.01)); render(); });
+  cv.addEventListener('pointerup',()=>drag=null); cv.addEventListener('pointercancel',()=>drag=null); }
+// a changed corner can change the surface, and so the dials
+buildCorners(); for(let i=0;i<KMAX;i++) byId('n'+i).addEventListener('change',()=>{ buildDials(readNs()); leave(); compute(); render(); });
+fillPresets(); setShape('5:2,2,2,2,2'); showSpeed(); selftest(); compute(); render();
+const PEN_VERSION="v0.2";
+// ---- run export (fvlt-pen-run/0.1) ----
+function caTooth(rule, T){ // q AND r of the centre pair, single black seed (the tooth of Rule 30)
+  const W=2*T+5, mid=T+2; let a=new Uint8Array(W), b=new Uint8Array(W); a[mid]=1; const out=[];
+  for(let t=0;t<T;t++){ out.push(a[mid]&a[mid+1]);
+    for(let i=1;i<W-1;i++){ const L=a[i-1],C=a[i],R=a[i+1]; b[i]= rule===150 ? (L^C^R) : (L^(C|R)); } b[0]=0; b[W-1]=0; const x=a; a=b; b=x; }
+  return out;
+}
+function exportRun(id){
+  const ns=shown.ns, K=ns.length, T=shown.T, which=byId('stream').value, sname={'30':'Rule 30','150':'Rule 150','coin':'Fair coin'}[which];
+  const tooth= which==='coin' ? null : caTooth(+which, T), pname= K===0 ? 'the line' : 'the '+NAMES[K]+' ('+ns.map(n=>n===0?'∞':n).join(', ')+')';
+  const pre=PRESETS.find(p=>p[0]===K+':'+ns.join(',') || (K===0 && p[0]==='1:')), label= pre ? ' · '+pre[1].split(':').slice(-1)[0].trim() : '';
+  const ideal=shown.ideal, rule={kind:'polygon', corners:ns.map(n=> n===0 ? {n:'∞', angle_fraction_of_turn:[0,1], ideal:true} : ideal ? {n, angle_fraction_of_turn:[1,2*n], turn_fraction_of_turn: n===2?[0,1]:[n-2,2*n]} : {n, angle_fraction_of_turn:[1,2*n], turn_fraction_of_turn:[n-1,2*n]}), corner_cycle: ideal&&!ideal.why ? 'the two finite corners in turn, '+(ideal.corners[0]+1)+', '+(ideal.corners[1]+1) : '1, 2, ..., k',
+    surface: K===0 ? 'line' : shown.surf>0?'sphere':shown.surf===0?'plane':'hyperbolic', dials:shown.ts, aspect: (K===4&&shown.surf===0)?ASPECT:null};
+  const base={viewer:{name:'Polygon pen', version:PEN_VERSION},
+    stream:{name:sname, seed: which==='coin' ? ((+byId('seed').value)>>>0||1) : null, T, signs:Array.from(shown.s), tooth}, playback:{steps_per_second:speed()}, rule};
+  const stub=K===0?'line':ns.map(n=>n===0?'inf':n).join('_');
+  if(id==='cS'){ const S=shown.S; if(!S) throw new Error(shown.why||'this polygon is not spherical');
+    const pts=S.path.pts, st=pathStats(pts, tooth), M=S.M;
+    return Object.assign(base,{file_stub:'polygon_sphere_'+stub, view:{kind:'sphere'}, title:sname+' on '+pname+label, subtitle:'k = +1 · '+(edgeMode==='chord'?'straight edges':'edges on the sphere'),
+      camera:{edgeMode}, geometry:{verts:M.verts.map(p=>p.map(r6)), vertex_corner:M.vtype, edges:M.edges}, path:{points:pts.map(p=>p.map(r6))},
+      stats:{per_step:st, final:{steps:T, vertices:st.vertices[T], edges:st.edges[T], tooth:st.tooth[T], vertices_total:M.verts.length, edges_total:M.edges.length, machine_states:M.states.length}}}); }
+  if(id==='cP'){ const Pp=shown.P; if(!Pp) throw new Error(shown.why||'this polygon is not flat');
+    if(Pp.line){ const st=pathStats(Pp.pts, tooth);
+      return Object.assign(base,{file_stub:'polygon_line', view:{kind:'plane'}, title:sname+' on the line', subtitle:'the pen on ℤ · position across, time down (a quarter unit per step)',
+        exact:{positions:Pp.ex}, geometry:{segments:[]}, path:{points:Pp.pts.map(p=>p.map(r6))}, stats:{per_step:st, final:{steps:T, position:Pp.ex[T], points_visited:new Set(Pp.ex).size, tooth:st.tooth[T]}}}); }
+    const st=pathStats(Pp.pts, tooth);
+    return Object.assign(base,{file_stub:'polygon_plane_'+stub, view:{kind:'plane'}, title:sname+' on '+pname+label, subtitle:'k = 0 · exact: '+Pp.model.basis,
+      exact:{basis:Pp.model.basis, positions:Pp.ex}, geometry:{segments:Pp.tiling.edges.map(([a,b])=>[...a,...b].map(r6))}, path:{points:Pp.pts.map(p=>p.map(r6))},
+      stats:{per_step:st, final:{steps:T, lattice_points:st.vertices[T], edges:st.edges[T], tooth:st.tooth[T]}}}); }
+  if(id==='cH'){ const Hh=shown.H; if(!Hh) throw new Error(shown.why||'this polygon is not hyperbolic');
+    const st=pathStats(Hh.pts, tooth, Hh.ds);
+    return Object.assign(base,{file_stub:'polygon_disk_'+stub, view:{kind:'disk-polygon'}, title:sname+' on '+pname+label, subtitle:'k = −1 · Poincaré disk · '+(ideal ? 'the tree of C'+ideal.p+' ∗ C'+ideal.q : 'sides '+(Hh.D.exact||'solved numerically')),
+      disk:{moves_by_phase:Hh.moves.map(m=> ideal ? {corner:ideal.corners[m.at]+1, turn_fraction: m.n===2?[0,1]:[m.n-2, 2*m.n], edge_length:r6(m.L)} : {corner:m.at+1, turn_fraction:[ns[m.at]-1, 2*ns[m.at]], edge_length:r6(m.L)}), follow_window:+byId('win').value, sides_exact:Hh.D.exact, residual:Hh.D.residual},
+      geometry:{tiling_by_phase:Hh.patch.map(p=>p.edges.map(([a,b])=>[...a,...b].map(r6)))},
+      path:{points_absolute:Hh.pts.map(p=>p.map(r6)), distance:Hh.ds.map(r6)},
+      stats:{per_step:st, final:{steps:T, distance:r6(Hh.ds[T]), max_distance:r6(Math.max(...Hh.ds)), tooth:st.tooth[T]}}}); }
+  throw new Error('unknown view '+id);
+}
+setupFullscreen([{id:'cS',kind:'sphere',title:'Sphere S² (k = +1)'},{id:'cP',kind:'plane',title:'Plane ℝ² (k = 0)'},{id:'cH',kind:'disk',title:'Poincaré disk H² (k = −1)'}]);
+</script>
+</body>
+</html>

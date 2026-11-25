@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cayley Horocycle Disk</title>
+<style>
+:root{
+  --bg:#fbfaf7; --panel:#ffffff; --ink:#1d1f24; --muted:#5d6370; --line:#d9d6cf;
+  --farey:#9aa3b2; --ford:#3a6ea5; --fordhit:#c2571a; --horo:#2f8f5b; --centre:#b0306a;
+  --ok:#2f8f5b; --bad:#c0392b; --grid:#ebe8e1;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171b; --panel:#1d2026; --ink:#e7e5e0; --muted:#9aa0ab; --line:#343841;
+    --farey:#5c6576; --ford:#6fa0d8; --fordhit:#f08a4b; --horo:#5cc48c; --centre:#e06aa0;
+    --ok:#5cc48c; --bad:#ef6b5b; --grid:#272a31;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#15171b; --panel:#1d2026; --ink:#e7e5e0; --muted:#9aa0ab; --line:#343841;
+  --farey:#5c6576; --ford:#6fa0d8; --fordhit:#f08a4b; --horo:#5cc48c; --centre:#e06aa0;
+  --ok:#5cc48c; --bad:#ef6b5b; --grid:#272a31;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif}
+main{max-width:860px;margin:0 auto;padding:16px}
+h1{font-size:1.45rem;margin:.2em 0 .1em}
+h2{font-size:1.1rem;margin:1.4em 0 .4em}
+p{margin:.4em 0}
+.sub{color:var(--muted);margin-bottom:1em}
+section{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px;margin:14px 0}
+.row{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center;margin:8px 0}
+label{color:var(--muted);font-size:.92rem}
+input[type=range]{width:150px;max-width:55vw}
+.val{font-variant-numeric:tabular-nums;font-weight:600}
+svg,canvas{display:block;width:100%;height:auto;max-width:560px;margin:8px auto}
+.read{font-variant-numeric:tabular-nums;background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:8px 10px;font-size:.9rem;overflow-wrap:anywhere}
+.key span{display:inline-block;margin-right:14px;font-size:.88rem;color:var(--muted)}
+.sw{display:inline-block;width:12px;height:3px;vertical-align:middle;margin-right:5px}
+ul{padding-left:1.2em;margin:.3em 0}
+.pass{color:var(--ok);font-weight:600}.fail{color:var(--bad);font-weight:600}
+.reg{border-left:3px solid var(--horo);padding-left:10px}
+</style>
+</head>
+<body>
+<main>
+<h1>Cayley Horocycle Disk</h1>
+<p class="sub">v0.1 · 2026-11-01 · The Cayley (geometric) viewer. It is a separate viewer from the Farey Horocycle Disk, which is the FVLT viewer in the exponential lift; neither succeeds the other. This one shows the same objects with the same certified readout, in the chart w = (z − i)/(z + i), where distances are true and every point and circle is an exact rational. The Riemann hypothesis seen in the Poincaré disk, through two classical equivalent forms: Franel–Landau and Zagier. The question came from saphir. The results are classical and belong to the people named below.</p>
+
+<section class="reg">
+<b>Registers.</b>
+<ul>
+<li><b>Exact.</b> Every value is a BigInt rational: the disk geometry, the Farey data, the discrepancy and the counts.</li>
+<li><b>Certified.</b> Irrational values (√ and π) are given as a pair of rationals that are guaranteed to contain them. Square roots come from integer square roots, and π from Machin's series with every rounding error counted.</li>
+<li><b>Drawing.</b> Values become decimals only when they are turned into SVG coordinates or canvas pixels. In this chart every circle, kiss and arc end is an exact rational point, or the image of one, before it is rounded to a pixel. Nothing computed is ever read back from a pixel.</li>
+</ul>
+There is no floating-point arithmetic in any result on this page.
+</section>
+
+<section>
+<h2 style="margin-top:0">1 · The disk</h2>
+<p>The map w = (z − i)/(z + i) sends the upper half-plane onto the disk. The centre 0 is z = i, and ∞ goes to w = 1. Each fraction p/q lands on the circle at an exact rational point, with no angle involved:</p>
+<p style="text-align:center">w(p/q) = (p − iq)/(p + iq) = ( (p² − q²) + (−2pq) i ) / (p² + q²)</p>
+<p>That is a Pythagorean point, the unit Gaussian rational of p + iq. Every circle on this page has an exact rational centre and an exact rational radius, or an exact rational radius².</p>
+<ul>
+<li><b>Grey arcs</b> are the Farey lines, joining a/b and c/d whenever |ad − bc| = 1. Each has a rational centre (w₁ + w₂)/(1 + w₁·w₂), and its radius² is |centre|² − 1.</li>
+<li><b>Blue circles</b> are the Ford circles. The one at p/q has centre (p² − q², −2pq)/(1 + p² + q²) and radius 1/(1 + p² + q²).</li>
+<li><b>The green circle</b> is the horocycle Im z = 1/H. Its centre is 1/(H + 1) and its radius H/(H + 1), both exact. It touches the rim at the cusp w = 1. It crosses the Ford circle at p/q exactly when q² &lt; H, which is an integer comparison. When q² = H it touches that circle (shown dashed).</li>
+<li><b>Dots are the kisses.</b> Farey neighbours a/q and c/s touch at z = (aq + cs)/m + i/m, where m = q² + s² (the Landau Ford-tangency lemma). In the disk that is the exact rational point w = (X² + Y² − 1, −2X)/(X² + (Y + 1)²). The horocycle with H = m passes through it, and those kisses are ringed.</li>
+</ul>
+<p>The companion FVLT viewer (Farey Horocycle Disk, exponential lift) shows the same objects with the cusp at the centre, fractions at roots of unity ζ<sub>q</sub><sup>p</sup> and kisses at e<sup>−2π/m</sup>·ζ<sub>m</sub><sup>aq+cs</sup>. The two are different charts of one picture: here a fraction is a Pythagorean point and a horocycle has rational radius; there a fraction is a root of unity and a horocycle has radius e<sup>−2π/H</sup>.</p>
+<div class="row">
+  <label>Farey order n <input id="nD" type="range" min="1" max="16" value="7"></label><span class="val" id="nDv"></span>
+</div>
+<div class="row">
+  <label>H = m·10<sup>d</sup>: m <input id="mD" type="range" min="1" max="9" value="1"></label>
+  <label>d <input id="dD" type="range" min="0" max="3" value="1"></label><span class="val" id="HDv"></span>
+</div>
+<svg id="disk" viewBox="-1.08 -1.08 2.16 2.16" aria-label="Poincaré disk with Farey lines, Ford circles and a horocycle"></svg>
+<div class="key"><span><i class="sw" style="background:var(--farey)"></i>Farey lines</span><span><i class="sw" style="background:var(--ford)"></i>Ford circles</span><span><i class="sw" style="background:var(--fordhit)"></i>crossed by the horocycle</span><span><i class="sw" style="background:var(--horo)"></i>horocycle Im z = 1/H</span><span><i class="sw" style="background:var(--ink)"></i>kisses</span><span><i class="sw" style="background:var(--centre)"></i>centre 0 = i</span></div>
+<div class="read" id="diskRead"></div>
+</section>
+
+<section>
+<h2 style="margin-top:0">1a · Animation: the horocycle swelling from the cusp</h2>
+<p>In the Cayley disk, the horocycle Im z = 1/H is the green circle with centre 1/(H + 1) and radius H/(H + 1). It always touches the rim at the cusp w = 1. As H grows (y = 1/H → 0), it swells from that rim point until it nearly fills the disk.</p>
+<ul>
+<li><b>Orange discs</b> are the cusp regions {Im γz &gt; Y}: one disc at each p/q, with diameter 1/(q²Y) in the half-plane. In the disk the disc at x is the circle tangent to the rim at w(x) with radius d/(d + 1 + x²), d = 1/(q²Y). When Y = 1 they are exactly the Ford circles. The horocycle reaches the disc at p/q once q²Y &lt; H.</li>
+<li><b>Thick orange arcs</b> are the parts of the green circle inside those discs. Their total share of the circle is h, the closed form from section 3.</li>
+<li><b>Green gaps</b> are where the horocycle runs between discs. Black dots are kisses (Y = 1); when H = q² + s² with gcd(q, s) = 1 the circle passes through the kisses of that m, and they are ringed.</li>
+<li>As the circle swells, more arcs appear, and h approaches the cusp's share of the area, 3/(πY). Only one period's worth of translates, |x| ≤ 8, is drawn; the rest crowd into the cusp at w = 1.</li>
+</ul>
+<p>Every frame uses an integer H, and its readout is certified exactly as in section 3. The horocycle's centre and radius are exact rationals. The circles and arcs are drawing register.</p>
+<div class="row">
+  <button id="aPlay" type="button">▶ play</button>
+  <label>cusp height Y <select id="aY"><option selected>1</option><option>2</option><option>3</option></select></label>
+  <label>up to H = <select id="aMax"><option>400</option><option selected>4000</option><option>40000</option></select></label>
+</div>
+<div class="row"><label>frame <input id="aFrame" type="range" min="0" max="0" value="0" style="width:260px"></label><span class="val" id="aHv"></span></div>
+<canvas id="animCv" width="1120" height="1120" aria-label="Animated horocycle in the Cayley disk"></canvas>
+<div class="read" id="animRead"></div>
+<canvas id="animTrace" width="1120" height="420" aria-label="Error trace so far"></canvas>
+<p class="sub" style="margin:0">The trace shows log<sub>10</sub>|E| against log<sub>10</sub> H, building up as the animation plays. The dashed lines have slopes −1/2 and −3/4. Points where the sign of E is not certified are left out.</p>
+</section>
+
+<section>
+<h2 style="margin-top:0">2 · Franel–Landau: how evenly the Farey fractions sit</h2>
+<p>Let r<sub>1</sub> &lt; … &lt; r<sub>m</sub> be the Farey fractions of order n in (0, 1], so m = φ(1) + … + φ(n). The discrepancy is</p>
+<p style="text-align:center">D(n) = Σ<sub>v</sub> | r<sub>v</sub> − v/m |</p>
+<p>It is an exact rational. <b>Franel and Landau (1924):</b> RH holds if and only if D(n) = O(n<sup>1/2 + ε</sup>) for every ε &gt; 0. The ratio D(n)/√n is certified from the exact rational D(n)²/n using integer square roots.</p>
+<div class="row">
+  <label>n <input id="nF" type="range" min="1" max="400" value="60"></label><span class="val" id="nFv"></span>
+</div>
+<div class="read" id="farRead"></div>
+<canvas id="farChart" width="1120" height="560" aria-label="D(n) divided by the square root of n"></canvas>
+<p class="sub" style="margin:0">The chart shows D(n)/√n for n = 1 … 400, as the certified lower bound, which agrees with the upper bound to 40 digits. A finite chart cannot decide RH.</p>
+</section>
+
+<section>
+<h2 style="margin-top:0">3 · Zagier: how evenly a long horocycle fills the surface</h2>
+<p>Fold the disk by PSL(2, ℤ), the trefoil group (2, 3, ∞). The result is the modular surface, which has area π/3. Take the horocycle at height y = 1/H for an integer H, and the cusp {Im z &gt; Y} for an integer Y ≥ 1. The cusp's share of the area is 3/(πY).</p>
+<p>The horocycle's share inside the cusp is built from the Ford circles, one denominator c at a time:</p>
+<p style="text-align:center">h = Σ<sub>c² Y &lt; H</sub> 2 φ(c) √((H − c²Y) Y) / (c H Y)</p>
+<p>Every √ in it is the square root of an integer. The error is E = h − 3/(πY). Euler's φ enters through the Farey denominators, and ζ through Σ φ(c)/c<sup>s</sup> = ζ(s − 1)/ζ(s).</p>
+<p><b>Zagier (1981):</b> for smooth test functions, RH holds if and only if the error is O(y<sup>3/4 − ε</sup>). Unconditionally it is O(y<sup>1/2</sup>) (Sarnak, 1981). This cusp region has a sharp edge, so it is not a smooth test function. This section shows the mechanism; it does not test RH.</p>
+<div class="row">
+  <label>cusp height Y <select id="Ysel"><option>1</option><option selected>2</option><option>3</option><option>5</option></select></label>
+</div>
+<div class="row">
+  <label>H = m·10<sup>d</sup>: m <input id="mZ" type="range" min="1" max="9" value="1"></label>
+  <label>d <input id="dZ" type="range" min="0" max="7" value="3"></label><span class="val" id="HZv"></span>
+</div>
+<div class="read" id="zagRead"></div>
+<canvas id="zagChart" width="1120" height="560" aria-label="Horocycle error against H, log scales"></canvas>
+<div class="key"><span><i class="sw" style="background:var(--fordhit)"></i>|E|, where its sign is certified</span><span><i class="sw" style="background:var(--ford)"></i>slope −1/2</span><span><i class="sw" style="background:var(--horo)"></i>slope −3/4</span></div>
+<p class="sub" style="margin:0" id="zagNote">Both axes are log<sub>10</sub>, against H = 1/y. The reference lines pass through the median of the data.</p>
+</section>
+
+<section>
+<h2 style="margin-top:0">Where “always through zero” fits</h2>
+<p>The waves of the hyperbolic plane go like y<sup>s</sup>. On the line s = ½ + it they only turn and never grow or shrink, and this line is the bottom of the spectrum, ¼ + t². On the modular surface, the factor that measures how much of a wave comes back out of the cusp is</p>
+<p style="text-align:center">φ(s) = √π · Γ(s − ½) · ζ(2s − 1) / (Γ(s) · ζ(2s))</p>
+<p>(Selberg). The zeros of ζ are therefore poles of this factor. RH says they sit where the waves keep their size. The horocycle in section 3 is how those waves are measured: the rate at which it fills the surface is governed by them.</p>
+<p>In this chart the horocycle does not go around the centre: it is a circle through the cusp w = 1. Averaging a function along it is still the constant term y<sup>s</sup> + φ(s)·y<sup>1−s</sup> of the Eisenstein series (Zagier's method). In the companion FVLT viewer the same horocycle is the circle |w| = e<sup>−2πy</sup> around the centre, where that average is the w<sup>0</sup> coefficient.</p>
+</section>
+
+<section>
+<h2 style="margin-top:0">Self-test</h2>
+<div class="read" id="selfTest">running…</div>
+</section>
+
+<section>
+<h2 style="margin-top:0">Limits and credits</h2>
+<ul>
+<li>This page is a drawing and a finite computation. It proves nothing about RH, and it raises no standing anywhere.</li>
+<li>The cusp test region in section 3 has a sharp edge. Zagier's equivalence concerns smooth test functions.</li>
+<li>This page is separate from the Rule 30 work.</li>
+<li>Credits: A. Cayley (the transform); L. R. Ford (Ford circles, 1938); J. Franel and E. Landau (1924); D. Zagier, “Eisenstein series and the Riemann zeta function” (1981); P. Sarnak (1981); A. Selberg (trace formula and scattering); J. Machin (the π series). The question that led to this page came from saphir.</li>
+</ul>
+</section>
+</main>
+
+<script>
+"use strict";
+const $=id=>document.getElementById(id);
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const B=BigInt;
+
+// ================= exact arithmetic =================
+function bgcd(a,b){if(a<0n)a=-a;if(b<0n)b=-b;while(b){[a,b]=[b,a%b]}return a}
+function Q(n,d=1n){n=B(n);d=B(d);if(d<0n){n=-n;d=-d}const g=bgcd(n,d)||1n;return{n:n/g,d:d/g}}
+const qadd=(a,b)=>Q(a.n*b.d+b.n*a.d,a.d*b.d), qsub=(a,b)=>Q(a.n*b.d-b.n*a.d,a.d*b.d);
+const qmul=(a,b)=>Q(a.n*b.n,a.d*b.d), qdiv=(a,b)=>Q(a.n*b.d,a.d*b.n);
+const qeq=(a,b)=>a.n===b.n&&a.d===b.d, qsgn=a=>a.n>0n?1:a.n<0n?-1:0;
+const fdiv=(a,b)=>{const q=a/b;return (a%b!==0n&&((a<0n)!==(b<0n)))?q-1n:q}; // floor, b ≠ 0
+const cdiv=(a,b)=>-fdiv(-a,b);
+function isqrt(n){if(n<0n)throw Error("isqrt<0");if(n<2n)return n;let x=1n<<B(Math.ceil(n.toString(2).length/2));for(;;){const y=(x+n/x)>>1n;if(y>=x)return x;x=y}}
+function phiSieve(N){const p=Array.from({length:N+1},(_,i)=>i);for(let i=2;i<=N;i++)if(p[i]===i)for(let j=i;j<=N;j+=i)p[j]-=p[j]/i;return p} // integer-exact for these sizes
+function farey(n){const out=[[0,1]];let a=0,b=1,c=1,d=n;while(c<=n){out.push([c,d]);const k=Math.floor((n+b)/d);[a,b,c,d]=[c,d,k*c-a,k*d-b]}return out} // integer floor of a ratio of small integers
+
+// fixed point at scale 10^40
+const P=40, S=10n**40n;
+function fixedStr(v,dp,dir){ // v at scale S → decimal with dp places, rounded down (dir<0) or up (dir>0)
+  const w=dir<0?fdiv(v,10n**B(P-dp)):cdiv(v,10n**B(P-dp));const neg=w<0n;let s=(neg?-w:w).toString().padStart(dp+1,"0");
+  return (neg?"−":"")+s.slice(0,s.length-dp)+(dp?"."+s.slice(s.length-dp):"")}
+function qDecimal(q,dp){ // exact rational → decimal truncated toward −∞, with "…"
+  const w=fdiv(q.n*10n**B(dp),q.d);const neg=w<0n;let s=(neg?-w:w).toString().padStart(dp+1,"0");
+  return (neg?"−":"")+s.slice(0,s.length-dp)+"."+s.slice(s.length-dp)+"…"}
+const pix=v=>Number(v)/1e40; // drawing register only: fixed point → pixel
+
+// ================= π, certified (Machin) =================
+function atanInvSum(x,Sg){x=B(x);let p=x,k=0n,sum=0n,K=0n;const x2=x*x;
+  for(;;){const t=Sg/((2n*k+1n)*p);if(t===0n)break;sum+=(k%2n===0n)?t:-t;K++;k++;p*=x2}
+  return [sum,K]} // |sum − Sg·atan(1/x)| < K + 1
+const PI=(()=>{const G=10n**12n,Sg=S*G;const [a,Ka]=atanInvSum(5,Sg),[b,Kb]=atanInvSum(239,Sg);
+  const comp=16n*a-4n*b,err=16n*(Ka+1n)+4n*(Kb+1n);return {lo:fdiv(comp-err,G),hi:cdiv(comp+err,G)}})();
+
+// ================= section 1: exact disk =================
+function bpt(p,q){p=B(p);q=B(q);const s=p*p+q*q;return [Q(p*p-q*q,s),Q(-2n*p*q,s)]} // w(p/q)
+const INF=[Q(1),Q(0)];
+function geodesic(w1,w2){ // exact data for the Farey line between two boundary points
+  const dot=qadd(qmul(w1[0],w2[0]),qmul(w1[1],w2[1]));
+  if(qeq(dot,Q(-1)))return {line:true,w1,w2};
+  const k=qadd(Q(1),dot),c=[qdiv(qadd(w1[0],w2[0]),k),qdiv(qadd(w1[1],w2[1]),k)];
+  const r2=qsub(qadd(qmul(c[0],c[0]),qmul(c[1],c[1])),Q(1));
+  const cross=qsub(qmul(qsub(w1[0],c[0]),qsub(w2[1],c[1])),qmul(qsub(w1[1],c[1]),qsub(w2[0],c[0])));
+  return {line:false,w1,w2,c,r2,sweep:qsgn(cross)>0?0:1}}
+function ford(p,q){p=B(p);q=B(q);const D=1n+p*p+q*q;return {c:[Q(p*p-q*q,D),Q(-2n*p*q,D)],r:Q(1,D)}}
+function fordGeneric(p,q){ // same circle by the definition: tangent at w(p/q), passing through the image of the top p/q + i/q²
+  p=B(p);q=B(q);const x=Q(p,q),y=Q(1n,q*q);const den=qadd(qmul(x,x),qmul(qadd(y,Q(1)),qadd(y,Q(1))));
+  const wt=[qdiv(qsub(qadd(qmul(x,x),qmul(y,y)),Q(1)),den),qdiv(qmul(Q(-2),x),den)],w0=bpt(p,q);
+  const dx=qsub(wt[0],w0[0]),dy=qsub(wt[1],w0[1]),dot=qadd(qmul(wt[0],w0[0]),qmul(wt[1],w0[1]));
+  const r=qdiv(qadd(qmul(dx,dx),qmul(dy,dy)),qmul(Q(2),qsub(Q(1),dot)));
+  return {c:[qmul(qsub(Q(1),r),w0[0]),qmul(qsub(Q(1),r),w0[1])],r}}
+const horo=H=>({c:[Q(1n,B(H)+1n),Q(0)],r:Q(B(H),B(H)+1n)});
+// drawing register: exact rational → SVG decimal string (y flipped for the screen)
+const sx=q=>qDecimal(q,6).replace("…","").replace("−","-");
+const sy=q=>sx(Q(-q.n,q.d));
+const sr=r2=>{const v=isqrt(r2.n*10n**12n/r2.d);return (v/1000000n)+"."+String(v%1000000n).padStart(6,"0")};
+
+const KT=8;
+function readHD(){const m=+$("mD").value,d=+$("dD").value;return {H:B(m)*10n**B(d),txt:m+"·10"+(d?"<sup>"+d+"</sup>":"⁰")}}
+// ---- kisses: exact w(X + iY), and the kiss of Farey neighbours a/q, c/s shifted by t ----
+function wOf(X,Y){const Y1=qadd(Y,Q(1)),den=qadd(qmul(X,X),qmul(Y1,Y1));return [qdiv(qsub(qadd(qmul(X,X),qmul(Y,Y)),Q(1)),den),qdiv(qmul(Q(-2),X),den)]}
+function kiss(a,q,c,s,t){const m=B(q*q+s*s);return {m,z:[Q(B(a*q+c*s)+B(t)*m,m),Q(1n,m)],w:wOf(Q(B(a*q+c*s)+B(t)*m,m),Q(1n,m))}}
+function twoSquares(H){const r=[];for(let q=1;2*q*q<=H;q++){const s2=H-q*q,s=Math.round(Math.sqrt(s2));if(s*s===s2&&bgcdN(q,s)===1)r.push([q,s])}return r} // integer check; sqrt only proposes s
+function kissPairs(n){const seen=new Set(),out=[];for(let k=1;k<=n;k++){const G=farey(k);for(let i=0;i+1<G.length;i++){const key=G[i]+"|"+G[i+1];if(!seen.has(key)){seen.add(key);out.push([G[i],G[i+1]])}}}return out}
+
+function bgcdN(a,b){while(b){[a,b]=[b,a%b]}return a}
+
+function drawDisk(){
+  const n=+$("nD").value,{H,txt}=readHD();
+  $("nDv").textContent=n;$("HDv").innerHTML="H = "+H+", y = 1/"+H;
+  const parts=[`<circle cx="0" cy="0" r="1" fill="none" stroke="${css('--ink')}" stroke-width="0.006"/>`];
+  const seen=new Set(),edges=[];
+  for(let k=1;k<=n;k++){const F=farey(k);for(let i=0;i+1<F.length;i++){const key=F[i]+"|"+F[i+1];if(!seen.has(key)){seen.add(key);edges.push([F[i],F[i+1]])}}}
+  const fs=css('--farey');
+  const drawG=g=>g.line?`<line x1="${sx(g.w1[0])}" y1="${sy(g.w1[1])}" x2="${sx(g.w2[0])}" y2="${sy(g.w2[1])}" stroke="${fs}" stroke-width="0.004"/>`
+    :`<path fill="none" stroke="${fs}" stroke-width="0.004" d="M${sx(g.w1[0])},${sy(g.w1[1])} A${sr(g.r2)},${sr(g.r2)} 0 0 ${g.sweep} ${sx(g.w2[0])},${sy(g.w2[1])}"/>`;
+  for(let t=-KT;t<KT;t++)for(const [[a,b],[c,d]] of edges)parts.push(drawG(geodesic(bpt(a+t*b,b),bpt(c+t*d,d))));
+  for(let t=-KT;t<=KT;t++)parts.push(drawG(geodesic(bpt(t,1),INF)));
+  const F=farey(n);let crossedQ=new Set();
+  for(let t=-KT;t<KT;t++)for(let i=0;i+1<F.length;i++){const [p,q]=F[i],qq=B(q)*B(q);const hit=qq<H,touch=qq===H;
+    if(hit)crossedQ.add(q);const f=ford(p+t*q,q);
+    parts.push(`<circle cx="${sx(f.c[0])}" cy="${sy(f.c[1])}" r="${sx(f.r)}" fill="${hit?css('--fordhit'):'none'}" fill-opacity="${hit?0.15:0}" stroke="${hit?css('--fordhit'):css('--ford')}" stroke-width="${touch?0.008:0.004}"${touch?' stroke-dasharray="0.02 0.015"':''}/>`)}
+  const h=horo(H);
+  parts.push(`<circle cx="${sx(h.c[0])}" cy="0" r="${sx(h.r)}" fill="none" stroke="${css('--horo')}" stroke-width="0.008"/>`);
+  const KP=kissPairs(n);let onH=0;
+  for(let t=-KT;t<KT;t++)for(const [[a,q],[c,s]] of KP){const k=kiss(a,q,c,s,t),on=k.m===H;if(on)onH++;
+    parts.push(`<circle cx="${sx(k.w[0])}" cy="${sy(k.w[1])}" r="${on?0.016:0.007}" fill="${on?'none':css('--ink')}" stroke="${on?css('--ink'):'none'}" stroke-width="0.006"/>`);
+    if(on)parts.push(`<circle cx="${sx(k.w[0])}" cy="${sy(k.w[1])}" r="0.007" fill="${css('--ink')}"/>`)}
+  parts.push(`<circle cx="0" cy="0" r="0.018" fill="${css('--centre')}"/>`);
+  $("disk").innerHTML=parts.join("");
+  const reps=H<=10n**6n?twoSquares(Number(H)):[],k0=kiss(0,1,1,2,0);
+  const Qmax=isqrt(H-1n);const phi=phiSieve(Number(Qmax)||1);let cnt=0n;for(let q=1;q<=Number(Qmax);q++)cnt+=B(phi[q]);
+  $("diskRead").innerHTML=`n = ${n}: ${edges.length} Farey edges per unit interval; Ford circles for q ≤ ${n} on [−${KT}, ${KT}].<br>`+
+    `Horocycle Im z = 1/${H}: centre ${h.c[0].n}/${h.c[0].d}, radius ${h.r.n}/${h.r.d}. It crosses the Ford circles with q² &lt; ${H}, i.e. q ≤ ${Qmax}`+
+    (isqrt(H)**2n===H?`, and touches those with q = ${isqrt(H)}`:"")+`.<br>Per unit interval that is φ(1)+…+φ(${Qmax}) = ${cnt} fractions: the Farey sequence of order ${Qmax} on [0, 1).`+
+    (Qmax>B(n)?` (Only q ≤ ${n} are drawn.)`:"")+
+    `<br>Kisses: ${KP.length} per unit interval for order ${n}; e.g. 0/1 · 1/2 at z = 2/5 + i/5, w = (${k0.w[0].n}/${k0.w[0].d}, ${k0.w[1].n}/${k0.w[1].d}).`+
+    (reps.length?` H = ${reps.map(([q,s])=>q+"² + "+s+"²").join(" = ")}, so the horocycle passes through the kisses with m = ${H}`+(onH?` (${onH} drawn, ringed).`:" (none of them drawn at this order)."):` H is not a sum of two coprime squares, so the horocycle passes through no kiss.`);
+}
+
+// ================= section 2: Franel–Landau, exact =================
+function Dexact(n){ // grouped by denominator; inner sums are exact safe integers (< 2^53 for n ≤ 400)
+  const F=farey(n).slice(1),m=F.length,Sb=new Array(n+1).fill(0);
+  F.forEach(([a,b],i)=>{Sb[b]+=Math.abs(a*m-(i+1)*b)});
+  let L=1n;for(let b=2n;b<=B(n);b++)L=L/bgcd(L,b)*b;
+  let N=0n;for(let b=1;b<=n;b++)if(Sb[b])N+=B(Sb[b])*(L/B(b));
+  return {D:Q(N,B(m)*L),m}}
+function Ddirect(n){const F=farey(n).slice(1),m=B(F.length);let s=Q(0);F.forEach(([a,b],i)=>{const t=Q(B(a)*m-B(i+1)*B(b),B(b)*m);s=qadd(s,t.n<0n?Q(-t.n,t.d):t)});return s}
+function ratioBounds(D,n){const v=isqrt(D.n*D.n*S*S/(D.d*D.d*B(n)));return {lo:v,hi:v+1n}} // D/√n · S ∈ [lo, hi]
+let farSeries=null;
+function farSeriesCompute(){if(farSeries)return farSeries;farSeries=[];for(let n=1;n<=400;n++){const {D}=Dexact(n);farSeries.push(ratioBounds(D,n).lo)}return farSeries}
+function drawFranel(){
+  const n=+$("nF").value;$("nFv").textContent=n;const {D,m}=Dexact(n);const rb=ratioBounds(D,n);
+  const dd=String(D.d).length,nd=String(D.n).length;
+  $("farRead").innerHTML=`n = ${n}, m = ${m} fractions in (0, 1].<br>D(n) = `+(dd<=24?`${D.n}/${D.d}`:`a rational with a ${nd}-digit numerator and a ${dd}-digit denominator`)+
+    ` = ${qDecimal(D,15)}<br>D(n)/√n ∈ [${fixedStr(rb.lo,15,-1)}, ${fixedStr(rb.hi,15,1)}]`;
+  chart($("farChart"),farSeriesCompute().map((v,i)=>[i+1,pix(v)]),{xl:"n",yl:"D(n)/√n",mark:n});
+}
+
+// ================= section 3: Zagier horocycle, certified =================
+const PHI=phiSieve(20000);
+function hBounds(H,Y){H=B(H);Y=B(Y);let lo=0n,hi=0n,K=0n,C=0;
+  for(let c=1n;c*c*Y<H;c++){const k=(H-c*c*Y)*Y,s=isqrt(k*S*S),den=c*H*Y,num=2n*B(PHI[Number(c)]);
+    lo+=fdiv(num*s,den);hi+=cdiv(num*(s+1n),den);K+=B(PHI[Number(c)]);C=Number(c)}
+  return {lo,hi,K,C}} // h·S ∈ [lo, hi]; K = number of cusp intervals per period
+function targetBounds(Y){Y=B(Y);return {lo:fdiv(3n*S*S,Y*PI.hi),hi:cdiv(3n*S*S,Y*PI.lo)}} // 3/(πY)·S
+function mulPos(e,f){ // [e.lo,e.hi]·[f, f+1)/S
+  const lo=e.lo>=0n?fdiv(e.lo*f,S):fdiv(e.lo*(f+1n),S),hi=e.hi>=0n?cdiv(e.hi*(f+1n),S):cdiv(e.hi*f,S);return {lo,hi}}
+function zagierAt(H,Y){const h=hBounds(H,Y),t=targetBounds(Y),E={lo:h.lo-t.hi,hi:h.hi-t.lo};
+  const sign=E.lo>0n?1:E.hi<0n?-1:0;return {h,t,E,sign}}
+const E24=[10,11,12,13,15,16,18,20,22,24,27,30,33,36,39,43,47,51,56,62,68,75,82,91];
+const zagCache={};
+function zagSeries(Y){if(zagCache[Y])return zagCache[Y];const pts=[];let unsigned=0;
+  for(let d=0;d<=5;d++)for(const m of E24){const H=B(m)*10n**B(d);const z=zagierAt(H,Y);
+    if(z.sign===0){unsigned++;continue}const mid=(z.E.lo+z.E.hi)/2n;pts.push([Math.log10(m)+d,Math.log10(Math.abs(pix(mid)))])} // drawing register
+  return zagCache[Y]={pts,unsigned}}
+function drawZagier(){
+  const Y=+$("Ysel").value,m=+$("mZ").value,d=+$("dZ").value,H=B(m)*10n**B(d);
+  $("HZv").innerHTML="H = "+H+", y = 1/"+H;
+  const z=zagierAt(H,Y);const sq=isqrt(H*S*S),q34=isqrt(isqrt(H*H*H*S*S*S*S));
+  const a=mulPos(z.E,sq),b=mulPos(z.E,q34);
+  $("zagRead").innerHTML=`Y = ${Y}, H = ${H}: ${z.h.C} denominators c, ${z.h.K} cusp intervals per period.<br>`+
+    `3/(πY) ∈ [${fixedStr(z.t.lo,22,-1)}, ${fixedStr(z.t.hi,22,1)}]<br>`+
+    `h ∈ [${fixedStr(z.h.lo,22,-1)}, ${fixedStr(z.h.hi,22,1)}]<br>`+
+    `E ∈ [${fixedStr(z.E.lo,22,-1)}, ${fixedStr(z.E.hi,22,1)}], sign ${z.sign>0?"+ (certified)":z.sign<0?"− (certified)":"not certified"}<br>`+
+    `E/y<sup>1/2</sup> = E·√H ∈ [${fixedStr(a.lo,12,-1)}, ${fixedStr(a.hi,12,1)}]<br>`+
+    `E/y<sup>3/4</sup> = E·H<sup>3/4</sup> ∈ [${fixedStr(b.lo,12,-1)}, ${fixedStr(b.hi,12,1)}]`;
+  const ser=zagSeries(Y),pts=ser.pts;
+  const xs=pts.map(p=>p[0]),ys=pts.map(p=>p[1]).sort((u,v)=>u-v);
+  const mx=xs.reduce((u,v)=>u+v,0)/xs.length,my=ys[Math.floor(ys.length/2)];
+  chart($("zagChart"),pts,{xl:"log₁₀ H",yl:"log₁₀ |E|",log:true,mark:Math.log10(m)+d,refs:[[-0.5,mx,my,css('--ford')],[-0.75,mx,my,css('--horo')]]});
+  $("zagNote").innerHTML=`Both axes are log<sub>10</sub>, against H = 1/y, at ${pts.length} values of H from 10 to 9.1·10⁶ (E24 steps). Each point's sign is certified; ${ser.unsigned} points with an uncertain sign are left out. The reference lines pass through the median of the data.`;
+}
+
+// ================= chart (drawing register) =================
+function chart(cv,pts,o){
+  const ctx=cv.getContext("2d"),W=cv.width,H=cv.height,L=90,R=20,T=20,Bm=70;ctx.clearRect(0,0,W,H);
+  let x0=Math.min(...pts.map(p=>p[0])),x1=Math.max(...pts.map(p=>p[0])),y0=Math.min(...pts.map(p=>p[1])),y1=Math.max(...pts.map(p=>p[1]));
+  if(!o.log)y0=Math.min(0,y0);const pad=(y1-y0)*0.08||1;if(o.log)y0-=pad;y1+=pad;
+  const X=x=>L+(x-x0)/(x1-x0)*(W-L-R),Yc=y=>H-Bm-(y-y0)/(y1-y0)*(H-T-Bm);
+  ctx.strokeStyle=css('--grid');ctx.lineWidth=1;ctx.fillStyle=css('--muted');ctx.font="22px system-ui";
+  for(let i=0;i<=5;i++){const yy=y0+(y1-y0)*i/5;ctx.beginPath();ctx.moveTo(L,Yc(yy));ctx.lineTo(W-R,Yc(yy));ctx.stroke();ctx.fillText(yy.toFixed(o.log?1:2),8,Yc(yy)+7)}
+  for(let i=0;i<=5;i++){const xx=x0+(x1-x0)*i/5;ctx.fillText(o.log?xx.toFixed(1):Math.round(xx),X(xx)-16,H-Bm+30)}
+  ctx.fillText(o.xl,W/2-30,H-12);ctx.fillText(o.yl,L+8,T+24);
+  if(o.refs)for(const [sl,mx,my,col] of o.refs){ctx.strokeStyle=col;ctx.lineWidth=2;ctx.setLineDash([10,8]);ctx.beginPath();ctx.moveTo(X(x0),Yc(my+sl*(x0-mx)));ctx.lineTo(X(x1),Yc(my+sl*(x1-mx)));ctx.stroke();ctx.setLineDash([])}
+  ctx.strokeStyle=css('--fordhit');ctx.lineWidth=2;ctx.beginPath();pts.forEach((p,i)=>i?ctx.lineTo(X(p[0]),Yc(p[1])):ctx.moveTo(X(p[0]),Yc(p[1])));ctx.stroke();
+  if(o.log){ctx.fillStyle=css('--fordhit');pts.forEach(p=>{ctx.beginPath();ctx.arc(X(p[0]),Yc(p[1]),3.5,0,7);ctx.fill()})}
+  if(o.mark!==undefined&&o.mark>=x0&&o.mark<=x1){ctx.strokeStyle=css('--centre');ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(X(o.mark),T);ctx.lineTo(X(o.mark),H-Bm);ctx.stroke()}
+}
+
+// ================= self-test (all exact) =================
+function reduceExact(xn,xd,H){ // z = xn/xd + i/H; reduce into the standard fundamental domain exactly; return Im as a rational
+  let u=Q(xn,xd),v=Q(1n,B(H));
+  for(let it=0;it<400;it++){const r=fdiv(2n*u.n+u.d,2n*u.d);u=qsub(u,Q(r));const n2=qadd(qmul(u,u),qmul(v,v));
+    if(n2.n>=n2.d)return v;u=qdiv(Q(-u.n,u.d),n2);v=qdiv(v,n2)}throw Error("no reduction")}
+function selfTest(){
+  const out=[];const ok=(name,c,extra="")=>out.push(`<span class="${c?'pass':'fail'}">${c?'✓':'✗'}</span> ${name}${extra?" — "+extra:""}`);
+  const phi=phiSieve(60);let g=true;for(let n=1;n<=60;n++){let s=1;for(let k=1;k<=n;k++)s+=phi[k];if(farey(n).length!==s)g=false}
+  ok("|F_n| = 1 + φ(1)+…+φ(n) for n ≤ 60",g);
+  g=true;for(let n=1;n<=40;n++){const F=farey(n);for(let i=0;i+1<F.length;i++)if(F[i+1][0]*F[i][1]-F[i][0]*F[i+1][1]!==1)g=false}
+  ok("consecutive Farey fractions have bc − ad = 1 (n ≤ 40)",g);
+  g=true;for(let n=1;n<=30;n++)if(!qeq(Dexact(n).D,Ddirect(n)))g=false;
+  ok("grouped D(n) equals the direct rational sum, exactly, n ≤ 30",g);
+  const D3=Dexact(3).D;ok("D(3) = 1/12 + 0 + 1/12 + 0 = 1/6",qeq(D3,Q(1,6)),`${D3.n}/${D3.d}`);
+  g=true;for(let p=-6;p<=6;p++)for(let q=1;q<=7;q++){const w=bpt(p,q);if(!qeq(qadd(qmul(w[0],w[0]),qmul(w[1],w[1])),Q(1)))g=false}
+  ok("w(p/q) lies exactly on the unit circle (|p| ≤ 6, q ≤ 7)",g);
+  g=true;for(let p=-5;p<=5;p++)for(let q=1;q<=6;q++){const a=ford(p,q),b=fordGeneric(p,q);if(!(qeq(a.r,b.r)&&qeq(a.c[0],b.c[0])&&qeq(a.c[1],b.c[1])))g=false}
+  ok("Ford circle = centre (p²−q², −2pq)/(1+p²+q²), radius 1/(1+p²+q²), from the definition",g);
+  const tang=(A,Bc,ext)=>{const dx=qsub(A.c[0],Bc.c[0]),dy=qsub(A.c[1],Bc.c[1]),d2=qadd(qmul(dx,dx),qmul(dy,dy)),s=ext?qadd(A.r,Bc.r):qsub(A.r,Bc.r);return qeq(d2,qmul(s,s))};
+  g=true;let cnt=0;for(let n=1;n<=9;n++){const F=farey(n);for(let i=0;i+1<F.length;i++){if(!tang(ford(...F[i]),ford(...F[i+1]),true))g=false;cnt++}}
+  ok("Farey neighbours' Ford circles are exactly tangent",g,`${cnt} pairs`);
+  g=true;for(let q=1;q<=9;q++)for(let p=-4;p<=4;p++)if(!tang(horo(q*q),ford(p,q),true))g=false;
+  ok("horocycle Im z = 1/q² is exactly tangent to the Ford circles of denominator q",g);
+  const pistr="3.14159265358979323846264338327950288419716939937510";const ref=B(pistr.replace(".","").slice(0,P+1));
+  ok("certified π enclosure contains the reference digits",PI.lo<=ref&&ref+1n<=PI.hi+1n&&PI.hi-PI.lo<100n,`width ${PI.hi-PI.lo}·10⁻⁴⁰`);
+  g=true;for(const n of [2n,10n,12345n,10n**30n+7n])for(const k of [n,n*n,n*n+1n,n*n-1n]){const r=isqrt(k);if(!(r*r<=k&&k<(r+1n)*(r+1n)))g=false}
+  ok("integer square root brackets: r² ≤ k < (r+1)²",g);
+  for(const [H,Y,M] of [[100,2,3000],[300,1,3000],[1000,3,2000]]){
+    const hb=hBounds(H,Y);let hit=0n;for(let j=0;j<M;j++){const v=reduceExact(B(2*j+1),B(2*M),H);if(v.n>B(Y)*v.d)hit++}
+    const M_=B(M),lo=M_*hb.lo-hb.K*S,hi=M_*hb.hi+hb.K*S,c=hit*S;
+    ok(`exact reduction count agrees with the closed form, H = ${H}, Y = ${Y}`,lo<=c&&c<=hi,`${hit}/${M} points; |count − M·h| ≤ ${hb.K} intervals`)}
+  { // Cayley kisses: the exact disk point lies on both Ford circles and on the horocycle H = m
+    const onC=(w,C)=>{const dx=qsub(w[0],C.c[0]),dy=qsub(w[1],C.c[1]);return qeq(qadd(qmul(dx,dx),qmul(dy,dy)),qmul(C.r,C.r))};
+    let g1=true,g2=true,k=0;for(let n=1;n<=9;n++){const G=farey(n);for(let i=0;i+1<G.length;i++){const [a,q]=G[i],[c,s]=G[i+1];
+      for(let t=-2;t<=2;t++){const K=kiss(a,q,c,s,t);if(!(onC(K.w,ford(a+t*q,q))&&onC(K.w,ford(c+t*s,s))))g1=false;if(!onC(K.w,horo(K.m)))g2=false;k++}}}
+    ok("Cayley kiss w((aq+cs)/m + i/m) lies exactly on both Ford circles",g1,`${k} kisses`);
+    ok("the horocycle with H = m = q² + s² passes exactly through that kiss",g2);
+    const r5=twoSquares(5),r7=twoSquares(7),r25=twoSquares(25);
+    ok("two coprime squares: 5 = 1² + 2², 25 = 3² + 4², 7 has none",r5.length===1&&r7.length===0&&r25.length===1&&r25[0][0]===3)}
+  g=true;cnt=0;for(let n=1;n<=9;n++){const G=farey(n);for(let i=0;i+1<G.length;i++){const [a,q]=G[i],[c,s]=G[i+1],m=B(q*q+s*s);
+    const X=Q(B(a*q+c*s),m),Y=Q(1n,m);for(const [u,v] of [[a,q],[c,s]]){const rho=Q(1n,2n*B(v)*B(v)),dx=qsub(X,Q(B(u),B(v))),dy=qsub(Y,rho);if(!qeq(qadd(qmul(dx,dx),qmul(dy,dy)),qmul(rho,rho)))g=false}cnt++}}
+  ok("tangency point ((aq+cs)/m, 1/m), m = q²+s², lies exactly on both Ford circles",g,`${cnt} pairs`);
+  const z=zagierAt(10n**8n,2);ok("E → 0: at H = 10⁸, Y = 2 the error interval lies inside ±10⁻⁴",z.E.lo>-S/10000n&&z.E.hi<S/10000n,`E ∈ [${fixedStr(z.E.lo,12,-1)}, ${fixedStr(z.E.hi,12,1)}]`);
+  const pass=out.filter(s=>s.includes('pass')).length;
+  $("selfTest").innerHTML=`<b>${pass}/${out.length} passing</b><br>`+out.join("<br>")+`<br>π ∈ [${fixedStr(PI.lo,40,-1)}, ${fixedStr(PI.hi,40,1)}]`;
+  window.__selfTest={pass,total:out.length};
+}
+
+["nD","mD","dD"].forEach(id=>$(id).addEventListener("input",drawDisk));
+$("nF").addEventListener("input",drawFranel);
+["mZ","dZ"].forEach(id=>$(id).addEventListener("input",drawZagier));$("Ysel").addEventListener("change",drawZagier);
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change",()=>{drawDisk();drawFranel();drawZagier()});
+// ================= 1a: animation in the Cayley disk =================
+const anim={frames:[],i:0,playing:false,trace:[],last:0};
+function animFrames(Hmax){const f=[];let H=1n;while(H<=Hmax){f.push(H);const st=H/40n;H+=st>0n?st:1n}return f} // integer steps, ~1/40 growth
+function animReset(){anim.frames=animFrames(B($("aMax").value));anim.i=0;anim.trace=[];$("aFrame").max=anim.frames.length-1;$("aFrame").value=0;animDraw()}
+function animDraw(){
+  const cv=$("animCv"),ctx=cv.getContext("2d"),W=cv.width,cx=W/2,cy=W/2,R=W/2-12,Y=+$("aY").value,H=anim.frames[anim.i];
+  const y=1/Number(H),gcdN=(a,b)=>{while(b){[a,b]=[b,a%b]}return a},T=KT;
+  ctx.clearRect(0,0,W,W);
+  // drawing register: w(x + iy) = ((x²+y²−1), −2x)/(x²+(y+1)²) placed on the canvas
+  const P=(x,yy)=>{const d=x*x+(yy+1)*(yy+1);return [cx+R*(x*x+yy*yy-1)/d,cy+R*2*x/d]};
+  const disc=(x0,dd)=>{const rho=dd/(dd+1+x0*x0),[u,v]=P(x0,0);return {X:cx+(1-rho)*(u-cx),Yc:cy+(1-rho)*(v-cy),r:R*rho}}; // horoball of height dd at x0
+  ctx.lineWidth=2;ctx.strokeStyle=css('--ink');ctx.beginPath();ctx.arc(cx,cy,R,0,7);ctx.stroke();
+  // Ford circles for context (q ≤ 10)
+  ctx.lineWidth=1.2;ctx.strokeStyle=css('--ford');
+  for(let q=1;q<=10;q++)for(let t=-T;t<T;t++)for(let p=0;p<q;p++)if(gcdN(p,q)===1){const D=disc(p/q+t,1/(q*q));if(D.r<0.6)continue;ctx.beginPath();ctx.arc(D.X,D.Yc,D.r,0,7);ctx.stroke()}
+  // cusp discs reached so far (drawn for c ≤ 60)
+  ctx.fillStyle=css('--fordhit');ctx.strokeStyle=css('--fordhit');ctx.lineWidth=1;
+  for(let c=1;c<=60&&B(c*c*Y)<H;c++)for(let t=-T;t<T;t++)for(let p=0;p<c;p++)if(gcdN(p,c)===1){const D=disc(p/c+t,1/(c*c*Y));if(D.r<0.6)continue;ctx.beginPath();ctx.arc(D.X,D.Yc,D.r,0,7);ctx.globalAlpha=0.14;ctx.fill();ctx.globalAlpha=1;ctx.stroke()}
+  // horocycle: centre 1/(H+1), radius H/(H+1), exact; arcs inside the cusp discs (all c, |x| ≤ T)
+  const hx=cx+R/(Number(H)+1),hr=R*Number(H)/(Number(H)+1);
+  ctx.strokeStyle=css('--horo');ctx.lineWidth=2.5;ctx.beginPath();ctx.arc(hx,cy,hr,0,7);ctx.stroke();
+  ctx.strokeStyle=css('--fordhit');ctx.lineWidth=7;const ang=([u,v])=>Math.atan2(v-cy,u-hx),TAU=2*Math.PI,md=a=>((a%TAU)+TAU)%TAU;
+  for(let c=1;B(c*c*Y)<H;c++){const r=Math.sqrt(y/Y-c*c*y*y)/c;
+    for(let t=-T;t<T;t++)for(let p=0;p<c;p++)if(gcdN(p,c)===1){const xm=p/c+t,p1=P(xm-r,y),p2=P(xm+r,y);
+      if(Math.hypot(p1[0]-p2[0],p1[1]-p2[1])<0.4)continue;
+      const a1=ang(p1),a2=ang(p2),am=ang(P(xm,y));ctx.beginPath();ctx.arc(hx,cy,hr,a1,a2,!(md(am-a1)<md(a2-a1)));ctx.stroke()}}
+  // kisses of Ford neighbours (order ≤ 10); those on this horocycle (m = H) ringed
+  const KP=kissPairs(10);let onH=0;
+  for(let t=-T;t<T;t++)for(const [[a,q],[c,s]] of KP){const m=q*q+s*s,[u,v]=P((a*q+c*s)/m+t,1/m);
+    if(B(m)===H){onH++;ctx.strokeStyle=css('--ink');ctx.lineWidth=2.5;ctx.beginPath();ctx.arc(u,v,11,0,7);ctx.stroke()}
+    ctx.fillStyle=css('--ink');ctx.beginPath();ctx.arc(u,v,m<=10?4:2.5,0,7);ctx.fill()}
+  ctx.fillStyle=css('--centre');ctx.beginPath();ctx.arc(cx,cy,7,0,7);ctx.fill();
+  ctx.fillStyle=css('--ink');ctx.beginPath();ctx.arc(cx+R,cy,6,0,7);ctx.fill();
+  // certified readout at this integer H
+  const z=zagierAt(H,Y),sq=isqrt(H*S*S),q34=isqrt(isqrt(H*H*H*S*S*S*S)),a=mulPos(z.E,sq),b=mulPos(z.E,q34),reps=twoSquares(Number(H));
+  $("aHv").innerHTML=`H = ${H}, y = 1/${H}`;
+  $("animRead").innerHTML=`Y = ${Y}, H = ${H}: horocycle centre 1/${H+1n}, radius ${H}/${H+1n} (exact); ${z.h.K} arcs per period (denominators c ≤ ${z.h.C}).<br>`+
+    (reps.length?`kisses: H = ${reps.map(([q,s])=>q+"² + "+s+"²").join(" = ")}, so the horocycle passes through the kisses with m = ${H}`+(onH?` (${onH} drawn, ringed)`:"")+`.<br>`:`kisses: ${H} is not a sum of two coprime squares, so the horocycle passes through no kiss.<br>`)+
+    `share on arcs h ∈ [${fixedStr(z.h.lo,14,-1)}, ${fixedStr(z.h.hi,14,1)}]<br>area share 3/(πY) ∈ [${fixedStr(z.t.lo,14,-1)}, ${fixedStr(z.t.hi,14,1)}]<br>`+
+    `E ∈ [${fixedStr(z.E.lo,14,-1)}, ${fixedStr(z.E.hi,14,1)}], sign ${z.sign>0?"+":z.sign<0?"−":"not certified"}; E·√H ∈ [${fixedStr(a.lo,8,-1)}, ${fixedStr(a.hi,8,1)}]; E·H<sup>3/4</sup> ∈ [${fixedStr(b.lo,8,-1)}, ${fixedStr(b.hi,8,1)}]`;
+  if(z.sign!==0&&!anim.trace.some(t=>t.H===H)){const mid=(z.E.lo+z.E.hi)/2n;anim.trace.push({H,x:Math.log10(Number(H)),yv:Math.log10(Math.abs(pix(mid)))})}
+  const pts=anim.trace.filter(t=>t.H<=H).sort((u,v)=>u.x-v.x).map(t=>[t.x,t.yv]);
+  if(pts.length>=3){const mx=pts.reduce((s,p)=>s+p[0],0)/pts.length,ys=pts.map(p=>p[1]).sort((u,v)=>u-v),my=ys[Math.floor(ys.length/2)];
+    chart($("animTrace"),pts,{xl:"log₁₀ H",yl:"log₁₀ |E|",log:true,refs:[[-0.5,mx,my,css('--ford')],[-0.75,mx,my,css('--horo')]]})}
+  else $("animTrace").getContext("2d").clearRect(0,0,1120,420);
+}
+function animLoop(ts){if(!anim.playing)return;if(ts-anim.last>70){anim.last=ts;if(anim.i<anim.frames.length-1){anim.i++;$("aFrame").value=anim.i;animDraw()}else{anim.playing=false;$("aPlay").textContent="▶ play";return}}requestAnimationFrame(animLoop)}
+$("aPlay").addEventListener("click",()=>{if(anim.playing){anim.playing=false;$("aPlay").textContent="▶ play"}else{if(anim.i>=anim.frames.length-1){anim.i=0;anim.trace=[]}anim.playing=true;$("aPlay").textContent="❚❚ pause";requestAnimationFrame(animLoop)}});
+$("aFrame").addEventListener("input",()=>{anim.i=+$("aFrame").value;animDraw()});
+$("aY").addEventListener("change",animReset);$("aMax").addEventListener("change",animReset);
+
+drawDisk();animReset();
+setTimeout(()=>{drawFranel();drawZagier();setTimeout(selfTest,30)},30);
+</script>
+</body>
+</html>

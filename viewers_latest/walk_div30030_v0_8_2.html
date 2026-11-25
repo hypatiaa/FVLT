@@ -1,0 +1,742 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Walking Div(30030)</title>
+<!-- v0.8.2 (2026-11-10): saphir "Can you put div(30) in". Div(30) = 2*3*5: the cube skin, a sphere; every vertex is a corner (3 quarter turns). Lift = the CAT(1) octant sphere (W_3 = (Z/2)^3, the cover is the skin itself). Pen checked against closed_atom_runs_helical_v0_1.json, counts against lift_check_div30_v0_1.py. The squarefree slide animation now has a spherical branch (tan, not tanh). Successor of walk_div30030_v0_8_1.html (14e7744c..., kept). -->
+<!-- v0.8.1 (2026-11-10): saphir (phone screenshot, Div(6), "Stopping"): Play stopped at s = 0.21 on pillow atoms. Cause: the squarefree slide animation in drawLift ran before the pillow branch and read reflections that pillow atoms do not have (TypeError), so the play loop never scheduled its next frame. Fix: the slide is skipped for pillow atoms. Successor of walk_div30030_v0_8.html (f5d7d480..., kept). -->
+<!-- v0.8 (2026-11-10): saphir "There should be pillow walks for numbers like 12". Two-prime atoms Div(2^a 3^b) = 6, 12, 18, 36, 72 walked as in pillow_reference_v0_1.py (646ae405...; saphir 2026-11-05 "Yes, pillowcase default"): the plane pen turns a quarter turn every step (h += +-2), and the plane is folded onto the pillowcase (the a x b rectangle doubled, cone points of half a turn at 1, 2^a, 3^b, N). The lift is the plane walk itself (the pillowcase's orbifold cover is the plane, CAT(0)). Labels checked against pillow_runs_v0_1.json (b2dd539b...); counts against lift_check_pillow_v0_1.py. Successor of walk_div30030_v0_7_4.html (9375bcd6..., kept). -->
+<!-- v0.7.4 (2026-11-10): fixes from a pasted seat review of v0.7.2 (saphir), each reproduced here first. (1) Lift camera = (anchor tile as an exact reduced word relative to the pen, bounded local Mobius map). After every drag the anchor moves to the tile nearest the view centre, so the matrix stays bounded (v0.7.2: tiles thinned out after ~12 drags and the matrix became NaN at drag 28). (2) Pen and trail placed through the exact word from the anchor (wmul, in place), drawn only within 14 walls of the anchor; no far point is rounded onto the rim. (3) Tiles grown from the tile nearest the screen centre (also under wheel zoom at the rim), deduplicated by screen position. (4) Stereographic sphere: the tile at infinity is found in the view frame (no missing octant when dragging). (5) gcd lookups by Map. Drawing only; no data or check depends on it. Successor of walk_div30030_v0_7_3.html (307e53ca..., kept). -->
+<!-- v0.7.3 (2026-11-10): units check (saphir: "check v0_7_2 hash, folder files, and angle units"). No old-style angle units were left; three visible places still used radians. All visible angles are now fractions of a turn, and the Gauss-Bonnet check is exact integer arithmetic: sum over vertices of (4 - edges) = 4 chi (each square corner is a quarter turn). Successor of walk_div30030_v0_7_2.html (4e5b3bf6..., kept). -->
+<!-- v0.7.2 (2026-11-10): saphir "pan zoom on the sphere/hyperbolic projection please". Lift panel: drag moves through the geometry by an isometry of the model, z -> (z - a)/(k conj(a) z + 1) with k = -1 (Poincare disk), 0 (plane), +1 (Riemann sphere), composed as T = M_{-z2} o M_{z1} (the dragged point follows the finger); ball view: drag rotates the ball. Wheel and pinch still zoom; reset restores the pen-centred view. Tiles are generated from the tile nearest the view centre (greedy wall crossing), so far regions fill in. Drawing only: no data or check depends on it. Successor of walk_div30030_v0_7_1.html (68d04593..., kept). -->
+<!-- v0.7.1 (2026-11-10): saphir "then you push it to Cat(1) instead" (with "we did a small experiment on that with the cat(1) piecewise spherical complexes"). Div(720) lift drawn in CAT(1). Metric stated: each tile is the all-right spherical triangle (an octant); the octahedron is a flag complex, so by Gromov's link condition this all-right spherical complex is CAT(1), here the round unit sphere. The octant of a corner divisor is the link (tangent-direction set) of that corner of the exponent box, as in the CAT gearbox experiment (ATOM_10800 v0.9); the 8 corner links tile S^2. The flat-square skin itself is not CAT(1) (corner links of length 3 pi/2 < 2 pi). Stereographic view from the point opposite the pen's tile. Successor of walk_div30030_v0_7.html (5007db70..., kept). -->
+<!-- v0.7 (2026-11-10): saphir "add the finer tiles when zooming the lift. also I think it is time to add 720 and 720720 to see how they behave", and "one of the chords is not on the cone". (1) Strained atoms Div(720) = (4,2,1) and Div(720720) = (4,2,1,1,1,1): skin = profile_skin_v0_1 (each square on seats (i,i+1) cut a_i x a_{i+1}), pen checked against gear_runs_v0_1.json (e090148c...). Vertices are exponent vectors now (bitmasks before). Wheels with a+1 teeth. (2) Exact lift for strained atoms: cover point (g, e), g in W_w lifts the corner c(e), c_k = [e_k = a_k]; a move of seat d multiplies g by r_d exactly when c_d changes. Counts checked against lift_check_v0_7.py. Div(720) is a sphere (W_3 = (Z/2)^3 finite): its cover is itself. (3) Lift tiles generated for the view (nearest first, down to 2.5 px), so zooming shows finer tiles. (4) Cone layout: gcd jumps drawn along the cone surface (radius law r(Omega) at every height), not as straight chords. Successor of walk_div30030_v0_6_4.html (8fa388ea..., kept). -->
+<!-- v0.6.4 (2026-11-10): saphir "can we have zoom and pan tools on the views please". Atom, lift and prime-wheel chain: mouse wheel zooms at the cursor, two-finger pinch zooms, drag pans (atom: drag rotates unless "drag: pan" is chosen or shift is held), + / - / reset buttons per view. Screen-space only: zoom and pan change no data or check. Successor of walk_div30030_v0_6_3.html (70e92d8d..., kept). -->
+<!-- v0.6.3 (2026-11-10): saphir "the gcd pen is fading, the rule 30 is behaving correctly". "full path, no fade" now also draws every gcd(s, N) jump from s = 1 at full strength (each distinct jump once); without it, the last 5 jumps as before. Cone-merge ring labels shown only with "all labels" (they piled up in the centre). Successor of walk_div30030_v0_6_2.html (149a6cda..., kept). -->
+<!-- v0.6.2 (2026-11-10): saphir "the disabling of the fade of the path was not working". Cause: "full path" drew every old step at half strength (alpha 0.47), so it still looked faded, and the lift trail ignored the checkbox. Now "full path" draws every step at full strength on the atom (latest step thicker) and the whole lifted path in the lift panel, also unfaded. Successor of walk_div30030_v0_6_1.html (94d1a054..., kept). -->
+<!-- v0.6.1 (2026-11-10): saphir: angles only as fractions of a turn, nowhere in other units; with a pasted seat review of v0.6. Angles as exact fractions of a turn (corner total w quarter-turns); "every vertex has w edges". Atom: rings now say which coincidences are true §9.7 stacks (solid) and which are made by the cone radius law (dashed, "cone"); the "stacked with" readout uses §9.7 stacks only; cone guide rings drawn only at levels with off-axis vertices. Prime wheels: each prime's §9.7 contribution drawn as the strong chord, chained 1 -> divisor with no gap; spokes faint. Panel renamed "prime wheels" (the kernel's "gearbox" is the Vernier temporal gearbox, not this). Successor of walk_div30030_v0_6.html (c5d21e4b..., kept). -->
+<!-- v0.6 (2026-11-10): saphir "can this be adapted to the fvlt native view, and I would like the straight line atoms like that in the atom viewer be also in the test viewer". (1) layout "helical §9.7, straight edges": the helical positions joined by straight chords, as the atom viewer draws them. (2) native FVLT gearbox: one wheel per prime in prime order, tooth e of prime i at phase phi_i + 2 pi e/n_i; the wheel arrows (1/n_i)(e^{i(2 pi e_i/n_i + phi_i)} - e^{i phi_i}) chained tip to tail land exactly on the divisor (the §9.7 sum). Successor of walk_div30030_v0_5_3.html (e49e26d8..., kept). -->
+<!-- v0.5.3 (2026-11-10): saphir "let me add steps to s, it seems to be too small for some of the numbers": run length 512 / 2048 / 8192 / 16384 steps. Tile identity for long runs: exact Tits representation of W_w (integer matrices, s_i(e_j) = e_j + 2 e_i for non-neighbouring seats, e_j for neighbours, -e_i for j = i), faithful by Tits theorem, compared modulo two primes near 2^25; checked against the lexicographic normal form on steps 0..512. Faster speeds added. Successor of walk_div30030_v0_5_2.html (fb455a3f..., kept). -->
+<!-- v0.5.2 (2026-11-10): saphir "I want the option to toggle it": checkbox "full path (no fade)" draws every pen step 0..s at one weight (latest step strong); readout adds edges covered. Successor of walk_div30030_v0_5_1.html (287330ac..., kept). -->
+<!-- v0.5.1 (2026-11-10): saphir "I want the ability to hide the rule 30 readout": checkbox "Rule 30 pen" hides the pen and its trail on the atom (the lift panel is the pen's lift and stays). Successor of walk_div30030_v0_5.html (057911f6..., kept). -->
+<!-- Test page v0.5 (2026-11-10). saphir, on the atlas screenshot of Div(30030) (Boolean 6-cube, helical §9.7 embed, cone shown):
+     "This is one of the objects I want to walk natively"; then "yes" to all three layers.
+     Built by Claude Opus 5.5. Successor of catk_three_pens_v0_4.html (dc8514d9..., kept).
+     Layer 1, pen on the atom: the closed-atom skin of Div(p1...pw) (squares on cyclically adjacent seat pairs), walked by the skeleton
+       pen (closed_atom_surfaces_v0_1.py: state (vertex, back); next = rot[(index(back) + c*s) mod deg], c = -1 skin convention,
+       s = -1 iff x_t(0) xor x_t(1), Rule 30 single seed; start 1, back 2). Recomputed here and compared with the reference
+       paths in closed_atom_runs_helical_v0_1.json (5bebf5a1...), which are embedded unchanged with their helical positions.
+       Drawn in the atlas layouts: helical §9.7 (position = sum_i (1/n_i)(e^{i(2 pi e_i/n_i + phi_i)} - e^{i phi_i}), height Omega)
+       or the atlas cone with radius law "§9.7 embed" (angle of the same vector, radius (2^Omega - 1)/(2^maxOmega - 1),
+       on the axis where the vector vanishes). Points shared by several divisors are drawn and labelled as stacks.
+     Layer 2, the lift: the skin is the quotient of the {4,w} tiling (dual: right-angled regular w-gons {w,4}) by the kernel of
+       W_w = <r_0..r_{w-1} | r_i^2, (r_i r_{i+1})^2> -> (Z/2)^w. A pen step that flips seat d lifts to g -> g r_d, exactly
+       (reduced words; equality by lexicographic normal form). w = 6: hyperbolic, cosh h = sqrt 2; w = 5: hyperbolic; w = 4: flat.
+       Display: the pen's own frame (current tile at the centre, mirrored tiles shown unmirrored, arrival from the left). Drawing only.
+     Layer 3, the native FVLT readout: gcd(s, N) at integer ticks s, on the same atom (consecutive values are coprime). -->
+<style>
+  :root { --bg:#fff; --fg:#1a1a1a; --mute:#666; --line:#ddd; --panel:#f6f6f6; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--fg); font:15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+  main { max-width:1200px; margin:0 auto; padding:14px; }
+  h1 { font-size:20px; margin:0 0 4px; }
+  .lede { color:var(--mute); margin:0 0 10px; }
+  .controls { display:flex; flex-wrap:wrap; gap:8px 12px; align-items:center; background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:8px 10px; margin-bottom:10px; position:sticky; top:0; z-index:5; }
+  button, select { font:inherit; padding:4px 10px; border:1px solid #bbb; border-radius:6px; background:#fff; }
+  .clock { display:flex; align-items:center; gap:8px; flex:1 1 220px; }
+  .clock input { flex:1; }
+  .grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+  @media (max-width:760px) { .grid { grid-template-columns:1fr; } }
+  .cell { border:1px solid var(--line); border-radius:8px; padding:8px; min-width:0; }
+  .cell h2 { font-size:15px; margin:0 0 2px; }
+  .sub { color:var(--mute); font-size:12.5px; margin:0 0 6px; }
+  .opts { display:flex; flex-wrap:wrap; gap:4px 12px; font-size:13px; margin-bottom:6px; }
+  canvas { display:block; width:100%; height:auto; border:1px solid var(--line); background:#fff; touch-action:none; }
+  .read { font-family:ui-monospace, Consolas, monospace; font-size:12.5px; margin-top:6px; word-break:break-word; }
+  .sum { font-size:14px; margin:0 0 10px; padding:6px 10px; border-left:4px solid #2f6fd6; background:#f3f7fd; }
+  table { border-collapse:collapse; width:100%; font-size:13px; }
+  th, td { border:1px solid var(--line); padding:4px 6px; text-align:left; vertical-align:top; }
+  th { background:var(--panel); }
+  details { margin-top:8px; } summary { cursor:pointer; color:#2f6fd6; font-size:13px; }
+  .tw { max-height:300px; overflow:auto; margin-top:6px; }
+  .note { color:var(--mute); font-size:13px; margin-top:12px; }
+  .ok { color:#17803d; font-weight:600; } .no { color:#b3261e; font-weight:600; }
+  .zb { display:inline-flex; gap:4px; align-items:center; } .zb button { padding:2px 9px; min-width:30px; }
+  .controls > label:first-child { display:flex; align-items:center; gap:6px; min-width:0; max-width:100%; } #atom { min-width:0; max-width:100%; flex:1 1 auto; text-overflow:ellipsis; }
+  .key { display:inline-block; width:10px; height:10px; border-radius:50%; vertical-align:-1px; margin-right:3px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Walking Div(30030) natively</h1>
+  <p class="lede">Test page v0.8.2. The Rule 30 pen walks the skin of the atom, drawn in the atlas layout. The same walk is lifted, exactly, into the tiling that covers the skin. The native FVLT readout gcd(s, N) is marked on the same atom.</p>
+
+  <div class="controls">
+    <label>atom <select id="atom"></select></label>
+    <button id="play">Play</button>
+    <button id="back">◀</button>
+    <button id="step">▶</button>
+    <button id="reset">s = 0</button>
+    <label>speed <select id="speed"><option value="1600">slow</option><option value="600" selected>medium</option><option value="160">fast</option><option value="40">very fast</option><option value="8">rush</option></select></label>
+    <label>steps <select id="runlen"><option value="512" selected>512</option><option value="2048">2048</option><option value="8192">8192</option><option value="16384">16384</option></select></label>
+    <div class="clock">s <input id="scrub" type="range" min="0" max="512" step="1" value="0"><b id="sval">0</b></div>
+  </div>
+  <div class="sum" id="summary"></div>
+
+  <div class="grid">
+    <div class="cell">
+      <h2 id="atom-h">The atom · pen and gcd readout</h2>
+      <p class="sub" id="atom-sub"></p>
+      <div class="opts">
+        <label>layout <select id="layout"><option value="cone" selected>cone (§9.7 embed radius law)</option><option value="helix">helical §9.7 (half-circle steps)</option><option value="helixline">helical §9.7, straight edges (as in the atom viewer)</option></select></label>
+        <label><input type="checkbox" id="showpen" checked> Rule 30 pen</label>
+        <label><input type="checkbox" id="fullpath"> full path, no fade (pen, gcd and lift)</label>
+        <label><input type="checkbox" id="showgcd" checked> gcd readout</label>
+        <label><input type="checkbox" id="alllab"> all labels</label>
+        <label><input type="checkbox" id="spin"> slow spin</label>
+        <label>drag <select id="dragmode"><option value="rotate" selected>rotate</option><option value="pan">pan</option></select></label>
+        <span class="zb" data-view="atm"><button data-z="in" title="zoom in">+</button><button data-z="out" title="zoom out">−</button><button data-z="reset" title="reset zoom and pan">reset</button></span>
+      </div>
+      <canvas id="cv-atm" width="560" height="560"></canvas>
+      <div class="read" id="r-atm"></div>
+    </div>
+    <div class="cell">
+      <h2 id="lift-h">The lift · the cover tiling</h2>
+      <p class="sub" id="lift-sub"></p>
+      <div class="opts">
+        <label>trail <select id="trail"><option value="12">12 steps</option><option value="40" selected>40 steps</option><option value="120">120 steps</option></select></label>
+        <label>drag <select id="liftdrag"><option value="move" selected>move through the geometry</option><option value="pan">pan the picture</option></select></label>
+        <span class="zb" data-view="lift"><button data-z="in" title="zoom in">+</button><button data-z="out" title="zoom out">−</button><button data-z="reset" title="reset zoom and pan">reset</button></span>
+        <label><input type="checkbox" id="tlab" checked> divisor on each tile</label>
+        <label id="sphv-l" style="display:none">sphere <select id="sphv"><option value="ball" selected>ball</option><option value="stereo">stereographic</option></select></label>
+      </div>
+      <canvas id="cv-lift" width="560" height="560"></canvas>
+      <div class="read" id="r-lift"></div>
+    </div>
+  </div>
+
+  <div class="cell" id="gear-cell" style="margin-top:12px">
+    <h2>Native FVLT prime wheels · one wheel per prime, in prime order</h2>
+    <p class="sub">A divisor is a setting of the wheels: wheel p shows how many times p divides it, so the wheel of p has a + 1 teeth when p<sup>a</sup> exactly divides N (two teeth, half a turn apart, for a squarefree N). Each pen step clicks one wheel by one tooth: forward multiplies by p, back divides by p. Left: the §9.7 sum built wheel by wheel. Each thick line is one prime's contribution (a chord of its wheel from tooth 0 to the current tooth); they chain from 1 (black) to the divisor (orange), its exact point in the helical layout. Thin lines are the wheel spokes. Right: each wheel on its own, tooth e of prime i at phase i/ω + e/(a+1) of a turn.</p>
+    <div class="opts"><label><input type="checkbox" id="showgear" checked> show the prime wheels</label> <span class="zb" data-view="gear"><button data-z="in" title="zoom in">+</button><button data-z="out" title="zoom out">−</button><button data-z="reset" title="reset zoom and pan">reset</button></span></div>
+    <div class="grid" id="gear-grid"><canvas id="cv-gear" width="560" height="560"></canvas><canvas id="cv-dials" width="560" height="560"></canvas></div>
+    <div class="read" id="r-gear"></div>
+    <details><summary>Move word (last 400 clicks; the current one is marked)</summary><div class="read" id="gear-moves" style="max-height:160px;overflow:auto"></div></details>
+  </div>
+
+  <details id="tbl"><summary>Step table (pen divisor, seat flipped, tile word length, gcd readout)</summary><div class="tw" id="steps"></div></details>
+  <details><summary>Checks</summary><div class="tw" id="checks"></div></details>
+
+  <div class="note" id="notes">
+    <p><b>Why the lift is exact.</b> The skin of a squarefree atom with w primes is built from squares on neighbouring seat pairs (i, i+1 mod w). Every vertex lies on w squares, so w right angles meet there. Its universal cover is the tiling by squares with w at each corner, {4,w}, whose dual is the tiling by right-angled regular w-gons, {w,4}. The tiles of {w,4} are the elements of the right-angled reflection group W<sub>w</sub>. A tile's parity vector (which reflections occur an odd number of times) is a divisor of N, and that is the covering map. A pen step that flips seat d lifts to g → g·r<sub>d</sub>. The page tracks g as a reduced word, so every count on the right is exact.</p>
+    <p><b>Curvature.</b> All angles in turns. Each square corner is a quarter turn, so w squares meet in w/4 turn: w = 4 is flat (1 turn), w = 5 and 6 are hyperbolic (5/4 and 3/2 turns), w = 3 is spherical (3/4 turn). Gauss–Bonnet in turns: the deficits (1 − edges/4) add up to χ, i.e. Σ(4 − edges) = 4χ in whole numbers. So χ = 0, −8, −32 for 210, 2310 and 30030 (genus 1, 5 and 17), and χ = 2 for 720 (a sphere).</p>
+    <p><b>Revisits.</b> When the pen returns to a divisor it has visited before, the lift either returns to a tile it has visited (a loop that closes in the cover, green) or lands on a new tile carrying the same divisor (the loop closes only because the surface is folded, orange).</p>
+    <p><b>Strained atoms (720, 720720).</b> The skin is the squarefree skin with every square on seats (i, i+1) cut into a<sub>i</sub> × a<sub>i+1</sub> small squares (profile_skin_v0_1). Cutting does not change the surface, so the cover is the same: the {4,6} tiling for 720720, the sphere itself for 720. A point of the lift is (tile, exponent vector); the tile changes by one reflection exactly when a coordinate reaches its top value or leaves it. In the cone layout, gcd jumps are drawn along the cone surface.</p>
+    <p><b>Pillow walks (two primes).</b> For Div(2<sup>a</sup>3<sup>b</sup>) the skin is the a × b rectangle of divisors doubled into a pillowcase, as in the atom viewer's default ("Double"). The pen walks the plane, turning a quarter turn every step (Rule 30 picks left or right), and the plane folds onto the pillowcase by half turns about the points (ka, lb). The four corners 1, 2<sup>a</sup>, 3<sup>b</sup>, N are cone points of half a turn; their deficits, half a turn each, add up to 2 = χ (a sphere). The unfolded plane walk is the same for every pillow atom, and it is also the lift of Div(210)'s flat torus; only the folding differs.</p>
+    <p><b>Curvature ladder.</b> The lift panel uses one construction for every atom: the right-angled reflection group of the seats, with each tile metrized as the all-right regular w-gon. w = 3 (Div(720)) gives octants of the round sphere, CAT(1); w = 4 (Div(210)) flat squares, CAT(0); w = 5, 6 (2310, 30030, 720720) right-angled hyperbolic pentagons and hexagons, CAT(−1). The flat-square skin of Div(720) itself is not CAT(1): around each of its 8 corners the total angle is 3/4 turn, so its link is shorter than one full turn, which CAT(1) forbids.</p>
+    <p><b>Moving through the lift (v0.7.4).</b> The view is held as a tile of the cover, written as an exact word from the pen's tile, plus a small map inside that tile; after every drag the anchor moves to the tile nearest the centre, so travel is unlimited. The pen and its trail are placed by exact words and drawn within 14 walls of the view (farther points sit on the rim anyway; a note says how far away the pen is). <b>Earlier:</b> In the lift panel, drag moves through the geometry itself: a hyperbolic translation in the Poincaré disk, a translation of the plane, a rotation of the sphere (ball view: drag turns the ball). The disk stays the disk and the tiles flow. Choose "pan the picture" (or hold shift) to slide the picture instead; reset returns to the pen.</p>
+    <p><b>Zoom and pan.</b> Mouse wheel or two-finger pinch zooms, drag pans (on the atom, drag rotates unless "drag: pan" is chosen or shift is held), reset restores the view. Zoom and pan only move the picture; no data or check depends on them.</p>
+    <p><b>Drawing choices.</b> In the helical layout one step flips one wheel, drawn as a half-circle of radius 1/2 (teeth move linearly, no wrap). The cone and the straight-edge helical layout draw steps as straight chords between the exact vertex positions. Tile edges in the lift are drawn as chords and the path as geodesics. The lift's frame turns with the pen. All of this is drawing only; every count comes from the exact paths and words.</p>
+  </div>
+</main>
+<script>
+const REF = {"tooth":[0,1,0,1,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,1,0,0,1,0,1,0,0,0,1,0,0,0,0,1,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,1,0,1,0,0,0,0,0,1,0,0,1,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,1,0,1,0,1,0,1,0,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0,1,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,1,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,0,1,0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,0,0,1,0,1,0,1,0,0,1,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,0,1,0,1,0,0,1,0,1,0,0,1,0,1,0,1,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0,0,1,0,0,0,0,1,0,1,0,0,0,1,0,0,1,0,1,0,0,1,0,0,1,0,0,0,0,0,1,0,1,0,1,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,1,0,1,0,0,0,1,0,0,0,0,1,0,0,1,0,1,0,1,0,0,0,0,0,1,0,0,1,0,0,1,0,1,0,0,0,1,0,0,0,0,1,0,1,0,0,0,1,0,0,0,0,0,0,1,0,0,1,0,0,1,0,0,0,1,0,0,0,0,1,0,1,0,1,0,1,0,0,1,0,1,0,0,1,0,0,0,0,1,0,0,0,0,0,0,1,0,1,0,0,1,0,0,0,0,0,1,0,1,0,0,1,0,0,1,0,0,0,0,1,0,0,0,1,0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,1,0,0,0,0,0,0,1,0,1,0,0,1,0,0,0],"surf":{"210":{"w":4,"labels":["1","7","5","35","3","21","15","105","2","14","10","70","6","42","30","210"],"path":[0,4,6,2,0,1,9,8,0,1,3,2,0,1,9,8,10,11,3,7,5,1,9,8,10,14,12,13,15,11,3,7,5,4,12,8,10,14,6,2,0,4,12,8,10,11,9,8,0,4,12,8,10,14,6,2,0,1,9,8,0,4,12,13,15,14,12,13,15,11,3,7,15,14,12,13,15,11,3,7,5,1,9,8,0,4,6,2,0,1,3,2,10,11,3,2,10,14,6,7,5,4,12,8,10,14,12,8,0,4,6,2,10,14,12,13,15,11,9,8,10,11,9,8,10,14,12,8,0,1,3,7,15,14,6,7,5,1,3,2,10,14,12,13,15,11,3,7,5,4,12,13,15,14,6,2,0,4,6,2,0,1,9,13,5,1,3,7,5,4,12,8,0,4,6,7,15,11,3,7,5,4,12,8,10,11,3,7,15,11,3,7,5,4,6,7,5,4,6,2,0,1,3,2,10,11,9,8,0,1,3,7,5,1,3,7,15,14,6,2,10,11,9,8,0,4,12,13,15,11,3,7,5,4,6,7,5,1,9,8,0,1,3,2,10,14,6,2,0,4,12,8,10,11,9,8,10,11,9,13,15,14,12,8,10,11,9,13,15,14,12,8,0,1,3,2,10,14,12,8,0,1,9,8,10,14,12,13,5,4,12,8,10,14,12,13,15,14,12,13,15,14,12,8,0,4,6,7,5,1,9,8,0,1,3,2,0,4,6,7,15,11,9,13,15,11,9,13,15,14,12,13,15,14,6,2,0,1,9,8,10,11,9,8,10,14,12,13,15,11,9,8,10,11,3,7,5,4,6,7,15,14,12,13,15,11,9,13,15,14,6,2,0,4,12,8,0,4,6,7,5,1,3,2,10,11,3,7,15,11,9,13,15,14,12,8,0,1,9,13,5,4,6,2,10,14,6,2,0,1,3,7,5,4,12,13,15,14,6,7,5,1,9,8,0,1,3,7,5,1,3,2,10,14,12,13,15,11,3,2,0,1,9,8,0,1,9,8,0,1,3,7,15,11,9,13,5,4,6,7,15,11,9,8,0,1,9,8,0,1,3,2,10,11,3,2,0,4,12,13,5,4,12,13,15,14,12,13,5,1,9,13,15,11,3,7,15,14,12,13,15,11,3,7,5,4,12,8,10,14,12,8,10],"helical":[[0.0,0.0,0.0],[0.0,1.0,1.0],[1.0,-0.0,1.0],[1.0,1.0,2.0],[-0.0,-1.0,1.0],[0.0,0.0,2.0],[1.0,-1.0,2.0],[1.0,-0.0,3.0],[-1.0,0.0,1.0],[-1.0,1.0,2.0],[0.0,-0.0,2.0],[0.0,1.0,3.0],[-1.0,-1.0,2.0],[-1.0,0.0,3.0],[-0.0,-1.0,3.0],[0.0,0.0,4.0]],"stacks_expected":null},"2310":{"w":5,"labels":["1","11","7","77","5","55","35","385","3","33","21","231","15","165","105","1155","2","22","14","154","10","110","70","770","6","66","42","462","30","330","210","2310"],"path":[0,8,12,4,0,2,3,1,0,2,6,4,0,2,3,1,5,7,6,22,30,14,15,13,9,1,5,7,3,11,27,19,23,21,20,4,12,28,29,13,5,21,20,4,12,8,0,4,6,7,5,4,20,21,23,22,6,14,10,2,6,4,0,8,24,16,0,8,24,25,27,26,24,28,20,16,24,8,9,25,17,1,0,2,3,19,27,11,3,7,15,11,9,13,15,11,9,8,10,14,6,2,0,1,17,16,0,1,3,2,18,19,17,16,0,8,24,25,9,1,17,25,9,1,17,16,0,1,3,7,15,31,30,28,29,31,27,19,23,21,20,4,12,8,0,16,17,1,9,13,15,11,3,7,5,4,20,21,5,4,20,28,24,26,30,28,29,31,30,14,6,2,10,14,12,13,29,21,5,13,9,11,10,26,18,22,20,21,23,22,20,21,5,13,29,21,5,13,29,28,12,4,20,28,24,16,0,8,12,4,20,21,5,4,20,21,23,19,17,16,18,22,30,26,24,25,27,31,23,7,6,22,30,26,18,22,30,14,15,13,12,14,10,8,9,25,24,8,0,16,17,1,9,13,5,1,9,13,5,21,29,25,17,1,9,13,5,21,29,25,17,1,0,2,6,4,5,21,29,13,12,14,15,13,9,1,5,7,6,4,5,21,29,13,5,1,9,13,5,1,9,13,5,21,20,4,12,8,0,16,17,19,18,16,20,22,18,26,30,28,29,13,5,21,29,13,5,21,29,25,17,21,29,25,27,26,10,2,6,14,30,22,6,14,30,31,15,7,23,22,6,14,30,22,18,16,17,1,0,16,24,8,9,25,24,26,27,25,24,8,0,4,6,2,10,14,6,2,0,1,3,7,5,4,20,21,5,13,29,21,17,25,29,31,27,19,3,2,18,26,10,11,9,13,5,1,9,13,15,14,12,8,10,11,27,26,24,25,9,8,10,14,6,22,30,14,15,13,12,14,15,31,23,19,17,16,18,22,30,14,15,31,23,7,15,31,23,7,15,31,30,28,24,26,27,25,29,21,5,13,9,11,10,26,18,2,10,26,18,2,3,19,27,11,3,19,18,16,20,28,24,16,20,28,12,4,20,28,24,26,30,28,29,31,27,25,29,21,5,13,29,28,30,31,15,7,3,1,0,2,3,1,0],"helical":[[0.0,0.0,0.0],[-0.309016994375,0.951056516295,1.0],[0.809016994375,0.587785252292,1.0],[0.5,1.538841768588,2.0],[0.809016994375,-0.587785252292,1.0],[0.5,0.363271264003,2.0],[1.61803398875,-0.0,2.0],[1.309016994375,0.951056516295,3.0],[-0.309016994375,-0.951056516295,1.0],[-0.61803398875,0.0,2.0],[0.5,-0.363271264003,2.0],[0.190983005625,0.587785252292,3.0],[0.5,-1.538841768588,2.0],[0.190983005625,-0.587785252292,3.0],[1.309016994375,-0.951056516295,3.0],[1.0,-0.0,4.0],[-1.0,0.0,1.0],[-1.309016994375,0.951056516295,2.0],[-0.190983005625,0.587785252292,2.0],[-0.5,1.538841768588,3.0],[-0.190983005625,-0.587785252292,2.0],[-0.5,0.363271264003,3.0],[0.61803398875,-0.0,3.0],[0.309016994375,0.951056516295,4.0],[-1.309016994375,-0.951056516295,2.0],[-1.61803398875,0.0,3.0],[-0.5,-0.363271264003,3.0],[-0.809016994375,0.587785252292,4.0],[-0.5,-1.538841768588,3.0],[-0.809016994375,-0.587785252292,4.0],[0.309016994375,-0.951056516295,4.0],[0.0,-0.0,5.0]],"stacks_expected":null},"30030":{"w":6,"labels":["1","13","11","143","7","91","77","1001","5","65","55","715","35","455","385","5005","3","39","33","429","21","273","231","3003","15","195","165","2145","105","1365","1155","15015","2","26","22","286","14","182","154","2002","10","130","110","1430","70","910","770","10010","6","78","66","858","42","546","462","6006","30","390","330","4290","210","2730","2310","30030"],"path":[0,16,24,8,0,4,6,2,0,4,12,8,0,4,6,2,10,14,12,13,45,44,46,42,34,50,58,62,54,38,6,22,30,26,24,25,57,56,58,59,27,26,24,25,57,41,9,25,17,21,29,25,27,31,23,19,17,16,48,49,17,1,33,32,34,35,33,32,34,38,46,42,34,50,18,2,34,35,33,32,0,1,3,7,5,4,36,37,5,21,53,37,45,61,53,37,45,41,33,49,17,1,9,13,15,11,9,13,5,1,3,7,15,11,9,8,10,14,12,13,15,14,12,13,15,11,9,13,5,21,53,52,54,50,48,52,60,44,36,32,34,35,3,19,51,50,48,49,17,1,9,25,57,41,33,37,39,35,33,37,39,38,6,22,54,38,46,62,54,50,48,49,51,50,18,2,10,14,6,2,0,1,33,49,57,61,63,62,60,61,63,62,30,14,46,62,30,14,46,47,15,31,63,47,39,55,23,7,15,31,63,62,30,31,63,62,60,56,58,59,57,61,53,49,51,50,48,52,60,44,12,28,20,16,24,28,20,4,36,37,5,4,6,7,39,55,23,7,15,31,63,47,39,35,43,47,39,35,43,59,51,55,63,47,39,35,43,59,51,55,63,47,15,14,12,13,45,61,53,37,5,4,36,37,39,35,33,32,0,1,33,49,57,41,33,37,45,41,33,37,45,41,33,49,17,1,9,13,5,21,53,52,20,21,23,22,20,16,18,19,51,35,43,59,51,35,43,59,51,55,63,59,51,55,53,52,20,4,12,28,60,44,12,28,60,61,29,13,45,44,12,28,60,44,36,32,34,35,33,32,0,1,3,2,0,4,6,2,0,1,33,49,57,41,9,25,57,41,33,37,45,61,53,49,51,55,53,52,54,55,23,22,54,38,6,7,5,1,3,2,0,4,12,28,60,44,12,28,20,16,24,8,0,4,6,2,10,14,12,8,0,16,48,49,17,16,18,22,20,16,18,19,51,35,43,47,39,55,23,22,20,21,53,52,20,21,53,52,20,21,23,19,27,31,29,25,17,1,33,49,57,61,63,62,30,31,63,62,30,31,29,28,60,61,29,28,30,26,18,2,10,26,18,2,34,50,18,2,10,14,6,2,0,4,12,8,0,16,48,32,0,1,3,2,34,50,58,62,60,56,58,62,60],"helical":[[0.0,0.0,0.0],[-0.5,0.866025403784,1.0],[0.5,0.866025403784,1.0],[0.0,1.732050807569,2.0],[1.0,-0.0,1.0],[0.5,0.866025403784,2.0],[1.5,0.866025403784,2.0],[1.0,1.732050807569,3.0],[0.5,-0.866025403784,1.0],[-0.0,-0.0,2.0],[1.0,-0.0,2.0],[0.5,0.866025403784,3.0],[1.5,-0.866025403784,2.0],[1.0,-0.0,3.0],[2.0,-0.0,3.0],[1.5,0.866025403784,4.0],[-0.5,-0.866025403784,1.0],[-1.0,-0.0,2.0],[0.0,-0.0,2.0],[-0.5,0.866025403784,3.0],[0.5,-0.866025403784,2.0],[-0.0,-0.0,3.0],[1.0,-0.0,3.0],[0.5,0.866025403784,4.0],[-0.0,-1.732050807569,2.0],[-0.5,-0.866025403784,3.0],[0.5,-0.866025403784,3.0],[-0.0,-0.0,4.0],[1.0,-1.732050807569,3.0],[0.5,-0.866025403784,4.0],[1.5,-0.866025403784,4.0],[1.0,-0.0,5.0],[-1.0,0.0,1.0],[-1.5,0.866025403784,2.0],[-0.5,0.866025403784,2.0],[-1.0,1.732050807569,3.0],[0.0,-0.0,2.0],[-0.5,0.866025403784,3.0],[0.5,0.866025403784,3.0],[0.0,1.732050807569,4.0],[-0.5,-0.866025403784,2.0],[-1.0,-0.0,3.0],[0.0,-0.0,3.0],[-0.5,0.866025403784,4.0],[0.5,-0.866025403784,3.0],[-0.0,-0.0,4.0],[1.0,-0.0,4.0],[0.5,0.866025403784,5.0],[-1.5,-0.866025403784,2.0],[-2.0,-0.0,3.0],[-1.0,-0.0,3.0],[-1.5,0.866025403784,4.0],[-0.5,-0.866025403784,3.0],[-1.0,-0.0,4.0],[0.0,-0.0,4.0],[-0.5,0.866025403784,5.0],[-1.0,-1.732050807569,3.0],[-1.5,-0.866025403784,4.0],[-0.5,-0.866025403784,4.0],[-1.0,-0.0,5.0],[-0.0,-1.732050807569,4.0],[-0.5,-0.866025403784,5.0],[0.5,-0.866025403784,5.0],[-0.0,-0.0,6.0]],"stacks_expected":null}}};
+const EXPECT = {"210":{"N":210,"w":4,"steps":512,"single_flip":true,"turns_adjacent":"512/512","cover_map_ok":true,"distinct_skin":16,"V":16,"distinct_lift":219,"skin_returns_to_start":36,"lift_returns_to_start":3,"revisits_true_loop":294,"revisits_folded":203,"final_word_len":22,"max_word_len":30},"2310":{"N":2310,"w":5,"steps":512,"single_flip":true,"turns_adjacent":"512/512","cover_map_ok":true,"distinct_skin":32,"V":32,"distinct_lift":369,"skin_returns_to_start":21,"lift_returns_to_start":3,"revisits_true_loop":144,"revisits_folded":337,"final_word_len":150,"max_word_len":150},"30030":{"N":30030,"w":6,"steps":512,"single_flip":true,"turns_adjacent":"512/512","cover_map_ok":true,"distinct_skin":63,"V":64,"distinct_lift":379,"skin_returns_to_start":15,"lift_returns_to_start":3,"revisits_true_loop":134,"revisits_folded":316,"final_word_len":158,"max_word_len":158}};
+
+const GEAR = {"720":{"labels":[1,3,15,5,1,2,6,3,1,2,10,5,1,2,6,3,9,18,90,180,60,30,10,5,1,3,15,45,9,18,6,3,1,5,10,30,60,20,40,120,240,80,16,48,24,72,144,48,240,80,16,48,24,8,4,12,6,18,9,3,6,2,1,5,15,3,1,5,15,30,90,45,15,3,1,5,15,30,90,45,9,18,6,12,36,72,360,180,36,18,90,180,60,30,90,180,60,120,360,720,144,72,24,12,4,8,24,12,36,72,360,180,60,120,40,80,240,48,16,8,24,48,16,8,24,12,4,8,40,80,240,48,144,72,24,48,16,80,240,120,360,180,36,18,90,45,15,30,10,20,4,2,6,12,36,72,360,180,36,72,360,720,240,48,144,720,360,72,144,48,240,80,16,48,24,72,36,180,360,72,144,48,240,80,40,8,4,12,24,8,4,12,6,18,36,12,6,18,36,180,90,30,60,180,360,120,240,720,144,48,24,8,16,48,24,8,4,20,40,120,60,180,90,30,15,5,10,2,4,12,24,8,16,80,40,8,16,48,240,720,144,48,24,72,36,180,360,72,144,720,240,48,16,8,24,48,16,8,24,12,4,2,6,3,1,5,15,30,10,20,60,120,360,720,144,72,24,12,4,8,40,80,16,8,24,12,4,2,10,20,4,8,24,12,4,2,6,12,4,2,6,12,4,8,40,20,60,30,10,5,1,3,15,5,10,30,15,45,90,18,36,12,24,72,36,12,24,72,36,180,360,72,36,180,90,30,15,5,1,3,6,2,1,3,6,18,9,45,90,30,15,5,10,30,60,180,360,72,36,180,90,18,9,45,90,30,15,45,90,18,36,12,24,72,144,48,24,72,36,180,360,120,60,20,10,30,60,180,90,30,15,45,90,18,9,3,15,5,1,2,10,20,60,120,360,180,60,120,40,80,240,48,16,8,40,80,240,120,360,720,144,48,24,8,16,48,240,720,144,48,240,80,40,8,4,12,24,72,144,720,240,48,16,80,240,48,16,80,240,48,144,72,360,720,240,120,40,20,4,8,24,48,144,720,360,72,144,720,360,72,36,180,90,18,36,180,360,120,240,80,40,120,240,80,16,48,240,80,40,8,16,80,240,48,144,720,240,120,40,80,240,48,144,720,360,120,60,20,10,30,60,20,10],"phases_turns":[["0","1/3","2/3"],["0","2/3","2/3"],["0","2/3","1/6"],["0","1/3","1/6"],["0","1/3","2/3"],["1/5","1/3","2/3"],["1/5","2/3","2/3"],["0","2/3","2/3"],["0","1/3","2/3"],["1/5","1/3","2/3"],["1/5","1/3","1/6"],["0","1/3","1/6"],["0","1/3","2/3"],["1/5","1/3","2/3"],["1/5","2/3","2/3"],["0","2/3","2/3"],["0","0","2/3"],["1/5","0","2/3"],["1/5","0","1/6"],["2/5","0","1/6"],["2/5","2/3","1/6"],["1/5","2/3","1/6"],["1/5","1/3","1/6"],["0","1/3","1/6"],["0","1/3","2/3"],["0","2/3","2/3"],["0","2/3","1/6"],["0","0","1/6"],["0","0","2/3"],["1/5","0","2/3"],["1/5","2/3","2/3"],["0","2/3","2/3"],["0","1/3","2/3"],["0","1/3","1/6"],["1/5","1/3","1/6"],["1/5","2/3","1/6"],["2/5","2/3","1/6"],["2/5","1/3","1/6"],["3/5","1/3","1/6"],["3/5","2/3","1/6"],["4/5","2/3","1/6"],["4/5","1/3","1/6"],["4/5","1/3","2/3"],["4/5","2/3","2/3"],["3/5","2/3","2/3"],["3/5","0","2/3"],["4/5","0","2/3"],["4/5","2/3","2/3"],["4/5","2/3","1/6"],["4/5","1/3","1/6"],["4/5","1/3","2/3"],["4/5","2/3","2/3"],["3/5","2/3","2/3"],["3/5","1/3","2/3"],["2/5","1/3","2/3"],["2/5","2/3","2/3"],["1/5","2/3","2/3"],["1/5","0","2/3"],["0","0","2/3"],["0","2/3","2/3"],["1/5","2/3","2/3"],["1/5","1/3","2/3"],["0","1/3","2/3"],["0","1/3","1/6"],["0","2/3","1/6"],["0","2/3","2/3"],["0","1/3","2/3"],["0","1/3","1/6"],["0","2/3","1/6"],["1/5","2/3","1/6"],["1/5","0","1/6"],["0","0","1/6"],["0","2/3","1/6"],["0","2/3","2/3"],["0","1/3","2/3"],["0","1/3","1/6"],["0","2/3","1/6"],["1/5","2/3","1/6"],["1/5","0","1/6"],["0","0","1/6"],["0","0","2/3"],["1/5","0","2/3"],["1/5","2/3","2/3"],["2/5","2/3","2/3"],["2/5","0","2/3"],["3/5","0","2/3"],["3/5","0","1/6"],["2/5","0","1/6"],["2/5","0","2/3"],["1/5","0","2/3"],["1/5","0","1/6"],["2/5","0","1/6"],["2/5","2/3","1/6"],["1/5","2/3","1/6"],["1/5","0","1/6"],["2/5","0","1/6"],["2/5","2/3","1/6"],["3/5","2/3","1/6"],["3/5","0","1/6"],["4/5","0","1/6"],["4/5","0","2/3"],["3/5","0","2/3"],["3/5","2/3","2/3"],["2/5","2/3","2/3"],["2/5","1/3","2/3"],["3/5","1/3","2/3"],["3/5","2/3","2/3"],["2/5","2/3","2/3"],["2/5","0","2/3"],["3/5","0","2/3"],["3/5","0","1/6"],["2/5","0","1/6"],["2/5","2/3","1/6"],["3/5","2/3","1/6"],["3/5","1/3","1/6"],["4/5","1/3","1/6"],["4/5","2/3","1/6"],["4/5","2/3","2/3"],["4/5","1/3","2/3"],["3/5","1/3","2/3"],["3/5","2/3","2/3"],["4/5","2/3","2/3"],["4/5","1/3","2/3"],["3/5","1/3","2/3"],["3/5","2/3","2/3"],["2/5","2/3","2/3"],["2/5","1/3","2/3"],["3/5","1/3","2/3"],["3/5","1/3","1/6"],["4/5","1/3","1/6"],["4/5","2/3","1/6"],["4/5","2/3","2/3"],["4/5","0","2/3"],["3/5","0","2/3"],["3/5","2/3","2/3"],["4/5","2/3","2/3"],["4/5","1/3","2/3"],["4/5","1/3","1/6"],["4/5","2/3","1/6"],["3/5","2/3","1/6"],["3/5","0","1/6"],["2/5","0","1/6"],["2/5","0","2/3"],["1/5","0","2/3"],["1/5","0","1/6"],["0","0","1/6"],["0","2/3","1/6"],["1/5","2/3","1/6"],["1/5","1/3","1/6"],["2/5","1/3","1/6"],["2/5","1/3","2/3"],["1/5","1/3","2/3"],["1/5","2/3","2/3"],["2/5","2/3","2/3"],["2/5","0","2/3"],["3/5","0","2/3"],["3/5","0","1/6"],["2/5","0","1/6"],["2/5","0","2/3"],["3/5","0","2/3"],["3/5","0","1/6"],["4/5","0","1/6"],["4/5","2/3","1/6"],["4/5","2/3","2/3"],["4/5","0","2/3"],["4/5","0","1/6"],["3/5","0","1/6"],["3/5","0","2/3"],["4/5","0","2/3"],["4/5","2/3","2/3"],["4/5","2/3","1/6"],["4/5","1/3","1/6"],["4/5","1/3","2/3"],["4/5","2/3","2/3"],["3/5","2/3","2/3"],["3/5","0","2/3"],["2/5","0","2/3"],["2/5","0","1/6"],["3/5","0","1/6"],["3/5","0","2/3"],["4/5","0","2/3"],["4/5","2/3","2/3"],["4/5","2/3","1/6"],["4/5","1/3","1/6"],["3/5","1/3","1/6"],["3/5","1/3","2/3"],["2/5","1/3","2/3"],["2/5","2/3","2/3"],["3/5","2/3","2/3"],["3/5","1/3","2/3"],["2/5","1/3","2/3"],["2/5","2/3","2/3"],["1/5","2/3","2/3"],["1/5","0","2/3"],["2/5","0","2/3"],["2/5","2/3","2/3"],["1/5","2/3","2/3"],["1/5","0","2/3"],["2/5","0","2/3"],["2/5","0","1/6"],["1/5","0","1/6"],["1/5","2/3","1/6"],["2/5","2/3","1/6"],["2/5","0","1/6"],["3/5","0","1/6"],["3/5","2/3","1/6"],["4/5","2/3","1/6"],["4/5","0","1/6"],["4/5","0","2/3"],["4/5","2/3","2/3"],["3/5","2/3","2/3"],["3/5","1/3","2/3"],["4/5","1/3","2/3"],["4/5","2/3","2/3"],["3/5","2/3","2/3"],["3/5","1/3","2/3"],["2/5","1/3","2/3"],["2/5","1/3","1/6"],["3/5","1/3","1/6"],["3/5","2/3","1/6"],["2/5","2/3","1/6"],["2/5","0","1/6"],["1/5","0","1/6"],["1/5","2/3","1/6"],["0","2/3","1/6"],["0","1/3","1/6"],["1/5","1/3","1/6"],["1/5","1/3","2/3"],["2/5","1/3","2/3"],["2/5","2/3","2/3"],["3/5","2/3","2/3"],["3/5","1/3","2/3"],["4/5","1/3","2/3"],["4/5","1/3","1/6"],["3/5","1/3","1/6"],["3/5","1/3","2/3"],["4/5","1/3","2/3"],["4/5","2/3","2/3"],["4/5","2/3","1/6"],["4/5","0","1/6"],["4/5","0","2/3"],["4/5","2/3","2/3"],["3/5","2/3","2/3"],["3/5","0","2/3"],["2/5","0","2/3"],["2/5","0","1/6"],["3/5","0","1/6"],["3/5","0","2/3"],["4/5","0","2/3"],["4/5","0","1/6"],["4/5","2/3","1/6"],["4/5","2/3","2/3"],["4/5","1/3","2/3"],["3/5","1/3","2/3"],["3/5","2/3","2/3"],["4/5","2/3","2/3"],["4/5","1/3","2/3"],["3/5","1/3","2/3"],["3/5","2/3","2/3"],["2/5","2/3","2/3"],["2/5","1/3","2/3"],["1/5","1/3","2/3"],["1/5","2/3","2/3"],["0","2/3","2/3"],["0","1/3","2/3"],["0","1/3","1/6"],["0","2/3","1/6"],["1/5","2/3","1/6"],["1/5","1/3","1/6"],["2/5","1/3","1/6"],["2/5","2/3","1/6"],["3/5","2/3","1/6"],["3/5","0","1/6"],["4/5","0","1/6"],["4/5","0","2/3"],["3/5","0","2/3"],["3/5","2/3","2/3"],["2/5","2/3","2/3"],["2/5","1/3","2/3"],["3/5","1/3","2/3"],["3/5","1/3","1/6"],["4/5","1/3","1/6"],["4/5","1/3","2/3"],["3/5","1/3","2/3"],["3/5","2/3","2/3"],["2/5","2/3","2/3"],["2/5","1/3","2/3"],["1/5","1/3","2/3"],["1/5","1/3","1/6"],["2/5","1/3","1/6"],["2/5","1/3","2/3"],["3/5","1/3","2/3"],["3/5","2/3","2/3"],["2/5","2/3","2/3"],["2/5","1/3","2/3"],["1/5","1/3","2/3"],["1/5","2/3","2/3"],["2/5","2/3","2/3"],["2/5","1/3","2/3"],["1/5","1/3","2/3"],["1/5","2/3","2/3"],["2/5","2/3","2/3"],["2/5","1/3","2/3"],["3/5","1/3","2/3"],["3/5","1/3","1/6"],["2/5","1/3","1/6"],["2/5","2/3","1/6"],["1/5","2/3","1/6"],["1/5","1/3","1/6"],["0","1/3","1/6"],["0","1/3","2/3"],["0","2/3","2/3"],["0","2/3","1/6"],["0","1/3","1/6"],["1/5","1/3","1/6"],["1/5","2/3","1/6"],["0","2/3","1/6"],["0","0","1/6"],["1/5","0","1/6"],["1/5","0","2/3"],["2/5","0","2/3"],["2/5","2/3","2/3"],["3/5","2/3","2/3"],["3/5","0","2/3"],["2/5","0","2/3"],["2/5","2/3","2/3"],["3/5","2/3","2/3"],["3/5","0","2/3"],["2/5","0","2/3"],["2/5","0","1/6"],["3/5","0","1/6"],["3/5","0","2/3"],["2/5","0","2/3"],["2/5","0","1/6"],["1/5","0","1/6"],["1/5","2/3","1/6"],["0","2/3","1/6"],["0","1/3","1/6"],["0","1/3","2/3"],["0","2/3","2/3"],["1/5","2/3","2/3"],["1/5","1/3","2/3"],["0","1/3","2/3"],["0","2/3","2/3"],["1/5","2/3","2/3"],["1/5","0","2/3"],["0","0","2/3"],["0","0","1/6"],["1/5","0","1/6"],["1/5","2/3","1/6"],["0","2/3","1/6"],["0","1/3","1/6"],["1/5","1/3","1/6"],["1/5","2/3","1/6"],["2/5","2/3","1/6"],["2/5","0","1/6"],["3/5","0","1/6"],["3/5","0","2/3"],["2/5","0","2/3"],["2/5","0","1/6"],["1/5","0","1/6"],["1/5","0","2/3"],["0","0","2/3"],["0","0","1/6"],["1/5","0","1/6"],["1/5","2/3","1/6"],["0","2/3","1/6"],["0","0","1/6"],["1/5","0","1/6"],["1/5","0","2/3"],["2/5","0","2/3"],["2/5","2/3","2/3"],["3/5","2/3","2/3"],["3/5","0","2/3"],["4/5","0","2/3"],["4/5","2/3","2/3"],["3/5","2/3","2/3"],["3/5","0","2/3"],["2/5","0","2/3"],["2/5","0","1/6"],["3/5","0","1/6"],["3/5","2/3","1/6"],["2/5","2/3","1/6"],["2/5","1/3","1/6"],["1/5","1/3","1/6"],["1/5","2/3","1/6"],["2/5","2/3","1/6"],["2/5","0","1/6"],["1/5","0","1/6"],["1/5","2/3","1/6"],["0","2/3","1/6"],["0","0","1/6"],["1/5","0","1/6"],["1/5","0","2/3"],["0","0","2/3"],["0","2/3","2/3"],["0","2/3","1/6"],["0","1/3","1/6"],["0","1/3","2/3"],["1/5","1/3","2/3"],["1/5","1/3","1/6"],["2/5","1/3","1/6"],["2/5","2/3","1/6"],["3/5","2/3","1/6"],["3/5","0","1/6"],["2/5","0","1/6"],["2/5","2/3","1/6"],["3/5","2/3","1/6"],["3/5","1/3","1/6"],["4/5","1/3","1/6"],["4/5","2/3","1/6"],["4/5","2/3","2/3"],["4/5","1/3","2/3"],["3/5","1/3","2/3"],["3/5","1/3","1/6"],["4/5","1/3","1/6"],["4/5","2/3","1/6"],["3/5","2/3","1/6"],["3/5","0","1/6"],["4/5","0","1/6"],["4/5","0","2/3"],["4/5","2/3","2/3"],["3/5","2/3","2/3"],["3/5","1/3","2/3"],["4/5","1/3","2/3"],["4/5","2/3","2/3"],["4/5","2/3","1/6"],["4/5","0","1/6"],["4/5","0","2/3"],["4/5","2/3","2/3"],["4/5","2/3","1/6"],["4/5","1/3","1/6"],["3/5","1/3","1/6"],["3/5","1/3","2/3"],["2/5","1/3","2/3"],["2/5","2/3","2/3"],["3/5","2/3","2/3"],["3/5","0","2/3"],["4/5","0","2/3"],["4/5","0","1/6"],["4/5","2/3","1/6"],["4/5","2/3","2/3"],["4/5","1/3","2/3"],["4/5","1/3","1/6"],["4/5","2/3","1/6"],["4/5","2/3","2/3"],["4/5","1/3","2/3"],["4/5","1/3","1/6"],["4/5","2/3","1/6"],["4/5","2/3","2/3"],["4/5","0","2/3"],["3/5","0","2/3"],["3/5","0","1/6"],["4/5","0","1/6"],["4/5","2/3","1/6"],["3/5","2/3","1/6"],["3/5","1/3","1/6"],["2/5","1/3","1/6"],["2/5","1/3","2/3"],["3/5","1/3","2/3"],["3/5","2/3","2/3"],["4/5","2/3","2/3"],["4/5","0","2/3"],["4/5","0","1/6"],["3/5","0","1/6"],["3/5","0","2/3"],["4/5","0","2/3"],["4/5","0","1/6"],["3/5","0","1/6"],["3/5","0","2/3"],["2/5","0","2/3"],["2/5","0","1/6"],["1/5","0","1/6"],["1/5","0","2/3"],["2/5","0","2/3"],["2/5","0","1/6"],["3/5","0","1/6"],["3/5","2/3","1/6"],["4/5","2/3","1/6"],["4/5","1/3","1/6"],["3/5","1/3","1/6"],["3/5","2/3","1/6"],["4/5","2/3","1/6"],["4/5","1/3","1/6"],["4/5","1/3","2/3"],["4/5","2/3","2/3"],["4/5","2/3","1/6"],["4/5","1/3","1/6"],["3/5","1/3","1/6"],["3/5","1/3","2/3"],["4/5","1/3","2/3"],["4/5","1/3","1/6"],["4/5","2/3","1/6"],["4/5","2/3","2/3"],["4/5","0","2/3"],["4/5","0","1/6"],["4/5","2/3","1/6"],["3/5","2/3","1/6"],["3/5","1/3","1/6"],["4/5","1/3","1/6"],["4/5","2/3","1/6"],["4/5","2/3","2/3"],["4/5","0","2/3"],["4/5","0","1/6"],["3/5","0","1/6"],["3/5","2/3","1/6"],["2/5","2/3","1/6"],["2/5","1/3","1/6"],["1/5","1/3","1/6"],["1/5","2/3","1/6"],["2/5","2/3","1/6"],["2/5","1/3","1/6"],["1/5","1/3","1/6"]]},"720720":{"labels":[1,3,15,5,1,7,77,11,1,7,35,5,1,7,77,11,55,385,35,455,910,70,140,420,840,2520,1260,16380,32760,10920,21840,65520,13104,1872,20592,1584,792,10296,5148,396,198,2574,1287,99,9,63,693,99,495,165,33,99,198,66,132,396,792,10296,20592,1584,792,264,528,176,880,2640,528,176,880,6160,560,80,880,11440,5720,440,880,2640,528,176,88,264,132,396,792,10296,20592,1584,792,264,528,1584,7920,2640,528,1584,7920,55440,11088,3696,1848,5544,2772,36036,18018,1386,2772,36036,72072,5544,11088,144144,13104,1008,504,168,336,112,56,728,1456,112,56,728,1456,4368,2184,728,364,28,14,42,21,63,126,42,84,28,14,182,91,273,1365,4095,819,117,1287,9009,45045,15015,30030,90090,180180,60060,120120,40040,80080,240240,120120,40040,80080,6160,560,80,880,6160,1232,176,880,2640,1320,3960,7920,2640,528,176,88,1144,2288,176,16,112,560,1680,840,2520,1260,16380,32760,2520,1260,16380,8190,2730,5460,16380,8190,2730,5460,1820,910,70,140,1820,3640,280,560,7280,80080,6160,3080,9240,18480,6160,3080,9240,4620,13860,27720,360360,180180,60060,30030,90090,45045,3465,6930,2310,4620,1540,3080,9240,18480,55440,27720,9240,18480,6160,1232,176,880,6160,560,80,16,48,240,80,40,120,60,20,10,130,260,20,10,130,260,780,390,1170,2340,180,90,30,60,20,10,130,260,780,1560,4680,9360,3120,624,208,104,312,156,468,936,312,624,208,104,8,4,52,104,312,624,208,104,8,16,208,104,8,16,208,104,312,156,52,26,2,4,12,24,72,36,12,6,18,36,468,234,78,39,13,65,195,39,13,65,195,39,117,585,195,39,117,234,18,36,12,24,72,144,48,24,72,144,1872,936,312,624,208,104,8,16,208,2288,16016,80080,240240,48048,16016,8008,24024,12012,4004,8008,616,308,4004,8008,24024,48048,144144,720720,240240,120120,360360,720720,240240,48048,16016,80080,11440,2288,6864,3432,1144,2288,176,88,1144,572,44,88,264,132,396,198,2574,5148,1716,858,286,143,11,1,13,143,11,22,66,33,99,198,2574,5148,396,792,10296,20592,1584,144,1008,5040,1680,336,1008,504,6552,13104,1008,504,168,84,28,14,182,364,1092,2184,6552,13104,4368,21840,65520,13104,4368,21840,65520,13104,4368,2184,728,364,1092,546,182,91,7,77,1001,2002,6006,12012,36036,72072,24024,12012,36036,72072,24024,48048,144144,720720,240240,48048,144144,72072,5544,2772,924,1848,5544,2772,924,462,1386,2772,924,1848,616,308,924,462,154,77,231,462,1386,2772,924,462,154,77,231,1155,3465,6930,90090,180180,13860,6930,90090,180180],"phases_turns":[["0","1/6","1/3","1/2","2/3","5/6"],["0","1/2","1/3","1/2","2/3","5/6"],["0","1/2","5/6","1/2","2/3","5/6"],["0","1/6","5/6","1/2","2/3","5/6"],["0","1/6","1/3","1/2","2/3","5/6"],["0","1/6","1/3","0","2/3","5/6"],["0","1/6","1/3","0","1/6","5/6"],["0","1/6","1/3","1/2","1/6","5/6"],["0","1/6","1/3","1/2","2/3","5/6"],["0","1/6","1/3","0","2/3","5/6"],["0","1/6","5/6","0","2/3","5/6"],["0","1/6","5/6","1/2","2/3","5/6"],["0","1/6","1/3","1/2","2/3","5/6"],["0","1/6","1/3","0","2/3","5/6"],["0","1/6","1/3","0","1/6","5/6"],["0","1/6","1/3","1/2","1/6","5/6"],["0","1/6","5/6","1/2","1/6","5/6"],["0","1/6","5/6","0","1/6","5/6"],["0","1/6","5/6","0","2/3","5/6"],["0","1/6","5/6","0","2/3","1/3"],["1/5","1/6","5/6","0","2/3","1/3"],["1/5","1/6","5/6","0","2/3","5/6"],["2/5","1/6","5/6","0","2/3","5/6"],["2/5","1/2","5/6","0","2/3","5/6"],["3/5","1/2","5/6","0","2/3","5/6"],["3/5","5/6","5/6","0","2/3","5/6"],["2/5","5/6","5/6","0","2/3","5/6"],["2/5","5/6","5/6","0","2/3","1/3"],["3/5","5/6","5/6","0","2/3","1/3"],["3/5","1/2","5/6","0","2/3","1/3"],["4/5","1/2","5/6","0","2/3","1/3"],["4/5","5/6","5/6","0","2/3","1/3"],["4/5","5/6","1/3","0","2/3","1/3"],["4/5","5/6","1/3","1/2","2/3","1/3"],["4/5","5/6","1/3","1/2","1/6","1/3"],["4/5","5/6","1/3","1/2","1/6","5/6"],["3/5","5/6","1/3","1/2","1/6","5/6"],["3/5","5/6","1/3","1/2","1/6","1/3"],["2/5","5/6","1/3","1/2","1/6","1/3"],["2/5","5/6","1/3","1/2","1/6","5/6"],["1/5","5/6","1/3","1/2","1/6","5/6"],["1/5","5/6","1/3","1/2","1/6","1/3"],["0","5/6","1/3","1/2","1/6","1/3"],["0","5/6","1/3","1/2","1/6","5/6"],["0","5/6","1/3","1/2","2/3","5/6"],["0","5/6","1/3","0","2/3","5/6"],["0","5/6","1/3","0","1/6","5/6"],["0","5/6","1/3","1/2","1/6","5/6"],["0","5/6","5/6","1/2","1/6","5/6"],["0","1/2","5/6","1/2","1/6","5/6"],["0","1/2","1/3","1/2","1/6","5/6"],["0","5/6","1/3","1/2","1/6","5/6"],["1/5","5/6","1/3","1/2","1/6","5/6"],["1/5","1/2","1/3","1/2","1/6","5/6"],["2/5","1/2","1/3","1/2","1/6","5/6"],["2/5","5/6","1/3","1/2","1/6","5/6"],["3/5","5/6","1/3","1/2","1/6","5/6"],["3/5","5/6","1/3","1/2","1/6","1/3"],["4/5","5/6","1/3","1/2","1/6","1/3"],["4/5","5/6","1/3","1/2","1/6","5/6"],["3/5","5/6","1/3","1/2","1/6","5/6"],["3/5","1/2","1/3","1/2","1/6","5/6"],["4/5","1/2","1/3","1/2","1/6","5/6"],["4/5","1/6","1/3","1/2","1/6","5/6"],["4/5","1/6","5/6","1/2","1/6","5/6"],["4/5","1/2","5/6","1/2","1/6","5/6"],["4/5","1/2","1/3","1/2","1/6","5/6"],["4/5","1/6","1/3","1/2","1/6","5/6"],["4/5","1/6","5/6","1/2","1/6","5/6"],["4/5","1/6","5/6","0","1/6","5/6"],["4/5","1/6","5/6","0","2/3","5/6"],["4/5","1/6","5/6","1/2","2/3","5/6"],["4/5","1/6","5/6","1/2","1/6","5/6"],["4/5","1/6","5/6","1/2","1/6","1/3"],["3/5","1/6","5/6","1/2","1/6","1/3"],["3/5","1/6","5/6","1/2","1/6","5/6"],["4/5","1/6","5/6","1/2","1/6","5/6"],["4/5","1/2","5/6","1/2","1/6","5/6"],["4/5","1/2","1/3","1/2","1/6","5/6"],["4/5","1/6","1/3","1/2","1/6","5/6"],["3/5","1/6","1/3","1/2","1/6","5/6"],["3/5","1/2","1/3","1/2","1/6","5/6"],["2/5","1/2","1/3","1/2","1/6","5/6"],["2/5","5/6","1/3","1/2","1/6","5/6"],["3/5","5/6","1/3","1/2","1/6","5/6"],["3/5","5/6","1/3","1/2","1/6","1/3"],["4/5","5/6","1/3","1/2","1/6","1/3"],["4/5","5/6","1/3","1/2","1/6","5/6"],["3/5","5/6","1/3","1/2","1/6","5/6"],["3/5","1/2","1/3","1/2","1/6","5/6"],["4/5","1/2","1/3","1/2","1/6","5/6"],["4/5","5/6","1/3","1/2","1/6","5/6"],["4/5","5/6","5/6","1/2","1/6","5/6"],["4/5","1/2","5/6","1/2","1/6","5/6"],["4/5","1/2","1/3","1/2","1/6","5/6"],["4/5","5/6","1/3","1/2","1/6","5/6"],["4/5","5/6","5/6","1/2","1/6","5/6"],["4/5","5/6","5/6","0","1/6","5/6"],["4/5","5/6","1/3","0","1/6","5/6"],["4/5","1/2","1/3","0","1/6","5/6"],["3/5","1/2","1/3","0","1/6","5/6"],["3/5","5/6","1/3","0","1/6","5/6"],["2/5","5/6","1/3","0","1/6","5/6"],["2/5","5/6","1/3","0","1/6","1/3"],["1/5","5/6","1/3","0","1/6","1/3"],["1/5","5/6","1/3","0","1/6","5/6"],["2/5","5/6","1/3","0","1/6","5/6"],["2/5","5/6","1/3","0","1/6","1/3"],["3/5","5/6","1/3","0","1/6","1/3"],["3/5","5/6","1/3","0","1/6","5/6"],["4/5","5/6","1/3","0","1/6","5/6"],["4/5","5/6","1/3","0","1/6","1/3"],["4/5","5/6","1/3","0","2/3","1/3"],["4/5","5/6","1/3","0","2/3","5/6"],["3/5","5/6","1/3","0","2/3","5/6"],["3/5","1/2","1/3","0","2/3","5/6"],["4/5","1/2","1/3","0","2/3","5/6"],["4/5","1/6","1/3","0","2/3","5/6"],["3/5","1/6","1/3","0","2/3","5/6"],["3/5","1/6","1/3","0","2/3","1/3"],["4/5","1/6","1/3","0","2/3","1/3"],["4/5","1/6","1/3","0","2/3","5/6"],["3/5","1/6","1/3","0","2/3","5/6"],["3/5","1/6","1/3","0","2/3","1/3"],["4/5","1/6","1/3","0","2/3","1/3"],["4/5","1/2","1/3","0","2/3","1/3"],["3/5","1/2","1/3","0","2/3","1/3"],["3/5","1/6","1/3","0","2/3","1/3"],["2/5","1/6","1/3","0","2/3","1/3"],["2/5","1/6","1/3","0","2/3","5/6"],["1/5","1/6","1/3","0","2/3","5/6"],["1/5","1/2","1/3","0","2/3","5/6"],["0","1/2","1/3","0","2/3","5/6"],["0","5/6","1/3","0","2/3","5/6"],["1/5","5/6","1/3","0","2/3","5/6"],["1/5","1/2","1/3","0","2/3","5/6"],["2/5","1/2","1/3","0","2/3","5/6"],["2/5","1/6","1/3","0","2/3","5/6"],["1/5","1/6","1/3","0","2/3","5/6"],["1/5","1/6","1/3","0","2/3","1/3"],["0","1/6","1/3","0","2/3","1/3"],["0","1/2","1/3","0","2/3","1/3"],["0","1/2","5/6","0","2/3","1/3"],["0","5/6","5/6","0","2/3","1/3"],["0","5/6","1/3","0","2/3","1/3"],["0","5/6","1/3","1/2","2/3","1/3"],["0","5/6","1/3","1/2","1/6","1/3"],["0","5/6","1/3","0","1/6","1/3"],["0","5/6","5/6","0","1/6","1/3"],["0","1/2","5/6","0","1/6","1/3"],["1/5","1/2","5/6","0","1/6","1/3"],["1/5","5/6","5/6","0","1/6","1/3"],["2/5","5/6","5/6","0","1/6","1/3"],["2/5","1/2","5/6","0","1/6","1/3"],["3/5","1/2","5/6","0","1/6","1/3"],["3/5","1/6","5/6","0","1/6","1/3"],["4/5","1/6","5/6","0","1/6","1/3"],["4/5","1/2","5/6","0","1/6","1/3"],["3/5","1/2","5/6","0","1/6","1/3"],["3/5","1/6","5/6","0","1/6","1/3"],["4/5","1/6","5/6","0","1/6","1/3"],["4/5","1/6","5/6","0","1/6","5/6"],["4/5","1/6","5/6","0","2/3","5/6"],["4/5","1/6","5/6","1/2","2/3","5/6"],["4/5","1/6","5/6","1/2","1/6","5/6"],["4/5","1/6","5/6","0","1/6","5/6"],["4/5","1/6","1/3","0","1/6","5/6"],["4/5","1/6","1/3","1/2","1/6","5/6"],["4/5","1/6","5/6","1/2","1/6","5/6"],["4/5","1/2","5/6","1/2","1/6","5/6"],["3/5","1/2","5/6","1/2","1/6","5/6"],["3/5","5/6","5/6","1/2","1/6","5/6"],["4/5","5/6","5/6","1/2","1/6","5/6"],["4/5","1/2","5/6","1/2","1/6","5/6"],["4/5","1/2","1/3","1/2","1/6","5/6"],["4/5","1/6","1/3","1/2","1/6","5/6"],["3/5","1/6","1/3","1/2","1/6","5/6"],["3/5","1/6","1/3","1/2","1/6","1/3"],["4/5","1/6","1/3","1/2","1/6","1/3"],["4/5","1/6","1/3","1/2","1/6","5/6"],["4/5","1/6","1/3","1/2","2/3","5/6"],["4/5","1/6","1/3","0","2/3","5/6"],["4/5","1/6","5/6","0","2/3","5/6"],["4/5","1/2","5/6","0","2/3","5/6"],["3/5","1/2","5/6","0","2/3","5/6"],["3/5","5/6","5/6","0","2/3","5/6"],["2/5","5/6","5/6","0","2/3","5/6"],["2/5","5/6","5/6","0","2/3","1/3"],["3/5","5/6","5/6","0","2/3","1/3"],["3/5","5/6","5/6","0","2/3","5/6"],["2/5","5/6","5/6","0","2/3","5/6"],["2/5","5/6","5/6","0","2/3","1/3"],["1/5","5/6","5/6","0","2/3","1/3"],["1/5","1/2","5/6","0","2/3","1/3"],["2/5","1/2","5/6","0","2/3","1/3"],["2/5","5/6","5/6","0","2/3","1/3"],["1/5","5/6","5/6","0","2/3","1/3"],["1/5","1/2","5/6","0","2/3","1/3"],["2/5","1/2","5/6","0","2/3","1/3"],["2/5","1/6","5/6","0","2/3","1/3"],["1/5","1/6","5/6","0","2/3","1/3"],["1/5","1/6","5/6","0","2/3","5/6"],["2/5","1/6","5/6","0","2/3","5/6"],["2/5","1/6","5/6","0","2/3","1/3"],["3/5","1/6","5/6","0","2/3","1/3"],["3/5","1/6","5/6","0","2/3","5/6"],["4/5","1/6","5/6","0","2/3","5/6"],["4/5","1/6","5/6","0","2/3","1/3"],["4/5","1/6","5/6","0","1/6","1/3"],["4/5","1/6","5/6","0","1/6","5/6"],["3/5","1/6","5/6","0","1/6","5/6"],["3/5","1/2","5/6","0","1/6","5/6"],["4/5","1/2","5/6","0","1/6","5/6"],["4/5","1/6","5/6","0","1/6","5/6"],["3/5","1/6","5/6","0","1/6","5/6"],["3/5","1/2","5/6","0","1/6","5/6"],["2/5","1/2","5/6","0","1/6","5/6"],["2/5","5/6","5/6","0","1/6","5/6"],["3/5","5/6","5/6","0","1/6","5/6"],["3/5","5/6","5/6","0","1/6","1/3"],["2/5","5/6","5/6","0","1/6","1/3"],["2/5","1/2","5/6","0","1/6","1/3"],["1/5","1/2","5/6","0","1/6","1/3"],["1/5","5/6","5/6","0","1/6","1/3"],["0","5/6","5/6","0","1/6","1/3"],["0","5/6","5/6","0","1/6","5/6"],["1/5","5/6","5/6","0","1/6","5/6"],["1/5","1/2","5/6","0","1/6","5/6"],["2/5","1/2","5/6","0","1/6","5/6"],["2/5","1/6","5/6","0","1/6","5/6"],["3/5","1/6","5/6","0","1/6","5/6"],["3/5","1/2","5/6","0","1/6","5/6"],["4/5","1/2","5/6","0","1/6","5/6"],["4/5","5/6","5/6","0","1/6","5/6"],["3/5","5/6","5/6","0","1/6","5/6"],["3/5","1/2","5/6","0","1/6","5/6"],["4/5","1/2","5/6","0","1/6","5/6"],["4/5","1/6","5/6","0","1/6","5/6"],["4/5","1/6","1/3","0","1/6","5/6"],["4/5","1/6","1/3","1/2","1/6","5/6"],["4/5","1/6","5/6","1/2","1/6","5/6"],["4/5","1/6","5/6","0","1/6","5/6"],["4/5","1/6","5/6","0","2/3","5/6"],["4/5","1/6","5/6","1/2","2/3","5/6"],["4/5","1/6","1/3","1/2","2/3","5/6"],["4/5","1/2","1/3","1/2","2/3","5/6"],["4/5","1/2","5/6","1/2","2/3","5/6"],["4/5","1/6","5/6","1/2","2/3","5/6"],["3/5","1/6","5/6","1/2","2/3","5/6"],["3/5","1/2","5/6","1/2","2/3","5/6"],["2/5","1/2","5/6","1/2","2/3","5/6"],["2/5","1/6","5/6","1/2","2/3","5/6"],["1/5","1/6","5/6","1/2","2/3","5/6"],["1/5","1/6","5/6","1/2","2/3","1/3"],["2/5","1/6","5/6","1/2","2/3","1/3"],["2/5","1/6","5/6","1/2","2/3","5/6"],["1/5","1/6","5/6","1/2","2/3","5/6"],["1/5","1/6","5/6","1/2","2/3","1/3"],["2/5","1/6","5/6","1/2","2/3","1/3"],["2/5","1/2","5/6","1/2","2/3","1/3"],["1/5","1/2","5/6","1/2","2/3","1/3"],["1/5","5/6","5/6","1/2","2/3","1/3"],["2/5","5/6","5/6","1/2","2/3","1/3"],["2/5","5/6","5/6","1/2","2/3","5/6"],["1/5","5/6","5/6","1/2","2/3","5/6"],["1/5","1/2","5/6","1/2","2/3","5/6"],["2/5","1/2","5/6","1/2","2/3","5/6"],["2/5","1/6","5/6","1/2","2/3","5/6"],["1/5","1/6","5/6","1/2","2/3","5/6"],["1/5","1/6","5/6","1/2","2/3","1/3"],["2/5","1/6","5/6","1/2","2/3","1/3"],["2/5","1/2","5/6","1/2","2/3","1/3"],["3/5","1/2","5/6","1/2","2/3","1/3"],["3/5","5/6","5/6","1/2","2/3","1/3"],["4/5","5/6","5/6","1/2","2/3","1/3"],["4/5","1/2","5/6","1/2","2/3","1/3"],["4/5","1/2","1/3","1/2","2/3","1/3"],["4/5","1/6","1/3","1/2","2/3","1/3"],["3/5","1/6","1/3","1/2","2/3","1/3"],["3/5","1/2","1/3","1/2","2/3","1/3"],["2/5","1/2","1/3","1/2","2/3","1/3"],["2/5","5/6","1/3","1/2","2/3","1/3"],["3/5","5/6","1/3","1/2","2/3","1/3"],["3/5","1/2","1/3","1/2","2/3","1/3"],["4/5","1/2","1/3","1/2","2/3","1/3"],["4/5","1/6","1/3","1/2","2/3","1/3"],["3/5","1/6","1/3","1/2","2/3","1/3"],["3/5","1/6","1/3","1/2","2/3","5/6"],["2/5","1/6","1/3","1/2","2/3","5/6"],["2/5","1/6","1/3","1/2","2/3","1/3"],["3/5","1/6","1/3","1/2","2/3","1/3"],["3/5","1/2","1/3","1/2","2/3","1/3"],["4/5","1/2","1/3","1/2","2/3","1/3"],["4/5","1/6","1/3","1/2","2/3","1/3"],["3/5","1/6","1/3","1/2","2/3","1/3"],["3/5","1/6","1/3","1/2","2/3","5/6"],["4/5","1/6","1/3","1/2","2/3","5/6"],["4/5","1/6","1/3","1/2","2/3","1/3"],["3/5","1/6","1/3","1/2","2/3","1/3"],["3/5","1/6","1/3","1/2","2/3","5/6"],["4/5","1/6","1/3","1/2","2/3","5/6"],["4/5","1/6","1/3","1/2","2/3","1/3"],["3/5","1/6","1/3","1/2","2/3","1/3"],["3/5","1/2","1/3","1/2","2/3","1/3"],["2/5","1/2","1/3","1/2","2/3","1/3"],["2/5","1/6","1/3","1/2","2/3","1/3"],["1/5","1/6","1/3","1/2","2/3","1/3"],["1/5","1/6","1/3","1/2","2/3","5/6"],["2/5","1/6","1/3","1/2","2/3","5/6"],["2/5","1/2","1/3","1/2","2/3","5/6"],["3/5","1/2","1/3","1/2","2/3","5/6"],["3/5","5/6","1/3","1/2","2/3","5/6"],["2/5","5/6","1/3","1/2","2/3","5/6"],["2/5","1/2","1/3","1/2","2/3","5/6"],["1/5","1/2","1/3","1/2","2/3","5/6"],["1/5","5/6","1/3","1/2","2/3","5/6"],["2/5","5/6","1/3","1/2","2/3","5/6"],["2/5","5/6","1/3","1/2","2/3","1/3"],["1/5","5/6","1/3","1/2","2/3","1/3"],["1/5","1/2","1/3","1/2","2/3","1/3"],["0","1/2","1/3","1/2","2/3","1/3"],["0","1/6","1/3","1/2","2/3","1/3"],["0","1/6","5/6","1/2","2/3","1/3"],["0","1/2","5/6","1/2","2/3","1/3"],["0","1/2","1/3","1/2","2/3","1/3"],["0","1/6","1/3","1/2","2/3","1/3"],["0","1/6","5/6","1/2","2/3","1/3"],["0","1/2","5/6","1/2","2/3","1/3"],["0","1/2","1/3","1/2","2/3","1/3"],["0","5/6","1/3","1/2","2/3","1/3"],["0","5/6","5/6","1/2","2/3","1/3"],["0","1/2","5/6","1/2","2/3","1/3"],["0","1/2","1/3","1/2","2/3","1/3"],["0","5/6","1/3","1/2","2/3","1/3"],["1/5","5/6","1/3","1/2","2/3","1/3"],["1/5","5/6","1/3","1/2","2/3","5/6"],["2/5","5/6","1/3","1/2","2/3","5/6"],["2/5","1/2","1/3","1/2","2/3","5/6"],["3/5","1/2","1/3","1/2","2/3","5/6"],["3/5","5/6","1/3","1/2","2/3","5/6"],["4/5","5/6","1/3","1/2","2/3","5/6"],["4/5","1/2","1/3","1/2","2/3","5/6"],["3/5","1/2","1/3","1/2","2/3","5/6"],["3/5","5/6","1/3","1/2","2/3","5/6"],["4/5","5/6","1/3","1/2","2/3","5/6"],["4/5","5/6","1/3","1/2","2/3","1/3"],["3/5","5/6","1/3","1/2","2/3","1/3"],["3/5","1/2","1/3","1/2","2/3","1/3"],["4/5","1/2","1/3","1/2","2/3","1/3"],["4/5","1/6","1/3","1/2","2/3","1/3"],["3/5","1/6","1/3","1/2","2/3","1/3"],["3/5","1/6","1/3","1/2","2/3","5/6"],["4/5","1/6","1/3","1/2","2/3","5/6"],["4/5","1/6","1/3","1/2","2/3","1/3"],["4/5","1/6","1/3","1/2","1/6","1/3"],["4/5","1/6","1/3","0","1/6","1/3"],["4/5","1/6","5/6","0","1/6","1/3"],["4/5","1/2","5/6","0","1/6","1/3"],["4/5","1/2","1/3","0","1/6","1/3"],["4/5","1/6","1/3","0","1/6","1/3"],["3/5","1/6","1/3","0","1/6","1/3"],["3/5","1/2","1/3","0","1/6","1/3"],["2/5","1/2","1/3","0","1/6","1/3"],["2/5","1/6","1/3","0","1/6","1/3"],["3/5","1/6","1/3","0","1/6","1/3"],["3/5","1/6","1/3","0","1/6","5/6"],["2/5","1/6","1/3","0","1/6","5/6"],["2/5","1/6","1/3","0","1/6","1/3"],["3/5","1/6","1/3","0","1/6","1/3"],["3/5","1/2","1/3","0","1/6","1/3"],["4/5","1/2","1/3","0","1/6","1/3"],["4/5","5/6","1/3","0","1/6","1/3"],["4/5","5/6","5/6","0","1/6","1/3"],["4/5","1/2","5/6","0","1/6","1/3"],["3/5","1/2","5/6","0","1/6","1/3"],["3/5","5/6","5/6","0","1/6","1/3"],["4/5","5/6","5/6","0","1/6","1/3"],["4/5","1/2","5/6","0","1/6","1/3"],["4/5","1/2","1/3","0","1/6","1/3"],["4/5","1/6","1/3","0","1/6","1/3"],["4/5","1/6","5/6","0","1/6","1/3"],["4/5","1/6","5/6","1/2","1/6","1/3"],["4/5","1/6","1/3","1/2","1/6","1/3"],["4/5","1/2","1/3","1/2","1/6","1/3"],["3/5","1/2","1/3","1/2","1/6","1/3"],["3/5","1/6","1/3","1/2","1/6","1/3"],["4/5","1/6","1/3","1/2","1/6","1/3"],["4/5","1/6","1/3","1/2","1/6","5/6"],["3/5","1/6","1/3","1/2","1/6","5/6"],["3/5","1/6","1/3","1/2","1/6","1/3"],["2/5","1/6","1/3","1/2","1/6","1/3"],["2/5","1/6","1/3","1/2","1/6","5/6"],["3/5","1/6","1/3","1/2","1/6","5/6"],["3/5","1/2","1/3","1/2","1/6","5/6"],["2/5","1/2","1/3","1/2","1/6","5/6"],["2/5","5/6","1/3","1/2","1/6","5/6"],["1/5","5/6","1/3","1/2","1/6","5/6"],["1/5","5/6","1/3","1/2","1/6","1/3"],["2/5","5/6","1/3","1/2","1/6","1/3"],["2/5","1/2","1/3","1/2","1/6","1/3"],["1/5","1/2","1/3","1/2","1/6","1/3"],["1/5","1/6","1/3","1/2","1/6","1/3"],["0","1/6","1/3","1/2","1/6","1/3"],["0","1/6","1/3","1/2","1/6","5/6"],["0","1/6","1/3","1/2","2/3","5/6"],["0","1/6","1/3","1/2","2/3","1/3"],["0","1/6","1/3","1/2","1/6","1/3"],["0","1/6","1/3","1/2","1/6","5/6"],["1/5","1/6","1/3","1/2","1/6","5/6"],["1/5","1/2","1/3","1/2","1/6","5/6"],["0","1/2","1/3","1/2","1/6","5/6"],["0","5/6","1/3","1/2","1/6","5/6"],["1/5","5/6","1/3","1/2","1/6","5/6"],["1/5","5/6","1/3","1/2","1/6","1/3"],["2/5","5/6","1/3","1/2","1/6","1/3"],["2/5","5/6","1/3","1/2","1/6","5/6"],["3/5","5/6","1/3","1/2","1/6","5/6"],["3/5","5/6","1/3","1/2","1/6","1/3"],["4/5","5/6","1/3","1/2","1/6","1/3"],["4/5","5/6","1/3","1/2","1/6","5/6"],["4/5","5/6","1/3","1/2","2/3","5/6"],["4/5","5/6","1/3","0","2/3","5/6"],["4/5","5/6","5/6","0","2/3","5/6"],["4/5","1/2","5/6","0","2/3","5/6"],["4/5","1/2","1/3","0","2/3","5/6"],["4/5","5/6","1/3","0","2/3","5/6"],["3/5","5/6","1/3","0","2/3","5/6"],["3/5","5/6","1/3","0","2/3","1/3"],["4/5","5/6","1/3","0","2/3","1/3"],["4/5","5/6","1/3","0","2/3","5/6"],["3/5","5/6","1/3","0","2/3","5/6"],["3/5","1/2","1/3","0","2/3","5/6"],["2/5","1/2","1/3","0","2/3","5/6"],["2/5","1/6","1/3","0","2/3","5/6"],["1/5","1/6","1/3","0","2/3","5/6"],["1/5","1/6","1/3","0","2/3","1/3"],["2/5","1/6","1/3","0","2/3","1/3"],["2/5","1/2","1/3","0","2/3","1/3"],["3/5","1/2","1/3","0","2/3","1/3"],["3/5","5/6","1/3","0","2/3","1/3"],["4/5","5/6","1/3","0","2/3","1/3"],["4/5","1/2","1/3","0","2/3","1/3"],["4/5","1/2","5/6","0","2/3","1/3"],["4/5","5/6","5/6","0","2/3","1/3"],["4/5","5/6","1/3","0","2/3","1/3"],["4/5","1/2","1/3","0","2/3","1/3"],["4/5","1/2","5/6","0","2/3","1/3"],["4/5","5/6","5/6","0","2/3","1/3"],["4/5","5/6","1/3","0","2/3","1/3"],["4/5","1/2","1/3","0","2/3","1/3"],["3/5","1/2","1/3","0","2/3","1/3"],["3/5","1/6","1/3","0","2/3","1/3"],["2/5","1/6","1/3","0","2/3","1/3"],["2/5","1/2","1/3","0","2/3","1/3"],["1/5","1/2","1/3","0","2/3","1/3"],["1/5","1/6","1/3","0","2/3","1/3"],["0","1/6","1/3","0","2/3","1/3"],["0","1/6","1/3","0","2/3","5/6"],["0","1/6","1/3","0","1/6","5/6"],["0","1/6","1/3","0","1/6","1/3"],["1/5","1/6","1/3","0","1/6","1/3"],["1/5","1/2","1/3","0","1/6","1/3"],["2/5","1/2","1/3","0","1/6","1/3"],["2/5","5/6","1/3","0","1/6","1/3"],["3/5","5/6","1/3","0","1/6","1/3"],["3/5","1/2","1/3","0","1/6","1/3"],["2/5","1/2","1/3","0","1/6","1/3"],["2/5","5/6","1/3","0","1/6","1/3"],["3/5","5/6","1/3","0","1/6","1/3"],["3/5","1/2","1/3","0","1/6","1/3"],["4/5","1/2","1/3","0","1/6","1/3"],["4/5","5/6","1/3","0","1/6","1/3"],["4/5","5/6","5/6","0","1/6","1/3"],["4/5","1/2","5/6","0","1/6","1/3"],["4/5","1/2","1/3","0","1/6","1/3"],["4/5","5/6","1/3","0","1/6","1/3"],["3/5","5/6","1/3","0","1/6","1/3"],["3/5","5/6","1/3","0","1/6","5/6"],["2/5","5/6","1/3","0","1/6","5/6"],["2/5","1/2","1/3","0","1/6","5/6"],["3/5","1/2","1/3","0","1/6","5/6"],["3/5","5/6","1/3","0","1/6","5/6"],["2/5","5/6","1/3","0","1/6","5/6"],["2/5","1/2","1/3","0","1/6","5/6"],["1/5","1/2","1/3","0","1/6","5/6"],["1/5","5/6","1/3","0","1/6","5/6"],["2/5","5/6","1/3","0","1/6","5/6"],["2/5","1/2","1/3","0","1/6","5/6"],["3/5","1/2","1/3","0","1/6","5/6"],["3/5","1/6","1/3","0","1/6","5/6"],["2/5","1/6","1/3","0","1/6","5/6"],["2/5","1/2","1/3","0","1/6","5/6"],["1/5","1/2","1/3","0","1/6","5/6"],["1/5","1/6","1/3","0","1/6","5/6"],["0","1/6","1/3","0","1/6","5/6"],["0","1/2","1/3","0","1/6","5/6"],["1/5","1/2","1/3","0","1/6","5/6"],["1/5","5/6","1/3","0","1/6","5/6"],["2/5","5/6","1/3","0","1/6","5/6"],["2/5","1/2","1/3","0","1/6","5/6"],["1/5","1/2","1/3","0","1/6","5/6"],["1/5","1/6","1/3","0","1/6","5/6"],["0","1/6","1/3","0","1/6","5/6"],["0","1/2","1/3","0","1/6","5/6"],["0","1/2","5/6","0","1/6","5/6"],["0","5/6","5/6","0","1/6","5/6"],["1/5","5/6","5/6","0","1/6","5/6"],["1/5","5/6","5/6","0","1/6","1/3"],["2/5","5/6","5/6","0","1/6","1/3"],["2/5","5/6","5/6","0","1/6","5/6"],["1/5","5/6","5/6","0","1/6","5/6"],["1/5","5/6","5/6","0","1/6","1/3"],["2/5","5/6","5/6","0","1/6","1/3"]]}};   // gear_runs_v0_1.json (e090148c...), labels + exact phases, 513 steps
+Object.assign(EXPECT, {"720": {"distinct_lift": 30, "revisits_folded": 0, "revisits_true_loop": 483, "final_word_len": 1}, "720720": {"distinct_lift": 330, "revisits_folded": 127, "revisits_true_loop": 183, "final_word_len": 55}});   // lift_check_v0_7.py
+const PILLOW = {"6":[1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1],"12":[1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,4,12,6,2,1,3,6,2,4,12,6,2,4,12,6,2,1,3,6,2,4,12,6,2,1,3,6,2,4,12,6,2,1,3,6,2,4,12,6,2,1,3,6,2,1,3,6,2,4,12,6,2,4,12,6,2,4,12,6,2,4,12,6,2,1,3,6,2,1,3,6,2,1,3,6,2,4,12,6,2,4,12,6,2,1,3,6,2,4,12,6,2,1,3,6,2,4,12,6,2,4,12,6,2,4,12,6,2,4,12,6,2,1,3,6,2,4,12,6,2,1,3,6,2,4,12,6,2,4,12,6,2,1,3,6,2,4,12,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,4,12,6,2,1,3,6,2,4,12,6,2,4,12,6,2,1,3,6,2,1,3,6,2,1,3,6,2,4,12,6,2,1,3,6,2,1,3,6,2,4,12,6,2,4,12,6,2,1,3,6,2,4,12,6,2,1,3,6,2,1,3,6,2,1,3,6,2,4,12,6,2,1,3,6,2,4,12,6,2,4,12,6,2,4,12,6,2,4,12,6,2,4,12,6,2,1,3,6,2,4,12,6,2,1,3,6,2,4,12,6,2,1,3,6,2,4,12,6,2,4,12,6,2,4,12,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,4,12,6,2,4,12,6,2,4,12,6,2,4,12,6,2,1,3,6,2,4,12,6,2,4,12,6,2,4,12,6,2,4,12,6,2,1,3,6,2,4,12,6,2,4,12,6,2,4,12,6,2,1,3,6,2,1,3,6,2,1,3,6,2,4,12,6,2,4,12,6,2,4,12,6,2,1,3,6,2,1,3,6,2,4,12,6,2,1,3,6,2,1,3,6,2,4,12,6,2,1,3,6,2,1,3,6,2,1,3,6,2,4,12,6,2,4,12,6,2,1,3,6,2,1,3,6,2,1,3,6,2,4,12,6,2,1,3,6,2,4,12,6,2,1,3,6,2,1,3,6,2,4,12,6,2,1,3,6,2,1,3,6,2,4,12,6,2,1,3,6,2,4,12,6,2,4,12,6,2,4,12,6,2,1,3,6,2,4,12,6,2,4],"18":[1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,18,9,3,6,2,1,3,6,18,9,3,6,18,9,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,18,9,3,6,18,9,3,6,18,9,3,6,18,9,3,6,18,9,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,18,9,3,6,2,1,3,6,2,1,3,6,2,1,3,6,18,9,3,6,2,1,3,6,2,1,3,6,2,1,3,6,18,9,3,6,18,9,3,6,2,1,3,6,18,9,3,6,18,9,3,6,18,9,3,6,2,1,3,6,2,1,3,6,18,9,3,6,18,9,3,6,2,1,3,6,18,9,3,6,18,9,3,6,2,1,3,6,18,9,3,6,18,9,3,6,18,9,3,6,2,1,3,6,2,1,3,6,2,1,3,6,18,9,3,6,18,9,3,6,2,1,3,6,2,1,3,6,18,9,3,6,18,9,3,6,18,9,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,18,9,3,6,2,1,3,6,18,9,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,18,9,3,6,2,1,3,6,18,9,3,6,18,9,3,6,2,1,3,6,18,9,3,6,2,1,3,6,2,1,3,6,18,9,3,6,18,9,3,6,18,9,3,6,18,9,3,6,2,1,3,6,2,1,3,6,2,1,3,6,18,9,3,6,2,1,3,6,18,9,3,6,18,9,3,6,18,9,3,6,18,9,3,6,2,1,3,6,2,1,3,6,18,9,3,6,2,1,3,6,18,9,3,6,18,9,3,6,2,1,3,6,18,9,3,6,2,1,3,6,2,1,3,6,18,9,3,6,18,9,3,6,18,9,3,6,2,1,3,6,18,9,3,6,2,1,3,6,18,9,3,6,2,1,3,6,2,1,3,6,2,1,3,6,18,9,3,6,18,9,3,6,18,9,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,18,9,3,6,18,9,3,6,18,9,3,6,18,9,3,6,18,9,3,6,18,9,3,6,18,9,3,6,2,1,3,6,2,1],"36":[1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,4,12,6,18,9,3,6,2,4,12,6,18,36,12,6,18,9,3,6,2,4,12,6,2,1,3,6,2,4,12,6,2,1,3,6,2,4,12,6,2,1,3,6,2,1,3,6,18,36,12,6,18,36,12,6,18,36,12,6,18,36,12,6,18,9,3,6,2,1,3,6,2,1,3,6,2,4,12,6,2,4,12,6,18,9,3,6,2,4,12,6,2,1,3,6,2,4,12,6,18,36,12,6,2,4,12,6,2,4,12,6,2,1,3,6,18,36,12,6,18,9,3,6,2,4,12,6,18,36,12,6,18,9,3,6,18,36,12,6,2,1,3,6,2,1,3,6,18,9,3,6,18,9,3,6,2,1,3,6,18,36,12,6,18,9,3,6,2,4,12,6,18,36,12,6,18,9,3,6,18,9,3,6,2,1,3,6,2,4,12,6,2,1,3,6,18,9,3,6,18,36,12,6,2,4,12,6,2,1,3,6,18,36,12,6,18,9,3,6,18,9,3,6,2,1,3,6,2,4,12,6,2,1,3,6,2,4,12,6,2,4,12,6,18,36,12,6,2,4,12,6,18,36,12,6,2,1,3,6,2,4,12,6,2,1,3,6,2,4,12,6,18,9,3,6,2,4,12,6,18,36,12,6,18,36,12,6,2,1,3,6,18,9,3,6,2,1,3,6,2,1,3,6,18,36,12,6,18,36,12,6,18,36,12,6,18,36,12,6,2,1,3,6,2,4,12,6,2,4,12,6,18,36,12,6,2,4,12,6,18,9,3,6,18,36,12,6,18,36,12,6,18,36,12,6,2,1,3,6,2,1,3,6,18,9,3,6,2,4,12,6,18,36,12,6,18,36,12,6,2,1,3,6,18,9,3,6,2,4,12,6,2,1,3,6,18,9,3,6,18,36,12,6,18,9,3,6,2,1,3,6,18,9,3,6,2,4,12,6,18,36,12,6,2,1,3,6,2,1,3,6,2,1,3,6,18,36,12,6,18,9,3,6,18,36,12,6,2,1,3,6,2,1,3,6,2,4,12,6,2,1,3,6,18,9,3,6,18,36,12,6,18,9,3,6,18,36,12,6,18,36,12,6,18,36,12,6,18,9,3,6,2,4,12,6,2,4],"72":[1,3,6,2,1,3,6,2,1,3,6,2,1,3,6,2,4,12,24,72,36,12,6,2,1,3,6,18,9,3,6,18,36,12,24,8,4,12,6,2,1,3,6,2,4,12,6,2,1,3,6,2,4,12,24,8,4,12,6,2,4,12,6,18,9,3,6,18,9,3,6,18,9,3,6,18,9,3,6,18,36,12,24,8,4,12,6,2,4,12,6,2,1,3,6,2,1,3,6,18,36,12,24,8,4,12,24,8,4,12,6,2,1,3,6,18,9,3,6,2,1,3,6,2,1,3,6,2,4,12,24,72,36,12,24,72,36,12,24,8,4,12,6,18,36,12,24,72,36,12,6,18,9,3,6,2,4,12,6,2,4,12,24,72,36,12,6,18,36,12,24,8,4,12,6,18,9,3,6,18,36,12,24,8,4,12,6,18,36,12,6,18,9,3,6,18,9,3,6,2,1,3,6,2,4,12,24,8,4,12,6,18,36,12,6,18,9,3,6,2,1,3,6,2,4,12,6,18,9,3,6,18,36,12,6,18,36,12,24,8,4,12,6,2,1,3,6,2,4,12,24,8,4,12,24,8,4,12,24,72,36,12,24,8,4,12,24,72,36,12,24,8,4,12,6,2,1,3,6,2,4,12,6,2,1,3,6,18,36,12,6,2,1,3,6,18,9,3,6,18,9,3,6,2,4,12,24,72,36,12,6,2,4,12,24,8,4,12,24,72,36,12,6,18,36,12,6,18,36,12,6,18,36,12,24,8,4,12,6,2,1,3,6,2,1,3,6,18,9,3,6,2,1,3,6,18,36,12,6,18,9,3,6,18,9,3,6,18,9,3,6,2,4,12,24,8,4,12,6,18,36,12,6,2,1,3,6,18,9,3,6,18,9,3,6,2,4,12,6,18,36,12,24,8,4,12,24,8,4,12,24,72,36,12,6,18,9,3,6,18,36,12,24,8,4,12,6,18,36,12,6,2,1,3,6,18,9,3,6,2,4,12,24,8,4,12,24,8,4,12,6,18,9,3,6,18,36,12,24,72,36,12,6,2,1,3,6,2,1,3,6,2,4,12,6,2,1,3,6,18,9,3,6,18,36,12,6,18,9,3,6,18,36,12,24,72,36,12,6,18,36,12,24,72,36,12,6,2,1,3,6,2,1]};   // pillow_runs_v0_1.json (b2dd539b...), Double labels, 513 steps
+Object.assign(EXPECT, {"6": {"distinct_lift": 219, "revisits_folded": 215, "revisits_true_loop": 294, "final_word_len": 22}, "12": {"distinct_lift": 219, "revisits_folded": 213, "revisits_true_loop": 294, "final_word_len": 22}, "18": {"distinct_lift": 219, "revisits_folded": 213, "revisits_true_loop": 294, "final_word_len": 22}, "36": {"distinct_lift": 219, "revisits_folded": 210, "revisits_true_loop": 294, "final_word_len": 22}, "72": {"distinct_lift": 219, "revisits_folded": 207, "revisits_true_loop": 294, "final_word_len": 22}});   // lift_check_pillow_v0_1.py
+REF.surf["30"] = {"w":3,"labels":["1","5","3","15","2","10","6","30"],"path":[0,2,3,1,0,4,6,2,0,4,5,1,0,4,6,2,3,7,5,4,0,1,3,7,6,4,5,1,0,2,6,4,5,1,3,2,6,7,5,4,0,1,3,2,6,4,0,2,3,7,6,2,0,4,5,1,3,2,6,7,3,1,5,4,6,7,5,4,6,2,3,7,6,4,0,2,6,7,5,4,0,1,3,7,5,4,0,1,5,7,3,1,0,2,3,1,0,4,5,7,3,1,0,4,6,2,0,4,5,1,3,7,6,2,0,1,3,7,5,4,6,7,5,4,6,2,0,4,5,7,3,2,0,4,6,2,3,1,0,4,6,7,3,1,5,4,6,7,3,1,0,2,6,4,5,1,3,7,5,1,3,2,6,4,0,2,3,1,0,4,6,7,5,4,0,2,3,7,6,2,0,1,5,7,6,2,0,1,3,2,0,1,5,7,3,1,5,7,3,2,6,4,0,2,3,1,5,7,6,4,0,1,5,4,0,1,3,7,5,4,6,2,3,7,5,4,6,2,3,1,5,7,6,2,3,7,6,4,0,1,5,4,6,7,3,1,5,7,6,4,0,2,3,7,6,2,3,7,6,4,5,1,0,2,3,7,6,4,5,1,0,2,6,7,5,4,0,2,3,1,5,4,0,1,3,7,5,4,0,1,5,7,6,4,5,1,0,4,5,1,0,4,5,7,3,1,0,4,5,7,3,2,6,7,5,4,6,2,0,1,5,7,6,4,5,7,6,4,5,1,0,4,5,1,3,2,6,4,5,7,3,1,5,7,3,2,6,4,0,1,5,7,3,1,0,4,6,7,5,4,0,1,3,2,0,4,6,2,0,1,5,7,6,4,0,2,6,4,5,1,0,2,3,7,5,1,3,2,0,1,5,4,0,2,6,7,5,1,3,2,0,4,5,7,3,1,5,7,6,2,3,1,0,4,6,2,3,7,5,1,0,2,6,7,3,2,0,4,6,2,0,1,5,7,6,2,3,1,5,4,6,7,3,2,6,7,3,2,6,7,5,1,0,4,6,2,3,1,5,7,6,2,0,1,5,4,0,1,5,4,6,7,3,2,6,7,5,1,0,2,3,1,0,2,6,4,0,2,3,7,6,2,0,4,5,1,0,2,6,4,0,1,3,2,6,4,5,1,3,7,5,1,3],"helical":[[0.0,0.0,0.0],[0.5000000000000004,0.8660254037844384,1.0],[0.49999999999999956,-0.8660254037844388,1.0],[1.0,-4.440892098500626e-16,2.0],[-1.0,6.123233995736766e-17,1.0],[-0.49999999999999956,0.8660254037844385,2.0],[-0.5000000000000004,-0.8660254037844387,2.0],[0.0,-3.3306690738754696e-16,3.0]]};   // closed_atom_runs_helical_v0_1.json (5bebf5a1...), Div(30)
+Object.assign(EXPECT, {"30": {"distinct_lift": 8, "revisits_folded": 0, "revisits_true_loop": 505, "final_word_len": 2}});   // lift_check_div30_v0_1.py
+
+const PR = [2, 3, 5, 7, 11, 13];
+const ATOMS = ["30030", "2310", "210", "30", "720", "720720", "6", "12", "18", "36", "72"];
+const PILLOW_AB = { "6": [1, 1], "12": [2, 1], "18": [1, 2], "36": [2, 2], "72": [3, 2] };
+const PROF = { "30030": [1, 1, 1, 1, 1, 1], "2310": [1, 1, 1, 1, 1], "210": [1, 1, 1, 1], "30": [1, 1, 1], "720": [4, 2, 1], "720720": [4, 2, 1, 1, 1, 1] };
+const ADESC = { "30030": "2·3·5·7·11·13, 6-cube skin, genus 17", "2310": "2·3·5·7·11, 5-cube skin, genus 5", "210": "2·3·5·7, flat torus", "30": "2·3·5, cube skin, a sphere", "720": "2⁴·3²·5 = 6!, (4,2,1) strained skin, a sphere", "720720": "2⁴·3²·5·7·11·13, (4,2,1,1,1,1) strained skin, genus 17", "6": "2·3, pillowcase (1 × 1)", "12": "2²·3, pillowcase (2 × 1)", "18": "2·3², pillowcase (1 × 2)", "36": "2²·3², pillowcase (2 × 2)", "72": "2³·3², pillowcase (3 × 2)" };
+let SMAX = 512; const REFLEN = 512;
+const $ = id => document.getElementById(id);
+const gcd = (a, b) => { a = Math.abs(a); b = Math.abs(b); while (b) [a, b] = [b, a % b]; return a; };
+const popc = v => { let c = 0; while (v) { c += v & 1; v >>= 1; } return c; };
+
+// ---------------- Rule 30 stream ----------------
+function rule30(T) {
+  const W = 2 * T + 5, mid = T + 2; let a = new Uint8Array(W); a[mid] = 1; const s = [], tooth = [];
+  for (let t = 0; t < T; t++) {
+    const q = a[mid], r = a[mid + 1]; s.push(q ^ r ? -1 : 1); tooth.push(q & r);
+    const b = new Uint8Array(W); const lo = Math.max(1, mid - t - 3), hi = Math.min(W - 2, mid + t + 3); for (let i = lo; i <= hi; i++) b[i] = a[i - 1] ^ (a[i] | a[i + 1]); a = b;
+  }
+  return { s, tooth };
+}
+let STREAM = rule30(SMAX);
+
+// ---------------- the skin and its pen (closed_atom(w, 1), skeleton convention) ----------------
+// vertices are exponent vectors (profile_skin_v0_1): the square on seats (i, i+1 mod w) at corner v is cut into a_i x a_j unit
+// squares (prime i runs 0..a_i, prime j runs 0..a_j, every other prime k fixed at a_k * bit_k(v)), orientation (-1)^Omega(v).
+function skinP(prof) {
+  const w = prof.length, faces = [], idx = new Map(), verts = [];
+  const vid = e => { const k = e.join(","); if (!idx.has(k)) { idx.set(k, verts.length); verts.push(e.slice()); } return idx.get(k); };
+  for (let i = 0; i < w; i++) { const j = (i + 1) % w; if (w === 2 && i === 1) break;
+    for (let v = 0; v < (1 << w); v++) { if ((v >> i) & 1 || (v >> j) & 1) continue;
+      const base = prof.map((a, k) => a * ((v >> k) & 1)), odd = popc(v) & 1;
+      for (let x = 0; x < prof[i]; x++) for (let y = 0; y < prof[j]; y++) {
+        const P = (dx, dy) => { const e = base.slice(); e[i] = x + dx; e[j] = y + dy; return vid(e); };
+        let cyc = [P(0, 0), P(1, 0), P(1, 1), P(0, 1)]; if (odd) cyc = cyc.reverse(); faces.push(cyc); } } }
+  const succ = verts.map(() => new Map());
+  for (const f of faces) for (let i = 0; i < 4; i++) succ[f[i]].set(f[(i + 1) % 4], f[(i + 3) % 4]);
+  const rot = succ.map(m => { const nb = [...m.keys()], c = [nb[0]]; for (;;) { const n = m.get(c[c.length - 1]); if (n === c[0]) break; c.push(n); } return c; });
+  return { faces, rot, verts, vid: e => idx.get(e.join(",")) };
+}
+function penWalk(rot, start, back, c) {
+  let w = start, u = back; const path = [w];
+  for (let t = 0; t < SMAX; t++) { const r = rot[w], d = r.length, k = r.indexOf(u), n = r[((k + c * STREAM.s[t]) % d + d) % d]; u = w; w = n; path.push(w); }
+  return path;
+}
+
+// ---------------- right-angled Coxeter group W_w (exact) ----------------
+const commW = (w, i, j) => { const d = ((i - j) % w + w) % w; return d === 1 || d === w - 1; };
+function wmul(w, word, x) {
+  for (let j = word.length - 1; j >= 0; j--) { if (word[j] === x) { const v = word.slice(); v.splice(j, 1); return v; } if (!commW(w, word[j], x)) break; }
+  return word.concat([x]);
+}
+function lexnf(w, word) {          // lexicographically least reduced word (commutations only, right-angled)
+  const a = word.slice(), out = [];
+  while (a.length) { let best = -1;
+    for (let j = 0; j < a.length; j++) { let free = true; for (let k = 0; k < j; k++) if (a[k] === a[j] || !commW(w, a[k], a[j])) { free = false; break; } if (free && (best < 0 || a[j] < a[best])) best = j; }
+    out.push(a.splice(best, 1)[0]); }
+  return out.join(".");
+}
+function isPrime(n) { for (let d = 2; d * d <= n; d++) if (n % d === 0) return false; return true; }
+const MODS = (() => { const m = []; let n = (1 << 25) - 1; while (m.length < 2) { if (isPrime(n)) m.push(n); n -= 2; } return m; })();
+function titsStep(w, G, d) {        // G = [mat mod p1, mat mod p2], column-major w x w; returns G * s_d
+  return G.map((M, q) => { const p = MODS[q], out = M.map(c => c.slice()), cd = M[d];
+    for (let j = 0; j < w; j++) { if (j === d) out[j] = cd.map(x => (p - x) % p); else if (!commW(w, j, d)) out[j] = M[j].map((x, r) => (x + 2 * cd[r]) % p); }
+    return out; });
+}
+const titsKey = G => G.map(M => M.map(c => c.join(",")).join(";")).join("|");
+const parity = word => word.reduce((v, x) => v ^ (1 << x), 0);
+
+// ---------------- geometry of the {w,4} tiles: (anti-)Mobius maps z -> M (conj z) ----------------
+const C = { add: (a, b) => [a[0] + b[0], a[1] + b[1]], mul: (a, b) => [a[0] * b[0] - a[1] * b[1], a[0] * b[1] + a[1] * b[0]], cj: a => [a[0], -a[1]],
+  div: (a, b) => { const d = b[0] * b[0] + b[1] * b[1]; return [(a[0] * b[0] + a[1] * b[1]) / d, (a[1] * b[0] - a[0] * b[1]) / d]; }, ex: t => [Math.cos(t), Math.sin(t)] };
+const ID = { M: [[1, 0], [0, 0], [0, 0], [1, 0]], anti: false };
+function cmp(F, G) {           // F o G
+  const g = F.anti ? G.M.map(C.cj) : G.M, f = F.M;
+  return { M: [C.add(C.mul(f[0], g[0]), C.mul(f[1], g[2])), C.add(C.mul(f[0], g[1]), C.mul(f[1], g[3])), C.add(C.mul(f[2], g[0]), C.mul(f[3], g[2])), C.add(C.mul(f[2], g[1]), C.mul(f[3], g[3]))], anti: F.anti !== G.anti };
+}
+function ap(F, z) { const u = F.anti ? C.cj(z) : z, m = F.M; return C.div(C.add(C.mul(m[0], u), m[1]), C.add(C.mul(m[2], u), m[3])); }
+function geom(w) {
+  const th = k => 2 * Math.PI * k / w, R = [], G = { w, flat: w === 4 };
+  if (w === 3) {                // CAT(1): all-right spherical triangle (octant); stereographic from the antipode of its centre; side k = great circle
+    const t = Math.tan(Math.acos(Math.sqrt(2 / 3)) / 2), c = (1 - t * t) / (2 * t);       // inradius: cos = sqrt(2/3); circle centre -c u, r^2 = c^2 + 1
+    for (let k = 0; k < w; k++) { const u = C.ex(th(k)), a = [-c * u[0], -c * u[1]]; R.push({ M: [a, [1, 0], [1, 0], [-a[0], a[1]]], anti: true }); }
+    G.corner = Math.tan(Math.acos(1 / Math.sqrt(3)) / 2); G.nbr = Math.SQRT1_2; G.sphere = true;
+  } else if (G.flat) {                 // squares of side 1 centred at 0; side k at distance 1/2 in direction th_k: z -> -u^2 conj z + u
+    for (let k = 0; k < w; k++) { const u = C.ex(th(k)); R.push({ M: [C.mul([-1, 0], C.mul(u, u)), u, [0, 0], [1, 0]], anti: true }); }
+    G.corner = Math.SQRT1_2; G.nbr = 1;
+  } else {                      // right-angled regular w-gon: cosh h = cos(pi/4)/sin(pi/w); side circle centre c u, c = (1+t^2)/(2t), t = tanh(h/2)
+    const h = Math.acosh(Math.cos(Math.PI / 4) / Math.sin(Math.PI / w)), t = Math.tanh(h / 2), c = (1 + t * t) / (2 * t);
+    for (let k = 0; k < w; k++) { const u = C.ex(th(k)), cu = [c * u[0], c * u[1]]; R.push({ M: [cu, [-1, 0], [1, 0], [-cu[0], cu[1]]], anti: true }); }
+    G.corner = Math.tanh(Math.acosh(1 / Math.tan(Math.PI / w)) / 2); G.nbr = Math.tanh(h); G.h = h;
+  }
+  G.R = R; G.corners = []; for (let k = 0; k < w; k++) G.corners.push(C.ex(th(k) + Math.PI / w).map(x => x * G.corner));
+  // ball of words around the identity (for drawing the tiles near the pen)
+  const L = w === 6 ? 3 : w === 5 ? 4 : 5, seen = new Map([["", { word: [], F: ID }]]); let front = [{ word: [], F: ID }];
+  for (let r = 0; r < L; r++) { const nf = [];
+    for (const e of front) for (let k = 0; k < w; k++) { const wd = wmul(w, e.word, k); if (wd.length <= e.word.length) continue; const key = lexnf(w, wd);
+      if (!seen.has(key)) { const o = { word: wd, F: cmp(e.F, R[k]) }; seen.set(key, o); nf.push(o); } }
+    front = nf; }
+  G.ball = [...seen.values()];
+  return G;
+}
+
+// ---------------- the atoms ----------------
+let AT = {}; const GEOM = {};
+function buildAtoms() { AT = {};
+for (const N of ATOMS) { if (PILLOW_AB[N]) { buildPillow(N); continue; }
+  const prof = PROF[N], w = prof.length, S = skinP(prof), E = S.verts, n = E.length, nT = prof.map(a => a + 1), strained = prof.some(a => a > 1);
+  const lab = E.map(e => e.reduce((d, x, k) => d * PR[k] ** x, 1)), omega = E.map(e => e.reduce((s, x) => s + x, 0)), Om = prof.reduce((s, x) => s + x, 0);
+  const cb = v => E[v].reduce((m, x, k) => m | ((x === prof[k] ? 1 : 0) << k), 0);
+  const unitLab = bits => prof.reduce((d, a, k) => d * ((bits >> k) & 1 ? PR[k] ** a : 1), 1);
+  const z0 = new Array(w).fill(0), b0 = z0.slice(); b0[0] = 1;
+  const path = penWalk(S.rot, S.vid(z0), S.vid(b0), -1);
+  const seats = [], dirs = [], gs = [];
+  for (let t = 0; t < SMAX; t++) { const a = E[path[t]], b = E[path[t + 1]]; let d = -1, nd = 0; for (let k = 0; k < w; k++) if (a[k] !== b[k]) { d = k; nd++; }
+    seats.push(nd === 1 && Math.abs(a[d] - b[d]) === 1 ? d : NaN); dirs.push(b[d] - a[d]); gs.push((a[d] === prof[d]) !== (b[d] === prof[d]) ? d : -1); }
+  // lift: g changes by r_d exactly when the corner bit of seat d changes; key = (g, e)
+  const I = []; for (let j = 0; j < w; j++) { const c = new Array(w).fill(0); c[j] = 1; I.push(c); }
+  let Gm = [I, I.map(c => c.slice())], cur = []; const words = [[]], wlen = [0], keys = [titsKey(Gm) + "/" + E[path[0]].join(",")];
+  for (let t = 0; t < SMAX; t++) { if (gs[t] >= 0) { cur = wmul(w, cur, gs[t]); Gm = titsStep(w, Gm, gs[t]); } wlen.push(cur.length); keys.push(titsKey(Gm) + "/" + E[path[t + 1]].join(",")); if (t < REFLEN) words.push(cur); }
+  const k0 = keys[0];
+  const kind = [null], skinSeen = new Set([path[0]]), tileSeen = new Set([k0]);
+  for (let t = 1; t <= SMAX; t++) { const v = path[t], k = keys[t]; kind.push(skinSeen.has(v) ? (tileSeen.has(k) ? "loop" : "fold") : null); skinSeen.add(v); tileSeen.add(k); }
+  const lastG = [0]; for (let t = 0; t < SMAX; t++) lastG.push(gs[t] >= 0 ? gs[t] : lastG[t]);
+  // layouts: helical §9.7 (wheel i has a_i + 1 teeth) and the cone radius law
+  const contrib = (i, x) => { const ph = 2 * Math.PI * i / w, a = ph + 2 * Math.PI * x / nT[i]; return [(Math.cos(a) - Math.cos(ph)) / nT[i], (Math.sin(a) - Math.sin(ph)) / nT[i]]; };
+  const helix = E.map((e, v) => { let x = 0, y = 0; for (let i = 0; i < w; i++) { const c = contrib(i, e[i]); x += c[0]; y += c[1]; } return [x, y, omega[v]]; });
+  const cone = helix.map(([x, y], v) => { const m = Math.hypot(x, y), r = (2 ** omega[v] - 1) / (2 ** Om - 1); return m < 1e-9 ? [0, 0, omega[v]] : [r * x / m, r * y / m, omega[v]]; });
+  const refLab = REF.surf[N] ? REF.surf[N].path.map(i => +REF.surf[N].labels[i]) : GEAR[N].labels;
+  const nE = S.rot.reduce((s, r) => s + r.length, 0) / 2;
+  AT[N] = { N: +N, w, n, nE, labIdx: new Map(lab.map((d, v) => [d, v])), prof, nT, strained, Om, S, E, lab, cb, unitLab, i1: S.vid(z0), iN: S.vid(prof), refLab, path, seats, dirs, gs, lastG, words, wlen, keys, k0, kind,
+    helix, cone, omega, contrib, G: GEOM[w] || (GEOM[w] = geom(w)) };
+} }
+function buildPillow(N) {        // pillow_reference_v0_1: plane pen (a quarter turn every step), folded onto the pillowcase of the a x b rectangle
+  const [a, b] = PILLOW_AB[N], prof = [a, b], w = 2, nT = [a + 1, b + 1], verts = [], idx = new Map();
+  for (let y = 0; y <= b; y++) for (let x = 0; x <= a; x++) { idx.set(x + "," + y, verts.length); verts.push([x, y]); }
+  const vid = e => idx.get(e.join(",")), E = verts, n = E.length;
+  const rot = E.map(([x, y]) => [[x + 1, y], [x, y + 1], [x - 1, y], [x, y - 1]].filter(([u, v]) => u >= 0 && u <= a && v >= 0 && v <= b).map(vid));
+  const faces = []; for (let y = 0; y < b; y++) for (let x = 0; x < a; x++) faces.push([vid([x, y]), vid([x + 1, y]), vid([x + 1, y + 1]), vid([x, y + 1])]);
+  const S = { rot, faces, verts, vid };
+  const lab = E.map(e => e.reduce((d, x, k) => d * PR[k] ** x, 1)), omega = E.map(e => e[0] + e[1]), Om = a + b;
+  const cb = v => (E[v][0] === a ? 1 : 0) | (E[v][1] === b ? 2 : 0), unitLab = bits => ((bits & 1) ? 2 ** a : 1) * ((bits & 2) ? 3 ** b : 1);
+  const fold = (X, Y) => { let x = ((X % (2 * a)) + 2 * a) % (2 * a), y = ((Y % (2 * b)) + 2 * b) % (2 * b); if (y > b) { y = 2 * b - y; x = (2 * a - x) % (2 * a); } return [x <= a ? x : 2 * a - x, y]; };
+  const Z4 = [[1, 0], [0, 1], [-1, 0], [0, -1]], XY = [[0, 0]], Hd = [0]; let h = 0, X = 0, Y = 0;
+  for (let t = 0; t < SMAX; t++) { h += STREAM.s[t] > 0 ? 2 : -2; const d = Z4[(((h / 2) % 4) + 4) % 4]; X += d[0]; Y += d[1]; XY.push([X, Y]); Hd.push(h); }
+  const path = XY.map(([X, Y]) => vid(fold(X, Y))), seats = [], dirs = [], gs = [];
+  for (let t = 0; t < SMAX; t++) { const p = E[path[t]], q = E[path[t + 1]], dx = q[0] - p[0], dy = q[1] - p[1];
+    seats.push(Math.abs(dx) + Math.abs(dy) === 1 ? (dx ? 0 : 1) : NaN); dirs.push(dx + dy); gs.push(-1); }
+  const keys = XY.map(q => q.join(",")), k0 = keys[0], wlen = XY.map(([X, Y]) => Math.abs(X) + Math.abs(Y)), lastG = XY.map(() => 0);
+  const kind = [null], skinSeen = new Set([path[0]]), tileSeen = new Set([k0]);
+  for (let t = 1; t <= SMAX; t++) { const v = path[t], k = keys[t]; kind.push(skinSeen.has(v) ? (tileSeen.has(k) ? "loop" : "fold") : null); skinSeen.add(v); tileSeen.add(k); }
+  const contrib = (i, x) => { const ph = 2 * Math.PI * i / w, an = ph + 2 * Math.PI * x / nT[i]; return [(Math.cos(an) - Math.cos(ph)) / nT[i], (Math.sin(an) - Math.sin(ph)) / nT[i]]; };
+  const helix = E.map((e, v) => { let x = 0, y = 0; for (let i = 0; i < w; i++) { const c = contrib(i, e[i]); x += c[0]; y += c[1]; } return [x, y, omega[v]]; });
+  const cone = helix.map(([x, y], v) => { const m = Math.hypot(x, y), r = (2 ** omega[v] - 1) / (2 ** Om - 1); return m < 1e-9 ? [0, 0, omega[v]] : [r * x / m, r * y / m, omega[v]]; });
+  const nE = rot.reduce((s, r) => s + r.length, 0) / 2;
+  AT[N] = { N: +N, w, n, nE, labIdx: new Map(lab.map((d, v) => [d, v])), prof, nT, strained: false, pillow: true, Om, S, E, lab, cb, unitLab, i1: vid([0, 0]), iN: vid([a, b]),
+    refLab: PILLOW[N], path, seats, dirs, gs, lastG, words: [], wlen, keys, k0, kind, helix, cone, omega, contrib, XY, Hd, fold, G: { pillow: true, w: 2 } };
+}
+buildAtoms();
+function stacks(P) { const g = new Map(); P.forEach((p, v) => { const k = p.map(c => Math.round(c * 1e9)).join(","); if (!g.has(k)) g.set(k, []); g.get(k).push(v); }); return [...g.values()]; }
+
+// ---------------- checks ----------------
+const CHECKS = []; const chk = (ok, msg) => CHECKS.push([!!ok, msg]);
+const SAGE = { "210": [15, 1, 2], "2310": [32, 0, 1], "30030": [53, 9, 3] };   // helical stacks (distinct points, shared points, max stack), exact in Sage
+for (const N of ATOMS) { const A = AT[N], w = A.w, E = EXPECT[N];
+  if (A.pillow) { const [a, b] = A.prof, Z4 = [[1, 0], [0, 1], [-1, 0], [0, -1]];
+    chk(A.refLab.every((l, t) => l === A.lab[A.path[t]]), `Div(${N}): pillow walk recomputed here = reference (513 points, pillow_runs_v0_1.json)`);
+    chk(A.seats.every(d => Number.isInteger(d)), `Div(${N}): every step moves exactly one wheel by one tooth`);
+    chk(A.seats.every((d, t) => !t || d !== A.seats[t - 1]), `Div(${N}): the wheels alternate (2 then 3 then 2 …), ${SMAX} steps`);
+    { let ok = true, nc = 0; for (let t = 0; t < SMAX; t++) { const [x, y] = A.E[A.path[t]]; if (!((x === 0 || x === a) && (y === 0 || y === b))) continue; nc++;
+        const d1 = Z4[((((A.Hd[t] + 2) / 2) % 4) + 4) % 4], d2 = Z4[((((A.Hd[t] - 2) / 2) % 4) + 4) % 4], [X, Y] = A.XY[t];
+        ok = ok && A.fold(X + d1[0], Y + d1[1]).join() === A.fold(X + d2[0], Y + d2[1]).join(); }
+      chk(ok, `Div(${N}): at the ${nc} visits to a cone point (1, ${2 ** a}, ${3 ** b}, ${N}) both turns land on the same divisor`); }
+    { let def4 = 0; for (const [x, y] of A.E) { const k = (x > 0 && x < a ? 2 : 1) * (y > 0 && y < b ? 2 : 1); def4 += k === 4 ? 0 : 4 - 2 * k; }
+      chk(def4 === 8, `Div(${N}): Gauss–Bonnet in quarter turns, exact: the 4 cone points each lack half a turn, Σ = ${def4} = 4χ, χ = 2 (a sphere)`); }
+    { const dl = new Set(A.keys.slice(0, REFLEN + 1)).size, fo = A.kind.slice(0, REFLEN + 1).filter(k => k === "fold").length, lo = A.kind.slice(0, REFLEN + 1).filter(k => k === "loop").length;
+      chk(dl === E.distinct_lift && fo === E.revisits_folded && lo === E.revisits_true_loop && A.wlen[REFLEN] === E.final_word_len,
+        `Div(${N}): lift counts = independent Python check (plane points ${dl}, folded ${fo}, closed ${lo}, final distance ${A.wlen[REFLEN]})`); }
+    { let md = 0; for (let v = 0; v < A.n; v++) { const e = gearChain(A, A.E[v])[w - 1].e; md = Math.max(md, Math.hypot(e[0] - A.helix[v][0], e[1] - A.helix[v][1])); }
+      chk(md < 1e-12, `Div(${N}): prime-wheel chain sum = helical §9.7 point for all ${A.n} divisors (max |Δ| ${md.toExponential(1)})`); }
+    continue; }
+  chk(A.refLab.every((l, t) => l === A.lab[A.path[t]]), `Div(${N}): pen recomputed here = reference path (${A.refLab.length} points, ${A.strained ? "gear_runs_v0_1.json" : "closed_atom_runs_helical_v0_1.json"})`);
+  chk(A.seats.every(d => Number.isInteger(d)), `Div(${N}): every step moves exactly one wheel by one tooth`);
+  chk(A.seats.every((d, t) => commW(w, d, t ? A.seats[t - 1] : 0)), `Div(${N}): every turn goes to a neighbouring seat (${SMAX}/${SMAX})`);
+  chk(A.S.rot.every((r, v) => r.length === (A.E[v].every((x, k) => x === 0 || x === A.prof[k]) ? w : 4)),
+    A.strained ? `Div(${N}): the ${2 ** w} unitary divisors have ${w} edges on the skin, all other ${A.n - 2 ** w} have 4` : `Div(${N}): every vertex has ${w} edges on the skin`);
+  chk(A.words.every((wd, t) => parity(wd) === A.cb(A.path[t])), `Div(${N}): cover map (word parity = corner bits of the pen's vertex) at all ${A.words.length} points`);
+  { const lk = A.words.map((wd, t) => lexnf(w, wd) + "/" + A.E[A.path[t]].join(",")), m1 = new Map(), m2 = new Map(); let ok = true;
+    lk.forEach((l, t) => { const k = A.keys[t]; if (m1.has(k) && m1.get(k) !== l) ok = false; if (m2.has(l) && m2.get(l) !== k) ok = false; m1.set(k, l); m2.set(l, k); });
+    chk(ok && A.words.every((wd, t) => wd.length === A.wlen[t]), `Div(${N}): Tits-matrix lift keys = normal-form lift keys on steps 0..512 (same points, same word lengths)`); }
+  const dl = new Set(A.keys.slice(0, REFLEN + 1)).size, fo = A.kind.slice(0, REFLEN + 1).filter(k => k === "fold").length, lo = A.kind.slice(0, REFLEN + 1).filter(k => k === "loop").length;
+  chk(dl === E.distinct_lift && fo === E.revisits_folded && lo === E.revisits_true_loop && A.wlen[REFLEN] === E.final_word_len,
+    `Div(${N}): lift counts = independent Python check (points ${dl}, folded ${fo}, closed ${lo}, final word length ${A.wlen[REFLEN]})`);
+  { const V = A.n, F = A.S.faces.length, chi = V - A.nE + F, def4 = A.S.rot.reduce((s, r) => s + 4 - r.length, 0);   // quarter-turn deficits, whole numbers
+    chk(def4 === 4 * chi, `Div(${N}): Gauss–Bonnet in quarter turns, exact: Σ(4 − edges) = ${def4} = 4χ, χ = ${chi}, genus ${1 - chi / 2}`); }
+  if (SAGE[N]) { const st = stacks(A.helix), sh = st.filter(s => s.length > 1);
+    chk(st.length === SAGE[N][0] && sh.length === SAGE[N][1] && Math.max(...st.map(s => s.length)) === SAGE[N][2], `Div(${N}): helical stacks ${st.length} points, ${sh.length} shared, max ${Math.max(...st.map(s => s.length))} (Sage: ${SAGE[N].join(", ")})`); }
+  if (REF.surf[N]) { const R = REF.surf[N], hmax = A.helix.reduce((m, p, v) => { const q = R.helical[R.labels.indexOf(String(A.lab[v]))]; return Math.max(m, Math.hypot(p[0] - q[0], p[1] - q[1])); }, 0);
+    chk(hmax < 1e-9, `Div(${N}): helical positions = reference helical positions (max diff ${hmax.toExponential(1)})`); }
+  if (GEAR[N]) chk(GEAR[N].phases_turns.every((ph, t) => ph.every((s, i) => s === fracTurn(i, w, A.E[A.path[t]][i], A.nT[i]))),
+    `Div(${N}): wheel phases = gear_runs exact fractions at all ${GEAR[N].phases_turns.length} steps`);
+  if (A.G.sphere) { const z = ap(A.G.R[0], [0, 0]), c0 = A.G.corners[0], m0 = ap(A.G.R[0], c0), m1 = ap(A.G.R[1], c0), c2 = A.G.corners[2];
+    chk(Math.abs(Math.hypot(...z) - Math.SQRT1_2) < 1e-12 && Math.hypot(m0[0] - c0[0], m0[1] - c0[1]) < 1e-12 && Math.hypot(m1[0] - c0[0], m1[1] - c0[1]) < 1e-12,
+      `Div(${N}), CAT(1) octants: neighbour octant centre at stereographic radius tan(θ/2), cos θ = 1/3, = 1/√2; each corner fixed by its two reflections`);
+    const up = q => { const r2 = q[0] * q[0] + q[1] * q[1]; return [2 * q[0] / (1 + r2), 2 * q[1] / (1 + r2), (1 - r2) / (1 + r2)]; }, a = up(c0), b = up(A.G.corners[1]);
+    chk(Math.abs(a[0] * b[0] + a[1] * b[1] + a[2] * b[2]) < 1e-12, `Div(${N}), CAT(1) octants: every side is a quarter of a great circle (corners orthogonal on the sphere)`); }
+  if (!A.G.sphere && !A.G.flat) { const z = ap(A.G.R[0], [0, 0]), want = w === 6 ? Math.SQRT1_2 : Math.tanh(A.G.h);
+    chk(Math.abs(Math.hypot(...z) - want) < 1e-12, `Div(${N}), {${w},4}: neighbour tile centre at |z| = tanh h = ${want.toFixed(6)}${w === 6 ? " = 1/√2" : ""}`); }
+  { let md = 0; for (let v = 0; v < A.n; v++) { const e = gearChain(A, A.E[v])[w - 1].e; md = Math.max(md, Math.hypot(e[0] - A.helix[v][0], e[1] - A.helix[v][1])); }
+    chk(md < 1e-12, `Div(${N}): prime-wheel chain sum = helical §9.7 point for all ${A.n} divisors (max |Δ| ${md.toExponential(1)})`); }
+  chk(A.seats.every((d, t) => !t || d !== A.seats[t - 1]), `Div(${N}): the same wheel never clicks twice in a row (${SMAX} steps)`);
+  let cop = true; for (let s = 0; s < SMAX; s++) cop = cop && gcd(gcd(s, A.N), gcd(s + 1, A.N)) === 1;
+  chk(cop, `Div(${N}): gcd(s, N) and gcd(s+1, N) coprime for s = 0..${SMAX - 1}`);
+}
+
+// ---------------- state ----------------
+let N = "30030", sf = 0, playing = false, last = 0, spinA = 0;
+const tick = () => Math.min(SMAX, Math.floor(sf + 1e-9));
+const cam = [0.5, 0.42];
+const COL = { pen: "#d04a02", path: "#2f6fd6", gcd: "#8a2be2", fold: "#e08a00", loop: "#17803d", edge: "#d6d6d6" };
+
+// ---------------- zoom and pan (screen space only) ----------------
+let CAM = null, LASTV = null, LIFTSC = 1; const BALL = [0, 0];      // lift camera {M bounded Mobius, rel = word anchor -> pen tile at relT}, last pen frame, scale, ball yaw/pitch
+const KMAX = 14;                                                     // pen and trail drawn within this many walls of the anchor tile
+const VIEW = { atm: { z: 1, px: 0, py: 0 }, lift: { z: 1, px: 0, py: 0 }, gear: { z: 1, px: 0, py: 0 } };
+function vt(id, cv, p) { const v = VIEW[id], cx = cv.width / 2, cy = cv.height / 2; return [cx + (p[0] - cx) * v.z + v.px, cy + (p[1] - cy) * v.z + v.py, ...p.slice(2)]; }
+function zoomAt(id, cv, sx, sy, f) { const v = VIEW[id], cx = cv.width / 2, cy = cv.height / 2, z2 = Math.max(0.3, Math.min(40, v.z * f));
+  const wx = cx + (sx - cx - v.px) / v.z, wy = cy + (sy - cy - v.py) / v.z; v.z = z2; v.px = sx - cx - (wx - cx) * z2; v.py = sy - cy - (wy - cy) * z2; }
+function attachView(id, cvId, onDrag) {
+  const cv = $(cvId), pts = new Map(); let last = null;
+  const xy = e => { const r = cv.getBoundingClientRect(); return [(e.clientX - r.left) * cv.width / r.width, (e.clientY - r.top) * cv.height / r.height]; };
+  const redraw = () => { if (!playing) refresh(); };
+  cv.addEventListener("wheel", e => { e.preventDefault(); const [x, y] = xy(e); zoomAt(id, cv, x, y, Math.exp(-e.deltaY * 0.0015)); redraw(); }, { passive: false });
+  cv.addEventListener("pointerdown", e => { cv.setPointerCapture(e.pointerId); pts.set(e.pointerId, xy(e)); last = null; });
+  cv.addEventListener("pointermove", e => { if (!pts.has(e.pointerId)) return; const prev = pts.get(e.pointerId), cur = xy(e); pts.set(e.pointerId, cur);
+    if (pts.size >= 2) { const [a, b] = [...pts.values()], d = Math.hypot(a[0] - b[0], a[1] - b[1]), m = [(a[0] + b[0]) / 2, (a[1] + b[1]) / 2];
+      if (last) { zoomAt(id, cv, m[0], m[1], d / Math.max(1, last.d)); VIEW[id].px += m[0] - last.m[0]; VIEW[id].py += m[1] - last.m[1]; } last = { d, m }; redraw(); return; }
+    const dx = cur[0] - prev[0], dy = cur[1] - prev[1];
+    if (onDrag && onDrag(e, dx, dy, prev, cur)) { redraw(); return; }
+    VIEW[id].px += dx; VIEW[id].py += dy; redraw(); });
+  const up = e => { pts.delete(e.pointerId); last = null; };
+  cv.addEventListener("pointerup", up); cv.addEventListener("pointercancel", up);
+}
+document.addEventListener("click", e => { const b = e.target.closest(".zb button"); if (!b) return; const id = b.parentNode.dataset.view, cv = $({ atm: "cv-atm", lift: "cv-lift", gear: "cv-gear" }[id]);
+  if (b.dataset.z === "reset") { Object.assign(VIEW[id], { z: 1, px: 0, py: 0 }); if (id === "lift") { CAM = null; PCAM = null; BALL[0] = BALL[1] = 0; } } else zoomAt(id, cv, cv.width / 2, cv.height / 2, b.dataset.z === "in" ? 1.4 : 1 / 1.4); if (!playing) refresh(); });
+
+// ---------------- the atom ----------------
+function proj(cv, p, S, zc) {
+  const yaw = cam[0] + spinA, pit = cam[1], [x, y, z0] = p, z = (z0 - zc), cy = Math.cos(yaw), sy = Math.sin(yaw), cp = Math.cos(pit), sp = Math.sin(pit);
+  const x1 = cy * x - sy * y, y1 = sy * x + cy * y, v = cp * z - sp * y1, dep = sp * z + cp * y1;
+  const sc = S * Math.min(cv.width, cv.height); return [cv.width / 2 + x1 * sc, cv.height / 2 - v * sc, dep];
+}
+function atomPoint(A, a, b, f, mode) {      // point on the step a -> b at fraction f
+  const P = mode === "cone" ? A.cone : A.helix, pa = P[a], pb = P[b];
+  if (mode !== "helix" || a === b) return pa.map((x, k) => x + (pb[k] - x) * f);
+  let i = 0; while (A.E[a][i] === A.E[b][i]) i++;
+  const ea = A.E[a][i], eb = A.E[b][i], ca = A.contrib(i, ea), cm = A.contrib(i, ea + (eb - ea) * f);   // wheel i turns one tooth (arc of radius 1/n_i)
+  return [pa[0] - ca[0] + cm[0], pa[1] - ca[1] + cm[1], pa[2] + (pb[2] - pa[2]) * f];
+}
+function conePoint(A, a, b, f) {            // on the cone surface r(Omega) = (2^Omega - 1)/(2^Omega_max - 1); straight if an end sits on the axis above 1
+  const pa = A.cone[a], pb = A.cone[b], ra = Math.hypot(pa[0], pa[1]), rb = Math.hypot(pb[0], pb[1]);
+  if ((ra < 1e-12 && pa[2] > 0) || (rb < 1e-12 && pb[2] > 0)) return pa.map((x, k) => x + (pb[k] - x) * f);
+  let ta = Math.atan2(pa[1], pa[0]), tb = Math.atan2(pb[1], pb[0]); if (ra < 1e-12) ta = tb; if (rb < 1e-12) tb = ta;
+  let dt = tb - ta; dt -= 2 * Math.PI * Math.round(dt / (2 * Math.PI));
+  const om = pa[2] + (pb[2] - pa[2]) * f, r = (2 ** om - 1) / (2 ** A.Om - 1), th = ta + dt * f; return [r * Math.cos(th), r * Math.sin(th), om];
+}
+function drawAtom() {
+  const A = AT[N], cv = $("cv-atm"), g = cv.getContext("2d"), mode = $("layout").value, P = mode === "cone" ? A.cone : A.helix;
+  g.fillStyle = "#fff"; g.fillRect(0, 0, cv.width, cv.height);
+  const zs = mode === "cone" ? 0.62 / A.Om : 3.2 / A.Om, Pz = P.map(p => [p[0], p[1], p[2] * zs]);
+  let ext = 0; for (const p of P) ext = Math.max(ext, Math.hypot(p[0], p[1])); const S = 0.36 / Math.max(ext, 0.5), zc = A.Om * zs / 2;
+  const Q = (p) => vt("atm", cv, proj(cv, [p[0], p[1], p[2] * zs], S, zc));
+  // axis and cone rings
+  g.strokeStyle = "#eee"; g.lineWidth = 1; { const a = Q([0, 0, 0]), b = Q([0, 0, A.Om]); g.beginPath(); g.moveTo(a[0], a[1]); g.lineTo(b[0], b[1]); g.stroke(); }
+  if (mode === "cone") for (let o = 1; o <= A.Om; o++) { if (!A.cone.some((p, v) => A.omega[v] === o && Math.hypot(p[0], p[1]) > 1e-9)) continue; const r = (2 ** o - 1) / (2 ** A.Om - 1); g.beginPath(); for (let k = 0; k <= 48; k++) { const q = Q([r * Math.cos(k * Math.PI / 24), r * Math.sin(k * Math.PI / 24), o]); k ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1]); } g.stroke(); }
+  // skin edges
+  for (let v = 0; v < A.n; v++) for (const u of A.S.rot[v]) if (v < u) { const pts = []; for (let k = 0; k <= (mode !== "helix" ? 1 : 10); k++) pts.push(Q(atomPoint(A, v, u, k / (mode !== "helix" ? 1 : 10), mode)));
+    g.strokeStyle = COL.edge; g.beginPath(); pts.forEach((q, k) => k ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1])); g.stroke(); }
+  // pen trail
+  const T = tick(), f = sf - T, full = $("fullpath").checked, tail = full ? Math.max(T, 1) : 60, penOn = $("showpen").checked;
+  if (penOn) for (let t = Math.max(0, T - tail); t < Math.min(T + 1, SMAX); t++) { const fr = t < T ? 1 : f; if (fr <= 0) continue; const age = full ? 0 : (T - t) / tail;
+    g.strokeStyle = `rgba(47,111,214,${0.95 - 0.8 * age})`; g.lineWidth = full ? (t >= T - 1 ? 3.4 : 1.8) : 2.4 - 1.4 * age; g.beginPath();
+    const n = mode !== "helix" ? 1 : 12; for (let k = 0; k <= n; k++) { const q = Q(atomPoint(A, A.path[t], A.path[t + 1], fr * k / n, mode)); k ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1]); } g.stroke(); }
+  // gcd readout
+  if ($("showgcd").checked) { g.setLineDash([5, 4]); g.lineWidth = 1.4;
+    const fullG = $("fullpath").checked, done = new Set();
+    for (let s = fullG ? 1 : Math.max(1, T - 5); s <= T; s++) { const ia = A.labIdx.get(gcd(s - 1, A.N)), ib = A.labIdx.get(gcd(s, A.N)), key = Math.min(ia, ib) + "-" + Math.max(ia, ib);
+      if (fullG && s < T && done.has(key)) continue; done.add(key);
+      const seg = []; if (mode === "cone") for (let k = 0; k <= 24; k++) seg.push(Q(conePoint(A, ia, ib, k / 24))); else seg.push(Q(P[ia]), Q(P[ib])); g.strokeStyle = fullG ? `rgba(138,43,226,${s === T ? 0.95 : 0.8})` : `rgba(138,43,226,${0.25 + 0.12 * (s - T + 5)})`; g.lineWidth = fullG && s === T ? 2.4 : 1.4;
+      g.beginPath(); seg.forEach((q, k) => k ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1])); g.stroke(); }
+    g.setLineDash([]); }
+  // vertices and stacks
+  const st = stacks(P), hkey = stacks(A.helix), hof = new Map(); hkey.forEach((s, k) => s.forEach(v => hof.set(v, k)));
+  const pos = P.map(p => Q(p)), onPath = new Set(penOn ? A.path.slice(0, T + 1) : []), cur = A.path[T], gd = A.labIdx.get(gcd(T, A.N));
+  g.font = "11px system-ui"; g.textAlign = "left";
+  for (const s of st) { const [x, y, d] = pos[s[0]];
+    g.fillStyle = s.some(v => onPath.has(v)) ? (d > 0 ? "#555" : "#999") : "#ccc"; g.beginPath(); g.arc(x, y, 2.6, 0, 7); g.fill();
+    if (s.length > 1) { const tru = new Set(s.map(v => hof.get(v))).size === 1; g.strokeStyle = tru ? "#444" : "#999"; g.lineWidth = 1; if (!tru) g.setLineDash([3, 2]); g.beginPath(); g.arc(x, y, 6, 0, 7); g.stroke(); g.setLineDash([]);
+      if (tru || $("alllab").checked) { g.fillStyle = tru ? "#444" : "#888"; g.fillText((tru ? "×" : "cone ×") + s.length, x + 7, y + 12); } }
+    const show = $("alllab").checked || (penOn && s.includes(cur)) || ($("showgcd").checked && s.includes(gd)) || s.includes(A.i1) || s.includes(A.iN);
+    if (show) { g.fillStyle = "#333"; g.fillText(s.map(v => A.lab[v]).join(" · "), x + 8, y - 6); } }
+  if ($("showgcd").checked) { const [x, y] = pos[gd]; g.fillStyle = COL.gcd; g.beginPath(); g.moveTo(x, y - 8); g.lineTo(x + 8, y); g.lineTo(x, y + 8); g.lineTo(x - 8, y); g.closePath(); g.globalAlpha = 0.8; g.fill(); g.globalAlpha = 1; }
+  const pp = Q(atomPoint(A, A.path[T], A.path[Math.min(T + 1, SMAX)], T < SMAX ? f : 0, mode));
+  if (penOn) { g.fillStyle = COL.pen; g.beginPath(); g.arc(pp[0], pp[1], 6, 0, 7); g.fill(); }
+  return hkey;
+}
+
+// ---------------- the lift ----------------
+function hgeo(G, z1, z2, n) {     // geodesic (or segment) from z1 to z2
+  if (G.flat) return [z1, z2];
+  if (G.sphere) { const up = z => { const r2 = z[0] * z[0] + z[1] * z[1]; return [2 * z[0] / (1 + r2), 2 * z[1] / (1 + r2), (1 - r2) / (1 + r2)]; };
+    const a = up(z1), b = up(z2), om = Math.acos(Math.max(-1, Math.min(1, a[0] * b[0] + a[1] * b[1] + a[2] * b[2]))), out = [];
+    for (let k = 0; k <= n; k++) { const s = k / n, wa = om > 1e-12 ? Math.sin((1 - s) * om) / Math.sin(om) : 1 - s, wb = om > 1e-12 ? Math.sin(s * om) / Math.sin(om) : s;
+      const P = [0, 1, 2].map(i => wa * a[i] + wb * b[i]); out.push([P[0] / (1 + P[2]), P[1] / (1 + P[2])]); }
+    return out; }
+  const phi = q => ({ M: [[1, 0], [-q[0], -q[1]], [-q[0], q[1]], [1, 0]], anti: false });
+  const m = phi(z1), w = ap(m, z2), r = Math.hypot(w[0], w[1]), inv = phi([-z1[0], -z1[1]]), out = [];
+  for (let k = 0; k <= n; k++) { const s = r > 0 ? Math.tanh((k / n) * Math.atanh(Math.min(r, 1 - 1e-15))) / r : 0; out.push(ap(inv, [w[0] * s, w[1] * s])); }
+  return out;
+}
+function liftOff(A, G, v) {      // where vertex v sits inside the cover cell of its corner tile (frame of that tile); drawing only (Klein-bilinear)
+  const e = A.E[v], I = []; for (let k = 0; k < A.w; k++) if (e[k] > 0 && e[k] < A.prof[k]) I.push(k);
+  if (!I.length) return [0, 0];
+  const K = z => { if (G.flat) return z; if (G.sphere) { const s = 2 / (1 - z[0] * z[0] - z[1] * z[1]); return [z[0] * s, z[1] * s]; } const s = 2 / (1 + z[0] * z[0] + z[1] * z[1]); return [z[0] * s, z[1] * s]; };
+  const Pk = k => { if (G.flat) return k; if (G.sphere) { const s = 1 / (1 + Math.sqrt(1 + k[0] * k[0] + k[1] * k[1])); return [k[0] * s, k[1] * s]; } const s = 1 / (1 + Math.sqrt(Math.max(0, 1 - k[0] * k[0] - k[1] * k[1]))); return [k[0] * s, k[1] * s]; };
+  const i = I[0], fi = e[i] / A.prof[i], ki = K(ap(G.R[i], [0, 0]));
+  if (I.length === 1) return Pk([ki[0] * fi, ki[1] * fi]);
+  const j = I[1], fj = e[j] / A.prof[j], kj = K(ap(G.R[j], [0, 0])), kij = K(ap(cmp(G.R[i], G.R[j]), [0, 0]));
+  return Pk([fi * (1 - fj) * ki[0] + (1 - fi) * fj * kj[0] + fi * fj * kij[0], fi * (1 - fj) * ki[1] + (1 - fi) * fj * kj[1] + fi * fj * kij[1]]);
+}
+function wmulIP(w, word, x) { for (let j = word.length - 1; j >= 0; j--) { if (word[j] === x) { word.splice(j, 1); return; } if (!commW(w, word[j], x)) break; } word.push(x); }
+function Fmap(G, word) { let F = ID; for (const x of word) F = cmp(F, G.R[x]); return F; }      // anchor frame <- frame of tile anchor*word
+const kapOf = G => G.flat ? 0 : G.sphere ? 1 : -1;
+function mobDist(G, c, a) {      // |(c - a)/(k conj(a) c + 1)|: increasing in the distance between c and a, in the model's own geometry
+  if (!(Math.hypot(c[0], c[1]) < 1e6)) return Infinity; const k = kapOf(G), n = [c[0] - a[0], c[1] - a[1]], d = C.add(C.mul([k * a[0], -k * a[1]], c), [1, 0]); return Math.hypot(...n) / Math.hypot(...d); }
+function cleanIso(G, F) {         // the isometry with the same image of 0 and the same turning: T_c o Rot_theta (o conj if anti)
+  const k = kapOf(G), c = ap(F, [0, 0]), Tinv = { M: [[1, 0], [-c[0], -c[1]], [k * c[0], -k * c[1]], [1, 0]], anti: false }, w = ap(cmp(Tinv, F), [0.5, 0]), th = Math.atan2(w[1], w[0]), e = C.ex(th);
+  return { M: [e, c, C.mul([-k * c[0], k * c[1]], e), [1, 0]], anti: F.anti };
+}
+function camRel(A) {             // word from the camera's anchor tile to the pen's tile at tick(), kept exactly by stepping the walk's reflections
+  const T = tick(); while (CAM.relT < T) { if (A.gs[CAM.relT] >= 0) wmulIP(A.w, CAM.rel, A.gs[CAM.relT]); CAM.relT++; }
+  while (CAM.relT > T) { CAM.relT--; if (A.gs[CAM.relT] >= 0) wmulIP(A.w, CAM.rel, A.gs[CAM.relT]); } return CAM.rel; }
+function tilesInView(G, M, S, W, H, tgt, penSp) {    // tiles for the current view: start at the tile nearest the screen centre, nearest first, down to 2.5 px
+  const out = [], seen = new Set(), hp = [], BUD = 4000;
+  const push = x => { hp.push(x); let i = hp.length - 1; while (i) { const p = (i - 1) >> 1; if (hp[p].pr <= hp[i].pr) break; [hp[p], hp[i]] = [hp[i], hp[p]]; i = p; } };
+  const pop = () => { const top = hp[0], last = hp.pop(); if (hp.length) { hp[0] = last; let i = 0; for (;;) { const l = 2 * i + 1, r = l + 1; let m = i;
+    if (l < hp.length && hp[l].pr < hp[m].pr) m = l; if (r < hp.length && hp[r].pr < hp[m].pr) m = r; if (m === i) break; [hp[m], hp[i]] = [hp[i], hp[m]]; i = m; } } return top; };
+  const off = q => Math.hypot(Math.max(0, -q[0], q[0] - W), Math.max(0, -q[1], q[1] - H));
+  const add = (Ff, par, depth) => { const c = ap(Ff, [0, 0]); if (!(Math.hypot(c[0], c[1]) < 1e6)) return;
+    const sp = S(c), key = Math.round(sp[0] * 4) + "," + Math.round(sp[1] * 4); if (seen.has(key)) return; seen.add(key);   // visible tiles are > 2.5 px apart
+    const c0 = S(ap(Ff, G.corners[0])), span = Math.hypot(c0[0] - sp[0], c0[1] - sp[1]), o = off(sp);
+    if (depth && (span < 2.5 || (o > Math.max(W, H) && o > 3 * span))) return;
+    push({ Ff, par, depth, sp, span, o, pr: o - span, pen: !!penSp && Math.hypot(sp[0] - penSp[0], sp[1] - penSp[1]) < 0.5 }); };
+  let Fr = M, pr0 = 0, dr = mobDist(G, ap(M, [0, 0]), tgt);
+  for (let it = 0; it < 400; it++) { let best = -1, bd = dr; for (let k = 0; k < G.w; k++) { const d = mobDist(G, ap(cmp(Fr, G.R[k]), [0, 0]), tgt); if (d < bd - 1e-12) { bd = d; best = k; } }
+    if (best < 0) break; Fr = cmp(Fr, G.R[best]); pr0 ^= 1 << best; dr = bd; }
+  add(Fr, pr0, 0); let visits = 0;
+  while (hp.length && out.length < BUD && visits < 4 * BUD) { const x = pop(); visits++; if (x.o < 1.5 * x.span) { x.cs = G.corners.map(c => S(ap(x.Ff, c))); out.push(x); }
+    for (let k = 0; k < G.w; k++) add(cmp(x.Ff, G.R[k]), x.par ^ (1 << k), x.depth + 1); }
+  return out;
+}
+function drawLiftBall(A, G, cv, g, W, H, T, f, V) {
+  const R0 = 0.42 * Math.min(W, H), tilt = 0.55, ct = Math.cos(tilt), st = Math.sin(tilt);
+  const up = z => { if (!(Math.hypot(z[0], z[1]) < 1e6)) return [0, 0, -1]; const r2 = z[0] * z[0] + z[1] * z[1]; return [2 * z[0] / (1 + r2), 2 * z[1] / (1 + r2), (1 - r2) / (1 + r2)]; };
+  const cy = Math.cos(BALL[0]), sy = Math.sin(BALL[0]), cp = Math.cos(BALL[1]), sp = Math.sin(BALL[1]);
+  const rot = P => { const a = [P[0], ct * P[1] + st * P[2], -st * P[1] + ct * P[2]], b = [cy * a[0] + sy * a[2], a[1], -sy * a[0] + cy * a[2]]; return [b[0], cp * b[1] - sp * b[2], sp * b[1] + cp * b[2]]; };       // tip the pen's octant up a little so the ball reads as a ball
+  const scr = P => { const Q = rot(P), s = vt("lift", cv, [W / 2 + Q[0] * R0, H / 2 - Q[1] * R0]); return [s[0], s[1], Q[2]]; };
+  const slerp = (a, b, n) => { const om = Math.acos(Math.max(-1, Math.min(1, a[0] * b[0] + a[1] * b[1] + a[2] * b[2]))), out = [];
+    for (let k = 0; k <= n; k++) { const s = k / n, wa = om > 1e-9 ? Math.sin((1 - s) * om) / Math.sin(om) : 1 - s, wb = om > 1e-9 ? Math.sin(s * om) / Math.sin(om) : s; out.push([0, 1, 2].map(i => wa * a[i] + wb * b[i])); } return out; };
+  const path3 = (pts, col, lw) => { for (let k = 1; k < pts.length; k++) { const a = scr(pts[k - 1]), b = scr(pts[k]), back = (a[2] + b[2]) / 2 < 0;
+    g.strokeStyle = col(back); g.lineWidth = back ? Math.max(0.8, lw * 0.6) : lw; g.beginPath(); g.moveTo(a[0], a[1]); g.lineTo(b[0], b[1]); g.stroke(); } };
+  { const c0 = vt("lift", cv, [W / 2, H / 2]); g.fillStyle = "#f7f9fc"; g.strokeStyle = "#999"; g.lineWidth = 1.2; g.beginPath(); g.arc(c0[0], c0[1], R0 * VIEW.lift.z, 0, 7); g.fill(); g.stroke(); }
+  const cbT = A.cb(A.path[T]);
+  for (const b of G.ball) { const Ff = cmp(V, b.F), cw = G.corners.map(c => up(ap(Ff, c)));
+    cw.forEach((c, k) => path3(slerp(c, cw[(k + 1) % cw.length], 24), back => back ? "rgba(0,0,0,0.12)" : "#9a9a9a", 1.2));
+    const cc = scr(up(ap(Ff, [0, 0])));
+    if ($("tlab").checked) { const back = cc[2] < 0; g.fillStyle = back ? "rgba(0,0,0,0.28)" : b.word.length ? "#555" : "#111"; g.font = (back ? "15px" : "bold 19px") + " system-ui"; g.textAlign = "center"; g.fillText(String(A.unitLab(cbT ^ parity(b.word))), cc[0], cc[1] + 6); } }
+  const fullL = $("fullpath").checked, K = fullL ? T : +$("trail").value, pts = [liftOff(A, G, A.path[T])]; let F = ID;
+  for (let t = T - 1; t >= Math.max(0, T - K); t--) { if (A.gs[t] >= 0) F = cmp(F, G.R[A.gs[t]]); pts.push(ap(F, liftOff(A, G, A.path[t]))); }
+  const D = pts.map(z => up(ap(V, z)));
+  for (let k = D.length - 1; k > 0; k--) { const age = fullL ? 0 : k / Math.max(1, K), al = 0.95 - 0.75 * age;
+    path3(slerp(D[k], D[k - 1], 10), back => `rgba(47,111,214,${back ? al * 0.3 : al})`, fullL ? (k === 1 ? 3.4 : 1.8) : 2.4 - 1.2 * age); }
+  for (let k = 0; k < D.length; k++) { const t = T - k, kd = A.kind[t]; if (!kd) continue; const p = scr(D[k]);
+    g.globalAlpha = p[2] < 0 ? 0.3 : 1; g.fillStyle = kd === "fold" ? COL.fold : COL.loop; g.beginPath(); g.arc(p[0], p[1], k ? 3.5 : 5, 0, 7); g.fill(); g.globalAlpha = 1; }
+  const here = liftOff(A, G, A.path[T]), nxt = T < SMAX ? (A.gs[T] >= 0 ? ap(G.R[A.gs[T]], liftOff(A, G, A.path[T + 1])) : liftOff(A, G, A.path[T + 1])) : here;
+  const pz = T < SMAX ? [here[0] + (nxt[0] - here[0]) * f, here[1] + (nxt[1] - here[1]) * f] : here, pp = scr(up(ap(V, pz)));
+  g.fillStyle = COL.pen; g.beginPath(); g.arc(pp[0], pp[1], 6, 0, 7); g.fill();
+}
+let PCAM = null;                  // pillow lift camera: centre of the view in plane coordinates (null = follow the pen)
+function drawLiftPillow(A, cv, g, W, H, T, f) {
+  const [a, b] = A.prof, u = 0.47 * Math.min(W, H) / 6; LIFTSC = u;
+  const here = A.XY[T], nxt = A.XY[Math.min(T + 1, SMAX)], pen = T < SMAX ? [here[0] + (nxt[0] - here[0]) * f, here[1] + (nxt[1] - here[1]) * f] : here;
+  const ctr = PCAM ? [PCAM.x, PCAM.y] : pen, S = q => vt("lift", cv, [W / 2 + (q[0] - ctr[0]) * u, H / 2 - (q[1] - ctr[1]) * u]);
+  const v = VIEW.lift, inv = s => [ctr[0] + ((W / 2 + (s[0] - W / 2 - v.px) / v.z) - W / 2) / u, ctr[1] - ((H / 2 + (s[1] - H / 2 - v.py) / v.z) - H / 2) / u];
+  const p0 = inv([0, H]), p1 = inv([W, 0]), x0 = Math.floor(p0[0]) - 1, x1 = Math.ceil(p1[0]) + 1, y0 = Math.floor(p0[1]) - 1, y1 = Math.ceil(p1[1]) + 1, upx = u * v.z;
+  // back sheet shaded: cells of the a x b fold pattern whose centre folds to the back
+  if ((x1 - x0) * (y1 - y0) < 40000) for (let i = Math.floor(x0 / a); i <= Math.ceil(x1 / a); i++) for (let j = Math.floor(y0 / b); j <= Math.ceil(y1 / b); j++) {
+    const cx = i * a + a / 2, cy = j * b + b / 2; let xx = ((cx % (2 * a)) + 2 * a) % (2 * a), yy = ((cy % (2 * b)) + 2 * b) % (2 * b); if (yy > b) { yy = 2 * b - yy; xx = (2 * a - xx) % (2 * a); }
+    if (xx > a) { const q = S([i * a, j * b]), r = S([(i + 1) * a, (j + 1) * b]); g.fillStyle = "#eef1f6"; g.fillRect(q[0], r[1], r[0] - q[0], q[1] - r[1]); } }
+  if (upx > 4) { g.strokeStyle = "#e3e3e3"; g.lineWidth = 1; for (let x = x0; x <= x1; x++) { const q = S([x, y0]), r = S([x, y1]); g.beginPath(); g.moveTo(q[0], q[1]); g.lineTo(r[0], r[1]); g.stroke(); }
+    for (let y = y0; y <= y1; y++) { const q = S([x0, y]), r = S([x1, y]); g.beginPath(); g.moveTo(q[0], q[1]); g.lineTo(r[0], r[1]); g.stroke(); } }
+  g.strokeStyle = "#9aa3b2"; g.lineWidth = 1.4;      // fold lines x = ka, y = lb: the edges of the two sheets
+  for (let x = Math.ceil(x0 / a) * a; x <= x1; x += a) { const q = S([x, y0]), r = S([x, y1]); g.beginPath(); g.moveTo(q[0], q[1]); g.lineTo(r[0], r[1]); g.stroke(); }
+  for (let y = Math.ceil(y0 / b) * b; y <= y1; y += b) { const q = S([x0, y]), r = S([x1, y]); g.beginPath(); g.moveTo(q[0], q[1]); g.lineTo(r[0], r[1]); g.stroke(); }
+  // lattice points labelled by their divisor; cone points (half-turn centres) as diamonds
+  const cbT = A.cb(A.path[T]); g.textAlign = "center";
+  for (let x = x0; x <= x1 && upx > 1.5; x++) for (let y = y0; y <= y1; y++) { const cone = x % a === 0 && y % b === 0, q = S([x, y]);
+    if (cone) { g.fillStyle = "#6b4fa0"; g.beginPath(); g.moveTo(q[0], q[1] - 5); g.lineTo(q[0] + 5, q[1]); g.lineTo(q[0], q[1] + 5); g.lineTo(q[0] - 5, q[1]); g.closePath(); g.fill(); }
+    if ($("tlab").checked && (upx > 26 || (cone && upx > 10))) { const e = A.fold(x, y); g.fillStyle = cone ? "#4a3a73" : "#888"; g.font = (cone ? "bold 12px" : "11px") + " system-ui"; g.fillText(String(2 ** e[0] * 3 ** e[1]), q[0] + 12, q[1] - 7); } }
+  // trail in the plane
+  const fullL = $("fullpath").checked, K = fullL ? T : +$("trail").value;
+  for (let t = Math.max(0, T - K); t < T; t++) { const age = fullL ? 0 : (T - t) / Math.max(1, K), q = S(A.XY[t]), r = S(A.XY[t + 1]);
+    g.strokeStyle = `rgba(47,111,214,${0.95 - 0.75 * age})`; g.lineWidth = fullL ? (t === T - 1 ? 3.4 : 1.8) : 2.4 - 1.2 * age; g.beginPath(); g.moveTo(q[0], q[1]); g.lineTo(r[0], r[1]); g.stroke(); }
+  for (let t = Math.max(1, T - K); t <= T; t++) { const kd = A.kind[t]; if (!kd) continue; const q = S(A.XY[t]); g.fillStyle = kd === "fold" ? COL.fold : COL.loop; g.beginPath(); g.arc(q[0], q[1], t === T ? 5 : 3.5, 0, 7); g.fill(); }
+  if (T < SMAX) { const q = S(here), r = S(nxt); g.strokeStyle = "#ccc"; g.setLineDash([3, 3]); g.beginPath(); g.moveTo(q[0], q[1]); g.lineTo(r[0], r[1]); g.stroke(); g.setLineDash([]); }
+  const pp = S(pen); g.fillStyle = COL.pen; g.beginPath(); g.arc(pp[0], pp[1], 6, 0, 7); g.fill();
+}
+function drawLift() {
+  const A = AT[N], G = A.G, cv = $("cv-lift"), g = cv.getContext("2d"), W = cv.width, H = cv.height, T = tick(), f = playing ? sf - T : 0;
+  g.fillStyle = "#fff"; g.fillRect(0, 0, W, H);
+  const Rr = 0.47 * Math.min(W, H), sc = G.flat ? Rr / 3.2 : G.sphere ? Rr / 2.1 : Rr; LIFTSC = sc;
+  // pen frame: current corner tile at 0; mirror if the word is odd; rotate so the last reflection arrived from the left
+  const odd = A.wlen[T] & 1, dIn = A.lastG[T], thIn = 2 * Math.PI * dIn / A.w * (odd ? -1 : 1);
+  const al = (T ? Math.PI : 0) - thIn, ro = C.ex(al);
+  let V = { M: [ro, [0, 0], [0, 0], [1, 0]], anti: false }; if (odd) V = cmp(V, { M: [[1, 0], [0, 0], [0, 0], [1, 0]], anti: true });
+  if (!CAM && !A.strained && !A.pillow && f > 0 && T < SMAX) { const nx = ap(V, ap(G.R[A.seats[T]], [0, 0])); let q;      // squarefree, pen-centred: slide toward the next tile while playing
+    if (G.flat) { q = [nx[0] * f, nx[1] * f]; V = cmp({ M: [[1, 0], [-q[0], -q[1]], [0, 0], [1, 0]], anti: false }, V); }
+    else if (G.sphere) { const r = Math.hypot(...nx), s = Math.tan(f * Math.atan(r)) / r; q = [nx[0] * s, nx[1] * s]; V = cmp({ M: [[1, 0], [-q[0], -q[1]], [q[0], -q[1]], [1, 0]], anti: false }, V); }
+    else { const r = Math.hypot(...nx), s = Math.tanh(f * Math.atanh(r)) / r; q = [nx[0] * s, nx[1] * s]; V = cmp({ M: [[1, 0], [-q[0], -q[1]], [-q[0], q[1]], [1, 0]], anti: false }, V); } }
+  LASTV = V;
+  if (G.pillow) { $("sphv-l").style.display = "none"; return drawLiftPillow(A, cv, g, W, H, T, f); }
+  $("sphv-l").style.display = G.sphere ? "" : "none";
+  if (G.sphere && $("sphv").value === "ball") return drawLiftBall(A, G, cv, g, W, H, T, f, V);
+  // camera: pen-centred (anchor = pen tile, map V) or the user's anchored camera
+  const M = CAM ? CAM.M : V, rel = CAM ? camRel(A) : [], relPar = parity(rel), near = rel.length <= KMAX, Fp = near ? cmp(M, Fmap(G, rel)) : null;
+  const S = z => vt("lift", cv, [W / 2 + z[0] * sc, H / 2 - z[1] * sc]);
+  const v = VIEW.lift, tgt0 = [((W / 2 - v.px - W / 2) / v.z) / sc, -((H / 2 - v.py - H / 2) / v.z) / sc], tgt = kapOf(G) < 0 && Math.hypot(...tgt0) > 0.999 ? tgt0.map(x => x * 0.999 / Math.hypot(...tgt0)) : tgt0;
+  if (G.sphere) { g.strokeStyle = "#bbb"; g.lineWidth = 1; g.setLineDash([4, 4]); g.beginPath(); (() => { const c0 = vt("lift", cv, [W / 2, H / 2]); g.arc(c0[0], c0[1], sc * VIEW.lift.z, 0, 7); })(); g.stroke(); g.setLineDash([]); }
+  else if (!G.flat) { g.strokeStyle = "#bbb"; g.lineWidth = 1; g.beginPath(); (() => { const c0 = vt("lift", cv, [W / 2, H / 2]); g.arc(c0[0], c0[1], Rr * VIEW.lift.z, 0, 7); })(); g.stroke(); }
+  // tiles in view, labelled by the corner divisor they cover (parity relative to the pen's tile)
+  const cbT = A.cb(A.path[T]); g.lineWidth = 1; g.textAlign = "center";
+  for (const tl of tilesInView(G, M, S, W, H, tgt, near ? S(ap(Fp, [0, 0])) : null)) { g.strokeStyle = G.sphere ? "#bdbdbd" : "#dcdcdc"; g.beginPath();
+    if (G.sphere) { const cw = G.corners.map(c => ap(tl.Ff, c)); cw.forEach((c, k) => hgeo(G, c, cw[(k + 1) % cw.length], 24).forEach((z, i) => { const q = S(z); (k || i) ? g.lineTo(q[0], q[1]) : g.moveTo(q[0], q[1]); })); }
+    else tl.cs.forEach((p, k) => k ? g.lineTo(p[0], p[1]) : g.moveTo(p[0], p[1])); g.closePath(); g.stroke();
+    if ($("tlab").checked && tl.span > 16) { g.fillStyle = !tl.pen ? "#777" : "#222"; g.font = (!tl.pen ? Math.max(9, Math.min(13, tl.span / 5)) : 13) + "px system-ui";
+      g.fillText(String(A.unitLab(cbT ^ relPar ^ tl.par)), tl.sp[0], tl.sp[1] + (!tl.pen ? 4 : 22)); } }
+  if (G.sphere && $("tlab").checked) { const inf = G.ball.find(b => !(Math.hypot(...ap(cmp(M, b.F), [0, 0])) < 1e6));
+    if (inf) { g.fillStyle = "#777"; g.font = "12px system-ui"; g.textAlign = "left"; g.fillText(`outside the corners: tile ${A.unitLab(cbT ^ relPar ^ parity(inf.word))} (its centre is the point at infinity)`, 8, H - 10); g.textAlign = "center"; } }
+  // trail: exact word from the anchor to each earlier tile (in place), drawn within KMAX walls
+  const fullL = $("fullpath").checked, K = fullL ? T : +$("trail").value, rw = rel.slice(), D = [];
+  D.push(rw.length <= KMAX ? ap(cmp(M, Fmap(G, rw)), liftOff(A, G, A.path[T])) : null);
+  for (let t = T - 1; t >= Math.max(0, T - K); t--) { if (A.gs[t] >= 0) wmulIP(A.w, rw, A.gs[t]); D.push(rw.length <= KMAX ? ap(cmp(M, Fmap(G, rw)), liftOff(A, G, A.path[t])) : null); }
+  for (let k = D.length - 1; k > 0; k--) { if (!D[k] || !D[k - 1]) continue; const age = fullL ? 0 : k / Math.max(1, K); g.strokeStyle = `rgba(47,111,214,${0.95 - 0.75 * age})`; g.lineWidth = fullL ? (k === 1 ? 3.4 : 1.8) : 2.4 - 1.2 * age;
+    const seg = hgeo(G, D[k], D[k - 1], 12).map(S); g.beginPath(); seg.forEach((p, i) => i ? g.lineTo(p[0], p[1]) : g.moveTo(p[0], p[1])); g.stroke(); }
+  for (let k = 0; k < D.length; k++) { const t = T - k, kd = A.kind[t]; if (!kd || !D[k]) continue; const p = S(D[k]);
+    g.fillStyle = kd === "fold" ? COL.fold : COL.loop; g.beginPath(); g.arc(p[0], p[1], k ? 3.5 : 5, 0, 7); g.fill(); }
+  if (!near) { g.fillStyle = "#b3261e"; g.font = "13px system-ui"; g.textAlign = "left"; g.fillText(`the pen is ${rel.length} walls from this view · reset returns to it`, 8, 18); g.textAlign = "center"; return; }
+  const here = liftOff(A, G, A.path[T]);
+  const nxt = T < SMAX ? (A.gs[T] >= 0 ? ap(G.R[A.gs[T]], liftOff(A, G, A.path[T + 1])) : liftOff(A, G, A.path[T + 1])) : here;
+  if (T < SMAX) { const a = S(ap(Fp, here)), b = S(ap(Fp, nxt)); g.strokeStyle = "#ccc"; g.setLineDash([3, 3]); g.beginPath(); g.moveTo(a[0], a[1]); g.lineTo(b[0], b[1]); g.stroke(); g.setLineDash([]); }
+  const pz = (CAM || A.strained) && T < SMAX ? [here[0] + (nxt[0] - here[0]) * f, here[1] + (nxt[1] - here[1]) * f] : here;
+  const pp = S(ap(Fp, pz)); g.fillStyle = COL.pen; g.beginPath(); g.arc(pp[0], pp[1], 6, 0, 7); g.fill();
+}
+
+// ---------------- the native gearbox ----------------
+function C2(r, a) { return [r * Math.cos(a), r * Math.sin(a)]; }
+function gearChain(A, eFrac) {      // eFrac[i] = tooth of wheel i (may be fractional while turning); wheel i has n_i = a_i + 1 teeth, radius 1/n_i
+  const out = []; let q = [0, 0];
+  for (let i = 0; i < A.w; i++) { const n = A.nT[i], rad = 1 / n, phi = 2 * Math.PI * i / A.w, c = [q[0] - rad * Math.cos(phi), q[1] - rad * Math.sin(phi)], tip = C2(rad, phi + 2 * Math.PI * eFrac[i] / n);
+    const e = [c[0] + tip[0], c[1] + tip[1]]; out.push({ phi, c, e, q0: q, rad, n }); q = e; }
+  return out;
+}
+function gearTeeth(A, T, f) { const a = A.E[A.path[T]], b = A.E[A.path[Math.min(T + 1, SMAX)]]; return a.map((x, i) => x + (b[i] - x) * (T < SMAX ? f : 0)); }
+function drawGear() {
+  $("gear-grid").style.display = $("showgear").checked ? "" : "none"; if (!$("showgear").checked) return;
+  const cv = $("cv-gear"), cd = $("cv-dials"), A = AT[N], T = tick(), f = playing ? sf - T : 0, w = A.w;
+  let g = cv.getContext("2d"), W = cv.width, H = cv.height;
+  g.fillStyle = "#fff"; g.fillRect(0, 0, W, H);
+  const turning = T < SMAX && f > 0 ? A.seats[T] : (T ? A.seats[T - 1] : -1), WC = ["#c0392b", "#2f6fd6", "#17803d", "#8a2be2", "#e08a00", "#16a2b8"];
+  // left: the chain
+  const ch = gearChain(A, gearTeeth(A, T, f));
+  let ext = 0.6; for (const v of A.helix) ext = Math.max(ext, Math.hypot(v[0], v[1]) + 0.6);
+  const sc = 0.46 * H / ext, ox = 0.5 * W, oy = H / 2, S = z => vt("gear", cv, [ox + z[0] * sc, oy - z[1] * sc]);
+  g.fillStyle = "#e4e4e4"; for (const v of A.helix) { const s = S(v); g.beginPath(); g.arc(s[0], s[1], 2.2, 0, 7); g.fill(); }
+  ch.forEach((k, i) => { const c = S(k.c), e = S(k.e); g.strokeStyle = i === turning ? WC[i % 6] : "#bbb"; g.lineWidth = i === turning ? 2 : 1;
+    g.beginPath(); g.arc(c[0], c[1], k.rad * sc * VIEW.gear.z, 0, 7); g.stroke();
+    for (let tt = 0; tt < k.n; tt++) { const z = S([k.c[0] + k.rad * Math.cos(k.phi + 2 * Math.PI * tt / k.n), k.c[1] + k.rad * Math.sin(k.phi + 2 * Math.PI * tt / k.n)]); g.fillStyle = "#999"; g.beginPath(); g.arc(z[0], z[1], 2.5, 0, 7); g.fill(); }
+    g.globalAlpha = 0.35; g.strokeStyle = WC[i % 6]; g.lineWidth = 1.2; g.beginPath(); g.moveTo(c[0], c[1]); g.lineTo(e[0], e[1]); g.stroke(); g.globalAlpha = 1;
+    const q0 = S(k.q0); g.lineWidth = 3.4; g.beginPath(); g.moveTo(q0[0], q0[1]); g.lineTo(e[0], e[1]); g.stroke();
+    g.fillStyle = WC[i % 6]; g.font = "13px system-ui"; g.textAlign = "center"; g.fillText(String(PR[i]), c[0], c[1] + 4); });
+  const o = S([0, 0]), end = S(ch[w - 1].e); g.fillStyle = "#333"; g.beginPath(); g.arc(o[0], o[1], 3.5, 0, 7); g.fill();
+  g.fillStyle = COL.pen; g.beginPath(); g.arc(end[0], end[1], 6, 0, 7); g.fill();
+  g.fillStyle = "#333"; g.font = "14px system-ui"; g.textAlign = "left"; g.fillText("black dot: divisor 1 (all wheels on tooth 0) · orange: the divisor now", 10, H - 12);
+  // right: the dials, one per prime
+  g = cd.getContext("2d"); W = cd.width; H = cd.height; g.fillStyle = "#fff"; g.fillRect(0, 0, W, H);
+  const cols = Math.min(w, 3), rows = Math.ceil(w / cols), cw = W / cols, rh = H / rows, rd = Math.min(cw, rh) * 0.3, v = A.path[T];
+  for (let i = 0; i < w; i++) { const cx = (i % cols + 0.5) * cw, cy = (Math.floor(i / cols) + 0.45) * rh, phi = 2 * Math.PI * i / w, e = gearTeeth(A, T, f)[i];
+    g.strokeStyle = i === turning ? WC[i % 6] : "#bbb"; g.lineWidth = i === turning ? 3 : 1.5; g.beginPath(); g.arc(cx, cy, rd, 0, 7); g.stroke();
+    for (let tt = 0; tt < A.nT[i]; tt++) { const a = phi + 2 * Math.PI * tt / A.nT[i]; g.fillStyle = A.E[v][i] === tt ? WC[i % 6] : "#bbb"; g.beginPath(); g.arc(cx + rd * Math.cos(a), cy - rd * Math.sin(a), 4, 0, 7); g.fill(); }
+    const a = phi + 2 * Math.PI * e / A.nT[i]; g.strokeStyle = WC[i % 6]; g.lineWidth = 3; g.beginPath(); g.moveTo(cx, cy); g.lineTo(cx + 0.85 * rd * Math.cos(a), cy - 0.85 * rd * Math.sin(a)); g.stroke();
+    g.fillStyle = "#222"; g.font = "16px system-ui"; g.textAlign = "center";
+    const ei = A.E[v][i]; g.fillText(`p = ${PR[i]} · e = ${ei} of ${A.prof[i]}`, cx, cy + rd + 22);
+    g.fillStyle = "#666"; g.font = "14px system-ui"; g.fillText(`${fracTurn(i, w, ei, A.nT[i])} turn`, cx, cy + rd + 40); }
+}
+function gcdI(a, b) { while (b) [a, b] = [b, a % b]; return a; }
+function fracTurn(i, w, e, n) { const num = i * n + e * w, den = w * n, nn = num % den, g = gcdI(nn, den) || den; return nn === 0 ? "0" : `${nn / g}/${den / g}`; }
+function gearRead() {
+  if (!$("showgear").checked) { $("r-gear").innerHTML = ""; return; }
+  const A = AT[N], T = tick(), v = A.path[T], w = A.w, ch = gearChain(A, gearTeeth(A, T, 0)), h = A.helix[v], dl = Math.hypot(ch[w - 1].e[0] - h[0], ch[w - 1].e[1] - h[1]);
+  let rep = 0; for (let t = 1; t < T; t++) if (A.seats[t] === A.seats[t - 1]) rep++;
+  const ex = A.E[v];
+  const mv = T ? `wheel p = <b>${PR[A.seats[T - 1]]}</b> clicked ${A.dirs[T - 1] > 0 ? "forward (×" + PR[A.seats[T - 1]] + ")" : "back (÷" + PR[A.seats[T - 1]] + ")"}: ${A.lab[A.path[T - 1]]} → ${A.lab[v]}` : "no click yet";
+  $("r-gear").innerHTML = `s = ${T} · the wheels follow the Rule 30 pen${$("showpen").checked ? "" : " (hidden on the atom; the purple gcd(s, N) is a separate walk)"} · ${mv}<br>divisor <b>${A.lab[v]}</b> · exponent vector (${ex.join(", ")}) in prime order ${PR.slice(0, w).join(", ")} · Ω = ${A.omega[v]}<br>`
+    + `teeth: ${ex.map((e, i) => `p=${PR[i]}: ${fracTurn(i, w, e, A.nT[i])} turn`).join(" · ")}<br>`
+    + `chain sum (${ch[w - 1].e[0].toFixed(6)}, ${ch[w - 1].e[1].toFixed(6)}) vs helical point (${h[0].toFixed(6)}, ${h[1].toFixed(6)}) · |Δ| = ${dl.toExponential(1)} · same wheel twice in a row: ${rep}`;
+  const lo = Math.max(0, T - 400); let m = lo ? "… " : "";
+  for (let t = lo; t < T; t++) { const d = A.seats[t], up = A.dirs[t] > 0, s = `${PR[d]}${up ? "+" : "−"}`; m += t === T - 1 ? `<b style="background:#ffd27a">${s}</b> ` : s + " "; }
+  $("gear-moves").innerHTML = m || "(none yet)";
+}
+
+// ---------------- readouts ----------------
+function counts(A, T) {
+  const sk = new Set(A.path.slice(0, T + 1)), tl = new Set(A.keys.slice(0, T + 1)); let fo = 0, lo = 0, rs = 0, rl = 0;
+  for (let t = 1; t <= T; t++) { if (A.kind[t] === "fold") fo++; if (A.kind[t] === "loop") lo++; if (A.path[t] === A.i1) rs++; if (A.keys[t] === A.k0) rl++; }
+  return { sk: sk.size, tl: tl.size, fo, lo, rs, rl, wl: A.wlen[T] };
+}
+function refresh() {
+  const A = AT[N], T = tick(), c = counts(A, T), gd = gcd(T, A.N), sgn = T ? (STREAM.s[T - 1] > 0 ? "+" : "−") : "start";
+  $("sval").textContent = playing ? sf.toFixed(2) : String(T); $("scrub").value = T;
+  const st = drawAtom(); drawLift(); drawGear(); gearRead();
+  const curSt = st.find(s => s.includes(A.path[T])), gst = st.find(s => s.includes(A.labIdx.get(gd)));
+  const qt = w => { const g = gcdI(w, 4); return w % 4 ? (w / g) + "/" + (4 / g) : w / 4; };
+  const geo = A.pillow ? `the ${A.prof[0]} × ${A.prof[1]} rectangle doubled into a pillowcase (front and back sheet, ${2 * A.S.faces.length} squares), 4 cone points of half a turn (1, ${2 ** A.prof[0]}, ${3 ** A.prof[1]}, ${A.N}), every other point flat` : A.strained ? `${2 ** A.w} unitary corners with ${A.w} quarter-turns (${qt(A.w)} turns), every other vertex flat (4 quarter-turns)` : A.w === 4 ? "flat squares {4,4}" : `{4,${A.w}}, ${A.w} quarter-turns at every corner (${qt(A.w)} turns)`;
+  $("atom-h").textContent = `Div(${A.N}) · pen and gcd readout`;
+  $("atom-sub").innerHTML = `${ADESC[N]}: ${A.n} divisors, ${A.nE} edges, ${A.S.faces.length} squares, ${geo}. <span class="key" style="background:${COL.pen}"></span>pen <span class="key" style="background:${COL.gcd}"></span>gcd(s, N) (dashed: its last jumps). Solid rings: divisors at the same §9.7 point. Dashed rings (cone): different §9.7 points that the cone radius law puts together.`;
+  $("lift-h").textContent = A.pillow ? "The lift · the flat plane (the pillowcase unfolded)" : A.G.sphere ? "The lift · CAT(1): the round sphere, eight all-right triangles" : A.w === 4 ? "The lift · the flat square grid" : `The lift · the {${A.w},4} tiling in the Poincaré disk`;
+  $("lift-sub").innerHTML = A.pillow ? `The pillowcase is the plane folded by half turns about the points (k·${A.prof[0]}, l·${A.prof[1]}); unfolding it gives the pen's plane walk exactly (CAT(0)). Grey lines: the folds; shaded: cells that fold onto the back sheet; diamonds: the half-turn centres, the cone points. Each lattice point carries the divisor it folds to. Dots mark revisits on the atom: <span class="key" style="background:${COL.loop}"></span>same plane point <span class="key" style="background:${COL.fold}"></span>a different plane point with the same divisor (a fold).` : A.G.sphere ? `Metric stated: each tile is the all-right spherical triangle, one octant, centred on a unitary corner divisor (${[0, 1, 2, 3, 4, 5, 6, 7].map(b => A.unitLab(b)).join(", ")}). The octahedron is a flag complex, so by Gromov's link condition this complex is CAT(1); here it is the round unit sphere, its own universal cover, so every revisit closes. The octant of a corner is its link in the exponent box (the directions you can leave it in), as in the CAT gearbox experiment. Dashed: the great circle a quarter turn from the pen's tile.` : `Each tile is one element of the reflection group; its number is the divisor it covers. The pen walks from tile to neighbouring tile. Dots mark revisits on the atom: <span class="key" style="background:${COL.loop}"></span>closed in the cover too <span class="key" style="background:${COL.fold}"></span>closed only on the folded surface.${A.strained && !A.G.sphere ? " Strained atom: each tile is centred on a unitary corner divisor; between tiles the pen walks the subdivided squares (drawn at its exact cell, interpolated inside)." : ""}`;
+  $("r-atm").innerHTML = `s = ${T} · pen at <b>${A.lab[A.path[T]]}</b>${curSt.length > 1 ? " (stacked with " + curSt.filter(v => v !== A.path[T]).map(v => A.lab[v]).join(", ") + ")" : ""} · last turn ${sgn}${T ? ", flipped p = " + PR[A.seats[T - 1]] : ""}<br>`
+    + `gcd(${T}, ${A.N}) = <b>${gd}</b>${gst.length > 1 ? " (stacked with " + gst.filter(v => v !== A.labIdx.get(gd)).map(v => A.lab[v]).join(", ") + ")" : ""}${T ? ` · previous ${gcd(T - 1, A.N)}, coprime` : ""}<br>`
+    + `divisors visited ${c.sk} of ${A.n} · edges covered ${(() => { const e = new Set(); for (let t = 0; t < T; t++) e.add(Math.min(A.path[t], A.path[t + 1]) + "-" + Math.max(A.path[t], A.path[t + 1])); return e.size; })()} of ${A.nE} · returns to 1: ${c.rs}`;
+  $("r-lift").innerHTML = A.pillow ? `plane distance ${c.wl} (taxicab, from the start) · distinct plane points ${c.tl}<br>revisits on the atom: ${c.lo + c.fo} = ${c.lo} same plane point + ${c.fo} folded · returns to the start point: ${c.rl}` : `tile word length ${c.wl} (walls between the pen and its start tile) · distinct ${A.strained ? "lift points" : "tiles"} ${c.tl}<br>`
+    + `revisits on the atom: ${c.lo + c.fo} = ${c.lo} closed in the cover + ${c.fo} folded · returns to the start tile: ${c.rl}`;
+  $("summary").innerHTML = A.pillow ? `s = ${T}: on the pillowcase the pen has seen ${c.sk} of ${A.n} divisors; unfolded, it has visited ${c.tl} plane points and is ${c.wl} steps (taxicab) from where it started. ${c.fo} of its ${c.lo + c.fo} returns to an old divisor are folds of the pillow, not loops in the plane.` : `s = ${T}: on the atom the pen has seen ${c.sk} of ${A.n} divisors; in the cover it has ${A.strained ? `reached ${c.tl} distinct lift points` : `crossed into ${c.tl} distinct tiles`} and is ${c.wl} walls from where it started. `
+    + `${c.fo} of its ${c.lo + c.fo} returns to an old divisor are folds of the surface, not loops in the plane.`;
+  if ($("tbl").open) stepTable();
+}
+function stepTable() {
+  const A = AT[N], T = tick(); let h = "<table><tr><th>s</th><th>turn</th><th>seat p</th><th>pen</th><th>word length</th><th>revisit</th><th>gcd(s, N)</th></tr>";
+  for (let t = Math.max(0, T - 30); t <= Math.min(SMAX, T + 10); t++) h += `<tr${t === T ? ' style="background:#fff4e5"' : ""}><td>${t}</td><td>${t ? (STREAM.s[t - 1] > 0 ? "+" : "−") : ""}</td><td>${t ? PR[A.seats[t - 1]] : ""}</td><td>${A.lab[A.path[t]]}</td><td>${A.wlen[t]}</td><td>${A.kind[t] === "fold" ? "folded" : A.kind[t] === "loop" ? "closed" : ""}</td><td>${gcd(t, A.N)}</td></tr>`;
+  $("steps").innerHTML = h + "</table>";
+}
+function checkTable() { let h = "<table><tr><th></th><th>check</th></tr>"; for (const [ok, m] of CHECKS) h += `<tr><td class="${ok ? "ok" : "no"}">${ok ? "PASS" : "FAIL"}</td><td>${m}</td></tr>`;
+  $("checks").innerHTML = h + "</table>"; }
+
+// ---------------- events ----------------
+function setTick(t) { sf = Math.max(0, Math.min(SMAX, t)); refresh(); }
+function frame() { const ts = performance.now(); if (!playing) return; if (!last) last = ts; const dt = (ts - last) / +$("speed").value; last = ts;
+  sf = Math.min(SMAX, sf + dt); if ($("spin").checked) spinA += 0.004; if (sf >= SMAX) { stopPlay(); setTick(SMAX); return; } refresh(); setTimeout(frame, 30); }
+function stopPlay() { if (!playing) return; playing = false; last = 0; $("play").textContent = "Play"; }
+$("play").onclick = () => { if (playing) { stopPlay(); setTick(tick()); return; } if (sf >= SMAX) sf = 0; playing = true; last = 0; $("play").textContent = "Pause"; setTimeout(frame, 0); };
+$("step").onclick = () => { stopPlay(); setTick(tick() + 1); };
+$("back").onclick = () => { stopPlay(); setTick(tick() - 1); };
+$("reset").onclick = () => { stopPlay(); setTick(0); };
+$("scrub").oninput = () => { stopPlay(); setTick(+$("scrub").value); };
+for (const id of ["sphv", "showgear", "layout", "showpen", "fullpath", "showgcd", "alllab", "trail", "tlab"]) $(id).onchange = () => refresh();
+$("tbl").addEventListener("toggle", stepTable);
+attachView("atm", "cv-atm", (e, dx, dy) => { if (e.shiftKey || $("dragmode").value === "pan") return false; cam[0] += dx * 0.01; cam[1] = Math.max(-1.5, Math.min(1.5, cam[1] + dy * 0.01)); return true; });
+attachView("lift", "cv-lift", (e, dx, dy, prev, cur) => {
+  if (e.shiftKey || $("liftdrag").value === "pan") return false;
+  const G = AT[N].G;
+  if (G.pillow) { const A = AT[N], T = tick(); if (!PCAM) PCAM = { x: A.XY[T][0], y: A.XY[T][1] }; PCAM.x -= dx / (LIFTSC * VIEW.lift.z); PCAM.y += dy / (LIFTSC * VIEW.lift.z); return true; }
+  if (G.sphere && $("sphv").value === "ball") { BALL[0] += dx * 0.008; BALL[1] = Math.max(-1.5, Math.min(1.5, BALL[1] + dy * 0.008)); return true; }
+  const cv = $("cv-lift"), v = VIEW.lift, toM = s => { const px = cv.width / 2 + (s[0] - cv.width / 2 - v.px) / v.z, py = cv.height / 2 + (s[1] - cv.height / 2 - v.py) / v.z; return [(px - cv.width / 2) / LIFTSC, -(py - cv.height / 2) / LIFTSC]; };
+  let z1 = toM(prev), z2 = toM(cur); const kap = G.flat ? 0 : G.sphere ? 1 : -1;
+  if (kap < 0) { const cl = z => { const r = Math.hypot(z[0], z[1]); return r > 0.97 ? [z[0] * 0.97 / r, z[1] * 0.97 / r] : z; }; z1 = cl(z1); z2 = cl(z2); }
+  const Mv = a => ({ M: [[1, 0], [-a[0], -a[1]], [kap * a[0], -kap * a[1]], [1, 0]], anti: false });      // z -> (z - a)/(k conj(a) z + 1): an isometry taking a to 0
+  if (!CAM) CAM = { M: LASTV || ID, rel: [], relT: tick() };
+  const A = AT[N]; camRel(A);
+  CAM.M = cmp(Mv([-z2[0], -z2[1]]), cmp(Mv(z1), CAM.M));
+  for (let it = 0; it < 64; it++) { const d0 = mobDist(G, ap(CAM.M, [0, 0]), [0, 0]); let best = -1, bd = d0;
+    for (let k = 0; k < G.w; k++) { const d = mobDist(G, ap(cmp(CAM.M, G.R[k]), [0, 0]), [0, 0]); if (d < bd - 1e-12) { bd = d; best = k; } }
+    if (best < 0) break; CAM.M = cmp(CAM.M, G.R[best]); CAM.rel.reverse(); wmulIP(A.w, CAM.rel, best); CAM.rel.reverse(); }      // anchor <- anchor r_k, rel <- r_k rel
+  CAM.M = cleanIso(G, CAM.M);       // rebuild as an exact isometry: rounding errors grow exponentially under hyperbolic motion otherwise
+  return true; }); attachView("gear", "cv-gear");
+ATOMS.forEach(n => { const o = document.createElement("option"); o.value = n; o.textContent = "Div(" + n + ") · " + ADESC[n]; $("atom").appendChild(o); });
+$("runlen").onchange = () => { stopPlay(); const T = tick(); SMAX = +$("runlen").value; STREAM = rule30(SMAX); buildAtoms(); CAM = null; PCAM = null; $("scrub").max = SMAX; setTick(Math.min(T, SMAX)); };
+$("atom").onchange = () => { stopPlay(); N = $("atom").value; CAM = null; PCAM = null; BALL[0] = BALL[1] = 0; refresh(); };
+checkTable(); setTick(0);
+</script>
+</body>
+</html>

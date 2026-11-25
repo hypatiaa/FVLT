@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FVLT Rosette Automaton</title>
+<!-- v0.1.1 (2026-11-07): fixes from Gemini's view review (bus #1975): the rosette strip keeps a sensible shape on phones (ring columns several pixels wide), the centre-bit readout wraps, ring labels only up to 16 rings, scope sentence added. saphir: "Yes to Gemini". Claude Opus 5.5; successor of FVLT_ROSETTE_AUTOMATON_v0_1_20261107. -->
+<!-- v0.1.2 (2026-11-08): new panel "Entropy (FVLT)" under the two automata: each ring on the axis with probability exactly 1/n over its period; the readout law over one full period L = lcm(1..W) as independent prime valuations (the automaton's counterpart of the divisor gas), with H_W in bits, the number of distinct on-sets and a per-prime table; entropy per tick (rosette 0, Rule 30's centre column unknown); running plug-in readouts over ticks 1..S (on-sets against H_W, Rule 30 centre-bit block entropies k = 1..4), labelled evidence. Review correction (relayed by saphir): the space-time strip caption said each column repeats with period n; the axis contacts do, but the colour (ray) repeats every n ticks for odd n and 2n for even n (at s = kn the ray is + iff n is odd or k is even), and the caption now says so. Nothing else changed. saphir: "I want the fvlt version to be in the two rosette programs". Claude Opus 5.5 (builder for the Fourier viewer track owner); successor of FVLT_ROSETTE_AUTOMATON_v0_1_1_20261107. -->
+<!-- v0.1.3 (2026-11-09): new panel "Two shells" after Entropy (FVLT): two separate parameter sets with their own drives and dials, never one shared slider (idea saphir: "separate parameters"). Set A, shell N = 3: the divisor-lattice walk on Div(30030) with triples (2,3,5) and (7,11,13), moves +-1 in F3^2, frame update (S, Q) -> (S + d, Q + 2 (S ^ d)) mod 3, shell-3 dial omega^Q, landing iff Q = 0 mod 3, preset walks 14->21->33 and 14->22->33, mirror dials omega / omega-bar. Set B, shell N = 2: synchronous Rule 30 from seeds {1,3} and {1,7}, windows x = 0..5, t = 0..12 computed in the page, first-black times at x = 2 and x = 4, order bits and the relative bit on a shell-2 dial (always on the axis; the bit picks the ray), its own tick slider. Comparison box with the open question. Sources: NOTE_PHASOR_WALK_SHELLS_N3_N2_v0_1_1_20261109.md (e7a7b613…, GOLAY-DOOR session) and SHELLS_N3_N2_VIEWER_READING_v0_1_20261109/READING.md; bus #2041-#2057. Library status: the four entropy modules are published in library v36+3 (3db18131…); the credit line says so. Nothing else changed. saphir: "Yes". Claude Opus 5.5 (builder for the Fourier viewer track owner); successor of FVLT_ROSETTE_AUTOMATON_v0_1_2_20261108 (fvlt_rosette_automaton_v0_1_2.html bd3de091…). -->
+<!-- v0.1 (2026-11-07): the rosette as an automaton, ticking beside Rule 30. Idea saphir ("How can you structure the fvlt like an automaton, the original Fourier instrument" / "The rosette"). Claude Opus 5.5.
+     Cells are the rings n = 1..W. State of ring n at tick s: the integer phase e_n(s) = ((n - 1) s) mod 2n, the exponent of the
+     root of unity zeta_{2n} (the rosette picker's expo; kernel Rmk II.5a rosette column with t1 = t2 = 1). Update: every ring adds
+     n - 1 mod 2n, on its own. Readout: ring n is on the real axis iff e is 0 (+ ray) or n (- ray), iff n divides s. Rule 30 runs from a
+     single black cell with the same ticks; its readout is the centre cell. Integers decide everything; floats only place drawn points. -->
+<style>
+  :root {
+    --bg: #f2f4f7; --surface: #ffffff; --fg: #121c27; --muted: #566474; --line: #d5dbe3;
+    --accent: #2a4fc4; --accent-fg: #ffffff; --warm: #b4500a; --black: #121c27;
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e151c; --surface: #151e27; --fg: #e5eaf0; --muted: #94a3b3; --line: #2b3a49;
+      --accent: #8aa5ff; --accent-fg: #0e151c; --warm: #ffb070; --black: #e5eaf0; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e151c; --surface: #151e27; --fg: #e5eaf0; --muted: #94a3b3; --line: #2b3a49;
+    --accent: #8aa5ff; --accent-fg: #0e151c; --warm: #ffb070; --black: #e5eaf0; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 15px; line-height: 1.45; }
+  .wrap { max-width: 1060px; margin: 0 auto; padding: 16px; }
+  h1 { font-size: 24px; margin: 4px 0 2px; }
+  h2 { font-size: 13px; letter-spacing: .08em; text-transform: uppercase; font-family: var(--font-mono); color: var(--muted); margin: 0 0 8px; font-weight: 500; }
+  .lede { color: var(--muted); margin: 0 0 12px; }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px; margin-bottom: 14px; }
+  .controls { display: flex; flex-wrap: wrap; gap: 10px; align-items: flex-end; }
+  label { display: flex; flex-direction: column; font-size: 14px; color: var(--muted); gap: 4px; }
+  input[type=number], select { font: inherit; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--fg); width: 110px; }
+  button { font: inherit; font-size: 15px; padding: 10px 16px; border-radius: 8px; border: 1px solid var(--accent); background: var(--accent); color: var(--accent-fg); cursor: pointer; }
+  button.ghost { background: transparent; color: var(--fg); border-color: var(--line); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+  svg { width: 100%; height: auto; display: block; }
+  canvas { width: 100%; height: auto; display: block; image-rendering: pixelated; border: 1px solid var(--line); border-radius: 6px; background: var(--surface); }
+  .read { font-family: var(--font-mono); font-size: 15px; margin-top: 8px; overflow-wrap: anywhere; word-break: break-all; }
+  .big { font-size: 22px; font-weight: 600; font-family: var(--font-mono); }
+  .note { color: var(--muted); font-size: 14px; margin-top: 8px; }
+  .ring { fill: none; stroke: var(--line); stroke-width: 1; }
+  .axis { stroke: var(--muted); stroke-width: 1; stroke-dasharray: 3 3; }
+  .dot { fill: var(--muted); opacity: .8; }
+  .cplus { fill: var(--accent); }
+  .cminus { fill: var(--warm); }
+  .lbl { font-family: var(--font-mono); font-size: 11px; fill: var(--fg); }
+  .legend span { margin-right: 14px; white-space: nowrap; font-size: 14px; }
+  .legend i { display: inline-block; width: 11px; height: 11px; margin-right: 5px; vertical-align: -1px; }
+  /* v0.1.2: entropy panel */
+  .ent h3 { font-family: var(--font-mono); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 14px 0 6px; }
+  .ent .line { font-size: 14px; margin: 6px 0; overflow-wrap: anywhere; }
+  .ent .num { font-family: var(--font-mono); }
+  .tw { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; margin-top: 6px; }
+  table { border-collapse: collapse; width: 100%; font-family: var(--font-mono); font-size: 12px; }
+  th, td { padding: 5px 8px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { color: var(--muted); font-weight: 500; background: var(--surface); }
+  th:first-child, td:first-child { text-align: left; }
+  td.law { white-space: normal; text-align: left; min-width: 10em; }
+  #ent-btab th, #ent-btab td { white-space: normal; }
+  /* v0.1.3: two shells panel */
+  .shl h3 { font-family: var(--font-mono); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 14px 0 6px; }
+  .shl .line { font-size: 14px; margin: 6px 0; overflow-wrap: anywhere; }
+  .shl .num { font-family: var(--font-mono); }
+  .shgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  @media (max-width: 760px) { .shgrid { grid-template-columns: 1fr; } }
+  .shcol { border: 1px solid var(--line); border-radius: 8px; padding: 10px; min-width: 0; }
+  .shcol h3 { margin-top: 2px; color: var(--fg); }
+  .shbtns { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+  .shbtns button { padding: 8px 12px; font-size: 14px; }
+  .shbtns button.mv { font-family: var(--font-mono); min-width: 52px; }
+  .seg { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .seg label { flex-direction: row; align-items: center; gap: 4px; padding: 6px 10px; color: var(--fg); cursor: pointer; }
+  .seg input { margin: 0; }
+  .dialrow { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr) minmax(0, 1fr); gap: 8px; align-items: end; margin-top: 6px; }
+  .dialrow figure, .win2 figure { margin: 0; min-width: 0; }
+  .dialrow figcaption, .win2 figcaption { font-family: var(--font-mono); font-size: 12px; color: var(--muted); text-align: center; overflow-wrap: anywhere; }
+  .dialrow figure.sel figcaption { color: var(--fg); font-weight: 600; }
+  .dialrow figure.sel svg { outline: 2px solid var(--accent); outline-offset: -2px; border-radius: 50%; }
+  .win2 { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 6px; }
+  .win2 svg { max-width: 190px; margin: 0 auto; }
+  .bdial { max-width: 150px; margin: 6px auto 0; }
+  .shl input[type=range] { width: 100%; }
+  .shl .tlab { color: var(--fg); }
+  .cmpbox { border: 1px solid var(--accent); border-radius: 8px; padding: 10px; margin-top: 12px; }
+  .dc { fill: none; stroke: var(--line); stroke-width: 1.2; }
+  .dtick { fill: var(--muted); }
+  .dhand { stroke: var(--fg); stroke-width: 1.6; }
+  .doff { fill: var(--muted); }
+  .dhollow { fill: none; stroke: var(--muted); stroke-width: 1.2; stroke-dasharray: 2 2; }
+  .dtxt { font-family: var(--font-mono); font-size: 9px; fill: var(--fg); }
+  .wcell1 { fill: var(--black); }
+  .wcell0 { fill: var(--surface); stroke: var(--line); stroke-width: 0.5; }
+  .wbound { fill: var(--line); opacity: 0.55; }
+  .wmark { fill: var(--accent); font-weight: 700; }
+  .wfirst { fill: none; stroke: var(--warm); stroke-width: 2.2; }
+  .wrow { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+  .wdiff { fill: var(--warm); }
+  .win2 .lbl { font-size: 9px; }
+  .stat { display: inline-block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; padding: 1px 6px; border-radius: 4px; border: 1px solid var(--warm); color: var(--warm); margin-right: 6px; }
+</style>
+<div class="wrap">
+  <h1>FVLT Rosette Automaton</h1>
+  <p class="lede">The rosette as an automaton: every ring is a cell with a clock hand. Each tick, every hand turns by its own exact step. The hands that land on the axis at tick s are exactly the divisors of s. Rule 30 runs beside it on the same ticks.</p>
+
+  <section class="panel">
+    <h2>Ticks</h2>
+    <div class="controls">
+      <label for="W">Rings (cells) 1 to 60<input id="W" type="number" min="1" max="60" step="1" value="12" inputmode="numeric"></label>
+      <label for="speed">Speed
+        <select id="speed"><option value="1000">1 tick/s</option><option value="400" selected>2.5 ticks/s</option><option value="150">7 ticks/s</option><option value="50">20 ticks/s</option></select>
+      </label>
+      <button class="ghost" id="back" type="button" aria-label="One tick back">&minus;1</button>
+      <button id="play" type="button">Play</button>
+      <button class="ghost" id="fwd" type="button" aria-label="One tick forward">+1</button>
+      <button class="ghost" id="reset" type="button">s = 0</button>
+    </div>
+    <div class="big" id="s-out" style="margin-top:10px">s = 0</div>
+  </section>
+
+  <div class="grid">
+    <section class="panel">
+      <h2>Rosette (FVLT)</h2>
+      <svg id="ros" viewBox="-170 -170 340 340" role="img" aria-label="The rings of the rosette with their hands at tick s; hands on the axis are the divisors of s"></svg>
+      <div class="legend"><span><i style="background:var(--accent);border-radius:50%"></i>on the +real ray</span><span><i style="background:var(--warm);transform:rotate(45deg)"></i>on the −real ray</span><span><i style="background:var(--muted);border-radius:50%"></i>off the axis</span></div>
+      <div class="read" id="ros-read"></div>
+      <h2 style="margin-top:12px">Rosette space-time (rows = ticks, columns = rings)</h2>
+      <canvas id="st-ros" width="60" height="64" aria-label="Rows are ticks, newest at the bottom; a coloured cell means that ring is on the axis"></canvas>
+      <div class="note">Each column is one ring and ignores its neighbours: a clockwork. Ring n touches the axis every n ticks; odd rings always on the +ray (blue), even rings alternating −ray (orange) and +ray (blue), so the coloured column repeats every n ticks for odd n and every 2n ticks for even n.</div>
+    </section>
+
+    <section class="panel">
+      <h2>Rule 30</h2>
+      <canvas id="st-r30" width="129" height="64" aria-label="Rule 30 from a single black cell, rows are ticks, newest at the bottom, centre column marked"></canvas>
+      <div class="read" id="r30-read"></div>
+      <div class="note">Each cell reads its two neighbours: new = left XOR (centre OR right). The marked column is the centre column, the sequence used as random bits.</div>
+    </section>
+  </div>
+
+  <section class="panel ent" id="ent-panel" aria-labelledby="h-ent">
+    <h2 id="h-ent">Entropy (FVLT)</h2>
+    <h3>One ring</h3>
+    <div class="line" id="ent-ring">Each ring n is on the axis with probability exactly 1/n over its readout period n: it touches the axis at the ticks s that are multiples of n, one tick in every n. The hand itself, and the ray it touches (the colour), repeat every n ticks for odd n and every 2n ticks for even n: at s = kn the ray is + when n is odd or k is even, and − when n is even and k is odd. The on/off readout used below has period n.</div>
+    <h3>The readout law</h3>
+    <div class="line">Let s run uniformly over one full period L = lcm(1..W) of the readout. The on-set D = Div(s) &cap; [1, W] is in bijection with the truncated valuation box: for each prime p &le; W let a<sub>p</sub> be the largest a with p<sup>a</sup> &le; W, and e<sub>p</sub> = min(v<sub>p</sub>(s), a<sub>p</sub>). By the Chinese remainder theorem the e<sub>p</sub> are independent, with P(e<sub>p</sub> = k) = p<sup>&minus;k</sup>(1 &minus; 1/p) for k &lt; a<sub>p</sub> and p<sup>&minus;a<sub>p</sub></sup> for k = a<sub>p</sub>. So H<sub>W</sub> = &Sigma;<sub>p&le;W</sub> H(e<sub>p</sub>), and the number of distinct on-sets is &prod;(a<sub>p</sub> + 1). This is the automaton's counterpart of the divisor gas: each prime is an independent valuation "spin".</div>
+    <div class="line num" id="ent-hw"></div>
+    <div class="tw"><table id="ent-ptab"><thead><tr><th>prime p</th><th>a<sub>p</sub></th><th>law of e<sub>p</sub>, k = 0..a<sub>p</sub> (exact)</th><th>H(e<sub>p</sub>) bits</th></tr></thead><tbody></tbody></table></div>
+    <div class="line" id="ent-hw-degen"></div>
+    <div class="line"><span class="stat">Status</span>Derived here and checked by exhaustive count for W &le; 12 (nucleus Sage); not in Lean.</div>
+    <h3>Entropy per tick</h3>
+    <div class="line"><b>Rosette:</b> 0. It is periodic: ring n's hand has period n for odd n and 2n for even n, so the whole state repeats and no new information arrives per tick.<br><b>Rule 30's centre column:</b> unknown (open).</div>
+    <h3>Running readouts over ticks 1..S (evidence only)</h3>
+    <div class="line" id="ent-run-sets"></div>
+    <div class="tw"><table id="ent-btab"><thead><tr><th>k</th><th>blocks</th><th>distinct</th><th>plug-in H<sub>k</sub>/k, bits per symbol</th></tr></thead><tbody></tbody></table></div>
+    <div class="line" id="ent-run-r30"></div>
+    <div class="note">Plug-in entropies are floats computed from the observed frequencies; they run low on short samples, and they are evidence only. The exact numbers above (laws, counts, L) are integers and fractions; H in bits is a float.</div>
+    <div class="note">Credit: idea saphir. Framing from Astra: "how entropy changes under an update, projection or refinement". Lean modules the picker's entropy rests on: FVLTDiceExactV1 (the skeleton seat's Dice module, in the library since v36+2), and the four entropy modules FVLTRosetteEntropyV1, FVLTRosetteFairBridgeV1 (these two a Codex build), FVLTDivisorBoltzmannV1 and FVLTRosetteLogLossV1, published in library v36+3 (library SHA256SUMS 3db18131…, 527 entries; verified on nucleus, scout and membrane; independently audited). The readout-law entropy on this page is not one of them: it is derived here and checked, not in Lean.</div>
+  </section>
+
+  <section class="panel shl" id="shells-panel" aria-labelledby="h-shl">
+    <h2 id="h-shl">Two shells</h2>
+    <div class="line" id="shl-intro">The instrument phasor is e<sup>i&pi;&middot;k&middot;s/N</sup>. Ring 3 of this automaton is a shell-3 clock: its hand visits 1, &omega;, &omega;<sup>2</sup> (&omega; = e<sup>2&pi;i/3</sup>). Ring 2 is a shell-2 clock: it lands every 2 ticks, alternating the +ray and the &minus;ray. A <b>landing</b> is the hand on the real axis. The two sets below are separate parameters: each has its own drive and its own dial, and nothing is shared between them.</div>
+    <div class="shgrid">
+      <div class="shcol" id="shA">
+        <h3>Set A &middot; shell N = 3 &middot; the divisor-lattice walk</h3>
+        <div class="line">Golay gauge (bus #2041/#2043/#2056). The atoms of Div(30030) split into the triples A = (2, 3, 5) and B = (7, 11, 13), each oriented as a cycle, 2&rarr;3&rarr;5&rarr;2 and 7&rarr;11&rarr;13&rarr;7 (a declared convention). A state is a divisor with one atom from each triple, 9 states, for example 14 = 2&middot;7. A move changes one triple's atom; its displacement is +1 or &minus;1 in F<sub>3</sub> (forward or backward along the cycle), in coordinate x (triple A) or y (triple B). So d &isin; F<sub>3</sub><sup>2</sup>, S &isin; F<sub>3</sub><sup>2</sup>, and the area Q &isin; F<sub>3</sub>. Frame update: (S, Q) &rarr; (S + d, Q + &frac12;&middot;S&and;d), with &frac12; = 2 in F<sub>3</sub> and S&and;d = S<sub>x</sub>d<sub>y</sub> &minus; S<sub>y</sub>d<sub>x</sub> (mod 3).</div>
+        <div class="shbtns" role="group" aria-label="Set A moves">
+          <button class="mv" type="button" id="shA-ap">A+</button><button class="mv" type="button" id="shA-am">A&minus;</button><button class="mv" type="button" id="shA-bp">B+</button><button class="mv" type="button" id="shA-bm">B&minus;</button>
+        </div>
+        <div class="shbtns">
+          <button class="ghost" type="button" id="shA-reset">reset to 14</button><button class="ghost" type="button" id="shA-pa">14&rarr;21&rarr;33 (A first)</button><button class="ghost" type="button" id="shA-pb">14&rarr;22&rarr;33 (B first)</button>
+        </div>
+        <div class="seg" role="radiogroup" aria-label="Dial orientation">
+          <label><input type="radio" name="shA-or" id="shA-w" value="w" checked>orientation &omega;</label><label><input type="radio" name="shA-or" id="shA-wb" value="wb">orientation &omega;&#772;</label>
+        </div>
+        <div class="read" id="shA-walk"></div>
+        <div class="read" id="shA-sq"></div>
+        <div class="dialrow">
+          <figure id="shA-fmain"><svg id="shA-dial" viewBox="-62 -62 124 124" role="img" aria-label="Shell-3 dial of set A"></svg><figcaption id="shA-cmain"></figcaption></figure>
+          <figure id="shA-fw"><svg id="shA-dw" viewBox="-62 -62 124 124" role="img" aria-label="Small dial: omega to the Q"></svg><figcaption>&omega;<sup>Q</sup></figcaption></figure>
+          <figure id="shA-fwb"><svg id="shA-dwb" viewBox="-62 -62 124 124" role="img" aria-label="Small dial: omega-bar to the Q"></svg><figcaption>&omega;&#772;<sup>Q</sup> = &omega;<sup>&minus;Q</sup></figcaption></figure>
+        </div>
+        <div class="line" id="shA-land"></div>
+        <div class="line" id="shA-pre"></div>
+        <div class="note" id="shA-mirror">Mirror pair k<sub>1</sub>/k<sub>2</sub>: the &omega; dial draws &omega;<sup>Q</sup>, the &omega;&#772; dial draws the conjugate &omega;<sup>&minus;Q</sup>; Q is the same integer for both. Reversing the orientation of both cycles leaves Q unchanged (S&and;d is bilinear, and both S and d change sign); reversing one cycle sends Q to &minus;Q, which is the &omega;&#772; picture.</div>
+        <div class="line"><span class="stat">Status</span>Composition law and hexacode forcing checked on the bus (#2041/#2042, #2056/#2057). The shell reading is checked arithmetic.</div>
+      </div>
+      <div class="shcol" id="shB">
+        <h3>Set B &middot; shell N = 2 &middot; synchronous Rule 30</h3>
+        <div class="line">Seeds A = {1, 3} and B = {1, 7} on the integer line, every other cell white. Ordinary synchronous Rule 30, new = left XOR (centre OR right), computed in this page on the whole line (a sparse set of black cells). Shown: the window x = 0..5 for t = 0..12, rows top to bottom; boundary columns x = 0 and x = 5 shaded; marked sites x = 2 and x = 4 (blue labels); the first black at each marked site outlined.</div>
+        <label class="tlab" for="shB-t">Tick t of set B (its own control): <span class="num" id="shB-tout">5</span><input id="shB-t" type="range" min="0" max="12" step="1" value="5"></label>
+        <div class="win2">
+          <figure><svg id="shB-wa" viewBox="0 0 110 204" role="img" aria-label="Run A window"></svg><figcaption>run A, seeds {1, 3}</figcaption></figure>
+          <figure><svg id="shB-wb" viewBox="0 0 110 204" role="img" aria-label="Run B window"></svg><figcaption>run B, seeds {1, 7}</figcaption></figure>
+        </div>
+        <div class="note">Small orange dots mark the cells of row t where the two windows differ.</div>
+        <div class="line num" id="shB-first"></div>
+        <div class="line" id="shB-facts"></div>
+        <div class="line" id="shB-at"></div>
+        <svg class="bdial" id="shB-dial" viewBox="-62 -62 124 124" role="img" aria-label="Shell-2 dial of the relative bit"></svg>
+        <div class="line" id="shB-ray"></div>
+        <div class="note" id="shB-mirror">The mirror pair here is Rule 30 / Rule 86; not drawn.</div>
+        <div class="line"><span class="stat">Status</span>Table confirmed on the bus (#2054/#2055) and recomputed in this page. The shell reading is checked arithmetic.</div>
+      </div>
+    </div>
+    <div class="cmpbox" id="shl-cmp">
+      <h3 style="margin-top:0">Comparison</h3>
+      <div class="line">Set A's order memory moves the hand <b>off</b> the axis, to 1/3 or 2/3 of a turn (Q &equiv; 1 or 2). Set B's never leaves the axis: e<sup>i&pi;&middot;bit</sup> is &plusmn;1, and the bit only flips the ray.</div>
+      <div class="line"><span class="stat">Open</span>Whether set B's flip is the &mu;<sub>2</sub> (sign) part of &mu;<sub>6</sub> = &mu;<sub>2</sub> &times; &mu;<sub>3</sub> in set A. No claim is made.</div>
+      <div class="line"><span class="stat">Status</span>Set A: composition law and hexacode forcing checked on the bus (#2041/#2042, #2056/#2057). Set B: table confirmed (#2054/#2055). The shell readings are checked arithmetic (the corrigendum's node check, 4284/4284 landings).</div>
+    </div>
+    <div class="note">Credit: idea saphir ("separate parameters"). Note by the GOLAY-DOOR session (skeleton seat, Claude Opus 5.5), NOTE_PHASOR_WALK_SHELLS_N3_N2 v0.1.1; Codex and discipline reports #2041&ndash;#2054. Integers decide every value on this panel; floats only place drawn points.</div>
+  </section>
+
+  <section class="panel">
+    <h2>The two automata</h2>
+    <div class="note" style="color:var(--fg)">
+      <b>Rosette:</b> cell n holds an integer phase e in 0..2n−1 (the hand points at the root of unity ζ<sub>2n</sub><sup>e</sup>); each tick e → e + (n − 1) mod 2n; read: e = 0 or e = n, which happens exactly when n divides s. No cell looks at another.<br>
+      <b>Rule 30:</b> cell x holds one bit; each tick it becomes left XOR (centre OR right); read: the centre cell. Every cell depends on its neighbours.<br>
+      The rosette is perfectly ordered and every residue and divisibility frequency comes out exactly; Rule 30 looks random. Both are deterministic. Statistics of single values cannot tell order from randomness; how a value depends on the ones before it can. The visible difference here is two-dimensional: each rosette cell ignores its neighbours, each Rule 30 cell depends on them.<br><b>Scope:</b> an illustration and evidence only; nothing on this page proves anything about Rule 30.
+    </div>
+    <div class="note">Integers decide everything; floats only place the drawn points. The framework was assembled by Robin Miller; its components are classical results of others. Rule 30: Stephen Wolfram. Idea: saphir.</div>
+  </section>
+</div>
+<script>
+(function () {
+  "use strict";
+  var NS = "http://www.w3.org/2000/svg", $ = function (id) { return document.getElementById(id); };
+  function el(name, attrs, text) { var e = document.createElementNS(NS, name); for (var a in attrs) e.setAttribute(a, attrs[a]); if (text != null) e.textContent = text; return e; }
+  function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+  var S = 0, W = 12, timer = null, ROWS = 64, HALF = 64;
+  // exact phase exponent of ring n at tick s: zeta_{2n}^e, e = ((n - 1) s) mod 2n (the picker's expo)
+  function expo(n, s) { return ((n - 1) * s) % (2 * n); }
+  // ---- Rule 30, incremental rows (bit arrays over -s..s), kept for all ticks reached ----
+  var R30 = [new Uint8Array([1])];
+  function r30Row(s) {
+    while (R30.length <= s) {
+      var p = R30[R30.length - 1], t = R30.length, q = new Uint8Array(2 * t + 1);
+      for (var i = 0; i < q.length; i++) {
+        var x = i - t, get = function (y) { var j = y + (t - 1); return (j >= 0 && j < p.length) ? p[j] : 0; };
+        q[i] = get(x - 1) ^ (get(x) | get(x + 1));
+      }
+      R30.push(q);
+    }
+    return R30[s];
+  }
+  function cell30(s, x) { var r = r30Row(s); var j = x + s; return (j >= 0 && j < r.length) ? r[j] : 0; }
+  function css(v) { return getComputedStyle(document.documentElement).getPropertyValue(v).trim(); }
+
+  function drawRosette() {
+    var svg = $("ros"); clear(svg);
+    var unit = 150 / W;
+    svg.appendChild(el("line", { "class": "axis", x1: -165, y1: 0, x2: 165, y2: 0 }));
+    for (var n = 1; n <= W; n++) svg.appendChild(el("circle", { "class": "ring", cx: 0, cy: 0, r: n * unit }));
+    var on = [];
+    for (n = 1; n <= W; n++) {
+      var e = expo(n, S), r = n * unit, th = Math.PI * e / n;   // drawing only
+      var x = r * Math.cos(th), y = -r * Math.sin(th), dr = W > 40 ? 2.4 : 3.4;
+      svg.appendChild(el("line", { x1: 0, y1: 0, x2: x, y2: y, stroke: css("--line"), "stroke-width": 0.6 }));
+      if (e === 0) { svg.appendChild(el("circle", { "class": "cplus", cx: x, cy: 0, r: dr + 0.8 })); on.push(n); }
+      else if (e === n) { svg.appendChild(el("rect", { "class": "cminus", x: x - dr, y: -dr, width: 2 * dr, height: 2 * dr, transform: "rotate(45 " + x + " 0)" })); on.push(n); }
+      else svg.appendChild(el("circle", { "class": "dot", cx: x, cy: y, r: dr * 0.7 }));
+      if (W <= 16 && (e === 0 || e === n)) svg.appendChild(el("text", { "class": "lbl", x: x, y: e === 0 ? -8 : 16, "text-anchor": "middle" }, String(n)));
+    }
+    var txt;
+    if (S === 0) txt = "s = 0: every ring is on the +real ray, because every n divides 0 (the start state; drawn, not hidden).";
+    else {
+      var plus = [], minus = [];
+      on.forEach(function (n) { if (expo(n, S) === 0) plus.push(n); else minus.push(n); });
+      txt = "on the axis: " + on.join(", ") + (on.length ? "" : "none") + " = Div(" + S + ")" + (W < S ? " up to " + W : "") + ". +ray: " + (plus.join(", ") || "none") + "; −ray: " + (minus.join(", ") || "none") + ".";
+    }
+    $("ros-read").textContent = txt;
+  }
+  function drawST() {
+    var cR = $("st-ros"), ctx = cR.getContext("2d"), t0 = Math.max(0, S - ROWS + 1);
+    // v0.1.1: each ring column is cw pixels wide, so the strip has about the same shape as the Rule 30 strip (no tall stretch on phones)
+    var cw = Math.max(1, Math.floor((2 * HALF + 1) / W));
+    cR.width = W * cw; cR.height = ROWS;
+    ctx.fillStyle = css("--surface"); ctx.fillRect(0, 0, cR.width, ROWS);
+    for (var s = t0; s <= S; s++) for (var n = 1; n <= W; n++) {
+      var e = expo(n, s);
+      if (e === 0 || e === n) { ctx.fillStyle = e === 0 ? css("--accent") : css("--warm"); ctx.fillRect((n - 1) * cw, s - t0, Math.max(1, cw - (cw > 2 ? 1 : 0)), 1); }
+    }
+    var c3 = $("st-r30"), x3 = c3.getContext("2d");
+    c3.width = 2 * HALF + 1; c3.height = ROWS;
+    x3.fillStyle = css("--surface"); x3.fillRect(0, 0, c3.width, ROWS);
+    for (s = t0; s <= S; s++) for (var x = -HALF; x <= HALF; x++) {
+      if (cell30(s, x)) { x3.fillStyle = x === 0 ? css("--warm") : css("--black"); x3.fillRect(x + HALF, s - t0, 1, 1); }
+      else if (x === 0) { x3.fillStyle = css("--line"); x3.fillRect(HALF, s - t0, 1, 1); }
+    }
+    var bits = ""; for (s = Math.max(0, S - 39); s <= S; s++) bits += cell30(s, 0);
+    $("r30-read").textContent = "centre cell at tick " + S + ": " + cell30(S, 0) + (S > 0 ? (cell30(S, 0) ? " (black)" : " (white)") : " (the seed)") + ". Last centre bits: " + bits;
+  }
+  // AUTOENT-BEGIN (v0.1.2): pure functions; the node unit check extracts this block.
+  // Readout law over one period L = lcm(1..W): independent truncated valuations e_p, P(e_p = k) = (p - 1)/p^(k+1) for k < a_p, 1/p^a_p at k = a_p.
+  var AutoEnt = (function () {
+    function lg(x) { return Math.log(x) / Math.LN2; }
+    function primesUpTo(W) { var out = []; for (var p = 2; p <= W; p++) { var ok = true; for (var d = 2; d * d <= p; d++) if (p % d === 0) { ok = false; break; } if (ok) out.push(p); } return out; }
+    function law(W) {
+      var ps = primesUpTo(W), rows = [], H = 0, count = 1n, L = 1n;
+      ps.forEach(function (p) {
+        var a = 0, pa = 1; while (pa * p <= W) { pa *= p; a++; }
+        var probs = [], h = 0, pk = 1;                         // probs[k] = [numerator, denominator], exact integers (p^(a+1) <= W*p stays small)
+        for (var k = 0; k < a; k++) { probs.push([p - 1, pk * p]); pk *= p; }
+        probs.push([1, pk]);                                   // pk = p^a here
+        probs.forEach(function (f) { var x = f[0] / f[1]; h -= x * lg(x); });
+        rows.push({ p: p, a: a, probs: probs, H: h });
+        H += h; count *= BigInt(a + 1); L *= BigInt(pa);
+      });
+      return { W: W, rows: rows, H: H, count: count, L: L };
+    }
+    // plug-in entropy (bits) of a map key -> count with total T
+    function plugin(map, T) { var h = 0, k = 0; for (var key in map) { var x = map[key] / T; h -= x * lg(x); k++; } return { H: h, distinct: k }; }
+    return { law: law, plugin: plugin, lg: lg };
+  })();
+  // AUTOENT-END
+  function fracTxt(f) { var a = f[0], b = f[1], g = a; for (var t = b; t; ) { var r = g % t; g = t; t = r; } return (a / g) + "/" + (b / g); }
+  function fmtBig(x) { return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+  function entClear(tb) { while (tb.firstChild) tb.removeChild(tb.firstChild); }
+  function entRow(tb, cells, lawCol) { var tr = document.createElement("tr"); cells.forEach(function (c, i) { var td = document.createElement("td"); td.textContent = c; if (i === lawCol) td.className = "law"; tr.appendChild(td); }); tb.appendChild(tr); }
+  var ENTW = null;
+  function drawEntropy() {
+    var Lw = AutoEnt.law(W), tb;
+    if (ENTW !== W) {
+      ENTW = W;
+      $("ent-hw").textContent = "W = " + W + ": L = lcm(1.." + W + ") = " + fmtBig(Lw.L) + "; distinct on-sets ∏(a_p + 1) = " + fmtBig(Lw.count) + "; H_W = " + Lw.H.toFixed(6) + " bits (float; at most log2 of the count, " + AutoEnt.lg(Number(Lw.count)).toFixed(6) + ").";
+      tb = $("ent-ptab").tBodies[0]; entClear(tb);
+      Lw.rows.forEach(function (r) { entRow(tb, [String(r.p), String(r.a), r.probs.map(fracTxt).join(", "), r.H.toFixed(6)], 2); });
+      $("ent-hw-degen").textContent = W === 1 ? "Degenerate case W = 1: no primes, only ring 1, which is always on; one on-set, H_1 = 0 bits. Shown, not hidden." : "Ring 1 is on at every tick and carries no information; it is in every on-set.";
+    }
+    // running readouts over ticks 1..S (s = 0 is the all-on start state and is not counted)
+    var map = {}, s, n;
+    for (s = 1; s <= S; s++) { var key = ""; for (n = 1; n <= W; n++) { var e = expo(n, s); key += (e === 0 || e === n) ? "1" : "0"; } map[key] = (map[key] || 0) + 1; }
+    var txt;
+    if (S === 0) txt = "S = 0: no ticks counted yet (tick 0 is the all-on start state). Press +1 or Play.";
+    else {
+      var P = AutoEnt.plugin(map, S), full = (BigInt(S) % Lw.L === 0n);
+      txt = "On-sets over ticks 1.." + S + ": " + P.distinct + " distinct of " + fmtBig(Lw.count) + "; plug-in entropy " + P.H.toFixed(6) + " bits against H_W = " + Lw.H.toFixed(6) + " bits." +
+        (full ? " S is a multiple of L, so the ticks 1..S cover every residue mod L equally often and the plug-in value equals H_W exactly (up to float rounding)." : " One full period is L = " + fmtBig(Lw.L) + " ticks; until then the observed frequencies are not the law.") +
+        (S < 10 ? " Very small sample (S < 10)." : "");
+    }
+    $("ent-run-sets").textContent = txt;
+    tb = $("ent-btab").tBodies[0]; entClear(tb);
+    var bits = []; for (s = 1; s <= S; s++) bits.push(cell30(s, 0));
+    for (var k = 1; k <= 4; k++) {
+      var nb = S - k + 1;
+      if (nb < 1) { entRow(tb, [String(k), "0", "-", "not defined (fewer than " + k + " bits)"], -1); continue; }
+      var bm = {};
+      for (var i = 0; i < nb; i++) { var b = bits.slice(i, i + k).join(""); bm[b] = (bm[b] || 0) + 1; }
+      var Pk = AutoEnt.plugin(bm, nb);
+      entRow(tb, [String(k), String(nb), Pk.distinct + " of " + (1 << k), (Pk.H / k).toFixed(4) + (nb < 4 * (1 << k) ? " (small sample)" : "")], -1);
+    }
+    $("ent-run-r30").textContent = S === 0 ? "Rule 30: no centre bits counted yet (tick 0 is the seed, not counted)." : "Rule 30 centre bits at ticks 1.." + S + ", overlapping blocks of length k. A value of 1 bit per symbol is the most a binary sequence can show; it would not show that the column is random, and a lower value on a short run does not show that it is not. \"Small sample\" marks fewer than 4 blocks per possible pattern.";
+  }
+  // SHELLS-BEGIN (v0.1.3): pure functions, no page state; the node unit check extracts this block.
+  // Set A (shell 3): divisor-lattice walk on Div(30030), triples (2,3,5) and (7,11,13); integers mod 3 only.
+  // Set B (shell 2): synchronous Rule 30 on the whole integer line from a finite seed set (sparse set of black cells).
+  var Shells = (function () {
+    var TRIPLES = [[2, 3, 5], [7, 11, 13]];
+    var MOVES = { "A+": [1, 0], "A-": [2, 0], "B+": [0, 1], "B-": [0, 2] };   // -1 = 2 in F3
+    function m3(x) { return ((x % 3) + 3) % 3; }
+    function m6(x) { return ((x % 6) + 6) % 6; }
+    function wedge(S, d) { return m3(S[0] * d[1] - S[1] * d[0]); }
+    // frame update (S, Q) -> (S + d, Q + (1/2) S^d), 1/2 = 2 in F3
+    function step(st, d) { return { S: [m3(st.S[0] + d[0]), m3(st.S[1] + d[1])], Q: m3(st.Q + 2 * wedge(st.S, d)) }; }
+    function divisorAt(S) { return TRIPLES[0][S[0]] * TRIPLES[1][S[1]]; }   // start 14 = 2*7 is S = (0, 0)
+    // walk from 14 by named moves; flip = [fx, fy] reverses the orientation of triple A (fx) and/or B (fy) for the area only
+    function walkDs(ds) {
+      var st = { S: [0, 0], Q: 0 }, divs = [divisorAt(st.S)], frames = [st];
+      ds.forEach(function (d) { st = step(st, d); frames.push(st); divs.push(divisorAt(st.S)); });
+      return { S: st.S, Q: st.Q, divs: divs, frames: frames };
+    }
+    function walk(names) { return walkDs(names.map(function (n) { if (!MOVES[n]) throw new Error("bad move " + n); return MOVES[n]; })); }
+    function reorient(names, fx, fy) {   // the same moves read with reversed cycle orientation(s): d -> -d in that coordinate
+      return walkDs(names.map(function (n) { var d = MOVES[n]; return [fx ? m3(-d[0]) : d[0], fy ? m3(-d[1]) : d[1]]; }));
+    }
+    // phase of omega^Q (conj: omega-bar^Q = omega^-Q) as half-turns num/3 with num in 0..5: e^{i pi num/3}
+    function phaseNum(Q, conj) { return m6((conj ? -2 : 2) * Q); }
+    function landing(Q) { return m3(Q) === 0; }
+    var PRESETS = { A: ["A+", "B+"], B: ["B+", "A+"] };
+    function r30Run(seeds, T) {
+      var cur = new Set(seeds), rows = [cur];
+      for (var t = 1; t <= T; t++) {
+        var cand = new Set(), nxt = new Set();
+        cur.forEach(function (x) { cand.add(x - 1); cand.add(x); cand.add(x + 1); });   // a cell with three white neighbours stays white (000 -> 0)
+        cand.forEach(function (x) { var l = cur.has(x - 1) ? 1 : 0, c = cur.has(x) ? 1 : 0, r = cur.has(x + 1) ? 1 : 0; if (l ^ (c | r)) nxt.add(x); });
+        rows.push(nxt); cur = nxt;
+      }
+      return rows;
+    }
+    function windowRows(rows, x0, x1) { return rows.map(function (set) { var s = ""; for (var x = x0; x <= x1; x++) s += set.has(x) ? "1" : "0"; return s; }); }
+    function firstBlack(win, i) { for (var t = 0; t < win.length; t++) if (win[t][i] === "1") return t; return -1; }
+    // order bit: 0 if site x=2 fires first, 1 if x=4 first; null if neither has fired by tick t, "tie" if both first fire at the same tick
+    function orderBit(f2, f4, t) {
+      var a = (f2 >= 0 && f2 <= t), b = (f4 >= 0 && f4 <= t);
+      if (!a && !b) return null;
+      if (a && b && f2 === f4) return "tie";
+      if (a && (!b || f2 < f4)) return 0;
+      return 1;
+    }
+    function analyse(T) {
+      T = T == null ? 12 : T;
+      var wa = windowRows(r30Run([1, 3], T), 0, 5), wb = windowRows(r30Run([1, 7], T), 0, 5);
+      var fA = [firstBlack(wa, 2), firstBlack(wa, 4)], fB = [firstBlack(wb, 2), firstBlack(wb, 4)];
+      var agree = wa.map(function (r, t) { return r === wb[t]; });
+      var bAgree = wa.map(function (r, t) { return r[0] === wb[t][0] && r[5] === wb[t][5]; });
+      var pA = orderBit(fA[0], fA[1], T), pB = orderBit(fB[0], fB[1], T);
+      return { T: T, wa: wa, wb: wb, fA: fA, fB: fB, agree: agree, bAgree: bAgree, pA: pA, pB: pB,
+        rel: (typeof pA === "number" && typeof pB === "number") ? (pA + pB) % 2 : null };
+    }
+    // maximal runs of t where flags[t] is true, as [from, to] pairs
+    function runs(flags) { var out = [], st = -1; for (var t = 0; t <= flags.length; t++) { if (t < flags.length && flags[t]) { if (st < 0) st = t; } else if (st >= 0) { out.push([st, t - 1]); st = -1; } } return out; }
+    return { TRIPLES: TRIPLES, MOVES: MOVES, wedge: wedge, step: step, divisorAt: divisorAt, walk: walk, walkDs: walkDs, reorient: reorient,
+      phaseNum: phaseNum, landing: landing, PRESETS: PRESETS, r30Run: r30Run, windowRows: windowRows, firstBlack: firstBlack, orderBit: orderBit, analyse: analyse, runs: runs };
+  })();
+  // SHELLS-END
+  var SHA = { moves: [], conj: false, MAX: 60 }, SHB = { t: 5, an: Shells.analyse(12) };
+  // a dial: circle, dashed real axis, ticks at the given half-turn numerators over den, hand at num/den half-turns (drawing only)
+  function dial(svg, den, ticks, num, label) {
+    clear(svg);
+    var R = 46;
+    svg.appendChild(el("line", { "class": "axis", x1: -58, y1: 0, x2: 58, y2: 0 }));
+    svg.appendChild(el("circle", { "class": "dc", cx: 0, cy: 0, r: R }));
+    ticks.forEach(function (k) { var th = Math.PI * k / den; svg.appendChild(el("circle", { "class": "dtick", cx: R * Math.cos(th), cy: -R * Math.sin(th), r: 2 })); });
+    if (num == null) {
+      svg.appendChild(el("circle", { "class": "dhollow", cx: 0, cy: 0, r: 12 }));
+      svg.appendChild(el("text", { "class": "dtxt", x: 0, y: 26, "text-anchor": "middle" }, label || "not defined"));
+      return;
+    }
+    var th = Math.PI * num / den, x = R * Math.cos(th), y = -R * Math.sin(th), n2 = ((num % (2 * den)) + 2 * den) % (2 * den);
+    svg.appendChild(el("line", { "class": "dhand", x1: 0, y1: 0, x2: x, y2: y }));
+    if (n2 === 0) svg.appendChild(el("circle", { "class": "cplus", cx: x, cy: 0, r: 6 }));
+    else if (n2 === den) svg.appendChild(el("rect", { "class": "cminus", x: x - 5, y: -5, width: 10, height: 10, transform: "rotate(45 " + x + " 0)" }));
+    else svg.appendChild(el("circle", { "class": "doff", cx: x, cy: y, r: 5 }));
+    if (label) svg.appendChild(el("text", { "class": "dtxt", x: 0, y: 58, "text-anchor": "middle" }, label));
+  }
+  function halfTurnTxt(num) { return num === 0 ? "0 half-turns" : (num % 3 === 0 ? (num / 3) + " half-turn" + (num === 3 ? "" : "s") : num + "/3 half-turns"); }
+  function drawShellA() {
+    var W = Shells.walk(SHA.moves), Q = W.Q, conj = SHA.conj;
+    var names = SHA.moves.map(function (m) { return m.replace("-", "−"); });
+    $("shA-walk").textContent = "Walk: " + W.divs.join(" → ") + (SHA.moves.length ? "  (moves " + names.join(", ") + ")" : "  (no moves yet: the start state 14 = 2·7, S = 0, Q = 0; drawn, not hidden)") + (SHA.moves.length >= SHA.MAX ? "  [at most " + SHA.MAX + " moves]" : "");
+    $("shA-sq").textContent = "S = (" + W.S[0] + ", " + W.S[1] + ") in F3²;  Q = " + Q + " in F3.";
+    var nm = Shells.phaseNum(Q, conj), nw = Shells.phaseNum(Q, false), nb = Shells.phaseNum(Q, true);
+    dial($("shA-dial"), 3, [0, 2, 4], nm, conj ? "ω̄^Q = ω^" + (Q ? "−" + Q : "0") : "ω^Q = ω^" + Q);
+    dial($("shA-dw"), 3, [0, 2, 4], nw, "");
+    dial($("shA-dwb"), 3, [0, 2, 4], nb, "");
+    $("shA-fw").className = conj ? "" : "sel"; $("shA-fwb").className = conj ? "sel" : "";
+    $("shA-cmain").textContent = (conj ? "ω̄" : "ω") + ": " + halfTurnTxt(nm);
+    $("shA-land").textContent = Shells.landing(Q) ?
+      "Q ≡ 0 mod 3: on the axis: the move orders agree. The phase " + (conj ? "ω^−Q" : "ω^Q") + " = e^{iπ·0} = 1, the +ray." :
+      "Q = " + Q + ": off the axis by a third of a turn. The phase " + (conj ? "ω^−Q = e^{−iπ·2Q/3}" : "ω^Q = e^{iπ·2Q/3}") + " sits at " + halfTurnTxt(nm) + " (" + (nm === 2 ? "1/3 of a turn" : "2/3 of a turn, a third of a turn short of a full turn") + ").";
+    var a = Shells.walk(Shells.PRESETS.A), b = Shells.walk(Shells.PRESETS.B), diff = ((a.Q - b.Q) % 3 + 3) % 3, xy = Shells.wedge([1, 0], [0, 1]);
+    $("shA-pre").textContent = "Preset walks (exact): " + a.divs.join("→") + " (A first) has Q = " + a.Q + "; " + b.divs.join("→") + " (B first) has Q = " + b.Q + ". Both end at " + a.divs[a.divs.length - 1] + " with S = (" + a.S.join(", ") + "). The difference " + a.Q + " − " + b.Q + " ≡ " + diff + " = x∧y = " + xy + " in F3: the two walks sit one third of a turn apart.";
+  }
+  function drawWindow(svg, rows, other, f, t) {
+    clear(svg);
+    var X0 = 22, Y0 = 18, C = 14;
+    [0, 5].forEach(function (i) { svg.appendChild(el("rect", { "class": "wbound", x: X0 + i * C, y: Y0 - 2, width: C, height: rows.length * C + 4 })); });
+    for (var i = 0; i < 6; i++) svg.appendChild(el("text", { "class": "lbl" + (i === 2 || i === 4 ? " wmark" : ""), x: X0 + i * C + C / 2, y: 12, "text-anchor": "middle" }, String(i)));
+    rows.forEach(function (r, tt) {
+      if (tt % 2 === 0 || tt === rows.length - 1) svg.appendChild(el("text", { "class": "lbl", x: X0 - 4, y: Y0 + tt * C + 10, "text-anchor": "end" }, String(tt)));
+      for (var i = 0; i < 6; i++) svg.appendChild(el("rect", { "class": r[i] === "1" ? "wcell1" : "wcell0", x: X0 + i * C + 1, y: Y0 + tt * C + 1, width: C - 2, height: C - 2 }));
+    });
+    [[2, f[0]], [4, f[1]]].forEach(function (p) { if (p[1] >= 0) svg.appendChild(el("rect", { "class": "wfirst", x: X0 + p[0] * C, y: Y0 + p[1] * C, width: C, height: C })); });
+    svg.appendChild(el("rect", { "class": "wrow", x: X0 - 1, y: Y0 + t * C - 1, width: 6 * C + 2, height: C + 2 }));
+    for (i = 0; i < 6; i++) if (rows[t][i] !== other[t][i]) svg.appendChild(el("circle", { "class": "wdiff", cx: X0 + i * C + C / 2, cy: Y0 + t * C + C / 2, r: 2.6 }));
+    // (x labels on top; the figure caption names the run)
+  }
+  function bitTxt(p) { return p === null ? "not yet defined" : (p === "tie" ? "tie (both at once)" : String(p)); }
+  function drawShellB() {
+    var A = SHB.an, t = SHB.t;
+    $("shB-tout").textContent = String(t);
+    drawWindow($("shB-wa"), A.wa, A.wb, A.fA, t); drawWindow($("shB-wb"), A.wb, A.wa, A.fB, t);
+    $("shB-first").textContent = "First black at (x = 2, x = 4): run A (" + A.fA.join(", ") + "), run B (" + A.fB.join(", ") + "). Order bit p = 0 if x = 2 fires first, 1 if x = 4 fires first: p(A) = " + bitTxt(A.pA) + ", p(B) = " + bitTxt(A.pB) + ". Relative bit p(A) + p(B) = " + (A.rel === null ? "not defined" : A.rel) + " (mod 2).";
+    var ra = Shells.runs(A.agree), rb = Shells.runs(A.bAgree), fmt = function (rr) { return rr.map(function (p) { return p[0] === p[1] ? "t = " + p[0] : "t = " + p[0] + ".." + p[1]; }).join(" and ") || "no t"; };
+    var bdiff = []; A.wa.forEach(function (r, tt) { if (!A.bAgree[tt]) bdiff.push(tt); });
+    var bdTxt = bdiff.map(function (tt) { var xs = []; [0, 5].forEach(function (i) { if (A.wa[tt][i] !== A.wb[tt][i]) xs.push("x = " + i); }); return "t = " + tt + " (" + xs.join(", ") + ")"; }).join(", ");
+    $("shB-facts").textContent = "Boundary columns x = 0 and x = 5 agree for " + fmt(rb) + (bdiff.length ? " and differ at " + bdTxt : "") + ". The whole window agrees for " + fmt(ra) + ".";
+    var pa = Shells.orderBit(A.fA[0], A.fA[1], t), pb = Shells.orderBit(A.fB[0], A.fB[1], t), ag = A.agree[t];
+    var rel = (typeof pa === "number" && typeof pb === "number") ? (pa + pb) % 2 : null;
+    var known = rel === null ? "No order bit is defined yet at t = " + t + ": neither marked site has fired in " + (pa === null && pb === null ? "either run" : (pa === null ? "run A" : "run B")) + "." :
+      "By t = " + t + " both order bits are set (p(A) = " + pa + ", p(B) = " + pb + ").";
+    $("shB-at").textContent = "t = " + t + ": the two windows " + (ag ? "agree" : "differ") + " (A " + A.wa[t] + ", B " + A.wb[t] + "). " + known + " The order is erased from the window state from t = 2 (the windows agree for t = 2..11) and kept only in the history." + (t === 12 ? " At t = 12 the windows differ again, at the boundary column x = 5." : "");
+    dial($("shB-dial"), 1, [0, 1], rel, rel === null ? "not yet defined" : "e^{iπ·" + rel + "}");
+    $("shB-ray").textContent = rel === null ? "Shell-2 dial for the relative bit: not drawn yet, because the bit is not defined at t = " + t + " (hollow centre; shown, not hidden)." :
+      "Shell-2 dial e^{iπ·bit} with bit = " + rel + ": always on the axis; the bit only picks the ray, here the " + (rel === 0 ? "+ray (bit 0)" : "−ray (bit 1)") + ".";
+  }
+  function drawShells() { drawShellA(); drawShellB(); }
+  function render() { $("s-out").textContent = "s = " + S; drawRosette(); drawST(); drawEntropy(); }
+  function readW() { var v = Math.floor(Number($("W").value)); if (!isFinite(v) || v < 1) v = 1; if (v > 60) v = 60; W = v; }
+  function step(d) { S = Math.max(0, S + d); render(); }
+  function stop() { if (timer) { clearInterval(timer); timer = null; } $("play").textContent = "Play"; }
+  $("play").addEventListener("click", function () {
+    if (timer) { stop(); return; }
+    $("play").textContent = "Pause";
+    timer = setInterval(function () { step(1); }, Number($("speed").value));
+  });
+  $("speed").addEventListener("change", function () { if (timer) { stop(); $("play").click(); } });
+  $("fwd").addEventListener("click", function () { stop(); step(1); });
+  $("back").addEventListener("click", function () { stop(); step(-1); });
+  $("reset").addEventListener("click", function () { stop(); S = 0; render(); });
+  $("W").addEventListener("input", function () { readW(); render(); });
+  // v0.1.3: two shells, two separate drives (set A: move buttons; set B: its own tick slider); neither touches s or the other set
+  [["shA-ap", "A+"], ["shA-am", "A-"], ["shA-bp", "B+"], ["shA-bm", "B-"]].forEach(function (p) {
+    $(p[0]).addEventListener("click", function () { if (SHA.moves.length < SHA.MAX) SHA.moves.push(p[1]); drawShellA(); });
+  });
+  $("shA-reset").addEventListener("click", function () { SHA.moves = []; drawShellA(); });
+  $("shA-pa").addEventListener("click", function () { SHA.moves = Shells.PRESETS.A.slice(); drawShellA(); });
+  $("shA-pb").addEventListener("click", function () { SHA.moves = Shells.PRESETS.B.slice(); drawShellA(); });
+  $("shA-w").addEventListener("change", function () { SHA.conj = false; drawShellA(); });
+  $("shA-wb").addEventListener("change", function () { SHA.conj = true; drawShellA(); });
+  $("shB-t").addEventListener("input", function () { var v = Math.floor(Number($("shB-t").value)); SHB.t = Math.max(0, Math.min(12, isFinite(v) ? v : 0)); drawShellB(); });
+  window.fvltAutomaton = { expo: expo, cell30: cell30, autoEnt: AutoEnt, shells: Shells, shellA: SHA, shellB: SHB, drawShells: drawShells, get s() { return S; }, set s(v) { S = v; render(); } };
+  readW(); render(); drawShells();
+})();
+</script>
+</html>

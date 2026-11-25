@@ -1,0 +1,2135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GENESIS — Garcia Mode · Cyclic Supercharacters σ_X(y)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#08090c;color:#c9cdd5;font-family:'JetBrains Mono',monospace;min-height:100vh}
+.wrap{max-width:1140px;margin:0 auto;padding:18px 14px 40px}
+h1{font-size:16px;font-weight:700;color:#e8ecf2;letter-spacing:.06em}
+.sub{font-size:9px;color:#4b5563;margin-top:3px;letter-spacing:.1em}
+.sec{margin-top:14px}
+.sec-label{font-size:9px;color:#3a3f4b;letter-spacing:.12em;margin-bottom:6px}
+.row{display:flex;gap:5px;flex-wrap:wrap;align-items:center}
+.nbtn{padding:3px 9px;border-radius:5px;font-size:10px;border:1px solid #1e2028;background:transparent;color:#6b7280;cursor:pointer;font-family:inherit}
+.nbtn:hover{border-color:#2a2d35;color:#8b95a5}
+.nbtn.a{border-color:#61afef;background:#61afef18;color:#61afef}
+.nbtn.fvlt{border-color:#e5c07b30;color:#e5c07b;background:#e5c07b08}
+.nbtn.fvlt.a{border-color:#e5c07b;background:#e5c07b18}
+.nbtn.paper{border-color:#c678dd30;color:#c678dd;background:#c678dd08}
+.nbtn.paper.a{border-color:#c678dd;background:#c678dd18}
+.small{font-size:9px;color:#4b5563;margin-top:3px}
+.input-row{display:flex;gap:6px;align-items:center;margin-top:4px}
+.input-row label{font-size:10px;color:#6b7280;min-width:24px}
+.inp{padding:4px 8px;background:#0d0f13;border:1px solid #1e2028;border-radius:5px;color:#c9cdd5;font-family:inherit;font-size:11px;width:90px}
+.inp:focus{outline:none;border-color:#61afef}
+.inp.bad{border-color:#e06c75}
+.tbtn{padding:4px 10px;border-radius:5px;font-size:10px;border:1px solid #2a2d35;background:#0d0f13;color:#8b95a5;cursor:pointer;font-family:inherit}
+.tbtn.on{border-color:#98c379;background:#98c37915;color:#98c379}
+.layout{display:grid;grid-template-columns:1fr 280px;gap:14px;margin-top:14px}
+.canvas-wrap{border:1px solid #1e2028;border-radius:10px;overflow:hidden;position:relative;background:#08090c}
+#cv{display:block;width:100%;aspect-ratio:1;cursor:crosshair}
+.info-tl{position:absolute;top:10px;left:12px;font-size:9px;color:#4b5563;letter-spacing:.04em;line-height:1.5;pointer-events:none}
+.info-tl .v{color:#e5c07b}
+.info-tl .a{color:#c678dd}
+.info-tr{position:absolute;top:10px;right:12px;padding:3px 10px;border-radius:10px;font-size:9px;background:#0d0f13;border:1px solid #1e2028;color:#4b5563}
+.info-tr .n{color:#61afef}
+.info-bl{position:absolute;bottom:10px;left:12px;font-size:8px;color:#3a3f4b;letter-spacing:.05em}
+.info-br{position:absolute;bottom:10px;right:12px;font-size:9px;color:#3a3f4b}
+.progress{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:10px;color:#98c379;display:none}
+.panel{background:#0d0f13;border:1px solid #1e2028;border-radius:10px;padding:12px;font-size:10.5px;color:#a0a8b8;line-height:1.65}
+.panel h3{font-size:10px;color:#e8ecf2;letter-spacing:.08em;margin-bottom:6px;font-weight:700}
+.panel .sep{border-top:1px solid #1a1d25;margin:8px 0}
+.panel .k{color:#4b5563}
+.panel .v{color:#e5c07b}
+.panel .g{color:#98c379}
+.panel .b{color:#61afef}
+.panel .p{color:#c678dd}
+.panel .r{color:#e06c75}
+.panel .w{color:#d19a66}
+.panel .mono{font-size:10px}
+.thm{border-left:2px solid #c678dd40;padding-left:8px;margin-top:6px;font-size:9.5px;color:#8b95a5;line-height:1.6}
+.thm b{color:#c678dd;font-weight:600}
+.footer{margin-top:18px;font-size:8px;color:#2a2d35;text-align:center;letter-spacing:.1em}
+.mode-row{display:flex;gap:0;border:1px solid #2a2d35;border-radius:6px;overflow:hidden;width:fit-content}
+.mode-row .tbtn{border:none;border-radius:0;padding:5px 12px}
+.mode-row .tbtn+.tbtn{border-left:1px solid #2a2d35}
+.mode-row .tbtn.on{background:#61afef15;color:#61afef}
+.legend{display:flex;gap:10px;flex-wrap:wrap;margin-top:4px;font-size:8px;color:#4b5563}
+.legend .sw{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:3px;vertical-align:middle}
+.pred-ok{color:#98c379}
+.pred-no{color:#4b5563}
+.range-row{display:flex;align-items:center;gap:8px}
+.range-row input[type=range]{flex:1;accent-color:#e5c07b;height:3px}
+.range-row .v{color:#e5c07b;min-width:46px;text-align:right;font-size:10px}
+.range-row label{font-size:10px;color:#6b7280;min-width:56px}
+.components-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:6px}
+.subgroup-catalog{display:flex;flex-direction:column;gap:4px;margin-top:4px}
+.sub-row{display:grid;grid-template-columns:24px 1fr auto;gap:10px;align-items:center;padding:6px 10px;border:1px solid #1e2028;border-radius:6px;background:#0d0f13;cursor:pointer;transition:all 0.1s}
+.sub-row:hover{border-color:#2a2d35;background:#11141a}
+.sub-row.active{border-color:#61afef;background:#61afef0c}
+.sub-row.synth{border-color:#e5c07b80;background:#e5c07b08}
+.sub-row.synth.active{border-color:#e5c07b;background:#e5c07b12}
+.sub-row .sub-idx{font-size:9px;color:#4b5563;font-weight:600}
+.sub-row.active .sub-idx{color:#61afef}
+.sub-row .sub-body{display:flex;gap:14px;align-items:center;flex-wrap:wrap;font-size:10px}
+.sub-row .sub-elems{color:#8b95a5;font-family:inherit}
+.sub-row .sub-elems .el{color:#c9cdd5}
+.sub-row .sub-elems .cur{color:#61afef;font-weight:700}
+.sub-row .sub-gens{color:#4b5563;font-size:9px}
+.sub-row .sub-gens .g{color:#c678dd}
+.sub-row .sub-gens .gcur{color:#c678dd;font-weight:700;text-decoration:underline}
+.sub-row .sub-tag{font-size:8px;color:#3a3f4b;text-align:right;line-height:1.4}
+.sub-row .sub-tag .prop{color:#98c379}
+.comp-card{background:#0d0f13;border:1px solid #1e2028;border-radius:8px;overflow:hidden;position:relative}
+.comp-card.role-flag{border-color:#e5c07b50}
+.comp-card.trivial{opacity:0.45}
+.comp-card canvas{display:block;width:100%;aspect-ratio:1;background:#08090c}
+.comp-card .comp-label{position:absolute;top:6px;left:8px;font-size:9px;color:#c9cdd5;letter-spacing:.03em;pointer-events:none}
+.comp-card .comp-label .pe{color:#61afef;font-weight:600}
+.comp-card .comp-label .dp{color:#e5c07b}
+.comp-card .comp-geom{position:absolute;bottom:6px;right:8px;font-size:8px;color:#3a3f4b;letter-spacing:.04em;text-align:right;pointer-events:none;line-height:1.3}
+.comp-card .comp-geom .cat{color:#98c379}
+.comp-card .comp-geom .role{color:#e5c07b;font-weight:600}
+
+.energy-panel{display:flex;flex-direction:column;gap:10px;margin-top:4px}
+.energy-stats{display:flex;flex-wrap:wrap;gap:16px;padding:10px 12px;background:#0d0f13;border:1px solid #1e2028;border-radius:8px;font-size:10px;line-height:1.5}
+.energy-stats .stat{display:flex;flex-direction:column;min-width:120px}
+.energy-stats .stat .k{color:#4b5563;font-size:8px;letter-spacing:.08em;text-transform:uppercase}
+.energy-stats .stat .v{color:#e5c07b;font-size:13px;font-weight:600;font-family:inherit;margin-top:1px}
+.energy-stats .stat .v .u{color:#6b7280;font-size:10px;font-weight:400;margin-left:3px}
+.energy-stats .stat.conc .v{color:#c678dd}
+.energy-stats .stat.eff .v{color:#61afef}
+.energy-charts{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px}
+.energy-chart{background:#0d0f13;border:1px solid #1e2028;border-radius:8px;padding:8px;position:relative}
+.ech-label{font-size:9px;color:#c9cdd5;letter-spacing:.05em;margin-bottom:4px}
+.ech-label .ech-sub{color:#4b5563;font-weight:400;font-size:8px;margin-left:4px}
+.energy-chart canvas{display:block;width:100%;height:110px;background:transparent}
+@media (max-width:780px){.layout{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<h1>GENESIS · GARCIA MODE</h1>
+<p class="sub">CYCLIC SUPERCHARACTERS · σ<sub>X</sub>(y) = Σ<sub>x∈X</sub> e(xy/n) · X = ⟨a⟩·r</p>
+
+<div class="sec">
+  <div class="sec-label">PAPER MODULI (Duke · Garcia · Lutz 2013)</div>
+  <div class="row" id="paperRow"></div>
+</div>
+
+<div class="sec">
+  <div class="sec-label">FVLT / RATIOQUE SHELLS &nbsp; <span style="color:#e5c07b">small d</span> · <span style="color:#c678dd">max d</span></div>
+  <div class="row" id="fvltRow"></div>
+</div>
+
+<div class="sec">
+  <div class="sec-label">PARAMETERS</div>
+  <div class="input-row">
+    <label>n =</label><input class="inp" id="nInp" type="text" value="52059">
+    <label style="margin-left:10px">a =</label><input class="inp" id="aInp" type="text" value="766">
+    <label style="margin-left:10px">r =</label><input class="inp" id="rInp" type="text" value="1">
+    <label style="margin-left:10px">m =</label><input class="inp" id="mInp" type="text" value="0" title="coloring modulus m | n; 0 = auto">
+    <button class="tbtn" onclick="applyInputs()">APPLY</button>
+    <button class="tbtn" onclick="randomA()" title="pick a random unit modulo n">↻ a</button>
+  </div>
+  <div class="small" id="paramNote">—</div>
+
+  <div class="sec-label" style="margin-top:10px">ACHIEVABLE d &nbsp; <span style="color:#4b5563;font-size:8px">pick an order; viewer finds a generator</span></div>
+  <div class="row" id="dRow"></div>
+</div>
+
+<div class="sec">
+  <div class="sec-label">OVERLAYS</div>
+  <div class="row">
+    <button class="tbtn on" id="ovHypo" onclick="toggleOv('hypo')" title="Thm 1.1: d-cusped hypocycloid when |X|=d prime, d≠p, n=p^a">hypocycloid</button>
+    <button class="tbtn" id="ovEll" onclick="toggleOv('ell')" title="Prop 5.2: ellipse (Re z)²+(Im z)²/p = 1">ellipse</button>
+    <button class="tbtn" id="ovAxis" onclick="toggleOv('axis')" title="Real/imaginary axes highlight (Prop 4.3)">axes</button>
+    <button class="tbtn" id="ovDih" onclick="toggleOv('dih')" title="Prop 3.1: dihedral symmetry rays at 2π/k">k-rays</button>
+    <button class="tbtn" id="ovOrb" onclick="toggleOv('orb')" title="Mark orbit X itself with larger dots">orbit X</button>
+    <button class="tbtn" id="ovNest" onclick="toggleOv('nest')" title="Prop 2.2: nested σ_{Ar} for r|n (other r values)">nest</button>
+  </div>
+  <div class="range-row" style="margin-top:6px">
+    <label>dot size</label>
+    <input type="range" id="dotSz" min="0.4" max="2.5" step="0.1" value="1.0" oninput="document.getElementById('dotSzV').textContent=this.value;redraw()">
+    <span class="v" id="dotSzV">1.0</span>
+    <label style="margin-left:10px">alpha</label>
+    <input type="range" id="alpha" min="0.1" max="1" step="0.05" value="0.55" oninput="document.getElementById('alphaV').textContent=this.value;redraw()">
+    <span class="v" id="alphaV">0.55</span>
+  </div>
+</div>
+
+<div class="layout">
+  <div class="canvas-wrap">
+    <canvas id="cv"></canvas>
+    <div class="info-tl">
+      n = <span class="v" id="iN">—</span><br>
+      a = <span class="a" id="iA">—</span> &nbsp; r = <span class="v" id="iR">—</span><br>
+      |⟨a⟩| = <span class="v" id="iD">—</span> &nbsp; φ(n) = <span class="v" id="iPhi">—</span>
+    </div>
+    <div class="info-tr"><span class="n" id="dotCount">0</span> points</div>
+    <div class="info-bl" id="ibl">scroll to zoom · drag to pan · dblclick to reset</div>
+    <div class="info-br" id="ibr">color = y mod <span id="mDisp">—</span></div>
+    <div class="progress" id="prog">computing…</div>
+  </div>
+
+  <div class="panel" id="panel">
+    <h3>SPECTRAL PROFILE</h3>
+    <div id="profile">—</div>
+    <div class="sep"></div>
+    <h3>PREDICTED STRUCTURE</h3>
+    <div id="predictions">—</div>
+    <div class="sep"></div>
+    <h3>COLORING</h3>
+    <div id="coloring">—</div>
+  </div>
+</div>
+
+<div class="sec" style="margin-top:14px">
+  <div class="sec-label">CYCLIC SUBGROUPS OF ORDER <span id="catDLabel">—</span> IN (ℤ/n ℤ)<sup>×</sup>
+    &nbsp; <span style="color:#4b5563;font-size:8px">each row is a distinct subgroup · different images · click to switch</span>
+  </div>
+  <div class="subgroup-catalog" id="subgroupCatalog"></div>
+  <div class="small" id="subgroupNote" style="margin-top:4px">—</div>
+</div>
+
+<div class="sec" style="margin-top:18px">
+  <div class="sec-label">CRT COMPONENT DECOMPOSITION &nbsp;
+    <span style="color:#4b5563;font-size:8px">each shows σ<sub>X<sub>p</sub></sub>(y′) for y′ ∈ ℤ/p<sup>e</sup>ℤ · full image is NOT a simple sum or product unless component orbit sizes are pairwise coprime (Thm 2.1)</span>
+  </div>
+  <div class="components-row" id="componentsRow"></div>
+  <div class="small" id="componentsNote" style="margin-top:4px">—</div>
+</div>
+
+<div class="sec" style="margin-top:18px">
+  <div class="sec-label">IMAGE ENERGY DISTRIBUTION &nbsp;
+    <span style="color:#4b5563;font-size:8px">𝓔<sub>X</sub>(y) = |σ<sub>X</sub>(y)|² · same idea as FVLT E<sub>q</sub> but indexed by sample y, not by divisor shell · structural atlas, not yet measurement-mature</span>
+  </div>
+  <div class="energy-panel" id="energyPanel">
+    <div class="energy-stats" id="energyStats"></div>
+    <div class="energy-charts">
+      <div class="energy-chart">
+        <div class="ech-label">radial histogram &nbsp; <span class="ech-sub">energy by |σ| band</span></div>
+        <canvas id="energyRadial"></canvas>
+      </div>
+      <div class="energy-chart">
+        <div class="ech-label">residue-class energy &nbsp; <span class="ech-sub">Σ 𝓔 by y mod m</span></div>
+        <canvas id="energyResidue"></canvas>
+      </div>
+      <div class="energy-chart">
+        <div class="ech-label">CRT-component energy &nbsp; <span class="ech-sub">Σ 𝓔<sub>X<sub>p</sub></sub> per component</span></div>
+        <canvas id="energyCRT"></canvas>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">GENESIS · sibling of genesis-1 (Ramanujan) &amp; genesis-3d (ribbons) · A = ⟨a⟩ cyclic ≤ (ℤ/nℤ)<sup>×</sup></div>
+</div>
+
+<script>
+/* Global error surfacer — if anything throws anywhere in the code, make it visible
+   instead of letting the UI freeze silently. */
+window.addEventListener('error', (ev) => {
+  const msg = `ERROR: ${ev.message} [${ev.filename?.split('/').pop()||'?'}:${ev.lineno}]`;
+  console.error('global error:', ev);
+  const prog = document.getElementById('prog');
+  if(prog){
+    prog.style.display = 'block';
+    prog.style.color = '#d19a66';
+    prog.textContent = msg;
+  }
+});
+window.addEventListener('unhandledrejection', (ev) => {
+  console.error('unhandled promise rejection:', ev.reason);
+  const prog = document.getElementById('prog');
+  if(prog){
+    prog.style.display = 'block';
+    prog.style.color = '#d19a66';
+    prog.textContent = `PROMISE ERROR: ${ev.reason?.message || ev.reason}`;
+  }
+});
+
+/* ───────────────────────────── number theory ───────────────────────────── */
+const TAU = 2*Math.PI;
+const gcd = (a,b)=>{a=Math.abs(a);b=Math.abs(b);while(b){[a,b]=[b,a%b]}return a};
+const pmod = (x,m)=>((x%m)+m)%m;
+
+function phi(n){
+  if(n<=1)return n===1?1:0;
+  let r=n;
+  for(let p=2;p*p<=n;p++){
+    if(n%p===0){while(n%p===0)n/=p;r-=r/p}
+  }
+  if(n>1)r-=r/n;
+  return Math.round(r);
+}
+
+/* Cache phi(n) — orderMod() calls it in hot loops; recomputing it for the same n
+   on every call can burn millions of cycles during subgroup enumeration. */
+const _phiCache = new Map();
+function phiCached(n){
+  if(!_phiCache.has(n)) _phiCache.set(n, phi(n));
+  return _phiCache.get(n);
+}
+
+function divisors(n){
+  const d=[];
+  for(let i=1;i*i<=n;i++)if(n%i===0){d.push(i);if(i!==n/i)d.push(n/i)}
+  return d.sort((a,b)=>a-b);
+}
+
+function primeFactors(n){
+  const f=[];
+  for(let p=2;p*p<=n;p++){
+    if(n%p===0){let e=0;while(n%p===0){n/=p;e++}f.push([p,e])}
+  }
+  if(n>1)f.push([n,1]);
+  return f;
+}
+
+function isPrime(n){
+  if(n<2)return false;
+  if(n<4)return true;
+  if(n%2===0)return false;
+  for(let i=3;i*i<=n;i+=2)if(n%i===0)return false;
+  return true;
+}
+
+function isPrimePower(n){
+  if(n<2)return null;
+  for(let p=2;p*p<=n;p++){
+    if(n%p===0){
+      let t=n,e=0;
+      while(t%p===0){t/=p;e++}
+      return t===1?{p,e}:null;
+    }
+  }
+  return {p:n,e:1};
+}
+
+/* order of a modulo n, assuming gcd(a,n)=1 */
+function orderMod(a,n){
+  if(gcd(a,n)!==1)return 0;
+  a=pmod(a,n);
+  let k=1, x=a;
+  const max=phiCached(n);
+  while(x!==1 && k<=max){
+    x=(x*a)%n;
+    k++;
+  }
+  return x===1?k:0;
+}
+
+/* ───────────────────────────── orbit + sigma ───────────────────────────── */
+/* build orbit X = ⟨a⟩·r mod n */
+function buildOrbit(n,a,r){
+  const X = new Set();
+  let x = pmod(r,n);
+  const start = x;
+  for(let i=0;i<n;i++){
+    if(X.has(x))break;
+    X.add(x);
+    x = (x*a)%n;
+    if(x===start && i>0)break;
+  }
+  return Array.from(X);
+}
+
+/* build cyclic subgroup ⟨a⟩ mod n */
+function buildSubgroup(n,a){
+  if(gcd(a,n)!==1)return null;
+  const A = [];
+  let x=1;
+  for(let i=0;i<n;i++){
+    A.push(x);
+    x = (x*a)%n;
+    if(x===1)break;
+  }
+  return A;
+}
+
+/* σ_X(y) for one y, given orbit X ⊂ ℤ/nℤ */
+function sigmaAt(X, y, n, cosT, sinT){
+  let re=0, im=0;
+  for(let i=0;i<X.length;i++){
+    const k = (X[i]*y)%n;
+    re += cosT[k];
+    im += sinT[k];
+  }
+  return [re,im];
+}
+
+/* trig lookup table for fast ∑ e(k/n) */
+function trigTable(n){
+  const c = new Float64Array(n), s = new Float64Array(n);
+  for(let k=0;k<n;k++){
+    const θ = TAU*k/n;
+    c[k] = Math.cos(θ);
+    s[k] = Math.sin(θ);
+  }
+  return {c,s};
+}
+
+/* ───────────────────────────── palette ───────────────────────────── */
+const PAL = [
+  '#e06c75','#61afef','#98c379','#e5c07b','#c678dd','#56b6c2',
+  '#d19a66','#be5046','#7ec8e3','#c3e88d','#ffcb6b','#f78c6c',
+  '#89ddff','#82aaff','#b2ccd6','#ff79c6','#50fa7b','#f1fa8c',
+  '#6272a4','#bd93f9','#ff5555','#8be9fd','#ffb86c','#caa9fa'
+];
+const PAL_RGB = PAL.map(h=>{const v=parseInt(h.slice(1),16);return[(v>>16)&255,(v>>8)&255,v&255]});
+
+/* ───────────────────────────── presets ───────────────────────────── */
+const PAPER = [
+  /* Figure 1 */
+  ['1a', 52059, 766, 1, 'F1a · triangular'],
+  ['1b', 91205, 2337, 1, 'F1b · double-lobed'],
+  ['1c', 70091, 3447, 1, 'F1c · star'],
+  ['1d', 91205, 39626, 1, 'F1d · rose'],
+  ['1e', 91205, 1322, 1, 'F1e · diamond'],
+  ['1f', 95095, 626, 1, 'F1f · cross'],
+  ['1g', 82677, 8147, 1, 'F1g · 6-star'],
+  ['1h', 70091, 21792, 1, 'F1h · 8-ray'],
+  ['1i', 51319, 430, 1, 'F1i · petals'],
+  /* Figure 2 — 5-cusp hypocycloid asymptotic */
+  ['2a', 2791, 800, 1, 'F2a · 5-hypo (sparse)'],
+  ['2b', 27011, 9360, 1, 'F2b · 5-hypo (filling)'],
+  /* 2c removed: n=202231 pushes browser main-thread computation past practical limits */
+  /* Figure 3 — Prop 2.2 nesting, n=62160, a=319, r varies */
+  ['3a', 62160, 319, 37, 'F3a · r=37'],
+  ['3b', 62160, 319, 7,  'F3b · r=7'],
+  ['3c', 62160, 319, 5,  'F3c · r=5'],
+  ['3d', 62160, 319, 3,  'F3d · r=3'],
+  ['3e', 62160, 319, 4,  'F3e · r=4'],
+  ['3f', 62160, 319, 1,  'F3f · r=1 (full nest)'],
+  /* Figure 4 — dihedral */
+  ['4a', 68913, 88, 1, 'F4a'],
+  ['4b', 20485, 4609, 1, 'F4b · asymmetric'],
+  ['4c', 51319, 138, 1, 'F4c'],
+  ['4d', 51319, 27, 1, 'F4d'],
+  ['4e', 44161, 608, 1, 'F4e'],
+  ['4f', 16383, 2, 1, 'F4f'],
+  /* Figure 6 — real axis */
+  ['6a', 855, 164, 1, 'F6a · real'],
+  ['6b', 105, 104, 1, 'F6b · ⟨−1⟩'],
+  ['6c', 121, 94, 1, 'F6c · real'],
+  /* Figure 7 — imaginary axis */
+  ['7a', 912, 71, 1, 'F7a · cross'],
+  ['7b', 400, 39, 1, 'F7b · cross'],
+  ['7c', 552, 275, 1, 'F7c · cross'],
+  /* Figure 8 — ellipses */
+  ['8a', 1535, 613, 1, 'F8a · ellipse'],
+  ['8b', 559, 171, 1, 'F8b · ellipse'],
+  ['8c', 770, 153, 1, 'F8c · ellipse'],
+  ['8d', 65995, 613, 1, 'F8d · ellipse tiled'],
+  ['8e', 19565, 171, 1, 'F8e · ellipse rose'],
+  ['8f', 30030, 1693, 1, 'F8f · ellipse flower'],
+  /* Figure 9 — hypocycloid boundaries */
+  ['9a', 2017, 294, 1, 'F9a · 3-cusp'],
+  ['9b', 32587, 10922, 1, 'F9b · 3-cusp'],
+  ['9c', 200017, 35098, 1, 'F9c · 3-cusp'],
+  ['9d', 4019, 1551, 1, 'F9d · 5-cusp'],
+  ['9e', 32173, 3223, 1, 'F9e · 5-cusp'],
+  ['9f', 200033, 11073, 1, 'F9f · 5-cusp'],
+];
+
+/* FVLT shells — pick generators automatically that give small subgroups */
+const FVLT_SHELLS = [
+  [720, 'N₀ = 6!'],
+  [1001, "B' = 7·11·13"],
+  [719, 'N−1 prime'],
+  [721, 'N+1 = 7·103'],
+  [720720, 'N · N_c = 6!·1001'],
+];
+
+/* ───────────────────────────── state ───────────────────────────── */
+let state = {
+  n: 52059, a: 766, r: 1, m: 0,
+  X: [], A: [], dOrder: 0, phiN: 0,
+  points: null,          // Float32Array [re, im, colorIdx, ...]
+  nPoints: 0,
+  sigmaXvals: null,      // σ_X on X itself (for ovOrb)
+  bounds: null,          // {minRe,maxRe,minIm,maxIm}
+  zoom: 1, panX: 0, panY: 0,
+  overlays: {hypo:true, ell:false, axis:false, dih:false, orb:false, nest:false},
+  mAuto: 0,
+  renderID: 0,
+};
+
+/* ───────────────────────────── UI builders ───────────────────────────── */
+function buildPaperRow(){
+  const r = document.getElementById('paperRow');
+  r.innerHTML = '';
+  PAPER.forEach(([id,n,a,rv,desc])=>{
+    const b = document.createElement('button');
+    b.className = 'nbtn paper';
+    b.textContent = id;
+    b.title = `${desc} · n=${n}, a=${a}`;
+    b.onclick = ()=>loadPreset(n,a,rv);
+    r.appendChild(b);
+  });
+}
+
+function buildFvltRow(){
+  const r = document.getElementById('fvltRow');
+  r.innerHTML = '';
+  FVLT_SHELLS.forEach(([n,desc])=>{
+    /* label node */
+    const lab = document.createElement('span');
+    lab.className = 'row-label';
+    lab.style.cssText = 'font-size:10px;color:#e5c07b;margin:0 4px 0 2px;letter-spacing:.05em';
+    lab.textContent = `n=${n}`;
+    lab.title = desc;
+    r.appendChild(lab);
+
+    /* small ⟨a⟩ button: first d in [6,4,8,12,3,5,10,15] that exists */
+    const smallA = findGenByOrder(n, [6,4,8,12,3,5,10,15]);
+    if(smallA){
+      const b = document.createElement('button');
+      b.className = 'nbtn fvlt';
+      b.textContent = `d=${smallA.d}, a=${smallA.a}`;
+      b.title = `${desc} · small cyclic subgroup, order ${smallA.d}`;
+      b.onclick = ()=>loadPreset(n, smallA.a, 1);
+      r.appendChild(b);
+    }
+
+    /* max ⟨a⟩ button: largest available order */
+    const maxA = findMaxOrderGen(n);
+    if(maxA && maxA.d !== (smallA ? smallA.d : 0)){
+      const b = document.createElement('button');
+      b.className = 'nbtn fvlt';
+      b.textContent = `d=${maxA.d}, a=${maxA.a}`;
+      b.title = `${desc} · maximum-order cyclic subgroup (exponent of (ℤ/nℤ)×)`;
+      b.style.borderColor = '#c678dd40';
+      b.style.color = '#c678dd';
+      b.onclick = ()=>loadPreset(n, maxA.a, 1);
+      r.appendChild(b);
+    }
+
+    /* spacer */
+    const sp = document.createElement('span');
+    sp.style.cssText = 'display:inline-block;width:10px';
+    r.appendChild(sp);
+  });
+}
+
+/* find first a whose order is one of the targets (tried in order) */
+function findGenByOrder(n, targets){
+  /* bound search: for large n, scanning all units is expensive */
+  const limit = Math.min(n, 10000);
+  for(const t of targets){
+    for(let a=2;a<limit;a++){
+      if(gcd(a,n)===1 && orderMod(a,n)===t)return {a, d:t};
+    }
+  }
+  return null;
+}
+
+/* find a generator giving the maximum achievable order.
+   Strategy: sample units, record max order, then find smallest `a` with that order. */
+function findMaxOrderGen(n){
+  const phiN = phi(n);
+  /* for large n, don't scan all — sample + look for order equal to exponent */
+  const limit = Math.min(n, 20000);
+  let bestOrder = 1, bestA = 1;
+  for(let a=2;a<limit;a++){
+    if(gcd(a,n)!==1)continue;
+    const o = orderMod(a,n);
+    if(o > bestOrder){bestOrder=o; bestA=a}
+    if(o === phiN)break; /* found primitive root, can't beat */
+  }
+  return {a: bestA, d: bestOrder};
+}
+
+function loadPreset(n,a,r){
+  state.n=n; state.a=a; state.r=r; state.m=0;
+  document.getElementById('nInp').value=n;
+  document.getElementById('aInp').value=a;
+  document.getElementById('rInp').value=r;
+  document.getElementById('mInp').value=0;
+  state.zoom=1; state.panX=0; state.panY=0;
+  recompute();
+}
+
+function applyInputs(){
+  const n = parseInt(document.getElementById('nInp').value);
+  const a = parseInt(document.getElementById('aInp').value);
+  const r = parseInt(document.getElementById('rInp').value);
+  const m = parseInt(document.getElementById('mInp').value)||0;
+  const nInp = document.getElementById('nInp'), aInp=document.getElementById('aInp');
+  nInp.classList.remove('bad'); aInp.classList.remove('bad');
+  if(!n||n<2){nInp.classList.add('bad');return}
+  if(!a||gcd(a,n)!==1){aInp.classList.add('bad');document.getElementById('paramNote').textContent=`a=${a} is not coprime to n=${n} — gcd=${gcd(a,n)}`;return}
+  state.n=n; state.a=a; state.r=r; state.m=m;
+  state.zoom=1; state.panX=0; state.panY=0;
+  recompute();
+}
+
+function randomA(){
+  const n = state.n;
+  let tries=0;
+  while(tries<1000){
+    const a = 2 + Math.floor(Math.random()*(n-3));
+    if(gcd(a,n)===1){
+      state.a = a;
+      document.getElementById('aInp').value = a;
+      recompute();
+      return;
+    }
+    tries++;
+  }
+}
+
+function toggleOv(k){
+  state.overlays[k] = !state.overlays[k];
+  document.getElementById('ov'+k.charAt(0).toUpperCase()+k.slice(1)).classList.toggle('on', state.overlays[k]);
+  redraw();
+}
+
+/* ───────────────────────────── achievable d enumeration ─────────────────────────── */
+/* Achievable orders at n = divisors of the Carmichael function λ(n).
+   λ(p^e) = φ(p^e)     for odd prime p
+   λ(2) = 1, λ(4) = 2, λ(2^e) = 2^{e-2} for e ≥ 3
+   λ(n) = lcm over prime-power components. */
+const _dCache = new Map();
+function carmichael(n){
+  const pf = primeFactors(n);
+  const lambdas = pf.map(([p,e])=>{
+    if(p===2){
+      if(e===1)return 1;
+      if(e===2)return 2;
+      return Math.pow(2, e-2);
+    }
+    return Math.pow(p, e-1) * (p-1);
+  });
+  /* lcm of list */
+  const glcm = (a,b)=>a/gcd(a,b)*b;
+  return lambdas.reduce(glcm, 1);
+}
+function achievableOrders(n){
+  if(_dCache.has(n))return _dCache.get(n);
+  const lam = carmichael(n);
+  const ds = divisors(lam).filter(d=>d>1);
+  _dCache.set(n, ds);
+  return ds;
+}
+
+/* choose a generator with order exactly d; prefer small a.
+   Strategy: (1) scan small units for one of exact order d. (2) If that fails,
+   construct one via CRT: for each prime-power factor p^e of n, pick a component
+   whose order in (ℤ/p^eℤ)× contributes the right factor of d, then CRT-lift.
+   Cached by (n,d) so repeated clicks on the same d are free. */
+const _genCache = new Map();
+function pickGenForD(n, d){
+  const key = `${n},${d}`;
+  if(_genCache.has(key))return _genCache.get(key);
+
+  /* (1) fast scan */
+  const scanLimit = Math.min(n, 50000);
+  for(let a=2;a<scanLimit;a++){
+    if(gcd(a,n)!==1)continue;
+    if(orderMod(a,n)===d){_genCache.set(key, a);return a}
+  }
+
+  /* (2) CRT construction — used when scan fails for rare orders
+     (e.g. d=5 at n=720720: smallest generator is 65521) */
+  const a = constructGenByCRT(n, d);
+  if(a !== null){_genCache.set(key, a);return a}
+  return null;
+}
+
+/* Extended Euclidean for modular inverse */
+function modInverse(a, m){
+  a = pmod(a, m);
+  if(m === 1) return 0;
+  let [or, r] = [a, m], [os, s] = [1, 0];
+  while(r){
+    const q = Math.floor(or/r);
+    [or, r] = [r, or - q*r];
+    [os, s] = [s, os - q*s];
+  }
+  return or === 1 ? pmod(os, m) : null;
+}
+
+/* CRT: given residues r_i mod m_i (m_i pairwise coprime), return unique x mod ∏m_i */
+function crt(residues, moduli){
+  let M = 1;
+  for(const m of moduli) M *= m;
+  let x = 0;
+  for(let i=0;i<moduli.length;i++){
+    const Mi = M / moduli[i];
+    const yi = modInverse(Mi, moduli[i]);
+    if(yi === null) return null;
+    x = pmod(x + residues[i] * Mi * yi, M);
+  }
+  return x;
+}
+
+/* Find an element of exact order d_target in (ℤ/pe ℤ)×, via scan.
+   For small pe this is cheap. */
+function elementOfOrderInComponent(pe, d_target){
+  if(d_target === 1) return 1;
+  for(let u=2;u<pe;u++){
+    if(gcd(u, pe) !== 1) continue;
+    if(orderMod(u, pe) === d_target) return u;
+  }
+  return null;
+}
+
+/* Factor d across CRT components: find per-component orders d_i with
+   d_i | λ(p_i^{e_i}) and lcm = d. Returns array of d_i per component, or null. */
+function factorOrderAcrossComponents(d, lambdas){
+  /* Each d_i must divide both d and λ_i. Need lcm(d_1,...,d_k) = d.
+     Greedy: for each prime power q^f exactly dividing d, assign it to some
+     component whose λ_i contains q^f. */
+  const dFactors = [];
+  let dRemaining = d;
+  for(let p=2;p*p<=dRemaining;p++){
+    if(dRemaining%p===0){
+      let e=0;
+      while(dRemaining%p===0){dRemaining/=p;e++}
+      dFactors.push([p,e]);
+    }
+  }
+  if(dRemaining>1) dFactors.push([dRemaining, 1]);
+  /* For each prime power q^f of d, find a component slot */
+  const perComponent = lambdas.map(_=>1);
+  for(const [p,e] of dFactors){
+    const qf = Math.pow(p,e);
+    let placed = false;
+    for(let i=0;i<lambdas.length;i++){
+      if(lambdas[i] % qf === 0){
+        perComponent[i] *= qf;
+        placed = true;
+        break;
+      }
+    }
+    if(!placed) return null; /* d doesn't divide λ of any single component */
+  }
+  /* Verify: lcm(perComponent) should equal d */
+  const glcm = (a,b)=>a/gcd(a,b)*b;
+  const lcmResult = perComponent.reduce(glcm, 1);
+  if(lcmResult !== d) return null;
+  return perComponent;
+}
+
+/* Construct a generator of order exactly d via CRT.
+   Process: factor n into prime powers; compute Carmichael λ of each;
+   split d across components so lcm = d; find per-component element; CRT-lift. */
+function constructGenByCRT(n, d){
+  const pf = primeFactors(n);
+  const moduli = pf.map(([p,e])=>Math.pow(p,e));
+  const lambdas = pf.map(([p,e])=>{
+    if(p===2){
+      if(e===1)return 1;
+      if(e===2)return 2;
+      return Math.pow(2, e-2);
+    }
+    return Math.pow(p, e-1) * (p-1);
+  });
+  const dFactors = factorOrderAcrossComponents(d, lambdas);
+  if(!dFactors) return null;
+  /* find element in each component with exactly the assigned order */
+  const residues = [];
+  for(let i=0;i<moduli.length;i++){
+    const u = elementOfOrderInComponent(moduli[i], dFactors[i]);
+    if(u === null) return null;
+    residues.push(u);
+  }
+  return crt(residues, moduli);
+}
+
+function renderDRow(){
+  const r = document.getElementById('dRow');
+  r.innerHTML = '';
+  const ds = achievableOrders(state.n);
+  if(ds.length === 0){
+    r.innerHTML = '<span style="color:#4b5563;font-size:9px">no achievable orders (n has no units)</span>';
+    return;
+  }
+  ds.forEach(d => {
+    const b = document.createElement('button');
+    b.className = 'nbtn' + (d === state.dOrder ? ' a' : '');
+    b.textContent = `d=${d}`;
+    b.title = `find a generator of order ${d}`;
+    b.onclick = ()=>{
+      /* Estimate cost of pickGenForD: up to 50k orderMod calls, each up to φ(n) ops.
+         If the result is already cached, it's instant. Otherwise defer with a
+         computing indicator so the click doesn't freeze the UI. */
+      const cached = _genCache.has(`${state.n},${d}`);
+      if(cached){
+        const a = pickGenForD(state.n, d);
+        if(a !== null){
+          state.a = a;
+          document.getElementById('aInp').value = a;
+          recompute();
+        }
+        return;
+      }
+      /* Estimate: 50k units × φ(n) — if n is large and prime, this is the expensive case */
+      const estimate = Math.min(state.n, 50000) * Math.min(phiCached(state.n), 50000);
+      if(estimate > 1e7){
+        /* defer with indicator */
+        const prog = document.getElementById('prog');
+        prog.style.display='block';
+        prog.style.color = '';
+        prog.textContent = `searching for generator of order ${d}…`;
+        setTimeout(()=>{
+          try {
+            const a = pickGenForD(state.n, d);
+            prog.style.display='none';
+            if(a !== null){
+              state.a = a;
+              document.getElementById('aInp').value = a;
+              recompute();
+            } else {
+              prog.style.display='block';
+              prog.style.color = '#d19a66';
+              prog.textContent = `no generator of order ${d} found in scan`;
+              setTimeout(()=>{prog.style.display='none'; prog.style.color='';}, 3000);
+            }
+          } catch(err){
+            console.error('pickGenForD error:', err);
+            prog.style.display='block';
+            prog.style.color = '#d19a66';
+            prog.textContent = `error: ${err.message||err}`;
+          }
+        }, 20);
+      } else {
+        const a = pickGenForD(state.n, d);
+        if(a !== null){
+          state.a = a;
+          document.getElementById('aInp').value = a;
+          recompute();
+        }
+      }
+    };
+    r.appendChild(b);
+  });
+  /* total count indicator */
+  const note = document.createElement('span');
+  note.style.cssText = 'font-size:8px;color:#3a3f4b;margin-left:6px;align-self:center';
+  note.textContent = `· ${ds.length} orders · max d = ${ds[ds.length-1]}`;
+  r.appendChild(note);
+}
+
+/* ───────────────────────────── subgroup enumeration ───────────────────────────── */
+/* Enumerate distinct cyclic subgroups of order exactly d in (ℤ/nℤ)×.
+   Each subgroup is keyed by its sorted element set. For each subgroup, record
+   all generators (elements whose order in the subgroup = d).
+   Cost: O(scan_limit) × O(d) per hit. For large d with many subgroups, cap
+   the displayed list and note that more exist.
+
+   Fast paths (per Chris's audit, 2026-04-17):
+   (1) When n is prime, (ℤ/nℤ)× is cyclic; for each d | (n-1) there is exactly ONE
+       subgroup of order d. Skip scanning entirely.
+   (2) Hard bailout when estimated work exceeds threshold: 2c (n=202231, d=5) would
+       do ~100k × φ(n) ≈ 2×10¹⁰ ops in the slow path, freezing the browser. Bail out
+       and show just the current subgroup.
+*/
+const _subgroupCache = new Map();
+function enumerateSubgroups(n, d){
+  const key = `${n},${d}`;
+  if(_subgroupCache.has(key))return _subgroupCache.get(key);
+
+  /* ---- Fix 1: cyclic unit group (prime n) — exactly one subgroup per d | (n-1) ---- */
+  if(isPrime(n)){
+    if((n - 1) % d !== 0){
+      const payload = {subgroups: [], hitCap: false, totalFound: 0};
+      _subgroupCache.set(key, payload);
+      return payload;
+    }
+    /* Prefer the current subgroup if it already matches; otherwise construct one */
+    let elements, generators;
+    if(state.A && state.A.length === d){
+      elements = state.A.slice().sort((u,v)=>u-v);
+    } else {
+      const g = pickGenForD(n, d);
+      if(g === null){
+        const payload = {subgroups: [], hitCap: false, totalFound: 0};
+        _subgroupCache.set(key, payload);
+        return payload;
+      }
+      elements = [];
+      let x = 1;
+      for(let i=0;i<d;i++){ elements.push(x); x = (x*g)%n; }
+      elements.sort((u,v)=>u-v);
+    }
+    /* In a cyclic group of prime order, every non-identity element is a generator.
+       For composite-order cyclic groups, the generators are those of order exactly d. */
+    if(isPrime(d)){
+      generators = elements.filter(el => el !== 1).sort((a,b)=>a-b);
+    } else {
+      generators = elements.filter(el => orderMod(el, n) === d).sort((a,b)=>a-b);
+    }
+    const payload = {
+      subgroups: [{elements, generators}],
+      hitCap: false,
+      totalFound: 1
+    };
+    _subgroupCache.set(key, payload);
+    return payload;
+  }
+
+  /* ---- Structural enumeration via component d-torsion + CRT ----
+     The order-d cyclic subgroups all live inside the d-torsion
+     H_d = {x : x^d ≡ 1 (mod n)} = CRT product of the per-component d-torsions
+     {u mod p^e : u^d ≡ 1}. We get each component torsion by scanning that (small)
+     prime-power component directly — NO cyclic/abelian-structure assumption, so the
+     non-cyclic 2^e component (e≥3) is handled correctly (the gcd(d,φ) formula is wrong
+     there). Cost: O(Σ p^e + T·d), T = ∏ |component torsion| ≤ φ(n). The old unit-scan
+     was O(n·φ(n)); this is the right cost model. Verified == brute force. */
+  const comps = primeFactors(n).map(([p,e]) => {
+    const pe = Math.pow(p, e);
+    const tors = [];
+    for(let u=0; u<pe; u++){
+      if(gcd(u, pe) !== 1) continue;
+      let v=1; for(let j=0;j<d;j++) v=(v*u)%pe;   /* u^d mod p^e */
+      if(v === 1) tors.push(u);
+    }
+    return {pe, tors};
+  });
+  let T = 1; for(const c of comps) T *= c.tors.length;
+
+  /* Safety: only for a pathologically large prime-power component would T blow up.
+     Then fall back to the current subgroup with an honest flag. */
+  const T_CAP = 2_000_000;
+  if(T > T_CAP){
+    let elements = [], generators = [];
+    if(state.A && state.A.length === d){
+      elements = state.A.slice().sort((u,v)=>u-v);
+      generators = elements.filter(el => orderMod(el, n) === d).sort((a,b)=>a-b);
+    }
+    const payload = {subgroups: elements.length?[{elements,generators}]:[], hitCap:false,
+                     totalFound: elements.length?1:0, skipped:true, torsion:T};
+    _subgroupCache.set(key, payload);
+    return payload;
+  }
+
+  /* Precompute CRT coefficients once so the inner combine is a dot product (no per-combo
+     modInverse). x = Σ residues[i]·coef[i] (mod M),  coef[i] = (M/m_i)·((M/m_i)⁻¹ mod m_i). */
+  const mods  = comps.map(c => c.pe);
+  const sizes = comps.map(c => c.tors.length);
+  const M = mods.reduce((a,b)=>a*b, 1);
+  const coef = mods.map(mi => { const Mi = M/mi; const inv = modInverse(Mi, mi); return inv===null?null:(Mi*inv)%M; });
+
+  const displayCap = 150;
+  /* Dedup by generators: every order-d element generates exactly ONE order-d subgroup,
+     so the first time we meet any generator of a subgroup we build it once, record all its
+     φ(d) generators, and mark them seen. Later generators of the same subgroup are skipped
+     by the seen-check — no per-element sorting or string keys (that was the ~1.5s cost). */
+  const seenGen = new Set();   /* order-d elements already assigned to a counted subgroup */
+  const stored  = [];          /* up to displayCap subgroups with full data */
+  let totalFound = 0;
+  const counter = new Array(comps.length).fill(0);
+
+  for(let it=0; it<T; it++){
+    /* CRT-combine the current per-component torsion selection */
+    let x = 0;
+    for(let i=0;i<comps.length;i++){ const ci = coef[i]; if(ci===null){ x=-1; break; } x = (x + comps[i].tors[counter[i]]*ci) % M; }
+    if(x > 1 && !seenGen.has(x)){
+      /* order of x mod n (x ∈ H_d ⇒ order | d) */
+      let o=1, y=x; while(y!==1 && o<=d){ y=(y*x)%n; o++; }
+      if(y===1 && o===d){
+        /* new subgroup ⟨x⟩: walk it once, collect+mark its order-d generators */
+        const sub=[]; let z=1; for(let j=0;j<d;j++){ sub.push(z); z=(z*x)%n; }
+        const gens=[];
+        for(const el of sub){
+          if(el===1) continue;
+          let oo=1, w=el; while(w!==1 && oo<=d){ w=(w*el)%n; oo++; }
+          if(w===1 && oo===d){ gens.push(el); seenGen.add(el); }
+        }
+        totalFound++;
+        if(stored.length < displayCap){
+          sub.sort((u,v)=>u-v); gens.sort((u,v)=>u-v);
+          stored.push({elements: sub, generators: gens});
+        }
+      }
+    }
+    /* mixed-radix increment over the component torsion sizes */
+    for(let i=comps.length-1;i>=0;i--){ if(++counter[i] < sizes[i]) break; counter[i]=0; }
+  }
+
+  stored.sort((A,B) => A.generators[0] - B.generators[0]);
+  const payload = {subgroups: stored, hitCap: totalFound > stored.length, totalFound};
+  _subgroupCache.set(key, payload);
+  return payload;
+}
+
+/* heuristic classification for a subgroup: which Garcia theorem applies?
+   Returns short tag for display. */
+function classifySubgroup(subgroup, n){
+  const A = subgroup.elements;
+  const d = A.length;
+  /* -1 in A? → real-valued per Prop 4.1 */
+  if(A.includes(n-1)) return {tag: 'real', detail: '−1 ∈ A (Prop 4.1)'};
+  /* Prop 3.1 dihedral prediction for r=1 */
+  const gen = subgroup.generators[0];
+  const k = gcd(gen - 1, n);
+  if(k > 1) return {tag: `${k}-dih`, detail: `${k}-fold dihedral (Prop 3.1)`};
+  return {tag: '', detail: ''};
+}
+
+/* which subgroup is the current state.A? returns index in catalog, or -1 */
+function currentSubgroupIndex(catalog){
+  if(!state.A) return -1;
+  const curKey = state.A.slice().sort((u,v)=>u-v).join(',');
+  for(let i=0;i<catalog.length;i++){
+    if(catalog[i].elements.slice().sort((u,v)=>u-v).join(',') === curKey) return i;
+  }
+  return -1;
+}
+
+function renderSubgroupCatalog(){
+  const container = document.getElementById('subgroupCatalog');
+  const noteEl = document.getElementById('subgroupNote');
+  const labelEl = document.getElementById('catDLabel');
+  container.innerHTML = '';
+
+  const {n, dOrder} = state;
+  if(!dOrder || dOrder < 2){
+    labelEl.textContent = '—';
+    noteEl.textContent = 'no nontrivial subgroup at current parameters';
+    return;
+  }
+  labelEl.textContent = dOrder;
+
+  const enumResult = enumerateSubgroups(n, dOrder);
+  let {subgroups, hitCap, totalFound, skipped} = enumResult;
+  if(subgroups.length === 0){
+    noteEl.innerHTML = `<span style="color:#d19a66">no subgroups of order ${dOrder} found within scan limit</span>`;
+    return;
+  }
+
+  /* If the current subgroup isn't in the displayed list (beyond display cap or
+     with generator above scan limit), synthesize a row for it and prepend.
+     This guarantees the user's current image is always represented. */
+  let curIdx = currentSubgroupIndex(subgroups);
+  let currentBeyondCap = false;
+  if(curIdx === -1 && state.A && state.A.length === dOrder){
+    /* find all generators of the current subgroup among its own elements */
+    const curElements = state.A.slice().sort((u,v)=>u-v);
+    const curGens = [];
+    for(const el of curElements){
+      if(orderMod(el, n) === dOrder) curGens.push(el);
+    }
+    curGens.sort((a,b)=>a-b);
+    const synthesized = {
+      elements: curElements,
+      generators: curGens
+    };
+    subgroups = [synthesized, ...subgroups];
+    curIdx = 0;
+    currentBeyondCap = true;
+  }
+
+  subgroups.forEach((sub, idx) => {
+    const row = document.createElement('div');
+    const isSynth = (currentBeyondCap && idx === 0);
+    row.className = 'sub-row' + (idx === curIdx ? ' active' : '') + (isSynth ? ' synth' : '');
+
+    /* index */
+    const idxCell = document.createElement('div');
+    idxCell.className = 'sub-idx';
+    idxCell.textContent = isSynth ? 'cur' : `#${idx+1}`;
+    row.appendChild(idxCell);
+
+    /* body: elements + generators */
+    const body = document.createElement('div');
+    body.className = 'sub-body';
+
+    /* elements list */
+    const elems = document.createElement('span');
+    elems.className = 'sub-elems';
+    const elemStr = sub.elements.map(el => {
+      const cls = (el === state.a) ? 'cur' : 'el';
+      return `<span class="${cls}">${el}</span>`;
+    }).join(' · ');
+    elems.innerHTML = `A = { ${elemStr} }`;
+    body.appendChild(elems);
+
+    /* generator list (subset of A — those of order d) */
+    const gens = document.createElement('span');
+    gens.className = 'sub-gens';
+    const phi_d = phi(dOrder);
+    const genStr = sub.generators.map(g => {
+      const cls = (g === state.a) ? 'gcur' : 'g';
+      return `<span class="${cls}">${g}</span>`;
+    }).join(', ');
+    gens.innerHTML = `generators (${sub.generators.length} of φ(${dOrder})=${phi_d}): ${genStr}`;
+    body.appendChild(gens);
+
+    row.appendChild(body);
+
+    /* classification tag */
+    const tag = document.createElement('div');
+    tag.className = 'sub-tag';
+    const cls = classifySubgroup(sub, n);
+    if(cls.tag){
+      tag.innerHTML = `<span class="prop">${cls.tag}</span><br>${cls.detail}`;
+    } else {
+      tag.textContent = 'generic';
+    }
+    row.appendChild(tag);
+
+    /* clicking a row switches to that subgroup using its smallest generator */
+    row.onclick = () => {
+      const newA = sub.generators[0];
+      state.a = newA;
+      document.getElementById('aInp').value = newA;
+      recompute();
+    };
+
+    container.appendChild(row);
+  });
+
+  /* note */
+  const displayCount = currentBeyondCap ? subgroups.length - 1 : subgroups.length;
+  if(skipped){
+    noteEl.innerHTML = `<span style="color:#d19a66">d-torsion too large to enumerate (T = ${enumResult.torsion?.toLocaleString?.()||'?'} &gt; cap) · showing current subgroup only</span>`;
+  } else if(currentBeyondCap){
+    noteEl.innerHTML = `<span style="color:#e5c07b">current subgroup (row #1) is beyond the display cap · ${displayCount} additional subgroups shown below · ${totalFound} distinct subgroups of order ${dOrder} in total</span>`;
+  } else if(hitCap){
+    noteEl.innerHTML = `<span style="color:#d19a66">showing ${displayCount} of ${totalFound} distinct subgroups · more exist beyond display cap</span>`;
+  } else if(isPrime(n)){
+    noteEl.innerHTML = `n=${n} is prime → (ℤ/${n}ℤ)<sup>×</sup> is cyclic → exactly one cyclic subgroup of order ${dOrder}`;
+  } else {
+    noteEl.innerHTML = `${displayCount} distinct cyclic subgroup${displayCount===1?'':'s'} of order ${dOrder} in (ℤ/${n}ℤ)<sup>×</sup>`;
+  }
+}
+
+/* ───────────────────────────── recompute ───────────────────────────── */
+function recompute(){
+  state.renderID++;
+  const myID = state.renderID;
+  const {n,a,r} = state;
+
+  document.getElementById('iN').textContent = n;
+  document.getElementById('iA').textContent = a;
+  document.getElementById('iR').textContent = r;
+
+  /* Validate: a must be a unit mod n. Otherwise ⟨a⟩ isn't a subgroup of (ℤ/nℤ)×
+     and all downstream assumptions break. Show a clear message and bail. */
+  if(n < 2 || gcd(a, n) !== 1){
+    const reason = n < 2
+      ? `n = ${n} must be ≥ 2`
+      : `gcd(a, n) = gcd(${a}, ${n}) = ${gcd(a,n)} ≠ 1 — a is not a unit mod n`;
+    document.getElementById('paramNote').innerHTML =
+      `<span style="color:#d19a66">invalid parameters: ${reason}</span>`;
+    document.getElementById('prog').style.display = 'none';
+    /* clear derived panels but don't crash */
+    state.X = [];
+    state.A = null;
+    state.dOrder = 0;
+    state.phiN = phi(n);
+    document.getElementById('iD').textContent = '—';
+    document.getElementById('iPhi').textContent = state.phiN;
+    document.getElementById('dotCount').textContent = '0';
+    /* clear the main scatter */
+    const ctx = cv.getContext('2d');
+    ctx.clearRect(0,0,cv.width,cv.height);
+    /* clear the component row and energy panel */
+    document.getElementById('componentsRow').innerHTML = '';
+    document.getElementById('componentsNote').textContent = '—';
+    document.getElementById('subgroupCatalog').innerHTML = '';
+    document.getElementById('subgroupNote').textContent = '—';
+    document.getElementById('catDLabel').textContent = '—';
+    document.getElementById('energyStats').innerHTML = '—';
+    for(const id of ['energyRadial','energyResidue','energyCRT']){
+      const c = document.getElementById(id);
+      const cx = c.getContext('2d');
+      cx.clearRect(0,0,c.width,c.height);
+    }
+    return;
+  }
+
+  state.phiN = phi(n);
+  state.X = buildOrbit(n, a, r);
+  state.A = buildSubgroup(n, a);
+  state.dOrder = state.A ? state.A.length : 0;
+
+  document.getElementById('iD').textContent = state.dOrder;
+  document.getElementById('iPhi').textContent = state.phiN;
+  document.getElementById('paramNote').innerHTML =
+    `φ(n)=${state.phiN} · |⟨a⟩|=${state.dOrder} · ` +
+    `|X|=${state.X.length} · factors of n: ${primeFactors(n).map(([p,e])=>e>1?`${p}^${e}`:`${p}`).join(' · ')}`;
+
+  /* refresh the d-selector row — cached per n, so cheap after first call */
+  renderDRow();
+
+  /* decide coloring m: auto = largest small divisor m|n with m≤32 and m>1; falls back to 1 */
+  if(state.m===0){
+    const d = divisors(n).filter(m=>m>1 && m<=32);
+    state.mAuto = d.length ? d[d.length-1] : 1;
+  } else {
+    state.mAuto = (n%state.m===0) ? state.m : 1;
+  }
+  document.getElementById('mDisp').textContent = state.mAuto;
+
+  /* progress UI */
+  document.getElementById('prog').style.display='block';
+  document.getElementById('prog').textContent = 'computing…';
+
+  /* defer to next frame so UI paints first */
+  setTimeout(()=>{
+    if(myID!==state.renderID){
+      /* stale: clean up the progress indicator so the UI doesn't freeze */
+      document.getElementById('prog').style.display='none';
+      return;
+    }
+    try {
+      computePoints(myID);
+    } catch(err){
+      console.error('computePoints error:', err);
+      /* ensure UI isn't frozen, and show the error to the user */
+      document.getElementById('prog').style.display='block';
+      document.getElementById('prog').textContent = `error: ${err.message||err}`;
+      document.getElementById('prog').style.color = '#d19a66';
+    }
+  }, 20);
+}
+
+function computePoints(myID){
+  const {n} = state;
+  const X = state.X;
+  if(!X || X.length === 0){
+    document.getElementById('prog').style.display='none';
+    return;
+  }
+  const {c:cosT, s:sinT} = trigTable(n);
+
+  /* sampling: for n up to ~250k compute all y; beyond that, subsample */
+  const MAX = 300000;
+  const step = n > MAX ? Math.ceil(n/MAX) : 1;
+  const count = Math.floor(n/step);
+
+  const pts = new Float32Array(count*3);
+  let minRe=Infinity,maxRe=-Infinity,minIm=Infinity,maxIm=-Infinity;
+  const m = state.mAuto;
+
+  /* per-orbit precompute: σ_X constant on X-orbits → O(n) not O(n·d).
+     Fills sigRe/sigIm for every y; the pts loop then just samples from them
+     at the existing step, so subsampling logic is unchanged. */
+  const sigRe = new Float32Array(n);
+  const sigIm = new Float32Array(n);
+  const seen  = new Uint8Array(n);
+  for(let y=0; y<n; y++){
+    if(seen[y]) continue;
+    let re=0, im=0;
+    for(let i=0; i<X.length; i++){ const k=(X[i]*y)%n; re+=cosT[k]; im+=sinT[k]; }
+    for(let i=0; i<X.length; i++){ const mm=(X[i]*y)%n; if(!seen[mm]){ seen[mm]=1; sigRe[mm]=re; sigIm[mm]=im; } }
+  }
+  let idx = 0;
+  for(let j=0;j<count;j++){
+    const y = j*step;
+    const re = sigRe[y], im = sigIm[y];
+    pts[idx++] = re;
+    pts[idx++] = im;
+    pts[idx++] = y % m;
+    if(re<minRe)minRe=re; if(re>maxRe)maxRe=re;
+    if(im<minIm)minIm=im; if(im>maxIm)maxIm=im;
+  }
+
+  if(myID!==state.renderID){
+    /* stale: clean up progress but don't update state */
+    document.getElementById('prog').style.display='none';
+    return;
+  }
+  state.points = pts;
+  state.nPoints = count;
+  state.bounds = {minRe,maxRe,minIm,maxIm};
+
+  document.getElementById('dotCount').textContent = count.toLocaleString();
+  document.getElementById('prog').style.display='none';
+  document.getElementById('prog').style.color = '';  /* reset from any error state */
+
+  updatePanel();
+  redraw();
+  /* each panel isolated — a failure in one shouldn't block the others */
+  try { renderComponents(); }
+  catch(err){ console.error('renderComponents error:', err); }
+  try { renderSubgroupCatalog(); }
+  catch(err){ console.error('renderSubgroupCatalog error:', err); }
+  try { renderEnergyPanel(); }
+  catch(err){ console.error('renderEnergyPanel error:', err); }
+}
+
+/* ───────────────────────────── theorem predictions ───────────────────────────── */
+function predictHypocycloid(){
+  /* Thm 1.1: n=p^a odd prime power, |X|=d prime, d≠p */
+  const {n, dOrder:d} = state;
+  const pp = isPrimePower(n);
+  if(!pp || pp.p===2)return null;
+  if(!isPrime(d))return null;
+  if(d===pp.p)return null;
+  return {cusps:d, radius:d};
+}
+
+function predictDihedral(){
+  /* Prop 3.1: k-fold dihedral, k = gcd(a-1, n/gcd(r,n)) */
+  const {n,a,r} = state;
+  const dd = n/gcd(r,n);
+  const k = gcd(a-1, dd);
+  return k;
+}
+
+function predictReal(){
+  /* A contains -1 iff some power of a is ≡ -1 (mod n), iff d=|⟨a⟩| even and a^(d/2) ≡ -1 */
+  const {n,a,dOrder:d} = state;
+  if(d%2!==0)return false;
+  let x=1;
+  for(let i=0;i<d/2;i++)x=(x*a)%n;
+  return x === n-1;
+}
+
+function predictImaginary(){
+  /* Prop 4.3(ii): A has form (3) with k even, J_- = k/2 - J_+, r odd.
+     Heuristic detection: check if every element of A satisfies a ≡ ±1 (mod n/k) for some k|n
+     and the balance condition holds. Conservative: flag when A \cup (-A) has the coset structure. */
+  const {n,a,r,A} = state;
+  if(r%2===0)return false;
+  /* find candidate k: largest divisor of n such that every x in A has x ≡ ±1 (mod n/k) */
+  const divs = divisors(n);
+  for(let i=divs.length-1;i>=0;i--){
+    const k = divs[i]; if(k===n)continue;
+    const q = n/k;
+    let ok=true;
+    const Jplus = new Set(), Jminus = new Set();
+    for(const x of A){
+      const xm = pmod(x,q);
+      if(xm===1){
+        /* x = j*q + 1, j = (x-1)/q, need 0 ≤ j < k */
+        Jplus.add(((x-1)/q)%k);
+      } else if(xm===q-1){
+        Jminus.add(((x+1)/q)%k);
+      } else {
+        ok=false; break;
+      }
+    }
+    if(ok && k>=2 && k%2===0){
+      /* check J_- = k/2 - J_+ (mod k) */
+      const half = k/2;
+      if(Jplus.size === Jminus.size){
+        let match=true;
+        for(const j of Jplus){
+          if(!Jminus.has(pmod(half-j, k))){match=false;break}
+        }
+        if(match)return {k, Jplus:[...Jplus].sort((a,b)=>a-b), Jminus:[...Jminus].sort((a,b)=>a-b)};
+      }
+    }
+  }
+  return false;
+}
+
+function predictEllipse(){
+  /* Prop 5.2: p|n prime, p ≡ 1 mod 4, A has form with J_± built from quadratic residues mod p. 
+     This is subtle to auto-detect. Soft flag: exists odd prime p | n with p ≡ 1 mod 4 and d | (p-1). */
+  const {n, dOrder:d} = state;
+  const pf = primeFactors(n);
+  for(const [p,_] of pf){
+    if(p>2 && p%4===1 && (p-1)%d===0)return p;
+  }
+  return null;
+}
+
+/* ───────────────────────────── panel ───────────────────────────── */
+function updatePanel(){
+  const {n,a,r,dOrder:d,phiN,X} = state;
+  const pf = primeFactors(n);
+
+  /* Spectral profile */
+  let sp = '';
+  sp += `<span class="k">n</span> = <span class="v">${n}</span> = ${pf.map(([p,e])=>e>1?`${p}<sup>${e}</sup>`:`${p}`).join('·')}<br>`;
+  sp += `<span class="k">a</span> = <span class="p">${a}</span>, ord<sub>n</sub>(a) = <span class="v">${d}</span><br>`;
+  sp += `<span class="k">φ(n)</span> = <span class="v">${phiN}</span> · <span class="k">φ/d</span> = <span class="v">${phiN/d}</span><br>`;
+  sp += `<span class="k">r</span> = <span class="v">${r}</span>, gcd(r,n) = <span class="v">${gcd(r,n)}</span><br>`;
+  sp += `<span class="k">|X|</span> = <span class="v">${X.length}</span>`;
+  if(X.length<=16){
+    sp += `<br><span class="mono" style="font-size:9px;color:#6b7280">X = {${X.join(',')}}</span>`;
+  }
+  document.getElementById('profile').innerHTML = sp;
+
+  /* Predictions */
+  let pp = '';
+  const hy = predictHypocycloid();
+  if(hy){
+    pp += `<div class="thm"><b>Thm 1.1</b> applies: boundary is the <span class="g">${hy.cusps}-cusped hypocycloid</span> (d prime, d≠p, n=p^a).</div>`;
+  } else {
+    const pow = isPrimePower(n);
+    if(pow){
+      if(!isPrime(d)) pp += `<div class="thm"><b>Thm 1.1</b>: d=${d} not prime; apply Prop 2.4 (scaled copy).</div>`;
+      else if(d===pow.p) pp += `<div class="thm"><b>Thm 1.1</b>: d=p=${d} blocks hypocycloid.</div>`;
+    } else {
+      pp += `<div class="thm"><b>Thm 2.1</b>: n composite → factor via CRT; see Prop 2.2 for r-nesting.</div>`;
+    }
+  }
+
+  const k = predictDihedral();
+  if(k>1){
+    pp += `<div class="thm"><b>Prop 3.1</b>: predicts <span class="g">${k}-fold dihedral</span> symmetry (k = gcd(a−1, n/gcd(r,n))).</div>`;
+  } else {
+    pp += `<div class="thm"><b>Prop 3.1</b>: predicts <span class="r">no rotational</span> symmetry (k=1).</div>`;
+  }
+
+  if(predictReal()){
+    pp += `<div class="thm"><b>Prop 4.1</b>: A contains −1 → σ<sub>X</sub> is <span class="g">real-valued</span>.</div>`;
+  }
+  const im = predictImaginary();
+  if(im){
+    pp += `<div class="thm"><b>Prop 4.3/4.5</b>: structure (J<sub>+</sub>, J<sub>−</sub>) at k=${im.k} suggests <span class="g">real ∪ imaginary axis</span>.<br>
+      <span class="mono" style="font-size:9px;color:#6b7280">J<sub>+</sub>={${im.Jplus.slice(0,6).join(',')}${im.Jplus.length>6?'…':''}}</span></div>`;
+  }
+  const ep = predictEllipse();
+  if(ep){
+    pp += `<div class="thm"><b>Prop 5.2</b>: candidate ellipse prime <span class="g">p=${ep}</span> (p≡1 mod 4, d|p−1). Enable ellipse overlay to test.</div>`;
+  }
+
+  document.getElementById('predictions').innerHTML = pp || '—';
+
+  /* Coloring */
+  let cc = `<span class="k">m =</span> <span class="v">${state.mAuto}</span> (${state.m===0?'auto':'user'})<br>`;
+  cc += `<span class="k">divisors of n:</span> <span class="mono" style="font-size:9px">${divisors(n).slice(0,20).join(', ')}${divisors(n).length>20?', …':''}</span>`;
+  document.getElementById('coloring').innerHTML = cc;
+}
+
+/* ───────────────────────────── render ───────────────────────────── */
+const cv = document.getElementById('cv');
+const ctx = cv.getContext('2d');
+function resizeCanvas(){
+  const rect = cv.getBoundingClientRect();
+  const dpr = Math.min(devicePixelRatio,2);
+  cv.width = Math.floor(rect.width*dpr);
+  cv.height = Math.floor(rect.height*dpr);
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+}
+addEventListener('resize', ()=>{resizeCanvas();redraw()});
+
+function redraw(){
+  if(!state.bounds){
+    ctx.fillStyle='#08090c';
+    const r = cv.getBoundingClientRect();
+    ctx.fillRect(0,0,r.width,r.height);
+    return;
+  }
+  const rect = cv.getBoundingClientRect();
+  const W = rect.width, H = rect.height;
+
+  ctx.fillStyle = '#08090c';
+  ctx.fillRect(0,0,W,H);
+
+  /* compute scale: fit bounds with 8% margin, square aspect */
+  const {minRe,maxRe,minIm,maxIm} = state.bounds;
+  const cRe = (minRe+maxRe)/2, cIm = (minIm+maxIm)/2;
+  const spanRe = maxRe-minRe, spanIm = maxIm-minIm;
+  const span = Math.max(spanRe, spanIm, 1);
+  const margin = 0.92;
+  const baseScale = (Math.min(W,H)/span) * margin;
+  const scale = baseScale * state.zoom;
+
+  const panX = state.panX, panY = state.panY;
+  const cx = W/2 + panX, cy = H/2 + panY;
+
+  /* project complex z → pixel */
+  const proj = (re,im) => [cx + (re-cRe)*scale, cy - (im-cIm)*scale];
+
+  /* grid: axes at origin */
+  ctx.strokeStyle = '#151820';
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  const [ox, oy] = proj(0,0);
+  if(ox>=0 && ox<=W){ctx.moveTo(ox,0);ctx.lineTo(ox,H)}
+  if(oy>=0 && oy<=H){ctx.moveTo(0,oy);ctx.lineTo(W,oy)}
+  ctx.stroke();
+
+  /* ─── overlays that go UNDER the points ─── */
+  /* dihedral rays */
+  if(state.overlays.dih){
+    const k = predictDihedral();
+    if(k>1){
+      ctx.strokeStyle = '#c678dd25';
+      ctx.lineWidth = 0.8;
+      const R = Math.max(W,H);
+      for(let i=0;i<2*k;i++){
+        const θ = Math.PI*i/k;
+        ctx.beginPath();
+        ctx.moveTo(ox, oy);
+        ctx.lineTo(ox + Math.cos(θ)*R, oy - Math.sin(θ)*R);
+        ctx.stroke();
+      }
+    }
+  }
+  /* axes (real/imag highlight) */
+  if(state.overlays.axis){
+    ctx.strokeStyle = '#98c37940';
+    ctx.lineWidth = 1.5;
+    ctx.beginPath();
+    ctx.moveTo(0, oy); ctx.lineTo(W, oy);
+    ctx.moveTo(ox, 0); ctx.lineTo(ox, H);
+    ctx.stroke();
+  }
+
+  /* scatter: draw all points */
+  const pts = state.points;
+  const count = state.nPoints;
+  const dotSz = parseFloat(document.getElementById('dotSz').value);
+  const alpha = parseFloat(document.getElementById('alpha').value);
+  const m = state.mAuto;
+
+  /* pre-compute color table for m */
+  const colors = [];
+  for(let i=0;i<m;i++){
+    const [r,g,b] = PAL_RGB[i % PAL_RGB.length];
+    colors.push(`rgba(${r},${g},${b},${alpha})`);
+  }
+  if(m===1) colors[0] = `rgba(97,175,239,${alpha})`;
+
+  /* batch by color for fewer fillStyle changes */
+  const byColor = new Array(Math.max(m,1));
+  for(let i=0;i<byColor.length;i++)byColor[i] = [];
+  for(let i=0;i<count;i++){
+    const re = pts[i*3], im = pts[i*3+1], ci = pts[i*3+2]|0;
+    byColor[ci % byColor.length].push(re, im);
+  }
+  const rad = dotSz;
+  for(let ci=0;ci<byColor.length;ci++){
+    const arr = byColor[ci];
+    if(!arr.length)continue;
+    ctx.fillStyle = colors[ci];
+    for(let i=0;i<arr.length;i+=2){
+      const [px,py] = proj(arr[i], arr[i+1]);
+      ctx.beginPath();
+      ctx.arc(px, py, rad, 0, TAU);
+      ctx.fill();
+    }
+  }
+
+  /* ─── overlays that go OVER the points ─── */
+  /* hypocycloid */
+  if(state.overlays.hypo){
+    const hy = predictHypocycloid();
+    if(hy){
+      const d = hy.cusps;
+      /* parametrization (Thm 1.1): θ ↦ (d−1) e^{iθ} + e^{i(d−1)θ} */
+      ctx.strokeStyle = '#98c379';
+      ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      for(let i=0;i<=400;i++){
+        const θ = TAU*i/400;
+        const re = (d-1)*Math.cos(θ) + Math.cos((d-1)*θ);
+        const im = (d-1)*Math.sin(θ) - Math.sin((d-1)*θ);
+        const [px,py] = proj(re,im);
+        if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
+      }
+      ctx.stroke();
+    }
+  }
+
+  /* ellipse (Prop 5.2) */
+  if(state.overlays.ell){
+    const ep = predictEllipse();
+    if(ep){
+      /* (Re z)² + (Im z)²/p = 1  →  semi-axes a=1, b=√p  (scaled by d-1 typically) */
+      /* actually per Prop 5.2, values on ellipse (Re z)² + (Im z)²/p = 1  — no scaling.
+         But the d=2 case from Lemma 5.1 gives sum bound d-1. Plot the unit ellipse as stated. */
+      ctx.strokeStyle = '#e5c07b';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      for(let i=0;i<=200;i++){
+        const θ = TAU*i/200;
+        const re = Math.cos(θ);
+        const im = Math.sqrt(ep)*Math.sin(θ);
+        const [px,py] = proj(re,im);
+        if(i===0) ctx.moveTo(px,py); else ctx.lineTo(px,py);
+      }
+      ctx.stroke();
+    }
+  }
+
+  /* orbit X points */
+  if(state.overlays.orb){
+    ctx.fillStyle = '#ff79c6';
+    ctx.strokeStyle = '#ff79c6';
+    ctx.lineWidth = 1;
+    /* σ_X(y) at y in X itself — mark these specifically */
+    const {c:cosT,s:sinT} = trigTable(state.n);
+    const X = state.X, n = state.n;
+    for(let i=0;i<X.length;i++){
+      const y = X[i];
+      let re=0, im=0;
+      for(let j=0;j<X.length;j++){
+        const k = (X[j]*y)%n;
+        re += cosT[k]; im += sinT[k];
+      }
+      const [px,py] = proj(re, im);
+      ctx.beginPath();
+      ctx.arc(px, py, 3.5, 0, TAU);
+      ctx.stroke();
+    }
+  }
+
+  /* zoom indicator */
+  ctx.fillStyle = '#3a3f4b';
+  ctx.font = '9px JetBrains Mono, monospace';
+  ctx.fillText(`zoom ${state.zoom.toFixed(2)}×`, 12, H-28);
+}
+
+/* ───────────────────────────── interaction ───────────────────────────── */
+let dragging=false, lx=0, ly=0;
+cv.addEventListener('mousedown', e=>{dragging=true;lx=e.clientX;ly=e.clientY;cv.style.cursor='grabbing'});
+cv.addEventListener('mousemove', e=>{
+  if(!dragging)return;
+  state.panX += (e.clientX - lx);
+  state.panY += (e.clientY - ly);
+  lx=e.clientX; ly=e.clientY;
+  redraw();
+});
+addEventListener('mouseup', ()=>{dragging=false;cv.style.cursor='crosshair'});
+cv.addEventListener('dblclick', ()=>{state.zoom=1;state.panX=0;state.panY=0;redraw()});
+cv.addEventListener('wheel', e=>{
+  e.preventDefault();
+  const factor = e.deltaY<0 ? 1.15 : 1/1.15;
+  state.zoom *= factor;
+  state.zoom = Math.max(0.1, Math.min(50, state.zoom));
+  redraw();
+}, {passive:false});
+
+/* touch */
+let pd=0;
+cv.addEventListener('touchstart', e=>{
+  if(e.touches.length===1){dragging=true;lx=e.touches[0].clientX;ly=e.touches[0].clientY}
+  else if(e.touches.length===2){
+    dragging=false;
+    const dx=e.touches[0].clientX-e.touches[1].clientX, dy=e.touches[0].clientY-e.touches[1].clientY;
+    pd = Math.sqrt(dx*dx+dy*dy);
+  }
+}, {passive:false});
+cv.addEventListener('touchmove', e=>{
+  e.preventDefault();
+  if(e.touches.length===1 && dragging){
+    state.panX += (e.touches[0].clientX - lx);
+    state.panY += (e.touches[0].clientY - ly);
+    lx=e.touches[0].clientX; ly=e.touches[0].clientY;
+    redraw();
+  } else if(e.touches.length===2){
+    const dx=e.touches[0].clientX-e.touches[1].clientX, dy=e.touches[0].clientY-e.touches[1].clientY;
+    const nd = Math.sqrt(dx*dx+dy*dy);
+    if(pd>0){state.zoom *= (nd/pd); state.zoom=Math.max(0.1,Math.min(50,state.zoom))}
+    pd = nd;
+    redraw();
+  }
+}, {passive:false});
+cv.addEventListener('touchend', ()=>{dragging=false;pd=0});
+
+/* ───────────────────────────── CRT component decomposition ───────────────────────────── */
+/* For each prime power p^e dividing n, compute σ_{X_p}(y') for y' ∈ ℤ/p^eℤ,
+   where X_p is the image of X under the natural map ψ_p : ℤ/nℤ → ℤ/p^eℤ.
+   This is NOT a decomposition of the full image — Thm 2.1 only makes σ_X factor
+   multiplicatively when component orbit sizes are pairwise coprime. The components
+   are shown side-by-side so the user can see each component's geometry in isolation
+   and judge by eye whether the full image appears to inherit from them. */
+
+/* Classify a component's geometry from its image bounds + orbit properties.
+   Categories: point, real line, imag line, hypocycloid-like, generic.
+   Role (separate from category): P5.2 contributor flag for primes p ≡ 1 (mod 4) with d | p−1
+   where X_p is closed under negation. This role is about the component's preconditions for
+   contributing to a full-modulus Prop 5.2 ellipse, NOT about the component's own shape
+   (which, when X_p is neg-closed, is always a real line on its own). */
+function classifyComponent(pe, Xp, vals){
+  const d = Xp.length;
+  if(d === 1) return {category: 'point', note: 'a ≡ 1 mod p', role: null};
+
+  let maxIm = 0, maxRe = 0;
+  for(const v of vals){
+    if(Math.abs(v[1]) > maxIm) maxIm = Math.abs(v[1]);
+    if(Math.abs(v[0]) > maxRe) maxRe = Math.abs(v[0]);
+  }
+  const imFrac = maxIm / Math.max(maxRe, 0.01);
+
+  /* Detect Prop 5.2 structural role: prime p ≡ 1 mod 4, d | (p-1), X_p closed under negation.
+     This does NOT mean the component is elliptical on its own — X_p closed under negation
+     forces σ_{X_p} to be real. It means the component SATISFIES THE PRECONDITIONS for
+     contributing to a Prop 5.2 ellipse at the full modulus n when CRT-combined with others.
+     We compute the role flag FIRST, then the category; the role is independent of category. */
+  let role = null;
+  const ppInfo = isPrimePower(pe);
+  if(ppInfo && ppInfo.e === 1 && ppInfo.p % 4 === 1 && (ppInfo.p - 1) % d === 0){
+    const XpSet = new Set(Xp);
+    let negClosed = true;
+    for(const x of Xp){
+      if(!XpSet.has(pmod(-x, pe))){ negClosed = false; break }
+    }
+    if(negClosed) role = {tag: 'P5.2 contributor', detail: `p ≡ 1 (mod 4), d | p−1, X_p ∋ ±x`};
+  }
+
+  /* Now classify the component's own image shape */
+  if(imFrac < 0.02) return {category: 'real line', note: '−1 ∈ ⟨a mod p<sup>e</sup>⟩ → σ real', role};
+  if(maxRe < 0.02 && maxIm > 0.01) return {category: 'imag line', note: 'purely imaginary', role};
+
+  /* hypocycloid test: pe prime, d prime, d ≠ pe (Thm 1.1 condition) */
+  if(ppInfo && ppInfo.p !== 2 && isPrime(d) && d !== ppInfo.p){
+    return {category: `${d}-hypocycloid`, note: 'Thm 1.1 bound', role};
+  }
+
+  return {category: 'generic', note: '', role};
+}
+
+function renderComponents(){
+  const row = document.getElementById('componentsRow');
+  const note = document.getElementById('componentsNote');
+  row.innerHTML = '';
+
+  const {n, X} = state;
+  const pf = primeFactors(n);
+  if(pf.length === 0){
+    note.textContent = 'no prime factors';
+    return;
+  }
+
+  const components = [];
+  for(const [p, e] of pf){
+    const pe = Math.pow(p, e);
+    /* project X to this component */
+    const Xp = [...new Set(X.map(x => x % pe))].sort((a,b)=>a-b);
+    const dp = Xp.length;
+
+    /* compute σ_{X_p}(y') for all y' in ℤ/peℤ */
+    const vals = [];
+    const cos = new Float64Array(pe), sin = new Float64Array(pe);
+    for(let k=0;k<pe;k++){
+      const θ = TAU*k/pe;
+      cos[k] = Math.cos(θ);
+      sin[k] = Math.sin(θ);
+    }
+    let cMinRe=Infinity,cMaxRe=-Infinity,cMinIm=Infinity,cMaxIm=-Infinity;
+    for(let y=0;y<pe;y++){
+      let re=0, im=0;
+      for(let i=0;i<Xp.length;i++){
+        const k = (Xp[i]*y) % pe;
+        re += cos[k]; im += sin[k];
+      }
+      vals.push([re, im]);
+      if(re<cMinRe)cMinRe=re; if(re>cMaxRe)cMaxRe=re;
+      if(im<cMinIm)cMinIm=im; if(im>cMaxIm)cMaxIm=im;
+    }
+
+    const classification = classifyComponent(pe, Xp, vals);
+    components.push({p, e, pe, Xp, dp, vals, bounds: {cMinRe, cMaxRe, cMinIm, cMaxIm}, classification});
+  }
+
+  /* render each as a mini-card */
+  for(const comp of components){
+    const card = document.createElement('div');
+    card.className = 'comp-card';
+    if(comp.classification.role && comp.classification.role.tag === 'P5.2 contributor') card.classList.add('role-flag');
+    if(comp.classification.category === 'point') card.classList.add('trivial');
+
+    const canvas = document.createElement('canvas');
+    card.appendChild(canvas);
+
+    const lbl = document.createElement('div');
+    lbl.className = 'comp-label';
+    const peLbl = comp.e > 1 ? `${comp.p}<sup>${comp.e}</sup>` : `${comp.p}`;
+    lbl.innerHTML = `<span class="pe">p<sup>e</sup> = ${peLbl}</span> &nbsp; <span class="dp">d<sub>p</sub> = ${comp.dp}</span>`;
+    card.appendChild(lbl);
+
+    const geom = document.createElement('div');
+    geom.className = 'comp-geom';
+    const cat = comp.classification.category;
+    const tag = cat === 'point' ? '· trivial' :
+                cat === 'real line' ? `<span class="cat">real</span>` :
+                cat === 'imag line' ? `<span class="cat">imag</span>` :
+                cat.includes('hypocycloid') ? `<span class="cat">${cat}</span>` :
+                cat === 'generic' ? `<span style="color:#6b7280">generic</span>` :
+                '';
+    let html = tag;
+    if(comp.classification.note) html += `<br>${comp.classification.note}`;
+    if(comp.classification.role){
+      html += `<br><span class="role">${comp.classification.role.tag}</span>`;
+    }
+    geom.innerHTML = html;
+    card.appendChild(geom);
+
+    row.appendChild(card);
+
+    /* draw the component */
+    drawComponent(canvas, comp);
+  }
+
+  /* explanatory note */
+  const orbitsSizes = components.map(c => c.dp).join(' × ');
+  const allCoprime = (()=>{
+    for(let i=0;i<components.length;i++)
+      for(let j=i+1;j<components.length;j++)
+        if(gcd(components[i].dp, components[j].dp) > 1) return false;
+    return true;
+  })();
+  const thm21 = allCoprime
+    ? `<span style="color:#98c379">Thm 2.1 applies</span> (orbit sizes ${orbitsSizes} pairwise coprime): σ<sub>X</sub>(y) = ∏ σ<sub>X<sub>p</sub></sub>(ψ<sub>p</sub>(y))`
+    : `<span style="color:#d19a66">Thm 2.1 does NOT apply</span> (orbit sizes ${orbitsSizes} share factors): full image is not a simple product of components`;
+  note.innerHTML = thm21;
+}
+
+/* draw σ_{X_p}(y') for y' ∈ ℤ/peℤ into a mini-canvas */
+function drawComponent(canvas, comp){
+  const rect = canvas.getBoundingClientRect();
+  const dpr = Math.min(devicePixelRatio, 2);
+  /* use the actual rendered size — if not laid out yet, fall back to 160 */
+  const W = Math.max(rect.width, 140);
+  const H = W;
+  canvas.width = Math.floor(W*dpr);
+  canvas.height = Math.floor(H*dpr);
+  const cx = canvas.getContext('2d');
+  cx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  cx.fillStyle = '#08090c';
+  cx.fillRect(0, 0, W, H);
+
+  const {cMinRe, cMaxRe, cMinIm, cMaxIm} = comp.bounds;
+  const centerRe = (cMinRe + cMaxRe) / 2;
+  const centerIm = (cMinIm + cMaxIm) / 2;
+  const span = Math.max(cMaxRe - cMinRe, cMaxIm - cMinIm, 0.5);
+  const scale = (Math.min(W, H) * 0.8) / span;
+  const cx_px = W/2, cy_px = H/2;
+
+  const proj = (re, im) => [cx_px + (re - centerRe) * scale, cy_px - (im - centerIm) * scale];
+
+  /* axes */
+  cx.strokeStyle = '#1a1d25';
+  cx.lineWidth = 0.5;
+  cx.beginPath();
+  const [ox, oy] = proj(0, 0);
+  if(ox >= 0 && ox <= W){ cx.moveTo(ox, 0); cx.lineTo(ox, H) }
+  if(oy >= 0 && oy <= H){ cx.moveTo(0, oy); cx.lineTo(W, oy) }
+  cx.stroke();
+
+  /* Note: no Prop 5.2 ellipse overlay here. A Prop 5.2 ellipse is a property of the full
+     image at modulus n, not of any single CRT component. When X_p is closed under negation,
+     the standalone σ_{X_p} IS the real axis — drawing an ellipse curve on a real-line
+     scatter was misleading. The P5.2 contributor role is shown textually instead. */
+
+  /* overlay hypocycloid if flagged (this IS a valid per-component curve per Thm 1.1) */
+  if(comp.classification.category.includes('hypocycloid')){
+    const d = comp.dp;
+    cx.strokeStyle = '#98c37940';
+    cx.lineWidth = 1;
+    cx.beginPath();
+    for(let i=0;i<=200;i++){
+      const θ = TAU*i/200;
+      const re = (d-1)*Math.cos(θ) + Math.cos((d-1)*θ);
+      const im = (d-1)*Math.sin(θ) - Math.sin((d-1)*θ);
+      const [px, py] = proj(re, im);
+      if(i===0) cx.moveTo(px, py); else cx.lineTo(px, py);
+    }
+    cx.stroke();
+  }
+
+  /* scatter the component values */
+  cx.fillStyle = comp.classification.category === 'point' ? '#4b5563' :
+                 comp.classification.category.includes('hypocycloid') ? '#98c379aa' :
+                 comp.classification.role ? '#e5c07baa' :
+                 '#61afefaa';
+  const r_dot = comp.pe > 400 ? 1.0 : comp.pe > 100 ? 1.5 : 2.0;
+  for(const [re, im] of comp.vals){
+    const [px, py] = proj(re, im);
+    cx.beginPath();
+    cx.arc(px, py, r_dot, 0, TAU);
+    cx.fill();
+  }
+}
+
+/* ───────────────────────────── image energy panel ───────────────────────────── */
+/* 𝓔_X(y) = |σ_X(y)|². Parseval: Σ_y 𝓔_X(y) = n·|X| exactly.
+   We compute the energy field over the FULL y range (not subsampled points)
+   so the total-energy invariant holds exactly and the concentration statistic is honest. */
+
+function computeEnergyField(){
+  const {n, X} = state;
+  const d = X.length;
+  /* trig table */
+  const cos = new Float64Array(n), sin = new Float64Array(n);
+  for(let k=0;k<n;k++){const θ = TAU*k/n; cos[k] = Math.cos(θ); sin[k] = Math.sin(θ)}
+
+  /* per-orbit: σ_X is constant on X-orbits (σ_X(gy)=σ_X(y) for g∈X).
+     Compute once per orbit rep, broadcast to members. O(n) not O(n·d).
+     Parseval Σ𝓔 = n·d holds by the same algebra; verified identical to per-y. */
+  const energy = new Float64Array(n);
+  const seen = new Uint8Array(n);
+  for(let y=0; y<n; y++){
+    if(seen[y]) continue;
+    let re=0, im=0;
+    for(let i=0; i<d; i++){ const k=(X[i]*y)%n; re+=cos[k]; im+=sin[k]; }
+    const e = re*re + im*im;
+    for(let i=0; i<d; i++){ const m=(X[i]*y)%n; if(!seen[m]){ seen[m]=1; energy[m]=e; } }
+  }
+  return energy;
+}
+
+function renderEnergyPanel(){
+  const {n, X} = state;
+  const d = X.length;
+  if(!n || d === 0){
+    document.getElementById('energyStats').innerHTML = '—';
+    return;
+  }
+
+  /* Per-orbit patch: actual work is O(n), not O(n·d). ops=n·d kept for display only.
+     Empirical timing (Node, per-orbit): n=720720, d=60 → 58ms (was 676ms naive).
+     Cap on n: soft >500k (~100ms browser), hard >5M (~800ms browser). */
+  const ops = n * d;
+  const SOFT_CAP = 500_000;   /* n, not n·d */
+  const HARD_CAP = 5_000_000; /* n, not n·d */
+  if(n > HARD_CAP){
+    document.getElementById('energyStats').innerHTML =
+      `<span style="color:#d19a66">energy panel skipped: n·d = ${ops.toLocaleString()} exceeds ${HARD_CAP.toLocaleString()} (would take several seconds)</span>`;
+    for(const id of ['energyRadial','energyResidue','energyCRT']){
+      const c = document.getElementById(id);
+      const cx = c.getContext('2d');
+      cx.clearRect(0,0,c.width,c.height);
+    }
+    return;
+  }
+  if(n > SOFT_CAP){
+    /* Capture current renderID so stale deferred callbacks can be discarded
+       if the user changes parameters before the timeout fires. */
+    const myID = state.renderID;
+    document.getElementById('energyStats').innerHTML =
+      `<span style="color:#4b5563">computing energy field (n·d = ${ops.toLocaleString()} ops)…</span>`;
+    setTimeout(() => {
+      if(myID !== state.renderID) return;  /* stale: abandon silently */
+      try { actuallyRenderEnergyPanel(); }
+      catch(err){
+        console.error('energy panel error:', err);
+        document.getElementById('energyStats').innerHTML =
+          `<span style="color:#d19a66">energy panel error: ${err.message||err}</span>`;
+      }
+    }, 20);
+    return;
+  }
+  try { actuallyRenderEnergyPanel(); }
+  catch(err){
+    console.error('energy panel error:', err);
+    document.getElementById('energyStats').innerHTML =
+      `<span style="color:#d19a66">energy panel error: ${err.message||err}</span>`;
+  }
+}
+
+function actuallyRenderEnergyPanel(){
+  const {n, X} = state;
+  const d = X.length;
+  const energy = computeEnergyField();
+
+  /* invariants */
+  let totalE = 0, maxE = 0, sumE4 = 0;
+  for(let y=0;y<n;y++){
+    totalE += energy[y];
+    if(energy[y] > maxE) maxE = energy[y];
+    sumE4 += energy[y]*energy[y];
+  }
+  /* exact invariant: totalE should equal n*d */
+  const expectedTotal = n * d;
+  const invariantErr = Math.abs(totalE - expectedTotal) / expectedTotal;
+
+  /* participation ratio: larger = more concentrated */
+  const IPR = sumE4 / (totalE * totalE);
+  const N_eff = 1 / IPR;  /* effective number of y-samples carrying the energy */
+  const effFrac = N_eff / n;
+
+  /* max-to-mean ratio */
+  const meanE = totalE / n;  /* = d */
+  const peakiness = maxE / meanE;
+
+  /* stats display */
+  document.getElementById('energyStats').innerHTML = `
+    <div class="stat">
+      <span class="k">Σ 𝓔(y)</span>
+      <span class="v">${expectedTotal.toLocaleString()}<span class="u">= n·d</span></span>
+    </div>
+    <div class="stat">
+      <span class="k">mean 𝓔</span>
+      <span class="v">${meanE.toFixed(2)}<span class="u">= d</span></span>
+    </div>
+    <div class="stat">
+      <span class="k">max 𝓔</span>
+      <span class="v">${maxE.toFixed(2)}<span class="u">/ ${(d*d)} = d²</span></span>
+    </div>
+    <div class="stat eff">
+      <span class="k">N<sub>eff</sub></span>
+      <span class="v">${N_eff.toFixed(1)}<span class="u">= ${(effFrac*100).toFixed(1)}% of n</span></span>
+    </div>
+    <div class="stat conc">
+      <span class="k">participation ratio</span>
+      <span class="v">${(IPR).toExponential(2)}</span>
+    </div>
+    <div class="stat">
+      <span class="k">Parseval check</span>
+      <span class="v" style="color:${invariantErr < 1e-9 ? '#98c379' : '#d19a66'}">${invariantErr < 1e-9 ? '✓' : invariantErr.toExponential(2)}<span class="u">Σ 𝓔 = n·d</span></span>
+    </div>
+  `;
+
+  /* 1. radial histogram: bin energy by |σ| magnitude. 
+     |σ|² ranges from 0 to d²; use d² as max. */
+  drawRadialHistogram('energyRadial', energy, d);
+
+  /* 2. residue-class profile: Σ 𝓔(y) for each y mod m (where m = state.mAuto, the coloring mod) */
+  drawResidueProfile('energyResidue', energy, state.mAuto);
+
+  /* 3. CRT-component energy: for each prime power p^e | n, compute Σ 𝓔_{X_p}(y') for y' ∈ ℤ/p^eℤ */
+  drawCRTProfile('energyCRT', n, X);
+}
+
+function drawRadialHistogram(canvasId, energy, d){
+  const c = document.getElementById(canvasId);
+  const rect = c.getBoundingClientRect();
+  const dpr = Math.min(devicePixelRatio, 2);
+  const W = rect.width, H = rect.height;
+  c.width = W*dpr; c.height = H*dpr;
+  const cx = c.getContext('2d');
+  cx.setTransform(dpr,0,0,dpr,0,0);
+  cx.clearRect(0,0,W,H);
+
+  /* energy runs from 0 to d². We use magnitude |σ| = sqrt(energy), bin into B bins from 0 to d. */
+  const B = 32;
+  const bins = new Float64Array(B);
+  const dMax = d;  /* max |σ| */
+  for(let y=0;y<energy.length;y++){
+    const mag = Math.sqrt(energy[y]);
+    let bi = Math.floor(mag / dMax * B);
+    if(bi >= B) bi = B-1;
+    bins[bi] += 1;  /* count of y's with |σ| in this band */
+  }
+  /* draw as bars */
+  const maxCount = Math.max(...bins);
+  if(maxCount === 0) return;
+  const pad = 4;
+  const barW = (W - 2*pad) / B;
+  const plotH = H - 2*pad;
+  for(let i=0;i<B;i++){
+    const h = bins[i] / maxCount * plotH;
+    const x = pad + i*barW;
+    const y = H - pad - h;
+    /* color gradient: interior (low |σ|) blue, boundary (high |σ|) yellow */
+    const t = i/(B-1);
+    const col = t < 0.5
+      ? `rgba(97,175,239,${0.5 + t*0.8})`
+      : `rgba(229,192,123,${0.5 + (t-0.5)*0.8})`;
+    cx.fillStyle = col;
+    cx.fillRect(x, y, Math.max(barW-0.5, 1), h);
+  }
+  /* axis labels */
+  cx.fillStyle = '#3a3f4b';
+  cx.font = '8px JetBrains Mono, monospace';
+  cx.fillText('|σ|=0', pad, H-1);
+  cx.textAlign = 'right';
+  cx.fillText(`|σ|=${d}`, W-pad, H-1);
+  cx.textAlign = 'left';
+  cx.fillText('count of y', pad, 10);
+}
+
+function drawResidueProfile(canvasId, energy, m){
+  const c = document.getElementById(canvasId);
+  const rect = c.getBoundingClientRect();
+  const dpr = Math.min(devicePixelRatio, 2);
+  const W = rect.width, H = rect.height;
+  c.width = W*dpr; c.height = H*dpr;
+  const cx = c.getContext('2d');
+  cx.setTransform(dpr,0,0,dpr,0,0);
+  cx.clearRect(0,0,W,H);
+
+  if(m <= 1){
+    cx.fillStyle = '#4b5563';
+    cx.font = '9px JetBrains Mono, monospace';
+    cx.textAlign = 'center';
+    cx.fillText(`m=${m}: no residue split`, W/2, H/2);
+    return;
+  }
+
+  const classSum = new Float64Array(m);
+  for(let y=0;y<energy.length;y++){
+    classSum[y % m] += energy[y];
+  }
+  const maxS = Math.max(...classSum);
+  if(maxS === 0) return;
+
+  const pad = 4;
+  const barW = (W - 2*pad) / m;
+  const plotH = H - 2*pad;
+  for(let i=0;i<m;i++){
+    const h = classSum[i] / maxS * plotH;
+    const x = pad + i*barW;
+    const y = H - pad - h;
+    /* use same palette as main scatter coloring */
+    const [r,g,b] = PAL_RGB[i % PAL_RGB.length];
+    cx.fillStyle = `rgba(${r},${g},${b},0.75)`;
+    cx.fillRect(x, y, Math.max(barW-0.5, 1), h);
+  }
+  /* labels */
+  cx.fillStyle = '#3a3f4b';
+  cx.font = '8px JetBrains Mono, monospace';
+  cx.fillText(`y mod ${m}: 0`, pad, H-1);
+  cx.textAlign = 'right';
+  cx.fillText(`${m-1}`, W-pad, H-1);
+  cx.textAlign = 'left';
+  cx.fillText('Σ 𝓔', pad, 10);
+}
+
+function drawCRTProfile(canvasId, n, X){
+  const c = document.getElementById(canvasId);
+  const rect = c.getBoundingClientRect();
+  const dpr = Math.min(devicePixelRatio, 2);
+  const W = rect.width, H = rect.height;
+  c.width = W*dpr; c.height = H*dpr;
+  const cx = c.getContext('2d');
+  cx.setTransform(dpr,0,0,dpr,0,0);
+  cx.clearRect(0,0,W,H);
+
+  const pf = primeFactors(n);
+  if(pf.length === 0) return;
+
+  /* for each component, compute Σ_{y'} |σ_{X_p}(y')|² = p^e · |X_p| (standalone Parseval).
+     Report that, plus display. */
+  const entries = pf.map(([p,e])=>{
+    const pe = Math.pow(p,e);
+    const Xp = [...new Set(X.map(x => x%pe))];
+    const total = pe * Xp.length;  /* Parseval on component */
+    return {p, e, pe, dp: Xp.length, total, label: e>1?`${p}^${e}`:`${p}`};
+  });
+
+  const maxT = Math.max(...entries.map(e=>e.total));
+  if(maxT === 0) return;
+
+  const pad = 4;
+  const N = entries.length;
+  const barW = (W - 2*pad) / N;
+  const plotH = H - 2*pad - 12;
+  for(let i=0;i<N;i++){
+    const en = entries[i];
+    const h = en.total / maxT * plotH;
+    const x = pad + i*barW + barW*0.15;
+    const y = H - pad - 12 - h;
+    cx.fillStyle = en.dp === 1 ? '#4b5563' : '#e5c07baa';
+    cx.fillRect(x, y, barW*0.7, h);
+    /* label */
+    cx.fillStyle = '#8b95a5';
+    cx.font = '8px JetBrains Mono, monospace';
+    cx.textAlign = 'center';
+    cx.fillText(en.label, x + barW*0.35, H - pad - 2);
+    cx.fillStyle = '#3a3f4b';
+    cx.fillText(`d=${en.dp}`, x + barW*0.35, y - 2);
+  }
+  cx.textAlign = 'left';
+  cx.fillStyle = '#3a3f4b';
+  cx.fillText('p^e · |X_p|', pad, 10);
+}
+
+/* ───────────────────────────── init ───────────────────────────── */
+buildPaperRow();
+buildFvltRow();
+resizeCanvas();
+recompute();
+</script>
+</body>
+</html>

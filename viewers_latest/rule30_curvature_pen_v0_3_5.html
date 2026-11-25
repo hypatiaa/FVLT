@@ -1,0 +1,687 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Curvature Pen</title>
+<style>
+:root{
+  --bg:#f7f6f2; --panel:#ffffff; --ink:#1d1d1f; --muted:#5f6368; --line:#d9d6cf;
+  --pen:#c2410c; --disk:#eef0f3; --grid:#c9ced6; --start:#15803d; --tooth:#b91c1c;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#121316; --panel:#1b1d21; --ink:#e8e8ea; --muted:#a0a4ab; --line:#2e3138;
+    --pen:#fb923c; --disk:#22252b; --grid:#3a3f48; --start:#4ade80; --tooth:#f87171;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#121316; --panel:#1b1d21; --ink:#e8e8ea; --muted:#a0a4ab; --line:#2e3138;
+  --pen:#fb923c; --disk:#22252b; --grid:#3a3f48; --start:#4ade80; --tooth:#f87171;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+main{max-width:1180px;margin:0 auto;padding:16px}
+h1{font-size:1.35rem;margin:0 0 4px}
+.sub{color:var(--muted);margin:0 0 14px}
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 18px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;margin-bottom:14px}
+.controls label{display:block;font-size:.85rem;color:var(--muted)}
+.controls input[type=range],.controls select,.controls input[type=number]{width:100%;font:inherit}
+.val{color:var(--ink);font-variant-numeric:tabular-nums}
+.btns{display:flex;gap:8px;align-items:end;flex-wrap:wrap}
+button{font:inherit;padding:6px 12px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px;min-width:0}
+.card h2{font-size:1rem;margin:0}
+.card .k{font-size:.8rem;color:var(--muted);margin:0 0 4px;overflow-wrap:anywhere}
+.card .meta{font-size:.82rem;color:var(--muted);margin:0 0 6px;font-variant-numeric:tabular-nums;min-height:2.6em;overflow-wrap:anywhere}
+.card select{font:inherit;margin:2px 0 6px;max-width:100%}
+canvas{width:100%;height:auto;display:block;touch-action:none}
+.notes{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px;margin-top:14px;font-size:.9rem}
+.notes h3{font-size:.95rem;margin:.2em 0 .3em}
+.tag{display:inline-block;font-size:.72rem;border:1px solid var(--line);border-radius:6px;padding:0 6px;margin-right:4px;color:var(--muted)}
+.formula{text-align:center;font-size:1.05rem;margin:.4em 0}
+table{border-collapse:collapse;font-size:.85rem} td,th{padding:2px 10px 2px 0;text-align:left}
+</style>
+</head>
+<body>
+<main>
+<h1>Curvature pen</h1>
+<p class="sub">One sign stream, one turtle rule, every regular tiling {p,q}: turn by ζ<sub>2q</sub><sup>±(q−2)</sup>, then walk one edge. The edge comes from one formula, and the formula picks the surface. v0.3.0: the {p,q} dial (earlier versions kept). v0.3.1: move (pan) in every full-screen view. v0.3.2: step counter on every view. v0.3.3: export each run as JSON for video. v0.3.4: Play no longer stalls at step 0. v0.3.5: a Solid / atom picker with the five Platonic solids and the Boolean cubes Div(6) … Div(30030), and a card that walks the closed Boolean cube in the helical atlas layout.</p>
+
+<section class="controls" aria-label="Controls">
+  <div><label for="pick">Solid / atom</label>
+    <select id="pick"><option value="">— set by the dials —</option>
+      <optgroup label="Platonic solids"><option value="tet">Tetrahedron {3,3}</option><option value="cube">Cube {4,3} = Boolean cube Div(30)</option><option value="oct">Octahedron {3,4}</option><option value="dod">Dodecahedron {5,3}</option><option value="ico">Icosahedron {3,5}</option></optgroup>
+      <optgroup label="Boolean cubes (profiles 1,1 … 1,1,1,1,1,1)"><option value="b2">Div(6) · (1,1) · one square, degenerate</option><option value="b3">Div(30) · (1,1,1) · cube {4,3}</option><option value="b4">Div(210) · (1,1,1,1) · torus, cover {4,4}</option><option value="b5">Div(2310) · (1,1,1,1,1) · genus 5, cover {4,5}</option><option value="b6">Div(30030) · (1,1,1,1,1,1) · genus 17, cover {4,6}</option></optgroup>
+    </select></div>
+  <div><label for="stream">Stream</label>
+    <select id="stream"><option value="30">Rule 30</option><option value="150">Rule 150</option><option value="coin">Fair coin</option></select></div>
+  <div><label for="q">Vertex degree q (the turn) <span class="val" id="qv"></span></label>
+    <select id="q"><option>3</option><option selected>4</option><option>5</option><option>6</option><option>7</option><option>8</option></select></div>
+  <div><label for="T">Steps T <span class="val" id="Tv"></span></label><input id="T" type="range" min="8" max="4096" step="8" value="512"></div>
+  <div><label for="seed">Coin seed</label><input id="seed" type="number" min="1" max="4294967295" value="1"></div>
+  <div><label for="win">Disk: follow pen, trail of last <span class="val" id="winv"></span> steps</label><input id="win" type="range" min="20" max="600" step="10" value="200"></div>
+  <div><label for="spd">Play speed <span class="val" id="spdv"></span></label><input id="spd" type="range" min="0" max="11" step="1" value="4"></div>
+  <div><label><input id="spin" type="checkbox" checked> Turn the sphere while playing</label></div>
+  <div class="btns"><button id="slower">− Slower</button><button id="play">Play</button><button id="faster">Faster +</button><button id="stepbtn">Step ▸</button><button id="restart">Restart</button><button id="edges">Edges: straight</button><button id="newseed">New seed</button><button id="theme">Theme</button></div>
+</section>
+
+<section class="grid">
+  <div class="card"><h2>Sphere S² · k = +1</h2><select id="pS" aria-label="Sphere face size p"></select><p class="k" id="kS"></p>
+    <p class="meta" id="mS"></p><canvas id="cS" width="640" height="640" aria-label="Pen on a spherical tiling"></canvas></div>
+  <div class="card"><h2>Plane ℝ² · k = 0</h2><select id="pP" aria-label="Plane face size p"></select><p class="k" id="kP"></p>
+    <p class="meta" id="mP"></p><canvas id="cP" width="640" height="640" aria-label="Pen on a flat tiling"></canvas></div>
+  <div class="card"><h2>Poincaré disk H² · k = −1</h2><select id="pH" aria-label="Disk face size p"></select><p class="k" id="kH"></p>
+    <p class="meta" id="mH"></p><canvas id="cH" width="640" height="640" aria-label="Pen on a hyperbolic tiling"></canvas></div>
+  <div class="card"><h2>Boolean cube · the closed skin of Div(N)</h2><p class="k" id="kB"></p>
+    <p class="meta" id="mB"></p><canvas id="cB" width="640" height="640" aria-label="Pen on the skin of a Boolean cube, helical atlas layout"></canvas></div>
+</section>
+
+<section class="notes">
+  <h3>The general formula</h3>
+  <p>In the regular tiling {p,q}, every face has p edges and q edges meet at every vertex. The q edges at a vertex are spaced 1/q of a turn apart, so a pen arriving along one edge finds the next edge to its left or right after a turn of (q − 2)/(2q) of a turn: the root of unity ζ<sub>2q</sub><sup>q−2</sup>, or its inverse. The edge length ℓ is fixed by</p>
+  <p class="formula">cos(ℓ/2) = Re ζ<sub>2p</sub> / Im ζ<sub>2q</sub></p>
+  <p>(on the sphere; in the hyperbolic plane cos becomes cosh). Whether the ratio is below, equal to, or above 1 is the same as whether pq is below, equal to, or above 2(p + q), that is, whether 1/p + 1/q is above, equal to, or below 1/2. That integer comparison picks the surface: sphere (k = +1), plane (k = 0), or hyperbolic plane (k = −1).</p>
+  <table>
+    <tr><th>q</th><th>sphere {p,q}</th><th>plane</th><th>hyperbolic</th></tr>
+    <tr><td>3</td><td>p = 3, 4, 5 (tetrahedron, cube, dodecahedron)</td><td>p = 6 (hexagons)</td><td>p ≥ 7</td></tr>
+    <tr><td>4</td><td>p = 3 (octahedron)</td><td>p = 4 (squares)</td><td>p ≥ 5</td></tr>
+    <tr><td>5</td><td>p = 3 (icosahedron)</td><td>none</td><td>p ≥ 4</td></tr>
+    <tr><td>6</td><td>none</td><td>p = 3 (triangles)</td><td>p ≥ 4</td></tr>
+    <tr><td>q ≥ 7</td><td>none</td><td>none</td><td>p ≥ 3</td></tr>
+  </table>
+  <p>Every q also has the degenerate sphere tiling {2,q} (the hosohedron: digon faces, edges of half a great circle). It is offered in the sphere list and labelled as degenerate. A panel with no tiling for the chosen q says so instead of drawing.</p>
+  <h3>What is drawn</h3>
+  <p>The stream gives one sign per step: for Rule 30 and Rule 150 it is the squeezed-sphere readout s<sub>t</sub> = σ(x<sub>t</sub>(0) ⊕ x<sub>t</sub>(1)) of the centre pair from a single black cell; for the coin it is a fair ±1. The same signs drive all three panels. Each panel shows its tiling dimmed and the pen's path over it.</p>
+  <p><b>Sphere.</b> The pen is run as a finite flag machine: every (vertex, heading) state the two moves can reach is enumerated once, and the path is read from that table, so it cannot drift. The card reports vertices, edges and states reached. <b>Plane.</b> The pen's position is an exact sum of roots of unity: Gaussian integers for squares (q = 4), Eisenstein integers for hexagons and triangles (q = 3, 6). <b>Disk.</b> The pen is a product of SU(1,1) matrices; the view follows the pen and the tiling patch is the one seen from the pen's own flag, so one patch serves every step.</p>
+  <p><b>Playback.</b> Play walks the pen smoothly along each edge, from one step every five seconds up to twenty a second; − Slower and Faster + change the speed while it walks. Older steps are dimmed, the last six are bold, the pen is ringed. Every view has ⛶ Full screen with its own playback and camera controls.</p>
+  <h3>Boolean cubes (v0.3.5)</h3>
+  <p>A squarefree number with ω primes has the ω-cube as its divisor lattice: a divisor is a set of primes, and an edge adds or removes one prime. Put the primes on seats around a circle and keep only the squares whose two primes sit on neighbouring seats: that is the <b>skin</b>, a closed surface with 2<sup>ω</sup> vertices, ω·2<sup>ω−1</sup> edges and ω·2<sup>ω−2</sup> squares (the atom skin pen's surface). Four squares meet at nothing; ω squares meet at every vertex, so the skin is a {4,ω} map and the {4,ω} tiling in the other cards is its universal cover: the cube for Div(30) (sphere), a torus for Div(210) (plane), genus 5 for Div(2310) and genus 17 for Div(30030) (disk). The fourth card walks the skin with the same signs (atom skin pen rule: take the edge next to the back edge, side set by the sign) and draws it in the helical atlas layout of the atlas viewer: a divisor sits at minus the sum of its primes' seat directions, at height Ω, with a dashed ring per Ω layer. Points marked ×k carry k divisors (in Div(210) the divisors 10 and 21; in Div(30030) for example 14, 33 and 65). <b>Degenerate case, labelled:</b> Div(6) is one square whose vertices have two edges, so the pen circles the square whatever the stream. It has no tiling on the q dial.</p>
+  <h3>Export a run (fvlt-pen-run/0.1)</h3>
+  <p>Every view has a <b>⇩ Run JSON</b> button, on the page and in full screen. It saves the run as it is now: the stream (signs, seed, tooth events), the rule and its exact labels, the geometry (skeleton, lattice or tiling patch), the path for every step, the camera, the play speed, and statistics for every step (vertices, edges, tooth events, distance) with final totals. The renderer <code>pen_tools/render_pen_run_v0_1.py</code> turns such a file into a video like the Platonic-solid videos.</p>
+  <h3>Status</h3>
+  <p id="selftest"></p>
+  <p><span class="tag">classical</span>The edge-length formula for {p,q} and the sphere / plane / hyperbolic split are classical (Schläfli; Coxeter, <i>Regular Polytopes</i>). The octahedron as the vertex link of ℤ³ and Gromov's link condition are classical.
+  <span class="tag">exact · Lean</span>For q = 4, p = 4 and the Rule 150 stream, the plane pen stays in |x| ≤ 3, |y| ≤ 2 for all time (<code>FVLTS4sRule150PenV1.pen_confined</code>; Codex review PASS WITH FLAGS, #1318; library v16).
+  <span class="tag">exact</span>Plane positions are exact integers in a Gaussian or Eisenstein basis; the surface choice is an exact integer comparison.
+  <span class="tag">finite / drawing</span>The sphere's flag machine is enumerated in floating point with snapping tolerance 10⁻⁷, so its counts are a FINITE readout. Sphere and disk drawings are floating point. Nothing here is evidence about periodicity.</p>
+  <p style="color:var(--muted)">Credits: saphir — Rule 30 written on surfaces, the polyhedra found by hand, the vision of one general formula, CAT(k) rather than CAT(0). Schläfli and Coxeter — the {p,q} formula. Gromov — the link condition. FVLT: the framework was assembled by Robin Miller; its components are classical results of others. Built by skeleton (Claude Opus 5.5), 2026-10-31.</p>
+</section>
+</main>
+
+<script>
+"use strict";
+// ---- full-screen views with playback and camera controls (shared by the pen viewers) ----
+// v0.4: every view exports its run as JSON (fvlt-pen-run/0.1), with per-step statistics, for the video renderer.
+// v0.3: a step counter on every view, on the page and in full screen.
+// v0.2: every view pans (buttons, one-finger drag on flat views, two-finger drag on all); the pan is applied to the
+// canvas itself each time a frame is cleared, so it works for spheres, planes and disks without touching their drawing code.
+const CAMZ={}, CAMP={};                       // per-view zoom factor and pan offset (fraction of the canvas width)
+function zoomOf(id){ return CAMZ[id]||1; }
+function panOf(id){ return [0,0]; }           // kept for the drawing hooks of v0.1; the pan now lives in the canvas transform
+// ---- run export (fvlt-pen-run/0.1) ----
+// per-step statistics from a path: distinct vertices and edges reached, cumulative tooth events, distance from the start
+function pathStats(points, tooth, dist){
+  const key=p=>p.map(x=>Math.round(x*1e6)).join(','), vs=new Set(), es=new Set(), out={vertices:[], edges:[], tooth:[], distance:[]};
+  let tc=0;
+  for(let t=0;t<points.length;t++){
+    vs.add(key(points[t])); if(t>0){ const a=key(points[t-1]), b=key(points[t]); if(a!==b) es.add(a<b?a+'|'+b:b+'|'+a); }
+    if(t>0 && tooth && tooth[t-1]) tc++;
+    out.vertices.push(vs.size); out.edges.push(es.size); out.tooth.push(tc);
+    out.distance.push(dist ? dist[t] : Math.hypot(...points[t].map((x,i)=>x-points[0][i])));
+  }
+  return out;
+}
+const r6=x=>Math.round(x*1e9)/1e9;
+function downloadRun(v){
+  let run; try{ run=exportRun(v.id); }catch(e){ alert('Export failed: '+e.message); return; }
+  run.schema='fvlt-pen-run/0.1'; run.created=new Date().toISOString();
+  run.view=Object.assign({id:v.id, title:v.title, kind:v.kind}, run.view||{});
+  run.camera=Object.assign({yaw:r6(yaw), pitch:r6(pitch), zoom:zoomOf(v.id), pan:CAMP[v.id]||[0,0]}, run.camera||{});
+  run.credits='saphir: Rule 30 written on surfaces, the polyhedra, the {p,q} vision. FVLT: the framework was assembled by Robin Miller; its components are classical results of others. Built by skeleton (Claude Opus 5.5).';
+  run.status=run.status||'drawing register: coordinates are floating point unless marked exact; counts are FINITE readouts, not proofs.';
+  const name=(run.file_stub||('pen_run_'+v.id))+'_'+new Date().toISOString().slice(0,19).replace(/[:T]/g,'-')+'.json';
+  const blob=new Blob([JSON.stringify(run)],{type:'application/json'}), a=document.createElement('a');
+  a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },1000);
+  window.lastRun=run; return run;
+}
+function setupFullscreen(VIEWS){
+  const Y0=yaw, P0=pitch, byId=id=>document.getElementById(id);
+  const st=document.createElement('style');
+  st.textContent=`.fsbox{position:relative}
+.fsopen{position:absolute;top:6px;right:6px;font-size:.8rem;padding:4px 8px;opacity:.9;z-index:2}
+.fsbar,.fstitle{display:none}
+.fsbox.fs-on{position:fixed;inset:0;z-index:1000;background:var(--panel);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:8px;gap:6px;overflow:auto}
+.fsbox.fs-on canvas{width:min(calc(100vw - 16px),calc(100vh - 220px))!important;height:auto!important;flex:0 0 auto}
+.fsbox.fs-on .fsopen{display:none}
+.fsbox.fs-on .fstitle{display:block;font-weight:600}
+.fsbox.fs-on .fsbar{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;align-items:center;max-width:100%}
+.fsbar button{min-width:44px;min-height:40px;font-size:1rem}
+.fsbar .fsspd{font-size:.85rem;color:var(--muted);min-width:9em;text-align:center}
+.fsbar .fslab{font-size:.8rem;color:var(--muted)}
+.fsstep{position:absolute;left:6px;top:6px;z-index:2;font-size:.85rem;font-variant-numeric:tabular-nums;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:2px 8px;opacity:.92;pointer-events:none}
+.fsbox.fs-on .fsstep{position:static;font-size:1rem;opacity:1}
+.fsexport{position:absolute;top:6px;right:118px;font-size:.8rem;padding:4px 8px;opacity:.9;z-index:2}
+.fsbox.fs-on .fsexport{display:none}`;
+  document.head.appendChild(st);
+  const boxes=[];
+  for(const v of VIEWS){
+    const cv=byId(v.id), box=document.createElement('div'); box.className='fsbox';
+    cv.parentNode.insertBefore(box,cv); box.appendChild(cv);
+    // the pan: after every full clear, draw through a translation
+    const g=cv.getContext('2d'), clear0=g.clearRect.bind(g);
+    g.clearRect=function(x,y,w,h){ g.setTransform(1,0,0,1,0,0); clear0(0,0,cv.width,cv.height); const p=CAMP[v.id]||[0,0]; g.setTransform(1,0,0,1,p[0]*cv.width,p[1]*cv.width); };
+    const open=document.createElement('button'); open.className='fsopen'; open.textContent='⛶ Full screen'; open.setAttribute('aria-label','Full screen: '+v.title);
+    box.insertBefore(open,cv);
+    if(typeof exportRun==='function'){ const ex=document.createElement('button'); ex.className='fsexport'; ex.textContent='⇩ Run JSON'; ex.setAttribute('aria-label','Export this run as JSON: '+v.title); ex.addEventListener('click',()=>downloadRun(v)); box.insertBefore(ex,cv); }
+    const title=document.createElement('div'); title.className='fstitle'; title.textContent=v.title; box.insertBefore(title,cv);
+    const badge=document.createElement('div'); badge.className='fsstep'; badge.setAttribute('aria-live','off'); box.insertBefore(badge,cv);
+    const row1=document.createElement('div'), row2=document.createElement('div'), row3=document.createElement('div');
+    row1.className=row2.className=row3.className='fsbar';
+    row1.innerHTML='<button data-p="slower">− Slower</button><button data-p="play">Play</button><button data-p="faster">Faster +</button><button data-p="stepbtn">Step ▸</button><button data-p="restart">Restart</button><span class="fsspd"></span>';
+    row2.innerHTML='<span class="fslab">Move</span><button data-c="pl" aria-label="Move left">◀</button><button data-c="pr" aria-label="Move right">▶</button><button data-c="pu" aria-label="Move up">▲</button><button data-c="pd" aria-label="Move down">▼</button><span class="fslab">Zoom</span><button data-c="zout" aria-label="Zoom out">−</button><button data-c="zin" aria-label="Zoom in">+</button>';
+    row3.innerHTML=(v.kind==='sphere' ? '<span class="fslab">Turn</span><button data-c="left" aria-label="Turn left">⟲</button><button data-c="right" aria-label="Turn right">⟳</button><button data-c="up" aria-label="Tilt up">⤒</button><button data-c="down" aria-label="Tilt down">⤓</button>' : '')
+      +'<button data-c="reset">Reset camera</button>'+(typeof exportRun==='function'?'<button data-c="export">⇩ Run JSON</button>':'')+'<button data-c="exit">✕ Exit</button>';
+    box.appendChild(row1); box.appendChild(row2); box.appendChild(row3);
+    const b={v, cv, box, row1, badge, api:false}; boxes.push(b);
+    open.addEventListener('click',()=>enter(b));
+    row1.addEventListener('click',e=>{ const p=e.target.dataset&&e.target.dataset.p; if(p && byId(p)) byId(p).click(); sync(); });
+    for(const r of [row2,row3]) r.addEventListener('click',e=>{ const c=e.target.dataset&&e.target.dataset.c; if(c) camera(b,c); });
+    // gestures: wheel and pinch zoom; two fingers also pan; one finger pans a flat view (spheres turn by one-finger drag)
+    const ptrs=new Map(); let two=null, drag0=null;
+    cv.addEventListener('wheel',e=>{ if(!box.classList.contains('fs-on')) return; e.preventDefault(); zoomBy(v.id, Math.exp(-e.deltaY*0.0015)); },{passive:false});
+    cv.addEventListener('pointerdown',e=>{ ptrs.set(e.pointerId,[e.clientX,e.clientY]);
+      if(ptrs.size===2){ const [a,c]=[...ptrs.values()]; two={d:Math.hypot(a[0]-c[0],a[1]-c[1]), z:zoomOf(v.id), m:[(a[0]+c[0])/2,(a[1]+c[1])/2], p:(CAMP[v.id]||[0,0]).slice()}; drag0=null; }
+      else if(v.kind!=='sphere'){ drag0=[e.clientX,e.clientY,...(CAMP[v.id]||[0,0])]; } });
+    cv.addEventListener('pointermove',e=>{ if(!ptrs.has(e.pointerId)) return; ptrs.set(e.pointerId,[e.clientX,e.clientY]); const w=cv.clientWidth||1;
+      if(ptrs.size===2 && two){ const [a,c]=[...ptrs.values()];
+        CAMZ[v.id]=Math.max(0.25,Math.min(12,two.z*Math.hypot(a[0]-c[0],a[1]-c[1])/Math.max(1,two.d)));
+        CAMP[v.id]=[two.p[0]+((a[0]+c[0])/2-two.m[0])/w, two.p[1]+((a[1]+c[1])/2-two.m[1])/w]; render(); }
+      else if(drag0){ CAMP[v.id]=[drag0[2]+(e.clientX-drag0[0])/w, drag0[3]+(e.clientY-drag0[1])/w]; render(); } });
+    const up=e=>{ ptrs.delete(e.pointerId); if(ptrs.size<2) two=null; if(ptrs.size===0) drag0=null; };
+    cv.addEventListener('pointerup',up); cv.addEventListener('pointercancel',up);
+  }
+  function zoomBy(id,f){ CAMZ[id]=Math.max(0.25,Math.min(12,zoomOf(id)*f)); render(); }
+  function camera(b,c){ const id=b.v.id, P=CAMP[id]||[0,0], d=0.1;
+    if(c==='left') yaw-=0.25; else if(c==='right') yaw+=0.25;
+    else if(c==='up') pitch=Math.max(-1.5,pitch-0.2); else if(c==='down') pitch=Math.min(1.5,pitch+0.2);
+    else if(c==='pl') CAMP[id]=[P[0]+d,P[1]]; else if(c==='pr') CAMP[id]=[P[0]-d,P[1]];
+    else if(c==='pu') CAMP[id]=[P[0],P[1]+d]; else if(c==='pd') CAMP[id]=[P[0],P[1]-d];
+    else if(c==='zin') return zoomBy(id,1.25); else if(c==='zout') return zoomBy(id,0.8);
+    else if(c==='reset'){ CAMZ[id]=1; CAMP[id]=[0,0]; if(b.v.kind==='sphere'){ yaw=Y0; pitch=P0; } }
+    else if(c==='exit') return leaveFs(b);
+    else if(c==='export') return downloadRun(b.v);
+    render(); }
+  function enter(b){
+    for(const o of boxes) if(o!==b && o.box.classList.contains('fs-on')) leaveFs(o);
+    b.box.classList.add('fs-on'); document.body.style.overflow='hidden';
+    const rq=b.box.requestFullscreen||b.box.webkitRequestFullscreen;
+    if(rq){ try{ const p=rq.call(b.box); b.api=true; if(p&&p.catch) p.catch(()=>{ b.api=false; }); }catch(e){ b.api=false; } }
+    sync(); render(); }
+  function leaveFs(b){
+    if(!b.box.classList.contains('fs-on')) return;
+    b.box.classList.remove('fs-on'); document.body.style.overflow='';
+    const fe=document.fullscreenElement||document.webkitFullscreenElement;
+    if(fe){ const ex=document.exitFullscreen||document.webkitExitFullscreen; try{ ex&&ex.call(document); }catch(e){} }
+    b.api=false; render(); }
+  const onFs=()=>{ const fe=document.fullscreenElement||document.webkitFullscreenElement; if(!fe) for(const b of boxes) if(b.api) leaveFs(b); };
+  document.addEventListener('fullscreenchange',onFs); document.addEventListener('webkitfullscreenchange',onFs);
+  document.addEventListener('keydown',e=>{ if(e.key==='Escape') for(const b of boxes) leaveFs(b); });
+  function sync(){ for(const b of boxes){ const pb=b.row1.querySelector('[data-p="play"]'), sp=b.row1.querySelector('.fsspd');
+    if(byId('play')) pb.textContent=byId('play').textContent; if(byId('spdv')) sp.textContent=byId('spdv').textContent; } }
+  setInterval(sync,250);
+  // the step the pen is on: during playback the step in progress, otherwise the whole run
+  function stepText(){ if(typeof shown==='undefined' || !shown) return ''; const total= shown.T!==undefined ? shown.T : shown.n;
+    if(pos===null) return 'step '+total+' of '+total+' (whole path)';
+    const n=Math.max(0,Math.min(total, Math.floor(pos))); return 'step '+n+' of '+total+(playing?'':' · paused'); }
+  let lastStep='';
+  function showSteps(){ const t=stepText(); if(t===lastStep) return; lastStep=t; for(const b of boxes) b.badge.textContent=t; }
+  (function loop(){ showSteps(); setTimeout(loop,100); })();
+  window.PenFullscreen={boxes, enter, leaveFs, camera, zoomBy};
+}
+
+// ---- streams (exact Boolean) ----
+function caSigns(rule, T){
+  const W=2*T+5, mid=T+2; let a=new Uint8Array(W), b=new Uint8Array(W); a[mid]=1;
+  const s=new Int8Array(T);
+  for(let t=0;t<T;t++){
+    s[t] = (a[mid]^a[mid+1]) ? -1 : 1;
+    for(let i=1;i<W-1;i++){ const L=a[i-1],C=a[i],R=a[i+1]; b[i]= rule===150 ? (L^C^R) : (L^(C|R)); }
+    b[0]=0; b[W-1]=0; const tmp=a; a=b; b=tmp;
+  }
+  return s;
+}
+function coinSigns(T, seed){
+  let x=(seed>>>0)||1; const s=new Int8Array(T);
+  for(let t=0;t<T;t++){ x^=x<<13; x>>>=0; x^=x>>>17; x^=x<<5; x>>>=0; s[t]=(x&1)?1:-1; }
+  return s;
+}
+// ---- the {p,q} formula ----
+// surface by exact integer comparison: sign of 2(p+q) - pq  (+1 sphere, 0 plane, -1 hyperbolic)
+const curv=(p,q)=>Math.sign(2*(p+q)-p*q);
+const ratio=(p,q)=>Math.cos(Math.PI/p)/Math.sin(Math.PI/q);       // Re zeta_2p / Im zeta_2q
+const turnAngle=q=>Math.PI*(q-2)/q;                                  // (q-2)/(2q) of a turn, internal radians
+function spherePs(q){ const out=[2]; for(let p=3;p<=12;p++) if(curv(p,q)>0) out.push(p); return out; }
+function planePs(q){ const out=[]; for(let p=3;p<=12;p++) if(curv(p,q)===0) out.push(p); return out; }
+function hypPs(q){ const out=[]; for(let p=3;p<=12;p++) if(curv(p,q)<0) out.push(p); return out; }
+const NAMES={'3,3':'tetrahedron','4,3':'cube','5,3':'dodecahedron','3,4':'octahedron','3,5':'icosahedron','6,3':'hexagons','4,4':'squares','3,6':'triangles'};
+const nm=(p,q)=> p===2 ? 'hosohedron, degenerate: digon faces; its q edges share the same two endpoints, so the card counts them as 1' : (NAMES[p+','+q]||'');
+
+// ---- k = +1: finite flag machine on the sphere ----
+const cross=(u,v)=>[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];
+function penStep(x, v, s, ca, sa, theta){
+  const th=s*theta, ct=Math.cos(th), st=Math.sin(th), w=cross(x,v);
+  const u=[ct*v[0]+st*w[0], ct*v[1]+st*w[1], ct*v[2]+st*w[2]];
+  return [[ca*x[0]+sa*u[0], ca*x[1]+sa*u[1], ca*x[2]+sa*u[2]], [-sa*x[0]+ca*u[0], -sa*x[1]+ca*u[1], -sa*x[2]+ca*u[2]]];
+}
+function buildMachine(ca, theta, cap=20000){
+  const sa=Math.sqrt(Math.max(0,1-ca*ca)), tol=1e-7;
+  const verts=[], states=[], key=new Map();
+  const near=(a,b)=>Math.abs(a[0]-b[0])<tol&&Math.abs(a[1]-b[1])<tol&&Math.abs(a[2]-b[2])<tol;
+  const vIndex=p=>{ for(let i=0;i<verts.length;i++) if(near(verts[i],p)) return i; verts.push(p); return verts.length-1; };
+  const sIndex=(x,v)=>{ const vi=vIndex(x), list=key.get(vi)||[];
+    for(const si of list) if(near(states[si].v,v)) return si;
+    states.push({vi, x:verts[vi], v, next:[-1,-1]}); list.push(states.length-1); key.set(vi,list); return states.length-1; };
+  sIndex([0,0,1],[1,0,0]);
+  for(let i=0;i<states.length;i++){
+    if(states.length>cap) return {finite:false, verts, states, edges:[]};
+    for(const [k,s] of [[0,1],[1,-1]]){ const [nx,nv]=penStep(states[i].x, states[i].v, s, ca, sa, theta); states[i].next[k]=sIndex(nx,nv); }
+  }
+  const edges=new Set();
+  for(const st of states) for(const n of st.next){ const a=st.vi, b=states[n].vi; edges.add(a<b?a+','+b:b+','+a); }
+  return {finite:true, verts, states, edges:[...edges].map(e=>e.split(',').map(Number))};
+}
+function machinePath(M, s){
+  let st=0; const pts=[M.verts[0]], vs=[0], es=[];
+  for(let t=0;t<s.length;t++){ const a=M.states[st].vi; st=M.states[st].next[s[t]>0?0:1]; const b=M.states[st].vi; pts.push(M.verts[b]); vs.push(b); es.push(a<b?a+','+b:b+','+a); }
+  return {pts, vs, es};
+}
+
+// ---- k = 0: exact lattice pen (Gaussian integers for q = 4, Eisenstein integers for q = 3 and 6) ----
+// heading h counts (2q)ths of a turn; a move turns by +-(q-2) and walks one unit edge zeta_2q^h
+const Z6=[[1,0],[1,1],[0,1],[-1,0],[-1,-1],[0,-1]];      // zeta_6^j in the Eisenstein basis (1, omega), omega = zeta_3
+const Z4=[[1,0],[0,1],[-1,0],[0,-1]];                    // i^j in the Gaussian basis (1, i)
+function unitEdge(q,h){ h=((h%(2*q))+2*q)%(2*q);
+  if(q===3) return Z6[h]; if(q===6) return Z6[(h/2)%6]; if(q===4) return Z4[(h/2)%4]; return null; }
+function latticeDraw(q,a){ return q===4 ? [a[0],a[1]] : [a[0]-a[1]/2, a[1]*Math.sqrt(3)/2]; }   // drawing register only
+function planePen(q, s){
+  let h=0, a=[0,0]; const pts=[[0,0]];
+  for(const v of s){ h+= v>0 ? (q-2) : -(q-2); const u=unitEdge(q,h); a=[a[0]+u[0], a[1]+u[1]]; pts.push(a); }
+  return pts;
+}
+function latticeEdges(q, M){ // every edge the pen could walk inside |coordinate| <= M, by search over (position, heading)
+  const key=(a,h)=>a[0]+','+a[1]+','+(((h%(2*q))+2*q)%(2*q)); const seen=new Set([key([0,0],0)]), stack=[[[0,0],0]], E=new Map();
+  while(stack.length && E.size<6000){
+    const [a,h]=stack.pop();
+    for(const sg of [1,-1]){ const h2=h+sg*(q-2), u=unitEdge(q,h2), b=[a[0]+u[0],a[1]+u[1]];
+      if(Math.abs(b[0])>M||Math.abs(b[1])>M) continue;
+      const ek=[a.join(),b.join()].sort().join('|'); if(!E.has(ek)) E.set(ek,[a,b]);
+      const k2=key(b,h2); if(!seen.has(k2)){ seen.add(k2); stack.push([b,h2]); } }
+  }
+  return [...E.values()];
+}
+
+// ---- k = -1: SU(1,1) turtle on the Poincare disk ----
+const cm=(a,b)=>[a[0]*b[0]-a[1]*b[1], a[0]*b[1]+a[1]*b[0]], ca=(a,b)=>[a[0]+b[0],a[1]+b[1]], cj=a=>[a[0],-a[1]];
+function mul(g,h){ return {a: ca(cm(g.a,h.a), cm(g.b,cj(h.b))), b: ca(cm(g.a,h.b), cm(g.b,cj(h.a)))}; }
+const ROT = th => ({a:[Math.cos(th/2),Math.sin(th/2)], b:[0,0]});
+const TRANS = L => ({a:[Math.cosh(L/2),0], b:[Math.sinh(L/2),0]});
+function point(g){ const ab=cj(g.a), d=ab[0]*ab[0]+ab[1]*ab[1]; const n=cm(g.b,cj(ab)); return [n[0]/d, n[1]/d]; }
+function act(g,z){ const num=ca(cm(g.a,z),g.b), den=ca(cm(cj(g.b),z),cj(g.a)), d=den[0]*den[0]+den[1]*den[1];
+  return [(num[0]*den[0]+num[1]*den[1])/d, (num[1]*den[0]-num[0]*den[1])/d]; }
+function hypMoves(p,q){ const L=2*Math.acosh(ratio(p,q)), th=turnAngle(q); return {L, RL:ROT(th), RR:ROT(-th), TE:TRANS(L)}; }
+function diskPen(H, s){
+  let g={a:[1,0],b:[0,0]}, logS=0; const ds=[0];
+  for(const sg of s){
+    g=mul(mul(g, sg>0?H.RL:H.RR), H.TE);
+    const m=Math.max(Math.hypot(g.a[0],g.a[1]), Math.hypot(g.b[0],g.b[1]));
+    if(m>1e100){ g={a:[g.a[0]/m,g.a[1]/m], b:[g.b[0]/m,g.b[1]/m]}; logS+=Math.log(m); }
+    const am=Math.hypot(g.a[0],g.a[1]); ds.push(logS===0 && am<1e8 ? 2*Math.acosh(Math.max(1,am)) : 2*(Math.log(am)+logS+Math.log(2)));
+  }
+  return {ds};
+}
+function trailFrom(H, s, u, W){ // positions of the last W steps seen from the pen at step u (pen at the centre)
+  let P={a:[1,0],b:[0,0]}; const out=[[0,0]];
+  for(let k=u-1;k>=Math.max(0,u-W);k--){
+    P=mul(mul(s[k]>0?H.RL:H.RR, H.TE), P);
+    const m=Math.max(Math.hypot(P.a[0],P.a[1]), Math.hypot(P.b[0],P.b[1])); if(m>1e100) P={a:[P.a[0]/m,P.a[1]/m], b:[P.b[0]/m,P.b[1]/m]};
+    const d=P.a[0]*P.a[0]+P.a[1]*P.a[1], n=cm(P.b,cj(P.a)); out.push([-n[0]/d, -n[1]/d]);
+  }
+  return out;
+}
+function tilingEdges(H){ // the tiling as seen from the pen's flag; grown until the patch is large enough
+  const key=p=>p[0].toFixed(9)+','+p[1].toFixed(9); const edges=new Map();
+  let frontier=[{a:[1,0],b:[0,0]}]; const seen=new Set([key([0,0])+'|0']);
+  for(let d=0; d<14 && edges.size<2600 && frontier.length; d++){
+    const next=[];
+    for(const g of frontier) for(const M of [H.RL,H.RR]){
+      const h=mul(mul(g,M),H.TE), p0=point(g), p1=point(h);
+      if(Math.hypot(p1[0],p1[1])>0.9995) continue;
+      const ek=[key(p0),key(p1)].sort().join('|'); if(!edges.has(ek)) edges.set(ek,[p0,p1]);
+      const hk=key(p1)+'|'+key(point(mul(h,H.TE))); if(!seen.has(hk)){ seen.add(hk); next.push(h); }
+    }
+    frontier=next;
+  }
+  return [...edges.values()];
+}
+function diskGeodesic(z1,z2,steps){
+  const phi=(z,w)=>{ const num=[z[0]-w[0],z[1]-w[1]], den=[1-(w[0]*z[0]+w[1]*z[1]), -(w[0]*z[1]-w[1]*z[0])]; const d=den[0]**2+den[1]**2; return [(num[0]*den[0]+num[1]*den[1])/d,(num[1]*den[0]-num[0]*den[1])/d]; };
+  const inv=(z,w)=>{ const num=[z[0]+w[0],z[1]+w[1]], den=[1+(w[0]*z[0]+w[1]*z[1]), (w[0]*z[1]-w[1]*z[0])]; const d=den[0]**2+den[1]**2; return [(num[0]*den[0]+num[1]*den[1])/d,(num[1]*den[0]-num[0]*den[1])/d]; };
+  const w=phi(z2,z1), r=Math.hypot(w[0],w[1]); if(r<1e-12) return [z1,z2];
+  const A=Math.atanh(Math.min(r,1-1e-16)), out=[];
+  for(let k=0;k<=steps;k++){ const rr=Math.tanh(A*k/steps); out.push(inv([w[0]/r*rr, w[1]/r*rr], z1)); }
+  return out;
+}
+window.CurvPen={caSigns, coinSigns, curv, ratio, spherePs, planePs, hypPs, buildMachine, machinePath, planePen, unitEdge, latticeEdges, hypMoves, diskPen, trailFrom, tilingEdges};
+
+// ---- drawing ----
+const css=n=>getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+let yaw=0.6, pitch=0.45, shown=null, playing=false, raf=0, pos=null, lastT=0, edgeMode='chord';
+const TRAIL=6;
+function rot(p){ const cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(pitch),sp=Math.sin(pitch);
+  const x1=cy*p[0]+sy*p[1], y1=-sy*p[0]+cy*p[1], z1=p[2]; return [x1, cp*y1-sp*z1, sp*y1+cp*z1]; }
+function along(a,b,f){
+  if(edgeMode==='chord') return [a[0]+(b[0]-a[0])*f, a[1]+(b[1]-a[1])*f, a[2]+(b[2]-a[2])*f];
+  const d=Math.max(-1,Math.min(1,a[0]*b[0]+a[1]*b[1]+a[2]*b[2])), w=Math.acos(d);
+  if(w<1e-9) return a;
+  if(Math.PI-w<1e-6){ // antipodal (hosohedron edge): go over the pole the flag machine started from
+    const m=Math.abs(a[2])<0.9?[0,0,1]:[1,0,0], c=cross(cross(a,m),a), n=Math.hypot(...c), u=c.map(x=>x/n);
+    return [Math.cos(Math.PI*f)*a[0]+Math.sin(Math.PI*f)*u[0], Math.cos(Math.PI*f)*a[1]+Math.sin(Math.PI*f)*u[1], Math.cos(Math.PI*f)*a[2]+Math.sin(Math.PI*f)*u[2]]; }
+  const sw=Math.sin(w), p=Math.sin((1-f)*w)/sw, q=Math.sin(f*w)/sw; return [p*a[0]+q*b[0], p*a[1]+q*b[1], p*a[2]+q*b[2]];
+}
+function strokeEdge(g,a,b,c,R,fa,ba,lw,f=1){
+  const n=edgeMode==='chord'?1:24, pts=[]; for(let k=0;k<=n;k++) pts.push(rot(along(a,b,f*k/n)));
+  for(let k=0;k<n;k++){ const front=(pts[k][1]+pts[k+1][1])/2>=0; g.globalAlpha=front?fa:ba; g.lineWidth=front?lw:Math.max(1,lw*0.6);
+    g.beginPath(); g.moveTo(c+R*pts[k][0],c-R*pts[k][2]); g.lineTo(c+R*pts[k+1][0],c-R*pts[k+1][2]); g.stroke(); }
+}
+function message(cv, lines){
+  const g=cv.getContext('2d'), W=cv.width; g.clearRect(0,0,W,W); g.fillStyle=css('--disk'); g.fillRect(0,0,W,W);
+  g.fillStyle=css('--muted'); g.font='26px system-ui'; g.textAlign='center';
+  lines.forEach((t,i)=>g.fillText(t, W/2, W/2-20+i*36)); g.textAlign='left';
+}
+function frame(upto, last){ const walking=pos!==null, n=Math.max(0,Math.min(Math.floor(upto), last)), frac=n<last?Math.max(0,Math.min(1,upto-n)):0; return {walking,n,frac}; }
+function drawSphere(cv, upto){
+  const S=shown.S; if(!S){ return message(cv, ['no spherical tiling for q = '+shown.q, 'every p ≥ 3 has 1/p + 1/q ≤ 1/2']); }
+  const g=cv.getContext('2d'), W=cv.width, R=W*0.44*zoomOf(cv.id), c=W/2; g.clearRect(0,0,W,W);
+  g.fillStyle=css('--disk'); g.beginPath(); g.arc(c,c,R,0,2*Math.PI); g.fill();
+  const {walking,n,frac}=frame(upto, S.path.pts.length-1), pts=S.path.pts;
+  g.strokeStyle=css('--muted'); for(const [a,b] of S.M.edges) strokeEdge(g,S.M.verts[a],S.M.verts[b],c,R,walking?0.22:0.35,0.07,1);
+  g.strokeStyle=css('--pen');
+  for(let i=0;i<n;i++){ const recent=walking && i>=n-TRAIL; strokeEdge(g,pts[i],pts[i+1],c,R, walking?(recent?1:0.55):0.95, walking?(recent?0.35:0.12):0.18, recent?3.4:1.6); }
+  let m=pts[n]; if(walking && frac>0){ m=along(pts[n],pts[n+1],frac); strokeEdge(g,pts[n],pts[n+1],c,R,1,0.35,3.4,frac); }
+  const e=rot(m); g.globalAlpha=e[1]>=0?1:0.45; g.fillStyle=css('--ink'); g.beginPath(); g.arc(c+R*e[0],c-R*e[2],walking?7:5,0,2*Math.PI); g.fill();
+  if(walking){ g.strokeStyle=css('--pen'); g.lineWidth=2.5; g.beginPath(); g.arc(c+R*e[0],c-R*e[2],12,0,2*Math.PI); g.stroke(); }
+  g.globalAlpha=1;
+}
+function drawPlane(cv, upto){
+  const P=shown.P; if(!P){ return message(cv, ['no flat tiling for q = '+shown.q, 'pq = 2(p + q) has no whole-number p']); }
+  const g=cv.getContext('2d'), W=cv.width; g.clearRect(0,0,W,W);
+  const pts=P.pts.map(a=>latticeDraw(shown.q,a)), {walking,n,frac}=frame(upto, pts.length-1);
+  let mx=3; const span=walking?pts.length-1:n; for(let i=0;i<=span;i++) mx=Math.max(mx, Math.abs(pts[i][0]), Math.abs(pts[i][1]));
+  const sc=(W*0.45)/mx*zoomOf(cv.id), c=W/2; g.save(); const pn=panOf(cv.id); g.translate(pn[0]*W, pn[1]*W);
+  g.fillStyle=css('--disk'); g.fillRect(-W,-W,3*W,3*W);
+  if(sc>=5){ g.strokeStyle=css('--grid'); g.lineWidth=1; g.globalAlpha=walking?0.7:1;
+    for(const [a,b] of P.lattice){ const A=latticeDraw(shown.q,a), B=latticeDraw(shown.q,b); g.beginPath(); g.moveTo(c+A[0]*sc,c-A[1]*sc); g.lineTo(c+B[0]*sc,c-B[1]*sc); g.stroke(); } }
+  const lw=Math.max(1.2, Math.min(3, sc/6)), from=walking?Math.max(0,n-TRAIL):n;
+  g.strokeStyle=css('--pen'); g.lineWidth=lw; g.globalAlpha=walking?0.45:0.85; g.beginPath();
+  for(let i=0;i<=from;i++){ const X=c+pts[i][0]*sc, Y=c-pts[i][1]*sc; i?g.lineTo(X,Y):g.moveTo(X,Y); } g.stroke();
+  let ex=pts[n][0], ey=pts[n][1];
+  if(walking){ if(frac>0){ ex+= (pts[n+1][0]-pts[n][0])*frac; ey+= (pts[n+1][1]-pts[n][1])*frac; }
+    g.globalAlpha=1; g.lineWidth=Math.max(3,lw*1.8); g.beginPath();
+    for(let i=from;i<=n;i++){ const X=c+pts[i][0]*sc, Y=c-pts[i][1]*sc; i===from?g.moveTo(X,Y):g.lineTo(X,Y); } g.lineTo(c+ex*sc, c-ey*sc); g.stroke(); }
+  g.globalAlpha=1; g.fillStyle=css('--start'); g.beginPath(); g.arc(c,c,4,0,2*Math.PI); g.fill();
+  g.fillStyle=css('--ink'); g.beginPath(); g.arc(c+ex*sc,c-ey*sc,walking?7:4,0,2*Math.PI); g.fill();
+  if(walking){ g.strokeStyle=css('--pen'); g.lineWidth=2.5; g.beginPath(); g.arc(c+ex*sc,c-ey*sc,12,0,2*Math.PI); g.stroke(); }
+  g.restore();
+}
+function drawDisk(cv, upto){
+  const Hh=shown.H; if(!Hh){ return message(cv, ['no hyperbolic tiling chosen']); }
+  const g=cv.getContext('2d'), W=cv.width, R=W*0.46*zoomOf(cv.id), c=W/2; g.clearRect(0,0,W,W);
+  g.fillStyle=css('--disk'); g.beginPath(); g.arc(c,c,R,0,2*Math.PI); g.fill();
+  g.strokeStyle=css('--grid'); g.lineWidth=1; g.beginPath(); g.arc(c,c,R,0,2*Math.PI); g.stroke();
+  const {walking,n,frac}=frame(upto, shown.s.length), Wn=+document.getElementById('win').value;
+  let view=z=>z;
+  if(walking && frac>0){ const F=mul(ROT((shown.s[n]>0?1:-1)*turnAngle(shown.q)*frac), TRANS(Hh.moves.L*frac)), Fi={a:cj(F.a), b:[-F.b[0],-F.b[1]]}; view=z=>act(Fi,z); }
+  g.strokeStyle=css('--grid'); g.lineWidth=0.8; g.globalAlpha=walking?0.55:0.9;
+  for(const [a0,b0] of Hh.tiling){ const a=view(a0), b=view(b0); if(Math.hypot(a[0],a[1])>0.995 && Math.hypot(b[0],b[1])>0.995) continue;
+    const seg=diskGeodesic(a,b,8); g.beginPath(); seg.forEach((p,k)=>{ const X=c+R*p[0], Y=c-R*p[1]; k?g.lineTo(X,Y):g.moveTo(X,Y); }); g.stroke(); }
+  g.globalAlpha=1;
+  const tr=trailFrom(Hh.moves, shown.s, n, Wn).map(view);
+  for(let j=tr.length-2;j>=0;j--){
+    const a=tr[j+1], b=tr[j]; if(Math.hypot(a[0],a[1])>1-1e-12 && Math.hypot(b[0],b[1])>1-1e-12) continue;
+    const age=j/Math.max(1,tr.length-1), recent=walking && j<TRAIL; g.strokeStyle=`hsl(${20+190*age} 80% 50%)`;
+    g.globalAlpha= recent ? 1 : (walking ? 0.55-0.4*age : 0.9-0.6*age); g.lineWidth= recent ? 3.2 : 1.6-0.8*age;
+    const seg=diskGeodesic(a,b,10); g.beginPath(); seg.forEach((p,k)=>{ const X=c+R*p[0], Y=c-R*p[1]; k?g.lineTo(X,Y):g.moveTo(X,Y); }); g.stroke();
+  }
+  if(walking && frac>0){ g.strokeStyle='hsl(20 80% 50%)'; g.globalAlpha=1; g.lineWidth=3.2; const seg=diskGeodesic(tr[0],[0,0],10); g.beginPath(); seg.forEach((p,k)=>{ const X=c+R*p[0], Y=c-R*p[1]; k?g.lineTo(X,Y):g.moveTo(X,Y); }); g.stroke(); }
+  g.globalAlpha=1; g.fillStyle=css('--ink'); g.beginPath(); g.arc(c,c,walking?7:4.5,0,2*Math.PI); g.fill();
+  if(walking){ g.strokeStyle=css('--pen'); g.lineWidth=2.5; g.beginPath(); g.arc(c,c,12,0,2*Math.PI); g.stroke(); }
+}
+function fillSelect(id, list, q, keep){
+  const el=document.getElementById(id), old=+el.value; el.innerHTML='';
+  if(!list.length){ const o=document.createElement('option'); o.value=''; o.textContent='none for q = '+q; el.appendChild(o); el.disabled=true; return; }
+  el.disabled=false;
+  for(const p of list){ const o=document.createElement('option'); o.value=p; const name=nm(p,q); o.textContent='{'+p+','+q+'}'+(name?' · '+name:''); el.appendChild(o); }
+  el.value = keep && list.includes(old) ? old : (list.includes(3)&&id!=='pH' ? 3 : list[0]);
+  if(id==='pS' && list.length>1 && !(keep && list.includes(old))) el.value=list[1];   // prefer a true solid over the degenerate {2,q}
+}
+function formulaLine(p,q){
+  const r=ratio(p,q), k=curv(p,q);
+  const rel = k>0 ? 'pq < 2(p + q): sphere' : k===0 ? 'pq = 2(p + q): plane' : 'pq > 2(p + q): hyperbolic';
+  const edge = k>0 ? 'cos(ℓ/2) = Re ζ'+sub(2*p)+' / Im ζ'+sub(2*q)+' ≈ '+r.toFixed(6)+', cos ℓ ≈ '+(2*r*r-1).toFixed(6)
+             : k===0 ? 'Re ζ'+sub(2*p)+' / Im ζ'+sub(2*q)+' = 1: the edge is a free unit length'
+             : 'cosh(ℓ/2) = Re ζ'+sub(2*p)+' / Im ζ'+sub(2*q)+' ≈ '+r.toFixed(6)+', ℓ ≈ '+(2*Math.acosh(r)).toFixed(6);
+  return '{'+p+','+q+'} · '+rel+' · '+edge+' · turn ζ'+sub(2*q)+(q-2===1?'':sup(q-2))+' = '+(q-2)+'/'+(2*q)+' of a turn';
+}
+const SUB="₀₁₂₃₄₅₆₇₈₉", SUP="⁰¹²³⁴⁵⁶⁷⁸⁹";
+function sub(n){ return String(n).split("").map(d=>SUB[+d]).join(""); }
+function sup(n){ return String(n).split("").map(d=>SUP[+d]).join(""); }
+function compute(keep){
+  const T=+document.getElementById('T').value, which=document.getElementById('stream').value, q=+document.getElementById('q').value;
+  const seed=(+document.getElementById('seed').value)>>>0||1;
+  document.getElementById('Tv').textContent=T; document.getElementById('winv').textContent=document.getElementById('win').value;
+  document.getElementById('qv').textContent='turn ζ'+sub(2*q)+(q-2===1?'':sup(q-2))+' = '+(q-2)+'/'+(2*q)+' of a turn';
+  fillSelect('pS', spherePs(q), q, keep); fillSelect('pP', planePs(q), q, keep); fillSelect('pH', hypPs(q), q, keep);
+  const s = which==='coin' ? coinSigns(T,seed) : caSigns(+which,T);
+  shown={T, q, s, S:null, P:null, H:null};
+  const pS=+document.getElementById('pS').value, pP=+document.getElementById('pP').value, pH=+document.getElementById('pH').value;
+  if(pS){ const r=ratio(pS,q), M=buildMachine(2*r*r-1, turnAngle(q)); shown.S={p:pS, M, path:machinePath(M,s)};
+    document.getElementById('kS').textContent=formulaLine(pS,q); } else document.getElementById('kS').textContent='q = '+q+': no spherical tiling (only the degenerate {2,'+q+'} would remain)';
+  if(pP){ const pts=planePen(q,s); let ext=4; for(const a of pts) ext=Math.max(ext,Math.abs(a[0]),Math.abs(a[1])); shown.P={p:pP, pts, lattice:latticeEdges(q, Math.min(ext+2, 40))};
+    document.getElementById('kP').textContent=formulaLine(pP,q); } else document.getElementById('kP').textContent='q = '+q+': no flat tiling';
+  if(pH){ const moves=hypMoves(pH,q); shown.H={p:pH, moves, tiling:tilingEdges(moves), ds:diskPen(moves,s).ds};
+    document.getElementById('kH').textContent=formulaLine(pH,q); } else document.getElementById('kH').textContent='';
+  const wB = skinW===null ? ((q>=3&&q<=6)?q:null) : (skinW||null);   // v0.3.5
+  shown.B = wB ? skinOf(wB, s, which==='coin' ? null : caTooth(+which,T)) : null;
+  document.getElementById('kB').textContent = shown.B ? skinLine(shown.B) : 'no Boolean cube for this setting (the card follows q = 3 … 6, or the picker)';
+}
+function stats(u){
+  if(shown.S){ const S=shown.S, vs=new Set(S.path.vs.slice(0,u+1)), es=new Set(S.path.es.slice(0,u));
+    document.getElementById('mS').textContent=`vertices ${vs.size}/${S.M.verts.length} · edges ${es.size}/${S.M.edges.length} · ${S.M.states.length} flag-machine states · step ${u}`; }
+  else document.getElementById('mS').textContent='';
+  if(shown.P){ const P=shown.P.pts.slice(0,u+1), pp=new Set(P.map(a=>a.join())); let mx=0,my=0; for(const a of P){ mx=Math.max(mx,Math.abs(a[0])); my=Math.max(my,Math.abs(a[1])); }
+    document.getElementById('mP').textContent=`lattice points ${pp.size} · max |a| ${mx}, |b| ${my} (${shown.q===4?'Gaussian':'Eisenstein'} coordinates) · step ${u}`; }
+  else document.getElementById('mP').textContent='';
+  if(shown.H){ const ds=shown.H.ds.slice(0,u+1), dmax=Math.max(...ds), dend=ds[ds.length-1];
+    document.getElementById('mH').textContent=`hyperbolic distance: end ${dend.toFixed(2)}, max ${dmax.toFixed(2)} · speed ${(dend/Math.max(1,u)).toFixed(3)} per step · step ${u}`; }
+  else document.getElementById('mH').textContent='';
+}
+
+// ---- v0.3.5: Boolean cubes Div(6) ... Div(30030): the closed skin, drawn in the helical atlas layout ----
+const BPRIMES=[2,3,5,7,11,13];
+let skinW=null;   // set by the picker; null = follow q (3..6); 0 = none
+const popc=v=>{ let c=0; while(v){ c+=v&1; v>>=1; } return c; };
+function skinOf(w, s, tooth){
+  const V=1<<w, val=v=>{ let d=1; for(let i=0;i<w;i++) if(v>>i&1) d*=BPRIMES[i]; return d; }, eps=v=>(popc(v)&1)?-1:1;
+  let x=0, b=0; const vs=[0];                                   // atom skin pen: start at divisor 1, as if arrived along prime 0
+  for(const sg of s){ const d=(((b - sg*eps(x))%w)+w)%w; x^=1<<d; b=d; vs.push(x); }
+  const P=[]; let Rm=0;
+  for(let v=0;v<V;v++){ let X=0, Y=0; for(let i=0;i<w;i++) if(v>>i&1){ X-=Math.cos(2*Math.PI*i/w); Y-=Math.sin(2*Math.PI*i/w); } P.push([X,Y,popc(v)]); Rm=Math.max(Rm,Math.hypot(X,Y)); }
+  const H=w, sc=1/Math.hypot(Math.max(Rm,0.5), H/2), pts=P.map(p=>[p[0]*sc, p[1]*sc, (p[2]-H/2)*sc]);
+  const rings=[]; for(let k=0;k<=H;k++){ let r=0; P.forEach(p=>{ if(p[2]===k) r=Math.max(r,Math.hypot(p[0],p[1])); }); rings.push([(k-H/2)*sc, r*sc]); }
+  const edges=[]; for(let v=0;v<V;v++) for(let i=0;i<w;i++) if(!(v>>i&1)) edges.push([v, v|1<<i]);
+  const st=new Map(); P.forEach((p,v)=>{ const k=p.map(c=>Math.round(c*1e9)).join(); if(!st.has(k)) st.set(k,[]); st.get(k).push(v); });
+  const stacks=[...st.values()].filter(g=>g.length>1);
+  const F= w>=3 ? w*(1<<(w-2)) : null, chi= w>=3 ? V-edges.length+F : null;
+  return {w, V, E:edges.length, F, chi, genus: chi===null?null:(2-chi)/2, N:val(V-1), val, vs, pts, rings, edges, stacks, tooth, Rm, H};
+}
+function skinLine(B){
+  const prof='('+Array(B.w).fill(1).join(',')+')';
+  if(B.w===2) return 'Div(6) · profile (1,1) · one square: every vertex has two edges, so the pen circles the square whatever the stream (degenerate)';
+  const cover = B.w===3?'sphere {4,3}':B.w===4?'plane {4,4}':'disk {4,'+B.w+'}';
+  return 'Div('+B.N+') · profile '+prof+' · skin of the '+B.w+'-cube: '+B.V+' vertices, '+B.E+' edges, '+B.F+' squares · χ = '+B.chi+', genus '+B.genus+' · universal cover: the '+cover+' tiling';
+}
+function rotB(p, beta){ const cy=Math.cos(yaw),sy=Math.sin(yaw),cp=Math.cos(beta),sp=Math.sin(beta);
+  const x1=cy*p[0]+sy*p[1], y1=-sy*p[0]+cy*p[1], z1=p[2]; return [x1, cp*y1-sp*z1, sp*y1+cp*z1]; }
+function drawSkin(cv, upto){
+  const B=shown.B; if(!B) return message(cv, ['pick a Boolean cube, Div(6) … Div(30030),', 'or set q = 3 … 6']);
+  const g=cv.getContext('2d'), W=cv.width, R=W*0.40*zoomOf(cv.id), c=W/2; g.clearRect(0,0,W,W);
+  g.fillStyle=css('--disk'); g.fillRect(0,0,W,W);
+  const beta=Math.acos(Math.min(0.85, 3*B.Rm/B.H)), pr=p=>{ const q=rotB(p,beta); return [c+R*q[0], c-R*q[2], q[1]]; };
+  const {walking,n,frac}=frame(upto, B.vs.length-1), PP=B.pts.map(pr);
+  g.strokeStyle=css('--grid'); g.lineWidth=1; g.setLineDash([5,7]);
+  for(const [z,r] of B.rings){ if(r<=0) continue; g.beginPath(); for(let j=0;j<=72;j++){ const a=2*Math.PI*j/72, q=pr([r*Math.cos(a), r*Math.sin(a), z]); j?g.lineTo(q[0],q[1]):g.moveTo(q[0],q[1]); } g.stroke(); }
+  g.setLineDash([]);
+  g.strokeStyle=css('--muted'); g.lineWidth=1;
+  for(const [a,b] of B.edges){ g.globalAlpha=(PP[a][2]+PP[b][2])/2>=0?0.4:0.18; g.beginPath(); g.moveTo(PP[a][0],PP[a][1]); g.lineTo(PP[b][0],PP[b][1]); g.stroke(); }
+  g.strokeStyle=css('--pen');
+  for(let i=0;i<n;i++){ const recent=walking && i>=n-TRAIL, a=PP[B.vs[i]], b=PP[B.vs[i+1]];
+    g.globalAlpha= walking?(recent?1:0.5):0.9; g.lineWidth= recent?3.4:1.8; g.beginPath(); g.moveTo(a[0],a[1]); g.lineTo(b[0],b[1]); g.stroke(); }
+  let m=PP[B.vs[n]];
+  if(walking && frac>0){ const a=PP[B.vs[n]], b=PP[B.vs[n+1]]; m=[a[0]+(b[0]-a[0])*frac, a[1]+(b[1]-a[1])*frac];
+    g.globalAlpha=1; g.lineWidth=3.4; g.beginPath(); g.moveTo(a[0],a[1]); g.lineTo(m[0],m[1]); g.stroke(); }
+  if(B.tooth){ g.fillStyle=css('--tooth'); g.globalAlpha=0.9; for(let i=0;i<n;i++) if(B.tooth[i]){ const p=PP[B.vs[i]]; g.beginPath(); g.arc(p[0],p[1],3.2,0,2*Math.PI); g.fill(); } }
+  g.globalAlpha=1; g.fillStyle=css('--muted'); g.font='20px system-ui';
+  for(const grp of B.stacks){ const p=PP[grp[0]]; g.fillText('×'+grp.length, p[0]+8, p[1]+20); }
+  if(B.V<=16){ g.fillStyle=css('--ink'); g.font='19px system-ui'; for(let v=0;v<B.V;v++){ const p=PP[v]; g.globalAlpha=p[2]>=0?0.9:0.5; g.fillText(String(B.val(v)), p[0]+9, p[1]-9); } g.globalAlpha=1; }
+  g.fillStyle=css('--ink'); g.beginPath(); g.arc(m[0],m[1],walking?7:5,0,2*Math.PI); g.fill();
+  if(walking){ g.strokeStyle=css('--pen'); g.lineWidth=2.5; g.beginPath(); g.arc(m[0],m[1],12,0,2*Math.PI); g.stroke(); }
+}
+function skinStats(u){
+  const B=shown.B; if(!B){ document.getElementById('mB').textContent=''; return; }
+  const vs=new Set(B.vs.slice(0,u+1)), es=new Set(); for(let i=0;i<u;i++){ const a=B.vs[i], b=B.vs[i+1]; es.add(Math.min(a,b)+'-'+Math.max(a,b)); }
+  const t= B.tooth ? ' · tooth events '+B.tooth.slice(0,u).reduce((x,y)=>x+y,0) : '';
+  document.getElementById('mB').textContent=`divisors visited ${vs.size}/${B.V} · edges ${es.size}/${B.E} · now at divisor ${B.val(B.vs[u])}${t} · helical atlas layout, height = Ω · step ${u}`;
+}
+function skinSelftest(){ // exact: the skin is a closed surface (every edge on exactly two squares), chi formula, every step an edge
+  const out=[]; let ok=true; const s=caSigns(30,4096);
+  for(let w=2; w<=6; w++){ const B=skinOf(w, s, null), cnt=new Map();
+    if(w>=3) for(let i=0;i<w;i++){ const j=(i+1)%w; for(let v=0;v<B.V;v++) if(!(v>>i&1) && !(v>>j&1)){ for(const e of [[v,i],[v|1<<i,j],[v|1<<j,i],[v,j]]){ const k=e.join(); cnt.set(k,(cnt.get(k)||0)+1); } } }
+    const two = w<3 || [...cnt.values()].every(c=>c===2) && cnt.size===B.E;
+    const steps = B.vs.every((v,t)=>!t || popc(v^B.vs[t-1])===1);
+    const chiOK = w<3 || B.chi===(1<<(w-2))*(4-w);
+    ok = ok && two && steps && chiOK; out.push('Div('+B.N+')'+(two&&steps&&chiOK?' ✓':' ✗')); }
+  const el=document.getElementById('selftest'); if(el) el.textContent += ' · Boolean cube skins (v0.3.5): '+out.join(', ')+(ok?' — every edge on two squares, χ = 2^(ω−2)(4−ω), every step an edge':' — FAILED');
+  return ok;
+}
+const PICKS={tet:{q:3,pane:'pS',p:3,w:0}, cube:{q:3,pane:'pS',p:4,w:3}, oct:{q:4,pane:'pS',p:3,w:0}, dod:{q:3,pane:'pS',p:5,w:0}, ico:{q:5,pane:'pS',p:3,w:0},
+  b2:{w:2}, b3:{q:3,pane:'pS',p:4,w:3}, b4:{q:4,pane:'pP',p:4,w:4}, b5:{q:5,pane:'pH',p:4,w:5}, b6:{q:6,pane:'pH',p:4,w:6}};
+function render(upto){
+  if(!shown) return; const u=Math.min(upto ?? (pos!==null ? pos : shown.T), shown.T);
+  drawSphere(document.getElementById('cS'), u); drawPlane(document.getElementById('cP'), u); drawDisk(document.getElementById('cH'), u); drawSkin(document.getElementById('cB'), u);
+  stats(Math.floor(u)); skinStats(Math.floor(u));
+}
+function selftest(){ // p lefts close a face, in every panel, for every q on the dial
+  const res=[];
+  for(const q of [3,4,5,6,7,8]){
+    for(const p of spherePs(q).filter(p=>p>2)){ const r=ratio(p,q), M=buildMachine(2*r*r-1, turnAngle(q)), path=machinePath(M,new Int8Array(p).fill(1));
+      res.push({q,p,k:1, ok: path.vs[p]===path.vs[0] && new Set(path.vs.slice(0,p)).size===p}); }
+    for(const p of planePs(q)){ const pts=planePen(q,new Int8Array(p).fill(1)); res.push({q,p,k:0, ok: pts[p].join()==='0,0' && new Set(pts.slice(0,p).map(a=>a.join())).size===p}); }
+    for(const p of hypPs(q).slice(0,3)){ const H=hypMoves(p,q); let g={a:[1,0],b:[0,0]}; const zs=[];
+      for(let i=0;i<p;i++){ g=mul(mul(g,H.RL),H.TE); zs.push(point(g)); }
+      res.push({q,p,k:-1, ok: Math.hypot(...zs[p-1])<1e-9 && Math.hypot(...zs[0])>1e-3}); }
+  }
+  const bad=res.filter(r=>!r.ok);
+  document.getElementById('selftest').textContent=`Closure self-test: p left turns close a face for ${res.length-bad.length} of ${res.length} tilings checked (q = 3 … 8; sphere, plane, and the first three hyperbolic p for each q)${bad.length?' · FAILED: '+bad.map(r=>'{'+r.p+','+r.q+'}').join(' '):' ✓'}.`;
+  return {checked:res.length, failed:bad};
+}
+window.CurvPen.selftest=selftest;
+// ---- playback ----
+function stop(){ playing=false; cancelAnimationFrame(raf); document.getElementById('play').textContent='Play'; }
+function leave(){ stop(); pos=null; }
+const SPEEDS=[0.2,0.25,1/3,0.5,1,1.5,2,3,5,8,12,20];
+function speed(){ return SPEEDS[+document.getElementById('spd').value]; }
+function showSpeed(){ const v=speed(); document.getElementById('spdv').textContent = v<1 ? 'one step every '+Math.round(1/v)+' seconds' : v===1 ? 'one step a second' : v+' steps a second'; }
+function nudge(d){ const e=document.getElementById('spd'); e.value=Math.max(0,Math.min(SPEEDS.length-1,+e.value+d)); showSpeed(); }
+document.getElementById('spd').addEventListener('input',showSpeed);
+document.getElementById('slower').addEventListener('click',()=>nudge(-1));
+document.getElementById('faster').addEventListener('click',()=>nudge(1));
+document.getElementById('stepbtn').addEventListener('click',()=>{ stop(); if(pos===null) pos=0; pos=Math.min(shown.T, Math.floor(pos)+1); render(pos); });
+document.getElementById('restart').addEventListener('click',()=>{ stop(); pos=0; render(pos); });
+document.getElementById('play').addEventListener('click',()=>{ if(playing){stop();render();return;}
+  if(pos===null || pos>=shown.T) pos=0;
+  playing=true; document.getElementById('play').textContent='Pause'; lastT=performance.now();
+  const tick=now=>{ if(!playing) return; const dt=Math.max(0,Math.min(0.1,(now-lastT)/1000)); lastT=now;   // play fix 2026-11-05: the first frame's clock can be earlier than the click
+    pos=Math.min(shown.T, pos+dt*speed()); if(document.getElementById('spin').checked) yaw+=0.25*dt;
+    render(pos); if(pos<shown.T) raf=requestAnimationFrame(tick); else stop(); };
+  raf=requestAnimationFrame(tick); });
+document.getElementById('edges').addEventListener('click',e=>{ edgeMode= edgeMode==='chord'?'arc':'chord'; e.target.textContent= edgeMode==='chord'?'Edges: straight':'Edges: on the sphere'; render(); });
+document.getElementById('q').addEventListener('change',()=>{ skinW=null; document.getElementById('pick').value=''; leave(); compute(false); render(); });
+document.getElementById('pick').addEventListener('change',()=>{ const P=PICKS[document.getElementById('pick').value]; leave();
+  if(!P){ skinW=null; compute(true); render(); return; }
+  skinW=P.w; if(P.q){ document.getElementById('q').value=P.q; compute(false); document.getElementById(P.pane).value=P.p; }
+  compute(true); render(); });
+['pS','pP','pH'].forEach(id=>document.getElementById(id).addEventListener('change',()=>{ leave(); compute(true); render(); }));
+['T','stream'].forEach(id=>document.getElementById(id).addEventListener('input',()=>{ leave(); compute(true); render(); }));
+document.getElementById('win').addEventListener('input',()=>{ document.getElementById('winv').textContent=document.getElementById('win').value; render(); });
+document.getElementById('seed').addEventListener('change',()=>{ leave(); compute(true); render(); });
+document.getElementById('newseed').addEventListener('click',()=>{ let v=1; try{const a=new Uint32Array(1); crypto.getRandomValues(a); v=a[0]||1;}catch(e){v=(Date.now()>>>0)||1;}
+  document.getElementById('seed').value=v; document.getElementById('stream').value='coin'; leave(); compute(true); render(); });
+document.getElementById('theme').addEventListener('click',()=>{ const r=document.documentElement, cur=r.getAttribute('data-theme');
+  const dark=cur?cur==='dark':matchMedia('(prefers-color-scheme: dark)').matches; r.setAttribute('data-theme',dark?'light':'dark'); render(); });
+{ const cv=document.getElementById('cS'); let drag=null;
+  cv.addEventListener('pointerdown',e=>{drag=[e.clientX,e.clientY,yaw,pitch];});
+  cv.addEventListener('pointermove',e=>{ if(!drag) return; yaw=drag[2]+(e.clientX-drag[0])*0.01; pitch=Math.max(-1.5,Math.min(1.5,drag[3]+(e.clientY-drag[1])*0.01)); render(); });
+  cv.addEventListener('pointerup',()=>drag=null); cv.addEventListener('pointercancel',()=>drag=null); }
+showSpeed(); selftest(); compute(false); render();
+const PEN_VERSION="v0.3.5";
+// ---- run export for the curvature pen (fvlt-pen-run/0.1) ----
+function caTooth(rule, T){ // q AND r of the centre pair, single black seed (the tooth of Rule 30)
+  const W=2*T+5, mid=T+2; let a=new Uint8Array(W), b=new Uint8Array(W); a[mid]=1; const out=[];
+  for(let t=0;t<T;t++){ out.push(a[mid]&a[mid+1]);
+    for(let i=1;i<W-1;i++){ const L=a[i-1],C=a[i],R=a[i+1]; b[i]= rule===150 ? (L^C^R) : (L^(C|R)); } b[0]=0; b[W-1]=0; const x=a; a=b; b=x; }
+  return out;
+}
+function exportRun(id){
+  const q=shown.q, T=shown.T, which=document.getElementById('stream').value, sname={'30':'Rule 30','150':'Rule 150','coin':'Fair coin'}[which];
+  const tooth= which==='coin' ? null : caTooth(+which, T), turn={fraction:[q-2,2*q], label:'zeta_'+(2*q)+'^'+(q-2)};
+  const base={viewer:{name:'Curvature pen', version:PEN_VERSION},
+    stream:{name:sname, seed: which==='coin' ? ((+document.getElementById('seed').value)>>>0||1) : null, T, signs:Array.from(shown.s), tooth},
+    playback:{steps_per_second:speed()}};
+  const label=(p)=>{ const n=nm(p,q); return n ? ' ('+n.split(',')[0].split(';')[0]+')' : ''; };
+  if(id==='cS'){ const S=shown.S; if(!S) throw new Error('no spherical tiling for q = '+q);
+    const pts=S.path.pts, st=pathStats(pts, tooth), r=ratio(S.p,q);
+    return Object.assign(base,{file_stub:'curvature_sphere_'+S.p+'_'+q, view:{kind:'sphere'},
+      title:sname+' on the {'+S.p+','+q+'} sphere'+label(S.p), subtitle:'{'+S.p+','+q+'} · k = +1 · '+(edgeMode==='chord'?'straight edges: the true polyhedron':'edges on the sphere'),
+      rule:{kind:'pq', p:S.p, q, surface:'sphere', formula:'cos(l/2) = Re zeta_2p / Im zeta_2q', ratio:r, cos_edge:2*r*r-1, turn}, camera:{edgeMode},
+      geometry:{verts:S.M.verts.map(p=>p.map(r6)), edges:S.M.edges}, path:{points:pts.map(p=>p.map(r6))},
+      stats:{per_step:st, final:{steps:T, vertices:st.vertices[T], edges:st.edges[T], tooth:st.tooth[T], vertices_total:S.M.verts.length, edges_total:S.M.edges.length, machine_states:S.M.states.length}}}); }
+  if(id==='cP'){ const Pp=shown.P; if(!Pp) throw new Error('no flat tiling for q = '+q);
+    const draw=Pp.pts.map(a=>latticeDraw(q,a)), st=pathStats(draw, tooth);
+    return Object.assign(base,{file_stub:'curvature_plane_'+Pp.p+'_'+q, view:{kind:'plane'},
+      title:sname+' on the {'+Pp.p+','+q+'} plane'+label(Pp.p), subtitle:'{'+Pp.p+','+q+'} · k = 0 · exact '+(q===4?'Gaussian':'Eisenstein')+' integers',
+      rule:{kind:'pq', p:Pp.p, q, surface:'plane', turn},
+      exact:{basis: q===4 ? 'gaussian (1, i)' : 'eisenstein (1, omega)', lattice_points:Pp.pts},
+      geometry:{segments:Pp.lattice.map(([a,b])=>[...latticeDraw(q,a),...latticeDraw(q,b)].map(r6))},
+      path:{points:draw.map(p=>p.map(r6))},
+      stats:{per_step:st, final:{steps:T, lattice_points:st.vertices[T], edges:st.edges[T], tooth:st.tooth[T]}}}); }
+  if(id==='cH'){ const Hh=shown.H; if(!Hh) throw new Error('no hyperbolic tiling chosen');
+    let g={a:[1,0],b:[0,0]}; const pts=[[0,0]];
+    for(const sg of shown.s){ g=mul(mul(g, sg>0?Hh.moves.RL:Hh.moves.RR), Hh.moves.TE);
+      const m=Math.max(Math.hypot(g.a[0],g.a[1]), Math.hypot(g.b[0],g.b[1])); if(m>1e100) g={a:[g.a[0]/m,g.a[1]/m], b:[g.b[0]/m,g.b[1]/m]}; pts.push(point(g)); }
+    const st=pathStats(pts, tooth, Hh.ds), r=ratio(Hh.p,q);
+    return Object.assign(base,{file_stub:'curvature_disk_'+Hh.p+'_'+q, view:{kind:'disk'},
+      title:sname+' on the {'+Hh.p+','+q+'} hyperbolic plane', subtitle:'{'+Hh.p+','+q+'} · k = −1 · Poincaré disk, view follows the pen',
+      rule:{kind:'pq', p:Hh.p, q, surface:'hyperbolic', formula:'cosh(l/2) = Re zeta_2p / Im zeta_2q', ratio:r, edge_length:Hh.moves.L, turn},
+      disk:{edge_length:Hh.moves.L, turn_fraction:[q-2,2*q], follow_window:+document.getElementById('win').value},
+      geometry:{tiling_from_pen_flag:Hh.tiling.map(([a,b])=>[...a,...b].map(r6))},
+      path:{points_absolute:pts.map(p=>p.map(r6)), distance:Hh.ds.map(r6)},
+      stats:{per_step:st, final:{steps:T, distance:r6(Hh.ds[T]), max_distance:r6(Math.max(...Hh.ds)), tooth:st.tooth[T], note:'vertex and edge counts use absolute positions rounded to 1e-6; far from the start the disk compresses distinct vertices, so these counts are lower bounds'}}}); }
+  throw new Error('unknown view '+id);
+}
+skinSelftest();
+setupFullscreen([{id:'cS',kind:'sphere',title:'Sphere S² (k = +1)'},{id:'cP',kind:'plane',title:'Plane ℝ² (k = 0)'},{id:'cH',kind:'disk',title:'Poincaré disk H² (k = −1)'}]);
+</script>
+</body>
+</html>

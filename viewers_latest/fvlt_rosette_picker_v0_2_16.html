@@ -1,0 +1,2453 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FVLT Rosette Picker</title>
+<!-- v0.2.1 (2026-10-20): roll history list added by Claude Opus 5.5 at saphir's request; successor of FVLT_DICE_v0_2_20261019/fvlt_rosette.html -->
+<!-- v0.2.2 (2026-10-20): zoom for the rosette column, Claude Opus 5.5 at saphir's request; successor of FVLT_DICE_v0_2_1_20261020/fvlt_rosette.html -->
+<!-- v0.2.3 (2026-10-20): spiral mode (fair two-stage pick, spiral first), naive-rule comparison, hyperbolic spiral curve; builder Claude Sonnet 5.5, requested by saphir; successor of FVLT_DICE_v0_2_2_20261020/fvlt_rosette.html -->
+<!-- v0.2.4 (2026-10-20): three exact optimisations of v0.2.3, outputs unchanged: contact readout by pairing r with s/r, orbit counts by formula 2N/gcd(N-1,2N), light spiral-first sampler (no global tables); proposed and proved by Claude Opus 5.5 at saphir's request; builder Claude Sonnet 5.5; successor of FVLT_DICE_v0_2_3_20261020/fvlt_rosette.html -->
+<!-- v0.2.5 chart text fix (Opus verifier, 2026-10-20): titles and legends moved out of the charts into page text, larger axis numbers on phones. -->
+<!-- v0.2.5 (2026-10-20): batch run with live graphs (histogram, running even share, spiral counts, chi-square); one buffered secure word source shared by every draw; builder Claude Sonnet 5.5, requested by saphir; successor of FVLT_DICE_v0_2_4_20261020/fvlt_rosette.html -->
+<!-- v0.2.6 (2026-10-20): comparison views in the batch run (spirals chosen in both modes, crossing index m = s/n, the naive rule as the inverse divisor function); builder Claude Sonnet 5.5, requested by saphir; successor of FVLT_DICE_v0_2_5_20261020/fvlt_rosette.html with the Opus chart-text fix -->
+<!-- v0.2.7 tick fix (Opus verifier, 2026-10-20): log-axis ticks at either edge are aligned inward, and a tick label whose box would touch the previous one is dropped. -->
+<!-- v0.2.7 (2026-10-20): p-adic panel in the batch run (residues mod p, running share divisible by p with the gap stream, layer ruler, exact levels as fractions, mean valuation); idea saphir; exact levels and design Claude Opus 5.5; builder Claude Sonnet 5.5; successor of FVLT_DICE_v0_2_6_20261020/fvlt_rosette.html -->
+<!-- v0.2.8 (2026-10-20): simple front view; the page opens with the roll, the rosette and its Div line, everything else folded into six named sections that open with one tap (open state remembered, Open all / Close all); charts in a closed section are redrawn when it opens; builder Claude Sonnet 5.5, requested by saphir; successor of FVLT_DICE_v0_2_7_20261020/fvlt_rosette.html -->
+<!-- v0.2.9 (2026-11-07): random-bits dial. Every draw takes 32-bit words from one source: the browser's secure generator (default, as before) or Rule 30's centre column from a single black cell (bits MSB-first from rule30_center_4194304.bin, sha256 d3688fcb…, 4,194,304 bits computed on nucleus and checked against a plain simulation and Wolfram's CellularAutomaton). A batch run with Rule 30 restarts at bit 0, so runs are reproducible; the existing fair (rosette) expectations and the naive overlay are the comparison. Idea saphir ("compare rule 30 to the naive rule and rosette"); Claude Opus 5.5; successor of FVLT_DICE_v0_2_8_20261020 (VIEWERS_LATEST/fvlt_rosette_picker_v0_2_8.html e40b6920…). -->
+<!-- v0.2.10 (2026-11-07): "Compare all three" button and table. One tap runs, roll by roll in one batch, the fair rosette pick with Rule 30 bits, the naive rule with Rule 30 bits, and the fair rosette pick with secure bits as the reference, and shows their statistics side by side at the top of the page. saphir: "I wanted to see all three stats". Claude Opus 5.5; successor of FVLT_DICE_v0_2_9_RULE30_SOURCE_20261107. -->
+<!-- v0.2.11 (2026-11-07): p-adic view inside "Rule 30 vs real random": residues mod p and the layer ruler, Rule 30 (red) and real random (blue) side by side against exact levels, for the rosette and the naive rule. saphir: "It feels so different from before when I could see both in p-adic". Claude Opus 5.5; successor of FVLT_DICE_v0_2_10_THREE_WAY_20261107. -->
+<!-- v0.2.12 (2026-11-07): fixes from Gemini's view review (bus #1975): p-adic comparison charts use the page's colour tokens, so dark mode works (band, level line, grid, labels); red and blue dots spaced apart and sized to the column; "real randoms" reworded as the browser's secure random bits. saphir: "Yes to Gemini". Claude Opus 5.5; successor of FVLT_DICE_v0_2_11_PADIC_COMPARE_20261107. -->
+<!-- v0.2.13 (2026-11-07): statistical wording from Astra's review of bus #1973 (R3): the naive rule's own law is named as its null model; verdicts say "not rejected" or "rejected at 0.01", not "fits" or "equal"; caveats added that p-values and bands assume independent uniform-like draws, that overlapping summaries are dependent, and that bands are per point, not simultaneous. Claude Opus 5.5; successor of FVLT_DICE_v0_2_12_DARK_FIX_20261107. -->
+<!-- v0.2.14 (2026-11-08): longer Rule 30 bits. The page accepts either rule30_center_16777216.bin (2^24 bits, 2,097,152 bytes; computed on scout, its first 524,288 bytes are byte-identical to the 2^22 file) or rule30_center_4194304.bin (2^22 bits); the header bits are checked in both cases, and the bit count and R30WORDS follow the file actually loaded. It fetches the larger file first, then the smaller. Wording: the load label names both files; the bits-used-up messages say how many rolls each file allows; the two CSV headers name the file actually loaded (they had the 2^22 file name fixed in the code). Nothing else changed; the v0.2.9 help item still describes the 2^22 file. saphir's request ("yes" to a longer Rule 30 bits file so a batch can reach 100,000 rolls). Claude Opus 5.5; successor of FVLT_DICE_v0_2_13_WORDING_20261107 (fvlt_rosette_picker_v0_2_13.html 1668d0a3…). -->
+<!-- v0.2.15 (2026-11-08): new section "Entropy (FVLT)": for the current maximum M, H(N), H(S), H(N|S), H(S|N) and the chain rule for the fair law and the naive rule, the naive deficit log2 M - H(P_N) = KL(P_N || uniform), a plain reading, and status labels (proved in Lean / classical / computed here). After a batch run, the plug-in entropy of the picks against log2 M with the Miller-Madow note, in the batch statistics, in this section and in the "Rule 30 vs real random" cards (with one sentence added to their note). A help item for v0.2.15; the v0.2.9 help item now names both bits files; CSV headers say v0.2.15. Nothing else changed. saphir: "I want the fvlt version to be in the two rosette programs". Claude Opus 5.5 (builder for the Fourier viewer track owner); successor of FVLT_DICE_v0_2_14_LONG_RULE30_20261108 (fvlt_rosette_picker_v0_2_14.html d74d9650…). -->
+<!-- v0.2.16 (2026-11-09): library status. The four entropy modules FVLTRosetteEntropyV1, FVLTRosetteFairBridgeV1, FVLTDivisorBoltzmannV1 and FVLTRosetteLogLossV1 are published in library v36+3 (library SHA256SUMS 3db18131…, 527 entries; verified on nucleus, scout and membrane; independently audited); FVLTDiceExactV1 since v36+2. The status label and the help item say so. In the Entropy (FVLT) section: the reverse direction D(U || P_N) (fair data scored by the naive predictor) for the current M next to D(P_N || U), with its Lean status (FVLTRosetteLogLossV1.fair_data_naive_predictor_pos; both orientations are cross-entropy minus entropy), and one temperature line (divisor Boltzmann law as a softmax, the fair rosette law as the zero-logit softmax on 1..M). CSV headers say v0.2.16. Nothing else changed. saphir: "Yes". Claude Opus 5.5 (builder for the Fourier viewer track owner); successor of FVLT_DICE_v0_2_15_ENTROPY_20261108 (fvlt_rosette_picker_v0_2_15.html 037cf891…). -->
+<style>
+  .tcard { border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; margin: 10px 0; font-size: 15px; }
+  .tcard h3 { margin: 0 0 6px; font-size: 16px; }
+  .tcard .row { display: flex; justify-content: space-between; gap: 12px; padding: 2px 0; }
+  .tcard .v { font-family: var(--font-mono); text-align: right; }
+  .tcard .verdict { margin-top: 6px; font-weight: 600; }
+  #src-tools[hidden], #r30-file-lab[hidden] { display: none !important; }
+  :root {
+    --bg: #f2f4f7;
+    --surface: #ffffff;
+    --fg: #121c27;
+    --muted: #566474;
+    --line: #d5dbe3;
+    --accent: #2a4fc4;
+    --accent-fg: #ffffff;
+    --accent-soft: #e3e9fb;
+    --warm: #b4500a;
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e151c; --surface: #151e27; --fg: #e5eaf0; --muted: #94a3b3;
+      --line: #2b3a49; --accent: #8aa5ff; --accent-fg: #0e151c; --accent-soft: #1d2a4a;
+      --warm: #ffb070;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e151c; --surface: #151e27; --fg: #e5eaf0; --muted: #94a3b3;
+    --line: #2b3a49; --accent: #8aa5ff; --accent-fg: #0e151c; --accent-soft: #1d2a4a;
+    --warm: #ffb070;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html { overflow-x: hidden; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font-family: var(--font-body); font-size: 15px; line-height: 1.55;
+    padding: 24px 16px 48px;
+  }
+  .wrap { max-width: 980px; margin: 0 auto; display: flex; flex-direction: column; gap: 20px; }
+  h1 { font-size: clamp(26px, 6vw, 38px); line-height: 1.1; margin: 0 0 6px; letter-spacing: -0.01em; }
+  h2 {
+    font-family: var(--font-mono); font-weight: 500; font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.1em; color: var(--muted); margin: 0 0 12px;
+  }
+  .lede { margin: 0; color: var(--muted); max-width: 66ch; }
+  .grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  @media (min-width: 820px) { .grid { grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); } }
+  .col { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+  .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px; min-width: 0; }
+  .controls { display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; }
+  label { display: flex; flex-direction: column; gap: 4px; font-size: 13px; color: var(--muted); }
+  input[type=number] {
+    font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line);
+    border-radius: 8px; padding: 9px 10px; width: 120px;
+  }
+  button {
+    font: inherit; font-weight: 600; cursor: pointer; border-radius: 8px; padding: 10px 24px;
+    border: 1px solid var(--accent); background: var(--accent); color: var(--accent-fg);
+  }
+  button:hover { filter: brightness(1.08); }
+  button:focus-visible, input:focus-visible { outline: 3px solid var(--accent-soft); outline-offset: 2px; box-shadow: 0 0 0 1px var(--accent); }
+  .err { color: var(--warm); font-size: 13px; min-height: 1.2em; margin-top: 8px; }
+  svg { width: 100%; height: auto; display: block; max-width: 520px; margin: 0 auto; }
+  svg .ringc { fill: none; stroke: var(--line); stroke-width: 0.6; }
+  svg .axis { stroke: var(--muted); stroke-width: 0.8; opacity: 0.6; }
+  svg .dot { fill: var(--muted); opacity: 0.75; }
+  svg .cpos { fill: var(--accent); }
+  svg .cneg { fill: var(--warm); }
+  svg .lab { font-family: var(--font-mono); font-size: 9px; fill: var(--fg); text-anchor: middle; }
+  svg .olab { font-family: var(--font-mono); font-size: 8px; fill: var(--muted); text-anchor: middle; dominant-baseline: central; }
+  svg .walk { fill: none; stroke: var(--muted); stroke-width: 0.6; opacity: 0.7; }
+  svg .og { fill: none; stroke: var(--line); stroke-width: 1; }
+  svg .hit { fill: var(--accent); stroke: var(--accent); }
+  svg .miss { fill: var(--surface); stroke: var(--warm); stroke-width: 1.4; }
+  .big { font-family: var(--font-mono); font-size: 34px; font-weight: 700; line-height: 1.1; }
+  .detail { font-family: var(--font-mono); font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+  .zoombar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-top: 10px; font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+  .zoombar button { min-width: 40px; }
+  #ros { cursor: zoom-in; touch-action: pan-y; }
+  #ros.zoomed { cursor: grab; touch-action: none; }
+  #tbl tbody tr { cursor: zoom-in; }
+  #tbl tbody tr:hover td { background: var(--accent-soft); }
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 16px; font-size: 13px; color: var(--muted); margin-top: 10px; }
+  .legend i { display: inline-block; width: 10px; height: 10px; margin-right: 6px; vertical-align: -1px; }
+  .tw { overflow-x: auto; max-height: 280px; overflow-y: auto; margin-top: 10px; border: 1px solid var(--line); border-radius: 8px; }
+  table { border-collapse: collapse; width: 100%; font-family: var(--font-mono); font-size: 12px; }
+  th, td { padding: 5px 8px; text-align: right; border-bottom: 1px solid var(--line); white-space: nowrap; }
+  th { color: var(--muted); font-weight: 500; position: sticky; top: 0; background: var(--surface); }
+  .note { margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .note b { color: var(--fg); font-weight: 600; }
+  ul.facts { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; }
+  ul.facts li { padding-left: 12px; border-left: 2px solid var(--line); }
+  code, .mono { font-family: var(--font-mono); font-size: 0.92em; }
+  .hhead { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin-top: 16px; font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+  .hhead .sp { flex: 1; }
+  button.ghost { background: transparent; color: var(--fg); border-color: var(--line); padding: 6px 12px; font-size: 13px; }
+  .hist { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; max-height: 168px; overflow-y: auto; }
+  .hist:empty::before { content: "No rolls yet."; font-size: 13px; color: var(--muted); }
+  button.chip { font-family: var(--font-mono); font-size: 13px; font-variant-numeric: tabular-nums; min-width: 42px; padding: 5px 8px; border-radius: 6px; background: var(--surface); color: var(--fg); border: 1px solid var(--line); }
+  button.chip.prime { border-style: dashed; }
+  button.chip.cur { background: var(--accent); color: var(--accent-fg); border: 1px solid var(--accent); }
+  fieldset.mode { border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px 8px; margin: 0; display: flex; gap: 14px; align-items: center; flex-wrap: wrap; }
+  fieldset.mode legend { font-size: 13px; color: var(--muted); padding: 0 4px; }
+  fieldset.mode label { flex-direction: row; align-items: center; gap: 6px; color: var(--fg); font-size: 14px; }
+  svg .spiral { fill: none; stroke: var(--accent); stroke-width: 0.9; opacity: 0.6; stroke-linejoin: round; }
+  svg .hl { fill: none; stroke: var(--accent); stroke-width: 1.6; }
+  svg .lab.hlab { font-weight: 700; font-size: 11px; fill: var(--accent); }
+  #tbl tbody tr.pick td { background: var(--accent-soft); font-weight: 700; }
+  .frac { font-family: var(--font-mono); font-size: 14px; overflow-wrap: anywhere; color: var(--fg); }
+  .sline { margin: 6px 0; font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+  .sline b { color: var(--fg); }
+  .naive { margin-top: 14px; border-top: 1px dashed var(--line); padding-top: 12px; }
+  .naive h3 { font-family: var(--font-mono); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--warm); margin: 0 0 8px; }
+  svg#nchart { max-width: 520px; }
+  svg#nchart text { font-family: var(--font-mono); font-size: 8px; fill: var(--muted); }
+  svg#nchart .nd { stroke: var(--muted); stroke-width: 1.3; stroke-linecap: round; fill: none; opacity: 0.8; }
+  svg#nchart .fair { stroke: var(--accent); stroke-width: 1; }
+  svg#nchart .gridl { stroke: var(--line); stroke-width: 0.5; }
+  svg#nchart .rm { fill: none; stroke: var(--warm); stroke-width: 1.6; }
+  .bsel { font: inherit; color: var(--fg); background: var(--bg); border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; }
+  label.chk { flex-direction: row; align-items: center; gap: 8px; color: var(--fg); font-size: 14px; margin-top: 10px; }
+  .bfig { margin: 18px 0 0; }
+  .bfig h3 { font-family: var(--font-mono); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); margin: 0 0 6px; }
+  svg.bsvg { max-width: 720px; }
+  svg.bsvg { font-size: 8.5px; }
+  svg.bsvg text { font-family: var(--font-mono); fill: var(--muted); }
+  @media (max-width: 600px) { svg.bsvg { font-size: 15px; } }
+  .bcap { font-family: var(--font-mono); font-size: 12px; color: var(--muted); margin-top: 4px; display: flex; flex-direction: column; gap: 2px; }
+  .bcap .nvl { color: var(--warm); }
+  svg.bsvg .gl { stroke: var(--line); stroke-width: 0.6; }
+  svg.bsvg .gl0 { fill: none; stroke: var(--line); stroke-width: 0.6; }
+  svg.bsvg .bar { fill: var(--accent); opacity: 0.8; }
+  svg.bsvg .band { fill: var(--fg); opacity: 0.13; }
+  svg.bsvg .expl { fill: none; stroke: var(--fg); stroke-width: 1.1; }
+  svg.bsvg .nv { fill: none; stroke: var(--warm); stroke-width: 1.5; }
+  svg.bsvg .nvt { fill: var(--warm); }
+  svg.bsvg text.nvl { fill: var(--warm); }
+  svg.bsvg .ln { fill: none; stroke: var(--accent); stroke-width: 1.2; }
+  svg.bsvg .funnel { fill: var(--fg); opacity: 0.13; }
+  svg.bsvg .fairl { stroke: var(--fg); stroke-width: 0.9; stroke-dasharray: 3 2; }
+  svg.bsvg { touch-action: pan-y; }
+  svg.bsvg.zoomed { touch-action: none; cursor: grab; }
+  svg.bsvg:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  .bfig .zoombar { margin-top: 6px; }
+  svg.bsvg .funnel2 { fill: var(--muted); opacity: 0.08; }
+  svg.bsvg .fairs { stroke: var(--fg); stroke-width: 0.9; stroke-dasharray: 1 2.5; }
+  svg.bsvg .ln2 { fill: none; stroke: var(--muted); stroke-width: 1.4; stroke-dasharray: 5 2.5; }
+  svg.bsvg .nvlaw { fill: none; stroke: var(--warm); stroke-width: 0.8; }
+  svg.bsvg .shade { fill: var(--warm); opacity: 0.09; }
+  svg.bsvg .pdot { fill: var(--accent); stroke: var(--surface); stroke-width: 0.5; }
+  .bfig table.cmp { margin-top: 0; }
+  .bfig table.cmp th, .bfig table.cmp td { padding: 5px 6px; }
+  .bfig .tw.small { max-height: none; }
+  .bfig label.chk { margin: 4px 0 6px; }
+  .bstats { margin-top: 16px; border: 1px solid var(--line); border-radius: 8px; padding: 10px 12px; }
+  .bstats .sline { margin: 4px 0; }
+  .bbtns { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 12px; }
+  svg.bsvg .bar2 { fill: var(--muted); opacity: 0.75; }
+  svg.bsvg .ln3 { fill: none; stroke: var(--warm); stroke-width: 1.6; stroke-dasharray: 1.5 2.5; stroke-linecap: round; }
+  svg.bsvg .funnel3 { fill: var(--warm); opacity: 0.1; }
+  svg.bsvg .fairg { stroke: var(--warm); stroke-width: 0.9; stroke-dasharray: 1 2.5; }
+  svg.bsvg .dotn { fill: var(--accent); stroke: var(--surface); stroke-width: 0.6; }
+  svg.bsvg .dots { fill: var(--muted); stroke: var(--surface); stroke-width: 0.6; }
+  svg.bsvg .whisk { stroke: var(--fg); stroke-width: 1.1; opacity: 0.55; }
+  .pdwrap { margin-top: 22px; border-top: 1px solid var(--line); padding-top: 14px; }
+  .pdwrap h3.pdh { font-family: var(--font-mono); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin: 0 0 8px; }
+  .pdwrap table.cmp th, .pdwrap table.cmp td { padding: 5px 6px; }
+  .pdwrap .tw { max-height: none; }
+  .hnote { margin-top: 8px; font-size: 13px; color: var(--muted); min-height: 1.4em; }
+
+  .fold { display: flex; flex-direction: column; gap: 10px; }
+  .foldbar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .foldbar .foldhead { font-family: var(--font-mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); }
+  .foldbar .sp { flex: 1; }
+  details.sec { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; min-width: 0; }
+  details.sec > summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: 20px minmax(0, 1fr); column-gap: 8px; align-items: start; padding: 14px 16px; border-radius: 10px; }
+  details.sec > summary::-webkit-details-marker { display: none; }
+  details.sec > summary::before { content: ""; width: 8px; height: 8px; margin: 7px 0 0 4px; border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent); transform: rotate(-45deg); transition: transform 0.12s; grid-row: 1 / span 2; }
+  details.sec[open] > summary::before { transform: rotate(45deg); margin-top: 5px; }
+  details.sec > summary:hover { background: var(--accent-soft); }
+  details.sec > summary:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+  summary .stitle { font-weight: 600; font-size: 16px; grid-column: 2; }
+  summary .sdesc { grid-column: 2; font-size: 13px; color: var(--muted); overflow-wrap: anywhere; }
+  .secbody { padding: 0 16px 16px; min-width: 0; }
+  .secbody > .naive:first-child { margin-top: 0; }
+  .big { margin-top: 12px; }
+  /* v0.2.15: entropy section */
+  .ent .tw { max-height: none; }
+  .ent table.etab th:first-child, .ent table.etab td:first-child { text-align: left; }
+  .ent .stat { display: inline-block; font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.06em; padding: 1px 6px; border-radius: 4px; border: 1px solid var(--line); color: var(--fg); margin-right: 6px; white-space: nowrap; }
+  .ent .stat.lean { border-color: var(--accent); color: var(--accent); }
+  .ent .stat.cls { border-style: dashed; }
+  .ent .stat.cmp { color: var(--warm); border-color: var(--warm); }
+  .ent ul.facts { font-size: 14px; }
+  .ent ul.facts li { overflow-wrap: anywhere; }
+  #ent-rkl, #ent-rkl-read, #ent-temp { overflow-wrap: anywhere; }   /* v0.2.16: long Lean names wrap on phones */
+  .ent table.etab th, .ent table.etab td { white-space: normal; }
+  .ent table.etab td:first-child { min-width: 8em; }
+  .ent h3 { font-family: var(--font-mono); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--muted); margin: 16px 0 8px; }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>FVLT Rosette Picker</h1>
+    <p class="lede">Roll a number; the rings that touch the axis in its column are its divisors.</p>
+  </header>
+
+  <section class="panel" aria-labelledby="h-ctl">
+    <h2 id="h-ctl">Roll</h2>
+    <div class="controls">
+      <label for="max">Maximum (1 to 5041)
+        <input id="max" type="number" min="1" max="5041" step="1" value="100" inputmode="numeric">
+      </label>
+      <fieldset class="mode" id="modeset">
+        <legend>Mode</legend>
+        <label for="mode-plain"><input type="radio" name="mode" id="mode-plain" value="plain" checked> Plain</label>
+        <label for="mode-spiral"><input type="radio" name="mode" id="mode-spiral" value="spiral"> Spiral</label>
+      </fieldset>
+      <fieldset class="mode" id="srcset">
+        <legend>Random bits</legend>
+        <label for="src-secure"><input type="radio" name="src" id="src-secure" value="secure" checked> Secure</label>
+        <label for="src-rule30"><input type="radio" name="src" id="src-rule30" value="rule30"> Rule 30</label>
+      </fieldset>
+      <button id="roll" type="button">Roll</button>
+      <button id="three-go" type="button">Rule 30 vs real random</button>
+    </div>
+    <div id="three-panel" hidden>
+      <h2 style="margin-top:12px">Rule 30 vs real random, under the rosette and the naive rule</h2>
+      <div class="detail" id="three-prog"></div>
+      <div id="three-cards"></div>
+      <div id="three-padic" hidden>
+        <h3 style="margin-top:14px">p-adic view: Rule 30 vs real random</h3>
+        <div class="controls">
+          <label for="three-p">Prime p
+            <select id="three-p" class="bsel"><option value="2">2</option><option value="3" selected>3</option><option value="5">5</option><option value="7">7</option></select>
+          </label>
+        </div>
+        <div class="note"><b style="color:#c62828">●</b> Rule 30 bits &nbsp; <b style="color:#1565c0">●</b> real random (secure) bits &nbsp; <b>—</b> exact level, with a grey ±2σ band for this many rolls.</div>
+        <h3>Residues mod p</h3>
+        <svg id="three-res" class="bsvg" viewBox="0 0 360 230" role="img" aria-label="Share of each residue mod p, rosette and naive rule, Rule 30 and real random bits, with exact levels"></svg>
+        <h3>Layer ruler: share divisible by p<sup>k</sup></h3>
+        <svg id="three-lay" class="bsvg" viewBox="0 0 360 230" role="img" aria-label="Share divisible by p to the k, rosette and naive rule, Rule 30 and real random bits, log scale, with exact levels"></svg>
+        <div class="note" id="three-padic-note"></div>
+      </div>
+      <div class="note" id="three-note">Wolfram used Rule 30 as a random number generator; FVLT's reference draws use the browser's secure random bits (crypto.getRandomValues, a cryptographic generator). Each roll makes four picks: the fair rosette pick and the naive rule (a spiral uniformly, then a divisor uniformly), each once with Rule 30 bits and once with secure bits. The first card asks directly whether Rule 30 and secure bits give the same distribution (two-sample chi-square). Uniform 1/M is the fair rosette law. A small p (say below 0.01) means the counts disagree with that law. For the naive rule its own exact law is the appropriate null model; uniform is not its law. A p of 0.01 or more means "not rejected in this run", not "equal". The p-values and the ±2σ bands assume independent, uniform-like draws; the summaries overlap and are not independent of one another, and each band is for one point, not for all points at once. Statistics are floats and are evidence only. Each card also gives the plug-in entropy of its picks; it runs low by about (M − 1)/(2T ln 2) bits for T rolls (Miller–Madow), so a gap of that size is expected. Spiral mode, maximum from the box above; the graphs are under More → Batch run and graphs.</div>
+    </div>
+    <div class="note" id="src-line">Random bits: the browser's secure generator.</div>
+    <div class="controls" id="src-tools" hidden>
+      <button class="ghost" id="r30-reset" type="button">Restart Rule 30 bits at 0</button>
+      <label for="r30-file" id="r30-file-lab" hidden>Load rule30_center_16777216.bin or rule30_center_4194304.bin
+        <input id="r30-file" type="file" accept=".bin,application/octet-stream">
+      </label>
+    </div>
+    <div class="err" id="err" role="alert"></div>
+    <div class="hhead">
+      <span id="hcount">0 rolls</span><span id="hdist"></span><span class="sp"></span>
+      <button class="ghost" id="hclear" type="button">Clear list</button>
+    </div>
+    <div class="hist" id="hist" role="list" aria-label="Numbers rolled, newest first"></div>
+  </section>
+
+  <section class="panel" aria-labelledby="h-ros">
+    <h2 id="h-ros">Rosette column for s</h2>
+    <div class="note" id="ros-hint">Press Roll to draw the column.</div>
+    <svg id="ros" viewBox="-170 -170 340 340" role="img" aria-label="Rings of the rosette column with contact points on the real axis"></svg>
+    <div class="zoombar">
+      <button class="ghost" id="zout" type="button" aria-label="Zoom out">&minus;</button>
+      <button class="ghost" id="zin" type="button" aria-label="Zoom in">+</button>
+      <button class="ghost" id="zfit" type="button">Fit</button>
+      <span id="zread">zoom &times;1</span>
+    </div>
+    <div class="big" id="s-out">s = &ndash;</div>
+    <div class="detail" id="div">Div(s) = &ndash;</div>
+    <div class="detail" id="sp-line" hidden></div>
+    <div class="note" id="degen"></div>
+  </section>
+
+  <div class="fold">
+    <div class="foldbar">
+      <span class="foldhead">More, one tap each</span>
+      <span class="sp"></span>
+      <button class="ghost" id="open-all" type="button">Open all</button>
+      <button class="ghost" id="close-all" type="button">Close all</button>
+    </div>
+
+    <details class="sec" id="sec-contact" data-key="contact">
+      <summary><span class="stitle">Contact table</span><span class="sdesc">Every ring in the column with its phi3, ray and phase.</span></summary>
+      <div class="secbody">
+        <div class="detail" id="win">window: n1 = &ndash;, F = &ndash;</div>
+        <div class="tw"><table id="tbl"><thead><tr><th>ring n3</th><th>phi3</th><th>ray</th><th>phase (turns)</th><th>e of 2*n3</th></tr></thead><tbody></tbody></table></div>
+        <div class="note">Tap a row to zoom the rosette to that ring.</div>
+        <div class="detail" style="margin-top:8px" id="redraw">redraws so far: 0</div>
+      </div>
+    </details>
+
+    <details class="sec" id="sec-spiral" data-key="spiral">
+      <summary><span class="stitle">Spiral mode: the fair pick in detail</span><span class="sdesc">Exact P(s), P(n | s), the crossing index and the naive rule for comparison.</span></summary>
+      <div class="secbody">
+        <div class="note" id="sp-empty">Switch to Spiral mode and roll to fill this section.</div>
+      <div id="spiral-panel" hidden>
+        <h2 id="h-spiral">Spiral mode: the fair pick</h2>
+        <div class="big" id="sp-n">n = &ndash;</div>
+        <div class="sline">spiral <b id="sp-s">s</b>, probability <b>P(s)</b> = <span class="frac" id="sp-ps"></span> <span id="sp-ps-a"></span></div>
+        <div class="sline">crossing index <b>m = s/n</b> = <span class="frac" id="sp-m"></span>; <b>P(n | s)</b> = <span class="frac" id="sp-pns"></span> <span id="sp-pns-a"></span></div>
+        <div class="sline" id="sp-div"></div>
+        <div class="sline"><b>P(n) = 1/M exactly.</b> <span id="sp-pn"></span></div>
+        <div class="naive" id="naive">
+          <h3>Naive rule (not used)</h3>
+          <div class="sline">naive P(n) = <span class="frac" id="nv-frac"></span> <span id="nv-a"></span></div>
+          <div class="sline" id="nv-ratio"></div>
+          <svg id="nchart" viewBox="0 0 320 170" role="img" aria-label="Naive probability of each number times the maximum, log scale, against n"></svg>
+          <div class="note" id="nv-note"></div>
+          <div class="note">The naive rule (a spiral uniformly, then a divisor of it uniformly) is shown only for comparison. It never picks anything here.</div>
+        </div>
+        </div>
+      </div>
+    </details>
+
+    <details class="sec" id="sec-entropy" data-key="entropy">
+      <summary><span class="stitle">Entropy (FVLT)</span><span class="sdesc" id="ent-sum">How many bits the fair pick and the naive rule carry, stage by stage, for the current maximum.</span></summary>
+      <div class="secbody ent" id="ent-panel">
+        <div class="sline" id="ent-head">Maximum M = &ndash;</div>
+        <div class="note">S is the spiral, N is the pick. q(d) = floor(M/d) is the number of spirals through d, and tau(s) is the number of divisors of s. <b>Fair law:</b> P(s, n) = 1/(M&middot;q(n)) for n | s, s &le; M. <b>Naive rule:</b> P(s, n) = 1/(M&middot;tau(s)) for n | s. Entropies are shown in bits; the Lean proofs use nats, and the statements are the same.</div>
+        <div class="tw"><table class="etab" id="ent-tab"><thead><tr><th>entropy (bits)</th><th>fair law</th><th>naive rule</th></tr></thead><tbody></tbody></table></div>
+        <div class="sline" id="ent-chain"></div>
+        <div class="sline" id="ent-kl"></div>
+        <div class="sline" id="ent-rkl"></div>
+        <div class="note" id="ent-rkl-read">Reading the two directions: in D(X &Vert; Y) the first argument is the data and the second is the predictor. D(P<sub>N</sub> &Vert; U) scores the naive rule's picks with the fair predictor; D(U &Vert; P<sub>N</sub>) scores fair picks with the naive rule as the predictor. Both are cross-entropy minus entropy. In general the two numbers differ; at M = 3 they happen to coincide (both exactly 1/3 bit).</div>
+        <div class="note" id="ent-temp">Temperature: the divisor Boltzmann law d<sup>&minus;&beta;</sup>/Z<sub>N</sub>(&beta;) is a softmax with logits &minus;log d at temperature T = 1/&beta; (FVLTDivisorBoltzmannV1.divisor_mass_eq_softmax); the fair rosette law is the zero-logit softmax on 1..M (FVLTRosetteLogLossV1.fair_rosette_eq_zero_logit_softmax), a different support from the &beta; = 0 divisor gas.</div>
+        <div class="sline" id="ent-pairs"></div>
+        <div class="note" id="ent-degen"></div>
+        <h3>Plain reading</h3>
+        <div class="note" id="ent-read"></div>
+        <h3>Status</h3>
+        <ul class="facts">
+          <li><span class="stat lean">Proved in Lean</span>The fair law is uniform, so H(P<sub>F</sub>) = log M (FVLTDiceExactV1, in the library since v36+2, together with FVLTRosetteFairBridgeV1). The naive rule's pick is strictly below log M for M &ge; 2, and log M &minus; H(P<sub>N</sub>) = KL(P<sub>N</sub> &Vert; U) (FVLTRosetteEntropyV1). The four entropy modules FVLTRosetteEntropyV1, FVLTRosetteFairBridgeV1, FVLTDivisorBoltzmannV1 and FVLTRosetteLogLossV1 are published in library v36+3 (library SHA256SUMS 3db18131…, 527 entries; verified on nucleus, scout and membrane; independently audited). The first two were built by Codex.</li>
+          <li><span class="stat lean">Proved in Lean</span>The reverse direction D(U &Vert; P<sub>N</sub>) is &gt; 0 for M &ge; 2 (FVLTRosetteLogLossV1.fair_data_naive_predictor_pos); both orientations are cross-entropy minus entropy (crossEntropy_sub_entropy_eq_finiteKL). The value shown for the current M is computed here (float).</li>
+          <li><span class="stat cls">Classical</span>The chain rule H(N) = H(S) + H(N|S) &minus; H(S|N), since H(S) + H(N|S) = H(S, N) = H(N) + H(S|N).</li>
+          <li><span class="stat cmp">Computed here</span>The numbers in the table: the exact laws above, evaluated in this browser, with logarithms as floats. The closed forms used: fair H(N) = log<sub>2</sub> M, fair H(S|N) = (1/M) &Sigma;<sub>n</sub> log<sub>2</sub> q(n), naive H(S) = log<sub>2</sub> M, naive H(N|S) = (1/M) &Sigma;<sub>s</sub> log<sub>2</sub> tau(s); the other entries are summed directly from the joint law, so the chain-rule line is a real check.</li>
+        </ul>
+        <h3>From the last batch run</h3>
+        <div class="note" id="ent-batch">No batch run yet. After a run (More &rarr; Batch run and graphs) the plug-in entropy of the picks is shown here against log<sub>2</sub> M.</div>
+      </div>
+    </details>
+
+    <details class="sec" id="sec-orbit" data-key="orbit">
+      <summary><span class="stitle">Orbit of ring s</span><span class="sdesc">Where ring N = s lands on the unit circle as s walks.</span></summary>
+      <div class="secbody">
+        <svg id="orb" viewBox="-130 -130 260 260" role="img" aria-label="Orbit of ring N on the unit circle in walk order"></svg>
+        <div class="note" id="orb-note">Press Roll.</div>
+      </div>
+    </details>
+
+    <details class="sec" id="sec-batch" data-key="batch">
+      <summary><span class="stitle">Batch run and graphs</span><span class="sdesc" id="b-sum">Batch run: no run yet</span></summary>
+      <div class="secbody" id="batch-panel">
+    <div class="controls">
+      <label for="b-total">Number of rolls
+        <select id="b-total" class="bsel">
+          <option value="100">100</option><option value="1000">1,000</option><option value="10000" selected>10,000</option><option value="100000">100,000</option><option value="1000000">1,000,000</option>
+        </select>
+      </label>
+      <button id="b-start" type="button">Start</button>
+      <button class="ghost" id="b-stop" type="button" disabled>Stop</button>
+      <button class="ghost" id="b-clear" type="button">Clear</button>
+    </div>
+    <label class="chk" for="b-naive"><input type="checkbox" id="b-naive"> Also run the naive rule (comparison only)</label>
+    <div class="note" id="b-using"></div>
+    <div class="err" id="b-err" role="alert"></div>
+    <div class="detail" id="b-prog" aria-live="off">No batch run yet.</div>
+    <div class="detail" id="b-state"></div>
+    <figure class="bfig" style="margin-left:0;margin-right:0">
+      <h3>Counts per number</h3>
+      <div class="bcap" id="bh1-top"></div>
+      <svg id="bh1" class="bsvg" viewBox="0 0 360 186" role="img" aria-label="Histogram of how often each number was rolled, with the fair expected count and a two standard deviation band"></svg>
+      <div class="bcap" id="bh1-cap"></div>
+      <div class="note">Each bar is how often a number came up. The line is the fair expected count T/M and the grey band is plus or minus 2 standard deviations around it, so about 95 in 100 bars should sit inside the band when the roll is fair. A few bars outside it are normal.</div>
+      <div class="note" id="b-n1"></div>
+    </figure>
+    <figure class="bfig" style="margin-left:0;margin-right:0">
+      <h3>Running even share</h3>
+      <div class="bcap" id="bh2-top"></div>
+      <svg id="bh2" class="bsvg" viewBox="0 0 360 186" role="img" aria-label="Share of even numbers against the number of rolls so far on a log axis, with the fair value and a two standard deviation funnel"></svg>
+      <div class="bcap" id="bh2-cap"></div>
+      <div class="note">The share of even numbers so far. It wobbles at first and settles on the fair value (dashed). The funnel is the plus or minus 2 standard deviation range for that many rolls; it narrows as rolls accumulate. The dashed grey line is the same count for the spiral s of each roll, against its own exact level (in Spiral mode busy even spirals are chosen more often, so that level is above one half).</div>
+    </figure>
+    <figure class="bfig" id="b-fig3" style="margin-left:0;margin-right:0">
+      <h3>Spirals chosen</h3>
+      <div class="bcap" id="bh3-top"></div>
+      <svg id="bh3" class="bsvg" viewBox="0 0 360 186" role="img" aria-label="How often each spiral was chosen against its exact expected count"></svg>
+      <div class="bcap" id="bh3-cap"></div>
+      <div class="note" id="b-n3"></div>
+    </figure>
+    <figure class="bfig" id="b-fig4" style="margin-left:0;margin-right:0">
+      <h3>Crossing index m = s/n</h3>
+      <div class="bcap" id="bh4-top"></div>
+      <label class="chk" for="b-logm"><input type="checkbox" id="b-logm" checked> Log y axis (counts of 0 are not drawn)</label>
+      <svg id="bh4" class="bsvg" viewBox="0 0 360 186" role="img" aria-label="How often each crossing index m was used, against the exact expected count for the mode, with a two standard deviation band"></svg>
+      <div class="bcap" id="bh4-cap"></div>
+      <div class="note" id="b-n4"></div>
+    </figure>
+    <figure class="bfig" id="b-fig5" style="margin-left:0;margin-right:0" hidden>
+      <h3>Naive rule: the inverse divisor function</h3>
+      <div class="bcap" id="bh5-top"></div>
+      <svg id="bh5" class="bsvg" viewBox="0 0 360 186" role="img" aria-label="Naive rule counts per number against the exact naive expected count, log scale, primes marked, upper half shaded"></svg>
+      <div class="bcap" id="bh5-cap"></div>
+      <div class="note" id="b-n5"></div>
+      <div class="tw small"><table class="cmp" id="b-nvtab"><thead><tr><th style="text-align:left">n &gt; M/2</th><th>numbers</th><th>observed</th><th>expected</th><th>z</th></tr></thead><tbody></tbody></table></div>
+      <div class="sline" id="b-nvcorr"></div>
+    </figure>
+    <div class="bstats" id="b-stats">
+      <div class="sline" id="b-s-src"></div>
+      <div class="sline" id="b-s-total"></div>
+      <div class="sline" id="b-s-distinct"></div>
+      <div class="sline" id="b-s-minmax"></div>
+      <div class="sline" id="b-s-chi"></div>
+      <div class="sline" id="b-s-even"></div>
+      <div class="sline" id="b-s-seven"></div>
+      <div class="sline" id="b-s-sp" hidden></div>
+      <div class="sline" id="b-s-spchi" hidden></div>
+      <div class="sline" id="b-s-mchi"></div>
+      <div class="sline" id="b-s-nv" hidden></div>
+      <div class="sline" id="b-s-nvlaw" hidden></div>
+      <div class="sline" id="b-s-nvm" hidden></div>
+      <div class="sline" id="b-s-ent"></div>
+      <div class="sline" id="b-s-nvent" hidden></div>
+      <div class="note"><b>These are evidence only.</b> Fairness is proved by the exact enumeration of the draw, not by any run; the exact 1/M law is also proved in Lean (FVLTDiceExactV1, an exact counting model of this page's sampler, given uniform words).</div>
+    </div>
+    <div class="bbtns">
+      <button class="ghost" id="b-csv" type="button" disabled>Download counts (CSV)</button>
+    </div>
+      </div>
+    </details>
+
+    <details class="sec" id="sec-padic" data-key="padic">
+      <summary><span class="stitle">p-adic view</span><span class="sdesc">How often p = 2, 3, 5 or 7 divides the rolled numbers and their spirals.</span></summary>
+      <div class="secbody">
+    <div class="pdwrap" id="pd-panel">
+      <h3 class="pdh">p-adic view of the batch run</h3>
+      <div class="controls">
+        <label for="pd-p">Prime p
+          <select id="pd-p" class="bsel"><option value="2">2</option><option value="3" selected>3</option><option value="5">5</option><option value="7">7</option></select>
+        </label>
+      </div>
+      <div class="note" id="pd-intro">Each roll gives a number n and its spiral s (in Plain mode s = n). The panel asks how often p divides them. Counts are kept for p = 2, 3, 5 and 7 during every run, so changing p redraws without rerunning.</div>
+      <figure class="bfig" style="margin-left:0;margin-right:0">
+        <h3>Residues mod p</h3>
+        <div class="bcap" id="pd1-top"></div>
+        <svg id="pd1" class="bsvg" viewBox="0 0 360 186" role="img" aria-label="For each residue mod p, observed share of numbers and of spirals with its exact level and a two standard deviation band"></svg>
+        <div class="bcap" id="pd1-cap"></div>
+        <div class="note">Each residue r has two bars: the numbers n (blue) and the spirals s (grey). The black line is the exact level and the grey band is plus or minus 2 standard deviations around it. Residue 0 means divisible by p.</div>
+      </figure>
+      <figure class="bfig" style="margin-left:0;margin-right:0">
+        <h3>Running share divisible by p</h3>
+        <div class="bcap" id="pd2-top"></div>
+        <svg id="pd2" class="bsvg" viewBox="0 0 360 186" role="img" aria-label="Running share of numbers divisible by p, of spirals divisible by p, and of the gap stream, against the number of rolls on a log axis, each with its exact level and a two standard deviation funnel"></svg>
+        <div class="bcap" id="pd2-cap"></div>
+        <div class="note">If p divides the number, it divides its spiral, so the two lines move together; the gap line is the part of the spirals' depth that the numbers do not inherit.</div>
+        <div class="note" id="pd-plainnote" hidden>Plain mode: s = n, so the numbers and spirals lines coincide and the gap is identically 0.</div>
+      </figure>
+      <figure class="bfig" style="margin-left:0;margin-right:0">
+        <h3>Layer ruler</h3>
+        <div class="bcap" id="pd3-top"></div>
+        <svg id="pd3" class="bsvg" viewBox="0 0 360 186" role="img" aria-label="For each layer k, observed share of numbers and spirals divisible by p to the power k, against the exact levels, log scale"></svg>
+        <div class="bcap" id="pd3-cap"></div>
+        <div class="note">Layer k asks whether p to the power k divides the number (blue dot) or its spiral (grey dot). The black tick is the exact level with a whisker for plus or minus 2 standard deviations. A share of 0 is not drawn on the log axis.</div>
+      </figure>
+      <div class="bstats" id="pd-stats">
+        <div class="sline" id="pd-time"></div>
+        <div class="tw small"><table class="cmp" id="pd-tres"><thead><tr><th style="text-align:left">residue r</th><th>n: observed</th><th>n: exact level</th><th>n: expected</th><th>n: z</th><th>s: observed</th><th>s: exact level</th><th>s: expected</th><th>s: z</th></tr></thead><tbody></tbody></table></div>
+        <div class="sline" id="pd-chi-n"></div>
+        <div class="sline" id="pd-chi-s"></div>
+        <div class="tw small" style="margin-top:10px"><table class="cmp" id="pd-tlay"><thead><tr><th style="text-align:left">layer</th><th>n: observed</th><th>n: exact level</th><th>n: expected</th><th>n: z</th><th>s: observed</th><th>s: exact level</th><th>s: expected</th><th>s: z</th></tr></thead><tbody></tbody></table></div>
+        <div class="sline" id="pd-gap"></div>
+        <div class="sline" id="pd-corr"></div>
+        <div class="sline" id="pd-mean"></div>
+        <div class="sline" id="pd-mean-nv" hidden></div>
+        <div class="sline" id="pd-halving" hidden>the naive rule halves every mean valuation exactly, because a uniformly chosen divisor takes each valuation from 0 to v_p(s) equally often.</div>
+        <div class="note">Evidence only: z-scores and p-values are floating-point statistics against exact levels. They assume independent, uniform-like draws; bands are per point, not simultaneous, and overlapping summaries are dependent. Exact levels are reduced fractions with a decimal next to them.</div>
+      </div>
+    </div>
+    <div class="bbtns">
+      <button class="ghost" id="pd-csv" type="button" disabled>Download p-adic table (CSV)</button>
+    </div>
+      </div>
+    </details>
+
+    <details class="sec" id="sec-fair" data-key="fair">
+      <summary><span class="stitle">What is fair, what is structure</span><span class="sdesc">The facts behind the draw, the legend and reading notes.</span></summary>
+      <div class="secbody">
+        <ul class="facts">
+          <li><b>Fair:</b> s comes from your browser's secure generator (<code>crypto.getRandomValues</code>). Draws that would bias the result are discarded, so each s in 1..max has probability exactly 1/max.</li>
+          <li><b>Structure:</b> the gearbox is an exact reading, not a source of randomness. Column s is read on the integer exponent e of the phase, and the contact rings come out as Div(s). A draw of s alone is a plain uniform draw.</li>
+          <li><b>Spiral mode:</b> two stages, spiral first. Stage 1: a number n1 is drawn uniformly on 1..max and then one of its spirals k uniformly on 1..q(n1), where q(n) = floor(max/n) is the number of spirals through n; the spiral is s = k &times; n1 and n1 is discarded. This picks each spiral with exactly its fair weight. Stage 2: the number n on that spiral is drawn with integer weight Ls/q(n) among the divisors of s (Ls = lcm of their q), a fresh draw. The output law is identical to v0.2.3; only the work is lighter. P(n) = 1/max exactly. Draws are exact: 32-bit words from <code>crypto.getRandomValues</code> with rejection, big integers (BigInt) in stage 2 when needed.</li>
+          <li><b>Batch run:</b> uses the same draws as a single roll, from the same buffered stream of secure 32-bit words (each word used once, rejection unchanged). The chi-square, z-score and p-values are floating-point statistics and are evidence only; the naive overlay is comparison only and never picks anything.</li>
+          <li><b>Exact:</b> every decision uses integers. Floats are used only to place drawn points.</li>
+          <li><b>Rule 30 bits (v0.2.9, files from v0.2.14):</b> with the dial on Rule 30, every word comes from Rule 30's centre column started from a single black cell, 32 bits at a time, most significant bit first, from one of two files: <code>rule30_center_16777216.bin</code> (2<sup>24</sup> = 16,777,216 bits, 2,097,152 bytes; computed on scout, its first 524,288 bytes are byte-identical to the smaller file, and an independent verifier recomputed all of its bits) or <code>rule30_center_4194304.bin</code> (2<sup>22</sup> = 4,194,304 bits; computed on nucleus, equal to a plain simulation on the first 3,000 bits and to Wolfram's <code>CellularAutomaton[30, …]</code> on the first 40). The page tries the larger file first, then the smaller, and checks the size and the first 40 bits of whichever it loads. The draw rules, rejection and BigInt stages are unchanged, so the fair and naive laws above are exactly what uniform bits would give; with Rule 30 the bits are deterministic, and the bars show how close Rule 30's centre column comes to those laws. That is evidence about the bits in the loaded file only: nothing here proves anything about Rule 30.</li>
+          <li><b>Entropy (v0.2.15):</b> the section "Entropy (FVLT)" gives, for the current maximum, the entropies of the spiral S and the pick N under the fair law and under the naive rule, in bits, with the chain rule as a check. The fair pick carries the full log<sub>2</sub> M bits (proved in Lean); the naive rule's pick falls short by exactly KL(P<sub>N</sub> &Vert; uniform) (proved in Lean, FVLTRosetteEntropyV1, published in library v36+3). After a batch run, the plug-in entropy of the observed picks is shown against log<sub>2</sub> M; it runs low by about (M &minus; 1)/(2T ln 2) bits for T rolls (Miller&ndash;Madow), so a gap of that size is expected. The run is evidence only.</li>
+          <li><b>Library status and reverse direction (v0.2.16):</b> the four entropy modules (FVLTRosetteEntropyV1, FVLTRosetteFairBridgeV1, FVLTDivisorBoltzmannV1, FVLTRosetteLogLossV1) are published in library v36+3, and FVLTDiceExactV1 since v36+2. The Entropy section also shows D(U &Vert; P<sub>N</sub>), fair data scored by the naive rule as predictor, next to D(P<sub>N</sub> &Vert; U); the first argument is the data, the second the predictor, and in general the two numbers differ (M = 100: 1.2655 and 1.7451 bits; at M = 3 both are exactly 1/3 bit). Proved in Lean: D(U &Vert; P<sub>N</sub>) &gt; 0 for M &ge; 2. One line reads the divisor Boltzmann law and the fair rosette law as softmax laws (temperature T = 1/&beta;).</li>
+        </ul>
+        <div class="note" id="modenote">Plain: s is uniform and its column reads Div(s). Spiral: a fair two-stage pick, spiral s first (a number and one of its spirals drawn uniformly, keeping only the spiral), then a number n on that spiral, so every number n has probability exactly 1/max.</div>
+        <div class="hnote" id="hnote">Newest first. Dashed border: the shown number is a prime. Tap a number to show its column again; that is not a new roll.</div>
+        <div class="note" style="margin-top:6px">Zoom with + and &minus;, the mouse wheel, a double-click or a two-finger pinch. When zoomed in, drag to move. Tap a row of the readout table to zoom to that ring. Markers and labels keep their size, so more ring numbers appear as you zoom in.</div>
+        <div class="legend">
+          <span><i style="background:var(--accent); border-radius:50%"></i>contact on the +real ray</span>
+          <span><i style="background:var(--warm); transform:rotate(45deg)"></i>contact on the -real ray</span>
+          <span><i style="background:var(--muted); border-radius:50%; opacity:.75"></i>point off the axis</span>
+          <span><i style="height:2px; background:var(--accent); opacity:.6; vertical-align:3px; width:14px"></i>hyperbolic spiral r&middot;&theta; = const (every ring pointer lies on it)</span>
+          <span id="leg-hl" hidden><i style="border:2px solid var(--accent); border-radius:50%; background:transparent; width:12px; height:12px; vertical-align:-3px"></i>chosen ring n (spiral mode)</span>
+        </div>
+        <div class="note" id="ros-note">Press Roll.</div>
+      </div>
+    </details>
+  </div>
+</div>
+
+<script>
+(function () {
+  var NS = "http://www.w3.org/2000/svg";
+  var $ = function (id) { return document.getElementById(id); };
+  var redraws = 0;
+  var MAXV = 5041;
+
+  function el(name, attrs, text) {
+    var e = document.createElementNS(NS, name);
+    for (var a in attrs) e.setAttribute(a, attrs[a]);
+    if (text != null) e.textContent = text;
+    return e;
+  }
+  function gcd(a, b) { while (b) { var t = a % b; a = b; b = t; } return a; }
+  function frac(n, d) {
+    if (n === 0) return "0";
+    var g = gcd(n, d); n /= g; d /= g;
+    return d === 1 ? String(n) : n + "/" + d;
+  }
+  function factorial(n) { var f = 1; for (var i = 2; i <= n; i++) f *= i; return f; }
+  function windowOf(M) { var n1 = 1; while (factorial(n1) + 1 < M) n1++; return { n1: n1, F: factorial(n1) }; }
+  // exact phase exponent of z1 on ring n3 in column s: zeta_{2*n3}^e
+  function expo(n3, s) { return ((n3 - 1) * s) % (2 * n3); }
+
+  // unbiased draw of s in 1..M from 32-bit words by rejection
+  // v0.2.5: one buffered source of secure 32-bit words. Each word is handed out exactly once, in the order
+  // crypto.getRandomValues produced it; the buffer is refilled when empty. The rejection rules are unchanged.
+  var WBUF = new Uint32Array(4096), WI = 4096;
+  // v0.2.9: the source of the words. "secure" = crypto.getRandomValues as before; "rule30" = the next 32 bits of
+  // Rule 30's centre column (single black cell), most significant bit first. Rejection rules are unchanged.
+  var SRC = "secure", R30 = null, R30WORDS = 0, R30POS = 0, R30OK = false;
+  // v0.2.14: two accepted files, larger first; R30FILE is the one actually loaded.
+  var R30FILES = ["rule30_center_16777216.bin", "rule30_center_4194304.bin"], R30SIZES = [2097152, 524288], R30FILE = "", R30HEAD = "1101110011000101100100111010111001110101";
+  var R30ROLLS = "The 2^24-bit file (rule30_center_16777216.bin) allows about 104,000 rolls with the naive comparison on; the 2^22-bit file (rule30_center_4194304.bin) about 26,000.";
+  function word() {
+    if (SRC === "rule30") {
+      if (!R30OK) throw new Error("R30_NOT_LOADED");
+      if (R30POS >= R30WORDS) throw new Error("R30_EXHAUSTED");
+      var k = 4 * R30POS++;
+      return ((R30[k] << 24) | (R30[k + 1] << 16) | (R30[k + 2] << 8) | R30[k + 3]) >>> 0;
+    }
+    if (WI >= 4096) { crypto.getRandomValues(WBUF); WI = 0; }
+    return WBUF[WI++];
+  }
+  function r30Left() { return R30WORDS - R30POS; }
+  function draw(M) {
+    var limit = 4294967296 - (4294967296 % M);
+    for (;;) {
+      var w = word();
+      if (w < limit) return (w % M) + 1;
+      redraws++;
+    }
+  }
+
+  function clear(n) { while (n.firstChild) n.removeChild(n.firstChild); }
+
+  // ---------- spiral mode: exact integer machinery (BigInt) ----------
+  var HI = null;                       // chosen ring n in spiral mode, else null
+  function bgcd(a, b) { while (b) { var t = a % b; a = b; b = t; } return a; }
+  // uniform BigInt below X by rejection: k bits, ceil(k/32) words of crypto.getRandomValues
+  function bigBelow(X) {
+    if (X <= 1n) return 0n;
+    var k = (X - 1n).toString(2).length, words = Math.ceil(k / 32), mask = (1n << BigInt(k)) - 1n;
+    for (;;) {
+      var v = 0n;
+      for (var i = 0; i < words; i++) v = (v << 32n) | BigInt(word());
+      v &= mask;
+      if (v < X) return v;
+      redraws++;
+    }
+  }
+  // light spiral-first sampler (v0.2.4): no global tables. q(d) = floor(M/d).
+  function divisorsFast(s) {   // divisors in increasing order by pairing d with s/d
+    var lo = [], hi = [];
+    for (var d = 1; d * d <= s; d++) if (s % d === 0) { lo.push(d); if (d * d !== s) hi.push(s / d); }
+    return lo.concat(hi.reverse());
+  }
+  // per-spiral exact integers: Ls = lcm of q(d) over d | s; w(d) = Ls/q(d); Ws = sum of w(d)
+  function spiralWeights(M, s) {
+    var ds = divisorsFast(s), Ls = 1n, i, qd = [];
+    for (i = 0; i < ds.length; i++) { qd.push(Math.floor(M / ds[i])); var b = BigInt(qd[i]); Ls = Ls / bgcd(Ls, b) * b; }
+    var w = [], Ws = 0n;
+    for (i = 0; i < ds.length; i++) { w.push(Ls / BigInt(qd[i])); Ws += w[i]; }
+    return { ds: ds, q: qd, Ls: Ls, w: w, Ws: Ws };
+  }
+  // stage 1: n1 uniform on 1..M, then k uniform on 1..q(n1); the spiral is k*n1 and n1 is discarded.
+  // stage 2: a fresh draw v below Ws picks the divisor whose cumulative-weight interval holds v.
+  function spiralPick(M) {
+    var n1 = draw(M), k = draw(Math.floor(M / n1)), s = k * n1;
+    var S = spiralWeights(M, s);
+    var v = (S.Ws <= 1073741824n) ? BigInt(draw(Number(S.Ws)) - 1) : bigBelow(S.Ws), acc = 0n, n = 0;
+    for (var i = 0; i < S.ds.length; i++) { acc += S.w[i]; if (v < acc) { n = S.ds[i]; break; } }
+    return { s: s, n: n };
+  }
+  function bstr(n) { var t = n.toString(); return t.length > 40 ? t.slice(0, 12) + "…(" + t.length + " digits)" : t; }
+  function fracOf(n, d) { var g = bgcd(n, d); n /= g; d /= g; return { n: n, d: d, text: d === 1n ? bstr(n) : bstr(n) + "/" + bstr(d) }; }
+  function approx(n, d) {   // decimal approximation of n/d (labelled as such where shown)
+    var ln = n.toString().length, ld = d.toString().length, shift = BigInt(20 - (ln - ld));
+    var qv = shift >= 0n ? n * 10n ** shift / d : n / (d * 10n ** (-shift));
+    var qs = qv.toString(), ex = qs.length - 1 - Number(shift);
+    return qs[0] + "." + qs.slice(1, 7) + "e" + (ex < 0 ? "-" : "+") + Math.abs(ex);
+  }
+  var NCACHE = {}, NORDER = [];
+  // naive rule (comparison only): P(n) = (1/M) * sum over multiples s of n of 1/tau(s)
+  function ntables(M) {
+    if (NCACHE[M]) return NCACHE[M];
+    var tau = new Uint16Array(M + 1), d, s, m;
+    for (d = 1; d <= M; d++) for (s = d; s <= M; s += d) tau[s]++;
+    var seen = {}, LT = 1n;
+    for (s = 1; s <= M; s++) if (!seen[tau[s]]) { seen[tau[s]] = 1; var b = BigInt(tau[s]); LT = LT / bgcd(LT, b) * b; }
+    var val = new Float64Array(M + 1), mx = 0, mn = Infinity, amx = 1, amn = 1;   // val[n] = naive P(n) * M (floats, drawing only)
+    for (d = 1; d <= M; d++) {
+      var sum = 0;
+      for (m = d; m <= M; m += d) sum += 1 / tau[m];
+      val[d] = sum;
+      if (sum > mx) { mx = sum; amx = d; }
+      if (sum < mn) { mn = sum; amn = d; }
+    }
+    var N = { M: M, tau: tau, LT: LT, val: val, max: mx, min: mn, amax: amx, amin: amn, path: null };
+    NCACHE[M] = N; NORDER.push(M);
+    if (NORDER.length > 3) delete NCACHE[NORDER.shift()];
+    return N;
+  }
+  function naiveExact(M, n) {   // numerator sum_{n|s} LT/tau(s) (BigInt) over LT; naive P(n) = sum / (LT * M)
+    var N = ntables(M), sum = 0n;
+    for (var s = n; s <= M; s += n) sum += N.LT / BigInt(N.tau[s]);
+    return { sum: sum, LT: N.LT };
+  }
+  // ENTROPY-BEGIN (v0.2.15): pure functions, no page state; the node unit check extracts this block.
+  // Laws: fair P(s, n) = 1/(M q(n)), naive P(s, n) = 1/(M tau(s)), for n | s <= M. The laws are exact; their values and
+  // all logarithms are floats (log base 2). Integers q, tau and the pair counts are exact.
+  var FVLTEnt = (function () {
+    var cache = {}, order = [];
+    function lg(x) { return Math.log(x) / Math.LN2; }
+    function exact(M) {
+      if (cache[M]) return cache[M];
+      var q = new Int32Array(M + 1), tau = new Int32Array(M + 1), n, s, sumQ = 0, sumTau = 0;
+      for (n = 1; n <= M; n++) { q[n] = Math.floor(M / n); sumQ += q[n]; for (s = n; s <= M; s += n) tau[s]++; }
+      for (s = 1; s <= M; s++) sumTau += tau[s];
+      var PS = new Float64Array(M + 1), PN = new Float64Array(M + 1), w, v;
+      for (n = 1; n <= M; n++) { w = 1 / (M * q[n]); for (s = n; s <= M; s += n) { PS[s] += w; PN[n] += 1 / (M * tau[s]); } }
+      var fHS = 0, fHSgN = 0, fHNgS = 0, nHN = 0, nHNgS = 0, nHSgN = 0, KL = 0, fHSgNdirect = 0, massF = 0, massN = 0;
+      for (s = 1; s <= M; s++) { if (PS[s] > 0) fHS -= PS[s] * lg(PS[s]); nHNgS += lg(tau[s]); }
+      nHNgS /= M;                                             // closed form: (1/M) sum_s log2 tau(s)
+      for (n = 1; n <= M; n++) { fHSgN += lg(q[n]); if (PN[n] > 0) { nHN -= PN[n] * lg(PN[n]); KL += PN[n] * lg(M * PN[n]); } massN += PN[n]; }
+      fHSgN /= M;                                             // closed form: (1/M) sum_n log2 q(n)
+      var RKL = 0;                                            // v0.2.16: reverse direction D(U || P_N) = sum_n (1/M) log2((1/M) / P_N(n)); P_N(n) > 0 since n | n
+      for (n = 1; n <= M; n++) RKL += lg(1 / (M * PN[n])) / M;
+      for (n = 1; n <= M; n++) {                              // conditional entropies summed directly from the joint law
+        w = 1 / (M * q[n]);
+        for (s = n; s <= M; s += n) {
+          fHNgS += w * lg(PS[s] / w);                         // -P(s,n) log2 P(n|s), fair
+          fHSgNdirect += w * lg(1 / (M * w));                 // -P(s,n) log2 P(s|n) with P(s|n) = 1/q(n), fair
+          v = 1 / (M * tau[s]);
+          nHSgN += v * lg(PN[n] / v);                         // -P(s,n) log2 P(s|n), naive
+          massF += w;
+        }
+      }
+      var LM = lg(M);
+      var R = {
+        M: M, log2M: LM, sumQ: sumQ, sumTau: sumTau, pairsEqual: sumQ === sumTau,
+        fair: { HN: LM, HS: fHS, HNgS: fHNgS, HSgN: fHSgN, HSgNdirect: fHSgNdirect, mass: massF },
+        naive: { HN: nHN, HS: LM, HNgS: nHNgS, HSgN: nHSgN, mass: massN, KL: KL, deficit: LM - nHN, RKL: RKL },
+        PN: PN
+      };
+      R.fair.chain = R.fair.HN - (R.fair.HS + R.fair.HNgS - R.fair.HSgN);
+      R.naive.chain = R.naive.HN - (R.naive.HS + R.naive.HNgS - R.naive.HSgN);
+      R.fair.spiralLoss = LM - fHS;                           // bits the spiral stage gives up
+      R.fair.divisorGain = fHNgS - fHSgN;                     // bits the divisor stage wins back
+      R.naive.divisorGain = nHNgS - nHSgN;
+      cache[M] = R; order.push(M); if (order.length > 4) delete cache[order.shift()];
+      return R;
+    }
+    // plug-in (empirical) entropy of integer counts c[1..M] with total T, in bits; Miller-Madow first-order bias (K - 1)/(2 T ln 2)
+    function plugin(c, M, T) {
+      var h = 0, k = 0, n, p;
+      if (!T) return { H: 0, seen: 0, mm: 0 };
+      for (n = 1; n <= M; n++) if (c[n] > 0) { p = c[n] / T; h -= p * lg(p); k++; }
+      return { H: h, seen: k, mm: (M - 1) / (2 * T * Math.LN2) };
+    }
+    return { exact: exact, plugin: plugin, lg: lg };
+  })();
+  // ENTROPY-END
+
+  function drawChart(M, n) {
+    var N = ntables(M), svg = $("nchart"); clear(svg);
+    var X0 = 40, X1 = 310, Y0 = 12, Y1 = 138;
+    var llo = Math.log10(Math.min(N.min, 1)), lhi = Math.log10(Math.max(N.max, 1));
+    if (lhi - llo < 0.2) { llo -= 0.1; lhi += 0.1; }
+    var pad = (lhi - llo) * 0.06; llo -= pad; lhi += pad;
+    var ys = function (v) { return Y1 - (Math.log10(v) - llo) / (lhi - llo) * (Y1 - Y0); };
+    var xs = function (k) { return M === 1 ? (X0 + X1) / 2 : X0 + (k - 1) / (M - 1) * (X1 - X0); };
+    for (var k = Math.ceil(llo); k <= Math.floor(lhi); k++) {
+      var yy = ys(Math.pow(10, k));
+      svg.appendChild(el("line", { "class": "gridl", x1: X0, y1: yy, x2: X1, y2: yy }));
+      svg.appendChild(el("text", { x: X0 - 4, y: yy + 3, "text-anchor": "end" }, String(Math.pow(10, k))));
+    }
+    svg.appendChild(el("line", { "class": "gridl", x1: X0, y1: Y1, x2: X1, y2: Y1 }));
+    if (!N.path) {
+      var parts = [];
+      for (var i = 1; i <= M; i++) parts.push("M" + xs(i).toFixed(2) + " " + ys(N.val[i]).toFixed(2) + "l0 0");
+      N.path = parts.join("");
+    }
+    svg.appendChild(el("path", { "class": "nd", id: "nchart-pts", d: N.path }));
+    svg.appendChild(el("line", { "class": "fair", id: "nchart-fair", x1: X0, y1: ys(1), x2: X1, y2: ys(1) }));
+    svg.appendChild(el("text", { x: X1, y: ys(1) - 3, "text-anchor": "end", style: "fill:var(--accent)" }, "fair: 1"));
+    svg.appendChild(el("circle", { "class": "rm", id: "nchart-mark", cx: xs(n), cy: ys(N.val[n]), r: 4.5 }));
+    var mx = xs(n), anchor = mx > X1 - 40 ? "end" : "start";
+    svg.appendChild(el("text", { x: mx + (anchor === "end" ? -7 : 7), y: ys(N.val[n]) - 6, "text-anchor": anchor, style: "fill:var(--warm)" }, "n = " + n));
+    svg.appendChild(el("text", { x: X0, y: 154, "text-anchor": "start" }, "n = 1"));
+    svg.appendChild(el("text", { x: X1, y: 154, "text-anchor": "end" }, "n = " + M));
+    svg.appendChild(el("text", { x: (X0 + X1) / 2, y: 166, "text-anchor": "middle" }, "y: naive P(n) × max, log scale"));
+  }
+  function renderSpiral(s, M, n) {
+    var S = spiralWeights(M, s), ni = S.ds.indexOf(n), Ws = S.Ws, Ls = S.Ls, ML = BigInt(M) * Ls, wn = S.w[ni], qn = S.q[ni], m = s / n;
+    var ps = fracOf(Ws, ML), pns = fracOf(wn, Ws);
+    $("sp-n").textContent = "n = " + n;
+    $("sp-s").textContent = "s = " + s;
+    $("sp-ps").textContent = ps.text;
+    $("sp-ps-a").textContent = "≈ " + approx(Ws, ML) + " (decimal approximation)";
+    $("sp-m").textContent = String(m);
+    $("sp-pns").textContent = pns.text;
+    $("sp-pns-a").textContent = "≈ " + approx(wn, Ws) + " (decimal approximation)";
+    $("sp-div").textContent = "n = " + n + " divides s = " + s + " (" + n + " × " + m + " = " + s + "). Divisors of s: " + S.ds.join(", ") + ".";
+    var chk = BigInt(qn) * wn === Ls;
+    $("sp-pn").textContent = "n lies on q(n) = " + qn + " spirals, each contributing P(s) P(n | s) = 1/(" + M + " × " + qn + "), so P(n) = 1/" + M + ". Integer check q(n) × Ls/q(n) = Ls: " + (chk ? "yes" : "NO") + " (Ls = lcm of q(d) over the divisors of s).";
+    var ne = naiveExact(M, n), npn = fracOf(ne.sum, ne.LT * BigInt(M)), rat = fracOf(ne.sum, ne.LT);
+    $("nv-frac").textContent = npn.text;
+    $("nv-a").textContent = "≈ " + approx(ne.sum, ne.LT * BigInt(M)) + " (decimal approximation)";
+    $("nv-ratio").textContent = "Ratio to the fair 1/" + M + ": " + rat.text + " ≈ " + approx(ne.sum, ne.LT) + " (decimal approximation). Fair is exactly 1.";
+    var N = ntables(M);
+    drawChart(M, n);
+    $("nv-note").textContent = "Chart: naive P(n) × " + M + " for every n (dots) against the fair value 1 (line); the circle is your n. Under the naive rule the most likely number is " + N.amax + " (× " + N.max.toFixed(4) + ") and the least likely is " + N.amin + " (× " + N.min.toFixed(6) + "), a spread of about " + (N.max / N.min).toFixed(1) + " (floats, drawing only).";
+    $("spiral-panel").hidden = false;
+    $("sp-empty").hidden = true;
+    $("sp-line").textContent = "n = " + n + ", spiral s = " + s + ", crossing m = " + m + ", P(n) = 1/" + M;
+    $("sp-line").hidden = false;
+  }
+
+  // the hyperbolic spiral of column s: screen radius R, theta = -150*pi*Z/R (+ pi when s is odd)
+  function curvePath(s, Z, PX, PY) {
+    var K = 150 * Math.PI * Z, odd = (s % 2 === 1) ? Math.PI : 0, LIM = 190;
+    var Rmin = Math.max(2, Math.sqrt(1.5 * K / (2 * Math.PI)));
+    var Rmax = Math.hypot(Math.abs(PX) + 170, Math.abs(PY) + 170);
+    var info = { Rmin: Rmin, Rmax: Rmax, pts: 0, capped: false, d: "" };
+    if (Rmin >= Rmax) return info;
+    var R = Rmin, parts = [], pen = false;
+    while (R <= Rmax) {
+      var th = -K / R + odd, x = PX + R * Math.cos(th), y = PY - R * Math.sin(th);
+      var out = Math.max(Math.abs(x), Math.abs(y)) - LIM, step;
+      if (out <= 0) {
+        parts.push((pen ? "L" : "M") + x.toFixed(2) + " " + y.toFixed(2)); pen = true; info.pts++;
+        if (info.pts >= 30000) { info.capped = true; break; }
+        step = 2;
+      } else { pen = false; step = Math.max(2, out * 0.8); }   // arc length is 1-Lipschitz, so a step below the distance to the frame cannot skip into it
+      var tt = K / R;
+      R += step / Math.sqrt(1 + tt * tt);
+    }
+    info.d = parts.join("");
+    return info;
+  }
+
+  // contacts by pairing (v0.2.4): test only rings 1..floor(sqrt(s)) with the exact test e == 0 or e == n3;
+  // each contact r has the partner s/r. The side of r comes from its cofactor m = s/r:
+  // negative real iff s is even and m is odd, else positive real. Returns increasing [{r, ray}].
+  function contactList(s) {
+    var rt = Math.floor(Math.sqrt(s)), r, e;
+    while (rt * rt > s) rt--;
+    while ((rt + 1) * (rt + 1) <= s) rt++;
+    var lo = [], hi = [];
+    for (r = 1; r <= rt; r++) {
+      e = ((r - 1) * s) % (2 * r);
+      if (e === 0 || e === r) { lo.push(r); if (r * r !== s) hi.push(s / r); }
+    }
+    return lo.concat(hi.reverse()).map(function (x) { var m = s / x; return { r: x, ray: (s % 2 === 0 && m % 2 === 1) ? "-real" : "+real" }; });
+  }
+  var CM = { s: 0, map: null };
+  function contactMap(s) {
+    if (CM.s === s && CM.map) return CM.map;
+    var map = {};
+    contactList(s).forEach(function (c) { map[c.r] = c.ray === "+real" ? "+" : "-"; });
+    CM = { s: s, map: map };
+    return map;
+  }
+
+  var VIEW = { z: 1, px: 0, py: 0 }, lastS = null, lastWin = null;
+  function drawRosette(s, win) {
+    lastS = s; lastWin = win;
+    var svg = $("ros"); clear(svg);
+    var Z = VIEW.z, PX = VIEW.px, PY = VIEW.py, B = 176;
+    var F = win.F, top = F + 1, unit = 150 / s; // ring s sits at radius 150; rings beyond s extend past the frame (all F+1 rings are drawn, the frame clips)
+    var ringsPath = "", dots = [], contacts = [], cmap = contactMap(s);
+    for (var n3 = 1; n3 <= top; n3++) {
+      var r = n3 * unit, R = r * Z;
+      // draw the ring only if it crosses the frame: not wholly outside it, not wholly around it
+      var dx = Math.max(Math.abs(PX) - B, 0), dy = Math.max(Math.abs(PY) - B, 0);
+      var far = Math.max(Math.abs(PX) + B, Math.abs(PY) + B) * Math.SQRT2;
+      if (R >= Math.sqrt(dx * dx + dy * dy) && R <= far && R > 0.15)
+        ringsPath += "M" + (PX - R) + " " + PY + "a" + R + " " + R + " 0 1 0 " + (2 * R) + " 0a" + R + " " + R + " 0 1 0 " + (-2 * R) + " 0";
+      var e = expo(n3, s);
+      var th = Math.PI * e / n3;               // drawing only
+      var x = r * Math.cos(th) * Z + PX, y = -r * Math.sin(th) * Z + PY;
+      if (Math.abs(x) > B + 10 || Math.abs(y) > B + 10) continue;   // off screen
+      if (cmap[n3]) contacts.push({ n3: n3, x: x, ray: cmap[n3] });   // contact status from the paired set
+      else dots.push([x, y]);
+    }
+    svg.appendChild(el("line", { "class": "axis", x1: -170, y1: PY, x2: 170, y2: PY }));
+    svg.appendChild(el("path", { "class": "ringc", d: ringsPath }));
+    var cv = curvePath(s, Z, PX, PY);
+    drawRosette.curve = cv;
+    svg.appendChild(el("path", { "class": "spiral", id: "spiralpath", d: cv.d, "data-z": Z, "data-px": PX, "data-py": PY, "data-rmin": cv.Rmin, "data-pts": cv.pts }));
+    var dr = top > 300 ? 0.7 : (top > 60 ? 1.2 : 1.8);
+    dots.forEach(function (p) { svg.appendChild(el("circle", { "class": "dot", cx: p[0], cy: p[1], r: dr })); });
+    // Labels: one row above and one below the axis. A label is printed only if its text
+    // (9px mono, about 5.6 units per digit) clears the last label on its row by 3 units,
+    // so numbers never run together. The table lists every contact.
+    var lastEnd = [-1e9, -1e9], skipped = 0;
+    contacts.filter(function (c) { return c.n3 !== HI; }).sort(function (a, b) { return a.x - b.x; }).forEach(function (c) {
+      var half = String(c.n3).length * 2.8;
+      var row = (c.x - half >= lastEnd[0] + 3) ? 0 : ((c.x - half >= lastEnd[1] + 3) ? 1 : -1);
+      if (row < 0) { skipped++; return; }
+      lastEnd[row] = c.x + half;
+      svg.appendChild(el("text", { "class": "lab", x: c.x, y: PY + (row === 0 ? -8 : 15) }, String(c.n3)));
+    });
+    drawRosette.skipped = skipped;
+    contacts.forEach(function (c) {
+      if (c.ray === "+") svg.appendChild(el("circle", { "class": "cpos", cx: c.x, cy: PY, r: 3.6 }));
+      else svg.appendChild(el("rect", { "class": "cneg", x: c.x - 3.2, y: PY - 3.2, width: 6.4, height: 6.4, transform: "rotate(45 " + c.x + " " + PY + ")" }));
+    });
+    // spiral mode: ring the chosen ring's contact marker; its label is always printed (above the two label rows)
+    drawRosette.hiOff = false;
+    if (HI != null) {
+      var hc = null;
+      contacts.forEach(function (c) { if (c.n3 === HI) hc = c; });
+      if (hc) {
+        svg.appendChild(el("circle", { "class": "hl", id: "hl-ring", cx: hc.x, cy: PY, r: 7.5 }));
+        svg.appendChild(el("text", { "class": "lab hlab", id: "hl-label", x: hc.x, y: PY - 20 }, String(HI)));
+      } else drawRosette.hiOff = true;
+    }
+  }
+
+  // orbit size by formula: the exponents (N-1)j mod 2N are the multiples of g = gcd(N-1, 2N), so there are 2N/g of them
+  function orbitSize(N) { return 2 * N / gcd(N - 1, 2 * N); }
+
+  function drawOrbit(N, win) {
+    var svg = $("orb"); clear(svg);
+    var full = orbitSize(N);
+    var reached = Math.min(win.F + 2, full);       // s = 0..F+1: the first `size` steps are all distinct
+    var R = 100, pts = [], seen = {};
+    for (var j = 0; j < full; j++) {
+      var e = expo(N, j), th = 2 * Math.PI * e / (2 * N);
+      pts.push({ j: j, e: e, x: R * Math.cos(th), y: -R * Math.sin(th), hit: j <= win.F + 1 });
+    }
+    svg.appendChild(el("circle", { "class": "og", cx: 0, cy: 0, r: R }));
+    var d = "";
+    pts.forEach(function (p, i) { d += (i ? "L" : "M") + p.x + " " + p.y; });
+    d += "Z";
+    svg.appendChild(el("path", { "class": "walk", d: d }));
+    var pr = full > 120 ? 1.6 : (full > 40 ? 2.4 : 3.6);
+    var lab = full <= 24;
+    pts.forEach(function (p) {
+      svg.appendChild(el("circle", { "class": p.hit ? "hit" : "miss", cx: p.x, cy: p.y, r: pr }));
+      if (lab) {
+        var k = 1.16;
+        svg.appendChild(el("text", { "class": "olab", x: p.x * k, y: p.y * k }, String(p.j)));
+      }
+    });
+    var odd = (N % 2 === 1);
+    var msg = "Ring N = " + N + ": the phase after j steps is zeta_" + (2 * N) + "^((N-1)j), at turn ((N-1)j mod " + (2 * N) + ")/" + (2 * N) + ". ";
+    msg += "Orbit size " + full + (odd ? " (N is odd: all of mu_" + N + ")" : " (N is even: all of mu_" + (2 * N) + ")") + ". ";
+    msg += "The window 0 <= s <= " + (win.F + 1) + " (the " + win.n1 + "!-window) reaches " + reached + " of them. ";
+    if (reached < full) msg += "NOT completed: " + (full - reached) + " points (hollow, orange) are never visited in the window. ";
+    else msg += "Completed inside the window. ";
+    if (N === 1) msg += "Degenerate: ring 1 has a single point. ";
+    msg += "Filled points are reached in the window; lines follow the walk order j = 0, 1, 2, ...";
+    $("orb-note").textContent = msg;
+  }
+
+  var rosBase = "Press Roll.";
+  function show(s, M, pick) {
+    var win = windowOf(M);
+    VIEW = { z: 1, px: 0, py: 0 };
+    HI = (pick == null) ? null : pick;
+    if (HI != null) renderSpiral(s, M, HI); else { $("spiral-panel").hidden = true; $("sp-empty").hidden = false; $("sp-line").hidden = true; $("sp-line").textContent = ""; }
+    $("leg-hl").hidden = (HI == null);
+    var F = win.F, rows = [], divs = [];
+    var tb = $("tbl").tBodies[0]; clear(tb);
+    contactList(s).forEach(function (c) {
+      var e = expo(c.r, s);
+      rows.push([c.r, F + 1 - c.r, c.ray, frac(e, 2 * c.r), e + " of " + (2 * c.r)]);
+      divs.push(c.r);
+    });
+    rows.forEach(function (r) {
+      var tr = document.createElement("tr");
+      if (pick != null && r[0] === pick) tr.className = "pick";
+      r.forEach(function (c) { var td = document.createElement("td"); td.textContent = c; tr.appendChild(td); });
+      tr.title = "zoom to ring " + r[0];
+      tr.addEventListener("click", function () { zoomToRing(r[0]); });
+      tb.appendChild(tr);
+    });
+    $("ros-hint").hidden = true;
+    $("s-out").textContent = "s = " + s;
+    $("win").textContent = "window: n1 = " + win.n1 + ", F = " + win.n1 + "! = " + F + ", rings n3 = 1.." + (F + 1) + ", phi3 = F + 1 - n3";
+    $("div").textContent = "Div(" + s + ") = {" + divs.join(", ") + "}";
+    var dg = "";
+    if (s === 1) dg = "Degenerate case: s = 1. Only ring 1 touches (ring 1 always touches, so 1 divides every s).";
+    else if (divs.length === 2) dg = "Degenerate case: " + s + " is prime. Only rings 1 and " + s + " touch the real axis.";
+    $("degen").textContent = dg;
+    var note = (pick != null ? "Spiral mode: the chosen ring n = " + pick + " is ringed. " : "") + "Rings n3 > s can never touch in column s, so their points sit off the axis. Radius = n3 (alpha = 1), scaled so ring s is the outer visible circle; larger rings are drawn but fall outside the frame. Angle = e/(2*n3) turns.";
+    $("redraw").textContent = "redraws so far: " + redraws;
+    rosBase = note;
+    drawRosette(s, win);
+    drawOrbit(s, win);
+    afterZoom();
+  }
+
+  // ---------- zoom (drawing only; every reading stays exact) ----------
+  function zmax() { return lastS ? Math.max(8, 0.4 * lastS) : 8; }   // ring 1 can be shown about 60 units wide
+  var pending = false;
+  function redraw() {
+    if (pending || lastS == null) return;
+    pending = true;
+    requestAnimationFrame(function () { pending = false; drawRosette(lastS, lastWin); afterZoom(); });
+  }
+  function afterZoom() {
+    var z = VIEW.z;
+    $("zread").textContent = "zoom \u00d7" + (z < 10 ? z.toFixed(1) : String(Math.round(z))) + (z >= zmax() - 1e-9 ? " (max)" : "");
+    $("ros").classList.toggle("zoomed", z > 1);
+    var sk = drawRosette.skipped, cv = drawRosette.curve, note = rosBase;
+    if (sk) note += " " + sk + " ring number" + (sk === 1 ? " is" : "s are") + " not printed on the plot because the contacts sit too close together; the table lists every contact.";
+    if (drawRosette.hiOff) note += " The chosen ring n = " + HI + " is outside the frame at this zoom.";
+    if (cv) {
+      if (cv.Rmin >= cv.Rmax) note += " The spiral curve is not drawn at this zoom: its turns are less than 1.5 units apart everywhere in the frame.";
+      else note += " Spiral curve drawn for screen radius ≥ " + cv.Rmin.toFixed(1) + " only (nearer the centre its turns are less than 1.5 units apart)" + (cv.capped ? "; the cap of 30000 points was reached, so the outer part is not drawn" : "") + ".";
+    }
+    $("ros-note").textContent = note;
+  }
+  function setView(z, px, py) {
+    z = Math.min(Math.max(z, 1), zmax());
+    if (z === 1) { px = 0; py = 0; }
+    VIEW = { z: z, px: px, py: py };
+    redraw();
+  }
+  function zoomAt(sx, sy, f) {   // keep the point (sx, sy) of the frame fixed
+    var z = Math.min(Math.max(VIEW.z * f, 1), zmax()), g = z / VIEW.z;
+    setView(z, sx - (sx - VIEW.px) * g, sy - (sy - VIEW.py) * g);
+  }
+  function zoomToRing(n3) {
+    if (lastS == null) return;
+    var unit = 150 / lastS;
+    setView(130 / (n3 * unit), 0, 0);
+    $("ros").scrollIntoView({ block: "nearest", behavior: "smooth" });
+  }
+  function svgPoint(ev) {
+    var svg = $("ros"), m = svg.getScreenCTM();
+    if (!m) return { x: 0, y: 0 };
+    var pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY;
+    var q = pt.matrixTransform(m.inverse());
+    return { x: q.x, y: q.y };
+  }
+  $("zin").addEventListener("click", function () { zoomAt(0, 0, 2); });
+  $("zout").addEventListener("click", function () { zoomAt(0, 0, 0.5); });
+  $("zfit").addEventListener("click", function () { setView(1, 0, 0); });
+  $("ros").addEventListener("wheel", function (ev) {
+    if (lastS == null) return;
+    ev.preventDefault();
+    var p = svgPoint(ev);
+    zoomAt(p.x, p.y, Math.exp(-ev.deltaY * 0.0015));
+  }, { passive: false });
+  var ptrs = {}, gesture = null;
+  function ptrList() { return Object.keys(ptrs).map(function (k) { return ptrs[k]; }); }
+  $("ros").addEventListener("pointerdown", function (ev) {
+    if (lastS == null) return;
+    ptrs[ev.pointerId] = svgPoint(ev);
+    try { $("ros").setPointerCapture(ev.pointerId); } catch (e) {}
+    var l = ptrList();
+    if (l.length === 2) gesture = { kind: "pinch", d: Math.hypot(l[0].x - l[1].x, l[0].y - l[1].y) || 1 };
+    else if (l.length === 1) gesture = { kind: "pan", x: l[0].x, y: l[0].y };
+  });
+  $("ros").addEventListener("pointermove", function (ev) {
+    if (!(ev.pointerId in ptrs) || !gesture) return;
+    ptrs[ev.pointerId] = svgPoint(ev);
+    var l = ptrList();
+    if (gesture.kind === "pinch" && l.length === 2) {
+      var d = Math.hypot(l[0].x - l[1].x, l[0].y - l[1].y) || 1;
+      zoomAt((l[0].x + l[1].x) / 2, (l[0].y + l[1].y) / 2, d / gesture.d);
+      gesture.d = d;
+    } else if (gesture.kind === "pan" && l.length === 1 && VIEW.z > 1) {
+      var q = l[0];
+      setView(VIEW.z, VIEW.px + (q.x - gesture.x), VIEW.py + (q.y - gesture.y));
+      gesture.x = q.x; gesture.y = q.y;
+    }
+  });
+  function ptrEnd(ev) {
+    delete ptrs[ev.pointerId];
+    var l = ptrList();
+    gesture = l.length === 1 ? { kind: "pan", x: l[0].x, y: l[0].y } : null;
+  }
+  $("ros").addEventListener("pointerup", ptrEnd);
+  $("ros").addEventListener("pointercancel", ptrEnd);
+  $("ros").addEventListener("dblclick", function (ev) { var p = svgPoint(ev); zoomAt(p.x, p.y, 2); });
+
+  var MODE = "plain", MKEY = "fvlt-rosette-mode-v1";
+  try { if (localStorage.getItem(MKEY) === "spiral") MODE = "spiral"; } catch (e) {}
+  $("mode-" + MODE).checked = true;
+  ["mode-plain", "mode-spiral"].forEach(function (id) {
+    $(id).addEventListener("change", function () {
+      if (!this.checked) return;
+      MODE = this.value;
+      try { localStorage.setItem(MKEY, MODE); } catch (e) {}
+    });
+  });
+
+  // ---------- v0.2.9: random-bits source ----------
+  function srcLine() {
+    var t;
+    if (SRC === "secure") t = "Random bits: the browser's secure generator.";
+    else if (!R30OK) t = "Random bits: Rule 30 centre column, not loaded yet. " + ($("r30-file-lab").hidden ? "Loading " + R30FILES.join(" or ") + "…" : "The file could not be fetched next to this page; load it with the button below.");
+    else t = "Random bits: Rule 30 centre column from one black cell (" + fmtInt(R30WORDS * 32) + " bits; first 40 match Wolfram's CellularAutomaton). Next bit used: " + fmtInt(R30POS * 32) + ", " + fmtInt(r30Left()) + " words left. Deterministic: the same start gives the same rolls.";
+    $("src-line").textContent = t;
+    $("src-tools").hidden = SRC !== "rule30";
+  }
+  function r30Accept(buf) {
+    var b = new Uint8Array(buf), head = "";
+    for (var i = 0; i < 40; i++) head += (b[i >> 3] >> (7 - (i & 7))) & 1;
+    var idx = R30SIZES.indexOf(b.length);
+    if (idx < 0 || head !== R30HEAD) {
+      $("err").textContent = "That file is not the Rule 30 centre column this page expects (" + R30SIZES.join(" or ") + " bytes starting " + R30HEAD.slice(0, 12) + "…).";
+      return false;
+    }
+    R30FILE = R30FILES[idx]; R30 = b; R30WORDS = b.length >> 2; R30POS = 0; R30OK = true; $("err").textContent = ""; $("r30-file-lab").hidden = true;
+    srcLine(); updateUsing();
+    return true;
+  }
+  function r30Load() {
+    if (R30OK) { srcLine(); return; }
+    srcLine();
+    function tryFile(i) {
+      if (i >= R30FILES.length) { $("r30-file-lab").hidden = false; srcLine(); return; }
+      fetch(R30FILES[i]).then(function (res) { if (!res.ok) throw new Error("HTTP " + res.status); return res.arrayBuffer(); })
+        .then(function (buf) { if (!r30Accept(buf)) tryFile(i + 1); else srcLine(); })
+        .catch(function () { tryFile(i + 1); });
+    }
+    tryFile(0);
+  }
+  $("r30-file").addEventListener("change", function () {
+    var f = this.files && this.files[0]; if (!f) return;
+    f.arrayBuffer().then(function (buf) { r30Accept(buf); });
+  });
+  $("r30-reset").addEventListener("click", function () { if (B && B.running) return; R30POS = 0; srcLine(); });
+  var SKEY = "fvlt-rosette-src-v1";
+  ["src-secure", "src-rule30"].forEach(function (id) {
+    $(id).addEventListener("change", function () {
+      if (!this.checked) return;
+      if (B && B.running) { $("src-" + SRC).checked = true; return; }
+      SRC = this.value;
+      try { localStorage.setItem(SKEY, SRC); } catch (e) {}
+      if (SRC === "rule30") r30Load(); else srcLine();
+      updateUsing();
+    });
+  });
+  try { if (localStorage.getItem(SKEY) === "rule30") { SRC = "rule30"; $("src-rule30").checked = true; } } catch (e) {}
+  if (SRC === "rule30") r30Load(); else srcLine();
+  function srcErr(e) {
+    var m = String(e && e.message || e);
+    if (m === "R30_NOT_LOADED") return "Rule 30 bits are not loaded yet.";
+    if (m === "R30_EXHAUSTED") return "All " + fmtInt(R30WORDS * 32) + " Rule 30 bits are used. Restart the bits at 0, or switch to Secure. " + R30ROLLS;
+    return null;
+  }
+
+  $("roll").addEventListener("click", function () {
+    var raw = $("max").value.trim();
+    var M = Number(raw);
+    if (raw === "" || !isFinite(M) || Math.floor(M) !== M || M < 1 || M > MAXV) {
+      $("err").textContent = "Maximum must be a whole number from 1 to " + MAXV + ".";
+      return;
+    }
+    $("err").textContent = "";
+    var e, pos0 = R30POS;
+    try {
+      if (MODE === "spiral") { var pk = spiralPick(M); e = { mode: "spiral", M: M, s: pk.s, n: pk.n }; }
+      else e = { mode: "plain", M: M, s: draw(M) };
+    } catch (ex) {
+      var msg = srcErr(ex); if (msg == null) throw ex;
+      R30POS = pos0; $("err").textContent = msg; srcLine(); return;
+    }
+    if (SRC === "rule30") e.src = "rule30@" + (pos0 * 32);
+    srcLine();
+    hist.unshift(e);
+    current = 0;
+    save();
+    show(e.s, M, e.mode === "spiral" ? e.n : null);
+    renderHist();
+  });
+
+  // ---------- roll history (per viewer; kept in this browser only) ----------
+  var KEY = "fvlt-rosette-history-v1", hist = [], current = -1;
+  function isPrime(n) { if (n < 2) return false; for (var d = 2; d * d <= n; d++) if (n % d === 0) return false; return true; }
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(hist)); } catch (e) {} }
+  function load() {
+    try {
+      var h = JSON.parse(localStorage.getItem(KEY) || "[]");
+      if (Array.isArray(h)) hist = h.filter(function (x) { return x && Number.isInteger(x.s) && Number.isInteger(x.M) && x.M >= 1 && x.M <= MAXV && x.s >= 1 && x.s <= x.M; }).filter(function (x) {
+        // a spiral entry must carry a number n that divides s; anything else is dropped
+        return x.mode !== "spiral" || (Number.isInteger(x.n) && x.n >= 1 && x.s % x.n === 0);
+      }).map(function (x) {
+        // v0.2.1 / v0.2.2 entries are {s, M}: plain
+        if (x.mode === "spiral") return { mode: "spiral", M: x.M, s: x.s, n: x.n };
+        return { mode: "plain", M: x.M, s: x.s };
+      });
+    } catch (e) { hist = []; }
+  }
+  function renderHist() {
+    var box = $("hist"); clear(box);
+    hist.forEach(function (h, i) {
+      var b = document.createElement("button");
+      b.type = "button";
+      var shown = h.mode === "spiral" ? h.n : h.s;
+      b.className = "chip" + (isPrime(shown) ? " prime" : "") + (i === current ? " cur" : "");
+      b.textContent = shown;
+      b.setAttribute("role", "listitem");
+      b.title = "roll " + (hist.length - i) + " of " + hist.length + ", " + (h.mode === "spiral" ? "spiral mode: spiral s = " + h.s + ", number n = " + h.n : "plain mode: s = " + h.s) + ", maximum " + h.M;
+      b.addEventListener("click", function () {
+        current = i;
+        show(h.s, h.M, h.mode === "spiral" ? h.n : null);
+        renderHist();
+        $("hnote").textContent = "Showing roll " + (hist.length - i) + " again (" + (h.mode === "spiral" ? "spiral mode, spiral s = " + h.s + ", n = " + h.n : "plain mode, s = " + h.s) + ", maximum " + h.M + "). This is not a new roll.";
+      });
+      box.appendChild(b);
+    });
+    var distinct = {}, n = 0;
+    hist.forEach(function (h) { var k = h.mode === "spiral" ? h.n : h.s; if (!distinct[k]) { distinct[k] = 1; n++; } });
+    $("hcount").textContent = hist.length + (hist.length === 1 ? " roll" : " rolls");
+    $("hdist").textContent = hist.length ? n + " distinct" + (hist.length > n ? ", " + (hist.length - n) + " repeat" + (hist.length - n === 1 ? "" : "s") : "") : "";
+    if (current === 0 && hist.length) $("hnote").textContent = "Newest first. Dashed border: the shown number is a prime. Tap a number to show its column again; that is not a new roll.";
+  }
+  $("hclear").addEventListener("click", function () {
+    hist = []; current = -1; save(); renderHist();
+  });
+
+  // ---------- batch run (v0.2.5): many rolls, live graphs; integer counts, floats only for statistics and drawing ----------
+  var B = null;                      // the current run, or null
+  var BUDGET = 10;                   // ms of work per chunk
+  var bsched;
+  if (typeof MessageChannel !== "undefined") {
+    var bmc = new MessageChannel(), bcb = null;
+    bmc.port1.onmessage = function () { var f = bcb; bcb = null; if (f) f(); };
+    bsched = function (f) { bcb = f; bmc.port2.postMessage(0); };
+  } else bsched = function (f) { setTimeout(f, 0); };
+
+  function fmtInt(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ","); }
+  function fmtP(p) { return p <= 0 ? "< 1e-300" : p.toPrecision(3); }
+
+  // chi-square upper tail: Q(k/2, x/2), regularized upper incomplete gamma (floats; statistics only)
+  function lgam(x) {
+    var c = [0.99999999999980993, 676.5203681218851, -1259.1392167224028, 771.32342877765313, -176.61502916214059, 12.507343278686905, -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7];
+    if (x < 0.5) return Math.log(Math.PI / Math.sin(Math.PI * x)) - lgam(1 - x);
+    x -= 1;
+    var a = c[0], t = x + 7.5;
+    for (var i = 1; i < 9; i++) a += c[i] / (x + i);
+    return 0.5 * Math.log(2 * Math.PI) + (x + 0.5) * Math.log(t) - t + Math.log(a);
+  }
+  function gammaQ(a, x) {
+    if (x <= 0) return 1;
+    var gln = lgam(a), i;
+    if (x < a + 1) {                       // series for P(a, x)
+      var ap = a, sum = 1 / a, del = sum;
+      for (i = 0; i < 200000; i++) { ap += 1; del *= x / ap; sum += del; if (Math.abs(del) < Math.abs(sum) * 1e-16) break; }
+      return Math.max(0, 1 - sum * Math.exp(-x + a * Math.log(x) - gln));
+    }
+    var tiny = 1e-300, b = x + 1 - a, c = 1 / tiny, d = 1 / b, h = d;   // Lentz continued fraction for Q(a, x)
+    for (i = 1; i < 200000; i++) {
+      var an = -i * (i - a);
+      b += 2; d = an * d + b; if (Math.abs(d) < tiny) d = tiny;
+      c = b + an / c; if (Math.abs(c) < tiny) c = tiny;
+      d = 1 / d; var dl = d * c; h *= dl;
+      if (Math.abs(dl - 1) < 3e-16) break;
+    }
+    return Math.exp(-x + a * Math.log(x) - gln) * h;
+  }
+  function chiP(x, k) { return k < 1 ? NaN : gammaQ(k / 2, x / 2); }
+  function normTail(z) { return z >= 0 ? 0.5 * gammaQ(0.5, z * z / 2) : 1 - 0.5 * gammaQ(0.5, z * z / 2); }   // P(Z > z)
+  window.fvltTest = { chiP: chiP, wilsonHilferty: function (x, k) { var m = 2 / (9 * k); return normTail((Math.pow(x / k, 1 / 3) - (1 - m)) / Math.sqrt(m)); }, normTail: normTail };
+
+  var PSCACHE = {};
+  var PRIMES = [2, 3, 5, 7];
+  function spiralProbs(M) {              // P(s) for s = 1..M as floats (drawing and statistics only), from the exact integers
+    if (PSCACHE[M]) return PSCACHE[M];
+    var tStart = performance.now();
+    var P = new Float64Array(M + 1), tot = 0, SC = 10n ** 30n;
+    // v0.2.7: exact class sums for the p-adic panel. L = lcm of all q(d) = floor(M/d); every Ls divides L,
+    // so P(s) = Ws (L/Ls) / (M L) with the common denominator D = M L. Sums over residue classes and layers are BigInt.
+    var L = 1n, seenQ = {}, d0, q0, qi, k0, pw, tot2 = 0n, DD;
+    for (d0 = 1; d0 <= M; d0++) { q0 = Math.floor(M / d0); if (!seenQ[q0]) { seenQ[q0] = 1; var bq = BigInt(q0); L = L / bgcd(L, bq) * bq; } }
+    DD = BigInt(M) * L;
+    var XP = PRIMES.map(function (p) {
+      var K = 0, pk = p; while (pk <= M) { K++; pk *= p; }
+      var res = [], lay = [], r; for (r = 0; r < p; r++) res.push(0n); for (r = 0; r <= K; r++) lay.push(0n);
+      return { p: p, K: K, res: res, lay: lay };
+    });
+    for (var s = 1; s <= M; s++) {
+      var S = spiralWeights(M, s);
+      P[s] = Number(S.Ws * SC / (BigInt(M) * S.Ls)) / 1e30; tot += P[s];
+      var num = S.Ws * (L / S.Ls);
+      tot2 += num;
+      for (qi = 0; qi < XP.length; qi++) {
+        var xp = XP[qi]; xp.res[s % xp.p] += num;
+        pw = xp.p;
+        for (k0 = 1; k0 <= xp.K; k0++) { if (s % pw === 0) xp.lay[k0] += num; else break; pw *= xp.p; }
+      }
+    }
+    PSCACHE[M] = { P: P, sum: tot, X: { D: DD, L: L, total: tot2, ok: tot2 === DD, per: XP }, ms: performance.now() - tStart };
+    return PSCACHE[M];
+  }
+  var PMCACHE = {};
+  // exact law of the crossing index under the fair spiral mode: P(m) = sum over n with n*m <= M of 1/(M q(n)), q(n) = floor(M/n)
+  // (floats, drawing and statistics only); the plain mode's law is the single point m = 1
+  function crossLaw(M) {
+    if (PMCACHE[M]) return PMCACHE[M];
+    var pre = new Float64Array(M + 1), n, P = new Float64Array(M + 1);
+    for (n = 1; n <= M; n++) pre[n] = pre[n - 1] + 1 / Math.floor(M / n);
+    for (var m = 1; m <= M; m++) P[m] = pre[Math.floor(M / m)] / M;
+    PMCACHE[M] = P;
+    return P;
+  }
+  var NDIV = {};
+  function naiveDivs(s) { return NDIV[s] || (NDIV[s] = divisorsFast(s)); }
+
+  function readM() {
+    var raw = $("max").value.trim(), M = Number(raw);
+    if (raw === "" || !isFinite(M) || Math.floor(M) !== M || M < 1 || M > MAXV) return null;
+    return M;
+  }
+  function modeName() { return MODE === "spiral" ? "Spiral" : "Plain"; }
+  function updateUsing() {
+    var el0 = $("b-using");
+    var srcTxt = function (s) { return s === "rule30" ? "Rule 30 bits (restarting at bit 0)" : "secure bits"; };
+    if (B && B.running) { el0.textContent = "Running with the " + (B.spiral ? "Spiral" : "Plain") + " mode, maximum " + B.M + " and " + srcTxt(B.src) + ", fixed at Start."; return; }
+    var M = readM();
+    el0.textContent = "Uses the current mode (" + modeName() + "), the current maximum (" + (M == null ? "not valid yet" : M) + ") and the current random bits (" + srcTxt(SRC) + "), read when you press Start. With Rule 30 bits, tick the naive rule below to compare Rule 30 against both the fair rosette law and the naive law. Batch rolls are not added to the roll history and do not change the rosette, readout or orbit.";
+  }
+
+  function chunk(run) {
+    if (B !== run || !run.running) return;
+    var t0 = performance.now(), M = run.M, c = run.counts, i, n, s, pk, nn, ds, pq, pp;
+    // v0.2.9: with Rule 30 bits, stop cleanly (between rolls) when fewer than 256 words are left, so a roll never runs dry halfway.
+    try {
+    while (run.done < run.total) {
+      for (i = 0; i < 64 && run.done < run.total; i++) {
+        if (run.src === "rule30" && r30Left() < 256) { run.dry = true; run.bitEnd = R30POS * 32; finish(run); return; }
+        if (run.spiral) {
+          pk = spiralPick(M); s = pk.s; n = pk.n;
+          if (n < 1 || n > M || s < 1 || s > M || s % n !== 0) run.bad++;
+        } else { s = draw(M); n = s; }      // plain: spiral s uniform, the outermost crossing n = s, so m = 1
+        run.sc[s]++;
+        if ((s & 1) === 0) run.evenS++;
+        if (s % n === 0) run.mc[s / n]++;
+        c[n]++;
+        if ((n & 1) === 0) run.even++;
+        for (pq = 0; pq < 4; pq++) {      // p-adic counters for p = 2, 3, 5, 7: p | n, p | s, and the gap (p does not divide n, p | s)
+          pp = PRIMES[pq];
+          if (n % pp === 0) run.cdn[pq]++;
+          if (s % pp === 0) { run.cds[pq]++; if (n % pp !== 0) run.cgp[pq]++; }
+        }
+        if (run.naive) { s = draw(M); ds = naiveDivs(s); nn = ds[draw(ds.length) - 1]; run.nc[nn]++; run.nsc[s]++; run.nmc[s / nn]++; }
+        if (run.three) {   // v0.2.10: the reference, a fair rosette pick from the secure generator (does not use Rule 30 bits)
+          var sv = SRC; SRC = "secure";
+          try {
+            var pr = spiralPick(M); run.ref[pr.n]++; if ((pr.n & 1) === 0) run.refEven++;
+            var s2 = draw(M), ds2 = naiveDivs(s2); run.refN[ds2[draw(ds2.length) - 1]]++;   // naive rule, secure bits
+          } finally { SRC = sv; }
+        }
+        run.done++;
+        if (run.done >= run.next) { run.ts.push(run.done); run.es.push(run.even); run.es2.push(run.evenS); pser(run); run.next = Math.max(run.done + 1, Math.floor(run.done * 1.05)); }
+      }
+      if (performance.now() - t0 > BUDGET) break;
+    }
+    } catch (ex) {   // a source error inside a roll (should not happen with the 256-word margin); the last roll may be partly counted
+      if (srcErr(ex) == null) throw ex;
+      run.dry = true; run.midroll = true; run.bitEnd = R30POS * 32; finish(run); return;
+    }
+    if (run.src === "rule30") run.bitEnd = R30POS * 32;
+    if (run.done >= run.total) { finish(run); return; }
+    var now = performance.now();
+    if (now - run.lastDraw >= 100) { run.lastDraw = now; bdraw(); }
+    bsched(function () { chunk(run); });
+  }
+  function pser(run) { for (var q = 0; q < 4; q++) { run.sdn[q].push(run.cdn[q]); run.sds[q].push(run.cds[q]); run.sgp[q].push(run.cgp[q]); } }
+  function finish(run) {
+    run.running = false;
+    run.elapsed = performance.now() - run.t0;
+    if (!run.ts.length || run.ts[run.ts.length - 1] !== run.done) { if (run.done > 0) { run.ts.push(run.done); run.es.push(run.even); run.es2.push(run.evenS); pser(run); } }
+    run.status = run.done >= run.total ? "complete" : "partial";
+    bdraw();
+    setButtons();
+  }
+  function setButtons() {
+    var running = !!(B && B.running), has = !!(B && B.done > 0);
+    $("b-start").disabled = running;
+    $("b-stop").disabled = !running;
+    $("b-total").disabled = running;
+    $("b-naive").disabled = running;
+    $("src-secure").disabled = $("src-rule30").disabled = $("r30-reset").disabled = running;
+    $("b-csv").disabled = !has;
+    srcLine();
+    updateUsing();
+  }
+
+  // ---------- v0.2.10: Compare all three ----------
+  var THREE_NEXT = false;
+  function chiOf(cnt, M, T, P) {   // P(n) law as floats, or null for uniform; no pooling (the note says so)
+    var x = 0, k = 0;
+    for (var n = 1; n <= M; n++) { var E = P ? T * P[n] : T / M; if (E > 0) { x += (cnt[n] - E) * (cnt[n] - E) / E; k++; } }
+    return { x: x, df: k - 1, p: chiP(x, k - 1) };
+  }
+  function evenOf(cnt, M) { var e = 0, t = 0; for (var n = 1; n <= M; n++) { t += cnt[n]; if ((n & 1) === 0) e += cnt[n]; } return t ? e / t : 0; }
+  function threeTable(r) {
+    var M = r.M, T = r.done, box = $("three-cards");
+    clear(box);
+    if (T === 0) return;
+    var rows = [
+      ["Rosette, Rule 30 bits", r.counts, null],
+      ["Rosette, secure bits", r.ref, null],
+      ["Naive rule, Rule 30 bits", r.nc, r.PNV],
+      ["Naive rule, secure bits", r.refN, r.PNV]
+    ];
+    var two = function (a, b) {   // two-sample chi-square (homogeneity), equal totals; cells with a + b = 0 skipped
+      var x = 0, k = 0;
+      for (var n = 1; n <= M; n++) { var t = a[n] + b[n]; if (t > 0) { x += (a[n] - b[n]) * (a[n] - b[n]) / t; k++; } }
+      return { x: x, df: k - 1, p: chiP(x, k - 1) };
+    };
+    var line =function (card, k, v) { var d = document.createElement("div"); d.className = "row"; var a = document.createElement("span"); a.textContent = k; var b = document.createElement("span"); b.className = "v"; b.textContent = v; d.appendChild(a); d.appendChild(b); card.appendChild(d); };
+    var head = document.createElement("div"); head.className = "tcard";
+    var hh = document.createElement("h3"); hh.textContent = "Rule 30 vs real random: same distribution?"; head.appendChild(hh);
+    var hr = two(r.counts, r.ref), hn = two(r.nc, r.refN);
+    line(head, "Rosette: Rule 30 vs secure", "χ² " + hr.x.toFixed(1) + " (df " + hr.df + "), p " + fmtP(hr.p));
+    line(head, "Naive: Rule 30 vs secure", "χ² " + hn.x.toFixed(1) + " (df " + hn.df + "), p " + fmtP(hn.p));
+    line(head, "even share, rosette (R30 / secure)", evenOf(r.counts, M).toFixed(4) + " / " + evenOf(r.ref, M).toFixed(4));
+    var hv = document.createElement("div"); hv.className = "verdict";
+    hv.textContent = (hr.p >= 0.01 && hn.p >= 0.01) ? "Not rejected: no difference between Rule 30 and real random bits detected at the 0.01 level in this run. That is a failure to reject, not proof that they are the same." : "Rejected at the 0.01 level in this run for at least one rule. With many tests, some small p-values occur by chance; look at which rule and rerun.";
+    head.appendChild(hv); box.appendChild(head);
+    rows.forEach(function (row) {
+      var u = chiOf(row[1], M, T, null), own = row[2] ? chiOf(row[1], M, T, row[2]) : null;
+      var card = document.createElement("div"); card.className = "tcard";
+      var h = document.createElement("h3"); h.textContent = row[0]; card.appendChild(h);
+      line(card, "vs uniform 1/M (rosette law)", "χ² " + u.x.toFixed(1) + ", p " + fmtP(u.p));
+      if (own) line(card, "vs its own naive law", "χ² " + own.x.toFixed(1) + ", p " + fmtP(own.p));
+      line(card, "even share", evenOf(row[1], M).toFixed(4));
+      // v0.2.15: plug-in entropy against log2 M (and against the naive rule's exact H(P_N) for its rows); evidence only
+      var pe = FVLTEnt.plugin(row[1], M, T), EX = FVLTEnt.exact(M);
+      line(card, "plug-in entropy (bits)", f4(pe.H) + " vs log2 M " + f4(EX.log2M) + (own ? ", exact H(P_N) " + f4(EX.naive.HN) : ""));
+      line(card, "expected low by (Miller–Madow)", "≈ " + f4(pe.mm));
+      var vd = document.createElement("div"); vd.className = "verdict";
+      var fits = function (p) { return p >= 0.01 ? "not rejected" : "rejected at 0.01"; };
+      vd.textContent = own ? "Uniform: " + fits(u.p) + ". Own law (the null model for this rule): " + fits(own.p) + "." : "Uniform: " + fits(u.p) + ".";
+      card.appendChild(vd);
+      box.appendChild(card);
+    });
+    threePadic(r);
+    $("three-prog").textContent = fmtInt(T) + (r.running ? " rolls so far" : " rolls") + ", maximum " + M + ", Spiral mode" + (r.src === "rule30" ? ", Rule 30 bits 0 to " + fmtInt(Math.max(0, (r.running ? R30POS * 32 : r.bitEnd) - 1)) : "") + (r.running ? " (running)" : r.status === "complete" ? " (complete)" : " (stopped" + (r.dry ? ": Rule 30 bits used up" : "") + ")") + ". Fair even share " + (Math.floor(M / 2) / M).toFixed(4) + ".";
+  }
+  // ---------- v0.2.11: p-adic view of the comparison (both sources, both rules, exact levels) ----------
+  // Exact levels: rosette P(n = r mod p) = #{n <= M : n = r mod p}/M and P(p^k | n) = floor(M/p^k)/M;
+  // naive levels are the same sums taken with the exact naive law Pnaive(n) (floats from the naive tables, drawing only).
+  var RED = "#c62828", BLUE = "#1565c0";
+  function threePadic(r) {
+    var M = r.M, T = r.done, p = Number($("three-p").value);
+    $("three-padic").hidden = T === 0;
+    if (T === 0) return;
+    var unif = new Float64Array(M + 1); for (var n0 = 1; n0 <= M; n0++) unif[n0] = 1 / M;
+    var groups = [
+      { name: "rosette", law: unif, a: r.counts, b: r.ref },
+      { name: "naive", law: r.PNV, a: r.nc, b: r.refN }
+    ];
+    var share = function (cnt, pred) { var s = 0; for (var n = 1; n <= M; n++) if (pred(n)) s += cnt[n]; return s / T; };
+    var level = function (law, pred) { var s = 0; for (var n = 1; n <= M; n++) if (pred(n)) s += law[n]; return s; };
+    // residues
+    var cats = [], ci, g;
+    for (g = 0; g < 2; g++) for (ci = 0; ci < p; ci++) (function (gg, rr) { cats.push({ g: groups[gg], label: (gg ? "nv " : "") + rr, pred: function (n) { return n % p === rr; } }); })(g, ci);
+    drawPairs("three-res", cats, false);
+    // layers
+    var K = 0; while (Math.pow(p, K + 1) <= M) K++;
+    var lc = [];
+    for (g = 0; g < 2; g++) for (var k = 1; k <= K; k++) (function (gg, kk) { var q = Math.pow(p, kk); lc.push({ g: groups[gg], label: (gg ? "nv " : "") + (kk === 1 ? p : p + "^" + kk), pred: function (n) { return n % q === 0; } }); })(g, k);
+    drawPairs("three-lay", lc, true);
+    function drawPairs(id, cs, logy) {
+      var svg = $(id); clear(svg);
+      var x0 = 52, x1 = 352, y0 = 14, y1 = 180, w = (x1 - x0) / cs.length;
+      var vals = [];
+      cs.forEach(function (c) {
+        c.L = level(c.g.law, c.pred); c.va = share(c.g.a, c.pred); c.vb = share(c.g.b, c.pred);
+        c.sd = Math.sqrt(Math.max(c.L * (1 - c.L), 0) / T);
+        vals.push(c.L + 2.5 * c.sd, Math.max(1e-9, c.L - 2.5 * c.sd), c.va, c.vb);
+      });
+      var lo, hi, Y;
+      if (logy) {
+        lo = Infinity; hi = 0; vals.forEach(function (v) { if (v > 0) { lo = Math.min(lo, v); hi = Math.max(hi, v); } });
+        lo = Math.pow(10, Math.floor(Math.log10(lo))); hi = Math.pow(10, Math.ceil(Math.log10(hi)));
+        Y = function (v) { v = Math.max(v, lo); return y1 - (Math.log10(v) - Math.log10(lo)) / (Math.log10(hi) - Math.log10(lo)) * (y1 - y0); };
+        for (var e = Math.log10(lo); e <= Math.log10(hi) + 1e-9; e++) { svg.appendChild(el("line", { x1: x0, x2: x1, y1: Y(Math.pow(10, e)), y2: Y(Math.pow(10, e)), style: "stroke:var(--line)" })); svg.appendChild(el("text", { x: x0 - 4, y: Y(Math.pow(10, e)) + 4, "font-size": 12, "text-anchor": "end", style: "fill:var(--fg)" }, String(Math.pow(10, e) >= 1 ? 1 : Number(Math.pow(10, e).toPrecision(1))))); }
+      } else {
+        lo = 0; hi = Math.min(1, Math.max.apply(null, vals) * 1.1);
+        Y = function (v) { return y1 - (v - lo) / (hi - lo) * (y1 - y0); };
+        [0, hi / 2, hi].forEach(function (v) { svg.appendChild(el("line", { x1: x0, x2: x1, y1: Y(v), y2: Y(v), style: "stroke:var(--line)" })); svg.appendChild(el("text", { x: x0 - 4, y: Y(v) + 4, "font-size": 12, "text-anchor": "end", style: "fill:var(--fg)" }, v.toFixed(2))); });
+      }
+      var half = Math.ceil(cs.length / 2);
+      svg.appendChild(el("line", { x1: x0 + half * w, x2: x0 + half * w, y1: y0, y2: y1 + 30, stroke: "#999", "stroke-dasharray": "3 3" }));
+      svg.appendChild(el("text", { x: x0 + half * w / 2, y: 226, "font-size": 13, "text-anchor": "middle", "font-weight": "bold", style: "fill:var(--fg)" }, "rosette"));
+      svg.appendChild(el("text", { x: x0 + half * w * 1.5, y: 226, "font-size": 13, "text-anchor": "middle", "font-weight": "bold", style: "fill:var(--fg)" }, "naive rule"));
+      cs.forEach(function (c, i) {
+        var cx = x0 + (i + 0.5) * w;
+        svg.appendChild(el("rect", { x: cx - w * 0.4, y: Y(c.L + 2 * c.sd), width: w * 0.8, height: Math.max(1, Y(Math.max(logy ? lo : 0, c.L - 2 * c.sd)) - Y(c.L + 2 * c.sd)), style: "fill:var(--line);opacity:.7" }));
+        svg.appendChild(el("line", { x1: cx - w * 0.4, x2: cx + w * 0.4, y1: Y(c.L), y2: Y(c.L), style: "stroke:var(--fg)", "stroke-width": 2 }));
+        if (!(logy && c.va <= 0)) svg.appendChild(el("circle", { cx: cx - w * 0.2, cy: Y(c.va), r: Math.min(4, w * 0.17), fill: RED }));
+        if (!(logy && c.vb <= 0)) svg.appendChild(el("circle", { cx: cx + w * 0.2, cy: Y(c.vb), r: Math.min(4, w * 0.17), fill: BLUE }));
+        svg.appendChild(el("text", { x: cx, y: y1 + 18, "font-size": 12, "text-anchor": "middle", style: "fill:var(--fg)" }, c.label.replace(/^nv /, "")));
+      });
+    }
+    // z summary: how many points sit outside ±2σ, per source
+    var out = { a: 0, b: 0, n: 0 }, zmax = { a: 0, b: 0 };
+    cats.concat(lc).forEach(function (c) { if (c.sd > 0) { var za = (c.va - c.L) / c.sd, zb = (c.vb - c.L) / c.sd; out.n++; if (Math.abs(za) > 2) out.a++; if (Math.abs(zb) > 2) out.b++; zmax.a = Math.max(zmax.a, Math.abs(za)); zmax.b = Math.max(zmax.b, Math.abs(zb)); } });
+    $("three-padic-note").textContent = "p = " + p + ", " + fmtInt(T) + " rolls. Outside ±2σ: Rule 30 " + out.a + " of " + out.n + " (largest |z| " + zmax.a.toFixed(2) + "), real random " + out.b + " of " + out.n + " (largest |z| " + zmax.b.toFixed(2) + "); about 1 in 20 per point is expected by chance. The bands are per point, not simultaneous, and the points are not independent (residues and layers share the same rolls). Exact levels: rosette = counts of residues or multiples of p^k up to M, divided by M; naive = the same sums over the exact naive law (floats, drawing only). Evidence only.";
+  }
+  $("three-p").addEventListener("change", function () { if (B && B.three) threePadic(B); });
+
+  $("three-go").addEventListener("click", function () {
+    if (B && B.running) return;
+    $("three-panel").hidden = false;
+    $("mode-spiral").checked = true; MODE = "spiral"; try { localStorage.setItem(MKEY, MODE); } catch (e) {}
+    $("b-naive").checked = true;
+    var go = function () {
+      if (!R30OK) { $("three-prog").textContent = "Rule 30 bits could not be loaded; see the Random bits line."; return; }
+      THREE_NEXT = true; $("b-start").click(); THREE_NEXT = false;
+    };
+    if (SRC !== "rule30") { $("src-rule30").checked = true; SRC = "rule30"; try { localStorage.setItem(SKEY, SRC); } catch (e) {} }
+    if (R30OK) go();
+    else {
+      $("three-prog").textContent = "Loading Rule 30 bits…"; r30Load();
+      var tries = 0, iv = setInterval(function () { tries++; if (R30OK || tries > 40) { clearInterval(iv); go(); } }, 250);
+    }
+  });
+
+  $("b-start").addEventListener("click", function () {
+    if (B && B.running) return;
+    var M = readM();
+    if (M == null) { $("b-err").textContent = "Maximum must be a whole number from 1 to " + MAXV + "."; return; }
+    $("b-err").textContent = "";
+    var total = Number($("b-total").value), spiral = (MODE === "spiral"), naive = $("b-naive").checked;
+    if (SRC === "rule30" && !R30OK) { $("b-err").textContent = "Rule 30 bits are not loaded yet; see the Random bits line at the top."; return; }
+    if (SRC === "rule30") { R30POS = 0; srcLine(); }   // every Rule 30 batch starts at bit 0, so it is reproducible
+    var run = {
+      src: SRC, bitStart: SRC === "rule30" ? 0 : null, bitEnd: SRC === "rule30" ? 0 : null, dry: false, midroll: false,
+      three: THREE_NEXT, ref: THREE_NEXT ? new Uint32Array(M + 1) : null, refN: THREE_NEXT ? new Uint32Array(M + 1) : null, refEven: 0,
+      M: M, total: total, spiral: spiral, naive: naive, done: 0, even: 0, evenS: 0, es2: [], fS: 0, bad: 0, running: true, status: "running",
+      counts: new Uint32Array(M + 1), sc: new Uint32Array(M + 1), mc: new Uint32Array(M + 1),
+      nc: naive ? new Uint32Array(M + 1) : null, nsc: naive ? new Uint32Array(M + 1) : null, nmc: naive ? new Uint32Array(M + 1) : null,
+      cdn: [0, 0, 0, 0], cds: [0, 0, 0, 0], cgp: [0, 0, 0, 0], sdn: [[], [], [], []], sds: [[], [], [], []], sgp: [[], [], [], []], PXD: {},
+      ts: [], es: [], next: 1, t0: performance.now(), elapsed: 0, lastDraw: 0, PS: spiral ? spiralProbs(M) : null,
+      PM: spiral ? crossLaw(M) : null, NT: naive ? ntables(M) : null, PM1: null, PNV: null
+    };
+    if (!spiral) { run.PM1 = new Float64Array(M + 1); run.PM1[1] = 1; }
+    if (naive) { run.PNV = new Float64Array(M + 1); for (var q0 = 1; q0 <= M; q0++) run.PNV[q0] = run.NT.val[q0] / M; }
+    ZV = {}; RD = {};
+    if (spiral) { var fs0 = 0; for (var q1 = 2; q1 <= M; q1 += 2) fs0 += run.PS.P[q1]; run.fS = fs0; } else run.fS = Math.floor(M / 2) / M;
+    run.exactMs = spiral ? run.PS.ms : 0;
+    run.t0 = performance.now();
+    B = run;
+    setButtons();
+    bdraw();
+    bsched(function () { chunk(run); });
+  });
+  $("b-stop").addEventListener("click", function () { if (B && B.running) finish(B); });
+  $("b-clear").addEventListener("click", function () {
+    if (B && B.running) B.running = false;
+    B = null; ZV = {}; RD = {}; setButtons(); bdraw();
+  });
+  $("max").addEventListener("input", updateUsing);
+  ["mode-plain", "mode-spiral"].forEach(function (id) { $(id).addEventListener("change", updateUsing); });
+
+  $("b-csv").addEventListener("click", function () {
+    if (!B || B.done === 0) return;
+    var r = B, lines = [];
+    lines.push("# FVLT rosette picker v0.2.16 batch counts; mode=" + (r.spiral ? "spiral" : "plain") + "; bits=" + (r.src === "rule30" ? R30FILE + "[" + r.bitStart + ".." + r.bitEnd + ")" : "secure") + "; M=" + r.M + "; total_rolls=" + r.done + "; planned_rolls=" + r.total + "; status=" + (r.running ? "running" : r.status) + "; date=" + new Date().toISOString());
+    lines.push("# k is read as the number n in count, the spiral s in spiral_count and the crossing index m = s/n in m_count" + (r.naive ? "; naive_count, naive_spiral_count and naive_m_count are the same three readings for the naive overlay (comparison only, never used to pick)" : ""));
+    lines.push(r.naive ? "k,count,spiral_count,m_count,naive_count,naive_spiral_count,naive_m_count" : "k,count,spiral_count,m_count");
+    for (var n = 1; n <= r.M; n++) lines.push(n + "," + r.counts[n] + "," + r.sc[n] + "," + r.mc[n] + (r.naive ? "," + r.nc[n] + "," + r.nsc[n] + "," + r.nmc[n] : ""));
+    var blob = new Blob([lines.join("\n") + "\n"], { type: "text/csv" }), url = URL.createObjectURL(blob);
+    var a = document.createElement("a");
+    a.href = url; a.download = "fvlt_counts_" + (r.spiral ? "spiral" : "plain") + "_M" + r.M + "_T" + r.done + ".csv";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 3000);
+  });
+
+  // ---- drawing ----
+  var BX0 = 60, BX1 = 352, BY0 = 24, BY1 = 160, PW = BX1 - BX0;
+  var BARS = ["bh1", "bh3", "bh4", "bh5"], ALLC = ["bh1", "bh2", "bh3", "bh4", "bh5"];
+  var ZV = {};     // zoom window per chart: {d0, d1} in domain units (value k for bar charts, log10 of rolls for bh2); absent = Fit
+  var RD = {};     // selected domain position per chart for the readout line
+  function caps(svg, top, lines) {   // titles and legend rows as page text (legible on phones)
+    var t = $(svg.id + '-top'), c = $(svg.id + '-cap');
+    if (t) { clear(t); var d0 = document.createElement('div'); d0.textContent = top; t.appendChild(d0); }
+    if (c) { clear(c); lines.forEach(function (l) { var d = document.createElement('div'); if (l[1]) d.className = l[1]; d.textContent = l[0]; c.appendChild(d); }); }
+  }
+  function tx(svg, x, y, txt, cls, anchor) { var a = { x: x, y: y }; if (cls) a["class"] = cls; if (anchor) a["text-anchor"] = anchor; svg.appendChild(el("text", a, txt)); }
+  function noData(svg, msg) {
+    clear(svg);
+    var t0c = $(svg.id + '-top'), c0c = $(svg.id + '-cap'); if (t0c) clear(t0c); if (c0c) clear(c0c);
+    svg.appendChild(el("rect", { x: BX0, y: BY0, width: BX1 - BX0, height: BY1 - BY0, "class": "gl0" }));
+    tx(svg, (BX0 + BX1) / 2, (BY0 + BY1) / 2, msg, null, "middle");
+  }
+  function axTick(v) { return v >= 1e6 ? (v / 1e6) + "M" : (v >= 1e4 ? (v / 1e3) + "k" : String(v)); }
+  function pAt(p, k) { return typeof p === "number" ? p : p[k]; }
+  function nfmt(x) { return Math.abs(x) >= 100 ? x.toFixed(1) : x.toFixed(2); }
+
+  // ---- zoom state: a window [d0, d1] of the chart's own domain ----
+  function Tdom(run) { return Math.max(10, run.running || run.status === "complete" ? run.total : run.done); }
+  function isLogT(id) { return id === "bh2" || id === "pd2"; }   // charts whose x axis is log10 of the rolls so far
+  function fullDom(id) { return isLogT(id) ? [0, Math.log10(Tdom(B))] : [1, B.M + 1]; }
+  function minSpan(id) { return isLogT(id) ? Math.min(0.15, Math.log10(Tdom(B))) : Math.min(10, B.M); }
+  function getView(id) {
+    var f = fullDom(id), z = ZV[id], span = f[1] - f[0], ms = minSpan(id), d0 = f[0], d1 = f[1];
+    if (z) {
+      var s = Math.min(Math.max(z.d1 - z.d0, ms), span);
+      d0 = Math.min(Math.max(z.d0, f[0]), f[1] - s); d1 = d0 + s;
+    }
+    return { d0: d0, d1: d1, f0: f[0], f1: f[1], ms: ms };
+  }
+  function setWin(id, d0, d1) {
+    var f = fullDom(id), span = f[1] - f[0], s = Math.min(Math.max(d1 - d0, minSpan(id)), span);
+    d0 = Math.min(Math.max(d0, f[0]), f[1] - s);
+    if (s >= span - 1e-9) delete ZV[id]; else ZV[id] = { d0: d0, d1: d0 + s };
+    schedChart(id);
+  }
+  function zoomAtB(id, ux, f) {
+    if (!B) return;
+    var v = getView(id), span = v.d1 - v.d0, fr = (ux - BX0) / PW, u = v.d0 + fr * span, ns = span / f;
+    ns = Math.min(Math.max(ns, v.ms), v.f1 - v.f0);
+    setWin(id, u - fr * ns, u - fr * ns + ns);
+  }
+  function panFrac(id, fr) {   // shift by fr of the visible width
+    if (!B) return;
+    var v = getView(id), span = v.d1 - v.d0;
+    setWin(id, v.d0 + fr * span, v.d1 + fr * span);
+  }
+  var pendC = {};
+  function schedChart(id) {
+    if (pendC[id]) return;
+    pendC[id] = true;
+    requestAnimationFrame(function () { pendC[id] = false; drawChartB(id); });
+  }
+  function unitOf(id) { return id === "bh3" ? "s" : (id === "bh4" ? "m" : "n"); }
+  function updateZB(id) {
+    var has = !!B, v = has ? getView(id) : null, eps = 1e-9;
+    var span = has ? v.d1 - v.d0 : 0, fit = !has || !ZV[id];
+    $(id + "-pl").disabled = !has || v.d0 <= v.f0 + eps;
+    $(id + "-pr").disabled = !has || v.d1 >= v.f1 - eps;
+    $(id + "-out").disabled = !has || fit;
+    $(id + "-in").disabled = !has || span <= v.ms + eps;
+    $(id + "-fit").disabled = !has || fit;
+    $(id).classList.toggle("zoomed", !fit);
+    var txt;
+    if (!has) txt = "";
+    else if (isLogT(id)) {
+      var t0 = Math.pow(10, v.d0), t1 = Math.pow(10, v.d1);
+      txt = "showing rolls t = " + fmtInt(Math.max(1, Math.round(t0))) + ".." + fmtInt(Math.round(t1)) + " of 1.." + fmtInt(Math.round(Math.pow(10, v.f1))) + (span <= v.ms + eps ? " (max zoom)" : "");
+    } else {
+      var ka = Math.max(1, Math.floor(v.d0 + eps)), kb = Math.min(B.M, Math.ceil(v.d1 - eps) - 1);
+      txt = "showing " + unitOf(id) + " = " + ka + ".." + kb + " of 1.." + B.M + (span <= v.ms + eps ? " (max zoom)" : "");
+    }
+    setText(id + "-zr", txt);
+    $(id).setAttribute("data-d0", has ? v.d0.toFixed(6) : "");
+    $(id).setAttribute("data-d1", has ? v.d1.toFixed(6) : "");
+  }
+
+  // ---- per-chart configuration (full, unbinned arrays; binning follows the zoom window) ----
+  function chartCfg(id) {
+    var r = B;
+    if (!r) return null;
+    var M = r.M, T = r.done, c = { id: id, M: M, T: T, unit: unitOf(id), cell: "bar", lawWord: "fair expected", extra: [], nv: null, nvp: null, nvLine: false, nvText: null };
+    if (id === "bh1") { c.obs = r.counts; c.pk = 1 / M; c.title = "counts per number n"; if (r.naive) { c.nv = r.nc; c.nvp = r.PNV; } return c; }
+    if (id === "bh3") {
+      c.obs = r.sc; c.title = "spirals chosen, counts per spiral s";
+      if (r.spiral) { c.pk = r.PS.P; c.lawWord = "exact expected T·P(s)"; }
+      else { c.pk = 1 / M; c.lawWord = "exact expected T/M"; c.extra.push(["plain mode chooses spiral s uniformly and always takes its outermost crossing (n = s, m = 1), so the bars sit flat at T/M"]); }
+      if (r.naive) { c.nv = r.nsc; c.nvp = 1 / M; c.nvText = "orange ticks: the naive rule's spirals (uniform), never used to pick"; }
+      return c;
+    }
+    if (id === "bh4") {
+      c.obs = r.mc; c.title = "crossing index m = s/n"; c.log = $("b-logm").checked;
+      if (r.spiral) { c.pk = r.PM; c.lawWord = "exact expected T·P(m)"; }
+      else { c.pk = r.PM1; c.lawWord = "exact law: all T at m = 1"; c.extra.push(["plain mode always uses the outermost crossing, m = 1: all " + T + " rolls sit at m = 1 (degenerate on purpose, not an error)"]); }
+      c.extra.push([c.log ? "y axis: log scale; a count of 0 is not drawn" : "y axis: linear"]);
+      if (r.naive) { c.nv = r.nmc; c.nvp = r.PNV; c.nvLine = true; c.nvText = "orange ticks: naive rule; thin orange line: its exact law Pnaive(m)"; }
+      return c;
+    }
+    if (id === "bh5") {
+      if (!r.naive) return null;
+      c.obs = r.nc; c.pk = r.PNV; c.title = "naive counts per number n"; c.cell = "tick"; c.ticksOnly = true; c.log = true; c.tau = r.NT.tau; c.shade = true;
+      c.lawWord = "exact naive expected T·Pnaive(n)";
+      c.extra.push(["shaded: n > M/2, where Pnaive(n) = 1/(M tau(n)) exactly; y axis: log scale"]);
+      return c;
+    }
+    return null;
+  }
+
+  function binRange(c, v) {
+    var M = c.M, a = v.d0, W = v.d1 - v.d0;
+    var ka = Math.max(1, Math.floor(a + 1e-9)), kb = Math.min(M, Math.ceil(a + W - 1e-9) - 1);
+    var w = W <= 200 + 1e-9 ? 1 : Math.ceil(W / 200);
+    return { a: a, W: W, ka: ka, kb: kb, w: w, j0: Math.floor((ka - 1) / w), j1: Math.floor((kb - 1) / w) };
+  }
+  function binSum(arr, s0, s1) { var q = 0; for (var k = s0; k <= s1; k++) q += arr[k]; return q; }
+  function binP(p, s0, s1) { if (typeof p === "number") return p * (s1 - s0 + 1); var q = 0; for (var k = s0; k <= s1; k++) q += p[k]; return q; }
+
+  function drawBars(id) {
+    var c = chartCfg(id), svg = $(id);
+    if (!c) { noData(svg, "no data yet"); return; }
+    clear(svg);
+    var M = c.M, T = c.T, v = getView(id), g0 = binRange(c, v), a = g0.a, W = g0.W, w = g0.w, log = !!c.log;
+    var nb = g0.j1 - g0.j0 + 1, b, s0 = [], s1 = [], obsB = [], ex = [], lo = [], hi = [], nvB = c.nv ? [] : null, nvX = c.nvp ? [] : null, sd, p;
+    var ymax = 1;
+    for (b = 0; b < nb; b++) {
+      s0[b] = (g0.j0 + b) * w + 1; s1[b] = Math.min((g0.j0 + b + 1) * w, M);
+      obsB[b] = binSum(c.obs, s0[b], s1[b]);
+      p = binP(c.pk, s0[b], s1[b]); ex[b] = T * p; sd = Math.sqrt(Math.max(0, T * p * (1 - p)));
+      lo[b] = Math.max(0, ex[b] - 2 * sd); hi[b] = ex[b] + 2 * sd;
+      if (nvB) nvB[b] = binSum(c.nv, s0[b], s1[b]);
+      if (nvX) nvX[b] = T * binP(c.nvp, s0[b], s1[b]);
+      ymax = Math.max(ymax, obsB[b], hi[b]);
+      if (log && nvB) ymax = Math.max(ymax, nvB[b]);
+      if (log && nvX && c.nvLine) ymax = Math.max(ymax, nvX[b]);
+    }
+    var flo = 0.5, top = ymax * 1.08, ys;
+    if (log) {
+      var mnPos = Infinity, anyLow = false;
+      for (b = 0; b < nb; b++) {
+        if (obsB[b] > 0) mnPos = Math.min(mnPos, obsB[b]); else anyLow = true;
+        if (ex[b] >= 0.5) mnPos = Math.min(mnPos, ex[b]); else anyLow = true;
+        if (nvB && nvB[b] > 0) mnPos = Math.min(mnPos, nvB[b]);
+      }
+      flo = (anyLow || !isFinite(mnPos)) ? 0.5 : Math.max(0.5, mnPos * 0.6);
+      top = Math.max(2, ymax) * 1.5;
+      var lf = Math.log10(flo), lt = Math.log10(top);
+      ys = function (val) { val = Math.min(Math.max(val, flo), top); return BY1 - (Math.log10(val) - lf) / (lt - lf) * (BY1 - BY0); };
+    } else ys = function (val) { return BY1 - (Math.min(val, top) / top) * (BY1 - BY0); };
+    var xl = function (k) { return BX0 + (k - a) / W * PW; };
+    svg.appendChild(el("clipPath", { id: "clip-" + id })).appendChild(el("rect", { x: BX0, y: 0, width: PW, height: BY1 + 1 }));
+    // y gridlines and numbers
+    var yy, i;
+    if (!log) {
+      for (i = 0; i <= 2; i++) {
+        yy = BY1 - i * (BY1 - BY0) / 2;
+        svg.appendChild(el("line", { "class": "gl", x1: BX0, y1: yy, x2: BX1, y2: yy }));
+        tx(svg, BX0 - 4, yy + 3, String(Math.round(top * i / 2)), null, "end");
+      }
+    } else {
+      var tk = ticksFor([1, 2, 5]), mn = Infinity;
+      for (i = 1; i < tk.length; i++) mn = Math.min(mn, ys(tk[i - 1]) - ys(tk[i]));
+      if (tk.length < 2 || mn < 15) { var t1 = ticksFor([1]); if (t1.length >= 2 || tk.length < 2) tk = t1; }
+      svg.appendChild(el("line", { "class": "gl", x1: BX0, y1: BY1, x2: BX1, y2: BY1 }));
+      tk.forEach(function (tv) { var y2 = ys(tv); svg.appendChild(el("line", { "class": "gl", x1: BX0, y1: y2, x2: BX1, y2: y2 })); tx(svg, BX0 - 4, y2 + 3, axTick(tv), null, "end"); });
+    }
+    function ticksFor(mults) {
+      var out = [], k, mu, tv;
+      for (k = Math.floor(Math.log10(flo)); k <= Math.ceil(Math.log10(top)); k++) for (var q = 0; q < mults.length; q++) {
+        tv = mults[q] * Math.pow(10, k);
+        if (tv >= 1 && tv >= flo * 0.999 && tv <= top) out.push(tv);
+      }
+      return out;
+    }
+    var gr = svg.appendChild(el("g", { "clip-path": "url(#clip-" + id + ")" }));
+    if (c.shade) {
+      var xsh = xl(Math.floor(M / 2) + 1);
+      if (xsh < BX1) gr.appendChild(el("rect", { "class": "shade", x: Math.max(BX0, xsh), y: BY0 - 14, width: BX1 - Math.max(BX0, xsh), height: BY1 - BY0 + 14 }));
+    }
+    var bars = "", band = "", line = "", nvp = "", tri = "", nlaw = "", clipped = 0, x0, x1, x2, dots = [];
+    for (b = 0; b < nb; b++) {
+      x0 = xl(s0[b]); x1 = xl(s1[b] + 1); x2 = x0 + (x1 - x0) * 0.86;
+      if (obsB[b] > 0) {
+        if (c.ticksOnly) nvp += "M" + x0.toFixed(2) + " " + ys(obsB[b]).toFixed(2) + "H" + x2.toFixed(2);
+        else bars += "M" + x0.toFixed(2) + " " + BY1 + "V" + ys(obsB[b]).toFixed(2) + "H" + x2.toFixed(2) + "V" + BY1 + "Z";
+      }
+      if (c.ticksOnly && w === 1 && c.tau[s0[b]] === 2 && obsB[b] > 0) dots.push([(x0 + x2) / 2, ys(obsB[b])]);
+      band += "M" + x0.toFixed(2) + " " + ys(hi[b]).toFixed(2) + "H" + x1.toFixed(2) + "V" + ys(lo[b]).toFixed(2) + "H" + x0.toFixed(2) + "Z";
+      line += "M" + x0.toFixed(2) + " " + ys(ex[b]).toFixed(2) + "H" + x1.toFixed(2);
+      if (nvB && !c.ticksOnly) {
+        if (!log && nvB[b] > top) { clipped++; tri += "M" + ((x0 + x2) / 2).toFixed(2) + " " + (BY0 - 12) + "l3 6h-6Z"; }
+        else if (nvB[b] > 0 || !log) nvp += "M" + x0.toFixed(2) + " " + ys(nvB[b]).toFixed(2) + "H" + x2.toFixed(2);
+      }
+      if (c.nvLine && nvX) nlaw += "M" + x0.toFixed(2) + " " + ys(nvX[b]).toFixed(2) + "H" + x1.toFixed(2);
+    }
+    gr.appendChild(el("path", { "class": "band", d: band }));
+    if (bars) gr.appendChild(el("path", { "class": "bar", d: bars }));
+    gr.appendChild(el("path", { "class": "expl", d: line }));
+    if (nlaw) gr.appendChild(el("path", { "class": "nvlaw", d: nlaw }));
+    if (nvp) gr.appendChild(el("path", { "class": "nv", d: nvp }));
+    if (tri) gr.appendChild(el("path", { "class": "nvt", d: tri }));
+    dots.forEach(function (d) { gr.appendChild(el("circle", { "class": "pdot", cx: d[0].toFixed(2), cy: d[1].toFixed(2), r: 2 })); });
+    var capLines = [];
+    tx(svg, BX0, 174, c.unit + " " + g0.ka, null, "start");
+    tx(svg, BX1, 174, c.unit + " " + g0.kb, null, "end");
+    if (c.ticksOnly) {
+      capLines.push(["orange ticks: observed naive counts; line: " + c.lawWord + "; band: ±2 sd", "nvl"]);
+      capLines.push([w === 1 ? "filled dots: primes (tau = 2)" : "primes are marked when one tick is one number (zoom in to 200 numbers or fewer); the table below counts them"]);
+    } else capLines.push(["bars: observed counts; line: " + c.lawWord + "; band: ±2 sd"]);
+    if (nvB && !c.ticksOnly) capLines.push([c.nvText || "orange ticks: naive rule, never used to pick", "nvl"]);
+    if (nvB && clipped) capLines.push([clipped + " naive bin" + (clipped === 1 ? "" : "s") + " above the chart, marked with a triangle", "nvl"]);
+    c.extra.forEach(function (l) { capLines.push(l); });
+    caps(svg, c.title + " · " + (w > 1 ? "binned, width " + w : "one " + c.cell + " per " + c.unit), capLines);
+    svg.setAttribute("data-w", w);
+  }
+
+  // text for the readout line: the bin under a domain position u (a value k for bar charts, log10 of rolls for bh2)
+  function readoutText(id, u) {
+    if (!B) return "";
+    if (id === "bh2") return shareReadout(u);
+    if (id === "pd2") return padicReadout(u);
+    var c = chartCfg(id);
+    if (!c) return "";
+    var g0 = binRange(c, getView(id)), k = Math.min(Math.max(Math.floor(u), 1), c.M), j = Math.floor((k - 1) / g0.w);
+    var s0 = j * g0.w + 1, s1 = Math.min((j + 1) * g0.w, c.M), T = c.T, u0 = c.unit;
+    var t = u0 + " = " + (s0 === s1 ? s0 : s0 + ".." + s1 + " (" + (s1 - s0 + 1) + " values)");
+    t += ": observed " + binSum(c.obs, s0, s1) + "; exact expected " + nfmt(T * binP(c.pk, s0, s1)) + " (float)";
+    if (c.nv) t += "; naive " + binSum(c.nv, s0, s1) + ", naive expected " + nfmt(T * binP(c.nvp, s0, s1)) + " (float)";
+    if (c.tau) {
+      if (s0 === s1) t += "; tau(" + s0 + ") = " + c.tau[s0] + ", " + (c.tau[s0] === 2 ? "prime" : (s0 === 1 ? "neither prime nor composite" : "composite"));
+      else { var np = 0; for (var q = s0; q <= s1; q++) if (c.tau[q] === 2) np++; t += "; primes in this range: " + np; }
+    }
+    return t;
+  }
+  function updateRD(id) {
+    var e0 = $(id + "-rd");
+    if (!B) { setText(id + "-rd", ""); return; }
+    if (RD[id] == null || (!isLogT(id) && !chartCfg(id))) { setText(id + "-rd", "Tap or point at the chart for a reading."); return; }
+    setText(id + "-rd", readoutText(id, RD[id]));
+  }
+  // v0.2.8: a chart inside a closed section is not drawn (getBBox and sizes need a rendered element); it is redrawn when the section opens
+  function secOpen(id) { var d = $(id).closest("details"); return !d || d.open; }
+  function drawChartB(id) {
+    if (!secOpen(id)) return;
+    if (id === "bh2") { if (B) shareChart($(id), B); else noData($(id), "no data yet"); }
+    else if (id === "pd2") { if (B) padicShare($(id), B); else noData($(id), "no data yet"); }
+    else drawBars(id);
+    updateZB(id);
+    updateRD(id);
+  }
+
+  var shareMeta = null;
+  function shareChart(svg, run) {
+    clear(svg);
+    var M = run.M, f = Math.floor(M / 2) / M, Td = Tdom(run), lT = Math.log10(Td), v = getView("bh2"), fit = !ZV.bh2;
+    var tvMin = Math.pow(10, v.d0), tvMax = Math.pow(10, v.d1), span = v.d1 - v.d0;
+    var t0 = fit ? Math.min(1000, Math.max(10, Math.floor(Td / 10))) : Math.max(1, tvMin), sdAt = function (t) { return Math.sqrt(f * (1 - f) / t); };
+    var fS = run.fS, sdS = function (t) { return Math.sqrt(fS * (1 - fS) / t); };
+    var pts = [], pts2 = [], i, dev = 2 * sdAt(t0), dev2 = 2 * sdS(t0);
+    for (i = 0; i < run.ts.length; i++) { pts.push([run.ts[i], run.es[i] / run.ts[i]]); pts2.push([run.ts[i], run.es2[i] / run.ts[i]]); }
+    if (run.done > 0 && (!pts.length || pts[pts.length - 1][0] !== run.done)) { pts.push([run.done, run.even / run.done]); pts2.push([run.done, run.evenS / run.done]); }
+    pts.forEach(function (p) { if (p[0] >= t0 && (fit || p[0] <= tvMax)) dev = Math.max(dev, Math.abs(p[1] - f)); });
+    pts2.forEach(function (p) { if (p[0] >= t0 && (fit || p[0] <= tvMax)) dev2 = Math.max(dev2, Math.abs(p[1] - fS)); });
+    var h = Math.max(1.15 * dev, 1e-6), h2 = Math.max(1.15 * dev2, 1e-6);
+    var ylo = Math.min(f - h, fS - h2), yhi = Math.max(f + h, fS + h2);
+    var xs = function (t) { return BX0 + (Math.log10(Math.max(t, 1)) - v.d0) / span * PW; };
+    var ys = function (val) { return BY0 + (1 - (val - ylo) / (yhi - ylo)) * (BY1 - BY0); };
+    svg.appendChild(el("clipPath", { id: "bclip" })).appendChild(el("rect", { x: BX0, y: BY0, width: PW, height: BY1 - BY0 }));
+    var k, up = "", dn = [], up2 = "", dn2 = [], N = 140, t;
+    for (k = 0; k <= N; k++) {
+      t = Math.pow(10, v.d0 + span * k / N);
+      up += (k ? "L" : "M") + xs(t).toFixed(2) + " " + ys(f + 2 * sdAt(t)).toFixed(2);
+      dn.push("L" + xs(t).toFixed(2) + " " + ys(f - 2 * sdAt(t)).toFixed(2));
+      up2 += (k ? "L" : "M") + xs(t).toFixed(2) + " " + ys(fS + 2 * sdS(t)).toFixed(2);
+      dn2.push("L" + xs(t).toFixed(2) + " " + ys(fS - 2 * sdS(t)).toFixed(2));
+    }
+    // x ticks at 1, 2, 5 times powers of ten inside the window; every gridline, labels thinned to 34 units apart
+    var tl = function (mults) {
+      var out = [], e, q, tv;
+      for (e = Math.floor(v.d0); e <= Math.ceil(v.d1); e++) for (q = 0; q < mults.length; q++) { tv = mults[q] * Math.pow(10, e); if (tv >= 1 && Math.log10(tv) >= v.d0 - 1e-9 && Math.log10(tv) <= v.d1 + 1e-9) out.push(tv); }
+      return out;
+    };
+    var tks = tl([1, 2, 5]), crowded = false;
+    for (i = 1; i < tks.length; i++) if (xs(tks[i]) - xs(tks[i - 1]) < 34) crowded = true;
+    if (crowded) { var t10 = tl([1]); if (t10.length) tks = t10; }
+    var lastX = -1e9;
+    tks.forEach(function (tv) {
+      var xx = xs(tv);
+      svg.appendChild(el("line", { "class": "gl", x1: xx, y1: BY0, x2: xx, y2: BY1 }));
+      if (xx - lastX >= 34) { tx(svg, xx, 174, axTick(tv), null, xx > BX1 - 12 ? "end" : (xx < BX0 + 12 ? "start" : "middle")); lastX = xx; }
+    });
+    // drop any tick label whose drawn box would touch the previous kept one (edge labels are re-anchored above)
+    (function () {
+      var labs = [].slice.call(svg.querySelectorAll("text")).filter(function (t) { return t.getAttribute("y") === "174"; });
+      var prevRight = -1e9;
+      labs.forEach(function (t) {
+        var bb; try { bb = t.getBBox(); } catch (e) { return; }
+        if (bb.width === 0) return;
+        if (bb.x < prevRight + 4) t.parentNode.removeChild(t); else prevRight = bb.x + bb.width;
+      });
+    })();
+    var g = svg.appendChild(el("g", { "clip-path": "url(#bclip)" }));
+    g.appendChild(el("path", { "class": "funnel", d: up + dn.reverse().join("") + "Z" }));
+    if (Math.abs(fS - f) > 1e-12) g.appendChild(el("path", { "class": "funnel2", d: up2 + dn2.reverse().join("") + "Z" }));
+    g.appendChild(el("line", { "class": "fairl", x1: BX0, y1: ys(f), x2: BX1, y2: ys(f) }));
+    if (Math.abs(fS - f) > 1e-12) g.appendChild(el("line", { "class": "fairs", x1: BX0, y1: ys(fS), x2: BX1, y2: ys(fS) }));
+    var d = "", d2 = "";
+    pts.forEach(function (p, j) { d += (j ? "L" : "M") + xs(p[0]).toFixed(2) + " " + ys(p[1]).toFixed(2); });
+    pts2.forEach(function (p, j) { d2 += (j ? "L" : "M") + xs(p[0]).toFixed(2) + " " + ys(p[1]).toFixed(2); });
+    g.appendChild(el("path", { "class": "ln2", d: d2 }));
+    g.appendChild(el("path", { "class": "ln", d: d }));
+    var shown = [];
+    [f, fS, yhi, ylo].forEach(function (val) {
+      var y0 = ys(val), okk = true;
+      shown.forEach(function (q) { if (Math.abs(q - y0) < 13) okk = false; });
+      if (okk) { shown.push(y0); tx(svg, BX0 - 4, y0 + 3, val.toFixed(4), null, "end"); }
+    });
+    var sl = [["solid line: even share of the numbers n; dashed: fair level floor(M/2)/M; band: ±2 sd"], ["grey dashed line: even share of the spirals s; dotted: its exact level " + fS.toFixed(4) + " (float); light band: its ±2 sd"], ["sd = sqrt(f(1-f)/t) with f the level of each line"]];
+    if (!run.spiral) sl.push(["plain mode: s = n, so the two lines coincide exactly"]);
+    else sl.push(["Spiral mode chooses even spirals more often (they are busier); the second stage brings the numbers back to the fair share."]);
+    if (run.naive) sl.push(["the naive spirals are uniform (level floor(M/2)/M) and are not drawn here, to keep the chart readable"]);
+    if (fit && t0 > 1) sl.push(["scale fitted to t ≥ " + t0 + "; earlier points may leave the frame"]);
+    if (!fit) sl.push(["zoomed: the vertical scale is fitted to the visible rolls"]);
+    caps(svg, "even share vs rolls so far (log axis) · fair " + Math.floor(M / 2) + "/" + M, sl);
+  }
+  function shareReadout(u) {
+    var r = B, t = Math.pow(10, u), ts = r.ts, best = -1, bd = Infinity, i, M = r.M, f = Math.floor(M / 2) / M;
+    if (!ts.length) return "no points yet";
+    for (i = 0; i < ts.length; i++) { var dd = Math.abs(Math.log10(ts[i]) - u); if (dd < bd) { bd = dd; best = i; } }
+    var tt = ts[best], sh = r.es[best] / tt;
+    return "after t = " + fmtInt(tt) + " rolls: even share of numbers " + sh.toFixed(4) + " (float); fair " + f.toFixed(4) + "; 2 sd = " + (2 * Math.sqrt(f * (1 - f) / tt)).toFixed(4) + " (float); even share of spirals " + (r.es2[best] / tt).toFixed(4) + ", exact level " + r.fS.toFixed(4);
+  }
+
+  // ---- zoom bars, readout lines and gestures (the pattern of the rosette zoom) ----
+  function setSel(id, ux) {
+    if (!B || ux < BX0 || ux > BX1) return;
+    var v = getView(id);
+    RD[id] = v.d0 + (ux - BX0) / PW * (v.d1 - v.d0);
+    updateRD(id);
+  }
+  function wireChart(id) {
+    var svg = $(id), zb = document.createElement("div"), rd = document.createElement("div");
+    zb.className = "zoombar"; zb.id = id + "-zb"; rd.className = "sline"; rd.id = id + "-rd";
+    [["pl", "◀", "Pan left by half the visible range"], ["out", "−", "Zoom out"], ["in", "+", "Zoom in"], ["pr", "▶", "Pan right by half the visible range"], ["fit", "Fit", "Show the whole range"]].forEach(function (d) {
+      var bt = document.createElement("button"); bt.type = "button"; bt.className = "ghost"; bt.id = id + "-" + d[0]; bt.textContent = d[1]; bt.setAttribute("aria-label", d[2]); bt.title = d[2];
+      zb.appendChild(bt);
+    });
+    var sp = document.createElement("span"); sp.id = id + "-zr"; zb.appendChild(sp);
+    svg.parentNode.insertBefore(zb, svg.nextSibling); svg.parentNode.insertBefore(rd, zb.nextSibling);
+    svg.setAttribute("tabindex", "0");
+    $(id + "-pl").addEventListener("click", function () { panFrac(id, -0.5); });
+    $(id + "-pr").addEventListener("click", function () { panFrac(id, 0.5); });
+    $(id + "-in").addEventListener("click", function () { zoomAtB(id, (BX0 + BX1) / 2, 2); });
+    $(id + "-out").addEventListener("click", function () { zoomAtB(id, (BX0 + BX1) / 2, 0.5); });
+    $(id + "-fit").addEventListener("click", function () { delete ZV[id]; schedChart(id); });
+    function ux(ev) { var r0 = svg.getBoundingClientRect(); return (ev.clientX - r0.left) / r0.width * 360; }
+    svg.addEventListener("wheel", function (ev) {
+      if (!B) return;
+      if (!ZV[id] && ev.deltaY > 0) return;     // at Fit, scrolling down moves the page
+      ev.preventDefault();
+      zoomAtB(id, ux(ev), Math.exp(-ev.deltaY * 0.0015));
+    }, { passive: false });
+    svg.addEventListener("dblclick", function (ev) { zoomAtB(id, ux(ev), 2); });
+    svg.addEventListener("keydown", function (ev) {
+      if (!B) return;
+      if (ev.key === "ArrowLeft") { ev.preventDefault(); panFrac(id, -0.25); }
+      else if (ev.key === "ArrowRight") { ev.preventDefault(); panFrac(id, 0.25); }
+      else if (ev.key === "+" || ev.key === "=") { ev.preventDefault(); zoomAtB(id, (BX0 + BX1) / 2, 2); }
+      else if (ev.key === "-") { ev.preventDefault(); zoomAtB(id, (BX0 + BX1) / 2, 0.5); }
+    });
+    var ptrs = {}, gest = null, moved = false, downX = 0;
+    function plist() { return Object.keys(ptrs).map(function (k0) { return ptrs[k0]; }); }
+    function cdist(l) { var r0 = svg.getBoundingClientRect(); return (Math.hypot(l[0].cx - l[1].cx, l[0].cy - l[1].cy) * 360 / r0.width) || 1; }
+    svg.addEventListener("pointerdown", function (ev) {
+      if (!B) return;
+      ptrs[ev.pointerId] = { x: ux(ev), cx: ev.clientX, cy: ev.clientY };
+      try { svg.setPointerCapture(ev.pointerId); } catch (e) {}
+      var l = plist();
+      if (l.length === 2) { gest = { kind: "pinch", d: cdist(l) }; moved = true; }
+      else if (l.length === 1) { gest = { kind: "pan", x: l[0].x }; moved = false; downX = l[0].x; }
+    });
+    svg.addEventListener("pointermove", function (ev) {
+      if (!B) return;
+      if (!(ev.pointerId in ptrs)) { if (ev.pointerType === "mouse") setSel(id, ux(ev)); return; }
+      ptrs[ev.pointerId] = { x: ux(ev), cx: ev.clientX, cy: ev.clientY };
+      var l = plist();
+      if (!gest) return;
+      if (gest.kind === "pinch" && l.length === 2) {
+        var d = cdist(l);
+        zoomAtB(id, (l[0].x + l[1].x) / 2, d / gest.d);
+        gest.d = d;
+      } else if (gest.kind === "pan" && l.length === 1) {
+        var q = l[0].x;
+        if (Math.abs(q - downX) > 2) moved = true;
+        if (ZV[id]) { var v = getView(id); panFrac(id, -(q - gest.x) / PW); }
+        gest.x = q;
+      }
+    });
+    function end(ev) {
+      var wasTap = ev.type === "pointerup" && gest && gest.kind === "pan" && !moved && Object.keys(ptrs).length === 1;
+      delete ptrs[ev.pointerId];
+      if (wasTap) setSel(id, ux(ev));
+      var l = plist();
+      gest = l.length === 1 ? { kind: "pan", x: l[0].x } : null;
+      if (l.length === 1) { moved = true; }
+    }
+    svg.addEventListener("pointerup", end);
+    svg.addEventListener("pointercancel", end);
+  }
+  ALLC.forEach(wireChart);
+  wireChart("pd2");
+  $("b-logm").addEventListener("change", function () { schedChart("bh4"); });
+
+  function setText(id, txt) { var e0 = $(id); if (e0.textContent !== txt) e0.textContent = txt; }
+
+  // chi-square of observed counts against an exact law (cells with expected count below 5 are pooled and the pooling is said)
+  function chiLaw(label, unit, obs, P, T, M) {
+    var kept = [], pooledObs = 0, pooledExp = 0, pooledN = 0, i, Es, how, mi;
+    for (i = 1; i <= M; i++) { Es = T * P[i]; if (Es >= 5) kept.push([obs[i], Es]); else { pooledObs += obs[i]; pooledExp += Es; pooledN++; } }
+    if (M < 2 || !kept.length) return label + " not shown: expected counts below 5";
+    if (pooledN) {
+      if (pooledExp >= 5) { kept.push([pooledObs, pooledExp]); how = "; " + pooledN + " " + unit + " with expected count below 5 pooled into one cell"; }
+      else { mi = 0; for (i = 1; i < kept.length; i++) if (kept[i][1] < kept[mi][1]) mi = i; kept[mi][0] += pooledObs; kept[mi][1] += pooledExp; how = "; " + pooledN + " " + unit + " with expected count below 5 pooled (their total expected " + pooledExp.toFixed(2) + " is still below 5, so added to the smallest kept cell)"; }
+    } else how = "; no " + unit + " pooled";
+    var x = 0, dd;
+    for (i = 0; i < kept.length; i++) { dd = kept[i][0] - kept[i][1]; x += dd * dd / kept[i][1]; }
+    var dof = kept.length - 1;
+    return dof < 1 ? label + " not shown: fewer than two cells" : label + ": " + x.toFixed(2) + " on " + dof + " degrees of freedom (cells minus 1" + (dof === M - 1 ? ", equal to M - 1" : ", fewer than M - 1 because of pooling") + "), p = " + fmtP(chiP(x, dof)) + how;
+  }
+
+  function nvTable(r) {
+    var M = r.M, T = r.done, tau = r.NT.tau, P = r.PNV, c = r.nc, n, tb = $("b-nvtab").tBodies[0];
+    clear(tb);
+    var groups = [["primes", function (q) { return tau[q] === 2; }], ["tau >= 8", function (q) { return tau[q] >= 8; }], ["all", function () { return true; }]];
+    groups.forEach(function (gr) {
+      var cnt = 0, ob = 0, p = 0;
+      for (n = Math.floor(M / 2) + 1; n <= M; n++) if (gr[1](n)) { cnt++; ob += c[n]; p += P[n]; }
+      var exv = T * p, sd = Math.sqrt(Math.max(0, T * p * (1 - p)));
+      var tr = document.createElement("tr");
+      [gr[0], String(cnt), cnt ? String(ob) : "-", cnt ? exv.toFixed(1) : "-", cnt && sd > 0 ? ((ob - exv) / sd).toFixed(2) : "-"].forEach(function (s0, i) {
+        var td = document.createElement("td"); td.textContent = s0; if (i === 0) td.style.textAlign = "left"; tr.appendChild(td);
+      });
+      tb.appendChild(tr);
+    });
+    var xs = [], ysv = [], mx = 0, my = 0, i;
+    for (n = Math.floor(M / 2) + 1; n <= M; n++) { xs.push(1 / tau[n]); ysv.push(c[n]); }
+    for (i = 0; i < xs.length; i++) { mx += xs[i]; my += ysv[i]; }
+    mx /= Math.max(1, xs.length); my /= Math.max(1, xs.length);
+    var sxy = 0, sxx = 0, syy = 0;
+    for (i = 0; i < xs.length; i++) { sxy += (xs[i] - mx) * (ysv[i] - my); sxx += (xs[i] - mx) * (xs[i] - mx); syy += (ysv[i] - my) * (ysv[i] - my); }
+    setText("b-nvcorr", "correlation of the naive counts with 1/tau(n) over the upper half (" + xs.length + " numbers, n > M/2): " + (xs.length >= 2 && sxx > 0 && syy > 0 ? "r = " + (sxy / Math.sqrt(sxx * syy)).toFixed(3) + " (float; the exact expected counts are proportional to 1/tau(n) there, so r should be near 1 for large T)" : "not defined here (fewer than two numbers or no spread)"));
+  }
+
+  // ================= p-adic panel (v0.2.7) =================
+  // Exact levels are BigInt fractions (reduced); floats are used only to place points and for labelled statistics.
+  var PP = 3;
+  function pIndex() { return PRIMES.indexOf(PP); }
+  function ratioF(n, d) { if (d === 0n) return 0; var neg = n < 0n; if (neg) n = -n; var v = Number(n * 1000000000000000n / d) / 1e15; return neg ? -v : v; }
+  function decOf(f) { var v = ratioF(f.n, f.d); return v === 0 ? "0" : v.toPrecision(5); }
+  function fracTxt(f) { return f.text + " ≈ " + decOf(f); }     // reduced fraction, then its decimal
+  function padicModel(run, qi) {
+    if (run.PXD[qi]) return run.PXD[qi];
+    var p = PRIMES[qi], M = run.M, Mb = BigInt(M), K = 0, pk = p, k, r, m = { p: p };
+    while (pk <= M) { K++; pk *= p; }
+    m.K = K; m.resN = []; m.resS = []; m.layN = [null]; m.layS = [null];
+    for (r = 0; r < p; r++) {
+      var cnt = r === 0 ? Math.floor(M / p) : (r <= M ? Math.floor((M - r) / p) + 1 : 0);
+      m.resN.push(fracOf(BigInt(cnt), Mb));
+    }
+    pk = 1; var sumK = 0n;
+    for (k = 1; k <= K; k++) { pk *= p; m.layN.push(fracOf(BigInt(Math.floor(M / pk)), Mb)); sumK += BigInt(Math.floor(M / pk)); }
+    if (run.spiral) {
+      var X = run.PS.X, xp = X.per[qi], lay1 = K >= 1 ? xp.lay[1] : 0n;
+      for (r = 0; r < p; r++) m.resS.push(fracOf(xp.res[r], X.D));
+      for (k = 1; k <= K; k++) m.layS.push(fracOf(xp.lay[k], X.D));
+      m.gap = fracOf(lay1 - BigInt(Math.floor(M / p)) * X.L, X.D);
+    } else {
+      m.resS = m.resN.slice(); m.layS = m.layN.slice(); m.gap = fracOf(0n, 1n);
+    }
+    m.meanV = fracOf(sumK, Mb); m.meanNaive = fracOf(sumK, 2n * Mb);
+    m.aN = K >= 1 ? ratioF(m.layN[1].n, m.layN[1].d) : 0;
+    m.bS = K >= 1 ? ratioF(m.layS[1].n, m.layS[1].d) : 0;
+    m.g = ratioF(m.gap.n, m.gap.d);
+    m.corr = (m.aN > 0 && m.aN < 1 && m.bS > 0 && m.bS < 1) ? Math.sqrt(m.aN * (1 - m.bS) / ((1 - m.aN) * m.bS)) : null;   // Cov = a(1-b) because [p|n] implies [p|s]
+    m.resNf = m.resN.map(function (f) { return ratioF(f.n, f.d); });
+    m.resSf = m.resS.map(function (f) { return ratioF(f.n, f.d); });
+    m.layNf = m.layN.map(function (f) { return f ? ratioF(f.n, f.d) : 0; });
+    m.laySf = m.layS.map(function (f) { return f ? ratioF(f.n, f.d) : 0; });
+    run.PXD[qi] = m;
+    return m;
+  }
+  function padicObs(run, qi) {
+    var p = PRIMES[qi], M = run.M, m = padicModel(run, qi), K = m.K, c = run.counts, sc = run.sc, o = { resN: [], resS: [], layN: [0], layS: [0] }, r, n, k, pk;
+    for (r = 0; r < p; r++) { o.resN.push(0); o.resS.push(0); }
+    var sv = 0, sv2 = 0, nsv = 0, nsv2 = 0, v, x;
+    for (n = 1; n <= M; n++) {
+      o.resN[n % p] += c[n]; o.resS[n % p] += sc[n];
+      v = 0; x = n; while (x % p === 0) { x /= p; v++; }
+      sv += v * c[n]; sv2 += v * v * c[n];
+      if (run.naive) { nsv += v * run.nc[n]; nsv2 += v * v * run.nc[n]; }
+    }
+    pk = 1;
+    for (k = 1; k <= K; k++) { pk *= p; var a = 0, b = 0; for (n = pk; n <= M; n += pk) { a += c[n]; b += sc[n]; } o.layN.push(a); o.layS.push(b); }
+    o.gap = run.cgp[qi]; o.dn = run.cdn[qi]; o.ds = run.cds[qi];
+    o.sv = sv; o.sv2 = sv2; o.nsv = nsv; o.nsv2 = nsv2;
+    return o;
+  }
+  function zTxt(obs, E, P, T) {
+    var sd = Math.sqrt(Math.max(0, T * P * (1 - P)));
+    if (sd > 0) return ((obs - E) / sd).toFixed(2);
+    return Math.abs(obs - E) < 1e-9 ? "-" : "undefined";
+  }
+  function chiCells(label, obs, P, T) {
+    var kept = [], po = 0, pe = 0, pn = 0, i, how, mi, E;
+    for (i = 0; i < P.length; i++) { E = T * P[i]; if (E >= 5) kept.push([obs[i], E]); else { po += obs[i]; pe += E; pn++; } }
+    if (!kept.length) return label + " not shown: expected counts below 5";
+    if (pn) {
+      if (pe >= 5) { kept.push([po, pe]); how = "; " + pn + " residue" + (pn === 1 ? "" : "s") + " with expected count below 5 pooled into one cell"; }
+      else { mi = 0; for (i = 1; i < kept.length; i++) if (kept[i][1] < kept[mi][1]) mi = i; kept[mi][0] += po; kept[mi][1] += pe; how = "; " + pn + " residue" + (pn === 1 ? "" : "s") + " with expected count below 5 pooled (total expected " + pe.toFixed(2) + " is still below 5, so added to the smallest kept cell)"; }
+    } else how = "; no residues pooled";
+    var x = 0, dd; for (i = 0; i < kept.length; i++) { dd = kept[i][0] - kept[i][1]; x += dd * dd / kept[i][1]; }
+    var dof = kept.length - 1;
+    return dof < 1 ? label + " not shown: fewer than two cells" : label + ": " + x.toFixed(2) + " on " + dof + " degrees of freedom, p = " + fmtP(chiP(x, dof)) + how;
+  }
+  function fillRows(tb, rows) {
+    clear(tb);
+    rows.forEach(function (row) {
+      var tr = document.createElement("tr");
+      row.forEach(function (s0, i) { var td = document.createElement("td"); td.textContent = s0; if (i === 0) td.style.textAlign = "left"; tr.appendChild(td); });
+      tb.appendChild(tr);
+    });
+  }
+  function logTick(v) { return v >= 1 ? String(Math.round(v)) : v.toExponential(0); }
+
+  // chart A: residues mod p
+  function padicResidues(svg, run, m, o) {
+    clear(svg);
+    var T = run.done, p = m.p, r, top = 0.05, gw = (BX1 - BX0) / p, sdv = function (P) { return Math.sqrt(P * (1 - P) / T); };
+    for (r = 0; r < p; r++) {
+      top = Math.max(top, o.resN[r] / T, o.resS[r] / T, m.resNf[r] + 2 * sdv(m.resNf[r]), m.resSf[r] + 2 * sdv(m.resSf[r]));
+    }
+    top *= 1.08;
+    var ys = function (val) { return BY1 - Math.min(val, top) / top * (BY1 - BY0); };
+    var i, yy;
+    for (i = 0; i <= 2; i++) { yy = BY1 - i * (BY1 - BY0) / 2; svg.appendChild(el("line", { "class": "gl", x1: BX0, y1: yy, x2: BX1, y2: yy })); tx(svg, BX0 - 4, yy + 3, (top * i / 2).toFixed(2), null, "end"); }
+    var bN = "", bS = "", lv = "", bd = "", bw = gw * 0.38;
+    for (r = 0; r < p; r++) {
+      var gx = BX0 + r * gw, xN = gx + gw * 0.08, xS = gx + gw * 0.54;
+      [[xN, o.resN[r], m.resNf[r], 0], [xS, o.resS[r], m.resSf[r], 1]].forEach(function (b) {
+        var path = "M" + b[0].toFixed(2) + " " + BY1 + "V" + ys(b[1] / T).toFixed(2) + "H" + (b[0] + bw).toFixed(2) + "V" + BY1 + "Z";
+        if (b[3]) bS += path; else bN += path;
+        var sd = sdv(b[2]);
+        bd += "M" + b[0].toFixed(2) + " " + ys(b[2] + 2 * sd).toFixed(2) + "H" + (b[0] + bw).toFixed(2) + "V" + ys(Math.max(0, b[2] - 2 * sd)).toFixed(2) + "H" + b[0].toFixed(2) + "Z";
+        lv += "M" + (b[0] - 1).toFixed(2) + " " + ys(b[2]).toFixed(2) + "H" + (b[0] + bw + 1).toFixed(2);
+      });
+      tx(svg, gx + gw / 2, 174, String(r), null, "middle");
+    }
+    svg.appendChild(el("path", { "class": "bar", d: bN }));
+    svg.appendChild(el("path", { "class": "bar2", d: bS }));
+    svg.appendChild(el("path", { "class": "band", d: bd }));
+    svg.appendChild(el("path", { "class": "expl", d: lv }));
+    var sl = [["blue bars: numbers n; grey bars: spirals s; black line: exact level; band: ±2 sd; x axis: residue r, and residue 0 means divisible by " + p]];
+    if (!run.spiral) sl.push(["plain mode: s = n, so the two bars of each residue coincide"]);
+    caps(svg, "share of rolls by residue mod " + p + " · observed against exact", sl);
+  }
+
+  // chart B: running share divisible by p, spirals divisible by p, and the gap stream
+  function padicShare(svg, run) {
+    clear(svg);
+    var qi = pIndex(), m = padicModel(run, qi), p = m.p, Td = Tdom(run), v = getView("pd2"), fit = !ZV.pd2, span = v.d1 - v.d0;
+    var tvMin = Math.pow(10, v.d0), tvMax = Math.pow(10, v.d1), t0 = fit ? Math.min(1000, Math.max(10, Math.floor(Td / 10))) : Math.max(1, tvMin);
+    var lv = [m.aN, m.bS, m.g], S = [run.sdn[qi], run.sds[qi], run.sgp[qi]], cur = [run.cdn[qi], run.cds[qi], run.cgp[qi]];
+    var sdOf = function (j, t) { return Math.sqrt(Math.max(0, lv[j] * (1 - lv[j]) / t)); };
+    var pts = [[], [], []], i, j, k, t;
+    for (i = 0; i < run.ts.length; i++) for (j = 0; j < 3; j++) pts[j].push([run.ts[i], S[j][i] / run.ts[i]]);
+    if (run.done > 0 && (!run.ts.length || run.ts[run.ts.length - 1] !== run.done)) for (j = 0; j < 3; j++) pts[j].push([run.done, cur[j] / run.done]);
+    var h = [], ylo = Infinity, yhi = -Infinity;
+    for (j = 0; j < 3; j++) {
+      var dev = 2 * sdOf(j, t0);
+      pts[j].forEach(function (q) { if (q[0] >= t0 && (fit || q[0] <= tvMax)) dev = Math.max(dev, Math.abs(q[1] - lv[j])); });
+      h[j] = Math.max(1.15 * dev, 1e-6); ylo = Math.min(ylo, lv[j] - h[j]); yhi = Math.max(yhi, lv[j] + h[j]);
+    }
+    if (yhi - ylo < 1e-3) { var mid = (yhi + ylo) / 2; ylo = mid - 5e-4; yhi = mid + 5e-4; }
+    var xs = function (tt) { return BX0 + (Math.log10(Math.max(tt, 1)) - v.d0) / span * PW; };
+    var ys = function (val) { return BY0 + (1 - (val - ylo) / (yhi - ylo)) * (BY1 - BY0); };
+    svg.appendChild(el("clipPath", { id: "pclip" })).appendChild(el("rect", { x: BX0, y: BY0, width: PW, height: BY1 - BY0 }));
+    var N = 140, fun = [];
+    for (j = 0; j < 3; j++) {
+      var up = "", dn = [];
+      for (k = 0; k <= N; k++) { t = Math.pow(10, v.d0 + span * k / N); up += (k ? "L" : "M") + xs(t).toFixed(2) + " " + ys(lv[j] + 2 * sdOf(j, t)).toFixed(2); dn.push("L" + xs(t).toFixed(2) + " " + ys(lv[j] - 2 * sdOf(j, t)).toFixed(2)); }
+      fun.push(up + dn.reverse().join("") + "Z");
+    }
+    var tl = function (mults) {
+      var out = [], e, q, tv;
+      for (e = Math.floor(v.d0); e <= Math.ceil(v.d1); e++) for (q = 0; q < mults.length; q++) { tv = mults[q] * Math.pow(10, e); if (tv >= 1 && Math.log10(tv) >= v.d0 - 1e-9 && Math.log10(tv) <= v.d1 + 1e-9) out.push(tv); }
+      return out;
+    };
+    var tks = tl([1, 2, 5]), crowded = false;
+    for (i = 1; i < tks.length; i++) if (xs(tks[i]) - xs(tks[i - 1]) < 34) crowded = true;
+    if (crowded) { var t10 = tl([1]); if (t10.length) tks = t10; }
+    var lastX = -1e9;
+    tks.forEach(function (tv) {
+      var xx = xs(tv);
+      svg.appendChild(el("line", { "class": "gl", x1: xx, y1: BY0, x2: xx, y2: BY1 }));
+      if (xx - lastX >= 34) { tx(svg, xx, 174, axTick(tv), null, xx > BX1 - 12 ? "end" : (xx < BX0 + 12 ? "start" : "middle")); lastX = xx; }
+    });
+    // drop any tick label whose drawn box would touch the previous kept one (edge labels are re-anchored above)
+    (function () {
+      var labs = [].slice.call(svg.querySelectorAll("text")).filter(function (t) { return t.getAttribute("y") === "174"; });
+      var prevRight = -1e9;
+      labs.forEach(function (t) {
+        var bb; try { bb = t.getBBox(); } catch (e) { return; }
+        if (bb.width === 0) return;
+        if (bb.x < prevRight + 4) t.parentNode.removeChild(t); else prevRight = bb.x + bb.width;
+      });
+    })();
+    var g = svg.appendChild(el("g", { "clip-path": "url(#pclip)" }));
+    g.appendChild(el("path", { "class": "funnel", d: fun[0] }));
+    if (Math.abs(lv[1] - lv[0]) > 1e-12) g.appendChild(el("path", { "class": "funnel2", d: fun[1] }));
+    if (lv[2] > 0) g.appendChild(el("path", { "class": "funnel3", d: fun[2] }));
+    g.appendChild(el("line", { "class": "fairl", x1: BX0, y1: ys(lv[0]), x2: BX1, y2: ys(lv[0]) }));
+    if (Math.abs(lv[1] - lv[0]) > 1e-12) g.appendChild(el("line", { "class": "fairs", x1: BX0, y1: ys(lv[1]), x2: BX1, y2: ys(lv[1]) }));
+    g.appendChild(el("line", { "class": "fairg", x1: BX0, y1: ys(lv[2]), x2: BX1, y2: ys(lv[2]) }));
+    var cls = ["ln", "ln2", "ln3"];
+    for (j = 2; j >= 0; j--) {
+      var d = ""; pts[j].forEach(function (q, jj) { d += (jj ? "L" : "M") + xs(q[0]).toFixed(2) + " " + ys(q[1]).toFixed(2); });
+      g.appendChild(el("path", { "class": cls[j], d: d }));
+    }
+    var shown = [];
+    [lv[0], lv[1], lv[2], yhi, ylo].forEach(function (val) {
+      var y0 = ys(val), okk = true;
+      shown.forEach(function (q) { if (Math.abs(q - y0) < 20) okk = false; });
+      if (okk) { shown.push(y0); tx(svg, BX0 - 4, y0 + 3, val.toFixed(4), null, "end"); }
+    });
+    var sl = [["solid blue: share of numbers n divisible by " + p + "; dashed grey: share of spirals s divisible by " + p + "; dotted orange: the gap stream (" + p + " does not divide n but divides s)"],
+      ["thin straight lines: exact levels " + m.aN.toFixed(4) + " (numbers), " + m.bS.toFixed(4) + " (spirals), " + m.g.toFixed(4) + " (gap), floats from the exact fractions; light bands: ±2 sd, sd = sqrt(f(1-f)/t)"]];
+    if (!run.spiral) sl.push(["plain mode: s = n, so the numbers and spirals lines coincide and the gap is identically 0"]);
+    if (fit && t0 > 1) sl.push(["scale fitted to t ≥ " + t0 + "; earlier points may leave the frame"]);
+    if (!fit) sl.push(["zoomed: the vertical scale is fitted to the visible rolls"]);
+    caps(svg, "running share divisible by " + p + " vs rolls so far (log axis)", sl);
+  }
+  function padicReadout(u) {
+    var r = B, qi = pIndex(), m = padicModel(r, qi), ts = r.ts, best = -1, bd = Infinity, i;
+    if (!ts.length) return "no points yet";
+    for (i = 0; i < ts.length; i++) { var dd = Math.abs(Math.log10(ts[i]) - u); if (dd < bd) { bd = dd; best = i; } }
+    var tt = ts[best];
+    return "after t = " + fmtInt(tt) + " rolls: numbers " + (r.sdn[qi][best] / tt).toFixed(4) + " (exact " + m.aN.toFixed(4) + "), spirals " + (r.sds[qi][best] / tt).toFixed(4) + " (exact " + m.bS.toFixed(4) + "), gap " + (r.sgp[qi][best] / tt).toFixed(4) + " (exact " + m.g.toFixed(4) + "); 2 sd of the numbers line = " + (2 * Math.sqrt(m.aN * (1 - m.aN) / tt)).toFixed(4) + " (floats)";
+  }
+
+  // chart C: layer ruler (log y)
+  function padicLayers(svg, run, m, o) {
+    clear(svg);
+    var T = run.done, K = m.K, p = m.p, k, pos = [];
+    if (K < 1) { noData(svg, "p > M: no layers"); return; }
+    var sdv = function (P) { return Math.sqrt(P * (1 - P) / T); };
+    for (k = 1; k <= K; k++) {
+      [m.layNf[k], m.laySf[k], o.layN[k] / T, o.layS[k] / T].forEach(function (x) { if (x > 0) pos.push(x); });
+    }
+    var flo = Math.min.apply(null, pos) * 0.4, lf = Math.log10(flo), lt = 0.04;
+    var ys = function (val) { val = Math.min(Math.max(val, flo), 1); return BY1 - (Math.log10(val) - lf) / (lt - lf) * (BY1 - BY0); };
+    var ticks = function (mults) { var out = [], e, q, tv; for (e = Math.floor(lf); e <= 0; e++) for (q = 0; q < mults.length; q++) { tv = mults[q] * Math.pow(10, e); if (tv >= flo * 0.999 && tv <= 1.0001) out.push(tv); } return out; };
+    var tk = ticks([1, 2, 5]), mn = Infinity, i;
+    for (i = 1; i < tk.length; i++) mn = Math.min(mn, Math.abs(ys(tk[i - 1]) - ys(tk[i])));
+    if (tk.length < 2 || mn < 22) { var t1 = ticks([1]); if (t1.length) tk = t1; }
+    tk.forEach(function (tv) { var yy = ys(tv); svg.appendChild(el("line", { "class": "gl", x1: BX0, y1: yy, x2: BX1, y2: yy })); tx(svg, BX0 - 4, yy + 3, logTick(tv), null, "end"); });
+    var gw = (BX1 - BX0) / K, lv = "", wh = "", dN = [], dS = [];
+    for (k = 1; k <= K; k++) {
+      var gx = BX0 + (k - 1) * gw, xn = gx + gw * 0.3, xsx = gx + gw * 0.7, hw = Math.min(6, gw * 0.18);
+      [[xn, m.layNf[k], o.layN[k], dN], [xsx, m.laySf[k], o.layS[k], dS]].forEach(function (b) {
+        var sd = sdv(b[1]);
+        wh += "M" + b[0].toFixed(2) + " " + ys(b[1] + 2 * sd).toFixed(2) + "V" + ys(Math.max(flo, b[1] - 2 * sd)).toFixed(2);
+        lv += "M" + (b[0] - hw).toFixed(2) + " " + ys(b[1]).toFixed(2) + "H" + (b[0] + hw).toFixed(2);
+        if (b[2] > 0) b[3].push([b[0], ys(b[2] / T)]);
+      });
+      tx(svg, gx + gw / 2, 174, String(k), null, "middle");
+    }
+    svg.appendChild(el("path", { "class": "whisk", d: wh }));
+    svg.appendChild(el("path", { "class": "expl", d: lv }));
+    dN.forEach(function (d) { svg.appendChild(el("circle", { "class": "dotn", cx: d[0].toFixed(2), cy: d[1].toFixed(2), r: 2.8 })); });
+    dS.forEach(function (d) { svg.appendChild(el("circle", { "class": "dots", cx: d[0].toFixed(2), cy: d[1].toFixed(2), r: 2.8 })); });
+    var sl = [["blue dots: numbers n, grey dots: spirals s; black tick: exact level with a ±2 sd whisker; x axis: layer k, meaning " + p + "^k divides; y axis: log scale, share of rolls"]];
+    if (!run.spiral) sl.push(["plain mode: s = n, so the two dots of each layer coincide"]);
+    caps(svg, "layer ruler · share with " + p + "^k dividing, k = 1.." + K, sl);
+  }
+
+  var PDC = ["pd1", "pd2", "pd3"];
+  function padicClear() {
+    PDC.forEach(function (id) { if (id === "pd2") drawChartB(id); else noData($(id), "no data yet"); });
+    fillRows($("pd-tres").tBodies[0], []); fillRows($("pd-tlay").tBodies[0], []);
+    ["pd-time", "pd-chi-n", "pd-chi-s", "pd-gap", "pd-corr", "pd-mean", "pd-mean-nv"].forEach(function (id) { setText(id, ""); });
+    $("pd-mean-nv").hidden = true; $("pd-halving").hidden = true; $("pd-plainnote").hidden = true;
+    $("pd-csv").disabled = true;
+  }
+  function padicDraw() {
+    var r = B;
+    if (!r) { padicClear(); return; }
+    var qi = pIndex(), m = padicModel(r, qi), T = r.done, p = m.p, M = r.M, k, i;
+    $("pd-plainnote").hidden = r.spiral;
+    $("pd-csv").disabled = T === 0;
+    if (T === 0) {
+      PDC.forEach(function (id) { if (id === "pd2") drawChartB(id); else noData($(id), "no rolls yet"); });
+      fillRows($("pd-tres").tBodies[0], []); fillRows($("pd-tlay").tBodies[0], []);
+      ["pd-chi-n", "pd-chi-s", "pd-gap", "pd-corr", "pd-mean", "pd-mean-nv"].forEach(function (id) { setText(id, ""); });
+      setText("pd-time", "No rolls yet.");
+      return;
+    }
+    var o = padicObs(r, qi);
+    if (secOpen("pd1")) { padicResidues($("pd1"), r, m, o); padicLayers($("pd3"), r, m, o); }
+    drawChartB("pd2");
+    setText("pd-time", r.spiral
+      ? "Prime p = " + p + ". Exact spiral levels for M = " + M + " (BigInt fractions from the exact weights P(s); sum of all P(s) is exactly 1: " + (r.PS.X.ok ? "yes" : "NO") + ") were computed in " + Math.round(r.exactMs) + " ms, once per maximum."
+      : "Prime p = " + p + ". Plain mode: the spirals are the numbers, so every spiral level equals the number level, floor counts over M = " + M + ".");
+    var rows = [];
+    for (i = 0; i < p; i++) rows.push([i === 0 ? "0 (p divides)" : String(i), String(o.resN[i]), fracTxt(m.resN[i]), (T * m.resNf[i]).toFixed(1), zTxt(o.resN[i], T * m.resNf[i], m.resNf[i], T), String(o.resS[i]), fracTxt(m.resS[i]), (T * m.resSf[i]).toFixed(1), zTxt(o.resS[i], T * m.resSf[i], m.resSf[i], T)]);
+    fillRows($("pd-tres").tBodies[0], rows);
+    setText("pd-chi-n", chiCells("residue chi-square, numbers, against their exact law", o.resN, m.resNf, T));
+    setText("pd-chi-s", chiCells("residue chi-square, spirals, against their exact law", o.resS, m.resSf, T));
+    rows = []; var pk = 1;
+    for (k = 1; k <= m.K; k++) {
+      pk *= p;
+      rows.push(["p^" + k + " = " + pk + " divides", String(o.layN[k]), fracTxt(m.layN[k]), (T * m.layNf[k]).toFixed(1), zTxt(o.layN[k], T * m.layNf[k], m.layNf[k], T), String(o.layS[k]), fracTxt(m.layS[k]), (T * m.laySf[k]).toFixed(1), zTxt(o.layS[k], T * m.laySf[k], m.laySf[k], T)]);
+    }
+    rows.push(["gap: p∤n, p|s", "-", "-", "-", "-", String(o.gap), fracTxt(m.gap), (T * m.g).toFixed(1), zTxt(o.gap, T * m.g, m.g, T)]);
+    fillRows($("pd-tlay").tBodies[0], rows);
+    setText("pd-gap", "gap share (p does not divide n, p divides s): observed " + o.gap + " of " + T + " = " + (o.gap / T).toFixed(5) + " (float); exact " + fracTxt(m.gap) + "; z = " + zTxt(o.gap, T * m.g, m.g, T) + (r.spiral ? "" : "; plain mode: s = n, so the gap is identically 0") + "; the gap is never negative because p | n implies p | s: " + (o.gap >= 0 && o.ds >= o.dn ? "yes" : "NO"));
+    var phi = null, nA = o.dn, nB = o.ds, den = nA * (T - nA) * nB * (T - nB);
+    if (den > 0) phi = (T * nA - nA * nB) / Math.sqrt(den);      // [p|n] implies [p|s], so the joint count of both is nA
+    setText("pd-corr", "correlation of the indicators [p | n] and [p | s]: observed " + (phi == null ? "not defined (an indicator has no spread)" : phi.toFixed(4)) + " (float); exact " + (m.corr == null ? "not defined (a level is 0 or 1)" : m.corr.toFixed(4)) + " (float, from the exact joint: P(both) = P(p | n))");
+    var meanO = o.sv / T, varO = Math.max(0, o.sv2 / T - meanO * meanO), sdM = Math.sqrt(varO / T), meanE = ratioF(m.meanV.n, m.meanV.d);
+    setText("pd-mean", "mean valuation v_p(n): observed " + meanO.toFixed(5) + " (sd of the mean " + sdM.toFixed(5) + " from the observed valuations); exact " + fracTxt(m.meanV) + " (sum over k of floor(M/p^k) divided by M); z = " + (sdM > 0 ? ((meanO - meanE) / sdM).toFixed(2) : "-"));
+    $("pd-mean-nv").hidden = $("pd-halving").hidden = !r.naive;
+    if (r.naive) {
+      var nO = o.nsv / T, nVar = Math.max(0, o.nsv2 / T - nO * nO), nSd = Math.sqrt(nVar / T), nE = ratioF(m.meanNaive.n, m.meanNaive.d);
+      setText("pd-mean-nv", "naive rule mean valuation (comparison only): observed " + nO.toFixed(5) + " (sd of the mean " + nSd.toFixed(5) + "); exact " + fracTxt(m.meanNaive) + ", exactly half of the uniform-spiral mean " + fracTxt(m.meanV) + "; z = " + (nSd > 0 ? ((nO - nE) / nSd).toFixed(2) : "-"));
+    } else setText("pd-mean-nv", "");
+  }
+  $("pd-p").value = String(PP);
+  $("pd-p").addEventListener("change", function () { PP = Number(this.value); if (PRIMES.indexOf(PP) < 0) PP = 3; padicDraw(); });
+  $("pd-csv").addEventListener("click", function () {
+    if (!B || B.done === 0) return;
+    var r = B, qi = pIndex(), m = padicModel(r, qi), o = padicObs(r, qi), T = r.done, p = m.p, lines = [], i, k;
+    var full = function (f) { return f.d === 1n ? f.n.toString() : f.n.toString() + "/" + f.d.toString(); };
+    lines.push("# FVLT rosette picker v0.2.16 p-adic table; mode=" + (r.spiral ? "spiral" : "plain") + "; bits=" + (r.src === "rule30" ? R30FILE + "[" + r.bitStart + ".." + r.bitEnd + ")" : "secure") + "; M=" + r.M + "; p=" + p + "; T=" + T + "; planned_rolls=" + r.total + "; status=" + (r.running ? "running" : r.status) + "; naive_overlay=" + (r.naive ? "on" : "off") + "; date=" + new Date().toISOString());
+    lines.push("# exact levels are reduced fractions; decimals are floats (5 significant digits). Residue and layer rows give numbers n and spirals s. The gap row (p does not divide n, p divides s) has its values in the spirals columns. The mean_v row gives the mean valuation v_p(n) of the numbers: observed is a decimal, exact is the fraction.");
+    lines.push("row,index,numbers_observed,numbers_exact_fraction,numbers_exact_decimal,spirals_observed,spirals_exact_fraction,spirals_exact_decimal");
+    for (i = 0; i < p; i++) lines.push(["residue", i, o.resN[i], full(m.resN[i]), decOf(m.resN[i]), o.resS[i], full(m.resS[i]), decOf(m.resS[i])].join(","));
+    for (k = 1; k <= m.K; k++) lines.push(["layer", k, o.layN[k], full(m.layN[k]), decOf(m.layN[k]), o.layS[k], full(m.layS[k]), decOf(m.layS[k])].join(","));
+    lines.push(["gap", "", "", "", "", o.gap, full(m.gap), decOf(m.gap)].join(","));
+    lines.push(["mean_v", "", (o.sv / T).toPrecision(8), full(m.meanV), decOf(m.meanV), "", "", ""].join(","));
+    if (r.naive) lines.push(["naive_mean_v", "", (o.nsv / T).toPrecision(8), full(m.meanNaive), decOf(m.meanNaive), "", "", ""].join(","));
+    var blob = new Blob([lines.join("\n") + "\n"], { type: "text/csv" }), url = URL.createObjectURL(blob), a = document.createElement("a");
+    a.href = url; a.download = "fvlt_padic_" + (r.spiral ? "spiral" : "plain") + "_M" + r.M + "_p" + p + "_T" + T + ".csv";
+    document.body.appendChild(a); a.click(); a.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 3000);
+  });
+
+  // ================= v0.2.15: Entropy (FVLT) =================
+  function f4(x) { return (Math.abs(x) < 5e-13 ? 0 : x).toFixed(4); }
+  var ENTM = null;
+  function entRender() {
+    var M = readM();
+    if (M == null) { setText("ent-head", "Maximum M is not valid yet (a whole number from 1 to " + MAXV + ")."); return; }
+    if (ENTM === M) return;
+    ENTM = M;
+    var E = FVLTEnt.exact(M), F = E.fair, N = E.naive, tb = $("ent-tab").tBodies[0];
+    setText("ent-head", "Maximum M = " + M + ", log2 M = " + f4(E.log2M) + " bits (float).");
+    fillRows(tb, [
+      ["H(N), the pick", f4(F.HN) + " (= log2 M)", f4(N.HN)],
+      ["H(S), the spiral", f4(F.HS), f4(N.HS) + " (= log2 M)"],
+      ["H(N|S), the divisor stage", f4(F.HNgS), f4(N.HNgS)],
+      ["H(S|N), the spiral given the pick", f4(F.HSgN), f4(N.HSgN)],
+      ["H(S) + H(N|S) − H(S|N)", f4(F.HS + F.HNgS - F.HSgN), f4(N.HS + N.HNgS - N.HSgN)]
+    ]);
+    setText("ent-chain", "Chain rule H(N) = H(S) + H(N|S) − H(S|N): difference of the two sides " + F.chain.toExponential(1) + " (fair) and " + N.chain.toExponential(1) + " (naive), floating-point rounding only.");
+    setText("ent-kl", "Naive deficit log2 M − H(P_N) = " + f4(N.deficit) + " bits; KL(P_N ‖ uniform) summed directly = " + f4(N.KL) + " bits (floats)." + (M >= 2 ? " The naive pick is below log2 M." : ""));
+    setText("ent-rkl", "Reverse direction D(U ‖ P_N), fair data scored by the naive predictor = " + f4(N.RKL) + " bits, next to D(P_N ‖ U) = " + f4(N.KL) + " bits (floats)." + (M === 1 ? " M = 1: both are 0 (one number, both laws equal)." : (M === 2 ? " M = 2: D(U ‖ P_N) = ½·log2(4/3) exactly." : "")) +
+      (M === 3 ? " M = 3: the two coincide exactly. P_N = (2/3, 1/6, 1/6), so both are 1/3 bit; both are > 0." :
+        (M >= 2 ? (Math.abs(N.RKL - N.KL) > 1e-9 ? " Both are > 0 and they differ." : " Both are > 0; here they agree to float precision.") : "")));
+    setText("ent-pairs", "Exact integer check: the number of pairs (s, n) with n | s ≤ M counted by spirals, Σ tau(s) = " + fmtInt(E.sumTau) + ", equals the count by numbers, Σ q(n) = " + fmtInt(E.sumQ) + ": " + (E.pairsEqual ? "yes" : "NO") + ". Total probability (floats): fair " + F.mass.toFixed(12) + ", naive " + N.mass.toFixed(12) + ".");
+    setText("ent-degen", M === 1 ? "Degenerate case M = 1: one number and one spiral, both laws are the single pair (1, 1), and every entropy is 0 bits. Shown, not hidden." : (M === 2 ? "Small case M = 2: the pairs are (1, 1), (2, 1), (2, 2). Fair: P = 1/4, 1/4, 1/2, so N is uniform on {1, 2}. Naive: P = 1/2, 1/4, 1/4, so P_N = (3/4, 1/4)." : ""));
+    var loss = F.spiralLoss, gain = F.divisorGain;
+    setText("ent-read", "The fair spiral stage gives up log2 M − H(S) = " + f4(loss) + " bits by favouring busy spirals (spirals with many divisors are chosen more often). The divisor stage wins exactly that back: H(N|S) − H(S|N) = " + f4(gain) + " = log2 M − H(S), so the pick ends at the full log2 M = " + f4(E.log2M) + " bits. The naive rule starts with a uniform spiral (H(S) = log2 M, nothing given up), but its divisor stage does not break even: H(N|S) − H(S|N) = " + f4(N.divisorGain) + ", so it ends KL(P_N ‖ U) = " + f4(N.deficit) + " bits below log2 M.");
+    setText("ent-sum", "M = " + M + ": fair H(N) = " + f4(F.HN) + " bits, naive H(N) = " + f4(N.HN) + " bits.");
+  }
+  // plug-in entropy lines for a batch run r (evidence only); each returns a string
+  function entPlugText(label, cnt, M, T, ref, refName) {
+    var P = FVLTEnt.plugin(cnt, M, T), LM = FVLTEnt.lg(M), t;
+    t = label + ": plug-in entropy " + f4(P.H) + " bits over " + fmtInt(T) + " rolls (" + P.seen + " of " + M + " numbers seen); log2 M = " + f4(LM) + ", gap " + f4(LM - P.H);
+    if (ref != null) t += "; its exact " + refName + " " + f4(ref) + ", gap " + f4(ref - P.H);
+    t += ". The plug-in estimate runs low by about (M − 1)/(2T ln 2) = " + f4(P.mm) + " bits (Miller–Madow), so a gap of that size is expected" + (ref != null ? " below the exact value" : "") + ".";
+    if (ref != null) {   // non-uniform law: the estimate also scatters, sd about sqrt(Var[-log2 P(N)]/T) (delta method, from the exact law; floats)
+      var PN = FVLTEnt.exact(M).PN, m1 = 0, m2 = 0, x;
+      for (var n = 1; n <= M; n++) if (PN[n] > 0) { x = -FVLTEnt.lg(PN[n]); m1 += PN[n] * x; m2 += PN[n] * x * x; }
+      t += " For this non-uniform law the estimate also scatters by about ±" + f4(Math.sqrt(Math.max(0, m2 - m1 * m1) / T)) + " bits (one sd, delta method from the exact law), so it can land on either side of the exact value.";
+    }
+    if (M === 1) t += " M = 1: one number, the entropy is 0 by construction.";
+    else if (T < M) t += " Fewer rolls than numbers: the estimate is far below, and the Miller–Madow term is only a rough first-order guide here.";
+    return t + " Evidence only.";
+  }
+  function entBatch() {
+    var r = B;
+    if (!r || r.done === 0) {
+      setText("b-s-ent", ""); setText("b-s-nvent", ""); $("b-s-nvent").hidden = true;
+      $("ent-batch").innerHTML = "No batch run yet. After a run (More &rarr; Batch run and graphs) the plug-in entropy of the picks is shown here against log<sub>2</sub> M.";
+      return;
+    }
+    var M = r.M, T = r.done, E = FVLTEnt.exact(M);
+    var a = entPlugText("Fair picks n" + (r.src === "rule30" ? " (Rule 30 bits)" : ""), r.counts, M, T, null, null);
+    setText("b-s-ent", a);
+    $("b-s-nvent").hidden = !r.naive;
+    var b = r.naive ? entPlugText("Naive picks (comparison only)", r.nc, M, T, E.naive.HN, "H(P_N)") : "";
+    setText("b-s-nvent", b);
+    var box = $("ent-batch"); clear(box);
+    [["Batch run" + (r.running ? " (running)" : "") + ": maximum M = " + M + ", " + (r.spiral ? "Spiral" : "Plain") + " mode, " + fmtInt(T) + " rolls."], [a], r.naive ? [b] : null].forEach(function (l) {
+      if (!l) return; var d = document.createElement("div"); d.className = "sline"; d.textContent = l[0]; box.appendChild(d);
+    });
+  }
+  $("max").addEventListener("input", entRender);
+
+  function batchSum() {
+    var r = B, t = "Batch run: no run yet";
+    if (r) {
+      var tail = ", " + (r.spiral ? "spiral" : "plain") + ", max " + r.M;
+      if (r.running) t = "Batch run: running " + Math.floor(r.done / r.total * 100) + "% (" + fmtInt(r.done) + " of " + fmtInt(r.total) + ")";
+      else if (r.status === "complete") t = "Batch run: complete, " + fmtInt(r.done) + " rolls" + tail;
+      else t = "Batch run: stopped, " + fmtInt(r.done) + " of " + fmtInt(r.total) + " rolls" + tail;
+    }
+    setText("b-sum", t);
+  }
+  function bdraw() {
+    var r = B;
+    batchSum();
+    $("b-fig5").hidden = !(r && r.naive);
+    if (!r) {
+      setText("b-prog", "No batch run yet.");
+      setText("b-state", "");
+      ALLC.forEach(function (id) { drawChartB(id); });
+      padicDraw();
+      ["b-s-src", "b-s-total", "b-s-distinct", "b-s-minmax", "b-s-chi", "b-s-even", "b-s-seven", "b-s-sp", "b-s-spchi", "b-s-mchi", "b-s-nv", "b-s-nvlaw", "b-s-nvm", "b-n3", "b-n4", "b-n5", "b-nvcorr"].forEach(function (id) { setText(id, ""); });
+      clear($("b-nvtab").tBodies[0]);
+      $("b-s-sp").hidden = $("b-s-spchi").hidden = $("b-s-nv").hidden = $("b-s-nvlaw").hidden = $("b-s-nvm").hidden = true;
+      setText("b-n1", ""); $("b-csv").disabled = true;
+      entBatch();
+      return;
+    }
+    entBatch();
+    var M = r.M, T = r.done, el1 = r.running ? performance.now() - r.t0 : r.elapsed;
+    setText("b-prog", fmtInt(T) + " of " + fmtInt(r.total) + " rolls, " + (el1 / 1000).toFixed(2) + " s, " + (el1 > 0 ? fmtInt(Math.round(T / (el1 / 1000))) : "0") + " rolls per second (" + (r.spiral ? "Spiral" : "Plain") + " mode, maximum " + M + ")");
+    setText("b-state", r.running ? "Status: running." : (r.status === "complete" ? "Status: complete." : "Status: PARTIAL. Stopped after " + fmtInt(T) + " of " + fmtInt(r.total) + " planned rolls" + (r.dry ? " because the Rule 30 bits ran out" + (r.midroll ? " inside a roll (that roll may be partly counted)" : "") : "") + "; the graphs and counts below are the partial result." + (r.dry ? " " + R30ROLLS : "")));
+    setText("b-s-src", r.src === "rule30" ? "random bits: Rule 30 centre column, bits " + fmtInt(r.bitStart) + " to " + fmtInt(Math.max(r.bitStart, (r.running ? R30POS * 32 : r.bitEnd) - 1)) + " (" + fmtInt(((r.running ? R30POS * 32 : r.bitEnd) - r.bitStart)) + " bits, one stream shared by the fair pick and the naive overlay). The fair expected lines are what perfectly uniform bits would give; how close the bars come is the test of Rule 30's bits. Evidence only." : "random bits: the browser's secure generator.");
+    $("b-csv").disabled = T === 0;
+    var c = r.counts, n, mn = Infinity, mx = -1, an = 0, ax = 0, distinct = 0;
+    for (n = 1; n <= M; n++) { if (c[n] > 0) distinct++; if (c[n] < mn) { mn = c[n]; an = n; } if (c[n] > mx) { mx = c[n]; ax = n; } }
+    var E = T / M;
+    ALLC.forEach(function (id) { drawChartB(id); });
+    padicDraw();
+    // notes under the new charts
+    if (r.spiral) setText("b-n3", "Busy spirals (many divisors) are chosen more often, and this is what makes every number come out at exactly 1/M. The line is the exact expected count T times P(s), shown here as a float for drawing only." + (r.naive ? " The orange ticks are the naive rule's spirals: uniform, like plain mode. The naive rule's bias is not in which spiral it picks but in which crossing of that spiral it takes (see the next charts)." : ""));
+    else setText("b-n3", "Plain mode chooses spiral s uniformly and always takes its outermost crossing (n = s, m = 1), so the bars sit flat at T/M, the same counts as the number chart above." + (r.naive ? " The orange ticks are the naive rule's spirals, also uniform: the naive rule's bias is in which crossing it takes (see the next charts)." : ""));
+    var P1 = r.spiral ? r.PM[1] : 1, P2 = r.spiral && M >= 2 ? r.PM[2] : 0;
+    setText("b-n4", "m = s/n counts which crossing of spiral s the number n is, from the outside: m = 1 is the outermost crossing (n = s). " + (r.spiral ? "In spiral mode the exact law is P(m) = sum over n with n m <= M of 1/(M q(n)); here P(1) = " + P1.toFixed(4) + (M >= 2 ? " and P(2) = " + P2.toFixed(4) : "") + " (floats), so small m dominates and the log axis shows the thin tail." : "Plain mode always takes the outermost crossing, so all T rolls sit at m = 1: this is degenerate on purpose, and it is what the next mode changes.") + (r.naive ? " For the naive rule m has exactly the same law as n, Pnaive(m): choosing a uniform divisor d of s and looking at its partner s/d is the same experiment, so the thin orange line here is the very curve of the naive chart below. This is a fact of the rule that the chart shows, not an observation." : ""));
+    setText("b-n5", r.naive ? "Shaded, n > M/2: here the expected naive count is exactly T/(M tau(n)): primes (tau = 2) get the most, highly composite numbers the least. For n <= M/2 the expected count is T/M times a sum of 1/tau(s) over the multiples s of n up to M (a divisor sieve), so it is lifted by those extra terms; the fair spiral mode cancels exactly this bias by weighting each pick by 1/q(n)." : "");
+    if (r.naive) nvTable(r);
+    if (r.three) threeTable(r);
+    // statistics
+    setText("b-s-total", "total rolls: " + T);
+    setText("b-s-distinct", "distinct numbers seen: " + distinct + " of " + M);
+    setText("b-s-minmax", "smallest count: " + mn + " (n = " + an + "); largest count: " + mx + " (n = " + ax + "); fair expected T/M = " + E.toFixed(2) + " (float)");
+    var chiTxt = function (cnt, label) {
+      if (M < 2) return label + " not shown: only one number";
+      if (E < 5) return label + " not shown: expected counts below 5";
+      var x = 0, d; for (var i = 1; i <= M; i++) { d = cnt[i] - E; x += d * d / E; }
+      return label + ": " + x.toFixed(2) + " on " + (M - 1) + " degrees of freedom, p = " + fmtP(chiP(x, M - 1)) + (M - 1 > 1000 ? " (computed directly, not by the Wilson-Hilferty approximation)" : "");
+    };
+    setText("b-s-chi", chiTxt(c, "chi-square against uniform"));
+    var f = Math.floor(M / 2) / M, odd = T - r.even, sdE = Math.sqrt(T * f * (1 - f));
+    setText("b-s-even", "even: " + r.even + ", odd: " + odd + "; fair even share floor(M/2)/M = " + Math.floor(M / 2) + "/" + M + " = " + f.toFixed(4) + "; z-score of the even count = " + (sdE > 0 ? ((r.even - T * f) / sdE).toFixed(2) : "not defined (fair share has no spread)") + " (floats)");
+    var sdS2 = Math.sqrt(T * r.fS * (1 - r.fS));
+    setText("b-s-seven", "even spirals s: " + r.evenS + " of " + T + "; exact expected share " + (r.spiral ? "(sum of P(s) over even s) " : "floor(M/2)/M ") + "= " + r.fS.toFixed(4) + "; z-score of the even-spiral count = " + (sdS2 > 0 ? ((r.evenS - T * r.fS) / sdS2).toFixed(2) : "not defined (no spread)") + " (floats)");
+    $("b-s-sp").hidden = $("b-s-spchi").hidden = !r.spiral;
+    if (!r.spiral) { setText("b-s-sp", ""); setText("b-s-spchi", ""); }
+    if (r.spiral) {
+      var sT = 0, s;
+      for (s = 1; s <= M; s++) sT += r.sc[s];
+      setText("b-s-sp", "spirals chosen: " + sT + " in total; every n divided its spiral: " + (r.bad === 0 ? "yes" : "NO (" + r.bad + " failures)") + " (checked on every roll); sum of the float P(s) = " + r.PS.sum.toFixed(9));
+      setText("b-s-spchi", chiLaw("spiral chi-square against T·P(s)", "spirals", r.sc, r.PS.P, T, M));
+      setText("b-s-mchi", chiLaw("crossing-index chi-square against the exact law T·P(m)", "crossing indices", r.mc, r.PM, T, M));
+    } else setText("b-s-mchi", "crossing-index chi-square not shown in plain mode: the exact law puts all probability on m = 1 (n = s always), so there is nothing to test; m = 1 occurred " + r.mc[1] + " of " + T + " times, by construction.");
+    $("b-s-nv").hidden = $("b-s-nvlaw").hidden = $("b-s-nvm").hidden = !r.naive;
+    if (!r.naive) { setText("b-s-nv", ""); setText("b-s-nvlaw", ""); setText("b-s-nvm", ""); }
+    if (r.naive) {
+      setText("b-s-nv", "naive rule (comparison only, never used to pick): count of n = 1 is " + r.nc[1] + " (fair would be " + E.toFixed(1) + "); " + chiTxt(r.nc, "naive chi-square against uniform"));
+      setText("b-s-nvlaw", "naive rule against its own exact law (numbers; expected count of n = 1 is " + (T * r.PNV[1]).toFixed(1) + ", float): " + chiLaw("naive chi-square against T·Pnaive(n)", "numbers", r.nc, r.PNV, T, M));
+      setText("b-s-nvm", "naive rule, crossing index m against the same law Pnaive(m): " + chiLaw("naive crossing-index chi-square against T·Pnaive(m)", "crossing indices", r.nmc, r.PNV, T, M));
+    }
+    setText("b-n1", r.naive ? "Naive overlay: the naive count of n = 1 is " + r.nc[1] + ", against a fair expected " + E.toFixed(1) + ". Ticks above the chart are marked with a triangle." : "");
+    setButtons();
+  }
+  // v0.2.8: folded sections. Open state is a per-viewer convenience kept in localStorage (page works without it).
+  var OKEY = "fvlt-rosette-open-sections", SECS = [].slice.call(document.querySelectorAll("details.sec"));
+  function saveOpen() { try { var o = {}; SECS.forEach(function (d) { o[d.getAttribute("data-key")] = d.open; }); localStorage.setItem(OKEY, JSON.stringify(o)); } catch (e) {} }
+  try { var so = JSON.parse(localStorage.getItem(OKEY) || "{}"); SECS.forEach(function (d) { if (so && so[d.getAttribute("data-key")] === true) d.open = true; }); } catch (e) {}
+  SECS.forEach(function (d) {
+    d.addEventListener("toggle", function () { saveOpen(); if (d.open) bdraw(); });
+  });
+  function setAllOpen(v) { SECS.forEach(function (d) { d.open = v; }); saveOpen(); bdraw(); }
+  $("open-all").addEventListener("click", function () { setAllOpen(true); });
+  $("close-all").addEventListener("click", function () { setAllOpen(false); });
+  $("b-total").value = "10000";
+  entRender(); setButtons(); bdraw();
+
+  load();
+  renderHist();
+})();
+</script>
