@@ -1,0 +1,80 @@
+{
+  "standing": "LOCAL_EXACT_AND_NUMERICAL_CONCORDANCE_NOT_COLD_AUDIT",
+  "total": 17,
+  "formulaCases": 84,
+  "formulaTally": {
+    "pairPASS": 84,
+    "doublingPASS": 84
+  },
+  "independentCountCases": 52,
+  "checks": [
+    {
+      "name": "Screenshot carrier C=(1,0), pair sums to O, and R=O",
+      "status": "PASS"
+    },
+    {
+      "name": "Finite sum uses independent chord and tangent formulas",
+      "status": "PASS"
+    },
+    {
+      "name": "Third intersection equals carrier exactly at the order-three phase",
+      "status": "PASS"
+    },
+    {
+      "name": "Coincident branches use a tangent instead of division by zero",
+      "status": "PASS"
+    },
+    {
+      "name": "Origin and stationary branches retain exact identities",
+      "status": "PASS"
+    },
+    {
+      "name": "Even comb has a reference carrier but no fabricated c=0 channel",
+      "status": "PASS"
+    },
+    {
+      "name": "Negative amplitude half-period shift preserves the carrier relation",
+      "status": "PASS"
+    },
+    {
+      "name": "Changing only differential normalization preserves coordinates",
+      "status": "PASS"
+    },
+    {
+      "name": "Quadratic twist and rational scaling use actual effective coefficients",
+      "status": "PASS"
+    },
+    {
+      "name": "84 phase, group-law and chord cases across rectangular and rotated markings",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact Oxford rational addition gives (-2,3) on y²=x³+17",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact rational doubling gives (-8/9,109/27)",
+      "status": "PASS"
+    },
+    {
+      "name": "Rational identity, inverse and vertical tangent are exact",
+      "status": "PASS"
+    },
+    {
+      "name": "Malformed points, off-curve points, unavailable pairs and unsupported period families reject",
+      "status": "PASS"
+    },
+    {
+      "name": "Finite product reproduces 3/4 × 5/8 × 7/8 = 105/256 with O counted",
+      "status": "PASS"
+    },
+    {
+      "name": "52 finite-field counts checked by independent exhaustive (x,y) enumeration",
+      "status": "PASS"
+    },
+    {
+      "name": "Prime cutoffs reject invalid or oversized input and represent an empty product explicitly",
+      "status": "PASS"
+    }
+  ]
+}

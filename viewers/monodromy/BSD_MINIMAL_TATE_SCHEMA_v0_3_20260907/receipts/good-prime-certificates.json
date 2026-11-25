@@ -1,0 +1,174 @@
+[
+  {
+    "contextId": "257176e2064c6e6a9ea68f3e78fa1793339660c18c3f88015d93650adb364579",
+    "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+    "normalizationId": "d9d6091f79f0fdefb18f6d283f4fb67d081fb35a8d251141ab7d8d0fe7288609",
+    "p": "2",
+    "schema": "BSD_GOOD_PRIME_CERTIFICATE_V1",
+    "verifier": {
+      "name": "BSD_LOCAL_REDUCTION_REFERENCE",
+      "version": "0.3.0",
+      "sha256": "c7b102ef7ff7b9044e6099eb777873eaf7a06f248d311676c789dd5d2fa11877"
+    },
+    "method": "P_INTEGRAL_UNIT_DISCRIMINANT_AND_EXHAUSTIVE_FP_COUNT",
+    "ainvs": [
+      "0",
+      "0",
+      "1",
+      "-1",
+      "0"
+    ],
+    "discriminant": "37",
+    "reducedAinvs": [
+      "0",
+      "0",
+      "1",
+      "1",
+      "0"
+    ],
+    "discriminantResidue": "1",
+    "pointsIncludingInfinity": "5",
+    "ap": "-2",
+    "eulerPolynomial": [
+      "1",
+      "2",
+      "2"
+    ],
+    "localMinimality": "PROVED_AT_THIS_PRIME_BY_UNIT_DISCRIMINANT",
+    "kodaira": "I0",
+    "conductorExponent": "0",
+    "tamagawaNumber": "1",
+    "assumptions": [],
+    "dependencies": [],
+    "scope": "THIS_MODEL_AND_THIS_PRIME_ONLY"
+  },
+  {
+    "contextId": "257176e2064c6e6a9ea68f3e78fa1793339660c18c3f88015d93650adb364579",
+    "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+    "normalizationId": "d9d6091f79f0fdefb18f6d283f4fb67d081fb35a8d251141ab7d8d0fe7288609",
+    "p": "3",
+    "schema": "BSD_GOOD_PRIME_CERTIFICATE_V1",
+    "verifier": {
+      "name": "BSD_LOCAL_REDUCTION_REFERENCE",
+      "version": "0.3.0",
+      "sha256": "c7b102ef7ff7b9044e6099eb777873eaf7a06f248d311676c789dd5d2fa11877"
+    },
+    "method": "P_INTEGRAL_UNIT_DISCRIMINANT_AND_EXHAUSTIVE_FP_COUNT",
+    "ainvs": [
+      "0",
+      "0",
+      "1",
+      "-1",
+      "0"
+    ],
+    "discriminant": "37",
+    "reducedAinvs": [
+      "0",
+      "0",
+      "1",
+      "2",
+      "0"
+    ],
+    "discriminantResidue": "1",
+    "pointsIncludingInfinity": "7",
+    "ap": "-3",
+    "eulerPolynomial": [
+      "1",
+      "3",
+      "3"
+    ],
+    "localMinimality": "PROVED_AT_THIS_PRIME_BY_UNIT_DISCRIMINANT",
+    "kodaira": "I0",
+    "conductorExponent": "0",
+    "tamagawaNumber": "1",
+    "assumptions": [],
+    "dependencies": [],
+    "scope": "THIS_MODEL_AND_THIS_PRIME_ONLY"
+  },
+  {
+    "contextId": "acb4d23996bf619268dfbde2bc40f33616815469ab089e8ddad5cbe9070b74e0",
+    "modelId": "ffcb2a8870615acd85178662b14f03b2b02171da48e153cc9e23d3e5365f508c",
+    "normalizationId": "972d1c49b302abf3c94d82fec9ec0599773369273104ccce9d2ea08813c00f94",
+    "p": "5",
+    "schema": "BSD_GOOD_PRIME_CERTIFICATE_V1",
+    "verifier": {
+      "name": "BSD_LOCAL_REDUCTION_REFERENCE",
+      "version": "0.3.0",
+      "sha256": "c7b102ef7ff7b9044e6099eb777873eaf7a06f248d311676c789dd5d2fa11877"
+    },
+    "method": "P_INTEGRAL_UNIT_DISCRIMINANT_AND_EXHAUSTIVE_FP_COUNT",
+    "ainvs": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "1"
+    ],
+    "discriminant": "-432",
+    "reducedAinvs": [
+      "0",
+      "0",
+      "0",
+      "0",
+      "1"
+    ],
+    "discriminantResidue": "3",
+    "pointsIncludingInfinity": "6",
+    "ap": "0",
+    "eulerPolynomial": [
+      "1",
+      "0",
+      "5"
+    ],
+    "localMinimality": "PROVED_AT_THIS_PRIME_BY_UNIT_DISCRIMINANT",
+    "kodaira": "I0",
+    "conductorExponent": "0",
+    "tamagawaNumber": "1",
+    "assumptions": [],
+    "dependencies": [],
+    "scope": "THIS_MODEL_AND_THIS_PRIME_ONLY"
+  },
+  {
+    "contextId": "46ff994a1ce14725bba6e7ab60ab24033e36001b57bf6e3fd7e27a53436ab018",
+    "modelId": "6fde21a5ade3735b7f8ca1a1b4010f5ca08483ae9ed343a1cef3327960773d61",
+    "normalizationId": "6e029daa93c9569b8f7864598026ac642781a21e5d87ed528754e595b4bc5619",
+    "p": "3",
+    "schema": "BSD_GOOD_PRIME_CERTIFICATE_V1",
+    "verifier": {
+      "name": "BSD_LOCAL_REDUCTION_REFERENCE",
+      "version": "0.3.0",
+      "sha256": "c7b102ef7ff7b9044e6099eb777873eaf7a06f248d311676c789dd5d2fa11877"
+    },
+    "method": "P_INTEGRAL_UNIT_DISCRIMINANT_AND_EXHAUSTIVE_FP_COUNT",
+    "ainvs": [
+      "0",
+      "0",
+      "0",
+      "-1/16",
+      "0"
+    ],
+    "discriminant": "1/64",
+    "reducedAinvs": [
+      "0",
+      "0",
+      "0",
+      "2",
+      "0"
+    ],
+    "discriminantResidue": "1",
+    "pointsIncludingInfinity": "4",
+    "ap": "0",
+    "eulerPolynomial": [
+      "1",
+      "0",
+      "3"
+    ],
+    "localMinimality": "PROVED_AT_THIS_PRIME_BY_UNIT_DISCRIMINANT",
+    "kodaira": "I0",
+    "conductorExponent": "0",
+    "tamagawaNumber": "1",
+    "assumptions": [],
+    "dependencies": [],
+    "scope": "THIS_MODEL_AND_THIS_PRIME_ONLY"
+  }
+]

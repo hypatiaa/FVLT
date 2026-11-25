@@ -1,0 +1,175 @@
+{
+  "schema": "BSD_MINIMAL_TATE_RECORD_V1",
+  "anchor": {
+    "inputModelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+    "sourceHash": "79aa9ea296c21154406bf3f14fe24d83657957c959ffcd651606d8c5da3a205a",
+    "legacyContextId": null
+  },
+  "contextId": "541c6f2cd78ee336c8e7cef2a45dd8e92ad8384e91bc1570d392cd7447eae75b",
+  "models": [
+    {
+      "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+      "field": "Q",
+      "ainvs": [
+        "0",
+        "0",
+        "1",
+        "-1",
+        "0"
+      ],
+      "invariants": {
+        "b2": "0",
+        "b4": "-2",
+        "b6": "1",
+        "b8": "-1",
+        "c4": "48",
+        "c6": "-216",
+        "discriminant": "37",
+        "j": "110592/37"
+      }
+    },
+    {
+      "modelId": "0a01af2e40f354ab0a820fa1cddde30b15573e0581ed4dba9ea8e127d9a03d08",
+      "field": "Q",
+      "ainvs": [
+        "-6",
+        "-3",
+        "-9",
+        "-16",
+        "-14"
+      ],
+      "invariants": {
+        "b2": "24",
+        "b4": "22",
+        "b6": "25",
+        "b8": "29",
+        "c4": "48",
+        "c6": "-216",
+        "discriminant": "37",
+        "j": "110592/37"
+      }
+    }
+  ],
+  "twistLineage": [],
+  "transformations": [
+    {
+      "fromModelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+      "toModelId": "0a01af2e40f354ab0a820fa1cddde30b15573e0581ed4dba9ea8e127d9a03d08",
+      "direction": "SOURCE_TO_TARGET",
+      "urst": {
+        "u": "-1",
+        "r": "2",
+        "s": "3",
+        "t": "4"
+      },
+      "pullbackModelDifferentialFactor": "-1",
+      "targetSelectedMultiplier": "-1"
+    }
+  ],
+  "normalization": {
+    "modelDifferential": "dx/(2*y+a1*x+a3)",
+    "sourceSelectedMultiplier": "1",
+    "targetModelId": "0a01af2e40f354ab0a820fa1cddde30b15573e0581ed4dba9ea8e127d9a03d08",
+    "targetSelectedMultiplier": "-1",
+    "composedPullbackFactor": "-1",
+    "neron": null
+  },
+  "marking": {
+    "basisMatrix": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "1"
+      ]
+    ],
+    "convention": "TARGET_BASIS_EQUALS_U_TIMES_M_SOURCE_BASIS",
+    "mcombSourceHash": null,
+    "phaseConvention": "FULL_PERIOD_FRACTIONS_MOD_Z2"
+  },
+  "points": [
+    {
+      "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+      "coordinates": {
+        "x": "0",
+        "y": "0"
+      },
+      "sourceHash": "d51322d05b7d36b22f8b08a49f1b34bd681fb12fabf419127d74ef877542ca6c"
+    },
+    {
+      "modelId": "0a01af2e40f354ab0a820fa1cddde30b15573e0581ed4dba9ea8e127d9a03d08",
+      "coordinates": {
+        "x": "-2",
+        "y": "-2"
+      },
+      "sourceHash": "135042fc643254e92a1188bc69cfb44ce814718c8126377d3cdcb86e1fde93a3"
+    }
+  ],
+  "minimalModel": null,
+  "localData": [],
+  "badPrimeInventory": null,
+  "aggregate": null,
+  "panelBindings": [
+    {
+      "panel": "MCOMB",
+      "contextId": "541c6f2cd78ee336c8e7cef2a45dd8e92ad8384e91bc1570d392cd7447eae75b",
+      "modelId": "0a01af2e40f354ab0a820fa1cddde30b15573e0581ed4dba9ea8e127d9a03d08",
+      "normalizationId": "bcff18cc37deafda0a2fc5e2da9e8957e83698b55f09ec714e1ce0f4f5c4bcb0",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "CARRIER_ADDITION",
+      "contextId": "541c6f2cd78ee336c8e7cef2a45dd8e92ad8384e91bc1570d392cd7447eae75b",
+      "modelId": "0a01af2e40f354ab0a820fa1cddde30b15573e0581ed4dba9ea8e127d9a03d08",
+      "normalizationId": "bcff18cc37deafda0a2fc5e2da9e8957e83698b55f09ec714e1ce0f4f5c4bcb0",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "ELLIPTIC_MODEL",
+      "contextId": "541c6f2cd78ee336c8e7cef2a45dd8e92ad8384e91bc1570d392cd7447eae75b",
+      "modelId": "0a01af2e40f354ab0a820fa1cddde30b15573e0581ed4dba9ea8e127d9a03d08",
+      "normalizationId": "bcff18cc37deafda0a2fc5e2da9e8957e83698b55f09ec714e1ce0f4f5c4bcb0",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "MARKED_CLIFFORD_LEAF",
+      "contextId": "541c6f2cd78ee336c8e7cef2a45dd8e92ad8384e91bc1570d392cd7447eae75b",
+      "modelId": "0a01af2e40f354ab0a820fa1cddde30b15573e0581ed4dba9ea8e127d9a03d08",
+      "normalizationId": "bcff18cc37deafda0a2fc5e2da9e8957e83698b55f09ec714e1ce0f4f5c4bcb0",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "EXACT_CURVE_BSD",
+      "contextId": "541c6f2cd78ee336c8e7cef2a45dd8e92ad8384e91bc1570d392cd7447eae75b",
+      "modelId": "0a01af2e40f354ab0a820fa1cddde30b15573e0581ed4dba9ea8e127d9a03d08",
+      "normalizationId": "bcff18cc37deafda0a2fc5e2da9e8957e83698b55f09ec714e1ce0f4f5c4bcb0",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "PRIME_PRODUCT",
+      "contextId": "541c6f2cd78ee336c8e7cef2a45dd8e92ad8384e91bc1570d392cd7447eae75b",
+      "modelId": "0a01af2e40f354ab0a820fa1cddde30b15573e0581ed4dba9ea8e127d9a03d08",
+      "normalizationId": "bcff18cc37deafda0a2fc5e2da9e8957e83698b55f09ec714e1ce0f4f5c4bcb0",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    }
+  ],
+  "sources": [
+    {
+      "sha256": "79aa9ea296c21154406bf3f14fe24d83657957c959ffcd651606d8c5da3a205a",
+      "mediaType": "application/json",
+      "bytes": "{\"field\":\"Q\",\"ainvs\":[\"0\",\"0\",\"1\",\"-1\",\"0\"],\"selectedMultiplier\":\"1\"}"
+    },
+    {
+      "sha256": "d51322d05b7d36b22f8b08a49f1b34bd681fb12fabf419127d74ef877542ca6c",
+      "mediaType": "application/json",
+      "bytes": "{\"modelId\":\"8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0\",\"coordinates\":{\"x\":\"0\",\"y\":\"0\"}}"
+    },
+    {
+      "sha256": "135042fc643254e92a1188bc69cfb44ce814718c8126377d3cdcb86e1fde93a3",
+      "mediaType": "application/json",
+      "bytes": "{\"modelId\":\"0a01af2e40f354ab0a820fa1cddde30b15573e0581ed4dba9ea8e127d9a03d08\",\"coordinates\":{\"x\":\"-2\",\"y\":\"-2\"}}"
+    }
+  ]
+}

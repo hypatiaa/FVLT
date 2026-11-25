@@ -1,0 +1,25 @@
+'use strict';
+// Deterministic schema source. Run only while authoring a new package, never during verification.
+const fs=require('node:fs'),path=require('node:path');
+const obj=p=>({type:'object',additionalProperties:false,required:Object.keys(p),properties:p});
+const arr=(items,minItems=0,maxItems=1009)=>({type:'array',items,minItems,maxItems});
+const en=(...values)=>({enum:values}),literal=constant=>({const:constant});
+const str={type:'string',maxLength:200000},hash={type:'string',pattern:'^[a-f0-9]{64}$'},rat={type:'string',pattern:'^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$',maxLength:194},nat={type:'string',pattern:'^(0|[1-9][0-9]*)$',maxLength:96};
+const tuple=obj({u:rat,r:rat,s:rat,t:rat}),five=arr(rat,5,5),vec4=arr(rat,4,4),nullable=s=>({anyOf:[{type:'null'},s]});
+const val={oneOf:[obj({kind:literal('INFINITY')}),obj({kind:literal('FINITE'),exponent:rat,unit:rat})]};
+const prime=obj({method:literal('EXHAUSTIVE_TRIAL_DIVISION_TO_SQRT'),p:nat,trials:arr(obj({divisor:nat,remainder:nat}),0,31)});
+const valuations=obj({discriminant:val,c4:val,c6:val});
+const result=obj({reduction:en('GOOD','SPLIT_MULTIPLICATIVE','NONSPLIT_MULTIPLICATIVE'),kodaira:{type:'string',pattern:'^I(0|[1-9][0-9]*)$'},split:nullable({type:'boolean'}),discriminantValuation:nat,conductorExponent:nat,wildConductorContribution:nat,tamagawaNumber:nat,ap:rat,eulerPolynomial:arr(rat,2,3),localMinimality:en('PROVED_BY_UNIT_DISCRIMINANT','PROVED_BY_C4_UNIT')});
+const steps=arr({oneOf:[obj({operation:literal('CHECK_P_INTEGRAL'),denominatorResidues:five}),obj({operation:literal('VALUATIONS'),discriminant:val,c4:val,c6:val}),obj({operation:literal('UNIT_DISCRIMINANT'),residue:nat}),obj({operation:literal('COUNT_GOOD_FIBRE'),reducedAinvs:five,affineCountsByX:arr(nat,2,1009),pointsIncludingInfinity:nat,ap:rat}),obj({operation:literal('MULTIPLICATIVE_C4_UNIT'),residue:nat}),obj({operation:literal('SPLIT_NEGATIVE_C6'),residue:nat,roots:arr(nat,0,2)})]},2,4);
+const trace=obj({schema:literal('BSD_TATE_T1_TRACE_V1'),contextId:hash,modelId:hash,normalizationId:hash,markingId:hash,p:nat,primeProof:prime,ainvs:five,valuations,steps,terminal:{oneOf:[obj({branch:en('GOOD_UNIT_DISCRIMINANT','MULTIPLICATIVE_P_GE_5'),status:literal('REPLAYABLE'),result}),obj({branch:literal('UNSUPPORTED'),status:literal('UNAVAILABLE'),reason:en('WILD_OR_MULTIPLICATIVE_SMALL_CHARACTERISTIC_REQUIRES_T3','ADDITIVE_BRANCH_REQUIRES_T2')})]}});
+const version={type:'array',prefixItems:[nat,nat,nat,nat,{type:'string',pattern:'^[0-9a-f]{10}$'}],items:false,minItems:5,maxItems:5};
+const local={type:'array',prefixItems:[rat,rat,vec4,rat],items:false,minItems:4,maxItems:4};
+const pin=obj({url:str,sha256:hash});
+const backend=obj({schema:literal('BSD_T1_PARI_REPORT_V1'),status:literal('SOURCE_REPORT'),producer:obj({name:literal('PARI_GP_WASM'),version,adapterSha256:hash,nodeVersion:str,nodeSha256:hash,runtimeFiles:obj({'gp-sta.js':pin,'gp-sta.wasm':pin})}),request:obj({ainvs:five,p:nat,script:str,scriptSha256:hash}),stdout:str,stdoutSha256:hash,stderr:str,stderrSha256:hash,claims:obj({VERSION:version,GLOBAL:five,URST:vec4,LOCAL:local,TARGET:five})});
+const packet=obj({schema:literal('BSD_TATE_T1_PACKET_V1'),parent:obj({sha256:hash,bytes:{type:'string',maxLength:4000000}}),record:{$ref:'urn:robin:bsd:minimal-tate-record:1:draft-0.3'},adapter:obj({parentContextId:hash,sourceModelId:hash,targetModelId:hash,steps:arr(tuple,0,3),composite:tuple,pullbackModelDifferentialFactor:rat,targetSelectedMultiplier:rat,pointTransports:arr(obj({sourcePointIndex:{type:'integer',minimum:0,maximum:199},targetPointIndex:{type:'integer',minimum:0,maximum:199},sourceHash:hash,targetHash:hash}),0,200)}),inventory:obj({scope:literal('MODEL_DISCRIMINANT_SUPPORT_NOT_CURVE_BAD_PRIMES'),modelId:hash,absoluteDiscriminant:nat,factors:arr(obj({p:nat,exponent:nat,primeProof:prime}),0,169),remainingCofactor:nat,complete:{type:'boolean'},trialDivisionBound:literal('1009')}),backend:nullable(backend),trace});
+const base={$schema:'https://json-schema.org/draft/2020-12/schema'};
+const verifier=obj({name:literal('BSD_TATE_T1_REPLAY'),version:literal('0.1.0'),sha256:hash,arithmeticSha256:hash});
+const certificate=obj({schema:literal('BSD_TATE_T1_LOCAL_CERTIFICATE_V1'),packetHash:hash,parentSourceHash:hash,contextId:hash,sourceModelId:hash,modelId:hash,normalizationId:hash,markingId:hash,p:nat,traceHash:hash,verifier,status:literal('CERTIFIED'),scope:literal('LOCAL_MODEL_AT_ONE_PRIME_ONLY'),method:en('GOOD_UNIT_DISCRIMINANT','MULTIPLICATIVE_P_GE_5'),result,assumptions:arr(str,0,0),globalMinimality:literal('NOT_ASSESSED'),neronDifferential:literal('NOT_ASSESSED'),bsdPromotion:literal(false)});
+const schemas={'t1-packet.schema.json':{...base,$id:'urn:robin:bsd:tate-t1-packet:1',...packet},'t1-certificate.schema.json':{...base,$id:'urn:robin:bsd:tate-t1-certificate:1',...certificate}};
+module.exports=schemas;
+if(require.main===module){for(const [file,schema] of Object.entries(schemas))fs.writeFileSync(path.join(__dirname,file),JSON.stringify(schema,null,2)+'\n');}

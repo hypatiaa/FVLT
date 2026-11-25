@@ -1,0 +1,25 @@
+{
+  "target": "BSD_TATE_T2_v0_1_20260907",
+  "manifestSha256": "08bda1b0692ff8a871ea1f9befa8332f44633fc189c95abd6ee8aa03a81bb417",
+  "date": "2026-09-07",
+  "seat": "Fable 5.1 (Claude Code), independent of builder",
+  "standing": "PROSMENON",
+  "machineResult": "PASS",
+  "lockEligible": false,
+  "reproduced": {
+    "manifestEntriesOK": 26,
+    "externalPinsOK": 14,
+    "predecessorManifests": {"T1": 28, "v0_3": 80, "monodromy30": 27},
+    "verifyCjs": {"t2": 127, "t2Python": 99, "t1": 66, "t1Python": 31, "inheritedV03": 182, "total": 505, "formulaTally": {"pairPASS": 84, "doublingPASS": 84}, "exit": 0}
+  },
+  "independentSeat": {
+    "medium": "Own tame Tate implementation at p>=5 in Python (Silverman IV.9.4 / Cremona 3.2, refinement loop), packets built via build.cjs and replayed via assess.cjs",
+    "randomCorpus": {"cases": 262, "match": 262},
+    "starCorpus": {"cases": 126, "match": 126, "indices": [1,2,3,4,5,6,9,10,15,16], "bothTamagawaOutcomesPerIndex": true, "pariCompared": 6},
+    "typesCovered": ["I0", "I_n split/nonsplit", "II", "III", "IV c=1,3", "I0* c=1,2,4", "I_n* c=2,4", "IV* c=1,3", "III*", "II*"],
+    "forgeriesRejected": 21,
+    "noOpIdentified": "first PARI transcript edit changed nothing (value already 2); redone with real change, rejected"
+  },
+  "flags": {},
+  "counterWitness": null
+}

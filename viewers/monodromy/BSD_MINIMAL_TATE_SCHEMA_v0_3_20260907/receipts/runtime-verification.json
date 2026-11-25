@@ -1,0 +1,41 @@
+{
+  "total": 9,
+  "checks": [
+    {
+      "name": "Explicit Python override excludes default candidates",
+      "status": "PASS"
+    },
+    {
+      "name": "A failed override never falls back to another runtime",
+      "status": "PASS"
+    },
+    {
+      "name": "Discovery skips Python without jsonschema and records the chosen capability",
+      "status": "PASS"
+    },
+    {
+      "name": "No usable Python reports setup requirements explicitly",
+      "status": "PASS"
+    },
+    {
+      "name": "Invalid vendor override is not silently dropped",
+      "status": "PASS"
+    },
+    {
+      "name": "Node resolution handles a Playwright path with spaces",
+      "status": "PASS"
+    },
+    {
+      "name": "Missing Chromium fails without an implicit download",
+      "status": "PASS"
+    },
+    {
+      "name": "Staged workers contain no absolute user-specific Playwright import",
+      "status": "PASS"
+    },
+    {
+      "name": "Real discovered runtimes remain usable from the scratch directory",
+      "status": "PASS"
+    }
+  ]
+}

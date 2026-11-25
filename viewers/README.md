@@ -12,8 +12,21 @@ Private backup, made on 2026-11-25 at saphir's request, of two viewer packages f
 
 **How to run.**
 - Fourier viewer: open `fourier_viewer/FOURIER_VIEWER_PROTOTYPE_v0_4_19_20261031/dist/comb-hopf.html` in a browser (static, offline).
-- Monodromy: double-click `monodromy/START_MERGED_VIEWER_NOCHECK.cmd`, or run `node server.cjs` in the NOCHECK folder (Node required). The older route is `node start-fast.cjs` in the FASTSTART folder (Node required). Note that the launcher expects the parent at `../MCOMB_FCA_M7_COMBINED_BCD_RHM_AF_v0_1_20261004`, which this layout keeps. The full integrity check (`check-integrity.cjs`) needs the predecessor chain in `s6_atom/cold audit fourier/`, which is not copied here.
+- Monodromy: double-click `monodromy/START_MERGED_VIEWER_NOCHECK.cmd`, or run `node server.cjs` in the NOCHECK folder (Node required). The older route is `node start-fast.cjs` in the FASTSTART folder (Node required). Note that the launcher expects the parent at `../MCOMB_FCA_M7_COMBINED_BCD_RHM_AF_v0_1_20261004`, which this layout keeps. The full integrity check (`check-integrity.cjs`) needs the whole older predecessor chain in `s6_atom/cold audit fourier/`, which is not copied here.
 
-**Check.** In this folder, run `sha256sum -c MANIFEST.sha256`; it must report 1,321 OK. `.gitattributes` turns off line-ending conversion.
+**BSD Tate verifier (the viewer's `/assess` replay).** Added 2026-11-25. The viewer replays every packet through `assess-stdin.cjs`, which loads `../BSD_TATE_T4_v0_1_20260923/assess.cjs`.
+- **What was copied:** the five folders that chain needs at run time sit beside the viewer in `monodromy/`, whole and byte for byte, each with its own `MANIFEST.sha256`:
+  - `BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907`
+  - `BSD_TATE_T1_v0_1_20260907`
+  - `BSD_TATE_T2_v0_1_20260907`
+  - `BSD_TATE_T3_v0_1_20260907`
+  - `BSD_TATE_T4_v0_1_20260923`
+
+  Their build, audit and sealed-verification reports are in `monodromy/bsd_tate_audit_reports/`.
+- **Python (once per machine):** the structure gate (`validate.py`) needs Python 3.9 or newer with `jsonschema` 4.26.0. Double-click `monodromy/SETUP_BSD_TATE_PYTHON.cmd`. It creates `monodromy/.bsd-audit-venv`, which the verifier finds by itself; that folder is git-ignored. Alternatively, set `BSD_AUDIT_PYTHON` to any Python that has jsonschema.
+- **PARI is not needed:** the PARI WASM runtime is only used when packets are built, not when they are replayed.
+- **Tested from this layout on Neo:** all 44 T4 fixture packets replayed through `assess-stdin.cjs` and matched their expected assessments (42 PASS, 2 UNAVAILABLE). Two of them also went through the NOCHECK server's HTTP `/assess`; the signed replies carried the expected assessments.
+
+**Check.** In this folder, run `sha256sum -c MANIFEST.sha256`; it must report every line OK. `.gitattributes` turns off line-ending conversion.
 
 Credit: saphir (@saphirbijoux), with the model seats named in each folder's records.

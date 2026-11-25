@@ -1,0 +1,24 @@
+{
+  "schema": "COLD_AUDIT_REPORT_V1",
+  "seat": "Fable",
+  "date": "2026-09-23",
+  "candidate": "BSD_TATE_T4_v0_1_20260923",
+  "manifestSha256": "269a052593babfef65a7fe4529f9db42dae48176bf985e7796b63022337d9f39",
+  "manifestEntries": 26,
+  "engineSha256": "0406bcaf3cef905fb504553a63d6ccc9570507e8bcffadfdf9387d6e53f7301a",
+  "verdict": "PROSMENON",
+  "status": "PASS",
+  "flags": [],
+  "counterWitness": null,
+  "reproduction": {"verifyExit": 0, "scope": "T4_PLUS_T3_T2_T1_AND_V03", "groups": {"t4": 76, "t4Python": 44, "t3": 225, "t3Python": 190, "t2": 127, "t2Python": 99, "t1": 66, "t1Python": 31, "v03": 182, "total": 1040}, "sourcesUnchanged": true},
+  "independentSeat": {
+    "scripts": {"global.cjs": "32ab13cc005dd1b746db349f423c4fe573fb1b4d049aa236d427585208bab3a5", "minimal.py": "30fe3442f8f7fd663e16aedcd4c3c74db4039ef7fe6a2cb7fcf5dc7132ab96d4", "unav.cjs": "f7480d604e392faa33ff690a7705c1044d2204d2f18d1c58b6d35a1445374761"},
+    "curves": 600, "certified": 496, "unavailable": 104, "mismatches": 0,
+    "unavailableSmallestCofactorPrime": 1129,
+    "oracles": ["PARI ellglobalred/ellminimalmodel on the untransformed base curve", "own minimality+conductor (c4/c6 criterion p>=5, tate23.py at 2,3)", "hand composition of signed selected multiplier"]
+  },
+  "adversarial": {"probeSha256": ["c6a12f3aed3f3f1d9d27f6ff58a29818e36d4a9f914649f733de4132d67c274f", "ae4c7a6092c94641064156f038e404970c487a494d9473ed867c4473aebe18ac"], "rejected": 19, "acceptedAsDesigned": 3, "voidProbeDisclosed": "panel-to-intermediate-model on curve A was a no-op; redone on B, rejected"},
+  "observations": ["O1 v0.3 gate accepts the bare T4 record; V1 must retain the packet and run the T4 gate", "O2 completeness conservative: any cofactor prime >1009 blocks the global result (~17% of random small curves)"],
+  "viewerBaselineIntake": {"lf1Preview": "ebaaa76592733400cf8ccaa85eb1ad0ce73c1db6d7c56688241fcd91c9323285", "camera2Preview": "7ce6cf2829a8478b4813a9c206bd1248c48c775fe6b6b0c2caadbc6d2108ec8f", "runtimeIdenticalModuloCR": true, "browserSuitesRerun": false},
+  "lockRuling": false
+}

@@ -1,0 +1,108 @@
+{
+  "standing": "LOCAL_H1_H2_GATES_NOT_TATE_CERTIFICATION",
+  "total": 25,
+  "checks": [
+    {
+      "name": "Reproduce and reject H1 II* with v5(Delta)=2",
+      "status": "PASS"
+    },
+    {
+      "name": "Reproduce and reject H1 I0* with v5(Delta)=2",
+      "status": "PASS"
+    },
+    {
+      "name": "Reproduce and reject H1 IV* with v5(Delta)=7",
+      "status": "PASS"
+    },
+    {
+      "name": "Reproduce and reject H2 f2=12 on y2=x3-1",
+      "status": "PASS"
+    },
+    {
+      "name": "Tame II passes and every competing fixture label rejects",
+      "status": "PASS"
+    },
+    {
+      "name": "Tame III passes and every competing fixture label rejects",
+      "status": "PASS"
+    },
+    {
+      "name": "Tame IV passes and every competing fixture label rejects",
+      "status": "PASS"
+    },
+    {
+      "name": "Tame I0* passes and every competing fixture label rejects",
+      "status": "PASS"
+    },
+    {
+      "name": "Tame I1* passes and every competing fixture label rejects",
+      "status": "PASS"
+    },
+    {
+      "name": "Tame IV* passes and every competing fixture label rejects",
+      "status": "PASS"
+    },
+    {
+      "name": "Tame III* passes and every competing fixture label rejects",
+      "status": "PASS"
+    },
+    {
+      "name": "Tame II* passes and every competing fixture label rejects",
+      "status": "PASS"
+    },
+    {
+      "name": "p-unit rational transformations preserve all eight tame types",
+      "status": "PASS"
+    },
+    {
+      "name": "j=0 has infinite valuation and supports all applicable additive families",
+      "status": "PASS"
+    },
+    {
+      "name": "Negative j valuation determines I2* including colliding discriminant values",
+      "status": "PASS"
+    },
+    {
+      "name": "Negative j valuation determines I3* including colliding discriminant values",
+      "status": "PASS"
+    },
+    {
+      "name": "Negative j valuation determines I4* including colliding discriminant values",
+      "status": "PASS"
+    },
+    {
+      "name": "Negative j valuation determines I7* including colliding discriminant values",
+      "status": "PASS"
+    },
+    {
+      "name": "A nonminimal negative-j presentation cannot satisfy the tame pole-order relation",
+      "status": "PASS"
+    },
+    {
+      "name": "A nonminimal potentially good presentation lies outside the tame valuation table",
+      "status": "PASS"
+    },
+    {
+      "name": "The f2=8 boundary is admitted and 9 rejected on the 256.a1 model",
+      "status": "PASS"
+    },
+    {
+      "name": "The f3=5 boundary is admitted and 6 rejected on y2=x3+3",
+      "status": "PASS"
+    },
+    {
+      "name": "Conductor cannot exceed discriminant valuation even below the Q cap",
+      "status": "PASS"
+    },
+    {
+      "name": "Public structural entry point rejects the audit forgeries",
+      "status": "PASS"
+    },
+    {
+      "name": "Good-prime certification on a1 nonzero general models is preserved",
+      "status": "PASS"
+    }
+  ],
+  "predecessorAcceptedForgeries": 4,
+  "tameCompetingLabelRejections": 56
+}

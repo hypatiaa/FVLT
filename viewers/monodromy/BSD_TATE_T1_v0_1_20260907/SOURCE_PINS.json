@@ -1,0 +1,50 @@
+[
+  {
+    "path": "../BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907/MANIFEST.sha256",
+    "sha256": "40739e8bb8ff0259c974d727030ef89cc66895971aef5f1ce20840d4bef0302a"
+  },
+  {
+    "path": "../BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907/model-replay.cjs",
+    "sha256": "c7b102ef7ff7b9044e6099eb777873eaf7a06f248d311676c789dd5d2fa11877"
+  },
+  {
+    "path": "../BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907/minimal-tate-record.schema.json",
+    "sha256": "687bb7d9395abfc53bb844574aca4ff2e51ec4f7be8daab3b954c857187ab085"
+  },
+  {
+    "path": "../BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907/IMPLEMENTATION_PLAN.md",
+    "sha256": "c62c703dc8585047ab698993e46b7cd18e8a67b8602198839631db15ad1f1a58"
+  },
+  {
+    "path": "../MINIMAL_TATE_SCHEMA_v0_3_COLD_AUDIT_FABLE_20260907.md",
+    "sha256": "67cc4f4d93ac136f3ba75f0543ec1a3a41dd80cd4f99c5a7dd45022f5f5517ec"
+  },
+  {
+    "path": "../MINIMAL_TATE_SCHEMA_v0_3_COLD_AUDIT_FABLE_20260907.json",
+    "sha256": "51a19d671907a27d7946c0498720bfa59eff29c80aa0d2abd151a9ad3c40bd4c"
+  },
+  {
+    "path": "../BSD_MINIMAL_TATE_SCHEMA_v0_2_20260907/MANIFEST.sha256",
+    "sha256": "605d44f3b9b2c045ecb01837f4c1502eb2bb05bcae4d5e2caccc174560d3d97e"
+  },
+  {
+    "path": "../BSD_MINIMAL_TATE_SCHEMA_v0_1_20260907/MANIFEST.sha256",
+    "sha256": "252b5406568d19bd1377c68e8bd70c1a5bc369c26d262bd391d38311e33c4e3b"
+  },
+  {
+    "path": "../MCOMB_CARRIER_ADDITION_v0_1_20260907/MANIFEST.sha256",
+    "sha256": "b7799b08896ee9b57c8963d4530e393d7d3952a6d2f3047ce20376e1d67d87c1"
+  },
+  {
+    "path": "../BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907/monodromy-30-1-reduction-audit.html",
+    "sha256": "5dc69781082a3d2b41e1b38b49f71c44ec349a219221ed19b15969f8c0c0ee84"
+  },
+  {
+    "path": "../.bsd-arithmetic-runtime/gp-sta.js",
+    "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+  },
+  {
+    "path": "../.bsd-arithmetic-runtime/gp-sta.wasm",
+    "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+  }
+]

@@ -1,0 +1,26 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),T=require('./model-replay.cjs');
+const out=path.join(__dirname,'fixtures');fs.mkdirSync(out,{recursive:true});
+const panels=['MCOMB','CARRIER_ADDITION','ELLIPTIC_MODEL','MARKED_CLIFFORD_LEAF','EXACT_CURVE_BSD','PRIME_PRODUCT'];
+function bind(q){q.contextId=T.hash({anchor:q.anchor,modelId:q.normalization.targetModelId,normalization:q.normalization,transformations:q.transformations,twistLineage:q.twistLineage});q.panelBindings=panels.map(panel=>({panel,contextId:q.contextId,modelId:q.normalization.targetModelId,normalizationId:T.hash(q.normalization),markingId:T.hash(q.marking)}));return q;}
+function source(q,value){const bytes=JSON.stringify(value),sha256=T.hash(bytes);if(!q.sources.some(s=>s.sha256===sha256))q.sources.push({sha256,mediaType:'application/json',bytes});return sha256;}
+function evidence(q,value){return {status:'UNVERIFIED',method:value.source?'SOURCE_REPORTED_LMFDB_TRANSCRIPTION':'AUDIT_FIXTURE_PROPOSAL',software:value.source?'LMFDB page read 2026-09-07; no local Tate engine':'Audit fixture generator v0.1; exact finite counts replayed separately',sourceHash:source(q,value),assumptions:[],dependencies:[],certificate:null};}
+function make(a,steps=[],point=null){const m=T.model(a),q={schema:'BSD_MINIMAL_TATE_RECORD_V1',anchor:{inputModelId:m.modelId,sourceHash:'',legacyContextId:null},contextId:'',models:[m],twistLineage:[],transformations:[],normalization:{modelDifferential:'dx/(2*y+a1*x+a3)',sourceSelectedMultiplier:'1',targetModelId:m.modelId,targetSelectedMultiplier:'1',composedPullbackFactor:'1',neron:null},marking:{basisMatrix:[['1','0'],['0','1']],convention:'TARGET_BASIS_EQUALS_U_TIMES_M_SOURCE_BASIS',mcombSourceHash:null,phaseConvention:'FULL_PERIOD_FRACTIONS_MOD_Z2'},points:[],minimalModel:null,localData:[],badPrimeInventory:null,aggregate:null,panelBindings:[],sources:[]};q.anchor.sourceHash=source(q,{field:'Q',ainvs:a,selectedMultiplier:'1'});
+ let current=m,c='1',u='1',P=point;const addPoint=()=>{if(P){const body={modelId:current.modelId,coordinates:P};q.points.push({...body,sourceHash:source(q,body)});}};addPoint();
+ for(const urst of steps){const target=T.model(T.transform(current.ainvs,urst));if(!q.models.some(m=>m.modelId===target.modelId))q.models.push(target);c=T.S(T.div(T.R(c),T.R(urst.u)));u=T.S(T.mul(T.R(u),T.R(urst.u)));q.transformations.push({fromModelId:current.modelId,toModelId:target.modelId,direction:'SOURCE_TO_TARGET',urst,pullbackModelDifferentialFactor:urst.u,targetSelectedMultiplier:c});if(P)P=T.pointMap(current.ainvs,urst,P);current=target;addPoint();}
+ Object.assign(q.normalization,{targetModelId:current.modelId,targetSelectedMultiplier:c,composedPullbackFactor:u});return bind(q);
+}
+const w={u:'2',r:'0',s:'0',t:'4'};
+const q=make(['0','0','0','-16','16'],[w],{x:'0',y:'4'}),target=q.normalization.targetModelId,url='https://www.lmfdb.org/EllipticCurve/Q/37/a/1';
+const em=evidence(q,{source:url,claim:'global minimal model',ainvs:['0','0','1','-1','0'],discriminant:'37'});q.minimalModel={modelId:target,scope:'GLOBAL_Q',prime:null,evidence:em};
+for(const [p,polynomial] of [['2',['1','2','2']],['3',['1','3','3']]]){const result={reduction:'GOOD',kodaira:'I0',split:null,discriminantValuation:'0',conductorExponent:'0',wildConductorContribution:'0',tamagawaNumber:'1',eulerPolynomial:polynomial};q.localData.push({p,modelId:target,minimalityEvidence:em,result,evidence:evidence(q,{method:'Fixture enumeration on target model; independent replay required',p,result})});}
+const result={reduction:'NONSPLIT_MULTIPLICATIVE',kodaira:'I1',split:false,discriminantValuation:'1',conductorExponent:'1',wildConductorContribution:'0',tamagawaNumber:'1',eulerPolynomial:['1','1']};q.localData.push({p:'37',modelId:target,minimalityEvidence:em,result,evidence:evidence(q,{source:url,p:'37',result})});
+q.badPrimeInventory={modelId:target,factors:[{p:'37',exponent:'1'}],remainingCofactor:'1',complete:true,evidence:evidence(q,{source:url,claim:'prime support of minimal discriminant',discriminant:'37'})};
+q.aggregate={modelId:target,conductor:'37',tamagawaProduct:'1',localDataPrimes:['37'],evidence:evidence(q,{source:url,claim:'reported conductor and Tamagawa product',conductor:'37',tamagawaProduct:'1'})};
+bind(q);
+const simple=make(['0','0','0','0','17'],[],{x:'4',y:'9'});
+const neg=make(['0','0','1','-1','0'],[{u:'-1',r:'2',s:'3',t:'4'}],{x:'0',y:'0'});
+const v={u:'1/2',r:'1/3',s:'2/5',t:'-1/7'},chain=make(['0','0','1','-1','0'],[v,T.inverse(v)],{x:'0',y:'0'});chain.marking.basisMatrix=[['0','-1'],['1','0']];bind(chain);
+const twist=make(['0','0','0','-25','0'],[],{x:'0',y:'0'}),base=T.model(['0','0','0','-1','0']);twist.models.unshift(base);const edge={baseModelId:base.modelId,twistedModelId:twist.anchor.inputModelId,kind:'QUADRATIC_SHORT',parameter:'5'};twist.twistLineage=[{...edge,sourceHash:source(twist,edge)}];bind(twist);
+for(const [name,value] of [['37a1-model-exclusion',q],['exact-point-without-minimality',simple],['negative-scale-shear',neg],['rational-chain',chain],['separate-quadratic-twist',twist]]){T.verifyTransport(value);fs.writeFileSync(path.join(out,name+'.json'),JSON.stringify(value,null,2)+'\n');}
+console.log('Five positive audit fixtures generated; source-reported local claims remain unverified.');

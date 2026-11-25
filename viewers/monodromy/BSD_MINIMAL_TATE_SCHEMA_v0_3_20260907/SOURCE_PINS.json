@@ -1,0 +1,12 @@
+{
+  "schemaSuccessor": "0.3",
+  "schemaPredecessorManifestSha256": "605d44f3b9b2c045ecb01837f4c1502eb2bb05bcae4d5e2caccc174560d3d97e",
+  "schemaAncestorManifestSha256": "252b5406568d19bd1377c68e8bd70c1a5bc369c26d262bd391d38311e33c4e3b",
+  "auditReportSha256": "e0d59f7ecac6560793dba81892046d8ac7b27f674beaff47418542f4580a3901",
+  "auditReceiptSha256": "2b0d7784a8c4f21def36ff1c05ef4e50d6ead9c529f4891f23708d4eaa672623",
+  "predecessorSha256": "667bc1aba225d17d1ab1a5eac9d725a8de1fd4bc025e1653a184f05f22e68815",
+  "predecessorManifestSha256": "b7799b08896ee9b57c8963d4530e393d7d3952a6d2f3047ce20376e1d67d87c1",
+  "labelsSha256": "067fa640cca78321edca49026f3d977afd2d61f3d36b6fd98d715a03c14a5125",
+  "buildSha256": "371a32534e1bb707481366f31ab678b727104121cbc4321a5986c70ac32bb4bf",
+  "candidateSha256": "5dc69781082a3d2b41e1b38b49f71c44ec349a219221ed19b15969f8c0c0ee84"
+}

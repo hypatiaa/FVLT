@@ -1,0 +1,27 @@
+{
+  "target": "BSD_TATE_T1_v0_1_20260907",
+  "manifestSha256": "de4467a54d77fa6669ecbae43612ffa7425ef6746bcbeba877e0d0edb52b6032",
+  "date": "2026-09-07",
+  "seat": "Fable 5.1 (Claude Code), independent of builder",
+  "standing": "PROSMENON",
+  "machineResult": "PASS",
+  "lockEligible": false,
+  "reproduced": {
+    "manifestEntriesOK": 28,
+    "externalPinsOK": 12,
+    "predecessorManifests": {"v0_3": 80, "v0_2": 75, "v0_1": 41, "monodromy30": 27},
+    "verifyCjs": {"t1Groups": 66, "pythonFixtureGroups": 31, "inheritedGroups": 182, "formulaTally": {"pairPASS": 84, "doublingPASS": 84}, "exit": 0},
+    "pariRuntime": {"version": "2.17.4 f24e5d7cc5 WebAssembly", "filesPinned": 2, "pinFailureFallsBack": false}
+  },
+  "independentSeat": {
+    "medium": "Python Fraction invariants, Legendre symbols, exhaustive counts; packets built via build.cjs and replayed via assess.cjs",
+    "cases": 12,
+    "allMatch": true,
+    "coverage": ["split I5 c=5", "split I3 c=3 (two curves)", "split I4 c=4", "nonsplit I2 c=2", "nonsplit I3 c=1", "additive UNAVAILABLE", "recovered good at 2 and 3 from nonminimal input", "denominator clearing then re-minimisation", "bad characteristic 2 UNAVAILABLE with PARI III f=5 c=2 as source report"],
+    "forgeriesRejected": 15,
+    "nonForgeryIdentified": "inventory edit on 11.a1 was idempotent (Delta = -11^5 already complete)"
+  },
+  "flags": {},
+  "notes": ["multiplicative proof could extend to p=3 in T3", "Sage producer syntax-only, disclosed", "PARI WASM retrieved from official site and hash-pinned"],
+  "counterWitness": null
+}

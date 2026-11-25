@@ -1,0 +1,607 @@
+{
+  "status": "PASS",
+  "standing": "BUILDER_DISTINCT_METHOD_NOT_COLD_AUDIT",
+  "total": 99,
+  "methods": [
+    "Fraction polynomial substitution",
+    "short invariant valuation classification",
+    "discriminant-unit formula for I_n* splitting",
+    "independent residue evaluations"
+  ],
+  "checks": [
+    {
+      "name": "II-1-5",
+      "status": "PASS",
+      "kodaira": "II",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "III-2-5",
+      "status": "PASS",
+      "kodaira": "III",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "IV-3-5",
+      "status": "PASS",
+      "kodaira": "IV",
+      "tamagawaNumber": "3"
+    },
+    {
+      "name": "IV-1-5",
+      "status": "PASS",
+      "kodaira": "IV",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "IV*-3-5",
+      "status": "PASS",
+      "kodaira": "IV*",
+      "tamagawaNumber": "3"
+    },
+    {
+      "name": "IV*-1-5",
+      "status": "PASS",
+      "kodaira": "IV*",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "III*-2-5",
+      "status": "PASS",
+      "kodaira": "III*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "II*-1-5",
+      "status": "PASS",
+      "kodaira": "II*",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "I0star-1-5",
+      "status": "PASS",
+      "kodaira": "I0*",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "I0star-2-5",
+      "status": "PASS",
+      "kodaira": "I0*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "I0star-4-5",
+      "status": "PASS",
+      "kodaira": "I0*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-5-1-1",
+      "status": "PASS",
+      "kodaira": "I1*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-5-1-2",
+      "status": "PASS",
+      "kodaira": "I1*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-5-2-1",
+      "status": "PASS",
+      "kodaira": "I2*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-5-2-2",
+      "status": "PASS",
+      "kodaira": "I2*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-5-3-1",
+      "status": "PASS",
+      "kodaira": "I3*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-5-3-2",
+      "status": "PASS",
+      "kodaira": "I3*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-5-4-1",
+      "status": "PASS",
+      "kodaira": "I4*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-5-4-2",
+      "status": "PASS",
+      "kodaira": "I4*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-5-7-1",
+      "status": "PASS",
+      "kodaira": "I7*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-5-7-2",
+      "status": "PASS",
+      "kodaira": "I7*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-5-8-1",
+      "status": "PASS",
+      "kodaira": "I8*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-5-8-2",
+      "status": "PASS",
+      "kodaira": "I8*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-5-17-1",
+      "status": "PASS",
+      "kodaira": "I17*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-5-17-2",
+      "status": "PASS",
+      "kodaira": "I17*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-5-18-1",
+      "status": "PASS",
+      "kodaira": "I18*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-5-18-2",
+      "status": "PASS",
+      "kodaira": "I18*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "II-1-7",
+      "status": "PASS",
+      "kodaira": "II",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "III-2-7",
+      "status": "PASS",
+      "kodaira": "III",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "IV-3-7",
+      "status": "PASS",
+      "kodaira": "IV",
+      "tamagawaNumber": "3"
+    },
+    {
+      "name": "IV-1-7",
+      "status": "PASS",
+      "kodaira": "IV",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "IV*-3-7",
+      "status": "PASS",
+      "kodaira": "IV*",
+      "tamagawaNumber": "3"
+    },
+    {
+      "name": "IV*-1-7",
+      "status": "PASS",
+      "kodaira": "IV*",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "III*-2-7",
+      "status": "PASS",
+      "kodaira": "III*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "II*-1-7",
+      "status": "PASS",
+      "kodaira": "II*",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "I0star-1-7",
+      "status": "PASS",
+      "kodaira": "I0*",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "I0star-2-7",
+      "status": "PASS",
+      "kodaira": "I0*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "I0star-4-7",
+      "status": "PASS",
+      "kodaira": "I0*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-7-1-1",
+      "status": "PASS",
+      "kodaira": "I1*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-7-1-3",
+      "status": "PASS",
+      "kodaira": "I1*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-7-2-1",
+      "status": "PASS",
+      "kodaira": "I2*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-7-2-3",
+      "status": "PASS",
+      "kodaira": "I2*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-7-3-1",
+      "status": "PASS",
+      "kodaira": "I3*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-7-3-3",
+      "status": "PASS",
+      "kodaira": "I3*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-7-4-1",
+      "status": "PASS",
+      "kodaira": "I4*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-7-4-3",
+      "status": "PASS",
+      "kodaira": "I4*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-7-7-1",
+      "status": "PASS",
+      "kodaira": "I7*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-7-7-3",
+      "status": "PASS",
+      "kodaira": "I7*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-7-8-1",
+      "status": "PASS",
+      "kodaira": "I8*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-7-8-3",
+      "status": "PASS",
+      "kodaira": "I8*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-7-17-1",
+      "status": "PASS",
+      "kodaira": "I17*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-7-17-3",
+      "status": "PASS",
+      "kodaira": "I17*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-7-18-1",
+      "status": "PASS",
+      "kodaira": "I18*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-7-18-3",
+      "status": "PASS",
+      "kodaira": "I18*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "II-1-11",
+      "status": "PASS",
+      "kodaira": "II",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "III-2-11",
+      "status": "PASS",
+      "kodaira": "III",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "IV-3-11",
+      "status": "PASS",
+      "kodaira": "IV",
+      "tamagawaNumber": "3"
+    },
+    {
+      "name": "IV-1-11",
+      "status": "PASS",
+      "kodaira": "IV",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "IV*-3-11",
+      "status": "PASS",
+      "kodaira": "IV*",
+      "tamagawaNumber": "3"
+    },
+    {
+      "name": "IV*-1-11",
+      "status": "PASS",
+      "kodaira": "IV*",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "III*-2-11",
+      "status": "PASS",
+      "kodaira": "III*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "II*-1-11",
+      "status": "PASS",
+      "kodaira": "II*",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "I0star-1-11",
+      "status": "PASS",
+      "kodaira": "I0*",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "I0star-2-11",
+      "status": "PASS",
+      "kodaira": "I0*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "I0star-4-11",
+      "status": "PASS",
+      "kodaira": "I0*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-11-1-1",
+      "status": "PASS",
+      "kodaira": "I1*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-11-1-2",
+      "status": "PASS",
+      "kodaira": "I1*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-11-2-1",
+      "status": "PASS",
+      "kodaira": "I2*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-11-2-2",
+      "status": "PASS",
+      "kodaira": "I2*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-11-3-1",
+      "status": "PASS",
+      "kodaira": "I3*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-11-3-2",
+      "status": "PASS",
+      "kodaira": "I3*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-11-4-1",
+      "status": "PASS",
+      "kodaira": "I4*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-11-4-2",
+      "status": "PASS",
+      "kodaira": "I4*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-11-7-1",
+      "status": "PASS",
+      "kodaira": "I7*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-11-7-2",
+      "status": "PASS",
+      "kodaira": "I7*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-11-8-1",
+      "status": "PASS",
+      "kodaira": "I8*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-11-8-2",
+      "status": "PASS",
+      "kodaira": "I8*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-11-17-1",
+      "status": "PASS",
+      "kodaira": "I17*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "star-11-17-2",
+      "status": "PASS",
+      "kodaira": "I17*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-11-18-1",
+      "status": "PASS",
+      "kodaira": "I18*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "star-11-18-2",
+      "status": "PASS",
+      "kodaira": "I18*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "nonzero-refinement-5-1",
+      "status": "PASS",
+      "kodaira": "I4*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "nonzero-refinement-5-2",
+      "status": "PASS",
+      "kodaira": "I3*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "nonzero-refinement-7-1",
+      "status": "PASS",
+      "kodaira": "I3*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "nonzero-refinement-7-2",
+      "status": "PASS",
+      "kodaira": "I3*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "j0-II",
+      "status": "PASS",
+      "kodaira": "II",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "j0-IV",
+      "status": "PASS",
+      "kodaira": "IV",
+      "tamagawaNumber": "3"
+    },
+    {
+      "name": "j0-I0*",
+      "status": "PASS",
+      "kodaira": "I0*",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "j0-IV*",
+      "status": "PASS",
+      "kodaira": "IV*",
+      "tamagawaNumber": "3"
+    },
+    {
+      "name": "j0-II*",
+      "status": "PASS",
+      "kodaira": "II*",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "multip-1-4",
+      "status": "PASS",
+      "kodaira": "I4",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "multip-2-3",
+      "status": "PASS",
+      "kodaira": "I3",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "multip-2-4",
+      "status": "PASS",
+      "kodaira": "I4",
+      "tamagawaNumber": "2"
+    },
+    {
+      "name": "general-good",
+      "status": "PASS",
+      "kodaira": "I0",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "prime-bound",
+      "status": "PASS",
+      "kodaira": "I0",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "three-rescalings",
+      "status": "PASS",
+      "kodaira": "II",
+      "tamagawaNumber": "1"
+    },
+    {
+      "name": "rational-general-points",
+      "status": "PASS",
+      "kodaira": "I1*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "twist-and-marking",
+      "status": "PASS",
+      "kodaira": "I0*",
+      "tamagawaNumber": "4"
+    },
+    {
+      "name": "backend-free-incomplete",
+      "status": "PASS",
+      "kodaira": "I0",
+      "tamagawaNumber": "1"
+    }
+  ]
+}

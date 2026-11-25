@@ -1,0 +1,7 @@
+{
+  "status": "PASS",
+  "method": "Direct source worker refused before any write",
+  "exitCode": 1,
+  "sourceInventoryUnchanged": true,
+  "error": "Error: Worker requires a staged T4 scratch copy\r"
+}

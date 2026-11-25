@@ -1,0 +1,30 @@
+{
+  "schema": "COLD_AUDIT_REPORT_V1",
+  "seat": "Fable",
+  "date": "2026-09-23",
+  "candidate": "BSD_TATE_T3_v0_1_20260907",
+  "manifestSha256": "ea0d0bbe2939610e5d2405eba1ef9d548288f122f779566f2fe5ba1e596c10be",
+  "manifestEntries": 27,
+  "engineSha256": "d42c27aace381217f74d8db4e0b7841d11a5da64fdca7ef552bcfea21b8bf05d",
+  "wrapperSha256": "3fd7c6e1a3acff85d7b2df9a45664ad6d10055b7ceec995ffc33fc28648cb386",
+  "verdict": "PROSMENON",
+  "status": "PASS",
+  "flags": [],
+  "counterWitness": null,
+  "reproduction": {
+    "verifyExit": 0,
+    "scope": "T3_PLUS_T2_T1_AND_V03",
+    "groups": {"t3": 225, "t3Python": 190, "t2": 127, "t2Python": 99, "t1": 66, "t1Python": 31, "v03": 182, "total": 920},
+    "sourcesUnchanged": true
+  },
+  "independentSeat": {
+    "implementation": "tate23.py",
+    "sha256": "38498426bdb107a24df2512842e15a521e07724120b207eae7f894d9687c7a21",
+    "fixturesAgreed": "190/190",
+    "threeWayFuzz": {"driverSha256": "f62697f8b8031bdc0c3edbeb477db0bbf8719642442394bb4ae207831a4db34f", "seeds": [7, 11, 23, 37, 51], "curves": 2060, "mismatches": 0, "classes": 75, "compared": ["kodaira", "tamagawa", "conductorExponent", "minimalDiscriminantValuation", "rescalingCount"], "oracles": ["package", "Fable tate23.py", "pinned PARI elllocalred + ellminimalmodel"]}
+  },
+  "adversarial": {"probeSha256": "97f636945cf98f8cca6c7503ca8ca901c65d99c51e6d4d73c3c713bb7b82544b", "rejected": 11, "acceptedAsDesigned": 3, "unexpected": 0},
+  "observations": ["PARI comparison is an unauthenticated source report: disagreement blocks, agreement confers nothing; certificate is recomputed from parent bytes (as contracted)."],
+  "outOfScope": ["global minimality", "Neron differential", "curve-level products", "heights", "BSD", "Sage Serena/Nucleus comparison (unrun)"],
+  "lockRuling": false
+}

@@ -1,0 +1,161 @@
+{
+  "schema": "BSD_MINIMAL_TATE_RECORD_V1",
+  "anchor": {
+    "inputModelId": "cf879fe9214a4cac7cd49ea16934bbb53b1200c3bc928a7c4ae5f5d3a17f0f22",
+    "sourceHash": "194ca634adc2e913b6ebdaa02237c04a7433afde9830f23d58a3ac5b77eabc22",
+    "legacyContextId": null
+  },
+  "contextId": "0018d2acf96f33cab394d4232a5f85b4fab5a5eb3bcfc63360a95d919f811f69",
+  "models": [
+    {
+      "modelId": "dae30ded63c5401a8431aba91c30d7e1105aac4f831c14637cdfc8b4da7db7e8",
+      "field": "Q",
+      "ainvs": [
+        "0",
+        "0",
+        "0",
+        "-1",
+        "0"
+      ],
+      "invariants": {
+        "b2": "0",
+        "b4": "-2",
+        "b6": "0",
+        "b8": "-1",
+        "c4": "48",
+        "c6": "0",
+        "discriminant": "64",
+        "j": "1728"
+      }
+    },
+    {
+      "modelId": "cf879fe9214a4cac7cd49ea16934bbb53b1200c3bc928a7c4ae5f5d3a17f0f22",
+      "field": "Q",
+      "ainvs": [
+        "0",
+        "0",
+        "0",
+        "-25",
+        "0"
+      ],
+      "invariants": {
+        "b2": "0",
+        "b4": "-50",
+        "b6": "0",
+        "b8": "-625",
+        "c4": "1200",
+        "c6": "0",
+        "discriminant": "1000000",
+        "j": "1728"
+      }
+    }
+  ],
+  "twistLineage": [
+    {
+      "baseModelId": "dae30ded63c5401a8431aba91c30d7e1105aac4f831c14637cdfc8b4da7db7e8",
+      "twistedModelId": "cf879fe9214a4cac7cd49ea16934bbb53b1200c3bc928a7c4ae5f5d3a17f0f22",
+      "kind": "QUADRATIC_SHORT",
+      "parameter": "5",
+      "sourceHash": "c3de7b2829db7c9aaff6e7c96593e759069f347955495dbea41fa19816d1292c"
+    }
+  ],
+  "transformations": [],
+  "normalization": {
+    "modelDifferential": "dx/(2*y+a1*x+a3)",
+    "sourceSelectedMultiplier": "1",
+    "targetModelId": "cf879fe9214a4cac7cd49ea16934bbb53b1200c3bc928a7c4ae5f5d3a17f0f22",
+    "targetSelectedMultiplier": "1",
+    "composedPullbackFactor": "1",
+    "neron": null
+  },
+  "marking": {
+    "basisMatrix": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "1"
+      ]
+    ],
+    "convention": "TARGET_BASIS_EQUALS_U_TIMES_M_SOURCE_BASIS",
+    "mcombSourceHash": null,
+    "phaseConvention": "FULL_PERIOD_FRACTIONS_MOD_Z2"
+  },
+  "points": [
+    {
+      "modelId": "cf879fe9214a4cac7cd49ea16934bbb53b1200c3bc928a7c4ae5f5d3a17f0f22",
+      "coordinates": {
+        "x": "0",
+        "y": "0"
+      },
+      "sourceHash": "6e70d069a74afd7da7ef8f39a328aa036c0d0264364597fe6a37aef0d0219d6e"
+    }
+  ],
+  "minimalModel": null,
+  "localData": [],
+  "badPrimeInventory": null,
+  "aggregate": null,
+  "panelBindings": [
+    {
+      "panel": "MCOMB",
+      "contextId": "0018d2acf96f33cab394d4232a5f85b4fab5a5eb3bcfc63360a95d919f811f69",
+      "modelId": "cf879fe9214a4cac7cd49ea16934bbb53b1200c3bc928a7c4ae5f5d3a17f0f22",
+      "normalizationId": "9db790d0283a02305397a8ebdcfbccfb647ae0a1aab89b2d5aae51555ad1a174",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "CARRIER_ADDITION",
+      "contextId": "0018d2acf96f33cab394d4232a5f85b4fab5a5eb3bcfc63360a95d919f811f69",
+      "modelId": "cf879fe9214a4cac7cd49ea16934bbb53b1200c3bc928a7c4ae5f5d3a17f0f22",
+      "normalizationId": "9db790d0283a02305397a8ebdcfbccfb647ae0a1aab89b2d5aae51555ad1a174",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "ELLIPTIC_MODEL",
+      "contextId": "0018d2acf96f33cab394d4232a5f85b4fab5a5eb3bcfc63360a95d919f811f69",
+      "modelId": "cf879fe9214a4cac7cd49ea16934bbb53b1200c3bc928a7c4ae5f5d3a17f0f22",
+      "normalizationId": "9db790d0283a02305397a8ebdcfbccfb647ae0a1aab89b2d5aae51555ad1a174",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "MARKED_CLIFFORD_LEAF",
+      "contextId": "0018d2acf96f33cab394d4232a5f85b4fab5a5eb3bcfc63360a95d919f811f69",
+      "modelId": "cf879fe9214a4cac7cd49ea16934bbb53b1200c3bc928a7c4ae5f5d3a17f0f22",
+      "normalizationId": "9db790d0283a02305397a8ebdcfbccfb647ae0a1aab89b2d5aae51555ad1a174",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "EXACT_CURVE_BSD",
+      "contextId": "0018d2acf96f33cab394d4232a5f85b4fab5a5eb3bcfc63360a95d919f811f69",
+      "modelId": "cf879fe9214a4cac7cd49ea16934bbb53b1200c3bc928a7c4ae5f5d3a17f0f22",
+      "normalizationId": "9db790d0283a02305397a8ebdcfbccfb647ae0a1aab89b2d5aae51555ad1a174",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "PRIME_PRODUCT",
+      "contextId": "0018d2acf96f33cab394d4232a5f85b4fab5a5eb3bcfc63360a95d919f811f69",
+      "modelId": "cf879fe9214a4cac7cd49ea16934bbb53b1200c3bc928a7c4ae5f5d3a17f0f22",
+      "normalizationId": "9db790d0283a02305397a8ebdcfbccfb647ae0a1aab89b2d5aae51555ad1a174",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    }
+  ],
+  "sources": [
+    {
+      "sha256": "194ca634adc2e913b6ebdaa02237c04a7433afde9830f23d58a3ac5b77eabc22",
+      "mediaType": "application/json",
+      "bytes": "{\"field\":\"Q\",\"ainvs\":[\"0\",\"0\",\"0\",\"-25\",\"0\"],\"selectedMultiplier\":\"1\"}"
+    },
+    {
+      "sha256": "6e70d069a74afd7da7ef8f39a328aa036c0d0264364597fe6a37aef0d0219d6e",
+      "mediaType": "application/json",
+      "bytes": "{\"modelId\":\"cf879fe9214a4cac7cd49ea16934bbb53b1200c3bc928a7c4ae5f5d3a17f0f22\",\"coordinates\":{\"x\":\"0\",\"y\":\"0\"}}"
+    },
+    {
+      "sha256": "c3de7b2829db7c9aaff6e7c96593e759069f347955495dbea41fa19816d1292c",
+      "mediaType": "application/json",
+      "bytes": "{\"baseModelId\":\"dae30ded63c5401a8431aba91c30d7e1105aac4f831c14637cdfc8b4da7db7e8\",\"twistedModelId\":\"cf879fe9214a4cac7cd49ea16934bbb53b1200c3bc928a7c4ae5f5d3a17f0f22\",\"kind\":\"QUADRATIC_SHORT\",\"parameter\":\"5\"}"
+    }
+  ]
+}

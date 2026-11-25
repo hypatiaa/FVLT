@@ -1,0 +1,451 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:robin:bsd:global-reduction-packet:1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "parent",
+    "integralSource",
+    "sourceInventory",
+    "stages",
+    "adapter",
+    "record",
+    "candidateInventory",
+    "proof",
+    "proofHash"
+  ],
+  "properties": {
+    "schema": {
+      "const": "BSD_GLOBAL_REDUCTION_PACKET_V1"
+    },
+    "parent": {
+      "$ref": "urn:robin:bsd:tate-t1-packet:1#/properties/parent"
+    },
+    "integralSource": {
+      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/model"
+    },
+    "sourceInventory": {
+      "$ref": "urn:robin:bsd:tate-t1-packet:1#/properties/inventory"
+    },
+    "stages": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "p",
+          "engine",
+          "sourceModelId",
+          "localPacket",
+          "localCertificate",
+          "localCertificateId",
+          "lift",
+          "localToIntegral",
+          "congruences",
+          "target",
+          "fromIntegral",
+          "toIntegral",
+          "inputDeltaVal",
+          "targetDeltaVal"
+        ],
+        "properties": {
+          "p": {
+            "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/natural"
+          },
+          "engine": {
+            "enum": [
+              "T2",
+              "T3"
+            ]
+          },
+          "sourceModelId": {
+            "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+          },
+          "localPacket": {
+            "oneOf": [
+              {
+                "$ref": "urn:robin:bsd:tame-tate-packet:1"
+              },
+              {
+                "$ref": "urn:robin:bsd:small-prime-tate-packet:1"
+              }
+            ]
+          },
+          "localCertificate": {
+            "oneOf": [
+              {
+                "$ref": "urn:robin:bsd:tame-tate-certificate:1"
+              },
+              {
+                "$ref": "urn:robin:bsd:small-prime-tate-certificate:1"
+              }
+            ]
+          },
+          "localCertificateId": {
+            "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+          },
+          "lift": {
+            "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/urst"
+          },
+          "localToIntegral": {
+            "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/urst"
+          },
+          "congruences": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "rModulus",
+              "sModulus",
+              "tModulus",
+              "tResidueInput"
+            ],
+            "properties": {
+              "rModulus": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/natural"
+              },
+              "sModulus": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/natural"
+              },
+              "tModulus": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/natural"
+              },
+              "tResidueInput": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+              }
+            }
+          },
+          "target": {
+            "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/model"
+          },
+          "fromIntegral": {
+            "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/urst"
+          },
+          "toIntegral": {
+            "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/urst"
+          },
+          "inputDeltaVal": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "exponent",
+              "unit"
+            ],
+            "properties": {
+              "kind": {
+                "const": "FINITE"
+              },
+              "exponent": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/integer"
+              },
+              "unit": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+              }
+            }
+          },
+          "targetDeltaVal": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "exponent",
+              "unit"
+            ],
+            "properties": {
+              "kind": {
+                "const": "FINITE"
+              },
+              "exponent": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/integer"
+              },
+              "unit": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+              }
+            }
+          }
+        }
+      },
+      "maxItems": 24
+    },
+    "adapter": {
+      "$ref": "urn:robin:bsd:tate-t1-packet:1#/properties/adapter"
+    },
+    "record": {
+      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3"
+    },
+    "candidateInventory": {
+      "$ref": "urn:robin:bsd:tate-t1-packet:1#/properties/inventory"
+    },
+    "proof": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "parentSourceHash",
+        "sourceInventory",
+        "candidateInventory",
+        "stageHashes",
+        "transfers",
+        "knownPrimeProducts",
+        "recoveredGood",
+        "globalResult",
+        "verifier"
+      ],
+      "properties": {
+        "schema": {
+          "const": "BSD_GLOBAL_REDUCTION_PROOF_V1"
+        },
+        "parentSourceHash": {
+          "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+        },
+        "sourceInventory": {
+          "$ref": "urn:robin:bsd:tate-t1-packet:1#/properties/inventory"
+        },
+        "candidateInventory": {
+          "$ref": "urn:robin:bsd:tate-t1-packet:1#/properties/inventory"
+        },
+        "stageHashes": {
+          "type": "array",
+          "items": {
+            "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+          },
+          "maxItems": 24
+        },
+        "transfers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "p",
+              "localCertificateId",
+              "localModelId",
+              "globalCandidateModelId",
+              "integralStageToFinal",
+              "localToFinal",
+              "localMinimality",
+              "result",
+              "ap"
+            ],
+            "properties": {
+              "p": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/natural"
+              },
+              "localCertificateId": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+              },
+              "localModelId": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+              },
+              "globalCandidateModelId": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+              },
+              "integralStageToFinal": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/urst"
+              },
+              "localToFinal": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/urst"
+              },
+              "localMinimality": {
+                "const": "TRANSFERRED_BY_P_INTEGRAL_UNIT_ISOMORPHISM"
+              },
+              "result": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/localResult"
+              },
+              "ap": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/integer"
+              }
+            }
+          },
+          "maxItems": 24
+        },
+        "knownPrimeProducts": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "scope",
+            "primes",
+            "conductor",
+            "tamagawaProduct"
+          ],
+          "properties": {
+            "scope": {
+              "const": "ONLY_LISTED_PRIMES"
+            },
+            "primes": {
+              "type": "array",
+              "items": {
+                "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/natural"
+              },
+              "maxItems": 24
+            },
+            "conductor": {
+              "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/natural"
+            },
+            "tamagawaProduct": {
+              "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/natural"
+            }
+          }
+        },
+        "recoveredGood": {
+          "type": "array",
+          "items": {
+            "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/natural"
+          },
+          "maxItems": 24
+        },
+        "globalResult": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "modelId",
+                "minimalDiscriminant",
+                "curveBadPrimes",
+                "conductor",
+                "tamagawaProduct",
+                "goodOutsideInventory",
+                "normalization"
+              ],
+              "properties": {
+                "modelId": {
+                  "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+                },
+                "minimalDiscriminant": {
+                  "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/integer"
+                },
+                "curveBadPrimes": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/natural"
+                  },
+                  "maxItems": 24
+                },
+                "conductor": {
+                  "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/natural"
+                },
+                "tamagawaProduct": {
+                  "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/natural"
+                },
+                "goodOutsideInventory": {
+                  "const": "PROVED_BY_INTEGRAL_MODEL_AND_UNIT_DISCRIMINANT"
+                },
+                "normalization": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "convention",
+                    "chosenSign",
+                    "modelId",
+                    "inputModelId",
+                    "anchorModelId",
+                    "signedPullbackToInput",
+                    "signedPullbackToAnchor",
+                    "selectedMultiplier",
+                    "neronOverSelectedMultiplier",
+                    "absoluteRealMeasureFactorFromInput",
+                    "absoluteRealMeasureFactorFromAnchor",
+                    "absoluteRealMeasureFactorFromSelected",
+                    "realComponents",
+                    "periodValue"
+                  ],
+                  "properties": {
+                    "convention": {
+                      "const": "GLOBAL_MINIMAL_MODEL_DIFFERENTIAL_UP_TO_SIGN"
+                    },
+                    "chosenSign": {
+                      "const": "MODEL_DIFFERENTIAL"
+                    },
+                    "modelId": {
+                      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+                    },
+                    "inputModelId": {
+                      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+                    },
+                    "anchorModelId": {
+                      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+                    },
+                    "signedPullbackToInput": {
+                      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+                    },
+                    "signedPullbackToAnchor": {
+                      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+                    },
+                    "selectedMultiplier": {
+                      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+                    },
+                    "neronOverSelectedMultiplier": {
+                      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+                    },
+                    "absoluteRealMeasureFactorFromInput": {
+                      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+                    },
+                    "absoluteRealMeasureFactorFromAnchor": {
+                      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+                    },
+                    "absoluteRealMeasureFactorFromSelected": {
+                      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+                    },
+                    "realComponents": {
+                      "enum": [
+                        "1",
+                        "2"
+                      ]
+                    },
+                    "periodValue": {
+                      "const": "NOT_COMPUTED"
+                    }
+                  }
+                }
+              }
+            }
+          ]
+        },
+        "verifier": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "name",
+            "version",
+            "sha256",
+            "transportSha256",
+            "arithmeticSha256",
+            "tame",
+            "smallPrime"
+          ],
+          "properties": {
+            "name": {
+              "const": "BSD_GLOBAL_REDUCTION_REPLAY"
+            },
+            "version": {
+              "const": "0.1.0"
+            },
+            "sha256": {
+              "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+            },
+            "transportSha256": {
+              "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+            },
+            "arithmeticSha256": {
+              "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+            },
+            "tame": {
+              "$ref": "urn:robin:bsd:tame-tate-certificate:1#/properties/verifier"
+            },
+            "smallPrime": {
+              "$ref": "urn:robin:bsd:small-prime-tate-certificate:1#/properties/verifier"
+            }
+          }
+        }
+      }
+    },
+    "proofHash": {
+      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+    }
+  }
+}

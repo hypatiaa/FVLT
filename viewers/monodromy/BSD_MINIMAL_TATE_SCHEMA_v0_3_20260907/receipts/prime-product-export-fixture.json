@@ -1,0 +1,223 @@
+{
+  "schema": "CURVE_PRIME_PRODUCT_RECORD_V1",
+  "pins": {
+    "predecessorSha256": "f32eb8af15fd7cd386eb22bbe8cb45a96bb1ed163180439edddaffe07d9a8edd",
+    "coreSha256": "cf0b057d3f26fea2971561974149d26423ace0c0eb0d0f7529510e1aee409271",
+    "panelSha256": "5f320037c3adcdffbdcd51a19d8ec10138a47cb92be4bef6d56acc15ab2b5ee5",
+    "primeProductSha256": "295c0f222c30fce52174ee8f9a51eedc05eadc7e1863ceebabd3d612921c183a",
+    "buildSha256": "d125c922c912132a3296174d6ed03c43b5a0e463e8c21f177def5d452c98da8d"
+  },
+  "curvePacket": {
+    "schema": "BSD_CURVE_RECORD_V1",
+    "curve": {
+      "input": {
+        "A": "-1",
+        "B": "0",
+        "twistKind": "none",
+        "twistFactor": "1",
+        "differentialFactor": "2"
+      },
+      "scalings": [],
+      "model": {
+        "field": "Q",
+        "form": "SHORT_WEIERSTRASS",
+        "ainvs": [
+          "0",
+          "0",
+          "0",
+          "-1",
+          "0"
+        ],
+        "A": "-1",
+        "B": "0",
+        "discriminant": "64",
+        "c4": "48",
+        "j": "1728"
+      },
+      "modelId": "25aee92d63ad994e7a49d762e598578e6d86a9d8d04e109afed72de883a26520",
+      "normalization": {
+        "modelDifferential": "dx/(2y)",
+        "displayMultiplier": "2",
+        "neron": {
+          "status": "VERIFIED_REFERENCE_ISOMORPHISM",
+          "reference": {
+            "A": "-1",
+            "B": "0",
+            "id": "E_MINUS_ONE",
+            "delta": "64",
+            "valuations": {
+              "2": 6
+            }
+          },
+          "coordinateChange": "x_model = u^2 x_reference; y_model = u^3 y_reference",
+          "u": {
+            "num": "1",
+            "den": "1"
+          },
+          "factorOfModelDifferential": {
+            "num": "1",
+            "den": "1"
+          },
+          "differential": "omega_N = u * dx_model/(2 y_model)"
+        },
+        "bsdRealPeriodConvention": "NERON_TOTAL_REAL_INTEGRAL"
+      },
+      "normalizationId": "8fc6cff8b0b4589d7bc03ff2eb3cd5d44e1c6e5d6b902746d2479a82adc2337b",
+      "transformations": [],
+      "effectiveInput": {
+        "A": "-1",
+        "B": "0",
+        "twistKind": "none",
+        "twistFactor": "1",
+        "differentialFactor": "2"
+      },
+      "identityScope": "EXACT_MODEL_FINGERPRINT_NOT_CANONICAL_Q_ISOMORPHISM_CLASS",
+      "contextId": "ced39109742b6f1fa4cb477fcfafc713574046e5b2b9630bd9895cf1f221a676"
+    },
+    "sources": [
+      {
+        "sha256": "9706b37a0937de75e9e2e73c6fc31b72ca41fa4cfaad8e58579b0062c6e7af91",
+        "mediaType": "application/json",
+        "bytes": "{\"component\":\"real_period\",\"contextId\":\"ced39109742b6f1fa4cb477fcfafc713574046e5b2b9630bd9895cf1f221a676\",\"convention\":\"NERON_TOTAL_REAL_INTEGRAL\",\"evidence\":{\"assumptions\":[],\"certificate\":null,\"dependencies\":[],\"method\":\"LOCAL_V27_AGM_NERON_TOTAL\",\"software\":\"Monodromy.27 period adapter\",\"sourceLabel\":\"Recomputed from registered model and verified reference normalization\",\"status\":\"NUMERICAL\"},\"modelId\":\"25aee92d63ad994e7a49d762e598578e6d86a9d8d04e109afed72de883a26520\",\"normalizationId\":\"8fc6cff8b0b4589d7bc03ff2eb3cd5d44e1c6e5d6b902746d2479a82adc2337b\",\"value\":{\"lower\":\"2622057554292119/500000000000000\",\"upper\":\"2622057554292119/500000000000000\"}}"
+      },
+      {
+        "sha256": "45469b69dda4ab1ed14f548a1801eed43f54d04d381a96738f7b5655e41595bc",
+        "mediaType": "application/json",
+        "bytes": "{\"component\":\"l_function\",\"contextId\":\"ced39109742b6f1fa4cb477fcfafc713574046e5b2b9630bd9895cf1f221a676\",\"convention\":\"UNCOMPLETED_L_SERIES_GOOD_PRIME_FACTORS\",\"evidence\":{\"assumptions\":[],\"certificate\":null,\"dependencies\":[],\"method\":\"LOCAL_EXACT_GOOD_PRIME_COUNTS\",\"software\":\"Monodromy.30 / existing BSD finite-field verifier\",\"sourceLabel\":\"Finite prime product source 1c9478a1459851bbe3e38c067d2525e07d616207f9eebdbf2123df2f75828bc0; cutoff 7; excluded primes retained in product export; no rank or limit inference\",\"status\":\"CERTIFIED\"},\"modelId\":\"25aee92d63ad994e7a49d762e598578e6d86a9d8d04e109afed72de883a26520\",\"normalizationId\":\"8fc6cff8b0b4589d7bc03ff2eb3cd5d44e1c6e5d6b902746d2479a82adc2337b\",\"value\":{\"factors\":[{\"ap\":\"0\",\"p\":\"3\",\"points\":\"4\"},{\"ap\":\"-2\",\"p\":\"5\",\"points\":\"8\"},{\"ap\":\"0\",\"p\":\"7\",\"points\":\"8\"}],\"scope\":\"FINITE_GOOD_PRIME_FACTORS_ONLY\"}}"
+      }
+    ],
+    "records": [
+      {
+        "id": "44756e9df643f8e464761fa007c1245b289a1d42c32af844abb26ce31b35004b",
+        "claim": {
+          "contextId": "ced39109742b6f1fa4cb477fcfafc713574046e5b2b9630bd9895cf1f221a676",
+          "modelId": "25aee92d63ad994e7a49d762e598578e6d86a9d8d04e109afed72de883a26520",
+          "normalizationId": "8fc6cff8b0b4589d7bc03ff2eb3cd5d44e1c6e5d6b902746d2479a82adc2337b",
+          "component": "real_period",
+          "convention": "NERON_TOTAL_REAL_INTEGRAL",
+          "value": {
+            "lower": "2622057554292119/500000000000000",
+            "upper": "2622057554292119/500000000000000"
+          },
+          "evidence": {
+            "status": "NUMERICAL",
+            "method": "LOCAL_V27_AGM_NERON_TOTAL",
+            "software": "Monodromy.27 period adapter",
+            "sourceLabel": "Recomputed from registered model and verified reference normalization",
+            "assumptions": [],
+            "dependencies": [],
+            "certificate": null
+          }
+        },
+        "sourceHash": "9706b37a0937de75e9e2e73c6fc31b72ca41fa4cfaad8e58579b0062c6e7af91"
+      },
+      {
+        "id": "c36f3088f8ebe18de088b0f0c76fd4b1f3d71b3bbe9ab8a2c652b7911f38c809",
+        "claim": {
+          "contextId": "ced39109742b6f1fa4cb477fcfafc713574046e5b2b9630bd9895cf1f221a676",
+          "modelId": "25aee92d63ad994e7a49d762e598578e6d86a9d8d04e109afed72de883a26520",
+          "normalizationId": "8fc6cff8b0b4589d7bc03ff2eb3cd5d44e1c6e5d6b902746d2479a82adc2337b",
+          "component": "l_function",
+          "convention": "UNCOMPLETED_L_SERIES_GOOD_PRIME_FACTORS",
+          "value": {
+            "factors": [
+              {
+                "p": "3",
+                "points": "4",
+                "ap": "0"
+              },
+              {
+                "p": "5",
+                "points": "8",
+                "ap": "-2"
+              },
+              {
+                "p": "7",
+                "points": "8",
+                "ap": "0"
+              }
+            ],
+            "scope": "FINITE_GOOD_PRIME_FACTORS_ONLY"
+          },
+          "evidence": {
+            "status": "CERTIFIED",
+            "method": "LOCAL_EXACT_GOOD_PRIME_COUNTS",
+            "software": "Monodromy.30 / existing BSD finite-field verifier",
+            "sourceLabel": "Finite prime product source 1c9478a1459851bbe3e38c067d2525e07d616207f9eebdbf2123df2f75828bc0; cutoff 7; excluded primes retained in product export; no rank or limit inference",
+            "assumptions": [],
+            "dependencies": [],
+            "certificate": null
+          }
+        },
+        "sourceHash": "45469b69dda4ab1ed14f548a1801eed43f54d04d381a96738f7b5655e41595bc"
+      }
+    ],
+    "active": {
+      "real_period": "44756e9df643f8e464761fa007c1245b289a1d42c32af844abb26ce31b35004b",
+      "l_function": "c36f3088f8ebe18de088b0f0c76fd4b1f3d71b3bbe9ab8a2c652b7911f38c809"
+    },
+    "view": {
+      "p": "2",
+      "q": "1",
+      "folded": false
+    }
+  },
+  "sourceBytes": "{\"contextId\":\"ced39109742b6f1fa4cb477fcfafc713574046e5b2b9630bd9895cf1f221a676\",\"cutoff\":7}",
+  "sourceHash": "1c9478a1459851bbe3e38c067d2525e07d616207f9eebdbf2123df2f75828bc0",
+  "result": {
+    "schema": "EXACT_CURVE_FINITE_PRIME_PRODUCT_V1",
+    "contextId": "ced39109742b6f1fa4cb477fcfafc713574046e5b2b9630bd9895cf1f221a676",
+    "cutoff": 7,
+    "factors": [
+      {
+        "p": "3",
+        "points": "4",
+        "ap": "0"
+      },
+      {
+        "p": "5",
+        "points": "8",
+        "ap": "-2"
+      },
+      {
+        "p": "7",
+        "points": "8",
+        "ap": "0"
+      }
+    ],
+    "excluded": [
+      {
+        "p": "2",
+        "reason": "Bad reduction for this model; Tate algorithm not implemented"
+      }
+    ],
+    "samples": [
+      {
+        "p": "3",
+        "product": {
+          "num": "3",
+          "den": "4"
+        }
+      },
+      {
+        "p": "5",
+        "product": {
+          "num": "15",
+          "den": "32"
+        }
+      },
+      {
+        "p": "7",
+        "product": {
+          "num": "105",
+          "den": "256"
+        }
+      }
+    ],
+    "product": {
+      "num": "105",
+      "den": "256"
+    },
+    "scope": "FINITE_GOOD_PRIMES_OF_REGISTERED_MODEL; POINT_AT_INFINITY_INCLUDED; NO_RANK_OR_LIMIT_INFERENCE"
+  }
+}

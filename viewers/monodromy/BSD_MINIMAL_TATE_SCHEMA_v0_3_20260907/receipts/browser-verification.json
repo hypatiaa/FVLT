@@ -1,0 +1,83 @@
+{
+  "standing": "LOCAL_CHROMIUM_INTEGRATION_NOT_COLD_AUDIT",
+  "total": 19,
+  "checks": [
+    {
+      "name": "Carrier addition and finite-prime product connect automatically to the registered source",
+      "status": "PASS"
+    },
+    {
+      "name": "N=6 inverse-pair example recognizes the exact carrier and sum at infinity",
+      "status": "PASS"
+    },
+    {
+      "name": "Group-law overlays share the marked period chart and leave exact host arithmetic unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Only exactly checked finite displayed points enter BSD membership with carrier provenance",
+      "status": "PASS"
+    },
+    {
+      "name": "Finite-sum example displays a verified chord while withholding numerical points from rational evidence",
+      "status": "PASS"
+    },
+    {
+      "name": "The R=C special case is driven by the exact order-three phase",
+      "status": "PASS"
+    },
+    {
+      "name": "Pair selection can be held or follow the actual indexed branch",
+      "status": "PASS"
+    },
+    {
+      "name": "Explicit show action reveals the carrier and both source branches",
+      "status": "PASS"
+    },
+    {
+      "name": "Native carrier export retains exact source, pair, identities, normalization and all role incidences",
+      "status": "PASS"
+    },
+    {
+      "name": "Forged source/pair/exact phases reject; imported numerical coordinates are recomputed",
+      "status": "PASS"
+    },
+    {
+      "name": "Carrier records reopen on a held source without replacing the live mcomb",
+      "status": "PASS"
+    },
+    {
+      "name": "Pending normalization edits invalidate outputs; applying the differential preserves cubic points",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact finite-prime product matches the lecture construction and includes O in every count",
+      "status": "PASS"
+    },
+    {
+      "name": "Finite good-prime factors enter BSD through exact replay without rank or Sha promotion",
+      "status": "PASS"
+    },
+    {
+      "name": "Product export round-trips and altered finite-field counts reject",
+      "status": "PASS"
+    },
+    {
+      "name": "Point-count work caps and pending-cutoff state fail closed",
+      "status": "PASS"
+    },
+    {
+      "name": "Nonexact spin suspends carrier evidence while independent exact-curve prime counts remain valid",
+      "status": "PASS"
+    },
+    {
+      "name": "Carrier and prime-product views render on desktop/mobile and collapse independently",
+      "status": "PASS"
+    },
+    {
+      "name": "No JavaScript page errors",
+      "status": "PASS"
+    }
+  ],
+  "pageErrors": []
+}

@@ -1,0 +1,1251 @@
+{
+  "schema": "MCOMB_CARRIER_ADDITION_V1",
+  "pins": {
+    "predecessorSha256": "f32eb8af15fd7cd386eb22bbe8cb45a96bb1ed163180439edddaffe07d9a8edd",
+    "coreSha256": "cf0b057d3f26fea2971561974149d26423ace0c0eb0d0f7529510e1aee409271",
+    "panelSha256": "5f320037c3adcdffbdcd51a19d8ec10138a47cb92be4bef6d56acc15ab2b5ee5",
+    "primeProductSha256": "295c0f222c30fce52174ee8f9a51eedc05eadc7e1863ceebabd3d612921c183a",
+    "buildSha256": "d125c922c912132a3296174d6ed03c43b5a0e463e8c21f177def5d452c98da8d"
+  },
+  "linked": {
+    "schema": "MCOMB_ELLIPTIC_BSD_LINK_V1",
+    "pins": {
+      "predecessorSha256": "2a8d03173ca14751ea0ffa07570ea67ea35f1d831a6424dcef151f0111df28b2",
+      "transportModuleSha256": "7e14f84639c8ac4db379fc8e83ed360d9da62da160282923cbdbc2aac5052852",
+      "panelModuleSha256": "5db82384d929c7bb2eaa59aebb925c665ed2f912c7ef41026f3f6a623c71e055",
+      "connectedPanels": {
+        "predecessorSha256": "74fedcdaa74462e76f22e81c225c2f6d7db831becfa74d98f8ca61648f2ca206",
+        "adapterSha256": "b26ac69390cd5da6b00c14c70b48d108fded3dadd9e6865988ce9a3c25ea5485",
+        "buildSha256": "2756873e3f85f05740be54a2b86816163c9d830ecff4471211f2e44d35f8e541"
+      }
+    },
+    "curvePacket": {
+      "schema": "BSD_CURVE_RECORD_V1",
+      "curve": {
+        "input": {
+          "A": "-1",
+          "B": "0",
+          "twistKind": "none",
+          "twistFactor": "1",
+          "differentialFactor": "1"
+        },
+        "scalings": [],
+        "model": {
+          "field": "Q",
+          "form": "SHORT_WEIERSTRASS",
+          "ainvs": [
+            "0",
+            "0",
+            "0",
+            "-1",
+            "0"
+          ],
+          "A": "-1",
+          "B": "0",
+          "discriminant": "64",
+          "c4": "48",
+          "j": "1728"
+        },
+        "modelId": "25aee92d63ad994e7a49d762e598578e6d86a9d8d04e109afed72de883a26520",
+        "normalization": {
+          "modelDifferential": "dx/(2y)",
+          "displayMultiplier": "1",
+          "neron": {
+            "status": "VERIFIED_REFERENCE_ISOMORPHISM",
+            "reference": {
+              "A": "-1",
+              "B": "0",
+              "id": "E_MINUS_ONE",
+              "delta": "64",
+              "valuations": {
+                "2": 6
+              }
+            },
+            "coordinateChange": "x_model = u^2 x_reference; y_model = u^3 y_reference",
+            "u": {
+              "num": "1",
+              "den": "1"
+            },
+            "factorOfModelDifferential": {
+              "num": "1",
+              "den": "1"
+            },
+            "differential": "omega_N = u * dx_model/(2 y_model)"
+          },
+          "bsdRealPeriodConvention": "NERON_TOTAL_REAL_INTEGRAL"
+        },
+        "normalizationId": "885653bb3d7e7d48aaaff0ab05701f89b57f889ed7e7a8f2776c931c8a253629",
+        "transformations": [],
+        "effectiveInput": {
+          "A": "-1",
+          "B": "0",
+          "twistKind": "none",
+          "twistFactor": "1",
+          "differentialFactor": "1"
+        },
+        "identityScope": "EXACT_MODEL_FINGERPRINT_NOT_CANONICAL_Q_ISOMORPHISM_CLASS",
+        "contextId": "65024bb3fd6875680316becc387acc76a9b6f8dc6f3612cac8943b3969fdd2a2"
+      },
+      "sources": [
+        {
+          "sha256": "2f26b6786ecb102907fbdf2c9afecb611ba8d6a40962ba9ca301aacfce0b5eea",
+          "mediaType": "application/json",
+          "bytes": "{\"component\":\"real_period\",\"contextId\":\"65024bb3fd6875680316becc387acc76a9b6f8dc6f3612cac8943b3969fdd2a2\",\"convention\":\"NERON_TOTAL_REAL_INTEGRAL\",\"evidence\":{\"assumptions\":[],\"certificate\":null,\"dependencies\":[],\"method\":\"LOCAL_V27_AGM_NERON_TOTAL\",\"software\":\"Monodromy.27 period adapter\",\"sourceLabel\":\"Recomputed from registered model and verified reference normalization\",\"status\":\"NUMERICAL\"},\"modelId\":\"25aee92d63ad994e7a49d762e598578e6d86a9d8d04e109afed72de883a26520\",\"normalizationId\":\"885653bb3d7e7d48aaaff0ab05701f89b57f889ed7e7a8f2776c931c8a253629\",\"value\":{\"lower\":\"2622057554292119/500000000000000\",\"upper\":\"2622057554292119/500000000000000\"}}"
+        },
+        {
+          "sha256": "3c6bb34724bdb683a0c47c76e9620da4b896915af3e4d8dc75bf4d05918f3c98",
+          "mediaType": "application/json",
+          "bytes": "{\"component\":\"rational_points\",\"contextId\":\"65024bb3fd6875680316becc387acc76a9b6f8dc6f3612cac8943b3969fdd2a2\",\"convention\":\"AFFINE_POINTS_ON_REGISTERED_SHORT_MODEL\",\"evidence\":{\"assumptions\":[],\"certificate\":null,\"dependencies\":[],\"method\":\"LOCAL_EXACT_POINT_MEMBERSHIP\",\"software\":\"Mcomb carrier addition v0.1 / BigInt replay\",\"sourceLabel\":\"Carrier addition provenance b6ab2545be99d7d393950f4d2458ed84ddd22863decbea3c8504ff4526a7c94a; source 4cccbdd4020d08b47a67775d48ea487b3e1373c31e127aa3c9b23b78f2d1823a; exact addition 09ae691b9d538bdc4875dca4f647b7fbffacb762eb255ee7d9f62ec366424dee; membership only\",\"status\":\"CERTIFIED\"},\"modelId\":\"25aee92d63ad994e7a49d762e598578e6d86a9d8d04e109afed72de883a26520\",\"normalizationId\":\"885653bb3d7e7d48aaaff0ab05701f89b57f889ed7e7a8f2776c931c8a253629\",\"value\":[{\"x\":\"1\",\"y\":\"0\"}]}"
+        }
+      ],
+      "records": [
+        {
+          "id": "9d8ec03542ee33967b5a835ca787731aaca08f363e3903eae6035c009c952d79",
+          "claim": {
+            "contextId": "65024bb3fd6875680316becc387acc76a9b6f8dc6f3612cac8943b3969fdd2a2",
+            "modelId": "25aee92d63ad994e7a49d762e598578e6d86a9d8d04e109afed72de883a26520",
+            "normalizationId": "885653bb3d7e7d48aaaff0ab05701f89b57f889ed7e7a8f2776c931c8a253629",
+            "component": "real_period",
+            "convention": "NERON_TOTAL_REAL_INTEGRAL",
+            "value": {
+              "lower": "2622057554292119/500000000000000",
+              "upper": "2622057554292119/500000000000000"
+            },
+            "evidence": {
+              "status": "NUMERICAL",
+              "method": "LOCAL_V27_AGM_NERON_TOTAL",
+              "software": "Monodromy.27 period adapter",
+              "sourceLabel": "Recomputed from registered model and verified reference normalization",
+              "assumptions": [],
+              "dependencies": [],
+              "certificate": null
+            }
+          },
+          "sourceHash": "2f26b6786ecb102907fbdf2c9afecb611ba8d6a40962ba9ca301aacfce0b5eea"
+        },
+        {
+          "id": "ae5e9677827149b5edda71c6d794ec63b17425a7c06c384e1e89ee23af1d7fb9",
+          "claim": {
+            "contextId": "65024bb3fd6875680316becc387acc76a9b6f8dc6f3612cac8943b3969fdd2a2",
+            "modelId": "25aee92d63ad994e7a49d762e598578e6d86a9d8d04e109afed72de883a26520",
+            "normalizationId": "885653bb3d7e7d48aaaff0ab05701f89b57f889ed7e7a8f2776c931c8a253629",
+            "component": "rational_points",
+            "convention": "AFFINE_POINTS_ON_REGISTERED_SHORT_MODEL",
+            "value": [
+              {
+                "x": "1",
+                "y": "0"
+              }
+            ],
+            "evidence": {
+              "status": "CERTIFIED",
+              "method": "LOCAL_EXACT_POINT_MEMBERSHIP",
+              "software": "Mcomb carrier addition v0.1 / BigInt replay",
+              "sourceLabel": "Carrier addition provenance b6ab2545be99d7d393950f4d2458ed84ddd22863decbea3c8504ff4526a7c94a; source 4cccbdd4020d08b47a67775d48ea487b3e1373c31e127aa3c9b23b78f2d1823a; exact addition 09ae691b9d538bdc4875dca4f647b7fbffacb762eb255ee7d9f62ec366424dee; membership only",
+              "assumptions": [],
+              "dependencies": [],
+              "certificate": null
+            }
+          },
+          "sourceHash": "3c6bb34724bdb683a0c47c76e9620da4b896915af3e4d8dc75bf4d05918f3c98"
+        }
+      ],
+      "active": {
+        "real_period": "9d8ec03542ee33967b5a835ca787731aaca08f363e3903eae6035c009c952d79",
+        "rational_points": "ae5e9677827149b5edda71c6d794ec63b17425a7c06c384e1e89ee23af1d7fb9"
+      },
+      "view": {
+        "p": "2",
+        "q": "1",
+        "folded": false
+      }
+    },
+    "sourceBytes": "{\"source\":{\"N\":\"6\",\"m\":\"7\",\"t1\":\"1\",\"t2\":\"1\",\"s\":\"2/5\",\"amplitudeSign\":1,\"offsets\":[\"-3\",\"-2\",\"-1\",\"0\",\"1\",\"2\",\"3\"]},\"selection\":{\"lane\":\"current\",\"N\":\"6\",\"c\":\"-3\",\"s\":\"2/5\"},\"visibleOffsets\":[\"-3\",\"0\",\"3\"]}",
+    "sourceHash": "86e8b5d1b1c8431c8ea9e2c1bde97f79ef0de8335dcc0188208ca8ff4ccee0bb",
+    "exactDigest": "d64c05937c7479fbcebefa32c91187bc19f1e4b3d02fdb74661229d90cb6bd70",
+    "transport": {
+      "schema": "MCOMB_ELLIPTIC_TRANSPORT_V1",
+      "source": {
+        "N": "6",
+        "m": "7",
+        "t1": "1",
+        "t2": "1",
+        "s": "2/5",
+        "amplitudeSign": 1,
+        "offsets": [
+          "-3",
+          "-2",
+          "-1",
+          "0",
+          "1",
+          "2",
+          "3"
+        ]
+      },
+      "modelInput": {
+        "A": "-1",
+        "B": "0",
+        "twistKind": "none",
+        "twistFactor": "1",
+        "differentialFactor": "1"
+      },
+      "rows": [
+        {
+          "address": {
+            "N": "6",
+            "m": "7",
+            "c": "-3",
+            "s": "2/5"
+          },
+          "phase": {
+            "alpha": "1/5",
+            "beta": "1/10"
+          },
+          "exact": {
+            "frequency": "3",
+            "alphaVelocity": "1/2",
+            "betaVelocity": "1/4",
+            "rawWinding": [
+              "6",
+              "3"
+            ],
+            "traversalMultiplicity": "3",
+            "denominatorScale": "1",
+            "primitiveWinding": [
+              "2",
+              "1"
+            ],
+            "closurePeriod": "4",
+            "complexTorsionOrder": "10"
+          },
+          "numerical": {
+            "zModel": [
+              0.5244115108584239,
+              0.26220575542921193
+            ],
+            "dzModel_ds": [
+              1.3110287771460596,
+              0.6555143885730298
+            ],
+            "dzSelected_ds": [
+              1.3110287771460596,
+              0.6555143885730298
+            ],
+            "dzNeron_ds": [
+              1.3110287771460596,
+              0.6555143885730298
+            ],
+            "status": "FLOAT64_APPROXIMATION",
+            "x": [
+              1.7861513777574225,
+              -2.272019649514071
+            ],
+            "y": [
+              -0.7845611422071274,
+              4.935989884257138
+            ],
+            "relativeResidual": 1.4222498775445555e-16,
+            "seriesLastTermMagnitude": 5.1130775387429955e-20,
+            "tangent": {
+              "dx_ds": [
+                -8.528389251691209,
+                11.913867329061786
+              ],
+              "dy_ds": [
+                6.89509817236455,
+                -36.45529340881759
+              ]
+            }
+          },
+          "identities": {
+            "phase": "z=alpha*omega1+beta*omega2; omega0=dx/(2y)",
+            "jet": "k=N*t1+c*t2=2*N*(alphaVelocity-betaVelocity)",
+            "cubic": "x=wp(z); y=wp_prime(z)/2",
+            "transport": "dx/ds=2*y*dz/ds; dy/ds=(3*x^2+A)*dz/ds",
+            "atInfinity": "For local parameter t=-x/y at O, dt/ds=dz/ds at z=0"
+          },
+          "rationality": "NOT_INFERRED_FROM_NUMERICAL_COORDINATES_OR_RATIONAL_PHASES"
+        },
+        {
+          "address": {
+            "N": "6",
+            "m": "7",
+            "c": "-2",
+            "s": "2/5"
+          },
+          "phase": {
+            "alpha": "1/5",
+            "beta": "1/15"
+          },
+          "exact": {
+            "frequency": "4",
+            "alphaVelocity": "1/2",
+            "betaVelocity": "1/6",
+            "rawWinding": [
+              "6",
+              "2"
+            ],
+            "traversalMultiplicity": "2",
+            "denominatorScale": "1",
+            "primitiveWinding": [
+              "3",
+              "1"
+            ],
+            "closurePeriod": "6",
+            "complexTorsionOrder": "15"
+          },
+          "numerical": {
+            "zModel": [
+              0.5244115108584239,
+              0.17480383695280793
+            ],
+            "dzModel_ds": [
+              1.3110287771460596,
+              0.43700959238201986
+            ],
+            "dzSelected_ds": [
+              1.3110287771460596,
+              0.43700959238201986
+            ],
+            "dzNeron_ds": [
+              1.3110287771460596,
+              0.43700959238201986
+            ],
+            "status": "FLOAT64_APPROXIMATION",
+            "x": [
+              2.6668662735811264,
+              -1.9265596622093932
+            ],
+            "y": [
+              -3.2651258834387313,
+              4.904688716367025
+            ],
+            "relativeResidual": 6.930088105335507e-16,
+            "seriesLastTermMagnitude": 2.1598246285100755e-18,
+            "tangent": {
+              "dx_ds": [
+                -12.848140021785746,
+                10.00659343740639
+              ],
+              "dy_ds": [
+                25.53541189993065,
+                -36.39422659095689
+              ]
+            }
+          },
+          "identities": {
+            "phase": "z=alpha*omega1+beta*omega2; omega0=dx/(2y)",
+            "jet": "k=N*t1+c*t2=2*N*(alphaVelocity-betaVelocity)",
+            "cubic": "x=wp(z); y=wp_prime(z)/2",
+            "transport": "dx/ds=2*y*dz/ds; dy/ds=(3*x^2+A)*dz/ds",
+            "atInfinity": "For local parameter t=-x/y at O, dt/ds=dz/ds at z=0"
+          },
+          "rationality": "NOT_INFERRED_FROM_NUMERICAL_COORDINATES_OR_RATIONAL_PHASES"
+        },
+        {
+          "address": {
+            "N": "6",
+            "m": "7",
+            "c": "-1",
+            "s": "2/5"
+          },
+          "phase": {
+            "alpha": "1/5",
+            "beta": "1/30"
+          },
+          "exact": {
+            "frequency": "5",
+            "alphaVelocity": "1/2",
+            "betaVelocity": "1/12",
+            "rawWinding": [
+              "6",
+              "1"
+            ],
+            "traversalMultiplicity": "1",
+            "denominatorScale": "1",
+            "primitiveWinding": [
+              "6",
+              "1"
+            ],
+            "closurePeriod": "12",
+            "complexTorsionOrder": "30"
+          },
+          "numerical": {
+            "zModel": [
+              0.5244115108584239,
+              0.08740191847640397
+            ],
+            "dzModel_ds": [
+              1.3110287771460596,
+              0.21850479619100993
+            ],
+            "dzSelected_ds": [
+              1.3110287771460596,
+              0.21850479619100993
+            ],
+            "dzNeron_ds": [
+              1.3110287771460596,
+              0.21850479619100993
+            ],
+            "status": "FLOAT64_APPROXIMATION",
+            "x": [
+              3.400383900124989,
+              -1.1288691206900052
+            ],
+            "y": [
+              -5.748563805996601,
+              3.1825848379993396
+            ],
+            "relativeResidual": 5.623478717919544e-16,
+            "seriesLastTermMagnitude": 4.003435668697908e-19,
+            "tangent": {
+              "dx_ds": [
+                -16.46388525661893,
+                5.832743091011121
+              ],
+              "dy_ds": [
+                44.18610619725989,
+                -23.669397944570687
+              ]
+            }
+          },
+          "identities": {
+            "phase": "z=alpha*omega1+beta*omega2; omega0=dx/(2y)",
+            "jet": "k=N*t1+c*t2=2*N*(alphaVelocity-betaVelocity)",
+            "cubic": "x=wp(z); y=wp_prime(z)/2",
+            "transport": "dx/ds=2*y*dz/ds; dy/ds=(3*x^2+A)*dz/ds",
+            "atInfinity": "For local parameter t=-x/y at O, dt/ds=dz/ds at z=0"
+          },
+          "rationality": "NOT_INFERRED_FROM_NUMERICAL_COORDINATES_OR_RATIONAL_PHASES"
+        },
+        {
+          "address": {
+            "N": "6",
+            "m": "7",
+            "c": "0",
+            "s": "2/5"
+          },
+          "phase": {
+            "alpha": "1/5",
+            "beta": "0"
+          },
+          "exact": {
+            "frequency": "6",
+            "alphaVelocity": "1/2",
+            "betaVelocity": "0",
+            "rawWinding": [
+              "6",
+              "0"
+            ],
+            "traversalMultiplicity": "6",
+            "denominatorScale": "1",
+            "primitiveWinding": [
+              "1",
+              "0"
+            ],
+            "closurePeriod": "2",
+            "complexTorsionOrder": "5"
+          },
+          "numerical": {
+            "zModel": [
+              0.5244115108584239,
+              0
+            ],
+            "dzModel_ds": [
+              1.3110287771460596,
+              0
+            ],
+            "dzSelected_ds": [
+              1.3110287771460596,
+              0
+            ],
+            "dzNeron_ds": [
+              1.3110287771460596,
+              0
+            ],
+            "status": "FLOAT64_APPROXIMATION",
+            "x": [
+              3.691544802565738,
+              0
+            ],
+            "y": [
+              -6.8275173509395435,
+              0
+            ],
+            "relativeResidual": 0,
+            "seriesLastTermMagnitude": 8.902192485298159e-20,
+            "tangent": {
+              "dx_ds": [
+                -17.902143447091547,
+                0
+              ],
+              "dy_ds": [
+                52.28711711922325,
+                0
+              ]
+            }
+          },
+          "identities": {
+            "phase": "z=alpha*omega1+beta*omega2; omega0=dx/(2y)",
+            "jet": "k=N*t1+c*t2=2*N*(alphaVelocity-betaVelocity)",
+            "cubic": "x=wp(z); y=wp_prime(z)/2",
+            "transport": "dx/ds=2*y*dz/ds; dy/ds=(3*x^2+A)*dz/ds",
+            "atInfinity": "For local parameter t=-x/y at O, dt/ds=dz/ds at z=0"
+          },
+          "rationality": "NOT_INFERRED_FROM_NUMERICAL_COORDINATES_OR_RATIONAL_PHASES"
+        },
+        {
+          "address": {
+            "N": "6",
+            "m": "7",
+            "c": "1",
+            "s": "2/5"
+          },
+          "phase": {
+            "alpha": "1/5",
+            "beta": "29/30"
+          },
+          "exact": {
+            "frequency": "7",
+            "alphaVelocity": "1/2",
+            "betaVelocity": "-1/12",
+            "rawWinding": [
+              "6",
+              "-1"
+            ],
+            "traversalMultiplicity": "1",
+            "denominatorScale": "1",
+            "primitiveWinding": [
+              "6",
+              "-1"
+            ],
+            "closurePeriod": "12",
+            "complexTorsionOrder": "30"
+          },
+          "numerical": {
+            "zModel": [
+              0.5244115108584239,
+              2.534655635815715
+            ],
+            "dzModel_ds": [
+              1.3110287771460596,
+              -0.21850479619100993
+            ],
+            "dzSelected_ds": [
+              1.3110287771460596,
+              -0.21850479619100993
+            ],
+            "dzNeron_ds": [
+              1.3110287771460596,
+              -0.21850479619100993
+            ],
+            "status": "FLOAT64_APPROXIMATION",
+            "x": [
+              3.400383900124989,
+              1.1288691206900052
+            ],
+            "y": [
+              -5.748563805996601,
+              -3.1825848379993396
+            ],
+            "relativeResidual": 5.623478717919544e-16,
+            "seriesLastTermMagnitude": 4.003435668697908e-19,
+            "tangent": {
+              "dx_ds": [
+                -16.46388525661893,
+                -5.832743091011121
+              ],
+              "dy_ds": [
+                44.18610619725989,
+                23.669397944570687
+              ]
+            }
+          },
+          "identities": {
+            "phase": "z=alpha*omega1+beta*omega2; omega0=dx/(2y)",
+            "jet": "k=N*t1+c*t2=2*N*(alphaVelocity-betaVelocity)",
+            "cubic": "x=wp(z); y=wp_prime(z)/2",
+            "transport": "dx/ds=2*y*dz/ds; dy/ds=(3*x^2+A)*dz/ds",
+            "atInfinity": "For local parameter t=-x/y at O, dt/ds=dz/ds at z=0"
+          },
+          "rationality": "NOT_INFERRED_FROM_NUMERICAL_COORDINATES_OR_RATIONAL_PHASES"
+        },
+        {
+          "address": {
+            "N": "6",
+            "m": "7",
+            "c": "2",
+            "s": "2/5"
+          },
+          "phase": {
+            "alpha": "1/5",
+            "beta": "14/15"
+          },
+          "exact": {
+            "frequency": "8",
+            "alphaVelocity": "1/2",
+            "betaVelocity": "-1/6",
+            "rawWinding": [
+              "6",
+              "-2"
+            ],
+            "traversalMultiplicity": "2",
+            "denominatorScale": "1",
+            "primitiveWinding": [
+              "3",
+              "-1"
+            ],
+            "closurePeriod": "6",
+            "complexTorsionOrder": "15"
+          },
+          "numerical": {
+            "zModel": [
+              0.5244115108584239,
+              2.4472537173393114
+            ],
+            "dzModel_ds": [
+              1.3110287771460596,
+              -0.43700959238201986
+            ],
+            "dzSelected_ds": [
+              1.3110287771460596,
+              -0.43700959238201986
+            ],
+            "dzNeron_ds": [
+              1.3110287771460596,
+              -0.43700959238201986
+            ],
+            "status": "FLOAT64_APPROXIMATION",
+            "x": [
+              2.6668662735811264,
+              1.9265596622093932
+            ],
+            "y": [
+              -3.2651258834387313,
+              -4.904688716367025
+            ],
+            "relativeResidual": 6.930088105335507e-16,
+            "seriesLastTermMagnitude": 2.1598246285100755e-18,
+            "tangent": {
+              "dx_ds": [
+                -12.848140021785746,
+                -10.00659343740639
+              ],
+              "dy_ds": [
+                25.53541189993065,
+                36.39422659095689
+              ]
+            }
+          },
+          "identities": {
+            "phase": "z=alpha*omega1+beta*omega2; omega0=dx/(2y)",
+            "jet": "k=N*t1+c*t2=2*N*(alphaVelocity-betaVelocity)",
+            "cubic": "x=wp(z); y=wp_prime(z)/2",
+            "transport": "dx/ds=2*y*dz/ds; dy/ds=(3*x^2+A)*dz/ds",
+            "atInfinity": "For local parameter t=-x/y at O, dt/ds=dz/ds at z=0"
+          },
+          "rationality": "NOT_INFERRED_FROM_NUMERICAL_COORDINATES_OR_RATIONAL_PHASES"
+        },
+        {
+          "address": {
+            "N": "6",
+            "m": "7",
+            "c": "3",
+            "s": "2/5"
+          },
+          "phase": {
+            "alpha": "1/5",
+            "beta": "9/10"
+          },
+          "exact": {
+            "frequency": "9",
+            "alphaVelocity": "1/2",
+            "betaVelocity": "-1/4",
+            "rawWinding": [
+              "6",
+              "-3"
+            ],
+            "traversalMultiplicity": "3",
+            "denominatorScale": "1",
+            "primitiveWinding": [
+              "2",
+              "-1"
+            ],
+            "closurePeriod": "4",
+            "complexTorsionOrder": "10"
+          },
+          "numerical": {
+            "zModel": [
+              0.5244115108584239,
+              2.3598517988629073
+            ],
+            "dzModel_ds": [
+              1.3110287771460596,
+              -0.6555143885730298
+            ],
+            "dzSelected_ds": [
+              1.3110287771460596,
+              -0.6555143885730298
+            ],
+            "dzNeron_ds": [
+              1.3110287771460596,
+              -0.6555143885730298
+            ],
+            "status": "FLOAT64_APPROXIMATION",
+            "x": [
+              1.7861513777574225,
+              2.272019649514071
+            ],
+            "y": [
+              -0.7845611422071274,
+              -4.935989884257138
+            ],
+            "relativeResidual": 1.4222498775445555e-16,
+            "seriesLastTermMagnitude": 5.1130775387429955e-20,
+            "tangent": {
+              "dx_ds": [
+                -8.528389251691209,
+                -11.913867329061786
+              ],
+              "dy_ds": [
+                6.89509817236455,
+                36.45529340881759
+              ]
+            }
+          },
+          "identities": {
+            "phase": "z=alpha*omega1+beta*omega2; omega0=dx/(2y)",
+            "jet": "k=N*t1+c*t2=2*N*(alphaVelocity-betaVelocity)",
+            "cubic": "x=wp(z); y=wp_prime(z)/2",
+            "transport": "dx/ds=2*y*dz/ds; dy/ds=(3*x^2+A)*dz/ds",
+            "atInfinity": "For local parameter t=-x/y at O, dt/ds=dz/ds at z=0"
+          },
+          "rationality": "NOT_INFERRED_FROM_NUMERICAL_COORDINATES_OR_RATIONAL_PHASES"
+        }
+      ],
+      "sevenJet": {
+        "active": false,
+        "frequencies": [
+          "3",
+          "4",
+          "5",
+          "6",
+          "7",
+          "8",
+          "9"
+        ],
+        "normSquared": "280",
+        "meaning": "One logarithmic velocity per mcomb channel, not seven derivatives of L(E,s)"
+      },
+      "rational": {
+        "rootSearch": "B_ZERO_EXACT_SQUARE_ROOT_CHECK",
+        "rationalTwoTorsion": [
+          {
+            "point": {
+              "x": "-1",
+              "y": "0"
+            },
+            "phase": {
+              "alpha": "0",
+              "beta": "1/2"
+            }
+          },
+          {
+            "point": {
+              "x": "0",
+              "y": "0"
+            },
+            "phase": {
+              "alpha": "1/2",
+              "beta": "1/2"
+            }
+          },
+          {
+            "point": {
+              "x": "1",
+              "y": "0"
+            },
+            "phase": {
+              "alpha": "1/2",
+              "beta": "0"
+            }
+          }
+        ],
+        "encounters": [
+          {
+            "c": "-3",
+            "s": "2",
+            "phase": {
+              "alpha": "0",
+              "beta": "1/2"
+            },
+            "point": {
+              "x": "-1",
+              "y": "0"
+            },
+            "certificate": "EXACT_RATIONAL_ROOT_PLUS_MARKED_HALF_PERIOD_IDENTITY",
+            "scope": "RATIONAL_POINT_OF_ORDER_2; NOT_FULL_TORSION_ORDER_OR_RANK"
+          },
+          {
+            "c": "-2",
+            "s": "3",
+            "phase": {
+              "alpha": "1/2",
+              "beta": "1/2"
+            },
+            "point": {
+              "x": "0",
+              "y": "0"
+            },
+            "certificate": "EXACT_RATIONAL_ROOT_PLUS_MARKED_HALF_PERIOD_IDENTITY",
+            "scope": "RATIONAL_POINT_OF_ORDER_2; NOT_FULL_TORSION_ORDER_OR_RANK"
+          },
+          {
+            "c": "-1",
+            "s": "6",
+            "phase": {
+              "alpha": "0",
+              "beta": "1/2"
+            },
+            "point": {
+              "x": "-1",
+              "y": "0"
+            },
+            "certificate": "EXACT_RATIONAL_ROOT_PLUS_MARKED_HALF_PERIOD_IDENTITY",
+            "scope": "RATIONAL_POINT_OF_ORDER_2; NOT_FULL_TORSION_ORDER_OR_RANK"
+          },
+          {
+            "c": "0",
+            "s": "1",
+            "phase": {
+              "alpha": "1/2",
+              "beta": "0"
+            },
+            "point": {
+              "x": "1",
+              "y": "0"
+            },
+            "certificate": "EXACT_RATIONAL_ROOT_PLUS_MARKED_HALF_PERIOD_IDENTITY",
+            "scope": "RATIONAL_POINT_OF_ORDER_2; NOT_FULL_TORSION_ORDER_OR_RANK"
+          },
+          {
+            "c": "1",
+            "s": "6",
+            "phase": {
+              "alpha": "0",
+              "beta": "1/2"
+            },
+            "point": {
+              "x": "-1",
+              "y": "0"
+            },
+            "certificate": "EXACT_RATIONAL_ROOT_PLUS_MARKED_HALF_PERIOD_IDENTITY",
+            "scope": "RATIONAL_POINT_OF_ORDER_2; NOT_FULL_TORSION_ORDER_OR_RANK"
+          },
+          {
+            "c": "2",
+            "s": "3",
+            "phase": {
+              "alpha": "1/2",
+              "beta": "1/2"
+            },
+            "point": {
+              "x": "0",
+              "y": "0"
+            },
+            "certificate": "EXACT_RATIONAL_ROOT_PLUS_MARKED_HALF_PERIOD_IDENTITY",
+            "scope": "RATIONAL_POINT_OF_ORDER_2; NOT_FULL_TORSION_ORDER_OR_RANK"
+          },
+          {
+            "c": "3",
+            "s": "2",
+            "phase": {
+              "alpha": "0",
+              "beta": "1/2"
+            },
+            "point": {
+              "x": "-1",
+              "y": "0"
+            },
+            "certificate": "EXACT_RATIONAL_ROOT_PLUS_MARKED_HALF_PERIOD_IDENTITY",
+            "scope": "RATIONAL_POINT_OF_ORDER_2; NOT_FULL_TORSION_ORDER_OR_RANK"
+          }
+        ]
+      },
+      "normalization": {
+        "modelDifferential": "dx/(2y)",
+        "selectedFactor": "1",
+        "neron": {
+          "status": "VERIFIED_REFERENCE_ISOMORPHISM",
+          "reference": {
+            "A": "-1",
+            "B": "0",
+            "id": "E_MINUS_ONE",
+            "delta": "64",
+            "valuations": {
+              "2": 6
+            }
+          },
+          "coordinateChange": "x_model = u^2 x_reference; y_model = u^3 y_reference",
+          "u": {
+            "num": "1",
+            "den": "1"
+          },
+          "factorOfModelDifferential": {
+            "num": "1",
+            "den": "1"
+          },
+          "differential": "omega_N = u * dx_model/(2 y_model)"
+        }
+      },
+      "bsdRouting": {
+        "admissible": "Exact rational points at proved half-period encounters may enter rational_points after equation replay",
+        "notComputed": [
+          "analytic_rank",
+          "algebraic_rank",
+          "regulator",
+          "torsion_order",
+          "tamagawa",
+          "sha_order",
+          "L_leading_term"
+        ]
+      },
+      "standing": "EXACT_PHASE_AND_DIFFERENTIAL_IDENTITIES_WITH_FLOAT64_UNIFORMIZATION_NOT_INTERVAL_CERTIFIED"
+    }
+  },
+  "pairOffset": "3",
+  "exactDigest": "c8cf4064775b35799accbeb94cf3d55500709ed1a901e5cfada239842d28a596",
+  "addition": {
+    "schema": "MCOMB_CARRIER_ADDITION_V1",
+    "source": {
+      "N": "6",
+      "m": "7",
+      "t1": "1",
+      "t2": "1",
+      "s": "2/5",
+      "amplitudeSign": 1,
+      "offsets": [
+        "-3",
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "modelInput": {
+      "A": "-1",
+      "B": "0",
+      "twistKind": "none",
+      "twistFactor": "1",
+      "differentialFactor": "1"
+    },
+    "exact": {
+      "pairOffset": "3",
+      "carrierIsChannel": true,
+      "phases": {
+        "C": {
+          "alpha": "1/5",
+          "beta": "0"
+        },
+        "Pplus": {
+          "alpha": "1/5",
+          "beta": "9/10"
+        },
+        "Pminus": {
+          "alpha": "1/5",
+          "beta": "1/10"
+        },
+        "sum": {
+          "alpha": "2/5",
+          "beta": "0"
+        },
+        "R": {
+          "alpha": "3/5",
+          "beta": "0"
+        },
+        "D": {
+          "alpha": "0",
+          "beta": "9/10"
+        }
+      },
+      "identities": {
+        "pairEqualsDoubleCarrier": true,
+        "plusEqualsCarrierPlusOffset": true,
+        "minusEqualsCarrierMinusOffset": true,
+        "thirdEqualsNegativeSum": true,
+        "carrierEqualsThird": false
+      },
+      "jets": {
+        "kPlus": "9",
+        "kMinus": "3",
+        "kCarrier": "6",
+        "pairFrequencySum": "12",
+        "twiceCarrierFrequency": "12",
+        "carrierVelocity": {
+          "omega1": "1/2",
+          "omega2": "0"
+        },
+        "sumVelocity": {
+          "omega1": "1",
+          "omega2": "0"
+        }
+      },
+      "rationalPoints": {
+        "C": {
+          "point": null,
+          "method": null
+        },
+        "Pplus": {
+          "point": null,
+          "method": null
+        },
+        "Pminus": {
+          "point": null,
+          "method": null
+        },
+        "sum": {
+          "point": null,
+          "method": null
+        },
+        "R": {
+          "point": null,
+          "method": null
+        },
+        "D": {
+          "point": null,
+          "method": null
+        }
+      }
+    },
+    "points": {
+      "C": {
+        "phase": {
+          "alpha": "1/5",
+          "beta": "0"
+        },
+        "exactPoint": null,
+        "exactMethod": null,
+        "numerical": {
+          "status": "FLOAT64_APPROXIMATION",
+          "x": [
+            3.691544802565738,
+            0
+          ],
+          "y": [
+            -6.8275173509395435,
+            0
+          ],
+          "relativeResidual": 0,
+          "seriesLastTermMagnitude": 8.902192485298159e-20
+        }
+      },
+      "Pplus": {
+        "phase": {
+          "alpha": "1/5",
+          "beta": "9/10"
+        },
+        "exactPoint": null,
+        "exactMethod": null,
+        "numerical": {
+          "status": "FLOAT64_APPROXIMATION",
+          "x": [
+            1.7861513777574225,
+            2.272019649514071
+          ],
+          "y": [
+            -0.7845611422071274,
+            -4.935989884257138
+          ],
+          "relativeResidual": 1.4222498775445555e-16,
+          "seriesLastTermMagnitude": 5.1130775387429955e-20
+        }
+      },
+      "Pminus": {
+        "phase": {
+          "alpha": "1/5",
+          "beta": "1/10"
+        },
+        "exactPoint": null,
+        "exactMethod": null,
+        "numerical": {
+          "status": "FLOAT64_APPROXIMATION",
+          "x": [
+            1.7861513777574225,
+            -2.272019649514071
+          ],
+          "y": [
+            -0.7845611422071274,
+            4.935989884257138
+          ],
+          "relativeResidual": 1.4222498775445555e-16,
+          "seriesLastTermMagnitude": 5.1130775387429955e-20
+        }
+      },
+      "sum": {
+        "phase": {
+          "alpha": "2/5",
+          "beta": "0"
+        },
+        "exactPoint": null,
+        "exactMethod": null,
+        "numerical": {
+          "status": "FLOAT64_APPROXIMATION",
+          "x": [
+            1.1475055035375972,
+            0
+          ],
+          "y": [
+            -0.6029046640176672,
+            0
+          ],
+          "relativeResidual": 6.612845983135879e-16,
+          "seriesLastTermMagnitude": 1.4404050015606343e-19
+        }
+      },
+      "R": {
+        "phase": {
+          "alpha": "3/5",
+          "beta": "0"
+        },
+        "exactPoint": null,
+        "exactMethod": null,
+        "numerical": {
+          "status": "FLOAT64_APPROXIMATION",
+          "x": [
+            1.1475055035375972,
+            0
+          ],
+          "y": [
+            0.6029046640176672,
+            0
+          ],
+          "relativeResidual": 6.612845983135879e-16,
+          "seriesLastTermMagnitude": 1.4404050015606343e-19
+        }
+      },
+      "D": {
+        "phase": {
+          "alpha": "0",
+          "beta": "9/10"
+        },
+        "exactPoint": null,
+        "exactMethod": null,
+        "numerical": {
+          "status": "FLOAT64_APPROXIMATION",
+          "x": [
+            -14.558816125733474,
+            0
+          ],
+          "y": [
+            0,
+            55.41944730678527
+          ],
+          "relativeResidual": 2.9472840263923503e-16,
+          "seriesLastTermMagnitude": 5.112964203141279e-20
+        }
+      }
+    },
+    "numerical": {
+      "pair": {
+        "kind": "CHORD",
+        "point": {
+          "status": "FLOAT64_APPROXIMATION",
+          "x": [
+            1.1475055035375972,
+            0
+          ],
+          "y": [
+            -0.6029046640176666,
+            -8.881784197001252e-16
+          ]
+        },
+        "slope": [
+          -2.1725119698294972,
+          0
+        ]
+      },
+      "doubling": {
+        "kind": "TANGENT",
+        "point": {
+          "status": "FLOAT64_APPROXIMATION",
+          "x": [
+            1.147505503537598,
+            0
+          ],
+          "y": [
+            -0.6029046640176645,
+            0
+          ]
+        },
+        "slope": [
+          -2.920718252188847,
+          0
+        ]
+      },
+      "pairComparison": {
+        "status": "PASS",
+        "relativeError": 6.534276992142495e-16
+      },
+      "doublingComparison": {
+        "status": "PASS",
+        "relativeError": 1.6623167421708913e-15
+      },
+      "line": {
+        "kind": "CHORD",
+        "coefficients": [
+          [
+            -0.701744287886379,
+            0
+          ],
+          [
+            -0.32301055075036167,
+            0
+          ],
+          [
+            1,
+            0
+          ]
+        ],
+        "realLine": [
+          -0.701744287886379,
+          -0.32301055075036167,
+          1
+        ]
+      },
+      "thirdLineResidual": 7.401486830834375e-17
+    },
+    "exactChecks": {
+      "pair": null,
+      "doubling": null
+    },
+    "normalization": {
+      "modelDifferential": "dx/(2y)",
+      "selectedFactor": "1",
+      "neron": {
+        "status": "VERIFIED_REFERENCE_ISOMORPHISM",
+        "reference": {
+          "A": "-1",
+          "B": "0",
+          "id": "E_MINUS_ONE",
+          "delta": "64",
+          "valuations": {
+            "2": 6
+          }
+        },
+        "coordinateChange": "x_model = u^2 x_reference; y_model = u^3 y_reference",
+        "u": {
+          "num": "1",
+          "den": "1"
+        },
+        "factorOfModelDifferential": {
+          "num": "1",
+          "den": "1"
+        },
+        "differential": "omega_N = u * dx_model/(2 y_model)"
+      }
+    },
+    "standing": "EXACT_PERIOD_ADDRESS_IDENTITIES; CUBIC_COORDINATES_AND_CHORD_CONCORDANCE_NUMERICAL_UNLESS_EXACT_POINT_METHOD_STATED"
+  }
+}

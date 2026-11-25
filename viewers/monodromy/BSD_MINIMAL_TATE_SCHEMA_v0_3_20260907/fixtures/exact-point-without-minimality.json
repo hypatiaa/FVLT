@@ -1,0 +1,127 @@
+{
+  "schema": "BSD_MINIMAL_TATE_RECORD_V1",
+  "anchor": {
+    "inputModelId": "f9ebbc9a211ad1eb50dbdc354e23b686742674083aa36b3c768ba60c12d94ef1",
+    "sourceHash": "ece80ec3d774b02d383c1a203bbe1f2612f5efd8451acfe428b7af573b9d4e9b",
+    "legacyContextId": null
+  },
+  "contextId": "508a2939f5ed13f1edffee144d5198dc0144db70abec5daa6e715b3cd16399ca",
+  "models": [
+    {
+      "modelId": "f9ebbc9a211ad1eb50dbdc354e23b686742674083aa36b3c768ba60c12d94ef1",
+      "field": "Q",
+      "ainvs": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "17"
+      ],
+      "invariants": {
+        "b2": "0",
+        "b4": "0",
+        "b6": "68",
+        "b8": "0",
+        "c4": "0",
+        "c6": "-14688",
+        "discriminant": "-124848",
+        "j": "0"
+      }
+    }
+  ],
+  "twistLineage": [],
+  "transformations": [],
+  "normalization": {
+    "modelDifferential": "dx/(2*y+a1*x+a3)",
+    "sourceSelectedMultiplier": "1",
+    "targetModelId": "f9ebbc9a211ad1eb50dbdc354e23b686742674083aa36b3c768ba60c12d94ef1",
+    "targetSelectedMultiplier": "1",
+    "composedPullbackFactor": "1",
+    "neron": null
+  },
+  "marking": {
+    "basisMatrix": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "1"
+      ]
+    ],
+    "convention": "TARGET_BASIS_EQUALS_U_TIMES_M_SOURCE_BASIS",
+    "mcombSourceHash": null,
+    "phaseConvention": "FULL_PERIOD_FRACTIONS_MOD_Z2"
+  },
+  "points": [
+    {
+      "modelId": "f9ebbc9a211ad1eb50dbdc354e23b686742674083aa36b3c768ba60c12d94ef1",
+      "coordinates": {
+        "x": "4",
+        "y": "9"
+      },
+      "sourceHash": "721ec0ba82416beff5a13a03620764c673030f8340c5349df7287635ecc9e0f0"
+    }
+  ],
+  "minimalModel": null,
+  "localData": [],
+  "badPrimeInventory": null,
+  "aggregate": null,
+  "panelBindings": [
+    {
+      "panel": "MCOMB",
+      "contextId": "508a2939f5ed13f1edffee144d5198dc0144db70abec5daa6e715b3cd16399ca",
+      "modelId": "f9ebbc9a211ad1eb50dbdc354e23b686742674083aa36b3c768ba60c12d94ef1",
+      "normalizationId": "a379c0ca14e98968f3a00c1ffb541ff937dd70a38b2a9c79d47a5552637d7a99",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "CARRIER_ADDITION",
+      "contextId": "508a2939f5ed13f1edffee144d5198dc0144db70abec5daa6e715b3cd16399ca",
+      "modelId": "f9ebbc9a211ad1eb50dbdc354e23b686742674083aa36b3c768ba60c12d94ef1",
+      "normalizationId": "a379c0ca14e98968f3a00c1ffb541ff937dd70a38b2a9c79d47a5552637d7a99",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "ELLIPTIC_MODEL",
+      "contextId": "508a2939f5ed13f1edffee144d5198dc0144db70abec5daa6e715b3cd16399ca",
+      "modelId": "f9ebbc9a211ad1eb50dbdc354e23b686742674083aa36b3c768ba60c12d94ef1",
+      "normalizationId": "a379c0ca14e98968f3a00c1ffb541ff937dd70a38b2a9c79d47a5552637d7a99",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "MARKED_CLIFFORD_LEAF",
+      "contextId": "508a2939f5ed13f1edffee144d5198dc0144db70abec5daa6e715b3cd16399ca",
+      "modelId": "f9ebbc9a211ad1eb50dbdc354e23b686742674083aa36b3c768ba60c12d94ef1",
+      "normalizationId": "a379c0ca14e98968f3a00c1ffb541ff937dd70a38b2a9c79d47a5552637d7a99",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "EXACT_CURVE_BSD",
+      "contextId": "508a2939f5ed13f1edffee144d5198dc0144db70abec5daa6e715b3cd16399ca",
+      "modelId": "f9ebbc9a211ad1eb50dbdc354e23b686742674083aa36b3c768ba60c12d94ef1",
+      "normalizationId": "a379c0ca14e98968f3a00c1ffb541ff937dd70a38b2a9c79d47a5552637d7a99",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "PRIME_PRODUCT",
+      "contextId": "508a2939f5ed13f1edffee144d5198dc0144db70abec5daa6e715b3cd16399ca",
+      "modelId": "f9ebbc9a211ad1eb50dbdc354e23b686742674083aa36b3c768ba60c12d94ef1",
+      "normalizationId": "a379c0ca14e98968f3a00c1ffb541ff937dd70a38b2a9c79d47a5552637d7a99",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    }
+  ],
+  "sources": [
+    {
+      "sha256": "ece80ec3d774b02d383c1a203bbe1f2612f5efd8451acfe428b7af573b9d4e9b",
+      "mediaType": "application/json",
+      "bytes": "{\"field\":\"Q\",\"ainvs\":[\"0\",\"0\",\"0\",\"0\",\"17\"],\"selectedMultiplier\":\"1\"}"
+    },
+    {
+      "sha256": "721ec0ba82416beff5a13a03620764c673030f8340c5349df7287635ecc9e0f0",
+      "mediaType": "application/json",
+      "bytes": "{\"modelId\":\"f9ebbc9a211ad1eb50dbdc354e23b686742674083aa36b3c768ba60c12d94ef1\",\"coordinates\":{\"x\":\"4\",\"y\":\"9\"}}"
+    }
+  ]
+}

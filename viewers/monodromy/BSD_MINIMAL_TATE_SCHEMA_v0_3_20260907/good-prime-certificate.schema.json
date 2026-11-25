@@ -1,0 +1,158 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:robin:bsd:good-prime-certificate:1:reference-0.3",
+  "title": "Scoped exact good-prime certificate, reference verifier 0.3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "contextId",
+    "modelId",
+    "normalizationId",
+    "p",
+    "verifier",
+    "method",
+    "ainvs",
+    "discriminant",
+    "reducedAinvs",
+    "discriminantResidue",
+    "pointsIncludingInfinity",
+    "ap",
+    "eulerPolynomial",
+    "localMinimality",
+    "kodaira",
+    "conductorExponent",
+    "tamagawaNumber",
+    "assumptions",
+    "dependencies",
+    "scope"
+  ],
+  "properties": {
+    "schema": {
+      "const": "BSD_GOOD_PRIME_CERTIFICATE_V1"
+    },
+    "contextId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "modelId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "normalizationId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "p": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*$",
+      "maxLength": 96
+    },
+    "verifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version",
+        "sha256"
+      ],
+      "properties": {
+        "name": {
+          "const": "BSD_LOCAL_REDUCTION_REFERENCE"
+        },
+        "version": {
+          "const": "0.3.0"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "method": {
+      "const": "P_INTEGRAL_UNIT_DISCRIMINANT_AND_EXHAUSTIVE_FP_COUNT"
+    },
+    "ainvs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+        "maxLength": 194
+      },
+      "maxItems": 5,
+      "minItems": 5
+    },
+    "discriminant": {
+      "type": "string",
+      "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+      "maxLength": 194
+    },
+    "reducedAinvs": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(0|[1-9][0-9]*)$",
+        "maxLength": 96
+      },
+      "maxItems": 5,
+      "minItems": 5
+    },
+    "discriminantResidue": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*$",
+      "maxLength": 96
+    },
+    "pointsIncludingInfinity": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*$",
+      "maxLength": 96
+    },
+    "ap": {
+      "type": "string",
+      "pattern": "^(0|-?[1-9][0-9]*)$",
+      "maxLength": 96
+    },
+    "eulerPolynomial": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^(0|-?[1-9][0-9]*)$",
+        "maxLength": 96
+      },
+      "maxItems": 3,
+      "minItems": 3
+    },
+    "localMinimality": {
+      "const": "PROVED_AT_THIS_PRIME_BY_UNIT_DISCRIMINANT"
+    },
+    "kodaira": {
+      "const": "I0"
+    },
+    "conductorExponent": {
+      "const": "0"
+    },
+    "tamagawaNumber": {
+      "const": "1"
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 2000
+      },
+      "maxItems": 0
+    },
+    "dependencies": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "pattern": "^[a-f0-9]{64}$"
+      },
+      "maxItems": 0
+    },
+    "scope": {
+      "const": "THIS_MODEL_AND_THIS_PRIME_ONLY"
+    }
+  }
+}

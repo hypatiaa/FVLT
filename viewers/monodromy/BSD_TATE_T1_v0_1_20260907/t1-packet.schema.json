@@ -1,0 +1,1220 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:robin:bsd:tate-t1-packet:1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "parent",
+    "record",
+    "adapter",
+    "inventory",
+    "backend",
+    "trace"
+  ],
+  "properties": {
+    "schema": {
+      "const": "BSD_TATE_T1_PACKET_V1"
+    },
+    "parent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "bytes"
+      ],
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "bytes": {
+          "type": "string",
+          "maxLength": 4000000
+        }
+      }
+    },
+    "record": {
+      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3"
+    },
+    "adapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "parentContextId",
+        "sourceModelId",
+        "targetModelId",
+        "steps",
+        "composite",
+        "pullbackModelDifferentialFactor",
+        "targetSelectedMultiplier",
+        "pointTransports"
+      ],
+      "properties": {
+        "parentContextId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sourceModelId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "targetModelId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "u",
+              "r",
+              "s",
+              "t"
+            ],
+            "properties": {
+              "u": {
+                "type": "string",
+                "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                "maxLength": 194
+              },
+              "r": {
+                "type": "string",
+                "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                "maxLength": 194
+              },
+              "s": {
+                "type": "string",
+                "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                "maxLength": 194
+              },
+              "t": {
+                "type": "string",
+                "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                "maxLength": 194
+              }
+            }
+          },
+          "minItems": 0,
+          "maxItems": 3
+        },
+        "composite": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "u",
+            "r",
+            "s",
+            "t"
+          ],
+          "properties": {
+            "u": {
+              "type": "string",
+              "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+              "maxLength": 194
+            },
+            "r": {
+              "type": "string",
+              "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+              "maxLength": 194
+            },
+            "s": {
+              "type": "string",
+              "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+              "maxLength": 194
+            },
+            "t": {
+              "type": "string",
+              "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+              "maxLength": 194
+            }
+          }
+        },
+        "pullbackModelDifferentialFactor": {
+          "type": "string",
+          "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+          "maxLength": 194
+        },
+        "targetSelectedMultiplier": {
+          "type": "string",
+          "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+          "maxLength": 194
+        },
+        "pointTransports": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "sourcePointIndex",
+              "targetPointIndex",
+              "sourceHash",
+              "targetHash"
+            ],
+            "properties": {
+              "sourcePointIndex": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 199
+              },
+              "targetPointIndex": {
+                "type": "integer",
+                "minimum": 0,
+                "maximum": 199
+              },
+              "sourceHash": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              },
+              "targetHash": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          },
+          "minItems": 0,
+          "maxItems": 200
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope",
+        "modelId",
+        "absoluteDiscriminant",
+        "factors",
+        "remainingCofactor",
+        "complete",
+        "trialDivisionBound"
+      ],
+      "properties": {
+        "scope": {
+          "const": "MODEL_DISCRIMINANT_SUPPORT_NOT_CURVE_BAD_PRIMES"
+        },
+        "modelId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "absoluteDiscriminant": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "maxLength": 96
+        },
+        "factors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "p",
+              "exponent",
+              "primeProof"
+            ],
+            "properties": {
+              "p": {
+                "type": "string",
+                "pattern": "^(0|[1-9][0-9]*)$",
+                "maxLength": 96
+              },
+              "exponent": {
+                "type": "string",
+                "pattern": "^(0|[1-9][0-9]*)$",
+                "maxLength": 96
+              },
+              "primeProof": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "method",
+                  "p",
+                  "trials"
+                ],
+                "properties": {
+                  "method": {
+                    "const": "EXHAUSTIVE_TRIAL_DIVISION_TO_SQRT"
+                  },
+                  "p": {
+                    "type": "string",
+                    "pattern": "^(0|[1-9][0-9]*)$",
+                    "maxLength": 96
+                  },
+                  "trials": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "divisor",
+                        "remainder"
+                      ],
+                      "properties": {
+                        "divisor": {
+                          "type": "string",
+                          "pattern": "^(0|[1-9][0-9]*)$",
+                          "maxLength": 96
+                        },
+                        "remainder": {
+                          "type": "string",
+                          "pattern": "^(0|[1-9][0-9]*)$",
+                          "maxLength": 96
+                        }
+                      }
+                    },
+                    "minItems": 0,
+                    "maxItems": 31
+                  }
+                }
+              }
+            }
+          },
+          "minItems": 0,
+          "maxItems": 169
+        },
+        "remainingCofactor": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "maxLength": 96
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "trialDivisionBound": {
+          "const": "1009"
+        }
+      }
+    },
+    "backend": {
+      "anyOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "schema",
+            "status",
+            "producer",
+            "request",
+            "stdout",
+            "stdoutSha256",
+            "stderr",
+            "stderrSha256",
+            "claims"
+          ],
+          "properties": {
+            "schema": {
+              "const": "BSD_T1_PARI_REPORT_V1"
+            },
+            "status": {
+              "const": "SOURCE_REPORT"
+            },
+            "producer": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "name",
+                "version",
+                "adapterSha256",
+                "nodeVersion",
+                "nodeSha256",
+                "runtimeFiles"
+              ],
+              "properties": {
+                "name": {
+                  "const": "PARI_GP_WASM"
+                },
+                "version": {
+                  "type": "array",
+                  "prefixItems": [
+                    {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)$",
+                      "maxLength": 96
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)$",
+                      "maxLength": 96
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)$",
+                      "maxLength": 96
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)$",
+                      "maxLength": 96
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{10}$"
+                    }
+                  ],
+                  "items": false,
+                  "minItems": 5,
+                  "maxItems": 5
+                },
+                "adapterSha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "nodeVersion": {
+                  "type": "string",
+                  "maxLength": 200000
+                },
+                "nodeSha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "runtimeFiles": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "gp-sta.js",
+                    "gp-sta.wasm"
+                  ],
+                  "properties": {
+                    "gp-sta.js": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "url",
+                        "sha256"
+                      ],
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "maxLength": 200000
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "pattern": "^[a-f0-9]{64}$"
+                        }
+                      }
+                    },
+                    "gp-sta.wasm": {
+                      "type": "object",
+                      "additionalProperties": false,
+                      "required": [
+                        "url",
+                        "sha256"
+                      ],
+                      "properties": {
+                        "url": {
+                          "type": "string",
+                          "maxLength": 200000
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "pattern": "^[a-f0-9]{64}$"
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "request": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "ainvs",
+                "p",
+                "script",
+                "scriptSha256"
+              ],
+              "properties": {
+                "ainvs": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                    "maxLength": 194
+                  },
+                  "minItems": 5,
+                  "maxItems": 5
+                },
+                "p": {
+                  "type": "string",
+                  "pattern": "^(0|[1-9][0-9]*)$",
+                  "maxLength": 96
+                },
+                "script": {
+                  "type": "string",
+                  "maxLength": 200000
+                },
+                "scriptSha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                }
+              }
+            },
+            "stdout": {
+              "type": "string",
+              "maxLength": 200000
+            },
+            "stdoutSha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "stderr": {
+              "type": "string",
+              "maxLength": 200000
+            },
+            "stderrSha256": {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            },
+            "claims": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "VERSION",
+                "GLOBAL",
+                "URST",
+                "LOCAL",
+                "TARGET"
+              ],
+              "properties": {
+                "VERSION": {
+                  "type": "array",
+                  "prefixItems": [
+                    {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)$",
+                      "maxLength": 96
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)$",
+                      "maxLength": 96
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)$",
+                      "maxLength": 96
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)$",
+                      "maxLength": 96
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{10}$"
+                    }
+                  ],
+                  "items": false,
+                  "minItems": 5,
+                  "maxItems": 5
+                },
+                "GLOBAL": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                    "maxLength": 194
+                  },
+                  "minItems": 5,
+                  "maxItems": 5
+                },
+                "URST": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                    "maxLength": 194
+                  },
+                  "minItems": 4,
+                  "maxItems": 4
+                },
+                "LOCAL": {
+                  "type": "array",
+                  "prefixItems": [
+                    {
+                      "type": "string",
+                      "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                      "maxLength": 194
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                      "maxLength": 194
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                        "maxLength": 194
+                      },
+                      "minItems": 4,
+                      "maxItems": 4
+                    },
+                    {
+                      "type": "string",
+                      "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                      "maxLength": 194
+                    }
+                  ],
+                  "items": false,
+                  "minItems": 4,
+                  "maxItems": 4
+                },
+                "TARGET": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                    "maxLength": 194
+                  },
+                  "minItems": 5,
+                  "maxItems": 5
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "trace": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "schema",
+        "contextId",
+        "modelId",
+        "normalizationId",
+        "markingId",
+        "p",
+        "primeProof",
+        "ainvs",
+        "valuations",
+        "steps",
+        "terminal"
+      ],
+      "properties": {
+        "schema": {
+          "const": "BSD_TATE_T1_TRACE_V1"
+        },
+        "contextId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "modelId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "normalizationId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "markingId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "p": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "maxLength": 96
+        },
+        "primeProof": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "method",
+            "p",
+            "trials"
+          ],
+          "properties": {
+            "method": {
+              "const": "EXHAUSTIVE_TRIAL_DIVISION_TO_SQRT"
+            },
+            "p": {
+              "type": "string",
+              "pattern": "^(0|[1-9][0-9]*)$",
+              "maxLength": 96
+            },
+            "trials": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "divisor",
+                  "remainder"
+                ],
+                "properties": {
+                  "divisor": {
+                    "type": "string",
+                    "pattern": "^(0|[1-9][0-9]*)$",
+                    "maxLength": 96
+                  },
+                  "remainder": {
+                    "type": "string",
+                    "pattern": "^(0|[1-9][0-9]*)$",
+                    "maxLength": 96
+                  }
+                }
+              },
+              "minItems": 0,
+              "maxItems": 31
+            }
+          }
+        },
+        "ainvs": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+            "maxLength": 194
+          },
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "valuations": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "discriminant",
+            "c4",
+            "c6"
+          ],
+          "properties": {
+            "discriminant": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "kind"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "const": "INFINITY"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "kind",
+                    "exponent",
+                    "unit"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "const": "FINITE"
+                    },
+                    "exponent": {
+                      "type": "string",
+                      "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                      "maxLength": 194
+                    },
+                    "unit": {
+                      "type": "string",
+                      "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                      "maxLength": 194
+                    }
+                  }
+                }
+              ]
+            },
+            "c4": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "kind"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "const": "INFINITY"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "kind",
+                    "exponent",
+                    "unit"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "const": "FINITE"
+                    },
+                    "exponent": {
+                      "type": "string",
+                      "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                      "maxLength": 194
+                    },
+                    "unit": {
+                      "type": "string",
+                      "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                      "maxLength": 194
+                    }
+                  }
+                }
+              ]
+            },
+            "c6": {
+              "oneOf": [
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "kind"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "const": "INFINITY"
+                    }
+                  }
+                },
+                {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "kind",
+                    "exponent",
+                    "unit"
+                  ],
+                  "properties": {
+                    "kind": {
+                      "const": "FINITE"
+                    },
+                    "exponent": {
+                      "type": "string",
+                      "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                      "maxLength": 194
+                    },
+                    "unit": {
+                      "type": "string",
+                      "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                      "maxLength": 194
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        },
+        "steps": {
+          "type": "array",
+          "items": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "operation",
+                  "denominatorResidues"
+                ],
+                "properties": {
+                  "operation": {
+                    "const": "CHECK_P_INTEGRAL"
+                  },
+                  "denominatorResidues": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                      "maxLength": 194
+                    },
+                    "minItems": 5,
+                    "maxItems": 5
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "operation",
+                  "discriminant",
+                  "c4",
+                  "c6"
+                ],
+                "properties": {
+                  "operation": {
+                    "const": "VALUATIONS"
+                  },
+                  "discriminant": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "kind"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "const": "INFINITY"
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "kind",
+                          "exponent",
+                          "unit"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "const": "FINITE"
+                          },
+                          "exponent": {
+                            "type": "string",
+                            "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                            "maxLength": 194
+                          },
+                          "unit": {
+                            "type": "string",
+                            "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                            "maxLength": 194
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "c4": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "kind"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "const": "INFINITY"
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "kind",
+                          "exponent",
+                          "unit"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "const": "FINITE"
+                          },
+                          "exponent": {
+                            "type": "string",
+                            "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                            "maxLength": 194
+                          },
+                          "unit": {
+                            "type": "string",
+                            "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                            "maxLength": 194
+                          }
+                        }
+                      }
+                    ]
+                  },
+                  "c6": {
+                    "oneOf": [
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "kind"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "const": "INFINITY"
+                          }
+                        }
+                      },
+                      {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "kind",
+                          "exponent",
+                          "unit"
+                        ],
+                        "properties": {
+                          "kind": {
+                            "const": "FINITE"
+                          },
+                          "exponent": {
+                            "type": "string",
+                            "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                            "maxLength": 194
+                          },
+                          "unit": {
+                            "type": "string",
+                            "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                            "maxLength": 194
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "operation",
+                  "residue"
+                ],
+                "properties": {
+                  "operation": {
+                    "const": "UNIT_DISCRIMINANT"
+                  },
+                  "residue": {
+                    "type": "string",
+                    "pattern": "^(0|[1-9][0-9]*)$",
+                    "maxLength": 96
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "operation",
+                  "reducedAinvs",
+                  "affineCountsByX",
+                  "pointsIncludingInfinity",
+                  "ap"
+                ],
+                "properties": {
+                  "operation": {
+                    "const": "COUNT_GOOD_FIBRE"
+                  },
+                  "reducedAinvs": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                      "maxLength": 194
+                    },
+                    "minItems": 5,
+                    "maxItems": 5
+                  },
+                  "affineCountsByX": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)$",
+                      "maxLength": 96
+                    },
+                    "minItems": 2,
+                    "maxItems": 1009
+                  },
+                  "pointsIncludingInfinity": {
+                    "type": "string",
+                    "pattern": "^(0|[1-9][0-9]*)$",
+                    "maxLength": 96
+                  },
+                  "ap": {
+                    "type": "string",
+                    "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                    "maxLength": 194
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "operation",
+                  "residue"
+                ],
+                "properties": {
+                  "operation": {
+                    "const": "MULTIPLICATIVE_C4_UNIT"
+                  },
+                  "residue": {
+                    "type": "string",
+                    "pattern": "^(0|[1-9][0-9]*)$",
+                    "maxLength": 96
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "operation",
+                  "residue",
+                  "roots"
+                ],
+                "properties": {
+                  "operation": {
+                    "const": "SPLIT_NEGATIVE_C6"
+                  },
+                  "residue": {
+                    "type": "string",
+                    "pattern": "^(0|[1-9][0-9]*)$",
+                    "maxLength": 96
+                  },
+                  "roots": {
+                    "type": "array",
+                    "items": {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)$",
+                      "maxLength": 96
+                    },
+                    "minItems": 0,
+                    "maxItems": 2
+                  }
+                }
+              }
+            ]
+          },
+          "minItems": 2,
+          "maxItems": 4
+        },
+        "terminal": {
+          "oneOf": [
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "branch",
+                "status",
+                "result"
+              ],
+              "properties": {
+                "branch": {
+                  "enum": [
+                    "GOOD_UNIT_DISCRIMINANT",
+                    "MULTIPLICATIVE_P_GE_5"
+                  ]
+                },
+                "status": {
+                  "const": "REPLAYABLE"
+                },
+                "result": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "reduction",
+                    "kodaira",
+                    "split",
+                    "discriminantValuation",
+                    "conductorExponent",
+                    "wildConductorContribution",
+                    "tamagawaNumber",
+                    "ap",
+                    "eulerPolynomial",
+                    "localMinimality"
+                  ],
+                  "properties": {
+                    "reduction": {
+                      "enum": [
+                        "GOOD",
+                        "SPLIT_MULTIPLICATIVE",
+                        "NONSPLIT_MULTIPLICATIVE"
+                      ]
+                    },
+                    "kodaira": {
+                      "type": "string",
+                      "pattern": "^I(0|[1-9][0-9]*)$"
+                    },
+                    "split": {
+                      "anyOf": [
+                        {
+                          "type": "null"
+                        },
+                        {
+                          "type": "boolean"
+                        }
+                      ]
+                    },
+                    "discriminantValuation": {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)$",
+                      "maxLength": 96
+                    },
+                    "conductorExponent": {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)$",
+                      "maxLength": 96
+                    },
+                    "wildConductorContribution": {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)$",
+                      "maxLength": 96
+                    },
+                    "tamagawaNumber": {
+                      "type": "string",
+                      "pattern": "^(0|[1-9][0-9]*)$",
+                      "maxLength": 96
+                    },
+                    "ap": {
+                      "type": "string",
+                      "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                      "maxLength": 194
+                    },
+                    "eulerPolynomial": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+                        "maxLength": 194
+                      },
+                      "minItems": 2,
+                      "maxItems": 3
+                    },
+                    "localMinimality": {
+                      "enum": [
+                        "PROVED_BY_UNIT_DISCRIMINANT",
+                        "PROVED_BY_C4_UNIT"
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "branch",
+                "status",
+                "reason"
+              ],
+              "properties": {
+                "branch": {
+                  "const": "UNSUPPORTED"
+                },
+                "status": {
+                  "const": "UNAVAILABLE"
+                },
+                "reason": {
+                  "enum": [
+                    "WILD_OR_MULTIPLICATIVE_SMALL_CHARACTERISTIC_REQUIRES_T3",
+                    "ADDITIVE_BRANCH_REQUIRES_T2"
+                  ]
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,315 @@
+{
+  "status": "PASS",
+  "standing": "BUILDER_VERIFICATION_NOT_COLD_AUDIT",
+  "total": 76,
+  "fixtures": 44,
+  "certifiedFixtures": 42,
+  "unavailableControls": 2,
+  "pariComparisons": 42,
+  "checks": [
+    {
+      "name": "Fixture 37-nonminimal identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 37-nonminimal mixed-scale",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 37-nonminimal rational-signed",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 37-nonminimal scale49",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 37-general identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 37-general mixed-scale",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 37-general rational-signed",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 37-general scale49",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 11-split-I5 identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 11-split-I5 mixed-scale",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 11-split-I5 rational-signed",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 11-split-I5 scale49",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 32-CM identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 32-CM mixed-scale",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 32-CM rational-signed",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 32-CM scale49",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 27-CM identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 27-CM mixed-scale",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 27-CM rational-signed",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 27-CM scale49",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 14-general identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 14-general mixed-scale",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 14-general rational-signed",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture 14-general scale49",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture cubic17 identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture cubic17 mixed-scale",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture cubic17 rational-signed",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture cubic17 scale49",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture tame-star identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture tame-star mixed-scale",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture tame-star rational-signed",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture tame-star scale49",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture jzero7 identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture jzero7 mixed-scale",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture jzero7 rational-signed",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture jzero7 scale49",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture jzero343 identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture jzero343 mixed-scale",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture jzero343 rational-signed",
+      "status": "PASS"
+    },
+    {
+      "name": "Fixture jzero343 scale49",
+      "status": "PASS"
+    },
+    {
+      "name": "Preexisting signed ledger and nontrivial marking survive",
+      "status": "PASS"
+    },
+    {
+      "name": "Twist stays a separate exact curve context",
+      "status": "PASS"
+    },
+    {
+      "name": "unresolved-bad",
+      "status": "PASS"
+    },
+    {
+      "name": "unresolved-obscured-good",
+      "status": "PASS"
+    },
+    {
+      "name": "All fixtures meet public structure and certificate schemas",
+      "status": "PASS"
+    },
+    {
+      "name": "Global result invariant under order of local minimization",
+      "status": "PASS"
+    },
+    {
+      "name": "Integral lift cross term is necessary, not just recorded",
+      "status": "PASS"
+    },
+    {
+      "name": "Good reduction recovered from nonminimal model exclusions",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject global conductor",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject global Tamagawa product",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject minimal discriminant",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject omitted stage",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject omitted bad prime",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject inventory support",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject lift tuple sign",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject lift t",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject local transfer",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject borrowed local certificate",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject coherent local Tamagawa rewrite",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject selected normalization",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject signed normalization",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject absolute measure factor",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject real components",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject stale panel",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject verifier hash",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject unknown field",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject repaired parent hash",
+      "status": "PASS"
+    },
+    {
+      "name": "Incomplete inventory cannot become complete by editing every global field",
+      "status": "PASS"
+    },
+    {
+      "name": "Certificate and packet transplant rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Unavailable packet refuses a borrowed global certificate",
+      "status": "PASS"
+    },
+    {
+      "name": "Duplicate outer and embedded parent keys rejected",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact point membership does not depend on complete reduction",
+      "status": "PASS"
+    },
+    {
+      "name": "Domain caps and nonfinite scaling reject",
+      "status": "PASS"
+    },
+    {
+      "name": "24-prime work cap refuses global computation",
+      "status": "PASS"
+    },
+    {
+      "name": "Custom-input CLI works and rejects duplicate keys",
+      "status": "PASS"
+    },
+    {
+      "name": "Schema generation is byte reproducible",
+      "status": "PASS"
+    }
+  ]
+}

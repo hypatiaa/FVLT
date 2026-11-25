@@ -1,0 +1,2606 @@
+[
+  {
+    "name": "37-nonminimal identity",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "3cc4a6069fa23cc4997da403863f8512f8bd86d8ca914b5ea1c96a88a406b55b",
+    "certificateId": "20fe1962748696d2f96fbc7f7fffd04939126de2798b2047b7055fdcd721f87e",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([0,0,0,-16,16]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "3a39258157fb18bb3be25e5317caeaa4f911864c244402d9281216c68b017ab1",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 1, -1, 0]\nT4_MAP|[2, 0, 0, 4]\nT4_DATA|[37, 37, 1]\n",
+    "stdoutSha256": "5b4ce070c1563f79e7d0fec492d015ccef609387b8bdd828b2511d20d7988fad",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "1",
+        "-1",
+        "0"
+      ],
+      "MAP": [
+        "2",
+        "0",
+        "0",
+        "4"
+      ],
+      "DATA": [
+        "37",
+        "37",
+        "1"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "0",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "37-nonminimal mixed-scale",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "10cd7d9518f71f609f836504a24a4ba693731e0e4e8c96884c2fb1c3b8e2fbb8",
+    "certificateId": "29cb81497dfc8fd9a3e1cbb668ec45aabca64574ad54bff7963961f84ca12980",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-8,5,22,-12959765,11573280222]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "f88343298ad9cd02e799932c5d4dc9b466e1dfb124c11d719602dcfec78c3c11",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 1, -1, 0]\nT4_MAP|[60, -7, 4, 107961]\nT4_DATA|[37, 37, 1]\n",
+    "stdoutSha256": "e8cef84c0651c884552a9d613bb6c53985078e1713c6700794501f22820272aa",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "1",
+        "-1",
+        "0"
+      ],
+      "MAP": [
+        "60",
+        "-7",
+        "4",
+        "107961"
+      ],
+      "DATA": [
+        "37",
+        "37",
+        "1"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "37-nonminimal rational-signed",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "3ac90d4fdff60a1108e03d920897f3559e91a2500defcd894f909d15ccecab67",
+    "certificateId": "246a0511b4f0c9ffe60ca1af2210df036bcd002f8b7f622503eee726e86ced13",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-5184,-2239488,1289945088,1114512556032,-3743906242624487424]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "fa49493715d3f26a876815312dc43d74420f7b14bab8bdc5a025e424f38e8aba",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 1, -1, 0]\nT4_MAP|[1728, -1492992, 2592, -1934917632]\nT4_DATA|[37, 37, 1]\n",
+    "stdoutSha256": "d994094fcb8acf74c7ea58031a9855ff78540287915736a87fe04d2514614a8c",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "1",
+        "-1",
+        "0"
+      ],
+      "MAP": [
+        "1728",
+        "-1492992",
+        "2592",
+        "-1934917632"
+      ],
+      "DATA": [
+        "37",
+        "37",
+        "1"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "-1",
+      "t": "-1"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "37-nonminimal scale49",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "0a54d5fffbd9fc5df1ab0d7ebe0fccc9f408dbb796abbb5485a9b26bc542f91b",
+    "certificateId": "63f3ededfee09787d20a3b6624e9640d2b6a7b7f5e3a46294ad3899daaab0775",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([6,18,8,-92236597,220630464585]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "542a1d5bb1eb0b0a1a4e82c902bf68fe1226a1c8ecc7a552cadba0f9feb39782",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 1, -1, 0]\nT4_MAP|[98, -9, -3, 470619]\nT4_DATA|[37, 37, 1]\n",
+    "stdoutSha256": "c37fe60d62b5378dc976551556676c34a5927723a60ee9eec92c736f594d3d95",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "1",
+        "-1",
+        "0"
+      ],
+      "MAP": [
+        "98",
+        "-9",
+        "-3",
+        "470619"
+      ],
+      "DATA": [
+        "37",
+        "37",
+        "1"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "1",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "37-general identity",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "e7650d4f7f1f81c100d09e86123b4218c409441cf6c788e0da05bdc9d57ddd7b",
+    "certificateId": "87bc797bef0796716269ac59cba93322f85acfdc5480f6008f3c14affc9082f3",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([0,0,1,-1,0]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "cc473ce20fb8cfaadaa019a384da26795c4890ba2f2d76157b9dbaa3f2a9bd52",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 1, -1, 0]\nT4_MAP|[1, 0, 0, 0]\nT4_DATA|[37, 37, 1]\n",
+    "stdoutSha256": "0a59a69f2381631c40ead9fe30b6b073836b7b68e3ba1f607c2ff0d068363d24",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "1",
+        "-1",
+        "0"
+      ],
+      "MAP": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "DATA": [
+        "37",
+        "37",
+        "1"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "0",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "37-general mixed-scale",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "d6b5e65319fb9f6dd6124cccec5f0cd218b82259c659a51db937af4b13dcc7c6",
+    "certificateId": "890e121a02ccbc4ac64ea6b69c0bf61a8cdfefea536bd0f3bad64a5d29d05ce9",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-8,5,27022,-701765,-5966778]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "79b7191876ffd691d38b4a9d76cd712c6931bb5dc8e02078186110faf1ed4cc2",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 1, -1, 0]\nT4_MAP|[30, -7, 4, -39]\nT4_DATA|[37, 37, 1]\n",
+    "stdoutSha256": "05f01a0bc5759a62b31bb2762c2d486bfe9e0c3f0a1b159adc738c97d1e4acd4",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "1",
+        "-1",
+        "0"
+      ],
+      "MAP": [
+        "30",
+        "-7",
+        "4",
+        "-39"
+      ],
+      "DATA": [
+        "37",
+        "37",
+        "1"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "37-general rational-signed",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "7bfb1a21a78fa1349a31d9352ffc21f5664d38af4440454536164567fe98dfa9",
+    "certificateId": "b29d9cadbe5944adf92ee54e597e82e3a01d0945cce6d49dff3963f80456ffda",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-7776,-5038848,2176782336,39495538704384,28430288029929701376]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "c7429dbbe1100dedbeda6a8175f9f8b92a5fe8c4c6082838014001ad608b518e",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 1, -1, 0]\nT4_MAP|[1296, -3359232, 3888, -13060694016]\nT4_DATA|[37, 37, 1]\n",
+    "stdoutSha256": "776d622a9ba3420b859288569b7df31fb891bbb6c8f4d771aa398c404faa898a",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "1",
+        "-1",
+        "0"
+      ],
+      "MAP": [
+        "1296",
+        "-3359232",
+        "3888",
+        "-13060694016"
+      ],
+      "DATA": [
+        "37",
+        "37",
+        "1"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "2",
+      "s": "-3",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "37-general scale49",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "a1956ddde6d456f2d9ea6c9b9ec29501be9964b08da6acb160dffeabf6b61136",
+    "certificateId": "5e06b9e669586866d57396d7cd98b818fe8b8ab769e7f77b8380c45c1f6b2b3c",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([6,18,117657,-6117529,-52353092]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "643539ebb377a525642ae20d9c88e6afd8ff1cb059d59052be0f2d4f7ef91a1a",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 1, -1, 0]\nT4_MAP|[49, -9, -3, 23]\nT4_DATA|[37, 37, 1]\n",
+    "stdoutSha256": "247060198a541c95c95eb7817adde38f2d537ba3976f463ec5c487f0fc84dbd2",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "1",
+        "-1",
+        "0"
+      ],
+      "MAP": [
+        "49",
+        "-9",
+        "-3",
+        "23"
+      ],
+      "DATA": [
+        "37",
+        "37",
+        "1"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "1",
+      "t": "1"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "11-split-I5 identity",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "2fff4080913ec5fb4942c03d778b6a9a847e402c2df85f4f6364540330557d87",
+    "certificateId": "a4c09e249005fe12c9fc9b39a6f376b2d8b45cc4263d3df013602d3e36a539bb",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([0,-1,1,-10,-20]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "d81a7b8ff1682335e73b72259128cb782577887d24d4fe3ca0fdda64299be614",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, -1, 1, -10, -20]\nT4_MAP|[1, 0, 0, 0]\nT4_DATA|[-161051, 11, 5]\n",
+    "stdoutSha256": "0295df1b3abeb5b152b432e8fc1237d7396ac5040d4024dd96a3ef0364836297",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "-1",
+        "1",
+        "-10",
+        "-20"
+      ],
+      "MAP": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "DATA": [
+        "-161051",
+        "11",
+        "5"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "0",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "11-split-I5 mixed-scale",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "bbbeb666ba4d30682a10d344683d628a33a2957326470979878ef178de5f493c",
+    "certificateId": "7abce1d6e563daa6d02630a3c8e31faec48f708ffde04a2cb8dd560ba0b372a4",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-8,-895,27022,-8004365,-14637040878]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "7c9e921c2c4df8aed4c86e666268338912510d9ddcccbc470aca469f1c9b711c",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, -1, 1, -10, -20]\nT4_MAP|[30, -7, 4, -39]\nT4_DATA|[-161051, 11, 5]\n",
+    "stdoutSha256": "5aab56773b22c73f4de3d55b0e038e4207dbf6de7c9873adf802612504eb06dd",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "-1",
+        "1",
+        "-10",
+        "-20"
+      ],
+      "MAP": [
+        "30",
+        "-7",
+        "4",
+        "-39"
+      ],
+      "DATA": [
+        "-161051",
+        "11",
+        "5"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "11-split-I5 rational-signed",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "9539741052a79ca0d35e4b8d43014e30b2b43b0e041a304c14dfdc4cf201c482",
+    "certificateId": "5374c53a66008a7e6a3d4255b97d6dd9775ce5f5c1184bc9f5c638d93d44c0f9",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-1296,-186624,10077696,2176782336,-3656158440062976]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "98ad986467342de643e36493d66f2eb3143d286b74720134586abe245ba53dc5",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, -1, 1, -10, -20]\nT4_MAP|[216, -93312, 648, -60466176]\nT4_DATA|[-161051, 11, 5]\n",
+    "stdoutSha256": "2ed43167058e670bcb240e2b8f566eda0ce6c11e4395b3a9901571641965c0c8",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "-1",
+        "1",
+        "-10",
+        "-20"
+      ],
+      "MAP": [
+        "216",
+        "-93312",
+        "648",
+        "-60466176"
+      ],
+      "DATA": [
+        "-161051",
+        "11",
+        "5"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "2",
+      "s": "-3",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "11-split-I5 scale49",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "5695c8a2590b68b403511d052521aa7163e96a978b3dca14944dd0b5d5671861",
+    "certificateId": "4e9327bf34b41ab70a28011c16295abcc9a545e3ff76df5709697e84471757d2",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([6,-2383,117657,-58043956,-277345240474]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "7531f6449ed4ff91414110b41105ed7e331dc288fa9eedf6119fb2a5cbcdec59",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, -1, 1, -10, -20]\nT4_MAP|[49, -9, -3, 23]\nT4_DATA|[-161051, 11, 5]\n",
+    "stdoutSha256": "740d64d1673357a9107efe387a13a7936ccede827dea125b11d11755262f7a9b",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "-1",
+        "1",
+        "-10",
+        "-20"
+      ],
+      "MAP": [
+        "49",
+        "-9",
+        "-3",
+        "23"
+      ],
+      "DATA": [
+        "-161051",
+        "11",
+        "5"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "1",
+      "t": "1"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "32-CM identity",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "d10b9f9acafa670845f7892581f55f4d73af69362728606caefb1eec51e6ed89",
+    "certificateId": "9c49651286f69c720d62cdac2d36a92770b93aea9c3c8d322947337a4d5c4d39",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([0,0,0,-1,0]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "0802937b9ff4c6c6a0d7dfe8f7cdece2592bf02eb1b77ae853c5592f9af193b4",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, -1, 0]\nT4_MAP|[1, 0, 0, 0]\nT4_DATA|[64, 32, 2]\n",
+    "stdoutSha256": "81cb7c12ea1d4e0eb48950fdf17e5e67e0562f72a1c5b817152dafb085f76b50",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "-1",
+        "0"
+      ],
+      "MAP": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "DATA": [
+        "64",
+        "32",
+        "2"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "0",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "32-CM mixed-scale",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "a1bf47ff4e6ce9e0852b0cd50923448b51456e71bf43822607751eff0a8f6439",
+    "certificateId": "2b73d56a07daa6521a88a24126f9831108b6d21d8e00986ee4f9a001690a3dcd",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-8,5,22,-809765,-5669778]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "4371c12f17c920767e9f27ec5669eeecd0a89506bd8eca6606f8423ad6833623",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, -1, 0]\nT4_MAP|[30, -7, 4, -39]\nT4_DATA|[64, 32, 2]\n",
+    "stdoutSha256": "4f064d3d83a9fa1e13914770096d244ba1ccac643b45a2c5663753603fa1e986",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "-1",
+        "0"
+      ],
+      "MAP": [
+        "30",
+        "-7",
+        "4",
+        "-39"
+      ],
+      "DATA": [
+        "64",
+        "32",
+        "2"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "32-CM rational-signed",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "b2e92e88406f750da4522335f3a0b314d7f9093968226fd1b255f226606a3efe",
+    "certificateId": "00f2b244007654ae0e37cc85630164f716dc16cc6f6e5c24824549690fa22982",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-46656,-181398528,940369969152,62154693481070592,1105369598603666789498880]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "75066715d98ac4c803e2ff71c9defeba019de3e26a3d333a3ac8fcdba2946f5d",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, -1, 0]\nT4_MAP|[7776, -120932352, 23328, -3291294892032]\nT4_DATA|[64, 32, 2]\n",
+    "stdoutSha256": "0793de26e8412746ce3fba9f3987a68ac2efd0ac6a9c48e6962eec859f153488",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "-1",
+        "0"
+      ],
+      "MAP": [
+        "7776",
+        "-120932352",
+        "23328",
+        "-3291294892032"
+      ],
+      "DATA": [
+        "64",
+        "32",
+        "2"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "2",
+      "s": "-3",
+      "t": "1"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "32-CM scale49",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "27fd301d7bc5480e0672e4d835a89b9a08c0629c56ff9666a0fffc6047922858",
+    "certificateId": "ce9e9bfe0b00ad5ba8522adf0128eedbbb074add23027577afd1210a4a311508",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([6,18,8,-5764582,-51882496]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "f30453e6770b9d70dc6ac85df4c0505bcb1a1e74dc7fbb454478147ec76b7a01",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, -1, 0]\nT4_MAP|[49, -9, -3, 23]\nT4_DATA|[64, 32, 2]\n",
+    "stdoutSha256": "92d415f9ecd1db5a6489bafb2f3fd30f6928a55c696bff5b72f02d322a5299f1",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "-1",
+        "0"
+      ],
+      "MAP": [
+        "49",
+        "-9",
+        "-3",
+        "23"
+      ],
+      "DATA": [
+        "64",
+        "32",
+        "2"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "1",
+      "t": "1"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "27-CM identity",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "dc6eb9117b76e2c26980d9a99dc3d1209caf5bb41725c25cb68d0f4849726f8b",
+    "certificateId": "630c7b01ebf48d9970ad443d83e5d8cf8f9ccd148ec9e5f86cb39a35ba54555c",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([0,0,1,0,-7]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "cce195d546f439fd0e5b59422c551cd5e80be779ba95d4cf0b7974b02166d9ca",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 1, 0, -7]\nT4_MAP|[1, 0, 0, 0]\nT4_DATA|[-19683, 27, 3]\n",
+    "stdoutSha256": "30b9200f1266865c72df9a8ebb0104c715ead0a51a697696a4a64b49bcb5f4e6",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "1",
+        "0",
+        "-7"
+      ],
+      "MAP": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "DATA": [
+        "-19683",
+        "27",
+        "3"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "0",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "27-CM mixed-scale",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "5539ff01013c633bcc567d597da1631e6861d2c11ab209293b03a2875ade6de6",
+    "certificateId": "553078e23a7ae5251d3ef5edad53a98662b9af27cf46015b127a40ae42b1dcc8",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-8,5,27022,108235,-5103296778]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "639f6cde3ae585890b0af57e7ae83365c1650ff47cebe39e56553af3e7651149",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 1, 0, -7]\nT4_MAP|[30, -7, 4, -39]\nT4_DATA|[-19683, 27, 3]\n",
+    "stdoutSha256": "570ebf729a045e4253efdee476e54b72bab22f7c5111dc369ca2116a3d9f9a94",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "1",
+        "0",
+        "-7"
+      ],
+      "MAP": [
+        "30",
+        "-7",
+        "4",
+        "-39"
+      ],
+      "DATA": [
+        "-19683",
+        "27",
+        "3"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "27-CM rational-signed",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "30abb0e9bc5161beff141c984b1ab98d9fc738de45cc2aff66a8fadd621298cd",
+    "certificateId": "b98d13a6e4a6d2c7fa25e3bbd11141e35a8cf78cf77e221f26547bab802e4861",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-46656,-181398528,470184984576,54842376600944640,221073919720733357899776]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "69e96aff0d7d70efab2f1d49253fa83e9dfcb6253446ff874dd0c5058264ad20",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 1, 0, -7]\nT4_MAP|[7776, -120932352, 23328, -2821109907456]\nT4_DATA|[-19683, 27, 3]\n",
+    "stdoutSha256": "6c02a27ab07e594bcf67025be0ef2e594bdf51a19f50ecce52ed777518deb546",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "1",
+        "0",
+        "-7"
+      ],
+      "MAP": [
+        "7776",
+        "-120932352",
+        "23328",
+        "-2821109907456"
+      ],
+      "DATA": [
+        "-19683",
+        "27",
+        "3"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "2",
+      "s": "-3",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "27-CM scale49",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "376b83fd04fff704221d824a9adc7f5159d37b746e64bab22d0c9f486163284f",
+    "certificateId": "064319c1c4c773db9e7d916389865a1d22dab0c3ad43467f0ede103cdb518dba",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([6,18,117657,-352728,-96889480290]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "a3e6e165eec91de1a6354fde077ad54cba90f42240eca68bc15047a31879b743",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 1, 0, -7]\nT4_MAP|[49, -9, -3, 23]\nT4_DATA|[-19683, 27, 3]\n",
+    "stdoutSha256": "25393ce68b3639c10c136ae93e601381028b714e9e7407249f8fe1de555f5ae0",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "1",
+        "0",
+        "-7"
+      ],
+      "MAP": [
+        "49",
+        "-9",
+        "-3",
+        "23"
+      ],
+      "DATA": [
+        "-19683",
+        "27",
+        "3"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "1",
+      "t": "1"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "14-general identity",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "774dcebb6c19c5689bab207f3b83c100ba99c231f54c638e19180275f5bd067e",
+    "certificateId": "512b3cbc9193a0c411462a370a0bd3c2e79a1edfff8a99804b4c72f0d002b8a7",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([1,0,1,4,-6]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "4cb8df41cff13c3c209250838e223da224a01838bd67b18d4f6eb588f43e27d5",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[1, 0, 1, 4, -6]\nT4_MAP|[1, 0, 0, 0]\nT4_DATA|[-21952, 14, 6]\n",
+    "stdoutSha256": "4b19aece5c954de7910c96db4b23f93a3130028777e12f6e8ded061ebbf3806f",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "1",
+        "0",
+        "1",
+        "4",
+        "-6"
+      ],
+      "MAP": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "DATA": [
+        "-21952",
+        "14",
+        "6"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "0",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "14-general mixed-scale",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "c8371b33da2076149bb217510059ebed11428a3e651484777179f28c5455a97b",
+    "certificateId": "858995b0d837ca7365d1ca89644e6e33292bb600521c677a11b48af673edef9a",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([22,125,27232,3348745,-4351619088]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "71f4ec8d6f5b17687455300067963fdbffe965f8aa740ea64b78cd409def63e6",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[1, 0, 1, 4, -6]\nT4_MAP|[30, -7, 4, -39]\nT4_DATA|[-21952, 14, 6]\n",
+    "stdoutSha256": "ba80cba34d96d5d5b995cc8ef030b305bb682f4e6c272709888c1f4a9fd241e1",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "1",
+        "0",
+        "1",
+        "4",
+        "-6"
+      ],
+      "MAP": [
+        "30",
+        "-7",
+        "4",
+        "-39"
+      ],
+      "DATA": [
+        "-21952",
+        "14",
+        "6"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "14-general rational-signed",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "bdf3f44dfcffdafc0b687f8706284679425971e2de81526563e720c53705edc1",
+    "certificateId": "c5b00d1ec0831c47459fa89f59fe4060e247b16aa0f28d8bcde34a5fbabe6e61",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-4536,-2519424,-272097792,2468471169024,888446500935303168]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "f41ca49f4444e4d17400828ec7f1542f14ef255a135e6cb4c66bb5cb3b5598cf",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[1, 0, 1, 4, -6]\nT4_MAP|[648, -839808, 2592, -1632586752]\nT4_DATA|[-21952, 14, 6]\n",
+    "stdoutSha256": "71ddb806d3c374366a6abc1857d5e67e437f2296fdde8babeb556215736af50c",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "1",
+        "0",
+        "1",
+        "4",
+        "-6"
+      ],
+      "MAP": [
+        "648",
+        "-839808",
+        "2592",
+        "-1632586752"
+      ],
+      "DATA": [
+        "-21952",
+        "14",
+        "6"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "2",
+      "s": "-4",
+      "t": "-2"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "14-general scale49",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "b74d60bcbb84d8d6eecb6652b925e2b2e89f2e141725e25b61b33dc84ad75979",
+    "certificateId": "b8353c7eb890b209eb99d0a99f2fc0936404282967dfb524d92eca5b6f211a77",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([55,-129,118098,22704957,-82840662017]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "985a5be8ceac3fe1efa60a3f4959e656f71c86d8eb44339f3824ef9469cae273",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[1, 0, 1, 4, -6]\nT4_MAP|[49, -9, -3, 23]\nT4_DATA|[-21952, 14, 6]\n",
+    "stdoutSha256": "7db33cfd11ce99fd23bcdd594e601ec87f22e765b623b2aa0bc5ecbb683cefc1",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "1",
+        "0",
+        "1",
+        "4",
+        "-6"
+      ],
+      "MAP": [
+        "49",
+        "-9",
+        "-3",
+        "23"
+      ],
+      "DATA": [
+        "-21952",
+        "14",
+        "6"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "1",
+      "t": "1"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "cubic17 identity",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "a5ec7839dce0fa950128473dcb21bb70beb9e3036b51ee1a7c744ce2b0cbfdd2",
+    "certificateId": "c9e60cfe64face6101c5e8809291f6c987a323a7764a363eb6e4cc88fd949cd9",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([0,0,0,0,17]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "e10e488716b2ae1fe341561e076c656b3175170f10fd589acfed922ced1b191e",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, 0, 17]\nT4_MAP|[1, 0, 0, 0]\nT4_DATA|[-124848, 10404, 6]\n",
+    "stdoutSha256": "b2fb97d6b2f221135bee133ecfddb3fbff916d911e0e0b6405f0010bb2866fd8",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "17"
+      ],
+      "MAP": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "DATA": [
+        "-124848",
+        "10404",
+        "6"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "0",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "cubic17 mixed-scale",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "07f0f18f8e60b79f47278b5be04c4cc22080960657b5251c62ab24ed942ea460",
+    "certificateId": "785e1ef544f7e5779d77f3b10793a76cb284af36a32e05a1f6877ed106549afc",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-8,5,22,235,12393000222]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "b52df28935951a22a0a1d7fc0ff885a148eae468fbff2a2891054d26d2f95cfd",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, 0, 17]\nT4_MAP|[30, -7, 4, -39]\nT4_DATA|[-124848, 10404, 6]\n",
+    "stdoutSha256": "b6c3569ff1870fc40d9020e57a04055f3d63fdcec5c3e84583bae7c19668dd0c",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "17"
+      ],
+      "MAP": [
+        "30",
+        "-7",
+        "4",
+        "-39"
+      ],
+      "DATA": [
+        "-124848",
+        "10404",
+        "6"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "cubic17 rational-signed",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "195450aec7d95fc2d5e84470c4aab7775d531c2e0e6043767cb2a3f98401e51b",
+    "certificateId": "50f28c77a3c9d414274c09f09f5ddc546dfe262255c074a8168ed4f9b3089409",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-1944,-314928,68024448,198359290368,27763953154228224]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "234c6c2ea3058f122962becbc08ddaa51e2fc8964fe02f175dbcaed86225afc3",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, 0, 17]\nT4_MAP|[324, -209952, 972, -238085568]\nT4_DATA|[-124848, 10404, 6]\n",
+    "stdoutSha256": "245efeaf132879d92507f9283554eef255c08111f02a395059a0c252e487663c",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "17"
+      ],
+      "MAP": [
+        "324",
+        "-209952",
+        "972",
+        "-238085568"
+      ],
+      "DATA": [
+        "-124848",
+        "10404",
+        "6"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "2",
+      "s": "-3",
+      "t": "1"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "cubic17 scale49",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "2ea6d04200fd178e52f401b5809de16a74aa98f4dc726cc653adbc354c58db07",
+    "certificateId": "1c789790562878123b4bad60155713d51e2e5374618b2b016b349d3dc5f1156f",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([6,18,8,219,235301883130]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "20763ed77620f89af67fdbf86e418441b834912c36a44dbc54a3929e685504d0",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, 0, 17]\nT4_MAP|[49, -9, -3, 23]\nT4_DATA|[-124848, 10404, 6]\n",
+    "stdoutSha256": "bff7894959300c37545385590c3ab1d8800d1fef9a2c85583e1e0269e1b5eeb9",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "17"
+      ],
+      "MAP": [
+        "49",
+        "-9",
+        "-3",
+        "23"
+      ],
+      "DATA": [
+        "-124848",
+        "10404",
+        "6"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "1",
+      "t": "1"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "tame-star identity",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "54ad21b718972331adc3bdda7ae3d3da6db2deb46bd29633765450d3a421b7bf",
+    "certificateId": "43fde054cff833aedc95aef8cd5c9e7ae700183465a1bf3da609b2a28b2cb1c5",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([0,0,0,-75,875]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "e8ac71d001c7ad0c6ba1cb201fac7af30cb98728f5e0aa1ab175ff1d168d714b",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, -75, 875]\nT4_MAP|[1, 0, 0, 0]\nT4_DATA|[-303750000, 5400, 8]\n",
+    "stdoutSha256": "856286d1973e7371af255ea19cdcdb56dade4aff98b7cb05fdd6649e9a3bfa14",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "-75",
+        "875"
+      ],
+      "MAP": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "DATA": [
+        "-303750000",
+        "5400",
+        "8"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "0",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "tame-star mixed-scale",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "1d4939f376fb736f5607f6b26f9dba20d5c2c3edc79238ae0c3b260bcf8a075c",
+    "certificateId": "e14f6da47bb02e44a2339898805d490065c96bd813bde355ace90f9c7a62eb1d",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-8,5,22,-60749765,637449750222]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "4508653cd2ea1eef97d0cfcbb20606f50b7b2d5b1f258b436a7c2cda7a0dced2",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, -75, 875]\nT4_MAP|[30, -7, 4, -39]\nT4_DATA|[-303750000, 5400, 8]\n",
+    "stdoutSha256": "63e71ca0e26d3848f424322aafb120511c1a8594ee420f170ad55311a10cac0e",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "-75",
+        "875"
+      ],
+      "MAP": [
+        "30",
+        "-7",
+        "4",
+        "-39"
+      ],
+      "DATA": [
+        "-303750000",
+        "5400",
+        "8"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "tame-star rational-signed",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "12a67f869f89e85968c35d6190c9368087954cc97b21b06a75fc7ad3959e1d21",
+    "certificateId": "c8e39dadc04e0b4261b4a8f76a7a24003801e6df212a32ca57f2258c2b953310",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-3888,-1259712,544195584,-10050204045312,54195236557053493248]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "d8bfc696ed03883eb8dbfb59e8ff51508913409312306d19cdf4139cd47dbdeb",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, -75, 875]\nT4_MAP|[648, -839808, 1944, -1904684544]\nT4_DATA|[-303750000, 5400, 8]\n",
+    "stdoutSha256": "e6b4f449e772eb52d7cd948af17c2561967fe6ff46c834d1117462e2ebbf1638",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "-75",
+        "875"
+      ],
+      "MAP": [
+        "648",
+        "-839808",
+        "1944",
+        "-1904684544"
+      ],
+      "DATA": [
+        "-303750000",
+        "5400",
+        "8"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "2",
+      "s": "-3",
+      "t": "1"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "tame-star scale49",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "2484df8861517532dde52c6df667d6b15386bbf5e4ebee8c98ae39e569028c57",
+    "certificateId": "6da1ca321c86be44f2c221e088c57e4fe1c922237c17f3f7a11d85f813c13c26",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([6,18,8,-432359856,12107235060913]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "3dbd7d4849d23e1976b12e7785e8d718c5e3c3ce1037ddc2536a88870b3bfbd9",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, -75, 875]\nT4_MAP|[49, -9, -3, 23]\nT4_DATA|[-303750000, 5400, 8]\n",
+    "stdoutSha256": "fac6fdb57be3e9b6a31b9ba65a9eb5115f098b94b52d756a0331f0449f05d16b",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "-75",
+        "875"
+      ],
+      "MAP": [
+        "49",
+        "-9",
+        "-3",
+        "23"
+      ],
+      "DATA": [
+        "-303750000",
+        "5400",
+        "8"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "1",
+      "t": "1"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "jzero7 identity",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "57e191ad2e2ca4047947eb2605fe0b8355c217322874070f34ba462cf229004b",
+    "certificateId": "310a49d169f52b440f1e75fd3ff1135bb3cf5c12e72dfb0d1fddceb755a9ccf2",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([0,0,0,0,7]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "75c79edf44278d58102404e6e0ca42c7c9d9c63272d58ade68cdb36d72900d7d",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, 0, 7]\nT4_MAP|[1, 0, 0, 0]\nT4_DATA|[-21168, 21168, 1]\n",
+    "stdoutSha256": "fb98d73b055e18b1a8441f459ff2c78b2d4f2e4a2d74d0036a1f43925fdbfc24",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "7"
+      ],
+      "MAP": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "DATA": [
+        "-21168",
+        "21168",
+        "1"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "0",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "jzero7 mixed-scale",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "b0851e88fecad7cfb57b16afe4435b61eb0163140aa11d9a1948904bed8a8143",
+    "certificateId": "9de4621f2ca891835a9c0fd0a6e640f61dd4bece0b86faeec428cc997df7dacc",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-8,5,22,235,5103000222]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "e0327027ec9d9e4b599ceade5a87d93abb79eebcfd6de59812cd7e79f536e1c8",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, 0, 7]\nT4_MAP|[30, -7, 4, -39]\nT4_DATA|[-21168, 21168, 1]\n",
+    "stdoutSha256": "fc59193225c87c686faf1f72facdd12f43787b8cff0fee53e79dd666bc833ce5",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "7"
+      ],
+      "MAP": [
+        "30",
+        "-7",
+        "4",
+        "-39"
+      ],
+      "DATA": [
+        "-21168",
+        "21168",
+        "1"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "jzero7 rational-signed",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "50e62d637e32c0c98a7d81fb2ff8ad55e36b6538bcdae3413a3c685a1c018006",
+    "certificateId": "fa2addf34cff23d4d0f5f2b74ed2750068bfb9cfc71ed8e375636933a47d29d6",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-23328,-45349632,117546246144,4113178245070848,48359919938910422040576]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "2bdbe999c966ebbfc0206d519842ff5946ca7b7fbfcb63d2748636470d7d04b5",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, 0, 7]\nT4_MAP|[3888, -30233088, 11664, -411411861504]\nT4_DATA|[-21168, 21168, 1]\n",
+    "stdoutSha256": "f50dfe7cebb11f63ed3d6d4efc8dfaa454e482db468a09d429273c6e37115c28",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "7"
+      ],
+      "MAP": [
+        "3888",
+        "-30233088",
+        "11664",
+        "-411411861504"
+      ],
+      "DATA": [
+        "-21168",
+        "21168",
+        "1"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "2",
+      "s": "-3",
+      "t": "1"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "jzero7 scale49",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "b463f663946f2ebb3398816799b79c613ee61baf16488ffb35066d65eb18a0ca",
+    "certificateId": "bda581d9756c05820e7f8ec889ff3642d7b7c432bce37518c9e72baba2e7781f",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([6,18,8,219,96889011120]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "f6bd86cdd36b9ec42bf8bea152ea34f9d3940f6d1976a6dea0dc3a0fcd896232",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, 0, 7]\nT4_MAP|[49, -9, -3, 23]\nT4_DATA|[-21168, 21168, 1]\n",
+    "stdoutSha256": "516ae74b684aebbe1a30d613bd9e2ac5b6a5dd0eebe8201488a7696e2d7b3866",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "7"
+      ],
+      "MAP": [
+        "49",
+        "-9",
+        "-3",
+        "23"
+      ],
+      "DATA": [
+        "-21168",
+        "21168",
+        "1"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "1",
+      "t": "1"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "jzero343 identity",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "5b9a19f5d8253bc7e0cb0a0a954c17a6300680df8a184c40d2f115ec50658a7d",
+    "certificateId": "52c7464aa2ae5a3a2dd3794d11bad79518f2371372e6eb29b2e4253b0fd3522b",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([0,0,0,0,343]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "4847ab2be55b6a5ddb6eb77938ec46a6ba51e6741927eee35c0d1120dbe052fd",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, 0, 343]\nT4_MAP|[1, 0, 0, 0]\nT4_DATA|[-50824368, 7056, 8]\n",
+    "stdoutSha256": "c4bfc7c610454a442e2a9b01a9bc02f37c952eaafe220e4c250fae21205e5a23",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "343"
+      ],
+      "MAP": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "DATA": [
+        "-50824368",
+        "7056",
+        "8"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "0",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "jzero343 mixed-scale",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "a2c83d69b7956b2cd8882e3d7d50f7b9f6fff1e6e67cd743b571b936fe5fa504",
+    "certificateId": "546f5229cbe536ce1515e0f3d985d07e58b37121f9378977e37ff783709422b4",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-8,5,22,235,250047000222]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "60cd3471f870f4381676140267c54acb32d492b3a9b186e5635571f87e4ae689",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, 0, 343]\nT4_MAP|[30, -7, 4, -39]\nT4_DATA|[-50824368, 7056, 8]\n",
+    "stdoutSha256": "406b5a1b20f0f897f52449682f4479113bdf22cda5a60fe3ef51580032ae0f7a",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "343"
+      ],
+      "MAP": [
+        "30",
+        "-7",
+        "4",
+        "-39"
+      ],
+      "DATA": [
+        "-50824368",
+        "7056",
+        "8"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "jzero343 rational-signed",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "342507c2e23860ddb6faf5f88b92b585c7d7dbfbc1ecafe4583e56ec488c4764",
+    "certificateId": "bd13663d90b9c51e358a4719a7140620fc6805528f2c6e9d1162454ab35cd4fb",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-23328,-45349632,117546246144,4113178245070848,1208997998472760551014400]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "13cb708fb4f2b344cd5da9af8bd2415917317c91c8b627ee2e834e28cc41859c",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, 0, 343]\nT4_MAP|[3888, -30233088, 11664, -411411861504]\nT4_DATA|[-50824368, 7056, 8]\n",
+    "stdoutSha256": "d199cd9529ccc6f73612900c7e36cdaabd4a79a3f5bbfc4929694769b3b2faf4",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "343"
+      ],
+      "MAP": [
+        "3888",
+        "-30233088",
+        "11664",
+        "-411411861504"
+      ],
+      "DATA": [
+        "-50824368",
+        "7056",
+        "8"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "2",
+      "s": "-3",
+      "t": "1"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "jzero343 scale49",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "2e6f05dc54478e23f5c4e7f6ed7bc69efcfa9144e0c20fcc235d385aa7e703a7",
+    "certificateId": "35895ad3eb31c3ab0e001f8039f707ea3a86b8fa090185760a0eda73bb7a49a3",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([6,18,8,219,4747561510656]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "51c0b0c456c14e85f5daa880e601079443702a952569a61f2f69c131189270a0",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, 0, 343]\nT4_MAP|[49, -9, -3, 23]\nT4_DATA|[-50824368, 7056, 8]\n",
+    "stdoutSha256": "67cf4e9334c29304db0c9f58e2f4d51e465f03dceacf3b01063be0dc13254adc",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "0",
+        "343"
+      ],
+      "MAP": [
+        "49",
+        "-9",
+        "-3",
+        "23"
+      ],
+      "DATA": [
+        "-50824368",
+        "7056",
+        "8"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "1",
+      "t": "1"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "signed-ledger-marking",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "3ae48b72b63069717986961eaed9fe6335b045818ba16ec95c0ef97fb409898a",
+    "certificateId": "e2474befb425048807302b5573ba017f59ac4aed722b36f46eb0d20855baa3da",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([-2,2,-218,-1511,-1512]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "f70c1b8b5576065a0ce3a79f1f76d60e6c3f5df62c0da65bfeebf2e7f6220379",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 1, -1, 0]\nT4_MAP|[6, -1, 1, 216]\nT4_DATA|[37, 37, 1]\n",
+    "stdoutSha256": "8558144e621095e4593c1c75ca65b4e4a78915046267e695bfb3826e6c863bde",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "1",
+        "-1",
+        "0"
+      ],
+      "MAP": [
+        "6",
+        "-1",
+        "1",
+        "216"
+      ],
+      "DATA": [
+        "37",
+        "37",
+        "1"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "1",
+      "s": "0",
+      "t": "-1"
+    },
+    "certificateUsesComparison": false
+  },
+  {
+    "name": "twist-lineage",
+    "schema": "BSD_T4_PARI_COMPARISON_V1",
+    "status": "AGREES",
+    "standing": "UNAUTHENTICATED_COMPARISON_NOT_PROOF",
+    "packetHash": "c4f724d26c7ea466929508387bd7f60cd89e4c1845535bc3a8a793b41d32aae3",
+    "certificateId": "638efb4e46c2a4e69f4204cbafc31d4b139a1f9d39946762936f1a1b3d31a290",
+    "adapterSha256": "d7daf2eb2b9e7c0c83e73e68e651331810c6e00b651e1eb44c95d7f7fee6c3e2",
+    "runtime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t4-audit-HVMO9C\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "script": "E=ellinit([0,0,0,-25,0]);G=ellminimalmodel(E,&V);L=ellglobalred(G);print(\"T4_VERSION|\",version());print(\"T4_MODEL|\",vector(5,i,G[i]));print(\"T4_MAP|\",V);print(\"T4_DATA|\",[G.disc,L[1],L[3]]);quit\n",
+    "scriptSha256": "ccd70b4057c6af328bcd7cf1c392e06136c20560f9060ee4e287e790e2cb1af1",
+    "stdout": "? T4_VERSION|[2, 17, 4, 29757, \"f24e5d7cc5\"]\nT4_MODEL|[0, 0, 0, -25, 0]\nT4_MAP|[1, 0, 0, 0]\nT4_DATA|[1000000, 800, 8]\n",
+    "stdoutSha256": "b298307a4b85bddf9bdeb736f55ff0647e3d19ba03bf2edd458558701c267f7a",
+    "claims": {
+      "VERSION": [
+        "2",
+        "17",
+        "4",
+        "29757",
+        "f24e5d7cc5"
+      ],
+      "MODEL": [
+        "0",
+        "0",
+        "0",
+        "-25",
+        "0"
+      ],
+      "MAP": [
+        "1",
+        "0",
+        "0",
+        "0"
+      ],
+      "DATA": [
+        "1000000",
+        "800",
+        "8"
+      ]
+    },
+    "pariToCertifiedModel": {
+      "u": "1",
+      "r": "0",
+      "s": "0",
+      "t": "0"
+    },
+    "certificateUsesComparison": false
+  }
+]

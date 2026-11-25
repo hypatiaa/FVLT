@@ -1,0 +1,3887 @@
+{
+  "schema": "BSD_T2_SEALED_BUILDER_VERIFICATION_V1",
+  "date": "2026-09-07",
+  "status": "PASS",
+  "standing": "BUILDER_VERIFICATION_NOT_COLD_AUDIT",
+  "coldAudit": "PENDING",
+  "lockClaimed": false,
+  "manifest": {
+    "entries": 26,
+    "sha256": "08bda1b0692ff8a871ea1f9befa8332f44633fc189c95abd6ee8aa03a81bb417"
+  },
+  "sourcePins": 14,
+  "groups": {
+    "t2": 127,
+    "t2IndependentPython": 99,
+    "t1": 66,
+    "t1IndependentPython": 31,
+    "inheritedV03": 182
+  },
+  "totalGroups": 505,
+  "explicitT2Fixtures": 99,
+  "strictFormulaTally": {
+    "pairPASS": 84,
+    "doublingPASS": 84
+  },
+  "sourcePackagesUnchanged": true,
+  "viewerChanged": false,
+  "domain": {
+    "minimumPrime": 5,
+    "maximumPrime": 1009,
+    "localOnly": true,
+    "resourceCaps": "See CONTRACT.md"
+  },
+  "sageComparison": "SEPARATE_SERENA_NUCLEUS_LINE_ITEM_NOT_RUN",
+  "verificationSource": {
+    "path": "C:/Users/robin/AppData/Local/Temp/bsd-t2-audit-JpRrDv/verification.json",
+    "sha256": "3e88b4753170a7a5a2c0db66146cf1e57e0ba711d51c4ca963a712e9bdd50350"
+  },
+  "finalFixtureReceiptSha256": "51562bce3db2e1eadc282a2c509ea6d0bff1efc55e64305d97f9beaf599f8e9a",
+  "integrity": {
+    "status": "PASS",
+    "candidate": {
+      "entries": 26,
+      "sha256": "08bda1b0692ff8a871ea1f9befa8332f44633fc189c95abd6ee8aa03a81bb417"
+    },
+    "sourcePins": 14,
+    "predecessor": {
+      "status": "PASS",
+      "candidate": {
+        "entries": 28,
+        "sha256": "de4467a54d77fa6669ecbae43612ffa7425ef6746bcbeba877e0d0edb52b6032"
+      },
+      "sourcePins": 12,
+      "predecessors": {
+        "BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907": {
+          "status": "PASS",
+          "entries": 80,
+          "sha256": "40739e8bb8ff0259c974d727030ef89cc66895971aef5f1ce20840d4bef0302a"
+        },
+        "BSD_MINIMAL_TATE_SCHEMA_v0_2_20260907": {
+          "status": "PASS",
+          "entries": 75,
+          "sha256": "605d44f3b9b2c045ecb01837f4c1502eb2bb05bcae4d5e2caccc174560d3d97e"
+        },
+        "BSD_MINIMAL_TATE_SCHEMA_v0_1_20260907": {
+          "status": "PASS",
+          "entries": 41,
+          "sha256": "252b5406568d19bd1377c68e8bd70c1a5bc369c26d262bd391d38311e33c4e3b"
+        },
+        "MCOMB_CARRIER_ADDITION_v0_1_20260907": {
+          "status": "PASS",
+          "entries": 27,
+          "sha256": "b7799b08896ee9b57c8963d4530e393d7d3952a6d2f3047ce20376e1d67d87c1"
+        }
+      }
+    }
+  },
+  "run": {
+    "status": "PASS",
+    "standing": "BUILDER_SCRATCH_VERIFICATION_NOT_COLD_AUDIT",
+    "scope": "T2_PLUS_T1_AND_V03",
+    "sourcePackage": "C:\\Users\\robin\\s6_atom\\cold audit fourier\\BSD_TATE_T2_v0_1_20260907",
+    "scratch": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t2-audit-JpRrDv",
+    "stage": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t2-audit-JpRrDv\\BSD_TATE_T2_v0_1_20260907",
+    "manifests": {
+      "BSD_TATE_T2_v0_1_20260907": {
+        "status": "PASS",
+        "entries": 26,
+        "sha256": "08bda1b0692ff8a871ea1f9befa8332f44633fc189c95abd6ee8aa03a81bb417"
+      },
+      "BSD_TATE_T1_v0_1_20260907": {
+        "status": "PASS",
+        "entries": 28,
+        "sha256": "de4467a54d77fa6669ecbae43612ffa7425ef6746bcbeba877e0d0edb52b6032"
+      },
+      "BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907": {
+        "status": "PASS",
+        "entries": 80,
+        "sha256": "40739e8bb8ff0259c974d727030ef89cc66895971aef5f1ce20840d4bef0302a"
+      },
+      "BSD_MINIMAL_TATE_SCHEMA_v0_2_20260907": {
+        "status": "PASS",
+        "entries": 75,
+        "sha256": "605d44f3b9b2c045ecb01837f4c1502eb2bb05bcae4d5e2caccc174560d3d97e"
+      },
+      "BSD_MINIMAL_TATE_SCHEMA_v0_1_20260907": {
+        "status": "PASS",
+        "entries": 41,
+        "sha256": "252b5406568d19bd1377c68e8bd70c1a5bc369c26d262bd391d38311e33c4e3b"
+      },
+      "MCOMB_CARRIER_ADDITION_v0_1_20260907": {
+        "status": "PASS",
+        "entries": 27,
+        "sha256": "b7799b08896ee9b57c8963d4530e393d7d3952a6d2f3047ce20376e1d67d87c1"
+      }
+    },
+    "sourceInventories": {
+      "BSD_TATE_T2_v0_1_20260907": {
+        "CONTRACT.md": "58c007018c9fa6e63bb7cc93775bb00e0b9a49354560c1c8d6682b2ec5169155",
+        "HANDOFF.md": "e6c33e76908e8c78b98220a4721b557c344c444da59780f9c448aae7ca1da76b",
+        "MANIFEST.sha256": "08bda1b0692ff8a871ea1f9befa8332f44633fc189c95abd6ee8aa03a81bb417",
+        "NEXT_STEPS.md": "fab304038be79022a6e69a1d4ec5efc8ee43218c4da63a8dbf287cb7606362d8",
+        "README.md": "83f45d7c81f08976f0bd29104e889b5036710e379e13244cd2657284674cfea6",
+        "SOURCE_PINS.json": "1c0d4006c71d8d5958de68bd67fb9687efd0926859540bc391794f7fa1ae0ae0",
+        "VERIFICATION.md": "79d9c8b92fc28378a74a43ac8f69ac1f4b674fbed0edc5a21695f67e80894755",
+        "assess.cjs": "e707ff84605a6e694854b5e87f6f425b8c8fd5fb30fd94d1d3d89b200297d185",
+        "build.cjs": "ee9277c06f153cd878f948fb4f7fefca7cc65ad3af8628a005c8f3516285307c",
+        "check-independent.py": "6edeb3e43693382cbd47b94023a70b959aefee12f1af776743d5bf5878ef352d",
+        "check-integrity.cjs": "9e51ff4b1134cd6f66a8c9180e9a17c1901444cce0792d61b9e2e8fa850587b5",
+        "check-t2.worker.cjs": "23aa7fcd90791a53e0ff21e2e8ff0e165bfac8b4a3f7f88202ac59952203d80a",
+        "example-input.json": "856ac77b34f4f57dde714e2047d2f7ad9e3c8e41e937902f175b8fee42e96d5e",
+        "finite-field.cjs": "c9d22e7229460cd9c7ce2891f7911dd8f9f49fac5cd4b1bc186e5eca1bc0bd07",
+        "make-schema.cjs": "6acf84cd37bf783e405080d9cb8491ef84d18604fd0cb3bc29d53d90d38ed81b",
+        "receipts/independent-tests.json": "2cd101735e6f203c8f3b7aee62d3c4c0d69c4c3d39816e436e007d18a6a42aae",
+        "receipts/t2-fixtures.json": "51562bce3db2e1eadc282a2c509ea6d0bff1efc55e64305d97f9beaf599f8e9a",
+        "receipts/t2-tests.json": "c8ce6dbffcb40de10653c3e4950b1cd76723994be3a901b05ebcf670a71c0d2f",
+        "receipts/t2-verification.json": "26e9d465f16ebf57a3aa7a5c48aa0a59680362bbc16b2e6cf684f668c401278a",
+        "seal-authoring.cjs": "1099ba09f07ea84dd8227a9aaa978cc2bd556847155f10b1acdcc55f4ef156c6",
+        "t2-certificate.schema.json": "a17402703ae0f4d56f9173f96cd8922e7322a64ff9a1ea56035defaf98d57da6",
+        "t2-packet.schema.json": "5656fec3f5bc1a5cfc125227b5ac4603ec8d015f0c7555d66bda475fc99d69a2",
+        "t2.cjs": "a75502441449cd99a9836f4307595ff2ec0949f35d93f919bf102fe7e128362f",
+        "tame-tate.cjs": "9952c76d705916f2474b9b237f0b0784f19d0dd0c48b0d96910e645400934b4c",
+        "validate.py": "8a16fc1a5128fbf3e09db791bd21c5997e3cea311d371ad278719def88a1744a",
+        "verify.cjs": "13e6e72d37081893229b8cbd9588699fd7052b6c33e0c166e8dd5f720fb1c1d2",
+        "worker-guard.cjs": "474eb5c59119b074a22f9996297dcbedc8c1229f61fb8e1f6173b351611c224a"
+      },
+      "BSD_TATE_T1_v0_1_20260907": {
+        "CONTRACT.md": "3f070fa23d9226538fa746619f6a309e7da5e50abf0001218a92b839879bca86",
+        "HANDOFF.md": "87d0a34e847c7a3fce02e58051772230b2ef552abefbb97aa7652364a510e6f5",
+        "MANIFEST.sha256": "de4467a54d77fa6669ecbae43612ffa7425ef6746bcbeba877e0d0edb52b6032",
+        "NEXT_STEPS.md": "27a8d9f6cd24a8e03f39d9abe46f6fc39215cc5d1a828b7a38b390e820790291",
+        "README.md": "892a78eec30cececb12f22c94f355fc76070cd6536046f3009251b0e1233c8fb",
+        "SOURCE_PINS.json": "f894ecfde794a961b6d51145c607ddd3ba04ca78b98cdd4fc9d1d4e935d9c91c",
+        "VERIFICATION.md": "06a04978e728b3c8035d3ea443fa4709dbba18a434e498a8052a08deb25618db",
+        "assess.cjs": "c899d448b4f3a836ec1a188bd80769349d64572b9889621aba5b34261a6dd78d",
+        "build.cjs": "a57ccb840565855a2794003394fe2dd79b34bc4a469a6518245888a867548c6b",
+        "check-independent.py": "e264bf3ba0da24352139e8522124786d864af1710c210eaea561b1156a93912b",
+        "check-integrity.cjs": "9e31c069cd91a3baef64c6b8d8cb7b89df83469fdba4f63eaabc3fa8d8b102a7",
+        "check-t1.worker.cjs": "5524137cd190d8c84c4e9a4bb87900e1cd8cadd4c15453dc950f09b4616771bf",
+        "example-input.json": "388e6e672a125537ab89732e4d907f3b78f24d3406114fdaf41ed06f2004a096",
+        "make-schema.cjs": "04e4b8d8fa2923ba8430e59996c1793f10dc641f8044f13b152ed74fe7dff5aa",
+        "pari-adapter.cjs": "5ea80b80f1433172a457b49217841dc79a59b72807d43518b6291092ee2b53b4",
+        "receipts/independent-tests.json": "ab548a5ba8a4a81d9616687a45272a2fb6e2ece78de61a0ebfb56597fd52b3c0",
+        "receipts/inherited-v03.log": "8cd2f4d158c54a54fc4083e3919c076f07d865cdabcbd0b907b6650f6a3b99ab",
+        "receipts/inherited-verification.json": "5c4fb26c24a256c5451a6637a53d862df41899df8d321c472fa659c51ab621b1",
+        "receipts/t1-fixtures.json": "1e9aad52432d9bda4cb91974584547f4b60f02c8a7c7a63a34c332d509c16dde",
+        "receipts/t1-tests.json": "a3c05a019eb6dc3a55b88f9b98d5658c811310f866b638e6986eb716ed2bd75c",
+        "receipts/t1-verification.json": "562e4dbc4e1b700424bc012d42fb8c2a732d44bce288cef91c1e93bca8bd6949",
+        "sage-producer.py": "cf9e5e51ff0ee6a8a6d4fc36cc2a27e4d984bc4419ef1bc5138887502f95665b",
+        "seal-authoring.cjs": "ee386ee61c94e5bb52e8e05264713fd8d7f0d3bde0a116924bf36a6b8b1b9108",
+        "t1-certificate.schema.json": "b246a28e347fa75c42b9173b9b30decec79cd77ba79bf8479ec464a1c9aa075a",
+        "t1-packet.schema.json": "624ca28a795d9fc4a6916c7fd24c12850b2a93bc7c9dbe71c12f919b9bc95857",
+        "t1.cjs": "625c7a094f4c8d3330ba6b2d021bb07513090831e3176e17c9e9deb4c8ee674d",
+        "validate.py": "3e40cf92841d215a6b9aaed4e29aeb3385d1e4259967ffda776ab066ef79ff0e",
+        "verify.cjs": "f870e06f438050c4d14442e9f4d72b83dea009c297d33e6ab059077a6e73de3c",
+        "worker-guard.cjs": "6e21ee9b98d2d8600ff4328221e39d7b4473ff9e1e3fd8e10d960e8d7669bc79"
+      },
+      "BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907": {
+        "AUDIT_MATRIX.md": "9da8e36cd8273633735367c5b24e7b49974e792b492f78b6d6e0aa0281c8ebbc",
+        "HANDOFF.md": "cbe4a3aee722fec63600a466f4a045103e58edc005c0bb1838269800724f7494",
+        "IMPLEMENTATION_PLAN.md": "c62c703dc8585047ab698993e46b7cd18e8a67b8602198839631db15ad1f1a58",
+        "MANIFEST.sha256": "40739e8bb8ff0259c974d727030ef89cc66895971aef5f1ce20840d4bef0302a",
+        "README.md": "f524e8c3260710fa17986f1cd5ce3f46d3d129ec2700b6e8f464e7df865444f7",
+        "REPAIR_NOTES.md": "67c1b23d253fa074d3f5d915a8b54ec41d6b3c1194ca4f23e3669c41f0872f36",
+        "RUNTIME_SETUP.md": "ff5a69a37a3b8c9a30155e3145cf8f457c142b43b9e6c840db3e92cc2b7f5c8e",
+        "SCHEMA_FOR_AUDIT.md": "5c82adcee7a6dc950ff3bd2b0a53b183291c77ce1c06e3bc62b3d5733355d9da",
+        "SOURCE_PINS.json": "8d201786de8eeda799164c61ebeebcc7a779f2f9ac1f4a8ed217703d0f0a1c67",
+        "assess.cjs": "96104c56f3dcfddfe48364b91f7ad8a7c3a3e30f004883c99655e29755078834",
+        "build.cjs": "371a32534e1bb707481366f31ab678b727104121cbc4321a5986c70ac32bb4bf",
+        "check-browser.cjs": "bf2f5b4ea0ac22c5e29dacfd7fb8a16ef1466fec644e9c74b88dd749606d3db4",
+        "check-browser.worker.cjs": "3eba1b0f94ecc23626e5b906033ad120ae4eba9879f299d5b4cb2842e7fb1d32",
+        "check-good-certificates.py": "8a833bfc9ede0756e5f108cc69fa93ff1f4f2ed642d51ffa0121f5cbf925b937",
+        "check-integrity.cjs": "d19ef7e8ef75f8d5ece36ea680c112b73517c7a00af66a062b1cdf4d13e11d8c",
+        "check-local-gates.worker.cjs": "a3f1443cc28346daf2c9fc4eb0fd4ba16e9f3a1520142195c310ccaebbc6036f",
+        "check-maintenance.worker.cjs": "ad286eb30e09835452218ff29a25388e55cdde70a22ff13040c22deb91901e8f",
+        "check-math.cjs": "ada5a9325e5f81cd47a6de5eae210ff2694097e85ded726427de82634d1146c3",
+        "check-math.worker.cjs": "b0c83a043bc0de69b6cd72b0a32c3b33baef40d187348a0080f8b876621ab5e1",
+        "check-regression.worker.cjs": "ae27a253be640af6e6b2378a428824d2c1d0422f69a323c278c14952557a0bdd",
+        "check-runtime.worker.cjs": "620c4d39d8e8cb8fe1d67a42d8e4a04ef2acd553f643aee6c2bb7e64d5275e9b",
+        "check-schema.cjs": "ec8646c6ce9fe6afaeaf0601e06940a95902cea8eb429644371903e1a755fe68",
+        "check-schema.py": "08e88ce5ce9858393d544d6b5c189ab526434faf0d391efcda425a25e997736a",
+        "check-schema.worker.cjs": "5252935a19b6b5ced2eb6a537c960f7c9bbab65137b2bb15464e3b2b79d4fd47",
+        "check-valuation-gates.worker.cjs": "53102f3c1c685a4f7716fec2767c5d836526255af8568984b106ec6f0cad47bb",
+        "fixtures/37a1-model-exclusion.json": "648cfa9b27b9fbb64a477727ed65022628ce16926ae06197b0d03fad6bb21908",
+        "fixtures/exact-point-without-minimality.json": "6336ce7728918b8013519575dec2c3c49df871ec876737ec6c12c5eb2b7b8bc9",
+        "fixtures/negative-scale-shear.json": "97efb8c583d49d6fba9184337044d87e4b4a87691304225798be0cba6615f7fd",
+        "fixtures/rational-chain.json": "ad7181bafc942630ac5fe4a49786ad0fa5e4650fd7ec9e04d93b11d0b454af98",
+        "fixtures/separate-quadratic-twist.json": "6a5be0502725bc36e34be72711f4c00fdf2ecb271aa5b821223a4b2bddb55677",
+        "good-prime-certificate.schema.json": "765971e6e1528cf77dc275af9272be2b048736c33494926c8fb6ae5d3c4761af",
+        "labels.js": "067fa640cca78321edca49026f3d977afd2d61f3d36b6fd98d715a03c14a5125",
+        "make-fixtures.cjs": "63774dd2a12b5284e873a42536c4792596e1cc4013a1d49282ff66aab86b80d2",
+        "make-schema.cjs": "eb75984c47230f9820588d04eef91730e0d32104d73135bc200c770f65afba53",
+        "make-workers.cjs": "49709d18c34903b6b2d23404d4345a4668e418bf332b372b10ada21e321b05a4",
+        "minimal-tate-record.schema.json": "687bb7d9395abfc53bb844574aca4ff2e51ec4f7be8daab3b954c857187ab085",
+        "model-replay.cjs": "c7b102ef7ff7b9044e6099eb777873eaf7a06f248d311676c789dd5d2fa11877",
+        "monodromy-30-1-reduction-audit.html": "5dc69781082a3d2b41e1b38b49f71c44ec349a219221ed19b15969f8c0c0ee84",
+        "package-verification.json": "b8deacf27b2e4016b3a93b39db2d4e45673d6e8dff114dda82b047f5cd6ed442",
+        "package.cjs": "90c17c2947ab8dec6e52a0fa3128812950866d76e2c2c170828af5fbb6a75b12",
+        "receipts/browser-verification.json": "40fa32011ff805fec624c5e8a8fc688c1489b7378e3b4b3f0422dc1b93f72cee",
+        "receipts/browser.log": "fb44d6bd1562e544af617bb03b65ae0ca294059c04b10fc1fd32622081ce646f",
+        "receipts/bsd-mcomb-mobile.png": "721b230995d8e2c833c5fbe240472bd7783c96d6d739b53b13b2afde1cccc174",
+        "receipts/carrier-clifford.png": "55401093b6a14ec68936b8948fe015b49e36135209ebc42905c3384216ebf06b",
+        "receipts/carrier-desktop.png": "b896b763f36f2663fc88afc6e286419a94827b4f559b10e3c5e12764fba491ed",
+        "receipts/carrier-export-fixture.json": "cb1b44d591f86f874c48fcaf432c5b79e7c53995b8202df237e25b4fc83c9b7d",
+        "receipts/carrier-mobile.png": "7534c490756abb99c553c73e1564dfeaf631e57a5966be1300a2dc0e96e42212",
+        "receipts/elliptic-mcomb-mobile.png": "af80b89a7afe67633b43a358944c27e05c43b23f1c6f6f513d56598d6eb3346c",
+        "receipts/good-certificates-verification.json": "d8aaabafa251148f93a62ff4817fa7e0e7c1f5781ea2a3558c09b4142c2c510c",
+        "receipts/good-certificates.log": "ea46752cce433796bf43936bc96694760c876743a8356c8394e1adbabcefd78b",
+        "receipts/good-prime-certificates.json": "91a52a5f57ed601ad61cf43bb2546e1eedf7824d70002ffbcb65b8d7b7162d32",
+        "receipts/local-gates-verification.json": "6b7cc63fe1bd56408c661940d66f91efaa86291687bd1354fa8d6556a7bd6a85",
+        "receipts/local-gates.log": "bacfb2e1bac90b54fa1cf3cebf367187b52ec3ad3fc3270aaff5ebf036351aed",
+        "receipts/maintenance-verification.json": "1c6189aa4c9db960c0154e82f2ae617ac5c75495fc95e4f0412a877e39e0c12f",
+        "receipts/maintenance.log": "6c4e7c5374c1401609ad020319aaab80819a10c6beb7e47345f0723694b75131",
+        "receipts/math-verification.json": "548824736aebe660c6f0ccd0b0dcd8db99a549f0d87821b88db98569186f78f3",
+        "receipts/math.log": "a3a6159234267564dac1f785aade92f280d620807f7b7d8e36150efc0ad12ea7",
+        "receipts/model-exclusions-desktop.png": "6d65eb6eabfac306158e3f69f1b5f47025f9c481e24f2ea9ccbf574bf5fe98a4",
+        "receipts/prime-product-desktop.png": "870648aeed6f7eb82d82e55dd67f3ebbc58199ac5b61734b4fd0b87e8b70886c",
+        "receipts/prime-product-export-fixture.json": "3054a17873bafbfc717e290c8f3d1eb001e561ae7a91dfa91bd57596a5fe95f4",
+        "receipts/prime-product-mobile.png": "9f32b988d9a1cb25e1c8376112ec16296600b5c720927aa6ec20f3f0b48b7ea3",
+        "receipts/regression-bsd-mcomb-desktop.png": "921cca1170ea01f0e7e4a27aa0e6d13fb24f76e75a956f7c1fa5609ca952077a",
+        "receipts/regression-elliptic-mcomb-desktop.png": "5e5eb9ea3c16a3471fdbe7bdd0bb6dde7b846996c9eae4176e89f32240e94664",
+        "receipts/regression-export-fixture.json": "4a04df1ed96af9b4a05198241380591e22474a55999d5fd689b2a10878c88d7b",
+        "receipts/regression-verification.json": "f7cb286e2930449060500160055297530119a52d09da3eeb1a89e8dd78556ced",
+        "receipts/regression.log": "f65bdc4ce0ec171b33bab17547494eec9dc68314288e58b45a32eb4a481fa079",
+        "receipts/runtime-verification.json": "19c4922218987105009dd7c80792260e125775677d4b1d05a7bf09749db3ced1",
+        "receipts/runtime.log": "ee79950592e13ec7ff588d7df790dc1bbd895bb7c04246868d780984f62331e8",
+        "receipts/schema-python-verification.json": "33ea25148dca468dd7a54fc58c05dd978cef3de23a91af6fb3ec788f35d0c36b",
+        "receipts/schema-python.log": "0e5f6e1ec5487c08f727bf654010962e7ed204afbe8db7ca0cd154599e45b109",
+        "receipts/schema-semantic-verification.json": "a955304550f45f9f0d2b4ffc3cf00d58b25f1a8b12d26b1c599bcf43fa4f9dab",
+        "receipts/schema-semantic.log": "75307f11dd91e4a6e03715bbd8f583df5883bc2d7a8a2e0ccb82eff0f334e50a",
+        "receipts/scratch-verification.json": "5820ca7cfd13b8c5abf497bcd8a4f05508355b75a4c1a513aa7b7b49fb500fb7",
+        "receipts/valuation-forgery-reproductions.json": "efa34180390fee5e216417a76598fd0a5ea480c41d5cac3a6cfc5d436bf91ade",
+        "receipts/valuation-gates-verification.json": "9d9e326e34704bb68cdf33435609b719ec4d5e299a7649adc3e14bc54dc3eb5c",
+        "receipts/valuation-gates.log": "6e06dd26541bd91ff99eb1b61cbe78a5887e2c338ca938c77c9857d737bf2dbf",
+        "requirements-verification.txt": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6",
+        "runtime-browser.cjs": "4cdb4f20c42ca3741cd2ffa05ada5e097e946522c4cabefe35db2efc88b51f2f",
+        "runtime-discovery.cjs": "776d386961bf6cdb0a3c8088ca4ad6e7e6e69be961e66055619227943828026d",
+        "validate-packet.py": "107bbc4c4511db18eadd390e7534c06d4e25625887f51a1dc36612ae2bad3833",
+        "verify.cjs": "3e1c985d74e043d2e8f82cd2047f9c018e8c058c846935170dc60827939e58b7",
+        "worker-guard.cjs": "3cc98862746514a827318666bcd24ae8a19a56e38181c5da76ae2e4f8fc0a712"
+      },
+      "BSD_MINIMAL_TATE_SCHEMA_v0_2_20260907": {
+        "AUDIT_MATRIX.md": "6be1140307a3352089086cfee770938019abd68cc4600a1a1092c57f18b6a389",
+        "HANDOFF.md": "5ab43c3821417561a1be16052c5e430aac4d0ecd1a8738ad06750f9175710a16",
+        "IMPLEMENTATION_PLAN.md": "6c1f5bec2acc2d220f1234fb523ff31461b55c9d67cf67e126d1376330d4181b",
+        "MANIFEST.sha256": "605d44f3b9b2c045ecb01837f4c1502eb2bb05bcae4d5e2caccc174560d3d97e",
+        "README.md": "e5564fe15901b7447a48dd786ff1ce8f579994bf50bd9e4a293fca3cf500216d",
+        "RUNTIME_SETUP.md": "71a27243720fbcb792fcc10202f8a558f261b78a78a26625973751dd153ac06c",
+        "SCHEMA_FOR_AUDIT.md": "d8e6818e50388106bbd41895485a104b552eb6b1a74adcd2fd2ce143d094d80e",
+        "SOURCE_PINS.json": "dc5beec9e1cf377d763d8e371a3ab22bbd4c0a7696ff3576883d1f71147050ec",
+        "assess.cjs": "96104c56f3dcfddfe48364b91f7ad8a7c3a3e30f004883c99655e29755078834",
+        "build.cjs": "34b90b56c26335c78781730690e3e9fd064a7b79bd083589f13db06f614b4d5a",
+        "check-browser.cjs": "bf2f5b4ea0ac22c5e29dacfd7fb8a16ef1466fec644e9c74b88dd749606d3db4",
+        "check-browser.worker.cjs": "3eba1b0f94ecc23626e5b906033ad120ae4eba9879f299d5b4cb2842e7fb1d32",
+        "check-good-certificates.py": "8a833bfc9ede0756e5f108cc69fa93ff1f4f2ed642d51ffa0121f5cbf925b937",
+        "check-integrity.cjs": "a353749a167ed285aab80b699df42d95df6f8713cd9172b6025f59e9c9e3e20f",
+        "check-local-gates.worker.cjs": "a3f1443cc28346daf2c9fc4eb0fd4ba16e9f3a1520142195c310ccaebbc6036f",
+        "check-maintenance.worker.cjs": "ad286eb30e09835452218ff29a25388e55cdde70a22ff13040c22deb91901e8f",
+        "check-math.cjs": "ada5a9325e5f81cd47a6de5eae210ff2694097e85ded726427de82634d1146c3",
+        "check-math.worker.cjs": "b0c83a043bc0de69b6cd72b0a32c3b33baef40d187348a0080f8b876621ab5e1",
+        "check-regression.worker.cjs": "ae27a253be640af6e6b2378a428824d2c1d0422f69a323c278c14952557a0bdd",
+        "check-runtime.worker.cjs": "620c4d39d8e8cb8fe1d67a42d8e4a04ef2acd553f643aee6c2bb7e64d5275e9b",
+        "check-schema.cjs": "ec8646c6ce9fe6afaeaf0601e06940a95902cea8eb429644371903e1a755fe68",
+        "check-schema.py": "08e88ce5ce9858393d544d6b5c189ab526434faf0d391efcda425a25e997736a",
+        "check-schema.worker.cjs": "5252935a19b6b5ced2eb6a537c960f7c9bbab65137b2bb15464e3b2b79d4fd47",
+        "fixtures/37a1-model-exclusion.json": "648cfa9b27b9fbb64a477727ed65022628ce16926ae06197b0d03fad6bb21908",
+        "fixtures/exact-point-without-minimality.json": "6336ce7728918b8013519575dec2c3c49df871ec876737ec6c12c5eb2b7b8bc9",
+        "fixtures/negative-scale-shear.json": "97efb8c583d49d6fba9184337044d87e4b4a87691304225798be0cba6615f7fd",
+        "fixtures/rational-chain.json": "ad7181bafc942630ac5fe4a49786ad0fa5e4650fd7ec9e04d93b11d0b454af98",
+        "fixtures/separate-quadratic-twist.json": "6a5be0502725bc36e34be72711f4c00fdf2ecb271aa5b821223a4b2bddb55677",
+        "good-prime-certificate.schema.json": "2d1de2947e6870982c344f17f187b92132382473e03e2ea09c084fc43daea2e1",
+        "labels.js": "067fa640cca78321edca49026f3d977afd2d61f3d36b6fd98d715a03c14a5125",
+        "make-fixtures.cjs": "63774dd2a12b5284e873a42536c4792596e1cc4013a1d49282ff66aab86b80d2",
+        "make-schema.cjs": "dd4a87abf5e3607dbc378fef63f74a51ebdc68ccc0b2ef0dbf2ad1bc26d67b2a",
+        "make-workers.cjs": "49709d18c34903b6b2d23404d4345a4668e418bf332b372b10ada21e321b05a4",
+        "minimal-tate-record.schema.json": "53ff91611f6a7310b99d33abde9d5f973aea74cb01fabee50791c4190f221485",
+        "model-replay.cjs": "f701e0ee68d6fd33d5f269545f85f01503707a7de3158f13f5f4140fbd43d486",
+        "monodromy-30-1-reduction-audit.html": "5dc69781082a3d2b41e1b38b49f71c44ec349a219221ed19b15969f8c0c0ee84",
+        "package-verification.json": "34a2cd805c8f150321f99cbe27019b2a94cc569337efd4c2e9cd85050b8341bd",
+        "package.cjs": "c099e7b547a8bfa3480885c032150757aeeec5515abe6ae68dbaa4c7a8d2d22c",
+        "receipts/browser-verification.json": "40fa32011ff805fec624c5e8a8fc688c1489b7378e3b4b3f0422dc1b93f72cee",
+        "receipts/browser.log": "fb44d6bd1562e544af617bb03b65ae0ca294059c04b10fc1fd32622081ce646f",
+        "receipts/bsd-mcomb-mobile.png": "721b230995d8e2c833c5fbe240472bd7783c96d6d739b53b13b2afde1cccc174",
+        "receipts/carrier-clifford.png": "55401093b6a14ec68936b8948fe015b49e36135209ebc42905c3384216ebf06b",
+        "receipts/carrier-desktop.png": "b896b763f36f2663fc88afc6e286419a94827b4f559b10e3c5e12764fba491ed",
+        "receipts/carrier-export-fixture.json": "cb1b44d591f86f874c48fcaf432c5b79e7c53995b8202df237e25b4fc83c9b7d",
+        "receipts/carrier-mobile.png": "9d1e0f327cca756a03079d30fdd000f8838e73121dd32ff38f4d812535b724de",
+        "receipts/elliptic-mcomb-mobile.png": "819b7d7955a4b47d23cbed8b4d272863a971e9eb6c94ac6cf97d48e490413cbe",
+        "receipts/good-certificates-verification.json": "d8aaabafa251148f93a62ff4817fa7e0e7c1f5781ea2a3558c09b4142c2c510c",
+        "receipts/good-certificates.log": "ea46752cce433796bf43936bc96694760c876743a8356c8394e1adbabcefd78b",
+        "receipts/good-prime-certificates.json": "fcf3b3f55e282c9dc4a98cbb5266acaac28f77c4542aa742bedd8325608442ef",
+        "receipts/local-gates-verification.json": "6b7cc63fe1bd56408c661940d66f91efaa86291687bd1354fa8d6556a7bd6a85",
+        "receipts/local-gates.log": "bacfb2e1bac90b54fa1cf3cebf367187b52ec3ad3fc3270aaff5ebf036351aed",
+        "receipts/maintenance-verification.json": "1c6189aa4c9db960c0154e82f2ae617ac5c75495fc95e4f0412a877e39e0c12f",
+        "receipts/maintenance.log": "6c4e7c5374c1401609ad020319aaab80819a10c6beb7e47345f0723694b75131",
+        "receipts/math-verification.json": "548824736aebe660c6f0ccd0b0dcd8db99a549f0d87821b88db98569186f78f3",
+        "receipts/math.log": "a3a6159234267564dac1f785aade92f280d620807f7b7d8e36150efc0ad12ea7",
+        "receipts/model-exclusions-desktop.png": "6d65eb6eabfac306158e3f69f1b5f47025f9c481e24f2ea9ccbf574bf5fe98a4",
+        "receipts/prime-product-desktop.png": "870648aeed6f7eb82d82e55dd67f3ebbc58199ac5b61734b4fd0b87e8b70886c",
+        "receipts/prime-product-export-fixture.json": "3054a17873bafbfc717e290c8f3d1eb001e561ae7a91dfa91bd57596a5fe95f4",
+        "receipts/prime-product-mobile.png": "9f32b988d9a1cb25e1c8376112ec16296600b5c720927aa6ec20f3f0b48b7ea3",
+        "receipts/regression-bsd-mcomb-desktop.png": "921cca1170ea01f0e7e4a27aa0e6d13fb24f76e75a956f7c1fa5609ca952077a",
+        "receipts/regression-elliptic-mcomb-desktop.png": "5e5eb9ea3c16a3471fdbe7bdd0bb6dde7b846996c9eae4176e89f32240e94664",
+        "receipts/regression-export-fixture.json": "4a04df1ed96af9b4a05198241380591e22474a55999d5fd689b2a10878c88d7b",
+        "receipts/regression-verification.json": "f7cb286e2930449060500160055297530119a52d09da3eeb1a89e8dd78556ced",
+        "receipts/regression.log": "f65bdc4ce0ec171b33bab17547494eec9dc68314288e58b45a32eb4a481fa079",
+        "receipts/runtime-verification.json": "19c4922218987105009dd7c80792260e125775677d4b1d05a7bf09749db3ced1",
+        "receipts/runtime.log": "ee79950592e13ec7ff588d7df790dc1bbd895bb7c04246868d780984f62331e8",
+        "receipts/schema-python-verification.json": "33ea25148dca468dd7a54fc58c05dd978cef3de23a91af6fb3ec788f35d0c36b",
+        "receipts/schema-python.log": "0e5f6e1ec5487c08f727bf654010962e7ed204afbe8db7ca0cd154599e45b109",
+        "receipts/schema-semantic-verification.json": "a955304550f45f9f0d2b4ffc3cf00d58b25f1a8b12d26b1c599bcf43fa4f9dab",
+        "receipts/schema-semantic.log": "75307f11dd91e4a6e03715bbd8f583df5883bc2d7a8a2e0ccb82eff0f334e50a",
+        "receipts/scratch-verification.json": "d2582fee481631da746787159b465c61702f99bfcf641ce7da178573d2f1b773",
+        "requirements-verification.txt": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6",
+        "runtime-browser.cjs": "4cdb4f20c42ca3741cd2ffa05ada5e097e946522c4cabefe35db2efc88b51f2f",
+        "runtime-discovery.cjs": "776d386961bf6cdb0a3c8088ca4ad6e7e6e69be961e66055619227943828026d",
+        "validate-packet.py": "107bbc4c4511db18eadd390e7534c06d4e25625887f51a1dc36612ae2bad3833",
+        "verify.cjs": "a21a71b00a3e680f662666278f06dabd64a8af318b9afec2e77e1d03de876ee0",
+        "worker-guard.cjs": "3cc98862746514a827318666bcd24ae8a19a56e38181c5da76ae2e4f8fc0a712"
+      },
+      "BSD_MINIMAL_TATE_SCHEMA_v0_1_20260907": {
+        "AUDIT_MATRIX.md": "fec93f82300a3f30a1c8b6ea3e6f836385f431fc9a17ddb688fffee6ff743b97",
+        "HANDOFF.md": "5c709b4b561fbf5015ee8be120c270e5246078898d30d87f4acd7e5eb2f718d7",
+        "MANIFEST.sha256": "252b5406568d19bd1377c68e8bd70c1a5bc369c26d262bd391d38311e33c4e3b",
+        "README.md": "3fccf865e63b0b9bceb97b4ed288ce971624bd01897282f5e24730058049d0f3",
+        "SCHEMA_FOR_AUDIT.md": "2c5c491876deab2fd8f7103cd3addfc29c93feb1ef63fa039c9b7295eb3ff1cc",
+        "SOURCE_PINS.json": "9c8f7a5800f32482ef9994965116e75b63d1c820b110c132a6bbee84b8c475fe",
+        "build.cjs": "2fdfe0baa576f7698b3bf7505f5a6d94bdb8700250afb329fb6c9b08d4d6c076",
+        "check-browser.cjs": "bf2f5b4ea0ac22c5e29dacfd7fb8a16ef1466fec644e9c74b88dd749606d3db4",
+        "check-browser.worker.cjs": "650a412dfed23f2ef8579403b80055d5d8dd02afcc01632225572d068ae9509e",
+        "check-integrity.cjs": "5eb79f7de553d3f4bee841e558f745f283976a73968966d83d7fb8a7f6e99422",
+        "check-maintenance.worker.cjs": "8055564d323ca43a256768f1978a7942fadfbedad0a7ad5d127f2c54bfee1b37",
+        "check-math.cjs": "ada5a9325e5f81cd47a6de5eae210ff2694097e85ded726427de82634d1146c3",
+        "check-math.worker.cjs": "b0c83a043bc0de69b6cd72b0a32c3b33baef40d187348a0080f8b876621ab5e1",
+        "check-regression.worker.cjs": "e54bb5fee73ee545e43e3a06d16b2d2f79a85c356f25f4618dd8fc298116c668",
+        "check-schema.cjs": "ec8646c6ce9fe6afaeaf0601e06940a95902cea8eb429644371903e1a755fe68",
+        "check-schema.py": "08e88ce5ce9858393d544d6b5c189ab526434faf0d391efcda425a25e997736a",
+        "check-schema.worker.cjs": "5252935a19b6b5ced2eb6a537c960f7c9bbab65137b2bb15464e3b2b79d4fd47",
+        "fixtures/37a1-model-exclusion.json": "648cfa9b27b9fbb64a477727ed65022628ce16926ae06197b0d03fad6bb21908",
+        "fixtures/exact-point-without-minimality.json": "6336ce7728918b8013519575dec2c3c49df871ec876737ec6c12c5eb2b7b8bc9",
+        "fixtures/negative-scale-shear.json": "97efb8c583d49d6fba9184337044d87e4b4a87691304225798be0cba6615f7fd",
+        "fixtures/rational-chain.json": "ad7181bafc942630ac5fe4a49786ad0fa5e4650fd7ec9e04d93b11d0b454af98",
+        "fixtures/separate-quadratic-twist.json": "6a5be0502725bc36e34be72711f4c00fdf2ecb271aa5b821223a4b2bddb55677",
+        "labels.js": "067fa640cca78321edca49026f3d977afd2d61f3d36b6fd98d715a03c14a5125",
+        "make-fixtures.cjs": "63774dd2a12b5284e873a42536c4792596e1cc4013a1d49282ff66aab86b80d2",
+        "make-schema.cjs": "e432f41013933491b22718c94eaac86b99d903a2775986c592f2ca2ba31afb7e",
+        "make-workers.cjs": "897ff86f21d8d65f2f59edacf30955bc7325944ef71fca10ec8d8920ba2a1dc7",
+        "minimal-tate-record.schema.json": "176ded8a45bd462451bb20b80112648930056b94f877a3fb9737eb2c7a0c8f56",
+        "model-replay.cjs": "19acddc1593e0c658a29956c0ba5620f90e2733f9089141f8f814f4316a98d67",
+        "monodromy-30-1-reduction-audit.html": "5dc69781082a3d2b41e1b38b49f71c44ec349a219221ed19b15969f8c0c0ee84",
+        "package-verification.json": "f99ddf8e876f6087fdf7103c49aa836473bcd0443099abd35ed16038559d5a63",
+        "package.cjs": "f1c605e3308f054dcf31a013a213afb5ea65914579ab5447dda587c6f21540bb",
+        "receipts/browser-verification.json": "40fa32011ff805fec624c5e8a8fc688c1489b7378e3b4b3f0422dc1b93f72cee",
+        "receipts/carrier-desktop.png": "b950065c89820085fe43a260f626ca072ef354f49f2af693faa469ab6262d09a",
+        "receipts/maintenance-verification.json": "1c6189aa4c9db960c0154e82f2ae617ac5c75495fc95e4f0412a877e39e0c12f",
+        "receipts/math-verification.json": "548824736aebe660c6f0ccd0b0dcd8db99a549f0d87821b88db98569186f78f3",
+        "receipts/model-exclusions-desktop.png": "f613fac00f7d1a5bef6bb087584df508a60c13b787b1c2b49e48c2c878e1c92b",
+        "receipts/prime-product-mobile.png": "985bef67efd19ee0e45128be7c4b6ceb3d705e0ed8402d4f59b0c2a692fb9427",
+        "receipts/regression-verification.json": "f7cb286e2930449060500160055297530119a52d09da3eeb1a89e8dd78556ced",
+        "receipts/schema-python-verification.json": "33ea25148dca468dd7a54fc58c05dd978cef3de23a91af6fb3ec788f35d0c36b",
+        "receipts/schema-semantic-verification.json": "a955304550f45f9f0d2b4ffc3cf00d58b25f1a8b12d26b1c599bcf43fa4f9dab",
+        "receipts/scratch-verification.json": "3ffe2ecde20e3581a5c1314b17d5097eb87cea00a45f68eea1ec87de659a6fe7",
+        "verify.cjs": "7c4539e73f0a1493d05e713b4fc552b030be544f9f6ba0144787abed59b91faf",
+        "worker-guard.cjs": "3cc98862746514a827318666bcd24ae8a19a56e38181c5da76ae2e4f8fc0a712"
+      },
+      "MCOMB_CARRIER_ADDITION_v0_1_20260907": {
+        "CONTRACT.md": "e93a28a58e08932e3484a010479a1ce678fc034b6a2cdc5f005eec7dc98d8844",
+        "MANIFEST.sha256": "b7799b08896ee9b57c8963d4530e393d7d3952a6d2f3047ce20376e1d67d87c1",
+        "README.md": "3863406478d8b5e1eb0771597b558674bc351cd11c9331d469b657d3fc5d4e91",
+        "SOURCE_PINS.json": "d0efb7bd6c633c8b8610b0407a82762eb894315872b33592cb56fac5dc5d7bda",
+        "browser-verification.json": "40fa32011ff805fec624c5e8a8fc688c1489b7378e3b4b3f0422dc1b93f72cee",
+        "bsd-mcomb-mobile.png": "95b19562fcfecdbc32a23cc65797199545ba6643ba98aabe1b40fe4945f2d929",
+        "build.cjs": "d125c922c912132a3296174d6ed03c43b5a0e463e8c21f177def5d452c98da8d",
+        "carrier-addition.js": "cf0b057d3f26fea2971561974149d26423ace0c0eb0d0f7529510e1aee409271",
+        "carrier-clifford.png": "f07b6a1803fbf42a494cad29458e63586b9a1193192827bf9af4bf348147dcc1",
+        "carrier-desktop.png": "f44bdf8c1b1f824f3b033280ed8a9105d7b9f7ed880e6cacadef45601ea2945d",
+        "carrier-export-fixture.json": "cb1b44d591f86f874c48fcaf432c5b79e7c53995b8202df237e25b4fc83c9b7d",
+        "carrier-mobile.png": "5d1e5298c562714e51a3636fcd4eeb5fb34091ce5267e8f92715a7c0853e548f",
+        "carrier-panel.js": "5f320037c3adcdffbdcd51a19d8ec10138a47cb92be4bef6d56acc15ab2b5ee5",
+        "check-browser.cjs": "0da2c5a87d0f1d8f694696a983186bf1302e18fd432d6e59ddb9210340673b0a",
+        "check-math.cjs": "c119860ed683f7e1d630814e69059b0a3151254dd99d67938600ad09f165d15b",
+        "check-regression.cjs": "b478468f5cd1d8db61f9d227da5444ca986e143b2ab6b6b937999362fb1caf5a",
+        "elliptic-mcomb-mobile.png": "b420ff9040e5540b9257a8e854c9cf71b38c3ded99b5dcce69ecf54671599e05",
+        "initial-carrier.png": "bfc3d78d94cf9a9a0800191f72aaf808f90b8120ef5bbb81da40bc4e9b7ea6d4",
+        "math-verification.json": "a6cecd19082c55759f18389abe83e2ddde20acc91976a3e5841d48d6d8443781",
+        "monodromy-30-carrier-addition.html": "667bc1aba225d17d1ab1a5eac9d725a8de1fd4bc025e1653a184f05f22e68815",
+        "package-verification.json": "0172fed9dcc6112aaa44442d8d30240a925a9195cefc8af33fe5c999ea1d34ce",
+        "package.cjs": "877a0d7c9602addf4194d1d04a40644b50061b6ea4819f640866bf891fd4d0a2",
+        "prime-product-desktop.png": "dfbffe0fe38bed8a34aa17a0a16e17bb69eedf92798f4bd74781a384dde93d8d",
+        "prime-product-export-fixture.json": "3054a17873bafbfc717e290c8f3d1eb001e561ae7a91dfa91bd57596a5fe95f4",
+        "prime-product-mobile.png": "b2bff2a024de74b4703d314b445193f7947547d9f2e4a19d8727ec48b3aec148",
+        "prime-product.js": "295c0f222c30fce52174ee8f9a51eedc05eadc7e1863ceebabd3d612921c183a",
+        "regression-bsd-mcomb-desktop.png": "189d58554767daa979c9147f1be5246e6181f11317a910be868d3475a7af2329",
+        "regression-elliptic-mcomb-desktop.png": "3d1384ca0a5856461bf351974d74aed836767527c65fc219cc6262d735ca4fea",
+        "regression-export-fixture.json": "4a04df1ed96af9b4a05198241380591e22474a55999d5fd689b2a10878c88d7b",
+        "regression-verification.json": "f7cb286e2930449060500160055297530119a52d09da3eeb1a89e8dd78556ced"
+      },
+      "MCOMB_CONNECTED_PANELS_v0_1_20260907": {
+        "MANIFEST.sha256": "ffa723190500b1ca7d9dd0251005ea95a10c9f0bb8b2519774ab13f48b53a875",
+        "README.md": "4fd9500f25204eafefd8cd324844709fd5f8783e73b5ec82b3bfd424f1e97e73",
+        "SOURCE_PINS.json": "97dd7bb3f7ddfa513fda8540288009da6060fd9c1e3e09bc55493379aa401b8d",
+        "browser-verification.json": "f7cb286e2930449060500160055297530119a52d09da3eeb1a89e8dd78556ced",
+        "bsd-mcomb-desktop.png": "c7518202c9508c79c0424bf706229870ed18ec60c71d63dfdad3cea9a2033bc8",
+        "bsd-mcomb-mobile.png": "07053a192feb73a3005b321fda0bc3cebfcd3b66f9892ea3d9ad2a8b706932c9",
+        "build.cjs": "2756873e3f85f05740be54a2b86816163c9d830ecff4471211f2e44d35f8e541",
+        "check-browser.cjs": "3d40ca406232b3c937c0a101e7be7e0ef4ab6bbe6e768ce2b1a4ca3b39175e78",
+        "check-regression.cjs": "aa9df47b88bc7affbf98d237882e40d747cc4808715080ee52dc2c221c58ae80",
+        "connected-export-fixture.json": "4a04df1ed96af9b4a05198241380591e22474a55999d5fd689b2a10878c88d7b",
+        "elliptic-mcomb-desktop.png": "89671c989d0114d7efdc29e00fda5c01284f47a9d72fa30599d27a8403f353ce",
+        "elliptic-mcomb-mobile.png": "33433a74d14904f90bfbb4ff13ea42f74da75cb101a2f57a9b2e1e6acdcf8a15",
+        "mcomb-panels.js": "b26ac69390cd5da6b00c14c70b48d108fded3dadd9e6865988ce9a3c25ea5485",
+        "monodromy-29-1-mcomb-connected.html": "f32eb8af15fd7cd386eb22bbe8cb45a96bb1ed163180439edddaffe07d9a8edd",
+        "package-verification.json": "7ecee88db659e9a52f56cbfb877ac51dbe0a30eb48a5de7bbab1f0510ee2c564",
+        "package.cjs": "35a2258c34f8a8ba84276214c99b34f72142c618d017abe00f870405ddc244b4",
+        "regression-clifford.png": "19201f7d732edec7ac5ebf8189e4946b61a91f57505aa48d953e1ff2d0930e1e",
+        "regression-export-fixture.json": "cb839925a129ba36dda49434f73e1be2a0b9314078a470bb7822eff21ab0cebf",
+        "regression-panel-desktop.png": "e9d7ee6c88f310e0991cca309e12f3f07e3899c9a110a4fbc4323198b27496fb",
+        "regression-panel-mobile.png": "388d8e8223de31c01ffc59718aab8bc854ddd35bd0efab21dda224611b1f9094",
+        "regression-verification.json": "a33a90236600fc83e2e5ca64976001cc92df0e1e74422dcf4f9d3874652a9e43"
+      },
+      "MCOMB_ELLIPTIC_BSD_LINK_v0_1_20260907": {
+        "CONTRACT.md": "e90eefd4ef5a1cd8fd3d2453ffd19c8df7165cc70dea6c0b24f76be89961a566",
+        "MANIFEST.sha256": "d4b5832d7db004bacb4bd7f554f2912ed4a24215f1c9ed1803dc6fd6292ff5a6",
+        "README.md": "0336852cfb46564d2e3dd9bc7982a787c5e63110d756ac4e5f3e45e5a828240b",
+        "SOURCE_PINS.json": "c7094f615189f1406ffd9f536ecc4210394577d1634725c1bfab7d33db0cec38",
+        "browser-verification.json": "a33a90236600fc83e2e5ca64976001cc92df0e1e74422dcf4f9d3874652a9e43",
+        "build.cjs": "03e2e05cdcb1b650b7e6b315fe08f3a5fa7a57d9176aef0ab88d1a420ed189de",
+        "check-browser.cjs": "1fb71f75fe3aa09fee7b29f0ce93f06743e7d3af6bcab1eccefe9efa090bd95d",
+        "check-independent.py": "dfdb1d6a343b8c42aafb20b0ecc44a56720d35d4a60458b78aa27748c8194a41",
+        "check-math.cjs": "23d5db2b4788e1b374caa8af0a587d66a3ddf58f8186be85574b410fa4d7d590",
+        "elliptic-transport.js": "7e14f84639c8ac4db379fc8e83ed360d9da62da160282923cbdbc2aac5052852",
+        "independent-verification.json": "aa83768dc4b2a242f46b7c239416b1b2d0dc53b683fa5ffba4fe56c607a9cf57",
+        "initial-panel.png": "7aec1ec5668ed672a4eb11266589dbe8d67e4c11e46ed925309abaceb61f691d",
+        "link-panel.js": "5db82384d929c7bb2eaa59aebb925c665ed2f912c7ef41026f3f6a623c71e055",
+        "linked-clifford.png": "cfde39a68fe957be109ae1a28b54084f61d82bc42b6065c106338a67cc892170",
+        "linked-export-fixture.json": "c53c3a3bdd8419f9fc579da3d4de225a0e254866eaff7baa27a99fc48b6b4255",
+        "linked-panel-desktop.png": "e41234a2a6a93fa5c50ed1529b80fa93579da98c9dbdb057f1ec623bf5d2d340",
+        "linked-panel-mobile.png": "0550a9ef04fc0a117ba943be76109b34ebdf8eb60b048e105e9901338de83f05",
+        "math-verification.json": "22a00f75b8487eeea75be684c2a952f3a76d7bea8ec4f561ef0e908b3cc80d2b",
+        "monodromy-29-mcomb-elliptic-bsd.html": "74fedcdaa74462e76f22e81c225c2f6d7db831becfa74d98f8ca61648f2ca206",
+        "package-verification.json": "5e3f63008ee8de8d47ecb796075c063451ee61ce1484234674a44b2f339b95ee",
+        "package.cjs": "e0b9a6d2c22bb9f25adc7ca22903954a6521410bbda222f6aeb440091dbd3782",
+        "uniformization-oracle-inputs.json": "d46af77c62a204692097f67d3df6d2ed092fffcddb88938355f318b98efcc9cf"
+      },
+      "BSD_CURVE_RECORD_v0_1_20260907": {
+        "CONTRACT.md": "37e116ad95d249476c87269b27cc2036c58f25c722774e63efeeb3cca2559a42",
+        "README.md": "15b71ea7fd83f79fc7a992c1529733da649c432589a750c4880d263c4c0b31a8",
+        "SHA256SUMS.txt": "4585774e6c77889cee22144674c2d20fbd33afe421a5082eacfc95f2dd20b4c5",
+        "SOURCE_PINS.json": "71b9de6cc38f0be78640d2f534ab9f011565954698049f5eba5fd9c681947b32",
+        "SYNTHETIC_COMPARISON_FIXTURE.json": "182ffa2e525ea93af09cf29db22d7f5c48422ab095a3bc6e61b59f516534da97",
+        "VERIFICATION.md": "21c598ef92a784f3a96c1bd897e52c84da090c5ec5b0b4fe151f6dc0bca6bef4",
+        "browser-export-fixture.json": "fa1aef19c159a78f7f0a521e945fb08bb056ff0f80185ced5b51bdb435da1e42",
+        "browser-verification.json": "0246ada8f8f77f7c905c8df88bf142080d2471d7d7beb8bf0fc8f51ed91b9297",
+        "bsd-curve-record.schema.json": "b675150c50b9cc93ec420dc32ef922faa23af2b6d0b9420e51d94a0c863211b9",
+        "bsd-desktop.png": "abc5d2a87b25dfea14cab5db6ab37e0cc36b517d7db8044a9680ecca8dbdebcf",
+        "bsd-mobile.png": "d14fa4372caed9f3c3998eb5f460ba5cdb18d36f981988afe45968a570256025",
+        "bsd-panel.js": "de0cee248c7345a876a4d871b0a766da4a501985c17cca0fccffc3e094d20a74",
+        "bsd-record.js": "29f0cf6bff5afc07cdf590cb2b24eaef8001051ee4d090ed9e4e7b7098bd77ab",
+        "build.cjs": "4af1274fde49286127b9f7ec1b5c5f1cb46a736c79699e3c936b12be03040e6e",
+        "check-browser.cjs": "f32b7943db68205e0c3df785baf9426a0e11ee6169cee37ec12065b0ac70d743",
+        "check-core.cjs": "4ab59d3f6815240660c76d6d8d725d57a48a71480a45935d5b3c965e62e36900",
+        "check-independent.py": "a168ad29f9e5d88acbaa71dbc287af39ce696e9b36d1c7aa5568cd60f1731a4a",
+        "core-verification.json": "1c861b6773fbc68abf15915e00f07105d4649df70b0602a5091ec054852f0cc4",
+        "independent-verification.json": "1b45a3270b92978d39dc4e552ae4b9a12525b88e1fec82e01963ace0026cb6c2",
+        "make-schema.cjs": "3faad09f35d79ebdb13ab8cf42369037348811cc65ef8ea43f6c9e6cc3d0fa9f",
+        "monodromy-28-bsd.html": "9d6214339802e182881691ed33c2946eb8dc3d0e3536c413fe07783b4ebc433a",
+        "oracle-inputs.json": "ceb220930709445d21a9c24ac01fe0343bb8bbc0f6e7729c239c0731776051af",
+        "package.cjs": "79127edb1343b796f1d5806eeeb60351df228e6156bbb13491322a32750f32c7"
+      }
+    },
+    "extraHashes": {
+      "v27_elliptic_bridge.js": "0b59d55ba84f337458b45726e600b582fcb741ce0076811dadb6d9edda1c995c",
+      "SAGE_SERENA_NUCLEUS_HOST_PLAN_v0_1_20260907.md": "78fe6585b84f83e9789dac20b5d4e02eb03e2962a4bc15725af1b0a4b95dcef6",
+      "MONODROMY_30_1_SCHEMA_COLD_AUDIT_FABLE_20260907.md": "ff6438de67de91d7b37d3c427191efb14a045f7d2af379b143f91f4620e5ff75",
+      "MONODROMY_30_1_SCHEMA_COLD_AUDIT_FABLE_20260907.json": "e69380fd75f853f5719712bb4eb59c96c4e05e766155b2bd95842582f30b9729",
+      "MINIMAL_TATE_SCHEMA_v0_2_COLD_AUDIT_FABLE_20260907.md": "e0d59f7ecac6560793dba81892046d8ac7b27f674beaff47418542f4580a3901",
+      "MINIMAL_TATE_SCHEMA_v0_2_COLD_AUDIT_FABLE_20260907.json": "2b0d7784a8c4f21def36ff1c05ef4e50d6ead9c529f4891f23708d4eaa672623",
+      "MINIMAL_TATE_SCHEMA_v0_3_COLD_AUDIT_FABLE_20260907.md": "67cc4f4d93ac136f3ba75f0543ec1a3a41dd80cd4f99c5a7dd45022f5f5517ec",
+      "MINIMAL_TATE_SCHEMA_v0_3_COLD_AUDIT_FABLE_20260907.json": "51a19d671907a27d7946c0498720bfa59eff29c80aa0d2abd151a9ad3c40bd4c",
+      "BSD_TATE_T1_v0_1_COLD_AUDIT_FABLE_20260907.md": "effa17cd5f893e2e2d01519569a81c735e41cd29bcb48d23069b0957682d8e18",
+      "BSD_TATE_T1_v0_1_COLD_AUDIT_FABLE_20260907.json": "ff6272b6641d615ad5b4fca7a34d442562810b3a182e319dca7ac2fd1370c06e"
+    },
+    "runtimes": {
+      "node": {
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "version": "v24.13.0"
+      },
+      "python": {
+        "command": "C:\\Users\\robin\\s6_atom\\cold audit fourier\\.bsd-audit-venv\\Scripts\\python.exe",
+        "args": [],
+        "origin": "project environment",
+        "ok": true,
+        "executable": "C:\\Users\\robin\\s6_atom\\cold audit fourier\\.bsd-audit-venv\\Scripts\\python.exe",
+        "version": "3.12.14",
+        "jsonschemaVersion": "4.26.0",
+        "jsonschemaPath": "C:\\Users\\robin\\s6_atom\\cold audit fourier\\.bsd-audit-venv\\Lib\\site-packages\\jsonschema\\__init__.py",
+        "draft": "2020-12",
+        "attempts": [
+          {
+            "command": "C:\\Users\\robin\\s6_atom\\cold audit fourier\\.bsd-audit-venv\\Scripts\\python.exe",
+            "origin": "project environment",
+            "ok": true,
+            "reason": null
+          }
+        ],
+        "vendor": null
+      },
+      "browser": {
+        "modulePath": "C:\\Users\\robin\\s6_atom\\node_modules\\playwright\\index.js",
+        "executable": "C:\\Users\\robin\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe",
+        "version": "1.61.1",
+        "origin": "Node module resolution"
+      }
+    },
+    "pari": {
+      "dir": "C:\\Users\\robin\\s6_atom\\cold audit fourier\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "checks": [
+      {
+        "name": "t2",
+        "status": "PASS"
+      },
+      {
+        "name": "independent",
+        "status": "PASS"
+      },
+      {
+        "name": "inherited-t1",
+        "status": "PASS"
+      },
+      {
+        "name": "All source packages, audits, host plan and runtimes unchanged",
+        "status": "PASS"
+      }
+    ],
+    "failure": null,
+    "sageComparison": "SEPARATE_SERENA_NUCLEUS_LINE_ITEM"
+  },
+  "t2": {
+    "status": "PASS",
+    "standing": "BUILDER_VERIFICATION_NOT_COLD_AUDIT",
+    "total": 127,
+    "fixtures": 99,
+    "checks": [
+      {
+        "name": "II cp=1 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "III cp=2 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "IV cp=3 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "IV cp=1 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "IV* cp=3 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "IV* cp=1 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "III* cp=2 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "II* cp=1 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I0* cp=1 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I0* cp=2 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I0* cp=4 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I1* cp=4 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I1* cp=2 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I2* cp=2 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I2* cp=4 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I3* cp=4 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I3* cp=2 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I4* cp=2 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I4* cp=4 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I7* cp=4 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I7* cp=2 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I8* cp=2 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I8* cp=4 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I17* cp=4 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I17* cp=2 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I18* cp=2 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "I18* cp=4 at 5",
+        "status": "PASS"
+      },
+      {
+        "name": "II cp=1 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "III cp=2 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "IV cp=3 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "IV cp=1 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "IV* cp=3 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "IV* cp=1 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "III* cp=2 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "II* cp=1 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I0* cp=1 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I0* cp=2 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I0* cp=4 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I1* cp=4 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I1* cp=2 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I2* cp=4 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I2* cp=2 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I3* cp=4 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I3* cp=2 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I4* cp=4 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I4* cp=2 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I7* cp=4 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I7* cp=2 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I8* cp=4 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I8* cp=2 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I17* cp=4 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I17* cp=2 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I18* cp=4 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "I18* cp=2 at 7",
+        "status": "PASS"
+      },
+      {
+        "name": "II cp=1 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "III cp=2 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "IV cp=3 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "IV cp=1 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "IV* cp=3 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "IV* cp=1 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "III* cp=2 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "II* cp=1 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I0* cp=1 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I0* cp=2 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I0* cp=4 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I1* cp=4 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I1* cp=2 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I2* cp=2 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I2* cp=4 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I3* cp=4 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I3* cp=2 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I4* cp=2 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I4* cp=4 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I7* cp=4 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I7* cp=2 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I8* cp=2 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I8* cp=4 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I17* cp=4 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I17* cp=2 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I18* cp=2 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "I18* cp=4 at 11",
+        "status": "PASS"
+      },
+      {
+        "name": "Nonzero p-adic refinement 5/1",
+        "status": "PASS"
+      },
+      {
+        "name": "Nonzero p-adic refinement 5/2",
+        "status": "PASS"
+      },
+      {
+        "name": "Nonzero p-adic refinement 7/1",
+        "status": "PASS"
+      },
+      {
+        "name": "Nonzero p-adic refinement 7/2",
+        "status": "PASS"
+      },
+      {
+        "name": "j=0 II",
+        "status": "PASS"
+      },
+      {
+        "name": "j=0 IV",
+        "status": "PASS"
+      },
+      {
+        "name": "j=0 I0*",
+        "status": "PASS"
+      },
+      {
+        "name": "j=0 IV*",
+        "status": "PASS"
+      },
+      {
+        "name": "j=0 II*",
+        "status": "PASS"
+      },
+      {
+        "name": "Inherited multiplicative types and both Tamagawa parities",
+        "status": "PASS"
+      },
+      {
+        "name": "Good general equation and full upper-bound fibre count",
+        "status": "PASS"
+      },
+      {
+        "name": "Repeated p-scalings genuinely recover local minimality",
+        "status": "PASS"
+      },
+      {
+        "name": "General signed rational model, exact points and repeated visits",
+        "status": "PASS"
+      },
+      {
+        "name": "Nontrivial marking and twist context survive exact transport",
+        "status": "PASS"
+      },
+      {
+        "name": "Backend-free certification and incomplete model inventory",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject cp allowed but wrong",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject Kodaira with colliding valuation",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject conductor",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject wild",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject component count",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject component multiplicity",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject minimality witness",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject missing branch event",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject reordered events",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject refinement shift",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject level advance",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject polynomial coefficient",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject polynomial rational coefficient",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject polynomial evaluations",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject root multiplicity",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject omitted roots",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject residual irreducibility",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject tuple sign",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject differential",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject panel marking",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject borrowed comparison",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject comparison map",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject inventory completion",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject parent hash",
+        "status": "PASS"
+      },
+      {
+        "name": "Public entry point verifies certificates and rejects coherent/source forgeries",
+        "status": "PASS"
+      },
+      {
+        "name": "Bounds, singularity and p-integrality gates do not silently pass",
+        "status": "PASS"
+      },
+      {
+        "name": "An allowed but false additive PARI c_p cannot override the T2 proof",
+        "status": "PASS"
+      },
+      {
+        "name": "A true unresolved cofactor cannot be relabelled complete",
+        "status": "PASS"
+      },
+      {
+        "name": "p=3 multiplicative note cross-check (T3 extension remains unimplemented)",
+        "status": "PASS"
+      },
+      {
+        "name": "CLI and scratch refusal work at the real entry points",
+        "status": "PASS"
+      },
+      {
+        "name": "Generated schemas match their versioned source",
+        "status": "PASS"
+      }
+    ],
+    "coverage": {
+      "II:1": 5,
+      "III:2": 3,
+      "IV:3": 4,
+      "IV:1": 3,
+      "IV*:3": 4,
+      "IV*:1": 3,
+      "III*:2": 3,
+      "II*:1": 4,
+      "I0*:1": 3,
+      "I0*:2": 4,
+      "I0*:4": 4,
+      "I1*:4": 4,
+      "I1*:2": 3,
+      "I2*:2": 3,
+      "I2*:4": 3,
+      "I3*:4": 5,
+      "I3*:2": 4,
+      "I4*:2": 4,
+      "I4*:4": 3,
+      "I7*:4": 3,
+      "I7*:2": 3,
+      "I8*:2": 3,
+      "I8*:4": 3,
+      "I17*:4": 3,
+      "I17*:2": 3,
+      "I18*:2": 3,
+      "I18*:4": 3,
+      "I4:4": 1,
+      "I3:1": 1,
+      "I4:2": 1,
+      "I0:1": 3
+    },
+    "sageLive": "SEPARATE_SERENA_NUCLEUS_LINE_ITEM_NOT_A_T2_GATE"
+  },
+  "independentPython": {
+    "status": "PASS",
+    "standing": "BUILDER_DISTINCT_METHOD_NOT_COLD_AUDIT",
+    "total": 99,
+    "methods": [
+      "Fraction polynomial substitution",
+      "short invariant valuation classification",
+      "discriminant-unit formula for I_n* splitting",
+      "independent residue evaluations"
+    ],
+    "checks": [
+      {
+        "name": "II-1-5",
+        "status": "PASS",
+        "kodaira": "II",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "III-2-5",
+        "status": "PASS",
+        "kodaira": "III",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "IV-3-5",
+        "status": "PASS",
+        "kodaira": "IV",
+        "tamagawaNumber": "3"
+      },
+      {
+        "name": "IV-1-5",
+        "status": "PASS",
+        "kodaira": "IV",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "IV*-3-5",
+        "status": "PASS",
+        "kodaira": "IV*",
+        "tamagawaNumber": "3"
+      },
+      {
+        "name": "IV*-1-5",
+        "status": "PASS",
+        "kodaira": "IV*",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "III*-2-5",
+        "status": "PASS",
+        "kodaira": "III*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "II*-1-5",
+        "status": "PASS",
+        "kodaira": "II*",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "I0star-1-5",
+        "status": "PASS",
+        "kodaira": "I0*",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "I0star-2-5",
+        "status": "PASS",
+        "kodaira": "I0*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "I0star-4-5",
+        "status": "PASS",
+        "kodaira": "I0*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-5-1-1",
+        "status": "PASS",
+        "kodaira": "I1*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-5-1-2",
+        "status": "PASS",
+        "kodaira": "I1*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-5-2-1",
+        "status": "PASS",
+        "kodaira": "I2*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-5-2-2",
+        "status": "PASS",
+        "kodaira": "I2*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-5-3-1",
+        "status": "PASS",
+        "kodaira": "I3*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-5-3-2",
+        "status": "PASS",
+        "kodaira": "I3*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-5-4-1",
+        "status": "PASS",
+        "kodaira": "I4*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-5-4-2",
+        "status": "PASS",
+        "kodaira": "I4*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-5-7-1",
+        "status": "PASS",
+        "kodaira": "I7*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-5-7-2",
+        "status": "PASS",
+        "kodaira": "I7*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-5-8-1",
+        "status": "PASS",
+        "kodaira": "I8*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-5-8-2",
+        "status": "PASS",
+        "kodaira": "I8*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-5-17-1",
+        "status": "PASS",
+        "kodaira": "I17*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-5-17-2",
+        "status": "PASS",
+        "kodaira": "I17*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-5-18-1",
+        "status": "PASS",
+        "kodaira": "I18*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-5-18-2",
+        "status": "PASS",
+        "kodaira": "I18*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "II-1-7",
+        "status": "PASS",
+        "kodaira": "II",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "III-2-7",
+        "status": "PASS",
+        "kodaira": "III",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "IV-3-7",
+        "status": "PASS",
+        "kodaira": "IV",
+        "tamagawaNumber": "3"
+      },
+      {
+        "name": "IV-1-7",
+        "status": "PASS",
+        "kodaira": "IV",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "IV*-3-7",
+        "status": "PASS",
+        "kodaira": "IV*",
+        "tamagawaNumber": "3"
+      },
+      {
+        "name": "IV*-1-7",
+        "status": "PASS",
+        "kodaira": "IV*",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "III*-2-7",
+        "status": "PASS",
+        "kodaira": "III*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "II*-1-7",
+        "status": "PASS",
+        "kodaira": "II*",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "I0star-1-7",
+        "status": "PASS",
+        "kodaira": "I0*",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "I0star-2-7",
+        "status": "PASS",
+        "kodaira": "I0*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "I0star-4-7",
+        "status": "PASS",
+        "kodaira": "I0*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-7-1-1",
+        "status": "PASS",
+        "kodaira": "I1*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-7-1-3",
+        "status": "PASS",
+        "kodaira": "I1*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-7-2-1",
+        "status": "PASS",
+        "kodaira": "I2*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-7-2-3",
+        "status": "PASS",
+        "kodaira": "I2*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-7-3-1",
+        "status": "PASS",
+        "kodaira": "I3*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-7-3-3",
+        "status": "PASS",
+        "kodaira": "I3*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-7-4-1",
+        "status": "PASS",
+        "kodaira": "I4*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-7-4-3",
+        "status": "PASS",
+        "kodaira": "I4*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-7-7-1",
+        "status": "PASS",
+        "kodaira": "I7*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-7-7-3",
+        "status": "PASS",
+        "kodaira": "I7*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-7-8-1",
+        "status": "PASS",
+        "kodaira": "I8*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-7-8-3",
+        "status": "PASS",
+        "kodaira": "I8*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-7-17-1",
+        "status": "PASS",
+        "kodaira": "I17*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-7-17-3",
+        "status": "PASS",
+        "kodaira": "I17*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-7-18-1",
+        "status": "PASS",
+        "kodaira": "I18*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-7-18-3",
+        "status": "PASS",
+        "kodaira": "I18*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "II-1-11",
+        "status": "PASS",
+        "kodaira": "II",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "III-2-11",
+        "status": "PASS",
+        "kodaira": "III",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "IV-3-11",
+        "status": "PASS",
+        "kodaira": "IV",
+        "tamagawaNumber": "3"
+      },
+      {
+        "name": "IV-1-11",
+        "status": "PASS",
+        "kodaira": "IV",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "IV*-3-11",
+        "status": "PASS",
+        "kodaira": "IV*",
+        "tamagawaNumber": "3"
+      },
+      {
+        "name": "IV*-1-11",
+        "status": "PASS",
+        "kodaira": "IV*",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "III*-2-11",
+        "status": "PASS",
+        "kodaira": "III*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "II*-1-11",
+        "status": "PASS",
+        "kodaira": "II*",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "I0star-1-11",
+        "status": "PASS",
+        "kodaira": "I0*",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "I0star-2-11",
+        "status": "PASS",
+        "kodaira": "I0*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "I0star-4-11",
+        "status": "PASS",
+        "kodaira": "I0*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-11-1-1",
+        "status": "PASS",
+        "kodaira": "I1*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-11-1-2",
+        "status": "PASS",
+        "kodaira": "I1*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-11-2-1",
+        "status": "PASS",
+        "kodaira": "I2*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-11-2-2",
+        "status": "PASS",
+        "kodaira": "I2*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-11-3-1",
+        "status": "PASS",
+        "kodaira": "I3*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-11-3-2",
+        "status": "PASS",
+        "kodaira": "I3*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-11-4-1",
+        "status": "PASS",
+        "kodaira": "I4*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-11-4-2",
+        "status": "PASS",
+        "kodaira": "I4*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-11-7-1",
+        "status": "PASS",
+        "kodaira": "I7*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-11-7-2",
+        "status": "PASS",
+        "kodaira": "I7*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-11-8-1",
+        "status": "PASS",
+        "kodaira": "I8*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-11-8-2",
+        "status": "PASS",
+        "kodaira": "I8*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-11-17-1",
+        "status": "PASS",
+        "kodaira": "I17*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "star-11-17-2",
+        "status": "PASS",
+        "kodaira": "I17*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-11-18-1",
+        "status": "PASS",
+        "kodaira": "I18*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "star-11-18-2",
+        "status": "PASS",
+        "kodaira": "I18*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "nonzero-refinement-5-1",
+        "status": "PASS",
+        "kodaira": "I4*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "nonzero-refinement-5-2",
+        "status": "PASS",
+        "kodaira": "I3*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "nonzero-refinement-7-1",
+        "status": "PASS",
+        "kodaira": "I3*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "nonzero-refinement-7-2",
+        "status": "PASS",
+        "kodaira": "I3*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "j0-II",
+        "status": "PASS",
+        "kodaira": "II",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "j0-IV",
+        "status": "PASS",
+        "kodaira": "IV",
+        "tamagawaNumber": "3"
+      },
+      {
+        "name": "j0-I0*",
+        "status": "PASS",
+        "kodaira": "I0*",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "j0-IV*",
+        "status": "PASS",
+        "kodaira": "IV*",
+        "tamagawaNumber": "3"
+      },
+      {
+        "name": "j0-II*",
+        "status": "PASS",
+        "kodaira": "II*",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "multip-1-4",
+        "status": "PASS",
+        "kodaira": "I4",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "multip-2-3",
+        "status": "PASS",
+        "kodaira": "I3",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "multip-2-4",
+        "status": "PASS",
+        "kodaira": "I4",
+        "tamagawaNumber": "2"
+      },
+      {
+        "name": "general-good",
+        "status": "PASS",
+        "kodaira": "I0",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "prime-bound",
+        "status": "PASS",
+        "kodaira": "I0",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "three-rescalings",
+        "status": "PASS",
+        "kodaira": "II",
+        "tamagawaNumber": "1"
+      },
+      {
+        "name": "rational-general-points",
+        "status": "PASS",
+        "kodaira": "I1*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "twist-and-marking",
+        "status": "PASS",
+        "kodaira": "I0*",
+        "tamagawaNumber": "4"
+      },
+      {
+        "name": "backend-free-incomplete",
+        "status": "PASS",
+        "kodaira": "I0",
+        "tamagawaNumber": "1"
+      }
+    ]
+  },
+  "inheritedT1": {
+    "status": "PASS",
+    "standing": "BUILDER_SCRATCH_VERIFICATION_NOT_COLD_AUDIT",
+    "scope": "T1_AND_ALL_V03_REGRESSIONS",
+    "scratch": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t1-audit-Na1tPL",
+    "stage": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t1-audit-Na1tPL\\BSD_TATE_T1_v0_1_20260907",
+    "sourcePackage": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t2-audit-JpRrDv\\BSD_TATE_T1_v0_1_20260907",
+    "manifests": {
+      "BSD_TATE_T1_v0_1_20260907": {
+        "status": "PASS",
+        "entries": 28,
+        "sha256": "de4467a54d77fa6669ecbae43612ffa7425ef6746bcbeba877e0d0edb52b6032"
+      },
+      "BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907": {
+        "status": "PASS",
+        "entries": 80,
+        "sha256": "40739e8bb8ff0259c974d727030ef89cc66895971aef5f1ce20840d4bef0302a"
+      },
+      "BSD_MINIMAL_TATE_SCHEMA_v0_2_20260907": {
+        "status": "PASS",
+        "entries": 75,
+        "sha256": "605d44f3b9b2c045ecb01837f4c1502eb2bb05bcae4d5e2caccc174560d3d97e"
+      },
+      "BSD_MINIMAL_TATE_SCHEMA_v0_1_20260907": {
+        "status": "PASS",
+        "entries": 41,
+        "sha256": "252b5406568d19bd1377c68e8bd70c1a5bc369c26d262bd391d38311e33c4e3b"
+      },
+      "MCOMB_CARRIER_ADDITION_v0_1_20260907": {
+        "status": "PASS",
+        "entries": 27,
+        "sha256": "b7799b08896ee9b57c8963d4530e393d7d3952a6d2f3047ce20376e1d67d87c1"
+      }
+    },
+    "sourceInventories": {
+      "BSD_TATE_T1_v0_1_20260907": {
+        "CONTRACT.md": "3f070fa23d9226538fa746619f6a309e7da5e50abf0001218a92b839879bca86",
+        "HANDOFF.md": "87d0a34e847c7a3fce02e58051772230b2ef552abefbb97aa7652364a510e6f5",
+        "MANIFEST.sha256": "de4467a54d77fa6669ecbae43612ffa7425ef6746bcbeba877e0d0edb52b6032",
+        "NEXT_STEPS.md": "27a8d9f6cd24a8e03f39d9abe46f6fc39215cc5d1a828b7a38b390e820790291",
+        "README.md": "892a78eec30cececb12f22c94f355fc76070cd6536046f3009251b0e1233c8fb",
+        "SOURCE_PINS.json": "f894ecfde794a961b6d51145c607ddd3ba04ca78b98cdd4fc9d1d4e935d9c91c",
+        "VERIFICATION.md": "06a04978e728b3c8035d3ea443fa4709dbba18a434e498a8052a08deb25618db",
+        "assess.cjs": "c899d448b4f3a836ec1a188bd80769349d64572b9889621aba5b34261a6dd78d",
+        "build.cjs": "a57ccb840565855a2794003394fe2dd79b34bc4a469a6518245888a867548c6b",
+        "check-independent.py": "e264bf3ba0da24352139e8522124786d864af1710c210eaea561b1156a93912b",
+        "check-integrity.cjs": "9e31c069cd91a3baef64c6b8d8cb7b89df83469fdba4f63eaabc3fa8d8b102a7",
+        "check-t1.worker.cjs": "5524137cd190d8c84c4e9a4bb87900e1cd8cadd4c15453dc950f09b4616771bf",
+        "example-input.json": "388e6e672a125537ab89732e4d907f3b78f24d3406114fdaf41ed06f2004a096",
+        "make-schema.cjs": "04e4b8d8fa2923ba8430e59996c1793f10dc641f8044f13b152ed74fe7dff5aa",
+        "pari-adapter.cjs": "5ea80b80f1433172a457b49217841dc79a59b72807d43518b6291092ee2b53b4",
+        "receipts/independent-tests.json": "ab548a5ba8a4a81d9616687a45272a2fb6e2ece78de61a0ebfb56597fd52b3c0",
+        "receipts/inherited-v03.log": "8cd2f4d158c54a54fc4083e3919c076f07d865cdabcbd0b907b6650f6a3b99ab",
+        "receipts/inherited-verification.json": "5c4fb26c24a256c5451a6637a53d862df41899df8d321c472fa659c51ab621b1",
+        "receipts/t1-fixtures.json": "1e9aad52432d9bda4cb91974584547f4b60f02c8a7c7a63a34c332d509c16dde",
+        "receipts/t1-tests.json": "a3c05a019eb6dc3a55b88f9b98d5658c811310f866b638e6986eb716ed2bd75c",
+        "receipts/t1-verification.json": "562e4dbc4e1b700424bc012d42fb8c2a732d44bce288cef91c1e93bca8bd6949",
+        "sage-producer.py": "cf9e5e51ff0ee6a8a6d4fc36cc2a27e4d984bc4419ef1bc5138887502f95665b",
+        "seal-authoring.cjs": "ee386ee61c94e5bb52e8e05264713fd8d7f0d3bde0a116924bf36a6b8b1b9108",
+        "t1-certificate.schema.json": "b246a28e347fa75c42b9173b9b30decec79cd77ba79bf8479ec464a1c9aa075a",
+        "t1-packet.schema.json": "624ca28a795d9fc4a6916c7fd24c12850b2a93bc7c9dbe71c12f919b9bc95857",
+        "t1.cjs": "625c7a094f4c8d3330ba6b2d021bb07513090831e3176e17c9e9deb4c8ee674d",
+        "validate.py": "3e40cf92841d215a6b9aaed4e29aeb3385d1e4259967ffda776ab066ef79ff0e",
+        "verify.cjs": "f870e06f438050c4d14442e9f4d72b83dea009c297d33e6ab059077a6e73de3c",
+        "worker-guard.cjs": "6e21ee9b98d2d8600ff4328221e39d7b4473ff9e1e3fd8e10d960e8d7669bc79"
+      },
+      "BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907": {
+        "AUDIT_MATRIX.md": "9da8e36cd8273633735367c5b24e7b49974e792b492f78b6d6e0aa0281c8ebbc",
+        "HANDOFF.md": "cbe4a3aee722fec63600a466f4a045103e58edc005c0bb1838269800724f7494",
+        "IMPLEMENTATION_PLAN.md": "c62c703dc8585047ab698993e46b7cd18e8a67b8602198839631db15ad1f1a58",
+        "MANIFEST.sha256": "40739e8bb8ff0259c974d727030ef89cc66895971aef5f1ce20840d4bef0302a",
+        "README.md": "f524e8c3260710fa17986f1cd5ce3f46d3d129ec2700b6e8f464e7df865444f7",
+        "REPAIR_NOTES.md": "67c1b23d253fa074d3f5d915a8b54ec41d6b3c1194ca4f23e3669c41f0872f36",
+        "RUNTIME_SETUP.md": "ff5a69a37a3b8c9a30155e3145cf8f457c142b43b9e6c840db3e92cc2b7f5c8e",
+        "SCHEMA_FOR_AUDIT.md": "5c82adcee7a6dc950ff3bd2b0a53b183291c77ce1c06e3bc62b3d5733355d9da",
+        "SOURCE_PINS.json": "8d201786de8eeda799164c61ebeebcc7a779f2f9ac1f4a8ed217703d0f0a1c67",
+        "assess.cjs": "96104c56f3dcfddfe48364b91f7ad8a7c3a3e30f004883c99655e29755078834",
+        "build.cjs": "371a32534e1bb707481366f31ab678b727104121cbc4321a5986c70ac32bb4bf",
+        "check-browser.cjs": "bf2f5b4ea0ac22c5e29dacfd7fb8a16ef1466fec644e9c74b88dd749606d3db4",
+        "check-browser.worker.cjs": "3eba1b0f94ecc23626e5b906033ad120ae4eba9879f299d5b4cb2842e7fb1d32",
+        "check-good-certificates.py": "8a833bfc9ede0756e5f108cc69fa93ff1f4f2ed642d51ffa0121f5cbf925b937",
+        "check-integrity.cjs": "d19ef7e8ef75f8d5ece36ea680c112b73517c7a00af66a062b1cdf4d13e11d8c",
+        "check-local-gates.worker.cjs": "a3f1443cc28346daf2c9fc4eb0fd4ba16e9f3a1520142195c310ccaebbc6036f",
+        "check-maintenance.worker.cjs": "ad286eb30e09835452218ff29a25388e55cdde70a22ff13040c22deb91901e8f",
+        "check-math.cjs": "ada5a9325e5f81cd47a6de5eae210ff2694097e85ded726427de82634d1146c3",
+        "check-math.worker.cjs": "b0c83a043bc0de69b6cd72b0a32c3b33baef40d187348a0080f8b876621ab5e1",
+        "check-regression.worker.cjs": "ae27a253be640af6e6b2378a428824d2c1d0422f69a323c278c14952557a0bdd",
+        "check-runtime.worker.cjs": "620c4d39d8e8cb8fe1d67a42d8e4a04ef2acd553f643aee6c2bb7e64d5275e9b",
+        "check-schema.cjs": "ec8646c6ce9fe6afaeaf0601e06940a95902cea8eb429644371903e1a755fe68",
+        "check-schema.py": "08e88ce5ce9858393d544d6b5c189ab526434faf0d391efcda425a25e997736a",
+        "check-schema.worker.cjs": "5252935a19b6b5ced2eb6a537c960f7c9bbab65137b2bb15464e3b2b79d4fd47",
+        "check-valuation-gates.worker.cjs": "53102f3c1c685a4f7716fec2767c5d836526255af8568984b106ec6f0cad47bb",
+        "fixtures/37a1-model-exclusion.json": "648cfa9b27b9fbb64a477727ed65022628ce16926ae06197b0d03fad6bb21908",
+        "fixtures/exact-point-without-minimality.json": "6336ce7728918b8013519575dec2c3c49df871ec876737ec6c12c5eb2b7b8bc9",
+        "fixtures/negative-scale-shear.json": "97efb8c583d49d6fba9184337044d87e4b4a87691304225798be0cba6615f7fd",
+        "fixtures/rational-chain.json": "ad7181bafc942630ac5fe4a49786ad0fa5e4650fd7ec9e04d93b11d0b454af98",
+        "fixtures/separate-quadratic-twist.json": "6a5be0502725bc36e34be72711f4c00fdf2ecb271aa5b821223a4b2bddb55677",
+        "good-prime-certificate.schema.json": "765971e6e1528cf77dc275af9272be2b048736c33494926c8fb6ae5d3c4761af",
+        "labels.js": "067fa640cca78321edca49026f3d977afd2d61f3d36b6fd98d715a03c14a5125",
+        "make-fixtures.cjs": "63774dd2a12b5284e873a42536c4792596e1cc4013a1d49282ff66aab86b80d2",
+        "make-schema.cjs": "eb75984c47230f9820588d04eef91730e0d32104d73135bc200c770f65afba53",
+        "make-workers.cjs": "49709d18c34903b6b2d23404d4345a4668e418bf332b372b10ada21e321b05a4",
+        "minimal-tate-record.schema.json": "687bb7d9395abfc53bb844574aca4ff2e51ec4f7be8daab3b954c857187ab085",
+        "model-replay.cjs": "c7b102ef7ff7b9044e6099eb777873eaf7a06f248d311676c789dd5d2fa11877",
+        "monodromy-30-1-reduction-audit.html": "5dc69781082a3d2b41e1b38b49f71c44ec349a219221ed19b15969f8c0c0ee84",
+        "package-verification.json": "b8deacf27b2e4016b3a93b39db2d4e45673d6e8dff114dda82b047f5cd6ed442",
+        "package.cjs": "90c17c2947ab8dec6e52a0fa3128812950866d76e2c2c170828af5fbb6a75b12",
+        "receipts/browser-verification.json": "40fa32011ff805fec624c5e8a8fc688c1489b7378e3b4b3f0422dc1b93f72cee",
+        "receipts/browser.log": "fb44d6bd1562e544af617bb03b65ae0ca294059c04b10fc1fd32622081ce646f",
+        "receipts/bsd-mcomb-mobile.png": "721b230995d8e2c833c5fbe240472bd7783c96d6d739b53b13b2afde1cccc174",
+        "receipts/carrier-clifford.png": "55401093b6a14ec68936b8948fe015b49e36135209ebc42905c3384216ebf06b",
+        "receipts/carrier-desktop.png": "b896b763f36f2663fc88afc6e286419a94827b4f559b10e3c5e12764fba491ed",
+        "receipts/carrier-export-fixture.json": "cb1b44d591f86f874c48fcaf432c5b79e7c53995b8202df237e25b4fc83c9b7d",
+        "receipts/carrier-mobile.png": "7534c490756abb99c553c73e1564dfeaf631e57a5966be1300a2dc0e96e42212",
+        "receipts/elliptic-mcomb-mobile.png": "af80b89a7afe67633b43a358944c27e05c43b23f1c6f6f513d56598d6eb3346c",
+        "receipts/good-certificates-verification.json": "d8aaabafa251148f93a62ff4817fa7e0e7c1f5781ea2a3558c09b4142c2c510c",
+        "receipts/good-certificates.log": "ea46752cce433796bf43936bc96694760c876743a8356c8394e1adbabcefd78b",
+        "receipts/good-prime-certificates.json": "91a52a5f57ed601ad61cf43bb2546e1eedf7824d70002ffbcb65b8d7b7162d32",
+        "receipts/local-gates-verification.json": "6b7cc63fe1bd56408c661940d66f91efaa86291687bd1354fa8d6556a7bd6a85",
+        "receipts/local-gates.log": "bacfb2e1bac90b54fa1cf3cebf367187b52ec3ad3fc3270aaff5ebf036351aed",
+        "receipts/maintenance-verification.json": "1c6189aa4c9db960c0154e82f2ae617ac5c75495fc95e4f0412a877e39e0c12f",
+        "receipts/maintenance.log": "6c4e7c5374c1401609ad020319aaab80819a10c6beb7e47345f0723694b75131",
+        "receipts/math-verification.json": "548824736aebe660c6f0ccd0b0dcd8db99a549f0d87821b88db98569186f78f3",
+        "receipts/math.log": "a3a6159234267564dac1f785aade92f280d620807f7b7d8e36150efc0ad12ea7",
+        "receipts/model-exclusions-desktop.png": "6d65eb6eabfac306158e3f69f1b5f47025f9c481e24f2ea9ccbf574bf5fe98a4",
+        "receipts/prime-product-desktop.png": "870648aeed6f7eb82d82e55dd67f3ebbc58199ac5b61734b4fd0b87e8b70886c",
+        "receipts/prime-product-export-fixture.json": "3054a17873bafbfc717e290c8f3d1eb001e561ae7a91dfa91bd57596a5fe95f4",
+        "receipts/prime-product-mobile.png": "9f32b988d9a1cb25e1c8376112ec16296600b5c720927aa6ec20f3f0b48b7ea3",
+        "receipts/regression-bsd-mcomb-desktop.png": "921cca1170ea01f0e7e4a27aa0e6d13fb24f76e75a956f7c1fa5609ca952077a",
+        "receipts/regression-elliptic-mcomb-desktop.png": "5e5eb9ea3c16a3471fdbe7bdd0bb6dde7b846996c9eae4176e89f32240e94664",
+        "receipts/regression-export-fixture.json": "4a04df1ed96af9b4a05198241380591e22474a55999d5fd689b2a10878c88d7b",
+        "receipts/regression-verification.json": "f7cb286e2930449060500160055297530119a52d09da3eeb1a89e8dd78556ced",
+        "receipts/regression.log": "f65bdc4ce0ec171b33bab17547494eec9dc68314288e58b45a32eb4a481fa079",
+        "receipts/runtime-verification.json": "19c4922218987105009dd7c80792260e125775677d4b1d05a7bf09749db3ced1",
+        "receipts/runtime.log": "ee79950592e13ec7ff588d7df790dc1bbd895bb7c04246868d780984f62331e8",
+        "receipts/schema-python-verification.json": "33ea25148dca468dd7a54fc58c05dd978cef3de23a91af6fb3ec788f35d0c36b",
+        "receipts/schema-python.log": "0e5f6e1ec5487c08f727bf654010962e7ed204afbe8db7ca0cd154599e45b109",
+        "receipts/schema-semantic-verification.json": "a955304550f45f9f0d2b4ffc3cf00d58b25f1a8b12d26b1c599bcf43fa4f9dab",
+        "receipts/schema-semantic.log": "75307f11dd91e4a6e03715bbd8f583df5883bc2d7a8a2e0ccb82eff0f334e50a",
+        "receipts/scratch-verification.json": "5820ca7cfd13b8c5abf497bcd8a4f05508355b75a4c1a513aa7b7b49fb500fb7",
+        "receipts/valuation-forgery-reproductions.json": "efa34180390fee5e216417a76598fd0a5ea480c41d5cac3a6cfc5d436bf91ade",
+        "receipts/valuation-gates-verification.json": "9d9e326e34704bb68cdf33435609b719ec4d5e299a7649adc3e14bc54dc3eb5c",
+        "receipts/valuation-gates.log": "6e06dd26541bd91ff99eb1b61cbe78a5887e2c338ca938c77c9857d737bf2dbf",
+        "requirements-verification.txt": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6",
+        "runtime-browser.cjs": "4cdb4f20c42ca3741cd2ffa05ada5e097e946522c4cabefe35db2efc88b51f2f",
+        "runtime-discovery.cjs": "776d386961bf6cdb0a3c8088ca4ad6e7e6e69be961e66055619227943828026d",
+        "validate-packet.py": "107bbc4c4511db18eadd390e7534c06d4e25625887f51a1dc36612ae2bad3833",
+        "verify.cjs": "3e1c985d74e043d2e8f82cd2047f9c018e8c058c846935170dc60827939e58b7",
+        "worker-guard.cjs": "3cc98862746514a827318666bcd24ae8a19a56e38181c5da76ae2e4f8fc0a712"
+      },
+      "BSD_MINIMAL_TATE_SCHEMA_v0_2_20260907": {
+        "AUDIT_MATRIX.md": "6be1140307a3352089086cfee770938019abd68cc4600a1a1092c57f18b6a389",
+        "HANDOFF.md": "5ab43c3821417561a1be16052c5e430aac4d0ecd1a8738ad06750f9175710a16",
+        "IMPLEMENTATION_PLAN.md": "6c1f5bec2acc2d220f1234fb523ff31461b55c9d67cf67e126d1376330d4181b",
+        "MANIFEST.sha256": "605d44f3b9b2c045ecb01837f4c1502eb2bb05bcae4d5e2caccc174560d3d97e",
+        "README.md": "e5564fe15901b7447a48dd786ff1ce8f579994bf50bd9e4a293fca3cf500216d",
+        "RUNTIME_SETUP.md": "71a27243720fbcb792fcc10202f8a558f261b78a78a26625973751dd153ac06c",
+        "SCHEMA_FOR_AUDIT.md": "d8e6818e50388106bbd41895485a104b552eb6b1a74adcd2fd2ce143d094d80e",
+        "SOURCE_PINS.json": "dc5beec9e1cf377d763d8e371a3ab22bbd4c0a7696ff3576883d1f71147050ec",
+        "assess.cjs": "96104c56f3dcfddfe48364b91f7ad8a7c3a3e30f004883c99655e29755078834",
+        "build.cjs": "34b90b56c26335c78781730690e3e9fd064a7b79bd083589f13db06f614b4d5a",
+        "check-browser.cjs": "bf2f5b4ea0ac22c5e29dacfd7fb8a16ef1466fec644e9c74b88dd749606d3db4",
+        "check-browser.worker.cjs": "3eba1b0f94ecc23626e5b906033ad120ae4eba9879f299d5b4cb2842e7fb1d32",
+        "check-good-certificates.py": "8a833bfc9ede0756e5f108cc69fa93ff1f4f2ed642d51ffa0121f5cbf925b937",
+        "check-integrity.cjs": "a353749a167ed285aab80b699df42d95df6f8713cd9172b6025f59e9c9e3e20f",
+        "check-local-gates.worker.cjs": "a3f1443cc28346daf2c9fc4eb0fd4ba16e9f3a1520142195c310ccaebbc6036f",
+        "check-maintenance.worker.cjs": "ad286eb30e09835452218ff29a25388e55cdde70a22ff13040c22deb91901e8f",
+        "check-math.cjs": "ada5a9325e5f81cd47a6de5eae210ff2694097e85ded726427de82634d1146c3",
+        "check-math.worker.cjs": "b0c83a043bc0de69b6cd72b0a32c3b33baef40d187348a0080f8b876621ab5e1",
+        "check-regression.worker.cjs": "ae27a253be640af6e6b2378a428824d2c1d0422f69a323c278c14952557a0bdd",
+        "check-runtime.worker.cjs": "620c4d39d8e8cb8fe1d67a42d8e4a04ef2acd553f643aee6c2bb7e64d5275e9b",
+        "check-schema.cjs": "ec8646c6ce9fe6afaeaf0601e06940a95902cea8eb429644371903e1a755fe68",
+        "check-schema.py": "08e88ce5ce9858393d544d6b5c189ab526434faf0d391efcda425a25e997736a",
+        "check-schema.worker.cjs": "5252935a19b6b5ced2eb6a537c960f7c9bbab65137b2bb15464e3b2b79d4fd47",
+        "fixtures/37a1-model-exclusion.json": "648cfa9b27b9fbb64a477727ed65022628ce16926ae06197b0d03fad6bb21908",
+        "fixtures/exact-point-without-minimality.json": "6336ce7728918b8013519575dec2c3c49df871ec876737ec6c12c5eb2b7b8bc9",
+        "fixtures/negative-scale-shear.json": "97efb8c583d49d6fba9184337044d87e4b4a87691304225798be0cba6615f7fd",
+        "fixtures/rational-chain.json": "ad7181bafc942630ac5fe4a49786ad0fa5e4650fd7ec9e04d93b11d0b454af98",
+        "fixtures/separate-quadratic-twist.json": "6a5be0502725bc36e34be72711f4c00fdf2ecb271aa5b821223a4b2bddb55677",
+        "good-prime-certificate.schema.json": "2d1de2947e6870982c344f17f187b92132382473e03e2ea09c084fc43daea2e1",
+        "labels.js": "067fa640cca78321edca49026f3d977afd2d61f3d36b6fd98d715a03c14a5125",
+        "make-fixtures.cjs": "63774dd2a12b5284e873a42536c4792596e1cc4013a1d49282ff66aab86b80d2",
+        "make-schema.cjs": "dd4a87abf5e3607dbc378fef63f74a51ebdc68ccc0b2ef0dbf2ad1bc26d67b2a",
+        "make-workers.cjs": "49709d18c34903b6b2d23404d4345a4668e418bf332b372b10ada21e321b05a4",
+        "minimal-tate-record.schema.json": "53ff91611f6a7310b99d33abde9d5f973aea74cb01fabee50791c4190f221485",
+        "model-replay.cjs": "f701e0ee68d6fd33d5f269545f85f01503707a7de3158f13f5f4140fbd43d486",
+        "monodromy-30-1-reduction-audit.html": "5dc69781082a3d2b41e1b38b49f71c44ec349a219221ed19b15969f8c0c0ee84",
+        "package-verification.json": "34a2cd805c8f150321f99cbe27019b2a94cc569337efd4c2e9cd85050b8341bd",
+        "package.cjs": "c099e7b547a8bfa3480885c032150757aeeec5515abe6ae68dbaa4c7a8d2d22c",
+        "receipts/browser-verification.json": "40fa32011ff805fec624c5e8a8fc688c1489b7378e3b4b3f0422dc1b93f72cee",
+        "receipts/browser.log": "fb44d6bd1562e544af617bb03b65ae0ca294059c04b10fc1fd32622081ce646f",
+        "receipts/bsd-mcomb-mobile.png": "721b230995d8e2c833c5fbe240472bd7783c96d6d739b53b13b2afde1cccc174",
+        "receipts/carrier-clifford.png": "55401093b6a14ec68936b8948fe015b49e36135209ebc42905c3384216ebf06b",
+        "receipts/carrier-desktop.png": "b896b763f36f2663fc88afc6e286419a94827b4f559b10e3c5e12764fba491ed",
+        "receipts/carrier-export-fixture.json": "cb1b44d591f86f874c48fcaf432c5b79e7c53995b8202df237e25b4fc83c9b7d",
+        "receipts/carrier-mobile.png": "9d1e0f327cca756a03079d30fdd000f8838e73121dd32ff38f4d812535b724de",
+        "receipts/elliptic-mcomb-mobile.png": "819b7d7955a4b47d23cbed8b4d272863a971e9eb6c94ac6cf97d48e490413cbe",
+        "receipts/good-certificates-verification.json": "d8aaabafa251148f93a62ff4817fa7e0e7c1f5781ea2a3558c09b4142c2c510c",
+        "receipts/good-certificates.log": "ea46752cce433796bf43936bc96694760c876743a8356c8394e1adbabcefd78b",
+        "receipts/good-prime-certificates.json": "fcf3b3f55e282c9dc4a98cbb5266acaac28f77c4542aa742bedd8325608442ef",
+        "receipts/local-gates-verification.json": "6b7cc63fe1bd56408c661940d66f91efaa86291687bd1354fa8d6556a7bd6a85",
+        "receipts/local-gates.log": "bacfb2e1bac90b54fa1cf3cebf367187b52ec3ad3fc3270aaff5ebf036351aed",
+        "receipts/maintenance-verification.json": "1c6189aa4c9db960c0154e82f2ae617ac5c75495fc95e4f0412a877e39e0c12f",
+        "receipts/maintenance.log": "6c4e7c5374c1401609ad020319aaab80819a10c6beb7e47345f0723694b75131",
+        "receipts/math-verification.json": "548824736aebe660c6f0ccd0b0dcd8db99a549f0d87821b88db98569186f78f3",
+        "receipts/math.log": "a3a6159234267564dac1f785aade92f280d620807f7b7d8e36150efc0ad12ea7",
+        "receipts/model-exclusions-desktop.png": "6d65eb6eabfac306158e3f69f1b5f47025f9c481e24f2ea9ccbf574bf5fe98a4",
+        "receipts/prime-product-desktop.png": "870648aeed6f7eb82d82e55dd67f3ebbc58199ac5b61734b4fd0b87e8b70886c",
+        "receipts/prime-product-export-fixture.json": "3054a17873bafbfc717e290c8f3d1eb001e561ae7a91dfa91bd57596a5fe95f4",
+        "receipts/prime-product-mobile.png": "9f32b988d9a1cb25e1c8376112ec16296600b5c720927aa6ec20f3f0b48b7ea3",
+        "receipts/regression-bsd-mcomb-desktop.png": "921cca1170ea01f0e7e4a27aa0e6d13fb24f76e75a956f7c1fa5609ca952077a",
+        "receipts/regression-elliptic-mcomb-desktop.png": "5e5eb9ea3c16a3471fdbe7bdd0bb6dde7b846996c9eae4176e89f32240e94664",
+        "receipts/regression-export-fixture.json": "4a04df1ed96af9b4a05198241380591e22474a55999d5fd689b2a10878c88d7b",
+        "receipts/regression-verification.json": "f7cb286e2930449060500160055297530119a52d09da3eeb1a89e8dd78556ced",
+        "receipts/regression.log": "f65bdc4ce0ec171b33bab17547494eec9dc68314288e58b45a32eb4a481fa079",
+        "receipts/runtime-verification.json": "19c4922218987105009dd7c80792260e125775677d4b1d05a7bf09749db3ced1",
+        "receipts/runtime.log": "ee79950592e13ec7ff588d7df790dc1bbd895bb7c04246868d780984f62331e8",
+        "receipts/schema-python-verification.json": "33ea25148dca468dd7a54fc58c05dd978cef3de23a91af6fb3ec788f35d0c36b",
+        "receipts/schema-python.log": "0e5f6e1ec5487c08f727bf654010962e7ed204afbe8db7ca0cd154599e45b109",
+        "receipts/schema-semantic-verification.json": "a955304550f45f9f0d2b4ffc3cf00d58b25f1a8b12d26b1c599bcf43fa4f9dab",
+        "receipts/schema-semantic.log": "75307f11dd91e4a6e03715bbd8f583df5883bc2d7a8a2e0ccb82eff0f334e50a",
+        "receipts/scratch-verification.json": "d2582fee481631da746787159b465c61702f99bfcf641ce7da178573d2f1b773",
+        "requirements-verification.txt": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6",
+        "runtime-browser.cjs": "4cdb4f20c42ca3741cd2ffa05ada5e097e946522c4cabefe35db2efc88b51f2f",
+        "runtime-discovery.cjs": "776d386961bf6cdb0a3c8088ca4ad6e7e6e69be961e66055619227943828026d",
+        "validate-packet.py": "107bbc4c4511db18eadd390e7534c06d4e25625887f51a1dc36612ae2bad3833",
+        "verify.cjs": "a21a71b00a3e680f662666278f06dabd64a8af318b9afec2e77e1d03de876ee0",
+        "worker-guard.cjs": "3cc98862746514a827318666bcd24ae8a19a56e38181c5da76ae2e4f8fc0a712"
+      },
+      "BSD_MINIMAL_TATE_SCHEMA_v0_1_20260907": {
+        "AUDIT_MATRIX.md": "fec93f82300a3f30a1c8b6ea3e6f836385f431fc9a17ddb688fffee6ff743b97",
+        "HANDOFF.md": "5c709b4b561fbf5015ee8be120c270e5246078898d30d87f4acd7e5eb2f718d7",
+        "MANIFEST.sha256": "252b5406568d19bd1377c68e8bd70c1a5bc369c26d262bd391d38311e33c4e3b",
+        "README.md": "3fccf865e63b0b9bceb97b4ed288ce971624bd01897282f5e24730058049d0f3",
+        "SCHEMA_FOR_AUDIT.md": "2c5c491876deab2fd8f7103cd3addfc29c93feb1ef63fa039c9b7295eb3ff1cc",
+        "SOURCE_PINS.json": "9c8f7a5800f32482ef9994965116e75b63d1c820b110c132a6bbee84b8c475fe",
+        "build.cjs": "2fdfe0baa576f7698b3bf7505f5a6d94bdb8700250afb329fb6c9b08d4d6c076",
+        "check-browser.cjs": "bf2f5b4ea0ac22c5e29dacfd7fb8a16ef1466fec644e9c74b88dd749606d3db4",
+        "check-browser.worker.cjs": "650a412dfed23f2ef8579403b80055d5d8dd02afcc01632225572d068ae9509e",
+        "check-integrity.cjs": "5eb79f7de553d3f4bee841e558f745f283976a73968966d83d7fb8a7f6e99422",
+        "check-maintenance.worker.cjs": "8055564d323ca43a256768f1978a7942fadfbedad0a7ad5d127f2c54bfee1b37",
+        "check-math.cjs": "ada5a9325e5f81cd47a6de5eae210ff2694097e85ded726427de82634d1146c3",
+        "check-math.worker.cjs": "b0c83a043bc0de69b6cd72b0a32c3b33baef40d187348a0080f8b876621ab5e1",
+        "check-regression.worker.cjs": "e54bb5fee73ee545e43e3a06d16b2d2f79a85c356f25f4618dd8fc298116c668",
+        "check-schema.cjs": "ec8646c6ce9fe6afaeaf0601e06940a95902cea8eb429644371903e1a755fe68",
+        "check-schema.py": "08e88ce5ce9858393d544d6b5c189ab526434faf0d391efcda425a25e997736a",
+        "check-schema.worker.cjs": "5252935a19b6b5ced2eb6a537c960f7c9bbab65137b2bb15464e3b2b79d4fd47",
+        "fixtures/37a1-model-exclusion.json": "648cfa9b27b9fbb64a477727ed65022628ce16926ae06197b0d03fad6bb21908",
+        "fixtures/exact-point-without-minimality.json": "6336ce7728918b8013519575dec2c3c49df871ec876737ec6c12c5eb2b7b8bc9",
+        "fixtures/negative-scale-shear.json": "97efb8c583d49d6fba9184337044d87e4b4a87691304225798be0cba6615f7fd",
+        "fixtures/rational-chain.json": "ad7181bafc942630ac5fe4a49786ad0fa5e4650fd7ec9e04d93b11d0b454af98",
+        "fixtures/separate-quadratic-twist.json": "6a5be0502725bc36e34be72711f4c00fdf2ecb271aa5b821223a4b2bddb55677",
+        "labels.js": "067fa640cca78321edca49026f3d977afd2d61f3d36b6fd98d715a03c14a5125",
+        "make-fixtures.cjs": "63774dd2a12b5284e873a42536c4792596e1cc4013a1d49282ff66aab86b80d2",
+        "make-schema.cjs": "e432f41013933491b22718c94eaac86b99d903a2775986c592f2ca2ba31afb7e",
+        "make-workers.cjs": "897ff86f21d8d65f2f59edacf30955bc7325944ef71fca10ec8d8920ba2a1dc7",
+        "minimal-tate-record.schema.json": "176ded8a45bd462451bb20b80112648930056b94f877a3fb9737eb2c7a0c8f56",
+        "model-replay.cjs": "19acddc1593e0c658a29956c0ba5620f90e2733f9089141f8f814f4316a98d67",
+        "monodromy-30-1-reduction-audit.html": "5dc69781082a3d2b41e1b38b49f71c44ec349a219221ed19b15969f8c0c0ee84",
+        "package-verification.json": "f99ddf8e876f6087fdf7103c49aa836473bcd0443099abd35ed16038559d5a63",
+        "package.cjs": "f1c605e3308f054dcf31a013a213afb5ea65914579ab5447dda587c6f21540bb",
+        "receipts/browser-verification.json": "40fa32011ff805fec624c5e8a8fc688c1489b7378e3b4b3f0422dc1b93f72cee",
+        "receipts/carrier-desktop.png": "b950065c89820085fe43a260f626ca072ef354f49f2af693faa469ab6262d09a",
+        "receipts/maintenance-verification.json": "1c6189aa4c9db960c0154e82f2ae617ac5c75495fc95e4f0412a877e39e0c12f",
+        "receipts/math-verification.json": "548824736aebe660c6f0ccd0b0dcd8db99a549f0d87821b88db98569186f78f3",
+        "receipts/model-exclusions-desktop.png": "f613fac00f7d1a5bef6bb087584df508a60c13b787b1c2b49e48c2c878e1c92b",
+        "receipts/prime-product-mobile.png": "985bef67efd19ee0e45128be7c4b6ceb3d705e0ed8402d4f59b0c2a692fb9427",
+        "receipts/regression-verification.json": "f7cb286e2930449060500160055297530119a52d09da3eeb1a89e8dd78556ced",
+        "receipts/schema-python-verification.json": "33ea25148dca468dd7a54fc58c05dd978cef3de23a91af6fb3ec788f35d0c36b",
+        "receipts/schema-semantic-verification.json": "a955304550f45f9f0d2b4ffc3cf00d58b25f1a8b12d26b1c599bcf43fa4f9dab",
+        "receipts/scratch-verification.json": "3ffe2ecde20e3581a5c1314b17d5097eb87cea00a45f68eea1ec87de659a6fe7",
+        "verify.cjs": "7c4539e73f0a1493d05e713b4fc552b030be544f9f6ba0144787abed59b91faf",
+        "worker-guard.cjs": "3cc98862746514a827318666bcd24ae8a19a56e38181c5da76ae2e4f8fc0a712"
+      },
+      "MCOMB_CARRIER_ADDITION_v0_1_20260907": {
+        "CONTRACT.md": "e93a28a58e08932e3484a010479a1ce678fc034b6a2cdc5f005eec7dc98d8844",
+        "MANIFEST.sha256": "b7799b08896ee9b57c8963d4530e393d7d3952a6d2f3047ce20376e1d67d87c1",
+        "README.md": "3863406478d8b5e1eb0771597b558674bc351cd11c9331d469b657d3fc5d4e91",
+        "SOURCE_PINS.json": "d0efb7bd6c633c8b8610b0407a82762eb894315872b33592cb56fac5dc5d7bda",
+        "browser-verification.json": "40fa32011ff805fec624c5e8a8fc688c1489b7378e3b4b3f0422dc1b93f72cee",
+        "bsd-mcomb-mobile.png": "95b19562fcfecdbc32a23cc65797199545ba6643ba98aabe1b40fe4945f2d929",
+        "build.cjs": "d125c922c912132a3296174d6ed03c43b5a0e463e8c21f177def5d452c98da8d",
+        "carrier-addition.js": "cf0b057d3f26fea2971561974149d26423ace0c0eb0d0f7529510e1aee409271",
+        "carrier-clifford.png": "f07b6a1803fbf42a494cad29458e63586b9a1193192827bf9af4bf348147dcc1",
+        "carrier-desktop.png": "f44bdf8c1b1f824f3b033280ed8a9105d7b9f7ed880e6cacadef45601ea2945d",
+        "carrier-export-fixture.json": "cb1b44d591f86f874c48fcaf432c5b79e7c53995b8202df237e25b4fc83c9b7d",
+        "carrier-mobile.png": "5d1e5298c562714e51a3636fcd4eeb5fb34091ce5267e8f92715a7c0853e548f",
+        "carrier-panel.js": "5f320037c3adcdffbdcd51a19d8ec10138a47cb92be4bef6d56acc15ab2b5ee5",
+        "check-browser.cjs": "0da2c5a87d0f1d8f694696a983186bf1302e18fd432d6e59ddb9210340673b0a",
+        "check-math.cjs": "c119860ed683f7e1d630814e69059b0a3151254dd99d67938600ad09f165d15b",
+        "check-regression.cjs": "b478468f5cd1d8db61f9d227da5444ca986e143b2ab6b6b937999362fb1caf5a",
+        "elliptic-mcomb-mobile.png": "b420ff9040e5540b9257a8e854c9cf71b38c3ded99b5dcce69ecf54671599e05",
+        "initial-carrier.png": "bfc3d78d94cf9a9a0800191f72aaf808f90b8120ef5bbb81da40bc4e9b7ea6d4",
+        "math-verification.json": "a6cecd19082c55759f18389abe83e2ddde20acc91976a3e5841d48d6d8443781",
+        "monodromy-30-carrier-addition.html": "667bc1aba225d17d1ab1a5eac9d725a8de1fd4bc025e1653a184f05f22e68815",
+        "package-verification.json": "0172fed9dcc6112aaa44442d8d30240a925a9195cefc8af33fe5c999ea1d34ce",
+        "package.cjs": "877a0d7c9602addf4194d1d04a40644b50061b6ea4819f640866bf891fd4d0a2",
+        "prime-product-desktop.png": "dfbffe0fe38bed8a34aa17a0a16e17bb69eedf92798f4bd74781a384dde93d8d",
+        "prime-product-export-fixture.json": "3054a17873bafbfc717e290c8f3d1eb001e561ae7a91dfa91bd57596a5fe95f4",
+        "prime-product-mobile.png": "b2bff2a024de74b4703d314b445193f7947547d9f2e4a19d8727ec48b3aec148",
+        "prime-product.js": "295c0f222c30fce52174ee8f9a51eedc05eadc7e1863ceebabd3d612921c183a",
+        "regression-bsd-mcomb-desktop.png": "189d58554767daa979c9147f1be5246e6181f11317a910be868d3475a7af2329",
+        "regression-elliptic-mcomb-desktop.png": "3d1384ca0a5856461bf351974d74aed836767527c65fc219cc6262d735ca4fea",
+        "regression-export-fixture.json": "4a04df1ed96af9b4a05198241380591e22474a55999d5fd689b2a10878c88d7b",
+        "regression-verification.json": "f7cb286e2930449060500160055297530119a52d09da3eeb1a89e8dd78556ced"
+      },
+      "MCOMB_CONNECTED_PANELS_v0_1_20260907": {
+        "MANIFEST.sha256": "ffa723190500b1ca7d9dd0251005ea95a10c9f0bb8b2519774ab13f48b53a875",
+        "README.md": "4fd9500f25204eafefd8cd324844709fd5f8783e73b5ec82b3bfd424f1e97e73",
+        "SOURCE_PINS.json": "97dd7bb3f7ddfa513fda8540288009da6060fd9c1e3e09bc55493379aa401b8d",
+        "browser-verification.json": "f7cb286e2930449060500160055297530119a52d09da3eeb1a89e8dd78556ced",
+        "bsd-mcomb-desktop.png": "c7518202c9508c79c0424bf706229870ed18ec60c71d63dfdad3cea9a2033bc8",
+        "bsd-mcomb-mobile.png": "07053a192feb73a3005b321fda0bc3cebfcd3b66f9892ea3d9ad2a8b706932c9",
+        "build.cjs": "2756873e3f85f05740be54a2b86816163c9d830ecff4471211f2e44d35f8e541",
+        "check-browser.cjs": "3d40ca406232b3c937c0a101e7be7e0ef4ab6bbe6e768ce2b1a4ca3b39175e78",
+        "check-regression.cjs": "aa9df47b88bc7affbf98d237882e40d747cc4808715080ee52dc2c221c58ae80",
+        "connected-export-fixture.json": "4a04df1ed96af9b4a05198241380591e22474a55999d5fd689b2a10878c88d7b",
+        "elliptic-mcomb-desktop.png": "89671c989d0114d7efdc29e00fda5c01284f47a9d72fa30599d27a8403f353ce",
+        "elliptic-mcomb-mobile.png": "33433a74d14904f90bfbb4ff13ea42f74da75cb101a2f57a9b2e1e6acdcf8a15",
+        "mcomb-panels.js": "b26ac69390cd5da6b00c14c70b48d108fded3dadd9e6865988ce9a3c25ea5485",
+        "monodromy-29-1-mcomb-connected.html": "f32eb8af15fd7cd386eb22bbe8cb45a96bb1ed163180439edddaffe07d9a8edd",
+        "package-verification.json": "7ecee88db659e9a52f56cbfb877ac51dbe0a30eb48a5de7bbab1f0510ee2c564",
+        "package.cjs": "35a2258c34f8a8ba84276214c99b34f72142c618d017abe00f870405ddc244b4",
+        "regression-clifford.png": "19201f7d732edec7ac5ebf8189e4946b61a91f57505aa48d953e1ff2d0930e1e",
+        "regression-export-fixture.json": "cb839925a129ba36dda49434f73e1be2a0b9314078a470bb7822eff21ab0cebf",
+        "regression-panel-desktop.png": "e9d7ee6c88f310e0991cca309e12f3f07e3899c9a110a4fbc4323198b27496fb",
+        "regression-panel-mobile.png": "388d8e8223de31c01ffc59718aab8bc854ddd35bd0efab21dda224611b1f9094",
+        "regression-verification.json": "a33a90236600fc83e2e5ca64976001cc92df0e1e74422dcf4f9d3874652a9e43"
+      },
+      "MCOMB_ELLIPTIC_BSD_LINK_v0_1_20260907": {
+        "CONTRACT.md": "e90eefd4ef5a1cd8fd3d2453ffd19c8df7165cc70dea6c0b24f76be89961a566",
+        "MANIFEST.sha256": "d4b5832d7db004bacb4bd7f554f2912ed4a24215f1c9ed1803dc6fd6292ff5a6",
+        "README.md": "0336852cfb46564d2e3dd9bc7982a787c5e63110d756ac4e5f3e45e5a828240b",
+        "SOURCE_PINS.json": "c7094f615189f1406ffd9f536ecc4210394577d1634725c1bfab7d33db0cec38",
+        "browser-verification.json": "a33a90236600fc83e2e5ca64976001cc92df0e1e74422dcf4f9d3874652a9e43",
+        "build.cjs": "03e2e05cdcb1b650b7e6b315fe08f3a5fa7a57d9176aef0ab88d1a420ed189de",
+        "check-browser.cjs": "1fb71f75fe3aa09fee7b29f0ce93f06743e7d3af6bcab1eccefe9efa090bd95d",
+        "check-independent.py": "dfdb1d6a343b8c42aafb20b0ecc44a56720d35d4a60458b78aa27748c8194a41",
+        "check-math.cjs": "23d5db2b4788e1b374caa8af0a587d66a3ddf58f8186be85574b410fa4d7d590",
+        "elliptic-transport.js": "7e14f84639c8ac4db379fc8e83ed360d9da62da160282923cbdbc2aac5052852",
+        "independent-verification.json": "aa83768dc4b2a242f46b7c239416b1b2d0dc53b683fa5ffba4fe56c607a9cf57",
+        "initial-panel.png": "7aec1ec5668ed672a4eb11266589dbe8d67e4c11e46ed925309abaceb61f691d",
+        "link-panel.js": "5db82384d929c7bb2eaa59aebb925c665ed2f912c7ef41026f3f6a623c71e055",
+        "linked-clifford.png": "cfde39a68fe957be109ae1a28b54084f61d82bc42b6065c106338a67cc892170",
+        "linked-export-fixture.json": "c53c3a3bdd8419f9fc579da3d4de225a0e254866eaff7baa27a99fc48b6b4255",
+        "linked-panel-desktop.png": "e41234a2a6a93fa5c50ed1529b80fa93579da98c9dbdb057f1ec623bf5d2d340",
+        "linked-panel-mobile.png": "0550a9ef04fc0a117ba943be76109b34ebdf8eb60b048e105e9901338de83f05",
+        "math-verification.json": "22a00f75b8487eeea75be684c2a952f3a76d7bea8ec4f561ef0e908b3cc80d2b",
+        "monodromy-29-mcomb-elliptic-bsd.html": "74fedcdaa74462e76f22e81c225c2f6d7db831becfa74d98f8ca61648f2ca206",
+        "package-verification.json": "5e3f63008ee8de8d47ecb796075c063451ee61ce1484234674a44b2f339b95ee",
+        "package.cjs": "e0b9a6d2c22bb9f25adc7ca22903954a6521410bbda222f6aeb440091dbd3782",
+        "uniformization-oracle-inputs.json": "d46af77c62a204692097f67d3df6d2ed092fffcddb88938355f318b98efcc9cf"
+      },
+      "BSD_CURVE_RECORD_v0_1_20260907": {
+        "CONTRACT.md": "37e116ad95d249476c87269b27cc2036c58f25c722774e63efeeb3cca2559a42",
+        "README.md": "15b71ea7fd83f79fc7a992c1529733da649c432589a750c4880d263c4c0b31a8",
+        "SHA256SUMS.txt": "4585774e6c77889cee22144674c2d20fbd33afe421a5082eacfc95f2dd20b4c5",
+        "SOURCE_PINS.json": "71b9de6cc38f0be78640d2f534ab9f011565954698049f5eba5fd9c681947b32",
+        "SYNTHETIC_COMPARISON_FIXTURE.json": "182ffa2e525ea93af09cf29db22d7f5c48422ab095a3bc6e61b59f516534da97",
+        "VERIFICATION.md": "21c598ef92a784f3a96c1bd897e52c84da090c5ec5b0b4fe151f6dc0bca6bef4",
+        "browser-export-fixture.json": "fa1aef19c159a78f7f0a521e945fb08bb056ff0f80185ced5b51bdb435da1e42",
+        "browser-verification.json": "0246ada8f8f77f7c905c8df88bf142080d2471d7d7beb8bf0fc8f51ed91b9297",
+        "bsd-curve-record.schema.json": "b675150c50b9cc93ec420dc32ef922faa23af2b6d0b9420e51d94a0c863211b9",
+        "bsd-desktop.png": "abc5d2a87b25dfea14cab5db6ab37e0cc36b517d7db8044a9680ecca8dbdebcf",
+        "bsd-mobile.png": "d14fa4372caed9f3c3998eb5f460ba5cdb18d36f981988afe45968a570256025",
+        "bsd-panel.js": "de0cee248c7345a876a4d871b0a766da4a501985c17cca0fccffc3e094d20a74",
+        "bsd-record.js": "29f0cf6bff5afc07cdf590cb2b24eaef8001051ee4d090ed9e4e7b7098bd77ab",
+        "build.cjs": "4af1274fde49286127b9f7ec1b5c5f1cb46a736c79699e3c936b12be03040e6e",
+        "check-browser.cjs": "f32b7943db68205e0c3df785baf9426a0e11ee6169cee37ec12065b0ac70d743",
+        "check-core.cjs": "4ab59d3f6815240660c76d6d8d725d57a48a71480a45935d5b3c965e62e36900",
+        "check-independent.py": "a168ad29f9e5d88acbaa71dbc287af39ce696e9b36d1c7aa5568cd60f1731a4a",
+        "core-verification.json": "1c861b6773fbc68abf15915e00f07105d4649df70b0602a5091ec054852f0cc4",
+        "independent-verification.json": "1b45a3270b92978d39dc4e552ae4b9a12525b88e1fec82e01963ace0026cb6c2",
+        "make-schema.cjs": "3faad09f35d79ebdb13ab8cf42369037348811cc65ef8ea43f6c9e6cc3d0fa9f",
+        "monodromy-28-bsd.html": "9d6214339802e182881691ed33c2946eb8dc3d0e3536c413fe07783b4ebc433a",
+        "oracle-inputs.json": "ceb220930709445d21a9c24ac01fe0343bb8bbc0f6e7729c239c0731776051af",
+        "package.cjs": "79127edb1343b796f1d5806eeeb60351df228e6156bbb13491322a32750f32c7"
+      }
+    },
+    "extraHashes": {
+      "v27_elliptic_bridge.js": "0b59d55ba84f337458b45726e600b582fcb741ce0076811dadb6d9edda1c995c",
+      "MONODROMY_30_1_SCHEMA_COLD_AUDIT_FABLE_20260907.md": "ff6438de67de91d7b37d3c427191efb14a045f7d2af379b143f91f4620e5ff75",
+      "MONODROMY_30_1_SCHEMA_COLD_AUDIT_FABLE_20260907.json": "e69380fd75f853f5719712bb4eb59c96c4e05e766155b2bd95842582f30b9729",
+      "MINIMAL_TATE_SCHEMA_v0_2_COLD_AUDIT_FABLE_20260907.md": "e0d59f7ecac6560793dba81892046d8ac7b27f674beaff47418542f4580a3901",
+      "MINIMAL_TATE_SCHEMA_v0_2_COLD_AUDIT_FABLE_20260907.json": "2b0d7784a8c4f21def36ff1c05ef4e50d6ead9c529f4891f23708d4eaa672623",
+      "MINIMAL_TATE_SCHEMA_v0_3_COLD_AUDIT_FABLE_20260907.md": "67cc4f4d93ac136f3ba75f0543ec1a3a41dd80cd4f99c5a7dd45022f5f5517ec",
+      "MINIMAL_TATE_SCHEMA_v0_3_COLD_AUDIT_FABLE_20260907.json": "51a19d671907a27d7946c0498720bfa59eff29c80aa0d2abd151a9ad3c40bd4c"
+    },
+    "runtimes": {
+      "node": {
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "version": "v24.13.0"
+      },
+      "python": {
+        "command": "C:\\Users\\robin\\s6_atom\\cold audit fourier\\.bsd-audit-venv\\Scripts\\python.exe",
+        "args": [],
+        "origin": "explicit override",
+        "ok": true,
+        "executable": "C:\\Users\\robin\\s6_atom\\cold audit fourier\\.bsd-audit-venv\\Scripts\\python.exe",
+        "version": "3.12.14",
+        "jsonschemaVersion": "4.26.0",
+        "jsonschemaPath": "C:\\Users\\robin\\s6_atom\\cold audit fourier\\.bsd-audit-venv\\Lib\\site-packages\\jsonschema\\__init__.py",
+        "draft": "2020-12",
+        "attempts": [
+          {
+            "command": "C:\\Users\\robin\\s6_atom\\cold audit fourier\\.bsd-audit-venv\\Scripts\\python.exe",
+            "origin": "explicit override",
+            "ok": true,
+            "reason": null
+          }
+        ],
+        "vendor": null
+      },
+      "browser": {
+        "modulePath": "C:\\Users\\robin\\s6_atom\\node_modules\\playwright\\index.js",
+        "executable": "C:\\Users\\robin\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe",
+        "version": "1.61.1",
+        "origin": "explicit override"
+      }
+    },
+    "pari": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t2-audit-JpRrDv\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "checks": [
+      {
+        "name": "t1",
+        "status": "PASS"
+      },
+      {
+        "name": "independent",
+        "status": "PASS"
+      },
+      {
+        "name": "inherited-v03",
+        "status": "PASS"
+      },
+      {
+        "name": "All source packages, audits and runtime bytes unchanged",
+        "status": "PASS"
+      }
+    ],
+    "failure": null,
+    "sageLive": {
+      "status": "UNAVAILABLE",
+      "reason": "SEPARATE_SAGE_HOST_REQUIRED"
+    }
+  },
+  "t1": {
+    "status": "PASS",
+    "standing": "BUILDER_VERIFICATION_NOT_COLD_AUDIT",
+    "total": 66,
+    "checks": [
+      {
+        "name": "37.a1 short nonminimal presentation maps (0,4) exactly to general minimal candidate",
+        "status": "PASS"
+      },
+      {
+        "name": "Recovered good reduction on 37.a1 at 2",
+        "status": "PASS"
+      },
+      {
+        "name": "Recovered good reduction on 37.a1 at 3",
+        "status": "PASS"
+      },
+      {
+        "name": "Split I1 actual Tamagawa proof",
+        "status": "PASS"
+      },
+      {
+        "name": "Split I2 actual Tamagawa proof",
+        "status": "PASS"
+      },
+      {
+        "name": "Split I3 actual Tamagawa proof",
+        "status": "PASS"
+      },
+      {
+        "name": "Split I4 actual Tamagawa proof",
+        "status": "PASS"
+      },
+      {
+        "name": "Nonsplit I1 actual Tamagawa proof",
+        "status": "PASS"
+      },
+      {
+        "name": "Nonsplit I2 actual Tamagawa proof",
+        "status": "PASS"
+      },
+      {
+        "name": "Nonsplit I3 actual Tamagawa proof",
+        "status": "PASS"
+      },
+      {
+        "name": "Nonsplit I4 actual Tamagawa proof",
+        "status": "PASS"
+      },
+      {
+        "name": "General a1 nonzero good fibre at 2",
+        "status": "PASS"
+      },
+      {
+        "name": "General a1 nonzero good fibre at 3",
+        "status": "PASS"
+      },
+      {
+        "name": "Good reduction when c4 is identically zero",
+        "status": "PASS"
+      },
+      {
+        "name": "Prime/count work boundary 1009 is actually exercised",
+        "status": "PASS"
+      },
+      {
+        "name": "Documented PARI translated/sheared example",
+        "status": "PASS"
+      },
+      {
+        "name": "Additive II remains unavailable with retained source report",
+        "status": "PASS"
+      },
+      {
+        "name": "Additive III remains unavailable with retained source report",
+        "status": "PASS"
+      },
+      {
+        "name": "Additive IV remains unavailable with retained source report",
+        "status": "PASS"
+      },
+      {
+        "name": "Additive I0star remains unavailable with retained source report",
+        "status": "PASS"
+      },
+      {
+        "name": "Additive I1star remains unavailable with retained source report",
+        "status": "PASS"
+      },
+      {
+        "name": "Additive IVstar remains unavailable with retained source report",
+        "status": "PASS"
+      },
+      {
+        "name": "Additive IIIstar remains unavailable with retained source report",
+        "status": "PASS"
+      },
+      {
+        "name": "Additive IIstar remains unavailable with retained source report",
+        "status": "PASS"
+      },
+      {
+        "name": "wild2 is not silently promoted",
+        "status": "PASS"
+      },
+      {
+        "name": "wild3 is not silently promoted",
+        "status": "PASS"
+      },
+      {
+        "name": "small-multip is not silently promoted",
+        "status": "PASS"
+      },
+      {
+        "name": "Rational denominators, negative scale and exact points survive PARI minimization",
+        "status": "PASS"
+      },
+      {
+        "name": "Signed composite, inverse, full basis marking and differential transport",
+        "status": "PASS"
+      },
+      {
+        "name": "Bound parent bytes retain twist lineage without treating a twist as an isomorphism",
+        "status": "PASS"
+      },
+      {
+        "name": "Exact membership works without a backend or minimality",
+        "status": "PASS"
+      },
+      {
+        "name": "A direct local certificate needs no producer report",
+        "status": "PASS"
+      },
+      {
+        "name": "Incomplete model factorization remains visibly incomplete",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged parent hash",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged composite sign",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged step direction",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged point identity",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged selected differential",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged panel binding",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged marking",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged valuation",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged valuation unit",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged prime witness",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged missing decision",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged reordered decisions",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged splitting roots",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged coherent split forgery",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged Tamagawa",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged conductor",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged inventory",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged stale producer",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged stdout hash",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged producer tuple",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged hidden global claim",
+        "status": "PASS"
+      },
+      {
+        "name": "Reject forged false unsupported",
+        "status": "PASS"
+      },
+      {
+        "name": "Good-fibre count and Euler forgeries reject",
+        "status": "PASS"
+      },
+      {
+        "name": "Unsupported additive branch cannot carry a fabricated certificate",
+        "status": "PASS"
+      },
+      {
+        "name": "Singular, composite, noncanonical and exceeded prime domains reject",
+        "status": "PASS"
+      },
+      {
+        "name": "Parser rejects GP expressions and output ambiguity",
+        "status": "PASS"
+      },
+      {
+        "name": "Bad explicit runtime override fails without fallback",
+        "status": "PASS"
+      },
+      {
+        "name": "Mutated runtime bytes fail their pin before execution",
+        "status": "PASS"
+      },
+      {
+        "name": "Workers reject a missing scratch marker before any work",
+        "status": "PASS"
+      },
+      {
+        "name": "Inherited H1 and H2 gates reject coherently repaired producer transcripts",
+        "status": "PASS"
+      },
+      {
+        "name": "Public custom-input CLI builds a fully replayable packet",
+        "status": "PASS"
+      },
+      {
+        "name": "Public schema rejects unknown fields, duplicate keys, stale certificate and enforces exact PASS",
+        "status": "PASS"
+      },
+      {
+        "name": "Every generated schema is byte-equivalent to its versioned source",
+        "status": "PASS"
+      }
+    ],
+    "fixtures": 31,
+    "certifiedFixtures": 20,
+    "unavailableFixtures": 11,
+    "pariRuntime": {
+      "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t1-audit-Na1tPL\\.bsd-arithmetic-runtime",
+      "node": "C:\\Program Files\\nodejs\\node.exe",
+      "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+      "files": {
+        "gp-sta.js": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+          "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+        },
+        "gp-sta.wasm": {
+          "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+          "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+        }
+      }
+    },
+    "sageLive": {
+      "status": "UNAVAILABLE",
+      "reason": "SAGE_NOT_INSTALLED_ON_BUILD_HOST"
+    }
+  },
+  "t1IndependentPython": {
+    "status": "PASS",
+    "standing": "BUILDER_INDEPENDENT_METHOD_NOT_COLD_AUDIT",
+    "total": 31,
+    "checks": [
+      {
+        "name": "37a1-nonminimal-at-37",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "37a1-good-2",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "37a1-good-3",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "multip-1-1",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "multip-1-2",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "multip-1-3",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "multip-1-4",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "multip-2-1",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "multip-2-2",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "multip-2-3",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "multip-2-4",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "general-good-2",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "general-good-3",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "good-c4-zero",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "good-at-1009",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "pari-urst-example",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "additive-II",
+        "status": "PASS",
+        "localOutcome": "UNAVAILABLE"
+      },
+      {
+        "name": "additive-III",
+        "status": "PASS",
+        "localOutcome": "UNAVAILABLE"
+      },
+      {
+        "name": "additive-IV",
+        "status": "PASS",
+        "localOutcome": "UNAVAILABLE"
+      },
+      {
+        "name": "additive-I0star",
+        "status": "PASS",
+        "localOutcome": "UNAVAILABLE"
+      },
+      {
+        "name": "additive-I1star",
+        "status": "PASS",
+        "localOutcome": "UNAVAILABLE"
+      },
+      {
+        "name": "additive-IVstar",
+        "status": "PASS",
+        "localOutcome": "UNAVAILABLE"
+      },
+      {
+        "name": "additive-IIIstar",
+        "status": "PASS",
+        "localOutcome": "UNAVAILABLE"
+      },
+      {
+        "name": "additive-IIstar",
+        "status": "PASS",
+        "localOutcome": "UNAVAILABLE"
+      },
+      {
+        "name": "wild2",
+        "status": "PASS",
+        "localOutcome": "UNAVAILABLE"
+      },
+      {
+        "name": "wild3",
+        "status": "PASS",
+        "localOutcome": "UNAVAILABLE"
+      },
+      {
+        "name": "small-multip",
+        "status": "PASS",
+        "localOutcome": "UNAVAILABLE"
+      },
+      {
+        "name": "rational-denominators",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "retained-quadratic-twist",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "backend-free-proof",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      },
+      {
+        "name": "incomplete-inventory",
+        "status": "PASS",
+        "localOutcome": "PASS"
+      }
+    ],
+    "methods": [
+      "Fraction polynomial substitution",
+      "independent discriminant polynomial",
+      "Legendre quadratic discriminant point count",
+      "singular tangent-cone splitting"
+    ],
+    "sageProducerSyntax": "PASS",
+    "sageLive": "UNAVAILABLE"
+  },
+  "inheritedV03": {
+    "standing": "LOCAL_SCRATCH_VERIFICATION_NOT_COLD_AUDIT",
+    "suite": "all",
+    "status": "PASS",
+    "sourcePackage": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t1-audit-Na1tPL\\BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907",
+    "scratchPackage": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-reduction-audit-71Jtr5\\BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907",
+    "manifests": {
+      "candidate": {
+        "status": "PASS",
+        "entries": 80,
+        "sha256": "40739e8bb8ff0259c974d727030ef89cc66895971aef5f1ce20840d4bef0302a"
+      },
+      "predecessor": {
+        "status": "PASS",
+        "entries": 27,
+        "sha256": "b7799b08896ee9b57c8963d4530e393d7d3952a6d2f3047ce20376e1d67d87c1"
+      },
+      "schemaPredecessor": {
+        "status": "PASS",
+        "entries": 75,
+        "sha256": "605d44f3b9b2c045ecb01837f4c1502eb2bb05bcae4d5e2caccc174560d3d97e"
+      },
+      "schemaAncestor": {
+        "status": "PASS",
+        "entries": 41,
+        "sha256": "252b5406568d19bd1377c68e8bd70c1a5bc369c26d262bd391d38311e33c4e3b"
+      }
+    },
+    "runtimes": {
+      "node": {
+        "executable": "C:\\Program Files\\nodejs\\node.exe",
+        "version": "v24.13.0"
+      },
+      "python": {
+        "command": "C:\\Users\\robin\\s6_atom\\cold audit fourier\\.bsd-audit-venv\\Scripts\\python.exe",
+        "args": [],
+        "origin": "explicit override",
+        "ok": true,
+        "executable": "C:\\Users\\robin\\s6_atom\\cold audit fourier\\.bsd-audit-venv\\Scripts\\python.exe",
+        "version": "3.12.14",
+        "jsonschemaVersion": "4.26.0",
+        "jsonschemaPath": "C:\\Users\\robin\\s6_atom\\cold audit fourier\\.bsd-audit-venv\\Lib\\site-packages\\jsonschema\\__init__.py",
+        "draft": "2020-12",
+        "attempts": [
+          {
+            "command": "C:\\Users\\robin\\s6_atom\\cold audit fourier\\.bsd-audit-venv\\Scripts\\python.exe",
+            "origin": "explicit override",
+            "ok": true,
+            "reason": null
+          }
+        ],
+        "vendor": null
+      },
+      "browser": {
+        "modulePath": "C:\\Users\\robin\\s6_atom\\node_modules\\playwright\\index.js",
+        "executable": "C:\\Users\\robin\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe",
+        "version": "1.61.1",
+        "origin": "explicit override"
+      }
+    },
+    "inputInventories": {
+      "BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907": {
+        "AUDIT_MATRIX.md": "9da8e36cd8273633735367c5b24e7b49974e792b492f78b6d6e0aa0281c8ebbc",
+        "HANDOFF.md": "cbe4a3aee722fec63600a466f4a045103e58edc005c0bb1838269800724f7494",
+        "IMPLEMENTATION_PLAN.md": "c62c703dc8585047ab698993e46b7cd18e8a67b8602198839631db15ad1f1a58",
+        "MANIFEST.sha256": "40739e8bb8ff0259c974d727030ef89cc66895971aef5f1ce20840d4bef0302a",
+        "README.md": "f524e8c3260710fa17986f1cd5ce3f46d3d129ec2700b6e8f464e7df865444f7",
+        "REPAIR_NOTES.md": "67c1b23d253fa074d3f5d915a8b54ec41d6b3c1194ca4f23e3669c41f0872f36",
+        "RUNTIME_SETUP.md": "ff5a69a37a3b8c9a30155e3145cf8f457c142b43b9e6c840db3e92cc2b7f5c8e",
+        "SCHEMA_FOR_AUDIT.md": "5c82adcee7a6dc950ff3bd2b0a53b183291c77ce1c06e3bc62b3d5733355d9da",
+        "SOURCE_PINS.json": "8d201786de8eeda799164c61ebeebcc7a779f2f9ac1f4a8ed217703d0f0a1c67",
+        "assess.cjs": "96104c56f3dcfddfe48364b91f7ad8a7c3a3e30f004883c99655e29755078834",
+        "build.cjs": "371a32534e1bb707481366f31ab678b727104121cbc4321a5986c70ac32bb4bf",
+        "check-browser.cjs": "bf2f5b4ea0ac22c5e29dacfd7fb8a16ef1466fec644e9c74b88dd749606d3db4",
+        "check-browser.worker.cjs": "3eba1b0f94ecc23626e5b906033ad120ae4eba9879f299d5b4cb2842e7fb1d32",
+        "check-good-certificates.py": "8a833bfc9ede0756e5f108cc69fa93ff1f4f2ed642d51ffa0121f5cbf925b937",
+        "check-integrity.cjs": "d19ef7e8ef75f8d5ece36ea680c112b73517c7a00af66a062b1cdf4d13e11d8c",
+        "check-local-gates.worker.cjs": "a3f1443cc28346daf2c9fc4eb0fd4ba16e9f3a1520142195c310ccaebbc6036f",
+        "check-maintenance.worker.cjs": "ad286eb30e09835452218ff29a25388e55cdde70a22ff13040c22deb91901e8f",
+        "check-math.cjs": "ada5a9325e5f81cd47a6de5eae210ff2694097e85ded726427de82634d1146c3",
+        "check-math.worker.cjs": "b0c83a043bc0de69b6cd72b0a32c3b33baef40d187348a0080f8b876621ab5e1",
+        "check-regression.worker.cjs": "ae27a253be640af6e6b2378a428824d2c1d0422f69a323c278c14952557a0bdd",
+        "check-runtime.worker.cjs": "620c4d39d8e8cb8fe1d67a42d8e4a04ef2acd553f643aee6c2bb7e64d5275e9b",
+        "check-schema.cjs": "ec8646c6ce9fe6afaeaf0601e06940a95902cea8eb429644371903e1a755fe68",
+        "check-schema.py": "08e88ce5ce9858393d544d6b5c189ab526434faf0d391efcda425a25e997736a",
+        "check-schema.worker.cjs": "5252935a19b6b5ced2eb6a537c960f7c9bbab65137b2bb15464e3b2b79d4fd47",
+        "check-valuation-gates.worker.cjs": "53102f3c1c685a4f7716fec2767c5d836526255af8568984b106ec6f0cad47bb",
+        "fixtures/37a1-model-exclusion.json": "648cfa9b27b9fbb64a477727ed65022628ce16926ae06197b0d03fad6bb21908",
+        "fixtures/exact-point-without-minimality.json": "6336ce7728918b8013519575dec2c3c49df871ec876737ec6c12c5eb2b7b8bc9",
+        "fixtures/negative-scale-shear.json": "97efb8c583d49d6fba9184337044d87e4b4a87691304225798be0cba6615f7fd",
+        "fixtures/rational-chain.json": "ad7181bafc942630ac5fe4a49786ad0fa5e4650fd7ec9e04d93b11d0b454af98",
+        "fixtures/separate-quadratic-twist.json": "6a5be0502725bc36e34be72711f4c00fdf2ecb271aa5b821223a4b2bddb55677",
+        "good-prime-certificate.schema.json": "765971e6e1528cf77dc275af9272be2b048736c33494926c8fb6ae5d3c4761af",
+        "labels.js": "067fa640cca78321edca49026f3d977afd2d61f3d36b6fd98d715a03c14a5125",
+        "make-fixtures.cjs": "63774dd2a12b5284e873a42536c4792596e1cc4013a1d49282ff66aab86b80d2",
+        "make-schema.cjs": "eb75984c47230f9820588d04eef91730e0d32104d73135bc200c770f65afba53",
+        "make-workers.cjs": "49709d18c34903b6b2d23404d4345a4668e418bf332b372b10ada21e321b05a4",
+        "minimal-tate-record.schema.json": "687bb7d9395abfc53bb844574aca4ff2e51ec4f7be8daab3b954c857187ab085",
+        "model-replay.cjs": "c7b102ef7ff7b9044e6099eb777873eaf7a06f248d311676c789dd5d2fa11877",
+        "monodromy-30-1-reduction-audit.html": "5dc69781082a3d2b41e1b38b49f71c44ec349a219221ed19b15969f8c0c0ee84",
+        "package-verification.json": "b8deacf27b2e4016b3a93b39db2d4e45673d6e8dff114dda82b047f5cd6ed442",
+        "package.cjs": "90c17c2947ab8dec6e52a0fa3128812950866d76e2c2c170828af5fbb6a75b12",
+        "receipts/browser-verification.json": "40fa32011ff805fec624c5e8a8fc688c1489b7378e3b4b3f0422dc1b93f72cee",
+        "receipts/browser.log": "fb44d6bd1562e544af617bb03b65ae0ca294059c04b10fc1fd32622081ce646f",
+        "receipts/bsd-mcomb-mobile.png": "721b230995d8e2c833c5fbe240472bd7783c96d6d739b53b13b2afde1cccc174",
+        "receipts/carrier-clifford.png": "55401093b6a14ec68936b8948fe015b49e36135209ebc42905c3384216ebf06b",
+        "receipts/carrier-desktop.png": "b896b763f36f2663fc88afc6e286419a94827b4f559b10e3c5e12764fba491ed",
+        "receipts/carrier-export-fixture.json": "cb1b44d591f86f874c48fcaf432c5b79e7c53995b8202df237e25b4fc83c9b7d",
+        "receipts/carrier-mobile.png": "7534c490756abb99c553c73e1564dfeaf631e57a5966be1300a2dc0e96e42212",
+        "receipts/elliptic-mcomb-mobile.png": "af80b89a7afe67633b43a358944c27e05c43b23f1c6f6f513d56598d6eb3346c",
+        "receipts/good-certificates-verification.json": "d8aaabafa251148f93a62ff4817fa7e0e7c1f5781ea2a3558c09b4142c2c510c",
+        "receipts/good-certificates.log": "ea46752cce433796bf43936bc96694760c876743a8356c8394e1adbabcefd78b",
+        "receipts/good-prime-certificates.json": "91a52a5f57ed601ad61cf43bb2546e1eedf7824d70002ffbcb65b8d7b7162d32",
+        "receipts/local-gates-verification.json": "6b7cc63fe1bd56408c661940d66f91efaa86291687bd1354fa8d6556a7bd6a85",
+        "receipts/local-gates.log": "bacfb2e1bac90b54fa1cf3cebf367187b52ec3ad3fc3270aaff5ebf036351aed",
+        "receipts/maintenance-verification.json": "1c6189aa4c9db960c0154e82f2ae617ac5c75495fc95e4f0412a877e39e0c12f",
+        "receipts/maintenance.log": "6c4e7c5374c1401609ad020319aaab80819a10c6beb7e47345f0723694b75131",
+        "receipts/math-verification.json": "548824736aebe660c6f0ccd0b0dcd8db99a549f0d87821b88db98569186f78f3",
+        "receipts/math.log": "a3a6159234267564dac1f785aade92f280d620807f7b7d8e36150efc0ad12ea7",
+        "receipts/model-exclusions-desktop.png": "6d65eb6eabfac306158e3f69f1b5f47025f9c481e24f2ea9ccbf574bf5fe98a4",
+        "receipts/prime-product-desktop.png": "870648aeed6f7eb82d82e55dd67f3ebbc58199ac5b61734b4fd0b87e8b70886c",
+        "receipts/prime-product-export-fixture.json": "3054a17873bafbfc717e290c8f3d1eb001e561ae7a91dfa91bd57596a5fe95f4",
+        "receipts/prime-product-mobile.png": "9f32b988d9a1cb25e1c8376112ec16296600b5c720927aa6ec20f3f0b48b7ea3",
+        "receipts/regression-bsd-mcomb-desktop.png": "921cca1170ea01f0e7e4a27aa0e6d13fb24f76e75a956f7c1fa5609ca952077a",
+        "receipts/regression-elliptic-mcomb-desktop.png": "5e5eb9ea3c16a3471fdbe7bdd0bb6dde7b846996c9eae4176e89f32240e94664",
+        "receipts/regression-export-fixture.json": "4a04df1ed96af9b4a05198241380591e22474a55999d5fd689b2a10878c88d7b",
+        "receipts/regression-verification.json": "f7cb286e2930449060500160055297530119a52d09da3eeb1a89e8dd78556ced",
+        "receipts/regression.log": "f65bdc4ce0ec171b33bab17547494eec9dc68314288e58b45a32eb4a481fa079",
+        "receipts/runtime-verification.json": "19c4922218987105009dd7c80792260e125775677d4b1d05a7bf09749db3ced1",
+        "receipts/runtime.log": "ee79950592e13ec7ff588d7df790dc1bbd895bb7c04246868d780984f62331e8",
+        "receipts/schema-python-verification.json": "33ea25148dca468dd7a54fc58c05dd978cef3de23a91af6fb3ec788f35d0c36b",
+        "receipts/schema-python.log": "0e5f6e1ec5487c08f727bf654010962e7ed204afbe8db7ca0cd154599e45b109",
+        "receipts/schema-semantic-verification.json": "a955304550f45f9f0d2b4ffc3cf00d58b25f1a8b12d26b1c599bcf43fa4f9dab",
+        "receipts/schema-semantic.log": "75307f11dd91e4a6e03715bbd8f583df5883bc2d7a8a2e0ccb82eff0f334e50a",
+        "receipts/scratch-verification.json": "5820ca7cfd13b8c5abf497bcd8a4f05508355b75a4c1a513aa7b7b49fb500fb7",
+        "receipts/valuation-forgery-reproductions.json": "efa34180390fee5e216417a76598fd0a5ea480c41d5cac3a6cfc5d436bf91ade",
+        "receipts/valuation-gates-verification.json": "9d9e326e34704bb68cdf33435609b719ec4d5e299a7649adc3e14bc54dc3eb5c",
+        "receipts/valuation-gates.log": "6e06dd26541bd91ff99eb1b61cbe78a5887e2c338ca938c77c9857d737bf2dbf",
+        "requirements-verification.txt": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6",
+        "runtime-browser.cjs": "4cdb4f20c42ca3741cd2ffa05ada5e097e946522c4cabefe35db2efc88b51f2f",
+        "runtime-discovery.cjs": "776d386961bf6cdb0a3c8088ca4ad6e7e6e69be961e66055619227943828026d",
+        "validate-packet.py": "107bbc4c4511db18eadd390e7534c06d4e25625887f51a1dc36612ae2bad3833",
+        "verify.cjs": "3e1c985d74e043d2e8f82cd2047f9c018e8c058c846935170dc60827939e58b7",
+        "worker-guard.cjs": "3cc98862746514a827318666bcd24ae8a19a56e38181c5da76ae2e4f8fc0a712"
+      },
+      "BSD_MINIMAL_TATE_SCHEMA_v0_2_20260907": {
+        "AUDIT_MATRIX.md": "6be1140307a3352089086cfee770938019abd68cc4600a1a1092c57f18b6a389",
+        "HANDOFF.md": "5ab43c3821417561a1be16052c5e430aac4d0ecd1a8738ad06750f9175710a16",
+        "IMPLEMENTATION_PLAN.md": "6c1f5bec2acc2d220f1234fb523ff31461b55c9d67cf67e126d1376330d4181b",
+        "MANIFEST.sha256": "605d44f3b9b2c045ecb01837f4c1502eb2bb05bcae4d5e2caccc174560d3d97e",
+        "README.md": "e5564fe15901b7447a48dd786ff1ce8f579994bf50bd9e4a293fca3cf500216d",
+        "RUNTIME_SETUP.md": "71a27243720fbcb792fcc10202f8a558f261b78a78a26625973751dd153ac06c",
+        "SCHEMA_FOR_AUDIT.md": "d8e6818e50388106bbd41895485a104b552eb6b1a74adcd2fd2ce143d094d80e",
+        "SOURCE_PINS.json": "dc5beec9e1cf377d763d8e371a3ab22bbd4c0a7696ff3576883d1f71147050ec",
+        "assess.cjs": "96104c56f3dcfddfe48364b91f7ad8a7c3a3e30f004883c99655e29755078834",
+        "build.cjs": "34b90b56c26335c78781730690e3e9fd064a7b79bd083589f13db06f614b4d5a",
+        "check-browser.cjs": "bf2f5b4ea0ac22c5e29dacfd7fb8a16ef1466fec644e9c74b88dd749606d3db4",
+        "check-browser.worker.cjs": "3eba1b0f94ecc23626e5b906033ad120ae4eba9879f299d5b4cb2842e7fb1d32",
+        "check-good-certificates.py": "8a833bfc9ede0756e5f108cc69fa93ff1f4f2ed642d51ffa0121f5cbf925b937",
+        "check-integrity.cjs": "a353749a167ed285aab80b699df42d95df6f8713cd9172b6025f59e9c9e3e20f",
+        "check-local-gates.worker.cjs": "a3f1443cc28346daf2c9fc4eb0fd4ba16e9f3a1520142195c310ccaebbc6036f",
+        "check-maintenance.worker.cjs": "ad286eb30e09835452218ff29a25388e55cdde70a22ff13040c22deb91901e8f",
+        "check-math.cjs": "ada5a9325e5f81cd47a6de5eae210ff2694097e85ded726427de82634d1146c3",
+        "check-math.worker.cjs": "b0c83a043bc0de69b6cd72b0a32c3b33baef40d187348a0080f8b876621ab5e1",
+        "check-regression.worker.cjs": "ae27a253be640af6e6b2378a428824d2c1d0422f69a323c278c14952557a0bdd",
+        "check-runtime.worker.cjs": "620c4d39d8e8cb8fe1d67a42d8e4a04ef2acd553f643aee6c2bb7e64d5275e9b",
+        "check-schema.cjs": "ec8646c6ce9fe6afaeaf0601e06940a95902cea8eb429644371903e1a755fe68",
+        "check-schema.py": "08e88ce5ce9858393d544d6b5c189ab526434faf0d391efcda425a25e997736a",
+        "check-schema.worker.cjs": "5252935a19b6b5ced2eb6a537c960f7c9bbab65137b2bb15464e3b2b79d4fd47",
+        "fixtures/37a1-model-exclusion.json": "648cfa9b27b9fbb64a477727ed65022628ce16926ae06197b0d03fad6bb21908",
+        "fixtures/exact-point-without-minimality.json": "6336ce7728918b8013519575dec2c3c49df871ec876737ec6c12c5eb2b7b8bc9",
+        "fixtures/negative-scale-shear.json": "97efb8c583d49d6fba9184337044d87e4b4a87691304225798be0cba6615f7fd",
+        "fixtures/rational-chain.json": "ad7181bafc942630ac5fe4a49786ad0fa5e4650fd7ec9e04d93b11d0b454af98",
+        "fixtures/separate-quadratic-twist.json": "6a5be0502725bc36e34be72711f4c00fdf2ecb271aa5b821223a4b2bddb55677",
+        "good-prime-certificate.schema.json": "2d1de2947e6870982c344f17f187b92132382473e03e2ea09c084fc43daea2e1",
+        "labels.js": "067fa640cca78321edca49026f3d977afd2d61f3d36b6fd98d715a03c14a5125",
+        "make-fixtures.cjs": "63774dd2a12b5284e873a42536c4792596e1cc4013a1d49282ff66aab86b80d2",
+        "make-schema.cjs": "dd4a87abf5e3607dbc378fef63f74a51ebdc68ccc0b2ef0dbf2ad1bc26d67b2a",
+        "make-workers.cjs": "49709d18c34903b6b2d23404d4345a4668e418bf332b372b10ada21e321b05a4",
+        "minimal-tate-record.schema.json": "53ff91611f6a7310b99d33abde9d5f973aea74cb01fabee50791c4190f221485",
+        "model-replay.cjs": "f701e0ee68d6fd33d5f269545f85f01503707a7de3158f13f5f4140fbd43d486",
+        "monodromy-30-1-reduction-audit.html": "5dc69781082a3d2b41e1b38b49f71c44ec349a219221ed19b15969f8c0c0ee84",
+        "package-verification.json": "34a2cd805c8f150321f99cbe27019b2a94cc569337efd4c2e9cd85050b8341bd",
+        "package.cjs": "c099e7b547a8bfa3480885c032150757aeeec5515abe6ae68dbaa4c7a8d2d22c",
+        "receipts/browser-verification.json": "40fa32011ff805fec624c5e8a8fc688c1489b7378e3b4b3f0422dc1b93f72cee",
+        "receipts/browser.log": "fb44d6bd1562e544af617bb03b65ae0ca294059c04b10fc1fd32622081ce646f",
+        "receipts/bsd-mcomb-mobile.png": "721b230995d8e2c833c5fbe240472bd7783c96d6d739b53b13b2afde1cccc174",
+        "receipts/carrier-clifford.png": "55401093b6a14ec68936b8948fe015b49e36135209ebc42905c3384216ebf06b",
+        "receipts/carrier-desktop.png": "b896b763f36f2663fc88afc6e286419a94827b4f559b10e3c5e12764fba491ed",
+        "receipts/carrier-export-fixture.json": "cb1b44d591f86f874c48fcaf432c5b79e7c53995b8202df237e25b4fc83c9b7d",
+        "receipts/carrier-mobile.png": "9d1e0f327cca756a03079d30fdd000f8838e73121dd32ff38f4d812535b724de",
+        "receipts/elliptic-mcomb-mobile.png": "819b7d7955a4b47d23cbed8b4d272863a971e9eb6c94ac6cf97d48e490413cbe",
+        "receipts/good-certificates-verification.json": "d8aaabafa251148f93a62ff4817fa7e0e7c1f5781ea2a3558c09b4142c2c510c",
+        "receipts/good-certificates.log": "ea46752cce433796bf43936bc96694760c876743a8356c8394e1adbabcefd78b",
+        "receipts/good-prime-certificates.json": "fcf3b3f55e282c9dc4a98cbb5266acaac28f77c4542aa742bedd8325608442ef",
+        "receipts/local-gates-verification.json": "6b7cc63fe1bd56408c661940d66f91efaa86291687bd1354fa8d6556a7bd6a85",
+        "receipts/local-gates.log": "bacfb2e1bac90b54fa1cf3cebf367187b52ec3ad3fc3270aaff5ebf036351aed",
+        "receipts/maintenance-verification.json": "1c6189aa4c9db960c0154e82f2ae617ac5c75495fc95e4f0412a877e39e0c12f",
+        "receipts/maintenance.log": "6c4e7c5374c1401609ad020319aaab80819a10c6beb7e47345f0723694b75131",
+        "receipts/math-verification.json": "548824736aebe660c6f0ccd0b0dcd8db99a549f0d87821b88db98569186f78f3",
+        "receipts/math.log": "a3a6159234267564dac1f785aade92f280d620807f7b7d8e36150efc0ad12ea7",
+        "receipts/model-exclusions-desktop.png": "6d65eb6eabfac306158e3f69f1b5f47025f9c481e24f2ea9ccbf574bf5fe98a4",
+        "receipts/prime-product-desktop.png": "870648aeed6f7eb82d82e55dd67f3ebbc58199ac5b61734b4fd0b87e8b70886c",
+        "receipts/prime-product-export-fixture.json": "3054a17873bafbfc717e290c8f3d1eb001e561ae7a91dfa91bd57596a5fe95f4",
+        "receipts/prime-product-mobile.png": "9f32b988d9a1cb25e1c8376112ec16296600b5c720927aa6ec20f3f0b48b7ea3",
+        "receipts/regression-bsd-mcomb-desktop.png": "921cca1170ea01f0e7e4a27aa0e6d13fb24f76e75a956f7c1fa5609ca952077a",
+        "receipts/regression-elliptic-mcomb-desktop.png": "5e5eb9ea3c16a3471fdbe7bdd0bb6dde7b846996c9eae4176e89f32240e94664",
+        "receipts/regression-export-fixture.json": "4a04df1ed96af9b4a05198241380591e22474a55999d5fd689b2a10878c88d7b",
+        "receipts/regression-verification.json": "f7cb286e2930449060500160055297530119a52d09da3eeb1a89e8dd78556ced",
+        "receipts/regression.log": "f65bdc4ce0ec171b33bab17547494eec9dc68314288e58b45a32eb4a481fa079",
+        "receipts/runtime-verification.json": "19c4922218987105009dd7c80792260e125775677d4b1d05a7bf09749db3ced1",
+        "receipts/runtime.log": "ee79950592e13ec7ff588d7df790dc1bbd895bb7c04246868d780984f62331e8",
+        "receipts/schema-python-verification.json": "33ea25148dca468dd7a54fc58c05dd978cef3de23a91af6fb3ec788f35d0c36b",
+        "receipts/schema-python.log": "0e5f6e1ec5487c08f727bf654010962e7ed204afbe8db7ca0cd154599e45b109",
+        "receipts/schema-semantic-verification.json": "a955304550f45f9f0d2b4ffc3cf00d58b25f1a8b12d26b1c599bcf43fa4f9dab",
+        "receipts/schema-semantic.log": "75307f11dd91e4a6e03715bbd8f583df5883bc2d7a8a2e0ccb82eff0f334e50a",
+        "receipts/scratch-verification.json": "d2582fee481631da746787159b465c61702f99bfcf641ce7da178573d2f1b773",
+        "requirements-verification.txt": "756cc9e506ae4ee1a6f6c0507088b5cfc0dc8ba350fb2d2d46f1ffa72033adb6",
+        "runtime-browser.cjs": "4cdb4f20c42ca3741cd2ffa05ada5e097e946522c4cabefe35db2efc88b51f2f",
+        "runtime-discovery.cjs": "776d386961bf6cdb0a3c8088ca4ad6e7e6e69be961e66055619227943828026d",
+        "validate-packet.py": "107bbc4c4511db18eadd390e7534c06d4e25625887f51a1dc36612ae2bad3833",
+        "verify.cjs": "a21a71b00a3e680f662666278f06dabd64a8af318b9afec2e77e1d03de876ee0",
+        "worker-guard.cjs": "3cc98862746514a827318666bcd24ae8a19a56e38181c5da76ae2e4f8fc0a712"
+      },
+      "BSD_MINIMAL_TATE_SCHEMA_v0_1_20260907": {
+        "AUDIT_MATRIX.md": "fec93f82300a3f30a1c8b6ea3e6f836385f431fc9a17ddb688fffee6ff743b97",
+        "HANDOFF.md": "5c709b4b561fbf5015ee8be120c270e5246078898d30d87f4acd7e5eb2f718d7",
+        "MANIFEST.sha256": "252b5406568d19bd1377c68e8bd70c1a5bc369c26d262bd391d38311e33c4e3b",
+        "README.md": "3fccf865e63b0b9bceb97b4ed288ce971624bd01897282f5e24730058049d0f3",
+        "SCHEMA_FOR_AUDIT.md": "2c5c491876deab2fd8f7103cd3addfc29c93feb1ef63fa039c9b7295eb3ff1cc",
+        "SOURCE_PINS.json": "9c8f7a5800f32482ef9994965116e75b63d1c820b110c132a6bbee84b8c475fe",
+        "build.cjs": "2fdfe0baa576f7698b3bf7505f5a6d94bdb8700250afb329fb6c9b08d4d6c076",
+        "check-browser.cjs": "bf2f5b4ea0ac22c5e29dacfd7fb8a16ef1466fec644e9c74b88dd749606d3db4",
+        "check-browser.worker.cjs": "650a412dfed23f2ef8579403b80055d5d8dd02afcc01632225572d068ae9509e",
+        "check-integrity.cjs": "5eb79f7de553d3f4bee841e558f745f283976a73968966d83d7fb8a7f6e99422",
+        "check-maintenance.worker.cjs": "8055564d323ca43a256768f1978a7942fadfbedad0a7ad5d127f2c54bfee1b37",
+        "check-math.cjs": "ada5a9325e5f81cd47a6de5eae210ff2694097e85ded726427de82634d1146c3",
+        "check-math.worker.cjs": "b0c83a043bc0de69b6cd72b0a32c3b33baef40d187348a0080f8b876621ab5e1",
+        "check-regression.worker.cjs": "e54bb5fee73ee545e43e3a06d16b2d2f79a85c356f25f4618dd8fc298116c668",
+        "check-schema.cjs": "ec8646c6ce9fe6afaeaf0601e06940a95902cea8eb429644371903e1a755fe68",
+        "check-schema.py": "08e88ce5ce9858393d544d6b5c189ab526434faf0d391efcda425a25e997736a",
+        "check-schema.worker.cjs": "5252935a19b6b5ced2eb6a537c960f7c9bbab65137b2bb15464e3b2b79d4fd47",
+        "fixtures/37a1-model-exclusion.json": "648cfa9b27b9fbb64a477727ed65022628ce16926ae06197b0d03fad6bb21908",
+        "fixtures/exact-point-without-minimality.json": "6336ce7728918b8013519575dec2c3c49df871ec876737ec6c12c5eb2b7b8bc9",
+        "fixtures/negative-scale-shear.json": "97efb8c583d49d6fba9184337044d87e4b4a87691304225798be0cba6615f7fd",
+        "fixtures/rational-chain.json": "ad7181bafc942630ac5fe4a49786ad0fa5e4650fd7ec9e04d93b11d0b454af98",
+        "fixtures/separate-quadratic-twist.json": "6a5be0502725bc36e34be72711f4c00fdf2ecb271aa5b821223a4b2bddb55677",
+        "labels.js": "067fa640cca78321edca49026f3d977afd2d61f3d36b6fd98d715a03c14a5125",
+        "make-fixtures.cjs": "63774dd2a12b5284e873a42536c4792596e1cc4013a1d49282ff66aab86b80d2",
+        "make-schema.cjs": "e432f41013933491b22718c94eaac86b99d903a2775986c592f2ca2ba31afb7e",
+        "make-workers.cjs": "897ff86f21d8d65f2f59edacf30955bc7325944ef71fca10ec8d8920ba2a1dc7",
+        "minimal-tate-record.schema.json": "176ded8a45bd462451bb20b80112648930056b94f877a3fb9737eb2c7a0c8f56",
+        "model-replay.cjs": "19acddc1593e0c658a29956c0ba5620f90e2733f9089141f8f814f4316a98d67",
+        "monodromy-30-1-reduction-audit.html": "5dc69781082a3d2b41e1b38b49f71c44ec349a219221ed19b15969f8c0c0ee84",
+        "package-verification.json": "f99ddf8e876f6087fdf7103c49aa836473bcd0443099abd35ed16038559d5a63",
+        "package.cjs": "f1c605e3308f054dcf31a013a213afb5ea65914579ab5447dda587c6f21540bb",
+        "receipts/browser-verification.json": "40fa32011ff805fec624c5e8a8fc688c1489b7378e3b4b3f0422dc1b93f72cee",
+        "receipts/carrier-desktop.png": "b950065c89820085fe43a260f626ca072ef354f49f2af693faa469ab6262d09a",
+        "receipts/maintenance-verification.json": "1c6189aa4c9db960c0154e82f2ae617ac5c75495fc95e4f0412a877e39e0c12f",
+        "receipts/math-verification.json": "548824736aebe660c6f0ccd0b0dcd8db99a549f0d87821b88db98569186f78f3",
+        "receipts/model-exclusions-desktop.png": "f613fac00f7d1a5bef6bb087584df508a60c13b787b1c2b49e48c2c878e1c92b",
+        "receipts/prime-product-mobile.png": "985bef67efd19ee0e45128be7c4b6ceb3d705e0ed8402d4f59b0c2a692fb9427",
+        "receipts/regression-verification.json": "f7cb286e2930449060500160055297530119a52d09da3eeb1a89e8dd78556ced",
+        "receipts/schema-python-verification.json": "33ea25148dca468dd7a54fc58c05dd978cef3de23a91af6fb3ec788f35d0c36b",
+        "receipts/schema-semantic-verification.json": "a955304550f45f9f0d2b4ffc3cf00d58b25f1a8b12d26b1c599bcf43fa4f9dab",
+        "receipts/scratch-verification.json": "3ffe2ecde20e3581a5c1314b17d5097eb87cea00a45f68eea1ec87de659a6fe7",
+        "verify.cjs": "7c4539e73f0a1493d05e713b4fc552b030be544f9f6ba0144787abed59b91faf",
+        "worker-guard.cjs": "3cc98862746514a827318666bcd24ae8a19a56e38181c5da76ae2e4f8fc0a712"
+      },
+      "MCOMB_CARRIER_ADDITION_v0_1_20260907": {
+        "CONTRACT.md": "e93a28a58e08932e3484a010479a1ce678fc034b6a2cdc5f005eec7dc98d8844",
+        "MANIFEST.sha256": "b7799b08896ee9b57c8963d4530e393d7d3952a6d2f3047ce20376e1d67d87c1",
+        "README.md": "3863406478d8b5e1eb0771597b558674bc351cd11c9331d469b657d3fc5d4e91",
+        "SOURCE_PINS.json": "d0efb7bd6c633c8b8610b0407a82762eb894315872b33592cb56fac5dc5d7bda",
+        "browser-verification.json": "40fa32011ff805fec624c5e8a8fc688c1489b7378e3b4b3f0422dc1b93f72cee",
+        "bsd-mcomb-mobile.png": "95b19562fcfecdbc32a23cc65797199545ba6643ba98aabe1b40fe4945f2d929",
+        "build.cjs": "d125c922c912132a3296174d6ed03c43b5a0e463e8c21f177def5d452c98da8d",
+        "carrier-addition.js": "cf0b057d3f26fea2971561974149d26423ace0c0eb0d0f7529510e1aee409271",
+        "carrier-clifford.png": "f07b6a1803fbf42a494cad29458e63586b9a1193192827bf9af4bf348147dcc1",
+        "carrier-desktop.png": "f44bdf8c1b1f824f3b033280ed8a9105d7b9f7ed880e6cacadef45601ea2945d",
+        "carrier-export-fixture.json": "cb1b44d591f86f874c48fcaf432c5b79e7c53995b8202df237e25b4fc83c9b7d",
+        "carrier-mobile.png": "5d1e5298c562714e51a3636fcd4eeb5fb34091ce5267e8f92715a7c0853e548f",
+        "carrier-panel.js": "5f320037c3adcdffbdcd51a19d8ec10138a47cb92be4bef6d56acc15ab2b5ee5",
+        "check-browser.cjs": "0da2c5a87d0f1d8f694696a983186bf1302e18fd432d6e59ddb9210340673b0a",
+        "check-math.cjs": "c119860ed683f7e1d630814e69059b0a3151254dd99d67938600ad09f165d15b",
+        "check-regression.cjs": "b478468f5cd1d8db61f9d227da5444ca986e143b2ab6b6b937999362fb1caf5a",
+        "elliptic-mcomb-mobile.png": "b420ff9040e5540b9257a8e854c9cf71b38c3ded99b5dcce69ecf54671599e05",
+        "initial-carrier.png": "bfc3d78d94cf9a9a0800191f72aaf808f90b8120ef5bbb81da40bc4e9b7ea6d4",
+        "math-verification.json": "a6cecd19082c55759f18389abe83e2ddde20acc91976a3e5841d48d6d8443781",
+        "monodromy-30-carrier-addition.html": "667bc1aba225d17d1ab1a5eac9d725a8de1fd4bc025e1653a184f05f22e68815",
+        "package-verification.json": "0172fed9dcc6112aaa44442d8d30240a925a9195cefc8af33fe5c999ea1d34ce",
+        "package.cjs": "877a0d7c9602addf4194d1d04a40644b50061b6ea4819f640866bf891fd4d0a2",
+        "prime-product-desktop.png": "dfbffe0fe38bed8a34aa17a0a16e17bb69eedf92798f4bd74781a384dde93d8d",
+        "prime-product-export-fixture.json": "3054a17873bafbfc717e290c8f3d1eb001e561ae7a91dfa91bd57596a5fe95f4",
+        "prime-product-mobile.png": "b2bff2a024de74b4703d314b445193f7947547d9f2e4a19d8727ec48b3aec148",
+        "prime-product.js": "295c0f222c30fce52174ee8f9a51eedc05eadc7e1863ceebabd3d612921c183a",
+        "regression-bsd-mcomb-desktop.png": "189d58554767daa979c9147f1be5246e6181f11317a910be868d3475a7af2329",
+        "regression-elliptic-mcomb-desktop.png": "3d1384ca0a5856461bf351974d74aed836767527c65fc219cc6262d735ca4fea",
+        "regression-export-fixture.json": "4a04df1ed96af9b4a05198241380591e22474a55999d5fd689b2a10878c88d7b",
+        "regression-verification.json": "f7cb286e2930449060500160055297530119a52d09da3eeb1a89e8dd78556ced"
+      },
+      "MCOMB_CONNECTED_PANELS_v0_1_20260907": {
+        "MANIFEST.sha256": "ffa723190500b1ca7d9dd0251005ea95a10c9f0bb8b2519774ab13f48b53a875",
+        "README.md": "4fd9500f25204eafefd8cd324844709fd5f8783e73b5ec82b3bfd424f1e97e73",
+        "SOURCE_PINS.json": "97dd7bb3f7ddfa513fda8540288009da6060fd9c1e3e09bc55493379aa401b8d",
+        "browser-verification.json": "f7cb286e2930449060500160055297530119a52d09da3eeb1a89e8dd78556ced",
+        "bsd-mcomb-desktop.png": "c7518202c9508c79c0424bf706229870ed18ec60c71d63dfdad3cea9a2033bc8",
+        "bsd-mcomb-mobile.png": "07053a192feb73a3005b321fda0bc3cebfcd3b66f9892ea3d9ad2a8b706932c9",
+        "build.cjs": "2756873e3f85f05740be54a2b86816163c9d830ecff4471211f2e44d35f8e541",
+        "check-browser.cjs": "3d40ca406232b3c937c0a101e7be7e0ef4ab6bbe6e768ce2b1a4ca3b39175e78",
+        "check-regression.cjs": "aa9df47b88bc7affbf98d237882e40d747cc4808715080ee52dc2c221c58ae80",
+        "connected-export-fixture.json": "4a04df1ed96af9b4a05198241380591e22474a55999d5fd689b2a10878c88d7b",
+        "elliptic-mcomb-desktop.png": "89671c989d0114d7efdc29e00fda5c01284f47a9d72fa30599d27a8403f353ce",
+        "elliptic-mcomb-mobile.png": "33433a74d14904f90bfbb4ff13ea42f74da75cb101a2f57a9b2e1e6acdcf8a15",
+        "mcomb-panels.js": "b26ac69390cd5da6b00c14c70b48d108fded3dadd9e6865988ce9a3c25ea5485",
+        "monodromy-29-1-mcomb-connected.html": "f32eb8af15fd7cd386eb22bbe8cb45a96bb1ed163180439edddaffe07d9a8edd",
+        "package-verification.json": "7ecee88db659e9a52f56cbfb877ac51dbe0a30eb48a5de7bbab1f0510ee2c564",
+        "package.cjs": "35a2258c34f8a8ba84276214c99b34f72142c618d017abe00f870405ddc244b4",
+        "regression-clifford.png": "19201f7d732edec7ac5ebf8189e4946b61a91f57505aa48d953e1ff2d0930e1e",
+        "regression-export-fixture.json": "cb839925a129ba36dda49434f73e1be2a0b9314078a470bb7822eff21ab0cebf",
+        "regression-panel-desktop.png": "e9d7ee6c88f310e0991cca309e12f3f07e3899c9a110a4fbc4323198b27496fb",
+        "regression-panel-mobile.png": "388d8e8223de31c01ffc59718aab8bc854ddd35bd0efab21dda224611b1f9094",
+        "regression-verification.json": "a33a90236600fc83e2e5ca64976001cc92df0e1e74422dcf4f9d3874652a9e43"
+      },
+      "MCOMB_ELLIPTIC_BSD_LINK_v0_1_20260907": {
+        "CONTRACT.md": "e90eefd4ef5a1cd8fd3d2453ffd19c8df7165cc70dea6c0b24f76be89961a566",
+        "MANIFEST.sha256": "d4b5832d7db004bacb4bd7f554f2912ed4a24215f1c9ed1803dc6fd6292ff5a6",
+        "README.md": "0336852cfb46564d2e3dd9bc7982a787c5e63110d756ac4e5f3e45e5a828240b",
+        "SOURCE_PINS.json": "c7094f615189f1406ffd9f536ecc4210394577d1634725c1bfab7d33db0cec38",
+        "browser-verification.json": "a33a90236600fc83e2e5ca64976001cc92df0e1e74422dcf4f9d3874652a9e43",
+        "build.cjs": "03e2e05cdcb1b650b7e6b315fe08f3a5fa7a57d9176aef0ab88d1a420ed189de",
+        "check-browser.cjs": "1fb71f75fe3aa09fee7b29f0ce93f06743e7d3af6bcab1eccefe9efa090bd95d",
+        "check-independent.py": "dfdb1d6a343b8c42aafb20b0ecc44a56720d35d4a60458b78aa27748c8194a41",
+        "check-math.cjs": "23d5db2b4788e1b374caa8af0a587d66a3ddf58f8186be85574b410fa4d7d590",
+        "elliptic-transport.js": "7e14f84639c8ac4db379fc8e83ed360d9da62da160282923cbdbc2aac5052852",
+        "independent-verification.json": "aa83768dc4b2a242f46b7c239416b1b2d0dc53b683fa5ffba4fe56c607a9cf57",
+        "initial-panel.png": "7aec1ec5668ed672a4eb11266589dbe8d67e4c11e46ed925309abaceb61f691d",
+        "link-panel.js": "5db82384d929c7bb2eaa59aebb925c665ed2f912c7ef41026f3f6a623c71e055",
+        "linked-clifford.png": "cfde39a68fe957be109ae1a28b54084f61d82bc42b6065c106338a67cc892170",
+        "linked-export-fixture.json": "c53c3a3bdd8419f9fc579da3d4de225a0e254866eaff7baa27a99fc48b6b4255",
+        "linked-panel-desktop.png": "e41234a2a6a93fa5c50ed1529b80fa93579da98c9dbdb057f1ec623bf5d2d340",
+        "linked-panel-mobile.png": "0550a9ef04fc0a117ba943be76109b34ebdf8eb60b048e105e9901338de83f05",
+        "math-verification.json": "22a00f75b8487eeea75be684c2a952f3a76d7bea8ec4f561ef0e908b3cc80d2b",
+        "monodromy-29-mcomb-elliptic-bsd.html": "74fedcdaa74462e76f22e81c225c2f6d7db831becfa74d98f8ca61648f2ca206",
+        "package-verification.json": "5e3f63008ee8de8d47ecb796075c063451ee61ce1484234674a44b2f339b95ee",
+        "package.cjs": "e0b9a6d2c22bb9f25adc7ca22903954a6521410bbda222f6aeb440091dbd3782",
+        "uniformization-oracle-inputs.json": "d46af77c62a204692097f67d3df6d2ed092fffcddb88938355f318b98efcc9cf"
+      },
+      "BSD_CURVE_RECORD_v0_1_20260907": {
+        "CONTRACT.md": "37e116ad95d249476c87269b27cc2036c58f25c722774e63efeeb3cca2559a42",
+        "README.md": "15b71ea7fd83f79fc7a992c1529733da649c432589a750c4880d263c4c0b31a8",
+        "SHA256SUMS.txt": "4585774e6c77889cee22144674c2d20fbd33afe421a5082eacfc95f2dd20b4c5",
+        "SOURCE_PINS.json": "71b9de6cc38f0be78640d2f534ab9f011565954698049f5eba5fd9c681947b32",
+        "SYNTHETIC_COMPARISON_FIXTURE.json": "182ffa2e525ea93af09cf29db22d7f5c48422ab095a3bc6e61b59f516534da97",
+        "VERIFICATION.md": "21c598ef92a784f3a96c1bd897e52c84da090c5ec5b0b4fe151f6dc0bca6bef4",
+        "browser-export-fixture.json": "fa1aef19c159a78f7f0a521e945fb08bb056ff0f80185ced5b51bdb435da1e42",
+        "browser-verification.json": "0246ada8f8f77f7c905c8df88bf142080d2471d7d7beb8bf0fc8f51ed91b9297",
+        "bsd-curve-record.schema.json": "b675150c50b9cc93ec420dc32ef922faa23af2b6d0b9420e51d94a0c863211b9",
+        "bsd-desktop.png": "abc5d2a87b25dfea14cab5db6ab37e0cc36b517d7db8044a9680ecca8dbdebcf",
+        "bsd-mobile.png": "d14fa4372caed9f3c3998eb5f460ba5cdb18d36f981988afe45968a570256025",
+        "bsd-panel.js": "de0cee248c7345a876a4d871b0a766da4a501985c17cca0fccffc3e094d20a74",
+        "bsd-record.js": "29f0cf6bff5afc07cdf590cb2b24eaef8001051ee4d090ed9e4e7b7098bd77ab",
+        "build.cjs": "4af1274fde49286127b9f7ec1b5c5f1cb46a736c79699e3c936b12be03040e6e",
+        "check-browser.cjs": "f32b7943db68205e0c3df785baf9426a0e11ee6169cee37ec12065b0ac70d743",
+        "check-core.cjs": "4ab59d3f6815240660c76d6d8d725d57a48a71480a45935d5b3c965e62e36900",
+        "check-independent.py": "a168ad29f9e5d88acbaa71dbc287af39ce696e9b36d1c7aa5568cd60f1731a4a",
+        "core-verification.json": "1c861b6773fbc68abf15915e00f07105d4649df70b0602a5091ec054852f0cc4",
+        "independent-verification.json": "1b45a3270b92978d39dc4e552ae4b9a12525b88e1fec82e01963ace0026cb6c2",
+        "make-schema.cjs": "3faad09f35d79ebdb13ab8cf42369037348811cc65ef8ea43f6c9e6cc3d0fa9f",
+        "monodromy-28-bsd.html": "9d6214339802e182881691ed33c2946eb8dc3d0e3536c413fe07783b4ebc433a",
+        "oracle-inputs.json": "ceb220930709445d21a9c24ac01fe0343bb8bbc0f6e7729c239c0731776051af",
+        "package.cjs": "79127edb1343b796f1d5806eeeb60351df228e6156bbb13491322a32750f32c7"
+      }
+    },
+    "bridgeSha256": "0b59d55ba84f337458b45726e600b582fcb741ce0076811dadb6d9edda1c995c",
+    "auditHashes": {
+      "MONODROMY_30_1_SCHEMA_COLD_AUDIT_FABLE_20260907.md": "ff6438de67de91d7b37d3c427191efb14a045f7d2af379b143f91f4620e5ff75",
+      "MONODROMY_30_1_SCHEMA_COLD_AUDIT_FABLE_20260907.json": "e69380fd75f853f5719712bb4eb59c96c4e05e766155b2bd95842582f30b9729",
+      "MINIMAL_TATE_SCHEMA_v0_2_COLD_AUDIT_FABLE_20260907.md": "e0d59f7ecac6560793dba81892046d8ac7b27f674beaff47418542f4580a3901",
+      "MINIMAL_TATE_SCHEMA_v0_2_COLD_AUDIT_FABLE_20260907.json": "2b0d7784a8c4f21def36ff1c05ef4e50d6ead9c529f4891f23708d4eaa672623"
+    },
+    "checks": [
+      {
+        "name": "schema-semantic",
+        "status": "PASS"
+      },
+      {
+        "name": "schema-python",
+        "status": "PASS"
+      },
+      {
+        "name": "local-gates",
+        "status": "PASS"
+      },
+      {
+        "name": "good-certificates",
+        "status": "PASS"
+      },
+      {
+        "name": "valuation-gates",
+        "status": "PASS"
+      },
+      {
+        "name": "math",
+        "status": "PASS"
+      },
+      {
+        "name": "browser",
+        "status": "PASS"
+      },
+      {
+        "name": "regression",
+        "status": "PASS"
+      },
+      {
+        "name": "maintenance",
+        "status": "PASS"
+      },
+      {
+        "name": "runtime",
+        "status": "PASS"
+      },
+      {
+        "name": "Candidate and all staged source dependencies unchanged",
+        "status": "PASS"
+      }
+    ],
+    "failure": null
+  },
+  "v03Suites": {
+    "schema-semantic": {
+      "standing": "LOCAL_SCHEMA_REFERENCE_CHECK_NOT_TATE_OR_COLD_AUDIT",
+      "total": 40,
+      "checks": [
+        {
+          "name": "Replay 37a1-model-exclusion",
+          "status": "PASS"
+        },
+        {
+          "name": "Replay exact-point-without-minimality",
+          "status": "PASS"
+        },
+        {
+          "name": "Replay negative-scale-shear",
+          "status": "PASS"
+        },
+        {
+          "name": "Replay rational-chain",
+          "status": "PASS"
+        },
+        {
+          "name": "Replay separate-quadratic-twist",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject reversed differential scale",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject lost selected differential",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject zero u",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject forged coefficient",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject noncanonical rational",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject stale normalization ID",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject stale marking ID",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject duplicate panel",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject missing panel",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject orientation reversal",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject floating exact coordinate",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject off-curve point",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject altered source bytes",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject unimplemented legacy adapter",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject unimplemented mcomb adapter",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject local status laundering",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject certificate absent",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject conditional without assumption",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject self dependency",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject bad prime omitted",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject incomplete factorization promoted",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject incorrect conductor",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject incorrect Tamagawa product",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject missing local result",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject composite prime",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject prime exceeds replay bound",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject wrong good-prime count",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject false multiplicative splitting",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject wrong discriminant valuation",
+          "status": "PASS"
+        },
+        {
+          "name": "Reject unjustified Neron reference",
+          "status": "PASS"
+        },
+        {
+          "name": "Nontrivial twist cannot be smuggled into an isomorphism chain",
+          "status": "PASS"
+        },
+        {
+          "name": "Sage documented negative tuple reproduces all five coefficients",
+          "status": "PASS"
+        },
+        {
+          "name": "Exact inverse and composed tuple replay",
+          "status": "PASS"
+        },
+        {
+          "name": "Period fractions transform contragrediently",
+          "status": "PASS"
+        },
+        {
+          "name": "Exact point input remains available without a minimal model",
+          "status": "PASS"
+        }
+      ],
+      "unsupported": [
+        "Tate engine",
+        "global minimality certificates",
+        "legacy and mcomb packet migration",
+        "live general-model panel adapter",
+        "Neron-Tate heights"
+      ]
+    },
+    "schema-python": {
+      "standing": "LOCAL_STRUCTURAL_AND_INDEPENDENT_SUBSTITUTION_NOT_TATE",
+      "total": 23,
+      "checks": [
+        {
+          "name": "Draft 2020-12: 37a1-model-exclusion.json",
+          "status": "PASS"
+        },
+        {
+          "name": "Independent polynomial and differential substitution: 37a1-model-exclusion.json",
+          "status": "PASS"
+        },
+        {
+          "name": "Draft 2020-12: exact-point-without-minimality.json",
+          "status": "PASS"
+        },
+        {
+          "name": "Independent polynomial and differential substitution: exact-point-without-minimality.json",
+          "status": "PASS"
+        },
+        {
+          "name": "Draft 2020-12: negative-scale-shear.json",
+          "status": "PASS"
+        },
+        {
+          "name": "Independent polynomial and differential substitution: negative-scale-shear.json",
+          "status": "PASS"
+        },
+        {
+          "name": "Draft 2020-12: rational-chain.json",
+          "status": "PASS"
+        },
+        {
+          "name": "Independent polynomial and differential substitution: rational-chain.json",
+          "status": "PASS"
+        },
+        {
+          "name": "Draft 2020-12: separate-quadratic-twist.json",
+          "status": "PASS"
+        },
+        {
+          "name": "Independent polynomial and differential substitution: separate-quadratic-twist.json",
+          "status": "PASS"
+        },
+        {
+          "name": "Structural rejection: unknown root field",
+          "status": "PASS"
+        },
+        {
+          "name": "Structural rejection: unknown model field",
+          "status": "PASS"
+        },
+        {
+          "name": "Structural rejection: numeric coefficient",
+          "status": "PASS"
+        },
+        {
+          "name": "Structural rejection: six coefficients",
+          "status": "PASS"
+        },
+        {
+          "name": "Structural rejection: negative Tamagawa",
+          "status": "PASS"
+        },
+        {
+          "name": "Structural rejection: zero Tamagawa",
+          "status": "PASS"
+        },
+        {
+          "name": "Structural rejection: invalid Kodaira",
+          "status": "PASS"
+        },
+        {
+          "name": "Structural rejection: missing differential",
+          "status": "PASS"
+        },
+        {
+          "name": "Structural rejection: false infinity",
+          "status": "PASS"
+        },
+        {
+          "name": "Structural rejection: mixed affine infinity",
+          "status": "PASS"
+        },
+        {
+          "name": "Structural rejection: unknown evidence status",
+          "status": "PASS"
+        },
+        {
+          "name": "Structural rejection: audit standing in evidence",
+          "status": "PASS"
+        },
+        {
+          "name": "Unavailable local computation is representable without disabling exact points",
+          "status": "PASS"
+        }
+      ],
+      "jsonSchemaDraft": "2020-12"
+    },
+    "local-gates": {
+      "standing": "LOCAL_G1_G2_CHECKS_NOT_FULL_TATE",
+      "total": 22,
+      "checks": [
+        {
+          "name": "37 nonsplit result passes consistency and remains unverified",
+          "status": "PASS"
+        },
+        {
+          "name": "Coherently forged additive result at multiplicative 37 rejects",
+          "status": "PASS"
+        },
+        {
+          "name": "Coherently forged splitting and Euler sign at 37 reject",
+          "status": "PASS"
+        },
+        {
+          "name": "Square -c6 recognizes a split multiplicative example",
+          "status": "PASS"
+        },
+        {
+          "name": "False nonsplit classification at a split prime rejects",
+          "status": "PASS"
+        },
+        {
+          "name": "A vanishing c4 residue at a bad prime rejects multiplicative data",
+          "status": "PASS"
+        },
+        {
+          "name": "Kodaira II enforces its Tamagawa admissible set",
+          "status": "PASS"
+        },
+        {
+          "name": "Kodaira III enforces its Tamagawa admissible set",
+          "status": "PASS"
+        },
+        {
+          "name": "Kodaira IV enforces its Tamagawa admissible set",
+          "status": "PASS"
+        },
+        {
+          "name": "Kodaira I0* enforces its Tamagawa admissible set",
+          "status": "PASS"
+        },
+        {
+          "name": "Kodaira I1* enforces its Tamagawa admissible set",
+          "status": "PASS"
+        },
+        {
+          "name": "Kodaira IV* enforces its Tamagawa admissible set",
+          "status": "PASS"
+        },
+        {
+          "name": "Kodaira III* enforces its Tamagawa admissible set",
+          "status": "PASS"
+        },
+        {
+          "name": "Kodaira II* enforces its Tamagawa admissible set",
+          "status": "PASS"
+        },
+        {
+          "name": "Exact good-prime proofs at 2 and 3 need no minimality report",
+          "status": "PASS"
+        },
+        {
+          "name": "Good reduction with c4 divisible by p is not misclassified additive",
+          "status": "PASS"
+        },
+        {
+          "name": "p-integral rational coefficients support local certification",
+          "status": "PASS"
+        },
+        {
+          "name": "Singular or nonintegral good-prime claims cannot obtain certificates",
+          "status": "PASS"
+        },
+        {
+          "name": "Good-prime certificates retain producer status without inheriting assumptions",
+          "status": "PASS"
+        },
+        {
+          "name": "Unavailable local records remain unavailable",
+          "status": "PASS"
+        },
+        {
+          "name": "Bad data at 2 remain source reports, not p>=5 square-test certificates",
+          "status": "PASS"
+        },
+        {
+          "name": "Public assessment rejects imported assessments and duplicate JSON keys",
+          "status": "PASS"
+        }
+      ],
+      "certificates": 4
+    },
+    "good-certificates": {
+      "total": 4,
+      "checks": [
+        {
+          "name": "Independent exact invariants and point count at p=2 for 8878e6b37d71",
+          "status": "PASS"
+        },
+        {
+          "name": "Independent exact invariants and point count at p=3 for 8878e6b37d71",
+          "status": "PASS"
+        },
+        {
+          "name": "Independent exact invariants and point count at p=5 for ffcb2a887061",
+          "status": "PASS"
+        },
+        {
+          "name": "Independent exact invariants and point count at p=3 for 6fde21a5ade3",
+          "status": "PASS"
+        }
+      ],
+      "method": "Fraction invariants and Legendre-discriminant recount; exhaustive at p=2"
+    },
+    "valuation-gates": {
+      "standing": "LOCAL_H1_H2_GATES_NOT_TATE_CERTIFICATION",
+      "total": 25,
+      "checks": [
+        {
+          "name": "Reproduce and reject H1 II* with v5(Delta)=2",
+          "status": "PASS"
+        },
+        {
+          "name": "Reproduce and reject H1 I0* with v5(Delta)=2",
+          "status": "PASS"
+        },
+        {
+          "name": "Reproduce and reject H1 IV* with v5(Delta)=7",
+          "status": "PASS"
+        },
+        {
+          "name": "Reproduce and reject H2 f2=12 on y2=x3-1",
+          "status": "PASS"
+        },
+        {
+          "name": "Tame II passes and every competing fixture label rejects",
+          "status": "PASS"
+        },
+        {
+          "name": "Tame III passes and every competing fixture label rejects",
+          "status": "PASS"
+        },
+        {
+          "name": "Tame IV passes and every competing fixture label rejects",
+          "status": "PASS"
+        },
+        {
+          "name": "Tame I0* passes and every competing fixture label rejects",
+          "status": "PASS"
+        },
+        {
+          "name": "Tame I1* passes and every competing fixture label rejects",
+          "status": "PASS"
+        },
+        {
+          "name": "Tame IV* passes and every competing fixture label rejects",
+          "status": "PASS"
+        },
+        {
+          "name": "Tame III* passes and every competing fixture label rejects",
+          "status": "PASS"
+        },
+        {
+          "name": "Tame II* passes and every competing fixture label rejects",
+          "status": "PASS"
+        },
+        {
+          "name": "p-unit rational transformations preserve all eight tame types",
+          "status": "PASS"
+        },
+        {
+          "name": "j=0 has infinite valuation and supports all applicable additive families",
+          "status": "PASS"
+        },
+        {
+          "name": "Negative j valuation determines I2* including colliding discriminant values",
+          "status": "PASS"
+        },
+        {
+          "name": "Negative j valuation determines I3* including colliding discriminant values",
+          "status": "PASS"
+        },
+        {
+          "name": "Negative j valuation determines I4* including colliding discriminant values",
+          "status": "PASS"
+        },
+        {
+          "name": "Negative j valuation determines I7* including colliding discriminant values",
+          "status": "PASS"
+        },
+        {
+          "name": "A nonminimal negative-j presentation cannot satisfy the tame pole-order relation",
+          "status": "PASS"
+        },
+        {
+          "name": "A nonminimal potentially good presentation lies outside the tame valuation table",
+          "status": "PASS"
+        },
+        {
+          "name": "The f2=8 boundary is admitted and 9 rejected on the 256.a1 model",
+          "status": "PASS"
+        },
+        {
+          "name": "The f3=5 boundary is admitted and 6 rejected on y2=x3+3",
+          "status": "PASS"
+        },
+        {
+          "name": "Conductor cannot exceed discriminant valuation even below the Q cap",
+          "status": "PASS"
+        },
+        {
+          "name": "Public structural entry point rejects the audit forgeries",
+          "status": "PASS"
+        },
+        {
+          "name": "Good-prime certification on a1 nonzero general models is preserved",
+          "status": "PASS"
+        }
+      ],
+      "predecessorAcceptedForgeries": 4,
+      "tameCompetingLabelRejections": 56
+    },
+    "math": {
+      "standing": "LOCAL_EXACT_AND_NUMERICAL_CONCORDANCE_NOT_COLD_AUDIT",
+      "total": 17,
+      "formulaCases": 84,
+      "formulaTally": {
+        "pairPASS": 84,
+        "doublingPASS": 84
+      },
+      "independentCountCases": 52,
+      "checks": [
+        {
+          "name": "Screenshot carrier C=(1,0), pair sums to O, and R=O",
+          "status": "PASS"
+        },
+        {
+          "name": "Finite sum uses independent chord and tangent formulas",
+          "status": "PASS"
+        },
+        {
+          "name": "Third intersection equals carrier exactly at the order-three phase",
+          "status": "PASS"
+        },
+        {
+          "name": "Coincident branches use a tangent instead of division by zero",
+          "status": "PASS"
+        },
+        {
+          "name": "Origin and stationary branches retain exact identities",
+          "status": "PASS"
+        },
+        {
+          "name": "Even comb has a reference carrier but no fabricated c=0 channel",
+          "status": "PASS"
+        },
+        {
+          "name": "Negative amplitude half-period shift preserves the carrier relation",
+          "status": "PASS"
+        },
+        {
+          "name": "Changing only differential normalization preserves coordinates",
+          "status": "PASS"
+        },
+        {
+          "name": "Quadratic twist and rational scaling use actual effective coefficients",
+          "status": "PASS"
+        },
+        {
+          "name": "84 phase, group-law and chord cases across rectangular and rotated markings",
+          "status": "PASS"
+        },
+        {
+          "name": "Exact Oxford rational addition gives (-2,3) on y²=x³+17",
+          "status": "PASS"
+        },
+        {
+          "name": "Exact rational doubling gives (-8/9,109/27)",
+          "status": "PASS"
+        },
+        {
+          "name": "Rational identity, inverse and vertical tangent are exact",
+          "status": "PASS"
+        },
+        {
+          "name": "Malformed points, off-curve points, unavailable pairs and unsupported period families reject",
+          "status": "PASS"
+        },
+        {
+          "name": "Finite product reproduces 3/4 × 5/8 × 7/8 = 105/256 with O counted",
+          "status": "PASS"
+        },
+        {
+          "name": "52 finite-field counts checked by independent exhaustive (x,y) enumeration",
+          "status": "PASS"
+        },
+        {
+          "name": "Prime cutoffs reject invalid or oversized input and represent an empty product explicitly",
+          "status": "PASS"
+        }
+      ]
+    },
+    "browser": {
+      "standing": "LOCAL_CHROMIUM_INTEGRATION_NOT_COLD_AUDIT",
+      "total": 19,
+      "checks": [
+        {
+          "name": "Carrier addition and finite-prime product connect automatically to the registered source",
+          "status": "PASS"
+        },
+        {
+          "name": "N=6 inverse-pair example recognizes the exact carrier and sum at infinity",
+          "status": "PASS"
+        },
+        {
+          "name": "Group-law overlays share the marked period chart and leave exact host arithmetic unchanged",
+          "status": "PASS"
+        },
+        {
+          "name": "Only exactly checked finite displayed points enter BSD membership with carrier provenance",
+          "status": "PASS"
+        },
+        {
+          "name": "Finite-sum example displays a verified chord while withholding numerical points from rational evidence",
+          "status": "PASS"
+        },
+        {
+          "name": "The R=C special case is driven by the exact order-three phase",
+          "status": "PASS"
+        },
+        {
+          "name": "Pair selection can be held or follow the actual indexed branch",
+          "status": "PASS"
+        },
+        {
+          "name": "Explicit show action reveals the carrier and both source branches",
+          "status": "PASS"
+        },
+        {
+          "name": "Native carrier export retains exact source, pair, identities, normalization and all role incidences",
+          "status": "PASS"
+        },
+        {
+          "name": "Forged source/pair/exact phases reject; imported numerical coordinates are recomputed",
+          "status": "PASS"
+        },
+        {
+          "name": "Carrier records reopen on a held source without replacing the live mcomb",
+          "status": "PASS"
+        },
+        {
+          "name": "Pending normalization edits invalidate outputs; applying the differential preserves cubic points",
+          "status": "PASS"
+        },
+        {
+          "name": "Exact finite-prime product matches the lecture construction and includes O in every count",
+          "status": "PASS"
+        },
+        {
+          "name": "Finite good-prime factors enter BSD through exact replay without rank or Sha promotion",
+          "status": "PASS"
+        },
+        {
+          "name": "Product export round-trips and altered finite-field counts reject",
+          "status": "PASS"
+        },
+        {
+          "name": "Point-count work caps and pending-cutoff state fail closed",
+          "status": "PASS"
+        },
+        {
+          "name": "Nonexact spin suspends carrier evidence while independent exact-curve prime counts remain valid",
+          "status": "PASS"
+        },
+        {
+          "name": "Carrier and prime-product views render on desktop/mobile and collapse independently",
+          "status": "PASS"
+        },
+        {
+          "name": "No JavaScript page errors",
+          "status": "PASS"
+        }
+      ],
+      "pageErrors": []
+    },
+    "regression": {
+      "standing": "LOCAL_CHROMIUM_INTEGRATION_NOT_COLD_AUDIT",
+      "total": 20,
+      "checks": [
+        {
+          "name": "Both existing panels follow the actual mcomb on startup, with custom model inputs secondary",
+          "status": "PASS"
+        },
+        {
+          "name": "N=6 example uses the same exact address, primitive cycle and curve context in all three panels",
+          "status": "PASS"
+        },
+        {
+          "name": "Connecting from either panel preserves exact Fourier host arithmetic",
+          "status": "PASS"
+        },
+        {
+          "name": "Period chart and its export use the generated mcomb phase rather than the held ruler",
+          "status": "PASS"
+        },
+        {
+          "name": "A selected repeated visit drives both panels with its own raw exact s",
+          "status": "PASS"
+        },
+        {
+          "name": "Changing the indexed branch updates the lattice marker, winding and BSD mcomb address",
+          "status": "PASS"
+        },
+        {
+          "name": "Chart fold transforms only display coordinates while retaining the exact mcomb cycle",
+          "status": "PASS"
+        },
+        {
+          "name": "Applying custom coefficients in the elliptic panel registers and reconnects the same curve in BSD without changing mcomb",
+          "status": "PASS"
+        },
+        {
+          "name": "Period-panel twist presets automatically update the exact BSD context and live transport",
+          "status": "PASS"
+        },
+        {
+          "name": "BSD custom differential propagates to the period model and transport with cubic coordinates preserved",
+          "status": "PASS"
+        },
+        {
+          "name": "BSD panel directly admits exact mcomb encounters with provenance and membership-only evidence scope",
+          "status": "PASS"
+        },
+        {
+          "name": "Export from BSD includes its actual mcomb source, evidence, current cycle, fold and normalization",
+          "status": "PASS"
+        },
+        {
+          "name": "Pinned predecessor linked records remain readable; forged connected-panel pins reject",
+          "status": "PASS"
+        },
+        {
+          "name": "Pausing Follow in either panel holds one shared address and enables custom cycles",
+          "status": "PASS"
+        },
+        {
+          "name": "Recording encounters from a held mcomb retains its saved source rather than replacing it with the live screen",
+          "status": "PASS"
+        },
+        {
+          "name": "Resuming from BSD reconnects every panel to the current screen",
+          "status": "PASS"
+        },
+        {
+          "name": "Reopening linked transport holds its saved mcomb in both panels without an automatic reconnect race",
+          "status": "PASS"
+        },
+        {
+          "name": "Continuous nonexact input clears both mapped panel views and blocks mcomb evidence/export",
+          "status": "PASS"
+        },
+        {
+          "name": "Connected controls remain responsive and both existing panels retain collapse/open behavior",
+          "status": "PASS"
+        },
+        {
+          "name": "No JavaScript page errors",
+          "status": "PASS"
+        }
+      ],
+      "pageErrors": []
+    },
+    "maintenance": {
+      "total": 3,
+      "checks": [
+        {
+          "name": "Model-level labels persist after recompute; exact arithmetic remains unchanged",
+          "status": "PASS"
+        },
+        {
+          "name": "Exact non-2-torsion point membership works with no minimal-model or Tate result",
+          "status": "PASS"
+        },
+        {
+          "name": "No JavaScript page errors in maintenance checks",
+          "status": "PASS"
+        }
+      ],
+      "pageErrors": []
+    },
+    "runtime": {
+      "total": 9,
+      "checks": [
+        {
+          "name": "Explicit Python override excludes default candidates",
+          "status": "PASS"
+        },
+        {
+          "name": "A failed override never falls back to another runtime",
+          "status": "PASS"
+        },
+        {
+          "name": "Discovery skips Python without jsonschema and records the chosen capability",
+          "status": "PASS"
+        },
+        {
+          "name": "No usable Python reports setup requirements explicitly",
+          "status": "PASS"
+        },
+        {
+          "name": "Invalid vendor override is not silently dropped",
+          "status": "PASS"
+        },
+        {
+          "name": "Node resolution handles a Playwright path with spaces",
+          "status": "PASS"
+        },
+        {
+          "name": "Missing Chromium fails without an implicit download",
+          "status": "PASS"
+        },
+        {
+          "name": "Staged workers contain no absolute user-specific Playwright import",
+          "status": "PASS"
+        },
+        {
+          "name": "Real discovered runtimes remain usable from the scratch directory",
+          "status": "PASS"
+        }
+      ]
+    }
+  }
+}

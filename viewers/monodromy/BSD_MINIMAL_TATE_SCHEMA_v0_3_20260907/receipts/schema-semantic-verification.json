@@ -1,0 +1,173 @@
+{
+  "standing": "LOCAL_SCHEMA_REFERENCE_CHECK_NOT_TATE_OR_COLD_AUDIT",
+  "total": 40,
+  "checks": [
+    {
+      "name": "Replay 37a1-model-exclusion",
+      "status": "PASS"
+    },
+    {
+      "name": "Replay exact-point-without-minimality",
+      "status": "PASS"
+    },
+    {
+      "name": "Replay negative-scale-shear",
+      "status": "PASS"
+    },
+    {
+      "name": "Replay rational-chain",
+      "status": "PASS"
+    },
+    {
+      "name": "Replay separate-quadratic-twist",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject reversed differential scale",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject lost selected differential",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject zero u",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged coefficient",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject noncanonical rational",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject stale normalization ID",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject stale marking ID",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject duplicate panel",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject missing panel",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject orientation reversal",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject floating exact coordinate",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject off-curve point",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject altered source bytes",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject unimplemented legacy adapter",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject unimplemented mcomb adapter",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject local status laundering",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject certificate absent",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject conditional without assumption",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject self dependency",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject bad prime omitted",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject incomplete factorization promoted",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject incorrect conductor",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject incorrect Tamagawa product",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject missing local result",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject composite prime",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject prime exceeds replay bound",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject wrong good-prime count",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject false multiplicative splitting",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject wrong discriminant valuation",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject unjustified Neron reference",
+      "status": "PASS"
+    },
+    {
+      "name": "Nontrivial twist cannot be smuggled into an isomorphism chain",
+      "status": "PASS"
+    },
+    {
+      "name": "Sage documented negative tuple reproduces all five coefficients",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact inverse and composed tuple replay",
+      "status": "PASS"
+    },
+    {
+      "name": "Period fractions transform contragrediently",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact point input remains available without a minimal model",
+      "status": "PASS"
+    }
+  ],
+  "unsupported": [
+    "Tate engine",
+    "global minimality certificates",
+    "legacy and mcomb packet migration",
+    "live general-model panel adapter",
+    "Neron-Tate heights"
+  ]
+}

@@ -1,0 +1,95 @@
+{
+  "standing": "LOCAL_G1_G2_CHECKS_NOT_FULL_TATE",
+  "total": 22,
+  "checks": [
+    {
+      "name": "37 nonsplit result passes consistency and remains unverified",
+      "status": "PASS"
+    },
+    {
+      "name": "Coherently forged additive result at multiplicative 37 rejects",
+      "status": "PASS"
+    },
+    {
+      "name": "Coherently forged splitting and Euler sign at 37 reject",
+      "status": "PASS"
+    },
+    {
+      "name": "Square -c6 recognizes a split multiplicative example",
+      "status": "PASS"
+    },
+    {
+      "name": "False nonsplit classification at a split prime rejects",
+      "status": "PASS"
+    },
+    {
+      "name": "A vanishing c4 residue at a bad prime rejects multiplicative data",
+      "status": "PASS"
+    },
+    {
+      "name": "Kodaira II enforces its Tamagawa admissible set",
+      "status": "PASS"
+    },
+    {
+      "name": "Kodaira III enforces its Tamagawa admissible set",
+      "status": "PASS"
+    },
+    {
+      "name": "Kodaira IV enforces its Tamagawa admissible set",
+      "status": "PASS"
+    },
+    {
+      "name": "Kodaira I0* enforces its Tamagawa admissible set",
+      "status": "PASS"
+    },
+    {
+      "name": "Kodaira I1* enforces its Tamagawa admissible set",
+      "status": "PASS"
+    },
+    {
+      "name": "Kodaira IV* enforces its Tamagawa admissible set",
+      "status": "PASS"
+    },
+    {
+      "name": "Kodaira III* enforces its Tamagawa admissible set",
+      "status": "PASS"
+    },
+    {
+      "name": "Kodaira II* enforces its Tamagawa admissible set",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact good-prime proofs at 2 and 3 need no minimality report",
+      "status": "PASS"
+    },
+    {
+      "name": "Good reduction with c4 divisible by p is not misclassified additive",
+      "status": "PASS"
+    },
+    {
+      "name": "p-integral rational coefficients support local certification",
+      "status": "PASS"
+    },
+    {
+      "name": "Singular or nonintegral good-prime claims cannot obtain certificates",
+      "status": "PASS"
+    },
+    {
+      "name": "Good-prime certificates retain producer status without inheriting assumptions",
+      "status": "PASS"
+    },
+    {
+      "name": "Unavailable local records remain unavailable",
+      "status": "PASS"
+    },
+    {
+      "name": "Bad data at 2 remain source reports, not p>=5 square-test certificates",
+      "status": "PASS"
+    },
+    {
+      "name": "Public assessment rejects imported assessments and duplicate JSON keys",
+      "status": "PASS"
+    }
+  ],
+  "certificates": 4
+}

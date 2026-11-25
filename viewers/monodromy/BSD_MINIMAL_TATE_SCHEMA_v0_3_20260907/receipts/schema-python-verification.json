@@ -1,0 +1,99 @@
+{
+  "standing": "LOCAL_STRUCTURAL_AND_INDEPENDENT_SUBSTITUTION_NOT_TATE",
+  "total": 23,
+  "checks": [
+    {
+      "name": "Draft 2020-12: 37a1-model-exclusion.json",
+      "status": "PASS"
+    },
+    {
+      "name": "Independent polynomial and differential substitution: 37a1-model-exclusion.json",
+      "status": "PASS"
+    },
+    {
+      "name": "Draft 2020-12: exact-point-without-minimality.json",
+      "status": "PASS"
+    },
+    {
+      "name": "Independent polynomial and differential substitution: exact-point-without-minimality.json",
+      "status": "PASS"
+    },
+    {
+      "name": "Draft 2020-12: negative-scale-shear.json",
+      "status": "PASS"
+    },
+    {
+      "name": "Independent polynomial and differential substitution: negative-scale-shear.json",
+      "status": "PASS"
+    },
+    {
+      "name": "Draft 2020-12: rational-chain.json",
+      "status": "PASS"
+    },
+    {
+      "name": "Independent polynomial and differential substitution: rational-chain.json",
+      "status": "PASS"
+    },
+    {
+      "name": "Draft 2020-12: separate-quadratic-twist.json",
+      "status": "PASS"
+    },
+    {
+      "name": "Independent polynomial and differential substitution: separate-quadratic-twist.json",
+      "status": "PASS"
+    },
+    {
+      "name": "Structural rejection: unknown root field",
+      "status": "PASS"
+    },
+    {
+      "name": "Structural rejection: unknown model field",
+      "status": "PASS"
+    },
+    {
+      "name": "Structural rejection: numeric coefficient",
+      "status": "PASS"
+    },
+    {
+      "name": "Structural rejection: six coefficients",
+      "status": "PASS"
+    },
+    {
+      "name": "Structural rejection: negative Tamagawa",
+      "status": "PASS"
+    },
+    {
+      "name": "Structural rejection: zero Tamagawa",
+      "status": "PASS"
+    },
+    {
+      "name": "Structural rejection: invalid Kodaira",
+      "status": "PASS"
+    },
+    {
+      "name": "Structural rejection: missing differential",
+      "status": "PASS"
+    },
+    {
+      "name": "Structural rejection: false infinity",
+      "status": "PASS"
+    },
+    {
+      "name": "Structural rejection: mixed affine infinity",
+      "status": "PASS"
+    },
+    {
+      "name": "Structural rejection: unknown evidence status",
+      "status": "PASS"
+    },
+    {
+      "name": "Structural rejection: audit standing in evidence",
+      "status": "PASS"
+    },
+    {
+      "name": "Unavailable local computation is representable without disabling exact points",
+      "status": "PASS"
+    }
+  ],
+  "jsonSchemaDraft": "2020-12"
+}

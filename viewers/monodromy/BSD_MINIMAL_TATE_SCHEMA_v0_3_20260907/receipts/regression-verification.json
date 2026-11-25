@@ -1,0 +1,87 @@
+{
+  "standing": "LOCAL_CHROMIUM_INTEGRATION_NOT_COLD_AUDIT",
+  "total": 20,
+  "checks": [
+    {
+      "name": "Both existing panels follow the actual mcomb on startup, with custom model inputs secondary",
+      "status": "PASS"
+    },
+    {
+      "name": "N=6 example uses the same exact address, primitive cycle and curve context in all three panels",
+      "status": "PASS"
+    },
+    {
+      "name": "Connecting from either panel preserves exact Fourier host arithmetic",
+      "status": "PASS"
+    },
+    {
+      "name": "Period chart and its export use the generated mcomb phase rather than the held ruler",
+      "status": "PASS"
+    },
+    {
+      "name": "A selected repeated visit drives both panels with its own raw exact s",
+      "status": "PASS"
+    },
+    {
+      "name": "Changing the indexed branch updates the lattice marker, winding and BSD mcomb address",
+      "status": "PASS"
+    },
+    {
+      "name": "Chart fold transforms only display coordinates while retaining the exact mcomb cycle",
+      "status": "PASS"
+    },
+    {
+      "name": "Applying custom coefficients in the elliptic panel registers and reconnects the same curve in BSD without changing mcomb",
+      "status": "PASS"
+    },
+    {
+      "name": "Period-panel twist presets automatically update the exact BSD context and live transport",
+      "status": "PASS"
+    },
+    {
+      "name": "BSD custom differential propagates to the period model and transport with cubic coordinates preserved",
+      "status": "PASS"
+    },
+    {
+      "name": "BSD panel directly admits exact mcomb encounters with provenance and membership-only evidence scope",
+      "status": "PASS"
+    },
+    {
+      "name": "Export from BSD includes its actual mcomb source, evidence, current cycle, fold and normalization",
+      "status": "PASS"
+    },
+    {
+      "name": "Pinned predecessor linked records remain readable; forged connected-panel pins reject",
+      "status": "PASS"
+    },
+    {
+      "name": "Pausing Follow in either panel holds one shared address and enables custom cycles",
+      "status": "PASS"
+    },
+    {
+      "name": "Recording encounters from a held mcomb retains its saved source rather than replacing it with the live screen",
+      "status": "PASS"
+    },
+    {
+      "name": "Resuming from BSD reconnects every panel to the current screen",
+      "status": "PASS"
+    },
+    {
+      "name": "Reopening linked transport holds its saved mcomb in both panels without an automatic reconnect race",
+      "status": "PASS"
+    },
+    {
+      "name": "Continuous nonexact input clears both mapped panel views and blocks mcomb evidence/export",
+      "status": "PASS"
+    },
+    {
+      "name": "Connected controls remain responsive and both existing panels retain collapse/open behavior",
+      "status": "PASS"
+    },
+    {
+      "name": "No JavaScript page errors",
+      "status": "PASS"
+    }
+  ],
+  "pageErrors": []
+}

@@ -1,0 +1,550 @@
+{
+  "status": "PASS",
+  "standing": "BUILDER_VERIFICATION_NOT_COLD_AUDIT",
+  "total": 127,
+  "fixtures": 99,
+  "checks": [
+    {
+      "name": "II cp=1 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "III cp=2 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "IV cp=3 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "IV cp=1 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "IV* cp=3 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "IV* cp=1 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "III* cp=2 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "II* cp=1 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I0* cp=1 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I0* cp=2 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I0* cp=4 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I1* cp=4 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I1* cp=2 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I2* cp=2 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I2* cp=4 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I3* cp=4 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I3* cp=2 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I4* cp=2 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I4* cp=4 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I7* cp=4 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I7* cp=2 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I8* cp=2 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I8* cp=4 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I17* cp=4 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I17* cp=2 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I18* cp=2 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "I18* cp=4 at 5",
+      "status": "PASS"
+    },
+    {
+      "name": "II cp=1 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "III cp=2 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "IV cp=3 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "IV cp=1 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "IV* cp=3 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "IV* cp=1 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "III* cp=2 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "II* cp=1 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I0* cp=1 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I0* cp=2 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I0* cp=4 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I1* cp=4 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I1* cp=2 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I2* cp=4 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I2* cp=2 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I3* cp=4 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I3* cp=2 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I4* cp=4 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I4* cp=2 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I7* cp=4 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I7* cp=2 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I8* cp=4 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I8* cp=2 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I17* cp=4 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I17* cp=2 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I18* cp=4 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "I18* cp=2 at 7",
+      "status": "PASS"
+    },
+    {
+      "name": "II cp=1 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "III cp=2 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "IV cp=3 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "IV cp=1 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "IV* cp=3 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "IV* cp=1 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "III* cp=2 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "II* cp=1 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I0* cp=1 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I0* cp=2 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I0* cp=4 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I1* cp=4 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I1* cp=2 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I2* cp=2 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I2* cp=4 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I3* cp=4 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I3* cp=2 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I4* cp=2 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I4* cp=4 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I7* cp=4 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I7* cp=2 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I8* cp=2 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I8* cp=4 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I17* cp=4 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I17* cp=2 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I18* cp=2 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "I18* cp=4 at 11",
+      "status": "PASS"
+    },
+    {
+      "name": "Nonzero p-adic refinement 5/1",
+      "status": "PASS"
+    },
+    {
+      "name": "Nonzero p-adic refinement 5/2",
+      "status": "PASS"
+    },
+    {
+      "name": "Nonzero p-adic refinement 7/1",
+      "status": "PASS"
+    },
+    {
+      "name": "Nonzero p-adic refinement 7/2",
+      "status": "PASS"
+    },
+    {
+      "name": "j=0 II",
+      "status": "PASS"
+    },
+    {
+      "name": "j=0 IV",
+      "status": "PASS"
+    },
+    {
+      "name": "j=0 I0*",
+      "status": "PASS"
+    },
+    {
+      "name": "j=0 IV*",
+      "status": "PASS"
+    },
+    {
+      "name": "j=0 II*",
+      "status": "PASS"
+    },
+    {
+      "name": "Inherited multiplicative types and both Tamagawa parities",
+      "status": "PASS"
+    },
+    {
+      "name": "Good general equation and full upper-bound fibre count",
+      "status": "PASS"
+    },
+    {
+      "name": "Repeated p-scalings genuinely recover local minimality",
+      "status": "PASS"
+    },
+    {
+      "name": "General signed rational model, exact points and repeated visits",
+      "status": "PASS"
+    },
+    {
+      "name": "Nontrivial marking and twist context survive exact transport",
+      "status": "PASS"
+    },
+    {
+      "name": "Backend-free certification and incomplete model inventory",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject cp allowed but wrong",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject Kodaira with colliding valuation",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject conductor",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject wild",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject component count",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject component multiplicity",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject minimality witness",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject missing branch event",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject reordered events",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject refinement shift",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject level advance",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject polynomial coefficient",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject polynomial rational coefficient",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject polynomial evaluations",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject root multiplicity",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject omitted roots",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject residual irreducibility",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject tuple sign",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject differential",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject panel marking",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject borrowed comparison",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject comparison map",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject inventory completion",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject parent hash",
+      "status": "PASS"
+    },
+    {
+      "name": "Public entry point verifies certificates and rejects coherent/source forgeries",
+      "status": "PASS"
+    },
+    {
+      "name": "Bounds, singularity and p-integrality gates do not silently pass",
+      "status": "PASS"
+    },
+    {
+      "name": "An allowed but false additive PARI c_p cannot override the T2 proof",
+      "status": "PASS"
+    },
+    {
+      "name": "A true unresolved cofactor cannot be relabelled complete",
+      "status": "PASS"
+    },
+    {
+      "name": "p=3 multiplicative note cross-check (T3 extension remains unimplemented)",
+      "status": "PASS"
+    },
+    {
+      "name": "CLI and scratch refusal work at the real entry points",
+      "status": "PASS"
+    },
+    {
+      "name": "Generated schemas match their versioned source",
+      "status": "PASS"
+    }
+  ],
+  "coverage": {
+    "II:1": 5,
+    "III:2": 3,
+    "IV:3": 4,
+    "IV:1": 3,
+    "IV*:3": 4,
+    "IV*:1": 3,
+    "III*:2": 3,
+    "II*:1": 4,
+    "I0*:1": 3,
+    "I0*:2": 4,
+    "I0*:4": 4,
+    "I1*:4": 4,
+    "I1*:2": 3,
+    "I2*:2": 3,
+    "I2*:4": 3,
+    "I3*:4": 5,
+    "I3*:2": 4,
+    "I4*:2": 4,
+    "I4*:4": 3,
+    "I7*:4": 3,
+    "I7*:2": 3,
+    "I8*:2": 3,
+    "I8*:4": 3,
+    "I17*:4": 3,
+    "I17*:2": 3,
+    "I18*:2": 3,
+    "I18*:4": 3,
+    "I4:4": 1,
+    "I3:1": 1,
+    "I4:2": 1,
+    "I0:1": 3
+  },
+  "sageLive": "SEPARATE_SERENA_NUCLEUS_LINE_ITEM_NOT_A_T2_GATE"
+}

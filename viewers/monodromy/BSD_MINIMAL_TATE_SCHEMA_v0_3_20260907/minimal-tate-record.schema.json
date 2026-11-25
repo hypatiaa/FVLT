@@ -1,0 +1,847 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:robin:bsd:minimal-tate-record:1:draft-0.3",
+  "title": "BSD minimal models and Tate reduction record, audit draft 0.3",
+  "description": "Structural schema only. The mandatory semantic contract is SCHEMA_FOR_AUDIT.md. Evidence labels and certificate references do not establish local verification.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "anchor",
+    "contextId",
+    "models",
+    "twistLineage",
+    "transformations",
+    "normalization",
+    "marking",
+    "points",
+    "minimalModel",
+    "localData",
+    "badPrimeInventory",
+    "aggregate",
+    "panelBindings",
+    "sources"
+  ],
+  "properties": {
+    "schema": {
+      "const": "BSD_MINIMAL_TATE_RECORD_V1"
+    },
+    "anchor": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "inputModelId",
+        "sourceHash",
+        "legacyContextId"
+      ],
+      "properties": {
+        "inputModelId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "sourceHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "legacyContextId": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          ]
+        }
+      }
+    },
+    "contextId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "models": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/model"
+      },
+      "maxItems": 40,
+      "minItems": 1
+    },
+    "twistLineage": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/twist"
+      },
+      "maxItems": 8
+    },
+    "transformations": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/transform"
+      },
+      "maxItems": 16
+    },
+    "normalization": {
+      "$ref": "#/$defs/normalization"
+    },
+    "marking": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "basisMatrix",
+        "convention",
+        "mcombSourceHash",
+        "phaseConvention"
+      ],
+      "properties": {
+        "basisMatrix": {
+          "type": "array",
+          "minItems": 2,
+          "maxItems": 2,
+          "items": {
+            "type": "array",
+            "minItems": 2,
+            "maxItems": 2,
+            "items": {
+              "$ref": "#/$defs/integer"
+            }
+          }
+        },
+        "convention": {
+          "const": "TARGET_BASIS_EQUALS_U_TIMES_M_SOURCE_BASIS"
+        },
+        "mcombSourceHash": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "string",
+              "pattern": "^[a-f0-9]{64}$"
+            }
+          ]
+        },
+        "phaseConvention": {
+          "const": "FULL_PERIOD_FRACTIONS_MOD_Z2"
+        }
+      }
+    },
+    "points": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "modelId",
+          "coordinates",
+          "sourceHash"
+        ],
+        "properties": {
+          "modelId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "coordinates": {
+            "$ref": "#/$defs/point"
+          },
+          "sourceHash": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      },
+      "maxItems": 200
+    },
+    "minimalModel": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/minimal"
+        }
+      ]
+    },
+    "localData": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/local"
+      },
+      "maxItems": 50
+    },
+    "badPrimeInventory": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/inventory"
+        }
+      ]
+    },
+    "aggregate": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "$ref": "#/$defs/aggregate"
+        }
+      ]
+    },
+    "panelBindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "panel",
+          "contextId",
+          "modelId",
+          "normalizationId",
+          "markingId"
+        ],
+        "properties": {
+          "panel": {
+            "enum": [
+              "MCOMB",
+              "CARRIER_ADDITION",
+              "ELLIPTIC_MODEL",
+              "MARKED_CLIFFORD_LEAF",
+              "EXACT_CURVE_BSD",
+              "PRIME_PRODUCT"
+            ]
+          },
+          "contextId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "modelId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "normalizationId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "markingId": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          }
+        }
+      },
+      "maxItems": 6,
+      "minItems": 6
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/source"
+      },
+      "maxItems": 300
+    }
+  },
+  "$defs": {
+    "rational": {
+      "type": "string",
+      "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+      "maxLength": 194
+    },
+    "integer": {
+      "type": "string",
+      "pattern": "^(0|-?[1-9][0-9]*)$",
+      "maxLength": 96
+    },
+    "natural": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)$",
+      "maxLength": 96
+    },
+    "positive": {
+      "type": "string",
+      "pattern": "^[1-9][0-9]*$",
+      "maxLength": 96
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "evidence": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "method",
+        "software",
+        "sourceHash",
+        "assumptions",
+        "dependencies",
+        "certificate"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "UNVERIFIED",
+            "NUMERICAL",
+            "RIGOROUS_BOUND",
+            "CERTIFIED",
+            "CONDITIONAL"
+          ]
+        },
+        "method": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "software": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 2000
+        },
+        "sourceHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "assumptions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 2000
+          },
+          "maxItems": 20
+        },
+        "dependencies": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "maxItems": 40
+        },
+        "certificate": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "artifactSha256",
+                "verifier",
+                "conclusion"
+              ],
+              "properties": {
+                "artifactSha256": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "verifier": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2000
+                },
+                "conclusion": {
+                  "type": "string",
+                  "minLength": 1,
+                  "maxLength": 2000
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sha256",
+        "mediaType",
+        "bytes"
+      ],
+      "properties": {
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "mediaType": {
+          "enum": [
+            "application/json",
+            "text/plain"
+          ]
+        },
+        "bytes": {
+          "type": "string",
+          "maxLength": 200000
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "modelId",
+        "field",
+        "ainvs",
+        "invariants"
+      ],
+      "properties": {
+        "modelId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "field": {
+          "const": "Q"
+        },
+        "ainvs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/rational"
+          },
+          "maxItems": 5,
+          "minItems": 5
+        },
+        "invariants": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "b2",
+            "b4",
+            "b6",
+            "b8",
+            "c4",
+            "c6",
+            "discriminant",
+            "j"
+          ],
+          "properties": {
+            "b2": {
+              "$ref": "#/$defs/rational"
+            },
+            "b4": {
+              "$ref": "#/$defs/rational"
+            },
+            "b6": {
+              "$ref": "#/$defs/rational"
+            },
+            "b8": {
+              "$ref": "#/$defs/rational"
+            },
+            "c4": {
+              "$ref": "#/$defs/rational"
+            },
+            "c6": {
+              "$ref": "#/$defs/rational"
+            },
+            "discriminant": {
+              "$ref": "#/$defs/rational"
+            },
+            "j": {
+              "$ref": "#/$defs/rational"
+            }
+          }
+        }
+      }
+    },
+    "urst": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "u",
+        "r",
+        "s",
+        "t"
+      ],
+      "properties": {
+        "u": {
+          "$ref": "#/$defs/rational"
+        },
+        "r": {
+          "$ref": "#/$defs/rational"
+        },
+        "s": {
+          "$ref": "#/$defs/rational"
+        },
+        "t": {
+          "$ref": "#/$defs/rational"
+        }
+      }
+    },
+    "transform": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "fromModelId",
+        "toModelId",
+        "direction",
+        "urst",
+        "pullbackModelDifferentialFactor",
+        "targetSelectedMultiplier"
+      ],
+      "properties": {
+        "fromModelId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "toModelId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "direction": {
+          "const": "SOURCE_TO_TARGET"
+        },
+        "urst": {
+          "$ref": "#/$defs/urst"
+        },
+        "pullbackModelDifferentialFactor": {
+          "$ref": "#/$defs/rational"
+        },
+        "targetSelectedMultiplier": {
+          "$ref": "#/$defs/rational"
+        }
+      }
+    },
+    "twist": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "baseModelId",
+        "twistedModelId",
+        "kind",
+        "parameter",
+        "sourceHash"
+      ],
+      "properties": {
+        "baseModelId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "twistedModelId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "kind": {
+          "enum": [
+            "QUADRATIC_SHORT",
+            "QUARTIC_B_ZERO"
+          ]
+        },
+        "parameter": {
+          "$ref": "#/$defs/rational"
+        },
+        "sourceHash": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "point": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "infinity"
+          ],
+          "properties": {
+            "infinity": {
+              "const": true
+            }
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "x",
+            "y"
+          ],
+          "properties": {
+            "x": {
+              "$ref": "#/$defs/rational"
+            },
+            "y": {
+              "$ref": "#/$defs/rational"
+            }
+          }
+        }
+      ]
+    },
+    "localResult": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reduction",
+        "kodaira",
+        "split",
+        "discriminantValuation",
+        "conductorExponent",
+        "wildConductorContribution",
+        "tamagawaNumber",
+        "eulerPolynomial"
+      ],
+      "properties": {
+        "reduction": {
+          "enum": [
+            "GOOD",
+            "SPLIT_MULTIPLICATIVE",
+            "NONSPLIT_MULTIPLICATIVE",
+            "ADDITIVE"
+          ]
+        },
+        "kodaira": {
+          "type": "string",
+          "pattern": "^(I0|I[1-9][0-9]*|II|III|IV|I(0|[1-9][0-9]*)[*]|IV[*]|III[*]|II[*])$"
+        },
+        "split": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "discriminantValuation": {
+          "$ref": "#/$defs/natural"
+        },
+        "conductorExponent": {
+          "$ref": "#/$defs/natural"
+        },
+        "wildConductorContribution": {
+          "$ref": "#/$defs/natural"
+        },
+        "tamagawaNumber": {
+          "$ref": "#/$defs/positive"
+        },
+        "eulerPolynomial": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/integer"
+          },
+          "maxItems": 3,
+          "minItems": 1
+        }
+      }
+    },
+    "local": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "p",
+        "modelId",
+        "minimalityEvidence",
+        "result",
+        "evidence"
+      ],
+      "properties": {
+        "p": {
+          "$ref": "#/$defs/positive"
+        },
+        "modelId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "minimalityEvidence": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/evidence"
+            }
+          ]
+        },
+        "result": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/localResult"
+            }
+          ]
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        }
+      }
+    },
+    "normalization": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "modelDifferential",
+        "sourceSelectedMultiplier",
+        "targetModelId",
+        "targetSelectedMultiplier",
+        "composedPullbackFactor",
+        "neron"
+      ],
+      "properties": {
+        "modelDifferential": {
+          "const": "dx/(2*y+a1*x+a3)"
+        },
+        "sourceSelectedMultiplier": {
+          "$ref": "#/$defs/rational"
+        },
+        "targetModelId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "targetSelectedMultiplier": {
+          "$ref": "#/$defs/rational"
+        },
+        "composedPullbackFactor": {
+          "$ref": "#/$defs/rational"
+        },
+        "neron": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "modelId",
+                "convention",
+                "evidence"
+              ],
+              "properties": {
+                "modelId": {
+                  "type": "string",
+                  "pattern": "^[a-f0-9]{64}$"
+                },
+                "convention": {
+                  "const": "GLOBAL_MINIMAL_MODEL_DIFFERENTIAL_UP_TO_SIGN"
+                },
+                "evidence": {
+                  "$ref": "#/$defs/evidence"
+                }
+              }
+            }
+          ]
+        }
+      }
+    },
+    "minimal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "modelId",
+        "scope",
+        "prime",
+        "evidence"
+      ],
+      "properties": {
+        "modelId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "scope": {
+          "enum": [
+            "GLOBAL_Q",
+            "LOCAL_QP"
+          ]
+        },
+        "prime": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/positive"
+            }
+          ]
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        }
+      }
+    },
+    "inventory": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "modelId",
+        "factors",
+        "remainingCofactor",
+        "complete",
+        "evidence"
+      ],
+      "properties": {
+        "modelId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "factors": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "p",
+              "exponent"
+            ],
+            "properties": {
+              "p": {
+                "$ref": "#/$defs/positive"
+              },
+              "exponent": {
+                "$ref": "#/$defs/positive"
+              }
+            }
+          },
+          "maxItems": 50
+        },
+        "remainingCofactor": {
+          "$ref": "#/$defs/positive"
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        }
+      }
+    },
+    "aggregate": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "modelId",
+        "conductor",
+        "tamagawaProduct",
+        "localDataPrimes",
+        "evidence"
+      ],
+      "properties": {
+        "modelId": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "conductor": {
+          "$ref": "#/$defs/positive"
+        },
+        "tamagawaProduct": {
+          "$ref": "#/$defs/positive"
+        },
+        "localDataPrimes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/positive"
+          },
+          "maxItems": 50
+        },
+        "evidence": {
+          "$ref": "#/$defs/evidence"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,916 @@
+{
+  "schema": "MCOMB_ELLIPTIC_BSD_LINK_V1",
+  "pins": {
+    "predecessorSha256": "2a8d03173ca14751ea0ffa07570ea67ea35f1d831a6424dcef151f0111df28b2",
+    "transportModuleSha256": "7e14f84639c8ac4db379fc8e83ed360d9da62da160282923cbdbc2aac5052852",
+    "panelModuleSha256": "5db82384d929c7bb2eaa59aebb925c665ed2f912c7ef41026f3f6a623c71e055",
+    "connectedPanels": {
+      "predecessorSha256": "74fedcdaa74462e76f22e81c225c2f6d7db831becfa74d98f8ca61648f2ca206",
+      "adapterSha256": "b26ac69390cd5da6b00c14c70b48d108fded3dadd9e6865988ce9a3c25ea5485",
+      "buildSha256": "2756873e3f85f05740be54a2b86816163c9d830ecff4471211f2e44d35f8e541"
+    }
+  },
+  "curvePacket": {
+    "schema": "BSD_CURVE_RECORD_V1",
+    "curve": {
+      "input": {
+        "A": "-1",
+        "B": "0",
+        "twistKind": "quadratic",
+        "twistFactor": "5",
+        "differentialFactor": "2"
+      },
+      "scalings": [],
+      "model": {
+        "field": "Q",
+        "form": "SHORT_WEIERSTRASS",
+        "ainvs": [
+          "0",
+          "0",
+          "0",
+          "-25",
+          "0"
+        ],
+        "A": "-25",
+        "B": "0",
+        "discriminant": "1000000",
+        "c4": "1200",
+        "j": "1728"
+      },
+      "modelId": "8aafbe5814c1384cfb9a972cff718ef4e0c0443dc9bc82cc29916d73a1786705",
+      "normalization": {
+        "modelDifferential": "dx/(2y)",
+        "displayMultiplier": "2",
+        "neron": {
+          "status": "VERIFIED_REFERENCE_ISOMORPHISM",
+          "reference": {
+            "A": "-25",
+            "B": "0",
+            "id": "E_CONGRUENT_FIVE",
+            "delta": "1000000",
+            "valuations": {
+              "2": 6,
+              "5": 6
+            }
+          },
+          "coordinateChange": "x_model = u^2 x_reference; y_model = u^3 y_reference",
+          "u": {
+            "num": "1",
+            "den": "1"
+          },
+          "factorOfModelDifferential": {
+            "num": "1",
+            "den": "1"
+          },
+          "differential": "omega_N = u * dx_model/(2 y_model)"
+        },
+        "bsdRealPeriodConvention": "NERON_TOTAL_REAL_INTEGRAL"
+      },
+      "normalizationId": "b34983a7d7c4c755d5859a4a3bfb10b884db9375f486b11dbb341e6c0a82fa0e",
+      "transformations": [],
+      "effectiveInput": {
+        "A": "-25",
+        "B": "0",
+        "twistKind": "none",
+        "twistFactor": "1",
+        "differentialFactor": "2"
+      },
+      "identityScope": "EXACT_MODEL_FINGERPRINT_NOT_CANONICAL_Q_ISOMORPHISM_CLASS",
+      "contextId": "5d4259c39cb8a39d34ff42798716a4abd14a1b3fdfbe85de4a27741fb8d1ec1c"
+    },
+    "sources": [
+      {
+        "sha256": "27520cb8eacce88a3db1c03f2839de2c390a9e289da294f7e604e4a2c8f718dd",
+        "mediaType": "application/json",
+        "bytes": "{\"component\":\"real_period\",\"contextId\":\"5d4259c39cb8a39d34ff42798716a4abd14a1b3fdfbe85de4a27741fb8d1ec1c\",\"convention\":\"NERON_TOTAL_REAL_INTEGRAL\",\"evidence\":{\"assumptions\":[],\"certificate\":null,\"dependencies\":[],\"method\":\"LOCAL_V27_AGM_NERON_TOTAL\",\"software\":\"Monodromy.27 period adapter\",\"sourceLabel\":\"Recomputed from registered model and verified reference normalization\",\"status\":\"NUMERICAL\"},\"modelId\":\"8aafbe5814c1384cfb9a972cff718ef4e0c0443dc9bc82cc29916d73a1786705\",\"normalizationId\":\"b34983a7d7c4c755d5859a4a3bfb10b884db9375f486b11dbb341e6c0a82fa0e\",\"value\":{\"lower\":\"4690479145851219/2000000000000000\",\"upper\":\"4690479145851219/2000000000000000\"}}"
+      },
+      {
+        "sha256": "f2dc56ab3b8fb6aa50154592c09c0e21ba35e11fc7eb7b7c38251a68b4bdb5df",
+        "mediaType": "application/json",
+        "bytes": "{\"component\":\"rational_points\",\"contextId\":\"5d4259c39cb8a39d34ff42798716a4abd14a1b3fdfbe85de4a27741fb8d1ec1c\",\"convention\":\"AFFINE_POINTS_ON_REGISTERED_SHORT_MODEL\",\"evidence\":{\"assumptions\":[],\"certificate\":null,\"dependencies\":[],\"method\":\"LOCAL_EXACT_POINT_MEMBERSHIP\",\"software\":\"Mcomb elliptic link v0.1 / BigInt polynomial replay\",\"sourceLabel\":\"Mcomb half-period encounter provenance 881f7828ca0380d1cb3c7a521bc49fe4dc14eb571d8d101220b0ffbeb6d0c39a; source c8eebe8e5ccc76a8989eb2e8081d6fc4d7d699f94b25c4331c0b2f88c66bdfa2; exact transport 521bfa5b58e91c9d3632a033d0ed2af8be908e1770660819eee71b7033b5deab; membership only, not rank or full torsion\",\"status\":\"CERTIFIED\"},\"modelId\":\"8aafbe5814c1384cfb9a972cff718ef4e0c0443dc9bc82cc29916d73a1786705\",\"normalizationId\":\"b34983a7d7c4c755d5859a4a3bfb10b884db9375f486b11dbb341e6c0a82fa0e\",\"value\":[{\"x\":\"-5\",\"y\":\"0\"},{\"x\":\"0\",\"y\":\"0\"},{\"x\":\"5\",\"y\":\"0\"}]}"
+      }
+    ],
+    "records": [
+      {
+        "id": "a73922df1166aad7cbe74c279be3591a8f269ba3236e2802f48572277b86fce9",
+        "claim": {
+          "contextId": "5d4259c39cb8a39d34ff42798716a4abd14a1b3fdfbe85de4a27741fb8d1ec1c",
+          "modelId": "8aafbe5814c1384cfb9a972cff718ef4e0c0443dc9bc82cc29916d73a1786705",
+          "normalizationId": "b34983a7d7c4c755d5859a4a3bfb10b884db9375f486b11dbb341e6c0a82fa0e",
+          "component": "real_period",
+          "convention": "NERON_TOTAL_REAL_INTEGRAL",
+          "value": {
+            "lower": "4690479145851219/2000000000000000",
+            "upper": "4690479145851219/2000000000000000"
+          },
+          "evidence": {
+            "status": "NUMERICAL",
+            "method": "LOCAL_V27_AGM_NERON_TOTAL",
+            "software": "Monodromy.27 period adapter",
+            "sourceLabel": "Recomputed from registered model and verified reference normalization",
+            "assumptions": [],
+            "dependencies": [],
+            "certificate": null
+          }
+        },
+        "sourceHash": "27520cb8eacce88a3db1c03f2839de2c390a9e289da294f7e604e4a2c8f718dd"
+      },
+      {
+        "id": "b8016cbd7dc12e628e1618fe706433663af2ecbd23fa3ff3aa98990d8c12be55",
+        "claim": {
+          "contextId": "5d4259c39cb8a39d34ff42798716a4abd14a1b3fdfbe85de4a27741fb8d1ec1c",
+          "modelId": "8aafbe5814c1384cfb9a972cff718ef4e0c0443dc9bc82cc29916d73a1786705",
+          "normalizationId": "b34983a7d7c4c755d5859a4a3bfb10b884db9375f486b11dbb341e6c0a82fa0e",
+          "component": "rational_points",
+          "convention": "AFFINE_POINTS_ON_REGISTERED_SHORT_MODEL",
+          "value": [
+            {
+              "x": "-5",
+              "y": "0"
+            },
+            {
+              "x": "0",
+              "y": "0"
+            },
+            {
+              "x": "5",
+              "y": "0"
+            }
+          ],
+          "evidence": {
+            "status": "CERTIFIED",
+            "method": "LOCAL_EXACT_POINT_MEMBERSHIP",
+            "software": "Mcomb elliptic link v0.1 / BigInt polynomial replay",
+            "sourceLabel": "Mcomb half-period encounter provenance 881f7828ca0380d1cb3c7a521bc49fe4dc14eb571d8d101220b0ffbeb6d0c39a; source c8eebe8e5ccc76a8989eb2e8081d6fc4d7d699f94b25c4331c0b2f88c66bdfa2; exact transport 521bfa5b58e91c9d3632a033d0ed2af8be908e1770660819eee71b7033b5deab; membership only, not rank or full torsion",
+            "assumptions": [],
+            "dependencies": [],
+            "certificate": null
+          }
+        },
+        "sourceHash": "f2dc56ab3b8fb6aa50154592c09c0e21ba35e11fc7eb7b7c38251a68b4bdb5df"
+      }
+    ],
+    "active": {
+      "real_period": "a73922df1166aad7cbe74c279be3591a8f269ba3236e2802f48572277b86fce9",
+      "rational_points": "b8016cbd7dc12e628e1618fe706433663af2ecbd23fa3ff3aa98990d8c12be55"
+    },
+    "view": {
+      "p": "2",
+      "q": "-1",
+      "folded": true
+    }
+  },
+  "sourceBytes": "{\"source\":{\"N\":\"6\",\"m\":\"7\",\"t1\":\"1\",\"t2\":\"1\",\"s\":\"5\",\"amplitudeSign\":1,\"offsets\":[\"-3\",\"-2\",\"-1\",\"0\",\"1\",\"2\",\"3\"]},\"selection\":{\"lane\":\"current\",\"N\":\"6\",\"c\":\"3\",\"s\":\"5\"},\"visibleOffsets\":[\"-3\",\"3\"]}",
+  "sourceHash": "c8eebe8e5ccc76a8989eb2e8081d6fc4d7d699f94b25c4331c0b2f88c66bdfa2",
+  "exactDigest": "521bfa5b58e91c9d3632a033d0ed2af8be908e1770660819eee71b7033b5deab",
+  "transport": {
+    "schema": "MCOMB_ELLIPTIC_TRANSPORT_V1",
+    "source": {
+      "N": "6",
+      "m": "7",
+      "t1": "1",
+      "t2": "1",
+      "s": "5",
+      "amplitudeSign": 1,
+      "offsets": [
+        "-3",
+        "-2",
+        "-1",
+        "0",
+        "1",
+        "2",
+        "3"
+      ]
+    },
+    "modelInput": {
+      "A": "-25",
+      "B": "0",
+      "twistKind": "none",
+      "twistFactor": "1",
+      "differentialFactor": "2"
+    },
+    "rows": [
+      {
+        "address": {
+          "N": "6",
+          "m": "7",
+          "c": "-3",
+          "s": "5"
+        },
+        "phase": {
+          "alpha": "1/2",
+          "beta": "1/4"
+        },
+        "exact": {
+          "frequency": "3",
+          "alphaVelocity": "1/2",
+          "betaVelocity": "1/4",
+          "rawWinding": [
+            "6",
+            "3"
+          ],
+          "traversalMultiplicity": "3",
+          "denominatorScale": "1",
+          "primitiveWinding": [
+            "2",
+            "1"
+          ],
+          "closurePeriod": "4",
+          "complexTorsionOrder": "4"
+        },
+        "numerical": {
+          "zModel": [
+            0.5863098932314024,
+            0.2931549466157012
+          ],
+          "dzModel_ds": [
+            0.5863098932314024,
+            0.2931549466157012
+          ],
+          "dzSelected_ds": [
+            1.1726197864628047,
+            0.5863098932314024
+          ],
+          "dzNeron_ds": [
+            0.5863098932314024,
+            0.2931549466157012
+          ],
+          "status": "FLOAT64_APPROXIMATION",
+          "x": [
+            2.071067811865477,
+            2.993729218942528e-16
+          ],
+          "y": [
+            -2.772820989872444e-16,
+            6.549291474156005
+          ],
+          "relativeResidual": 8.233929164725031e-16,
+          "seriesLastTermMagnitude": 2.738070835296935e-18,
+          "tangent": {
+            "dx_ds": [
+              -3.8399143849537416,
+              7.679828769907482
+            ],
+            "dy_ds": [
+              -7.113131767925099,
+              -3.5565658839625467
+            ]
+          }
+        },
+        "identities": {
+          "phase": "z=alpha*omega1+beta*omega2; omega0=dx/(2y)",
+          "jet": "k=N*t1+c*t2=2*N*(alphaVelocity-betaVelocity)",
+          "cubic": "x=wp(z); y=wp_prime(z)/2",
+          "transport": "dx/ds=2*y*dz/ds; dy/ds=(3*x^2+A)*dz/ds",
+          "atInfinity": "For local parameter t=-x/y at O, dt/ds=dz/ds at z=0"
+        },
+        "rationality": "NOT_INFERRED_FROM_NUMERICAL_COORDINATES_OR_RATIONAL_PHASES"
+      },
+      {
+        "address": {
+          "N": "6",
+          "m": "7",
+          "c": "-2",
+          "s": "5"
+        },
+        "phase": {
+          "alpha": "1/2",
+          "beta": "5/6"
+        },
+        "exact": {
+          "frequency": "4",
+          "alphaVelocity": "1/2",
+          "betaVelocity": "1/6",
+          "rawWinding": [
+            "6",
+            "2"
+          ],
+          "traversalMultiplicity": "2",
+          "denominatorScale": "1",
+          "primitiveWinding": [
+            "3",
+            "1"
+          ],
+          "closurePeriod": "6",
+          "complexTorsionOrder": "6"
+        },
+        "numerical": {
+          "zModel": [
+            0.5863098932314024,
+            0.9771831553856707
+          ],
+          "dzModel_ds": [
+            0.5863098932314024,
+            0.1954366310771341
+          ],
+          "dzSelected_ds": [
+            1.1726197864628047,
+            0.3908732621542682
+          ],
+          "dzNeron_ds": [
+            0.5863098932314024,
+            0.1954366310771341
+          ],
+          "status": "FLOAT64_APPROXIMATION",
+          "x": [
+            3.40625019316607,
+            -3.0879317834963954e-16
+          ],
+          "y": [
+            2.241567815161593e-16,
+            -6.755375594580968
+          ],
+          "relativeResidual": 4.171993808239077e-16,
+          "seriesLastTermMagnitude": 2.2178373621470776e-18,
+          "tangent": {
+            "dx_ds": [
+              2.6404956957311927,
+              -7.921487087193578
+            ],
+            "dy_ds": [
+              5.750305300710351,
+              1.9167684335701125
+            ]
+          }
+        },
+        "identities": {
+          "phase": "z=alpha*omega1+beta*omega2; omega0=dx/(2y)",
+          "jet": "k=N*t1+c*t2=2*N*(alphaVelocity-betaVelocity)",
+          "cubic": "x=wp(z); y=wp_prime(z)/2",
+          "transport": "dx/ds=2*y*dz/ds; dy/ds=(3*x^2+A)*dz/ds",
+          "atInfinity": "For local parameter t=-x/y at O, dt/ds=dz/ds at z=0"
+        },
+        "rationality": "NOT_INFERRED_FROM_NUMERICAL_COORDINATES_OR_RATIONAL_PHASES"
+      },
+      {
+        "address": {
+          "N": "6",
+          "m": "7",
+          "c": "-1",
+          "s": "5"
+        },
+        "phase": {
+          "alpha": "1/2",
+          "beta": "5/12"
+        },
+        "exact": {
+          "frequency": "5",
+          "alphaVelocity": "1/2",
+          "betaVelocity": "1/12",
+          "rawWinding": [
+            "6",
+            "1"
+          ],
+          "traversalMultiplicity": "1",
+          "denominatorScale": "1",
+          "primitiveWinding": [
+            "6",
+            "1"
+          ],
+          "closurePeriod": "12",
+          "complexTorsionOrder": "12"
+        },
+        "numerical": {
+          "zModel": [
+            0.5863098932314024,
+            0.48859157769283534
+          ],
+          "dzModel_ds": [
+            0.5863098932314024,
+            0.09771831553856705
+          ],
+          "dzSelected_ds": [
+            1.1726197864628047,
+            0.1954366310771341
+          ],
+          "dzNeron_ds": [
+            0.5863098932314024,
+            0.09771831553856705
+          ],
+          "status": "FLOAT64_APPROXIMATION",
+          "x": [
+            0.2386129285481292,
+            1.1151674433687064e-16
+          ],
+          "y": [
+            -5.674802892944468e-16,
+            2.439618313806977
+          ],
+          "relativeResidual": 2.977804849399771e-16,
+          "seriesLastTermMagnitude": 2.7411659279756914e-18,
+          "tangent": {
+            "dx_ds": [
+              -0.47679078436451483,
+              2.860744706187085
+            ],
+            "dy_ds": [
+              -14.557600682461025,
+              -2.4262667804101707
+            ]
+          }
+        },
+        "identities": {
+          "phase": "z=alpha*omega1+beta*omega2; omega0=dx/(2y)",
+          "jet": "k=N*t1+c*t2=2*N*(alphaVelocity-betaVelocity)",
+          "cubic": "x=wp(z); y=wp_prime(z)/2",
+          "transport": "dx/ds=2*y*dz/ds; dy/ds=(3*x^2+A)*dz/ds",
+          "atInfinity": "For local parameter t=-x/y at O, dt/ds=dz/ds at z=0"
+        },
+        "rationality": "NOT_INFERRED_FROM_NUMERICAL_COORDINATES_OR_RATIONAL_PHASES"
+      },
+      {
+        "address": {
+          "N": "6",
+          "m": "7",
+          "c": "0",
+          "s": "5"
+        },
+        "phase": {
+          "alpha": "1/2",
+          "beta": "0"
+        },
+        "exact": {
+          "frequency": "6",
+          "alphaVelocity": "1/2",
+          "betaVelocity": "0",
+          "rawWinding": [
+            "6",
+            "0"
+          ],
+          "traversalMultiplicity": "6",
+          "denominatorScale": "1",
+          "primitiveWinding": [
+            "1",
+            "0"
+          ],
+          "closurePeriod": "2",
+          "complexTorsionOrder": "2"
+        },
+        "numerical": {
+          "zModel": [
+            0.5863098932314024,
+            0
+          ],
+          "dzModel_ds": [
+            0.5863098932314024,
+            0
+          ],
+          "dzSelected_ds": [
+            1.1726197864628047,
+            0
+          ],
+          "dzNeron_ds": [
+            0.5863098932314024,
+            0
+          ],
+          "status": "FLOAT64_APPROXIMATION",
+          "x": [
+            5.000000000000003,
+            0
+          ],
+          "y": [
+            1.142768355461049e-15,
+            0
+          ],
+          "relativeResidual": 1.1368683772161583e-15,
+          "seriesLastTermMagnitude": 1.795016063570915e-29,
+          "tangent": {
+            "dx_ds": [
+              1.3400327849571859e-15,
+              0
+            ],
+            "dy_ds": [
+              29.315494661570167,
+              0
+            ]
+          }
+        },
+        "identities": {
+          "phase": "z=alpha*omega1+beta*omega2; omega0=dx/(2y)",
+          "jet": "k=N*t1+c*t2=2*N*(alphaVelocity-betaVelocity)",
+          "cubic": "x=wp(z); y=wp_prime(z)/2",
+          "transport": "dx/ds=2*y*dz/ds; dy/ds=(3*x^2+A)*dz/ds",
+          "atInfinity": "For local parameter t=-x/y at O, dt/ds=dz/ds at z=0"
+        },
+        "rationality": "NOT_INFERRED_FROM_NUMERICAL_COORDINATES_OR_RATIONAL_PHASES"
+      },
+      {
+        "address": {
+          "N": "6",
+          "m": "7",
+          "c": "1",
+          "s": "5"
+        },
+        "phase": {
+          "alpha": "1/2",
+          "beta": "7/12"
+        },
+        "exact": {
+          "frequency": "7",
+          "alphaVelocity": "1/2",
+          "betaVelocity": "-1/12",
+          "rawWinding": [
+            "6",
+            "-1"
+          ],
+          "traversalMultiplicity": "1",
+          "denominatorScale": "1",
+          "primitiveWinding": [
+            "6",
+            "-1"
+          ],
+          "closurePeriod": "12",
+          "complexTorsionOrder": "12"
+        },
+        "numerical": {
+          "zModel": [
+            0.5863098932314024,
+            0.6840282087699695
+          ],
+          "dzModel_ds": [
+            0.5863098932314024,
+            -0.09771831553856705
+          ],
+          "dzSelected_ds": [
+            1.1726197864628047,
+            -0.1954366310771341
+          ],
+          "dzNeron_ds": [
+            0.5863098932314024,
+            -0.09771831553856705
+          ],
+          "status": "FLOAT64_APPROXIMATION",
+          "x": [
+            0.2386129285481302,
+            -1.1151674433687083e-16
+          ],
+          "y": [
+            -5.674802892944465e-16,
+            -2.4396183138069816
+          ],
+          "relativeResidual": 8.933414548199275e-16,
+          "seriesLastTermMagnitude": 2.741165927975653e-18,
+          "tangent": {
+            "dx_ds": [
+              -0.4767907843645157,
+              -2.8607447061870905
+            ],
+            "dy_ds": [
+              -14.557600682461025,
+              2.4262667804101707
+            ]
+          }
+        },
+        "identities": {
+          "phase": "z=alpha*omega1+beta*omega2; omega0=dx/(2y)",
+          "jet": "k=N*t1+c*t2=2*N*(alphaVelocity-betaVelocity)",
+          "cubic": "x=wp(z); y=wp_prime(z)/2",
+          "transport": "dx/ds=2*y*dz/ds; dy/ds=(3*x^2+A)*dz/ds",
+          "atInfinity": "For local parameter t=-x/y at O, dt/ds=dz/ds at z=0"
+        },
+        "rationality": "NOT_INFERRED_FROM_NUMERICAL_COORDINATES_OR_RATIONAL_PHASES"
+      },
+      {
+        "address": {
+          "N": "6",
+          "m": "7",
+          "c": "2",
+          "s": "5"
+        },
+        "phase": {
+          "alpha": "1/2",
+          "beta": "1/6"
+        },
+        "exact": {
+          "frequency": "8",
+          "alphaVelocity": "1/2",
+          "betaVelocity": "-1/6",
+          "rawWinding": [
+            "6",
+            "-2"
+          ],
+          "traversalMultiplicity": "2",
+          "denominatorScale": "1",
+          "primitiveWinding": [
+            "3",
+            "-1"
+          ],
+          "closurePeriod": "6",
+          "complexTorsionOrder": "6"
+        },
+        "numerical": {
+          "zModel": [
+            0.5863098932314024,
+            0.1954366310771341
+          ],
+          "dzModel_ds": [
+            0.5863098932314024,
+            -0.1954366310771341
+          ],
+          "dzSelected_ds": [
+            1.1726197864628047,
+            -0.3908732621542682
+          ],
+          "dzNeron_ds": [
+            0.5863098932314024,
+            -0.1954366310771341
+          ],
+          "status": "FLOAT64_APPROXIMATION",
+          "x": [
+            3.40625019316607,
+            3.0879317834963954e-16
+          ],
+          "y": [
+            2.241567815161593e-16,
+            6.755375594580968
+          ],
+          "relativeResidual": 4.171993808239077e-16,
+          "seriesLastTermMagnitude": 2.2178373621470776e-18,
+          "tangent": {
+            "dx_ds": [
+              2.6404956957311927,
+              7.921487087193578
+            ],
+            "dy_ds": [
+              5.750305300710351,
+              -1.9167684335701125
+            ]
+          }
+        },
+        "identities": {
+          "phase": "z=alpha*omega1+beta*omega2; omega0=dx/(2y)",
+          "jet": "k=N*t1+c*t2=2*N*(alphaVelocity-betaVelocity)",
+          "cubic": "x=wp(z); y=wp_prime(z)/2",
+          "transport": "dx/ds=2*y*dz/ds; dy/ds=(3*x^2+A)*dz/ds",
+          "atInfinity": "For local parameter t=-x/y at O, dt/ds=dz/ds at z=0"
+        },
+        "rationality": "NOT_INFERRED_FROM_NUMERICAL_COORDINATES_OR_RATIONAL_PHASES"
+      },
+      {
+        "address": {
+          "N": "6",
+          "m": "7",
+          "c": "3",
+          "s": "5"
+        },
+        "phase": {
+          "alpha": "1/2",
+          "beta": "3/4"
+        },
+        "exact": {
+          "frequency": "9",
+          "alphaVelocity": "1/2",
+          "betaVelocity": "-1/4",
+          "rawWinding": [
+            "6",
+            "-3"
+          ],
+          "traversalMultiplicity": "3",
+          "denominatorScale": "1",
+          "primitiveWinding": [
+            "2",
+            "-1"
+          ],
+          "closurePeriod": "4",
+          "complexTorsionOrder": "4"
+        },
+        "numerical": {
+          "zModel": [
+            0.5863098932314024,
+            0.8794648398471036
+          ],
+          "dzModel_ds": [
+            0.5863098932314024,
+            -0.2931549466157012
+          ],
+          "dzSelected_ds": [
+            1.1726197864628047,
+            -0.5863098932314024
+          ],
+          "dzNeron_ds": [
+            0.5863098932314024,
+            -0.2931549466157012
+          ],
+          "status": "FLOAT64_APPROXIMATION",
+          "x": [
+            2.071067811865477,
+            -2.993729218942528e-16
+          ],
+          "y": [
+            -2.772820989872444e-16,
+            -6.549291474156005
+          ],
+          "relativeResidual": 8.233929164725031e-16,
+          "seriesLastTermMagnitude": 2.738070835296935e-18,
+          "tangent": {
+            "dx_ds": [
+              -3.8399143849537416,
+              -7.679828769907482
+            ],
+            "dy_ds": [
+              -7.113131767925099,
+              3.5565658839625467
+            ]
+          }
+        },
+        "identities": {
+          "phase": "z=alpha*omega1+beta*omega2; omega0=dx/(2y)",
+          "jet": "k=N*t1+c*t2=2*N*(alphaVelocity-betaVelocity)",
+          "cubic": "x=wp(z); y=wp_prime(z)/2",
+          "transport": "dx/ds=2*y*dz/ds; dy/ds=(3*x^2+A)*dz/ds",
+          "atInfinity": "For local parameter t=-x/y at O, dt/ds=dz/ds at z=0"
+        },
+        "rationality": "NOT_INFERRED_FROM_NUMERICAL_COORDINATES_OR_RATIONAL_PHASES"
+      }
+    ],
+    "sevenJet": {
+      "active": false,
+      "frequencies": [
+        "3",
+        "4",
+        "5",
+        "6",
+        "7",
+        "8",
+        "9"
+      ],
+      "normSquared": "280",
+      "meaning": "One logarithmic velocity per mcomb channel, not seven derivatives of L(E,s)"
+    },
+    "rational": {
+      "rootSearch": "B_ZERO_EXACT_SQUARE_ROOT_CHECK",
+      "rationalTwoTorsion": [
+        {
+          "point": {
+            "x": "-5",
+            "y": "0"
+          },
+          "phase": {
+            "alpha": "0",
+            "beta": "1/2"
+          }
+        },
+        {
+          "point": {
+            "x": "0",
+            "y": "0"
+          },
+          "phase": {
+            "alpha": "1/2",
+            "beta": "1/2"
+          }
+        },
+        {
+          "point": {
+            "x": "5",
+            "y": "0"
+          },
+          "phase": {
+            "alpha": "1/2",
+            "beta": "0"
+          }
+        }
+      ],
+      "encounters": [
+        {
+          "c": "-3",
+          "s": "2",
+          "phase": {
+            "alpha": "0",
+            "beta": "1/2"
+          },
+          "point": {
+            "x": "-5",
+            "y": "0"
+          },
+          "certificate": "EXACT_RATIONAL_ROOT_PLUS_MARKED_HALF_PERIOD_IDENTITY",
+          "scope": "RATIONAL_POINT_OF_ORDER_2; NOT_FULL_TORSION_ORDER_OR_RANK"
+        },
+        {
+          "c": "-2",
+          "s": "3",
+          "phase": {
+            "alpha": "1/2",
+            "beta": "1/2"
+          },
+          "point": {
+            "x": "0",
+            "y": "0"
+          },
+          "certificate": "EXACT_RATIONAL_ROOT_PLUS_MARKED_HALF_PERIOD_IDENTITY",
+          "scope": "RATIONAL_POINT_OF_ORDER_2; NOT_FULL_TORSION_ORDER_OR_RANK"
+        },
+        {
+          "c": "-1",
+          "s": "6",
+          "phase": {
+            "alpha": "0",
+            "beta": "1/2"
+          },
+          "point": {
+            "x": "-5",
+            "y": "0"
+          },
+          "certificate": "EXACT_RATIONAL_ROOT_PLUS_MARKED_HALF_PERIOD_IDENTITY",
+          "scope": "RATIONAL_POINT_OF_ORDER_2; NOT_FULL_TORSION_ORDER_OR_RANK"
+        },
+        {
+          "c": "0",
+          "s": "1",
+          "phase": {
+            "alpha": "1/2",
+            "beta": "0"
+          },
+          "point": {
+            "x": "5",
+            "y": "0"
+          },
+          "certificate": "EXACT_RATIONAL_ROOT_PLUS_MARKED_HALF_PERIOD_IDENTITY",
+          "scope": "RATIONAL_POINT_OF_ORDER_2; NOT_FULL_TORSION_ORDER_OR_RANK"
+        },
+        {
+          "c": "1",
+          "s": "6",
+          "phase": {
+            "alpha": "0",
+            "beta": "1/2"
+          },
+          "point": {
+            "x": "-5",
+            "y": "0"
+          },
+          "certificate": "EXACT_RATIONAL_ROOT_PLUS_MARKED_HALF_PERIOD_IDENTITY",
+          "scope": "RATIONAL_POINT_OF_ORDER_2; NOT_FULL_TORSION_ORDER_OR_RANK"
+        },
+        {
+          "c": "2",
+          "s": "3",
+          "phase": {
+            "alpha": "1/2",
+            "beta": "1/2"
+          },
+          "point": {
+            "x": "0",
+            "y": "0"
+          },
+          "certificate": "EXACT_RATIONAL_ROOT_PLUS_MARKED_HALF_PERIOD_IDENTITY",
+          "scope": "RATIONAL_POINT_OF_ORDER_2; NOT_FULL_TORSION_ORDER_OR_RANK"
+        },
+        {
+          "c": "3",
+          "s": "2",
+          "phase": {
+            "alpha": "0",
+            "beta": "1/2"
+          },
+          "point": {
+            "x": "-5",
+            "y": "0"
+          },
+          "certificate": "EXACT_RATIONAL_ROOT_PLUS_MARKED_HALF_PERIOD_IDENTITY",
+          "scope": "RATIONAL_POINT_OF_ORDER_2; NOT_FULL_TORSION_ORDER_OR_RANK"
+        }
+      ]
+    },
+    "normalization": {
+      "modelDifferential": "dx/(2y)",
+      "selectedFactor": "2",
+      "neron": {
+        "status": "VERIFIED_REFERENCE_ISOMORPHISM",
+        "reference": {
+          "A": "-25",
+          "B": "0",
+          "id": "E_CONGRUENT_FIVE",
+          "delta": "1000000",
+          "valuations": {
+            "2": 6,
+            "5": 6
+          }
+        },
+        "coordinateChange": "x_model = u^2 x_reference; y_model = u^3 y_reference",
+        "u": {
+          "num": "1",
+          "den": "1"
+        },
+        "factorOfModelDifferential": {
+          "num": "1",
+          "den": "1"
+        },
+        "differential": "omega_N = u * dx_model/(2 y_model)"
+      }
+    },
+    "bsdRouting": {
+      "admissible": "Exact rational points at proved half-period encounters may enter rational_points after equation replay",
+      "notComputed": [
+        "analytic_rank",
+        "algebraic_rank",
+        "regulator",
+        "torsion_order",
+        "tamagawa",
+        "sha_order",
+        "L_leading_term"
+      ]
+    },
+    "standing": "EXACT_PHASE_AND_DIFFERENTIAL_IDENTITIES_WITH_FLOAT64_UNIFORMIZATION_NOT_INTERVAL_CERTIFIED"
+  }
+}

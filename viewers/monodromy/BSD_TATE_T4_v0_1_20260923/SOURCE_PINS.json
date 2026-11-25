@@ -1,0 +1,106 @@
+[
+  {
+    "path": "../BSD_TATE_T3_v0_1_20260907/MANIFEST.sha256",
+    "sha256": "ea0d0bbe2939610e5d2405eba1ef9d548288f122f779566f2fe5ba1e596c10be"
+  },
+  {
+    "path": "../BSD_TATE_T3_v0_1_20260907/t3.cjs",
+    "sha256": "3fd7c6e1a3acff85d7b2df9a45664ad6d10055b7ceec995ffc33fc28648cb386"
+  },
+  {
+    "path": "../BSD_TATE_T3_v0_1_20260907/small-prime-tate.cjs",
+    "sha256": "d42c27aace381217f74d8db4e0b7841d11a5da64fdca7ef552bcfea21b8bf05d"
+  },
+  {
+    "path": "../BSD_TATE_T3_v0_1_20260907/check-independent.py",
+    "sha256": "5006b58effb9274210b4e51ca5c35510f7ad71179964e49fb899817796fa9a16"
+  },
+  {
+    "path": "../BSD_TATE_T3_v0_1_COLD_AUDIT_FABLE_20260923.md",
+    "sha256": "538481192f9d4375f6ce9f98091a956a7e46322f24b0eda9ac186236287f8c78"
+  },
+  {
+    "path": "../BSD_TATE_T3_v0_1_COLD_AUDIT_FABLE_20260923.json",
+    "sha256": "6fd689244beda09ec7c522185210e10e4cdb54d2052805c54c946c23f4b2982d"
+  },
+  {
+    "path": "../BSD_MINIMAL_TATE_SCHEMA_v0_2_20260907/IMPLEMENTATION_PLAN.md",
+    "sha256": "6c1f5bec2acc2d220f1234fb523ff31461b55c9d67cf67e126d1376330d4181b"
+  },
+  {
+    "path": "../BSD_TATE_T2_v0_1_20260907/MANIFEST.sha256",
+    "sha256": "08bda1b0692ff8a871ea1f9befa8332f44633fc189c95abd6ee8aa03a81bb417"
+  },
+  {
+    "path": "../BSD_TATE_T2_v0_1_20260907/finite-field.cjs",
+    "sha256": "c9d22e7229460cd9c7ce2891f7911dd8f9f49fac5cd4b1bc186e5eca1bc0bd07"
+  },
+  {
+    "path": "../BSD_TATE_T2_v0_1_20260907/make-schema.cjs",
+    "sha256": "6acf84cd37bf783e405080d9cb8491ef84d18604fd0cb3bc29d53d90d38ed81b"
+  },
+  {
+    "path": "../BSD_TATE_T2_v0_1_COLD_AUDIT_FABLE_20260907.md",
+    "sha256": "fd09a1cec6e121cbdf20eeba750c8e4e5405de940ed0a958248ff91b92bf58dd"
+  },
+  {
+    "path": "../BSD_TATE_T2_v0_1_COLD_AUDIT_FABLE_20260907.json",
+    "sha256": "0bf5b1a4963aa4c3c505a18feb15c17fbad5bcc4aeabf1b28bbe6579cd2ad691"
+  },
+  {
+    "path": "../BSD_TATE_T1_v0_1_20260907/MANIFEST.sha256",
+    "sha256": "de4467a54d77fa6669ecbae43612ffa7425ef6746bcbeba877e0d0edb52b6032"
+  },
+  {
+    "path": "../BSD_TATE_T1_v0_1_COLD_AUDIT_FABLE_20260907.md",
+    "sha256": "effa17cd5f893e2e2d01519569a81c735e41cd29bcb48d23069b0957682d8e18"
+  },
+  {
+    "path": "../BSD_TATE_T1_v0_1_COLD_AUDIT_FABLE_20260907.json",
+    "sha256": "ff6272b6641d615ad5b4fca7a34d442562810b3a182e319dca7ac2fd1370c06e"
+  },
+  {
+    "path": "../BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907/MANIFEST.sha256",
+    "sha256": "40739e8bb8ff0259c974d727030ef89cc66895971aef5f1ce20840d4bef0302a"
+  },
+  {
+    "path": "../BSD_MINIMAL_TATE_SCHEMA_v0_2_20260907/MANIFEST.sha256",
+    "sha256": "605d44f3b9b2c045ecb01837f4c1502eb2bb05bcae4d5e2caccc174560d3d97e"
+  },
+  {
+    "path": "../BSD_MINIMAL_TATE_SCHEMA_v0_1_20260907/MANIFEST.sha256",
+    "sha256": "252b5406568d19bd1377c68e8bd70c1a5bc369c26d262bd391d38311e33c4e3b"
+  },
+  {
+    "path": "../MCOMB_CARRIER_ADDITION_v0_1_20260907/MANIFEST.sha256",
+    "sha256": "b7799b08896ee9b57c8963d4530e393d7d3952a6d2f3047ce20376e1d67d87c1"
+  },
+  {
+    "path": "../BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907/model-replay.cjs",
+    "sha256": "c7b102ef7ff7b9044e6099eb777873eaf7a06f248d311676c789dd5d2fa11877"
+  },
+  {
+    "path": "../BSD_TATE_T1_v0_1_20260907/t1.cjs",
+    "sha256": "625c7a094f4c8d3330ba6b2d021bb07513090831e3176e17c9e9deb4c8ee674d"
+  },
+  {
+    "path": "../BSD_TATE_T1_v0_1_20260907/pari-adapter.cjs",
+    "sha256": "5ea80b80f1433172a457b49217841dc79a59b72807d43518b6291092ee2b53b4"
+  },
+  {
+    "path": "../BSD_TATE_T1_v0_1_20260907/t1-packet.schema.json",
+    "sha256": "624ca28a795d9fc4a6916c7fd24c12850b2a93bc7c9dbe71c12f919b9bc95857"
+  },
+  {
+    "path": "../SAGE_SERENA_NUCLEUS_HOST_PLAN_v0_1_20260907.md",
+    "sha256": "78fe6585b84f83e9789dac20b5d4e02eb03e2962a4bc15725af1b0a4b95dcef6"
+  },
+  {
+    "path": "../.bsd-arithmetic-runtime/gp-sta.js",
+    "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+  },
+  {
+    "path": "../.bsd-arithmetic-runtime/gp-sta.wasm",
+    "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+  }
+]

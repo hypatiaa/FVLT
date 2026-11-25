@@ -1,0 +1,22 @@
+{
+  "total": 4,
+  "checks": [
+    {
+      "name": "Independent exact invariants and point count at p=2 for 8878e6b37d71",
+      "status": "PASS"
+    },
+    {
+      "name": "Independent exact invariants and point count at p=3 for 8878e6b37d71",
+      "status": "PASS"
+    },
+    {
+      "name": "Independent exact invariants and point count at p=5 for ffcb2a887061",
+      "status": "PASS"
+    },
+    {
+      "name": "Independent exact invariants and point count at p=3 for 6fde21a5ade3",
+      "status": "PASS"
+    }
+  ],
+  "method": "Fraction invariants and Legendre-discriminant recount; exhaustive at p=2"
+}

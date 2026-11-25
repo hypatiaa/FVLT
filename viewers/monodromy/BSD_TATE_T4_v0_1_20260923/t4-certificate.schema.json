@@ -1,0 +1,224 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:robin:bsd:global-reduction-certificate:1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "status",
+    "scope",
+    "packetHash",
+    "parentSourceHash",
+    "contextId",
+    "sourceModelId",
+    "modelId",
+    "normalizationId",
+    "markingId",
+    "proofHash",
+    "localCertificateIds",
+    "verifier",
+    "method",
+    "result",
+    "globalMinimality",
+    "neronDifferential",
+    "heights",
+    "bsdPromotion"
+  ],
+  "properties": {
+    "schema": {
+      "const": "BSD_GLOBAL_REDUCTION_CERTIFICATE_V1"
+    },
+    "status": {
+      "const": "CERTIFIED"
+    },
+    "scope": {
+      "const": "GLOBAL_REDUCTION_OVER_Q_WITHIN_DECLARED_BOUNDS"
+    },
+    "packetHash": {
+      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+    },
+    "parentSourceHash": {
+      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+    },
+    "contextId": {
+      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+    },
+    "sourceModelId": {
+      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+    },
+    "modelId": {
+      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+    },
+    "normalizationId": {
+      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+    },
+    "markingId": {
+      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+    },
+    "proofHash": {
+      "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+    },
+    "localCertificateIds": {
+      "type": "array",
+      "items": {
+        "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+      },
+      "maxItems": 24
+    },
+    "verifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version",
+        "sha256",
+        "transportSha256",
+        "arithmeticSha256",
+        "tame",
+        "smallPrime"
+      ],
+      "properties": {
+        "name": {
+          "const": "BSD_GLOBAL_REDUCTION_REPLAY"
+        },
+        "version": {
+          "const": "0.1.0"
+        },
+        "sha256": {
+          "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+        },
+        "transportSha256": {
+          "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+        },
+        "arithmeticSha256": {
+          "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+        },
+        "tame": {
+          "$ref": "urn:robin:bsd:tame-tate-certificate:1#/properties/verifier"
+        },
+        "smallPrime": {
+          "$ref": "urn:robin:bsd:small-prime-tate-certificate:1#/properties/verifier"
+        }
+      }
+    },
+    "method": {
+      "const": "INTEGRAL_LOCAL_LIFTS_COMPLETE_FACTORISATION_AND_LOCAL_CERTIFICATE_REPLAY"
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "modelId",
+        "minimalDiscriminant",
+        "curveBadPrimes",
+        "conductor",
+        "tamagawaProduct",
+        "goodOutsideInventory",
+        "normalization"
+      ],
+      "properties": {
+        "modelId": {
+          "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+        },
+        "minimalDiscriminant": {
+          "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/integer"
+        },
+        "curveBadPrimes": {
+          "type": "array",
+          "items": {
+            "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/natural"
+          },
+          "maxItems": 24
+        },
+        "conductor": {
+          "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/natural"
+        },
+        "tamagawaProduct": {
+          "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/natural"
+        },
+        "goodOutsideInventory": {
+          "const": "PROVED_BY_INTEGRAL_MODEL_AND_UNIT_DISCRIMINANT"
+        },
+        "normalization": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "convention",
+            "chosenSign",
+            "modelId",
+            "inputModelId",
+            "anchorModelId",
+            "signedPullbackToInput",
+            "signedPullbackToAnchor",
+            "selectedMultiplier",
+            "neronOverSelectedMultiplier",
+            "absoluteRealMeasureFactorFromInput",
+            "absoluteRealMeasureFactorFromAnchor",
+            "absoluteRealMeasureFactorFromSelected",
+            "realComponents",
+            "periodValue"
+          ],
+          "properties": {
+            "convention": {
+              "const": "GLOBAL_MINIMAL_MODEL_DIFFERENTIAL_UP_TO_SIGN"
+            },
+            "chosenSign": {
+              "const": "MODEL_DIFFERENTIAL"
+            },
+            "modelId": {
+              "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+            },
+            "inputModelId": {
+              "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+            },
+            "anchorModelId": {
+              "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/digest"
+            },
+            "signedPullbackToInput": {
+              "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+            },
+            "signedPullbackToAnchor": {
+              "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+            },
+            "selectedMultiplier": {
+              "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+            },
+            "neronOverSelectedMultiplier": {
+              "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+            },
+            "absoluteRealMeasureFactorFromInput": {
+              "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+            },
+            "absoluteRealMeasureFactorFromAnchor": {
+              "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+            },
+            "absoluteRealMeasureFactorFromSelected": {
+              "$ref": "urn:robin:bsd:minimal-tate-record:1:draft-0.3#/$defs/rational"
+            },
+            "realComponents": {
+              "enum": [
+                "1",
+                "2"
+              ]
+            },
+            "periodValue": {
+              "const": "NOT_COMPUTED"
+            }
+          }
+        }
+      }
+    },
+    "globalMinimality": {
+      "const": "CERTIFIED"
+    },
+    "neronDifferential": {
+      "const": "CERTIFIED_UP_TO_SIGN"
+    },
+    "heights": {
+      "const": "NOT_COMPUTED"
+    },
+    "bsdPromotion": {
+      "const": false
+    }
+  }
+}

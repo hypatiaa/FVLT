@@ -1,0 +1,77 @@
+{
+  "standing": "AUDIT_CANDIDATE_WITH_LOCAL_VERIFICATION",
+  "version": "0.3",
+  "fileCount": 80,
+  "manifestSha256": "40739e8bb8ff0259c974d727030ef89cc66895971aef5f1ce20840d4bef0302a",
+  "schemaPredecessorManifestSha256": "605d44f3b9b2c045ecb01837f4c1502eb2bb05bcae4d5e2caccc174560d3d97e",
+  "schemaAncestorManifestSha256": "252b5406568d19bd1377c68e8bd70c1a5bc369c26d262bd391d38311e33c4e3b",
+  "predecessorManifestSha256": "b7799b08896ee9b57c8963d4530e393d7d3952a6d2f3047ce20376e1d67d87c1",
+  "implementedAuditRepairs": [
+    "H1_TAME_KODAIRA_VALUATIONS",
+    "H2_Q_CONDUCTOR_BOUNDS"
+  ],
+  "goodPrimeLocalCertificationImplemented": true,
+  "badPrimeTamagawaCertificationImplemented": false,
+  "tateEngineImplemented": false,
+  "heightsImplemented": false,
+  "liveGeneralModelAdapterImplemented": false,
+  "independentAuditClaimed": false,
+  "lockEligible": false,
+  "checks": [
+    {
+      "name": "schema-semantic",
+      "total": 40,
+      "status": "PASS"
+    },
+    {
+      "name": "schema-python",
+      "total": 23,
+      "status": "PASS"
+    },
+    {
+      "name": "local-gates",
+      "total": 22,
+      "status": "PASS"
+    },
+    {
+      "name": "good-certificates",
+      "total": 4,
+      "status": "PASS"
+    },
+    {
+      "name": "valuation-gates",
+      "total": 25,
+      "status": "PASS"
+    },
+    {
+      "name": "math",
+      "total": 17,
+      "status": "PASS"
+    },
+    {
+      "name": "browser",
+      "total": 19,
+      "status": "PASS"
+    },
+    {
+      "name": "regression",
+      "total": 20,
+      "status": "PASS"
+    },
+    {
+      "name": "maintenance",
+      "total": 3,
+      "status": "PASS"
+    },
+    {
+      "name": "runtime",
+      "total": 9,
+      "status": "PASS"
+    }
+  ],
+  "strictFormulaTally": {
+    "pairPASS": 84,
+    "doublingPASS": 84
+  },
+  "verifiedScratch": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-reduction-audit-CTsGF5\\BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907"
+}

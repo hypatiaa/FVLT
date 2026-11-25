@@ -1,0 +1,2 @@
+'use strict';
+module.exports=function(){const fs=require('node:fs'),path=require('node:path'),root=process.env.BSD_T1_SCRATCH_ROOT;if(!root||path.dirname(__dirname)!==path.resolve(root))throw Error('Worker requires a staged T1 scratch copy');const marker=JSON.parse(fs.readFileSync(path.join(root,'.bsd-t1-scratch.json'),'utf8'));if(marker.kind!=='BSD_T1_SCRATCH_V1'||path.resolve(marker.sourcePackage)===path.resolve(__dirname))throw Error('Refusing an in-place verification run');};

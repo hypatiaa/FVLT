@@ -1,0 +1,12 @@
+Scratch: C:\Users\robin\AppData\Local\Temp\bsd-reduction-audit-kDdGpL
+40 schema semantic groups PASS
+23 Python schema/substitution groups PASS
+22 local reduction gate groups PASS
+4 independent good-prime certificate checks PASS
+25 valuation gate groups PASS; all four cold-audit forgeries rejected
+17 math groups PASS; 84 formula cases; 52 independent finite counts
+19 carrier/product browser groups PASS
+20 connected-panel checks PASS
+3 maintenance browser groups PASS
+9 runtime discovery groups PASS
+Receipt: C:\Users\robin\AppData\Local\Temp\bsd-reduction-audit-kDdGpL\verification.json

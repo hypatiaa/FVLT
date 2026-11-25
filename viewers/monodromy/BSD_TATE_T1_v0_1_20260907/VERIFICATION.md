@@ -1,0 +1,15 @@
+# Builder verification and package boundary
+
+The T1 suite passes **66 groups**, with **31 explicit fixture outcomes**: 20 local proofs and 11 deliberately unsupported additive/wild cases. Unsupported fixtures require UNAVAILABLE and no certificate; none count as a certified result. The independent Python method passes all 31 fixture groups. It rechecks exact polynomial substitutions and differentials, discriminants, point membership, factorization, finite point counts and multiplicative tangent-cone splitting. Sage producer syntax passes; Sage live validation remains unavailable.
+
+The frozen v0.3 verifier was also run from scratch: **ten suites, 182 groups**, including 84 pair and 84 doubling PASS results, 52 finite-count comparisons, 19 carrier/product browser groups, 20 connected-panel groups and 3 maintenance browser groups. The source/receipt files for v0.3, v0.2, v0.1 and Monodromy.30 stayed unchanged. There is no new visual rendering claim: the viewer bytes are unchanged and T1's live panel adapter is future work.
+
+`receipts/t1-verification.json` and the adjacent T1/Python receipts record the final pre-seal T1 run. `receipts/inherited-verification.json` and its log record the complete inherited run against the frozen v0.3 sources. These authoring runs precede this package's manifest; their inventories identify exactly what was run. They are not mislabelled as verification of a manifest that did not yet exist.
+
+After sealing, run `node verify.cjs` again. It checks the exact package inventory, all external source pins and predecessor manifests, runs only in scratch, and confirms before/after source inventories. The builder's post-seal receipt is stored **beside**, not inside, this immutable package as `../BSD_TATE_T1_v0_1_SEALED_VERIFICATION_20260907.json`. That separate receipt binds the final manifest without introducing a self-referential manifest hash.
+
+The first full-run attempt stopped at nested Playwright discovery because only the worker override was propagated. The corrected runner passes both the discovery and worker variables and the full inherited run succeeded. This was a runner defect; no predecessor or pinned receipt was edited to repair it. No mathematical test failure was masked or relabelled.
+
+Forgeries cover transformations, signed differential scale, repeated visit indices, stale panel/marking context, valuation units, prime witnesses, omitted/reordered steps, roots, coherent splitting/Euler changes, c_p/conductor values, inventory completeness, stdout/producer pins, unsupported promotion, unknown fields, duplicate keys and stale certificate hashes. Coherently repaired backend H1/H2 forgeries are rejected through the inherited cheap gates. Work-cap, pin mismatch, bad override, in-place worker refusal and the public custom-input CLI are exercised. The p=1009 bound is exercised by an actual full good-fibre count.
+
+Standing: **builder verification PASS within the stated scope; cold audit pending**. Full Tate, a live Sage comparison, global minimal/Neron certification, live linked-panel consumption and heights remain pending. Existing v0.3 PROSMENON/PASS does not transfer to this candidate.

@@ -1,0 +1,293 @@
+{
+  "status": "PASS",
+  "standing": "BUILDER_VERIFICATION_NOT_COLD_AUDIT",
+  "total": 66,
+  "checks": [
+    {
+      "name": "37.a1 short nonminimal presentation maps (0,4) exactly to general minimal candidate",
+      "status": "PASS"
+    },
+    {
+      "name": "Recovered good reduction on 37.a1 at 2",
+      "status": "PASS"
+    },
+    {
+      "name": "Recovered good reduction on 37.a1 at 3",
+      "status": "PASS"
+    },
+    {
+      "name": "Split I1 actual Tamagawa proof",
+      "status": "PASS"
+    },
+    {
+      "name": "Split I2 actual Tamagawa proof",
+      "status": "PASS"
+    },
+    {
+      "name": "Split I3 actual Tamagawa proof",
+      "status": "PASS"
+    },
+    {
+      "name": "Split I4 actual Tamagawa proof",
+      "status": "PASS"
+    },
+    {
+      "name": "Nonsplit I1 actual Tamagawa proof",
+      "status": "PASS"
+    },
+    {
+      "name": "Nonsplit I2 actual Tamagawa proof",
+      "status": "PASS"
+    },
+    {
+      "name": "Nonsplit I3 actual Tamagawa proof",
+      "status": "PASS"
+    },
+    {
+      "name": "Nonsplit I4 actual Tamagawa proof",
+      "status": "PASS"
+    },
+    {
+      "name": "General a1 nonzero good fibre at 2",
+      "status": "PASS"
+    },
+    {
+      "name": "General a1 nonzero good fibre at 3",
+      "status": "PASS"
+    },
+    {
+      "name": "Good reduction when c4 is identically zero",
+      "status": "PASS"
+    },
+    {
+      "name": "Prime/count work boundary 1009 is actually exercised",
+      "status": "PASS"
+    },
+    {
+      "name": "Documented PARI translated/sheared example",
+      "status": "PASS"
+    },
+    {
+      "name": "Additive II remains unavailable with retained source report",
+      "status": "PASS"
+    },
+    {
+      "name": "Additive III remains unavailable with retained source report",
+      "status": "PASS"
+    },
+    {
+      "name": "Additive IV remains unavailable with retained source report",
+      "status": "PASS"
+    },
+    {
+      "name": "Additive I0star remains unavailable with retained source report",
+      "status": "PASS"
+    },
+    {
+      "name": "Additive I1star remains unavailable with retained source report",
+      "status": "PASS"
+    },
+    {
+      "name": "Additive IVstar remains unavailable with retained source report",
+      "status": "PASS"
+    },
+    {
+      "name": "Additive IIIstar remains unavailable with retained source report",
+      "status": "PASS"
+    },
+    {
+      "name": "Additive IIstar remains unavailable with retained source report",
+      "status": "PASS"
+    },
+    {
+      "name": "wild2 is not silently promoted",
+      "status": "PASS"
+    },
+    {
+      "name": "wild3 is not silently promoted",
+      "status": "PASS"
+    },
+    {
+      "name": "small-multip is not silently promoted",
+      "status": "PASS"
+    },
+    {
+      "name": "Rational denominators, negative scale and exact points survive PARI minimization",
+      "status": "PASS"
+    },
+    {
+      "name": "Signed composite, inverse, full basis marking and differential transport",
+      "status": "PASS"
+    },
+    {
+      "name": "Bound parent bytes retain twist lineage without treating a twist as an isomorphism",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact membership works without a backend or minimality",
+      "status": "PASS"
+    },
+    {
+      "name": "A direct local certificate needs no producer report",
+      "status": "PASS"
+    },
+    {
+      "name": "Incomplete model factorization remains visibly incomplete",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged parent hash",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged composite sign",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged step direction",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged point identity",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged selected differential",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged panel binding",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged marking",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged valuation",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged valuation unit",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged prime witness",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged missing decision",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged reordered decisions",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged splitting roots",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged coherent split forgery",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged Tamagawa",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged conductor",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged inventory",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged stale producer",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged stdout hash",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged producer tuple",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged hidden global claim",
+      "status": "PASS"
+    },
+    {
+      "name": "Reject forged false unsupported",
+      "status": "PASS"
+    },
+    {
+      "name": "Good-fibre count and Euler forgeries reject",
+      "status": "PASS"
+    },
+    {
+      "name": "Unsupported additive branch cannot carry a fabricated certificate",
+      "status": "PASS"
+    },
+    {
+      "name": "Singular, composite, noncanonical and exceeded prime domains reject",
+      "status": "PASS"
+    },
+    {
+      "name": "Parser rejects GP expressions and output ambiguity",
+      "status": "PASS"
+    },
+    {
+      "name": "Bad explicit runtime override fails without fallback",
+      "status": "PASS"
+    },
+    {
+      "name": "Mutated runtime bytes fail their pin before execution",
+      "status": "PASS"
+    },
+    {
+      "name": "Workers reject a missing scratch marker before any work",
+      "status": "PASS"
+    },
+    {
+      "name": "Inherited H1 and H2 gates reject coherently repaired producer transcripts",
+      "status": "PASS"
+    },
+    {
+      "name": "Public custom-input CLI builds a fully replayable packet",
+      "status": "PASS"
+    },
+    {
+      "name": "Public schema rejects unknown fields, duplicate keys, stale certificate and enforces exact PASS",
+      "status": "PASS"
+    },
+    {
+      "name": "Every generated schema is byte-equivalent to its versioned source",
+      "status": "PASS"
+    }
+  ],
+  "fixtures": 31,
+  "certifiedFixtures": 20,
+  "unavailableFixtures": 11,
+  "pariRuntime": {
+    "dir": "C:\\Users\\robin\\AppData\\Local\\Temp\\bsd-t1-audit-1Rxd37\\.bsd-arithmetic-runtime",
+    "node": "C:\\Program Files\\nodejs\\node.exe",
+    "nodeSha256": "d14ba95cdce1ef7dc9ad3ac74949ca5db38b27378ee30f30a23cf26f9e875a11",
+    "files": {
+      "gp-sta.js": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.js",
+        "sha256": "4033ab9d300a51944d372033c14d7b910f24e6d91d38ede61a7d6fe5aaad0c69"
+      },
+      "gp-sta.wasm": {
+        "url": "https://pari.math.u-bordeaux.fr/gpjswasm/gp-sta.wasm",
+        "sha256": "b95fcd8239209d076b2b26f508b1fc2bba627c5660d8fda4447e199a5b1b12ba"
+      }
+    }
+  },
+  "sageLive": {
+    "status": "UNAVAILABLE",
+    "reason": "SAGE_NOT_INSTALLED_ON_BUILD_HOST"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "total": 3,
+  "checks": [
+    {
+      "name": "Model-level labels persist after recompute; exact arithmetic remains unchanged",
+      "status": "PASS"
+    },
+    {
+      "name": "Exact non-2-torsion point membership works with no minimal-model or Tate result",
+      "status": "PASS"
+    },
+    {
+      "name": "No JavaScript page errors in maintenance checks",
+      "status": "PASS"
+    }
+  ],
+  "pageErrors": []
+}

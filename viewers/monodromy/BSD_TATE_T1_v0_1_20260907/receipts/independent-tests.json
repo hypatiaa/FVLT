@@ -1,0 +1,170 @@
+{
+  "status": "PASS",
+  "standing": "BUILDER_INDEPENDENT_METHOD_NOT_COLD_AUDIT",
+  "total": 31,
+  "checks": [
+    {
+      "name": "37a1-nonminimal-at-37",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "37a1-good-2",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "37a1-good-3",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "multip-1-1",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "multip-1-2",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "multip-1-3",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "multip-1-4",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "multip-2-1",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "multip-2-2",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "multip-2-3",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "multip-2-4",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "general-good-2",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "general-good-3",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "good-c4-zero",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "good-at-1009",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "pari-urst-example",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "additive-II",
+      "status": "PASS",
+      "localOutcome": "UNAVAILABLE"
+    },
+    {
+      "name": "additive-III",
+      "status": "PASS",
+      "localOutcome": "UNAVAILABLE"
+    },
+    {
+      "name": "additive-IV",
+      "status": "PASS",
+      "localOutcome": "UNAVAILABLE"
+    },
+    {
+      "name": "additive-I0star",
+      "status": "PASS",
+      "localOutcome": "UNAVAILABLE"
+    },
+    {
+      "name": "additive-I1star",
+      "status": "PASS",
+      "localOutcome": "UNAVAILABLE"
+    },
+    {
+      "name": "additive-IVstar",
+      "status": "PASS",
+      "localOutcome": "UNAVAILABLE"
+    },
+    {
+      "name": "additive-IIIstar",
+      "status": "PASS",
+      "localOutcome": "UNAVAILABLE"
+    },
+    {
+      "name": "additive-IIstar",
+      "status": "PASS",
+      "localOutcome": "UNAVAILABLE"
+    },
+    {
+      "name": "wild2",
+      "status": "PASS",
+      "localOutcome": "UNAVAILABLE"
+    },
+    {
+      "name": "wild3",
+      "status": "PASS",
+      "localOutcome": "UNAVAILABLE"
+    },
+    {
+      "name": "small-multip",
+      "status": "PASS",
+      "localOutcome": "UNAVAILABLE"
+    },
+    {
+      "name": "rational-denominators",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "retained-quadratic-twist",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "backend-free-proof",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    },
+    {
+      "name": "incomplete-inventory",
+      "status": "PASS",
+      "localOutcome": "PASS"
+    }
+  ],
+  "methods": [
+    "Fraction polynomial substitution",
+    "independent discriminant polynomial",
+    "Legendre quadratic discriminant point count",
+    "singular tangent-cone splitting"
+  ],
+  "sageProducerSyntax": "PASS",
+  "sageLive": "UNAVAILABLE"
+}

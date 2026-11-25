@@ -1,0 +1,361 @@
+{
+  "schema": "BSD_MINIMAL_TATE_RECORD_V1",
+  "anchor": {
+    "inputModelId": "d15fc4845bfb9e0a13005c5ebe881bfd85506fe9467c2525497ce328382a565f",
+    "sourceHash": "e8168eb5c4148de6dd0a23c3dc425acafb5566c598a9f9588057584409cd1240",
+    "legacyContextId": null
+  },
+  "contextId": "257176e2064c6e6a9ea68f3e78fa1793339660c18c3f88015d93650adb364579",
+  "models": [
+    {
+      "modelId": "d15fc4845bfb9e0a13005c5ebe881bfd85506fe9467c2525497ce328382a565f",
+      "field": "Q",
+      "ainvs": [
+        "0",
+        "0",
+        "0",
+        "-16",
+        "16"
+      ],
+      "invariants": {
+        "b2": "0",
+        "b4": "-32",
+        "b6": "64",
+        "b8": "-256",
+        "c4": "768",
+        "c6": "-13824",
+        "discriminant": "151552",
+        "j": "110592/37"
+      }
+    },
+    {
+      "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+      "field": "Q",
+      "ainvs": [
+        "0",
+        "0",
+        "1",
+        "-1",
+        "0"
+      ],
+      "invariants": {
+        "b2": "0",
+        "b4": "-2",
+        "b6": "1",
+        "b8": "-1",
+        "c4": "48",
+        "c6": "-216",
+        "discriminant": "37",
+        "j": "110592/37"
+      }
+    }
+  ],
+  "twistLineage": [],
+  "transformations": [
+    {
+      "fromModelId": "d15fc4845bfb9e0a13005c5ebe881bfd85506fe9467c2525497ce328382a565f",
+      "toModelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+      "direction": "SOURCE_TO_TARGET",
+      "urst": {
+        "u": "2",
+        "r": "0",
+        "s": "0",
+        "t": "4"
+      },
+      "pullbackModelDifferentialFactor": "2",
+      "targetSelectedMultiplier": "1/2"
+    }
+  ],
+  "normalization": {
+    "modelDifferential": "dx/(2*y+a1*x+a3)",
+    "sourceSelectedMultiplier": "1",
+    "targetModelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+    "targetSelectedMultiplier": "1/2",
+    "composedPullbackFactor": "2",
+    "neron": null
+  },
+  "marking": {
+    "basisMatrix": [
+      [
+        "1",
+        "0"
+      ],
+      [
+        "0",
+        "1"
+      ]
+    ],
+    "convention": "TARGET_BASIS_EQUALS_U_TIMES_M_SOURCE_BASIS",
+    "mcombSourceHash": null,
+    "phaseConvention": "FULL_PERIOD_FRACTIONS_MOD_Z2"
+  },
+  "points": [
+    {
+      "modelId": "d15fc4845bfb9e0a13005c5ebe881bfd85506fe9467c2525497ce328382a565f",
+      "coordinates": {
+        "x": "0",
+        "y": "4"
+      },
+      "sourceHash": "5b2975e9a1d084f0caaa2f3a6db496d40fcdfc421485e94986158ab42aeca22f"
+    },
+    {
+      "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+      "coordinates": {
+        "x": "0",
+        "y": "0"
+      },
+      "sourceHash": "d51322d05b7d36b22f8b08a49f1b34bd681fb12fabf419127d74ef877542ca6c"
+    }
+  ],
+  "minimalModel": {
+    "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+    "scope": "GLOBAL_Q",
+    "prime": null,
+    "evidence": {
+      "status": "UNVERIFIED",
+      "method": "SOURCE_REPORTED_LMFDB_TRANSCRIPTION",
+      "software": "LMFDB page read 2026-09-07; no local Tate engine",
+      "sourceHash": "6fe19f555d76759e48a3768e8f8102a71b08d0b72208f1b1550c07c58ee316c7",
+      "assumptions": [],
+      "dependencies": [],
+      "certificate": null
+    }
+  },
+  "localData": [
+    {
+      "p": "2",
+      "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+      "minimalityEvidence": {
+        "status": "UNVERIFIED",
+        "method": "SOURCE_REPORTED_LMFDB_TRANSCRIPTION",
+        "software": "LMFDB page read 2026-09-07; no local Tate engine",
+        "sourceHash": "6fe19f555d76759e48a3768e8f8102a71b08d0b72208f1b1550c07c58ee316c7",
+        "assumptions": [],
+        "dependencies": [],
+        "certificate": null
+      },
+      "result": {
+        "reduction": "GOOD",
+        "kodaira": "I0",
+        "split": null,
+        "discriminantValuation": "0",
+        "conductorExponent": "0",
+        "wildConductorContribution": "0",
+        "tamagawaNumber": "1",
+        "eulerPolynomial": [
+          "1",
+          "2",
+          "2"
+        ]
+      },
+      "evidence": {
+        "status": "UNVERIFIED",
+        "method": "AUDIT_FIXTURE_PROPOSAL",
+        "software": "Audit fixture generator v0.1; exact finite counts replayed separately",
+        "sourceHash": "99228ede00a284ae654281663d3a9e024f2f80601e537c674353b1665110d1a3",
+        "assumptions": [],
+        "dependencies": [],
+        "certificate": null
+      }
+    },
+    {
+      "p": "3",
+      "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+      "minimalityEvidence": {
+        "status": "UNVERIFIED",
+        "method": "SOURCE_REPORTED_LMFDB_TRANSCRIPTION",
+        "software": "LMFDB page read 2026-09-07; no local Tate engine",
+        "sourceHash": "6fe19f555d76759e48a3768e8f8102a71b08d0b72208f1b1550c07c58ee316c7",
+        "assumptions": [],
+        "dependencies": [],
+        "certificate": null
+      },
+      "result": {
+        "reduction": "GOOD",
+        "kodaira": "I0",
+        "split": null,
+        "discriminantValuation": "0",
+        "conductorExponent": "0",
+        "wildConductorContribution": "0",
+        "tamagawaNumber": "1",
+        "eulerPolynomial": [
+          "1",
+          "3",
+          "3"
+        ]
+      },
+      "evidence": {
+        "status": "UNVERIFIED",
+        "method": "AUDIT_FIXTURE_PROPOSAL",
+        "software": "Audit fixture generator v0.1; exact finite counts replayed separately",
+        "sourceHash": "060ff8ef308ae9e5a2f90ae727a7da68bcc55e2594396f56107b1686197cec8c",
+        "assumptions": [],
+        "dependencies": [],
+        "certificate": null
+      }
+    },
+    {
+      "p": "37",
+      "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+      "minimalityEvidence": {
+        "status": "UNVERIFIED",
+        "method": "SOURCE_REPORTED_LMFDB_TRANSCRIPTION",
+        "software": "LMFDB page read 2026-09-07; no local Tate engine",
+        "sourceHash": "6fe19f555d76759e48a3768e8f8102a71b08d0b72208f1b1550c07c58ee316c7",
+        "assumptions": [],
+        "dependencies": [],
+        "certificate": null
+      },
+      "result": {
+        "reduction": "NONSPLIT_MULTIPLICATIVE",
+        "kodaira": "I1",
+        "split": false,
+        "discriminantValuation": "1",
+        "conductorExponent": "1",
+        "wildConductorContribution": "0",
+        "tamagawaNumber": "1",
+        "eulerPolynomial": [
+          "1",
+          "1"
+        ]
+      },
+      "evidence": {
+        "status": "UNVERIFIED",
+        "method": "SOURCE_REPORTED_LMFDB_TRANSCRIPTION",
+        "software": "LMFDB page read 2026-09-07; no local Tate engine",
+        "sourceHash": "c9671e1836c53277f7ce84cc92d791f65711653685b30bf1b00fd613a779477a",
+        "assumptions": [],
+        "dependencies": [],
+        "certificate": null
+      }
+    }
+  ],
+  "badPrimeInventory": {
+    "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+    "factors": [
+      {
+        "p": "37",
+        "exponent": "1"
+      }
+    ],
+    "remainingCofactor": "1",
+    "complete": true,
+    "evidence": {
+      "status": "UNVERIFIED",
+      "method": "SOURCE_REPORTED_LMFDB_TRANSCRIPTION",
+      "software": "LMFDB page read 2026-09-07; no local Tate engine",
+      "sourceHash": "b4de91f9a25d4312b609f4ee29d3d5d975087eb265c6e2c936479baa5917f3ad",
+      "assumptions": [],
+      "dependencies": [],
+      "certificate": null
+    }
+  },
+  "aggregate": {
+    "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+    "conductor": "37",
+    "tamagawaProduct": "1",
+    "localDataPrimes": [
+      "37"
+    ],
+    "evidence": {
+      "status": "UNVERIFIED",
+      "method": "SOURCE_REPORTED_LMFDB_TRANSCRIPTION",
+      "software": "LMFDB page read 2026-09-07; no local Tate engine",
+      "sourceHash": "05ce876a41ec5c16eb7f5e59b90e14d43e14a40fdb01012873d44b1aff57c8ec",
+      "assumptions": [],
+      "dependencies": [],
+      "certificate": null
+    }
+  },
+  "panelBindings": [
+    {
+      "panel": "MCOMB",
+      "contextId": "257176e2064c6e6a9ea68f3e78fa1793339660c18c3f88015d93650adb364579",
+      "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+      "normalizationId": "d9d6091f79f0fdefb18f6d283f4fb67d081fb35a8d251141ab7d8d0fe7288609",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "CARRIER_ADDITION",
+      "contextId": "257176e2064c6e6a9ea68f3e78fa1793339660c18c3f88015d93650adb364579",
+      "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+      "normalizationId": "d9d6091f79f0fdefb18f6d283f4fb67d081fb35a8d251141ab7d8d0fe7288609",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "ELLIPTIC_MODEL",
+      "contextId": "257176e2064c6e6a9ea68f3e78fa1793339660c18c3f88015d93650adb364579",
+      "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+      "normalizationId": "d9d6091f79f0fdefb18f6d283f4fb67d081fb35a8d251141ab7d8d0fe7288609",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "MARKED_CLIFFORD_LEAF",
+      "contextId": "257176e2064c6e6a9ea68f3e78fa1793339660c18c3f88015d93650adb364579",
+      "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+      "normalizationId": "d9d6091f79f0fdefb18f6d283f4fb67d081fb35a8d251141ab7d8d0fe7288609",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "EXACT_CURVE_BSD",
+      "contextId": "257176e2064c6e6a9ea68f3e78fa1793339660c18c3f88015d93650adb364579",
+      "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+      "normalizationId": "d9d6091f79f0fdefb18f6d283f4fb67d081fb35a8d251141ab7d8d0fe7288609",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    },
+    {
+      "panel": "PRIME_PRODUCT",
+      "contextId": "257176e2064c6e6a9ea68f3e78fa1793339660c18c3f88015d93650adb364579",
+      "modelId": "8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0",
+      "normalizationId": "d9d6091f79f0fdefb18f6d283f4fb67d081fb35a8d251141ab7d8d0fe7288609",
+      "markingId": "0869aebc1eb8493422afa4cb9578c0a3207ec05432676ed8249d948f79961bd0"
+    }
+  ],
+  "sources": [
+    {
+      "sha256": "e8168eb5c4148de6dd0a23c3dc425acafb5566c598a9f9588057584409cd1240",
+      "mediaType": "application/json",
+      "bytes": "{\"field\":\"Q\",\"ainvs\":[\"0\",\"0\",\"0\",\"-16\",\"16\"],\"selectedMultiplier\":\"1\"}"
+    },
+    {
+      "sha256": "5b2975e9a1d084f0caaa2f3a6db496d40fcdfc421485e94986158ab42aeca22f",
+      "mediaType": "application/json",
+      "bytes": "{\"modelId\":\"d15fc4845bfb9e0a13005c5ebe881bfd85506fe9467c2525497ce328382a565f\",\"coordinates\":{\"x\":\"0\",\"y\":\"4\"}}"
+    },
+    {
+      "sha256": "d51322d05b7d36b22f8b08a49f1b34bd681fb12fabf419127d74ef877542ca6c",
+      "mediaType": "application/json",
+      "bytes": "{\"modelId\":\"8878e6b37d7194cfbd48fee8e3407f3f02987b69f852200dea7271a59e0ca1f0\",\"coordinates\":{\"x\":\"0\",\"y\":\"0\"}}"
+    },
+    {
+      "sha256": "6fe19f555d76759e48a3768e8f8102a71b08d0b72208f1b1550c07c58ee316c7",
+      "mediaType": "application/json",
+      "bytes": "{\"source\":\"https://www.lmfdb.org/EllipticCurve/Q/37/a/1\",\"claim\":\"global minimal model\",\"ainvs\":[\"0\",\"0\",\"1\",\"-1\",\"0\"],\"discriminant\":\"37\"}"
+    },
+    {
+      "sha256": "99228ede00a284ae654281663d3a9e024f2f80601e537c674353b1665110d1a3",
+      "mediaType": "application/json",
+      "bytes": "{\"method\":\"Fixture enumeration on target model; independent replay required\",\"p\":\"2\",\"result\":{\"reduction\":\"GOOD\",\"kodaira\":\"I0\",\"split\":null,\"discriminantValuation\":\"0\",\"conductorExponent\":\"0\",\"wildConductorContribution\":\"0\",\"tamagawaNumber\":\"1\",\"eulerPolynomial\":[\"1\",\"2\",\"2\"]}}"
+    },
+    {
+      "sha256": "060ff8ef308ae9e5a2f90ae727a7da68bcc55e2594396f56107b1686197cec8c",
+      "mediaType": "application/json",
+      "bytes": "{\"method\":\"Fixture enumeration on target model; independent replay required\",\"p\":\"3\",\"result\":{\"reduction\":\"GOOD\",\"kodaira\":\"I0\",\"split\":null,\"discriminantValuation\":\"0\",\"conductorExponent\":\"0\",\"wildConductorContribution\":\"0\",\"tamagawaNumber\":\"1\",\"eulerPolynomial\":[\"1\",\"3\",\"3\"]}}"
+    },
+    {
+      "sha256": "c9671e1836c53277f7ce84cc92d791f65711653685b30bf1b00fd613a779477a",
+      "mediaType": "application/json",
+      "bytes": "{\"source\":\"https://www.lmfdb.org/EllipticCurve/Q/37/a/1\",\"p\":\"37\",\"result\":{\"reduction\":\"NONSPLIT_MULTIPLICATIVE\",\"kodaira\":\"I1\",\"split\":false,\"discriminantValuation\":\"1\",\"conductorExponent\":\"1\",\"wildConductorContribution\":\"0\",\"tamagawaNumber\":\"1\",\"eulerPolynomial\":[\"1\",\"1\"]}}"
+    },
+    {
+      "sha256": "b4de91f9a25d4312b609f4ee29d3d5d975087eb265c6e2c936479baa5917f3ad",
+      "mediaType": "application/json",
+      "bytes": "{\"source\":\"https://www.lmfdb.org/EllipticCurve/Q/37/a/1\",\"claim\":\"prime support of minimal discriminant\",\"discriminant\":\"37\"}"
+    },
+    {
+      "sha256": "05ce876a41ec5c16eb7f5e59b90e14d43e14a40fdb01012873d44b1aff57c8ec",
+      "mediaType": "application/json",
+      "bytes": "{\"source\":\"https://www.lmfdb.org/EllipticCurve/Q/37/a/1\",\"claim\":\"reported conductor and Tamagawa product\",\"conductor\":\"37\",\"tamagawaProduct\":\"1\"}"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const prev=path.join(__dirname,'../MCOMB_CARRIER_ADDITION_v0_1_20260907');
+const portable=s=>s.replace(/require\(['"]C:\/Users\/[^'"]+\/node_modules\/playwright['"]\)/g,"require('./runtime-browser.cjs')");
+const write=(n,s)=>fs.writeFileSync(path.join(__dirname,n),"require('./worker-guard.cjs')();\n"+portable(s));
+let math=fs.readFileSync(path.join(prev,'check-math.cjs'),'utf8');
+math=math.replace("require('./carrier-addition.js')","require('../MCOMB_CARRIER_ADDITION_v0_1_20260907/carrier-addition.js')").replace("require('./prime-product.js')","require('../MCOMB_CARRIER_ADDITION_v0_1_20260907/prime-product.js')");
+const old="assert.notEqual(q.numerical.pairComparison.status,'FAIL');assert.notEqual(q.numerical.doublingComparison.status,'FAIL');";
+assert(math.includes(old));math=math.replace(old,"assert.equal(q.numerical.pairComparison.status,'PASS');assert.equal(q.numerical.doublingComparison.status,'PASS');formulaTally.pairPASS++;formulaTally.doublingPASS++;");
+math=math.replace('let formulaCases=0;','const formulaTally={pairPASS:0,doublingPASS:0};let formulaCases=0;');
+math=math.replace('formulaCases,independentCountCases:','formulaCases,formulaTally,independentCountCases:');
+math=math.replace("checks.push({name:formulaCases+", "assert.equal(formulaCases,84);assert.deepEqual(formulaTally,{pairPASS:84,doublingPASS:84});checks.push({name:formulaCases+");
+write('check-math.worker.cjs',math);
+let browser=fs.readFileSync(path.join(prev,'check-browser.cjs'),'utf8').replaceAll('monodromy-30-carrier-addition.html','monodromy-30-1-reduction-audit.html');write('check-browser.worker.cjs',browser);
+let regression=fs.readFileSync(path.join(prev,'check-regression.cjs'),'utf8').replaceAll('monodromy-30-carrier-addition.html','monodromy-30-1-reduction-audit.html');regression=regression.replace("code=code.replaceAll(","code=code.replace(/require\\(['\"]C:\\/Users\\/[^'\"]+\\/node_modules\\/playwright['\"]\\)/g,\"require('./runtime-browser.cjs')\");\ncode=code.replaceAll(");write('check-regression.worker.cjs',regression);
+console.log('Pinned predecessor harness adaptations generated; explicit PASS required in every formula case.');

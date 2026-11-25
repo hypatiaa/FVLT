@@ -1,0 +1,493 @@
+{
+  "status": "PASS",
+  "standing": "BUILDER_DISTINCT_METHOD_NOT_COLD_AUDIT",
+  "total": 44,
+  "methods": [
+    "Fraction coefficient substitution and signed differential transport",
+    "Integral-lift congruences including t cross term",
+    "Exhaustive u=p minimality at 2 and 3",
+    "Independent short-invariant tame minimality and component splitting",
+    "Independent product and support reconciliation",
+    "Exact point membership"
+  ],
+  "checks": [
+    {
+      "name": "37-nonminimal identity",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "37"
+      ],
+      "knownConductor": "37",
+      "knownTamagawaProduct": "1"
+    },
+    {
+      "name": "37-nonminimal mixed-scale",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "37"
+      ],
+      "knownConductor": "37",
+      "knownTamagawaProduct": "1"
+    },
+    {
+      "name": "37-nonminimal rational-signed",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "37"
+      ],
+      "knownConductor": "37",
+      "knownTamagawaProduct": "1"
+    },
+    {
+      "name": "37-nonminimal scale49",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "37"
+      ],
+      "knownConductor": "37",
+      "knownTamagawaProduct": "1"
+    },
+    {
+      "name": "37-general identity",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "37"
+      ],
+      "knownConductor": "37",
+      "knownTamagawaProduct": "1"
+    },
+    {
+      "name": "37-general mixed-scale",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "37"
+      ],
+      "knownConductor": "37",
+      "knownTamagawaProduct": "1"
+    },
+    {
+      "name": "37-general rational-signed",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "37"
+      ],
+      "knownConductor": "37",
+      "knownTamagawaProduct": "1"
+    },
+    {
+      "name": "37-general scale49",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "37"
+      ],
+      "knownConductor": "37",
+      "knownTamagawaProduct": "1"
+    },
+    {
+      "name": "11-split-I5 identity",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "11"
+      ],
+      "knownConductor": "11",
+      "knownTamagawaProduct": "5"
+    },
+    {
+      "name": "11-split-I5 mixed-scale",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "11"
+      ],
+      "knownConductor": "11",
+      "knownTamagawaProduct": "5"
+    },
+    {
+      "name": "11-split-I5 rational-signed",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "11"
+      ],
+      "knownConductor": "11",
+      "knownTamagawaProduct": "5"
+    },
+    {
+      "name": "11-split-I5 scale49",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "11"
+      ],
+      "knownConductor": "11",
+      "knownTamagawaProduct": "5"
+    },
+    {
+      "name": "32-CM identity",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2"
+      ],
+      "knownConductor": "32",
+      "knownTamagawaProduct": "2"
+    },
+    {
+      "name": "32-CM mixed-scale",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2"
+      ],
+      "knownConductor": "32",
+      "knownTamagawaProduct": "2"
+    },
+    {
+      "name": "32-CM rational-signed",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2"
+      ],
+      "knownConductor": "32",
+      "knownTamagawaProduct": "2"
+    },
+    {
+      "name": "32-CM scale49",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2"
+      ],
+      "knownConductor": "32",
+      "knownTamagawaProduct": "2"
+    },
+    {
+      "name": "27-CM identity",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "3"
+      ],
+      "knownConductor": "27",
+      "knownTamagawaProduct": "3"
+    },
+    {
+      "name": "27-CM mixed-scale",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "3"
+      ],
+      "knownConductor": "27",
+      "knownTamagawaProduct": "3"
+    },
+    {
+      "name": "27-CM rational-signed",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "3"
+      ],
+      "knownConductor": "27",
+      "knownTamagawaProduct": "3"
+    },
+    {
+      "name": "27-CM scale49",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "3"
+      ],
+      "knownConductor": "27",
+      "knownTamagawaProduct": "3"
+    },
+    {
+      "name": "14-general identity",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "7"
+      ],
+      "knownConductor": "14",
+      "knownTamagawaProduct": "6"
+    },
+    {
+      "name": "14-general mixed-scale",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "7"
+      ],
+      "knownConductor": "14",
+      "knownTamagawaProduct": "6"
+    },
+    {
+      "name": "14-general rational-signed",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "7"
+      ],
+      "knownConductor": "14",
+      "knownTamagawaProduct": "6"
+    },
+    {
+      "name": "14-general scale49",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "7"
+      ],
+      "knownConductor": "14",
+      "knownTamagawaProduct": "6"
+    },
+    {
+      "name": "cubic17 identity",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "3",
+        "17"
+      ],
+      "knownConductor": "10404",
+      "knownTamagawaProduct": "6"
+    },
+    {
+      "name": "cubic17 mixed-scale",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "3",
+        "17"
+      ],
+      "knownConductor": "10404",
+      "knownTamagawaProduct": "6"
+    },
+    {
+      "name": "cubic17 rational-signed",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "3",
+        "17"
+      ],
+      "knownConductor": "10404",
+      "knownTamagawaProduct": "6"
+    },
+    {
+      "name": "cubic17 scale49",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "3",
+        "17"
+      ],
+      "knownConductor": "10404",
+      "knownTamagawaProduct": "6"
+    },
+    {
+      "name": "tame-star identity",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "3",
+        "5"
+      ],
+      "knownConductor": "5400",
+      "knownTamagawaProduct": "8"
+    },
+    {
+      "name": "tame-star mixed-scale",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "3",
+        "5"
+      ],
+      "knownConductor": "5400",
+      "knownTamagawaProduct": "8"
+    },
+    {
+      "name": "tame-star rational-signed",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "3",
+        "5"
+      ],
+      "knownConductor": "5400",
+      "knownTamagawaProduct": "8"
+    },
+    {
+      "name": "tame-star scale49",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "3",
+        "5"
+      ],
+      "knownConductor": "5400",
+      "knownTamagawaProduct": "8"
+    },
+    {
+      "name": "jzero7 identity",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "3",
+        "7"
+      ],
+      "knownConductor": "21168",
+      "knownTamagawaProduct": "1"
+    },
+    {
+      "name": "jzero7 mixed-scale",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "3",
+        "7"
+      ],
+      "knownConductor": "21168",
+      "knownTamagawaProduct": "1"
+    },
+    {
+      "name": "jzero7 rational-signed",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "3",
+        "7"
+      ],
+      "knownConductor": "21168",
+      "knownTamagawaProduct": "1"
+    },
+    {
+      "name": "jzero7 scale49",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "3",
+        "7"
+      ],
+      "knownConductor": "21168",
+      "knownTamagawaProduct": "1"
+    },
+    {
+      "name": "jzero343 identity",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "3",
+        "7"
+      ],
+      "knownConductor": "7056",
+      "knownTamagawaProduct": "8"
+    },
+    {
+      "name": "jzero343 mixed-scale",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "3",
+        "7"
+      ],
+      "knownConductor": "7056",
+      "knownTamagawaProduct": "8"
+    },
+    {
+      "name": "jzero343 rational-signed",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "3",
+        "7"
+      ],
+      "knownConductor": "7056",
+      "knownTamagawaProduct": "8"
+    },
+    {
+      "name": "jzero343 scale49",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "3",
+        "7"
+      ],
+      "knownConductor": "7056",
+      "knownTamagawaProduct": "8"
+    },
+    {
+      "name": "signed-ledger-marking",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "37"
+      ],
+      "knownConductor": "37",
+      "knownTamagawaProduct": "1"
+    },
+    {
+      "name": "twist-lineage",
+      "status": "PASS",
+      "assessment": "PASS",
+      "knownPrimes": [
+        "2",
+        "5"
+      ],
+      "knownConductor": "800",
+      "knownTamagawaProduct": "8"
+    },
+    {
+      "name": "unresolved-bad",
+      "status": "PASS",
+      "assessment": "UNAVAILABLE",
+      "knownPrimes": [
+        "2",
+        "3"
+      ],
+      "knownConductor": "108",
+      "knownTamagawaProduct": "1"
+    },
+    {
+      "name": "unresolved-obscured-good",
+      "status": "PASS",
+      "assessment": "UNAVAILABLE",
+      "knownPrimes": [
+        "37"
+      ],
+      "knownConductor": "37",
+      "knownTamagawaProduct": "1"
+    }
+  ]
+}

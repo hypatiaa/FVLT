@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:robin:bsd:tate-t1-certificate:1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "packetHash",
+    "parentSourceHash",
+    "contextId",
+    "sourceModelId",
+    "modelId",
+    "normalizationId",
+    "markingId",
+    "p",
+    "traceHash",
+    "verifier",
+    "status",
+    "scope",
+    "method",
+    "result",
+    "assumptions",
+    "globalMinimality",
+    "neronDifferential",
+    "bsdPromotion"
+  ],
+  "properties": {
+    "schema": {
+      "const": "BSD_TATE_T1_LOCAL_CERTIFICATE_V1"
+    },
+    "packetHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "parentSourceHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "contextId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "sourceModelId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "modelId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "normalizationId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "markingId": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "p": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)$",
+      "maxLength": 96
+    },
+    "traceHash": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "verifier": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "name",
+        "version",
+        "sha256",
+        "arithmeticSha256"
+      ],
+      "properties": {
+        "name": {
+          "const": "BSD_TATE_T1_REPLAY"
+        },
+        "version": {
+          "const": "0.1.0"
+        },
+        "sha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        },
+        "arithmeticSha256": {
+          "type": "string",
+          "pattern": "^[a-f0-9]{64}$"
+        }
+      }
+    },
+    "status": {
+      "const": "CERTIFIED"
+    },
+    "scope": {
+      "const": "LOCAL_MODEL_AT_ONE_PRIME_ONLY"
+    },
+    "method": {
+      "enum": [
+        "GOOD_UNIT_DISCRIMINANT",
+        "MULTIPLICATIVE_P_GE_5"
+      ]
+    },
+    "result": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reduction",
+        "kodaira",
+        "split",
+        "discriminantValuation",
+        "conductorExponent",
+        "wildConductorContribution",
+        "tamagawaNumber",
+        "ap",
+        "eulerPolynomial",
+        "localMinimality"
+      ],
+      "properties": {
+        "reduction": {
+          "enum": [
+            "GOOD",
+            "SPLIT_MULTIPLICATIVE",
+            "NONSPLIT_MULTIPLICATIVE"
+          ]
+        },
+        "kodaira": {
+          "type": "string",
+          "pattern": "^I(0|[1-9][0-9]*)$"
+        },
+        "split": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "boolean"
+            }
+          ]
+        },
+        "discriminantValuation": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "maxLength": 96
+        },
+        "conductorExponent": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "maxLength": 96
+        },
+        "wildConductorContribution": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "maxLength": 96
+        },
+        "tamagawaNumber": {
+          "type": "string",
+          "pattern": "^(0|[1-9][0-9]*)$",
+          "maxLength": 96
+        },
+        "ap": {
+          "type": "string",
+          "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+          "maxLength": 194
+        },
+        "eulerPolynomial": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^(0|-?[1-9][0-9]*)(/[1-9][0-9]*)?$",
+            "maxLength": 194
+          },
+          "minItems": 2,
+          "maxItems": 3
+        },
+        "localMinimality": {
+          "enum": [
+            "PROVED_BY_UNIT_DISCRIMINANT",
+            "PROVED_BY_C4_UNIT"
+          ]
+        }
+      }
+    },
+    "assumptions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 200000
+      },
+      "minItems": 0,
+      "maxItems": 0
+    },
+    "globalMinimality": {
+      "const": "NOT_ASSESSED"
+    },
+    "neronDifferential": {
+      "const": "NOT_ASSESSED"
+    },
+    "bsdPromotion": {
+      "const": false
+    }
+  }
+}
