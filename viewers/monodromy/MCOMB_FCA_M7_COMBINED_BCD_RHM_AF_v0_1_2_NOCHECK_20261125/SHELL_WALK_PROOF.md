@@ -1,0 +1,17 @@
+# Exact shell-walk claims
+
+Let B be the selected positive integer base, N=B+1-phi3, P=t2*s, A=t1*s. The pinned viewer has phase z_c/r=exp(i*pi*(A+c*P/N)) for N>0. Rational s,t1,t2 are parsed into reduced BigInt numerator/denominator pairs. Arithmetic uses no floating approximation.
+
+For nonzero integral P, the fixed atom is Div(abs(P)). At a positive integral shell N, N divides abs(P) exactly when K=P/N is integral. This is the divisor encounter predicate. Nonintegral P has no integer atom. P=0 gives universal alignment and no Div(0). Fractional phi3 receives BETWEEN_SHELLS and no divisor encounter, even though the fixed atom remains available. N=0 is outside positive shells and never divides anything. With no exact spin register, there is no atom claim.
+
+At an encounter, cK is integral for every integer tooth label, so all teeth lie on the carrier line, angle A*pi modulo pi. This does not assert all teeth coincide at the carrier. Even K puts every tooth at the carrier; odd K puts even-c teeth at the carrier and odd-c teeth opposite. The pinned even comb has odd labels only, hence all its teeth coincide opposite the carrier when K is odd. An odd comb of size at least 3 contains both parities and splits. m=1 has only c=0.
+
+The carrier line is the real axis exactly when A is integral. For nonzero amplitude, tooth c then has side determined by parity A+cK+epsilon, where epsilon=1 for negative amplitude and 0 for positive amplitude. The implementation computes each rational phase separately, reduces its turns modulo1, and tests its own axis condition. It also reports these phases outside encounters without promoting them into a divisor encounter. Zero amplitude has no physical phase or axis evidence; the rational divisor predicate remains a separate arithmetic fact.
+
+For base B, the positive shells reached by the walk are1 through B+1. A divisor d is reachable exactly when d<=B+1. Base changes affect reachability, not P or the atom. Exponent addresses for a hit are obtained by exact prime division of N, not by a planar hit test. Coincident planar positions retain distinct addresses. The unchanged atom core supplies step orders, cosets, contributions and symbolic zeros independently of the shell walk.
+
+Atom construction uses an internal q=1 source solely to assemble the existing shared-offset geometry at the actual comb size. Its character-order outputs are discarded. The displayed host character-order view is derived separately from the actual exact current source; it is unavailable between shells, at N=0, with unavailable exact spin, or at zero amplitude. No synthetic q is displayed as host data. Step-comb spectra of the divisor atom continue to use that atom's own order, not the host shell.
+
+The live shell position is an integer register when phi3 is a safe integer. Between-shell decimal fields are explicitly display-only Float64 values, checked for consistency with B, never converted into rational evidence. Planar geometry retains v0.2's numerical label and replay tolerance; no near-zero or proximity is promoted into a symbolic equality.
+
+Replay strictly parses duplicate-free JSON, checks pins and digest, validates the saved context and observed-encounter log, recomputes all exact claims, and compares numerical observations at the inherited 64-epsilon tolerance before returning fresh values. The digest detects alteration, not historical authenticity. Replayed visit contexts prove their own arithmetic consistency, not that a person actually visited them. There are no point/rank/BSD promotions.

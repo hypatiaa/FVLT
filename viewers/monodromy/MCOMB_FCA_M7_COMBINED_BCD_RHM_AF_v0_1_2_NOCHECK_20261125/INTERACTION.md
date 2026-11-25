@@ -1,0 +1,7 @@
+# Monodromy.31.6 / V1 v0.7 plot interaction
+
+Additive display interaction on carrier cubic and marked torus, real cubic and complex-x paths, marked-period chart, finite-prime product, Cayley kernel, linked marked phase and family preview. Drag to pan, wheel or pinch to zoom about the pointer, arrow keys to pan, +/- to zoom, Home or Reset view to reset. Click a point to pin its details. Next/previous point controls provide keyboard access and retain coincident records. Escape or Close dismisses details. Camera state is local to a plot and resets when its curve/source/marking changes; viewport changes never mutate an exact source or evidence record.
+
+Exact phases, rational membership, finite counts/products and numerical uniformization are separately labelled. Selecting any point is inspection only. Real loci are resampled numerically in the visible camera window, within a finite numerical range. Complex paths remain the inherited finite samples. The kernel remains the declared 1024-interval display and finite samples. Zoom does not turn interpolation into evidence. Rhombic period placement remains unavailable.
+
+V1 v0.6 is preserved byte-for-byte. All arithmetic code, T4 gate, server, spectral code and existing panels are unchanged. A single new runtime module attaches to their public records and SVGs inside the additive V1 block. The LF1 bytes still reconstruct by removing that block. Scratch verification remains the default; receipts live outside assessed inputs. This is builder validation, not a cold audit, seating or lock.

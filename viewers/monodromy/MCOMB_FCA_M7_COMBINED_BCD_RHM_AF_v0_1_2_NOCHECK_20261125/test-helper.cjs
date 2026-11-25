@@ -1,0 +1,5 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),crypto=require('node:crypto');
+function generator(){const c=vm.createContext({crypto:crypto.webcrypto,TextEncoder,TextDecoder,structuredClone,console,self:{}});vm.runInContext(fs.readFileSync(path.join(__dirname,'generator-worker.js.bundle'),'utf8'),c);return {V:vm.runInContext('V1',c),C:vm.runInContext('McombCayleyCoreV1',c),context:c};}
+async function input(V,C,a=['0','0','0','-1','0'],c='1',points=[]){const s={N:'4',m:'7',t1:'1',t2:'1',s:'1/3',amplitudeSign:1,offsets:['-3','-2','-1','0','1','2','3']},capture={source:s,selection:{lane:'live-register',N:s.N,c:'-3',s:s.s},visibleOffsets:s.offsets},binding={route:'DIRECT_HOST_CAPTURE',origin:'EXACT_LIVE_REGISTER',capturedN:s.N,capturedS:s.s,sourceRevision:'1'},z=await V.custom(a,c);return {schema:'BSD_LINKED_VIEW_REQUEST_V1',curveBytes:z.curveBytes,linkedBytes:null,cayleyBytes:JSON.stringify(await C.packet(capture,binding)),exactRecordBytes:z.exactRecordBytes,basisMatrix:[['1','0'],['0','1']],points,cutoff:'43',held:false};}
+module.exports={generator,input,hash:b=>crypto.createHash('sha256').update(b).digest('hex')};

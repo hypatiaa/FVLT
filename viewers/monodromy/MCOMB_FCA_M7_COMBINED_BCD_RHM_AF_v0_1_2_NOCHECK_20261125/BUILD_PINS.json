@@ -1,0 +1,714 @@
+{
+  "schema": "BSD_LINKED_VIEW_BUILD_V1",
+  "baseline": {
+    "path": "MCOMB_CAYLEY_AUDIT_20260921/mcomb-cayley-m3-camera2-lf1/monodromy-30-1-cayley-preview.html",
+    "sha256": "ebaaa76592733400cf8ccaa85eb1ad0ce73c1db6d7c56688241fcd91c9323285"
+  },
+  "modules": {
+    "/BSD_MINIMAL_TATE_SCHEMA_v0_3_20260907/model-replay.cjs": "c7b102ef7ff7b9044e6099eb777873eaf7a06f248d311676c789dd5d2fa11877",
+    "/BSD_TATE_T1_v0_1_20260907/t1.cjs": "625c7a094f4c8d3330ba6b2d021bb07513090831e3176e17c9e9deb4c8ee674d",
+    "/BSD_TATE_T2_v0_1_20260907/finite-field.cjs": "c9d22e7229460cd9c7ce2891f7911dd8f9f49fac5cd4b1bc186e5eca1bc0bd07",
+    "/BSD_TATE_T2_v0_1_20260907/tame-tate.cjs": "9952c76d705916f2474b9b237f0b0784f19d0dd0c48b0d96910e645400934b4c",
+    "/BSD_TATE_T2_v0_1_20260907/t2.cjs": "a75502441449cd99a9836f4307595ff2ec0949f35d93f919bf102fe7e128362f",
+    "/BSD_TATE_T3_v0_1_20260907/small-prime-tate.cjs": "d42c27aace381217f74d8db4e0b7841d11a5da64fdca7ef552bcfea21b8bf05d",
+    "/BSD_TATE_T3_v0_1_20260907/t3.cjs": "3fd7c6e1a3acff85d7b2df9a45664ad6d10055b7ceec995ffc33fc28648cb386",
+    "/BSD_TATE_T4_v0_1_20260923/global-reduction.cjs": "0406bcaf3cef905fb504553a63d6ccc9570507e8bcffadfdf9387d6e53f7301a",
+    "/v27_elliptic_bridge.js": "0b59d55ba84f337458b45726e600b582fcb741ce0076811dadb6d9edda1c995c",
+    "/BSD_CURVE_RECORD_v0_1_20260907/bsd-record.js": "29f0cf6bff5afc07cdf590cb2b24eaef8001051ee4d090ed9e4e7b7098bd77ab",
+    "/MCOMB_ELLIPTIC_BSD_LINK_v0_1_20260907/elliptic-transport.js": "7e14f84639c8ac4db379fc8e83ed360d9da62da160282923cbdbc2aac5052852",
+    "/pt1/pt1-group.cjs": "2c603733650d13b12f8ac9e5647b68d5b99fd45bb3def348d49f7156c200408a",
+    "/pt1/pt1-replay.cjs": "7c20fe3cfe5d577fb2d4cdddba8ae3572f294bf46cde99afd40ef7009fcd19a7",
+    "/pt1/pt1-producer.cjs": "96da078e2f8dee53cc23bc08b24fa9d9806b71e349f809c0b5f6ccf2b9c878e7",
+    "/pt1/strict-json.js": "bed7a30a3ead49a3f06fc1c54640f8baed81027aa66638e2b04db57513c04249",
+    "/pt1/u1-interval.cjs": "4f188812dbd9ffbb0156a976c0cbf90b601c3a2f82a4beea2253730f613a9e56",
+    "/pt1/u1-engine.cjs": "f691ff1eafa26c6347bf4c47ddc6276ecae0f9280c3952a012d9f2dbecfa91d2",
+    "/pt1/u1-replay.cjs": "ab153a5ee97987a129743d3ee0f48b5ceeba44dac8496e998ce3a75ff17090d5",
+    "/pt1/p1-engine.cjs": "297ce63b8a4282ff11e627720f3e063cc499c2ec1d5e0d713c3717aaf70c9073",
+    "/pt1/p1-replay.cjs": "735aafe18436e5311f6f420e0942e98e6fd5881414c6b86e20486676be4c9339"
+  },
+  "t4Verifier": {
+    "name": "BSD_GLOBAL_REDUCTION_REPLAY",
+    "version": "0.1.0",
+    "sha256": "0406bcaf3cef905fb504553a63d6ccc9570507e8bcffadfdf9387d6e53f7301a",
+    "transportSha256": "625c7a094f4c8d3330ba6b2d021bb07513090831e3176e17c9e9deb4c8ee674d",
+    "arithmeticSha256": "c7b102ef7ff7b9044e6099eb777873eaf7a06f248d311676c789dd5d2fa11877",
+    "tame": {
+      "name": "BSD_TAME_TATE_REPLAY",
+      "version": "0.1.0",
+      "sha256": "a75502441449cd99a9836f4307595ff2ec0949f35d93f919bf102fe7e128362f",
+      "tateSha256": "9952c76d705916f2474b9b237f0b0784f19d0dd0c48b0d96910e645400934b4c",
+      "finiteFieldSha256": "c9d22e7229460cd9c7ce2891f7911dd8f9f49fac5cd4b1bc186e5eca1bc0bd07",
+      "transportSha256": "625c7a094f4c8d3330ba6b2d021bb07513090831e3176e17c9e9deb4c8ee674d",
+      "arithmeticSha256": "c7b102ef7ff7b9044e6099eb777873eaf7a06f248d311676c789dd5d2fa11877"
+    },
+    "smallPrime": {
+      "name": "BSD_SMALL_PRIME_TATE_REPLAY",
+      "version": "0.1.0",
+      "sha256": "3fd7c6e1a3acff85d7b2df9a45664ad6d10055b7ceec995ffc33fc28648cb386",
+      "tateSha256": "d42c27aace381217f74d8db4e0b7841d11a5da64fdca7ef552bcfea21b8bf05d",
+      "finiteFieldSha256": "c9d22e7229460cd9c7ce2891f7911dd8f9f49fac5cd4b1bc186e5eca1bc0bd07",
+      "transportSha256": "625c7a094f4c8d3330ba6b2d021bb07513090831e3176e17c9e9deb4c8ee674d",
+      "arithmeticSha256": "c7b102ef7ff7b9044e6099eb777873eaf7a06f248d311676c789dd5d2fa11877"
+    }
+  },
+  "t4Manifest": "269a052593babfef65a7fe4529f9db42dae48176bf985e7796b63022337d9f39",
+  "workerSha256": "888160fb86acd7c1f9054e85ba0167f18782ae3fea4196ad121399b93e9f5c4b",
+  "publicGate": {
+    "assess.cjs": "559b05a2ee5f0fbf759829b4e42b3a1e563f6d538b52ba06f29ab63d32f4bcb0",
+    "validate.py": "72fbad78598a6e94a77adfbdcb9c679348f1a037ba0d0058239fce1e7382150c",
+    "t4-packet.schema.json": "c9cb4ed64101bfcd38c63dd5491306a5f6d9a5cb93687d5ed8b93ef5439569ec",
+    "t4-certificate.schema.json": "5bc370d50d052fcb68b5e79b2aee079603f9b3d49ba8370cf76866972906aecc"
+  },
+  "localBridge": {
+    "server.cjs": "bcf9215f8ccc05797ffb31903ade2a15b7271f8b3816e456e239403324b640c3",
+    "assess-stdin.cjs": "68159c81abd11d79897afbdc08916f4a2cce12147409c2b4a310a7c61f4448ab"
+  },
+  "registerIntegration": {
+    "version": "P1_0.1.0",
+    "predecessorManifest": "f47d92a6def87dae3acf8f4a2d9b332971a237fec89431d64bacad6d87f0b4cb",
+    "modelSha256": "28995cdd541332f3167ad343976fbaa9c3482fba33d7b10bb761b71953a128b4",
+    "uiSha256": "7864447d98a9d3313d6c9cf33935bd3982b6814873f2800770cd2665a94bd8b1",
+    "provenanceSha256": "905b310d7033838ffee998b6d1db9f76b1352a8931ce17602b33dd2249556fa4",
+    "clientSha256": "e49314739e4c2ace0b51ef531d3ee4e5635f6ae56e7ff1349d86e32db2c11aa9"
+  },
+  "familyDisplay": {
+    "version": "1.0.0",
+    "modelSha256": "628d222f65a6a79202fd84109ab14ef61a92d093f3630037165ebaddfc9bed17",
+    "uiSha256": "7686276f44b5ababae7afccc1d3e7c001c69b06ae4ae1d6fb13cd11ed3f310c9"
+  },
+  "plotInteraction": {
+    "version": "1.0.1",
+    "sourceSha256": "dccd8123840dbdcb79ecdfe0a43059e6cd78997bbcd180768369461147eae784"
+  },
+  "pt1Integration": {
+    "producerSha256": "96da078e2f8dee53cc23bc08b24fa9d9806b71e349f809c0b5f6ccf2b9c878e7",
+    "consumerSha256": "5cbf479b40cd6562cf486b805b7b54f54b5c236e84fe60d67225b3912bb74d9a"
+  },
+  "pt1Verifier": {
+    "pt1-group.cjs": "2c603733650d13b12f8ac9e5647b68d5b99fd45bb3def348d49f7156c200408a",
+    "pt1-replay.cjs": "7c20fe3cfe5d577fb2d4cdddba8ae3572f294bf46cde99afd40ef7009fcd19a7",
+    "strict-json.js": "bed7a30a3ead49a3f06fc1c54640f8baed81027aa66638e2b04db57513c04249",
+    "pt1-browser-api.js": "36dae8d6ce7dcca76bc463213c933a5f00487c074640863d39f9138e969b4c9a",
+    "model-replay.cjs": "c7b102ef7ff7b9044e6099eb777873eaf7a06f248d311676c789dd5d2fa11877"
+  },
+  "u1Verifier": {
+    "u1-interval.cjs": "4f188812dbd9ffbb0156a976c0cbf90b601c3a2f82a4beea2253730f613a9e56",
+    "u1-engine.cjs": "f691ff1eafa26c6347bf4c47ddc6276ecae0f9280c3952a012d9f2dbecfa91d2",
+    "u1-replay.cjs": "ab153a5ee97987a129743d3ee0f48b5ceeba44dac8496e998ce3a75ff17090d5",
+    "strict-json.js": "bed7a30a3ead49a3f06fc1c54640f8baed81027aa66638e2b04db57513c04249",
+    "u1-linked.js": "85a65272d5c102758126bfd71d2357a0407dd80742efb2f807e4d78f7987c5bc"
+  },
+  "p1Verifier": {
+    "p1-engine.cjs": "297ce63b8a4282ff11e627720f3e063cc499c2ec1d5e0d713c3717aaf70c9073",
+    "p1-replay.cjs": "735aafe18436e5311f6f420e0942e98e6fd5881414c6b86e20486676be4c9339",
+    "p1-linked.js": "23ec0188ed959416ad47cd46835f00cc663c15f80311e5dc2fb9802e319cd13c"
+  },
+  "p1ReferenceSha256": "e7d2be2298399bd4cc63473e79cc35d53a50e573aef3b2a30e6af9dec9f833aa",
+  "m4": {
+    "source": "3d65e14af4b0887b543e48d986ccc6367b0129afc150e0f9a254bd407b3ab106",
+    "function": "035955dfe1d51c810f136dc05969efb8cc8af1f62b19ae8c0d01cf32b37eb804",
+    "core": "c4c1af8bbbcc676780a50f591e120c26d67052133720f8eea014e8013bb05ac0",
+    "packet": "fd407968fb9156ca9f5020ac3b10404f7cfd816127b9b7d4b557145619e249ea",
+    "ui": "9cfcb7d39b18a75b4a6670a4fb527d7a9f3e94a7db6263e6a58a3ed787651a93",
+    "predecessorManifest": "5975372945e3c4a61ef1e27dd983b4f5ee3eab57b23e8bbd513227c10feaa8cf",
+    "repairPredecessorManifest": "bdf6df2252ef3c806edfabc3f1ad71d247c25faa7bda31468a6ca029c2e05722"
+  },
+  "walk": {
+    "version": "M4_WALK_0.3.0",
+    "core": "562132868fbb3c1287cc456969afdadaec43850181d75cdd450d62370bd7849b",
+    "host": "84ea3535d507e2d1149ab03afcae79ad218d36def85fdfc230f414785c4d9760",
+    "predecessorManifest": "3f328133f351849a2accae002b7ac8b28ef8e8def8beaff88baa57dee27e2ab5"
+  },
+  "m5": {
+    "version": "M5_0.1.0",
+    "core": "dcf3c9dbd6eea940c731d41356e4f94b5bd37492d9ae9aa51b8e36c9d0b423b9",
+    "worker": "fc34cfb968ece14a6f3ca4a6f2e47bb71ab6756623ef7827231ca8b82e0a7c0a",
+    "packet": "cac3801fe36a620563d5573302d7c0606403c360c090cecc1eb65d138daba232",
+    "ui": "a89978f75d86e3fdefe86edacf272d8d2ad32e29052700869a60d6aabb3456a2",
+    "predecessorManifest": "1dbc0066db119ac5505e50ec1017c41788a201ef35820de541a4a2ba38a72ad8"
+  },
+  "m7": {
+    "version": "M7_0.1.0",
+    "modules": {
+      "fca-core.js": "bdea703ed777655b230cfcea83e9258e6d3316e5084f75fa9b20b8c41a19fdaf",
+      "fca-packet.js": "43db5287e1bfbbdacc5c457a6caf9d55769dc78a6f7dcb79864a70a41dcb9d1a",
+      "fca-ui.js": "3233ec7a34db5f8c6a28139c43547275b3045b965e391d81777a6c65e80e3d96",
+      "fca-worker.js": "a97384289ab4bdd7c655a1a2741f86d02508e816259e31e520b9bac3c40f1bea"
+    },
+    "predecessorManifest": "71181e3f9a1076fd934d2c75de684dd507f198b754eb164108ffa74250e76d84"
+  },
+  "m6": {
+    "version": "M6_0.1.0",
+    "modules": {
+      "history-core.js": "816cbada422ec8c258e260ce041419d222c74b9cae5b94bf2fba2b37dd0e36e1",
+      "history-packet.js": "2834ff4df955fe84f53688f580969e028fcc868c22b0859fe80b4339ad189a27",
+      "history-ui.js": "05bd9efa14f9b46a6d04189429984c776bb19c8594731df001cfde8a7dff42c3",
+      "history-worker.js": "e25975242d44e30f95cc0e8e2bb7b130835fd2896f5a31a8edf2a729840005b9"
+    },
+    "predecessorManifest": "df92b0c31b3e8867e7d0eb03a66bcf2cad8ba8b7422bfbd32a8cac5d0cd164be"
+  },
+  "viewerSha256": "b4cee4e30a753eda7c62f72e8043d6d5c9b3f69c3c2e1dd0da9a3f9ab5b8e248",
+  "cameraPreview": {
+    "sourceManifest": "0ab6d7410277ff0856f7d6d55829a1b4a1c3453738cf29288e0aa664cc4dae79",
+    "source": "8a72354f8851af5296b036a9bb2f4059e75356ed77c5d09817bcc118420cebe4",
+    "status": "UNSEALED_DISPLAY_PREVIEW",
+    "fca3d": "e491ab2b09d5f7a9b0388b39dac4286aa869353d14d5b0267b13bd619b1f52f5",
+    "crystalPlacement": "84d11f2799e7089ff4d467aa8af8bf7ba750c054c0fb8bbaa1175ba1ded57bbe"
+  },
+  "contactSweep": {
+    "version": "0.1.1",
+    "status": "UNSEALED_CANDIDATE",
+    "snapshotSchema": "0.2.0",
+    "hostBuild": "MCOMB_FCA_M7_CONTACT_SWEEP_REPAIR_20260926",
+    "hostSha256": "b47765563f28b7190f73e68e2079514c233d58b58b167fe7fc7818c38fd973ca",
+    "identity": {
+      "schema": "MCOMB_CONTACT_SWEEP_HOST_IDENTITY_V1",
+      "build": "MCOMB_FCA_M7_CONTACT_SWEEP_REPAIR_20260926",
+      "contactVersion": "0.1.1",
+      "snapshotSchema": "0.2.0",
+      "cameraManifestSha256": "55280b7d59e77ef46fb3be42d7c30e5de5d08ac226cbbe73ffce46102c90a26d",
+      "cameraViewerSha256": "281d261a4cc62590b020b0a6cbe66fea97d1061a5bb0e1b7e25b4ab6756c33f6",
+      "strictJsonSha256": "bed7a30a3ead49a3f06fc1c54640f8baed81027aa66638e2b04db57513c04249",
+      "schema03Sha256": "fdad995684b1f89cd2561c742f71b3380b00e0b307eb01efaf6e86a0fc2abd9f",
+      "modules": {
+        "contact-core.js": "61c0b03254b4c2711d22924797fee84a4da3550b416d74d3976b63d3d30be8a2",
+        "contact-validate.js": "fcd19b65d58b906fc642e5198a97166427103cdce2d3cf42f6ad2dbbc98db06f",
+        "contact-worker.js": "8200681ce0763930257bf5c2d7ee8c15c57e1c19103f896da23a11927b5a3f25",
+        "contact-ui.js": "0a426274cf3ade842e42ee0f85fd73cc820068e9b0e611e93282be92afc8af23"
+      }
+    },
+    "workerSourceSha256": "60c021c359ebf173839a2a79e301a0ea55db3797b045b28b0697f4f2941a2744",
+    "predecessorViewerSha256": "281d261a4cc62590b020b0a6cbe66fea97d1061a5bb0e1b7e25b4ab6756c33f6",
+    "schemaPackageSha256Sums": "2e2f1dabde149d65fff656f336651ac9691dcbb5f2f7adde4424882ba58f10af",
+    "cameraManifestEntries": 171,
+    "schemaPackageEntries": 18,
+    "auditedPredecessor": {
+      "package": "MCOMB_FCA_M7_CONTACT_SWEEP_v0_1_20260926",
+      "monodromy-31-linked-reduction.html": "2cd7461d9a6ffb15d22e7c40d3d3964e6a98cf38459d65cf9075339b07c8481a",
+      "BUILD_PINS.json": "23a400781face26ddc423d5e0dd76ad60a7ead0b884c67e2ec3c96530592dc9f",
+      "auditReportSha256": "4708c820cdc8f0a6968712c7a974b846a6450d5c1e37bda8a58c22daee92110c",
+      "standing": "HOLD F1 (P1) + O1; repaired here, re-audit pending"
+    }
+  },
+  "baselLink": {
+    "version": "0.1.2",
+    "status": "UNSEALED_PROTOTYPE_LINK",
+    "hostBuild": "MCOMB_FCA_M7_BASEL_LINK_v0_1_2_20260928",
+    "hostSha256": "96804b488c1df40a91d9befdd04372e3c1024a51586eba1c322160b3c4779410",
+    "identity": {
+      "schema": "MCOMB_BASEL_LINK_HOST_IDENTITY_V1",
+      "build": "MCOMB_FCA_M7_BASEL_LINK_v0_1_2_20260928",
+      "linkVersion": "0.1.2",
+      "predecessorViewerSha256": "7e14d3756872f336195fea0b7ed4c88af8cb167ff1b64b82f99d6d7b0bc2a9e5",
+      "predecessorPinsSha256": "a6386022d44917ed06e28fa87beab52b9ac925698c529aae6fe5aad4b5d4a77a",
+      "schemaBaselineManifestSha256": "6aea9e88c6bce4a2d6a6b123bab73490955ee2ba44b0dc7db077733b400df4a2",
+      "prototypeManifestSha256": "cfb152ac532a10778159c1757a076707537721a0dddf4957a2663a02567836eb",
+      "modules": {
+        "basel-core.js": "37f7b376b4b54debf5f08aefced66f06b8c6c5c97c4e76fa748f70197ac6dde6",
+        "basel-link-ui.js": "c01b8f06202fb4fabc8542dd321ce953c0c609f91ccc4c475796d4a54df14eb7"
+      }
+    },
+    "auditedPredecessor": {
+      "package": "MCOMB_FCA_M7_BASEL_LINK_v0_1_1_20260928",
+      "monodromy-31-linked-reduction.html": "9859cac0d94f5e6be1f6521a71c25fca5a288af04b71ec8fa66a00d3ce463d3f",
+      "BUILD_PINS.json": "8b61e1c5a726442083744311658e4b3329ef8362aac9d527df93a913ebcaf4b1",
+      "audit": "BASEL_FOURIER_HOST_LINK_ASTRA_DELTA_AUDIT_20260928",
+      "auditReportSha256": "b30eaa56b0a61733c8c0bcb231e9a9f3287d670166f7e1660e1c610919449368",
+      "auditManifestSha256": "caea724c2e179a6645e93ace9ab6e196728c846d9d4b90da07360b03667d6cb6",
+      "standing": "delta audit: F1 closed; HOLD F2 (keyboard events reach host shortcuts); repaired here, re-audit pending"
+    },
+    "predecessor": {
+      "package": "MCOMB_FCA_M7_CONTACT_SWEEP_REPAIR_20260926",
+      "viewerSha256": "7e14d3756872f336195fea0b7ed4c88af8cb167ff1b64b82f99d6d7b0bc2a9e5",
+      "buildPinsSha256": "a6386022d44917ed06e28fa87beab52b9ac925698c529aae6fe5aad4b5d4a77a"
+    },
+    "schemaBaseline": {
+      "package": "BASEL_FOURIER_READOUT_SCHEMA_v0_1_2_20260928",
+      "manifestSha256": "6aea9e88c6bce4a2d6a6b123bab73490955ee2ba44b0dc7db077733b400df4a2",
+      "entries": 19,
+      "standing": "Astra delta audit PASS 2026-09-28 (schema/reference-validator scope)"
+    },
+    "prototype": {
+      "package": "BASEL_FOURIER_PROTOTYPE_v0_1_3_20260928",
+      "manifestSha256": "cfb152ac532a10778159c1757a076707537721a0dddf4957a2663a02567836eb",
+      "entries": 17,
+      "coreSha256": "37f7b376b4b54debf5f08aefced66f06b8c6c5c97c4e76fa748f70197ac6dde6"
+    },
+    "blockMarkers": [
+      "<!-- BASEL_LINK_V0_1_2_BEGIN -->",
+      "<!-- BASEL_LINK_V0_1_2_END -->"
+    ],
+    "prototypeOnlyQuantities": [
+      "prime strip",
+      "certified logs",
+      "remainder R_P",
+      "beta = 1 identity display"
+    ]
+  },
+  "serverSha256": "bcf9215f8ccc05797ffb31903ade2a15b7271f8b3816e456e239403324b640c3",
+  "combined": {
+    "version": "0.1.0",
+    "status": "UNSEALED_CANDIDATE_COMBINED_BUILDER",
+    "builder": "combined builder (Claude)",
+    "build": "MCOMB_FCA_M7_COMBINED_BCD_v0_1_20261001",
+    "combinedIdentity": "178e3610fb8a135450127bc0b6cc52a63ae994e1deb9fa1653e4165666fc708e",
+    "identity": {
+      "schema": "MCOMB_FCA_M7_COMBINED_BCD_HOST_IDENTITY_V1",
+      "build": "MCOMB_FCA_M7_COMBINED_BCD_v0_1_20261001",
+      "version": "0.1.0",
+      "predecessorViewerSha256": "3ff3e3c53ba44a862ec4ebcf637268f523bfb815230c263d91292f15808a9650",
+      "predecessorPinsSha256": "125602276648bd9d604414ce0158d1f0041676ff8214569583110adeeb5f72da",
+      "predecessorBaselIdentity": "96804b488c1df40a91d9befdd04372e3c1024a51586eba1c322160b3c4779410",
+      "predecessorContactIdentity": "b47765563f28b7190f73e68e2079514c233d58b58b167fe7fc7818c38fd973ca",
+      "serverSha256": "bcf9215f8ccc05797ffb31903ade2a15b7271f8b3816e456e239403324b640c3",
+      "panels": {
+        "reciprocal": {
+          "acceptedPackageManifest": "48c69a6e94abbc117a7e5771d1e092b657736212841da0958c040838038cd84d",
+          "acceptedStandaloneIdentity": "5f68b622a3054d08268d9adbac5f66e718e4bbee6b1363e7157cc39cca67150d",
+          "auditManifest": "34a5354b9952f5ac8e4e45b802bbdf7be7294d2e23ef48c08771745b2c744c44",
+          "modules": {
+            "reciprocal-record.js": "e9786cd68f7c81ce254cc97fefe9633caf56bef749387f57712c98a93d5b4f5c",
+            "reciprocal-link-ui.js": "bdddeb87b07df4dc4f1ec494e67109fdee228b3fdd119df8ab47e12ff2d15324"
+          }
+        },
+        "shellPrimeCount": {
+          "acceptedPackageManifest": "dac733af61120f1df9ff645db4e04980fba81ed8dc0be182c054d166ae5be827",
+          "acceptedStandaloneIdentity": "350cbc31a2f2fd6114f08c0e771c4068fd12e8b45d02ac9aee0b78d5d54a4311",
+          "auditManifest": "475fc9dd4cec0a670c9fcf670d5360c3cae401515198d80aaac1859b855eceaf",
+          "modules": {
+            "spc-core.js": "85fc0deff1f9578d72f19066872cb18136b7198d85bbab1f90ec99509d74ad29",
+            "spc-worker.js": "8c30b24cd40d47809b7a5db5634ab7527ad23380e593538041f323807978d30b",
+            "spc-ui.js": "37048ed981a306c97f07c8a5e7046dea3faea7ceaf1b8932fa06d6fe1951b0ea",
+            "embedded-worker-source": "211b5530dd591a270a6c87b7deb42f1fb514e9c0b860a399d0111968026b193e"
+          }
+        },
+        "toothContact": {
+          "acceptedPackageManifest": "a9c90f75ed1daf5b37ca7a54368a6bdcfa70a0ba05371807480f64df58153ed8",
+          "acceptedStandaloneIdentity": "4d3a2ca8115a017ff6b188d184184995187fab91b8a462981ba86cb628cddc6f",
+          "auditManifest": "66d35fbc0ff588d578c62a63d7a3cc3215ed4107482a63bde9581e4038896887",
+          "modules": {
+            "tooth-core.js": "2b0cce569106c90a1b7c8e5dd1b32f3bcf22603fc60948d023effee8d6e757fe",
+            "tooth-validate.js": "a0660811219e33781a4cc892b971e99940f4da9919324f25d1b15520c9befef6",
+            "tooth-worker.js": "11b38704b79713f8435661e8ea73d2928632232556a8765ccd38e3051c09a26b",
+            "tooth-ui.js": "66cf522f4afba5b283761b451f5b227ae264bfeab1b0e993b8ea3934bf4be6f1"
+          }
+        }
+      }
+    },
+    "handoff": {
+      "folder": "COMBINED_BCD_VIEWER_HANDOFF_v0_2_1_20261001",
+      "manifestSha256": "4715910cdd00c840d4a17479b586f6c01ac575b3957ee726363a8afd86dbe0df"
+    },
+    "predecessor": {
+      "package": "MCOMB_FCA_M7_BASEL_LINK_v0_1_2_20260928",
+      "manifestSha256": "c50b3e0dc06d3dc1da9eb7c12fe214e5eff65d0a8080311ec193978a80f545e7",
+      "entries": 176,
+      "viewerSha256": "3ff3e3c53ba44a862ec4ebcf637268f523bfb815230c263d91292f15808a9650",
+      "buildPinsSha256": "125602276648bd9d604414ce0158d1f0041676ff8214569583110adeeb5f72da",
+      "baselIdentity": "96804b488c1df40a91d9befdd04372e3c1024a51586eba1c322160b3c4779410",
+      "contactIdentity": "b47765563f28b7190f73e68e2079514c233d58b58b167fe7fc7818c38fd973ca"
+    },
+    "server": {
+      "file": "server.cjs",
+      "sha256": "bcf9215f8ccc05797ffb31903ade2a15b7271f8b3816e456e239403324b640c3",
+      "replaces": "689432af58fdc5070e34dbc8b1e8ba82346de756abe8009557935dcee71a572e",
+      "source": "ASSESS_SERVER_REPAIR_v0_1_20260930",
+      "sourceManifestSha256": "ba373f15e6b4b193be831e5d06d5490200fa8236ed563910712a2a54727deb6e",
+      "sourceEntries": 20,
+      "audit": "ASSESS_SERVER_REPAIR_ASTRA_AUDIT_20260930",
+      "auditManifestSha256": "8a64578d2754fd3e8ed9b998ced62d79ef769ced6e2559d90e5d9a1bfb11f5f8",
+      "auditEntries": 33,
+      "docNote": "SERVER_NOTE.md",
+      "docNoteSha256": "4e91cba8794edad70bb31e698382434367f89d7e42e1378b7c0c405e1762ddfa",
+      "docNoteSource": "ASSESS_SERVER_REPAIR_v0_1_DOC_NOTE_20260930/NOTE.md"
+    },
+    "blockOrder": [
+      "reciprocal",
+      "shellPrimeCount",
+      "toothContact"
+    ],
+    "blockMarkers": {
+      "reciprocal": [
+        "<!-- COMBINED_BCD_V0_1_RECIPROCAL_BEGIN -->",
+        "<!-- COMBINED_BCD_V0_1_RECIPROCAL_END -->"
+      ],
+      "shellPrimeCount": [
+        "<!-- COMBINED_BCD_V0_1_SHELL_PRIME_COUNT_BEGIN -->",
+        "<!-- COMBINED_BCD_V0_1_SHELL_PRIME_COUNT_END -->"
+      ],
+      "toothContact": [
+        "<!-- COMBINED_BCD_V0_1_TOOTH_CONTACT_BEGIN -->",
+        "<!-- COMBINED_BCD_V0_1_TOOTH_CONTACT_END -->"
+      ]
+    },
+    "domOrder": [
+      "bz-panel",
+      "tc-panel",
+      "spc-panel",
+      "rr-panel"
+    ],
+    "decodedWorkerSha256": {
+      "shellPrimeCount": "211b5530dd591a270a6c87b7deb42f1fb514e9c0b860a399d0111968026b193e",
+      "toothContact": "2f2538139c774cda8210938056b713295c90ec6c9496e027eae39baf360f5a6d"
+    },
+    "foreignIdentitiesRefused": [
+      "350cbc31a2f2fd6114f08c0e771c4068fd12e8b45d02ac9aee0b78d5d54a4311",
+      "cc9c56b38a8af4f1eccfcdddb021b39f2fbf7f784938ecf11e220c75805ee796",
+      "4d3a2ca8115a017ff6b188d184184995187fab91b8a462981ba86cb628cddc6f",
+      "cb02c4b90723af7ee8e389bd6cc4a11cfa851b24bb5f96b79081618e67cd4f2d",
+      "be6f12030aecd14ff4c99fd806699aea6bf4effa02faf43762f9269a1fc417cb",
+      "5276aac7569b06187c4f674d0e445fc4b809205b60469a745f02fe56f6ebc079"
+    ],
+    "credit": {
+      "idea": "saphir",
+      "specifications_corrections_audits": "Astra",
+      "build_and_checks": "combined builder (Claude)"
+    }
+  },
+  "reciprocalLinkCombined": {
+    "hostBuild": "MCOMB_FCA_M7_COMBINED_BCD_v0_1_20261001",
+    "hostSha256": "43cd1c2979a769506e6054a58af5dc8e999d2418f15637ba5ab4d70ba4d83d05",
+    "identity": {
+      "schema": "MCOMB_RECIPROCAL_LINK_HOST_IDENTITY_V1",
+      "build": "MCOMB_FCA_M7_COMBINED_BCD_v0_1_20261001",
+      "version": "0.1.0+combined-bcd-0.1.0",
+      "predecessorViewerSha256": "3ff3e3c53ba44a862ec4ebcf637268f523bfb815230c263d91292f15808a9650",
+      "predecessorPinsSha256": "125602276648bd9d604414ce0158d1f0041676ff8214569583110adeeb5f72da",
+      "predecessorBaselIdentity": "96804b488c1df40a91d9befdd04372e3c1024a51586eba1c322160b3c4779410",
+      "specManifestSha256": "9eed61281384360e2527bc43e5b3f43f793d7e33c1b475c0adbd233525a3c8d2",
+      "modules": {
+        "reciprocal-record.js": "e9786cd68f7c81ce254cc97fefe9633caf56bef749387f57712c98a93d5b4f5c",
+        "reciprocal-link-ui.js": "bdddeb87b07df4dc4f1ec494e67109fdee228b3fdd119df8ab47e12ff2d15324"
+      },
+      "combinedIdentity": "178e3610fb8a135450127bc0b6cc52a63ae994e1deb9fa1653e4165666fc708e"
+    },
+    "global": "McombReciprocalLinkBuildPins",
+    "blockMarkers": [
+      "<!-- COMBINED_BCD_V0_1_RECIPROCAL_BEGIN -->",
+      "<!-- COMBINED_BCD_V0_1_RECIPROCAL_END -->"
+    ],
+    "acceptedStandalone": {
+      "package": "MCOMB_FCA_M7_RECIPROCAL_LINK_v0_1_20260929",
+      "manifestSha256": "48c69a6e94abbc117a7e5771d1e092b657736212841da0958c040838038cd84d",
+      "entries": 179,
+      "viewerSha256": "734fbf63e4c00a646ec08a398bc9e898203d4b5b27eb0c06584207411c42025f",
+      "hostSha256": "5f68b622a3054d08268d9adbac5f66e718e4bbee6b1363e7157cc39cca67150d",
+      "blockMarkers": [
+        "<!-- RECIPROCAL_LINK_V0_1_BEGIN -->",
+        "<!-- RECIPROCAL_LINK_V0_1_END -->"
+      ],
+      "audit": "RECIPROCAL_LINK_ASTRA_AUDIT_20260929",
+      "auditManifestSha256": "34a5354b9952f5ac8e4e45b802bbdf7be7294d2e23ef48c08771745b2c744c44",
+      "auditEntries": 58,
+      "builder": "RECIPROCAL_LINK_WORK_v0_1_20260929/build-successor.cjs",
+      "builderSha256": "bdec18ce466ed5c65f8fff3c6447984d749292b84b012c881f61d617dcbc65b4",
+      "assemblyExpressionLines": "59-60"
+    }
+  },
+  "shellPrimeCountCombined": {
+    "hostBuild": "MCOMB_FCA_M7_COMBINED_BCD_v0_1_20261001",
+    "hostSha256": "9d6c149963253ccf737a8fddc1952665d2498a9ca4809599fbbb9e49394a3426",
+    "identity": {
+      "schema": "MCOMB_SHELL_PRIME_COUNT_HOST_IDENTITY_V1",
+      "build": "MCOMB_FCA_M7_COMBINED_BCD_v0_1_20261001",
+      "version": "0.1.1+combined-bcd-0.1.0",
+      "predecessorViewerSha256": "3ff3e3c53ba44a862ec4ebcf637268f523bfb815230c263d91292f15808a9650",
+      "predecessorPinsSha256": "125602276648bd9d604414ce0158d1f0041676ff8214569583110adeeb5f72da",
+      "predecessorBaselIdentity": "96804b488c1df40a91d9befdd04372e3c1024a51586eba1c322160b3c4779410",
+      "specManifestSha256": "790e83afc32b258b06772c3f6f9476776cd2f62d3d49cd77514e9c39ed91b269",
+      "modules": {
+        "spc-core.js": "85fc0deff1f9578d72f19066872cb18136b7198d85bbab1f90ec99509d74ad29",
+        "spc-worker.js": "8c30b24cd40d47809b7a5db5634ab7527ad23380e593538041f323807978d30b",
+        "spc-ui.js": "37048ed981a306c97f07c8a5e7046dea3faea7ceaf1b8932fa06d6fe1951b0ea",
+        "embedded-worker-source": "211b5530dd591a270a6c87b7deb42f1fb514e9c0b860a399d0111968026b193e"
+      },
+      "combinedIdentity": "178e3610fb8a135450127bc0b6cc52a63ae994e1deb9fa1653e4165666fc708e"
+    },
+    "global": "McombShellPrimeCountBuildPins",
+    "blockMarkers": [
+      "<!-- COMBINED_BCD_V0_1_SHELL_PRIME_COUNT_BEGIN -->",
+      "<!-- COMBINED_BCD_V0_1_SHELL_PRIME_COUNT_END -->"
+    ],
+    "acceptedStandalone": {
+      "package": "MCOMB_FCA_M7_SHELL_PRIME_COUNT_v0_1_1_20260930",
+      "manifestSha256": "dac733af61120f1df9ff645db4e04980fba81ed8dc0be182c054d166ae5be827",
+      "entries": 180,
+      "viewerSha256": "3e672b6803c8dbadbc70162b97365f11ad0593e89279ea5ea962490dcd975f59",
+      "hostSha256": "350cbc31a2f2fd6114f08c0e771c4068fd12e8b45d02ac9aee0b78d5d54a4311",
+      "blockMarkers": [
+        "<!-- SHELL_PRIME_COUNT_V0_1_1_BEGIN -->",
+        "<!-- SHELL_PRIME_COUNT_V0_1_1_END -->"
+      ],
+      "audit": "SHELL_PRIME_COUNT_LINK_v0_1_1_ASTRA_DELTA_AUDIT_20260930",
+      "auditManifestSha256": "475fc9dd4cec0a670c9fcf670d5360c3cae401515198d80aaac1859b855eceaf",
+      "auditEntries": 63,
+      "builder": "SHELL_PRIME_COUNT_WORK_v0_1_1_20260930/build-successor.cjs",
+      "builderSha256": "53d879ab4444900ebdfe367181bfcfa6a6b9a15957221d6ba5b8bd8d49c545da",
+      "assemblyExpressionLines": "77-80"
+    },
+    "workerSource": {
+      "global": "McombShellPrimeCountWorkerSourceV1",
+      "decodedSha256": "211b5530dd591a270a6c87b7deb42f1fb514e9c0b860a399d0111968026b193e",
+      "decoded": "spc-core.js + \"\\n\" + spc-worker.js",
+      "ltEscaped": false
+    }
+  },
+  "toothContactCombined": {
+    "hostBuild": "MCOMB_FCA_M7_COMBINED_BCD_v0_1_20261001",
+    "hostSha256": "e6d25b0ac29dc9631ed9d1fa994e5c7357c30c699e0c5f5dd616d3d903deddb8",
+    "identity": {
+      "schema": "MCOMB_TOOTH_CONTACT_HOST_IDENTITY_V1",
+      "build": "MCOMB_FCA_M7_COMBINED_BCD_v0_1_20261001",
+      "version": "0.1.3+combined-bcd-0.1.0",
+      "snapshotSchemaVersion": "0.1.0",
+      "predecessorViewerSha256": "3ff3e3c53ba44a862ec4ebcf637268f523bfb815230c263d91292f15808a9650",
+      "predecessorPinsSha256": "125602276648bd9d604414ce0158d1f0041676ff8214569583110adeeb5f72da",
+      "predecessorBaselIdentity": "96804b488c1df40a91d9befdd04372e3c1024a51586eba1c322160b3c4779410",
+      "specChecksumListSha256": "5ba068a114caed79f3e07afcd1af3bcd3c71110d5bc67aea9dba990421dd04e6",
+      "modules": {
+        "tooth-core.js": "2b0cce569106c90a1b7c8e5dd1b32f3bcf22603fc60948d023effee8d6e757fe",
+        "tooth-validate.js": "a0660811219e33781a4cc892b971e99940f4da9919324f25d1b15520c9befef6",
+        "tooth-worker.js": "11b38704b79713f8435661e8ea73d2928632232556a8765ccd38e3051c09a26b",
+        "tooth-ui.js": "66cf522f4afba5b283761b451f5b227ae264bfeab1b0e993b8ea3934bf4be6f1"
+      },
+      "combinedIdentity": "178e3610fb8a135450127bc0b6cc52a63ae994e1deb9fa1653e4165666fc708e"
+    },
+    "global": "McombToothContactBuildPins",
+    "blockMarkers": [
+      "<!-- COMBINED_BCD_V0_1_TOOTH_CONTACT_BEGIN -->",
+      "<!-- COMBINED_BCD_V0_1_TOOTH_CONTACT_END -->"
+    ],
+    "acceptedStandalone": {
+      "package": "MCOMB_FCA_M7_TOOTH_CONTACT_v0_1_3_20260930",
+      "manifestSha256": "a9c90f75ed1daf5b37ca7a54368a6bdcfa70a0ba05371807480f64df58153ed8",
+      "entries": 181,
+      "viewerSha256": "0572446f3f464ca40b73658979bd7532d4608782785c0a2f7df62d7e0319c384",
+      "hostSha256": "4d3a2ca8115a017ff6b188d184184995187fab91b8a462981ba86cb628cddc6f",
+      "blockMarkers": [
+        "<!-- TOOTH_CONTACT_V0_1_3_BEGIN -->",
+        "<!-- TOOTH_CONTACT_V0_1_3_END -->"
+      ],
+      "audit": "TOOTH_CONTACT_LINK_v0_1_3_ASTRA_DELTA_AUDIT_20261001",
+      "auditManifestSha256": "66d35fbc0ff588d578c62a63d7a3cc3215ed4107482a63bde9581e4038896887",
+      "auditEntries": 57,
+      "builder": "TOOTH_CONTACT_WORK_v0_1_3_20260930/build-successor.cjs",
+      "builderSha256": "d0c54035e5820497e46630868a16f183b88d2caa736601c5ffa9aa1892237823",
+      "assemblyExpressionLines": "108-110"
+    },
+    "workerSource": {
+      "global": "McombToothContactWorkerSource",
+      "decodedSha256": "2f2538139c774cda8210938056b713295c90ec6c9496e027eae39baf360f5a6d",
+      "decoded": "tooth-core.js + \"\\n\" + tooth-worker.js",
+      "ltEscaped": true
+    }
+  },
+  "rhMargin": {
+    "version": "0.1.0",
+    "status": "UNSEALED_CANDIDATE",
+    "builder": "RH margin builder (Claude)",
+    "hostBuild": "MCOMB_FCA_M7_COMBINED_BCD_RHM_AF_v0_1_20261004",
+    "hostSha256": "8611cbe7ea33dcc720e1e51f26863ba400a7d8648ad2c6e4027e80d32013d0c0",
+    "identity": {
+      "schema": "MCOMB_RH_MARGIN_HOST_IDENTITY_V1",
+      "build": "MCOMB_FCA_M7_COMBINED_BCD_RHM_AF_v0_1_20261004",
+      "version": "0.1.0",
+      "predecessorViewerSha256": "3cd1352f0b5846fb22f673dffae627f1191a00601c611128bb661224a7d1da9c",
+      "predecessorPinsSha256": "a3b4b924901b186cecb2b3fe5844864f24508f7839683aaba94dd536eb8a6edd",
+      "predecessorCombinedIdentity": "178e3610fb8a135450127bc0b6cc52a63ae994e1deb9fa1653e4165666fc708e",
+      "specManifestSha256": "8a3ae666bacf9f0560ecea87e00a32638b9a241b7bb11369d6954f47ed642581",
+      "corrigendumManifestSha256": "9196f24b17396900b833bde36caaab0e349174a0d9d8d60c86d803e68b43d5d1",
+      "modules": {
+        "rhm-core.js": "2a483c04d35e6a41eafcfcedd717716e7299f2bd743ed084562b5ab92cd4fe62",
+        "rhm-worker.js": "17077771c821915a70e2a31a2dacc26dc714090f9aec17bbe98ef914da617015",
+        "rhm-ui.js": "163098e361f70b6dce39a347d890871d8fd64a6c81ad849cf722c5f69a700c5b"
+      }
+    },
+    "global": "McombRhMarginBuildPins",
+    "diagnosticsGlobal": "McombRhMarginDiagnosticsV1",
+    "coreGlobal": "McombRhMarginCoreV1",
+    "blockMarkers": [
+      "<!-- RH_MARGIN_V0_1_BEGIN -->",
+      "<!-- RH_MARGIN_V0_1_END -->"
+    ],
+    "domOrder": [
+      "bz-panel",
+      "tc-panel",
+      "spc-panel",
+      "rr-panel",
+      "rhm-panel"
+    ],
+    "worker": {
+      "global": "McombRhMarginWorkerSourceV1",
+      "decoded": "rhm-core.js + \"\\n\" + rhm-worker.js",
+      "decodedSha256": "a108eb5bf1603c35165d3a250ea3b90f198b0e4342fd6ba507654844ff09c915",
+      "ltEscaped": true,
+      "messagePrefix": "rhm/"
+    },
+    "predecessor": {
+      "package": "MCOMB_FCA_M7_COMBINED_BCD_v0_1_20261001",
+      "manifestSha256": "3f4f12d0b13159092ad18db585aa52311af58a3de057114d07ffa343bab36cc4",
+      "entries": 187,
+      "viewerSha256": "3cd1352f0b5846fb22f673dffae627f1191a00601c611128bb661224a7d1da9c",
+      "buildPinsSha256": "a3b4b924901b186cecb2b3fe5844864f24508f7839683aaba94dd536eb8a6edd",
+      "combinedIdentity": "178e3610fb8a135450127bc0b6cc52a63ae994e1deb9fa1653e4165666fc708e"
+    },
+    "spec": {
+      "folder": "RH_CRITERIA_READOUT_SPEC_v0_1_20260929",
+      "manifestSha256": "8a3ae666bacf9f0560ecea87e00a32638b9a241b7bb11369d6954f47ed642581",
+      "schema": "rh-criteria-readout",
+      "schemaVersion": "0.1.0",
+      "kind": "rh_atom_margins",
+      "corrigendum": "RH_CRITERIA_READOUT_SPEC_v0_1_1_CORRIGENDUM_20260929",
+      "corrigendumManifestSha256": "9196f24b17396900b833bde36caaab0e349174a0d9d8d60c86d803e68b43d5d1"
+    },
+    "handoff": {
+      "folder": "RH_MARGIN_PANEL_HANDOFF_v0_1_1_20261001",
+      "manifestSha256": "33d5e75869072d771f7443d867308453e0adee16cf723a817ee340813a9c1fb6",
+      "handoffSha256": "c8f6c7b3bb754a07b416025a8d77fb9f822b32c2baf9cd8953701b8462867b72"
+    },
+    "deltaReview": {
+      "folder": "RH_MARGIN_PANEL_HANDOFF_v0_1_1_ASTRA_DELTA_REVIEW_20261001",
+      "manifestSha256": "39614e8d302db82600af97cca22cfe1a0c08bb61cac1df96beaf79755100928e"
+    },
+    "credit": {
+      "idea": "saphir",
+      "criteria_mapping": "Opus",
+      "specifications_corrections_audits": "Astra",
+      "handoff": "fable (Claude)",
+      "build_and_checks": "RH margin builder (Claude)"
+    }
+  },
+  "arithmeticFourier": {
+    "version": "0.1.0",
+    "status": "UNSEALED_BUILDER_CANDIDATE",
+    "builder": "arithmetic-Fourier panel builder (Claude)",
+    "build": "MCOMB_FCA_M7_COMBINED_BCD_RHM_AF_v0_1_20261004",
+    "hostBuild": "MCOMB_FCA_M7_COMBINED_BCD_RHM_AF_v0_1_20261004",
+    "hostSha256": "03f3b6909c1caeedb97c430c6110a53cadde60ca4e0321c6cc405f1a25b13400",
+    "identity": {
+      "schema": "MCOMB_ARITHMETIC_FOURIER_HOST_IDENTITY_V1",
+      "build": "MCOMB_FCA_M7_COMBINED_BCD_RHM_AF_v0_1_20261004",
+      "version": "0.1.0",
+      "predecessorViewerSha256": "3cd1352f0b5846fb22f673dffae627f1191a00601c611128bb661224a7d1da9c",
+      "predecessorPinsSha256": "a3b4b924901b186cecb2b3fe5844864f24508f7839683aaba94dd536eb8a6edd",
+      "predecessorCombinedIdentity": "178e3610fb8a135450127bc0b6cc52a63ae994e1deb9fa1653e4165666fc708e",
+      "schemaPackageManifestSha256": "868fe9ed7e062779b6a619a2ef15faf68668a8e826a8d60c1365d389fcc51d4b",
+      "schemaReviewManifestSha256": "0ead093a7cf1fb990716c09189f65c32600bc29d5c3c107342c22852f5897e5d",
+      "referenceSha256": "4425c6be41df8cff3d43506fe9d1013b31f728ab545dec11f9d030f4d741a061",
+      "fixturesSha256": "e3354b5a49c6397c99c15ab56260fefd251c920f30b166a71924341840384aca",
+      "sourceRegistrySha256": "0942479e6f84288323b605d7ffd14a679e71ff1947c14c9832d34470209b56a9",
+      "panelHandoffManifestSha256": "2bc1f181ec2ce66f1ba0f50650c8e55b26ef6665945a35a92d22e70a455a8516",
+      "modules": {
+        "afp-core.js": "163aa1a5949f6eff371407f496f208b10dc548db962740dce49192fe284582cc",
+        "afp-sources-data.js": "dca5361aeae2890e34af8bc8454245a433cb986da27d044d792a963668838477",
+        "afp-worker.js": "64c19351c56e722cdc6e3b2de28835938891a67a6bb4225093a5d62bf117d16b",
+        "afp-ui.js": "df2c587239be144d7e857332ae4d0498ea9d5a5439f6a062edf9c3c560681d62",
+        "embedded-worker-source": "fe83fd3ecc91261e25cf464553e93b8bb0aad6719933f46cd0bb2bc90200baa7"
+      }
+    },
+    "global": "McombArithmeticFourierBuildPins",
+    "blockMarkers": [
+      "<!-- ARITHMETIC_FOURIER_V0_1_BEGIN -->",
+      "<!-- ARITHMETIC_FOURIER_V0_1_END -->"
+    ],
+    "globals": {
+      "diagnostics": "McombArithmeticFourierDiagnosticsV1",
+      "sources": "McombArithmeticFourierSourcesV1",
+      "workerSource": "McombArithmeticFourierWorkerSourceV1",
+      "core": "McombArithmeticFourierCoreV1"
+    },
+    "viewerSha256": "b4cee4e30a753eda7c62f72e8043d6d5c9b3f69c3c2e1dd0da9a3f9ab5b8e248",
+    "blockSha256": "92ec0201a95a43e0a41140d450c901b8eb60e44859f4c9483ebf9b2e2b7545fa",
+    "blockBytes": 231955,
+    "predecessor": {
+      "package": "MCOMB_FCA_M7_COMBINED_BCD_v0_1_20261001",
+      "manifestSha256": "3f4f12d0b13159092ad18db585aa52311af58a3de057114d07ffa343bab36cc4",
+      "viewerSha256": "3cd1352f0b5846fb22f673dffae627f1191a00601c611128bb661224a7d1da9c",
+      "buildPinsSha256": "a3b4b924901b186cecb2b3fe5844864f24508f7839683aaba94dd536eb8a6edd",
+      "combinedIdentity": "178e3610fb8a135450127bc0b6cc52a63ae994e1deb9fa1653e4165666fc708e"
+    },
+    "governing": {
+      "handoffManifestSha256": "2bc1f181ec2ce66f1ba0f50650c8e55b26ef6665945a35a92d22e70a455a8516",
+      "erratumE1ManifestSha256": "526a32f5054da2d6316291309ffd6288bd826ba286a12cef097fa8fa2bc25018",
+      "reviewManifestSha256": "3a8d1adbe28db890d961ccc630cc9ba6c55c797d5c34ea17efa952aa04d32dfc",
+      "deltaReviewManifestSha256": "aaf0ca6bc27678a9d1ba1c049a5795f297b4008074d65d2c8e827dc1d0f36126",
+      "e1ClosureManifestSha256": "c904d8f2e2ad227b212a0b058f138ab04bb17e761a148b8c2cbf96bcbecfaa19"
+    },
+    "serverSha256": "bcf9215f8ccc05797ffb31903ade2a15b7271f8b3816e456e239403324b640c3",
+    "credit": "Purpose and atom reading: saphir. Schema handoff, panel reviews and audits: Astra. Schema construction: Fable (Claude). Panel handoff: the handoff drafter (Claude) under the oversight seat. Build and checks: the builder (Claude)."
+  },
+  "mergeRhmAf": {
+    "schema": "MCOMB_RHM_AF_MERGE_V1",
+    "version": "0.1.0",
+    "status": "UNSEALED_MERGE_CANDIDATE",
+    "build": "MCOMB_FCA_M7_COMBINED_BCD_RHM_AF_v0_1_20261004",
+    "runId": "20261004T122523Z",
+    "handoff": {
+      "folder": "COMBINED_VIEWER_MERGE_HANDOFF_v0_1_8_20261004",
+      "manifestSha256": "af2305b4dcb234b8cf91d4e7422a1d06c3d30a8097b4a26e37220b862c02cf0a",
+      "review": {
+        "folder": "COMBINED_VIEWER_MERGE_HANDOFF_V018_SOL_REVIEW_20261004",
+        "manifestSha256": "0152e79a46f7aba61f5f2048d91d974c26f43dc05fea50f0a216b7f12bf75673"
+      }
+    },
+    "predecessor": {
+      "package": "MCOMB_FCA_M7_COMBINED_BCD_v0_1_20261001",
+      "manifestSha256": "3f4f12d0b13159092ad18db585aa52311af58a3de057114d07ffa343bab36cc4",
+      "viewerSha256": "3cd1352f0b5846fb22f673dffae627f1191a00601c611128bb661224a7d1da9c",
+      "buildPinsSha256": "a3b4b924901b186cecb2b3fe5844864f24508f7839683aaba94dd536eb8a6edd",
+      "combinedIdentity": "178e3610fb8a135450127bc0b6cc52a63ae994e1deb9fa1653e4165666fc708e",
+      "acceptedBy": {
+        "folder": "COMBINED_BCD_ASTRA_INTEGRATION_AUDIT_20261001",
+        "manifestSha256": "86a374b91b6578845cbf2cf593fe95c307ab10fa2ec146641541bb3d253c235b"
+      }
+    },
+    "siblings": [
+      {
+        "key": "rhMargin",
+        "blockMarker": "RH_MARGIN_V0_1",
+        "package": "MCOMB_FCA_M7_COMBINED_BCD_RH_MARGIN_v0_1_20261001",
+        "manifestSha256": "3f562965306039d56fedba77819076f3c47ba0be9488e7236330cabd4fbe2ef1",
+        "viewerSha256": "7ca52ac84a886c7d55dbf378ac170c2468427770707c0128f8de7ed31a372470",
+        "acceptedIdentity": "14a9886aba4f117721a5d7d29be1b672bf37c6514d5b7787ba31e9716a9b4fba",
+        "acceptedPinsLineSha256": "93f7e1cb0eda91190cfeed24bf7286e72a25a9debfe28b6b3ee23f9ac19228ed",
+        "audit": {
+          "folder": "RH_MARGIN_ASTRA_AUDIT_20261001",
+          "manifestSha256": "84d9c8f05f268516e2f7e6c1dd578c4656700e7cfbe87071f6b4785f50f48a69"
+        },
+        "timingClarificationSha256": "13c69e0529abfd264ede0d8c349ed61905efc87d80e07d3c7140356d1d3e348a"
+      },
+      {
+        "key": "arithmeticFourier",
+        "blockMarker": "ARITHMETIC_FOURIER_V0_1",
+        "package": "MCOMB_FCA_M7_COMBINED_BCD_AF_v0_1_20261001",
+        "manifestSha256": "84654fee39b2633ee53823113f9d4f8373480a0af19090b34ddffbd242a9b6da",
+        "viewerSha256": "bfcbd55cb5859b80a9d9a731aa5915bfbb6c55bfec44dfa4ce0d521b928897b2",
+        "acceptedIdentity": "b5e2c961a55b98645397ebd29e07601113aaa0f55dde28db239df6397005d34b",
+        "acceptedPinsLineSha256": "0a04079e2a84923fa634b627261c1492362b04a4d4b6557aa4c0b393d6d59918",
+        "audit": {
+          "folder": "ARITHMETIC_FOURIER_ASTRA_FINAL_AUDIT_20261002",
+          "manifestSha256": "df2a9475df58c5dd908101aff8d0fe5e6c3bfea46cd2761f29187e36bca7b5a5"
+        },
+        "timingClarificationSha256": null
+      }
+    ],
+    "blockOrder": [
+      "RH_MARGIN_V0_1",
+      "ARITHMETIC_FOURIER_V0_1"
+    ],
+    "panelOrder": [
+      "bz-panel",
+      "tc-panel",
+      "spc-panel",
+      "rr-panel",
+      "afp-panel",
+      "rhm-panel"
+    ],
+    "md1": {
+      "order": "a",
+      "by": "saphir",
+      "date": "2026-10-03"
+    },
+    "hostIdentity": "R"
+  }
+}

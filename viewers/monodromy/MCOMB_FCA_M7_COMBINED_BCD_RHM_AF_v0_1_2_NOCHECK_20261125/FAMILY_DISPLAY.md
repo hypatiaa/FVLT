@@ -1,0 +1,15 @@
+# Family display V1: scope and replay boundary
+
+The finite grid is a in {-2,-1,0,1}, b in {-1,0,1,2}. family-model.js computes Delta = -16(4a^3+27b^2) and j = 1728*4a^3/(4a^3+27b^2) with BigInt and reduced rational strings. Delta zero has no j or elliptic real-component count. Fifteen tiles are nonsingular, in eight distinct complex j classes. Four have two real components; eleven have one.
+
+The real-locus renderer uses separate branches and Float64 square roots of x^3+ax+b. It does not join an oval to an unbounded branch. The finite display window is shared across tiles. Preview records carry arithmeticPromotion:false and never enter the BSD component register. There are no exported point coordinates or period addresses from this plot.
+
+Equal j identifies complex isomorphism, not a selected marked lattice, differential, rational isomorphism or arithmetic equivalence. The b=0 column has j=1728 and quartic twists; the a=0 row has j=0 and sextic twists, excluding the singular tile. Each nonzero +/-b pair in the grid is a quadratic twist by -1. A tile's application records its own exact model; the preview relation is explanatory and does not fabricate twist lineage for a previously selected arithmetic record.
+
+family-ui.js does not write mcomb/Cayley variables. It previews locally, and only an explicit application calls BSDLinkedReductionV1.applyExactModel(ainvs,'1'). That is also the general-model button's path: invalidate all six bindings, prepare the exact parent in the existing worker, import the exact short presentation, clear prior points and evidence, release the held arithmetic input, and replay T4. The selected multiplier is explicitly reset to 1 for the new curve. The V1 basis matrix and mcomb controls are retained. Preview selection is independent of the current curve status, so a failed or superseded assessment cannot claim success for the preview.
+
+Period availability is read from the unchanged v27 adapter. There are five supported placements (four positive-discriminant curves plus y^2=x^3+x) and ten unavailable placements. All 15 nonsingular tile models independently pass T4 within its existing domain. This extension does not implement a rhombic adapter, period-to-cubic overlays on unavailable models, torsion completeness, rank, heights, L-values or Sha.
+
+New checks: 21 model/worker groups and 25 browser groups. They cover all 16 invariant fixtures, all 15 exact worker packets and public localhost assessments, all six invalidations, source and marking preservation, evidence/visit clearing, singular refusal, unsupported-period membership, current-context 429 recovery, tampered responses, server-down/file mode, collapse and narrow layout. Existing 366 checks and the inherited 1040-group chain remain required.
+
+Mathematical references: https://math.mit.edu/classes/18.782/2023sp/LectureNotes26.pdf (j and twists); https://dlmf.nist.gov/23.5 (rectangular, square, rhombic and equianharmonic lattices). The finite fixtures and renderer residual checks are independently recomputed by this package; references do not certify browser arithmetic.

@@ -1,0 +1,11 @@
+# M4 implementation decisions
+
+1. The prompt names the short schema filename, whose local bytes are the old initial revision. The plan explicitly resolves schema roles by content: revision v0.1-C is `MCOMB_CAYLEY_VISUALIZATION_SCHEMA_v0_1_c.md`, SHA-256 46c7f214d606aab9014bac0d4631150a79ad7a0da39a6362acd05621302d2948. This matching revision controls. No source document was edited.
+2. M4 is a separate sidecar packet. The sealed Cayley packet rejects atom extensions; it remains unchanged. M4 embeds and replays that original packet, implements the specified AtomRecord and Selection, and adds only M4 data. It never enters BSD evidence.
+3. Explicit supported domain: at most 16 ascending distinct primes <= 1000000, exponents 1..64, shell <= 256 bits, selected orbit <= 4096 points. Full cosets only for group size <= 4096; above this only the selected orbit and its exact least representative are computed. Unsupported selected orbit size returns UNAVAILABLE. The spectral divisor view factors q <= 10^12 within a bounded trial budget; otherwise it retains exact inherited nullity with the divisor view UNAVAILABLE.
+4. All numerical geometry is labelled Float64, not bounded. Replay rebuilds exact expressions and compares supplied numerical observations with a stated 64-epsilon relative/absolute tolerance before returning freshly computed values. Symbolic opposite-anchor cancellation alone authorizes the known zero-position labels.
+5. S1-S4 in the M4 prompt are named M4-S1 through M4-S4 in receipts to distinguish them from the earlier schema structure fixtures.
+6. Exponent sum is the terminology in all new M4 UI and prose. Sealed historical source documents are retained verbatim as provenance, including their historical terminology.
+7. PT1 subgroup lattices, Atkin-Lehner actions, root numbers, M5-M7 and P1 integration improvements stay deferred. U1/P1 has builder and independent cold-audit PASS; no seating or lock is inferred.
+
+8. A final size-boundary probe found a 16-coordinate shell (166 bits), selected orbit 3927, whose derived JSON alone exceeds the 12 MB importer limit. The first M4 package was already sealed and is preserved unchanged. This additive v0.2 successor checks the complete serialized packet before returning it. The public UI refuses it honestly with export disabled; no arithmetic, spectral laws or security endpoint changed.
