@@ -1,0 +1,11 @@
+import MobiusLiftDiagonal
+
+open RHConnections.CoherentEnergyMeasure
+
+#print axioms diagonalLift_eval
+#print axioms diagonalLift_factorization
+#print axioms diagonalLift_rootMultiplicity_one
+#print axioms diagonalLift_eval_ne_zero
+#print axioms diagonalLift_720
+#print axioms diagonalLift_720_rootMultiplicity
+#print axioms StepanovCounting.card_mul_order_le_natDegree

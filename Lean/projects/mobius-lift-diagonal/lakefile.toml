@@ -1,0 +1,10 @@
+name = "MobiusLiftMultiplicity"
+defaultTargets = ["MobiusLiftDiagonal"]
+
+[[require]]
+name = "ArithmeticFourierRH"
+git = "https://github.com/hypatiaa/arithmetic-fourier-rh"
+rev = "3ba8b062bc2a324a3372b7ada6f7f00983f6a6f1"
+
+[[lean_lib]]
+name = "MobiusLiftDiagonal"
