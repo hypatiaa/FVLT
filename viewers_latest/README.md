@@ -39,7 +39,7 @@ Every page is a single HTML file; open it in a browser. Support files:
 | Rule 30 spherical Fourier pen | [`rule30_spherical_fourier_pen_v0_1_7.html`](rule30_spherical_fourier_pen_v0_1_7.html) | 8 | `af432864ee58…` |
 | Rule 30 squeezed-sphere pen | [`rule30_squeeze_sphere_pen_v0_1_15.html`](rule30_squeeze_sphere_pen_v0_1_15.html) | 16 | `66c764238607…` |
 | Rule 30 triangle pen | [`rule30_triangle_pen_v0_4_1.html`](rule30_triangle_pen_v0_4_1.html) | 2 | `8765ed65e995…` |
-| Supercharacters streaming (mobile) | [`supercharacters_streaming_v2_5_mobile (1).html`](supercharacters_streaming_v2_5_mobile%20%281%29.html) | 1 | `f2ca1ce646c8…` |
+| Supercharacters streaming (mobile) | [`supercharacters_streaming_v2_5_mobile_a.html`](supercharacters_streaming_v2_5_mobile_a.html) | 1 | `b8b5aa422eda…` |
 | Wacom annotator (examples in annotator_examples/) | [`wacom_annotator_v0_6_6.html`](wacom_annotator_v0_6_6.html) | 1 | `390c081ae2bd…` |
 | FVLT walk test viewer on Div(30030) | [`walk_div30030_v0_8_2.html`](walk_div30030_v0_8_2.html) | 1 | `c560dae88eb5…` |
 
