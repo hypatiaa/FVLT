@@ -1,0 +1,198 @@
+{
+ "kind": "fvlt-skill-bundle-provenance",
+ "version": "v3.2.6",
+ "release_status": "locked (Robin 2026-10-12)",
+ "source_commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+ "release_merge": "04fc94481e1424eb47e72f09656326c0db0e0c2d",
+ "note": "Copied files are byte-identical to the named path at source_commit. A hash match establishes integrity, not mathematical correctness.",
+ "files": [
+  {
+   "path": "ITEMS_v3_2_6.json",
+   "role": "release metadata: per-item standing, corrections, segments, stage",
+   "source": {
+    "commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+    "path": "kernel/next/ITEMS.json"
+   },
+   "sha256": "73b9439a8998fe58ed25c93210cf4a2f817845a6bec0ed433dfd9e8f68183390",
+   "bytes": 49651
+  },
+  {
+   "path": "SKILL.md",
+   "role": "skill instructions authored for v3.2.6",
+   "source": "authored in this bundle",
+   "sha256": "ed885147b8c0401dd7579673369e9159f057e553b67a224b503b0b5401a7cfc3",
+   "bytes": 14050
+  },
+  {
+   "path": "bibliography_v3_2_6.md",
+   "role": "bibliography (inherited working-assembly changelog carried unedited)",
+   "source": {
+    "commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+    "path": "kernel/next/bibliography.md"
+   },
+   "sha256": "f109a7e1097275795bb44fa481d4f63422dce7456c3dbbd7e7348f3468a4c474",
+   "bytes": 400633
+  },
+  {
+   "path": "kernel_v3_2_6.md",
+   "role": "authority: locked v3.2.6 kernel",
+   "source": {
+    "commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+    "path": "kernel/next/kernel.md"
+   },
+   "sha256": "4a23d62e15ada3819defe6919e56fe9f2ef6a9a10eb7f5c4082e4b6b442cdb94",
+   "bytes": 549320
+  },
+  {
+   "path": "legacy/v3.2.5/SKILL_v3_2_5.md",
+   "role": "superseded v3.2.5 skill instructions (historical only)",
+   "source": {
+    "commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+    "path": "kernel/base/v3.2.5/SKILL.md"
+   },
+   "sha256": "9b32a3291e3f37f03267d2230fc8184e70742b3b84137bb2b88b6e3a3b62afb1",
+   "bytes": 273647
+  },
+  {
+   "path": "legacy/v3.2.5/bibliography_v3_2_5.md",
+   "role": "superseded v3.2.5 bibliography (historical only)",
+   "source": {
+    "commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+    "path": "kernel/base/v3.2.5/bibliography_v3_2_5.md"
+   },
+   "sha256": "b82f8df76895ff29a41957e8ed7143750c2f0606be7b2d61a99cfa5759b2b01e",
+   "bytes": 399676
+  },
+  {
+   "path": "legacy/v3.2.5/kernel_v3_2_5.md",
+   "role": "superseded v3.2.5 kernel (historical only)",
+   "source": {
+    "commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+    "path": "kernel/base/v3.2.5/kernel_v3_2_5.md"
+   },
+   "sha256": "ac53e75b73c42f185248464e3daf856a3dd3fd98b56dfff971341b80b10717ef",
+   "bytes": 508520
+  },
+  {
+   "path": "records/04_ROBIN_NUMBERING_RECORD.md",
+   "role": "authority cited by ITEMS (numbering record)",
+   "source": {
+    "commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+    "path": "kernel/inputs/2026-10-11/sources/candidates/TERRA_COLD_PASSED_FINAL_KERNEL_FOLD_2026-07-24/04_ROBIN_NUMBERING_RECORD.md"
+   },
+   "sha256": "392cc8448a15af91d9fdd3e1049f73bab1822e17d945f212039599f8181e2bac",
+   "bytes": 1882
+  },
+  {
+   "path": "records/ATTESTATION_GOLDBACH_PHASOR_SEATS_v0.2.md",
+   "role": "authority cited by ITEMS (Goldbach attestation, seated: false)",
+   "source": {
+    "commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+    "path": "kernel/inputs/2026-10-11/sources/candidates/TERRA_COLD_PASSED_FINAL_KERNEL_FOLD_2026-07-24/final_packets/goldbach_v0_2/ATTESTATION_GOLDBACH_PHASOR_SEATS_v0.2.md"
+   },
+   "sha256": "9fe0a8e8e50de990f89eabd15afaff0628c3051c3fa36970460b67af487abf8b",
+   "bytes": 5840
+  },
+  {
+   "path": "records/CLAUDE_COLD_PASS_VERDICT_FAREY_ISOLATION_V0_2_2026-07-24.md",
+   "role": "authority cited by ITEMS (Farey cold pass)",
+   "source": {
+    "commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+    "path": "kernel/inputs/2026-10-11/sources/candidates/TERRA_COLD_PASSED_FINAL_KERNEL_FOLD_2026-07-24/final_packets/farey_v0_2/CLAUDE_COLD_PASS_VERDICT_FAREY_ISOLATION_V0_2_2026-07-24.md"
+   },
+   "sha256": "30efdcd384172bba85cbb8bb1d02095b6fc3bdbdccf083048f9fdc32c9cfcdb0",
+   "bytes": 14287
+  },
+  {
+   "path": "records/LOCK_RECORD_FAREY_II.5g-k.md",
+   "role": "item-lock record (Farey II.5g-k)",
+   "source": {
+    "commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+    "path": "docs/releases/v3.2.6/LOCK_RECORD_FAREY_II.5g-k.md"
+   },
+   "sha256": "067cb91c411a7fa9e60985336ae32dd43202b0acb803ba3c399efe3c1d42f6a6",
+   "bytes": 3893
+  },
+  {
+   "path": "records/LOCK_RECORD_GOLDBACH_II.23.5c-e.md",
+   "role": "item-lock record (Goldbach II.23.5c-e)",
+   "source": {
+    "commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+    "path": "docs/releases/v3.2.6/LOCK_RECORD_GOLDBACH_II.23.5c-e.md"
+   },
+   "sha256": "7ab76f305ac9267eca274b1d923b80641f9251ba341ef2e88bd2692275032370",
+   "bytes": 4040
+  },
+  {
+   "path": "records/LOCK_RECORD_II_23_9_2026-07-23.md",
+   "role": "item-lock record (II.23.9)",
+   "source": {
+    "commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+    "path": "kernel/inputs/2026-10-11/sources/candidates/TERRA_COLD_PASSED_FINAL_KERNEL_FOLD_2026-07-24/final_packets/ii_23_9/LOCK_RECORD_II_23_9_2026-07-23.md"
+   },
+   "sha256": "60ab02e50d5c2e3c4e2fd72e33cff9c69883bc76ddc5c709b0355d53397f27a7",
+   "bytes": 3093
+  },
+  {
+   "path": "records/OPUS_DELTA_COLD_PASS_VERDICT_II_23_9.md",
+   "role": "authority cited by ITEMS (II.23.9 cold pass)",
+   "source": {
+    "commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+    "path": "kernel/inputs/2026-10-11/sources/candidates/TERRA_COLD_PASSED_FINAL_KERNEL_FOLD_2026-07-24/final_packets/ii_23_9/OPUS_DELTA_COLD_PASS_VERDICT_II_23_9.md"
+   },
+   "sha256": "f91c3166796b3d4f181b4801a0c8d49b11af0ec3ceca4bb2b04eb16689d2a9c7",
+   "bytes": 3645
+  },
+  {
+   "path": "records/RELEASE_CANDIDATE.md",
+   "role": "release candidate record (what was reviewed)",
+   "source": {
+    "commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+    "path": "docs/releases/v3.2.6/RELEASE_CANDIDATE.md"
+   },
+   "sha256": "8ee7e603a47937f2ad81b5db12c29673434b8bc63c3cdf49fc7dd8eee3b81209",
+   "bytes": 7272
+  },
+  {
+   "path": "records/RELEASE_LOCK.md",
+   "role": "release lock record",
+   "source": {
+    "commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+    "path": "docs/releases/v3.2.6/RELEASE_LOCK.md"
+   },
+   "sha256": "3c44951ff921841617a568262115ed8096c0879e08ec9dfa7d1c82cd8c533b8b",
+   "bytes": 3319
+  },
+  {
+   "path": "records/ROBIN_RELEASE_GATE.md",
+   "role": "authority cited by ITEMS (release gate)",
+   "source": {
+    "commit": "e45bac611ae3fd2cbd5e5dbd73382d0dabb3066c",
+    "path": "kernel/inputs/2026-10-11/sources/candidates/TERRA_COLD_PASSED_FINAL_KERNEL_FOLD_2026-07-24/outputs/ROBIN_RELEASE_GATE.md"
+   },
+   "sha256": "3440230bedd6bc07b90dd4ee0d1a0f14baa0210dd31f5d342a8b83ca0d58bce0",
+   "bytes": 2110
+  },
+  {
+   "path": "references/CURRENT_WORK.md",
+   "role": "advisory current-work routing view; no source code, proofs or database artifacts",
+   "source": "authored in this bundle",
+   "sha256": "eafaa316f72a5799b52ea47aba0d36a0a16162dca8e06fffee959b28f9fb10c5",
+   "bytes": 23550
+  },
+  {
+   "path": "references/CURRENT_WORK_INDEX.json",
+   "role": "advisory navigation metadata generated from pinned repository/catalog sources; no mathematical authority",
+   "source": "authored in this bundle",
+   "sha256": "0a7590990e7a3e96dc4a3c6fe5ace4f6c781e46e615816b2ba7c8c81c725dbc5",
+   "bytes": 564860
+  },
+  {
+   "path": "scripts/verify_bundle.py",
+   "role": "standalone bundle verifier (stdlib only)",
+   "source": "authored in this bundle",
+   "sha256": "f9a0e3ed8f2b9bd3349709e947a0a3a2e941a2d1f0dd9ca79c9c99a657a663fa",
+   "bytes": 5958
+  }
+ ]
+}

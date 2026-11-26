@@ -1,0 +1,136 @@
+{
+ "schema": "item-lock-intersections-v3.4.0",
+ "release": "v3.4.0 (LOCKED release of record; saphir 2026-11-03: \"v3.4.0, lock it\")",
+ "base_sha256": "b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81",
+ "base_lines": 5552,
+ "plan": "kernel/post-v3.3.1/CORRECTIONS.json",
+ "plan_sha256": "9d1309712ab2fac9210a688c3a8195e81ae862e490e59fdda668adabd80e8d5e",
+ "span_source": "docs/releases/v3.3.0/ITEM_LOCK_INTERSECTIONS_v2.json",
+ "spans_total": 17,
+ "decision_ranges": "v3_2_7_lines_strict",
+ "rows": [
+  {
+   "replacement": "SCD-RMK-9.7j.1-ITEM",
+   "amends": [],
+   "v3_2_7_lines": [
+    2126,
+    2128
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "SCD-CONCORDANCE-VII2a",
+   "amends": [],
+   "v3_2_7_lines": [
+    4644,
+    4645
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "SCD-BIB-VII9",
+   "amends": [],
+   "v3_2_7_lines": [
+    5393,
+    5393
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "SCD-RELEASE-SCOPE",
+   "amends": [
+    "v3.3.0 plan: REPAIR-HUNK-002"
+   ],
+   "v3_2_7_lines": [
+    5,
+    6
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "POST331-HEADER-TITLE",
+   "amends": [
+    "v3.3.1 plan: POST330-HEADER-TITLE",
+    "v3.3.0 plan: REPAIR-HUNK-001"
+   ],
+   "v3_2_7_lines": [
+    3,
+    4
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "POST331-HEADER-VERSION",
+   "amends": [
+    "v3.3.1 plan: POST330-HEADER-VERSION",
+    "v3.3.0 plan: REPAIR-HUNK-002"
+   ],
+   "v3_2_7_lines": [
+    5,
+    6
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "POST331-CHANGELOG",
+   "amends": [
+    "v3.3.1 plan: POST330-CHANGELOG",
+    "v3.3.0 plan: REL330-CHANGELOG"
+   ],
+   "v3_2_7_lines": [
+    7,
+    7
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "POST331-FOOTER",
+   "amends": [
+    "v3.3.1 plan: POST330-FOOTER",
+    "v3.3.0 plan: REPAIR14-D-20"
+   ],
+   "v3_2_7_lines": [
+    5552,
+    5552
+   ],
+   "lock_spans": []
+  }
+ ],
+ "in_lock_spans": [],
+ "loose_only_hits": [
+  {
+   "replacement": "SCD-BIB-VII9",
+   "v3_2_7_lines": [
+    5393,
+    5393
+   ],
+   "span": "Cor 14.5a",
+   "strict": [
+    5167,
+    5250
+   ],
+   "loose": [
+    5167,
+    5552
+   ],
+   "not_a_lock_intersection_because": "loose range runs to the end of the file because this is the last native tag of v3.2.7; the strict span ends at line 5250"
+  },
+  {
+   "replacement": "POST331-FOOTER",
+   "v3_2_7_lines": [
+    5552,
+    5552
+   ],
+   "span": "Cor 14.5a",
+   "strict": [
+    5167,
+    5250
+   ],
+   "loose": [
+    5167,
+    5552
+   ],
+   "not_a_lock_intersection_because": "loose range runs to the end of the file because this is the last native tag of v3.2.7; the strict span ends at line 5250"
+  }
+ ]
+}

@@ -1,0 +1,110 @@
+{
+ "schema": "kernel-items-added-v1",
+ "status": "LOCKED_RELEASE_v3.4.0",
+ "purpose": "Item-index rows for native items added by this successor plan (policy rule 8). kernel/next/ITEMS.json, the locked v3.2.7 stage record, is not edited.",
+ "policy": "docs/governance/KERNEL_ITEM_ADDITIONS_v0_2.md (ADOPTED by saphir 2026-11-03)",
+ "kernel": {
+  "label": "v3.4.0 (minor release on the locked v3.3.1; label assigned by saphir 2026-11-03; LOCKED release of record by saphir 2026-11-03: \"v3.4.0, lock it\")",
+  "path": "kernel/post-v3.3.1/kernel.md",
+  "sha256": "0d6beee233602502576c1d0eedfe5a586e66f1b4e4b8a1858c39189d872ec1a2",
+  "plan": "kernel/post-v3.3.1/CORRECTIONS.json",
+  "builder": "tools/build_successor_kernel_v2.py",
+  "native_tag_count": 187
+ },
+ "predecessor": {
+  "label": "v3.3.1",
+  "path": "kernel/post-v3.3.0/kernel.md",
+  "sha256": "e49533088843e2cd0a1c531c4d8ba113ea30113e8135a15c17c040bdfca3e0e0",
+  "native_tag_count": 186
+ },
+ "items": [
+  {
+   "id": "RMK-9.7j.1-SYMMETRIC-CHAIN-DECOMPOSITION",
+   "tag": "<!-- id: RMK-9.7j.1-SYMMETRIC-CHAIN-DECOMPOSITION | register: remark | status: unconditional (classical, cited) + interpretive (address) | provenance: adapted-classical | depends: 9.7j -->",
+   "label": "Remark 9.7j.1",
+   "title": "Symmetric Chain Decomposition by the Diagonal Tensor Rule",
+   "anchor": "RMK-9.7j-CRYSTAL-GRAPH-IDENTIFICATION",
+   "location": {
+    "part": "Part II",
+    "subsection": "II.17 Crystal-graph readout",
+    "kernel_home": "Part II / II.17, directly after Rmk 9.7j's body and before the §G companion-spine routing note; identity order RMK-9.7j-CRYSTAL-GRAPH-IDENTIFICATION, RMK-9.7j.1-SYMMETRIC-CHAIN-DECOMPOSITION, RMK-9.7k-LOCAL-COMB-INVARIANT",
+    "tag_line": 2124,
+    "tag_byte_offset": 244437
+   },
+   "register": "remark",
+   "status": "unconditional (classical, cited) + interpretive (address)",
+   "provenance": "adapted-classical",
+   "depends": ["9.7j"],
+   "item_lock": "none",
+   "replacement_id": "SCD-RMK-9.7j.1-ITEM",
+   "concordance": "VII.2a, table 'Post-v3.3.1 item additions (v3.4.0)' (replacement SCD-CONCORDANCE-VII2a)",
+   "citations": "de Bruijn, van Ebbenhorst Tengbergen and Kruyswijk 1951; Greene and Kleitman 1976; Kashiwara survey arXiv:1809.00114 (VII.9 note, replacement SCD-BIB-VII9; not yet in kernel/next/bibliography.md)",
+   "source_candidate": {
+    "version": "v0.1.2",
+    "path": "docs/investigations/RMK_9_7j_1_symmetric_chains_2026-11-03/FVLT_SCD_CANDIDATE_v0_1_2_20261103/CANDIDATE_RMK_9_7j_1_SYMMETRIC_CHAINS_v0_1_2.md",
+    "sha256": "fd13dc858a80ba76704e25f96b8b7c726174107b9cffa34766363dc57ea527bf",
+    "adaptations": "kernel/post-v3.3.1/README.md, section 'Wording adaptations'"
+   },
+   "evidence_folder": "docs/investigations/RMK_9_7j_1_symmetric_chains_2026-11-03/",
+   "lean_links": [
+    {
+     "module_path": "docs/investigations/RMK_9_7j_1_symmetric_chains_2026-11-03/FVLT_SCD_CHECKS_v0_1_20261103/lean/SCD_9_7j_1_L01_L03_V1.lean",
+     "sha256": "4ae59ae41fb01dd078be76eb24feeb70616d530df52b1a31d16fbad0f9553625",
+     "namespace": "SCD97j1",
+     "lean_version": "Lean 4.35.0 (core only, no imports; v19 toolchain on membrane, job SCD-LEAN-07); recompiled byte-identically (same stdout sha256 151fc5fa853be9d532f17ca16c71560165374c153dff7f2d40ced83dd9f40c19) on scout, job SMR-01 of the statement-match review (exit 0, 0 errors, 0 sorry, empty stderr; record section 5)",
+     "theorems": {
+      "general": [
+       "C1_of_halves", "stepUp_sum", "wordAux_mem", "wordAux_mem_true", "scan_mem",
+       "incAt_stepUp", "decAt_stepUp", "raise_succ_rank", "lower_pred_rank"
+      ],
+      "instance_720": [
+       "N720_factorisation", "N720_C1a", "N720_C1b", "N720_C1", "N720_wellFormed", "N720_C2", "N720_C3",
+       "N720_C4", "N720_C5", "N720_C6", "N720_W", "N720_count", "N720_strings_exponents", "N720_strings_values"
+      ],
+      "instance_30030": [
+       "N30030_factorisation", "N30030_C1a", "N30030_C1b", "N30030_C1", "N30030_wellFormed", "N30030_C2",
+       "N30030_C3", "N30030_C4", "N30030_C5", "N30030_C6", "N30030_W", "N30030_count"
+      ],
+      "instance_720720": [
+       "N720720_factorisation", "N720720_C1a", "N720720_C1b", "N720720_C1", "N720720_wellFormed", "N720720_C2",
+       "N720720_C3", "N720720_C4", "N720720_C5", "N720720_C6", "N720720_W", "N720720_count"
+      ],
+      "count": 47
+     },
+     "axioms_output": {
+      "job": "SCD-LEAN-07",
+      "stdout_path": "docs/investigations/RMK_9_7j_1_symmetric_chains_2026-11-03/FVLT_SCD_CHECKS_v0_1_20261103/lean/runner_jobs/SCD-LEAN-07/stdout.txt",
+      "stdout_sha256": "151fc5fa853be9d532f17ca16c71560165374c153dff7f2d40ced83dd9f40c19",
+      "receipt_path": "docs/investigations/RMK_9_7j_1_symmetric_chains_2026-11-03/FVLT_SCD_CHECKS_v0_1_20261103/lean/runner_jobs/SCD-LEAN-07/RECEIPT.json",
+      "receipt_sha256": "1b1753a12ebe372cdfea29219cd49f070e3a0af74f2696cfcf6d1b44862ec415",
+      "summary": "47 '#print axioms' lines. Union {propext, Classical.choice, Quot.sound}; the 38 instance theorems use a subset of {propext, Quot.sound}; Classical.choice occurs only in general lemmas. No sorryAx, no Lean.ofReduceBool. Job exit 0, 0 errors, 0 sorry warnings, empty stderr."
+     },
+     "report": {
+      "path": "docs/investigations/RMK_9_7j_1_symmetric_chains_2026-11-03/FVLT_SCD_CHECKS_v0_1_20261103/lean/LEAN_REPORT.md",
+      "sha256": "7edd873c27928a90f604fb27b272cc1b703d7fd6305977d94c07323444e6ee8a"
+     },
+     "scope": "Finite instances only: N = 720, 30030 and 720720, in ascending prime order, with Div(N) encoded as the exponent box over the listed primes; the link to the integer N is the _factorisation theorems only (N = the product of the listed prime powers; primality of the listed primes and the bijection onto the divisors of N are not formalised). Covered there: checks C1-C6 (C5 stated for 0 <= r <= Omega_max; the kernel's '0 otherwise' for r > Omega_max is trivial but not stated), string well-formedness, the W profile, the string count and the factorisation, and the N = 720 string list as an equality of explicit lists, which is the kernel's 720 example. Proofs: the three _C1 theorems are term proofs assembled from their decided halves _C1a and _C1b via the general lemma C1_of_halves; the other 35 instance theorems are by plain decide (maxRecDepth 20000 for 720720). Plus general one-step rank lemmas (raise_succ_rank, lower_pred_rank and their supporting lemmas). It does NOT prove Rmk 9.7j.1 in general: raise_lower and string_symmetric were not attempted. Not formalised: claims 1-2 for general N; claim 2's consequences rank-symmetry, rank-unimodality and Sperner (the W lists show them for the instances only by inspection); claims 3-5 (the module decomposition including the 720 module isomorphism, the non-spanning statement, order dependence / C7); the identification of the bracket operators with Sage's crystal operators (S-02); and the equivalence of the bracket rule's stack-scan and sentence readings. No Lean proof shows that the module's stack scan equals the kernel's sentence 'read the word from left to right: pair each 1, in turn, with the nearest unpaired 0 to its left'; the statement-match review proves (record section 2.1, not in Lean) that they agree under the left-to-right reading, which the kernel text states, and that the right-to-left reading would differ.",
+     "statement_match_review": {
+      "reviewer": "Claude Opus 5.5 (independent statement-match reviewer; did not write the Lean, the candidate or the kernel text)",
+      "date": "2026-11-03",
+      "verdict": "MATCH WITH CORRECTIONS",
+      "scope": "The 38 instance theorems are faithful finite instances of claims 1-2 (check-spec C1-C6) of Rmk 9.7j.1 for N = 720, 30030, 720720 in ascending prime order, with Div(N) encoded as the exponent box; N720_strings_values is the kernel's 720 example; the module's stack scan is the kernel's bracket rule read left to right (proof in the record, not in Lean). The 9 general theorems are helpers and one-step rank lemmas. Claims 1-2 in general, unimodality/Sperner, claims 3-5 and the crystal identification are not formalised. Corrections are to the scope text only (record section 6).",
+      "compile": "scout SMR-01: exit 0, 0 errors, 0 sorry, stdout sha256 151fc5fa853be9d532f17ca16c71560165374c153dff7f2d40ced83dd9f40c19 (identical to SCD-LEAN-07)",
+      "record": {
+       "path": "docs/reviews/post-v3.3.1-rmk-9.7j.1_2026-11-03/statement_match/STATEMENT_MATCH_REVIEW.md",
+       "sha256": "d8ebda6b144c3c564148d54ba95322c897f4ae8274168ef572155e1c4c9372d7",
+       "sums_path": "docs/reviews/post-v3.3.1-rmk-9.7j.1_2026-11-03/statement_match/SHA256SUMS.txt",
+       "sums_sha256": "c67668be1b4406f4ee17ed570cfffe0b646932b124e6f09db0d937e2c4391b28",
+       "copied_from": "C:/Users/robin/s6_atom/FVLT_SCD_STATEMENT_MATCH_REVIEW_20261103/ (whole folder, byte for byte, 2026-11-03; all 25 SHA256SUMS.txt lines OK in the copy)"
+      },
+      "corrections_applied": "All six scope corrections of record section 6 are applied to 'scope' and 'lean_version' above (fix round 1, 2026-11-03; kernel/post-v3.3.1/README.md).",
+      "reviewed_against": "Draft kernel 07ff8b9fdbe57fafd37e3b815115cd2071b450052f6a09da30dfc686db3ef408 (the draft before fix round 1; the fix-round-1 draft is eb898511022c25d0ab43d836ca238893ca7452b3d8fd58f5e3abde0120ef859f, labelled in the label round of 2026-11-03 as the v3.4.0 release candidate 516fbbc55b15110dcb3c098004ebd7d4ba1ae04d15fb2255d486d8cdcedd555d, release metadata only). Since then the only kernel-text changes are fix 1 (the bracket rule now states that the word is read left to right, the reading the record finds the Lean implements, section 2.1) and the wording fixes 4-5 ('post-v3.3.1 draft' for the new uses of 'successor draft'; 'claims' in the status paragraph); the label round then changed release metadata only (the item text is byte-identical). To be rechecked against the current draft by the next verifier.",
+      "status_effect": "none"
+     },
+     "statement_match_note": "Reviewed 2026-11-03 against kernel 07ff8b9f...; the Lean builder's pin of candidate v0.1 (5f92883b...), not v0.1.2, does not affect the match, since the review compared the Lean with the kernel text directly (record section 1).",
+     "status_effect": "none"
+    }
+   ]
+  }
+ ]
+}

@@ -1,0 +1,108 @@
+{
+ "schema": "item-lock-intersections-v3.4.1",
+ "release": "v3.4.1 (LOCKED release of record; saphir 2026-11-04: \"v3.4.1, lock it\")",
+ "base_sha256": "b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81",
+ "base_lines": 5552,
+ "plan": "kernel/post-v3.4.0/CORRECTIONS.json",
+ "plan_sha256": "54292dde575a750a2ce5ac7ed763a807315a0d8d1b0de269c46dbffd7683daae",
+ "span_source": "docs/releases/v3.3.0/ITEM_LOCK_INTERSECTIONS_v2.json",
+ "spans_total": 17,
+ "decision_ranges": "v3_2_7_lines_strict",
+ "rows": [
+  {
+   "replacement": "FF3-FORD-9.4-ROW",
+   "amends": [
+    "v3.3.0 plan: REPAIR-HUNK-035"
+   ],
+   "v3_2_7_lines": [
+    630,
+    631
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "POST340-HEADER-TITLE",
+   "amends": [
+    "v3.4.0 plan: POST331-HEADER-TITLE",
+    "v3.3.1 plan: POST330-HEADER-TITLE",
+    "v3.3.0 plan: REPAIR-HUNK-001"
+   ],
+   "v3_2_7_lines": [
+    3,
+    4
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "POST340-HEADER-VERSION",
+   "amends": [
+    "v3.4.0 plan: POST331-HEADER-VERSION",
+    "v3.3.1 plan: POST330-HEADER-VERSION",
+    "v3.3.0 plan: REPAIR-HUNK-002"
+   ],
+   "v3_2_7_lines": [
+    5,
+    6
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "POST340-CHANGELOG",
+   "amends": [
+    "v3.4.0 plan: POST331-CHANGELOG",
+    "v3.3.1 plan: POST330-CHANGELOG",
+    "v3.3.0 plan: REL330-CHANGELOG"
+   ],
+   "v3_2_7_lines": [
+    7,
+    7
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "POST340-FOOTER",
+   "amends": [
+    "v3.4.0 plan: POST331-FOOTER",
+    "v3.3.1 plan: POST330-FOOTER",
+    "v3.3.0 plan: REPAIR14-D-20"
+   ],
+   "v3_2_7_lines": [
+    5552,
+    5552
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "POST340-RELEASE-STANDING",
+   "amends": [
+    "v3.3.1 plan: POST330-RELEASE-STANDING",
+    "v3.3.0 plan: REPAIR-HUNK-002"
+   ],
+   "v3_2_7_lines": [
+    5,
+    6
+   ],
+   "lock_spans": []
+  }
+ ],
+ "in_lock_spans": [],
+ "loose_only_hits": [
+  {
+   "replacement": "POST340-FOOTER",
+   "v3_2_7_lines": [
+    5552,
+    5552
+   ],
+   "span": "Cor 14.5a",
+   "strict": [
+    5167,
+    5250
+   ],
+   "loose": [
+    5167,
+    5552
+   ],
+   "not_a_lock_intersection_because": "loose range runs to the end of the file because this is the last native tag of v3.2.7; the strict span ends at line 5250"
+  }
+ ]
+}

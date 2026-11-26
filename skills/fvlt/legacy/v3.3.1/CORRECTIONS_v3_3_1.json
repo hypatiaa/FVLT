@@ -1,0 +1,144 @@
+{
+ "schema": "kernel-successor-corrections-v1",
+ "status": "LOCKED_RELEASE_v3.3.1",
+ "base_commit": "5c6bc6636b8f3316dd0d83ae1f4cb74ed814c757",
+ "base_path": "kernel/successor/kernel.md",
+ "base_sha256": "35ca26ee4cc68fee56013a769070eb14240ddf8aa8376b038a29c3d470e2b5ce",
+ "draft_path": "kernel/post-v3.3.0/kernel.md",
+ "draft_sha256": "e49533088843e2cd0a1c531c4d8ba113ea30113e8135a15c17c040bdfca3e0e0",
+ "review_sources": [
+  {
+   "pr": 69,
+   "head": "cbc595e718273627b9e2e319524fc614cd526970",
+   "standing": "adopted by saphir 2026-10-30 (\"our kernel needs to comply with the lean. I am good with that\", relayed by skeleton); fresh review of f2dc33f and re-check of cbc595e by skeleton (comments 6521011902, 6523650581)"
+  }
+ ],
+ "predecessor": {
+  "label": "v3.3.0",
+  "path": "kernel/successor/kernel.md",
+  "sha256": "35ca26ee4cc68fee56013a769070eb14240ddf8aa8376b038a29c3d470e2b5ce",
+  "status": "LOCKED by saphir 2026-10-28",
+  "plan": "kernel/successor/CORRECTIONS.json (unchanged)"
+ },
+ "record": "kernel/successor/repairs/2026-10-30/15-g2-n6/CHANGES.json",
+ "lean": "FVLTYReflectionV1 and FVLTN6YReflectionV1 (package n6_y_reflection_successor_v0_1_20261030, Rule 30 bus #1063), reported verified by skeleton; not in this repository and not re-checked here.",
+ "version_label": "v3.3.1",
+ "allowed_native_tag_changes": [],
+ "replacements": [
+  {
+   "id": "G2-N6-CHI-PARENTHETICAL",
+   "old": "- **G2 (enantiomorph pair).** $c\\mapsto -c$ sends $q\\mapsto -q$ with $p$ fixed; branches $c$\n  and $-c$ are mirror torus flows (the $n_6$ / χ winding-reversal), with gearbox numbers the\n  reflected pair $N t_1 \\pm c t_2$.",
+   "new": "- **G2 (enantiomorph pair).** $c\\mapsto -c$ sends $q\\mapsto -q$ with $p$ fixed; branches $c$\n  and $-c$ are mirror torus flows (winding reversal of the second torus coordinate only), with\n  gearbox numbers the reflected pair $N t_1 \\pm c t_2$. This branch change is not the sign of $n_6$\n  and not chirality $\\chi$. The lift uses $\\rho=|n_6|N^{\\alpha}$ and does not apply the sign of $n_6$;\n  that sign is the $y$-axis reflection $z\\mapsto-\\bar z$ of Rmk II.5a, which, applied to both lift\n  coordinates, would reverse both windings, $(p,q)\\mapsto(-p,-q)$, up to constant phases. Chirality\n  $\\chi$ (§4.4: the direction of phasor advance) is not defined on this lift; extended\n  coordinatewise to it, $\\chi$ would likewise reverse both. Either agrees\n  with $c\\mapsto -c$ only when $p=Nt_1=0$."
+  },
+  {
+   "id": "N6-II5a-SIGN-AS-Y-REFLECTION",
+   "old": "$$\nR_\\alpha(n_3) = \\begin{cases} 0, & n_6 = 0,\\\\ n_6 n_3, & \\alpha = 1,\\\\ n_6, & \\alpha = 0,\\\\ n_6 / n_3, & \\alpha = -1, \\end{cases}\n$$\n$$\nz_1(s, \\varphi_3) = R_\\alpha(n_3)\\, \\exp\\!\\left(i \\frac{k_1 s \\pi}{n_3}\\right), \\qquad z_2(s, \\varphi_3) = R_\\alpha(n_3)\\, \\exp\\!\\left(i \\frac{k_2 s \\pi}{n_3}\\right).\n$$\n",
+   "new": "$$\nr_\\alpha(n_3) = |n_6|\\, n_3^{\\alpha}\\quad(\\alpha\\in\\{-1,0,1\\}),\\qquad \\theta_j=\\frac{k_j s\\pi}{n_3}\\quad(j=1,2),\n$$\n$$\nz_j(s, \\varphi_3) = \\begin{cases} r_\\alpha(n_3)\\, e^{\\,i\\theta_j}, & n_6 > 0,\\\\ 0, & n_6 = 0,\\\\ -\\,r_\\alpha(n_3)\\, e^{-i\\theta_j} = -\\overline{r_\\alpha(n_3)\\,e^{\\,i\\theta_j}}, & n_6 < 0. \\end{cases}\n$$\n*Sign of $n_6$ (corrected 2026-10-30).* The sign of $n_6$ is the reflection across the imaginary ($y$) axis, $z\\mapsto-\\bar z$, i.e. $(\\operatorname{Re},\\operatorname{Im})\\mapsto(-\\operatorname{Re},\\operatorname{Im})$: a norm-preserving involution that reverses the direction of phasor advance and adds a constant half-turn (in phase-address units of $\\pi$, $a\\mapsto 1-a$). The magnitude $|n_6|$ scales the radius. Earlier versions multiplied the phasor by the signed scalar $n_6$; for $n_6<0$ that is the half-turn $z\\mapsto -z$ ($a\\mapsto a+1$), a different operation, which agrees with the reflection only on the real axis. That earlier scalar form and its consequences remain correct as statements about the scalar operation, but it is not the sign of $n_6$. The relations below are unchanged by the correction: the reflection preserves the conjugate pair ($\\overline{-\\bar w}=-w$) and imaginary parts ($\\operatorname{Im}(-\\bar z)=\\operatorname{Im}z$).\n\n"
+  },
+  {
+   "id": "N6-II5a-CONTACT-GUARD",
+   "old": "Assume $R_\\alpha(n_3)\\ne0$ (the $n_6=0$ collapse to the origin is excluded)",
+   "new": "Assume $n_6\\ne0$ (the $n_6=0$ collapse to the origin is excluded)"
+  },
+  {
+   "id": "G2-N6-LOCK-NOTE-VII2a",
+   "old": "differs from the locked v3.2.7 bytes only by two declared edits, listed in `kernel/successor/CORRECTIONS.json`: REPAIR-HUNK-146 (the reciprocal shell-swap gloss in Rmk II.23.9b) and REPAIR14-C-02-POINTER (the pointer from Def II.23.9 to the parameter note below).",
+   "new": "differs from the locked v3.2.7 bytes only by three declared edits: REPAIR-HUNK-146 (the reciprocal shell-swap gloss in Rmk II.23.9b) and REPAIR14-C-02-POINTER (the pointer from Def II.23.9 to the parameter note below), listed in `kernel/successor/CORRECTIONS.json`, and G2-N6-CHI-PARENTHETICAL, listed in `kernel/post-v3.3.0/CORRECTIONS.json` (guard G2 of Lemma II.23.9a no longer calls the branch change $c\\mapsto -c$ \"the $n_6$ / χ winding-reversal\"; saphir 2026-10-30).",
+   "note": "Placement adjustment at application: the adopted text (cbc595e) said all three edits are listed in kernel/successor/CORRECTIONS.json; that file is the locked v3.3.0 plan and is not edited, so G2-N6-CHI-PARENTHETICAL is listed in kernel/post-v3.3.0/CORRECTIONS.json and the sentence says so."
+  },
+  {
+   "id": "G2-N6-CONCORDANCE-ROW",
+   "old": "| Lemma II.23.9a | Part II / II.23, after Def II.23.9 | locked by Robin 2026-07-23; folded verbatim from the locked entry |",
+   "new": "| Lemma II.23.9a | Part II / II.23, after Def II.23.9 | locked by Robin 2026-07-23; folded verbatim from the locked entry; guard G2 since changed by declared edit G2-N6-CHI-PARENTHETICAL (see the VII.2a II.23.9 note) |"
+  },
+  {
+   "id": "G2-N6-RELEASE-SCOPE-a",
+   "old": "Twenty-two declared, reviewed replacements",
+   "new": "Twenty-three declared, reviewed replacements"
+  },
+  {
+   "id": "G2-N6-RELEASE-SCOPE-b",
+   "old": "in II.23.9, REPAIR14-C-02-POINTER and REPAIR-HUNK-146;",
+   "new": "in II.23.9, REPAIR14-C-02-POINTER, REPAIR-HUNK-146 and G2-N6-CHI-PARENTHETICAL;"
+  },
+  {
+   "id": "G2-N6-RELEASE-SCOPE-c",
+   "old": "Two of these correct the mathematics of locked statements:",
+   "new": "Three of these correct the mathematics of locked statements: G2-N6-CHI-PARENTHETICAL (Lemma II.23.9a guard G2: the branch change $c\\mapsto -c$ is no longer identified with the sign of $n_6$ or with chirality χ),"
+  },
+  {
+   "id": "POST330-HEADER-TITLE",
+   "old": "## FVLT — v3.3.0 (on the v3.2.0 Semantic-Correction Baseline)",
+   "new": "## FVLT — v3.3.1 (on the v3.2.0 Semantic-Correction Baseline)",
+   "kind": "release metadata (header, version paragraph, changelog, footer)"
+  },
+  {
+   "id": "POST330-HEADER-VERSION",
+   "old": "**Version:** 3.3.0 (current; minor release on the locked v3.2.7;",
+   "new": "**Version:** 3.3.1 (current; point release on the locked v3.3.0; label assigned and **LOCKED release of record** by saphir 2026-10-30: \"v3.3.1, lock it\"; release records in `docs/releases/v3.3.1/`). It supersedes v3.3.0 (SHA-256 `35ca26ee4cc68fee56013a769070eb14240ddf8aa8376b038a29c3d470e2b5ce`, LOCKED by saphir 2026-10-28) and applies to its bytes one correction, adopted by saphir 2026-10-30 (PR #69): guard G2 of Lemma II.23.9a no longer identifies the branch change $c\\mapsto -c$ with the sign of $n_6$ or with chirality χ, and Rmk II.5a states the sign of $n_6$ as the $y$-axis reflection $z\\mapsto-\\bar z$, with the lock bookkeeping for the item-locked II.23.9 text. The changes are declared in `kernel/post-v3.3.0/CORRECTIONS.json` and recorded in `kernel/successor/repairs/2026-10-30/15-g2-n6/`. The kernel text follows the verified Lean $y$-reflection law (modules FVLTYReflectionV1 and FVLTN6YReflectionV1; saphir 2026-10-30: \"our kernel needs to comply with the lean\"). No status label or native tag changes, and no standing is upgraded. The v3.3.0 version record follows as history. **v3.3.0:** 3.3.0 (minor release on the locked v3.2.7;",
+   "kind": "release metadata (header, version paragraph, changelog, footer)"
+  },
+  {
+   "id": "POST330-CHANGELOG",
+   "old": "<!-- v3.3.0 changelog (label assigned",
+   "new": "<!-- v3.3.1 changelog (label assigned and LOCKED by saphir 2026-10-30: \"v3.3.1, lock it\"): apply the correction adopted by saphir 2026-10-30 (PR #69) to the locked v3.3.0, declared in kernel/post-v3.3.0/CORRECTIONS.json and recorded in kernel/successor/repairs/2026-10-30/15-g2-n6/: G2-N6-CHI-PARENTHETICAL (Lemma II.23.9a guard G2: the branch change c ↦ −c is not the sign of n6 and not chirality χ; edits item-locked II.23.9 text, a correction to the mathematics of a locked statement, without renewing its attestation); N6-II5a-SIGN-AS-Y-REFLECTION and N6-II5a-CONTACT-GUARD (Rmk II.5a: the sign of n6 is the y-axis reflection z ↦ −z̄; outside the II.5a S2 lock span); lock bookkeeping G2-N6-LOCK-NOTE-VII2a, G2-N6-CONCORDANCE-ROW and G2-N6-RELEASE-SCOPE-a/b/c. No status label or native tag changes; upgrades no standing. --> <!-- v3.3.0 changelog (label assigned",
+   "kind": "release metadata (header, version paragraph, changelog, footer)"
+  },
+  {
+   "id": "POST330-FOOTER",
+   "old": "*— end Part VII, end FVLT v3.3.0 kernel (v3.2.0 semantic-correction baseline) —*",
+   "new": "*— end Part VII, end FVLT v3.3.1 kernel (v3.2.0 semantic-correction baseline) —*",
+   "kind": "release metadata (header, version paragraph, changelog, footer)"
+  },
+  {
+   "id": "POST330-RELEASE-STANDING",
+   "kind": "release metadata (release-scope paragraph, line 7; amends the new text of REPAIR-HUNK-002)",
+   "old": "The v3.3.0 release standing covers the assembled kernel as a whole; it does not re-attest the edited item-locked text.",
+   "new": "The v3.3.0 and v3.3.1 release standings cover the assembled kernel as a whole; they do not re-attest the edited item-locked text."
+  }
+ ],
+ "release": {
+  "label": "v3.3.1",
+  "status": "locked",
+  "predecessor": {
+   "label": "v3.3.0",
+   "path": "kernel/successor/kernel.md",
+   "sha256": "35ca26ee4cc68fee56013a769070eb14240ddf8aa8376b038a29c3d470e2b5ce",
+   "status": "LOCKED by saphir 2026-10-28"
+  },
+  "label_assigned": {
+   "by": "saphir",
+   "date": "2026-10-30",
+   "statement": "v3.3.1, lock it"
+  },
+  "lock": {
+   "by": "saphir",
+   "date": "2026-10-30",
+   "statement": "v3.3.1, lock it",
+   "content_verified": "skeleton, PR #71 head f85e62d (comment 6523940362): body text; this lock changes release metadata only"
+  },
+  "adoption": {
+   "by": "saphir",
+   "date": "2026-10-30",
+   "statement": "our kernel needs to comply with the lean. I am good with that",
+   "pr": 69,
+   "head": "cbc595e718273627b9e2e319524fc614cd526970",
+   "merged_as": "d8dec14fdbef995d9d3891b0d08defab72c77495"
+  },
+  "item_lock_interactions": [
+   {
+    "replacement": "G2-N6-CHI-PARENTHETICAL",
+    "span": "fold-II.23.9 (item-locked by Robin 2026-07-23)",
+    "v3_2_7_lines": [
+     3103,
+     3105
+    ],
+    "kind": "correction to the mathematics of a locked statement",
+    "attestation_renewed": false
+   }
+  ],
+  "item_lock_check": "docs/releases/v3.3.1/ITEM_LOCK_INTERSECTIONS.json: every replacement checked against the 17 lock spans of docs/releases/v3.3.0/ITEM_LOCK_INTERSECTIONS_v2.json; only G2-N6-CHI-PARENTHETICAL falls in one. N6-II5a-SIGN-AS-Y-REFLECTION (v3.2.7 lines 647-653) and G2-N6-CONCORDANCE-ROW (line 4631) fall in none; the other replacements amend text first introduced in v3.3.0.",
+  "standing": "No status label or native tag changes; no standing upgraded.",
+  "not_included": "No skill-bundle change or install (needs saphir's separate checkpoint)."
+ }
+}

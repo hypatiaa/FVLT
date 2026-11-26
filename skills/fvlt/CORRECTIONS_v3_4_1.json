@@ -1,0 +1,110 @@
+{
+ "schema": "kernel-successor-corrections-v2",
+ "status": "LOCKED_RELEASE_v3.4.1",
+ "base_commit": "87a16e6",
+ "base_path": "kernel/post-v3.3.1/kernel.md",
+ "base_sha256": "0d6beee233602502576c1d0eedfe5a586e66f1b4e4b8a1858c39189d872ec1a2",
+ "draft_path": "kernel/post-v3.4.0/kernel.md",
+ "draft_sha256": "7d46a830eb144cd3ad61e5f2842629e35432a68e56a2351aabe54ab698e157ce",
+ "builder": "tools/build_successor_kernel_v2.py",
+ "version_label": "v3.4.1 (point release on the locked v3.4.0; label assigned by saphir 2026-11-04: \"I like the point release label\"; LOCKED release of record by saphir 2026-11-04: \"v3.4.1, lock it\")",
+ "predecessor": {
+  "label": "v3.4.0",
+  "path": "kernel/post-v3.3.1/kernel.md",
+  "sha256": "0d6beee233602502576c1d0eedfe5a586e66f1b4e4b8a1858c39189d872ec1a2",
+  "status": "LOCKED by saphir 2026-11-03",
+  "plan": "kernel/post-v3.3.1/CORRECTIONS.json (unchanged)"
+ },
+ "review_sources": [
+  {
+   "pr": 76,
+   "head": "b6b78b0",
+   "standing": "line review (Idea Catalog partner) and candidate v0.3 (skeleton seat); adopted by saphir 2026-11-04: \"I approve\""
+  }
+ ],
+ "record": "kernel/post-v3.3.1/repairs/2026-11-04/ff3-ford-9.4-row/",
+ "lean": "FF-3 (shared theorem library v23, modules FVLTRosetteFord{Data,Phase,Arithmetic,Sweep,Endpoints}V1): final audit PASS, Stack Bus #1554 (FF3_FINAL_AUDIT_v0_1.md cf9f59c9faf849a378dcec1b2eca87116861e3119eb064adef11572c8d3e92a3), 37/37 statements, axioms propext, Classical.choice, Quot.sound only; fidelity review 37/37 MATCH (signoff abbf810a...); library readiness #1556. Reported by skeleton; not in this repository and not re-checked here. The note states r > 0, a special case of the Lean r != 0; its n6 < 0 sentence is the elementary Im(-conj z) = Im z. No status effect (policy v0.2 rule 9).",
+ "allowed_native_item_additions": [],
+ "allowed_native_tag_changes": [],
+ "replacements": [
+  {
+   "id": "FF3-FORD-9.4-ROW",
+   "kind": "mathematical correction (scope narrowing) with an untagged note; no native item or tag",
+   "old": "| **Ford circles** | Circle of radius $1/(2q^2)$ at $p/q$; tangent iff Farey neighbors [For38]. A map sending Vernier phasor paths to Ford-circle arcs has not been defined; this is an interpretive comparison only. |",
+   "new": "| **Ford circles** | Circle of radius $1/(2q^2)$ at $p/q$; tangent iff Farey neighbors [For38]. Lifted-data map: see the note below (Lean-verified, FF-3; shared library v23). |\n\n**Lifted-data map (§9.4 Ford circles; Lean-verified, FF-3; shared library v23).** For lifted rosette data $(t_1,t_2,s,n_3)$ with $t_1,t_2\\in\\mathbb Z$, $s\\in\\mathbb Q$ and $n_3\\ge 1$, the map $\\Phi(t_1,t_2,s,n_3)=C(x)$ sends the record to the Ford circle at its Ford address $x=t_2s/n_3$. With phase address $a=t_1s-x=k_1s/n_3$ (the $z_1$ phase of Rmk II.5a, $\\theta_1=\\pi a$) and amplitude $r>0$, the phasor $r\\,e^{i\\pi a}$ lies on the real axis ($\\operatorname{Im}=0$) iff $a\\in\\mathbb Z$. This extends the contact identity of Rmk II.5a from integer to rational $s$, and it is unchanged for $n_6<0$, whose point $-\\bar z$ has the same imaginary part. On the shells $n_3=N$ with $t_1=t_2=1$, for $N=2,\\dots,B+1$ ($B\\ge1$), the real-axis events with $s\\in[0,N]$ are exactly $s=mN/(N-1)$, $0\\le m\\le N-1$, with addresses $m/(N-1)$; the deduplicated address set is the Farey set $F_B$, and consecutive members $p/q<p'/q'$ satisfy $qp'-pq'=1$. Along a finite address path, each edge is exactly one of tangent (determinant $\\pm1$), stall (equal addresses) or break, and every tangent edge carries an exact rational kiss point lying on both circles. $\\Phi$ is defined on lifted data, not on phasor values: at $N=3$, $s=0$ and $s=3$ give the same phasor and the addresses $0$ and $1$. Oriented or continuous Ford-circle arcs, a map from unlabelled phasor values or paths, and any dynamical correspondence are not defined; that comparison remains interpretive only.",
+   "source": "candidate v0.3 (skeleton seat), REPLACEMENT_FF3-FORD-9.4-ROW_v0_3.json sha256 568a6662f64b92d6022b1bf307dcbcb060d31e8a5314c7d47a6c4fcc8771a252; line review PR #76; adopted by saphir 2026-11-04 (\"I approve\")"
+  },
+  {
+   "id": "POST340-HEADER-TITLE",
+   "kind": "release metadata",
+   "old": "## FVLT — v3.4.0 (on the v3.2.0 Semantic-Correction Baseline)",
+   "new": "## FVLT — v3.4.1 (on the v3.2.0 Semantic-Correction Baseline)"
+  },
+  {
+   "id": "POST340-HEADER-VERSION",
+   "kind": "release metadata",
+   "old": "**Version:** 3.4.0 (current; minor release on the locked v3.3.1;",
+   "new": "**Version:** 3.4.1 (current; point release on the locked v3.4.0; label assigned by saphir 2026-11-04: \"I like the point release label\", for the proposed v3.4.1; **LOCKED release of record** by saphir 2026-11-04: \"v3.4.1, lock it\"; release records in `docs/releases/v3.4.1/`). It supersedes v3.4.0 (SHA-256 `0d6beee233602502576c1d0eedfe5a586e66f1b4e4b8a1858c39189d872ec1a2`, LOCKED by saphir 2026-11-03) and applies to its bytes one correction, adopted by saphir 2026-11-04 (\"I approve\"; PR #76): the §9.4 Ford-circles row of Part II / II.5 no longer says only that a map from Vernier phasor paths to Ford-circle arcs is undefined. A short row now points to an untagged note directly below the table, which states the Lean-verified lifted-data map of FF-3 (shared theorem library v23) and keeps arcs, maps from phasor values or paths, and dynamics undefined and interpretive. The change is declared in `kernel/post-v3.4.0/CORRECTIONS.json` and recorded in `kernel/post-v3.3.1/repairs/2026-11-04/ff3-ford-9.4-row/`. The note carries no native tag: no native item is added, and no status label or native tag changes. No standing is upgraded. The v3.4.0 version record follows as history. **v3.4.0:** 3.4.0 (minor release on the locked v3.3.1;"
+  },
+  {
+   "id": "POST340-CHANGELOG",
+   "kind": "release metadata",
+   "old": "<!-- v3.4.0 changelog (",
+   "new": "<!-- v3.4.1 changelog (point release on the locked v3.4.0; label assigned by saphir 2026-11-04: \"I like the point release label\", for the proposed v3.4.1; LOCKED by saphir 2026-11-04: \"v3.4.1, lock it\"; release records in docs/releases/v3.4.1/): apply the correction adopted by saphir 2026-11-04 (PR #76), declared in kernel/post-v3.4.0/CORRECTIONS.json and recorded in kernel/post-v3.3.1/repairs/2026-11-04/ff3-ford-9.4-row/: FF3-FORD-9.4-ROW (Part II / II.5, §9.4 Ford circles: short row plus an untagged note stating the Lean-verified lifted-data map of FF-3, shared library v23; arcs, maps from phasor values or paths, and dynamics stay undefined and interpretive; a correction narrowing the scope of the old statement that no map was defined). Outside every item-lock span. No native item added; no status label or native tag changes; upgrades no standing. --> <!-- v3.4.0 changelog ("
+  },
+  {
+   "id": "POST340-FOOTER",
+   "kind": "release metadata",
+   "old": "*— end Part VII, end FVLT v3.4.0 kernel (v3.2.0 semantic-correction baseline) —*",
+   "new": "*— end Part VII, end FVLT v3.4.1 kernel (v3.2.0 semantic-correction baseline) —*"
+  },
+  {
+   "id": "POST340-RELEASE-STANDING",
+   "kind": "release metadata",
+   "old": "The v3.3.0 and v3.3.1 release standings cover the assembled kernel as a whole; they do not re-attest the edited item-locked text.",
+   "new": "The v3.3.0, v3.3.1, v3.4.0 and v3.4.1 release standings cover the assembled kernel as a whole; they do not re-attest the edited item-locked text."
+  }
+ ],
+ "release": {
+  "label": "v3.4.1",
+  "status": "locked",
+  "kind": "point release on the locked v3.4.0",
+  "label_assigned": {
+   "by": "saphir",
+   "date": "2026-11-04",
+   "statement": "I like the point release label",
+   "in_answer_to": "the proposed point-release label v3.4.1"
+  },
+  "adoption": {
+   "by": "saphir",
+   "date": "2026-11-04",
+   "statement": "I approve",
+   "of": "FF3-FORD-9.4-ROW v0.3 (PR #76)"
+  },
+  "release_metadata_units": [
+   "POST340-HEADER-TITLE",
+   "POST340-HEADER-VERSION",
+   "POST340-CHANGELOG",
+   "POST340-FOOTER",
+   "POST340-RELEASE-STANDING"
+  ],
+  "release_docs": "docs/releases/v3.4.1/",
+  "item_lock_interactions": [],
+  "item_lock_note": "See docs/releases/v3.4.1/ITEM_LOCK_INTERSECTIONS.json.",
+  "standing": "No status label change; no native item added; no standing upgraded.",
+  "not_included": "No skill-bundle change; the v3.4.1 skill package is built after the lock.",
+  "lock": {
+   "by": "saphir",
+   "date": "2026-11-04",
+   "statement": "v3.4.1, lock it",
+   "content_locked": "release candidate 90134be97be012da8a0ea0f5b48338a6a863166f36fbf0781f6822ef37886b39 (PR #77 head 74d4ce1); the lock round changes only the lock wording in the new texts of POST340-HEADER-VERSION and POST340-CHANGELOG and this plan metadata"
+  },
+  "predecessor": {
+   "label": "v3.4.0",
+   "path": "kernel/post-v3.3.1/kernel.md",
+   "sha256": "0d6beee233602502576c1d0eedfe5a586e66f1b4e4b8a1858c39189d872ec1a2",
+   "status": "LOCKED by saphir 2026-11-03; superseded by v3.4.1 (saphir 2026-11-04)",
+   "plan": "kernel/post-v3.3.1/CORRECTIONS.json (unchanged)"
+  }
+ }
+}

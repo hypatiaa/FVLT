@@ -1,0 +1,79 @@
+{
+ "schema": "kernel-correction-candidate-v1",
+ "status": "CANDIDATE_NOT_APPLIED (current: v0.3)",
+ "date": "2026-11-04",
+ "locked_release": {
+  "label": "v3.4.0",
+  "kernel": "kernel/post-v3.3.1/kernel.md",
+  "sha256": "0d6beee233602502576c1d0eedfe5a586e66f1b4e4b8a1858c39189d872ec1a2"
+ },
+ "source": {
+  "author": "skeleton seat (Claude Opus 5.5)",
+  "request": "saphir: \"do the kernel 9.4 correction draft for idea catalog to review\"",
+  "local_files": {
+   "CANDIDATE_9_4_FORD_ROW_v0_1.md": "4b870490… (prefix as reported)",
+   "replacement JSON": "5d7d8b97… (prefix as reported)"
+  },
+  "local_path": "FVLT_FORMALIZATION_v0_1_20261028/phasor_ford_map_v0_1_20261103/kernel_candidate_9_4_v0_1/ (not in this repository)"
+ },
+ "changes": [
+  {
+   "id": "FF3-FORD-9.4-ROW",
+   "kind": "mathematical correction, scope narrowing",
+   "target": "Part II / II.5, §9.4 classical connection table, Ford circles row (v3.4.0 line 644; no native tag; outside item-locked spans)",
+   "old": "| **Ford circles** | Circle of radius $1/(2q^2)$ at $p/q$; tangent iff Farey neighbors [For38]. A map sending Vernier phasor paths to Ford-circle arcs has not been defined; this is an interpretive comparison only. |",
+   "new": "| **Ford circles** | Circle of radius $1/(2q^2)$ at $p/q$; tangent iff Farey neighbors [For38]. **Lifted-data map (Lean-verified, FF-3; shared library v23).** For lifted rosette data $(t_1,t_2,s,n_3)$ with $t_1,t_2\\in\\mathbb Z$, $s\\in\\mathbb Q$, $n_3\\ge 1$ and a nonzero real amplitude $r$, the map $\\Phi(t_1,t_2,s,n_3)=C(x)$ sends the record to the Ford circle at its Ford address $x=t_2s/n_3$. The phasor $r\\,e^{i\\pi a}$, with phase address $a=t_1s-x$, is real iff $a\\in\\mathbb Z$. On the lower-tooth shells $N=2,\\dots,B+1$ ($t_1=t_2=1$), its real events with $s\\in[0,N]$ are exactly $s=mN/(N-1)$, $0\\le m\\le N-1$, with addresses $m/(N-1)$; the deduplicated address set is the Farey set $F_B$, and consecutive members $a/b<c/d$ satisfy $bc-ad=1$. Along a finite address path, each edge is exactly one of tangent (determinant $\\pm1$), stall (equal addresses) or break, and every tangent edge carries an exact rational kiss point lying on both circles. $\\Phi$ is defined on lifted data, not on phasor values: at $N=3$, $s=0$ and $s=3$ give the same phasor and the addresses $0$ and $1$. Oriented or continuous Ford-circle arcs, a map from unlabelled phasor values or paths, and any dynamical correspondence are not defined; that comparison remains interpretive only. |",
+   "applied_draft_sha256": "e2d348b7ab32fde7f1a7083813e7e7b0add45174a827785f62b15193d2f1f9ed",
+   "status_label_change": false,
+   "evidence": {
+    "lean": "FF-3 final audit PASS, Stack Bus #1554 (FF3_FINAL_AUDIT_v0_1.md cf9f59c9faf849a378dcec1b2eca87116861e3119eb064adef11572c8d3e92a3); 37/37 statements; clean rebuild on nucleus with strict replay of 161 constants; axioms propext, Classical.choice, Quot.sound only; fidelity review 37/37 MATCH (signoff abbf810a…); shared theorem library v23 (bus #1556, SHA256SUMS 394e72c5…), modules FVLTRosetteFord{Data,Phase,Arithmetic,Sweep,Endpoints}V1. Reported by skeleton; not in this repository and not re-checked here.",
+    "theorems": [
+     "phasor_real_iff",
+     "phasor_alias_not_address_alias",
+     "shell_contact_parameterization",
+     "shell_phasor_contact_iff",
+     "shell_contact_address",
+     "shell_addresses_eq_farey",
+     "farey_consecutive_det",
+     "path_edge_trichotomy",
+     "classify_tangent_iff",
+     "tangent_endpoint_certificate"
+    ],
+    "independent_exact_check": "check_ff3_row.py (this folder): shells N=2..39, Farey B=1..39, Ford pairs with denominators <=12, N=3 alias; output check_ff3_row.out"
+   }
+  }
+ ],
+ "review_proposal": {
+  "by": "Idea Catalog partner, 2026-11-04",
+  "status": "SUPERSEDED by candidate v0.3 (all five fixes taken)",
+  "id": "FF3-FORD-9.4-ROW (v0.2 text)",
+  "new": "| **Ford circles** | Circle of radius $1/(2q^2)$ at $p/q$; tangent iff Farey neighbors [For38]. **Lifted-data map (Lean-verified, FF-3; shared library v23).** For lifted rosette data $(t_1,t_2,s,n_3)$ with $t_1,t_2\\in\\mathbb Z$, $s\\in\\mathbb Q$ and $n_3\\ge 1$, the map $\\Phi(t_1,t_2,s,n_3)=C(x)$ sends the record to the Ford circle at its Ford address $x=t_2s/n_3$. With phase address $a=t_1s-x=k_1s/n_3$ (the $z_1$ phase of Rmk II.5a, $\\theta_1=\\pi a$) and amplitude $r>0$, the phasor $r\\,e^{i\\pi a}$ lies on the real axis ($\\operatorname{Im}=0$) iff $a\\in\\mathbb Z$. This extends the contact identity of Rmk II.5a from integer to rational $s$, and it is unchanged for $n_6<0$, whose point $-\\bar z$ has the same imaginary part. On the shells $n_3=N$ with $t_1=t_2=1$, for $N=2,\\dots,B+1$ ($B\\ge1$), the real-axis events with $s\\in[0,N]$ are exactly $s=mN/(N-1)$, $0\\le m\\le N-1$, with addresses $m/(N-1)$; the deduplicated address set is the Farey set $F_B$, and consecutive members $p/q<p'/q'$ satisfy $qp'-pq'=1$. Along a finite address path, each edge is exactly one of tangent (determinant $\\pm1$), stall (equal addresses) or break, and every tangent edge carries an exact rational kiss point lying on both circles. $\\Phi$ is defined on lifted data, not on phasor values: at $N=3$, $s=0$ and $s=3$ give the same phasor and the addresses $0$ and $1$. Oriented or continuous Ford-circle arcs, a map from unlabelled phasor values or paths, and any dynamical correspondence are not defined; that comparison remains interpretive only. |",
+  "applied_draft_sha256": "7e50df43cc10643d1d5b41b82c5b7851cc1d372eabfedc7f2140f3ec63e56f18",
+  "differences": [
+   "amplitude r>0 with a sentence that the reality test is unchanged for n6<0 (v3.3.1 sign convention), in place of \"nonzero real amplitude r\"",
+   "phase address tied to Rmk II.5a: a = k1 s/n3, theta_1 = pi a; states that it extends the II.5a contact identity from integer to rational s",
+   "\"real\" written as \"lies on the real axis (Im = 0)\", the II.5a wording",
+   "shells defined explicitly as n3 = N with t1 = t2 = 1, B >= 1 stated; the undefined term \"lower-tooth\" dropped",
+   "Farey neighbours written p/q < p'/q' with qp' - pq' = 1, since a is already the phase address"
+  ],
+  "to_confirm": "n3 = N on the shells is inferred from the stated events s = mN/(N-1); confirm against the Lean statement shell_contact_parameterization."
+ },
+ "current_candidate": {
+  "version": "v0.3",
+  "date": "2026-11-04",
+  "id": "FF3-FORD-9.4-ROW",
+  "author": "skeleton seat (Claude Opus 5.5)",
+  "layout_decision": "saphir, 2026-11-04: \"Short cell + note\" (untagged note directly below the table; no native ID, no item addition)",
+  "n3_confirmation": "shell_contact_parameterization is stated on phaseAddress 1 1 s N with (N : Nat) (hN : 2 <= N), i.e. n3 = N, t1 = t2 = 1 (frozen headers b8a052dc..., audited Stack Bus #1554), as reported by skeleton",
+  "old": "| **Ford circles** | Circle of radius $1/(2q^2)$ at $p/q$; tangent iff Farey neighbors [For38]. A map sending Vernier phasor paths to Ford-circle arcs has not been defined; this is an interpretive comparison only. |",
+  "new": "| **Ford circles** | Circle of radius $1/(2q^2)$ at $p/q$; tangent iff Farey neighbors [For38]. Lifted-data map: see the note below (Lean-verified, FF-3; shared library v23). |\n\n**Lifted-data map (§9.4 Ford circles; Lean-verified, FF-3; shared library v23).** For lifted rosette data $(t_1,t_2,s,n_3)$ with $t_1,t_2\\in\\mathbb Z$, $s\\in\\mathbb Q$ and $n_3\\ge 1$, the map $\\Phi(t_1,t_2,s,n_3)=C(x)$ sends the record to the Ford circle at its Ford address $x=t_2s/n_3$. With phase address $a=t_1s-x=k_1s/n_3$ (the $z_1$ phase of Rmk II.5a, $\\theta_1=\\pi a$) and amplitude $r>0$, the phasor $r\\,e^{i\\pi a}$ lies on the real axis ($\\operatorname{Im}=0$) iff $a\\in\\mathbb Z$. This extends the contact identity of Rmk II.5a from integer to rational $s$, and it is unchanged for $n_6<0$, whose point $-\\bar z$ has the same imaginary part. On the shells $n_3=N$ with $t_1=t_2=1$, for $N=2,\\dots,B+1$ ($B\\ge1$), the real-axis events with $s\\in[0,N]$ are exactly $s=mN/(N-1)$, $0\\le m\\le N-1$, with addresses $m/(N-1)$; the deduplicated address set is the Farey set $F_B$, and consecutive members $p/q<p'/q'$ satisfy $qp'-pq'=1$. Along a finite address path, each edge is exactly one of tangent (determinant $\\pm1$), stall (equal addresses) or break, and every tangent edge carries an exact rational kiss point lying on both circles. $\\Phi$ is defined on lifted data, not on phasor values: at $N=3$, $s=0$ and $s=3$ give the same phasor and the addresses $0$ and $1$. Oriented or continuous Ford-circle arcs, a map from unlabelled phasor values or paths, and any dynamical correspondence are not defined; that comparison remains interpretive only.",
+  "applied_draft_sha256": "9b6dda3d58f672eec8cac11a2790aec8ca58b0318ee433ed5bad1cba66265625",
+  "line_count_change": "+2 (row at 644, blank at 645, note at 646)",
+  "note_body": "byte-identical to the v0.2 review_proposal cell text after its heading (1376 characters)",
+  "local_files": {
+   "CANDIDATE_9_4_FORD_ROW_v0_3.md": "2801be4f... (prefix as reported)",
+   "REPLACEMENT_FF3-FORD-9.4-ROW_v0_3.json": "568a6662... (prefix as reported)"
+  },
+  "reproduced_here": "old occurs once in 0d6beee2...; applying new gives 9b6dda3d... exactly; note carries no native tag; dollar signs balanced"
+ }
+}

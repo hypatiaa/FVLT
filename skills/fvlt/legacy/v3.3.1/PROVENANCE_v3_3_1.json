@@ -1,0 +1,438 @@
+{
+  "kind": "fvlt-skill-bundle-provenance",
+  "version": "v3.3.1",
+  "release_status": "LOCKED by saphir 2026-10-30 (\"v3.3.1, lock it\") on kernel e49533088843e2cd0a1c531c4d8ba113ea30113e8135a15c17c040bdfca3e0e0",
+  "source_commit": "0df7105",
+  "source_branch": "main at 0df7105e72eac0b233c71ab13b514afc25529c20 (merge of PR #71)",
+  "predecessor_bundle": "v3.3.0 (installed; moved to legacy/v3.3.0/ unchanged)",
+  "bibliography_note": "bibliography_v3_2_6.md is carried over unchanged from the v3.2.6 bundle as the current bibliography; it was not revised for v3.3.0 or v3.3.1. The repository bibliography (kernel/next/bibliography.md) is the same bytes and is out of scope for this release.",
+  "references_note": "references/ was built against the v3.2.6 kernel and is carried over unrefreshed.",
+  "note": "Copied files are byte-identical to the named path at source_commit. A hash match establishes integrity, not mathematical correctness.",
+  "files": [
+    {
+      "path": "CORRECTIONS_v3_3_1.json",
+      "role": "release metadata: the 13 replacements declared against the pinned v3.3.0 bytes, and the release block (label, lock, adoption, item-lock interactions)",
+      "source": {
+        "commit": "0df7105",
+        "path": "kernel/post-v3.3.0/CORRECTIONS.json"
+      },
+      "sha256": "821fe903dbbc9d39cd9b286882377bd0b804a2f2c9748ae51654090e1533dbf8",
+      "bytes": 11853
+    },
+    {
+      "path": "SKILL.md",
+      "role": "skill instructions authored for the locked v3.3.1 release",
+      "source": "authored in this bundle",
+      "sha256": "9ceeff6903db6ab347be6898047fc30ba933757c142efd2d5378f9dd11cd196b",
+      "bytes": 23289
+    },
+    {
+      "path": "bibliography_v3_2_6.md",
+      "role": "current bibliography, carried over unchanged from v3.2.6; not revised for v3.3.0",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/bibliography_v3_2_6.md"
+      },
+      "sha256": "f109a7e1097275795bb44fa481d4f63422dce7456c3dbbd7e7348f3468a4c474",
+      "bytes": 400633
+    },
+    {
+      "path": "kernel_v3_3_1.md",
+      "role": "authority: the LOCKED v3.3.1 kernel (saphir 2026-10-30)",
+      "source": {
+        "commit": "0df7105",
+        "path": "kernel/post-v3.3.0/kernel.md"
+      },
+      "sha256": "e49533088843e2cd0a1c531c4d8ba113ea30113e8135a15c17c040bdfca3e0e0",
+      "bytes": 591683
+    },
+    {
+      "path": "legacy/v3.2.5/SKILL_v3_2_5.md",
+      "role": "superseded v3.2.5 skill instructions (historical only)",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/legacy/v3.2.5/SKILL_v3_2_5.md"
+      },
+      "sha256": "9b32a3291e3f37f03267d2230fc8184e70742b3b84137bb2b88b6e3a3b62afb1",
+      "bytes": 273647
+    },
+    {
+      "path": "legacy/v3.2.5/bibliography_v3_2_5.md",
+      "role": "superseded v3.2.5 bibliography (historical only)",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/legacy/v3.2.5/bibliography_v3_2_5.md"
+      },
+      "sha256": "b82f8df76895ff29a41957e8ed7143750c2f0606be7b2d61a99cfa5759b2b01e",
+      "bytes": 399676
+    },
+    {
+      "path": "legacy/v3.2.5/kernel_v3_2_5.md",
+      "role": "superseded v3.2.5 kernel (historical only)",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/legacy/v3.2.5/kernel_v3_2_5.md"
+      },
+      "sha256": "ac53e75b73c42f185248464e3daf856a3dd3fd98b56dfff971341b80b10717ef",
+      "bytes": 508520
+    },
+    {
+      "path": "legacy/v3.2.6/ITEMS_v3_2_6.json",
+      "role": "superseded v3.2.6 release metadata (historical only)",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/ITEMS_v3_2_6.json"
+      },
+      "sha256": "73b9439a8998fe58ed25c93210cf4a2f817845a6bec0ed433dfd9e8f68183390",
+      "bytes": 49651
+    },
+    {
+      "path": "legacy/v3.2.6/MANIFEST_v3_2_6.sha256",
+      "role": "v3.2.6 bundle manifest (historical only)",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/MANIFEST.sha256"
+      },
+      "sha256": "c34d135b5dfca0713d1bfe3192a28f6ef9f5e4456d992d289edeaf284d08178e",
+      "bytes": 2062
+    },
+    {
+      "path": "legacy/v3.2.6/PROVENANCE_v3_2_6.json",
+      "role": "v3.2.6 bundle provenance (historical only)",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/PROVENANCE.json"
+      },
+      "sha256": "f903943d74c7336fc0011c6d155cca139ad14c73d7f4968459816bbc5645b17b",
+      "bytes": 7644
+    },
+    {
+      "path": "legacy/v3.2.6/SKILL_v3_2_6.md",
+      "role": "superseded v3.2.6 skill instructions, renamed so no loader takes it for a second skill; bytes unchanged (historical only)",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/SKILL.md"
+      },
+      "sha256": "ed885147b8c0401dd7579673369e9159f057e553b67a224b503b0b5401a7cfc3",
+      "bytes": 14050
+    },
+    {
+      "path": "legacy/v3.2.6/kernel_v3_2_6.md",
+      "role": "superseded v3.2.6 kernel (historical only)",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/kernel_v3_2_6.md"
+      },
+      "sha256": "4a23d62e15ada3819defe6919e56fe9f2ef6a9a10eb7f5c4082e4b6b442cdb94",
+      "bytes": 549320
+    },
+    {
+      "path": "legacy/v3.2.7/ITEMS_v3_2_7.json",
+      "role": "superseded v3.2.7 release metadata (historical only)",
+      "source": {
+        "commit": "983753e",
+        "path": "kernel/next/ITEMS.json"
+      },
+      "sha256": "a7857bc7dca93484fa675615be08ef2dd5f293cde135226a6171c44f8f010d4e",
+      "bytes": 59454
+    },
+    {
+      "path": "legacy/v3.2.7/kernel_v3_2_7.md",
+      "role": "superseded v3.2.7 kernel (historical only)",
+      "source": {
+        "commit": "983753e",
+        "path": "kernel/next/kernel.md"
+      },
+      "sha256": "b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81",
+      "bytes": 552616
+    },
+    {
+      "path": "legacy/v3.3.0/CORRECTIONS_v3_3_0.json",
+      "role": "v3.3.0 release metadata: every replacement against v3.2.7 (index for v3.3.0-era edits)",
+      "source": {
+        "commit": "0df7105",
+        "path": "kernel/successor/CORRECTIONS.json"
+      },
+      "sha256": "fc676eacc1ad1e3043812e32c447ffb7b6b43f493089ed3d3251fa1172425b93",
+      "bytes": 272235
+    },
+    {
+      "path": "legacy/v3.3.0/MANIFEST_v3_3_0.sha256",
+      "role": "v3.3.0 bundle manifest (historical only)",
+      "source": "installed FVLT v3.3.0 skill bundle (its verify_bundle.py PASS, 34 manifest entries), carried unchanged",
+      "sha256": "f8f10af363b78235c1c4585db8a8060d1c64a318cc9223d2175da3f2f84df285",
+      "bytes": 3384
+    },
+    {
+      "path": "legacy/v3.3.0/PROVENANCE_v3_3_0.json",
+      "role": "v3.3.0 bundle provenance (historical only)",
+      "source": "installed FVLT v3.3.0 skill bundle (its verify_bundle.py PASS, 34 manifest entries), carried unchanged",
+      "sha256": "2766e8f2766d1c08281a008e19e8ef3c7b4e08ae568591445ad0cfc08e1ce2d9",
+      "bytes": 12604
+    },
+    {
+      "path": "legacy/v3.3.0/SKILL_v3_3_0.md",
+      "role": "superseded v3.3.0 skill instructions, renamed so no loader takes it for a second skill (historical only)",
+      "source": "installed FVLT v3.3.0 skill bundle (its verify_bundle.py PASS, 34 manifest entries), carried unchanged",
+      "sha256": "90e4331ac4180511f5f24d7d06687e3eaada5baa944370cb7e122fb64c6e2a0f",
+      "bytes": 19330
+    },
+    {
+      "path": "legacy/v3.3.0/kernel_v3_3_0.md",
+      "role": "superseded v3.3.0 kernel (historical only)",
+      "source": {
+        "commit": "0df7105",
+        "path": "kernel/successor/kernel.md"
+      },
+      "sha256": "35ca26ee4cc68fee56013a769070eb14240ddf8aa8376b038a29c3d470e2b5ce",
+      "bytes": 587722
+    },
+    {
+      "path": "records/04_ROBIN_NUMBERING_RECORD.md",
+      "role": "v3.2.6-era record carried unchanged from the v3.2.6 bundle",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/records/04_ROBIN_NUMBERING_RECORD.md"
+      },
+      "sha256": "392cc8448a15af91d9fdd3e1049f73bab1822e17d945f212039599f8181e2bac",
+      "bytes": 1882
+    },
+    {
+      "path": "records/ATTESTATION_GOLDBACH_PHASOR_SEATS_v0.2.md",
+      "role": "v3.2.6-era record carried unchanged from the v3.2.6 bundle",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/records/ATTESTATION_GOLDBACH_PHASOR_SEATS_v0.2.md"
+      },
+      "sha256": "9fe0a8e8e50de990f89eabd15afaff0628c3051c3fa36970460b67af487abf8b",
+      "bytes": 5840
+    },
+    {
+      "path": "records/CLAUDE_COLD_PASS_VERDICT_FAREY_ISOLATION_V0_2_2026-07-24.md",
+      "role": "v3.2.6-era record carried unchanged from the v3.2.6 bundle",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/records/CLAUDE_COLD_PASS_VERDICT_FAREY_ISOLATION_V0_2_2026-07-24.md"
+      },
+      "sha256": "30efdcd384172bba85cbb8bb1d02095b6fc3bdbdccf083048f9fdc32c9cfcdb0",
+      "bytes": 14287
+    },
+    {
+      "path": "records/LOCK_RECORD_FAREY_II.5g-k.md",
+      "role": "v3.2.6-era record carried unchanged from the v3.2.6 bundle",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/records/LOCK_RECORD_FAREY_II.5g-k.md"
+      },
+      "sha256": "067cb91c411a7fa9e60985336ae32dd43202b0acb803ba3c399efe3c1d42f6a6",
+      "bytes": 3893
+    },
+    {
+      "path": "records/LOCK_RECORD_GOLDBACH_II.23.5c-e.md",
+      "role": "v3.2.6-era record carried unchanged from the v3.2.6 bundle",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/records/LOCK_RECORD_GOLDBACH_II.23.5c-e.md"
+      },
+      "sha256": "7ab76f305ac9267eca274b1d923b80641f9251ba341ef2e88bd2692275032370",
+      "bytes": 4040
+    },
+    {
+      "path": "records/LOCK_RECORD_II_23_9_2026-07-23.md",
+      "role": "v3.2.6-era record carried unchanged from the v3.2.6 bundle",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/records/LOCK_RECORD_II_23_9_2026-07-23.md"
+      },
+      "sha256": "60ab02e50d5c2e3c4e2fd72e33cff9c69883bc76ddc5c709b0355d53397f27a7",
+      "bytes": 3093
+    },
+    {
+      "path": "records/OPUS_DELTA_COLD_PASS_VERDICT_II_23_9.md",
+      "role": "v3.2.6-era record carried unchanged from the v3.2.6 bundle",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/records/OPUS_DELTA_COLD_PASS_VERDICT_II_23_9.md"
+      },
+      "sha256": "f91c3166796b3d4f181b4801a0c8d49b11af0ec3ceca4bb2b04eb16689d2a9c7",
+      "bytes": 3645
+    },
+    {
+      "path": "records/RELEASE_CANDIDATE.md",
+      "role": "v3.2.6-era record carried unchanged from the v3.2.6 bundle",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/records/RELEASE_CANDIDATE.md"
+      },
+      "sha256": "8ee7e603a47937f2ad81b5db12c29673434b8bc63c3cdf49fc7dd8eee3b81209",
+      "bytes": 7272
+    },
+    {
+      "path": "records/RELEASE_LOCK.md",
+      "role": "v3.2.6-era record carried unchanged from the v3.2.6 bundle",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/records/RELEASE_LOCK.md"
+      },
+      "sha256": "3c44951ff921841617a568262115ed8096c0879e08ec9dfa7d1c82cd8c533b8b",
+      "bytes": 3319
+    },
+    {
+      "path": "records/ROBIN_RELEASE_GATE.md",
+      "role": "v3.2.6-era record carried unchanged from the v3.2.6 bundle",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/records/ROBIN_RELEASE_GATE.md"
+      },
+      "sha256": "3440230bedd6bc07b90dd4ee0d1a0f14baa0210dd31f5d342a8b83ca0d58bce0",
+      "bytes": 2110
+    },
+    {
+      "path": "records/v3.2.7/RELEASE_CANDIDATE.md",
+      "role": "v3.2.7 release record (finalized as LOCKED)",
+      "source": {
+        "commit": "983753e",
+        "path": "docs/releases/v3.2.7/RELEASE_CANDIDATE.md"
+      },
+      "sha256": "bde1e03b066e5ea6ebbcba5107d8b05a17d1c69a720e904392438b4384261a6f",
+      "bytes": 3771
+    },
+    {
+      "path": "records/v3.3.0/ITEM_LOCK_INTERSECTIONS.json",
+      "role": "superseded round-1 list (ITEMS.json sources only), kept as history",
+      "source": {
+        "commit": "983753e",
+        "path": "docs/releases/v3.3.0/ITEM_LOCK_INTERSECTIONS.json"
+      },
+      "sha256": "5c4048f8976d251888b6e921cfbc96ec418e6e4ce03eb924992181b212343383",
+      "bytes": 7606
+    },
+    {
+      "path": "records/v3.3.0/ITEM_LOCK_INTERSECTIONS_v2.json",
+      "role": "script-derived list (correction round 2, option A) of replacements inside v3.2.7 item-locked text over five lock sources, with the 108-occurrence lock-word census; this is the current list",
+      "source": {
+        "commit": "983753e",
+        "path": "docs/releases/v3.3.0/ITEM_LOCK_INTERSECTIONS_v2.json"
+      },
+      "sha256": "2c4c3d2dae54b5830967b4d5f4710b2291cd996cd413e72a458851a0c7918617",
+      "bytes": 58768
+    },
+    {
+      "path": "records/v3.3.0/RELEASE_CANDIDATE.md",
+      "role": "v3.3.0 release candidate record (corrected, rounds 1 and 2)",
+      "source": {
+        "commit": "983753e",
+        "path": "docs/releases/v3.3.0/RELEASE_CANDIDATE.md"
+      },
+      "sha256": "46457e1577ff834805c52068cf3d918eb2c7a7d74a13a4bf64f1470695284230",
+      "bytes": 16171
+    },
+    {
+      "path": "records/v3.3.0/RELEASE_LOCK.md",
+      "role": "v3.3.0 lock record: the current lock (saphir 2026-10-28, \"lock the kernel\") and the first lock, superseded before publication",
+      "source": {
+        "commit": "983753e",
+        "path": "docs/releases/v3.3.0/RELEASE_LOCK.md"
+      },
+      "sha256": "7b2269c30a3add5b5d39e632cee4e4ddb83b229b749ed9ed3f7200dd3785d336",
+      "bytes": 8133
+    },
+    {
+      "path": "records/v3.3.0/RELEASE_UNITS.json",
+      "role": "v3.3.0 release-metadata units (label, superseded lock, correction round 1)",
+      "source": {
+        "commit": "983753e",
+        "path": "kernel/successor/repairs/2026-10-28/release-v3.3.0/UNITS.json"
+      },
+      "sha256": "06345e2e3484758ad2d202c6ba7c1ca299d09df7db59d39b21928e1b9deb3764",
+      "bytes": 40517
+    },
+    {
+      "path": "records/v3.3.1/G2_N6_CHANGES.json",
+      "role": "G2 / n6 correction record (exact old/new, adoption)",
+      "source": {
+        "commit": "0df7105",
+        "path": "kernel/successor/repairs/2026-10-30/15-g2-n6/CHANGES.json"
+      },
+      "sha256": "088947e608468172d30c8b101cb48a54a32524a86b4a7f846838bc08e4deab15",
+      "bytes": 14708
+    },
+    {
+      "path": "records/v3.3.1/G2_N6_README.md",
+      "role": "G2 / n6 correction record (explanation, evidence)",
+      "source": {
+        "commit": "0df7105",
+        "path": "kernel/successor/repairs/2026-10-30/15-g2-n6/README.md"
+      },
+      "sha256": "e61f62d4175399ed5a8891310c317a037b1fe0f59fa6b10cea4fbb1699e87197",
+      "bytes": 9954
+    },
+    {
+      "path": "records/v3.3.1/ITEM_LOCK_INTERSECTIONS.json",
+      "role": "script-derived list of v3.3.1 replacements in item-lock spans (only G2-N6-CHI-PARENTHETICAL)",
+      "source": {
+        "commit": "0df7105",
+        "path": "docs/releases/v3.3.1/ITEM_LOCK_INTERSECTIONS.json"
+      },
+      "sha256": "69435c1413ac9911b2d8d3b0da56e1ad38528e1ae2bfbefe496fa3d98f3bb04d",
+      "bytes": 2160
+    },
+    {
+      "path": "records/v3.3.1/RELEASE_LOCK.md",
+      "role": "v3.3.1 lock record (saphir 2026-10-30, \"v3.3.1, lock it\")",
+      "source": {
+        "commit": "0df7105",
+        "path": "docs/releases/v3.3.1/RELEASE_LOCK.md"
+      },
+      "sha256": "f033fc82b0a0d2963b85708b72fd91adcbb444667c47d288a2761d28fcdf39f2",
+      "bytes": 4185
+    },
+    {
+      "path": "records/v3.3.1/check_g2_n6.out",
+      "role": "output of check_g2_n6.py",
+      "source": {
+        "commit": "0df7105",
+        "path": "kernel/successor/repairs/2026-10-30/15-g2-n6/check_g2_n6.out"
+      },
+      "sha256": "d74be9f5b24c0254f78051ed58e029622d8a569759a874db36598e11a8ccb5b2",
+      "bytes": 1081
+    },
+    {
+      "path": "records/v3.3.1/check_g2_n6.py",
+      "role": "exact check script for the G2 / n6 correction (stdlib)",
+      "source": {
+        "commit": "0df7105",
+        "path": "kernel/successor/repairs/2026-10-30/15-g2-n6/check_g2_n6.py"
+      },
+      "sha256": "0d24165e3674a7ae1f60ac11b0e84b2d8ae04aa0b79b0b30ebd4f523de397511",
+      "bytes": 8704
+    },
+    {
+      "path": "references/CURRENT_WORK.md",
+      "role": "advisory current-work routing view, built against v3.2.6 and not refreshed; no mathematical authority",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/references/CURRENT_WORK.md"
+      },
+      "sha256": "eafaa316f72a5799b52ea47aba0d36a0a16162dca8e06fffee959b28f9fb10c5",
+      "bytes": 23550
+    },
+    {
+      "path": "references/CURRENT_WORK_INDEX.json",
+      "role": "advisory navigation metadata, built against v3.2.6 and not refreshed; no mathematical authority",
+      "source": {
+        "commit": "983753e",
+        "path": "skills/fvlt/v3.2.6/fvlt/references/CURRENT_WORK_INDEX.json"
+      },
+      "sha256": "0a7590990e7a3e96dc4a3c6fe5ace4f6c781e46e615816b2ba7c8c81c725dbc5",
+      "bytes": 564860
+    },
+    {
+      "path": "scripts/verify_bundle.py",
+      "role": "standalone bundle verifier (stdlib only), adapted from v3.3.0 for v3.3.1",
+      "source": "authored in this bundle",
+      "sha256": "6290f7484dec09591b6c62f1472055696556b72955f206f3ebc8c01eeb76111e",
+      "bytes": 6748
+    }
+  ]
+}

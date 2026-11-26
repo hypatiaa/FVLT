@@ -1,0 +1,134 @@
+{
+ "schema": "kernel-correction-candidate-v1",
+ "status": "ADOPTED_2026-10-30_RELEASED_IN_v3.3.1_LOCKED",
+ "date": "2026-10-30",
+ "locked_release": {
+  "label": "v3.3.0",
+  "kernel": "kernel/successor/kernel.md",
+  "sha256": "35ca26ee4cc68fee56013a769070eb14240ddf8aa8376b038a29c3d470e2b5ce"
+ },
+ "replacement_base": {
+  "kernel": "kernel/next/kernel.md",
+  "sha256": "b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81",
+  "note": "CORRECTIONS.json replacements apply against this v3.2.7 base; the old text occurs exactly once in both the base and v3.3.0."
+ },
+ "changes": [
+  {
+   "id": "G2-N6-CHI-PARENTHETICAL",
+   "target": "Lemma II.23.9a, guard G2 (no native id; lemma status 'unconditional'); v3.3.0 lines 3101-3103",
+   "finding": "Stage 2 fresh semantic review row S2-0172 (skeleton, relayed 2026-10-30): the parenthetical 'the $n_6$ / χ winding-reversal' identifies c -> -c with the n6 sign. Verified here that it also misidentifies it with chirality χ.",
+   "decision": "saphir, 2026-10-30, relayed by skeleton: \"Send the kernel issue to idea catalog to fix. Go with the corrected meaning.\"",
+   "old": "- **G2 (enantiomorph pair).** $c\\mapsto -c$ sends $q\\mapsto -q$ with $p$ fixed; branches $c$\n  and $-c$ are mirror torus flows (the $n_6$ / χ winding-reversal), with gearbox numbers the\n  reflected pair $N t_1 \\pm c t_2$.",
+   "new": "- **G2 (enantiomorph pair).** $c\\mapsto -c$ sends $q\\mapsto -q$ with $p$ fixed; branches $c$\n  and $-c$ are mirror torus flows (winding reversal of the second torus coordinate only), with\n  gearbox numbers the reflected pair $N t_1 \\pm c t_2$. This branch change is not the sign of $n_6$\n  and not chirality $\\chi$. The lift uses $\\rho=|n_6|N^{\\alpha}$ and does not apply the sign of $n_6$;\n  that sign is the $y$-axis reflection $z\\mapsto-\\bar z$ of Rmk II.5a, which, applied to both lift\n  coordinates, would reverse both windings, $(p,q)\\mapsto(-p,-q)$, up to constant phases. Chirality\n  $\\chi$ (§4.4: the direction of phasor advance) is not defined on this lift; extended\n  coordinatewise to it, $\\chi$ would likewise reverse both. Either agrees\n  with $c\\mapsto -c$ only when $p=Nt_1=0$.",
+   "status_label_change": false,
+   "item_lock": {
+    "locked_item": "II.23.9 fold (Def II.23.9 - Cor II.23.9d), item-locked by Robin 2026-07-23",
+    "lock_record": "kernel/inputs/2026-10-11/sources/candidates/TERRA_COLD_PASSED_FINAL_KERNEL_FOLD_2026-07-24/final_packets/ii_23_9/LOCK_RECORD_II_23_9_2026-07-23.md",
+    "note": "This replacement edits item-locked text. The bookkeeping that records it beside REPAIR-HUNK-146 and REPAIR14-C-02-POINTER is part of this change set: G2-N6-LOCK-NOTE-VII2a (VII.2a II.23.9 note), G2-N6-CONCORDANCE-ROW (concordance row) and G2-N6-RELEASE-SCOPE-a/b/c (release-scope list). The next release's item-lock intersection list (docs/releases/<version>/ITEM_LOCK_INTERSECTIONS*) must also list it."
+   },
+   "evidence": "check_g2_n6.py (exact rationals), output check_g2_n6.out: sections 1-4 (1,536 + 42 checks) cover G2; each section reports substantive and by-construction checks separately.",
+   "meaning_source": "saphir, 2026-10-30: \"N6 was the flip across the y axis\"; decision relayed by skeleton (Stack Bus #1060; saphir: \"I prefer Opus idea\"). Explorer cross-check: FVLT Explorer v2.3.1 (uploaded 2026-10-20, sha256 08ac40ffdb0b63bee8e313aff7d2ad0fcae832eb0ba85d355865165048eb8726, not bundled), computeState/computeWalk: sign(n6) negates the real parts (\"§4.4 Chirality: n6 = ±1 mirrors across y-axis\").",
+   "chi_definition": "Kernel §4.4 (v3.3.0 line 1305): parity ε_p governs whether the phasor advances clockwise or counterclockwise; 'the choice of parity is the chirality'. Line 1809: chirality flips the entire angular argument (complex conjugation of the phasor). So χ is the direction reversal z↦z̄ per phasor, while the y-axis reflection is z↦−z̄; they differ by a constant half-turn. This candidate does not identify them; it states only that both reverse winding of both coordinates and neither equals c↦−c. The kernel does not define χ on the II.23.9 lift, so the G2 text states the χ comparison conditionally ('extended coordinatewise to it'); revised 2026-10-30 after skeleton's fresh review of head f2dc33f."
+  },
+  {
+   "id": "N6-II5a-SIGN-AS-Y-REFLECTION",
+   "target": "Rmk II.5a (RMK-II.5a-ROSETTE-FACTORIAL-ATLAS-MAP, status interpretive), v3.3.0 lines 661-666: the R_alpha and z displays",
+   "decision": "saphir, 2026-10-30, Stack Bus #1060 (relayed by skeleton): restate II.5a so that the sign of n6 means the y-axis reflection z -> -conj(z), not scalar multiplication by -1; locked v3.3.0 untouched; the old scalar reading stays as history.",
+   "parameter_change": "n6 now enters as magnitude |n6| (radius r_alpha = |n6| n3^alpha, same as the old |R_alpha|) and sign sgn(n6) (orientation): for n6<0, z_j = -r e^{-i theta_j} instead of the old -r e^{+i theta_j}. Positive n6 and n6 = 0 are unchanged.",
+   "old": "$$\nR_\\alpha(n_3) = \\begin{cases} 0, & n_6 = 0,\\\\ n_6 n_3, & \\alpha = 1,\\\\ n_6, & \\alpha = 0,\\\\ n_6 / n_3, & \\alpha = -1, \\end{cases}\n$$\n$$\nz_1(s, \\varphi_3) = R_\\alpha(n_3)\\, \\exp\\!\\left(i \\frac{k_1 s \\pi}{n_3}\\right), \\qquad z_2(s, \\varphi_3) = R_\\alpha(n_3)\\, \\exp\\!\\left(i \\frac{k_2 s \\pi}{n_3}\\right).\n$$\n",
+   "new": "$$\nr_\\alpha(n_3) = |n_6|\\, n_3^{\\alpha}\\quad(\\alpha\\in\\{-1,0,1\\}),\\qquad \\theta_j=\\frac{k_j s\\pi}{n_3}\\quad(j=1,2),\n$$\n$$\nz_j(s, \\varphi_3) = \\begin{cases} r_\\alpha(n_3)\\, e^{\\,i\\theta_j}, & n_6 > 0,\\\\ 0, & n_6 = 0,\\\\ -\\,r_\\alpha(n_3)\\, e^{-i\\theta_j} = -\\overline{r_\\alpha(n_3)\\,e^{\\,i\\theta_j}}, & n_6 < 0. \\end{cases}\n$$\n*Sign of $n_6$ (corrected 2026-10-30).* The sign of $n_6$ is the reflection across the imaginary ($y$) axis, $z\\mapsto-\\bar z$, i.e. $(\\operatorname{Re},\\operatorname{Im})\\mapsto(-\\operatorname{Re},\\operatorname{Im})$: a norm-preserving involution that reverses the direction of phasor advance and adds a constant half-turn (in phase-address units of $\\pi$, $a\\mapsto 1-a$). The magnitude $|n_6|$ scales the radius. Earlier versions multiplied the phasor by the signed scalar $n_6$; for $n_6<0$ that is the half-turn $z\\mapsto -z$ ($a\\mapsto a+1$), a different operation, which agrees with the reflection only on the real axis. That earlier scalar form and its consequences remain correct as statements about the scalar operation, but it is not the sign of $n_6$. The relations below are unchanged by the correction: the reflection preserves the conjugate pair ($\\overline{-\\bar w}=-w$) and imaginary parts ($\\operatorname{Im}(-\\bar z)=\\operatorname{Im}z$).\n\n",
+   "applies_against": "v3.2.7 base (old text occurs exactly once in base and in v3.3.0)",
+   "status_label_change": false,
+   "item_lock": "Rmk II.5a carries an in-body lock record (S2 efficiency closure, LOCKED by Robin 2026-08-19) in its Scope paragraph; this replacement does not touch that paragraph. Record it in the next release's item-lock intersection review as an edit inside II.5a outside the locked span.",
+   "guards_preserved": [
+    "n3 = 0 terminal case excluded",
+    "n6 = 0 collapse to origin",
+    "conjugate pair z2 = conj(z1) at integer s with integer t1 (Lemma II.23.2)",
+    "contact identity Im z1 = 0 iff t1 s - t2 s/n3 in Z, negative real ray included",
+    "reference specialization t1=t2=1, n6=1, alpha=1",
+    "Scope and S2 closure paragraphs unchanged"
+   ],
+   "evidence": "check_g2_n6.py section 5 (14,580 checks: 9,720 substantive, 4,860 by construction; the n6<0 reflection check runs only for n6<0) and section 6, reader note (a) (6,294 checks).",
+   "reader_notes": [
+    "(a) What changes in the drawn rosette for n6<0. The phase addresses satisfy a1 + a2 = 2 t1 s, so whenever t1 s is an integer (in particular at integer s and integer t1, where II.5a states the conjugate pair) the new point pair is the old pair with z1 and z2 swapped: the drawn image is unchanged, and only the labels and the sign of Im z1 change. The image itself changes only when t1 s is not an integer and at least one old point is off the real axis (check_g2_n6.py section 6).",
+    "(b) Label mismatch, recorded, not resolved. FVLT Explorer v2.3.1 labels its n6 y-flip '§4.4 Chirality'. Kernel chirality χ is per-phasor conjugation z -> conj(z) (v3.3.0 line 1809), which differs from the y-reflection z -> -conj(z) by a constant half-turn. This candidate does not equate the two; the Explorer label is the Explorer's."
+   ]
+  },
+  {
+   "id": "N6-II5a-CONTACT-GUARD",
+   "target": "Rmk II.5a contact identity hypothesis (text introduced by REPAIR-HUNK-036)",
+   "kind": "amends existing replacement REPAIR-HUNK-036 (its 'new' text), since this sentence does not occur in the v3.2.7 base",
+   "old": "Assume $R_\\alpha(n_3)\\ne0$ (the $n_6=0$ collapse to the origin is excluded)",
+   "new": "Assume $n_6\\ne0$ (the $n_6=0$ collapse to the origin is excluded)",
+   "status_label_change": false
+  },
+  {
+   "id": "G2-N6-LOCK-NOTE-VII2a",
+   "target": "Part VII / VII.2a, II.23.9 additive-notes header, v3.3.0 line 4665 (text introduced by REPAIR14-FIX2-II239-HEADER)",
+   "kind": "amends existing replacement REPAIR14-FIX2-II239-HEADER (its 'new' text); this text does not occur in the v3.2.7 base",
+   "old": "differs from the locked v3.2.7 bytes only by two declared edits, listed in `kernel/successor/CORRECTIONS.json`: REPAIR-HUNK-146 (the reciprocal shell-swap gloss in Rmk II.23.9b) and REPAIR14-C-02-POINTER (the pointer from Def II.23.9 to the parameter note below).",
+   "new": "differs from the locked v3.2.7 bytes only by three declared edits, listed in `kernel/successor/CORRECTIONS.json`: REPAIR-HUNK-146 (the reciprocal shell-swap gloss in Rmk II.23.9b), REPAIR14-C-02-POINTER (the pointer from Def II.23.9 to the parameter note below) and G2-N6-CHI-PARENTHETICAL (guard G2 of Lemma II.23.9a no longer calls the branch change $c\\mapsto -c$ \"the $n_6$ / χ winding-reversal\"; saphir 2026-10-30).",
+   "status_label_change": false
+  },
+  {
+   "id": "G2-N6-CONCORDANCE-ROW",
+   "target": "Post-v3.2.5 working-fold concordance (v3.2.6), Lemma II.23.9a row, v3.3.0 line 4621",
+   "applies_against": "v3.2.7 base (old text occurs exactly once in base and in v3.3.0)",
+   "old": "| Lemma II.23.9a | Part II / II.23, after Def II.23.9 | locked by Robin 2026-07-23; folded verbatim from the locked entry |",
+   "new": "| Lemma II.23.9a | Part II / II.23, after Def II.23.9 | locked by Robin 2026-07-23; folded verbatim from the locked entry; guard G2 since changed by declared edit G2-N6-CHI-PARENTHETICAL (see the VII.2a II.23.9 note) |",
+   "status_label_change": false
+  },
+  {
+   "id": "G2-N6-RELEASE-SCOPE-a",
+   "target": "Release scope paragraph, v3.3.0 line 7 (text introduced by REPAIR-HUNK-002): count",
+   "kind": "amends existing replacement REPAIR-HUNK-002 (its 'new' text); this text does not occur in the v3.2.7 base",
+   "old": "Twenty-two declared, reviewed replacements",
+   "new": "Twenty-three declared, reviewed replacements",
+   "status_label_change": false
+  },
+  {
+   "id": "G2-N6-RELEASE-SCOPE-b",
+   "target": "Release scope paragraph, v3.3.0 line 7 (REPAIR-HUNK-002 new text): II.23.9 entry of the list",
+   "kind": "amends existing replacement REPAIR-HUNK-002 (its 'new' text); this text does not occur in the v3.2.7 base",
+   "old": "in II.23.9, REPAIR14-C-02-POINTER and REPAIR-HUNK-146;",
+   "new": "in II.23.9, REPAIR14-C-02-POINTER, REPAIR-HUNK-146 and G2-N6-CHI-PARENTHETICAL;",
+   "status_label_change": false
+  },
+  {
+   "id": "G2-N6-RELEASE-SCOPE-c",
+   "target": "Release scope paragraph, v3.3.0 line 7 (REPAIR-HUNK-002 new text): locked statements whose mathematics is corrected",
+   "kind": "amends existing replacement REPAIR-HUNK-002 (its 'new' text); this text does not occur in the v3.2.7 base",
+   "old": "Two of these correct the mathematics of locked statements:",
+   "new": "Three of these correct the mathematics of locked statements: G2-N6-CHI-PARENTHETICAL (Lemma II.23.9a guard G2: the branch change $c\\mapsto -c$ is no longer identified with the sign of $n_6$ or with chirality χ),",
+   "note": "Classifying G2 as a mathematical correction is this candidate's reading (the old parenthetical made a false identification); saphir may prefer to list it as a gloss correction instead, in which case drop -c.",
+   "status_label_change": false
+  }
+ ],
+ "open_findings": [
+  {
+   "id": "N6-II5a-SCALAR-VS-MIRROR",
+   "status": "DECIDED_2026-10-30: restate II.5a with the y-axis reflection (change N6-II5a-SIGN-AS-Y-REFLECTION)",
+   "where": "Rmk II.5a, v3.3.0 line 662: R_alpha(n3) multiplies the phasor by the signed scalar n6",
+   "issue": "A signed scalar gives z -> -z (constant half-turn, phase a -> a+1), not the stated meaning of n6 (y-axis flip z -> -conj z, phase a -> 1-a). The two coincide only for points on the real axis (a an integer). The Lean theorem point_neg_scale_halfturn (FVLTN6MirrorV1, reported by skeleton, not inspected here) formalizes the printed scalar reading.",
+   "needed": "A decision: either re-state Rmk II.5a so n6 = -1 applies z -> -conj(z) (and re-check the contact identity at line 673, which uses R_alpha != 0 only), or record that the printed scalar form is a different convention from the instrument's y-axis flip. The Lean module should follow the decided meaning."
+  }
+ ],
+ "lean_note": "Lean: codex-fvlt-formalization is building an additive successor module for the y-reflection law; FVLTN6MirrorV1.point_neg_scale_halfturn stays as a true statement about the old scalar operation (relayed by skeleton). Stage 2 row S2-0172 re-pairs only against the reviewed corrected II.5a.",
+ "adoption": {
+  "by": "saphir",
+  "date": "2026-10-30",
+  "statement": "our kernel needs to comply with the lean. I am good with that",
+  "relayed_by": "skeleton",
+  "adopted_head": "cbc595e718273627b9e2e319524fc614cd526970",
+  "recheck": "https://github.com/hypatiaa/idea-catalog/pull/69#issuecomment-6523650581",
+  "applied_in": "kernel/post-v3.3.0/ (successor draft on the locked v3.3.0, label unassigned, not locked; draft SHA-256 29100e5098bc8ce2dc9c2d746d3b95b70f03ec01dac796eb328afe61641f2480)",
+  "application_note": "Applied byte-identically except G2-N6-LOCK-NOTE-VII2a, whose sentence now says G2-N6-CHI-PARENTHETICAL is listed in kernel/post-v3.3.0/CORRECTIONS.json, since kernel/successor/CORRECTIONS.json is the locked v3.3.0 plan.",
+  "released": {
+   "label": "v3.3.1",
+   "lock": "saphir 2026-10-30: \"v3.3.1, lock it\"",
+   "kernel": "kernel/post-v3.3.0/kernel.md",
+   "sha256": "e49533088843e2cd0a1c531c4d8ba113ea30113e8135a15c17c040bdfca3e0e0",
+   "records": "docs/releases/v3.3.1/"
+  }
+ }
+}

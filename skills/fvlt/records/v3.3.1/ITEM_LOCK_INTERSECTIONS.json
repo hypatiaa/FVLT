@@ -1,0 +1,127 @@
+{
+ "schema": "item-lock-intersections-v3.3.1",
+ "base_sha256": "b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81",
+ "plan": "kernel/post-v3.3.0/CORRECTIONS.json",
+ "span_source": "docs/releases/v3.3.0/ITEM_LOCK_INTERSECTIONS_v2.json",
+ "rows": [
+  {
+   "replacement": "G2-N6-CHI-PARENTHETICAL",
+   "v3_2_7_lines": [
+    3103,
+    3105
+   ],
+   "lock_spans": [
+    "fold-II.23.9"
+   ]
+  },
+  {
+   "replacement": "N6-II5a-SIGN-AS-Y-REFLECTION",
+   "v3_2_7_lines": [
+    647,
+    653
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "N6-II5a-CONTACT-GUARD",
+   "amends": "REPAIR-HUNK-036",
+   "v3_2_7_lines": [
+    659,
+    660
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "G2-N6-LOCK-NOTE-VII2a",
+   "amends": "REPAIR14-FIX2-II239-HEADER",
+   "v3_2_7_lines": [
+    4675,
+    4675
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "G2-N6-CONCORDANCE-ROW",
+   "v3_2_7_lines": [
+    4631,
+    4631
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "G2-N6-RELEASE-SCOPE-a",
+   "amends": "REPAIR-HUNK-002",
+   "v3_2_7_lines": [
+    5,
+    6
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "G2-N6-RELEASE-SCOPE-b",
+   "amends": "REPAIR-HUNK-002",
+   "v3_2_7_lines": [
+    5,
+    6
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "G2-N6-RELEASE-SCOPE-c",
+   "amends": "REPAIR-HUNK-002",
+   "v3_2_7_lines": [
+    5,
+    6
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "POST330-HEADER-TITLE",
+   "amends": "REPAIR-HUNK-001",
+   "v3_2_7_lines": [
+    3,
+    4
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "POST330-HEADER-VERSION",
+   "amends": "REPAIR-HUNK-002",
+   "v3_2_7_lines": [
+    5,
+    6
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "POST330-CHANGELOG",
+   "amends": "REL330-CHANGELOG",
+   "v3_2_7_lines": [
+    7,
+    7
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "POST330-FOOTER",
+   "amends": "REPAIR14-D-20",
+   "v3_2_7_lines": [
+    5552,
+    5552
+   ],
+   "lock_spans": []
+  },
+  {
+   "replacement": "POST330-RELEASE-STANDING",
+   "amends": "REPAIR-HUNK-002",
+   "v3_2_7_lines": [
+    5,
+    6
+   ],
+   "lock_spans": []
+  }
+ ],
+ "in_lock_spans": [
+  "G2-N6-CHI-PARENTHETICAL"
+ ]
+}

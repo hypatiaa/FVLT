@@ -1,0 +1,159 @@
+{
+ "schema": "kernel-successor-corrections-v2",
+ "status": "LOCKED_RELEASE_v3.4.0",
+ "base_commit": "0df7105e72eac0b233c71ab13b514afc25529c20",
+ "base_path": "kernel/post-v3.3.0/kernel.md",
+ "base_sha256": "e49533088843e2cd0a1c531c4d8ba113ea30113e8135a15c17c040bdfca3e0e0",
+ "draft_path": "kernel/post-v3.3.1/kernel.md",
+ "draft_sha256": "0d6beee233602502576c1d0eedfe5a586e66f1b4e4b8a1858c39189d872ec1a2",
+ "builder": "tools/build_successor_kernel_v2.py (v1, tools/build_successor_kernel.py, refuses this plan because it declares a native item addition)",
+ "policy": {
+  "path": "docs/governance/KERNEL_ITEM_ADDITIONS_v0_2.md",
+  "standing": "ADOPTED by saphir 2026-11-03 (\"1. Yes, adopt.\"); this plan ordered by saphir 2026-11-03 (\"2. Go after 1.\"); on labelling and locking: \"We aren't there yet.\""
+ },
+ "review_sources": [
+  {
+   "pr": 73,
+   "standing": "candidate Rmk 9.7j.1 v0.1.2 after the Idea Catalog partner's line review on PR #73 (issue comment 6601962440); item route R-4 decided by saphir 2026-11-03 (\"I like your leans, go with them\"). The plan was then verified and fixed in fix round 1 (the next two entries)."
+  },
+  {
+   "path": "docs/reviews/post-v3.3.1-rmk-9.7j.1_2026-11-03/VERIFY_REPORT.md",
+   "sha256": "746744b9b7b04a75bd72994577b6d8b6638c4a87ba4a1a56eb06e2a10a0014bc",
+   "standing": "independent plan verification of draft 07ff8b9f (PASS WITH FLAGS); flags F-1 (statement-match review), F-4 and F-5 drove fix round 1 (2026-11-03, ordered by saphir: \"Do it\"); F-6 left as is (README)."
+  },
+  {
+   "path": "docs/reviews/post-v3.3.1-rmk-9.7j.1_2026-11-03/statement_match/STATEMENT_MATCH_REVIEW.md",
+   "sha256": "d8ebda6b144c3c564148d54ba95322c897f4ae8274168ef572155e1c4c9372d7",
+   "standing": "policy rule 9 statement-match review of the Lean link against draft 07ff8b9f (MATCH WITH CORRECTIONS); its section 2.1 drove fix 1 (left-to-right reading) and its sections 6-7 the ITEMS_ADDED.json scope and review fields. To be rechecked against this draft by the next verifier."
+  },
+  {
+   "path": "docs/reviews/post-v3.3.1-rmk-9.7j.1_2026-11-03/fix1_verify/VERIFY_REPORT.md",
+   "sha256": "4bc52f4d00826a89634d25037518ceff1340713ec5fcd0dcb1dd974dff963390",
+   "standing": "independent verification of fix round 1, draft eb898511 (PASS WITH FLAGS; this entry added in the label round, 2026-11-03): every changed kernel line traces to fix 1, F-4 or F-5; the statement-match verdict carries over to eb898511 (scout probe SMR2-01); its two wording flags (README item 9 reason, ITEMS_ADDED.json scope quotation) were applied at 1f6cd7a. The label round that follows changes release metadata only."
+  }
+ ],
+ "predecessor": {
+  "label": "v3.3.1",
+  "path": "kernel/post-v3.3.0/kernel.md",
+  "sha256": "e49533088843e2cd0a1c531c4d8ba113ea30113e8135a15c17c040bdfca3e0e0",
+  "status": "LOCKED by saphir 2026-10-30",
+  "plan": "kernel/post-v3.3.0/CORRECTIONS.json (unchanged)"
+ },
+ "source_candidate": {
+  "path": "docs/investigations/RMK_9_7j_1_symmetric_chains_2026-11-03/FVLT_SCD_CANDIDATE_v0_1_2_20261103/CANDIDATE_RMK_9_7j_1_SYMMETRIC_CHAINS_v0_1_2.md",
+  "sha256": "fd13dc858a80ba76704e25f96b8b7c726174107b9cffa34766363dc57ea527bf",
+  "adaptations": "kernel/post-v3.3.1/README.md (wording adaptations, old -> new)"
+ },
+ "item_index": "kernel/post-v3.3.1/ITEMS_ADDED.json (policy rule 8; kernel/next/ITEMS.json is not edited)",
+ "lean": "SCD_9_7j_1_L01_L03_V1.lean (sha256 4ae59ae41fb01dd078be76eb24feeb70616d530df52b1a31d16fbad0f9553625, Lean 4.35.0, job SCD-LEAN-07): finite instances N = 720, 30030, 720720 (C1-C6, the 720 string list) and general rank lemmas (raise_succ_rank, lower_pred_rank, with supporting lemmas) only; does not prove the remark in general; linked in ITEMS_ADDED.json; statement-match review MATCH WITH CORRECTIONS (docs/reviews/post-v3.3.1-rmk-9.7j.1_2026-11-03/statement_match/STATEMENT_MATCH_REVIEW.md), its scope corrections applied to the link in fix round 1; no status effect (policy rule 9).",
+ "version_label": "v3.4.0 (minor release on the locked v3.3.1; label assigned by saphir 2026-11-03: \"lets go\", in answer to the proposed v3.4.0; LOCKED release of record by saphir 2026-11-03: \"v3.4.0, lock it\")",
+ "allowed_native_item_additions": [
+  {
+   "id": "RMK-9.7j.1-SYMMETRIC-CHAIN-DECOMPOSITION",
+   "after": "RMK-9.7j-CRYSTAL-GRAPH-IDENTIFICATION",
+   "tag": "<!-- id: RMK-9.7j.1-SYMMETRIC-CHAIN-DECOMPOSITION | register: remark | status: unconditional (classical, cited) + interpretive (address) | provenance: adapted-classical | depends: 9.7j -->"
+  }
+ ],
+ "allowed_native_tag_changes": [],
+ "replacements": [
+  {
+   "id": "SCD-RMK-9.7j.1-ITEM",
+   "kind": "native item addition",
+   "note": "Inserts the declared tag and Rmk 9.7j.1 (candidate v0.1.2, adapted to kernel conventions; see README) after the end of Rmk 9.7j's body and before the II.17 §G routing note, so the identity order is 9.7j, 9.7j.1, 9.7k. The §G heading is repeated unchanged as the anchor; no byte of Rmk 9.7j changes.",
+   "old": "\n\n### §G companion-spine routing note (terse, per Robin's File 1 verdict 1)",
+   "new": "\n\n<!-- id: RMK-9.7j.1-SYMMETRIC-CHAIN-DECOMPOSITION | register: remark | status: unconditional (classical, cited) + interpretive (address) | provenance: adapted-classical | depends: 9.7j -->\n**Remark 9.7j.1 (Symmetric Chain Decomposition by the Diagonal Tensor Rule).** Let $N = p_1^{a_1} \\cdots p_m^{a_m}$ with $p_1 < \\cdots < p_m$. Write a divisor as its exponent vector $e$. Set $\\Omega_{\\max} = \\sum_i a_i$, let $W_r$ be the number of divisors with $\\Omega = r$, and let $M = \\Omega - \\Omega_{\\max}/2$ be the total weight of Rmk 9.7j.\n\n**Declared structure.** This remark *declares* a second structure on the finite Hasse Hilbert space $H_{\\mathrm{Hasse}}(N) = \\bigotimes_i \\mathbb{C}^{a_i+1}$: the **diagonal $\\mathfrak{sl}_2$**, the restriction of Rmk 9.7j's $\\mathfrak{sl}_2^{\\oplus m}$ to its diagonal. Use the integer form on each factor:\n\n- $E|e\\rangle = (a-e)|e+1\\rangle$;\n- $F|e\\rangle = e|e-1\\rangle$;\n- $H|e\\rangle = (2e-a)|e\\rangle$.\n\nThen set $E = \\sum_i E_i$, and likewise $F$ and $H$. This structure is added alongside 9.7j. It does not replace or correct 9.7j's commuting-factor reading, and 9.7j's caveat stays true of 9.7j.\n\n**Bracket rule** (the $\\mathfrak{sl}_2$ crystal tensor rule, written as parentheses):\n\n1. The word of $e$ is $1^{e_1} 0^{a_1-e_1} \\cdots 1^{e_m} 0^{a_m-e_m}$.\n2. Read $0$ as \"(\" and $1$ as \")\", and read the word from left to right: pair each $1$, in turn, with the nearest unpaired $0$ to its left.\n3. $\\tilde{E}$ flips the leftmost unpaired $0$, multiplying by that prime.\n4. $\\tilde{F}$ flips the rightmost unpaired $1$, dividing by that prime.\n\n$\\tilde{E}$ and $\\tilde{F}$ are the crystal operators of $B(a_1) \\otimes \\cdots \\otimes B(a_m)$ of the diagonal $\\mathfrak{sl}_2$, in ascending prime order under Sage's tensor convention (check S-02).\n\n1. **Strings are symmetric saturated chains.** Every string, $d_0 < \\tilde{E}d_0 < \\cdots < \\tilde{E}^{y} d_0$ with $\\tilde{F}d_0$ undefined, is a saturated chain. Each step multiplies by one prime, and $\\Omega(\\mathrm{bottom}) + \\Omega(\\mathrm{top}) = \\Omega_{\\max}$. The strings partition $\\mathrm{Div}(N)$, so they form a symmetric chain decomposition.\n2. **Counts.** The number of strings starting at rank $r$ is $W_r - W_{r-1}$ for $2r \\le \\Omega_{\\max}$, and $0$ otherwise. The number of strings is $W_{\\lfloor \\Omega_{\\max}/2 \\rfloor}$. Hence $\\mathrm{Div}(N)$ is rank-symmetric, rank-unimodal and Sperner.\n3. **Module decomposition.** As diagonal $\\mathfrak{sl}_2$-modules,\n   $$H_{\\mathrm{Hasse}}(N) \\cong \\bigoplus_{2r \\le \\Omega_{\\max}} V_{(\\Omega_{\\max}-2r)/2}^{\\oplus (W_r - W_{r-1})}.$$\n4. **Strings index the summands; they do not span them.** Each string labels one irreducible summand of the right spin. If $N$ has two or more distinct primes ($m \\ge 2$), the basis vectors $|d\\rangle$ along a string **never** span an $E,F$-invariant subspace.\n   - *Proof.* Let $S$ be a string with bottom $d_0$. $S$ has exactly one element at each rank it covers, and $E$ and $F$ act with positive coefficients on distinct basis vectors.\n     - If two or more primes can be raised at $d_0$, then $E|d_0\\rangle$ has two or more terms one rank up, and at most one of them lies in $S$.\n     - If exactly one prime $j$ can be raised, then every other exponent is at its maximum $a_i \\ge 1$. Since $m \\ge 2$, $F|d_0\\rangle$ contains $|d_0/p_i\\rangle$ for some $i \\ne j$. That vector lies one rank below the bottom of $S$.\n     - No prime can be raised only at $d_0 = N$, which is never a bottom.\n   - At $N = 6$, the strings are $\\{1, 2, 6\\}$ and $\\{3\\}$, and $E|3\\rangle = |6\\rangle$. The spin-$0$ summand is spanned by $|2\\rangle - |3\\rangle$: in the declared integer form, $E(|2\\rangle - |3\\rangle) = |6\\rangle - |6\\rangle = 0$ and $F(|2\\rangle - |3\\rangle) = |1\\rangle - |1\\rangle = 0$.\n   - For $m = 1$, the single string is all of $\\mathrm{Div}(N)$, which is invariant.\n   - *Corroboration:* S-03c (the check spec's Appendix B list) and S-03d (every $N \\le 20000$ with $m \\ge 2$: 60,980 strings, 0 invariant spans).\n5. **Order.** The strings depend on the declared prime order; their length multiset is fixed by $W$.\n\n*Example.* For $N = 720 = 2^4 \\cdot 3^2 \\cdot 5$ there are six strings:\n\n- $1<2<4<8<16<48<144<720$\n- $3<6<12<24<72<360$ and $5<10<20<40<80<240$\n- $9<18<36<180$ and $15<30<60<120$\n- $45<90$\n\nSo $H_{\\mathrm{Hasse}}(720) \\cong V_{7/2} \\oplus 2V_{5/2} \\oplus 2V_{3/2} \\oplus V_{1/2}$.\n\n*Status: Unconditional (classical, cited) for claims 1–3 and 5. de Bruijn, van Ebbenhorst Tengbergen and Kruyswijk (1951) prove the symmetric chain decomposition of divisor lattices. The bracket construction for products of chains is standard; Greene and Kleitman (1976) give the Boolean-lattice case. It is Kashiwara's tensor-product rule for $\\mathfrak{sl}_2$ crystals; see the survey arXiv:1809.00114. Interpretive for the address: the kernel's $M$ and $H_{\\mathrm{Hasse}}(N)$ carry this decomposition. Claim 4 is an elementary precision statement, proved above for $m \\ge 2$ and corroborated by S-03c and S-03d. No new theorem is claimed. This is the first kernel item that uses the crystal tensor rule, and it says so.*\n\n*Evidence.* The checks S-01 to S-03d and the Lean checks L-01 to L-03 are in `docs/investigations/RMK_9_7j_1_symmetric_chains_2026-11-03/`. The Lean link is pinned in the item index `kernel/post-v3.3.1/ITEMS_ADDED.json`; it covers finite instances ($N = 720$, $30030$, $720720$) and general rank lemmas only, and does not prove this remark in general.\n\n### §G companion-spine routing note (terse, per Robin's File 1 verdict 1)"
+  },
+  {
+   "id": "SCD-CONCORDANCE-VII2a",
+   "kind": "item bookkeeping",
+   "note": "Policy rule 8: VII.2a concordance row for the added item, in a new post-v3.3.1 additions table, following the v3.2.6 convention of a separate table for working-fold additions.",
+   "old": "\n### §9.7 cluster detail (subsumed landing table)",
+   "new": "\n\n### Post-v3.3.1 item additions (v3.4.0)\n\nNative items added by a successor plan under the item-addition policy adopted by saphir 2026-11-03 (`docs/governance/KERNEL_ITEM_ADDITIONS_v0_2.md`, rule 8). An added item has no v2.7.x label. Its item-index row is a new file in its successor folder; `kernel/next/ITEMS.json`, the locked v3.2.7 stage record, is not edited.\n\n| Item | Kernel home | Status |\n|---|---|---|\n| Remark 9.7j.1 (Symmetric Chain Decomposition by the Diagonal Tensor Rule) | Part II / II.17, after Rmk 9.7j | new in v3.4.0; declared native item addition RMK-9.7j.1-SYMMETRIC-CHAIN-DECOMPOSITION; unconditional (classical, cited) + interpretive (address), as in its tag; not item-locked; item-index row and Lean link (finite instances and general rank lemmas only) in `kernel/post-v3.3.1/ITEMS_ADDED.json` |\n\n### §9.7 cluster detail (subsumed landing table)"
+  },
+  {
+   "id": "SCD-BIB-VII9",
+   "kind": "item bookkeeping",
+   "note": "VII.9 note naming the three works Rmk 9.7j.1 cites. Full entries belong in the working bibliography (kernel/next/bibliography.md), which this plan does not edit.",
+   "old": "Full reference data preserved in v2.7.14 References section.)",
+   "new": "Full reference data preserved in v2.7.14 References section.)\n\n**v3.4.0 citations (Rmk 9.7j.1).** Rmk 9.7j.1 (Part II / II.17) cites three works that are not yet in the working bibliography: de Bruijn, van Ebbenhorst Tengbergen and Kruyswijk (1951), *Nieuw Archief voor Wiskunde* (2) 23, 191–193; Greene and Kleitman (1976), “Strong versions of Sperner's theorem,” *J. Combin. Theory Ser. A* 20, 80–88; and Kashiwara's survey, arXiv:1809.00114."
+  },
+  {
+   "id": "SCD-RELEASE-SCOPE",
+   "kind": "release metadata (release scope)",
+   "note": "Policy follow-up: the release-scope count becomes 186 inherited identities in order plus one declared addition, 187 in total.",
+   "old": "all 186 native item identities and their order are kept.",
+   "new": "all 186 inherited native item identities and their order are kept, and v3.4.0 inserts one declared native item, Rmk 9.7j.1 (`RMK-9.7j.1-SYMMETRIC-CHAIN-DECOMPOSITION`, Part II / II.17, directly after Rmk 9.7j), for 187 native item identities in total."
+  },
+  {
+   "id": "POST331-HEADER-TITLE",
+   "kind": "release metadata (header, version paragraph, changelog, footer)",
+   "note": "v3.4.0 title (label assigned by saphir 2026-11-03; release candidate, lock pending saphir), in the form of the v3.3.0 candidate (e2d95c4) and the v3.3.1 lock (857ac96). Label round: was the unlabelled-draft title of the f85e62d pattern. Lock round (2026-11-03, saphir: \"v3.4.0, lock it\"): new text unchanged; only this note changed.",
+   "old": "## FVLT — v3.3.1 (on the v3.2.0 Semantic-Correction Baseline)",
+   "new": "## FVLT — v3.4.0 (on the v3.2.0 Semantic-Correction Baseline)"
+  },
+  {
+   "id": "POST331-HEADER-VERSION",
+   "kind": "release metadata (header, version paragraph, changelog, footer)",
+   "note": "v3.4.0 version paragraph (label assigned by saphir 2026-11-03; release candidate, lock pending saphir); the v3.3.1 version record is kept as history. Label round: only the opening sentence changed from the unlabelled-draft text. Lock round (2026-11-03, saphir: \"v3.4.0, lock it\"): the opening parenthesis now says current and LOCKED release of record, the sentence that v3.3.1 stays the release of record until the lock is removed, and the next sentence says v3.4.0 supersedes v3.3.1, in the form of the v3.3.1 lock (857ac96); the rest of the paragraph is unchanged.",
+   "old": "**Version:** 3.3.1 (current; point release on the locked v3.3.0;",
+   "new": "**Version:** 3.4.0 (current; minor release on the locked v3.3.1; label assigned by saphir 2026-11-03: \"lets go\", in answer to the proposed v3.4.0; **LOCKED release of record** by saphir 2026-11-03: \"v3.4.0, lock it\"; release records in `docs/releases/v3.4.0/`). It supersedes v3.3.1 (SHA-256 `e49533088843e2cd0a1c531c4d8ba113ea30113e8135a15c17c040bdfca3e0e0`, LOCKED by saphir 2026-10-30) and adds to its bytes one declared native item under the item-addition policy adopted by saphir 2026-11-03 (`docs/governance/KERNEL_ITEM_ADDITIONS_v0_2.md`): Rmk 9.7j.1 (Part II / II.17, directly after Rmk 9.7j), the symmetric chain decomposition of $\\mathrm{Div}(N)$ by the diagonal $\\mathfrak{sl}_2$ crystal tensor rule, classical and cited, from candidate v0.1.2 in `docs/investigations/RMK_9_7j_1_symmetric_chains_2026-11-03/`. With it come its VII.2a concordance row, a VII.9 citation note and the release-scope count. The changes are declared in `kernel/post-v3.3.1/CORRECTIONS.json`; the item-index row, with a Lean link for finite instances and general rank lemmas only, is the new file `kernel/post-v3.3.1/ITEMS_ADDED.json`. The added item enters with the status in its tag; no existing status label or native tag changes, and no standing is upgraded. The v3.3.1 version record follows as history. **v3.3.1:** 3.3.1 (point release on the locked v3.3.0;"
+  },
+  {
+   "id": "POST331-CHANGELOG",
+   "kind": "release metadata (header, version paragraph, changelog, footer)",
+   "note": "v3.4.0 changelog comment prepended (label assigned by saphir 2026-11-03; release candidate, lock pending saphir); earlier changelogs kept. Label round: only the opening parenthesis changed from the unlabelled-draft text. Lock round (2026-11-03, saphir: \"v3.4.0, lock it\"): only \"release candidate, lock pending saphir\" in the opening parenthesis changed, to the lock statement.",
+   "old": "<!-- v3.3.1 changelog (label assigned",
+   "new": "<!-- v3.4.0 changelog (minor release on the locked v3.3.1; label assigned by saphir 2026-11-03: \"lets go\", in answer to the proposed v3.4.0; LOCKED by saphir 2026-11-03: \"v3.4.0, lock it\"; release records in docs/releases/v3.4.0/): add one declared native item to the locked v3.3.1 under the item-addition policy adopted by saphir 2026-11-03 (docs/governance/KERNEL_ITEM_ADDITIONS_v0_2.md), declared in kernel/post-v3.3.1/CORRECTIONS.json and built by tools/build_successor_kernel_v2.py: SCD-RMK-9.7j.1-ITEM (Rmk 9.7j.1, symmetric chain decomposition of Div(N) by the diagonal sl2 crystal tensor rule; RMK-9.7j.1-SYMMETRIC-CHAIN-DECOMPOSITION directly after RMK-9.7j-CRYSTAL-GRAPH-IDENTIFICATION; from candidate v0.1.2, sha256 fd13dc858a80ba76704e25f96b8b7c726174107b9cffa34766363dc57ea527bf); bookkeeping SCD-CONCORDANCE-VII2a, SCD-BIB-VII9 and SCD-RELEASE-SCOPE; item-index row in kernel/post-v3.3.1/ITEMS_ADDED.json. The 186 inherited native identities are kept in order, plus one addition (187). No existing status label or native tag changes; edits no item-locked text; upgrades no standing. --> <!-- v3.3.1 changelog (label assigned"
+  },
+  {
+   "id": "POST331-FOOTER",
+   "kind": "release metadata (header, version paragraph, changelog, footer)",
+   "note": "v3.4.0 footer, in the form of the v3.3.0 candidate and the v3.3.1 lock. Label round: was the unlabelled-draft footer.",
+   "old": "*— end Part VII, end FVLT v3.3.1 kernel (v3.2.0 semantic-correction baseline) —*",
+   "new": "*— end Part VII, end FVLT v3.4.0 kernel (v3.2.0 semantic-correction baseline) —*"
+  }
+ ],
+ "release": {
+  "label": "v3.4.0",
+  "status": "locked",
+  "kind": "minor release on the locked v3.3.1",
+  "predecessor": {
+   "label": "v3.3.1",
+   "path": "kernel/post-v3.3.0/kernel.md",
+   "sha256": "e49533088843e2cd0a1c531c4d8ba113ea30113e8135a15c17c040bdfca3e0e0",
+   "status": "LOCKED by saphir 2026-10-30; superseded by v3.4.0 (saphir 2026-11-03)"
+  },
+  "label_assigned": {
+   "by": "saphir",
+   "date": "2026-11-03",
+   "statement": "lets go",
+   "in_answer_to": "the proposed label v3.4.0 (a minor release)"
+  },
+  "lock": {
+   "by": "saphir",
+   "date": "2026-11-03",
+   "statement": "v3.4.0, lock it",
+   "reported_before_lock": "label verify flag F-1 (policy v0.2 line 63 lists updating the skill-bundle count to 187 as a v3.4.0 follow-up; it does not apply, because the repository bundle skills/fvlt is the v3.2.6 package, where 186 is correct, and the v3.4.0 skill is a new local package built after the lock) was reported to saphir before the lock word; the lock was given with it reported. F-3 (the VII.9 bibliographic details are not checked against the papers) was also reported; it stays open, a limitation carried by this release.",
+   "lock_round": "release metadata only: the new texts of POST331-HEADER-VERSION and POST331-CHANGELOG and this plan's metadata; the text of Rmk 9.7j.1 (SCD-RMK-9.7j.1-ITEM) and its tag are unchanged"
+  },
+  "content_verified": {
+   "kernel_sha256": "eb898511022c25d0ab43d836ca238893ca7452b3d8fd58f5e3abde0120ef859f",
+   "by": "docs/reviews/post-v3.3.1-rmk-9.7j.1_2026-11-03/fix1_verify/VERIFY_REPORT.md (PASS WITH FLAGS)",
+   "note": "the label round changes release metadata only (the POST331-* hunks and the label wording in the new texts of SCD-CONCORDANCE-VII2a, SCD-BIB-VII9 and SCD-RELEASE-SCOPE); the text of Rmk 9.7j.1 (SCD-RMK-9.7j.1-ITEM) is unchanged"
+  },
+  "release_metadata_units": [
+   "POST331-HEADER-TITLE",
+   "POST331-HEADER-VERSION",
+   "POST331-CHANGELOG",
+   "POST331-FOOTER",
+   "SCD-RELEASE-SCOPE",
+   "SCD-CONCORDANCE-VII2a",
+   "SCD-BIB-VII9"
+  ],
+  "release_docs": "docs/releases/v3.4.0/",
+  "item_lock_interactions": [],
+  "item_lock_note": "No replacement of this plan falls in any of the 17 v3.2.7 item-lock spans (docs/releases/v3.4.0/ITEM_LOCK_INTERSECTIONS.json).",
+  "standing": "No status label change on any inherited item; no standing upgraded. The added item enters with the status in its tag.",
+  "not_included": "No change to the repository skill bundle skills/fvlt (the v3.2.6 package); the v3.4.0 skill package is built locally after the lock."
+ }
+}

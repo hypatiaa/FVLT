@@ -1,0 +1,354 @@
+{
+  "schema": "kernel-topic-repair-v1",
+  "topic": "Release metadata for FVLT v3.3.0 (label and lock)",
+  "scope": "Release metadata only: header, version paragraph, changelog and footer. No mathematical text, native tag or standing changes.",
+  "rounds": [
+    {
+      "round": "label",
+      "input_kernel_sha256": "eccec3efb8ffd856dbbf3979b3f520898279811119f973a3378d8926a6a10e57",
+      "output_kernel_sha256": "748e4ee3660ba664e4ee3533dc2871c66cc4c19367d005fbc3af460f236a9dcb",
+      "changed_line_hunks": [
+        {
+          "tag": "replace",
+          "old_lines": [
+            3,
+            3
+          ],
+          "new_lines": [
+            3,
+            3
+          ]
+        },
+        {
+          "tag": "replace",
+          "old_lines": [
+            5,
+            5
+          ],
+          "new_lines": [
+            5,
+            5
+          ]
+        },
+        {
+          "tag": "replace",
+          "old_lines": [
+            7,
+            7
+          ],
+          "new_lines": [
+            7,
+            7
+          ]
+        },
+        {
+          "tag": "replace",
+          "old_lines": [
+            9,
+            9
+          ],
+          "new_lines": [
+            9,
+            9
+          ]
+        },
+        {
+          "tag": "replace",
+          "old_lines": [
+            5558,
+            5558
+          ],
+          "new_lines": [
+            5558,
+            5558
+          ]
+        }
+      ]
+    },
+    {
+      "round": "lock",
+      "input_kernel_sha256": "748e4ee3660ba664e4ee3533dc2871c66cc4c19367d005fbc3af460f236a9dcb",
+      "output_kernel_sha256": "edb6528a5b8c46c4c5e9b3286d311dfa1259185f074312db9497fdc1a93eaae6",
+      "changed_line_hunks": [
+        {
+          "tag": "replace",
+          "old_lines": [
+            5,
+            5
+          ],
+          "new_lines": [
+            5,
+            5
+          ]
+        },
+        {
+          "tag": "replace",
+          "old_lines": [
+            9,
+            9
+          ],
+          "new_lines": [
+            9,
+            9
+          ]
+        }
+      ]
+    },
+    {
+      "round": "correction 1",
+      "input_kernel_sha256": "edb6528a5b8c46c4c5e9b3286d311dfa1259185f074312db9497fdc1a93eaae6",
+      "output_kernel_sha256": "8d436beb67ed5499f7d9cb1a1b79b6997db52e5da056018169a95699713ecc23",
+      "changed_line_hunks": [
+        {
+          "tag": "replace",
+          "old_lines": [
+            5,
+            5
+          ],
+          "new_lines": [
+            5,
+            5
+          ]
+        },
+        {
+          "tag": "replace",
+          "old_lines": [
+            7,
+            7
+          ],
+          "new_lines": [
+            7,
+            7
+          ]
+        },
+        {
+          "tag": "replace",
+          "old_lines": [
+            9,
+            9
+          ],
+          "new_lines": [
+            9,
+            9
+          ]
+        }
+      ],
+      "trigger": "VERIFY_REPORT.md (FAIL; R-01, R-02, R-03), relayed by the track owner",
+      "lock_effect": "the 2026-10-28 lock on edb6528a5b8c46c4c5e9b3286d311dfa1259185f074312db9497fdc1a93eaae6 is superseded before publication; re-lock pending saphir"
+    },
+    {
+      "round": "correction 2",
+      "input_kernel_sha256": "8d436beb67ed5499f7d9cb1a1b79b6997db52e5da056018169a95699713ecc23",
+      "output_kernel_sha256": "3e32818ea4e12957a53b4e85d8dcd16213d7f52653995102c14258603f85e6bc",
+      "changed_line_hunks": [
+        {
+          "tag": "replace",
+          "old_lines": [
+            7,
+            7
+          ],
+          "new_lines": [
+            7,
+            7
+          ]
+        },
+        {
+          "tag": "replace",
+          "old_lines": [
+            9,
+            9
+          ],
+          "new_lines": [
+            9,
+            9
+          ]
+        }
+      ],
+      "trigger": "VERIFY_REPORT_DELTA.md (FAIL; R-09, R-11, R-13); saphir chose option A"
+    }
+  ],
+  "units": [
+    {
+      "unit_id": "REPAIR-HUNK-001",
+      "action": "amend new text",
+      "replacements": [
+        {
+          "old": "## FVLT - integrated successor DRAFT (version unassigned; based on v3.2.7)\n",
+          "new": "## FVLT — v3.3.0 (on the v3.2.0 Semantic-Correction Baseline)\n"
+        }
+      ],
+      "round": "label",
+      "lane": "release-metadata",
+      "authority": "saphir 2026-10-28, label: \"v3.3.0\"",
+      "checks": [
+        "base pin kernel/next/kernel.md b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81 unchanged",
+        "every changed successor line lies inside a release-metadata unit (script-checked)",
+        "native identities and allowlisted metadata unchanged (tools/build_successor_kernel.py)"
+      ]
+    },
+    {
+      "unit_id": "REPAIR-HUNK-002",
+      "action": "amend new text",
+      "replacements": [
+        {
+          "old": "**Draft standing:** Working successor kernel, 2026-10-24. Mathematical corrections below are proposed for review; this file is not a lock or release. The v3.2.7 predecessor remains the locked release of record. All item tags and standings retain their stated scope.\n\n**Predecessor release:** v3.2.7 (**LOCKED release of record**, Robin 2026-10-20: \"I lock it\"; a point release on v3.2.6, label assigned by Robin 2026-10-20: \"its a point upgrade, so update it to v3.2.7\"). It supersedes v3.2.6 (SHA-256 `4a23d62e15ada3819defe6919e56fe9f2ef6a9a10eb7f5c4082e4b6b442cdb94`, locked by Robin 2026-10-12) as the release of record; v3.2.6 superseded v3.2.5 (SHA-256 `ac53e75b73c42f185248464e3daf856a3dd3fd98b56dfff971341b80b10717ef`). Relative to v3.2.6, this release applies errata only: W1 corrects Definition 5.2 (II.8), whose displayed formula did not reduce to the classical Ramanujan sum at $w \\equiv 1$; R1, R2b and G4 add notes on II.23.9 at the end of the fold concordance (Part VII / VII.2a), leaving the II.23.9 text byte-unchanged. The v3.2.6 contents relative to v3.2.5 are as recorded in its changelog below. Item standings, limitations and not-claimed clauses are as recorded in the item tags and the post-v3.2.5 concordance (Part VII); no status is upgraded, and no other base wording changes.\n",
+          "new": "**Version:** 3.3.0 (current; minor release on the locked v3.2.7; label assigned by saphir 2026-10-28: \"v3.3.0\"; **release lock pending saphir**). It supersedes v3.2.7 (SHA-256 `b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81`, LOCKED by Robin 2026-10-20: \"I lock it\"); v3.2.7 superseded v3.2.6 (SHA-256 `4a23d62e15ada3819defe6919e56fe9f2ef6a9a10eb7f5c4082e4b6b442cdb94`, locked by Robin 2026-10-12), which superseded v3.2.5 (SHA-256 `ac53e75b73c42f185248464e3daf856a3dd3fd98b56dfff971341b80b10717ef`). Relative to v3.2.7, this release applies the reviewed successor corrections: the integrated corrections of 2026-10-24 and repair topics 1–14, each declared against the pinned v3.2.7 bytes in `kernel/successor/CORRECTIONS.json` and recorded in `kernel/successor/repairs/` (summary in the v3.3.0 changelog below). Item standings, limitations and not-claimed clauses are as recorded in the item tags and the post-v3.2.5 concordance (Part VII); no status is upgraded, and no Goldbach, RH/Landau or centered-comb standing is raised.\n\n**Release scope:** Unsupported universal statements are withdrawn or scoped rather than retained as theorems; all 186 native item identities and their order are kept. Where the text below says \"successor draft\", it means this release's text as changed from v3.2.7. II.23.9, Def II.23.5e and the Farey census line were item-locked text in v3.2.7 and carry declared, reviewed edits here; as their edit records state, their historical attestations cover the original bytes only, and this release does not renew them (release records in `docs/releases/v3.3.0/`). The v3.3.0 release standing covers the assembled kernel as a whole; it does not re-attest those items.\n"
+        }
+      ],
+      "round": "label",
+      "lane": "release-metadata",
+      "authority": "saphir 2026-10-28, label: \"v3.3.0\"",
+      "checks": [
+        "base pin kernel/next/kernel.md b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81 unchanged",
+        "every changed successor line lies inside a release-metadata unit (script-checked)",
+        "native identities and allowlisted metadata unchanged (tools/build_successor_kernel.py)"
+      ]
+    },
+    {
+      "unit_id": "REPAIR14-D-20",
+      "action": "amend new text",
+      "replacements": [
+        {
+          "old": "*— end Part VII, end integrated successor draft (version unassigned; based on v3.2.7) —*",
+          "new": "*— end Part VII, end FVLT v3.3.0 kernel (v3.2.0 semantic-correction baseline) —*"
+        }
+      ],
+      "round": "label",
+      "lane": "release-metadata",
+      "authority": "saphir 2026-10-28, label: \"v3.3.0\"",
+      "checks": [
+        "base pin kernel/next/kernel.md b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81 unchanged",
+        "every changed successor line lies inside a release-metadata unit (script-checked)",
+        "native identities and allowlisted metadata unchanged (tools/build_successor_kernel.py)"
+      ]
+    },
+    {
+      "unit_id": "REL330-CHANGELOG",
+      "action": "new replacement (prefix to the inherited v3.2.7 changelog line)",
+      "replacements": [
+        {
+          "old": "<!-- v3.2.7 changelog (LOCKED by Robin 2026-10-20):",
+          "new": "<!-- v3.3.0 changelog (label assigned by saphir 2026-10-28; release lock pending): apply the reviewed successor corrections to the locked v3.2.7, declared in kernel/successor/CORRECTIONS.json and recorded in kernel/successor/repairs/: the integrated corrections of 2026-10-24; repair topics 1–13 of 2026-10-25 (1 divisor objects, lenses and finite actions; 2 algorithm and output cost models; 3 Vernier phases, spin and contact rules; 4 channel tilt, persistent state and walk boundaries; 5 crystal coordinates, grades and projected fibres; 6 chirality sufficiency and symmetry states; 7 measurement operators, phase and diagnostics; 8 factorial bridge selection and finite examples; 9 ordered profiles and transport scope; 10 analytic and geometric comparison boundaries; 11 categorical, signal and completion domains; 12 interpolation and iteration domains; 13 status, notation and source navigation) with the Opus follow-up; topic 14 of 2026-10-28, read-review corrections with fix rounds 1–4 (PR #67, cleared by Astra at 4c89fba). Adds the successor notation entries (VII.8); records the edits to the item-locked II.23.9, Def II.23.5e and Farey census text without renewing their attestations; keeps C-01 unresolved; upgrades no standing; release records in docs/releases/v3.3.0/. --> <!-- v3.2.7 changelog (LOCKED by Robin 2026-10-20):"
+        }
+      ],
+      "round": "label",
+      "lane": "release-metadata",
+      "authority": "saphir 2026-10-28, label: \"v3.3.0\"",
+      "checks": [
+        "base pin kernel/next/kernel.md b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81 unchanged",
+        "every changed successor line lies inside a release-metadata unit (script-checked)",
+        "native identities and allowlisted metadata unchanged (tools/build_successor_kernel.py)"
+      ]
+    },
+    {
+      "unit_id": "REPAIR-HUNK-002",
+      "action": "amend new text",
+      "replacements": [
+        {
+          "old": "**Version:** 3.3.0 (current; minor release on the locked v3.2.7; label assigned by saphir 2026-10-28: \"v3.3.0\"; **release lock pending saphir**). It supersedes v3.2.7 (SHA-256 `b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81`, LOCKED by Robin 2026-10-20: \"I lock it\"); v3.2.7 superseded v3.2.6 (SHA-256 `4a23d62e15ada3819defe6919e56fe9f2ef6a9a10eb7f5c4082e4b6b442cdb94`, locked by Robin 2026-10-12), which superseded v3.2.5 (SHA-256 `ac53e75b73c42f185248464e3daf856a3dd3fd98b56dfff971341b80b10717ef`). Relative to v3.2.7, this release applies the reviewed successor corrections: the integrated corrections of 2026-10-24 and repair topics 1–14, each declared against the pinned v3.2.7 bytes in `kernel/successor/CORRECTIONS.json` and recorded in `kernel/successor/repairs/` (summary in the v3.3.0 changelog below). Item standings, limitations and not-claimed clauses are as recorded in the item tags and the post-v3.2.5 concordance (Part VII); no status is upgraded, and no Goldbach, RH/Landau or centered-comb standing is raised.\n\n**Release scope:** Unsupported universal statements are withdrawn or scoped rather than retained as theorems; all 186 native item identities and their order are kept. Where the text below says \"successor draft\", it means this release's text as changed from v3.2.7. II.23.9, Def II.23.5e and the Farey census line were item-locked text in v3.2.7 and carry declared, reviewed edits here; as their edit records state, their historical attestations cover the original bytes only, and this release does not renew them (release records in `docs/releases/v3.3.0/`). The v3.3.0 release standing covers the assembled kernel as a whole; it does not re-attest those items.\n",
+          "new": "**Version:** 3.3.0 (current, **LOCKED release of record**, saphir 2026-10-28: \"yes, merge it, and I approve all the rest.\"; a minor release on v3.2.7, label assigned by saphir 2026-10-28: \"v3.3.0\"). It supersedes v3.2.7 (SHA-256 `b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81`, LOCKED by Robin 2026-10-20: \"I lock it\") as the release of record; v3.2.7 superseded v3.2.6 (SHA-256 `4a23d62e15ada3819defe6919e56fe9f2ef6a9a10eb7f5c4082e4b6b442cdb94`, locked by Robin 2026-10-12), which superseded v3.2.5 (SHA-256 `ac53e75b73c42f185248464e3daf856a3dd3fd98b56dfff971341b80b10717ef`). Relative to v3.2.7, this release applies the reviewed successor corrections: the integrated corrections of 2026-10-24 and repair topics 1–14, each declared against the pinned v3.2.7 bytes in `kernel/successor/CORRECTIONS.json` and recorded in `kernel/successor/repairs/` (summary in the v3.3.0 changelog below). Item standings, limitations and not-claimed clauses are as recorded in the item tags and the post-v3.2.5 concordance (Part VII); no status is upgraded, and no Goldbach, RH/Landau or centered-comb standing is raised.\n\n**Release scope:** Unsupported universal statements are withdrawn or scoped rather than retained as theorems; all 186 native item identities and their order are kept. Where the text below says \"successor draft\", it means this release's text as changed from v3.2.7. II.23.9, Def II.23.5e and the Farey census line were item-locked text in v3.2.7 and carry declared, reviewed edits here; as their edit records state, their historical attestations cover the original bytes only, and this release does not renew them (release records in `docs/releases/v3.3.0/`). The v3.3.0 release standing covers the assembled kernel as a whole; it does not re-attest those items.\n"
+        }
+      ],
+      "round": "lock",
+      "lane": "release-metadata",
+      "authority": "saphir 2026-10-28, lock: \"yes, merge it, and I approve all the rest.\"",
+      "checks": [
+        "base pin kernel/next/kernel.md b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81 unchanged",
+        "every changed successor line lies inside a release-metadata unit (script-checked)",
+        "native identities and allowlisted metadata unchanged (tools/build_successor_kernel.py)"
+      ]
+    },
+    {
+      "unit_id": "REL330-CHANGELOG",
+      "action": "amend new text",
+      "replacements": [
+        {
+          "old": "<!-- v3.3.0 changelog (label assigned by saphir 2026-10-28; release lock pending): apply the reviewed successor corrections to the locked v3.2.7, declared in kernel/successor/CORRECTIONS.json and recorded in kernel/successor/repairs/: the integrated corrections of 2026-10-24; repair topics 1–13 of 2026-10-25 (1 divisor objects, lenses and finite actions; 2 algorithm and output cost models; 3 Vernier phases, spin and contact rules; 4 channel tilt, persistent state and walk boundaries; 5 crystal coordinates, grades and projected fibres; 6 chirality sufficiency and symmetry states; 7 measurement operators, phase and diagnostics; 8 factorial bridge selection and finite examples; 9 ordered profiles and transport scope; 10 analytic and geometric comparison boundaries; 11 categorical, signal and completion domains; 12 interpolation and iteration domains; 13 status, notation and source navigation) with the Opus follow-up; topic 14 of 2026-10-28, read-review corrections with fix rounds 1–4 (PR #67, cleared by Astra at 4c89fba). Adds the successor notation entries (VII.8); records the edits to the item-locked II.23.9, Def II.23.5e and Farey census text without renewing their attestations; keeps C-01 unresolved; upgrades no standing; release records in docs/releases/v3.3.0/. --> <!-- v3.2.7 changelog (LOCKED by Robin 2026-10-20):",
+          "new": "<!-- v3.3.0 changelog (LOCKED by saphir 2026-10-28): apply the reviewed successor corrections to the locked v3.2.7, declared in kernel/successor/CORRECTIONS.json and recorded in kernel/successor/repairs/: the integrated corrections of 2026-10-24; repair topics 1–13 of 2026-10-25 (1 divisor objects, lenses and finite actions; 2 algorithm and output cost models; 3 Vernier phases, spin and contact rules; 4 channel tilt, persistent state and walk boundaries; 5 crystal coordinates, grades and projected fibres; 6 chirality sufficiency and symmetry states; 7 measurement operators, phase and diagnostics; 8 factorial bridge selection and finite examples; 9 ordered profiles and transport scope; 10 analytic and geometric comparison boundaries; 11 categorical, signal and completion domains; 12 interpolation and iteration domains; 13 status, notation and source navigation) with the Opus follow-up; topic 14 of 2026-10-28, read-review corrections with fix rounds 1–4 (PR #67, cleared by Astra at 4c89fba). Adds the successor notation entries (VII.8); records the edits to the item-locked II.23.9, Def II.23.5e and Farey census text without renewing their attestations; keeps C-01 unresolved; upgrades no standing; release records in docs/releases/v3.3.0/. --> <!-- v3.2.7 changelog (LOCKED by Robin 2026-10-20):"
+        }
+      ],
+      "round": "lock",
+      "lane": "release-metadata",
+      "authority": "saphir 2026-10-28, lock: \"yes, merge it, and I approve all the rest.\"",
+      "checks": [
+        "base pin kernel/next/kernel.md b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81 unchanged",
+        "every changed successor line lies inside a release-metadata unit (script-checked)",
+        "native identities and allowlisted metadata unchanged (tools/build_successor_kernel.py)"
+      ]
+    },
+    {
+      "unit_id": "REPAIR-HUNK-002",
+      "action": "amend new text",
+      "replacements": [
+        {
+          "old": "**Version:** 3.3.0 (current, **LOCKED release of record**, saphir 2026-10-28: \"yes, merge it, and I approve all the rest.\"; a minor release on v3.2.7, label assigned by saphir 2026-10-28: \"v3.3.0\"). It supersedes v3.2.7 (SHA-256 `b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81`, LOCKED by Robin 2026-10-20: \"I lock it\") as the release of record; v3.2.7 superseded v3.2.6 (SHA-256 `4a23d62e15ada3819defe6919e56fe9f2ef6a9a10eb7f5c4082e4b6b442cdb94`, locked by Robin 2026-10-12), which superseded v3.2.5 (SHA-256 `ac53e75b73c42f185248464e3daf856a3dd3fd98b56dfff971341b80b10717ef`). Relative to v3.2.7, this release applies the reviewed successor corrections: the integrated corrections of 2026-10-24 and repair topics 1–14, each declared against the pinned v3.2.7 bytes in `kernel/successor/CORRECTIONS.json` and recorded in `kernel/successor/repairs/` (summary in the v3.3.0 changelog below). Item standings, limitations and not-claimed clauses are as recorded in the item tags and the post-v3.2.5 concordance (Part VII); no status is upgraded, and no Goldbach, RH/Landau or centered-comb standing is raised.\n\n**Release scope:** Unsupported universal statements are withdrawn or scoped rather than retained as theorems; all 186 native item identities and their order are kept. Where the text below says \"successor draft\", it means this release's text as changed from v3.2.7. II.23.9, Def II.23.5e and the Farey census line were item-locked text in v3.2.7 and carry declared, reviewed edits here; as their edit records state, their historical attestations cover the original bytes only, and this release does not renew them (release records in `docs/releases/v3.3.0/`). The v3.3.0 release standing covers the assembled kernel as a whole; it does not re-attest those items.\n",
+          "new": "**Version:** 3.3.0 (current; minor release on the locked v3.2.7; label assigned by saphir 2026-10-28: \"v3.3.0\"; **release lock pending saphir's re-confirmation**: a lock given on 2026-10-28 named an earlier candidate whose release records were incomplete, and it was superseded before publication; release records in `docs/releases/v3.3.0/`). It supersedes v3.2.7 (SHA-256 `b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81`, LOCKED by Robin 2026-10-20: \"I lock it\"); v3.2.7 superseded v3.2.6 (SHA-256 `4a23d62e15ada3819defe6919e56fe9f2ef6a9a10eb7f5c4082e4b6b442cdb94`, locked by Robin 2026-10-12), which superseded v3.2.5 (SHA-256 `ac53e75b73c42f185248464e3daf856a3dd3fd98b56dfff971341b80b10717ef`). Relative to v3.2.7, this release applies the reviewed successor corrections: the integrated corrections of 2026-10-24 and repair topics 1–14, as 292 replacement hunks declared against the pinned v3.2.7 bytes in `kernel/successor/CORRECTIONS.json` (290 excluding the two header hunks; including the footer metadata hunk and the 2026-10-24 integrated corrections) and recorded in `kernel/successor/repairs/` (summary in the v3.3.0 changelog below). Item standings, limitations and not-claimed clauses are as recorded in the item tags and the post-v3.2.5 concordance (Part VII); no status is upgraded, and no Goldbach, RH/Landau or centered-comb standing is raised.\n\n**Release scope:** Unsupported universal statements are withdrawn or scoped rather than retained as theorems; all 186 native item identities and their order are kept. Where the text below says \"successor draft\", it means this release's text as changed from v3.2.7. Eight declared, reviewed replacements change text that was item-locked in v3.2.7 (a complete list, derived by script from the item-locked fold spans recorded in `kernel/next/ITEMS.json`): in the Farey II.5g–k fold, REPAIR14-A-11 (census line), REPAIR-HUNK-041 and REPAIR-HUNK-042 (rupture-and-repair record: \"order\" read as \"admissible denominator\"); in Goldbach II.23.5c–e, REPAIR-HUNK-133 (Def–Prop II.23.5d Status paragraph), REPAIR-HUNK-134 (Def II.23.5e defining sentence: $\\Lambda_G(r)$ is defined for any positive integer $r$, its comparator use staying at even $N \\ge 4$) and REPAIR14-PR60-LAMBDAG (Def II.23.5e displays); in II.23.9, REPAIR14-C-02-POINTER (Def II.23.9 parameter pointer) and REPAIR-HUNK-146 (Rmk II.23.9b shell-swap gloss). Their historical attestations and item locks cover the original bytes only, and this release does not renew them. No status is upgraded. Eleven native tags change against v3.2.7, each by a reviewed correction: Thm 6.2, Thm 8.14a and Thm 8.20h.3 are withdrawn to open (proved/unconditional to conditional/open) and Rmk 8.20h.4 is downgraded (unconditional to open); Rmk 9.7z splits its label (the iff becomes κ-palindromic sufficiency, with necessity open), and Rmk 1.2 and Rmk 3.6 split theirs into unconditional and interpretive parts; Def 5.1, Def 5.2, Rmk 9.4a and Note 9.4b change their dependency lists only. The v3.3.0 release standing covers the assembled kernel as a whole; it does not re-attest the edited item-locked text.\n"
+        }
+      ],
+      "round": "correction 1",
+      "lane": "release-metadata",
+      "authority": "track owner correction round, 2026-10-28, on VERIFY_REPORT.md R-01/R-02/R-03",
+      "checks": [
+        "base pin kernel/next/kernel.md b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81 unchanged",
+        "only successor lines 5, 7 and 9 change (script-checked); line count unchanged",
+        "lists asserted equal to locked_span_intersections.py output (8 replacements, 11 native tags)"
+      ]
+    },
+    {
+      "unit_id": "REL330-CHANGELOG",
+      "action": "amend new text",
+      "replacements": [
+        {
+          "old": "<!-- v3.3.0 changelog (LOCKED by saphir 2026-10-28): apply the reviewed successor corrections to the locked v3.2.7, declared in kernel/successor/CORRECTIONS.json and recorded in kernel/successor/repairs/: the integrated corrections of 2026-10-24; repair topics 1–13 of 2026-10-25 (1 divisor objects, lenses and finite actions; 2 algorithm and output cost models; 3 Vernier phases, spin and contact rules; 4 channel tilt, persistent state and walk boundaries; 5 crystal coordinates, grades and projected fibres; 6 chirality sufficiency and symmetry states; 7 measurement operators, phase and diagnostics; 8 factorial bridge selection and finite examples; 9 ordered profiles and transport scope; 10 analytic and geometric comparison boundaries; 11 categorical, signal and completion domains; 12 interpolation and iteration domains; 13 status, notation and source navigation) with the Opus follow-up; topic 14 of 2026-10-28, read-review corrections with fix rounds 1–4 (PR #67, cleared by Astra at 4c89fba). Adds the successor notation entries (VII.8); records the edits to the item-locked II.23.9, Def II.23.5e and Farey census text without renewing their attestations; keeps C-01 unresolved; upgrades no standing; release records in docs/releases/v3.3.0/. --> <!-- v3.2.7 changelog (LOCKED by Robin 2026-10-20):",
+          "new": "<!-- v3.3.0 changelog (label assigned by saphir 2026-10-28; release lock pending saphir's re-confirmation; an earlier lock was superseded before publication): apply the reviewed successor corrections to the locked v3.2.7, declared in kernel/successor/CORRECTIONS.json and recorded in kernel/successor/repairs/: the integrated corrections of 2026-10-24; repair topics 1–13 of 2026-10-25 (1 divisor objects, lenses and finite actions; 2 algorithm and output cost models; 3 Vernier phases, spin and contact rules; 4 channel tilt, persistent state and walk boundaries; 5 crystal coordinates, grades and projected fibres; 6 chirality sufficiency and symmetry states; 7 measurement operators, phase and diagnostics; 8 factorial bridge selection and finite examples; 9 ordered profiles and transport scope; 10 analytic and geometric comparison boundaries; 11 categorical, signal and completion domains; 12 interpolation and iteration domains; 13 status, notation and source navigation) with the Opus follow-up; topic 14 of 2026-10-28, read-review corrections with fix rounds 1–4 (PR #67, cleared by Astra at 4c89fba). 292 replacement hunks (290 excluding the two header hunks). Adds the successor notation entries (VII.8). Edits item-locked text by REPAIR14-A-11, REPAIR-HUNK-041 and REPAIR-HUNK-042 (Farey II.5g–k fold), REPAIR-HUNK-133, REPAIR-HUNK-134 and REPAIR14-PR60-LAMBDAG (Goldbach II.23.5c–e), REPAIR14-C-02-POINTER and REPAIR-HUNK-146 (II.23.9), without renewing their attestations. Upgrades no standing; 11 reviewed native-tag changes, with Thm 6.2, Thm 8.14a and Thm 8.20h.3 withdrawn to open and Rmk 8.20h.4 downgraded to open. Keeps C-01 unresolved. Release records in docs/releases/v3.3.0/. --> <!-- v3.2.7 changelog (LOCKED by Robin 2026-10-20):"
+        }
+      ],
+      "round": "correction 1",
+      "lane": "release-metadata",
+      "authority": "track owner correction round, 2026-10-28, on VERIFY_REPORT.md R-01/R-02/R-03",
+      "checks": [
+        "base pin kernel/next/kernel.md b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81 unchanged",
+        "only successor lines 5, 7 and 9 change (script-checked); line count unchanged",
+        "lists asserted equal to locked_span_intersections.py output (8 replacements, 11 native tags)"
+      ]
+    },
+    {
+      "unit_id": "REPAIR-HUNK-002",
+      "action": "amend new text",
+      "replacements": [
+        {
+          "old": "**Version:** 3.3.0 (current; minor release on the locked v3.2.7; label assigned by saphir 2026-10-28: \"v3.3.0\"; **release lock pending saphir's re-confirmation**: a lock given on 2026-10-28 named an earlier candidate whose release records were incomplete, and it was superseded before publication; release records in `docs/releases/v3.3.0/`). It supersedes v3.2.7 (SHA-256 `b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81`, LOCKED by Robin 2026-10-20: \"I lock it\"); v3.2.7 superseded v3.2.6 (SHA-256 `4a23d62e15ada3819defe6919e56fe9f2ef6a9a10eb7f5c4082e4b6b442cdb94`, locked by Robin 2026-10-12), which superseded v3.2.5 (SHA-256 `ac53e75b73c42f185248464e3daf856a3dd3fd98b56dfff971341b80b10717ef`). Relative to v3.2.7, this release applies the reviewed successor corrections: the integrated corrections of 2026-10-24 and repair topics 1–14, as 292 replacement hunks declared against the pinned v3.2.7 bytes in `kernel/successor/CORRECTIONS.json` (290 excluding the two header hunks; including the footer metadata hunk and the 2026-10-24 integrated corrections) and recorded in `kernel/successor/repairs/` (summary in the v3.3.0 changelog below). Item standings, limitations and not-claimed clauses are as recorded in the item tags and the post-v3.2.5 concordance (Part VII); no status is upgraded, and no Goldbach, RH/Landau or centered-comb standing is raised.\n\n**Release scope:** Unsupported universal statements are withdrawn or scoped rather than retained as theorems; all 186 native item identities and their order are kept. Where the text below says \"successor draft\", it means this release's text as changed from v3.2.7. Eight declared, reviewed replacements change text that was item-locked in v3.2.7 (a complete list, derived by script from the item-locked fold spans recorded in `kernel/next/ITEMS.json`): in the Farey II.5g–k fold, REPAIR14-A-11 (census line), REPAIR-HUNK-041 and REPAIR-HUNK-042 (rupture-and-repair record: \"order\" read as \"admissible denominator\"); in Goldbach II.23.5c–e, REPAIR-HUNK-133 (Def–Prop II.23.5d Status paragraph), REPAIR-HUNK-134 (Def II.23.5e defining sentence: $\\Lambda_G(r)$ is defined for any positive integer $r$, its comparator use staying at even $N \\ge 4$) and REPAIR14-PR60-LAMBDAG (Def II.23.5e displays); in II.23.9, REPAIR14-C-02-POINTER (Def II.23.9 parameter pointer) and REPAIR-HUNK-146 (Rmk II.23.9b shell-swap gloss). Their historical attestations and item locks cover the original bytes only, and this release does not renew them. No status is upgraded. Eleven native tags change against v3.2.7, each by a reviewed correction: Thm 6.2, Thm 8.14a and Thm 8.20h.3 are withdrawn to open (proved/unconditional to conditional/open) and Rmk 8.20h.4 is downgraded (unconditional to open); Rmk 9.7z splits its label (the iff becomes κ-palindromic sufficiency, with necessity open), and Rmk 1.2 and Rmk 3.6 split theirs into unconditional and interpretive parts; Def 5.1, Def 5.2, Rmk 9.4a and Note 9.4b change their dependency lists only. The v3.3.0 release standing covers the assembled kernel as a whole; it does not re-attest the edited item-locked text.\n",
+          "new": "**Version:** 3.3.0 (current; minor release on the locked v3.2.7; label assigned by saphir 2026-10-28: \"v3.3.0\"; **release lock pending saphir's re-confirmation**: a lock given on 2026-10-28 named an earlier candidate whose release records were incomplete, and it was superseded before publication; release records in `docs/releases/v3.3.0/`). It supersedes v3.2.7 (SHA-256 `b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81`, LOCKED by Robin 2026-10-20: \"I lock it\"); v3.2.7 superseded v3.2.6 (SHA-256 `4a23d62e15ada3819defe6919e56fe9f2ef6a9a10eb7f5c4082e4b6b442cdb94`, locked by Robin 2026-10-12), which superseded v3.2.5 (SHA-256 `ac53e75b73c42f185248464e3daf856a3dd3fd98b56dfff971341b80b10717ef`). Relative to v3.2.7, this release applies the reviewed successor corrections: the integrated corrections of 2026-10-24 and repair topics 1–14, as 292 replacement hunks declared against the pinned v3.2.7 bytes in `kernel/successor/CORRECTIONS.json` (290 excluding the two header hunks; including the footer metadata hunk and the 2026-10-24 integrated corrections) and recorded in `kernel/successor/repairs/` (summary in the v3.3.0 changelog below). Item standings, limitations and not-claimed clauses are as recorded in the item tags and the post-v3.2.5 concordance (Part VII); no status is upgraded, and no Goldbach, RH/Landau or centered-comb standing is raised.\n\n**Release scope:** Unsupported universal statements are withdrawn or scoped rather than retained as theorems; all 186 native item identities and their order are kept. Where the text below says \"successor draft\", it means this release's text as changed from v3.2.7. Twenty-two declared, reviewed replacements change text that was item-locked in v3.2.7; the list is complete with respect to five lock sources: (a) item-locked folds in `kernel/next/ITEMS.json`, (b) native-tag lock fields, (c) in-body item-lock records, (d) version-history item-lock records and (e) bodies described as locked; all 108 lock-word occurrences in the v3.2.7 kernel are classified (`docs/releases/v3.3.0/scripts/locked_span_intersections_v2.py`): in the Farey II.5g–k fold, REPAIR14-A-11, REPAIR-HUNK-041 and REPAIR-HUNK-042; in Goldbach II.23.5c–e, REPAIR-HUNK-133, REPAIR-HUNK-134 (Def II.23.5e defining sentence: $\\Lambda_G(r)$ for any positive integer $r$, comparator use at even $N \\ge 4$) and REPAIR14-PR60-LAMBDAG; in II.23.9, REPAIR14-C-02-POINTER and REPAIR-HUNK-146; in Thm II.3c, REPAIR-HUNK-024; in Rmk II.5f, REPAIR-HUNK-040; in Rmk 9.7z, REPAIR-HUNK-101 to REPAIR-HUNK-109; in Note 14.5, REPAIR-HUNK-230; in Cor 14.5a, REPAIR-HUNK-231 and REPAIR14-D-09. Two of these correct the mathematics of locked statements: REPAIR-HUNK-040 (Rmk II.5f(i): \"the path graph on $V$\" becomes the induced subgraph on $V$ of the integer path, generally a union of paths) and REPAIR-HUNK-101 to REPAIR-HUNK-109 (Rmk 9.7z: the locked iff is weakened to sufficiency, with necessity open; its lock record is relabelled \"Historical lock\"). Separately, under source (e), Lemma 9.7a (REPAIR-HUNK-087 to REPAIR-HUNK-089) and Rmk 9.7h (REPAIR-HUNK-112 to REPAIR-HUNK-114) are described as locked (v3.1.21 \"three locked bodies\"), lock scope not recorded; Note 9.3a.1 has no hits. The historical attestations and item locks of all these items cover the original bytes only, and this release does not renew them. No status is upgraded. Eleven native tags change against v3.2.7, each by a reviewed correction: Thm 6.2, Thm 8.14a and Thm 8.20h.3 are withdrawn to open (proved/unconditional to conditional/open) and Rmk 8.20h.4 is downgraded (unconditional to open); in Rmk 9.7z the iff is weakened to sufficiency (necessity open); Rmk 1.2 and Rmk 3.6 split their labels into unconditional and interpretive parts; Def 5.1, Def 5.2, Rmk 9.4a and Note 9.4b change their dependency lists only. The v3.3.0 release standing covers the assembled kernel as a whole; it does not re-attest the edited item-locked text.\n"
+        }
+      ],
+      "round": "correction 2",
+      "lane": "release-metadata",
+      "authority": "saphir option A, relayed by the track owner, 2026-10-28",
+      "checks": [
+        "only successor lines 7 and 9 change (script-checked)",
+        "lists asserted equal to locked_span_intersections_v2.py output"
+      ]
+    },
+    {
+      "unit_id": "REL330-CHANGELOG",
+      "action": "amend new text",
+      "replacements": [
+        {
+          "old": "<!-- v3.3.0 changelog (label assigned by saphir 2026-10-28; release lock pending saphir's re-confirmation; an earlier lock was superseded before publication): apply the reviewed successor corrections to the locked v3.2.7, declared in kernel/successor/CORRECTIONS.json and recorded in kernel/successor/repairs/: the integrated corrections of 2026-10-24; repair topics 1–13 of 2026-10-25 (1 divisor objects, lenses and finite actions; 2 algorithm and output cost models; 3 Vernier phases, spin and contact rules; 4 channel tilt, persistent state and walk boundaries; 5 crystal coordinates, grades and projected fibres; 6 chirality sufficiency and symmetry states; 7 measurement operators, phase and diagnostics; 8 factorial bridge selection and finite examples; 9 ordered profiles and transport scope; 10 analytic and geometric comparison boundaries; 11 categorical, signal and completion domains; 12 interpolation and iteration domains; 13 status, notation and source navigation) with the Opus follow-up; topic 14 of 2026-10-28, read-review corrections with fix rounds 1–4 (PR #67, cleared by Astra at 4c89fba). 292 replacement hunks (290 excluding the two header hunks). Adds the successor notation entries (VII.8). Edits item-locked text by REPAIR14-A-11, REPAIR-HUNK-041 and REPAIR-HUNK-042 (Farey II.5g–k fold), REPAIR-HUNK-133, REPAIR-HUNK-134 and REPAIR14-PR60-LAMBDAG (Goldbach II.23.5c–e), REPAIR14-C-02-POINTER and REPAIR-HUNK-146 (II.23.9), without renewing their attestations. Upgrades no standing; 11 reviewed native-tag changes, with Thm 6.2, Thm 8.14a and Thm 8.20h.3 withdrawn to open and Rmk 8.20h.4 downgraded to open. Keeps C-01 unresolved. Release records in docs/releases/v3.3.0/. --> <!-- v3.2.7 changelog (LOCKED by Robin 2026-10-20):",
+          "new": "<!-- v3.3.0 changelog (label assigned by saphir 2026-10-28; release lock pending saphir's re-confirmation; an earlier lock was superseded before publication): apply the reviewed successor corrections to the locked v3.2.7, declared in kernel/successor/CORRECTIONS.json and recorded in kernel/successor/repairs/: the integrated corrections of 2026-10-24; repair topics 1–13 of 2026-10-25 (1 divisor objects, lenses and finite actions; 2 algorithm and output cost models; 3 Vernier phases, spin and contact rules; 4 channel tilt, persistent state and walk boundaries; 5 crystal coordinates, grades and projected fibres; 6 chirality sufficiency and symmetry states; 7 measurement operators, phase and diagnostics; 8 factorial bridge selection and finite examples; 9 ordered profiles and transport scope; 10 analytic and geometric comparison boundaries; 11 categorical, signal and completion domains; 12 interpolation and iteration domains; 13 status, notation and source navigation) with the Opus follow-up; topic 14 of 2026-10-28, read-review corrections with fix rounds 1–4 (PR #67, cleared by Astra at 4c89fba). 292 replacement hunks (290 excluding the two header hunks). Adds the successor notation entries (VII.8). Edits item-locked text (complete for the five lock sources (a) to (e), 108 lock-word occurrences classified; docs/releases/v3.3.0/scripts/locked_span_intersections_v2.py) by 22 replacements: REPAIR14-A-11, REPAIR-HUNK-041 and -042 (Farey II.5g–k fold); REPAIR-HUNK-133, -134 and REPAIR14-PR60-LAMBDAG (Goldbach II.23.5c–e); REPAIR14-C-02-POINTER and REPAIR-HUNK-146 (II.23.9); REPAIR-HUNK-024 (Thm II.3c); REPAIR-HUNK-040 (Rmk II.5f, a correction to the mathematics of a locked statement); REPAIR-HUNK-101 to -109 (Rmk 9.7z, locked iff weakened to sufficiency, necessity open); REPAIR-HUNK-230 (Note 14.5); REPAIR-HUNK-231 and REPAIR14-D-09 (Cor 14.5a); without renewing their attestations. Also edits Lemma 9.7a and Rmk 9.7h, described as locked (v3.1.21), lock scope not recorded. Upgrades no standing; 11 reviewed native-tag changes, with Thm 6.2, Thm 8.14a and Thm 8.20h.3 withdrawn to open, Rmk 8.20h.4 downgraded to open and the Rmk 9.7z iff weakened to sufficiency. Keeps C-01 unresolved. Release records in docs/releases/v3.3.0/. --> <!-- v3.2.7 changelog (LOCKED by Robin 2026-10-20):"
+        }
+      ],
+      "round": "correction 2",
+      "lane": "release-metadata",
+      "authority": "saphir option A, relayed by the track owner, 2026-10-28",
+      "checks": [
+        "only successor lines 7 and 9 change (script-checked)",
+        "lists asserted equal to locked_span_intersections_v2.py output"
+      ]
+    }
+  ],
+  "open_units": [],
+  "status": "RELEASE_CANDIDATE_v3.3.0",
+  "input_kernel_sha256": "eccec3efb8ffd856dbbf3979b3f520898279811119f973a3378d8926a6a10e57",
+  "output_kernel_sha256": "3e32818ea4e12957a53b4e85d8dcd16213d7f52653995102c14258603f85e6bc"
+}

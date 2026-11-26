@@ -1,0 +1,1956 @@
+{
+ "base_sha256": "b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81",
+ "assembly_draft_sha256": "8d436beb67ed5499f7d9cb1a1b79b6997db52e5da056018169a95699713ecc23",
+ "lock_sources": [
+  "(a) kernel/next/ITEMS.json item_locked* fold segments",
+  "(b) native-tag lock fields",
+  "(c) in-body item-lock records",
+  "(d) version-history item-lock records",
+  "(e) bodies described as locked"
+ ],
+ "lock_word_census": {
+  "occurrences": 108,
+  "by_class": {
+   "release-level: front-matter version/changelog": [
+    5,
+    7
+   ],
+   "(b) native-tag lock field": [
+    526,
+    878,
+    1540,
+    1665
+   ],
+   "(c) in-body item-lock record": [
+    553,
+    697,
+    893,
+    1681,
+    2003,
+    4832,
+    5525
+   ],
+   "role or procedure (no lock of text)": [
+    1261,
+    3032,
+    5159,
+    5408,
+    5410,
+    5417,
+    5458,
+    5474,
+    5483,
+    5521,
+    5527
+   ],
+   "outside the kernel: companion / external lock records": [
+    1555,
+    1783,
+    1784,
+    4344,
+    4543
+   ],
+   "release/version-level: earlier version locks": [
+    2335,
+    4751,
+    5474,
+    5480,
+    5487
+   ],
+   "mathematical vocabulary (not a lock marker)": [
+    2498,
+    2504,
+    2567,
+    2704,
+    2706,
+    2708,
+    2956,
+    2957,
+    3446,
+    4478,
+    4814,
+    4815,
+    4820,
+    4832,
+    5253,
+    5264
+   ],
+   "(a) restatement of ITEMS.json locks (VII.2a rows / notes)": [
+    3134,
+    3258,
+    4630,
+    4631,
+    4632,
+    4633,
+    4634,
+    4635,
+    4636,
+    4637,
+    4638,
+    4639,
+    4640,
+    4641,
+    4642,
+    4643,
+    4644,
+    4677
+   ],
+   "(d) version-history item-lock record": [
+    5408,
+    5410,
+    5513
+   ],
+   "(e) bodies described as locked (no item-lock record)": [
+    5489
+   ]
+  },
+  "rows": [
+   {
+    "line": 5,
+    "class": "release-level: front-matter version/changelog",
+    "match": "LOCKED",
+    "context": "**Version:** 3.2.7 (current, **LOCKED release of record**, Robin 2026-10-20: \"I lock it\"; a point"
+   },
+   {
+    "line": 5,
+    "class": "release-level: front-matter version/changelog",
+    "match": "lock",
+    "context": "**Version:** 3.2.7 (current, **LOCKED release of record**, Robin 2026-10-20: \"I lock it\"; a point release on v3.2.6, label assigned by Robin 202"
+   },
+   {
+    "line": 5,
+    "class": "release-level: front-matter version/changelog",
+    "match": "locked",
+    "context": "sedes v3.2.6 (SHA-256 `4a23d62e15ada3819defe6919e56fe9f2ef6a9a10eb7f5c4082e4b6b442cdb94`, locked by Robin 2026-10-12) as the release of record; v3.2.6 super"
+   },
+   {
+    "line": 7,
+    "class": "release-level: front-matter version/changelog",
+    "match": "LOCKED",
+    "context": "<!-- v3.2.7 changelog (LOCKED by Robin 2026-10-20): apply errata W1 (Def 5.2 weighted Ram"
+   },
+   {
+    "line": 7,
+    "class": "release-level: front-matter version/changelog",
+    "match": "LOCKED",
+    "context": "s R1, R2b, G4 on II.23.9; errata records in docs/errata/next/. --> <!-- v3.2.6 changelog (LOCKED by Robin 2026-10-12): fold the Robin-locked II.23.9 entry; "
+   },
+   {
+    "line": 7,
+    "class": "release-level: front-matter version/changelog",
+    "match": "locked",
+    "context": "docs/errata/next/. --> <!-- v3.2.6 changelog (LOCKED by Robin 2026-10-12): fold the Robin-locked II.23.9 entry; fold independently cold-passed, fixed-number"
+   },
+   {
+    "line": 7,
+    "class": "release-level: front-matter version/changelog",
+    "match": "locked",
+    "context": "KG-06, KG-07, BIB-01, KG-04-VII8, COMB-M-VII8 and L93-SCOPE. Farey and Goldbach were item-locked by Robin on 2026-10-12 with their reviewed standings and li"
+   },
+   {
+    "line": 7,
+    "class": "release-level: front-matter version/changelog",
+    "match": "lock",
+    "context": "em-locked by Robin on 2026-10-12 with their reviewed standings and limitations preserved; lock records are in docs/releases/v3.2.6/. -->"
+   },
+   {
+    "line": 526,
+    "class": "(b) native-tag lock field",
+    "match": "locked",
+    "context": "unconditional | provenance: adapted | depends: 1.5c, II.3a, II.3b, II.8, II.9, 5.2, 5.3 | locked: Robin 2026-07-14 (item); v3.2.5 release LOCKED by Robin 20"
+   },
+   {
+    "line": 526,
+    "class": "(b) native-tag lock field",
+    "match": "LOCKED",
+    "context": ".5c, II.3a, II.3b, II.8, II.9, 5.2, 5.3 | locked: Robin 2026-07-14 (item); v3.2.5 release LOCKED by Robin 2026-07-14 -->"
+   },
+   {
+    "line": 553,
+    "class": "(c) in-body item-lock record",
+    "match": "locked",
+    "context": "49e33214a116e0c15079a4c`); last run `VERIFY OK … range=1..720 maxTau=30 failures=0`. Item locked Robin 2026-07-14; full record `fableous/locked/lock_record_"
+   },
+   {
+    "line": 553,
+    "class": "(c) in-body item-lock record",
+    "match": "locked",
+    "context": "… range=1..720 maxTau=30 failures=0`. Item locked Robin 2026-07-14; full record `fableous/locked/lock_record_2026-07-14_superclass-bridge.md` and `fableous/"
+   },
+   {
+    "line": 553,
+    "class": "(c) in-body item-lock record",
+    "match": "lock",
+    "context": "=1..720 maxTau=30 failures=0`. Item locked Robin 2026-07-14; full record `fableous/locked/lock_record_2026-07-14_superclass-bridge.md` and `fableous/locke"
+   },
+   {
+    "line": 553,
+    "class": "(c) in-body item-lock record",
+    "match": "locked",
+    "context": "; full record `fableous/locked/lock_record_2026-07-14_superclass-bridge.md` and `fableous/locked/synthesis_theorem/`."
+   },
+   {
+    "line": 697,
+    "class": "(c) in-body item-lock record",
+    "match": "LOCKED",
+    "context": "**Scope — S2 efficiency closure (closed negative; LOCKED by Robin 2026-08-19; record, not a new seat).** The efficie"
+   },
+   {
+    "line": 878,
+    "class": "(b) native-tag lock field",
+    "match": "locked",
+    "context": "nance: original (seating; classical Ford geometry) | depends: II.5b, II.5c, II.5a, 9.7f | locked: Robin 2026-07-14 v1.0 (item); v3.2.5 release LOCKED by Rob"
+   },
+   {
+    "line": 878,
+    "class": "(b) native-tag lock field",
+    "match": "LOCKED",
+    "context": "depends: II.5b, II.5c, II.5a, 9.7f | locked: Robin 2026-07-14 v1.0 (item); v3.2.5 release LOCKED by Robin 2026-07-14 -->"
+   },
+   {
+    "line": 893,
+    "class": "(c) in-body item-lock record",
+    "match": "locked",
+    "context": "pairs, 2,000 randomized profiles, 720 fixture, strict-staircase canonical identity). Item locked v1.0 (Robin, 2026-07-14); cold-passed body SHA-256 `3e034a6"
+   },
+   {
+    "line": 893,
+    "class": "(c) in-body item-lock record",
+    "match": "lock",
+    "context": "sed body SHA-256 `3e034a6e4b96d24e428aa9977fbec355763990d41d863387eb0747bdbdbb7360`. Full lock/verification record: `fableous/locked/rmk_II5f_locked_v1_0."
+   },
+   {
+    "line": 893,
+    "class": "(c) in-body item-lock record",
+    "match": "locked",
+    "context": "8aa9977fbec355763990d41d863387eb0747bdbdbb7360`. Full lock/verification record: `fableous/locked/rmk_II5f_locked_v1_0.md`."
+   },
+   {
+    "line": 893,
+    "class": "(c) in-body item-lock record",
+    "match": "locked",
+    "context": "3990d41d863387eb0747bdbdbb7360`. Full lock/verification record: `fableous/locked/rmk_II5f_locked_v1_0.md`."
+   },
+   {
+    "line": 1261,
+    "class": "role or procedure (no lock of text)",
+    "match": "lock",
+    "context": "   ratify, lock, or authorize a registered run."
+   },
+   {
+    "line": 1540,
+    "class": "(b) native-tag lock field",
+    "match": "LOCKED",
+    "context": "ntribution is seating + instrumentation only) | depends: 9.2, 9.1a | routing: kernel-body LOCKED by Robin 2026-07-14 (ratified amendment to the 2026-07-12 W"
+   },
+   {
+    "line": 1540,
+    "class": "(b) native-tag lock field",
+    "match": "lock",
+    "context": "ing: kernel-body LOCKED by Robin 2026-07-14 (ratified amendment to the 2026-07-12 WO-SB/M lock, correcting its kernel-non-contact clause); statement/proof"
+   },
+   {
+    "line": 1540,
+    "class": "(b) native-tag lock field",
+    "match": "LOCKED",
+    "context": "both patches applied — see COLDPASS_REQUEST_Lemma_9_2a_frontier_law_2026-07-14.md); LEMMA LOCKED by Robin 2026-07-14 (\"lock it\"); v3.2.5 release LOCKED by R"
+   },
+   {
+    "line": 1540,
+    "class": "(b) native-tag lock field",
+    "match": "lock",
+    "context": "LDPASS_REQUEST_Lemma_9_2a_frontier_law_2026-07-14.md); LEMMA LOCKED by Robin 2026-07-14 (\"lock it\"); v3.2.5 release LOCKED by Robin 2026-07-14 -->"
+   },
+   {
+    "line": 1540,
+    "class": "(b) native-tag lock field",
+    "match": "LOCKED",
+    "context": "frontier_law_2026-07-14.md); LEMMA LOCKED by Robin 2026-07-14 (\"lock it\"); v3.2.5 release LOCKED by Robin 2026-07-14 -->"
+   },
+   {
+    "line": 1555,
+    "class": "outside the kernel: companion / external lock records",
+    "match": "lock",
+    "context": " ideal-windows viewer. **Out of scope here** (bibliography / viewer tier, per the WO-SB/M lock record and its amendment): the ideal-windows and Markov vie"
+   },
+   {
+    "line": 1665,
+    "class": "(b) native-tag lock field",
+    "match": "locked",
+    "context": "riginal (dual of 9.3h(v) on the log-mirror register) | depends: 9.1a, 9.3h, 9.3i, II.5e | locked: Robin 2026-07-06 (item); v3.2.5 release LOCKED by Robin 20"
+   },
+   {
+    "line": 1665,
+    "class": "(b) native-tag lock field",
+    "match": "LOCKED",
+    "context": "ter) | depends: 9.1a, 9.3h, 9.3i, II.5e | locked: Robin 2026-07-06 (item); v3.2.5 release LOCKED by Robin 2026-07-14 -->"
+   },
+   {
+    "line": 1681,
+    "class": "(c) in-body item-lock record",
+    "match": "locked",
+    "context": "ily_super_.html` `30036119f14301335fe9e0aa1e020375aa6792f6dc35a9b5204831662c01cf0d`. Item locked Robin 2026-07-06; full provenance `fableous/locked/rmk_9_3j"
+   },
+   {
+    "line": 1681,
+    "class": "(c) in-body item-lock record",
+    "match": "locked",
+    "context": "a6792f6dc35a9b5204831662c01cf0d`. Item locked Robin 2026-07-06; full provenance `fableous/locked/rmk_9_3j_LOCKED_kernel_insert.md`."
+   },
+   {
+    "line": 1681,
+    "class": "(c) in-body item-lock record",
+    "match": "LOCKED",
+    "context": "04831662c01cf0d`. Item locked Robin 2026-07-06; full provenance `fableous/locked/rmk_9_3j_LOCKED_kernel_insert.md`."
+   },
+   {
+    "line": 1783,
+    "class": "outside the kernel: companion / external lock records",
+    "match": "lock",
+    "context": "$k \\leftrightarrow -k$ exchanged (the dihedral-orientation action of the companion lock"
+   },
+   {
+    "line": 1784,
+    "class": "outside the kernel: companion / external lock records",
+    "match": "lock",
+    "context": "`lock_record_2026-06-07_apex-defect-winding-orientation`). An ach"
+   },
+   {
+    "line": 2003,
+    "class": "(c) in-body item-lock record",
+    "match": "Lock",
+    "context": "Lock: `lock_record_2026-06-09_chi-W-coincidence` (proof + Route "
+   },
+   {
+    "line": 2003,
+    "class": "(c) in-body item-lock record",
+    "match": "lock",
+    "context": "Lock: `lock_record_2026-06-09_chi-W-coincidence` (proof + Route A bijec"
+   },
+   {
+    "line": 2335,
+    "class": "release/version-level: earlier version locks",
+    "match": "lock",
+    "context": " **not** $\\sum_j \\alpha_j \\lvert j\\rangle$ — $\\alpha$ is the FVLT scale exponent (v3.1.20 lock). (The kernel's own $\\alpha_j(x)$ for coprime amplitudes in"
+   },
+   {
+    "line": 2498,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "locks",
+    "context": "Range $\\gamma \\in [0,1]$. High γ = data locks to a μ-class wall; low γ = data flows across center."
+   },
+   {
+    "line": 2504,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "locking",
+    "context": "Range $H_T \\in [0, \\log_2 3]$. $H_T = 0$ = perfect locking to one μ-class; $H_T = \\log_2 3$ = uniform across three cla"
+   },
+   {
+    "line": 2567,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "locked",
+    "context": "er_final.html` activates the gearbox-moving factorization-search mode that was previously locked into the small-wedge polygon-trace regime by the $[0, 10]$ "
+   },
+   {
+    "line": 2704,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "locked",
+    "context": "6.2). At the measurement-instrument level, each such pair is **modeled as seeding a phase-locked region**: the rational point $p/N \\in [0, 1]$ surrounded by"
+   },
+   {
+    "line": 2704,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "lock",
+    "context": "te width $1/\\sqrt{pq}$ (the geometric mean of channel widths), within which signal phases lock to the $(p, q)$ pair."
+   },
+   {
+    "line": 2706,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "locked",
+    "context": "ng** of the Goldbach atlas. In the dynamical systems literature, Arnold tongues are phase-locked regions in parameter space; here the parameter is rational "
+   },
+   {
+    "line": 2708,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "locked",
+    "context": "- A signal whose energy concentrates in one tongue is locked to a specific Goldbach pair."
+   },
+   {
+    "line": 2956,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "Locks",
+    "context": " *Genomic-like* signal (HLA): narrow and long — extreme winding within a confined region. Locks to a μ-class wall (here $c_{719}$ at $81.4\\%$), wanders den"
+   },
+   {
+    "line": 2957,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "locking",
+    "context": " and shorter — broad exploration with less winding within local channels. Escapes channel-locking, wanders sparsely across phase space."
+   },
+   {
+    "line": 3032,
+    "class": "role or procedure (no lock of text)",
+    "match": "lock",
+    "context": "**Source:** 2026-07-23 session. Robin — architect / lock authority. Sol (ChatGPT) —"
+   },
+   {
+    "line": 3134,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "is the geometric face of the locked reciprocal involution $=$ exponent negation"
+   },
+   {
+    "line": 3258,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "lock",
+    "context": "**At lock:** add II.23.9 rows (Def/Lemma/Rmk/Prop/Cor) to the VII.2a "
+   },
+   {
+    "line": 3446,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "locked",
+    "context": "In the measurement-instrument reading, each resonant pair is modeled as seeding a phase-locked region at $p/N$ of approximate width $1/\\sqrt{pq}$ (Part II"
+   },
+   {
+    "line": 4344,
+    "class": "outside the kernel: companion / external lock records",
+    "match": "locked",
+    "context": "utline toggle for basis/complement architecture (Part V / V.4); walker schema v0.2 (Chris-locked). Preset overlays include factorial shells, primorials, sup"
+   },
+   {
+    "line": 4478,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "Lock",
+    "context": "| Rmk 14.4c (Parity Lock Arithmetic Fact) | §14 | Part VII / VII.6 | active arithmet"
+   },
+   {
+    "line": 4543,
+    "class": "outside the kernel: companion / external lock records",
+    "match": "lock",
+    "context": "not extend the companion beyond its stated integer parameter restrictions. The 2026-08-05 lock seats that note at the instrument/bibliography tier, outsid"
+   },
+   {
+    "line": 4630,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "| Def II.23.9 | Part II / II.23, after II.23.8 | locked by Robin 2026-07-23; folded verbatim from the locked entry "
+   },
+   {
+    "line": 4630,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "9 | Part II / II.23, after II.23.8 | locked by Robin 2026-07-23; folded verbatim from the locked entry |"
+   },
+   {
+    "line": 4631,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "| Lemma II.23.9a | Part II / II.23, after Def II.23.9 | locked by Robin 2026-07-23; folded verbatim from the locked entry "
+   },
+   {
+    "line": 4631,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "Part II / II.23, after Def II.23.9 | locked by Robin 2026-07-23; folded verbatim from the locked entry |"
+   },
+   {
+    "line": 4632,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "| Rmk II.23.9b | Part II / II.23, after Lemma II.23.9a | locked by Robin 2026-07-23; folded verbatim from the locked entry "
+   },
+   {
+    "line": 4632,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "t II / II.23, after Lemma II.23.9a | locked by Robin 2026-07-23; folded verbatim from the locked entry |"
+   },
+   {
+    "line": 4633,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "| Prop II.23.9c | Part II / II.23, after Rmk II.23.9b | locked by Robin 2026-07-23; folded verbatim from the locked entry "
+   },
+   {
+    "line": 4633,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "art II / II.23, after Rmk II.23.9b | locked by Robin 2026-07-23; folded verbatim from the locked entry |"
+   },
+   {
+    "line": 4634,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "| Cor II.23.9d | Part II / II.23, after Prop II.23.9c | locked by Robin 2026-07-23; folded verbatim from the locked entry "
+   },
+   {
+    "line": 4634,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "rt II / II.23, after Prop II.23.9c | locked by Robin 2026-07-23; folded verbatim from the locked entry |"
+   },
+   {
+    "line": 4635,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "file Modes) | Part II / II.5, after Rmk II.5f | independently cold-passed; numbered; item-locked by Robin 2026-10-12 |"
+   },
+   {
+    "line": 4636,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "ct Graph) | Part II / II.5, after Lemma II.5g | independently cold-passed; numbered; item-locked by Robin 2026-10-12 |"
+   },
+   {
+    "line": 4637,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": " Criterion) | Part II / II.5, after Def II.5h | independently cold-passed; numbered; item-locked by Robin 2026-10-12 |"
+   },
+   {
+    "line": 4638,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "ominator) | Part II / II.5, after Lemma II.5i | independently cold-passed; numbered; item-locked by Robin 2026-10-12 |"
+   },
+   {
+    "line": 4639,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "riterion) | Part II / II.5, after Cor II.5i.1 | independently cold-passed; numbered; item-locked by Robin 2026-10-12 |"
+   },
+   {
+    "line": 4640,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "t Symmetry) | Part II / II.5, after Cor II.5j | independently cold-passed; numbered; item-locked by Robin 2026-10-12 |"
+   },
+   {
+    "line": 4641,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "y) | Part II / II.5, after the worked fixture | independently cold-passed; numbered; item-locked by Robin 2026-10-12 |"
+   },
+   {
+    "line": 4642,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "Corollary II.23.5c | Part II / II.23.5, after Rmk II.23.5b | ATTESTED; machine PASS; item-locked by Robin 2026-10-12; attestation seated: false |"
+   },
+   {
+    "line": 4643,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "oposition II.23.5d | Part II / II.23.5, after Cor II.23.5c | ATTESTED; machine PASS; item-locked by Robin 2026-10-12; attestation seated: false |"
+   },
+   {
+    "line": 4644,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "ne PASS; [GS20] present in the working bibliography (`kernel/next/bibliography.md`); item-locked by Robin 2026-10-12; attestation seated: false |"
+   },
+   {
+    "line": 4677,
+    "class": "(a) restatement of ITEMS.json locks (VII.2a rows / notes)",
+    "match": "locked",
+    "context": "nters only through the distinction from Def 9.7b and the scope deferral of Note 9.7n. The locked II.23.9 text is unchanged."
+   },
+   {
+    "line": 4751,
+    "class": "release/version-level: earlier version locks",
+    "match": "locked",
+    "context": " is *active research track, not kernel theorem*. §9.7 / v2.7.13 holds arithmetic geometry locked; this note marks the scope boundary. Smallest real L1c test"
+   },
+   {
+    "line": 4814,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "LOCK",
+    "context": "<!-- id: RMK-14.4c-PARITY-LOCK | register: arithmetic-fact | status: active-arithmetic-fac"
+   },
+   {
+    "line": 4815,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "Lock",
+    "context": "**Remark 14.4c (Parity Lock Arithmetic Fact, active).** For $k \\geq 2$, $k!$ is even, s"
+   },
+   {
+    "line": 4820,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "lock",
+    "context": "dues is even, hence not a unit modulo $k!$. This is the full active content of the parity-lock statement in v3.2.0."
+   },
+   {
+    "line": 4832,
+    "class": "(c) in-body item-lock record",
+    "match": "Locked",
+    "context": "**Note 14.5 — seat & status (v3.2.3 addendum candidate).** Locked 2026-07-01 (Fable cold-pass v2 PASS + two cosmetic flags → "
+   },
+   {
+    "line": 4832,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "Lock",
+    "context": " Part VII / VII.6 (the §14 fold, VII.2a concordance), immediately after Rmk 14.4c (Parity Lock) and before §14.2d (structural recognition). Status is mixe"
+   },
+   {
+    "line": 5159,
+    "class": "role or procedure (no lock of text)",
+    "match": "lock",
+    "context": "7. Confirm final seat and item number before lock."
+   },
+   {
+    "line": 5253,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "lock",
+    "context": ", can its origin within the tower be recovered from internal structure alone?* The parity lock (Rmk 14.4c) supplies an arithmetic constraint, not an algeb"
+   },
+   {
+    "line": 5264,
+    "class": "mathematical vocabulary (not a lock marker)",
+    "match": "lock",
+    "context": " the Riemann zeta function admits a natural factorial-tower formulation, given the parity-lock structure of Rmk 14.4c."
+   },
+   {
+    "line": 5408,
+    "class": "(d) version-history item-lock record",
+    "match": "LOCKED",
+    "context": "**v3.2.3 (Cor 14.5a addendum — Unit-Orbit Quotient — 2026-07-04):** **[LOCKED 2026-07-04 by Robin's word (\"word. go.\"): v3.2.3 additive a"
+   },
+   {
+    "line": 5408,
+    "class": "(d) version-history item-lock record",
+    "match": "locked",
+    "context": "Orbit-Quotient corollary (Fable-derived 2026-07-02, Chris-endorsed, previously staged-not-locked) seated additively into Part VII / VII.6 immediately after "
+   },
+   {
+    "line": 5408,
+    "class": "role or procedure (no lock of text)",
+    "match": "lock",
+    "context": "asserted — Note 14.5 §6/§7 firewall governs. Three-stack + Opus: **Robin** — seat/version/lock authority; **Chris/ChatGPT** — identification endorsement a"
+   },
+   {
+    "line": 5410,
+    "class": "(d) version-history item-lock record",
+    "match": "LOCKED",
+    "context": "**v3.2.3 (P-adic Completion Note addendum — Note 14.5 — 2026-07-04):** **[LOCKED 2026-07-04 by Robin's word (\"word. go.\"): v3.2.3 additive a"
+   },
+   {
+    "line": 5410,
+    "class": "(d) version-history item-lock record",
+    "match": "locked",
+    "context": "s word (\"word. go.\"): v3.2.3 additive addendum, no version bump — ALG-5 precedent.]** The locked P-adic Completion of the Atlas note (locked 2026-07-01) sea"
+   },
+   {
+    "line": 5410,
+    "class": "(d) version-history item-lock record",
+    "match": "locked",
+    "context": "um, no version bump — ALG-5 precedent.]** The locked P-adic Completion of the Atlas note (locked 2026-07-01) seated additively into Part VII / VII.6, immedi"
+   },
+   {
+    "line": 5410,
+    "class": "(d) version-history item-lock record",
+    "match": "lock",
+    "context": "(Unit-Orbit Quotient) is a separate item and is **not** included here — it awaits its own lock. Independent verification: `verify_haar_independent.py` rep"
+   },
+   {
+    "line": 5410,
+    "class": "role or procedure (no lock of text)",
+    "match": "lock",
+    "context": "tly (observed 2662, max dev 6014/3003, mean 10771/27720). Three-stack + Opus: **Robin** — lock (2026-07-01), directive to seat, seat/version authority; **"
+   },
+   {
+    "line": 5417,
+    "class": "role or procedure (no lock of text)",
+    "match": "lock",
+    "context": "e ruling, seat confirmation, ruling to commit within v3.2.3 (no version bump), commit and lock authority."
+   },
+   {
+    "line": 5458,
+    "class": "role or procedure (no lock of text)",
+    "match": "lock",
+    "context": "  naming; rejection authority on the reference patch; lock authority."
+   },
+   {
+    "line": 5474,
+    "class": "release/version-level: earlier version locks",
+    "match": "locked",
+    "context": "operational definition with all prediction lines passing. C1-P results (measurement v0.1, locked May 26, 2026): P0 census integrity PASS ($\\tau(720720) = 24"
+   },
+   {
+    "line": 5474,
+    "class": "role or procedure (no lock of text)",
+    "match": "lock",
+    "context": "ank posture observation. Three-stack: Robin (scope authority, prediction-line tightening, lock authority), Claude (experiment design, bar draft, audit), C"
+   },
+   {
+    "line": 5480,
+    "class": "release/version-level: earlier version locks",
+    "match": "lock",
+    "context": "ion, logged under the viewer's own versioning, not as a kernel companion artifact of this lock.) Three-stack: Robin (lock and placement decision — front-m"
+   },
+   {
+    "line": 5480,
+    "class": "release/version-level: earlier version locks",
+    "match": "lock",
+    "context": "r's own versioning, not as a kernel companion artifact of this lock.) Three-stack: Robin (lock and placement decision — front-matter near the annotation v"
+   },
+   {
+    "line": 5483,
+    "class": "role or procedure (no lock of text)",
+    "match": "lock",
+    "context": "tiation-new / primitive-thin; instruction to fix the kernel while keeping same numbering; lock authority), Chris/ChatGPT (candidate-remark draft and lock-"
+   },
+   {
+    "line": 5483,
+    "class": "role or procedure (no lock of text)",
+    "match": "lock",
+    "context": " while keeping same numbering; lock authority), Chris/ChatGPT (candidate-remark draft and lock-safe claim; independent byte-identical reproduction; kernel"
+   },
+   {
+    "line": 5487,
+    "class": "release/version-level: earlier version locks",
+    "match": "lock",
+    "context": "no existing body content changed. v3.1.20 stands unchanged as the notation-disambiguation lock (α/σ/γ). Three additive interpretive items:"
+   },
+   {
+    "line": 5489,
+    "class": "(e) bodies described as locked (no item-lock record)",
+    "match": "locked",
+    "context": " 9.3a.1), and the atom as their Minkowski sum (Rmk 9.7h). No new claim — pointer to three locked bodies. `depends` field of RMK-II.23.8 extended: `9.7a, 9.3"
+   },
+   {
+    "line": 5513,
+    "class": "(d) version-history item-lock record",
+    "match": "lock",
+    "context": "nged (Rmk II.5a intact). Three items from the 2026-06-07 rotation-family / Farey-neighbor lock:"
+   },
+   {
+    "line": 5521,
+    "class": "role or procedure (no lock of text)",
+    "match": "lock",
+    "context": "Three-stack: Robin — architect, scope, lock authority; Chris/ChatGPT — cold audit; Sonnet 4.6 — constru"
+   },
+   {
+    "line": 5525,
+    "class": "(c) in-body item-lock record",
+    "match": "Lock",
+    "context": "). Cross-witness (strained, κ-palindromic, coincidence holds): (2,1,0,2,0,1), δ_apex = 1. Lock: `lock_record_2026-06-09_chi-W-coincidence` (SHA 232be788…p"
+   },
+   {
+    "line": 5525,
+    "class": "(c) in-body item-lock record",
+    "match": "lock",
+    "context": "s-witness (strained, κ-palindromic, coincidence holds): (2,1,0,2,0,1), δ_apex = 1. Lock: `lock_record_2026-06-09_chi-W-coincidence` (SHA 232be788…proof, b"
+   },
+   {
+    "line": 5525,
+    "class": "(c) in-body item-lock record",
+    "match": "lock",
+    "context": "_apex = 1. Lock: `lock_record_2026-06-09_chi-W-coincidence` (SHA 232be788…proof, b534d27e…lock-record; two independent verification routes: Route A σ_κ bi"
+   },
+   {
+    "line": 5527,
+    "class": "role or procedure (no lock of text)",
+    "match": "lock",
+    "context": "Three-stack: Robin — observation + scope + lock authority; Claude — theorem (sufficiency) + item authorship"
+   }
+  ]
+ },
+ "spans": [
+  {
+   "name": "fold-Farey-II.5g-k",
+   "source": "(a) ITEMS.json",
+   "items": [
+    "Lemma II.5g",
+    "Definition II.5h",
+    "Lemma II.5i",
+    "Corollary II.5i.1",
+    "Corollary II.5j",
+    "Corollary II.5j.1",
+    "Proposition II.5k"
+   ],
+   "lock_evidence": [
+    "item_locked"
+   ],
+   "evidence_lines": [],
+   "v3_2_7_lines_strict": [
+    894,
+    1283
+   ],
+   "v3_2_7_lines_loose": [
+    894,
+    1283
+   ],
+   "hits": [
+    {
+     "replacement": "REPAIR14-A-11",
+     "v3_2_7_lines": [
+      1216,
+      1216
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-041",
+     "v3_2_7_lines": [
+      1228,
+      1228
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-042",
+     "v3_2_7_lines": [
+      1230,
+      1232
+     ]
+    }
+   ],
+   "boundary_sensitive_hits": []
+  },
+  {
+   "name": "fold-Goldbach-II.23.5c-e",
+   "source": "(a) ITEMS.json",
+   "items": [
+    "Corollary II.23.5c",
+    "Definition-Proposition II.23.5d",
+    "Definition II.23.5e"
+   ],
+   "lock_evidence": [
+    "item_locked_attested_seated_false"
+   ],
+   "evidence_lines": [],
+   "v3_2_7_lines_strict": [
+    2773,
+    2933
+   ],
+   "v3_2_7_lines_loose": [
+    2773,
+    2933
+   ],
+   "hits": [
+    {
+     "replacement": "REPAIR-HUNK-133",
+     "v3_2_7_lines": [
+      2882,
+      2882
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-134",
+     "v3_2_7_lines": [
+      2890,
+      2890
+     ]
+    },
+    {
+     "replacement": "REPAIR14-PR60-LAMBDAG",
+     "v3_2_7_lines": [
+      2892,
+      2902
+     ]
+    }
+   ],
+   "boundary_sensitive_hits": []
+  },
+  {
+   "name": "fold-II.23.9",
+   "source": "(a) ITEMS.json",
+   "items": [
+    "Def II.23.9",
+    "Lemma II.23.9a",
+    "Rmk II.23.9b",
+    "Prop II.23.9c",
+    "Cor II.23.9d"
+   ],
+   "lock_evidence": [
+    "item_locked"
+   ],
+   "evidence_lines": [],
+   "v3_2_7_lines_strict": [
+    3028,
+    3258
+   ],
+   "v3_2_7_lines_loose": [
+    3028,
+    3258
+   ],
+   "hits": [
+    {
+     "replacement": "REPAIR14-C-02-POINTER",
+     "v3_2_7_lines": [
+      3053,
+      3055
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-146",
+     "v3_2_7_lines": [
+      3133,
+      3133
+     ]
+    }
+   ],
+   "boundary_sensitive_hits": []
+  },
+  {
+   "name": "Thm II.3c",
+   "source": "(b) native tag",
+   "items": [
+    "Thm II.3c"
+   ],
+   "lock_evidence": [
+    "THM-II\\.3c-.*locked: Robin 2026-07-14 \\(item\\)"
+   ],
+   "evidence_lines": [
+    526
+   ],
+   "v3_2_7_lines_strict": [
+    526,
+    556
+   ],
+   "v3_2_7_lines_loose": [
+    526,
+    564
+   ],
+   "hits": [
+    {
+     "replacement": "REPAIR-HUNK-024",
+     "v3_2_7_lines": [
+      543,
+      543
+     ]
+    }
+   ],
+   "boundary_sensitive_hits": []
+  },
+  {
+   "name": "Rmk II.5f",
+   "source": "(b) native tag",
+   "items": [
+    "Rmk II.5f"
+   ],
+   "lock_evidence": [
+    "RMK-II\\.5f-.*locked: Robin 2026-07-14 v1\\.0 \\(item\\)"
+   ],
+   "evidence_lines": [
+    878
+   ],
+   "v3_2_7_lines_strict": [
+    878,
+    931
+   ],
+   "v3_2_7_lines_loose": [
+    878,
+    931
+   ],
+   "hits": [
+    {
+     "replacement": "REPAIR-HUNK-040",
+     "v3_2_7_lines": [
+      883,
+      883
+     ]
+    }
+   ],
+   "boundary_sensitive_hits": []
+  },
+  {
+   "name": "Lemma 9.2a",
+   "source": "(b) native tag",
+   "items": [
+    "Lemma 9.2a"
+   ],
+   "lock_evidence": [
+    "LEM-9\\.2a-.*LEMMA LOCKED by Robin 2026-07-14"
+   ],
+   "evidence_lines": [
+    1540
+   ],
+   "v3_2_7_lines_strict": [
+    1540,
+    1558
+   ],
+   "v3_2_7_lines_loose": [
+    1540,
+    1558
+   ],
+   "hits": [],
+   "boundary_sensitive_hits": []
+  },
+  {
+   "name": "Rmk 9.3j",
+   "source": "(b) native tag",
+   "items": [
+    "Rmk 9.3j"
+   ],
+   "lock_evidence": [
+    "RMK-9\\.3j-.*locked: Robin 2026-07-06 \\(item\\)"
+   ],
+   "evidence_lines": [
+    1665
+   ],
+   "v3_2_7_lines_strict": [
+    1665,
+    1688
+   ],
+   "v3_2_7_lines_loose": [
+    1665,
+    1688
+   ],
+   "hits": [],
+   "boundary_sensitive_hits": []
+  },
+  {
+   "name": "Rmk 9.7z",
+   "source": "(c) in-body lock record",
+   "items": [
+    "Rmk 9.7z"
+   ],
+   "lock_evidence": [
+    "^Lock: `lock_record_2026-06-09_chi-W-coincidence`"
+   ],
+   "evidence_lines": [
+    2003
+   ],
+   "v3_2_7_lines_strict": [
+    1955,
+    2008
+   ],
+   "v3_2_7_lines_loose": [
+    1955,
+    2008
+   ],
+   "hits": [
+    {
+     "replacement": "REPAIR-HUNK-101",
+     "v3_2_7_lines": [
+      1955,
+      1956
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-102",
+     "v3_2_7_lines": [
+      1959,
+      1960
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-103",
+     "v3_2_7_lines": [
+      1967,
+      1967
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-104",
+     "v3_2_7_lines": [
+      1969,
+      1972
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-105",
+     "v3_2_7_lines": [
+      1977,
+      1978
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-106",
+     "v3_2_7_lines": [
+      1982,
+      1982
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-107",
+     "v3_2_7_lines": [
+      1998,
+      1999
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-108",
+     "v3_2_7_lines": [
+      2001,
+      2003
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-109",
+     "v3_2_7_lines": [
+      2005,
+      2006
+     ]
+    }
+   ],
+   "boundary_sensitive_hits": []
+  },
+  {
+   "name": "Note 14.5",
+   "source": "(c) in-body lock record + (d) version history",
+   "items": [
+    "Note 14.5"
+   ],
+   "lock_evidence": [
+    "Locked 2026-07-01 \\(Fable"
+   ],
+   "evidence_lines": [
+    4832
+   ],
+   "v3_2_7_lines_strict": [
+    4831,
+    5166
+   ],
+   "v3_2_7_lines_loose": [
+    4831,
+    5166
+   ],
+   "hits": [
+    {
+     "replacement": "REPAIR-HUNK-230",
+     "v3_2_7_lines": [
+      4933,
+      4933
+     ]
+    }
+   ],
+   "boundary_sensitive_hits": []
+  },
+  {
+   "name": "Cor 14.5a",
+   "source": "(d) version history",
+   "items": [
+    "Cor 14.5a"
+   ],
+   "lock_evidence": [
+    "Cor 14\\.5a addendum .*\\[LOCKED 2026-07-04"
+   ],
+   "evidence_lines": [
+    5408
+   ],
+   "v3_2_7_lines_strict": [
+    5167,
+    5250
+   ],
+   "v3_2_7_lines_loose": [
+    5167,
+    5552
+   ],
+   "hits": [
+    {
+     "replacement": "REPAIR-HUNK-231",
+     "v3_2_7_lines": [
+      5204,
+      5204
+     ]
+    },
+    {
+     "replacement": "REPAIR14-D-09",
+     "v3_2_7_lines": [
+      5216,
+      5216
+     ]
+    }
+   ],
+   "boundary_sensitive_hits": [
+    {
+     "replacement": "REPAIR-HUNK-232",
+     "v3_2_7_lines": [
+      5261,
+      5261
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-233",
+     "v3_2_7_lines": [
+      5263,
+      5263
+     ]
+    },
+    {
+     "replacement": "REPAIR14-D-04",
+     "v3_2_7_lines": [
+      5269,
+      5269
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-234",
+     "v3_2_7_lines": [
+      5270,
+      5270
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-235",
+     "v3_2_7_lines": [
+      5280,
+      5280
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-236",
+     "v3_2_7_lines": [
+      5284,
+      5284
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-237",
+     "v3_2_7_lines": [
+      5286,
+      5286
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-238",
+     "v3_2_7_lines": [
+      5294,
+      5294
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-239",
+     "v3_2_7_lines": [
+      5299,
+      5306
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-240",
+     "v3_2_7_lines": [
+      5313,
+      5315
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-241",
+     "v3_2_7_lines": [
+      5321,
+      5321
+     ]
+    },
+    {
+     "replacement": "REPAIR14-D-06",
+     "v3_2_7_lines": [
+      5350,
+      5350
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-242",
+     "v3_2_7_lines": [
+      5351,
+      5352
+     ]
+    },
+    {
+     "replacement": "REPAIR14-Y-NOTATION",
+     "v3_2_7_lines": [
+      5374,
+      5374
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-243",
+     "v3_2_7_lines": [
+      5378,
+      5378
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-244",
+     "v3_2_7_lines": [
+      5382,
+      5382
+     ]
+    },
+    {
+     "replacement": "REPAIR14-D-19",
+     "v3_2_7_lines": [
+      5386,
+      5386
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-245",
+     "v3_2_7_lines": [
+      5399,
+      5399
+     ]
+    },
+    {
+     "replacement": "REPAIR14-D-20",
+     "v3_2_7_lines": [
+      5552,
+      5552
+     ]
+    }
+   ]
+  },
+  {
+   "name": "Cor 9.7c.1",
+   "source": "(d) version history (2026-06-07 lock)",
+   "items": [
+    "Cor 9.7c.1"
+   ],
+   "lock_evidence": [
+    "2026-06-07 rotation-family / Farey-neighbor lock"
+   ],
+   "evidence_lines": [
+    5513
+   ],
+   "v3_2_7_lines_strict": [
+    1897,
+    1931
+   ],
+   "v3_2_7_lines_loose": [
+    1897,
+    1931
+   ],
+   "hits": [],
+   "boundary_sensitive_hits": []
+  },
+  {
+   "name": "Rmk 9.7y",
+   "source": "(d) version history (2026-06-07 lock)",
+   "items": [
+    "Rmk 9.7y"
+   ],
+   "lock_evidence": [
+    "2026-06-07 rotation-family / Farey-neighbor lock"
+   ],
+   "evidence_lines": [
+    5513
+   ],
+   "v3_2_7_lines_strict": [
+    1764,
+    1802
+   ],
+   "v3_2_7_lines_loose": [
+    1764,
+    1802
+   ],
+   "hits": [],
+   "boundary_sensitive_hits": []
+  },
+  {
+   "name": "Rmk II.5b",
+   "source": "(d) version history (2026-06-07 lock)",
+   "items": [
+    "Rmk II.5b"
+   ],
+   "lock_evidence": [
+    "2026-06-07 rotation-family / Farey-neighbor lock"
+   ],
+   "evidence_lines": [
+    5513
+   ],
+   "v3_2_7_lines_strict": [
+    701,
+    740
+   ],
+   "v3_2_7_lines_loose": [
+    701,
+    740
+   ],
+   "hits": [],
+   "boundary_sensitive_hits": []
+  },
+  {
+   "name": "Lemma 9.7a",
+   "source": "(e) described as locked",
+   "items": [
+    "Lemma 9.7a"
+   ],
+   "lock_evidence": [
+    "three locked bodies"
+   ],
+   "evidence_lines": [
+    5489
+   ],
+   "v3_2_7_lines_strict": [
+    1739,
+    1749
+   ],
+   "v3_2_7_lines_loose": [
+    1739,
+    1749
+   ],
+   "hits": [
+    {
+     "replacement": "REPAIR-HUNK-087",
+     "v3_2_7_lines": [
+      1740,
+      1740
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-088",
+     "v3_2_7_lines": [
+      1742,
+      1742
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-089",
+     "v3_2_7_lines": [
+      1746,
+      1746
+     ]
+    }
+   ],
+   "boundary_sensitive_hits": []
+  },
+  {
+   "name": "Note 9.3a.1",
+   "source": "(e) described as locked",
+   "items": [
+    "Note 9.3a.1"
+   ],
+   "lock_evidence": [
+    "three locked bodies"
+   ],
+   "evidence_lines": [
+    5489
+   ],
+   "v3_2_7_lines_strict": [
+    1689,
+    1693
+   ],
+   "v3_2_7_lines_loose": [
+    1689,
+    1693
+   ],
+   "hits": [],
+   "boundary_sensitive_hits": []
+  },
+  {
+   "name": "Rmk 9.7h",
+   "source": "(e) described as locked",
+   "items": [
+    "Rmk 9.7h"
+   ],
+   "lock_evidence": [
+    "three locked bodies"
+   ],
+   "evidence_lines": [
+    5489
+   ],
+   "v3_2_7_lines_strict": [
+    2075,
+    2087
+   ],
+   "v3_2_7_lines_loose": [
+    2075,
+    2087
+   ],
+   "hits": [
+    {
+     "replacement": "REPAIR-HUNK-112",
+     "v3_2_7_lines": [
+      2076,
+      2076
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-113",
+     "v3_2_7_lines": [
+      2082,
+      2082
+     ]
+    },
+    {
+     "replacement": "REPAIR-HUNK-114",
+     "v3_2_7_lines": [
+      2084,
+      2084
+     ]
+    }
+   ],
+   "boundary_sensitive_hits": []
+  },
+  {
+   "name": "S2 efficiency closure record (in Rmk II.5a Scope)",
+   "source": "(c) in-body lock record",
+   "items": [
+    "S2 closure paragraph"
+   ],
+   "lock_evidence": [
+    "LOCKED by Robin 2026-08-19"
+   ],
+   "evidence_lines": [
+    697
+   ],
+   "v3_2_7_lines_strict": [
+    697,
+    697
+   ],
+   "v3_2_7_lines_loose": [
+    697,
+    697
+   ],
+   "hits": [],
+   "boundary_sensitive_hits": []
+  }
+ ],
+ "replacements_in_locked_spans": [
+  {
+   "span": "fold-Farey-II.5g-k",
+   "source": "(a) ITEMS.json",
+   "replacement": "REPAIR14-A-11",
+   "v3_2_7_lines": [
+    1216,
+    1216
+   ],
+   "old_head": "the strict-refinement witness in §7 is reproduced.",
+   "new_head": "the strict-refinement witness of Prop II.5k is reproduced.\n\n*Edit record (successor draft; REPAIR14-A-11, accepted 2026-10-28).* In the last census line, the source-document reference \"in §7\" was repl"
+  },
+  {
+   "span": "fold-Farey-II.5g-k",
+   "source": "(a) ITEMS.json",
+   "replacement": "REPAIR-HUNK-041",
+   "v3_2_7_lines": [
+    1228,
+    1228
+   ],
+   "old_head": "> `1/n` is isolated if and only if order `n-1` is absent.\n",
+   "new_head": "> `1/n` is isolated if and only if admissible denominator `n-1` is absent.\n"
+  },
+  {
+   "span": "fold-Farey-II.5g-k",
+   "source": "(a) ITEMS.json",
+   "replacement": "REPAIR-HUNK-042",
+   "v3_2_7_lines": [
+    1230,
+    1232
+   ],
+   "old_head": "It is false. The bounded sweep produces 524 mismatches among 1,980 endpoint occurrences.\nFor example, missing the immediately adjacent order does not preclude a more distant\nadmissible denominator fro",
+   "new_head": "It is false. The bounded sweep produces 524 mismatches among 1,980 endpoint occurrences for this denominator-based guess. For example, missing the immediately adjacent denominator does not preclude a "
+  },
+  {
+   "span": "fold-Goldbach-II.23.5c-e",
+   "source": "(a) ITEMS.json",
+   "replacement": "REPAIR-HUNK-133",
+   "v3_2_7_lines": [
+    2882,
+    2882
+   ],
+   "old_head": "**Status.** Continuous interpolation: **definitional**. Pair factorization and integer reduction: **unconditional**. Rmk 5.7a remains the resident known-spectrum calibration statement; this item adds ",
+   "new_head": "**Status.** Continuous interpolation: **definitional**. Pair factorization and integer reduction: **unconditional**. Rmk 5.7a supplies a separate known-spectrum calibration for the coprime indicator, "
+  },
+  {
+   "span": "fold-Goldbach-II.23.5c-e",
+   "source": "(a) ITEMS.json",
+   "replacement": "REPAIR-HUNK-134",
+   "v3_2_7_lines": [
+    2890,
+    2890
+   ],
+   "old_head": "For even `N≥4`, define\n",
+   "new_head": "For any positive integer `r`, define the finite local-factor function `Lambda_G(r)` by the following product. Its Goldbach-comparator use below is restricted to even `N≥4`; the extension to odd `r` is"
+  },
+  {
+   "span": "fold-Goldbach-II.23.5c-e",
+   "source": "(a) ITEMS.json",
+   "replacement": "REPAIR14-PR60-LAMBDAG",
+   "v3_2_7_lines": [
+    2892,
+    2902
+   ],
+   "old_head": "\\[\n\\Lambda_G(N)\n=\\prod_{\\substack{p\\mid N\\\\p>2}}\n\\frac{p-1}{p-2},\n\\]\n\nwith the empty product equal to `1`. This is a positive rational depending only on the odd squarefree radical of `N`:\n\n\\[\n\\Lambda_",
+   "new_head": "\\[\n\\Lambda_G(r)\n=\\prod_{\\substack{p\\mid r\\\\p>2}}\n\\frac{p-1}{p-2},\n\\]\n\nwith the empty product equal to `1`. This is a positive rational depending only on the odd squarefree radical of `r`:\n\n\\[\n\\Lambda_"
+  },
+  {
+   "span": "fold-II.23.9",
+   "source": "(a) ITEMS.json",
+   "replacement": "REPAIR14-C-02-POINTER",
+   "v3_2_7_lines": [
+    3053,
+    3055
+   ],
+   "old_head": "**Status: definitional.**\n\nFor the centered m-comb instrument (ALG-5)",
+   "new_head": "**Status: definitional.** Integrality conditions for the degree, closure and gcd-reduction statements of II.23.9 are recorded in the Part VII / VII.2a parameter note (II.23.9).\n\nFor the centered m-com"
+  },
+  {
+   "span": "fold-II.23.9",
+   "source": "(a) ITEMS.json",
+   "replacement": "REPAIR-HUNK-146",
+   "v3_2_7_lines": [
+    3133,
+    3133
+   ],
+   "old_head": "($\\alpha\\mapsto-\\alpha$, $\\rho\\mapsto1/\\rho$, zero-side $\\leftrightarrow$ infinity-side)\n",
+   "new_head": "($\\rho\\mapsto1/\\rho$ as an independent reciprocal radius map; if $\\rho=|n_6|N^\\alpha$, implementing this by parameters sends $(\\alpha,|n_6|)\\mapsto(-\\alpha,1/|n_6|)$; fixed-amplitude $\\alpha\\mapsto-\\a"
+  },
+  {
+   "span": "Thm II.3c",
+   "source": "(b) native tag",
+   "replacement": "REPAIR-HUNK-024",
+   "v3_2_7_lines": [
+    543,
+    543
+   ],
+   "old_head": "phase dimensions — the exact statement of what the gcd-invariant Hasse shadow cannot see.\n",
+   "new_head": "complex dimensions discarded by superclass projection — the exact statement of what the gcd-invariant Hasse shadow cannot see.\n"
+  },
+  {
+   "span": "Rmk II.5f",
+   "source": "(b) native tag",
+   "replacement": "REPAIR-HUNK-040",
+   "v3_2_7_lines": [
+    883,
+    883
+   ],
+   "old_head": "**(i) [unconditional] Chain criterion.** The tangency graph of $\\{F(1/a) : a \\in V\\}$ is the path graph on $V$ in value order, with an edge exactly between consecutive integers both present in $V$. Th",
+   "new_head": "**(i) [unconditional] Chain criterion.** The tangency graph of $\\{F(1/a) : a \\in V\\}$ is the induced subgraph on $V$ of the integer path (generally a union of paths), with an edge exactly between cons"
+  },
+  {
+   "span": "Rmk 9.7z",
+   "source": "(c) in-body lock record",
+   "replacement": "REPAIR-HUNK-101",
+   "v3_2_7_lines": [
+    1955,
+    1956
+   ],
+   "old_head": "<!-- id: RMK-9.7z-CHI-W-COINCIDENCE | register: remark | status: unconditional (iff; four-state collapse) + interpretive (coupling / closure-crosscut framing) | provenance: original | depends: 9.7, DE",
+   "new_head": "<!-- id: RMK-9.7z-CHI-W-COINCIDENCE | register: remark | status: unconditional (κ-palindromic sufficiency; at-most-two states) + open (weighted-height multiset necessity) + interpretive (coupling / cl"
+  },
+  {
+   "span": "Rmk 9.7z",
+   "source": "(c) in-body lock record",
+   "replacement": "REPAIR-HUNK-102",
+   "v3_2_7_lines": [
+    1959,
+    1960
+   ],
+   "old_head": "(Part I / I.3, (x,y,z) ↦ (x,−y,z)) induce the **same unlabeled enantiomorph — equivalently, the\nfour orientation states (W,χ) ∈ {±1}² collapse to two embedded point-multisets — if and only if\n",
+   "new_head": "(Part I / I.3, (x,y,z) ↦ (x,−y,z)) induce the **same unlabeled point-multiset, and the\nfour orientation states (W,χ) ∈ {±1}² yield at most two embedded point-multisets (possibly one), when\n"
+  },
+  {
+   "span": "Rmk 9.7z",
+   "source": "(c) in-body lock record",
+   "replacement": "REPAIR-HUNK-103",
+   "v3_2_7_lines": [
+    1967,
+    1967
+   ],
+   "old_head": "satisfies Z(σ_κ e; W=−1) = conj Z(e; W=+1) and preserves Ω, so the W-image equals the χ-image;\n",
+   "new_head": "satisfies Z(σ_κ e; W=−1) = conj Z(e; W=+1) and preserves both Ω and the printed weighted height $h=\\sum_i e_i/n_i$ because $n_{\\kappa(i)}=n_i$, so the W-image equals the χ-image;\n"
+  },
+  {
+   "span": "Rmk 9.7z",
+   "source": "(c) in-body lock record",
+   "replacement": "REPAIR-HUNK-104",
+   "v3_2_7_lines": [
+    1969,
+    1972
+   ],
+   "old_head": "kernel ⟨Wχ⟩ (crystal ↔ enantiomorph). Necessity: restrict to the Ω=1 shell, where per-seat beads\nhave magnitude ρ(n) = 2 sin(π/n)/n = (2/π) g(π/n) with g(x) = x sin x, g′ > 0 on (0,π/2], so ρ is\nstric",
+   "new_head": "kernel containing ⟨Wχ⟩; it can be all of V₄ in an achiral one-state case. The former Ω=1 necessity argument does not apply to the literal spatial point-multiset because its printed height is weighted "
+  },
+  {
+   "span": "Rmk 9.7z",
+   "source": "(c) in-body lock record",
+   "replacement": "REPAIR-HUNK-105",
+   "v3_2_7_lines": [
+    1977,
+    1978
+   ],
+   "old_head": "Cor 9.7c.1) is the κ-palindromic ∩ closed slice: there the body retains chirality even though\nδ_apex = 0 — **apex closure does not imply achirality**. This sharpens Rmk 9.7p: δ_apex = |Â(−1)|²,\n",
+   "new_head": "Cor 9.7c.1) is the κ-palindromic ∩ closed slice: there the body may retain a distinguishable handed partner, subject to its actual stabilizer, even though\nδ_apex = 0 — **apex closure does not imply ac"
+  },
+  {
+   "span": "Rmk 9.7z",
+   "source": "(c) in-body lock record",
+   "replacement": "REPAIR-HUNK-106",
+   "v3_2_7_lines": [
+    1982,
+    1982
+   ],
+   "old_head": "retains the handedness; W and χ toggle it.\n",
+   "new_head": "may retain handedness; W and χ act on it according to the profile stabilizer.\n"
+  },
+  {
+   "span": "Rmk 9.7z",
+   "source": "(c) in-body lock record",
+   "replacement": "REPAIR-HUNK-107",
+   "v3_2_7_lines": [
+    1998,
+    1999
+   ],
+   "old_head": "doubled atom], (3,1,2,3,1,2). Cross-witness (strained, κ-palindromic, coincidence holds):\n(2,1,0,2,0,1), δ_apex = 1.\n",
+   "new_head": "doubled atom], (3,1,2,3,1,2). Padded ambient-seat example (strained, κ-palindromic under the six-seat convention):\n(2,1,0,2,0,1), δ_apex = 1. This vector has zero-exponent seats and is not a canonical"
+  },
+  {
+   "span": "Rmk 9.7z",
+   "source": "(c) in-body lock record",
+   "replacement": "REPAIR-HUNK-108",
+   "v3_2_7_lines": [
+    2001,
+    2003
+   ],
+   "old_head": "**Status.** iff and four→two collapse: unconditional (sufficiency by σ_κ; necessity by the Ω=1\nshell, two independent verification routes). Coupling / closure-crosscut framing: interpretive.\nLock: `lo",
+   "new_head": "**Status.** κ-palindromic sufficiency: unconditional by σ_κ with matching polygon orders and weighted heights. Necessity for the literal weighted-height unlabeled point-multiset is open. The four stat"
+  },
+  {
+   "span": "Rmk 9.7z",
+   "source": "(c) in-body lock record",
+   "replacement": "REPAIR-HUNK-109",
+   "v3_2_7_lines": [
+    2005,
+    2006
+   ],
+   "old_head": "**Kill condition.** A κ-palindromic profile with W-image ≠ χ-image; a non-κ-palindromic profile\nwith equality; or a flaw in the σ_κ bijection / Ω=1 injectivity step.\n",
+   "new_head": "**Test boundary.** A κ-palindromic profile with W-image ≠ χ-image would refute the stated sufficient condition. A non-κ-palindromic profile with equality would refute the stronger historical iff, now "
+  },
+  {
+   "span": "Note 14.5",
+   "source": "(c) in-body lock record + (d) version history",
+   "replacement": "REPAIR-HUNK-230",
+   "v3_2_7_lines": [
+    4933,
+    4933
+   ],
+   "old_head": "The finite atoms \\(\\mathrm{Div}(M)\\hookrightarrow \\mathrm{Div}(N)\\) for \\(M\\mid N\\) form a directed atlas. The natural completion by allowing infinite prime exponents is the supernatural / Steinitz-nu",
+   "new_head": "The finite divisor atoms under $M\\mid N$ form a directed divisibility atlas. Its order or ideal completion by allowing unbounded prime valuations is the supernatural/Steinitz-number lattice; this is a"
+  },
+  {
+   "span": "Cor 14.5a",
+   "source": "(d) version history",
+   "replacement": "REPAIR-HUNK-231",
+   "v3_2_7_lines": [
+    5204,
+    5204
+   ],
+   "old_head": "**Relation to the p-adic tree (resolves the tree/lattice question exactly).** The p-adic residue tower \\(\\mathbb Z/p^n\\) branches with factor \\(p\\) (digit choices); the divisor chain is that tower wit",
+   "new_head": "**Relation to the $p$-adic residue tower (fixed-level statement).** At each specified level $n$, the unit action on $\\mathbb Z/p^n$ has capped-valuation orbits indexed by $0,\\ldots,n$; its quotient is"
+  },
+  {
+   "span": "Cor 14.5a",
+   "source": "(d) version history",
+   "replacement": "REPAIR14-D-09",
+   "v3_2_7_lines": [
+    5216,
+    5216
+   ],
+   "old_head": "for all \\(N \\le 120\\) and \\(N=360\\) (120 cases)",
+   "new_head": "for all \\(N \\le 120\\) and \\(N=360\\) (121 cases)"
+  },
+  {
+   "span": "Lemma 9.7a",
+   "source": "(e) described as locked",
+   "replacement": "REPAIR-HUNK-087",
+   "v3_2_7_lines": [
+    1740,
+    1740
+   ],
+   "old_head": "**Lemma 9.7a (Hasse–Helix Correspondence, v2.7.13, preserved, unconditional).** Under the embedding of Definition 9.7, each Hasse cover edge $d \\to d \\cdot p_i$ in $\\mathrm{Div}(N)$ is realized geomet",
+   "new_head": "**Lemma 9.7a (Hasse–Helix Correspondence, v2.7.13, corrected scope).** Under the labeled realization of Definition 9.7, a Hasse cover $d\\to dp_i$ has the one-step displacement of prime $i$'s shifted h"
+  },
+  {
+   "span": "Lemma 9.7a",
+   "source": "(e) described as locked",
+   "replacement": "REPAIR-HUNK-088",
+   "v3_2_7_lines": [
+    1742,
+    1742
+   ],
+   "old_head": "*Proof.* Fix $d = \\prod_j p_j^{e_j}$ and consider the cover $d \\to d \\cdot p_i$. The exponent vector advances $e_i \\to e_i + 1$ with all other $e_j$ unchanged. By Definition 9.7, $\\mathbf{P}(d \\cdot p",
+   "new_head": "*Proof.* Only $e_i$ changes under the cover. Subtracting the two Definition 9.7 sums gives a rotated prime-$i$ chord with vertical component $r_i=1/n_i$; all other summands cancel. Independently, $\\Om"
+  },
+  {
+   "span": "Lemma 9.7a",
+   "source": "(e) described as locked",
+   "replacement": "REPAIR-HUNK-089",
+   "v3_2_7_lines": [
+    1746,
+    1746
+   ],
+   "old_head": "The multi-prime embedding provides $\\mathrm{Div}(N)$ as a geometric object; the cyclotomic-order stratification of the single phasor at integer spin $s$ provides a *spectral-side* readout of the same ",
+   "new_head": "The multi-prime embedding provides $\\mathrm{Div}(N)$ as a geometric object; the cyclotomic-order stratification of the single phasor at positive integer spin $s$ provides a *spectral-side* readout of "
+  },
+  {
+   "span": "Rmk 9.7h",
+   "source": "(e) described as locked",
+   "replacement": "REPAIR-HUNK-112",
+   "v3_2_7_lines": [
+    2076,
+    2076
+   ],
+   "old_head": "**Remark 9.7h (CRT Fibered Presentation of the Multi-Prime Embedding, v2.7.14, preserved).** Under the §9.7 embedding, $\\mathrm{Div}(N)$ is rendered as a Minkowski sum of prime-power fibers. For $N = ",
+   "new_head": "**Remark 9.7h (CRT Fibered Presentation of the Multi-Prime Embedding, v2.7.14, preserved).** Under the §9.7 embedding, $\\mathrm{Div}(N)$ is rendered as a Minkowski sum of prime-power fibers. For $N = "
+  },
+  {
+   "span": "Rmk 9.7h",
+   "source": "(e) described as locked",
+   "replacement": "REPAIR-HUNK-113",
+   "v3_2_7_lines": [
+    2082,
+    2082
+   ],
+   "old_head": "For $N = 720 = 2^4 \\cdot 3^2 \\cdot 5$, the prime-$2$ fiber is a pentagon (the regular $5$-gon traced by $e_2 \\in \\{0, 1, 2, 3, 4\\}$ on cylinder radius $r_2 = 1/5$), translated over the $3 \\times 2$ ba",
+   "new_head": "For $N = 720 = 2^4 \\cdot 3^2 \\cdot 5$, the prime-$2$ fiber projects to a pentagon (the regular $5$-gon traced by $e_2 \\in \\{0, 1, 2, 3, 4\\}$ on cylinder radius $r_2 = 1/5$), translated over the $3 \\ti"
+  },
+  {
+   "span": "Rmk 9.7h",
+   "source": "(e) described as locked",
+   "replacement": "REPAIR-HUNK-114",
+   "v3_2_7_lines": [
+    2084,
+    2084
+   ],
+   "old_head": "> *The §9.7 embedding makes the divisor product structure geometrically explicit: each prime-power factor appears as a translated regular polygon, and the divisor lattice is the Minkowski sum of these",
+   "new_head": "> *The §9.7 embedding makes the divisor product structure geometrically explicit: each prime-power factor appears as a lifted chain whose planar projection is a translated regular polygon, and the div"
+  }
+ ],
+ "native_tag_changes": [
+  {
+   "id": "RMK-1.2-DIVISOR-LATTICE-AS-MEASUREMENT-BASIS",
+   "changed_fields": [
+    "status"
+   ],
+   "diff": {
+    "status": {
+     "v3.2.7": "unconditional",
+     "v3.3.0": "interpretive (apparatus reading) + unconditional (divisor-label facts)"
+    }
+   }
+  },
+  {
+   "id": "RMK-3.6-GEOMETRIC-CONTENT",
+   "changed_fields": [
+    "status"
+   ],
+   "diff": {
+    "status": {
+     "v3.2.7": "unconditional",
+     "v3.3.0": "unconditional (algebraic identities) + interpretive (metric reading)"
+    }
+   }
+  },
+  {
+   "id": "DEF-5.1-AMPLITUDE-EXPONENT",
+   "changed_fields": [
+    "depends"
+   ],
+   "diff": {
+    "depends": {
+     "v3.2.7": "1.2, 5.2",
+     "v3.3.0": "1.2"
+    }
+   }
+  },
+  {
+   "id": "DEF-5.2-WEIGHTED-RAMANUJAN-SUMS",
+   "changed_fields": [
+    "depends"
+   ],
+   "diff": {
+    "depends": {
+     "v3.2.7": "5.1",
+     "v3.3.0": "none"
+    }
+   }
+  },
+  {
+   "id": "RMK-9.4a-WALK-REGIME-TAXONOMY",
+   "changed_fields": [
+    "depends"
+   ],
+   "diff": {
+    "depends": {
+     "v3.2.7": "5.1b, 9.4",
+     "v3.3.0": "9.4"
+    }
+   }
+  },
+  {
+   "id": "NOTE-9.4b-FAREY-BOUNDARY",
+   "changed_fields": [
+    "depends"
+   ],
+   "diff": {
+    "depends": {
+     "v3.2.7": "5.1b, 5.4b, 9.4, 9.4a",
+     "v3.3.0": "9.4, 9.4a"
+    }
+   }
+  },
+  {
+   "id": "RMK-9.7z-CHI-W-COINCIDENCE",
+   "changed_fields": [
+    "status"
+   ],
+   "diff": {
+    "status": {
+     "v3.2.7": "unconditional (iff; four-state collapse) + interpretive (coupling / closure-crosscut framing)",
+     "v3.3.0": "unconditional (κ-palindromic sufficiency; at-most-two states) + open (weighted-height multiset necessity) + interpretive (coupling / closure-crosscut framing)"
+    }
+   }
+  },
+  {
+   "id": "THM-6.2-RESONANCE-PURITY",
+   "changed_fields": [
+    "register",
+    "status"
+   ],
+   "diff": {
+    "register": {
+     "v3.2.7": "proved",
+     "v3.3.0": "conditional"
+    },
+    "status": {
+     "v3.2.7": "unconditional",
+     "v3.3.0": "open"
+    }
+   }
+  },
+  {
+   "id": "THM-8.20h.3-SELECTION-OF-N0",
+   "changed_fields": [
+    "register",
+    "status"
+   ],
+   "diff": {
+    "register": {
+     "v3.2.7": "proved",
+     "v3.3.0": "conditional"
+    },
+    "status": {
+     "v3.2.7": "unconditional",
+     "v3.3.0": "open"
+    }
+   }
+  },
+  {
+   "id": "THM-8.14a-CLOSURE-EXHAUSTION",
+   "changed_fields": [
+    "register",
+    "status"
+   ],
+   "diff": {
+    "register": {
+     "v3.2.7": "proved",
+     "v3.3.0": "conditional"
+    },
+    "status": {
+     "v3.2.7": "unconditional",
+     "v3.3.0": "open"
+    }
+   }
+  },
+  {
+   "id": "RMK-8.20h.4-S6-MAXIMALITY",
+   "changed_fields": [
+    "status"
+   ],
+   "diff": {
+    "status": {
+     "v3.2.7": "unconditional",
+     "v3.3.0": "open"
+    }
+   }
+  }
+ ]
+}

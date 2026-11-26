@@ -1,0 +1,317 @@
+{
+ "base_sha256": "b8266896dad305356faa76c7248338d3aed37115f8c434f7727475f28ad42a81",
+ "assembly_draft_sha256": "8d436beb67ed5499f7d9cb1a1b79b6997db52e5da056018169a95699713ecc23",
+ "item_locked_items": [
+  "Def II.23.9",
+  "Lemma II.23.9a",
+  "Rmk II.23.9b",
+  "Prop II.23.9c",
+  "Cor II.23.9d",
+  "Lemma II.5g",
+  "Definition II.5h",
+  "Lemma II.5i",
+  "Corollary II.5i.1",
+  "Corollary II.5j",
+  "Corollary II.5j.1",
+  "Proposition II.5k",
+  "Corollary II.23.5c",
+  "Definition-Proposition II.23.5d",
+  "Definition II.23.5e"
+ ],
+ "item_locked_spans": [
+  {
+   "segment": "fold-Farey-II.5g-k",
+   "items": [
+    "Lemma II.5g",
+    "Definition II.5h",
+    "Lemma II.5i",
+    "Corollary II.5i.1",
+    "Corollary II.5j",
+    "Corollary II.5j.1",
+    "Proposition II.5k"
+   ],
+   "standing": [
+    "item_locked"
+   ],
+   "base_lines": [
+    894,
+    1283
+   ],
+   "base_bytes": [
+    99874,
+    111647
+   ]
+  },
+  {
+   "segment": "fold-Goldbach-II.23.5c-e",
+   "items": [
+    "Corollary II.23.5c",
+    "Definition-Proposition II.23.5d",
+    "Definition II.23.5e"
+   ],
+   "standing": [
+    "item_locked_attested_seated_false"
+   ],
+   "base_lines": [
+    2773,
+    2933
+   ],
+   "base_bytes": [
+    286119,
+    294028
+   ]
+  },
+  {
+   "segment": "fold-II.23.9",
+   "items": [
+    "Def II.23.9",
+    "Lemma II.23.9a",
+    "Rmk II.23.9b",
+    "Prop II.23.9c",
+    "Cor II.23.9d"
+   ],
+   "standing": [
+    "item_locked"
+   ],
+   "base_lines": [
+    3028,
+    3258
+   ],
+   "base_bytes": [
+    307226,
+    321337
+   ]
+  }
+ ],
+ "replacements_in_item_locked_spans": [
+  {
+   "replacement": "REPAIR14-A-11",
+   "span": "fold-Farey-II.5g-k",
+   "base_lines": [
+    1216,
+    1216
+   ],
+   "old_head": "the strict-refinement witness in §7 is reproduced.",
+   "new_head": "the strict-refinement witness of Prop II.5k is reproduced.\n\n*Edit record (successor draft; REPAIR14-A-11, accepted 2026-10-28).* In the last census line, the so"
+  },
+  {
+   "replacement": "REPAIR-HUNK-041",
+   "span": "fold-Farey-II.5g-k",
+   "base_lines": [
+    1228,
+    1228
+   ],
+   "old_head": "> `1/n` is isolated if and only if order `n-1` is absent.\n",
+   "new_head": "> `1/n` is isolated if and only if admissible denominator `n-1` is absent.\n"
+  },
+  {
+   "replacement": "REPAIR-HUNK-042",
+   "span": "fold-Farey-II.5g-k",
+   "base_lines": [
+    1230,
+    1232
+   ],
+   "old_head": "It is false. The bounded sweep produces 524 mismatches among 1,980 endpoint occurrences.\nFor example, missing the immediately adjacent order does not preclude a",
+   "new_head": "It is false. The bounded sweep produces 524 mismatches among 1,980 endpoint occurrences for this denominator-based guess. For example, missing the immediately a"
+  },
+  {
+   "replacement": "REPAIR-HUNK-133",
+   "span": "fold-Goldbach-II.23.5c-e",
+   "base_lines": [
+    2882,
+    2882
+   ],
+   "old_head": "**Status.** Continuous interpolation: **definitional**. Pair factorization and integer reduction: **unconditional**. Rmk 5.7a remains the resident known-spectru",
+   "new_head": "**Status.** Continuous interpolation: **definitional**. Pair factorization and integer reduction: **unconditional**. Rmk 5.7a supplies a separate known-spectrum"
+  },
+  {
+   "replacement": "REPAIR-HUNK-134",
+   "span": "fold-Goldbach-II.23.5c-e",
+   "base_lines": [
+    2890,
+    2890
+   ],
+   "old_head": "For even `N≥4`, define\n",
+   "new_head": "For any positive integer `r`, define the finite local-factor function `Lambda_G(r)` by the following product. Its Goldbach-comparator use below is restricted to"
+  },
+  {
+   "replacement": "REPAIR14-PR60-LAMBDAG",
+   "span": "fold-Goldbach-II.23.5c-e",
+   "base_lines": [
+    2892,
+    2902
+   ],
+   "old_head": "\\[\n\\Lambda_G(N)\n=\\prod_{\\substack{p\\mid N\\\\p>2}}\n\\frac{p-1}{p-2},\n\\]\n\nwith the empty product equal to `1`. This is a positive rational depending only on the odd",
+   "new_head": "\\[\n\\Lambda_G(r)\n=\\prod_{\\substack{p\\mid r\\\\p>2}}\n\\frac{p-1}{p-2},\n\\]\n\nwith the empty product equal to `1`. This is a positive rational depending only on the odd"
+  },
+  {
+   "replacement": "REPAIR14-C-02-POINTER",
+   "span": "fold-II.23.9",
+   "base_lines": [
+    3053,
+    3055
+   ],
+   "old_head": "**Status: definitional.**\n\nFor the centered m-comb instrument (ALG-5)",
+   "new_head": "**Status: definitional.** Integrality conditions for the degree, closure and gcd-reduction statements of II.23.9 are recorded in the Part VII / VII.2a parameter"
+  },
+  {
+   "replacement": "REPAIR-HUNK-146",
+   "span": "fold-II.23.9",
+   "base_lines": [
+    3133,
+    3133
+   ],
+   "old_head": "($\\alpha\\mapsto-\\alpha$, $\\rho\\mapsto1/\\rho$, zero-side $\\leftrightarrow$ infinity-side)\n",
+   "new_head": "($\\rho\\mapsto1/\\rho$ as an independent reciprocal radius map; if $\\rho=|n_6|N^\\alpha$, implementing this by parameters sends $(\\alpha,|n_6|)\\mapsto(-\\alpha,1/|n"
+  }
+ ],
+ "native_tag_changes": [
+  {
+   "id": "RMK-1.2-DIVISOR-LATTICE-AS-MEASUREMENT-BASIS",
+   "changed_fields": [
+    "status"
+   ],
+   "diff": {
+    "status": {
+     "v3.2.7": "unconditional",
+     "v3.3.0": "interpretive (apparatus reading) + unconditional (divisor-label facts)"
+    }
+   }
+  },
+  {
+   "id": "RMK-3.6-GEOMETRIC-CONTENT",
+   "changed_fields": [
+    "status"
+   ],
+   "diff": {
+    "status": {
+     "v3.2.7": "unconditional",
+     "v3.3.0": "unconditional (algebraic identities) + interpretive (metric reading)"
+    }
+   }
+  },
+  {
+   "id": "DEF-5.1-AMPLITUDE-EXPONENT",
+   "changed_fields": [
+    "depends"
+   ],
+   "diff": {
+    "depends": {
+     "v3.2.7": "1.2, 5.2",
+     "v3.3.0": "1.2"
+    }
+   }
+  },
+  {
+   "id": "DEF-5.2-WEIGHTED-RAMANUJAN-SUMS",
+   "changed_fields": [
+    "depends"
+   ],
+   "diff": {
+    "depends": {
+     "v3.2.7": "5.1",
+     "v3.3.0": "none"
+    }
+   }
+  },
+  {
+   "id": "RMK-9.4a-WALK-REGIME-TAXONOMY",
+   "changed_fields": [
+    "depends"
+   ],
+   "diff": {
+    "depends": {
+     "v3.2.7": "5.1b, 9.4",
+     "v3.3.0": "9.4"
+    }
+   }
+  },
+  {
+   "id": "NOTE-9.4b-FAREY-BOUNDARY",
+   "changed_fields": [
+    "depends"
+   ],
+   "diff": {
+    "depends": {
+     "v3.2.7": "5.1b, 5.4b, 9.4, 9.4a",
+     "v3.3.0": "9.4, 9.4a"
+    }
+   }
+  },
+  {
+   "id": "RMK-9.7z-CHI-W-COINCIDENCE",
+   "changed_fields": [
+    "status"
+   ],
+   "diff": {
+    "status": {
+     "v3.2.7": "unconditional (iff; four-state collapse) + interpretive (coupling / closure-crosscut framing)",
+     "v3.3.0": "unconditional (κ-palindromic sufficiency; at-most-two states) + open (weighted-height multiset necessity) + interpretive (coupling / closure-crosscut framing)"
+    }
+   }
+  },
+  {
+   "id": "THM-6.2-RESONANCE-PURITY",
+   "changed_fields": [
+    "register",
+    "status"
+   ],
+   "diff": {
+    "register": {
+     "v3.2.7": "proved",
+     "v3.3.0": "conditional"
+    },
+    "status": {
+     "v3.2.7": "unconditional",
+     "v3.3.0": "open"
+    }
+   }
+  },
+  {
+   "id": "THM-8.20h.3-SELECTION-OF-N0",
+   "changed_fields": [
+    "register",
+    "status"
+   ],
+   "diff": {
+    "register": {
+     "v3.2.7": "proved",
+     "v3.3.0": "conditional"
+    },
+    "status": {
+     "v3.2.7": "unconditional",
+     "v3.3.0": "open"
+    }
+   }
+  },
+  {
+   "id": "THM-8.14a-CLOSURE-EXHAUSTION",
+   "changed_fields": [
+    "register",
+    "status"
+   ],
+   "diff": {
+    "register": {
+     "v3.2.7": "proved",
+     "v3.3.0": "conditional"
+    },
+    "status": {
+     "v3.2.7": "unconditional",
+     "v3.3.0": "open"
+    }
+   }
+  },
+  {
+   "id": "RMK-8.20h.4-S6-MAXIMALITY",
+   "changed_fields": [
+    "status"
+   ],
+   "diff": {
+    "status": {
+     "v3.2.7": "unconditional",
+     "v3.3.0": "open"
+    }
+   }
+  }
+ ]
+}
