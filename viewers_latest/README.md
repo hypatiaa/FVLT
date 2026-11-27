@@ -5,7 +5,7 @@ The latest build of each viewer type in `s6_atom/VIEWERS_LATEST/` on Neo, copied
 How the latest was chosen: by the version number in each file name, highest per type. The index on Neo marks some older builds as "latest" (for example rosette picker v0.2.8); the files themselves are newer, and the newest file wins here. Two frozen reference copies are left out: the atom viewer wl2 (superseded by wl26) and raven v0.5.2 (superseded by v0.5.3).
 
 Every page is a single HTML file; open it in a browser. Support files:
-- `vendor/` holds React for the Mandelbrot viewer.
+- `vendor/` holds React for the Mandelbrot viewer, and three.js r128 with OrbitControls for the Pen Sketchbook.
 - `rule30_center_*.bin` hold the Rule 30 centre column for the rosette picker.
 - `annotator_examples/` belongs to the Wacom annotator.
 
@@ -42,6 +42,7 @@ Every page is a single HTML file; open it in a browser. Support files:
 | Supercharacters streaming (mobile) | [`supercharacters_streaming_v2_5_mobile_a.html`](supercharacters_streaming_v2_5_mobile_a.html) | 1 | `b8b5aa422eda…` |
 | Wacom annotator (examples in annotator_examples/) | [`wacom_annotator_v0_6_6.html`](wacom_annotator_v0_6_6.html) | 1 | `390c081ae2bd…` |
 | FVLT walk test viewer on Div(30030) | [`walk_div30030_v0_8_2.html`](walk_div30030_v0_8_2.html) | 1 | `c560dae88eb5…` |
+| Pen Sketchbook: the FVLT pen in 3D. Gauss-sum pens end exactly √q out; Mertens pen; μ against \|μ\| sign test; helix-family frame in which the equal-weight comb is exactly the helix Γ_q. Loads three.js r128 from `vendor/` (works offline) | [`fvlt_pen_sketchbook_v0_2_1.html`](fvlt_pen_sketchbook_v0_2_1.html) | 1 (added 2026-11-26) | `0aae0c54862b…` |
 
 **Changed from the originals.** `mandelbrot_orbit_viewer_v0_1_1.html` had two Tailscale host addresses in its list of library mirrors. They are replaced by same-length placeholders (`[ts-redact-4]`, `[ts-redact-5]`). Original SHA-256 `709359b43ff96d86372e5c5572c14eb6cf8c92ff074c4f2f182bbe7f070b1ba6`. Every other file is byte-identical to Neo.
 

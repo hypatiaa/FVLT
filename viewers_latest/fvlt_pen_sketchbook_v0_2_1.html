@@ -1,0 +1,252 @@
+<meta charset="utf-8">
+<title>Pen Sketchbook</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Sans+Condensed:wght@600&display=swap">
+<style>
+/* Layout: the drawing sheet first (3D pen path, helix lift along time), then presets, dials and exact readouts. */
+:root {
+  --bg: #f6f7f9; --panel: #ffffff; --fg: #1a2130; --muted: #5b6475; --line: #d8dce4; --grid: #c9ced8;
+  --ink: #1f5fa8; --ink2: #b4531a; --ring: #2f8a5b; --origin: #1a2130;
+  --font-display: "IBM Plex Sans Condensed", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
+  --bg: #0f1319; --panel: #161c25; --fg: #e3e7ee; --muted: #97a1b2; --line: #283142; --grid: #2c3546;
+  --ink: #7ab4ff; --ink2: #ff9a5c; --ring: #5fd39a; --origin: #e3e7ee; color-scheme: dark } }
+:root[data-theme="dark"] {
+  --bg: #0f1319; --panel: #161c25; --fg: #e3e7ee; --muted: #97a1b2; --line: #283142; --grid: #2c3546;
+  --ink: #7ab4ff; --ink2: #ff9a5c; --ring: #5fd39a; --origin: #e3e7ee; color-scheme: dark }
+[hidden] { display: none !important; }
+body { background: var(--bg); color: var(--fg); font-family: var(--font-body); font-size: 14px; line-height: 1.45;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 12px 24px; }
+header { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin-bottom: 10px; }
+h1 { font-family: var(--font-display); font-size: 1.5rem; margin: 0; letter-spacing: .01em; }
+.sub { color: var(--muted); font-size: .9rem; max-width: 70ch; }
+.wrap { display: grid; grid-template-columns: minmax(0, 1fr) 350px; gap: 14px; align-items: start; }
+@media (max-width: 900px) { .wrap { grid-template-columns: minmax(0, 1fr); } }
+.stage { position: relative; height: min(70vh, 720px); min-height: 340px; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--bg); }
+@media (max-width: 900px) { .stage { height: 58vh; } }
+#gl { width: 100%; height: 100%; display: block; touch-action: none; }
+.legend { position: absolute; left: 10px; top: 8px; display: flex; flex-direction: column; gap: 3px; font-size: 12px; pointer-events: none;
+  background: color-mix(in srgb, var(--bg) 80%, transparent); padding: 4px 8px; border-radius: 5px; }
+.legend span::before { content: ""; display: inline-block; width: 14px; height: 3px; margin-right: 6px; vertical-align: middle; background: var(--c); }
+.hint { position: absolute; right: 10px; bottom: 8px; font-size: 11px; color: var(--muted); pointer-events: none; }
+aside { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+section.box { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 12px; min-width: 0; }
+.box h2 { font-family: var(--font-display); font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0 0 8px; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: inherit; font-size: .8rem; border: 1px solid var(--line); background: var(--bg); color: var(--fg); border-radius: 999px; padding: 3px 10px; cursor: pointer; }
+.chip:hover, .chip[aria-pressed="true"] { border-color: var(--ink); }
+.dials { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 7px 10px; align-items: center; font-size: .86rem; }
+.dials input[type=number], .dials select { font: inherit; font-family: var(--font-mono); font-size: .82rem; width: 7.5em; padding: 3px 5px;
+  border: 1px solid var(--line); border-radius: 5px; background: var(--bg); color: var(--fg); }
+.dials input[type=range] { width: 100%; grid-column: 1 / -1; }
+.dials .v { font-family: var(--font-mono); font-size: .8rem; color: var(--muted); text-align: right; }
+:is(input, select, button):focus-visible { outline: 2px solid var(--ink); outline-offset: 1px; }
+dl.read { display: grid; grid-template-columns: 9.5em minmax(0, 1fr); gap: 4px 10px; margin: 0; font-size: .86rem; }
+dl.read dt { color: var(--muted); }
+dl.read dd { margin: 0; font-family: var(--font-mono); font-size: .82rem; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+.note { color: var(--muted); font-size: .78rem; margin: 8px 0 0; }
+.counts { font-family: var(--font-mono); font-size: .74rem; max-height: 140px; overflow: auto; margin-top: 6px; color: var(--fg); }
+.foot { color: var(--muted); font-size: .76rem; margin-top: 12px; max-width: 80ch; }
+</style>
+
+<header>
+  <h1>Pen Sketchbook</h1>
+  <span class="sub">Step n points at the root of unity e<sup>2πi·a·n/q</sup> and carries the weight w(n). The pen is the running sum. Time lifts the path into a helix.</span>
+</header>
+
+<div class="wrap">
+  <div class="stage">
+    <canvas id="gl" aria-label="3D pen path"></canvas>
+    <div class="legend" id="legend"></div>
+    <div class="hint">Drag to turn, scroll or pinch to zoom</div>
+  </div>
+  <aside>
+    <section class="box"><h2>Sketches</h2><div class="chips" id="presets"></div>
+      <p class="note" id="presetNote"></p></section>
+    <section class="box"><h2>Dial ledger</h2>
+      <div class="dials">
+        <label for="w">Weight w(n)</label>
+        <select id="w"><option value="mu">μ(n) Möbius</option><option value="absmu">|μ(n)| signs removed</option><option value="leg">Legendre (n/q)</option><option value="one">1 (comb)</option></select>
+        <label for="a">Frequency numerator a</label><input id="a" type="number" step="1" value="1">
+        <label for="q">Frequency denominator q</label><input id="q" type="number" min="1" max="5000" step="1" value="13">
+        <label for="X">Steps X</label><input id="X" type="number" min="1" max="100000" step="1" value="13">
+        <label for="cmp">Overlay with signs removed</label><input id="cmp" type="checkbox">
+        <label for="frame">Frame</label>
+        <select id="frame"><option value="pen">pen (start at origin)</option><option value="helix">helix family Γ_q</option></select>
+        <label for="ghost">Ghost Γ_q beads (helix frame)</label><input id="ghost" type="checkbox" checked>
+        <label for="lift">Helix lift (time axis)</label><span class="v" id="liftV"></span>
+        <input id="lift" type="range" min="0" max="1" step="0.01" value="0.35">
+      </div>
+      <p class="note">Lift 0 is the flat pen drawing. In the pen frame the ring has radius √X, or √q when X = q, and sits at the pen's last height. The helix frame uses one fixed map, T(z) = (z + w)/(q·w) with w = ζ<sup>a</sup>/(ζ<sup>a</sup> − 1). It sends the comb exactly onto Γ_q: step n becomes ζ<sup>a·n</sup>/q at height n/q, and the ring is the cylinder of radius 1/q. Lift 0.25 gives true proportions there.</p>
+    </section>
+    <section class="box"><h2>Readout</h2>
+      <dl class="read" id="read"></dl>
+      <div class="counts" id="counts"></div>
+      <p class="note">The endpoint is Σ_k c_k·ζ<sup>a·k</sup>, with c_k the exact integer sum of w(n) over n ≡ k (mod q). The decimals are only for display.</p>
+    </section>
+  </aside>
+</div>
+<p class="foot">FVLT pen, as in FVLT.PenGaussV1.pen: steps phase(2·a·n/q), weights w(n). For the Legendre weight with X = q and q prime, the endpoint is the Gauss sum, which ends exactly √q from the start (Lean B4, bus #2227/#2229). For μ at a = 0 the pen walks the real axis and ends at the Mertens value M(X). The sign overlay is Astra's control from bus #2231.</p>
+
+<!-- v0.2.1: local-first libraries (vendor/, works offline), CDN fallback when vendor/ is missing -->
+<script src="vendor/three.r128.min.js"></script>
+<script>window.THREE || document.write('<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"><\/script>')</script>
+<script src="vendor/OrbitControls.r128.js"></script>
+<script>(window.THREE && THREE.OrbitControls) || document.write('<script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"><\/script>')</script>
+<script>
+(function () {
+const MAXX = 100000;
+// Möbius by linear sieve, exact integers
+const mu = new Int8Array(MAXX + 1), isComp = new Uint8Array(MAXX + 1), primes = [];
+mu[1] = 1;
+for (let i = 2; i <= MAXX; i++) {
+  if (!isComp[i]) { primes.push(i); mu[i] = -1; }
+  for (const p of primes) { const ip = i * p; if (ip > MAXX) break; isComp[ip] = 1; if (i % p === 0) { mu[ip] = 0; break; } mu[ip] = -mu[i]; }
+}
+const isPrime = n => n >= 2 && (n <= MAXX ? !isComp[n] : (() => { for (let d = 2; d * d <= n; d++) if (n % d === 0) return false; return true; })());
+function legendre(n, q) { n = ((n % q) + q) % q; if (n === 0) return 0; let r = 1, b = n, e = (q - 1) / 2, m = q; while (e > 0) { if (e & 1) r = (r * b) % m; b = (b * b) % m; e >>= 1; } return r === 1 ? 1 : -1; }
+const weightFn = { mu: (n) => mu[n], absmu: (n) => Math.abs(mu[n]), one: () => 1, leg: (n, q) => legendre(n, q) };
+
+const PRESETS = [
+  { lab: 'Gauss pen q = 13', w: 'leg', a: 1, q: 13, X: 13, cmp: false, lift: 0.35, note: 'Legendre weights mod 13. The pen ends exactly √13 from its start, on the ring.' },
+  { lab: 'Gauss pen q = 101', w: 'leg', a: 1, q: 101, X: 101, cmp: false, lift: 0.2, note: '101 steps, and the pen still ends exactly √101 out.' },
+  { lab: 'Mertens pen', w: 'mu', a: 0, q: 1, X: 20000, cmp: false, lift: 0.6, note: 'At a = 0 every step points the same way, so the pen walks the real axis and ends at M(X). With the lift, the path is the graph of M(n). RH says it stays within X^(1/2+ε).' },
+  { lab: 'Sign test 1/3', w: 'mu', a: 1, q: 3, X: 3000, cmp: true, lift: 0.3, note: 'The same steps with μ(n) and with |μ(n)|. The Gram data match, yet the signed pen stays near its start while the unsigned one drifts off.' },
+  { lab: 'Möbius pen 1/7', w: 'mu', a: 1, q: 7, X: 30000, cmp: false, lift: 0.4, note: 'The Möbius sum at frequency 1/7. It cancels: Davenport proves it is o(X), with no RH needed.' },
+  { lab: 'Comb closes', w: 'one', a: 1, q: 12, X: 12, cmp: false, lift: 0.25, note: 'Equal weights: the comb is a closed polygon of 12th roots of unity and returns to its start.' },
+  { lab: 'Comb = Γ_6', w: 'one', a: 1, q: 6, X: 24, cmp: false, lift: 0.25, frame: 'helix', note: 'The comb in the helix-family frame. Its steps land on the beads of Γ_6 (radius 1/6, bead j at height j/6) and climb four turns: saphir\'s helix family.' },
+  { lab: 'Gauss pen on Γ_13', w: 'leg', a: 1, q: 13, X: 39, cmp: false, lift: 0.25, frame: 'helix', note: 'Legendre weights deform Γ_13. Each full turn of 13 steps adds the Gauss sum once.' },
+  { lab: 'Möbius on Γ_6', w: 'mu', a: 1, q: 6, X: 600, cmp: true, lift: 0.15, frame: 'helix', note: 'μ and |μ| on the same helix Γ_6. The signed pen keeps near the cylinder axis; the unsigned one wanders off.' },
+];
+
+const $ = id => document.getElementById(id);
+const tok = n => getComputedStyle(document.documentElement).getPropertyValue('--' + n).trim() || '#888';
+let renderer, scene, camera, controls, group, extent = 10;
+
+function state() {
+  return { w: $('w').value, a: Math.trunc(+$('a').value || 0), q: Math.max(1, Math.min(5000, Math.trunc(+$('q').value || 1))),
+    X: Math.max(1, Math.min(MAXX, Math.trunc(+$('X').value || 1))), cmp: $('cmp').checked, lift: +$('lift').value,
+    frame: $('frame').value, ghost: $('ghost').checked };
+}
+
+function walk(st, wname) {
+  const { a, q, X } = st, wf = weightFn[wname];
+  const cos = new Float64Array(q), sin = new Float64Array(q);
+  for (let k = 0; k < q; k++) { cos[k] = Math.cos(2 * Math.PI * k / q); sin[k] = Math.sin(2 * Math.PI * k / q); }
+  const counts = new Array(q).fill(0);       // exact integer sums of w over residue classes n mod q
+  const pts = new Float32Array((X + 1) * 3); let x = 0, y = 0;
+  for (let n = 1; n <= X; n++) {
+    const w = wf(n, q); const k = ((((a * n) % q) + q) % q);
+    counts[n % q] += w; x += w * cos[k]; y += w * sin[k];
+    pts[n * 3] = x; pts[n * 3 + 1] = y; pts[n * 3 + 2] = n;
+  }
+  return { pts, counts, end: [x, y] };
+}
+
+function build() {
+  const st = state();
+  if (st.w === 'leg' && !(isPrime(st.q) && st.q > 2)) { $('presetNote').textContent = 'Legendre weights need an odd prime q.'; return; }
+  $('liftV').textContent = st.lift.toFixed(2);
+  if (group) { scene.remove(group); group.traverse(o => { o.geometry && o.geometry.dispose(); }); }
+  group = new THREE.Group(); scene.add(group);
+  const main = walk(st, st.w), other = st.cmp ? walk(st, st.w === 'absmu' ? 'mu' : 'absmu') : null;
+  // Frame. Helix family: T(z) = (z + w)/(q w), w = ζ^a/(ζ^a − 1); the comb's step n maps exactly to ζ^(a n)/q.
+  const helix = st.frame === 'helix', kA = (((st.a % st.q) + st.q) % st.q), degenerate = helix && kA === 0;
+  let tf = null;
+  if (helix) {
+    if (degenerate) tf = (x, y) => [x / st.q, y / st.q];   // Γ_q collapses onto the spine when ζ^a = 1
+    else {
+      const t = 2 * Math.PI * kA / st.q, zr = Math.cos(t), zi = Math.sin(t);          // ζ^a
+      const dr = zr - 1, di = zi, dd = dr * dr + di * di;                                // ζ^a − 1
+      const wr = (zr * dr + zi * di) / dd, wi = (zi * dr - zr * di) / dd;               // w = ζ^a/(ζ^a − 1)
+      const qw2 = st.q * (wr * wr + wi * wi);
+      tf = (x, y) => { const ar = x + wr, ai = y + wi; return [(ar * wr + ai * wi) / qw2, (ai * wr - ar * wi) / qw2]; }; // (z+w)/(q w)
+    }
+    for (const W of [main, other]) if (W) for (let n = 0; n <= st.X; n++) { const [u, v] = tf(W.pts[n * 3], W.pts[n * 3 + 1]); W.pts[n * 3] = u; W.pts[n * 3 + 1] = v; }
+  }
+  // scale: fit the larger of the paths' radius and the ring into a unit view; lift maps time into [0, H]
+  let R = 0; const scan = p => { for (let i = 0; i < p.length; i += 3) R = Math.max(R, Math.hypot(p[i], p[i + 1])); };
+  scan(main.pts); if (other) scan(other.pts);
+  const ringR = helix ? 1 / st.q : (st.X === st.q ? Math.sqrt(st.q) : Math.sqrt(st.X)); R = Math.max(R, ringR, 1e-12);
+  const s = 10 / R;
+  // pen frame: time squeezed into height H; helix frame: true height n/q in the same units as the radius, times 4·lift
+  const H = helix ? (st.X / st.q) * s * 4 * st.lift : 22 * st.lift;
+  const toV = (p, n) => new THREE.Vector3(p[n * 3] * s, (st.X ? p[n * 3 + 2] / st.X : 0) * H - H / 2, -p[n * 3 + 1] * s);
+  extent = Math.max(10, H / 2);
+  if (helix && st.ghost && !degenerate) {
+    const cap = Math.min(st.X, 6000), gp = [];
+    for (let m = 0; m <= cap; m++) { const t = 2 * Math.PI * ((kA * m) % st.q) / st.q; gp.push(Math.cos(t) / st.q * s, (m / st.X) * H - H / 2, -Math.sin(t) / st.q * s); }
+    const gg = new THREE.BufferGeometry(); gg.setAttribute('position', new THREE.Float32BufferAttribute(gp, 3));
+    group.add(new THREE.Points(gg, new THREE.PointsMaterial({ color: new THREE.Color(tok('ring')), size: 6, sizeAttenuation: false })));
+  }
+  let combDev = null;
+  if (helix && !degenerate && st.w === 'one') {   // identity check: comb step n vs bead ζ^(a n)/q
+    combDev = 0; for (let n = 0; n <= st.X; n++) { const t = 2 * Math.PI * ((kA * n) % st.q) / st.q;
+      combDev = Math.max(combDev, Math.hypot(main.pts[n * 3] - Math.cos(t) / st.q, main.pts[n * 3 + 1] - Math.sin(t) / st.q)); }
+  }
+  function line(p, color) {
+    const N = st.X + 1, stride = Math.max(1, Math.floor(N / 40000)), arr = [];
+    for (let n = 0; n < N; n += stride) { const v = toV(p, n); arr.push(v.x, v.y, v.z); }
+    const v = toV(p, N - 1); arr.push(v.x, v.y, v.z);
+    const g = new THREE.BufferGeometry(); g.setAttribute('position', new THREE.Float32BufferAttribute(arr, 3));
+    group.add(new THREE.Line(g, new THREE.LineBasicMaterial({ color: new THREE.Color(color) })));
+    const dot = new THREE.Mesh(new THREE.SphereGeometry(0.22, 14, 10), new THREE.MeshBasicMaterial({ color: new THREE.Color(color) }));
+    dot.position.copy(v); group.add(dot); return v;
+  }
+  const endV = line(main.pts, tok('ink'));
+  if (other) line(other.pts, tok('ink2'));
+  // origin marker and the time axis
+  const o = new THREE.Mesh(new THREE.SphereGeometry(0.16, 12, 8), new THREE.MeshBasicMaterial({ color: new THREE.Color(tok('origin')) }));
+  o.position.set(0, -H / 2, 0); group.add(o);
+  const ax = new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0, -H / 2, 0), new THREE.Vector3(0, H / 2, 0)]);
+  group.add(new THREE.Line(ax, new THREE.LineDashedMaterial({ color: new THREE.Color(tok('grid')), dashSize: 0.4, gapSize: 0.3 })).computeLineDistances());
+  // ring of radius sqrt(X) (or sqrt(q)) at the final height
+  const rp = []; for (let i = 0; i <= 128; i++) { const t = 2 * Math.PI * i / 128; rp.push(new THREE.Vector3(Math.cos(t) * ringR * s, H / 2, Math.sin(t) * ringR * s)); }
+  group.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(rp), new THREE.LineBasicMaterial({ color: new THREE.Color(tok('ring')) })));
+  renderer.setClearColor(new THREE.Color(tok('bg')));
+  readout(st, main, other, ringR, { helix, degenerate, combDev });
+  const L = $('legend'); L.innerHTML = '';
+  const add = (c, t) => { const e = document.createElement('span'); e.style.setProperty('--c', c); e.textContent = t; L.append(e); };
+  add(tok('ink'), 'pen, w = ' + labelW(st.w)); if (other) add(tok('ink2'), 'pen, w = ' + labelW(st.w === 'absmu' ? 'mu' : 'absmu'));
+  add(tok('ring'), helix ? (degenerate ? 'Γ_q on the spine (ζ^a = 1)' : 'Γ_q: cylinder radius 1/q and beads') : 'ring radius ' + (st.X === st.q ? '√q' : '√X'));
+}
+const labelW = w => ({ mu: 'μ(n)', absmu: '|μ(n)|', leg: '(n/q)', one: '1' })[w];
+
+function readout(st, m, other, ringR, fr) {
+  const r = Math.hypot(m.end[0], m.end[1]);   // always the pen-frame endpoint (walk() keeps end untransformed)
+  const rows = [['Weight', labelW(st.w)], ['Frequency a/q', `${st.a}/${st.q}`], ['Steps X', st.X.toLocaleString('en-US')],
+    ['Endpoint', `${m.end[0].toFixed(6)} ${m.end[1] < 0 ? '−' : '+'} ${Math.abs(m.end[1]).toFixed(6)} i`],
+    ['|endpoint|', r.toFixed(6)], [fr && fr.helix ? 'Cylinder radius 1/q' : (st.X === st.q ? '√q' : '√X'), ringR.toFixed(6)], ['|endpoint|²', (r * r).toFixed(6)]];
+  if (st.a % st.q === 0 && st.w === 'mu') rows.push(['M(X), exact', String(m.counts.reduce((s, c) => s + c, 0))]);
+  if (other) rows.push(['Signs removed |end|', Math.hypot(other.end[0], other.end[1]).toFixed(4)]);
+  if (fr && fr.helix) rows.push(['Frame', fr.degenerate ? 'Γ_q degenerate: a ≡ 0 mod q, map z/q' : 'helix family Γ_' + st.q + ', T(z) = (z + w)/(q w)']);
+  if (fr && fr.combDev !== null) rows.push(['Comb vs Γ_q beads', 'max distance ' + fr.combDev.toExponential(2) + ' (32-bit drawing precision; exact identity)']);
+  $('read').innerHTML = ''; rows.forEach(([k, v]) => { const dt = document.createElement('dt'), dd = document.createElement('dd'); dt.textContent = k; dd.textContent = v; $('read').append(dt, dd); });
+  $('counts').textContent = st.q <= 60 ? 'c_k (k = 0…q−1): ' + m.counts.join(', ') : `c_k listed for q ≤ 60 (q = ${st.q})`;
+}
+
+function setFrom(p) { $('w').value = p.w; $('a').value = p.a; $('q').value = p.q; $('X').value = p.X; $('cmp').checked = p.cmp; $('lift').value = p.lift; $('frame').value = p.frame || 'pen'; $('presetNote').textContent = p.note; build(); fit(); }
+function fit() { const k = extent / 10; camera.position.set(18 * k, 14 * k, 22 * k); camera.far = Math.max(1000, 80 * extent); camera.updateProjectionMatrix(); controls.target.set(0, 0, 0); controls.update(); }
+
+function init() {
+  const cv = $('gl');
+  renderer = new THREE.WebGLRenderer({ canvas: cv, antialias: true, preserveDrawingBuffer: true });
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, 2));
+  scene = new THREE.Scene(); camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+  controls = new THREE.OrbitControls(camera, cv); controls.enableDamping = true;
+  new ResizeObserver(() => { const p = cv.parentElement; renderer.setSize(p.clientWidth, p.clientHeight, false); camera.aspect = p.clientWidth / p.clientHeight; camera.updateProjectionMatrix(); }).observe(cv.parentElement);
+  PRESETS.forEach((p, i) => { const b = document.createElement('button'); b.type = 'button'; b.className = 'chip'; b.textContent = p.lab;
+    b.addEventListener('click', () => { [...$('presets').children].forEach(c => c.setAttribute('aria-pressed', String(c === b))); setFrom(p); }); $('presets').append(b); });
+  ['w', 'a', 'q', 'X', 'cmp', 'frame', 'ghost'].forEach(id => $(id).addEventListener('change', () => { $('presetNote').textContent = ''; build(); fit(); }));
+  $('lift').addEventListener('input', build);
+  new MutationObserver(build).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+  matchMedia('(prefers-color-scheme: dark)').addEventListener('change', build);
+  (function loop() { controls.update(); renderer.render(scene, camera); requestAnimationFrame(loop); })();
+  $('presets').children[0].setAttribute('aria-pressed', 'true'); setFrom(PRESETS[0]);
+}
+init();
+})();
+</script>
