@@ -43,6 +43,7 @@ Every page is a single HTML file; open it in a browser. Support files:
 | Wacom annotator (examples in annotator_examples/) | [`wacom_annotator_v0_6_6.html`](wacom_annotator_v0_6_6.html) | 1 | `390c081ae2bd…` |
 | FVLT walk test viewer on Div(30030) | [`walk_div30030_v0_8_2.html`](walk_div30030_v0_8_2.html) | 1 | `c560dae88eb5…` |
 | Pen Sketchbook: the FVLT pen in 3D. Gauss-sum pens end exactly √q out; Mertens pen; μ against \|μ\| sign test; helix-family frame in which the equal-weight comb is exactly the helix Γ_q. Loads three.js r128 from `vendor/` (works offline) | [`fvlt_pen_sketchbook_v0_2_1.html`](fvlt_pen_sketchbook_v0_2_1.html) | 1 (added 2026-11-26) | `0aae0c54862b…` |
+| Pen Sketchbook v0.3: adds the Farey helix family Γ_1…Γ_N (saphir's half level: even orders have a bead at 1/2, odd orders' straddling chord is cut in half on the angle-π line) and the primitive-bead walk, which returns to the real axis at M(n) after each order because Σ primitive ζ_n^j = μ(n). Loads three.js r128 from `vendor/` (works offline) | [`fvlt_pen_sketchbook_v0_3.html`](fvlt_pen_sketchbook_v0_3.html) | 1 (added 2026-11-27) | `3aab4cd0c3ea…` |
 
 **Changed from the originals.** `mandelbrot_orbit_viewer_v0_1_1.html` had two Tailscale host addresses in its list of library mirrors. They are replaced by same-length placeholders (`[ts-redact-4]`, `[ts-redact-5]`). Original SHA-256 `709359b43ff96d86372e5c5572c14eb6cf8c92ff074c4f2f182bbe7f070b1ba6`. Every other file is byte-identical to Neo.
 
