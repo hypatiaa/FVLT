@@ -1,6 +1,6 @@
 # FVLT Lean source index
 
-This index covers 1,273 Lean file paths. It includes theorem modules, statement checks, assembly fragments, and historical copies. Each citation opens the named Lean declaration or source line.
+This index covers 1,278 Lean file paths. It includes theorem modules, statement checks, assembly fragments, and historical copies. Each citation opens the named Lean declaration or source line.
 
 [Search the public index](https://hypatiaa.github.io/FVLT/lean/) · [FVLT guide](https://hypatiaa.github.io/FVLT/)
 
@@ -35,6 +35,8 @@ This index covers 1,273 Lean file paths. It includes theorem modules, statement 
 - Farey energy · The rank-displacement energy equals one twelfth of the coherent arithmetic energy at B = 1. [franelEnergy_eq_coherent_energy](projects/farey-character-bridge/FranelEnergy.lean#L12)
 
 - Two triangles at q = 7 · The orbit phasors add to −1. For the Farey rank errors, the normalized difference of the triangle totals equals a quadratic-character Mertens sum at every order. [Phasor identity](projects/farey-orbit-contrast/FareyOrbitPhasors.lean#L21) · [Farey coefficient](projects/farey-orbit-contrast/FareyQuadraticProjection.lean#L63) · [Replay](projects/farey-orbit-contrast/NUCLEUS_REPLAY.log)
+
+- All characters at prime denominators · The squared Farey rank errors split exactly into character energies. [All-character theorem](projects/farey-prime-character-energy/FareyPrimeCharacterFormula.lean#L79) · [Endpoint correction](projects/farey-prime-character-energy/FareyPrimeCharacterParity.lean#L91) · [Replay](projects/farey-prime-character-energy/NUCLEUS_REPLAY.log)
 
 - Denominator band · Square-root-scale cancellation of the untwisted band implies RH. Proving that cancellation independently remains open in this project. [riemannHypothesis_of_V_cancellation](projects/farey-character-bridge/CrystalBridge.lean#L823)
 
@@ -1163,6 +1165,18 @@ The links below use paths relative to this checkout. The public index links to a
 - [Lean/projects/farey-orbit-contrast/FareyRankInversion.lean](projects/farey-orbit-contrast/FareyRankInversion.lean#L54) · theorem countRank_eq_mertens_floors
 
 - [Lean/projects/farey-orbit-contrast/TwistedCount.lean](projects/farey-orbit-contrast/TwistedCount.lean#L135) · theorem count_eq_floors
+
+### farey-prime-character-energy (5)
+
+- [Lean/projects/farey-prime-character-energy/FareyPrimeCharacterEnergy.lean](projects/farey-prime-character-energy/FareyPrimeCharacterEnergy.lean#L79) · theorem all_components_energy
+
+- [Lean/projects/farey-prime-character-energy/FareyPrimeCharacterFormula.lean](projects/farey-prime-character-energy/FareyPrimeCharacterFormula.lean#L79) · theorem jointEnergy_eq_character_mertens
+
+- [Lean/projects/farey-prime-character-energy/FareyPrimeCharacterParity.lean](projects/farey-prime-character-energy/FareyPrimeCharacterParity.lean#L91) · theorem principal_coefficient
+
+- [Lean/projects/farey-prime-character-energy/PrimeQuadraticPeriods.lean](projects/farey-prime-character-energy/PrimeQuadraticPeriods.lean#L43) · theorem periods_sub_sq
+
+- [Lean/projects/farey-prime-character-energy/TwistedCount.lean](projects/farey-prime-character-energy/TwistedCount.lean#L135) · theorem count_eq_floors
 
 ### Farey joint port · Lean 4.33.1 (17)
 

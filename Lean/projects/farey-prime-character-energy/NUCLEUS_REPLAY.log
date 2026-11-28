@@ -1,0 +1,34 @@
+Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679
+compile TwistedCount PASS SHA-256 25b6b49f5b1e14a170dfcae5d6c82fc98a6cc746bdb6fbc745dc7fa4fd2aeb60
+compile PrimeQuadraticPeriods PASS SHA-256 cf23d0bb7324f4f5aaba085c8973e41dffa269b483e10328bfeba6cbfd1c5b18
+compile FareyPrimeCharacterEnergy PASS SHA-256 b7f7d8a51aaa7ff9ca97a73144a8f1c08148860bd130f91df1cbddd4b3322a85
+compile FareyPrimeCharacterFormula PASS SHA-256 713517bf10f3a2b4cf4cdb7341638243c631f6f4c2a6df6445339006238619de
+compile FareyPrimeCharacterParity PASS SHA-256 76ba317096ecb7709ad9da23199077370d64587e6548bb8d6116de4cd58a87d2
+21 public theorem axiom checks passed.
+'FareyPrimePeriods.periods_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimePeriods.periods_sub' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimePeriods.periods_sub_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimePeriods.periods_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.inversion' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.parseval' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.all_components_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.rankError_eq_mertens_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.coefficient_eq_mertens_rows' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.floorError_eq_residueWeight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.coefficient_translate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.coefficient_floorError' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.coefficient_eq_character_mertens' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.jointEnergy_eq_character_mertens' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.principal_coefficient_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.nonprincipal_coefficient_constant' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.characterWeight_reflection' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.principal_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.nonprincipal_even_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.nonprincipal_even_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyPrimeCharacterEnergy.principal_coefficient' depends on axioms: [propext, Classical.choice, Quot.sound]
+leanchecker TwistedCount PASS
+leanchecker PrimeQuadraticPeriods PASS
+leanchecker FareyPrimeCharacterEnergy PASS
+leanchecker FareyPrimeCharacterFormula PASS
+leanchecker FareyPrimeCharacterParity PASS
