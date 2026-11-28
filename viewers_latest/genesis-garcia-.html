@@ -49,6 +49,12 @@ canvas{display:block;width:100%;aspect-ratio:1;cursor:crosshair}
 .band-panel :focus-visible{outline:2px solid #8dc7f4;outline-offset:2px}
 .band-panel .band-result{color:#e5c07b;font-weight:700}
 .band-panel .band-help{font-size:11px;color:#a4adbc}
+.band-dirac{margin-top:12px;padding-top:10px;border-top:1px solid #323946}
+.band-dirac h3{margin-bottom:4px;font-size:13px;color:#e8ecf2}
+.band-dirac table{margin:6px 0;border-collapse:collapse;font-size:11px;font-variant-numeric:tabular-nums}
+.band-dirac th,.band-dirac td{padding:2px 8px;text-align:right}
+.band-dirac th:first-child{text-align:left;padding-left:0}
+.band-dirac thead th{color:#a4adbc}
 </style>
 </head>
 <body>
@@ -118,6 +124,17 @@ canvas{display:block;width:100%;aspect-ratio:1;cursor:crosshair}
 <p><a id="vernierAtlas" href="https://hypatiaa.github.io/arithmetic-fourier-rh/proof-atlas/#vernier">Three-tooth endpoint</a> <span id="bandEndpoint"></span></p>
 </div>
 <p class="band-help">Each count is exact for the selected cutoff. Bounding the signed sum at every cutoff by C<sub>ε</sub>X<sup>1/2+ε</sup> remains open. <a id="bandAtlas" href="https://hypatiaa.github.io/arithmetic-fourier-rh/proof-atlas/#garcia">Follow this step in the proof atlas</a></p>
+<section class="band-dirac" id="dirac-band" aria-labelledby="diracTitle">
+<h3 id="diracTitle">Dirac pairing</h3>
+<p>Couple the positive rows to the negative rows by a matrix B. If their counts are P and N, the Dirac operator has P + N − 2 rank(B) zero modes.</p>
+<table aria-label="Exact ranks and zero modes for two couplings at this cutoff">
+<thead><tr><th scope="col">Coupling</th><th scope="col">Rank of B</th><th scope="col">Zero modes</th></tr></thead>
+<tbody>
+<tr><th scope="row">One-to-one until a sign runs out</th><td id="diracPairRank"></td><td id="diracPairNullity"></td></tr>
+<tr><th scope="row">All opposite signs linked equally</th><td id="diracUniformRank"></td><td id="diracUniformNullity"></td></tr>
+</tbody></table>
+<p class="band-help"><span id="diracFloor" aria-live="polite"></span> RH follows if some family of couplings has at most C<sub>ε</sub>X<sup>1/2+ε</sup> zero modes at every sufficiently large cutoff for each ε &gt; 0. That bound remains open. <a id="diracAtlas" href="https://hypatiaa.github.io/arithmetic-fourier-rh/proof-atlas/#dirac">Read the Dirac rank theorem</a></p>
+</section>
 </section>
 <div class="footer">GENESIS · Garcia mode · K(a,b,q,Λ) = Σ<sub>u∈Λ</sub> e((au+bu⁻¹)/q) · classical when Λ = (ℤ/qℤ)×</div>
 </div>
@@ -395,6 +412,14 @@ function showBandAtCutoff(event){
   document.getElementById('bandValue').textContent = `V(${fmt(cutoff)}) = ${fmt(signed)}`;
   document.getElementById('bandCounts').textContent = `q from ${fmt(first)} through ${fmt(cutoff)} · positive ${fmt(positive)} · negative ${fmt(negative)} · zero ${fmt(zero)}`;
   document.getElementById('bandEndpoint').textContent = `2V(X) = ${fmt(2*signed)}`;
+  const pairRank = Math.min(positive, negative);
+  const uniformRank = pairRank > 0 ? 1 : 0;
+  const activeRows = positive+negative;
+  document.getElementById('diracPairRank').textContent = fmt(pairRank);
+  document.getElementById('diracPairNullity').textContent = fmt(activeRows-2*pairRank);
+  document.getElementById('diracUniformRank').textContent = fmt(uniformRank);
+  document.getElementById('diracUniformNullity').textContent = fmt(activeRows-2*uniformRank);
+  document.getElementById('diracFloor').textContent = `Every coupling here has at least |V(X)| = ${fmt(Math.abs(signed))} zero modes.`;
 }
 
 function getPhiDivisors(q){
