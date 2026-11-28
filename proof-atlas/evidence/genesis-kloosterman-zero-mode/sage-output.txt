@@ -1,0 +1,27 @@
+Sage 10.9
+viewer 5 K(1,0) -1 sum |K(1,b)|^2 20 mean squared column distance 10
+viewer 15 K(1,0) 1 sum |K(1,b)|^2 120 mean squared column distance 14
+viewer 31 K(1,0) -1 sum |K(1,b)|^2 930 mean squared column distance 62
+exact cyclotomic rows checked: 47
+Walsh band X=42: [23, 29, 31, 35, 37, 41] assignments 128 mean square 6 all minus -4
+Mertens identity checked at every cutoff through 1000000
+X  V  positive  negative  squarefree  parity fixed at 5,7,11
+100 -4 6 10 16 8
+1000 -6 72 78 150 60
+10000 -26 749 775 1524 628
+100000 -60 7569 7629 15198 6336
+1000000 86 76033 75947 151980 63314
+ratio 100 4 low positive/negative/signed 0 0 0 asymptotic main 0
+ratio 100 6 low positive/negative/signed 0 0 0 asymptotic main 0
+ratio 1000 9 low positive/negative/signed 18 0 18 asymptotic main [18.99772193293833214572739935 +/- 2.49e-27]
+ratio 1000 10 low positive/negative/signed 18 0 18 asymptotic main [18.99772193293833214572739935 +/- 2.49e-27]
+ratio 10000 13 low positive/negative/signed 480 0 480 asymptotic main [474.9430483234583036431849838 +/- 3.91e-26]
+ratio 10000 21 low positive/negative/signed 922 0 922 asymptotic main [894.501203604329194522900142 +/- 1.46e-25]
+ratio 100000 16 low positive/negative/signed 4760 0 4760 asymptotic main [4749.430483234583036431849838 +/- 4.30e-25]
+ratio 100000 46 low positive/negative/signed 19526 2770 16756 asymptotic main [16790.03434176658025599798055 +/- 2.34e-24]
+ratio 1000000 19 low positive/negative/signed 89438 0 89438 asymptotic main [89450.1203604329194522900142 +/- 1.36e-23]
+ratio 1000000 100 low positive/negative/signed 409852 185188 224664 asymptotic main [224751.7321955429451675353358 +/- 4.17e-23]
+fixed ratio coefficients and direct small-band pair checks passed
+independent gcd audit X,Y,Q,low,high,V: 10000 21 1524 922 -1770 -26
+independent gcd audit X,Y,Q,low,high,V: 100000 46 15198 16756 -28354 -60
+independent gcd audit X,Y,Q,low,high,V: 1000000 100 151980 224664 -369248 86
