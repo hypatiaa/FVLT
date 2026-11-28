@@ -1,6 +1,6 @@
 # FVLT Lean source index
 
-This index covers 1,266 Lean file paths. It includes theorem modules, statement checks, assembly fragments, and historical copies. Each citation opens the named Lean declaration or source line.
+This index covers 1,267 Lean file paths. It includes theorem modules, statement checks, assembly fragments, and historical copies. Each citation opens the named Lean declaration or source line.
 
 [Search the public index](https://hypatiaa.github.io/FVLT/lean/) · [FVLT guide](https://hypatiaa.github.io/FVLT/)
 
@@ -35,6 +35,8 @@ This index covers 1,266 Lean file paths. It includes theorem modules, statement 
 - Farey energy · The rank-displacement energy equals one twelfth of the coherent arithmetic energy at B = 1. [franelEnergy_eq_coherent_energy](projects/farey-character-bridge/FranelEnergy.lean#L12)
 
 - Denominator band · Square-root-scale cancellation of the untwisted band implies RH. Proving that cancellation independently remains open in this project. [riemannHypothesis_of_V_cancellation](projects/farey-character-bridge/CrystalBridge.lean#L823)
+
+- Three-tooth Vernier · For every Dirichlet character and X ≥ 2, the centered three-tooth endpoint equals twice the twisted denominator-band sum. [threeToothEndpoint_eq_two_mul_twistedV](projects/farey-character-bridge/ThreeToothVernierBridge.lean#L437)
 
 - Characters · Twisted band cancellation is equivalent to the every-character zero-free statement. [allChiVCancellation_iff_everyCharacter](projects/farey-character-bridge/CrystalBridgeConverse.lean#L18)
 
@@ -1110,7 +1112,7 @@ The links below use paths relative to this checkout. The public index links to a
 
 - [Lean/projects/factorial-oracle/WilsonOracle.lean](projects/factorial-oracle/WilsonOracle.lean#L17) · theorem distance_zero_iff
 
-### farey-character-bridge (15)
+### farey-character-bridge (16)
 
 - [Lean/projects/farey-character-bridge/CrystalBridge.lean](projects/farey-character-bridge/CrystalBridge.lean#L116) · theorem twistedCoprimeSum_sieve_prime
 
@@ -1141,6 +1143,8 @@ The links below use paths relative to this checkout. The public index links to a
 - [Lean/projects/farey-character-bridge/FranelPosition.lean](projects/farey-character-bridge/FranelPosition.lean#L10) · theorem grid_cos_zero
 
 - [Lean/projects/farey-character-bridge/FranelRank.lean](projects/farey-character-bridge/FranelRank.lean#L7) · theorem bTwo_opposite
+
+- [Lean/projects/farey-character-bridge/ThreeToothVernierBridge.lean](projects/farey-character-bridge/ThreeToothVernierBridge.lean#L437) · theorem threeToothEndpoint_eq_two_mul_twistedV
 
 ### Farey joint port · Lean 4.33.1 (17)
 
