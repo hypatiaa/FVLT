@@ -1,4 +1,10 @@
-# FVLT Lean modules: cloud backup
+# FVLT Lean sources
+
+[Public Lean index](https://hypatiaa.github.io/FVLT/lean/) · [Browse every file on GitHub](INDEX.md)
+
+The index includes all 120 FVLT-named theorem modules in the v36 snapshot, their project-owned imports, and links to the imported upstream kit. The following notes describe the original v21 backup and later additions.
+
+## Historical v21 backup
 
 This folder is a private backup of the 84 FVLT Lean modules, copied byte for byte from the frozen theorem library **v21** on nucleus (`~/rule30_theorem_library/v21/theorems/FVLT*.lean`) on 2026-11-04.
 
