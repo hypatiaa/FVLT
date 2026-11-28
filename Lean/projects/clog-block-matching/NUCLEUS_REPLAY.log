@@ -1,0 +1,36 @@
+Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679
+Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+compile LogSurplus PASS SHA-256 26719dd8fcb59c30e500116d0ca71ca7c83bc428f692ff8197ccf8fed965dd49
+leanchecker LogSurplus: PASS
+'AtlasLog.simultaneous_residual' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasLog.offset_average' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasLog.exceptional_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasLog.band_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS LogSurplus 4
+compile BlockMatching PASS SHA-256 9eff7c8af8fe4fc7933f06c11fd6882ce747728a08e892bbcf7d898fb607ebbe
+leanchecker BlockMatching: PASS
+'AtlasLog.residual_card' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasLog.fits_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasLog.fits_empty_edges' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasLog.fits_union' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasLog.full_block_matching' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS BlockMatching 5
+compile OffsetMatching PASS SHA-256 8605bee2581926eaae33e2ad24633c0c311daa4f065ee140d875640dd0f13a7a
+leanchecker OffsetMatching: PASS
+'AtlasLog.averaged_block_matching' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS OffsetMatching 1
+compile ShortIntervals PASS SHA-256 ebdf82b69b84b45761b46c0ef14d633d79d477642fdc696bb54b35b574fea046
+leanchecker ShortIntervals: PASS
+'AtlasLog.block_from_progressions' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasLog.signed_bad_subset' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasLog.matching_from_exception' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasLog.actual_matching_log' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS ShortIntervals 4
+compile ExceptionalTransfer PASS SHA-256 0dcfef0d3d3c682874520ea2b0b2ae148facfdd184a2261f43f948d42222707f
+leanchecker ExceptionalTransfer: PASS
+'AtlasLog.real_interval_membership' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasLog.bad_count_le_volume' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasLog.discrete_from_measure' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasLog.signed_short_estimate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasLog.actual_clog' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS ExceptionalTransfer 5
