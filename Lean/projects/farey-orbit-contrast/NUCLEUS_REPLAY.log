@@ -1,0 +1,33 @@
+Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679
+compile FareyOrbitSeven: PASS
+compile FareyOrbitPhasors: PASS
+compile TwistedCount: PASS
+compile FareyRankInversion: PASS
+compile FareyQuadraticProjection: PASS
+15 public theorem axiom checks passed.
+'FareyOrbitSeven.raw_contrast' depends on axioms: [propext, Quot.sound]
+'FareyOrbitSeven.saw_contrast' depends on axioms: [propext, Quot.sound]
+'FareyOrbitSeven.floor_contrast' depends on axioms: [propext, Quot.sound]
+'FareyOrbitSeven.order40' does not depend on any axioms
+'FareyOrbitPhasors.periods_add' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyOrbitPhasors.periods_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyOrbitPhasors.periods_sub_sq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyOrbitSeven.sumTo_eq_Icc' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyOrbitSeven.countRank_eq_mertens_floors' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyOrbitSeven.chi7_eq_legendre' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyOrbitSeven.scaled_contrast_eq_mertens' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyOrbitSeven.coefficient_from_ranks' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyOrbitSeven.quadraticCoefficient_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyOrbitSeven.quadraticCoefficient_40' depends on axioms: [propext, Classical.choice, Quot.sound]
+'FareyOrbitSeven.quadratic_component_le_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+leanchecker FareyOrbitSeven: PASS
+
+leanchecker FareyOrbitPhasors: PASS
+
+leanchecker TwistedCount: PASS
+
+leanchecker FareyRankInversion: PASS
+
+leanchecker FareyQuadraticProjection: PASS
+

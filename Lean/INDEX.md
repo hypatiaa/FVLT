@@ -1,6 +1,6 @@
 # FVLT Lean source index
 
-This index covers 1,268 Lean file paths. It includes theorem modules, statement checks, assembly fragments, and historical copies. Each citation opens the named Lean declaration or source line.
+This index covers 1,273 Lean file paths. It includes theorem modules, statement checks, assembly fragments, and historical copies. Each citation opens the named Lean declaration or source line.
 
 [Search the public index](https://hypatiaa.github.io/FVLT/lean/) · [FVLT guide](https://hypatiaa.github.io/FVLT/)
 
@@ -33,6 +33,8 @@ This index covers 1,268 Lean file paths. It includes theorem modules, statement 
 - RH criterion · For each fixed B ≥ 1, the energy growth bound for every δ > 0 is equivalent to RH. [coherent_energy_measure_growth_iff_RH](projects/arithmetic-fourier-rh/CoherentEnergyRHBridge.lean#L38)
 
 - Farey energy · The rank-displacement energy equals one twelfth of the coherent arithmetic energy at B = 1. [franelEnergy_eq_coherent_energy](projects/farey-character-bridge/FranelEnergy.lean#L12)
+
+- Two triangles at q = 7 · The orbit phasors add to −1. For the Farey rank errors, the normalized difference of the triangle totals equals a quadratic-character Mertens sum at every order. [Phasor identity](projects/farey-orbit-contrast/FareyOrbitPhasors.lean#L21) · [Farey coefficient](projects/farey-orbit-contrast/FareyQuadraticProjection.lean#L63) · [Replay](projects/farey-orbit-contrast/NUCLEUS_REPLAY.log)
 
 - Denominator band · Square-root-scale cancellation of the untwisted band implies RH. Proving that cancellation independently remains open in this project. [riemannHypothesis_of_V_cancellation](projects/farey-character-bridge/CrystalBridge.lean#L823)
 
@@ -1149,6 +1151,18 @@ The links below use paths relative to this checkout. The public index links to a
 - [Lean/projects/farey-character-bridge/ThreeToothVernierBridge.lean](projects/farey-character-bridge/ThreeToothVernierBridge.lean#L437) · theorem threeToothEndpoint_eq_two_mul_twistedV
 
 - [Lean/projects/farey-character-bridge/VernierPairingDirac.lean](projects/farey-character-bridge/VernierPairingDirac.lean#L553) · theorem diracMatrix_finrank_ker
+
+### farey-orbit-contrast (5)
+
+- [Lean/projects/farey-orbit-contrast/FareyOrbitPhasors.lean](projects/farey-orbit-contrast/FareyOrbitPhasors.lean#L21) · theorem periods_add
+
+- [Lean/projects/farey-orbit-contrast/FareyOrbitSeven.lean](projects/farey-orbit-contrast/FareyOrbitSeven.lean#L77) · theorem order40
+
+- [Lean/projects/farey-orbit-contrast/FareyQuadraticProjection.lean](projects/farey-orbit-contrast/FareyQuadraticProjection.lean#L63) · theorem quadraticCoefficient_eq
+
+- [Lean/projects/farey-orbit-contrast/FareyRankInversion.lean](projects/farey-orbit-contrast/FareyRankInversion.lean#L54) · theorem countRank_eq_mertens_floors
+
+- [Lean/projects/farey-orbit-contrast/TwistedCount.lean](projects/farey-orbit-contrast/TwistedCount.lean#L135) · theorem count_eq_floors
 
 ### Farey joint port · Lean 4.33.1 (17)
 
