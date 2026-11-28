@@ -1,0 +1,37 @@
+Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679
+Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+compile FareyMerge PASS SHA-256 be9cacd6bd00d159c0f4fcdeacada4e810786d455babb7e35c33e863c3e2c35a
+leanchecker FareyMerge: PASS
+'AtlasMerge.change_center' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasMerge.two_moves' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasMerge.displacement_change' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasMerge.parent_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasMerge.child_variance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasMerge.sum_parent_cost' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS FareyMerge 6
+compile FareyParent PASS SHA-256 044f1956ad03d0bbe8246a5d99d391cc9544a238e1498f690204cd96b0258017
+leanchecker FareyParent: PASS
+'AtlasMerge.mem_frac' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasMerge.frac_den' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasMerge.farey_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasMerge.parent_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasMerge.actual_radius' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS FareyParent 5
+compile FareyCount PASS SHA-256 853d08c2e167f5e1c784562b4ea4cb6cd2469b78d8941b5f91a607c5850fb831
+leanchecker FareyCount: PASS
+'AtlasMerge.population_lower' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS FareyCount 1
+compile FareyPacking PASS SHA-256 7f455cd88fef6d0894552ed487a1961a83c167f2c6f4a0f8121796324dda645c
+leanchecker FareyPacking: PASS
+'AtlasMerge.packing' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasMerge.population_upper' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasMerge.fibre_population' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasMerge.displacement_at_anchor' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS FareyPacking 4
+compile FareyEnergy PASS SHA-256 a4b557ee2989c2796ded4c8a1c78036bc5f60443820306772922cb8a7ce5ac52
+leanchecker FareyEnergy: PASS
+'AtlasMerge.denominator_mass' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasMerge.parentMean_original' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasMerge.merge_balance' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasMerge.actual_merge_bound' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS FareyEnergy 4
