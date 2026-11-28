@@ -1,0 +1,49 @@
+Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679
+Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+compile GarciaPairs PASS SHA-256 6db41ee40041a7da9db5f1651a269c7a5a7cb6a05add9cc41ab599e3f958ae60
+leanchecker GarciaPairs: PASS
+'AtlasPairs.common_factor_sign' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasPairs.signs_below_35' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasPairs.first_opposing_pair' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasPairs.accumulate' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasPairs.ratio_budget' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS GarciaPairs 5
+compile SquarefreeBase PASS SHA-256 c8c0e724ba37dda3bc4bef10267a0d77f3e6befa28c098ee48cddd68ac7dd797
+leanchecker SquarefreeBase: PASS
+'AtlasPairs.squarefree_floor_sum' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasPairs.base_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS SquarefreeBase 2
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+Try this:
+  [apply] ring_nf
+  
+  The `ring` tactic failed to close the goal. Use `ring_nf` to obtain a normal form.
+    
+  Note that `ring` works primarily in *commutative* rings. If you have a noncommutative ring, abelian group or module, consider using `noncomm_ring`, `abel` or `module` instead.
+compile CoprimeSquarefree PASS SHA-256 affc9c3654f00043861de95fd85b547f1aef71388c6589f5fbb968c625be7e0b
+leanchecker CoprimeSquarefree: PASS
+'AtlasPairs.uniform_squarefree' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS CoprimeSquarefree 1
+compile PairHeight PASS SHA-256 73ff08b58520ac05e21bd4d8fb1fbe8069504265fc134ac573a33b8da58bdc64
+leanchecker PairHeight: PASS
+'AtlasPairs.prime_weight' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasPairs.height_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasPairs.cube_height_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS PairHeight 3
+compile DenominatorPairs PASS SHA-256 4255521cfe8130bebcf265e6c8aad30be156a16f4fe056f6e126876939cd7b5f
+leanchecker DenominatorPairs: PASS
+'AtlasPairs.actual_reindex' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasPairs.actual_cube_height_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+'AtlasPairs.actual_cube_root_error' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS DenominatorPairs 3
