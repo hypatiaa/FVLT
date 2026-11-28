@@ -1,0 +1,21 @@
+Lean (version 4.35.0, x86_64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)
+Mathlib 56a005855ea17e0b0958f73ec801ae140b0a1679
+34bc69a105f1084ee8b6c77119632bae8c17f22669b36c84dcd5743172fff649  /home/saphir/vision_v264_replay_20261123/build/Verified.olean
+edd05b80b22192936c3f9d23a2080e2bd89ca60215af3c9cdd1d8a9940e7e728  /home/saphir/vision_measure_lean_20261123/build/CoherentEnergyMeasure.olean
+8465dde97956061c67f64d4dac9d23f7a7640b6a1a58fccb0b31f49713eb5ce8  /home/saphir/vision_measure_lean_20261123/build/CoherentEnergyRHBridge.olean
+ecff9ae8d0a262f9d451756c70fa98ff4a49a68747ccc01a187cd0e321cd503f  DivisorPower.lean
+PASS compile + kernel replay from imports: DivisorPower
+20784f6650c4099c5a4f2281dec7ef274d95491a47deea669bd6b6697c468c7a  GramBound.lean
+PASS compile + kernel replay from imports: GramBound
+400e54af3f604046867866b42eb1ca213d0c95c157d9895aaa96cc4e0561f9f9  PhaseGram.lean
+PASS compile + kernel replay from imports: PhaseGram
+2f5054f33b1822f138f28721a38c2936518e845b8f7e115f73f36049fe377838  FourthMomentRH.lean
+'FourthMoment.fourth_moment_growth_iff_RH' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS compile + kernel replay from imports: FourthMomentRH
+e6c52064a893e66a650fd7bd6068e96a1c237b19195f681c4c2880168367b84e  FirstRow.lean
+'FourthMoment.firstRow_growth_iff_RH' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS compile + kernel replay from imports: FirstRow
+11735565728d78bf808e3d5ad128dfb5f28d0bf6d6914926835fb9ada8073305  JordanRows.lean
+'FourthMoment.signed_row_energy' depends on axioms: [propext, Classical.choice, Quot.sound]
+PASS compile + kernel replay from imports: JordanRows
+
