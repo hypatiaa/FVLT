@@ -11,6 +11,8 @@ body{background:#0d0f12;color:#c9cdd5;font-family:'JetBrains Mono',monospace;min
 .wrap{max-width:960px;margin:0 auto;padding:20px 16px}
 h1{font-size:17px;font-weight:700;color:#e8ecf2;letter-spacing:.05em}
 .sub{font-size:10px;color:#4b5563;margin-top:4px;letter-spacing:.08em}
+.garcia-links{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:12px;font-size:12px}
+.garcia-links a{color:#8dc7f4;text-underline-offset:3px}
 .row{display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-bottom:10px}
 .row-label{font-size:10px;color:#4b5563;margin-right:4px}
 .nbtn{padding:4px 12px;border-radius:6px;font-size:10px;border:1px solid #1e2028;background:transparent;color:#6b7280;cursor:pointer;font-family:inherit}
@@ -68,6 +70,11 @@ canvas{display:block;width:100%;aspect-ratio:1;cursor:crosshair}
 <div class="wrap">
 <h1>GENESIS — GARCIA MODE</h1>
 <p class="sub">GENERALIZED KLOOSTERMAN SUMS K(a,b,q,Λ) · Burkhardt–Chan–Currier–Garcia–Luca–Suh 2016</p>
+<nav class="garcia-links" aria-label="Related Fourier viewers">
+  <a href="./genesis-garcia-2_per-orbit.html?example=q7#ramanujan">Build one denominator from cyclic orbits</a>
+  <a href="./genesis-ramanujan.html?example=q7">See the complete Ramanujan row at q = 7</a>
+  <a href="./genesis-garcia_sums.html">Direct cyclic sums</a>
+</nav>
 
 <div class="range-row" id="qRow" style="margin-top:20px">
 <span class="row-label" style="min-width:auto">q =</span>
@@ -962,6 +969,11 @@ for(const link of document.querySelectorAll('#denominator-band a[href^="https://
   }
 }
 document.getElementById('bandForm').addEventListener('submit',showBandAtCutoff);
+const initialCutoff = Number(new URLSearchParams(location.search).get('cutoff'));
+const bandInput = document.getElementById('bandX');
+if (Number.isInteger(initialCutoff) && initialCutoff >= Number(bandInput.min) && initialCutoff <= Number(bandInput.max)) {
+  bandInput.value = initialCutoff;
+}
 showBandAtCutoff();
 subgroup=buildSubgroup(q,d);
 renderQButtons();

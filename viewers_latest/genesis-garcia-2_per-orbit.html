@@ -108,6 +108,15 @@ h1{font-size:16px;font-weight:700;color:#e8ecf2;letter-spacing:.06em}
 .ech-label{font-size:9px;color:#c9cdd5;letter-spacing:.05em;margin-bottom:4px}
 .ech-label .ech-sub{color:#4b5563;font-weight:400;font-size:8px;margin-left:4px}
 .energy-chart canvas{display:block;width:100%;height:110px;background:transparent}
+.unit-jump,.unit-bridge a{color:#8dc7f4;text-underline-offset:3px}
+.unit-jump{display:inline-block;margin-top:6px;font-size:11px}
+.unit-bridge{margin-top:16px;padding:14px 16px;border:1px solid #354353;border-radius:8px;background:#0d1016;color:#c3cad7;font-size:12px;line-height:1.6;scroll-margin-top:12px}
+.unit-bridge h2{font-size:15px;color:#eef1f7}
+.unit-bridge p,.unit-bridge .row{margin-top:8px}
+.unit-bridge dl{margin-top:10px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,182px),1fr));gap:10px}
+.unit-bridge dt{color:#a7b2c4;font-size:11px}
+.unit-bridge dd{color:#e5c07b;font-size:14px;font-weight:600}
+.unit-bridge .tbtn{color:#cbe4f7}
 @media (max-width:780px){.layout{grid-template-columns:1fr}}
 </style>
 </head>
@@ -115,6 +124,7 @@ h1{font-size:16px;font-weight:700;color:#e8ecf2;letter-spacing:.06em}
 <div class="wrap">
 <h1>GENESIS · GARCIA MODE</h1>
 <p class="sub">CYCLIC SUPERCHARACTERS · σ<sub>X</sub>(y) = Σ<sub>x∈X</sub> e(xy/n) · X = ⟨a⟩·r</p>
+<a class="unit-jump" href="#ramanujan">Follow one orbit into the Ramanujan sum</a>
 
 <div class="sec">
   <div class="sec-label">PAPER MODULI (Duke · Garcia · Lutz 2013)</div>
@@ -187,6 +197,26 @@ h1{font-size:16px;font-weight:700;color:#e8ecf2;letter-spacing:.06em}
     <div id="coloring">—</div>
   </div>
 </div>
+
+<section class="unit-bridge" id="ramanujan" aria-labelledby="unitTitle">
+  <h2 id="unitTitle">From one orbit to a Ramanujan sum</h2>
+  <p>At frequency y = 1 the selected orbit contributes σ<sub>X</sub>(1) = Σ<sub>x∈X</sub> exp(2πix/n), with each distinct residue counted once. The units modulo n split into cosets of ⟨a⟩. Adding one sum from every unit coset gives the full Ramanujan sum c<sub>n</sub>(1) = μ(n).</p>
+  <div aria-live="polite">
+    <dl>
+      <div><dt>Selected σ<sub>X</sub>(1) · numerical</dt><dd id="unitValue">…</dd></div>
+      <div><dt>Unit cosets · exact count</dt><dd id="unitCount">…</dd></div>
+      <div><dt>Full unit sum c<sub>n</sub>(1) · exact</dt><dd id="unitMobius">…</dd></div>
+    </dl>
+    <p id="unitMembership"></p>
+  </div>
+  <p>Try n = 7 and a = 2. The two unit orbits give conjugate sums (−1 + i√7)/2 and (−1 − i√7)/2. Together they give c<sub>7</sub>(1) = −1 exactly.</p>
+  <div class="row">
+    <button type="button" class="tbtn" onclick="loadPreset(7,2,1)">Show {1, 2, 4}</button>
+    <button type="button" class="tbtn" onclick="loadPreset(7,2,3)">Show {3, 5, 6}</button>
+  </div>
+  <p>Open the <a href="./genesis-ramanujan.html?example=q7">same q = 7 row in the GENESIS gcd-shell viewer</a>. Its shell gcd(x, N) = d sums to c<sub>N/d</sub>(y) at integer frequency y. The example uses N = 210, d = 30, and y = 1. The <a href="./genesis-garcia_sums.html">direct cyclic-sums viewer</a> evaluates each frequency separately.</p>
+  <p>The <a href="./genesis-garcia-.html?cutoff=7#denominator-coupling">denominator coupling at cutoff X = 7</a> includes q = 5 and 7. In general it uses each full row c<sub>q</sub>(1) = μ(q) once for X/2 &lt; q ≤ X and gcd(q, 6) = 1. The optional χ₄ grading multiplies each row by +1 for q ≡ 1 mod 4 or −1 for q ≡ 3 mod 4. At X = 7 these sums are −2 and 0, respectively. The bound O<sub>ε</sub>(X<sup>1/2+ε</sup>) for every ε &gt; 0 and all sufficiently large cutoffs remains open. <a id="unitAtlas" href="https://hypatiaa.github.io/arithmetic-fourier-rh/proof-atlas/#unit-orbits">Trace the unit-orbit identity in the proof atlas</a>.</p>
+</section>
 
 <div class="sec" style="margin-top:14px">
   <div class="sec-label">CYCLIC SUBGROUPS OF ORDER <span id="catDLabel">—</span> IN (ℤ/n ℤ)<sup>×</sup>
@@ -327,6 +357,7 @@ function orderMod(a,n){
 /* ───────────────────────────── orbit + sigma ───────────────────────────── */
 /* build orbit X = ⟨a⟩·r mod n */
 function buildOrbit(n,a,r){
+  a = pmod(a,n);
   const X = new Set();
   let x = pmod(r,n);
   const start = x;
@@ -342,6 +373,7 @@ function buildOrbit(n,a,r){
 /* build cyclic subgroup ⟨a⟩ mod n */
 function buildSubgroup(n,a){
   if(gcd(a,n)!==1)return null;
+  a = pmod(a,n);
   const A = [];
   let x=1;
   for(let i=0;i<n;i++){
@@ -361,6 +393,38 @@ function sigmaAt(X, y, n, cosT, sinT){
     im += sinT[k];
   }
   return [re,im];
+}
+
+/* Multiplying the frequency by a permutes X, including when r is a nonunit. */
+function forEachOrbitValue(n, a, X, cosT, sinT, visit){
+  const multiplier = pmod(a,n);
+  const seen = new Uint8Array(n);
+  for(let y=0;y<n;y++){
+    if(seen[y])continue;
+    const [re,im] = sigmaAt(X,y,n,cosT,sinT);
+    let member = y;
+    do{
+      seen[member] = 1;
+      visit(member,re,im);
+      member = (member*multiplier)%n;
+    }while(!seen[member]);
+  }
+}
+
+function renderUnitOrbitRow(re,im){
+  const {n,r,phiN,dOrder} = state;
+  const factors = primeFactors(n);
+  const mu = factors.some(([,exponent])=>exponent>1) ? 0 : (-1)**factors.length;
+  const cosets = phiN/dOrder;
+  const gcdR = gcd(r,n);
+  const roundedRe = Number(re.toFixed(6));
+  const roundedIm = Number(im.toFixed(6));
+  document.getElementById('unitValue').textContent = `${roundedRe} ${roundedIm<0?'−':'+'} ${Math.abs(roundedIm)}i`;
+  document.getElementById('unitCount').textContent = `φ(${n}) / ${dOrder} = ${cosets}`;
+  document.getElementById('unitMobius').textContent = `μ(${n}) = ${mu}`;
+  document.getElementById('unitMembership').textContent = gcdR===1
+    ? `The orbit of r = ${r} contributes one of the ${cosets} unit coset sums.`
+    : `Every residue in the orbit of r = ${r} has gcd ${gcdR} with ${n}. This orbit belongs to a separate gcd shell and contributes nothing to the full unit sum.`;
 }
 
 /* trig lookup table for fast ∑ e(k/n) */
@@ -1139,6 +1203,9 @@ function recompute(){
     document.getElementById('subgroupNote').textContent = '—';
     document.getElementById('catDLabel').textContent = '—';
     document.getElementById('energyStats').innerHTML = '—';
+    for(const id of ['unitValue','unitCount','unitMobius','unitMembership']){
+      document.getElementById(id).textContent = '—';
+    }
     for(const id of ['energyRadial','energyResidue','energyCRT']){
       const c = document.getElementById(id);
       const cx = c.getContext('2d');
@@ -1211,18 +1278,14 @@ function computePoints(myID){
   let minRe=Infinity,maxRe=-Infinity,minIm=Infinity,maxIm=-Infinity;
   const m = state.mAuto;
 
-  /* per-orbit precompute: σ_X constant on X-orbits → O(n) not O(n·d).
-     Fills sigRe/sigIm for every y; the pts loop then just samples from them
-     at the existing step, so subsampling logic is unchanged. */
+  /* The plotted values and the y=1 readout share the same frequency-orbit sums. */
   const sigRe = new Float32Array(n);
   const sigIm = new Float32Array(n);
-  const seen  = new Uint8Array(n);
-  for(let y=0; y<n; y++){
-    if(seen[y]) continue;
-    let re=0, im=0;
-    for(let i=0; i<X.length; i++){ const k=(X[i]*y)%n; re+=cosT[k]; im+=sinT[k]; }
-    for(let i=0; i<X.length; i++){ const mm=(X[i]*y)%n; if(!seen[mm]){ seen[mm]=1; sigRe[mm]=re; sigIm[mm]=im; } }
-  }
+  forEachOrbitValue(n,state.a,X,cosT,sinT,(y,re,im)=>{
+    sigRe[y] = re;
+    sigIm[y] = im;
+    if(y===1)renderUnitOrbitRow(re,im);
+  });
   let idx = 0;
   for(let j=0;j<count;j++){
     const y = j*step;
@@ -1848,23 +1911,12 @@ function drawComponent(canvas, comp){
 
 function computeEnergyField(){
   const {n, X} = state;
-  const d = X.length;
   /* trig table */
   const cos = new Float64Array(n), sin = new Float64Array(n);
   for(let k=0;k<n;k++){const θ = TAU*k/n; cos[k] = Math.cos(θ); sin[k] = Math.sin(θ)}
 
-  /* per-orbit: σ_X is constant on X-orbits (σ_X(gy)=σ_X(y) for g∈X).
-     Compute once per orbit rep, broadcast to members. O(n) not O(n·d).
-     Parseval Σ𝓔 = n·d holds by the same algebra; verified identical to per-y. */
   const energy = new Float64Array(n);
-  const seen = new Uint8Array(n);
-  for(let y=0; y<n; y++){
-    if(seen[y]) continue;
-    let re=0, im=0;
-    for(let i=0; i<d; i++){ const k=(X[i]*y)%n; re+=cos[k]; im+=sin[k]; }
-    const e = re*re + im*im;
-    for(let i=0; i<d; i++){ const m=(X[i]*y)%n; if(!seen[m]){ seen[m]=1; energy[m]=e; } }
-  }
+  forEachOrbitValue(n,state.a,X,cos,sin,(y,re,im)=>{energy[y]=re*re+im*im;});
   return energy;
 }
 
@@ -1876,9 +1928,7 @@ function renderEnergyPanel(){
     return;
   }
 
-  /* Per-orbit patch: actual work is O(n), not O(n·d). ops=n·d kept for display only.
-     Empirical timing (Node, per-orbit): n=720720, d=60 → 58ms (was 676ms naive).
-     Cap on n: soft >500k (~100ms browser), hard >5M (~800ms browser). */
+  /* The orbit traversal visits all frequencies; n·d gives the direct summation cost. */
   const ops = n * d;
   const SOFT_CAP = 500_000;   /* n, not n·d */
   const HARD_CAP = 5_000_000; /* n, not n·d */
@@ -2126,10 +2176,17 @@ function drawCRTProfile(canvasId, n, X){
 }
 
 /* ───────────────────────────── init ───────────────────────────── */
+if(location.protocol==='file:'){
+  document.getElementById('unitAtlas').href='../RH_PROOF_PATH_VIEWER_v0_1_20261127/index.html#unit-orbits';
+}
 buildPaperRow();
 buildFvltRow();
 resizeCanvas();
-recompute();
+if(new URLSearchParams(location.search).get('example')==='q7'){
+  loadPreset(7,2,1);
+}else{
+  recompute();
+}
 </script>
 </body>
 </html>

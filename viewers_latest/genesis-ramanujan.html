@@ -11,6 +11,8 @@
   .wrap { max-width: 920px; margin: 0 auto; padding: 20px 16px; }
   h1 { font-size: 17px; font-weight: 700; color: #e8ecf2; letter-spacing: 0.05em; }
   .sub { font-size: 10px; color: #4b5563; margin-top: 4px; letter-spacing: 0.08em; }
+  .orbit-links { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 12px; font-size: 12px; }
+  .orbit-links a { color: #8dc7f4; text-underline-offset: 3px; }
   .row { display: flex; gap: 6px; flex-wrap: wrap; align-items: center; margin-bottom: 10px; }
   .row-label { font-size: 10px; color: #4b5563; margin-right: 4px; }
   .nbtn { padding: 4px 12px; border-radius: 6px; font-size: 10px; border: 1px solid #1e2028; background: transparent; color: #6b7280; cursor: pointer; font-family: inherit; }
@@ -53,6 +55,10 @@
 <div class="wrap">
   <h1>GENESIS</h1>
   <p class="sub">ORBIT → SUPERCHARACTER → RAMANUJAN SUM</p>
+  <nav class="orbit-links" aria-label="Follow the denominator">
+    <a href="./genesis-garcia-2_per-orbit.html?example=q7#ramanujan">Split a Ramanujan row into cyclic orbits</a>
+    <a href="./genesis-garcia-.html?cutoff=7#denominator-coupling">Count the denominator rows at X = 7</a>
+  </nav>
 
   <div class="row" id="nRow" style="margin-top:20px">
     <span class="row-label">N =</span>
@@ -289,7 +295,8 @@ function renderDetail() {
     <span style="opacity:0.6">Σ =</span>
     <span style="color:#e8ecf2;font-weight:600;margin-left:6px">${Math.round(sumRe*10000)/10000}</span>`;
   if (Math.abs(sumIm) > 0.0001) html += `<span style="opacity:0.5"> ${sumIm>=0?'+':''}${Math.round(sumIm*10000)/10000}i</span>`;
-  html += `<span style="opacity:0.5;margin-left:10px">= c<sub>${orb.q}</sub>(${fmtN(n)})</span></div></div>`;
+  const sumLabel = Number.isInteger(n) ? `= c<sub>${orb.q}</sub>(${fmtN(n)})` : 'interpolated phasor sum';
+  html += `<span style="opacity:0.5;margin-left:10px">${sumLabel}</span></div></div>`;
 
   panel.innerHTML = html;
 }
@@ -480,6 +487,11 @@ document.getElementById('exportAll').onclick = () => {
 };
 
 // ── Bootstrap ───────────────────────────────────────────────
+if (new URLSearchParams(location.search).get('example') === 'q7') {
+  // The gcd-30 shell in Z/210 gives precisely the six primitive seventh roots.
+  state.N = 210;
+  state.selectedD = 30;
+}
 initNButtons();
 const init = buildOrbits(state.N);
 divs = init.divs; orbits = init.orbits;

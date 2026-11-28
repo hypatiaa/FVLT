@@ -24,10 +24,10 @@ Every page is a single HTML file; open it in a browser. Support files:
 | FVLT orbit viewer (Ford gaps, orbits, Farey pen) | [`fvlt_orbit_viewer_v0_3.html`](fvlt_orbit_viewer_v0_3.html) | 3 | `461142310aca…` |
 | FVLT rosette automaton | [`fvlt_rosette_automaton_v0_1_3.html`](fvlt_rosette_automaton_v0_1_3.html) | 4 | `513d88652e5b…` |
 | FVLT rosette picker (uses the two rule30_center_*.bin files) | [`fvlt_rosette_picker_v0_2_16.html`](fvlt_rosette_picker_v0_2_16.html) | 16 | `2e5d4cc4d5fc…` |
-| GENESIS García · denominator band and Dirac nullity | [`genesis-garcia-.html`](genesis-garcia-.html) | 1 | `db2fd3658f21…` |
-| Genesis: Garcia, per orbit | [`genesis-garcia-2_per-orbit.html`](genesis-garcia-2_per-orbit.html) | 1 | `a4601f1068ac…` |
+| GENESIS García · denominator band and Dirac nullity | [`genesis-garcia-.html`](genesis-garcia-.html) | 1 | `5ad2d154b4c7…` |
+| Genesis: Garcia, per orbit | [`genesis-garcia-2_per-orbit.html`](genesis-garcia-2_per-orbit.html) | 1 | `acfd4dab418a…` |
 | Genesis: Garcia sums | [`genesis-garcia_sums.html`](genesis-garcia_sums.html) | 1 | `3e0afceece44…` |
-| Genesis: Ramanujan | [`genesis-ramanujan.html`](genesis-ramanujan.html) | 1 | `a368132b5f82…` |
+| Genesis: Ramanujan | [`genesis-ramanujan.html`](genesis-ramanujan.html) | 1 | `c7ffe8122fa7…` |
 | Genesis: Fourier paths | [`genesis_fourier_paths_v0_2.html`](genesis_fourier_paths_v0_2.html) | 2 | `c05ebe76a22e…` |
 | Atom viewer / helix atlas (doily witness), wl26 | [`helix_atlas_doily_witness_v27_patched_3_wl26.html`](helix_atlas_doily_witness_v27_patched_3_wl26.html) | 27 | `f8e4dee94a4a…` |
 | Helix atlas wl26 phase replay | [`helix_atlas_wl26_phase_replay_v0_4.html`](helix_atlas_wl26_phase_replay_v0_4.html) | 4 | `e8889c05367d…` |
