@@ -1,6 +1,6 @@
 # FVLT Lean source index
 
-This index covers 1,267 Lean file paths. It includes theorem modules, statement checks, assembly fragments, and historical copies. Each citation opens the named Lean declaration or source line.
+This index covers 1,268 Lean file paths. It includes theorem modules, statement checks, assembly fragments, and historical copies. Each citation opens the named Lean declaration or source line.
 
 [Search the public index](https://hypatiaa.github.io/FVLT/lean/) · [FVLT guide](https://hypatiaa.github.io/FVLT/)
 
@@ -37,6 +37,8 @@ This index covers 1,267 Lean file paths. It includes theorem modules, statement 
 - Denominator band · Square-root-scale cancellation of the untwisted band implies RH. Proving that cancellation independently remains open in this project. [riemannHypothesis_of_V_cancellation](projects/farey-character-bridge/CrystalBridge.lean#L823)
 
 - Three-tooth Vernier · For every Dirichlet character and X ≥ 2, the centered three-tooth endpoint equals twice the twisted denominator-band sum. [threeToothEndpoint_eq_two_mul_twistedV](projects/farey-character-bridge/ThreeToothVernierBridge.lean#L437)
+
+- Dirac rank · For any coupling of the positive and negative band rows, the Dirac kernel dimension bounds the signed imbalance. Proving a square-root-scale rank deficit at every sufficiently large cutoff remains open. [norm_V_le_dirac_ker](projects/farey-character-bridge/VernierPairingDirac.lean#L679) · [riemannHypothesis_of_dirac_rank_bound](projects/farey-character-bridge/VernierPairingDirac.lean#L689)
 
 - Characters · Twisted band cancellation is equivalent to the every-character zero-free statement. [allChiVCancellation_iff_everyCharacter](projects/farey-character-bridge/CrystalBridgeConverse.lean#L18)
 
@@ -1112,7 +1114,7 @@ The links below use paths relative to this checkout. The public index links to a
 
 - [Lean/projects/factorial-oracle/WilsonOracle.lean](projects/factorial-oracle/WilsonOracle.lean#L17) · theorem distance_zero_iff
 
-### farey-character-bridge (16)
+### farey-character-bridge (17)
 
 - [Lean/projects/farey-character-bridge/CrystalBridge.lean](projects/farey-character-bridge/CrystalBridge.lean#L116) · theorem twistedCoprimeSum_sieve_prime
 
@@ -1145,6 +1147,8 @@ The links below use paths relative to this checkout. The public index links to a
 - [Lean/projects/farey-character-bridge/FranelRank.lean](projects/farey-character-bridge/FranelRank.lean#L7) · theorem bTwo_opposite
 
 - [Lean/projects/farey-character-bridge/ThreeToothVernierBridge.lean](projects/farey-character-bridge/ThreeToothVernierBridge.lean#L437) · theorem threeToothEndpoint_eq_two_mul_twistedV
+
+- [Lean/projects/farey-character-bridge/VernierPairingDirac.lean](projects/farey-character-bridge/VernierPairingDirac.lean#L553) · theorem diracMatrix_finrank_ker
 
 ### Farey joint port · Lean 4.33.1 (17)
 
