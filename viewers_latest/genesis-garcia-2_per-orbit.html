@@ -124,7 +124,11 @@ h1{font-size:16px;font-weight:700;color:#e8ecf2;letter-spacing:.06em}
 <div class="wrap">
 <h1>GENESIS · GARCIA MODE</h1>
 <p class="sub">CYCLIC SUPERCHARACTERS · σ<sub>X</sub>(y) = Σ<sub>x∈X</sub> e(xy/n) · X = ⟨a⟩·r</p>
-<a class="unit-jump" href="#ramanujan">Follow one orbit into the Ramanujan sum</a>
+<nav class="row" aria-label="Orbit and rank readings">
+  <a class="unit-jump" href="#ramanujan">Follow one orbit into the Ramanujan sum</a>
+  <span aria-hidden="true">·</span>
+  <a class="unit-jump" href="#q7-rank-projection">Read the q = 7 Farey rank projection</a>
+</nav>
 
 <div class="sec">
   <div class="sec-label">PAPER MODULI (Duke · Garcia · Lutz 2013)</div>
@@ -209,13 +213,20 @@ h1{font-size:16px;font-weight:700;color:#e8ecf2;letter-spacing:.06em}
     </dl>
     <p id="unitMembership"></p>
   </div>
-  <p>Try n = 7 and a = 2. The two unit orbits give conjugate sums (−1 + i√7)/2 and (−1 − i√7)/2. Together they give c<sub>7</sub>(1) = −1 exactly.</p>
+  <p id="q7-phasors">Try n = 7 and a = 2. At y = 1, the two buttons select the phasor sums for A = {1, 2, 4} and B = {3, 5, 6}. With ζ = exp(2πi/7), their values are (−1 + i√7)/2 and (−1 − i√7)/2, respectively. They add to c<sub>7</sub>(1) = −1, multiply to 2, and their difference squares to −7. <a data-local-lean="FareyOrbitPhasors.lean" href="https://github.com/hypatiaa/FVLT/blob/f8cd3e145784e48b45023948ab2d2ff9735737a7/Lean/projects/farey-orbit-contrast/FareyOrbitPhasors.lean#L13-L35">Lean proof of the three phasor identities</a>.</p>
   <div class="row">
     <button type="button" class="tbtn" onclick="loadPreset(7,2,1)">Show {1, 2, 4}</button>
     <button type="button" class="tbtn" onclick="loadPreset(7,2,3)">Show {3, 5, 6}</button>
   </div>
   <p>Open the <a href="./genesis-ramanujan.html?example=q7">same q = 7 row in the GENESIS gcd-shell viewer</a>. Its shell gcd(x, N) = d sums to c<sub>N/d</sub>(y) at integer frequency y. The example uses N = 210, d = 30, and y = 1. The <a href="./genesis-garcia_sums.html">direct cyclic-sums viewer</a> evaluates each frequency separately.</p>
   <p>The <a href="./genesis-garcia-.html?cutoff=7#denominator-coupling">denominator coupling at cutoff X = 7</a> includes q = 5 and 7. In general it uses each full row c<sub>q</sub>(1) = μ(q) once for X/2 &lt; q ≤ X and gcd(q, 6) = 1. The optional χ₄ grading multiplies each row by +1 for q ≡ 1 mod 4 or −1 for q ≡ 3 mod 4. At X = 7 these sums are −2 and 0, respectively. The bound O<sub>ε</sub>(X<sup>1/2+ε</sup>) for every ε &gt; 0 and all sufficiently large cutoffs remains open. <a id="unitAtlas" href="https://hypatiaa.github.io/arithmetic-fourier-rh/proof-atlas/#unit-orbits">Trace the unit-orbit identity in the proof atlas</a>.</p>
+</section>
+
+<section class="unit-bridge" id="q7-rank-projection" aria-labelledby="q7RankTitle">
+  <h2 id="q7RankTitle">Farey rank errors on the same two orbits</h2>
+  <p>For Farey order N, let A<sub>N</sub>(x) count the positive reduced fractions at or below x with denominator at most N. At each a/7, subtract the equally spaced rank prediction to get D<sub>a</sub> = A<sub>N</sub>(a/7) − (a/7)A<sub>N</sub>(1). The quadratic coefficient is (D₁ + D₂ + D₄ − D₃ − D₅ − D₆)/6.</p>
+  <p>At N = 40 there are 490 positive fractions. In numerator order a = 1 through 6, the errors are (0, 1, 0, 0, −1, 0). Orbit A contributes 1 and orbit B contributes −1, so their difference is 2 and the coefficient is 1/3. <a data-local-lean="FareyOrbitSeven.lean" href="https://github.com/hypatiaa/FVLT/blob/f8cd3e145784e48b45023948ab2d2ff9735737a7/Lean/projects/farey-orbit-contrast/FareyOrbitSeven.lean#L66-L80">Exact order-40 rank counts in Lean</a>.</p>
+  <p>For every N, the coefficient equals (1/6) ∑<sub>k=1</sub><sup>N</sup> χ₇(k) M(⌊N/k⌋), where χ₇ is the Legendre symbol modulo 7 and M is the summatory Möbius function. Its square is bounded by the mean of the six squared rank errors. A uniform growth estimate for the joint energy across denominators remains open. <a data-local-lean="FareyQuadraticProjection.lean" href="https://github.com/hypatiaa/FVLT/blob/f8cd3e145784e48b45023948ab2d2ff9735737a7/Lean/projects/farey-orbit-contrast/FareyQuadraticProjection.lean#L49-L89">Lean proof of the rank-error projection and energy inequality</a>.</p>
 </section>
 
 <div class="sec" style="margin-top:14px">
@@ -2178,6 +2189,9 @@ function drawCRTProfile(canvasId, n, X){
 /* ───────────────────────────── init ───────────────────────────── */
 if(location.protocol==='file:'){
   document.getElementById('unitAtlas').href='../RH_PROOF_PATH_VIEWER_v0_1_20261127/index.html#unit-orbits';
+  for(const link of document.querySelectorAll('[data-local-lean]')){
+    link.href='../FAREY_ORBIT_CONTRAST_LEAN_20261128/'+link.dataset.localLean;
+  }
 }
 buildPaperRow();
 buildFvltRow();
