@@ -38,6 +38,17 @@ canvas{display:block;width:100%;aspect-ratio:1;cursor:crosshair}
 .detail .sum-box{border-radius:8px;padding:10px 12px;font-size:11px;background:#13151a;line-height:1.8}
 .footer{margin-top:24px;font-size:9px;color:#2a2d35;text-align:center;letter-spacing:.05em}
 .note{font-size:9px;color:#3a3f4b;margin-bottom:10px}
+.band-panel{margin-top:16px;padding:15px;border:1px solid #323946;border-radius:10px;background:#13151a;font-size:12px;line-height:1.6}
+.band-panel h2{color:#e8ecf2;font-size:14px;margin-bottom:6px}
+.band-panel p{color:#b3bdcb;margin:4px 0}
+.band-panel a{color:#8dc7f4;text-underline-offset:3px}
+.band-controls{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin:12px 0}
+.band-controls input,.band-panel button{background:#0d0f12;border:1px solid #46505e;color:#d5dce6;border-radius:5px;padding:6px 9px;font:inherit}
+.band-controls input{width:10ch;box-sizing:content-box}
+.band-panel button{cursor:pointer}
+.band-panel :focus-visible{outline:2px solid #8dc7f4;outline-offset:2px}
+.band-panel .band-result{color:#e5c07b;font-weight:700}
+.band-panel .band-help{font-size:11px;color:#a4adbc}
 </style>
 </head>
 <body>
@@ -91,6 +102,22 @@ canvas{display:block;width:100%;aspect-ratio:1;cursor:crosshair}
 </div>
 
 <div class="detail" id="detail"></div>
+<section class="band-panel" id="denominator-band" aria-labelledby="bandTitle">
+<h2 id="bandTitle">Denominator band · V(X)</h2>
+<p id="bandRow"></p>
+<p>Across denominators, V(X) adds the full-unit values K(1, 0;q) = μ(q) for X/2 &lt; q ≤ X with gcd(q, 6) = 1.</p>
+<form class="band-controls" id="bandForm">
+<label for="bandX">Cutoff X</label>
+<input id="bandX" type="number" inputmode="numeric" min="2" max="1000000" step="1" value="31" required aria-describedby="bandRange">
+<button type="submit">Calculate</button>
+<span class="band-help" id="bandRange">Whole numbers from 2 to 1,000,000</span>
+</form>
+<div aria-live="polite" aria-atomic="true">
+<p id="bandValue" class="band-result"></p>
+<p id="bandCounts"></p>
+</div>
+<p class="band-help">Each count is exact for the selected cutoff. Bounding the signed sum at every cutoff by C<sub>ε</sub>X<sup>1/2+ε</sup> remains open. <a id="bandAtlas" href="https://hypatiaa.github.io/arithmetic-fourier-rh/proof-atlas/#garcia">Follow this step in the proof atlas</a></p>
+</section>
 <div class="footer">GENESIS · Garcia mode · K(a,b,q,Λ) = Σ<sub>u∈Λ</sub> e((au+bu⁻¹)/q) · classical when Λ = (ℤ/qℤ)×</div>
 </div>
 
@@ -321,6 +348,52 @@ let q=31, d=5, colorMode='apb', kMod=6, viewMode='value';
 let subgroup=null;
 let renderID=0;
 
+let bandMu = new Int8Array(0);
+function mobiusTable(limit){
+  if(limit < bandMu.length) return bandMu;
+  const mu = new Int8Array(limit+1).fill(1);
+  const composite = new Uint8Array(limit+1);
+  mu[0] = 0;
+  for(let p=2; p<=limit; p++){
+    if(composite[p]) continue;
+    for(let n=p; n<=limit; n+=p) mu[n] = -mu[n];
+    for(let n=p*p; n<=limit; n+=p) composite[n] = 1;
+    for(let n=p*p; n<=limit; n+=p*p) mu[n] = 0;
+  }
+  bandMu = mu;
+  return mu;
+}
+
+const formatBandInt = new Intl.NumberFormat('en-US');
+function showBandRow(){
+  const mu = mobiusTable(q)[q];
+  const row = document.getElementById('bandRow');
+  if(subgroup && subgroup.method === 'full'){
+    row.textContent = `Selected plot: full unit group at q = ${q}. Its (1, 0) sum is exactly ${mu}.`;
+  } else {
+    row.textContent = `Selected plot: subgroup of order ${d} at q = ${q}. Choose ${eulerTotient(q)} (full) to see the group whose (1, 0) sum is μ(${q}) = ${mu}.`;
+  }
+}
+
+function showBandAtCutoff(event){
+  if(event) event.preventDefault();
+  const input = document.getElementById('bandX');
+  if(!input.reportValidity()) return;
+  const cutoff = input.valueAsNumber;
+  const mu = mobiusTable(cutoff);
+  let positive = 0, negative = 0, zero = 0;
+  const first = Math.floor(cutoff/2)+1;
+  for(let n=first; n<=cutoff; n++){
+    if(n%2===0 || n%3===0) continue;
+    if(mu[n]>0) positive++;
+    else if(mu[n]<0) negative++;
+    else zero++;
+  }
+  const fmt = n => formatBandInt.format(n);
+  document.getElementById('bandValue').textContent = `V(${fmt(cutoff)}) = ${fmt(positive-negative)}`;
+  document.getElementById('bandCounts').textContent = `q from ${fmt(first)} through ${fmt(cutoff)} · positive ${fmt(positive)} · negative ${fmt(negative)} · zero ${fmt(zero)}`;
+}
+
 function getPhiDivisors(q){
   const phi=eulerTotient(q);
   return divisorsOf(phi);
@@ -355,6 +428,7 @@ function findNiceD(divsPhi,q){
 }
 
 function renderDButtons(){
+  showBandRow();
   const r=document.getElementById('dRow');
   r.innerHTML='<span class="row-label">|Λ| = d =</span>';
   const phi=eulerTotient(q);
@@ -798,6 +872,13 @@ window.setViewMode=m=>{viewMode=m;
   scheduleGarcia()};
 
 /* ── init ── */
+if(location.protocol === 'file:' && /\/VIEWERS_LATEST\//i.test(location.pathname)){
+  document.getElementById('bandAtlas').href = '../RH_PROOF_PATH_VIEWER_v0_1_20261127/index.html#garcia';
+} else if(location.hostname === '127.0.0.1' && location.pathname === '/VIEWERS_LATEST/genesis-garcia-.html'){
+  document.getElementById('bandAtlas').href = '/#garcia';
+}
+document.getElementById('bandForm').addEventListener('submit',showBandAtCutoff);
+showBandAtCutoff();
 subgroup=buildSubgroup(q,d);
 renderQButtons();
 renderDButtons();
