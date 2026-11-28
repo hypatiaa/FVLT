@@ -55,6 +55,8 @@ canvas{display:block;width:100%;aspect-ratio:1;cursor:crosshair}
 .band-dirac th,.band-dirac td{padding:2px 8px;text-align:right}
 .band-dirac th:first-child{text-align:left;padding-left:0}
 .band-dirac thead th{color:#a4adbc}
+.band-dirac th[colspan]{text-align:center}
+.coupling-evidence summary{color:#8dc7f4;cursor:pointer}
 </style>
 </head>
 <body>
@@ -134,6 +136,19 @@ canvas{display:block;width:100%;aspect-ratio:1;cursor:crosshair}
 <tr><th scope="row">All opposite signs linked equally</th><td id="diracUniformRank"></td><td id="diracUniformNullity"></td></tr>
 </tbody></table>
 <p class="band-help"><span id="diracFloor" aria-live="polite"></span> RH follows if some family of couplings has at most C<sub>ε</sub>X<sup>1/2+ε</sup> zero modes at every sufficiently large cutoff for each ε &gt; 0. That bound remains open. <a id="diracAtlas" href="https://hypatiaa.github.io/arithmetic-fourier-rh/proof-atlas/#dirac">Read the Dirac rank theorem</a></p>
+</section>
+<section class="band-dirac" id="denominator-coupling" aria-labelledby="couplingTitle">
+<h3 id="couplingTitle">Pairing by Vernier distance</h3>
+<p>Opposite signs can pair when the denominator distance |q − r|/2 is at most ⌊√X⌋. Each row can pair once. The χ₄ twist reverses the signs at q ≡ 3 modulo 4.</p>
+<table aria-label="Signed sum and minimum unmatched count for each grading">
+<thead><tr><th rowspan="2" scope="col">Grading</th><th colspan="2" id="couplingLiveHeading">Selected cutoff</th><th colspan="2">Sage · X = 100,000,000</th></tr>
+<tr><th scope="col">Signed</th><th scope="col">Unmatched</th><th scope="col">Signed</th><th scope="col">Unmatched</th></tr></thead>
+<tbody><tr><th scope="row">Untwisted</th><td id="couplingPlainV"></td><td id="couplingPlainU"></td><td>726</td><td>726</td></tr>
+<tr><th scope="row">χ₄</th><td id="couplingTwistV"></td><td id="couplingTwistU"></td><td>550</td><td>3,100</td></tr></tbody></table>
+<p>Sage certified fewer than √X unmatched rows at every integer cutoff from 2 through 100,000,000. The largest ratios to √X were <strong>8/√73</strong> untwisted and <strong>6/√85</strong> under χ₄. <a href="https://github.com/hypatiaa/arithmetic-fourier-rh/blob/d137b37b2ebac857d776f5afc0794e805a85b301/proof-atlas/evidence/vernier-coupling/REPORT.md">Read the Sage report</a></p>
+<details class="coupling-evidence"><summary>Why the twist leaves 3,100 rows</summary>
+<p>At X = 100,000,000, the radius is 10,000. One interval has 6,107,381 negative rows with only 6,106,106 positive rows in reach. It strands 1,275 negatives. The band already has 550 more positives, leaving 550 + 2 × 1,275 = 3,100 rows. A radius of 14,207 pairs every negative row at this cutoff.</p></details>
+<p class="band-help">For unbounded X, a written argument gives O(X/(log X)<sup>1/200</sup>) unmatched rows. The square-root-scale bound for all sufficiently large X remains open. <a id="couplingAtlas" href="https://hypatiaa.github.io/arithmetic-fourier-rh/proof-atlas/#coupling">Trace the coupling and its certificate</a></p>
 </section>
 </section>
 <div class="footer">GENESIS · Garcia mode · K(a,b,q,Λ) = Σ<sub>u∈Λ</sub> e((au+bu⁻¹)/q) · classical when Λ = (ℤ/qℤ)×</div>
@@ -393,6 +408,34 @@ function showBandRow(){
   }
 }
 
+function vernierBandMatching(mu, cutoff, twist){
+  const radius = 2*Math.floor(Math.sqrt(cutoff));
+  const queue = new Int32Array(radius+1);
+  let head = 0, length = 0, queueSign = 0, signed = 0, unmatched = 0;
+  const lower = Math.floor(cutoff/2);
+  for(let q=lower+1+(lower%2); q<=cutoff; q+=2){
+    if(q%3===0 || !mu[q]) continue;
+    const sign = twist && q%4===3 ? -mu[q] : mu[q];
+    signed += sign;
+    while(length && q-queue[head]>radius){
+      head = (head+1)%queue.length;
+      length--;
+    }
+    // Once too distant to pair, an expired row stays in the unmatched count.
+    if(length && queueSign!==sign){
+      head = (head+1)%queue.length;
+      length--;
+      unmatched--;
+    } else {
+      queue[(head+length)%queue.length] = q;
+      length++;
+      queueSign = sign;
+      unmatched++;
+    }
+  }
+  return {signed,unmatched};
+}
+
 function showBandAtCutoff(event){
   if(event) event.preventDefault();
   const input = document.getElementById('bandX');
@@ -420,6 +463,12 @@ function showBandAtCutoff(event){
   document.getElementById('diracUniformRank').textContent = fmt(uniformRank);
   document.getElementById('diracUniformNullity').textContent = fmt(activeRows-2*uniformRank);
   document.getElementById('diracFloor').textContent = `Every coupling here has at least |V(X)| = ${fmt(Math.abs(signed))} zero modes.`;
+  document.getElementById('couplingLiveHeading').textContent = `Live · X = ${fmt(cutoff)}`;
+  for(const [label,twist] of [['Plain',false],['Twist',true]]){
+    const result = vernierBandMatching(mu,cutoff,twist);
+    document.getElementById('coupling'+label+'V').textContent = fmt(result.signed);
+    document.getElementById('coupling'+label+'U').textContent = fmt(result.unmatched);
+  }
 }
 
 function getPhiDivisors(q){
@@ -900,7 +949,7 @@ window.setViewMode=m=>{viewMode=m;
   scheduleGarcia()};
 
 /* ── init ── */
-for(const link of document.querySelectorAll('#denominator-band a')){
+for(const link of document.querySelectorAll('#denominator-band a[href^="https://hypatiaa.github.io/arithmetic-fourier-rh/proof-atlas/"]')){
   if(location.protocol === 'file:' && /\/VIEWERS_LATEST\//i.test(location.pathname)){
     link.href = '../RH_PROOF_PATH_VIEWER_v0_1_20261127/index.html'+link.hash;
   } else if(location.hostname === '127.0.0.1' && location.pathname === '/VIEWERS_LATEST/genesis-garcia-.html'){
