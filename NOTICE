@@ -1,0 +1,20 @@
+FVLT | Ratioque Factorial Vernier Lattice Transform
+Copyright 2026 Robin Miller (saphir) and the FVLT contributors.
+
+Robin Miller licenses all FVLT-authored Lean source files (*.lean) and
+viewer software in this repository under the Apache License, Version 2.0
+(SPDX: Apache-2.0). The grant covers viewer source code, standalone HTML
+viewers, compiled distributions, and archived or duplicated copies,
+wherever they appear, including GitHub Pages distributions.
+
+Third-party code and assets retain their respective licenses, copyrights,
+and attribution notices. The bundled React, React DOM, three.js r128,
+and OrbitControls code is MIT-licensed by its upstream authors. The
+upstream license texts accompany the libraries in viewers_latest/vendor/.
+
+Arithmetic Fourier attribution: The arithmetic Fourier construction
+(prime phasors, Möbius lift and window, Poisson measure, orthogonal modes,
+the scalar S_B and its inverse, and the energy identity) is saphir's.
+The project includes software formalised with Lean 4 and Mathlib.
+The arithmetic-Fourier paper has its own CC BY 4.0 license in
+https://github.com/hypatiaa/FVLT/blob/main/Lean/projects/arithmetic-fourier-rh/LICENSE-DOCS.md

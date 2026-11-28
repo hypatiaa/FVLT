@@ -6,3 +6,7 @@ Robin Miller’s FVLT atlas studies divisor lattices, Vernier phases, and exact-
 - [Browse the Lean proofs and citations](https://hypatiaa.github.io/FVLT/lean/) · [GitHub source index](Lean/INDEX.md)
 - [Open the García viewer](https://hypatiaa.github.io/FVLT/viewers_latest/genesis-garcia-.html)
 - [Read the locked kernel](skills/fvlt/kernel_v3_4_1.md)
+
+## License
+
+All FVLT-authored Lean sources and viewers are licensed under [Apache-2.0](LICENSE), including standalone and archived viewers. See [NOTICE](NOTICE) for attribution, third-party components, and the separate paper license.
