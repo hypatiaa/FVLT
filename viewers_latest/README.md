@@ -24,7 +24,7 @@ Every page is a single HTML file; open it in a browser. Support files:
 | FVLT orbit viewer (Ford gaps, orbits, Farey pen) | [`fvlt_orbit_viewer_v0_3.html`](fvlt_orbit_viewer_v0_3.html) | 3 | `461142310aca…` |
 | FVLT rosette automaton | [`fvlt_rosette_automaton_v0_1_3.html`](fvlt_rosette_automaton_v0_1_3.html) | 4 | `513d88652e5b…` |
 | FVLT rosette picker (uses the two rule30_center_*.bin files) | [`fvlt_rosette_picker_v0_2_16.html`](fvlt_rosette_picker_v0_2_16.html) | 16 | `2e5d4cc4d5fc…` |
-| GENESIS García · exact signed denominator band | [`genesis-garcia-.html`](genesis-garcia-.html) | 1 | `3ea98a8a96d9…` |
+| GENESIS García · exact signed denominator band | [`genesis-garcia-.html`](genesis-garcia-.html) | 1 | `659783e40ea6…` |
 | Genesis: Garcia, per orbit | [`genesis-garcia-2_per-orbit.html`](genesis-garcia-2_per-orbit.html) | 1 | `a4601f1068ac…` |
 | Genesis: Garcia sums | [`genesis-garcia_sums.html`](genesis-garcia_sums.html) | 1 | `3e0afceece44…` |
 | Genesis: Ramanujan | [`genesis-ramanujan.html`](genesis-ramanujan.html) | 1 | `a368132b5f82…` |

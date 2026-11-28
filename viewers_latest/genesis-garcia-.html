@@ -115,6 +115,7 @@ canvas{display:block;width:100%;aspect-ratio:1;cursor:crosshair}
 <div aria-live="polite" aria-atomic="true">
 <p id="bandValue" class="band-result"></p>
 <p id="bandCounts"></p>
+<p><a id="vernierAtlas" href="https://hypatiaa.github.io/arithmetic-fourier-rh/proof-atlas/#vernier">Three-tooth endpoint</a> <span id="bandEndpoint"></span></p>
 </div>
 <p class="band-help">Each count is exact for the selected cutoff. Bounding the signed sum at every cutoff by C<sub>ε</sub>X<sup>1/2+ε</sup> remains open. <a id="bandAtlas" href="https://hypatiaa.github.io/arithmetic-fourier-rh/proof-atlas/#garcia">Follow this step in the proof atlas</a></p>
 </section>
@@ -390,8 +391,10 @@ function showBandAtCutoff(event){
     else zero++;
   }
   const fmt = n => formatBandInt.format(n);
-  document.getElementById('bandValue').textContent = `V(${fmt(cutoff)}) = ${fmt(positive-negative)}`;
+  const signed = positive-negative;
+  document.getElementById('bandValue').textContent = `V(${fmt(cutoff)}) = ${fmt(signed)}`;
   document.getElementById('bandCounts').textContent = `q from ${fmt(first)} through ${fmt(cutoff)} · positive ${fmt(positive)} · negative ${fmt(negative)} · zero ${fmt(zero)}`;
+  document.getElementById('bandEndpoint').textContent = `2V(X) = ${fmt(2*signed)}`;
 }
 
 function getPhiDivisors(q){
@@ -872,10 +875,12 @@ window.setViewMode=m=>{viewMode=m;
   scheduleGarcia()};
 
 /* ── init ── */
-if(location.protocol === 'file:' && /\/VIEWERS_LATEST\//i.test(location.pathname)){
-  document.getElementById('bandAtlas').href = '../RH_PROOF_PATH_VIEWER_v0_1_20261127/index.html#garcia';
-} else if(location.hostname === '127.0.0.1' && location.pathname === '/VIEWERS_LATEST/genesis-garcia-.html'){
-  document.getElementById('bandAtlas').href = '/#garcia';
+for(const link of document.querySelectorAll('#denominator-band a')){
+  if(location.protocol === 'file:' && /\/VIEWERS_LATEST\//i.test(location.pathname)){
+    link.href = '../RH_PROOF_PATH_VIEWER_v0_1_20261127/index.html'+link.hash;
+  } else if(location.hostname === '127.0.0.1' && location.pathname === '/VIEWERS_LATEST/genesis-garcia-.html'){
+    link.href = '/'+link.hash;
+  }
 }
 document.getElementById('bandForm').addEventListener('submit',showBandAtCutoff);
 showBandAtCutoff();
